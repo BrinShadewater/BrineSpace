@@ -1,0 +1,61 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "sources": [
+    {
+      "slot": 0,
+      "pose": "near contact",
+      "path": "character/marsh-east-carry-material-v1/near-06-unselected/near-contact.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8",
+      "occupiedBounds": [
+        47,
+        26,
+        136,
+        172
+      ]
+    },
+    {
+      "slot": 1,
+      "pose": "near passing",
+      "path": "character/marsh-east-carry-material-v1/near-06-unselected/near-passing.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996",
+      "occupiedBounds": [
+        49,
+        26,
+        134,
+        172
+      ]
+    },
+    {
+      "slot": 2,
+      "pose": "far contact",
+      "path": "character/marsh-east-carry-material-v1/contact-04-unselected/far-contact.png",
+      "sha256": "4252c5fb8cd1560521d20084ed5a2b68fc4b06c34f4d7405f8ef8dbace6809e5",
+      "occupiedBounds": [
+        51,
+        26,
+        133,
+        172
+      ]
+    },
+    {
+      "slot": 3,
+      "pose": "far passing",
+      "path": "character/marsh-east-carry-material-v1/passing-05-unselected/far-passing.png",
+      "sha256": "ae13a7931e9d4e9cacc8fb60dc4d9347bdc3166f9707402485e9b1791c67fad7",
+      "occupiedBounds": [
+        50,
+        26,
+        135,
+        172
+      ]
+    }
+  ],
+  "operations": "Byte-identical complete source PNG copies; no added scaling, mirroring, limb or crate edits. Source sheets each use one own neutral calibration.",
+  "apngExactDecodedFrames": 4,
+  "nativeReviewed": false,
+  "visualReviewed": true,
+  "remaining": "Stage actual East workshop carry movement, inspect source/native pairs and registration/cargo joins; retain unselected until review. West carry, turn/held joins, normal saves/visible Continues, full consistency/polish remain.",
+  "allFourCompletePosesInspected": true,
+  "findings": "Near06 foreground near leading/support and far04/05 opposite thighs now alternate. Near passing raises rear far boot; far passing raises rear near boot. Crate inset panel/single visible right latch concept consistent; projected width and body/hand registration vary between separately generated sheets, especially narrower far-contact crate. Neutral widths36/37/38 versus selected32 remain diagnostics, not accepted anatomical matching. Far-contact sole clearance remains provisional. Native motion and whole-cycle joins still need validation/polish."
+}

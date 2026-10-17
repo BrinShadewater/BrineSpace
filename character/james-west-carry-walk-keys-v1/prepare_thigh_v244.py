@@ -1,0 +1,12 @@
+from pathlib import Path
+from PIL import Image
+import json,hashlib
+p=Path(__file__).resolve().parent;r=p.parents[1];out=p/'thigh-construction-phase0-v244';out.mkdir(exist_ok=True)
+base=p/'lower-material-phase0-v234';master=r/'character/branforth-west-direct-v2/master-input.png';box=(104,136,144,176)
+for role,f,crop in [('edit-target',base/'bare-head-protected.png',box),('master-quilt-reference',master,(552,640,598,738))]:
+ im=Image.open(f).convert('RGBA').crop(crop);im.resize((1024,1024),Image.Resampling.NEAREST if role=='edit-target' else Image.Resampling.LANCZOS).save(out/f'{role}.png')
+prompt='''Edit Image1 only, a fixed40x40 local crop of James carrying west phase0. Image2 is the authoritative original-master thigh suit surface, for charcoal quilting and restrained yellow stitching only; NEVER copy its pose or surrounding equipment. Correct the visible upper-thigh fabric below the belt in Image1: replace the invented rectangular thigh panel and parallel diagonal stripe construction with the master's fine dark charcoal diamond quilting and a restrained narrow yellow suit seam. The intended region corresponds to original sprite x112..140,y145..163 (relative crop x8..36,y9..27). Preserve exact existing thigh contours, limb widths, knee position, leg layering and the bent-arm/case overlap. Do not move or straighten limbs or alter height. Existing knee fittings and belt hardware stay unchanged. No new pockets, patches, straps, metal plates, rivets, tools, gold buttons or bulky outlines. Preserve all other surfaces and existing small equipment. Match original master matte illustrated detail, warm charcoal, muted yellow stitches; no purple, bright gold or black masses. This is a construction/style correction, not a body resize. Return identical1024x1024 crop registration with real transparency, no background, glow, text or pixel-art conversion.'''
+(out/'prompt.txt').write_text(prompt,encoding='utf-8');sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+files=[base/'bare-head-protected.png',base/'helmet-head-protected.png',master];refs=[out/'edit-target.png',out/'master-quilt-reference.png']
+(out/'inputs.json').write_text(json.dumps(dict(phase=0,baseFolder=base.relative_to(r).as_posix(),cropBox=box,admissionRectangle=[112,145,141,164],sourceSha256={f.relative_to(r).as_posix():sha(f) for f in files},referenceSha256={f.relative_to(r).as_posix():sha(f) for f in refs},promptSha256=sha(out/'prompt.txt'),normalChanged=False),indent=2)+'\n',encoding='utf-8')
+print('Prepared original-master thigh construction study.')

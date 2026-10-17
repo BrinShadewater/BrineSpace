@@ -1,0 +1,56 @@
+{
+  "frameHeight": 256.0,
+  "frameWidth": 256.0,
+  "name": "Krusher Dom West cargo settle helmet",
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "precomposed": true,
+  "standingHeight": 148.0,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0
+      ],
+      "frameFiles": [
+        "res://character/krusher-cargo-family-v1/poses/helmet/565ca318a0c7bdab4361.png",
+        "res://character/krusher-cargo-family-v1/poses/helmet/5ef768d75b46051db1ea.png",
+        "res://character/krusher-cargo-family-v1/poses/helmet/ae75ba031568f946fdd1.png",
+        "res://character/krusher-cargo-family-v1/poses/helmet/2d3adebe12990ad24db4.png",
+        "res://character/krusher-cargo-family-v1/poses/helmet/92d02d4577bf21a4ee49.png",
+        "res://character/krusher-cargo-family-v1/poses/helmet/fbb20a3cd7f621ee74d9.png"
+      ],
+      "id": "carry-settle-west",
+      "loop": false,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling",
+        "sourceManifest": "res://character/james-cargo-return-bridges-v1/helmet-joined-manifest-v9.json",
+        "profileRepair": "Exact frozen original root filter profile, no raster or clock change"
+      }
+    }
+  ]
+}

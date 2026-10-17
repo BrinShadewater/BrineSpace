@@ -1,0 +1,102 @@
+{
+  "rawSize": [
+    1536,
+    1024
+  ],
+  "tiles": [
+    {
+      "phase": 16,
+      "admittedPixels": 335,
+      "outsideExact": 65201,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 50.2848,
+      "medianAfter": 65.7822,
+      "p95Before": 80.7782,
+      "p95After": 105.16746
+    },
+    {
+      "phase": 17,
+      "admittedPixels": 334,
+      "outsideExact": 65202,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 53.06699999999999,
+      "medianAfter": 64.71,
+      "p95Before": 91.92740999999998,
+      "p95After": 103.8482399999999
+    },
+    {
+      "phase": 18,
+      "admittedPixels": 331,
+      "outsideExact": 65205,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 52.357,
+      "medianAfter": 64.6458,
+      "p95Before": 89.3189,
+      "p95After": 100.9196
+    },
+    {
+      "phase": 19,
+      "admittedPixels": 409,
+      "outsideExact": 65127,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 50.71,
+      "medianAfter": 64.9948,
+      "p95Before": 88.37659999999998,
+      "p95After": 98.79159999999997
+    },
+    {
+      "phase": 20,
+      "admittedPixels": 406,
+      "outsideExact": 65130,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 51.671899999999994,
+      "medianAfter": 62.4974,
+      "p95Before": 99.1643,
+      "p95After": 94.28115
+    },
+    {
+      "phase": 15,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_construction_original_brightness_not_met",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeIncluded": true,
+  "findings": [
+    "Five16..20 target poses now carry quilt/yellow construction, with wider pose-specific19/20 admission removing more of the original panel edge. Original knee ROI, alpha/silhouette and outside component exact; shared body paired.",
+    "Faint flat-stitch wording still yields padded lighter cloth. Same-mask medians roughly50..53to62..66; original charcoal brightness not met. Source-stage garment anatomy/seam topology remains provisional.",
+    "Raw generation changed reference15 and added backdrop/lower-leg stitches: all excluded through original reference bytes and restricted admission. Existing raw reused for V270; no second generation.",
+    "All eight14..21 native captures and three paired four-size boards visually reviewed. Panel construction at untouched21 persists. No complete temporal/master proportion/perspective/contact or normal lifecycle acceptance."
+  ]
+}

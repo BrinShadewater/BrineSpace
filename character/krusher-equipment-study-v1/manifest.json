@@ -1,0 +1,408 @@
+{
+  "source": "source-02.png",
+  "sourceSha256": "8371d52f0cbb4c8800a1820b5ea49a2e1d2b0491f0e0925773f0cb7d97b37524",
+  "method": "builtin imagegen source; deterministic cell extraction and one common native density; static attachment comparison",
+  "parts": [
+    {
+      "id": "closed-terminal-south",
+      "cell": [
+        0,
+        0,
+        362,
+        400
+      ],
+      "trim": [
+        144,
+        85,
+        317,
+        354
+      ],
+      "sourceSize": [
+        173,
+        269
+      ],
+      "nativeSize": [
+        10,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/closed-terminal-south.png",
+      "mirrored": false
+    },
+    {
+      "id": "closed-terminal-east",
+      "cell": [
+        362,
+        0,
+        724,
+        400
+      ],
+      "trim": [
+        125,
+        85,
+        236,
+        354
+      ],
+      "sourceSize": [
+        111,
+        269
+      ],
+      "nativeSize": [
+        7,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/closed-terminal-east.png",
+      "mirrored": false
+    },
+    {
+      "id": "closed-terminal-north",
+      "cell": [
+        724,
+        0,
+        1086,
+        400
+      ],
+      "trim": [
+        88,
+        85,
+        268,
+        354
+      ],
+      "sourceSize": [
+        180,
+        269
+      ],
+      "nativeSize": [
+        11,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/closed-terminal-north.png",
+      "mirrored": false
+    },
+    {
+      "id": "closed-terminal-west",
+      "cell": [
+        1086,
+        0,
+        1448,
+        400
+      ],
+      "trim": [
+        94,
+        85,
+        205,
+        354
+      ],
+      "sourceSize": [
+        111,
+        269
+      ],
+      "nativeSize": [
+        7,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/closed-terminal-west.png",
+      "mirrored": false
+    },
+    {
+      "id": "open-terminal-south",
+      "cell": [
+        0,
+        400,
+        362,
+        780
+      ],
+      "trim": [
+        71,
+        55,
+        347,
+        343
+      ],
+      "sourceSize": [
+        276,
+        288
+      ],
+      "nativeSize": [
+        16,
+        17
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/open-terminal-south.png",
+      "mirrored": false
+    },
+    {
+      "id": "open-terminal-east",
+      "cell": [
+        362,
+        400,
+        724,
+        780
+      ],
+      "trim": [
+        72,
+        63,
+        322,
+        325
+      ],
+      "sourceSize": [
+        250,
+        262
+      ],
+      "nativeSize": [
+        15,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/open-terminal-east.png",
+      "mirrored": false
+    },
+    {
+      "id": "open-terminal-north",
+      "cell": [
+        724,
+        400,
+        1086,
+        780
+      ],
+      "trim": [
+        59,
+        88,
+        348,
+        329
+      ],
+      "sourceSize": [
+        289,
+        241
+      ],
+      "nativeSize": [
+        17,
+        14
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/open-terminal-north.png",
+      "mirrored": false
+    },
+    {
+      "id": "open-terminal-west",
+      "cell": [
+        1086,
+        400,
+        1448,
+        780
+      ],
+      "trim": [
+        39,
+        63,
+        288,
+        325
+      ],
+      "sourceSize": [
+        249,
+        262
+      ],
+      "nativeSize": [
+        15,
+        16
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/open-terminal-west.png",
+      "mirrored": false
+    },
+    {
+      "id": "data-cartridges-south",
+      "cell": [
+        0,
+        780,
+        362,
+        1086
+      ],
+      "trim": [
+        132,
+        34,
+        312,
+        227
+      ],
+      "sourceSize": [
+        180,
+        193
+      ],
+      "nativeSize": [
+        11,
+        11
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/data-cartridges-south.png",
+      "mirrored": false
+    },
+    {
+      "id": "data-cartridges-east",
+      "cell": [
+        362,
+        780,
+        724,
+        1086
+      ],
+      "trim": [
+        140,
+        34,
+        266,
+        227
+      ],
+      "sourceSize": [
+        126,
+        193
+      ],
+      "nativeSize": [
+        7,
+        11
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/data-cartridges-east.png",
+      "mirrored": false
+    },
+    {
+      "id": "data-cartridges-north",
+      "cell": [
+        724,
+        780,
+        1086,
+        1086
+      ],
+      "trim": [
+        82,
+        34,
+        269,
+        227
+      ],
+      "sourceSize": [
+        187,
+        193
+      ],
+      "nativeSize": [
+        11,
+        11
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/data-cartridges-north.png",
+      "mirrored": false
+    },
+    {
+      "id": "data-cartridges-west",
+      "cell": [
+        1086,
+        780,
+        1448,
+        1086
+      ],
+      "trim": [
+        94,
+        34,
+        219,
+        227
+      ],
+      "sourceSize": [
+        125,
+        193
+      ],
+      "nativeSize": [
+        7,
+        11
+      ],
+      "scale": 0.05947955390334572,
+      "path": "parts/native/data-cartridges-west.png",
+      "mirrored": false
+    }
+  ],
+  "fit": [
+    {
+      "direction": "south",
+      "source": "character\\krusher-bill-base-test-v2\\frames\\bare\\idle-south\\000.png",
+      "sourceSha256": "61e7ba4d4042c10d84143e7e19cb98d52db49e51957fdc02881260368b9fbf1a",
+      "attachments": [
+        [
+          "closed-terminal-south",
+          [
+            106,
+            90
+          ]
+        ],
+        [
+          "data-cartridges-south",
+          [
+            75,
+            92
+          ]
+        ]
+      ],
+      "outsideAttachmentsExact": true,
+      "path": "review/fitted-south.png"
+    },
+    {
+      "direction": "east",
+      "source": "character\\krusher-bill-base-test-v2\\frames\\bare\\idle-east\\000.png",
+      "sourceSha256": "fa32b6fa6ba3da2f347d5ee12069c2155acb7d135c0b79118b7daaa6d0e39f99",
+      "attachments": [
+        [
+          "data-cartridges-east",
+          [
+            92,
+            93
+          ]
+        ]
+      ],
+      "outsideAttachmentsExact": true,
+      "path": "review/fitted-east.png"
+    },
+    {
+      "direction": "north",
+      "source": "character\\krusher-bill-base-test-v2\\frames\\bare\\idle-north\\000.png",
+      "sourceSha256": "67b9bb4f187644dd1d8bba4a4dd75df4665016c7e6e174f3bbd7c32045d32880",
+      "attachments": [
+        [
+          "closed-terminal-north",
+          [
+            75,
+            97
+          ]
+        ],
+        [
+          "data-cartridges-north",
+          [
+            103,
+            97
+          ]
+        ]
+      ],
+      "outsideAttachmentsExact": true,
+      "path": "review/fitted-north.png"
+    },
+    {
+      "direction": "west",
+      "source": "character\\krusher-bill-base-test-v2\\frames\\bare\\idle-west\\000.png",
+      "sourceSha256": "d8a18340ec5651cb676506bbab9acfe3e5a2be573f44fdb332bbdc59148088cc",
+      "attachments": [
+        [
+          "closed-terminal-west",
+          [
+            88,
+            92
+          ]
+        ]
+      ],
+      "outsideAttachmentsExact": true,
+      "path": "review/fitted-west.png"
+    }
+  ],
+  "limitations": [
+    "Static fit only; no motion registration or hand contacts proved",
+    "Far-side terminal hidden in east view; far-side cartridges hidden in west",
+    "Generated open terminal remains a concept; exact folding geometry needs motion review"
+  ],
+  "sourceAlphaRange": [
+    0,
+    255
+  ]
+}

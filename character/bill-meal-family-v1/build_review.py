@@ -1,0 +1,14 @@
+from pathlib import Path
+import json
+from PIL import Image,ImageDraw
+P=Path(__file__).resolve().parent;R=P.parents[1];O=R/'output/bill-meal-activities-v1'
+m=json.loads((P/'manifest.json').read_text());rows=json.loads((O/'contacts.json').read_text())['records']
+board=Image.new('RGB',(800,540),(34,52,62));draw=ImageDraw.Draw(board)
+for i,row in enumerate(rows):
+    image=Image.open(O/row['screenshot']);box=(505,535,635,670) if row['station']['prop']=='library/sp-galley-2' else (270,295,400,435)
+    crop=image.crop(box);x=(i%4)*200;y=(i//4)*180;board.paste(crop,(x+25,y+35));draw.text((x+4,y+5),row['phase'],fill='white');draw.text((x+4,y+18),row['station']['facing']+' '+str(row['station']['prop']),fill='#bdd0d2')
+board.save(P/'actual-contact-review.png')
+data=[{**s,'frameFiles':['/'+f[6:] for f in s['frameFiles']]} for s in m['states']]
+html='''<!doctype html><meta charset="utf-8"><title>Bill cardinal meal family</title><style>body{background:#14232b;color:#d1d9dc;font:16px system-ui;padding:24px}main{display:flex;flex-wrap:wrap;gap:20px}article{background:#22343e;padding:16px}canvas{display:block}p{max-width:90ch}</style><h1>Bill · Cardinal meal sequence</h1><p>Selected bare meal family. Each direction uses the existing6-second eat/3-second drink service timer. Entry and stow580ms, middle loop960ms. Below: actual normal galley captures. Fresh-scene Continue, finer hand contact and full-set identity/motion polish remain pending.</p><main></main><p>Actual galley contact review — native screenshot crops</p><img src="actual-contact-review.png"><script type="module">const data=DATA;const load=async f=>{const im=new Image;im.src=f;await im.decode();return im};await Promise.all(data.map(async s=>s.images=await Promise.all(s.frameFiles.map(load))));for(let d=0;d<4;d++){const row=data.slice(d*6,d*6+6),el=document.createElement('article');el.innerHTML=`<h2>${['east','south','west','north'][d]}</h2><canvas width="256" height="256"></canvas><p>Selected idle master</p><canvas width="256" height="256"></canvas>`;document.querySelector('main').append(el);const [c,ref]=el.querySelectorAll('canvas');ref.getContext('2d').drawImage(row[0].images[0],0,0);function index(s,t){let i=0;for(;i<6&&t>=s.frameDurationsMs[i];i++)t-=s.frameDurationsMs[i];return i}function draw(now){let t=now%9000,base=0,total=6000;if(t>=6000){t-=6000;base=3;total=3000}let clip=base,time=t;if(t>=total-580){clip=base+2;time=t-total+580}else if(t>=580){clip=base+1;time=(t-580)%960}let s=row[clip],im=s.images[index(s,time)];if(clip===base+2&&time<60)im=row[base+1].images[index(row[base+1],(total-1160-.0001)%960)];const ctx=c.getContext('2d');ctx.clearRect(0,0,256,256);ctx.drawImage(im,0,0);requestAnimationFrame(draw)}requestAnimationFrame(draw)}</script>'''
+(P/'index.html').write_text(html.replace('DATA',json.dumps(data)),encoding='utf-8')
+print('Built four-direction service-clock preview and12 native contact crops')

@@ -1,0 +1,120 @@
+{
+  "status": "Completed background trial; appearance improves, carrying-walk motion rejected",
+  "taskId": "448589965386249",
+  "estimatedUSD": 0.28,
+  "billingVerified": false,
+  "input": {
+    "source": "character/veld-east-held-original-master-v1/frames/bare/000.png",
+    "sourceSha256": "6e12010687601dbf7c5f10484567bd2a9062ad4cb62e375a172a678b4ff9d84a",
+    "inputSha256": "cf01e640089255d929eb0d3f646463863aea14e36a870e0f5da418ae169e7459",
+    "backgroundRGB": [
+      12,
+      18,
+      24
+    ],
+    "plateSize": [
+      768,
+      960
+    ],
+    "nativeScale": 3,
+    "plateOffset": [
+      0,
+      96
+    ],
+    "sourceScale": 0.3333333333333333,
+    "fixedOffset": [
+      0,
+      -32
+    ],
+    "nativeSize": [
+      256,
+      320
+    ],
+    "exactInverseRGBA": true,
+    "endpointIdentical": true,
+    "estimatedUSD": 0.28,
+    "billingVerified": false,
+    "conditioningChange": "Only flat background changed from white to dark RGB12,18,24. Same native original whole source,3xnearest,plate and exact motion prompt apart from background terms. No identity/density/anatomy/region RGB repair.",
+    "scope": "Single explicit background-conditioning trial. Original full142 white source retained. Full returned clip and master/edge/leg contact must be reviewed before any admission; no automatic paid retry."
+  },
+  "registration": {
+    "frameCount": 142,
+    "fps": 24.0,
+    "durationMs": 5917,
+    "checks": 284,
+    "failures": 0,
+    "ranges": {
+      "height": [
+        136,
+        149
+      ],
+      "headWidth": [
+        25,
+        26
+      ],
+      "headAxis": [
+        123.0,
+        123.5
+      ],
+      "headTop": [
+        76,
+        77
+      ],
+      "floor": [
+        212,
+        224
+      ],
+      "upperBodyWidth": [
+        43,
+        51
+      ]
+    },
+    "master": {
+      "height": 148,
+      "headWidth": 26,
+      "headAxis": 123.5,
+      "headTop": 76,
+      "floor": 223,
+      "upperBodyWidth": 42,
+      "clothMedian": [
+        66.0,
+        64.0,
+        63.0
+      ]
+    },
+    "alphaControl": {
+      "height": 147,
+      "headWidth": 26,
+      "headAxis": 123.5,
+      "headTop": 76,
+      "floor": 222,
+      "upperBodyWidth": 42,
+      "clothMedian": [
+        68.0,
+        67.0,
+        66.0
+      ]
+    }
+  },
+  "backgroundMaxDistance": 4,
+  "backgroundOutsideToleranceFraction": 0.0,
+  "independentFullForegroundRange": [
+    213.66666666666666,
+    225.0
+  ],
+  "extractionCorrection": "Largest-component V0 drops disconnected boot116 and produces misleading floor206/height130. V2 retains ALL dark-key foreground components20rawpixels or larger under same frozen8tolerance/1rawpxerosion. Source RGB/geometry untouched; original complete142 V0 exports and reports retained. Complete raw foreground extent supersedes V0 sole inference.",
+  "visualReview": "All6 chronological raw boards/142frames, all6V0 and all6 corrected V2 alpha boards, enlarged original/control/start/mid/end comparison and lowest12 raw boot crops reviewed. Pale white halo greatly reduced visually and head25..26 matches original26 more closely than white-source27. Head axis123..123.5 and top76..77 stable. But clip repeats faster jogging-like phases instead of requested2smallsteps; both boots float above original far220/near223 support projection at multiple phases. This is visible in RAW, not just alpha. No carrying-walk/contact/standing/full material acceptance.",
+  "measurementLimits": "Broad upper-body band43..51 includes raised knee at some poses, so maximum cannot establish torso enlargement by itself. Cloth ROI medians63..72/62..69/61..70 are diagnostic only, affected by changing pose. Full foreground extent213.7..225 is not a literal physical sole; lower12 raw crops establish the visible suspended-feet defect independently. One successful changed-background trial cannot establish a universal background effect across generations.",
+  "priorNativeInputsUnchanged": 308,
+  "priorNativeInputChanges": [],
+  "nativeTest": "Not run; raw carrying gait already fails. No helmet packaging, normal selector or gameplay adoption.",
+  "bindings": {
+    "source.mp4": "b2281951a1be04a48bf8f0312292a22630e984d9b7865a5820e1bc4aa4eebf0f",
+    "master-input.png": "cf01e640089255d929eb0d3f646463863aea14e36a870e0f5da418ae169e7459",
+    "prompt.txt": "fe5560a8c1ad9870d9736d21a3480160241d90328a52fe6f84414d8c65c28091",
+    "input-record.json": "85d0480936cb276fb5d51a4fc8c319b2696bf0ce6ad74e3bd479f45cfe3e6124",
+    "matte.py": "8a5738867d7f8b1506ff64c2dfa53b491094745755993b661084cd8c88f10804",
+    "source-registration-v2.json": "1936f6bd90a611161f0e7f6263b8354c6313497de2f808c1b16d8fa6e474a2cc",
+    "full-foreground-diagnostic.json": "c3aec8b0e9f3227223e689c68bd3e3a2fc76248edb1ebead921e13a6446b84cc"
+  }
+}

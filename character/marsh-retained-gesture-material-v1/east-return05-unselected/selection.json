@@ -1,0 +1,47 @@
+{
+  "sources": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/verification.json",
+      "sha256": "6fe4d1283b049a7c74d517d18571c1bdf46052fd5a3a8d47d767e7dab13339f7"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east05-unselected/verification.json",
+      "sha256": "46cc54b8527e556ebb582a3a4ae58703b61499a55dd8405e369eb6b7dbfec4b4"
+    }
+  ],
+  "policy": "East04 poses0..2 unchanged, East05 pose3 only. Each source strip uses its one own-neutral-derived density; no per-pose scale fit. East05 full bank not preferred: neutral width34.009 vs own32. Its return pose is reviewed as a slightly bent-arm action, not a neutral proportion authority.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "board": {
+    "path": "character/marsh-retained-gesture-material-v1/east-return05-unselected/return-comparison.png",
+    "sha256": "3834be575b19cd1f4ecf8e675af7977f324b9d6f50f0210c293cf523b63c784c",
+    "actuallyInspected": true
+  },
+  "slots": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-00.png",
+      "sha256": "266f47329ad33a0c78c059725df074904d5b9b35b8b4f7630a24b7879efac252"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-01.png",
+      "sha256": "fdb6c8b836ec4af8e28f4f7e273458bc72505c97cf8a24e9a730bc9cb624d11f"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-02.png",
+      "sha256": "3e04f474ad67f7f48f17b0af9c26a9be8275503fccae3b240baa5431c4f20a5f"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+      "sha256": "638339d05b7fd0a2297535de3efa44e81077fbf774ca3aa1a25b912e6ca76244"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    }
+  ],
+  "assessment": "Rejected for return timing: arms nearly fully lowered, so it relocates the large jump. East05 whole neutral also broadens to34.009vs own32."
+}

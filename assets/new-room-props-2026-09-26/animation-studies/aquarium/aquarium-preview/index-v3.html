@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrineSpace · Alien Aquarium Study</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#192426;color:#e7e3d8;font:16px system-ui,sans-serif}main{max-width:1220px;margin:auto;padding:28px}header{display:flex;justify-content:space-between;gap:24px;align-items:center}h1{font-size:27px;margin:6px 0}p{color:#acb9b7;line-height:1.5;margin:8px 0}.eyebrow{color:#c5a57d;font-size:12px;letter-spacing:2px}button,select{background:#344447;color:#f1ede4;border:1px solid #657776;border-radius:6px;padding:9px 14px;font:inherit;cursor:pointer}nav{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:22px 0}label{display:flex;align-items:center;gap:8px}input{accent-color:#c3936e}canvas{display:block;max-width:100%;height:auto;background:#8d9690;border-radius:10px}.note{font-size:13px}.species{display:flex;gap:12px;flex-wrap:wrap;margin:15px 0}.species span{padding:7px 11px;border:1px solid #475958;border-radius:20px;font-size:13px}#error{color:#ffb4a6}.status{color:#b9cbbd;font-size:13px}a{color:#d3b08a}@media(max-width:650px){main{padding:16px}header{display:block}}
+</style><main>
+<header><div><div class="eyebrow">BRINESPACE / MOTION STUDY 04</div><h1>Life behind the glass</h1><p>A quiet, looping habitat with alien swimmers and ribbon seaweed.</p></div><span class="status" id="status">Loading artwork…</span></header>
+<nav><button id="pause">Pause</button><button id="reset">Restart</button><label>Speed <input id="speed" type="range" min="0.25" max="2" step="0.25" value="1"><output id="rate">1×</output></label><label><input id="life" type="checkbox" checked> Inhabitants</label><label><input id="growth" type="checkbox" checked> Sea plants</label><label><input id="habitat" type="checkbox" checked> Sand & rocks</label><label>View <select id="view"><option value="large">Inspection</option><option value="native">Trial native size</option></select></label><label>Backdrop <select id="back"><option value="#8d9690">Neutral</option><option value="#ece9df">Light</option><option value="#182326">Dark</option></select></label></nav>
+<canvas id="scene" width="1160" height="540" aria-label="Two aquarium props with separately animated alien life"></canvas>
+<div class="species"><span>Ribbon skimmer</span><span>Bell grazer</span><span>Plated driftling</span><span>Ribbon seaweed</span><span>Swaying spiral sea plants</span></div>
+<p class="note">Motion concept: swimming paths, gentle body flex and anchored growth sway. This is a standalone study, not game integration or a finished directional animation pack. Trial widths are not final crew-relative scale.</p><p id="error"></p>
+</main><script>
+const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d'),ui=id=>document.getElementById(id);
+let paused=matchMedia('(prefers-reduced-motion: reduce)').matches,time=0,previous=0,ready=false,frames=0;ui('pause').textContent=paused?'Play':'Pause';
+const images={};const load=(key,src)=>new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>{images[key]=i;resolve()};i.onerror=()=>reject(new Error('Unable to load '+src));i.src=src});
+// Isolate each connected alpha component for this motion study. Source master stays untouched.
+function extract(rect){const [x,y,w,h]=rect,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(images.life,x,y,w,h,0,0,w,h);const im=g.getImageData(0,0,w,h),d=im.data,n=w*h,seen=new Uint8Array(n);let biggest=[];for(let s=0;s<n;s++){if(seen[s]||d[s*4+3]<=16)continue;const q=[s];seen[s]=1;for(let j=0;j<q.length;j++){const p=q[j],px=p%w;for(const next of [px>0?p-1:-1,px<w-1?p+1:-1,p-w,p+w])if(next>=0&&next<n&&!seen[next]&&d[next*4+3]>16){seen[next]=1;q.push(next)}}if(q.length>biggest.length)biggest=q}const keep=new Uint8Array(n);for(const p of biggest)keep[p]=1;for(let p=0;p<n;p++)if(!keep[p])d[p*4+3]=0;g.putImageData(im,0,0);return c}
+const crops=[[45,7,851,428],[873,22,537,451],[23,503,549,461],[594,400,424,605],[973,535,550,417]],sprites=[];
+const tanks=[{crop:[20,40,600,505],window:[42,90,506,199],x:25,y:15,scale:1},{crop:[640,24,426,514],window:[30,130,273,244],x:685,y:15,scale:1,round:true}];
+function body(index,x,y,w,phase,flip=1,anchored=false){const s=sprites[index],h=w*s.height/s.width;ctx.save();ctx.translate(x,y);if(anchored){ctx.translate(0,h/2);ctx.transform(1,0,Math.sin(phase)*.075,1,0,0);ctx.translate(0,-h/2)}else{ctx.rotate(Math.sin(phase)*.045);ctx.scale(flip,1)}const strips=24,sw=s.width/strips;for(let j=0;j<strips;j++){const frac=j/strips,dy=anchored?0:Math.sin(phase+frac*5)*h*.025;ctx.drawImage(s,j*sw,0,sw+.3,s.height,-w/2+frac*w,-h/2+dy,w/strips+.3,h)}ctx.restore()}
+function seaweed(x,base,height,phase){const s=images.weed,r=weedBounds,w=height*r[2]/r[3],strips=40;for(let j=0;j<strips;j++){const f=j/strips,bend=Math.sin(phase+f*1.5)*(1-f)**2*height*.055;ctx.drawImage(s,r[0],r[1]+r[3]*f,r[2],r[3]/strips+.5,x-w/2+bend,base-height+height*f,w,height/strips+.5)}}
+let weedBounds;
+function alphaBounds(im){const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');g.drawImage(im,0,0);const d=g.getImageData(0,0,c.width,c.height).data;let l=c.width,t=c.height,r=0,b=0;for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++)if(d[(y*c.width+x)*4+3]>16){l=Math.min(l,x);r=Math.max(r,x);t=Math.min(t,y);b=Math.max(b,y)}return [l,t,r-l+1,b-t+1]}
+function tank(t,index){
+ ctx.save();ctx.translate(t.x,t.y);ctx.scale(t.scale,t.scale);
+ ctx.drawImage(images.tanks,...t.crop,0,0,t.crop[2],t.crop[3]);
+ const [x,y,w,h]=t.window;ctx.save();ctx.beginPath();
+ if(t.round)ctx.roundRect(x,y,w,h,[8,8,50,50]);else ctx.rect(x,y,w,h);ctx.clip();
+ const phase=(time%48)/48*Math.PI*2;
+ if(ui('habitat').checked){
+  if(t.round){ctx.save();ctx.beginPath();ctx.ellipse(x+w/2,y+h-24,w*.51,26,0,0,Math.PI*2);ctx.clip();ctx.drawImage(images.habitat,150,510,1100,75,x-4,y+h-52,w+8,56);ctx.restore()}
+  const bedW=w*1.06,bedH=bedW*332/1923;ctx.drawImage(images.habitat,33,309,1923,332,x-w*.03,y+h-bedH+5,bedW,bedH);
+  if(index===0){ctx.save();ctx.translate(x+w*.30,y+h-45);ctx.scale(.20,.20);ctx.translate(-1360,-400);ctx.beginPath();const outline=[[1366,514],[1390,460],[1450,417],[1500,403],[1560,421],[1615,470],[1635,516],[1624,535],[1560,550],[1480,547]];outline.forEach(([px,py],i)=>i?ctx.lineTo(px,py):ctx.moveTo(px,py));ctx.closePath();ctx.clip();ctx.drawImage(images.habitat,0,0);ctx.restore()}
+ }
+ if(ui('growth').checked){const plantW=h*.31,plantH=plantW*sprites[3].height/sprites[3].width;body(3,x+w*.20,y+h*.92-plantH/2,plantW,phase*4+index,1,true);seaweed(x+w*.79,y+h-19,h*.64,phase*4+index);seaweed(x+w*.11,y+h-15,h*.48,phase*4+index+1.4)}
+ if(ui('life').checked){if(index===0){
+  const turn=p=>-Math.cos(p)/Math.sqrt(Math.cos(p)**2+.08);
+  body(0,x+w*(.56+.18*Math.sin(phase)),y+h*(.29+.04*Math.sin(phase*2)),w*.34,phase*8,turn(phase));
+  body(2,x+w*(.47+.19*Math.sin(phase+2.4)),y+h*(.56+.045*Math.sin(phase*2+1)),w*.22,phase*8+2,turn(phase+2.4));
+ }else{body(1,x+w*(.55+.08*Math.sin(phase)),y+h*(.35+.06*Math.sin(phase*2)),w*.52,phase*8)}}
+ ctx.fillStyle='rgba(30,55,65,.09)';ctx.fillRect(x,y,w,h);ctx.restore();ctx.restore();
+}
+function render(){ctx.clearRect(0,0,canvas.width,canvas.height);const native=ui('view').value==='native';tanks.forEach((t,i)=>{const st={...t,scale:native?.5:1,x:native?(i?640:110):t.x,y:native?85:15};tank(st,i)});ctx.fillStyle=ui('back').value==='#182326'?'#d5d6ce':'#273936';ctx.font='14px system-ui';ctx.fillText(native?'Wide tank · trial 300 px':'Wide aquarium',native?110:35,native?365:530);ctx.fillText(native?'Specimen tank · trial 213 px':'Specimen aquarium',native?640:695,native?365:530)}
+function tick(ms){if(previous&&!paused)time+=Math.min((ms-previous)/1000,.05)*Number(ui('speed').value);previous=ms;if(ready){render();frames++}requestAnimationFrame(tick)}
+ui('pause').onclick=()=>{paused=!paused;ui('pause').textContent=paused?'Play':'Pause'};ui('reset').onclick=()=>{time=0};ui('speed').oninput=()=>ui('rate').textContent=ui('speed').value+'×';ui('back').onchange=()=>canvas.style.background=ui('back').value;
+window.previewState=()=>({ready,paused,time,frames,species:sprites.length,visibleSwimmers:ui('life').checked?3:0,visiblePlants:ui('growth').checked?6:0,loopSeconds:48,habitat:ui('habitat').checked,view:ui('view').value});window.renderAt=t=>{time=t;render()};
+Promise.all([load('tanks','../aquarium-empty.png'),load('life','../alien-life.png'),load('habitat','sand-rocks.png'),load('weed','seaweed.png')]).then(()=>{crops.forEach(r=>sprites.push(extract(r)));weedBounds=alphaBounds(images.weed);ready=true;ui('status').textContent='Three swimmers / smooth 48-second loop';requestAnimationFrame(tick)}).catch(e=>ui('error').textContent=e.message);
+</script></html>
+

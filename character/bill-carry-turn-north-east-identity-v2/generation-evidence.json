@@ -1,0 +1,67 @@
+{
+  "method": "built-in imagegen edits",
+  "outputs": {
+    "bare": "exec-3fcde62b-cee6-4f32-8326-e5aaabea282a",
+    "helmet": "exec-2a849701-e461-40a8-8dae-213a91eb5f46"
+  },
+  "prompts": {
+    "bare": {
+      "file": "sources/prompt-bare-v1.txt",
+      "sha256": "75d98e29f91aea437873332047e8bece5d93103f86d9ca60fb40b3b0e5af362c"
+    },
+    "helmet": {
+      "file": "sources/prompt-helmet-v1.txt",
+      "sha256": "e9ec2320f46f40030510f429e635887ac474ee28e5960d505be4603095551195"
+    }
+  },
+  "rawSources": {
+    "bare": {
+      "file": "sources/bare-v1.png",
+      "sha256": "5b4679b7440a1a2711819e6b0496d2edfdc6a99e6e00425b90d23971cc13cb42"
+    },
+    "helmet": {
+      "file": "sources/helmet-v1.png",
+      "sha256": "5b49127ce574bf949dfce1aaab78784deca1941f2b933adf84b30faeda755466"
+    }
+  },
+  "scope": "Authored heads only; generated body/placement changes and halos excluded. Original accepted bare suit/cargo/feet protected in both profiles; no mirrored west artwork.",
+  "calibration": [
+    {
+      "gear": "bare",
+      "cell": 1,
+      "sourceNeutralBox": [
+        228,
+        80,
+        289,
+        146
+      ],
+      "targetFile": "character/bill-cargo-north-master-head-v1/sources/bare-master-head.png",
+      "targetSize": [
+        24,
+        25
+      ],
+      "scale": 0.3787878787878788
+    },
+    {
+      "gear": "helmet",
+      "cell": 0,
+      "sourceNeutralBox": [
+        210,
+        125,
+        304,
+        211
+      ],
+      "targetFile": "character/bill-cargo-north-master-head-v1/sources/helmet-master-head.png",
+      "targetSize": [
+        35,
+        36
+      ],
+      "scale": 0.4186046511627907
+    }
+  ],
+  "rejectedCalibrationReviews": {
+    "review-whole-figure-ruler-v1": "Independent whole-figure rulers yielded slightly short bare heads and oversized helmets; generated head/body ratios drifted.",
+    "review-neutral-rear-ruler-v2": "Rear-only bare crown used as full head ruler enlarged rear-quarter faces; rejected before normal selection."
+  },
+  "selectedRuler": "Complete rear-quarter bare source1 component to24x25native rear master component; helmet neutral0 to35x36native master component;fixed per independent sheet,never perpose. Visor,skin,hair,shell use pooled material grades."
+}

@@ -1,0 +1,50 @@
+# Bill West water joint exact prompt set
+
+Authoring method: builtin imagegen. Four provisional results, two rejected helmet Ready edits.
+
+
+## bare-ready-prompt-v1.txt
+
+Use case: identity-preserve. Repair the head, neck/collar and shoulder continuity of Bill's WEST bare READY water-transition pose.
+Image1 is the PRIMARY whole-figure EDIT TARGET and movement authority. Preserve its raised hands and upright planted stance, both arm articulations, elbows/gloves, shoulder locations, torso/hips, knees, backpack, boots/toes/soles and exact figure placement. Keep the full transparent square canvas and all surrounding empty space. Standing calibration is148pixels before the4x input enlargement; do not fit or stretch the posed figure to that height.
+Image2 is the ACTUAL adjacent revised walking frame on the SAME148pixel ruler, canvas and physical ground line. It controls Bill identity, head/skull/jaw/neck proportions, warm brown hair/beard, face, jaw and natural neck-to-collar attachment, and matte suit finish only. Never copy its walking pose, hands, body stance or equipment positions. Correct Image1 head/collar so Bill reads as the same character at the same camera/density, with natural pose foreshortening. Keep the head integrated with the torso and shoulder; eliminate detached helmet/collar gaps, doubled neck strips and abrupt jaw/skull design changes. Do not transplant a cutout or add a floating head.
+Image3 is the original West MASTER and controls anatomy, painterly fine grey quilting/seams, muted red panels, dull ivory hardware and restrained lighting. Keep details, warm skin, subtle cyan lamps and matte finish. Reconcile only head/collar identity and their small shoulder junction, preserving remaining body shapes and pose. No thick black contours, glossy highlights, purple-black cloth or washed-out grey.
+Return ONE complete revised Image1 figure only on its exact original transparent SQUARE canvas. Preserve body scale, body placement, original physical contact and pose. No other figure, labels, shadow, background, extra hand/limb or detached particles.
+
+
+## bare-rise-prompt-v1.txt
+
+Use case: identity-preserve. Repair the head, neck/collar and shoulder continuity of Bill's WEST bare RISE water-transition pose.
+Image1 is the PRIMARY whole-figure EDIT TARGET and movement authority. Preserve its raised hands and bent-leg rising/support stance, both arm articulations, elbows/gloves, shoulder locations, torso/hips, knees, backpack, boots/toes/soles and exact figure placement. Keep the full transparent square canvas and all surrounding empty space. Standing calibration is148pixels before the4x input enlargement; do not fit or stretch the posed figure to that height.
+Image2 is the ACTUAL adjacent revised walking frame on the SAME148pixel ruler, canvas and physical ground line. It controls Bill identity, head/skull/jaw/neck proportions, warm brown hair/beard, face, jaw and natural neck-to-collar attachment, and matte suit finish only. Never copy its walking pose, hands, body stance or equipment positions. Correct Image1 head/collar so Bill reads as the same character at the same camera/density, with natural pose foreshortening. Keep the head integrated with the torso and shoulder; eliminate detached helmet/collar gaps, doubled neck strips and abrupt jaw/skull design changes. Do not transplant a cutout or add a floating head.
+Image3 is the original West MASTER and controls anatomy, painterly fine grey quilting/seams, muted red panels, dull ivory hardware and restrained lighting. Keep details, warm skin, subtle cyan lamps and matte finish. Reconcile only head/collar identity and their small shoulder junction, preserving remaining body shapes and pose. No thick black contours, glossy highlights, purple-black cloth or washed-out grey.
+Return ONE complete revised Image1 figure only on its exact original transparent SQUARE canvas. Preserve body scale, body placement, original physical contact and pose. No other figure, labels, shadow, background, extra hand/limb or detached particles.
+
+
+## helmet-ready-prompt-v1.txt
+
+Use case: identity-preserve. Repair the head, neck/collar and shoulder continuity of Bill's WEST helmet READY water-transition pose.
+Image1 is the PRIMARY whole-figure EDIT TARGET and movement authority. Preserve its raised hands and upright planted stance, both arm articulations, elbows/gloves, shoulder locations, torso/hips, knees, backpack, boots/toes/soles and exact figure placement. Keep the full transparent square canvas and all surrounding empty space. Standing calibration is148pixels before the4x input enlargement; do not fit or stretch the posed figure to that height.
+Image2 is the ACTUAL adjacent revised walking frame on the SAME148pixel ruler, canvas and physical ground line. It controls Bill identity, head/skull/jaw/neck proportions, dark matte helmet shell, visor rim, ear fitting and natural collar-to-shoulder attachment, and matte suit finish only. Never copy its walking pose, hands, body stance or equipment positions. Correct Image1 head/collar so Bill reads as the same character at the same camera/density, with natural pose foreshortening. Keep the head integrated with the torso and shoulder; eliminate detached helmet/collar gaps, doubled neck strips and abrupt jaw/skull design changes. Do not transplant a cutout or add a floating head.
+Image3 is the original West MASTER and controls anatomy, painterly fine grey quilting/seams, muted red panels, dull ivory hardware and restrained lighting. Keep details, warm skin, subtle cyan lamps and matte finish. Reconcile only head/collar identity and their small shoulder junction, preserving remaining body shapes and pose. No thick black contours, glossy highlights, purple-black cloth or washed-out grey.
+Return ONE complete revised Image1 figure only on its exact original transparent SQUARE canvas. Preserve body scale, body placement, original physical contact and pose. No other figure, labels, shadow, background, extra hand/limb or detached particles.
+
+
+## helmet-ready-prompt-v2.txt
+
+Use case: identity-preserve. Image1 is the complete WEST helmeted READY figure to edit. Keep the exact entire transparent square canvas and the figure at EXACT Image1 coordinates: crown, shoulders, elbows, gloves, hips, knees, toes and soles. Do not enlarge, lengthen or move the body. Keep the raised hands and planted stance. Repair only the broken neck/collar junction so the helmet is visibly connected to the suit, with one coherent neck ring and shoulder connection rather than the detached horizontal dark strip.
+Image2 is the SAME READY POSE with bare head, and is only a reference for connected collar, shoulder seams, warm Bill face and matte quilted grey material. It does NOT replace the helmet, body placement or helmet dimensions of Image1. Image3 is the original West master for restrained muted red, dull ivory hardware, warm skin/beard and fine painterly quilting. Preserve the existing helmet shape, visor, ear module and cyan edge from Image1; remove the detached collar artifact without adding extra rings. Keep the boots, leg lengths, gloves, torso, backpack and all empty space exactly as in Image1. Return one complete Image1 figure on transparent square canvas, no labels, shadows, background or other figure. No pose transfer, rescaling, recentering or head cutout.
+
+
+## helmet-ready-prompt-v3.txt
+
+Edit this one sprite only. Repair the small broken collar under the helmet: connect the existing helmet neck ring naturally to the suit collar and shoulders, filling the dark detached horizontal gap. Change only that neck/collar junction. Keep the helmet crown, visor, ear module, face, raised hands, arms, shoulder position, torso, hips, knees, boots and soles exactly where they already are. Keep the entire original transparent square canvas, figure size and all empty space unchanged. Preserve the current matte grey quilted suit, muted red panels, dull ivory fittings and cyan details. Do not repaint or move the whole figure. Return the complete same sprite with the collar fixed, on transparent background.
+
+
+## helmet-rise-prompt-v1.txt
+
+Use case: identity-preserve. Repair the head, neck/collar and shoulder continuity of Bill's WEST helmet RISE water-transition pose.
+Image1 is the PRIMARY whole-figure EDIT TARGET and movement authority. Preserve its raised hands and bent-leg rising/support stance, both arm articulations, elbows/gloves, shoulder locations, torso/hips, knees, backpack, boots/toes/soles and exact figure placement. Keep the full transparent square canvas and all surrounding empty space. Standing calibration is148pixels before the4x input enlargement; do not fit or stretch the posed figure to that height.
+Image2 is the ACTUAL adjacent revised walking frame on the SAME148pixel ruler, canvas and physical ground line. It controls Bill identity, head/skull/jaw/neck proportions, dark matte helmet shell, visor rim, ear fitting and natural collar-to-shoulder attachment, and matte suit finish only. Never copy its walking pose, hands, body stance or equipment positions. Correct Image1 head/collar so Bill reads as the same character at the same camera/density, with natural pose foreshortening. Keep the head integrated with the torso and shoulder; eliminate detached helmet/collar gaps, doubled neck strips and abrupt jaw/skull design changes. Do not transplant a cutout or add a floating head.
+Image3 is the original West MASTER and controls anatomy, painterly fine grey quilting/seams, muted red panels, dull ivory hardware and restrained lighting. Keep details, warm skin, subtle cyan lamps and matte finish. Reconcile only head/collar identity and their small shoulder junction, preserving remaining body shapes and pose. No thick black contours, glossy highlights, purple-black cloth or washed-out grey.
+Return ONE complete revised Image1 figure only on its exact original transparent SQUARE canvas. Preserve body scale, body placement, original physical contact and pose. No other figure, labels, shadow, background, extra hand/limb or detached particles.

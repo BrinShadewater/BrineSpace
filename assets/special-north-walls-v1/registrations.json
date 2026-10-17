@@ -1,0 +1,404 @@
+{
+  "airlock": {
+    "registration": {
+      "source": "res://assets/special-north-walls-v1/masters/airlock.png",
+      "face": [
+        44,
+        188,
+        2065,
+        420
+      ],
+      "cap": [
+        44,
+        120,
+        2065,
+        68
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        44,
+        120,
+        2109,
+        608
+      ],
+      "sha256": "c34238c5f0467d3c08312765e344af3b8395a2aab79bc8f542ae8576a00db2f6",
+      "prompt_sha256": "b3fe3cb5b84896d1377263b5a1bcc205ac023f1752bd49ff388df1fdd1026335"
+    },
+    "previous": {
+      "base": {
+        "source": "res://assets/room-risers-v4/masters/airlock.png",
+        "face": [
+          52,
+          197,
+          2049,
+          405
+        ],
+        "cap": [
+          52,
+          131,
+          2049,
+          66
+        ],
+        "display_face": [
+          -200,
+          -258,
+          400,
+          82
+        ],
+        "door_reserve": [
+          -46,
+          -258,
+          92,
+          82
+        ],
+        "window_reserves": [
+          [
+            -152,
+            -249,
+            80,
+            32
+          ],
+          [
+            72,
+            -249,
+            80,
+            32
+          ]
+        ],
+        "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+        "native_size": [
+          2153,
+          730
+        ],
+        "opaque_component_bounds": [
+          52,
+          131,
+          2101,
+          602
+        ],
+        "sha256": "64d37e07950605294de3b7bdacfcd880b98f0c5fd3adb8fdd1690c1883a67e5a"
+      },
+      "integrated": {
+        "source": "res://assets/room-risers-v4/integrated-v1/shape-helmet-v3/airlock.png",
+        "face": [
+          50,
+          192,
+          2055,
+          409
+        ],
+        "opaque_component_bounds": [
+          50,
+          126,
+          2105,
+          601
+        ],
+        "sha256": "e4b6d30dd2338791804c8444242071e15d4735356ef06d1e2b370c9b9d1c068c",
+        "prompt_sha256": "841f74140d72bc56e5b8d296fa5bba6641c222f5019df6276a9eba97c7465eb2",
+        "reference_sha256": "a8bc63ef6e37492c0b59f8d048c2fc93c2e8072fb425fcc636e636762351d91c",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "native_size": [
+          2153,
+          730
+        ],
+        "subjects": [
+          "pressure gauges",
+          "crew-style diving helmets",
+          "pressure equalization diagram"
+        ]
+      },
+      "inherited_from": null,
+      "north_special": {
+        "source": "res://assets/special-north-walls-v1/masters/airlock.png",
+        "face": [
+          44,
+          188,
+          2065,
+          420
+        ],
+        "cap": [
+          44,
+          120,
+          2065,
+          68
+        ],
+        "display_face": [
+          -200,
+          -258,
+          400,
+          82
+        ],
+        "door_reserve": [
+          -46,
+          -258,
+          92,
+          82
+        ],
+        "window_reserves": [
+          [
+            -152,
+            -249,
+            80,
+            32
+          ],
+          [
+            72,
+            -249,
+            80,
+            32
+          ]
+        ],
+        "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+        "native_size": [
+          2153,
+          730
+        ],
+        "opaque_component_bounds": [
+          44,
+          120,
+          2109,
+          608
+        ],
+        "sha256": "c34238c5f0467d3c08312765e344af3b8395a2aab79bc8f542ae8576a00db2f6",
+        "prompt_sha256": "b3fe3cb5b84896d1377263b5a1bcc205ac023f1752bd49ff388df1fdd1026335"
+      }
+    },
+    "opaque_coverage": 0.9994947232057195
+  },
+  "survey_probe_bay": {
+    "registration": {
+      "source": "res://assets/special-north-walls-v1/masters/survey_probe_bay.png",
+      "face": [
+        42,
+        182,
+        2075,
+        409
+      ],
+      "cap": [
+        42,
+        116,
+        2075,
+        66
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        42,
+        116,
+        2117,
+        591
+      ],
+      "sha256": "69e9b93436154985e6639e8358258b197f4b128c1f71621c3cd238db97929379",
+      "prompt_sha256": "1725635a6efd7f79040fee46c3c1fdf0193a2331bf783479c1a364aade32f6c7",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "previous": {
+      "base": {
+        "source": "res://assets/room-risers-expansion-v1/masters/survey_probe_bay.png",
+        "face": [
+          48,
+          188,
+          2057,
+          400
+        ],
+        "cap": [
+          48,
+          123,
+          2057,
+          65
+        ],
+        "display_face": [
+          -200,
+          -258,
+          400,
+          82
+        ],
+        "door_reserve": [
+          -46,
+          -258,
+          92,
+          82
+        ],
+        "window_reserves": [
+          [
+            -152,
+            -249,
+            80,
+            32
+          ],
+          [
+            72,
+            -249,
+            80,
+            32
+          ]
+        ],
+        "cap_policy": "Production painted shell samples this measured cap",
+        "native_size": [
+          2153,
+          730
+        ],
+        "opaque_component_bounds": [
+          48,
+          123,
+          2105,
+          588
+        ],
+        "sha256": "f714ba1b400db163a68a05a2041913fdae0fe9131173ee30ad747780bb0b1805",
+        "prompt_sha256": "58dfa79044d46df12a9a45b85377732f186dfc4c546fe70cedb8184f862bd979",
+        "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      "integrated": {
+        "source": "res://assets/room-risers-expansion-v1/masters/survey_probe_bay.png",
+        "face": [
+          48,
+          188,
+          2057,
+          400
+        ],
+        "opaque_component_bounds": [
+          48,
+          123,
+          2105,
+          588
+        ],
+        "sha256": "f714ba1b400db163a68a05a2041913fdae0fe9131173ee30ad747780bb0b1805",
+        "prompt_sha256": "58dfa79044d46df12a9a45b85377732f186dfc4c546fe70cedb8184f862bd979",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      "inherited_from": "",
+      "north_special": {
+        "source": "res://assets/special-north-walls-v1/masters/survey_probe_bay.png",
+        "face": [
+          42,
+          182,
+          2075,
+          409
+        ],
+        "cap": [
+          42,
+          116,
+          2075,
+          66
+        ],
+        "display_face": [
+          -200,
+          -258,
+          400,
+          82
+        ],
+        "door_reserve": [
+          -46,
+          -258,
+          92,
+          82
+        ],
+        "window_reserves": [
+          [
+            -152,
+            -249,
+            80,
+            32
+          ],
+          [
+            72,
+            -249,
+            80,
+            32
+          ]
+        ],
+        "cap_policy": "Production painted shell samples this measured cap",
+        "native_size": [
+          2153,
+          730
+        ],
+        "opaque_component_bounds": [
+          42,
+          116,
+          2117,
+          591
+        ],
+        "sha256": "69e9b93436154985e6639e8358258b197f4b128c1f71621c3cd238db97929379",
+        "prompt_sha256": "1725635a6efd7f79040fee46c3c1fdf0193a2331bf783479c1a364aade32f6c7",
+        "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    },
+    "opaque_coverage": 0.9994569678128881
+  }
+}

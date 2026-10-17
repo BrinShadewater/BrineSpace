@@ -1,0 +1,98 @@
+{
+  "name": "Krusher Dom / west terminal action / helmet pair",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "status": "unselected gear pair; native and continuous motion review pending",
+  "states": [
+    {
+      "id": "terminal-raise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/idle.png",
+        "frames/helmet/key-001.png",
+        "frames/helmet/key-007.png",
+        "frames/helmet/key-002.png",
+        "frames/helmet/open.png",
+        "frames/helmet/key-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        120,
+        180
+      ],
+      "loop": false
+    },
+    {
+      "id": "terminal-type-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/key-003.png",
+        "frames/helmet/key-004.png",
+        "frames/helmet/key-005.png",
+        "frames/helmet/key-004.png",
+        "frames/helmet/key-005.png",
+        "frames/helmet/key-003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        160,
+        160,
+        160,
+        180
+      ],
+      "loop": true
+    },
+    {
+      "id": "terminal-lower-west",
+      "frameCount": 7,
+      "frameFiles": [
+        "frames/helmet/key-003.png",
+        "frames/helmet/close-004.png",
+        "frames/helmet/key-006.png",
+        "frames/helmet/key-007.png",
+        "frames/helmet/close-006.png",
+        "frames/helmet/release.png",
+        "frames/helmet/idle.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        120,
+        120,
+        100,
+        100,
+        120
+      ],
+      "loop": false
+    }
+  ],
+  "actionMeaning": "retrieve and open hip terminal, type on supported keyboard, close and stow",
+  "transitions": [
+    "idle-west -> terminal-raise-west -> terminal-type-west -> terminal-lower-west -> idle-west"
+  ],
+  "canonicalIdleSource": "character\\krusher-moving-equipment-test-v2\\frames\\helmet\\idle-west\\000.png",
+  "canonicalIdleSha256": "d6cf27af2046b9a39af9f4d9ed9acfe6c9625b96bcc7200af250e9398f8f3157",
+  "patchBounds": [
+    49,
+    62,
+    115,
+    110
+  ],
+  "limitations": [
+    "West terminal role action only; other views remain",
+    "Native art rendering does not establish station/controller integration or owner acceptance"
+  ],
+  "seamMethod": "Four-row deterministic feather at y62..66; no geometric warping",
+  "releasePatch": "Only near forearm/glove (91,84)-(106,110), excluding exact hip hardware (88,92)-(96,108); three-row upper seam feather",
+  "gearDerivation": "Exact shared body below row62; existing helmet upper region retained byte-for-byte, no scaling/mirroring/warping"
+}

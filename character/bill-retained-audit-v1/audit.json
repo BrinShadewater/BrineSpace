@@ -1,0 +1,14 @@
+{
+  "runtimeCapture": "actual GridCanvas Bill loader",
+  "capturedTracks": 302,
+  "capturedFrames": 2094,
+  "scope": "retained states plus selected east idle reference; excludes selected walk/interact/kneel/repair/stand and other directional idles",
+  "visualReview": "17 east comparison tracks sampled; not all 302 tracks visually accepted",
+  "findings": [
+    "Retained equip/remove helmet uses older bulkier body and old helmet",
+    "Cargo/pickup and welding retain older body proportions/materials",
+    "Water/death states remain older character/helmet artwork"
+  ],
+  "nextPriority": "east helmet equip/remove connected to accepted bare/equipped idle",
+  "runtimeArtChanged": false
+}

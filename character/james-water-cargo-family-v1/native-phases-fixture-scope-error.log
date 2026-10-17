@@ -1,0 +1,103 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+ERROR: The Image width specified (0 pixels) must be greater than 0 pixels.
+   at: initialize_data (core/io/image.cpp:2403)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:32)
+ERROR: Condition "dsize == 0" is true.
+   at: blit_rect (core/io/image.cpp:3127)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:32)
+ERROR: Visible route capture bare-salvage-east-000
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] capture (res://character/james-water-cargo-family-v1/native-phases.gd:34)
+WARNING: png_image_write_to_memory: invalid argument
+   at: check_error (drivers/png/png_driver_common.cpp:57)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:35)
+ERROR: Condition "compressed_size <= png_size_estimate" is true. Returning: FAILED
+   at: image_to_png (drivers/png/png_driver_common.cpp:188)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:35)
+ERROR: Can't convert image to PNG.
+   at: save_image (drivers/png/resource_saver_png.cpp:54)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:35)
+ERROR: Save route capture
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] capture (res://character/james-water-cargo-family-v1/native-phases.gd:35)
+ERROR: The Image width specified (0 pixels) must be greater than 0 pixels.
+   at: initialize_data (core/io/image.cpp:2403)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:42)
+ERROR: Condition "dsize == 0" is true.
+   at: blit_rect (core/io/image.cpp:3127)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:42)
+ERROR: The Image width specified (0 pixels) must be greater than 0 pixels.
+   at: initialize_data (core/io/image.cpp:2403)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:44)
+ERROR: Condition "dsize == 0" is true.
+   at: blit_rect (core/io/image.cpp:3127)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://character/james-water-cargo-family-v1/native-phases.gd:44)
+ERROR: Actor on/off render difference bare-salvage-east-000
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] capture (res://character/james-water-cargo-family-v1/native-phases.gd:47)
+ERROR: Actual pickup to carry endpoint eastbare
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:119)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual exterior movement retains cargo east
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:123)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual pickup to carry endpoint southbare
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:119)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual exterior movement retains cargo south
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:123)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual pickup to carry endpoint westbare
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:119)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual exterior movement retains cargo west
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:123)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual pickup to carry endpoint northbare
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:119)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+ERROR: Actual exterior movement retains cargo north
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-cargo-family-v1/native-phases.gd:11)
+       [1] run (res://character/james-water-cargo-family-v1/native-phases.gd:123)
+       [2] capture (res://character/james-water-cargo-family-v1/native-phases.gd:49)
+JAMES WATER CARGO PHASES: 363 checks; 11 failures; controlled phase fixture only

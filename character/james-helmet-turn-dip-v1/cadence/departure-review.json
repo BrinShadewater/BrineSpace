@@ -1,0 +1,55 @@
+{
+  "visualReviewPending": false,
+  "cases": [
+    {
+      "key": "carry-turn-south-west",
+      "lastElapsed": 0.7801,
+      "firstElapsed": 0.8001,
+      "board": "carry-turn-south-west-departure-detail.png",
+      "sourceAliases": [
+        {
+          "gear": "bare",
+          "carry0EqualsUnload0": true,
+          "departureLoadedRGBAboundToSource": true,
+          "turnEndpoint": "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/005.png",
+          "carry0": "character/james-cargo-material-joined-v1/frames/bare/carry-west/000.png",
+          "unload0": "character/james-cargo-material-joined-v1/frames/bare/unload-west/000.png"
+        },
+        {
+          "gear": "helmet",
+          "carry0EqualsUnload0": true,
+          "departureLoadedRGBAboundToSource": true,
+          "turnEndpoint": "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/005.png",
+          "carry0": "character/james-cargo-material-joined-v1/frames/helmet/carry-west/000.png",
+          "unload0": "character/james-cargo-material-joined-v1/frames/helmet/unload-west/000.png"
+        }
+      ]
+    },
+    {
+      "key": "carry-turn-east-west",
+      "lastElapsed": 1.5801,
+      "firstElapsed": 1.6001,
+      "board": "carry-turn-east-west-departure-detail.png",
+      "sourceAliases": [
+        {
+          "gear": "bare",
+          "carry0EqualsUnload0": true,
+          "departureLoadedRGBAboundToSource": true,
+          "turnEndpoint": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/010.png",
+          "carry0": "character/james-cargo-material-joined-v1/frames/bare/carry-west/000.png",
+          "unload0": "character/james-cargo-material-joined-v1/frames/bare/unload-west/000.png"
+        },
+        {
+          "gear": "helmet",
+          "carry0EqualsUnload0": true,
+          "departureLoadedRGBAboundToSource": true,
+          "turnEndpoint": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/010.png",
+          "carry0": "character/james-cargo-material-joined-v1/frames/helmet/carry-west/000.png",
+          "unload0": "character/james-cargo-material-joined-v1/frames/helmet/unload-west/000.png"
+        }
+      ]
+    }
+  ],
+  "scope": "Actual normal player prescribed-clock West departures with exact source-bound carry0/unload0 aliases. No actor scheduling/full world/cadence acceptance.",
+  "finding": "Both West departures inspected: shared planted turn endpoint switches to materially same but differently articulated head/collar/torso/case source. Destination walking carry0 exactly equals unloadWest0 for both gears. Existing V9 carry-settle endpoint pair therefore also describes this missing ordinary departure articulation; do not append an unreviewed bridge or fabricate new endpoints. Head source join repair and lifecycle handoff remain open."
+}

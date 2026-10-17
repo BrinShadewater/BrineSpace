@@ -1,0 +1,54 @@
+{
+  "checks": 275,
+  "failures": 0,
+  "reportSha256": "7c3fae703a152f07917e7840bd3afaab9972626da448e970381ff4e0e0c8fc38",
+  "manifestSha256": "db73524e3b0add56ee52f2182b52485bb43d6a6db893294e3e08f3662a628171",
+  "boards": [
+    {
+      "path": "character/marsh-south-work-polish-v1/world-review/repair-south.png",
+      "sha256": "2a21697c9b9f3f3a983507751b0df6c59f693e54b7187503104b2b6c584e1255",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-south-work-polish-v1/world-review/interact-south.png",
+      "sha256": "52ece62ce5a2699d37bda6c5d6b33053b9bac63d97523b506fdf67d3cf8a6f43",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-south-work-polish-v1/world-review/inspect-south.png",
+      "sha256": "52ece62ce5a2699d37bda6c5d6b33053b9bac63d97523b506fdf67d3cf8a6f43",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-south-work-polish-v1/world-review/salvage-south.png",
+      "sha256": "52ece62ce5a2699d37bda6c5d6b33053b9bac63d97523b506fdf67d3cf8a6f43",
+      "reviewed": true
+    }
+  ],
+  "fingerprints": {
+    "owner": {
+      "beforeCount": 2931,
+      "afterCount": 2931,
+      "changed": [],
+      "added": [],
+      "removed": []
+    },
+    "inputs": {
+      "beforeCount": 5718,
+      "afterCount": 5722,
+      "changed": [
+        "scripts/main.gd"
+      ],
+      "added": [
+        "character/marsh-south-work-polish-v1/inspect-south-candidate.apng",
+        "character/marsh-south-work-polish-v1/interact-south-candidate.apng",
+        "character/marsh-south-work-polish-v1/repair-south-candidate.apng",
+        "character/marsh-south-work-polish-v1/salvage-south-candidate.apng"
+      ],
+      "removed": []
+    }
+  },
+  "scope": "Staged texture family comparison in actual normal main scene renderer. Two actions/six slots before and after, matching pivot/density/timing, paused actor and whole source parity across render. In-memory textures only; actor states prescribed for held-source capture. Not normal catalogue admission, autonomous repair/inspection dispatch, complete continuous playback or SaveContinue.",
+  "firstFullCandidateCaptureReviewed": "output/marsh-animation-audit/south-work-polish-v2-2026-10-04/world-024.png",
+  "observations": "Candidate ivory boot/shin panels coherent with selected idle. All old/new held figures visible in native room; body stature/camera preserved. Minor face/detail variations retained; not continuously watched cadence."
+}

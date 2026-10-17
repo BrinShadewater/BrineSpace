@@ -1,0 +1,14 @@
+from pathlib import Path
+from PIL import Image
+import json,hashlib
+p=Path(__file__).resolve().parent;r=p.parents[1];o=p/'water-cargo-source-v338';o.mkdir(exist_ok=True)
+source=r/'character/james-water-cargo-west-v1/source.png';audit=json.loads((source.parent/'source-audit.json').read_bytes());reg=json.loads((source.parent/'registration.json').read_bytes())
+assert hashlib.sha256(source.read_bytes()).hexdigest()==audit['sourceSha256']==reg['sourceSha256']
+box=audit['poses'][12]['sourceBox'];im=Image.open(source).convert('RGBA').crop(box)
+im.save(o/'original-source-crop.png');canvas=Image.new('RGBA',(300,300));canvas.alpha_composite(im,(32,95));canvas.resize((1200,1200),Image.Resampling.NEAREST).save(o/'target.png')
+prompt='''Edit Image 1 only: one original source-authored James west-facing cargo swimming pose on a transparent square. Image 2 is the original West character master and supplies fine soft quilted cloth style. Image 3 is the current game-frame version of this exact pose and supplies muted matte colour and belt-tool identity. Preserve Image 1 framing and anatomy.
+The figure occupies x32..267 and y95..205 on a300-square ruler (multiply by4 for the1200 target). Keep that exact occupied region and head, case, boots, knees, elbows, hands and backpack locations. In particular the case stays in the leftmost part of that occupied region and keeps its width/height. Do not enlarge, shift, tighten-crop or recenter anything. Keep two hands gripping this same case, same head size/grey hair/moustache/goggles/collar, same bent-knee horizontal swim pitch and35-degree elevated orthographic view. Belt wrench stays visible on its existing attachment beside the yellow hip unit, no gear redesign or missing tools.
+Change just the shoulder/upper-arm and torso cloth finish from thick hard-looking bands into the original master's soft finely curved quilted graphite fabric. Modestly soften excessive shoulder bulk inside the existing joint locations. Preserve muted ochre shoulder patch, neutral matte graphite, warm worn silver hardware; no white shine or purple/magenta cast. Preserve all remaining pose and equipment. Return exactly one pose on the same transparent square and preserve all surrounding blank space. No text, no helmet, no flames, no new objects.'''
+(o/'actual-submitted-prompt.txt').write_bytes(prompt.encode())
+(o/'inputs.json').write_text(json.dumps(dict(source=str(source.relative_to(r)),sourceSha256=audit['sourceSha256'],sourcePose=12,sourceCrop=box,sourceCropSize=list(im.size),sourceScale=reg['fixedScale'],oldRegisteredPosition=reg['tracking'][12]['position'],authoringSquare=300,sourceOffset=[32,95],authoringScale=4,promptSha256=hashlib.sha256(prompt.encode()).hexdigest(),targetSha256=hashlib.sha256((o/'target.png').read_bytes()).hexdigest(),normalChanged=False),indent=2)+'\n')
+print('Source pose12:235x110; fixed source ruler0.56818;300-square framing retained.')

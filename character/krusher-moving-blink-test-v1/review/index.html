@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krusher Dom moving blink study</title>
+<style>body{margin:24px auto;max-width:1000px;padding:0 16px;background:#272b2e;color:#e4edf0;font:17px system-ui}h1{font-size:26px}video{width:100%;background:#272b2e}button,a{color:#c4e2e3}button{background:#354649;border:1px solid #638589;padding:10px;margin:4px;border-radius:6px}p{line-height:1.5}#status{font-size:15px}</style>
+<h1>Krusher Dom</h1><p>System Administrator · AI &amp; Robotics · muted cyan suit</p>
+<video id="preview" controls playsinline loop preload="auto" poster="native/idle-south-00.png"></video>
+<div id="chapters" aria-label="Animation chapters"></div><button id="blink">Watch blink</button><button id="closed">Hold closed pose</button><button id="slow">Half speed</button><button id="normal">Original speed</button>
+<p id="status" aria-live="polite">Loading preview…</p>
+<p><a href="blink-motion-preview.mp4" download>Download MP4</a></p>
+<p>Existing south idle on the left; authored eye-only blink on the right. Two source frames close the eyes for 84 ms while the breathing cycle remains unchanged. Large views show detail; the smaller views retain the 92 px display canvas. This video replays captured Godot poses at their source timings. Character candidate remains available for review.</p>
+<script>
+const video=document.querySelector('video'),status=document.querySelector('#status');let metadata;
+Promise.all([fetch('blink-motion-preview.json').then(r=>r.json()),fetch('blink-motion-preview.mp4').then(r=>{if(!r.ok)throw Error('Video unavailable');return r.blob()})]).then(([data,blob])=>{metadata=data;video.src=URL.createObjectURL(blob);video.onloadedmetadata=()=>{for(const chapter of data.chapters){const button=document.createElement('button');button.textContent=chapter.state.replaceAll('-',' ');button.onclick=()=>{video.currentTime=chapter.startMs/1000;video.play()};document.querySelector('#chapters').append(button)}status.textContent=`Ready · ${data.entries.length} captured poses · ${(data.durationMs/1000).toFixed(3)} seconds`}}).catch(()=>{status.textContent='Preview could not load. Use Download MP4 below.'});
+document.querySelector('#blink').onclick=()=>{video.currentTime=1.75;video.play()};document.querySelector('#closed').onclick=()=>{video.currentTime=1.98;video.pause()};
+document.querySelector('#slow').onclick=()=>{video.playbackRate=.5};document.querySelector('#normal').onclick=()=>{video.playbackRate=1};
+video.ontimeupdate=()=>{if(!metadata)return;const chapter=[...metadata.chapters].reverse().find(c=>video.currentTime*1000>=c.startMs);status.textContent=`${chapter?.state.replaceAll('-',' ')} · ${video.currentTime.toFixed(2)} s · ${video.playbackRate}× speed`};
+</script></html>

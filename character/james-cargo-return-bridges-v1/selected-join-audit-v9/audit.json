@@ -1,0 +1,220 @@
+{
+  "scope": "Current normal V9 source join; exact pivot alignment, no per-pose height normalization. Upper rectangle is a diagnostic region, not anatomical head segmentation. No native motion/master/full-set acceptance.",
+  "gears": {
+    "bare": {
+      "frames": [
+        {
+          "index": 0,
+          "alpha32Bounds": [
+            94,
+            76,
+            153,
+            226
+          ],
+          "crownAbovePivot": 148,
+          "lowestVisibleRow": 225
+        },
+        {
+          "index": 1,
+          "alpha32Bounds": [
+            94,
+            76,
+            160,
+            225
+          ],
+          "crownAbovePivot": 148,
+          "lowestVisibleRow": 224
+        },
+        {
+          "index": 2,
+          "alpha32Bounds": [
+            90,
+            76,
+            159,
+            225
+          ],
+          "crownAbovePivot": 148,
+          "lowestVisibleRow": 224
+        },
+        {
+          "index": 3,
+          "alpha32Bounds": [
+            94,
+            75,
+            158,
+            224
+          ],
+          "crownAbovePivot": 149,
+          "lowestVisibleRow": 223
+        },
+        {
+          "index": 4,
+          "alpha32Bounds": [
+            94,
+            75,
+            157,
+            224
+          ],
+          "crownAbovePivot": 149,
+          "lowestVisibleRow": 223
+        },
+        {
+          "index": 5,
+          "alpha32Bounds": [
+            89,
+            75,
+            153,
+            225
+          ],
+          "crownAbovePivot": 149,
+          "lowestVisibleRow": 224
+        }
+      ],
+      "transitions": [
+        {
+          "from": 0,
+          "to": 1,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "upperRegionChangedRgbaPixels": 1169
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "upperRegionChangedRgbaPixels": 0
+        }
+      ]
+    },
+    "helmet": {
+      "frames": [
+        {
+          "index": 0,
+          "alpha32Bounds": [
+            94,
+            68,
+            153,
+            226
+          ],
+          "crownAbovePivot": 156,
+          "lowestVisibleRow": 225
+        },
+        {
+          "index": 1,
+          "alpha32Bounds": [
+            95,
+            68,
+            160,
+            225
+          ],
+          "crownAbovePivot": 156,
+          "lowestVisibleRow": 224
+        },
+        {
+          "index": 2,
+          "alpha32Bounds": [
+            90,
+            68,
+            159,
+            225
+          ],
+          "crownAbovePivot": 156,
+          "lowestVisibleRow": 224
+        },
+        {
+          "index": 3,
+          "alpha32Bounds": [
+            92,
+            66,
+            158,
+            224
+          ],
+          "crownAbovePivot": 158,
+          "lowestVisibleRow": 223
+        },
+        {
+          "index": 4,
+          "alpha32Bounds": [
+            92,
+            66,
+            157,
+            224
+          ],
+          "crownAbovePivot": 158,
+          "lowestVisibleRow": 223
+        },
+        {
+          "index": 5,
+          "alpha32Bounds": [
+            89,
+            66,
+            153,
+            225
+          ],
+          "crownAbovePivot": 158,
+          "lowestVisibleRow": 224
+        }
+      ],
+      "transitions": [
+        {
+          "from": 0,
+          "to": 1,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "upperRegionChangedRgbaPixels": 1601
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "upperRegionChangedRgbaPixels": 0
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "upperRegionChangedRgbaPixels": 0
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "character\\james-cargo-return-bridges-v1\\bare-joined-manifest-v9.json": "94e2e5b301eae322f63f2925747229ee4641f29c763d9f2434ea416685e585e4",
+    "character\\james-east-cargo-heads-v3\\frames\\bare\\carry-turn-east-west\\010.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\bare\\000.png": "6bfe82c2e6ec79856613efc5abfb2b9a84df402337bf7160e00d9bd6283b5ce0",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\bare\\001.png": "97b3ce1317c818c4e84b38d7a3321fda7f631e7267ef93fbb94482582212c5b8",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\bare\\002.png": "76a7bf81b6900216b0d8d97720a689cb4ec708d8ad3c18549e2e4c3396daefec",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\bare\\003.png": "30c826b515c692932f31a435026aad2148c4e6b2a6642bb4a9a0b566ad1c58dd",
+    "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-west\\000.png": "7508ba92f5bf2340b2d7df5d5d9f22523952fb7b6e936aebafe40733a3c3b433",
+    "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-west-breathing-v1\\000.png": "87d07ba644bb5b85179769377c4003479c2a8c71a098841780bd11d155181a29",
+    "character\\james-cargo-return-bridges-v1\\helmet-joined-manifest-v9.json": "25168ed72bdb0608a64c130fe8e90034e2f8c47cbccf92569ea67a12588bb15e",
+    "character\\james-east-cargo-heads-v3\\frames\\helmet\\carry-turn-east-west\\010.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\helmet\\000.png": "5ef768d75b46051db1ea7277908634645f411a34949029d8e75ce5182c3a8a6d",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\helmet\\001.png": "ae75ba031568f946fdd14b1413e94e34dc51eb838b035bfdd00820499dadbe98",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\helmet\\002.png": "2d3adebe12990ad24db49cbcc327a3c0a61f8770b8a886cec85ed270386becca",
+    "character\\james-cargo-return-bridges-v1\\frames-v9\\helmet\\003.png": "92d02d4577bf21a4ee49662e3528366c4ed8f457b61f4c225ffb9fbe303a4471",
+    "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-west\\000.png": "fbb20a3cd7f621ee74d957ed9917cce37474bc07440dcd526c1bfb8b1ef37ded",
+    "character\\james-shared-helmet-runtime-v1\\frames\\idle-west\\000.png": "6578fe30a4413834c5bd5d3954bf5d9ebefa17ae35019ae345174cae6a7e0655"
+  },
+  "visualReviewPending": false,
+  "artworkChanged": false,
+  "finding": "All fourteen registered source/reference presentations plus twelve enlarged collar crops inspected. Head/collar orientation switches abruptly between zero-based interiors2 and3; shoulder articulation also changes. Upper110 rectangle exact elsewhere,1169 bare/1601 helmet RGBA differences at join. Alpha32 crown148\u2192149 bare,156\u2192158 helmet relative fixed224 pivot; these are diagnostic crown distances, not anatomical body height or head-only counts. Preserve reference identity; next coherent paired intermediate upper-body articulation, not another narrow collar-only patch or whole-body rescale."
+}

@@ -1,0 +1,16 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent
+source=(P.parent/'james-case-release-south-v1/native-indexed.gd').read_text()
+source=source.replace('james-case-release-south-v1','james-case-release-lifecycle-v1').replace('native-indexed-evidence.json','native-lifecycle-evidence.json').replace('for rotation in [1]','for rotation in [0,1,2,3]')
+source=source.replace('JAMES INDEXED CANCELLATION MATRIX','JAMES CASE LIFECYCLE')
+source=source.replace('DirAccess.make_dir_recursive_absolute(OUT+"captures")', 'if not FileAccess.file_exists("res://character/james-case-release-lifecycle-v1/native-lifecycle.gd.uid"):\n\t\tvar uid_file=FileAccess.open("res://character/james-case-release-lifecycle-v1/native-lifecycle.gd.uid",FileAccess.WRITE);uid_file.store_line(ResourceUID.id_to_text(ResourceUID.create_id()));uid_file.close()\n\tDirAccess.make_dir_recursive_absolute(OUT+"captures")')
+source=source.replace('"phase":actor.expedition.phase,"elapsed":actor.expedition.elapsed', '"phase":actor.expedition.get("phase","death" if actor.dead else "none"),"elapsed":actor.expedition.get("elapsed",0.0)')
+source=source.replace('"cargo":actor.expedition.cargo.duplicate()', '"cargo":actor.expedition.get("cargo",{}).duplicate()')
+source=source.replace('var before_actor:Dictionary=actor.snapshot();var clock:float=game.visual_time_seconds', 'var before_actor:Dictionary=actor.snapshot();var before_case:Dictionary=game.drone_fleet.sites[target].get("james_case_release",{}).duplicate(true);var clock:float=game.visual_time_seconds')
+source=source.replace('game.paused=false;restored=true', 'check(game.drone_fleet.sites[target].get("james_case_release",{})==before_case,"Fresh-scene Continue retains exact world case anchor/heading");game.paused=false;restored=true')
+source=source.replace('\nfunc capture(label:String,npc)', '\n\tawait new_attempt(actor,home,target,rotation)\nfunc capture(label:String,npc)')
+start=source.index('func source_matrix(')
+source=source[:start]+(P/'lifecycle-body.gd.txt').read_text()
+source=source.replace('Existing James selected source only. One actual South parent pickup trip/Continue with12controlled work/pickup branches from its actual work arrival; all6naturally advanced source indexes per action, exact entrance/empty join, five indexed pickup release world anchors and actor-only restore. Site state restored between branches; not12full journeys or fresh-scene Continues. Bare gear/traffic/invalidation remain unproven.', 'Four actual cardinal parent recall returns with fresh-scene Continue and controlled site/death/low-air/obstructed-turn branches from each actual work arrival. Each branch naturally advances to pickup source2; site/world state reset and actor-only restore between branches. These are not complete interrupted journeys/Continues or actual bare exterior trips. Death texture byte identity is measured across different canvas/pivots; it does not certify pose continuity. Four additional real second-dispatch arrival/recall/return trips and actual body render controls are checked. Peer traffic remains unproven.')
+(P/'native-lifecycle.gd').write_text(source)
+print('Lifecycle fixture prepared: four actual cardinal parents plus controlled interruption branches.')

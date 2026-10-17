@@ -1,0 +1,95 @@
+{
+  "name": "Krusher Dom / west terminal action isolated intermediate revision",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "status": "unselected candidate; equipment and full motion review pending",
+  "states": [
+    {
+      "id": "terminal-raise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/idle.png",
+        "frames/key-001.png",
+        "frames/key-007.png",
+        "frames/key-002.png",
+        "frames/open.png",
+        "frames/key-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        120,
+        180
+      ],
+      "loop": false
+    },
+    {
+      "id": "terminal-type-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/key-003.png",
+        "frames/key-004.png",
+        "frames/key-005.png",
+        "frames/key-004.png",
+        "frames/key-005.png",
+        "frames/key-003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        160,
+        160,
+        160,
+        180
+      ],
+      "loop": true
+    },
+    {
+      "id": "terminal-lower-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/key-003.png",
+        "frames/close-004.png",
+        "frames/key-006.png",
+        "frames/key-007.png",
+        "frames/close-006.png",
+        "frames/idle.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        120,
+        140,
+        140,
+        120
+      ],
+      "loop": false
+    }
+  ],
+  "actionMeaning": "retrieve and open hip terminal, type on supported keyboard, close and stow",
+  "transitions": [
+    "idle-west -> terminal-raise-west -> terminal-type-west -> terminal-lower-west -> idle-west"
+  ],
+  "canonicalIdleSource": "character\\krusher-equipment-study-v1\\review\\fitted-west.png",
+  "canonicalIdleSha256": "620f0ed54e37dc17c9485fedf4e555b0a874d53a09aca5689cc250aa39da14a3",
+  "patchBounds": [
+    49,
+    62,
+    115,
+    106
+  ],
+  "limitations": [
+    "One isolated partial-opening source admitted provisionally; generated lift/release rejected after native review",
+    "Raise reuses existing lowered-terminal key-007 pose; no new lift artwork claimed",
+    "West bare only; no full-motion/native station acceptance, other directions or helmet"
+  ],
+  "seamMethod": "Four-row deterministic feather at y62..66; no geometric warping"
+}

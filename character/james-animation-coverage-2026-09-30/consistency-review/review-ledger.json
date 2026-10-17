@@ -1,0 +1,106 @@
+{
+  "date": "2026-09-30",
+  "scope": "Visual inspection of first/middle/final selected poses in both modes, fixed 82px standing scale, all pages including 12-state turn families; not every-frame motion or full journey acceptance.",
+  "familiesReviewed": [
+    "bunk-enter",
+    "bunk-exit",
+    "bunk-sleep",
+    "carry",
+    "carry-turn",
+    "death-ground",
+    "death-water",
+    "drink",
+    "eat",
+    "equip-helmet",
+    "get-up",
+    "idle",
+    "inspect",
+    "interact",
+    "kneel",
+    "lie-down",
+    "pickup",
+    "read-seated",
+    "recover-air",
+    "remove-helmet",
+    "repair",
+    "salvage",
+    "sit-down",
+    "sit-idle",
+    "sit-rise",
+    "sleep",
+    "stand",
+    "swim",
+    "swim-carry",
+    "swim-carry-turn",
+    "swim-distress",
+    "swim-pickup",
+    "swim-start",
+    "swim-stop",
+    "swim-turn",
+    "torch-draw",
+    "torch-stow",
+    "tread",
+    "unload",
+    "walk",
+    "weld"
+  ],
+  "dryTurnHeight": {
+    "measurements": "turn-height-review/measurements.json",
+    "allSlotsMeasured": true,
+    "uniqueFullPoseBoardsReviewed": [
+      "east-south",
+      "north-east",
+      "north-west",
+      "south-west",
+      "east-west",
+      "north-south"
+    ],
+    "bareHeightRange": [
+      147,
+      149
+    ],
+    "bareMasterHeightRange": [
+      147,
+      148
+    ],
+    "rearHelmetMasterHeight": 150,
+    "sideHelmetMasterHeight": 156,
+    "perPoseResizing": false
+  },
+  "corrected": [
+    "North dry recovery slim long legs/close stance with master-only v3 source",
+    "Underwater cargo half clock composed from two quarters:680 to1600ms,quarter800 retained,all pose hashes unchanged",
+    "Review water boards include actual alpha bounds around pivot",
+    "Route fixture checks cargo-turn life keys rather than equality with a historical whole profile",
+    "Generic arrival facing and complete dry tablet clock",
+    "Coherent North rest body and subtle sleep breathing",
+    "North ordinary water slim calves/boots and bent-elbow early reach",
+    "West water death projected thigh/shin span matched to selected swim"
+  ],
+  "remaining": [
+    "Full motion/material/transition review across families",
+    "Full furniture/meal/equipment/exterior dispatch-airlock-cargo-return handoffs",
+    "Owner and release acceptance",
+    "Workstation-specific arrival facing continuity"
+  ],
+  "northRestRevision": {
+    "pack": "character/james-north-rest-polish-v1",
+    "finalNativePosesReviewed": 36,
+    "installedPlayerChecks": 186,
+    "installedBerthChecksPerMode": 127,
+    "ownerReviewPending": true
+  },
+  "northWaterRevision": {
+    "pack": "character/james-water-north-polish-v1",
+    "installedRouteChecks": 502,
+    "finalNativeCapturesReviewed": 50,
+    "ownerReviewPending": true
+  },
+  "westWaterDeathRevision": {
+    "pack": "character/james-west-water-death-polish-v1",
+    "installedMortalityChecks": 71,
+    "diskRestoreChecks": 52,
+    "finalNativeCapturesReviewed": 14,
+    "ownerReviewPending": true
+  }
+}

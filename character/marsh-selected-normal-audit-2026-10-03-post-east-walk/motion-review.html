@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Marsh East walking comparison</title>
+<style>body{margin:24px;background:#17282d;color:#e8ece4;font:18px system-ui}button,select{font:inherit;padding:8px;margin-right:12px}section{display:flex;gap:20px}article{text-align:center}canvas{background:#293b40;border:1px solid #506267}p{max-width:940px;color:#b9c9c5}</style>
+<h1>Marsh East walking</h1><p>Original walking, normal selected polish and own idle. Same foot pivot and source density. The lower figures use station height.</p>
+<button id="play">Pause</button><label>Speed <select id="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label>
+<span id="state">Loading images</span>
+<section><article><h2>Original</h2><canvas id="old" width="296" height="390"></canvas></article><article><h2>Normal selected</h2><canvas id="new" width="296" height="390"></canvas></article><article><h2>Own idle</h2><canvas id="idle" width="296" height="390"></canvas></article></section>
+<p>Six authored holds of 150 milliseconds. The loop shows source continuity; station movement and floor contact have separate native evidence.</p>
+<script>
+const load=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(src));im.src=src});
+const oldPaths=Array.from({length:6},(_,i)=>`/marsh-v2/frames/bare/walk-east/${String(i).padStart(3,'0')}.png`);
+const newPaths=Array.from({length:6},(_,i)=>`/marsh-v2/supplemental/east-walk-polish-v1/${String(i).padStart(3,'0')}.png`);
+let playing=true,clock=0,last=null,ticks=0;
+const button=document.getElementById('play'),speed=document.getElementById('speed'),state=document.getElementById('state');
+button.onclick=()=>{playing=!playing;button.textContent=playing?'Pause':'Play'};
+function draw(id,im){const ctx=document.getElementById(id).getContext('2d');ctx.clearRect(0,0,296,390);ctx.imageSmoothingEnabled=false;for(const [y,z] of [[207,1],[362,65.28/148]])ctx.drawImage(im,148-92*z,y-172*z,184*z,184*z);ctx.fillStyle='#b9c9c5';ctx.font='14px system-ui';ctx.fillText('Source density',12,18);ctx.fillText('Station height',12,274)}
+Promise.all([Promise.all(oldPaths.map(load)),Promise.all(newPaths.map(load)),load('/marsh-v2/frames/bare/idle-east/000.png')]).then(([old,newer,idle])=>{
+function frame(time){if(last!==null&&playing)clock+=Math.max(0,Math.min(100,time-last))*Number(speed.value);last=time;ticks++;const phase=Math.floor(clock/150)%6;draw('old',old[phase]);draw('new',newer[phase]);draw('idle',idle);state.textContent=`Phase ${phase} · Clock ${Math.round(clock)} ms · Draw ${ticks}`;requestAnimationFrame(frame)}requestAnimationFrame(frame)
+}).catch(e=>state.textContent='Image unavailable: '+e.message);
+</script></html>

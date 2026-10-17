@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>BrineSpace lighting batch 2</title>
+<style>body{margin:32px auto;max-width:1500px;background:#0a181f;color:#c2d7d9;font:16px system-ui}img{width:100%;height:auto}a{color:#78cec9}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}h1{font-size:25px}p{max-width:1000px}</style>
+<h1>BrineSpace lighting / batch 2</h1>
+<p>Style pass: quieter painted caustics, slightly uneven shafts and bubble rims, fine beacon dithering. Palette, world size, timing and lamp bands retained. Left is the original batch; right is painted-v2. Density is measured from actual runtime scale.</p>
+<img src="style-pass.jpg" alt="Before and after style pass with color and world-scale density notes">
+<p>Warm/cool halos preserve the original dithered bands. Caustics, hull bubbles and the directional blackout beacon are installed with procedural fallbacks. The three surface shafts and wide floor pool are review studies awaiting selection.</p>
+<img src="contact-sheet.jpg" alt="Nine lighting textures with caustic repeat preview">
+<p>Native Godot render: left is procedural, right is authored. Top: warm/cool lamp tint and blackout beacon at the existing intensity. Bubble streams use their real world scale. Bottom: the fog shader with its existing tint and strength.</p>
+<p>Original authored lighting compared with this style pass:</p>
+<div class="pair"><img src="before-style-20260929/lighting-authored-0.png" alt="Original authored lighting"><img src="native/lighting-authored-0.png" alt="Painted-v2 lighting at runtime intensity"></div>
+<div class="pair"><img src="native/lighting-procedural.png" alt="Original procedural shapes"><img src="native/lighting-authored-0.png" alt="Authored lighting shapes"></div>
+<p>Directional beacon at quarter-turn increments. Its rate remains one turn every four seconds.</p>
+<div class="pair"><img src="native/lighting-authored-1.png" alt="Beacon quarter turn"><img src="native/lighting-authored-2.png" alt="Beacon half turn"></div>
+<p>Station comparison at High quality: procedural left, authored right. Native gameplay captures also cover Low, Medium, four blackout phases, and Reduced Motion.</p>
+<div class="pair"><img src="native/game-procedural-quality-2.png" alt="Station with procedural lighting"><img src="native/game-authored-quality-2.png" alt="Station with authored lighting"></div>
+<div class="pair"><img src="native/game-blackout-1.png" alt="Station during blackout"><img src="native/game-reduced-motion.png" alt="Station with Reduced Motion"></div>
+<p>The isolated fixture checks frozen rendered bytes and Low/Reduced Motion bubble suppression. Validation details are recorded in HANDOFF.md.</p>
+</html>

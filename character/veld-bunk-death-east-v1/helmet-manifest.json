@@ -1,0 +1,40 @@
+{
+  "name": "Veld staged supported bunk death helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_held_bunk_only_native_review_pending",
+  "states": [
+    {
+      "id": "death-bunk-east",
+      "frameFiles": [
+        "res://character/veld-bunk-death-east-v1/frames/helmet/death-bunk-east/000.png",
+        "res://character/veld-bunk-death-east-v1/frames/helmet/death-bunk-east/001.png",
+        "res://character/veld-bunk-death-east-v1/frames/helmet/death-bunk-east/002.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        280,
+        420
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "bunk",
+        "bunk",
+        "bunk"
+      ],
+      "depthOffsets": [
+        100,
+        100,
+        100
+      ]
+    }
+  ],
+  "equipment": "diving-helmet"
+}

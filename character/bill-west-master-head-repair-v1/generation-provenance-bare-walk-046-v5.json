@@ -1,0 +1,154 @@
+{
+  "key": "bare-walk-046",
+  "revision": 5,
+  "status": "completed",
+  "method": "builtin imagegen",
+  "sourcePath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\bare-walk-046-face-detail-baseline-v1.png",
+  "sourceSha256": "168bd9a04643f419cf88d615e9c205e561840a2360dd26aa971d26bbe37faaf9",
+  "references": [
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-style-target-v5.png",
+      "sha256": "350c05f9acb88641d50a239237186644a54b0602dd07d9ad008d21e91d031de5",
+      "role": "whole-sprite pose and canvas edit target"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\physical-master-reference-4x.png",
+      "sha256": "60fcc3999fc6a844b587858523128de89bd7f03da30c83155442c885113cc428",
+      "role": "original master whole-figure rendering and material authority only; no pose transfer"
+    }
+  ],
+  "promptFile": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-prompt-v5.txt",
+  "promptSha256": "6929ee378e9132b3cbec128db00986f3ad746c86c0e08f64bbaf9521a560ec23",
+  "submittedPromptSha256": "6929ee378e9132b3cbec128db00986f3ad746c86c0e08f64bbaf9521a560ec23",
+  "originalCanvas": [
+    256,
+    256
+  ],
+  "commonCanvas": [
+    352,
+    352
+  ],
+  "targetTranslation": [
+    32,
+    0
+  ],
+  "returnCrop": [
+    32,
+    0,
+    288,
+    256
+  ],
+  "standingRuler": 148,
+  "normalAdmission": false,
+  "comparisonReference": {
+    "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\physical-master-reference-4x.png",
+    "sha256": "60fcc3999fc6a844b587858523128de89bd7f03da30c83155442c885113cc428",
+    "role": "post-generation diagnostic only"
+  },
+  "baselineRole": "frozen registered v1; whole-figure master rendering pilot",
+  "originalPath": "C:\\Users\\Alex\\.codex\\generated_images\\01a0ef89-cf35-77f0-9b57-2a08e6ea987f\\exec-7523da95-98f2-4140-96bd-2b5430aecf16.png",
+  "savedPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-edit-v5.png",
+  "sha256": "7213b433ce88cb258bd506e964fd743ee9716e70923f5ca360c0379751892718",
+  "generationId": "exec-7523da95-98f2-4140-96bd-2b5430aecf16",
+  "rejected": true,
+  "rejectionReason": "Whole-figure master-rendering pilot widens body/boots and lowers sole11px; body IoU .68906. Still differs from master texture. Do not fit back or install.",
+  "rejectionMetrics": {
+    "key": "bare-walk-046",
+    "revision": 5,
+    "sourcePath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\bare-walk-046-face-detail-baseline-v1.png",
+    "sourceSha256": "168bd9a04643f419cf88d615e9c205e561840a2360dd26aa971d26bbe37faaf9",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "uniformRawScale": 0.2807017543859649,
+    "rawNormalizedSide": 352,
+    "rawCellCrop": null,
+    "sharedGenerationId": null,
+    "returnCrop": [
+      32,
+      0,
+      288,
+      256
+    ],
+    "opaquePixelsOutsideOriginalCanvas": 0,
+    "commonOldBounds": [
+      106,
+      78,
+      199,
+      224
+    ],
+    "commonNewBounds": [
+      102,
+      77,
+      204,
+      235
+    ],
+    "bodyBelow115IoU": 0.6890639481000926,
+    "windows": {
+      "headCollar": {
+        "box": [
+          125,
+          55,
+          195,
+          125
+        ],
+        "oldBounds": [
+          16,
+          23,
+          60,
+          70
+        ],
+        "newBounds": [
+          15,
+          22,
+          64,
+          70
+        ]
+      },
+      "handsShoulders": {
+        "box": [
+          110,
+          105,
+          195,
+          175
+        ],
+        "oldBounds": [
+          19,
+          0,
+          81,
+          70
+        ],
+        "newBounds": [
+          17,
+          0,
+          83,
+          70
+        ]
+      },
+      "boots": {
+        "box": [
+          100,
+          185,
+          220,
+          240
+        ],
+        "oldBounds": [
+          6,
+          0,
+          99,
+          39
+        ],
+        "newBounds": [
+          2,
+          0,
+          104,
+          50
+        ]
+      }
+    },
+    "normalAdmission": false,
+    "nativeAcceptance": false,
+    "visualAcceptance": false
+  }
+}

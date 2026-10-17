@@ -1,0 +1,44 @@
+{
+  "status": "installed_pipeline_checked_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-south-west",
+    "carry-turn-west-south"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet.png",
+  "helmetPrompt": "prompt-helmet.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.27715355805243447,
+  "timingMs": 800,
+  "derivation": "Independent south-to-west quarter-turn; return exact reverse; six connected full body poses at one fixed scale; source components extracted independently of assumed cell spacing",
+  "helmet": "Exact selected directional standing-master heads at endpoints; generated intermediate helmet angles; body below headCutoff byte-identical to bare",
+  "checks": "123 packaging /121 installed-loader native checks,0 failures;8 captures",
+  "height": "Body148-149px vs masters south147/west148; crown76-77, soles223-224; helmet crowns68-70 vs masters69south/68west",
+  "palette": "Fixed shared gold gain [.7298,.816,1.026] plus fixed matte curve; no per-frame exposure or bounds normalization; pre-grade evidence preserved in before-gold-master-v4",
+  "profileAudit": "Scratch APPDATA asserted; real profile unchanged",
+  "visualReview": "Selected source, contact, master comparison and native reviewed; final owner visual review pending",
+  "review": "review-master-v4.gif",
+  "remaining": [
+    "Final owner visual review",
+    "Four dry half-turn states",
+    "Remaining full-set family master audit/replacement and cross-family polish"
+  ],
+  "materialEvidence": "../james-animation-coverage-2026-09-30/turn-material-audit.json",
+  "selectedSourceHashes": {
+    "source": "e51f520613311565424f086a2818d2521a305aaa3cf64ec443936f398121f2e5",
+    "helmetSource": "c871d1925fb5771b0e1c5f18fa05a1c5717c2581bde8016e24c38a0cbb56111f"
+  }
+}

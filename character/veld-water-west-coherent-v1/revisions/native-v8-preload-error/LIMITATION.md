@@ -1,0 +1,1 @@
+1098 candidate assertions passed but engine emitted seabed/fungi preload/compile errors. This run is NOT a clean native integration pass. Profile changed[]; files retained. The missing/unresolved fungi source exists on disk by follow-up inspection. No environment scripts modified by Veld work.

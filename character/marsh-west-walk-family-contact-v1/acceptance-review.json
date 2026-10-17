@@ -1,0 +1,52 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "decision": "Complete six-pose material/definition improvement retained provisionally. Normal selection unchanged. Closing/opening and half-cycle bob still needs assessment before admission.",
+  "sourceReviewSha256": "d6f67dbfa04c79c114a09865880630545b7408816e6896cc67ca205e4c470a86",
+  "nativeVerificationSha256": "d3090a11bea82bf0647b427340a415d6dd6a3038589e778435a400f38344101b",
+  "allSixRawFiguresReviewed": true,
+  "sourceBoards": [
+    {
+      "path": "character/marsh-west-walk-family-detail-v1/family-joins-native.png",
+      "sha256": "43c4dec143def8065ebf070b62ed3c29450db7c1f772fdc75449c59f7e1c7fb5",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-west-walk-family-detail-v1/heads-2x.png",
+      "sha256": "05e0cee6f6017a1632958e901c5b031c22025398b8ba396adc49d87ee73857fa",
+      "reviewed": true
+    }
+  ],
+  "crownSequence": [
+    27,
+    24,
+    25,
+    25,
+    24,
+    24
+  ],
+  "originalCrownSequence": [
+    26,
+    24,
+    25,
+    26,
+    24,
+    25
+  ],
+  "maxAdjacentCrownChange": 3,
+  "originalMaxAdjacentCrownChange": 2,
+  "residual": "Max3nativepixel crown jump versus original2; one additional pixel=.441081world units at65.28/148. Do not infer anatomical bob solely from hair bounds; inspect actual joins.",
+  "browser": {
+    "pageSha256": "4051aa4bbaa677e1e23450724cb3aad90d5c6d037d0948c859abfc648d4af778",
+    "screenshotSha256": "ac3a441ccf903e8b2d5e12d0beea3b7bbed5c670ce12681d89f943123af91058",
+    "observations": [
+      "normal phase0clock83draw6",
+      "quarter phase1clock7481draw457",
+      "screenshot quarter phase4clock9633draw973",
+      "quarter phase2clock12097draw1564",
+      "paused phase4clock14191draw2076"
+    ],
+    "scope": "Sampled advancement and controls, not continuously watched complete loop."
+  },
+  "next": "Check closing/opening and half-cycle bob at station density; normal catalogue/player admission when supported, then remaining movement and other family joins."
+}

@@ -25,6 +25,8 @@ static var index_of: Dictionary = {}
 static var tasks: Dictionary = {}
 static var results: Dictionary = {}
 static var next_submit := 0
+static var batch_order := false
+static var primed_paths := 0
 static var hits := 0
 static var cache_hits := 0
 static var worker_submissions := 0
@@ -55,6 +57,8 @@ static func begin(manifest := MANIFEST) -> void:
 	tasks = {}
 	results = {}
 	next_submit = 0
+	batch_order = false
+	primed_paths = 0
 	hits = 0
 	cache_hits = 0
 	worker_submissions = 0
@@ -72,6 +76,18 @@ static func begin(manifest := MANIFEST) -> void:
 			if line.begins_with("res://") and not index_of.has(line):
 				index_of[line] = paths.size()
 				paths.append(line)
+	batch_order = paths.is_empty()
+
+# A new profile has no previous order, but a completed crew batch already knows
+# its surviving paths. Announce them without decoding or inventing requests.
+# Repeat launches keep their learned order, including non-crew artwork.
+static func prime(order: PackedStringArray) -> void:
+	if not active or not batch_order: return
+	for path in order:
+		if path.begins_with("res://") and not index_of.has(path):
+			index_of[path] = paths.size()
+			paths.append(path)
+			primed_paths += 1
 
 # An independent decoded image, or null to use the ordinary decoder. Recently used
 # poses can be served again; older repeats fall back after their bounded cache entry expires.
@@ -154,6 +170,7 @@ static func end() -> void:
 	recorded = PackedStringArray()
 	paths = PackedStringArray()
 	index_of = {}
+	batch_order = false
 
 static func service_loading() -> void:
 	if active: _pump()
@@ -166,7 +183,7 @@ static func _pump() -> void:
 	DisplayServer.process_events()
 	if progress_callback.is_valid():
 		# The previous launch's image count stands in for the total; the first launch has none.
-		progress_callback.call(clampf(float(recorded.size()) / float(paths.size()), 0.0, 1.0) if not paths.is_empty() else -1.0)
+		progress_callback.call(clampf(float(recorded.size()) / float(paths.size()), 0.0, 1.0) if not paths.is_empty() and not batch_order else -1.0)
 	RenderingServer.force_draw()
 
 static func _submit_up_to(limit: int) -> void:
@@ -197,6 +214,7 @@ static func stats() -> Dictionary:
 	mutex.lock()
 	var result := {"requests": recorded.size() if active else completed_requests, "prefetch_hits": hits, "recent_hits": cache_hits,
 		"worker_submissions": worker_submissions, "peak_pending": peak_pending,
+		"primed_paths": primed_paths,
 		"unused_results": unused_results, "worker_decode_usec": worker_decode_usec,
 		"peak_decoded_bytes": peak_decoded_bytes, "recent_cache_budget_bytes": CACHE_BYTES}
 	mutex.unlock()

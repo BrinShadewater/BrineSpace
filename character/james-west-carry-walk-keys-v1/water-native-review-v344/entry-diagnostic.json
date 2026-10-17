@@ -1,0 +1,52 @@
+{
+	"actorMedium": "flooded",
+	"actorScript": "res://scripts/james_cargo_actor.gd",
+	"actorState": "swim",
+	"afterEntry": {
+		"equipment": "diving-helmet",
+		"key": "swim-south",
+		"last_position": "(20.16667, 20.37867)",
+		"last_time": 100.65,
+		"motion": {
+			"clip": "swim-reorient-rise-3-south-north",
+			"direction": "north",
+			"started": 100.65,
+			"state": "swim"
+		},
+		"phase": 0.0,
+		"started": 99.0
+	},
+	"allowed": true,
+	"clock": 100.65,
+	"gridPlayer": "res://character/james-west-carry-walk-keys-v1/water-stop-bridge-v340/reorient_player.gd",
+	"postCapture": {
+		"equipment": "diving-helmet",
+		"key": "swim-south",
+		"last_position": "(20.16667, 20.37867)",
+		"last_time": 100.65,
+		"motion": {
+			"clip": "swim-stop-phase-2-south",
+			"direction": "south",
+			"started": 100.0,
+			"state": "tread"
+		},
+		"phase": 0.0,
+		"started": 99.0
+	},
+	"preCapture": {
+		"equipment": "diving-helmet",
+		"key": "swim-south",
+		"last_position": "(20.16667, 20.37867)",
+		"last_time": 100.65,
+		"motion": {
+			"clip": "swim-stop-phase-2-south",
+			"direction": "south",
+			"started": 100.0,
+			"state": "tread"
+		},
+		"phase": 0.0,
+		"started": 99.0
+	},
+	"predicted": "swim-reorient-rise-3-south-north",
+	"stage": ""
+}

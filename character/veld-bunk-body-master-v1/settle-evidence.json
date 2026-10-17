@@ -1,0 +1,83 @@
+{
+  "validation": {
+    "passed": true,
+    "runs": [
+      {
+        "name": "native",
+        "code": 0,
+        "passed": true,
+        "seconds": 72.41
+      },
+      {
+        "name": "held-regression",
+        "code": 0,
+        "passed": true,
+        "seconds": 76.11
+      },
+      {
+        "name": "water-regression",
+        "code": 0,
+        "passed": true,
+        "seconds": 36.67
+      }
+    ],
+    "seconds": 186.91,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 29,
+    "targetedInputsUnchanged": true,
+    "freshRecords": true,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-bunk-body-settle-v1\\scratch-appdata"
+  },
+  "packageChecks": 130,
+  "nativeChecks": 14813,
+  "heldRegressionChecks": 1306,
+  "waterRegressionChecks": 1953,
+  "partialActorDeathCases": 80,
+  "sameClockActorFileRestores": 320,
+  "nativeSequences": 18,
+  "roomCaptures": 136,
+  "sourceCaptures": 136,
+  "newOrModifiedSourcePNGs": 0,
+  "sourcePNGsEqualPreviousEmergencyMilestone": true,
+  "normalManifestSelection": false,
+  "visualReview": "Eight full native/source boards, two paired entrance boards, source-clock browser preview observed",
+  "scope": "Prescribed actor-only supported source/death; not new partial full RunSave/fresh-scene Continue or natural world mortality",
+  "bindings": {
+    "scripts/veld_npc.gd": "20d855a0cba0973ab41b103c4236d09a56dfca37e58d31ffd0f1b3e89a127e64",
+    "scripts/veld_npc.gd.uid": "7df27f6ed619826e498b5457fa21da05c2cfa7516fd06816c99228901ac30efc",
+    "scripts/veld_death_motion.gd": "8a40b06e5d92901e6498b032b0dcbe953e89bcfd565078d9a39f6dc162393f3a",
+    "scripts/veld_death_motion.gd.uid": "6c3f87a0ba109e2f47c8f548fba44c2e1418f6a5577df48b674e4775b036d42f",
+    "scripts/crew_life.gd": "7fb23ca94e1b2bd8c1571f17e9e1f3947e34d08004fcff849dd42eaf4f3f23eb",
+    "scripts/crew_life.gd.uid": "5282786a13a341638864e232763162a6af4ed77f731d4e1404dfbce03e6d0272",
+    "scripts/crew_sprite_player.gd": "69eab53d515b5f0152a181a21fdffc89f435be4c4770501783d25b29d67721c5",
+    "scripts/crew_sprite_player.gd.uid": "be407e3ef80a50e97780120675ab547cd450370723459f12ea0bcb31db98a129",
+    "tests/test_veld_bunk_body_settle.gd": "f82ad57d7e46c298f1ddddfe073b0f7571b9c0988e82b21baa46dc3ee035e2cf",
+    "tests/test_veld_bunk_body_settle.gd.uid": "c91692249846aa00dc005ff582900f373857b9541a164c2a30d05ce001f7303c",
+    "tests/test_veld_bunk_body_settle_held.gd": "3d5f470704fe5a1e31293bc0ae64318bff860c71abd31137411fc3237b626ca9",
+    "tests/test_veld_bunk_body_settle_held.gd.uid": "7ba65507e5bcefc2a1f4621d0720c476a16f5cabcc6efd741cacbf6c4767b431",
+    "tools/run_veld_bunk_body_settle.py": "556795bb2119b43099cbdd5ce77d04594ed525fd0ce43a084d9fff9c8c89f044",
+    "output/veld-bunk-body-settle-v1/native.log": "105e1f00b3882fd0bf56b25fb31bb346ce0b2f8cc08083b758405852ca1284bf",
+    "output/veld-bunk-body-settle-v1/held-regression.log": "0e79199b7573907a5597564d35374042a68ca116af1d06f2daf8599c964f55ff",
+    "output/veld-bunk-body-settle-v1/water-regression.log": "c022496d85cc60de6edac342c0801930eab3cd9674e3b54ba21e553da9ac7ebd",
+    "output/veld-bunk-body-settle-v1/validation.json": "661777110d9c75a37e52ed3cdc06903d85afab26972c69fdf573556853686b9c",
+    "output/veld-bunk-body-settle-v1/records.json": "a90cea911d7a0bf14910bc4dd4be4e0f65dc2814423afce537d0504751da865a",
+    "output/veld-bunk-body-settle-v1/inputs-before.json": "f5fa35f3453314794e4ad3a215be92e4252a88501951f4b1bfb3baa1558eb06a",
+    "output/veld-bunk-body-settle-v1/inputs-after.json": "f5fa35f3453314794e4ad3a215be92e4252a88501951f4b1bfb3baa1558eb06a",
+    "character/veld-bunk-body-master-v1/bare-manifest.json": "73f83a8d529d57b49b64e04b33953b987b8aaec79d2c2bdb84c61aefb0cab381",
+    "character/veld-bunk-body-master-v1/helmet-manifest.json": "3039e24a3ab1bf84f08981ee06d9fa01497c5adbcf5cceffa2940078a42651c1",
+    "character/veld-bunk-body-master-v1/package-checks.json": "24650985a6a892670c856ba3d834f3364d9253ce434dcfeb124a7b77a0cdbf60",
+    "character/veld-bunk-body-master-v1/build_settle.py": "eb08bfd9b5b790528bd9bdf0e75748517987c52c6e55419555e27227e2dd6457",
+    "character/veld-bunk-body-master-v1/settle-review.html": "f2848698358d5cd750e3dab7e2bf9644fb4071119ded43bcfa246ccffb33dcd4",
+    "character/veld-bunk-body-master-v1/native-settle-joins-bare.png": "261141b8fdd769fcae295a80798eee63c99efafe11c505171c3522e7ee79e6d3",
+    "character/veld-bunk-body-master-v1/native-settle-joins-helmet.png": "75a2b7edf462c9784b443a4db2dc3be618b2e9cf906250b6f8b443e0f393c646",
+    "character/veld-bunk-body-master-v1/native-settle-r0-bare.png": "cb9908f1d31f5ee95361799d8784060278280c3607b469dc5699e415ef156149",
+    "character/veld-bunk-body-master-v1/native-settle-r0-helmet.png": "08ff909c4af9c02a5a02854c5e29c34c570e143ce4e08ef4ba15b316267d204b",
+    "character/veld-bunk-body-master-v1/native-settle-r1-bare.png": "5c441bf8ae14df48312c347d4338e9fd2a7040352cf0cc0dda6e43e15582679e",
+    "character/veld-bunk-body-master-v1/native-settle-r1-helmet.png": "79e1b2ac95e8c784585d3d23c7a25bc989e6df34b8f5d7a192865b8f5f75ff41",
+    "character/veld-bunk-body-master-v1/native-settle-r2-bare.png": "28f9f54fd090f745fc3c45cf42764330322a672710f1f2aa4e55dc8d0148615e",
+    "character/veld-bunk-body-master-v1/native-settle-r2-helmet.png": "ecb3232771eb63508453a38e98e52d3666c66d8bd0e45c6e6f28a2eccb759b90",
+    "character/veld-bunk-body-master-v1/native-settle-r3-bare.png": "5a1d819bb8f82ab8cadc4884b8f3dfde4a8c8a4315f08ab5096377b572666560",
+    "character/veld-bunk-body-master-v1/native-settle-r3-helmet.png": "cd8652fa8ad2dedfd95bb77d33774aded1413c85a58459fde1e3a5be856eb475"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "name": "James north meals",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_master_matched_meals_owner_review_pending",
+  "states": [
+    {
+      "id": "eat-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/eat/000.png",
+        "frames/eat/001.png",
+        "frames/eat/002.png",
+        "frames/eat/003.png",
+        "frames/eat/004.png",
+        "frames/eat/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "independentFacing": "north",
+        "fixedScale": 0.38642297650130547,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          0
+        ],
+        "materialGain": [
+          0.907,
+          1.0,
+          1.152
+        ],
+        "derivation": "Independent meal source at one fixed scale; translated by source foot anchor, no per-frame resizing; exact shared neutral loop endpoint"
+      }
+    },
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/drink/000.png",
+        "frames/drink/001.png",
+        "frames/drink/002.png",
+        "frames/drink/003.png",
+        "frames/drink/004.png",
+        "frames/drink/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "independentFacing": "north",
+        "fixedScale": 0.38642297650130547,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          6
+        ],
+        "materialGain": [
+          0.907,
+          1.0,
+          1.152
+        ],
+        "derivation": "Independent meal source at one fixed scale; translated by source foot anchor, no per-frame resizing; exact shared neutral loop endpoint"
+      }
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "revision": "marsh-cardinal-water-transitions-03-staged",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "states": [
+    {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/pickup-east-02-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/pickup-west-03-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-02-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-south",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/pickup-south-02-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-drain-east",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/drain-east-01-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-drain-west",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-drain-north",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/drain-north-01-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-drain-south",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/drain-south-04-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "sources": [
+    "pickup-east-02",
+    "pickup-west-03",
+    "pickup-north-02",
+    "pickup-south-02",
+    "drain-east-01",
+    "drain-west-01",
+    "drain-north-01",
+    "drain-south-04"
+  ]
+}

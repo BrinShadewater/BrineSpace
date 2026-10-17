@@ -1,0 +1,1 @@
+Historical rejected v1/half-v3 review. The frozen PNGs are in this folder's frames directory. Archived manifest/hash records name their original paths at the time of capture; those original paths now hold selected v7 artwork. Archived build.py is documentary and is not intended to run from this nested folder.

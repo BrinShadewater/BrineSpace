@@ -1,0 +1,828 @@
+{
+  "checks": 2453,
+  "failures": 0,
+  "scope": "Actual production Veld actor/default workshop generated route and grid source, prescribed powered room/service entry. Candidate East manifests only; no controller change, natural chooser, cargo ownership, interruption or Continue acceptance.",
+  "journeys": [
+    {
+      "tag": "normal-bare",
+      "stationFacing": "east",
+      "stageBoundaries": [
+        {
+          "stage": "workshop_pickup",
+          "key": "pickup-east",
+          "step": 0,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "workshop_carry",
+          "key": "carry-east",
+          "step": 32,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": -1.0
+        },
+        {
+          "stage": "workshop_unload",
+          "key": "unload-north",
+          "step": 359,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "",
+          "key": "idle-north",
+          "step": 480,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": -1.0
+        }
+      ],
+      "boundaryCaptures": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-bare-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": 0.45,
+          "capture": "normal-bare-0027",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 5,
+          "stage": "workshop_pickup",
+          "step": 27,
+          "time": 7.452,
+          "timer": 0.0700000000000001
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-bare-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-bare-0357",
+          "direction": "west",
+          "foot": [
+            7761.197265625,
+            7999.4013671875
+          ],
+          "key": "carry-west",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 4,
+          "stage": "workshop_carry",
+          "step": 357,
+          "time": 12.9520000000002,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-bare-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": 0.466666666666665,
+          "capture": "normal-bare-0387",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 5,
+          "stage": "workshop_unload",
+          "step": 387,
+          "time": 13.4520000000003,
+          "timer": 1.53333333333334
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-bare-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ],
+      "simulationTicks": 481,
+      "nativeCaptureCount": 62,
+      "turnMotion": {
+        "clip": "carry-turn-east-west",
+        "firstStep": 33,
+        "lastStep": 73,
+        "ticks": 41,
+        "travelWorldUnits": 30.658588285251025
+      }
+    },
+    {
+      "tag": "normal-helmet",
+      "stationFacing": "east",
+      "stageBoundaries": [
+        {
+          "stage": "workshop_pickup",
+          "key": "pickup-east",
+          "step": 0,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "workshop_carry",
+          "key": "carry-east",
+          "step": 32,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": -1.0
+        },
+        {
+          "stage": "workshop_unload",
+          "key": "unload-north",
+          "step": 359,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "",
+          "key": "idle-north",
+          "step": 480,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": -1.0
+        }
+      ],
+      "boundaryCaptures": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-helmet-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": 0.45,
+          "capture": "normal-helmet-0027",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 5,
+          "stage": "workshop_pickup",
+          "step": 27,
+          "time": 7.452,
+          "timer": 0.0700000000000001
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-helmet-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-helmet-0357",
+          "direction": "west",
+          "foot": [
+            7761.197265625,
+            7999.4013671875
+          ],
+          "key": "carry-west",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 4,
+          "stage": "workshop_carry",
+          "step": 357,
+          "time": 12.9520000000002,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-helmet-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": 0.466666666666665,
+          "capture": "normal-helmet-0387",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 5,
+          "stage": "workshop_unload",
+          "step": 387,
+          "time": 13.4520000000003,
+          "timer": 1.53333333333334
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-helmet-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ],
+      "simulationTicks": 481,
+      "nativeCaptureCount": 62,
+      "turnMotion": {
+        "clip": "carry-turn-east-west",
+        "firstStep": 33,
+        "lastStep": 73,
+        "ticks": 41,
+        "travelWorldUnits": 30.658588285251025
+      }
+    },
+    {
+      "tag": "staged-bare",
+      "stationFacing": "east",
+      "stageBoundaries": [
+        {
+          "stage": "workshop_pickup",
+          "key": "pickup-east",
+          "step": 0,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "workshop_carry",
+          "key": "carry-east",
+          "step": 32,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": -1.0
+        },
+        {
+          "stage": "workshop_unload",
+          "key": "unload-north",
+          "step": 359,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "",
+          "key": "idle-north",
+          "step": 480,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": -1.0
+        }
+      ],
+      "boundaryCaptures": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-bare-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": 0.45,
+          "capture": "staged-bare-0027",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 5,
+          "stage": "workshop_pickup",
+          "step": 27,
+          "time": 7.452,
+          "timer": 0.0700000000000001
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-bare-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-bare-0357",
+          "direction": "west",
+          "foot": [
+            7761.197265625,
+            7999.4013671875
+          ],
+          "key": "carry-west",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 4,
+          "stage": "workshop_carry",
+          "step": 357,
+          "time": 12.9520000000002,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-bare-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": 0.466666666666665,
+          "capture": "staged-bare-0387",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 5,
+          "stage": "workshop_unload",
+          "step": 387,
+          "time": 13.4520000000003,
+          "timer": 1.53333333333334
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-bare-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ],
+      "simulationTicks": 481,
+      "nativeCaptureCount": 62,
+      "turnMotion": {
+        "clip": "carry-turn-east-west",
+        "firstStep": 33,
+        "lastStep": 73,
+        "ticks": 41,
+        "travelWorldUnits": 30.658588285251025
+      }
+    },
+    {
+      "tag": "staged-helmet",
+      "stationFacing": "east",
+      "stageBoundaries": [
+        {
+          "stage": "workshop_pickup",
+          "key": "pickup-east",
+          "step": 0,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "workshop_carry",
+          "key": "carry-east",
+          "step": 32,
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "elapsed": -1.0
+        },
+        {
+          "stage": "workshop_unload",
+          "key": "unload-north",
+          "step": 359,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": 0.0
+        },
+        {
+          "stage": "",
+          "key": "idle-north",
+          "step": 480,
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "elapsed": -1.0
+        }
+      ],
+      "boundaryCaptures": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-helmet-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": 0.45,
+          "capture": "staged-helmet-0027",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "slot": 5,
+          "stage": "workshop_pickup",
+          "step": 27,
+          "time": 7.452,
+          "timer": 0.0700000000000001
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-helmet-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-helmet-0357",
+          "direction": "west",
+          "foot": [
+            7761.197265625,
+            7999.4013671875
+          ],
+          "key": "carry-west",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "slot": 4,
+          "stage": "workshop_carry",
+          "step": 357,
+          "time": 12.9520000000002,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-helmet-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": 0.466666666666665,
+          "capture": "staged-helmet-0387",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "slot": 5,
+          "stage": "workshop_unload",
+          "step": 387,
+          "time": 13.4520000000003,
+          "timer": 1.53333333333334
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-helmet-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ],
+      "simulationTicks": 481,
+      "nativeCaptureCount": 62,
+      "turnMotion": {
+        "clip": "carry-turn-east-west",
+        "firstStep": 33,
+        "lastStep": 73,
+        "ticks": 41,
+        "travelWorldUnits": 30.658588285251025
+      }
+    }
+  ],
+  "visualReview": {
+    "reviewedBoards": [
+      "normal-bare.png",
+      "normal-helmet.png",
+      "staged-bare.png",
+      "staged-helmet.png"
+    ],
+    "boundaryPairsReviewed": 28,
+    "all248CapturesReviewed": false,
+    "observations": [
+      "Pickup is already mapped and clocked by CrewLife; reading inherited state alone was misleading.",
+      "Staged East held pose is slimmer/master matched; first carry pose opens immediately into stride.",
+      "Production East-to-West carry turn moves the physical foot instead of holding it planted.",
+      "Actual route ends West-facing and arrival snaps to North unload, still using older West/North sources."
+    ],
+    "limits": "Prescribed contact/powered room; sampled stage boundaries only, not uninterrupted motion, natural chooser, floor-case ownership, interruption or Continue acceptance."
+  }
+}

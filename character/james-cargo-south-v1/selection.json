@@ -1,0 +1,58 @@
+{
+  "status": "installed_owner_accepted_south_cargo_v1",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-south",
+    "carry-south",
+    "unload-south"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "generationTool": "built-in imagegen",
+  "walkingGuide": "walking-pose-guide.png",
+  "sourceGuideIndices": [
+    0,
+    13,
+    25,
+    38,
+    51,
+    63
+  ],
+  "sourceSha256": "f84e2ba5eac13143569c136ca4355474be6b13c9a9e9ff78713eb77fdefd5bbd",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedScale": 0.30833333333333335,
+  "durationMs": 840,
+  "strideDistanceCells": 0.0827027027027027,
+  "helmet": "Selected shared south39x41 shell; face-tracked placement",
+  "palette": "Fixed master-matched highlight compression and gold RGB0.89/0.96/1.14; warm head and selected helmet pixels unchanged",
+  "checks": "150 packaging / 169 actual installed loader checks, 0 failures; 12 native and 36 production station captures",
+  "profileAudit": "Installed native profile unchanged; station scratch asserted and only3 owner Godot log files changed, non-log files unchanged",
+  "visualReview": "Owner accepted complete matte south cargo; installed station captures inspected",
+  "remaining": [
+    "North cargo"
+  ],
+  "materialEvidence": "matte-preservation-validation.json",
+  "review": "review-chain-v1.gif",
+  "pickupSource": "source-pickup-case-v2.png",
+  "pickupPrompt": "prompt-pickup-case-v2.txt",
+  "originalPickupPrompt": "prompt-pickup-v1.txt",
+  "rejectedPickupSource": "rejected-pickup-wide-case-v1.png",
+  "rejectionReason": "Initial generated case too wide relative to accepted carry; corrected case source preserves six-pose sequence",
+  "pickupFixedScale": 0.2624113475177305,
+  "timingMs": {
+    "pickup-south": 520,
+    "carry-south": 840,
+    "unload-south": 520
+  },
+  "derivation": "Independent south pickup, exact reversed unload, selected idle body and accepted carry frame0 endpoints; all12 carry PNGs byte-identical"
+}

@@ -1,0 +1,44 @@
+{
+  "status": "installed_master_height_revision_visual_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-east",
+    "carry-east",
+    "unload-east"
+  ],
+  "framesPerMode": 18,
+  "totalReferences": 36,
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "generationTool": "Existing accepted built-in source; deterministic registration repair",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "timingMs": {
+    "pickup-east": 520,
+    "carry-east": 840,
+    "unload-east": 520
+  },
+  "derivation": "Independent6-pose pickup and full6-pose alternating gait; unloading reverses pickup",
+  "palette": "Fixed matte material curve; cloth median 52 to 47; skin, hair, yellow and shared helmet preserved",
+  "helmet": "Selected35x41 east shared shell; face-tracked movement, restrained10degree bend",
+  "registration": "Pickup original scalesX0.3975903614/Y0.4340175953 unchanged; all six gait frames use fixedY149/332; selected helmet crown anchored toward standing master68 with gait bob",
+  "checks": "178 packaging /169 actual installed loader checks,0 failures;12 native captures; all24 pickup/unload PNGrefs byte-identical to prior installed pack",
+  "visualReview": "Contact/native at148/82/54/27px inspected; final owner height correction review pending",
+  "limits": [
+    "Phase joins are visually continuous rather than identical pixel endpoints.",
+    "Deposited case stays beside exact installed actor idle endpoint.",
+    "No release export or cargo route ownership claim."
+  ],
+  "matteAlphaPreservation": "All 36 alpha planes byte-identical to before-matte-v2",
+  "profileAudit": "Final actual-loader scratch assertion and real-profile unchanged audit passed; earlier candidate interval observed unrelated layout backup delta",
+  "review": "review-height-v3.gif"
+}

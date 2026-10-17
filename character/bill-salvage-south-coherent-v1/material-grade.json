@@ -1,0 +1,49 @@
+{
+  "authority": "south idle neutral/shoulder samples;current swimming crown samples",
+  "neutralInput": [
+    0.0,
+    0.3333333333333333,
+    4.333333333333333,
+    33.0,
+    52.666666666666664,
+    74.33333333333333,
+    89.66666666666667,
+    133.66666666666666,
+    236.66666666666666,
+    255.0
+  ],
+  "neutralOutput": [
+    1.6666666666666667,
+    12.666666666666666,
+    25.333333333333332,
+    40.666666666666664,
+    48.666666666666664,
+    60.0,
+    75.33333333333333,
+    121.33333333333333,
+    152.13333333333352,
+    215.0
+  ],
+  "burgundyGain": [
+    0.6262626262626263,
+    1.0731707317073171,
+    0.86
+  ],
+  "crownGain": [
+    0.5,
+    0.6190476190476191,
+    0.7317073170731707
+  ],
+  "cyanGain": [
+    5.5,
+    0.5317073170731708,
+    0.461864406779661
+  ],
+  "scope": "one frozen atlas curve/gain, bounded crown excludes face;no per-pose exposure or scale",
+  "faceGain": [
+    0.7633928571428571,
+    1.1095890410958904,
+    1.0925925925925926
+  ],
+  "faceScope": "one atlas-wide warm-skin gain inside measured face boxes;selected south swim skin ROI x92..116/y152..166;hair/suit excluded"
+}

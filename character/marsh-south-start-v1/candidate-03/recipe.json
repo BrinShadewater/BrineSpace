@@ -1,0 +1,133 @@
+{
+  "status": "rejected: sole match hides stepping-body lateral shift; no runtime admission",
+  "rawSha256": "7a8098c8d6699bb4374bc17c7b12c6c078a8174b97c7508aefca91abdb0c297e",
+  "sharedNeutralScale": 0.193717277486911,
+  "cells": [
+    {
+      "cell": [
+        0,
+        0,
+        443,
+        887
+      ],
+      "sharedScale": 0.193717277486911,
+      "registration": [
+        48,
+        9
+      ],
+      "supportTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        61,
+        23,
+        122,
+        170
+      ],
+      "headAlphaCentroid": [
+        91.35282651072124,
+        36.65692007797271
+      ],
+      "role": "interior",
+      "sha256": "8f48454ea1308c797bbd32f869bc985289c3a356d4af709c830dd8ff0ca1e027"
+    },
+    {
+      "cell": [
+        443,
+        0,
+        887,
+        887
+      ],
+      "sharedScale": 0.193717277486911,
+      "registration": [
+        49,
+        9
+      ],
+      "supportTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        61,
+        23,
+        121,
+        170
+      ],
+      "headAlphaCentroid": [
+        90.95069033530572,
+        36.76331360946745
+      ],
+      "role": "interior",
+      "sha256": "b9bc743b92d518b569e144bf1de524d1dfcf109ae2954ba62a1d09c1f32cd7f1"
+    },
+    {
+      "cell": [
+        887,
+        0,
+        1330,
+        887
+      ],
+      "sharedScale": 0.193717277486911,
+      "registration": [
+        54,
+        13
+      ],
+      "supportTarget": [
+        83.5,
+        170
+      ],
+      "bounds": [
+        66,
+        28,
+        127,
+        177
+      ],
+      "headAlphaCentroid": [
+        96.3790523690773,
+        39.082294264339154
+      ],
+      "role": "interior",
+      "sha256": "c1ab740848b0e578904fa3a1efd4c5e1402cd0313e4f0799eb287362105277ee"
+    },
+    {
+      "cell": [
+        1330,
+        0,
+        1774,
+        887
+      ],
+      "sharedScale": 0.193717277486911,
+      "registration": [
+        51,
+        9
+      ],
+      "supportTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        62,
+        23,
+        122,
+        170
+      ],
+      "headAlphaCentroid": [
+        92.04305283757338,
+        36.702544031311156
+      ],
+      "role": "neutral ruler",
+      "sha256": "ba9661891c62bb2f7c01f09f5d2e8a9c77f52671b3e3a17eeee3256e0df07c65"
+    }
+  ],
+  "idleSha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d",
+  "gaitSha256": "655067b49235987be98f4154dbed968b25e04e5ded6ee4497120a5339a4cfeeb",
+  "grade": "none; generation requested reference finish",
+  "supportDepthAdvanceDense": 6,
+  "supportDepthAdvanceWorld": 2.6464864864864865,
+  "supportLateralSeamDense": 0.0,
+  "supportLateralSeamWorld": 0.0,
+  "gaitJoin": "derive from loaded durations of first4poses plus80ms consumed hold; currently .68s",
+  "decision": "Whole coherent strip edit; common neutral scale; complete figures registered without anatomy edits. Pose3 viewer-left support registered to selected gait4 lateral centroid, at selected idle support depth. Root bridges depth; no root lateral motion. Inspect body/head alignment: matching sole alone is insufficient. Historical candidate02 untouched.",
+  "rejection": "Prompt02 wrongly requested wider viewer-left support. Actual gait4 sole centroid83.5 vs original candidate02 pose3 sole79.0: supporting sole must move toward body centre, not outward. Candidate03 packing compensates by moving whole body right: head96.38 vs ready/load~91, so no accepted body/contact continuity. Raw/prompt preserved; do not retarget controller to this bank."
+}

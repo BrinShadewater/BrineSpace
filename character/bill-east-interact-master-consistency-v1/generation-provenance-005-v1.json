@@ -1,0 +1,78 @@
+{
+  "status": "completed",
+  "method": "builtin imagegen",
+  "source": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\005.png",
+  "sourceSha256": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+  "references": [
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\sources\\interact-005-target.png",
+      "sha256": "3e9d0e41c7298ad121f10f53936da8e097ca73a0c61cebb11b73b6048af2b526",
+      "role": "only edit target; exact whole canvas translation and nearest4x"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\sources\\original-east-master-common.png",
+      "sha256": "7aba6b687e4476bf0f83be0458c4de71fe8c28a46447c2a2fc8ff9543e016990",
+      "role": "original master identity/material/proportion authority only"
+    }
+  ],
+  "promptFile": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\sources\\prompt-neighbors-v1.txt",
+  "promptSha256": "d5defa9e39259bf83d7edd633a20c175f3860a5672de961bcd58b77e249f99dd",
+  "submittedPromptSha256": "d5defa9e39259bf83d7edd633a20c175f3860a5672de961bcd58b77e249f99dd",
+  "frozenInputs": {
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\003.png": "f25bf30b9139a126840b5a74400996e27386bc512ca07f0e979f5539503292eb",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\crew-side-masters-v1\\bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\crew-runtime-matte-v1\\bill\\frames\\idle-east-breathing-v1\\000.png": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\manifest.json": "6697ea5b08b4307335c0601cf5192eb30bd08d40edc6a2c251bd15692c7b58ef",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\000.png": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\001.png": "704c09216c907ad5da229ae5a2163b3d2edf77d8cc87870a75b37dd721db3eda",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\002.png": "539a4fcd2a0e5da9dab6f519a80c28402218f215bff4f798ddcb114f98a55f3c",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\004.png": "0f2e39d17c00dcf370d17c0bc1f80c5b0e86bfd17da43346d50c11d07202d6de",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-bare-east-selected-v1\\frames\\interact-east\\005.png": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec"
+  },
+  "targetTranslation": [
+    68,
+    52
+  ],
+  "originalCanvas": [
+    184,
+    184
+  ],
+  "commonCanvas": [
+    352,
+    352
+  ],
+  "returnCrop": [
+    68,
+    52,
+    252,
+    236
+  ],
+  "standingHeight": 148,
+  "referenceSource": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\crew-side-masters-v1\\bill-side-master-01.png",
+  "referenceCrop": [
+    300,
+    0,
+    640,
+    1024
+  ],
+  "referenceScale": 0.6192468619246861,
+  "referenceResampledSize": [
+    211,
+    634
+  ],
+  "referenceTranslation": [
+    529,
+    291
+  ],
+  "referenceResampling": "BICUBIC",
+  "normalAdmission": false,
+  "poseIndex": 5,
+  "originalPath": "C:\\Users\\Alex\\.codex\\generated_images\\01a0ef89-cf35-77f0-9b57-2a08e6ea987f\\exec-8bcd7d8f-667b-4141-b82c-b35a0a48ec8d.png",
+  "savedPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\sources\\interact-005-edit-v1.png",
+  "sha256": "73c9e8ae873dca28a251161cd58b8dcea037605fb32fe92032292be5b6d3264b",
+  "generationId": "exec-8bcd7d8f-667b-4141-b82c-b35a0a48ec8d",
+  "derivedEndpoint": true,
+  "derivedReceipt": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\generation-provenance-000-v1.json",
+  "derivedReceiptSha256": "98fd29b84dc04cf105e911d39ef44302b54438a5e1708dd0a090fc23b3ed28fc",
+  "derivation": "Exact identical source and target pixels and prompt; reuse000 output for returning idle endpoint005 without another generation."
+}

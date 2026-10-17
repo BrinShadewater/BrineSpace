@@ -1,0 +1,399 @@
+{
+  "checks": [
+    {
+      "mode": "bare",
+      "label": "reverse exit",
+      "pass": true
+    },
+    {
+      "mode": "bare",
+      "label": "exact sleep joins",
+      "pass": true
+    },
+    {
+      "mode": "bare",
+      "label": "entry exit clock1840ms",
+      "pass": true
+    },
+    {
+      "mode": "helmet",
+      "label": "reverse exit",
+      "pass": true
+    },
+    {
+      "mode": "helmet",
+      "label": "exact sleep joins",
+      "pass": true
+    },
+    {
+      "mode": "helmet",
+      "label": "entry exit clock1840ms",
+      "pass": true
+    }
+  ],
+  "failures": 0,
+  "records": [
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 0,
+      "rgbaSha256": "12ba2abe36114235855396e9a789b6518b23cb19d686bcd847fa57da8d2f595c",
+      "bounds": [
+        98,
+        74,
+        158,
+        227
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 1,
+      "rgbaSha256": "69977c77eb0cdad3cbd7625715c8c927bdc74e4ba7f572b7028bfbcf5e983036",
+      "bounds": [
+        72,
+        99,
+        142,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 2,
+      "rgbaSha256": "9aa53ad8f51f1d838ad40e7ac120971af7ed1bc67d564ffdda5cdbf971a61ccc",
+      "bounds": [
+        58,
+        108,
+        140,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 3,
+      "rgbaSha256": "46070f3cb6e8f2bbc9ed46f748e74c46a8270dfed081f7dd01ad93ae716c8e03",
+      "bounds": [
+        109,
+        141,
+        218,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 4,
+      "rgbaSha256": "265a18effcbdf7d45347cdaefcace4de6be53db88199b24a28eddf01be6d9b4c",
+      "bounds": [
+        38,
+        159,
+        157,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 5,
+      "rgbaSha256": "cfefc58a4267d35af3724468e72ff998addbfc0b523c62d6f4dae6c65088fc53",
+      "bounds": [
+        43,
+        180,
+        167,
+        225
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-enter",
+      "index": 6,
+      "rgbaSha256": "29f40165d1a90dd0ed8b234c0bbadf4e0cc3d5f671a02080da529063ee2f5c12",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-sleep",
+      "index": 0,
+      "rgbaSha256": "29f40165d1a90dd0ed8b234c0bbadf4e0cc3d5f671a02080da529063ee2f5c12",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 0,
+      "rgbaSha256": "29f40165d1a90dd0ed8b234c0bbadf4e0cc3d5f671a02080da529063ee2f5c12",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 1,
+      "rgbaSha256": "cfefc58a4267d35af3724468e72ff998addbfc0b523c62d6f4dae6c65088fc53",
+      "bounds": [
+        43,
+        180,
+        167,
+        225
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 2,
+      "rgbaSha256": "265a18effcbdf7d45347cdaefcace4de6be53db88199b24a28eddf01be6d9b4c",
+      "bounds": [
+        38,
+        159,
+        157,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 3,
+      "rgbaSha256": "46070f3cb6e8f2bbc9ed46f748e74c46a8270dfed081f7dd01ad93ae716c8e03",
+      "bounds": [
+        109,
+        141,
+        218,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 4,
+      "rgbaSha256": "9aa53ad8f51f1d838ad40e7ac120971af7ed1bc67d564ffdda5cdbf971a61ccc",
+      "bounds": [
+        58,
+        108,
+        140,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 5,
+      "rgbaSha256": "69977c77eb0cdad3cbd7625715c8c927bdc74e4ba7f572b7028bfbcf5e983036",
+      "bounds": [
+        72,
+        99,
+        142,
+        224
+      ]
+    },
+    {
+      "mode": "bare",
+      "action": "bunk-exit",
+      "index": 6,
+      "rgbaSha256": "12ba2abe36114235855396e9a789b6518b23cb19d686bcd847fa57da8d2f595c",
+      "bounds": [
+        98,
+        74,
+        158,
+        227
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 0,
+      "rgbaSha256": "807b7ed62aecd44e0260983f01c8b01a49c56cc4c05ffef46dddee4bec2e7492",
+      "bounds": [
+        98,
+        68,
+        158,
+        227
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 1,
+      "rgbaSha256": "579fb89ba4425013cc5f21dac91809fc6de5afaba73062a196415097f318418e",
+      "bounds": [
+        72,
+        92,
+        147,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 2,
+      "rgbaSha256": "50c1ac75d348656d58df7f3bcf91ddcb7fc59f368d4d7b9c0e4bcb94d66e4f99",
+      "bounds": [
+        58,
+        100,
+        140,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 3,
+      "rgbaSha256": "b0d96e58e3e00259a7940f534abe540a4e9e980c220c16e69dd518b25495228b",
+      "bounds": [
+        109,
+        137,
+        218,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 4,
+      "rgbaSha256": "3b9010a8c1bee7b006e0f8b17a0096253ad460e65ffd4e34f5ec5731b74b8c80",
+      "bounds": [
+        38,
+        153,
+        157,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 5,
+      "rgbaSha256": "3c6df85c142a2547e3c48123c0e440b64ed3b7313a8139f26f52a5dee825a153",
+      "bounds": [
+        39,
+        175,
+        167,
+        225
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-enter",
+      "index": 6,
+      "rgbaSha256": "ed850191847e3abef86a60133240a24595e8dc1feac7a3c7e023c992cf3fd298",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-sleep",
+      "index": 0,
+      "rgbaSha256": "ed850191847e3abef86a60133240a24595e8dc1feac7a3c7e023c992cf3fd298",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 0,
+      "rgbaSha256": "ed850191847e3abef86a60133240a24595e8dc1feac7a3c7e023c992cf3fd298",
+      "bounds": [
+        57,
+        182,
+        183,
+        225
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 1,
+      "rgbaSha256": "3c6df85c142a2547e3c48123c0e440b64ed3b7313a8139f26f52a5dee825a153",
+      "bounds": [
+        39,
+        175,
+        167,
+        225
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 2,
+      "rgbaSha256": "3b9010a8c1bee7b006e0f8b17a0096253ad460e65ffd4e34f5ec5731b74b8c80",
+      "bounds": [
+        38,
+        153,
+        157,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 3,
+      "rgbaSha256": "b0d96e58e3e00259a7940f534abe540a4e9e980c220c16e69dd518b25495228b",
+      "bounds": [
+        109,
+        137,
+        218,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 4,
+      "rgbaSha256": "50c1ac75d348656d58df7f3bcf91ddcb7fc59f368d4d7b9c0e4bcb94d66e4f99",
+      "bounds": [
+        58,
+        100,
+        140,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 5,
+      "rgbaSha256": "579fb89ba4425013cc5f21dac91809fc6de5afaba73062a196415097f318418e",
+      "bounds": [
+        72,
+        92,
+        147,
+        224
+      ]
+    },
+    {
+      "mode": "helmet",
+      "action": "bunk-exit",
+      "index": 6,
+      "rgbaSha256": "807b7ed62aecd44e0260983f01c8b01a49c56cc4c05ffef46dddee4bec2e7492",
+      "bounds": [
+        98,
+        68,
+        158,
+        227
+      ]
+    }
+  ],
+  "sleepSourceFramesPerGear": 1,
+  "scope": "Thirty actual selected East bunk references, fixed canonical source canvas. Static bunk sleep hold, exact reverse exits and shared joins; visual furniture contact must be judged from actual native journeys."
+}

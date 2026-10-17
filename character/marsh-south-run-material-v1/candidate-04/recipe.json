@@ -1,0 +1,120 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "records": [
+    {
+      "file": "000.png",
+      "sourcePath": "character/marsh-south-run-material-v1/candidate-03/003.png",
+      "sourceSha256": "23fb46a1cdfb44dd6cbdeed5c06a7ac8db3c7024347f9e1a638e39b4d2c8896f",
+      "phase": "LEFT contact",
+      "bounds": [
+        61,
+        29,
+        124,
+        173
+      ],
+      "size": [
+        63,
+        144
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    },
+    {
+      "file": "001.png",
+      "sourcePath": "character/marsh-south-run-material-v1/candidate-03/004.png",
+      "sourceSha256": "cd7ab716dd387d3b21d3e91370fe5e8b7333b2a2312c22f49e172bdb628f05c5",
+      "phase": "LEFT support/pass",
+      "bounds": [
+        60,
+        30,
+        124,
+        171
+      ],
+      "size": [
+        64,
+        141
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    },
+    {
+      "file": "002.png",
+      "sourcePath": "character/marsh-south-run-material-v1/candidate-03/002.png",
+      "sourceSha256": "898b8b5c428dbb7c5666cd2b4be793046abc9f0b508bfa8753eebd3caabbbb36",
+      "phase": "RIGHT knee flight",
+      "bounds": [
+        61,
+        26,
+        124,
+        156
+      ],
+      "size": [
+        63,
+        130
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    },
+    {
+      "file": "003.png",
+      "sourcePath": "character/marsh-south-run-material-v1/candidate-03/000.png",
+      "sourceSha256": "578c418d2a289b132b6a57adf009b2dcf3ed379e55c9dc2eccdb7f8d7a7cb906",
+      "phase": "RIGHT contact",
+      "bounds": [
+        60,
+        27,
+        123,
+        173
+      ],
+      "size": [
+        63,
+        146
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    },
+    {
+      "file": "004.png",
+      "sourcePath": "character/marsh-south-run-material-v1/passing-06-unselected/passing.png",
+      "sourceSha256": "f3a398d5fbd7b8b121ffc99fa908ef5873685e5defe786274322786d7f411428",
+      "phase": "RIGHT support/pass",
+      "bounds": [
+        59,
+        38,
+        126,
+        172
+      ],
+      "size": [
+        67,
+        134
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    },
+    {
+      "file": "005.png",
+      "sourcePath": "character/marsh-south-run-material-v1/candidate-03/005.png",
+      "sourceSha256": "a113bdefe8ecc38d886af53deb194b0db7c29f3383917305be5ca1f8b4ffcb59",
+      "phase": "LEFT knee flight",
+      "bounds": [
+        61,
+        26,
+        124,
+        158
+      ],
+      "size": [
+        63,
+        132
+      ],
+      "operation": "complete existing source bytes, no image changes"
+    }
+  ],
+  "phasePolicy": "New coherent left/right contact-passing-flight order; existing six100ms looping/distance stride metadata retained. No runtime controller changes.",
+  "sources": [
+    {
+      "recipePath": "character/marsh-south-run-material-v1/candidate-03/recipe.json",
+      "sha256": "6f98868fe7baa9ffb204dd10e4822353ef0e9170f3a3ccd60cc18281cdfd6bbc"
+    },
+    {
+      "recipePath": "character/marsh-south-run-material-v1/passing-06-unselected/recipe.json",
+      "sha256": "e6ad3d1bb83e8b91f9a6f4e168307f2d84ec94f55f7304385f8265a38afdf447"
+    }
+  ],
+  "limits": "Whole-cycle held/motion and actor/cadence/root/transition evidence pending; passing compression differs by side, no per-pose fitting."
+}

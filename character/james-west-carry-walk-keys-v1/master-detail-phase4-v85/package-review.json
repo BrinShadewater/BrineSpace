@@ -1,0 +1,72 @@
+{
+  "phase": 4,
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "metrics": [
+    {
+      "file": "character/james-west-master-carry-v1/registered-original-master.png",
+      "sha256": "f10067e18e85f94c2a47db6e9478da5c69d0289c546cd98dd3a00c690a769833",
+      "alpha128Bounds": [
+        106,
+        76,
+        150,
+        224
+      ]
+    },
+    {
+      "file": "character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-004.png",
+      "sha256": "28c7edd7dcf97d022b10c626bd00feb7fe600fff27b06ea318d7d95a82bfc269",
+      "alpha128Bounds": [
+        98,
+        76,
+        155,
+        224
+      ]
+    },
+    {
+      "file": "character/james-west-carry-walk-keys-v1/master-detail-phase4-v85/bare-whole-candidate.png",
+      "sha256": "ef62a843bd8395e68376f85ed87aece987f6db46aa95bf5ce4fc0c8f7ce9b1e2",
+      "alpha128Bounds": [
+        94,
+        65,
+        171,
+        207
+      ]
+    },
+    {
+      "file": "character/james-west-carry-walk-keys-v1/master-detail-phase4-v85/bare-head-protected.png",
+      "sha256": "231f975dabeebdbded73a43a23320a00c8d55c9c198244cc873b2f7fbfbb4bd5",
+      "alpha128Bounds": [
+        98,
+        76,
+        155,
+        224
+      ]
+    }
+  ],
+  "normalization": "Full square normalized once256. Authored RGB admitted inside original opaque silhouette; original alpha and outer two-pixel ring unchanged. No fitting/warp/regrade.",
+  "alphaPlaneExact": true,
+  "outerTwoPixelRingExact": true,
+  "headTop104Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "admittedPixelCount": 2229,
+  "changedPixels": 2229,
+  "outsideExactPixels": 63307,
+  "pairedBeforeColumnPhase": 4,
+  "pairedBeforeBaselinesPixelVerified": true,
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "rejected_internal_pose_and_registration_drift",
+  "reviewedSourceBoards": [
+    "master-comparison.png"
+  ],
+  "findings": [
+    "Raw same-pose output moves crown6..12rows and soles13..22rows; knees/case/articulation shift visibly.",
+    "Alpha/outer-ring protection preserves a footprint while creating internally incoherent anatomy. Reject all protected derivatives too.",
+    "Native99source/clock checks remain technical evidence only; generated art rejected despite zero failures.",
+    "New pre-packaging crown/sole drift guard independently rejects this stored raw. Earlier failed study derivatives remain preserved as historical evidence."
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "name": "Bill west seated loops helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "sit-idle-west",
+      "frameFiles": [
+        "frames/helmet/sit-idle-west/000.png",
+        "frames/helmet/sit-idle-west/001.png",
+        "frames/helmet/sit-idle-west/002.png",
+        "frames/helmet/sit-idle-west/003.png",
+        "frames/helmet/sit-idle-west/004.png",
+        "frames/helmet/sit-idle-west/005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "read-seated-west",
+      "frameFiles": [
+        "frames/helmet/read-seated-west/000.png",
+        "frames/helmet/read-seated-west/001.png",
+        "frames/helmet/read-seated-west/002.png",
+        "frames/helmet/read-seated-west/003.png",
+        "frames/helmet/read-seated-west/004.png",
+        "frames/helmet/read-seated-west/005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    }
+  ],
+  "equipment": "diving-helmet"
+}

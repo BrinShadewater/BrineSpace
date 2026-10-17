@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,hashlib
+p=Path(__file__).resolve().parent;r=p.parents[1];o=p/'north-unload-bend-source-v310';o.mkdir(exist_ok=True)
+target=p/'north-unload-start-source-v309/raw.png'
+prompt='Edit this exact rear-view character into the NEXT unloading pose: a deeper controlled squat as he lowers the case in front of him. Bend BOTH knees naturally and lower head, shoulders, backpack and hips together; the crown should descend about12 pixels on a256-pixel whole canvas (about60pixels on this1254canvas). Both boot soles stay planted at EXACT same locations and same spacing as input. No step, stance widening, raised heel, longer shins or floating feet. Case remains held in front of his torso, occluded from this rear view. Preserve head size, limb lengths, camera and full transparent canvas registration. Preserve this exact dark matte charcoal quilt fabric, muted yellow shoulders, warm worn metal, backpack gear emblem, straps and panels, left belt meter and RIGHT belt wrench. Wrench stays attached to belt. No purple cast, brighter shine, new gear or bulky arms. One full figure on transparent square canvas.'
+(o/'prompt.txt').write_text(prompt+'\n',encoding='utf-8');sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+(o/'inputs.json').write_text(json.dumps(dict(editTarget=target.relative_to(r).as_posix(),editTargetSha256=sha(target),precedingSource=(p/'north-unload-start-source-v309/fixed-canvas-source.png').relative_to(r).as_posix(),promptSha256=sha(o/'prompt.txt'),normalChanged=False),indent=2)+'\n',encoding='utf-8')
+print('Frozen deeper-bend source target and prompt.')

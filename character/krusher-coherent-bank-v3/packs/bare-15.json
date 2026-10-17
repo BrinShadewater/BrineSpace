@@ -1,0 +1,933 @@
+{
+  "name": "Krusher Dom water bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png",
+        "res://character/krusher-coherent-bank-v2/frames/51785b383b47cbb2cd1db14205d12ff98b1a2753b7297abe2b9beb79ff3baf09.png",
+        "res://character/krusher-coherent-bank-v2/frames/d620ea4c42f3b265db323a396c4f1e9de86c3074fc12b8435fe1d2a3f899eef2.png",
+        "res://character/krusher-coherent-bank-v2/frames/1a44ee17ed7690115a3caa51136c57b47fdf7a09eab61fc66072724ec719ffdc.png",
+        "res://character/krusher-coherent-bank-v2/frames/0fec888ceb63072f43a43f5a7d22b98c6d1f61310eeb4e27cedcf7ab4d8792bd.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png",
+        "res://character/krusher-coherent-bank-v2/frames/d86c95cbb1375f0e091bcad218ea6c3d949d8a3d30fb8383fbc3a4a2c472a8b4.png",
+        "res://character/krusher-coherent-bank-v2/frames/a311698854ed41a105045691fdc7276e9d12698c109ac5f2f456a3464ba048ba.png",
+        "res://character/krusher-coherent-bank-v2/frames/c3b4720811bcd92ad48cae6b76c2abae59c89fbe50810dfa1906a38837299f06.png",
+        "res://character/krusher-coherent-bank-v2/frames/f0e630b572d514c9d6475a2c908dca99e0a0031a60754e118a89d87f35e50dbe.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png",
+        "res://character/krusher-coherent-bank-v2/frames/7d7d13024bc360c0603b444ca425b2de0d437eb465d4ca7a2651ad9ad1a26998.png",
+        "res://character/krusher-coherent-bank-v2/frames/3cf280d834f6012bf38e49e3137809c3288e79d691f7bacedeb9d558c1b2ec31.png",
+        "res://character/krusher-coherent-bank-v2/frames/e59818a4760242ad433aa9e030ffa8da3f39fa2eb7810c3c30b4d209b7cbf614.png",
+        "res://character/krusher-coherent-bank-v2/frames/6ffd2fa96d3dd4058bb82b4f7669e2697be5bf23e2e9421c36a7b6e879207dc2.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png",
+        "res://character/krusher-coherent-bank-v2/frames/55f5986dc06c702e5e7a0ad19ee15fd3227f3fa8d9f746f6e38d8daf7d3b2f94.png",
+        "res://character/krusher-coherent-bank-v2/frames/ed3569689be91cdaf12d144d91893bb81a033fa88836de840d4a3b3976fbf8e7.png",
+        "res://character/krusher-coherent-bank-v2/frames/a6d55936f7f429660ec02b678555db6b1a4ecee950051a60cfe03c1b88fd6282.png",
+        "res://character/krusher-coherent-bank-v2/frames/93f14939883bd431c2b6b565db47555e3c429689f84c286948be17cf4a32739f.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "tread-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ff07508df7316481d12ee30f3392cf0fe26c33d2219aadcbfcce23e76650ca09.png",
+        "res://character/krusher-coherent-bank-v2/frames/358b7c5379a9df13e9954c9acf09957ac4245a47e2004d310a004a4b07943186.png",
+        "res://character/krusher-coherent-bank-v2/frames/448f162f8efc47cbef9d48e70ce354642e2c8371dd88e6ed4f1ae9bdfeda31c9.png",
+        "res://character/krusher-coherent-bank-v2/frames/a92b53e26f3ecc9de42077e34f8bad756352467784c96f7c9cd48bc1f71a6317.png",
+        "res://character/krusher-coherent-bank-v2/frames/d9688822af430e4bb38866ada843f93321c46f31536d21e858d6d4a984ca4891.png",
+        "res://character/krusher-coherent-bank-v2/frames/ff07508df7316481d12ee30f3392cf0fe26c33d2219aadcbfcce23e76650ca09.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "tread-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/e39e6892bf7b642cdb0345b989bcf68563eeb0a267e167804631f3eee74fb19e.png",
+        "res://character/krusher-coherent-bank-v2/frames/acee6ecda56f0346803a2e193c384cff8dd866595d6097ae10bbf565a3ffa9fd.png",
+        "res://character/krusher-coherent-bank-v2/frames/9aca109dcaccf04433f428d06a24b97576a1e9f247657242c9f82fb9bcdff275.png",
+        "res://character/krusher-coherent-bank-v2/frames/4d2687c0da097ef54fd9c070fa8fe51b0ea2cfc6eb1047da59fb7e6a98d2deeb.png",
+        "res://character/krusher-coherent-bank-v2/frames/36eb63297f9534609260b5202477eb9ff11da3975bf90f2acb1992541c6dc9d5.png",
+        "res://character/krusher-coherent-bank-v2/frames/e39e6892bf7b642cdb0345b989bcf68563eeb0a267e167804631f3eee74fb19e.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-north-polish-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "tread-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/e9b382b15d403fd2f509e8dab65ba1bbb46510b5621ccef01b199a9bce03eb43.png",
+        "res://character/krusher-coherent-bank-v2/frames/f3787d30701976854e8aaf02a64669a2f8bf48fef83502870283e1fee9733900.png",
+        "res://character/krusher-coherent-bank-v2/frames/886049a2f4b1fefbf02590222052f75de68daffe3a66f0c35ebd45382a5d8e9b.png",
+        "res://character/krusher-coherent-bank-v2/frames/d22c14676a765f6fbfa2f189198aea9548a067b8128eb5e337884544dedc6d84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf2ba0886e7953d903b3d860c016b236d04868adc249fb9785d2249dbfed0e1e.png",
+        "res://character/krusher-coherent-bank-v2/frames/e9b382b15d403fd2f509e8dab65ba1bbb46510b5621ccef01b199a9bce03eb43.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "tread-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/138123f20502fbcbcba373b81af15aecd362b0b280ef1217cde9d38a52cad804.png",
+        "res://character/krusher-coherent-bank-v2/frames/03c45de7faf73054334d21bf23fa32186e7ab09dd4e38005ead056e48a9210f2.png",
+        "res://character/krusher-coherent-bank-v2/frames/ca9ea18b04d2adf0759d5493d32757ff147c82d54c123b8f9190149e0ef4878f.png",
+        "res://character/krusher-coherent-bank-v2/frames/f25411dab0d7ab2dac80017c379cf28a99c3a3f7197587d786b51aa6766a0005.png",
+        "res://character/krusher-coherent-bank-v2/frames/9f9458e9d4013db026211e758d4c8956320b9fd2e71970a3dffd16e3dfb14e95.png",
+        "res://character/krusher-coherent-bank-v2/frames/138123f20502fbcbcba373b81af15aecd362b0b280ef1217cde9d38a52cad804.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-start-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ff07508df7316481d12ee30f3392cf0fe26c33d2219aadcbfcce23e76650ca09.png",
+        "res://character/krusher-coherent-bank-v2/frames/88a4fcd402ed3c752ffbd716fd90504cd6a01e05eb25a7f103519871f200ac35.png",
+        "res://character/krusher-coherent-bank-v2/frames/d01192dcb43b390c146f4b3b7c52aaf972759a73d45d6022c944347b13191598.png",
+        "res://character/krusher-coherent-bank-v2/frames/e2e1f77bed2098a2c480188c56b3ca890bcaf245c4fda5ff9b26b7f4d57d5f3a.png",
+        "res://character/krusher-coherent-bank-v2/frames/eb35cfff3ac161cc7ee5f6b9b610649f58a073bd767f08053e2a6f1bcb62d97b.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "tread",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-start-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/e39e6892bf7b642cdb0345b989bcf68563eeb0a267e167804631f3eee74fb19e.png",
+        "res://character/krusher-coherent-bank-v2/frames/45bdb0e1f2d10013049a15368e2981b7f3f9070b19274c9434d3aa478484bdcf.png",
+        "res://character/krusher-coherent-bank-v2/frames/fa09bc814b26708a36eb7810df68708fe25bf90cd0297c4cf0b8550ea0a24b32.png",
+        "res://character/krusher-coherent-bank-v2/frames/28e595f0d4b32f9c315073e7a143dc0e3b545c14d7be79ed2f25ed77fb645092.png",
+        "res://character/krusher-coherent-bank-v2/frames/ccaec619df66fa6d738308e7e6496af805241fc330d0cfaeaabac46530afd153.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "tread",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-north-polish-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-start-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/e9b382b15d403fd2f509e8dab65ba1bbb46510b5621ccef01b199a9bce03eb43.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8d5b34338fa0d22096d9531d2a59ca9d0d73ec98335eb016977a42cf1a31fc3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b639f8883c884a635e70d2548ca091b8945238b0b2c46080cb35e6c99e06a5d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/86725a1f73b41f1afaea91276e71405c236a4014623835b2b8267e46145b0f81.png",
+        "res://character/krusher-coherent-bank-v2/frames/9c015e332482d4b8a4263868bd346b45f0b251f1ba0e502fca2df5e286c6f228.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "tread",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-start-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/138123f20502fbcbcba373b81af15aecd362b0b280ef1217cde9d38a52cad804.png",
+        "res://character/krusher-coherent-bank-v2/frames/06e2e2b0262ee0676f48bec7c0e9269a0093a2a961462258598c2571e559260a.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ef405236d6d6f4a6f47cc0aee31c6eeb042333e9d6983609dad2064bf668616.png",
+        "res://character/krusher-coherent-bank-v2/frames/73630eaa830fbc2694c54a66b6f645479ea2d6169373303df7b8676d5d098ac6.png",
+        "res://character/krusher-coherent-bank-v2/frames/479c05064d6ae515ec9f5a3988ecc7c686356b9fda67933aff7ff1de95c86df2.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "tread",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-stop-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png",
+        "res://character/krusher-coherent-bank-v2/frames/eb35cfff3ac161cc7ee5f6b9b610649f58a073bd767f08053e2a6f1bcb62d97b.png",
+        "res://character/krusher-coherent-bank-v2/frames/e2e1f77bed2098a2c480188c56b3ca890bcaf245c4fda5ff9b26b7f4d57d5f3a.png",
+        "res://character/krusher-coherent-bank-v2/frames/d01192dcb43b390c146f4b3b7c52aaf972759a73d45d6022c944347b13191598.png",
+        "res://character/krusher-coherent-bank-v2/frames/88a4fcd402ed3c752ffbd716fd90504cd6a01e05eb25a7f103519871f200ac35.png",
+        "res://character/krusher-coherent-bank-v2/frames/ff07508df7316481d12ee30f3392cf0fe26c33d2219aadcbfcce23e76650ca09.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-stop-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png",
+        "res://character/krusher-coherent-bank-v2/frames/ccaec619df66fa6d738308e7e6496af805241fc330d0cfaeaabac46530afd153.png",
+        "res://character/krusher-coherent-bank-v2/frames/28e595f0d4b32f9c315073e7a143dc0e3b545c14d7be79ed2f25ed77fb645092.png",
+        "res://character/krusher-coherent-bank-v2/frames/fa09bc814b26708a36eb7810df68708fe25bf90cd0297c4cf0b8550ea0a24b32.png",
+        "res://character/krusher-coherent-bank-v2/frames/45bdb0e1f2d10013049a15368e2981b7f3f9070b19274c9434d3aa478484bdcf.png",
+        "res://character/krusher-coherent-bank-v2/frames/e39e6892bf7b642cdb0345b989bcf68563eeb0a267e167804631f3eee74fb19e.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-north-polish-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-stop-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9c015e332482d4b8a4263868bd346b45f0b251f1ba0e502fca2df5e286c6f228.png",
+        "res://character/krusher-coherent-bank-v2/frames/86725a1f73b41f1afaea91276e71405c236a4014623835b2b8267e46145b0f81.png",
+        "res://character/krusher-coherent-bank-v2/frames/b639f8883c884a635e70d2548ca091b8945238b0b2c46080cb35e6c99e06a5d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8d5b34338fa0d22096d9531d2a59ca9d0d73ec98335eb016977a42cf1a31fc3.png",
+        "res://character/krusher-coherent-bank-v2/frames/e9b382b15d403fd2f509e8dab65ba1bbb46510b5621ccef01b199a9bce03eb43.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    },
+    {
+      "id": "swim-stop-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png",
+        "res://character/krusher-coherent-bank-v2/frames/479c05064d6ae515ec9f5a3988ecc7c686356b9fda67933aff7ff1de95c86df2.png",
+        "res://character/krusher-coherent-bank-v2/frames/73630eaa830fbc2694c54a66b6f645479ea2d6169373303df7b8676d5d098ac6.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ef405236d6d6f4a6f47cc0aee31c6eeb042333e9d6983609dad2064bf668616.png",
+        "res://character/krusher-coherent-bank-v2/frames/06e2e2b0262ee0676f48bec7c0e9269a0093a2a961462258598c2571e559260a.png",
+        "res://character/krusher-coherent-bank-v2/frames/138123f20502fbcbcba373b81af15aecd362b0b280ef1217cde9d38a52cad804.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-family-v1/bare-manifest.json",
+        "reuse": "Complete original James water body and state metadata; open-eyed Krusher heads and matte cyan"
+      }
+    }
+  ]
+}

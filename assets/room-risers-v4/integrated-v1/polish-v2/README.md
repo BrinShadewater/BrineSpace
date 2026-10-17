@@ -1,0 +1,9 @@
+# Riser polish — September 26, 2026
+
+Owner requested additional BRINE Core monitors, a permanently clear north-door centre, and smaller listening headphones/corner phone, plus a consistency review.
+
+Built-in image generation produced three selected edits, preserving old masters. BRINE has six recessed teal screens; its middle panel is blank. Native preview now enforces its north port in every global mode; gallery reserves the centre in every mode. Corner telephone reduced to a small flush installation. Listening headset/microphone required two reductions; `listening_post-final.png` is selected, first attempt retained as an intermediate. Exact prompts are in prompts/. Registration overrides include source, prompt and reference hashes and measured face/alpha bounds. The registration builder reapplies these overrides.
+
+Reviewed all 44 furnished-room closed/ocean pairs on six refreshed sheets for material, projection, top-edge clearance, detail density and object scale, plus corridor studies. Retained large architectural gauges, charts and diagrams as wall installations; reduced wearable/handheld objects instead of forcing them to fill panels. New headphones read approximately head-sized; corner handset is about head-length at native wall scale. BRINE screens match existing console tones and remain within side panels. Fine text/diagrams are decorative, not intended to be legible UI at gameplay zoom. Existing tall furniture can naturally occlude lower wall details.
+
+Full native verification: session d487e6041f734a768eb86083027f9fac, 47 designs, 185 captures, zero clearance failures. Final headphone follow-up: 2d423b16d5554f869eaef8c2603cf8d7, one room/four captures, passed. Both scratch APPDATA runs preserved owner-save fingerprints. All 47 registration checks passed. Browser source link and BRINE gallery rendering visually verified. Preview-only; production art remains unchanged. Owner acceptance of these revisions remains pending.

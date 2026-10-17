@@ -1,0 +1,55 @@
+{
+  "name": "Veld original North gathered stance bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry-north": 0.0827027027027027,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351
+  },
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_source_pose_only_not_installed",
+  "states": [
+    {
+      "id": "carry-turn-ready-north",
+      "frameFiles": [
+        "res://character/veld-turn-north-east-original-master-v1/gather-frames/bare/000.png"
+      ],
+      "frameCount": 4,
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

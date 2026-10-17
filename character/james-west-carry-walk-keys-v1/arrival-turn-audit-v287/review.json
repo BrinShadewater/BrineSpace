@@ -1,0 +1,11 @@
+{
+  "chronologyBoardVisuallyReviewed": true,
+  "existingTurnPresent": true,
+  "runtimeSelection": "carry-turn-west-north exists, but workshop arrival changes state carry to unload before generic carry-facing transition can run.",
+  "findings": [
+    "Existing six-pose turn800ms has broader torso/different detail and helmet height changes versus latest carry and north-unload endpoints.",
+    "Normal load order retains old west-north turn; return-bridgeV9 and helmet-dip override other states. Existence alone does not establish latest endpoint compatibility."
+  ],
+  "normalChanged": false,
+  "fullGoalComplete": false
+}

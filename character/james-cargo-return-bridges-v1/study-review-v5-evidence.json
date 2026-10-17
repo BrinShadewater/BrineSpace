@@ -1,0 +1,26 @@
+{
+  "selected": false,
+  "verdict": "rejected_whole_sheet",
+  "size": [
+    1536,
+    1024
+  ],
+  "alphaZeroPixels": 1205544,
+  "alphaOpaquePixels": 0,
+  "pixels": 1572864,
+  "rawSha256": "9fc2a2a36dabe2c23d35170add29d2cac6447b73a9282ffa3baf06fc59a30fb1",
+  "prompt": "west-bridge-prompt-v5.txt",
+  "authoring": "built-in image_gen",
+  "visualFindings": [
+    "Whole-body orientation progresses toward unloading stance, including hips and two boots in later cells.",
+    "Early two columns are nearly repeated profile poses; far leg still occluded rather than a clear progressive turn.",
+    "Bare head loses goggles and facial proportions drift from original.",
+    "Background has visible dark halo; transparency not suitable for direct sprite admission.",
+    "Generated cuffs/hardware and enlarged suit detail differ from original endpoint; endpoint joins unproven."
+  ],
+  "next": "Regenerate using explicit preserved goggles and camera/detail constraints, transparent isolated sprites and stronger intermediate pose progression. Do not extract or select this sheet as runtime frames.",
+  "alphaRange": [
+    0,
+    254
+  ]
+}

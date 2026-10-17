@@ -1,0 +1,17 @@
+{
+  "nativeDiagnosticChecks": 54,
+  "diagnosticFailures": 0,
+  "visualInterruptionAcceptance": false,
+  "visualReview": "All six source/room before-after comparisons and all four directional standing endpoints in both gears reviewed.",
+  "findings": [
+    "Power loss clears workshop stage and selects idle within one 20ms update; physical foot remains fixed in all six cases.",
+    "Pickup and carry visibly lose the held crate with an abrupt body/arm change; North unload switches to a different standing endpoint.",
+    "Carry samples are East-to-West turn source index2, not ordinary West gait; aliases include other connected turns.",
+    "North unload uses unload-north index5 while locomotion cache still says West; do not infer action facing from that cache.",
+    "Pickup/unload exact reversal does not prove a registered return to selected idle or persistence of the floor crate.",
+    "Idle source canvas184/pivot92,172 and cargo256/pivot128,224 share standingHeight148. Pivot-aligned four-direction comparison shows close standing heights; raw-canvas placement is invalid for size review."
+  ],
+  "correctionSelected": false,
+  "fullGoalComplete": false,
+  "next": "Author a finite return from the exact displayed source, including interrupted turns and explicit crate release/standing join. Verify needs and emergency priority, then ordinary Continue and native motion."
+}

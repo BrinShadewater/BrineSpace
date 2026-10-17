@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+SCRIPT ERROR: Parse Error: Could not preload resource script "res://scripts/grid_canvas.gd".
+   at: GDScript::reload (res://scripts/performance_monitor.gd:151)
+SCRIPT ERROR: Parse Error: Could not resolve script "res://scripts/grid_canvas.gd".
+   at: GDScript::reload (res://scripts/performance_monitor.gd:151)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/bug_report.gd:0)
+ERROR: Failed to load script "res://scripts/bug_report.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+   at: _ready (res://scripts/bug_report.gd:60)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://scripts/bug_report.gd:60)
+JAMES ISOLATION: C:/Users/Alex/AppData/Local/Temp/brine-james-native-hkes3sd0/Godot/app_userdata/BrineSpace
+SCRIPT ERROR: Parse Error: Expected closing ")" after call arguments.
+   at: GDScript::reload (res://scripts/grid_canvas.gd:577)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-material-joined-v1/validate.gd:41)
+ERROR: Failed to load script "res://scripts/grid_canvas.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-material-joined-v1/validate.gd:41)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+   at: run (res://character/james-cargo-material-joined-v1/validate.gd:41)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-material-joined-v1/validate.gd:41)

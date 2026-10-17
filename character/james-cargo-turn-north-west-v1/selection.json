@@ -1,0 +1,50 @@
+{
+  "status": "installed_pipeline_checked_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-north-west",
+    "carry-turn-west-north"
+  ],
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.27056672760511885,
+  "timingMs": 800,
+  "checks": "127 packaging /121 installed-loader native checks,0 failures;8 captures",
+  "profileAudit": "Scratch APPDATA asserted; real profile unchanged",
+  "visualReview": "Selected source, contact, master comparison and native reviewed; final owner visual review pending",
+  "review": "review-master-v4.gif",
+  "palette": "Fixed shared gold gain [.7298,.816,1.026] plus fixed matte curve; no per-frame exposure or bounds normalization; pre-grade evidence preserved in before-gold-master-v4",
+  "materialEvidence": "../james-animation-coverage-2026-09-30/turn-material-audit.json",
+  "remaining": [
+    "Final owner visual review",
+    "Four dry half-turn states",
+    "Remaining full-set family master audit/replacement and cross-family polish"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet-face-v2.png",
+  "helmetPrompt": "prompt-helmet-face-v2.txt",
+  "occludedHelmetSource": "source-helmet-before-face-v2.png",
+  "occludedHelmetSourcePoses": [
+    1,
+    2
+  ],
+  "occludedHelmetPrompt": "prompt-helmet.txt",
+  "sharedEndpoints": "Exact east/north005 and south/west005, bare and helmet",
+  "footSamplingAllowance": "Maximum56px sole span at rear three-quarter pose1; visually compact beneath hips; one pixel beyond earlier generic threshold",
+  "selectedSourceHashes": {
+    "source": "f217960de8862217441524a22bc27d949c0243f59240c8fef7eda6d17ba141c2",
+    "helmetSource": "96d3f4669ad3490ac556744e6c389c9496ee8d541bbfedeae74946aa421d7284",
+    "occludedHelmetSource": "fd3548d161a6773d55bf1ecacd5200468d66ecf66729365de792e4c56b92c99b"
+  }
+}

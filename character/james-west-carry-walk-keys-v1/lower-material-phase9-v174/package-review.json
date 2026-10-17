@@ -1,0 +1,49 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1026,
+  "outsideExactPixels": 64510,
+  "changedPixels": 1025,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    85,
+    76,
+    173,
+    225
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      42.3,
+      64.68,
+      94.3,
+      176.2
+    ],
+    "after": [
+      43.43,
+      67.71,
+      99.35,
+      170.33
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "retain_provisional_lower_finish",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "findings": [
+    "Phase9 toe/ankle highlights modestly softer and warmer, readable hardware retained. Upper-tail luma176.20to170.33; median64.68to67.71. This is not uniform darkening or a measured25percent highlight reduction.",
+    "Two source repair boards, phase8..12 source board and all five paired four-size native captures visually reviewed. Phases10/11 retain brighter original boot highlights; coordinated lower finish remains open.",
+    "Original alpha and one-pixel outer rim remain exact, rows above181 unchanged, paired body below110 exact. Interior hardware landmarks receive visual assessment; fixed alpha does not prove unchanged internal geometry.",
+    "Original clocks30/20/20/20/20ms (110ms) verified. Finite five-frame fixture is not continuous full49motion or normal movement/controller acceptance."
+  ],
+  "nativeIncluded": true
+}

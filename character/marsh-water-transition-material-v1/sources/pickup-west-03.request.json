@@ -1,0 +1,134 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; provisional packaging/review",
+  "promptSha256": "b443e84fdbb67b3636ff96de98600f16f8850b1c141a0135dec5a3441e7d394f",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-west-03-large-primary.png",
+      "sha256": "2dfb0ab7fc4a72bb22d00dec53f3e72cbc185e5c73d5a312b5806319b28cf9ab"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/west-standing-identity-01.png",
+      "sha256": "b966ca363b4e97d414ade9ccc392b24ad9737756d935e7ad64f9305dd2f01261"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-west-01-old-motion-only.png",
+      "sha256": "3b48213afba8a411e932cc7cdc740dbb0b6e39b5b30d92b4e5972316fc8d1d1a"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "path": "character/marsh-v2/supplemental/loaded-swim-west/swim-pickup-west-000.png",
+      "sha256": "8ed1543986eb9e7040d922272fbd5c266e3cfce99e5bd02aa7300d1cf02ca438"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/001.png",
+      "sha256": "e54d0419a301ef6d247c9a381b699c011781b4bbf9acf7ec46305b0fdcf57de1"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/002.png",
+      "sha256": "d877c89cc2b0317307570d8c70dc4016a3e7bf9a5c3761a93091db499461bbbd"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/003.png",
+      "sha256": "e936f8a0f5a99bdfd6326ef71f48adc95931f47740fe405b93c7537878a330ee"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/004.png",
+      "sha256": "a676bac3303aa4ed6962e51b3cef8b5f8754f264a86c93c74ee6fa0681bbec4a"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/005.png",
+      "sha256": "2eb94fea41b75957d82fd7ce0be7422177b9e78ac405814ac34dfb4a0e8c8abf"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    }
+  ],
+  "selectedTransitionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTransitionState": {
+    "id": "swim-pickup-west",
+    "frameFiles": [
+      "../../character/marsh-v2/supplemental/loaded-swim-west/swim-pickup-west-000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-west/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-west/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-west/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-west/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-west/005.png"
+    ],
+    "frameDurationsMs": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "loop": false,
+    "facings": [
+      "west",
+      "west",
+      "west",
+      "west",
+      "west",
+      "west"
+    ],
+    "waterKinds": [
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "selectedIdleMaster": {
+    "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+    "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+  },
+  "neutralOccupiedTargetHeight": 147,
+  "intermediateFigures": 4,
+  "rules": "Whole independent own direction; one neutral ruler, exact endpoints/normal timing; no patches/mirror/per-pose fitting. Physical contact/root/proportions/camera/grade remain review requirements.",
+  "generationId": "exec-07100148-723d-473f-ad9d-965db6e93c69",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-07100148-723d-473f-ad9d-965db6e93c69.png",
+  "rawSha256": "138677ba751dd9e2800b488ea20059429943caba9a9b8d6a87dd67fb21986d01"
+}

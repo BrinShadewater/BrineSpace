@@ -1,0 +1,15 @@
+# East cargo source corrections
+
+October 3, 2026. Built-in image generation; all raw sources and exact prompts retained.
+
+- `264a132a-2948-48d2-91eb-79fb8e81ca4d`: raw-unload-v4.png / prompt-unload-v4.txt. Whole six-pose edit of previous atlas, original held and true original East density references. Deposited cases moved, but the contact case still differed. Retained foundation for bend and released body poses, not accepted as a complete coherent atlas.
+- `78a2a59d-4265-4c00-9ba4-0057a5e024d2`: raw-deep-contact-v1.png / prompt-deep-contact-v1.txt. Complete deep pose correction with whole floor-case reference and original identity. Rejected: visible case grows relative to body and does not solve consistency. No precise size-growth percentage claimed.
+- `618c45fd-b7bd-47b4-8891-b63a394b61c6`: raw-deep-body-v1.png / prompt-deep-body-v1.txt. Complete deep pose with case removed, fully authored gloves/wrists; whole deep source and true original East reference. Selected provisional full-body source for independent uniform density to actual matching crouch height81, not standing148.
+
+register_contacts.py establishes one atlas ruler0.2361878453 and sharedY66. Foreground boot registration isolates body from deposited equipment; atlas-only near residual0.458px, nearY drift0 and far visible toeX span0. These figures do not apply unchanged after exact original endpoint replacement and new independent deep source. Final source-record.json measures actual resulting near contacts, with nearX span2.333px and all floors223. Shape, far boot contact and world planting remain separate.
+
+build_shared_case.py reuses ONE complete floor case25x21 including alpha margins, opaque23x19, position150,204, opaque ground223 in poses3/4/5. Case drawn behind complete authored character. Original held entry exact; original empty East body reused at exit. No limb/body-region/RGB patches, scalar grading or per-pose atlas rescaling. Headwidth26/27/27/28/27/27; standing148, crouches naturally lower. Original whole profile helmet reused, outside-fitting body protected. Idle-east in this staged pack includes the deposited case for chronological review, not ordinary world ownership.
+
+18 build checks0;13 source equipment/reverse/original endpoint checks0. Native output/veld-cargo-east-original-master-v2:605 checks0,108 presentations,6.78s,42 frozen inputs unchanged,2931 real owner non-log files unchanged under scratch APPDATA. Two1800ms APNGs replay native captures;108 exact chronological pixel checks0. Native fixture prescribes state/time; no ordinary controller, world case lifetime, save, final artistic or owner acceptance.
+
+Paired source board and native pose boards inspected. Initial pose-board crop accidentally showed master row; make_review.py corrected to action row before acceptance. Browser bare cycle3/held contact500ms, helmet cycle33/released600ms observed. Browser-review.png retains final full-page helmet comparison. Staged geometry improved; remaining grip/held-to-floor physical case size, contour/material/helmet pitch and final smoothness review. Prior sources unchanged.

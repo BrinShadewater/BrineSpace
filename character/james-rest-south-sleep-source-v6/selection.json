@@ -1,0 +1,9 @@
+{
+  "status": "rejected_camera_zoom",
+  "runtimeInstalled": false,
+  "task_id": "447818168017344",
+  "sourceSha256": "428a54437a08bd4ce10a1c36ceb998fe7dcbd577676d1cce1f44f4702f94f071",
+  "frames": 141,
+  "finding": "Fixed inverse ruler shows crown132->51 and body dramatically expands; source0/mid/end inspected. Cropped body/head diagnostic ROIs miss expanded upper body, so do not claim all-frame anatomy review from them. Full256-frame preview retains whole source. No rescale/cut/grade to hide zoom.",
+  "next": "One tighter-source-framing retry preserving exact neutral pixels and reconstructing original canvas with one fixed transform."
+}

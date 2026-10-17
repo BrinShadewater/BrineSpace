@@ -1,0 +1,980 @@
+{
+  "checks": 304,
+  "failures": 0,
+  "sourceLumaKnots": [
+    0.0,
+    10.000399999999999,
+    24.004,
+    38.00919999999999,
+    57.940999999999995,
+    77.0132,
+    92.51979999999999,
+    134.9828,
+    160.0,
+    255.0
+  ],
+  "targetLumaKnots": [
+    0.0,
+    10.0618,
+    19.6338,
+    33.357,
+    51.21659999999999,
+    66.14439999999999,
+    82.54394000000005,
+    134.99599999999998,
+    160.0,
+    255.0
+  ],
+  "masterHueBins": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    125,
+    160,
+    200,
+    255
+  ],
+  "masterHueOffsets": [
+    [
+      0.7873999999999999,
+      -0.07220000000000049,
+      -0.7151999999999994
+    ],
+    [
+      0.6430000000000007,
+      -0.14440000000000097,
+      0.0
+    ],
+    [
+      -0.14439999999999742,
+      -0.14439999999999742,
+      1.1403999999999996
+    ],
+    [
+      -0.07219999999999516,
+      -0.14440000000000452,
+      1.6430000000000007
+    ],
+    [
+      0.7151999999999958,
+      -0.35300000000000864,
+      0.71520000000001
+    ],
+    [
+      4.081400000000002,
+      -0.7019999999999982,
+      -5.276799999999994
+    ],
+    [
+      3.510600000000011,
+      -0.4894000000000034,
+      -6.204599999999999
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "referenceFiles": [
+    {
+      "file": "character/crew-runtime-matte-v1/veld/frames/idle-north-breathing-v1/000.png",
+      "sha256": "f8f666456d6cfbd83cb49ae33388114cbcacee0fad9a373217ae6e2669255b60"
+    },
+    {
+      "file": "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png",
+      "sha256": "d010facbf575cf52bbd0293dbed9fef11b94b80830f4270fdd98757c7e6d4dfa"
+    },
+    {
+      "file": "character/crew-runtime-matte-v1/veld/frames/idle-south-breathing-v1/000.png",
+      "sha256": "f7b0a72a928544b5634441a5a4566f93ca1ab32d9ad9ee3c51020660aa01dd18"
+    },
+    {
+      "file": "character/crew-runtime-matte-v1/veld/frames/idle-west-transition-matte-v1/000.png",
+      "sha256": "025f5a80b040e39fa16db2c192d36588c096d02c0867b3d28258bdd9afd5fdce"
+    }
+  ],
+  "records": [
+    {
+      "key": "tread-north",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/000.png",
+      "sourceSha256": "1e6f0291f29e7ae12e0b41ab743c2d342337c2428fcc7bcaaeeee98a2d587037",
+      "changedPixels": 3286,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/000.png",
+      "sourceSha256": "50473b1bf895ecea117b682b7cc2f05ab9feb642015d61ebd3aabd829c023eb2",
+      "changedPixels": 3286,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/001.png",
+      "sourceSha256": "f2a282e0a6a10a91a2da72df7fd088b7edfdbe74fa97743071508ca5e6f1bd29",
+      "changedPixels": 3311,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/001.png",
+      "sourceSha256": "2927f9f1578ce441bfa8a1c0a3b4fe73568b8bd650d1a48a4366b30579d037bc",
+      "changedPixels": 3311,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/002.png",
+      "sourceSha256": "2983e815b65ee653ed424d9629f540a78fa61e320c52f985e298cc8aeee3b7c3",
+      "changedPixels": 3178,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/002.png",
+      "sourceSha256": "616a14cd2a1c5e310c59ebe8153f853c5a1c20f7b9062db3fb6eeec2731e8db4",
+      "changedPixels": 3178,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/003.png",
+      "sourceSha256": "0f24eb5e54c0001058c5626cb66ae0e8c57a6b2875aa6e608ed52addd4a4f184",
+      "changedPixels": 3379,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/003.png",
+      "sourceSha256": "78e561526eca8e9aa8ac32687717c4d4fb085ac925bb65229c6875361db7c4b5",
+      "changedPixels": 3379,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/004.png",
+      "sourceSha256": "44a7c83933f1f32d9c07fb9a96082c08579a56833174bb73a9fdfe1b82c0b72d",
+      "changedPixels": 3225,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/004.png",
+      "sourceSha256": "5f7153f8aeaa9ac4f58c2fcbd754ea8a493ac5b256b8589c77473390793e2b20",
+      "changedPixels": 3225,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-north/005.png",
+      "sourceSha256": "529dfab7620348f0a8251a26af3f2d9472fec0897f515ed8f1002b56e62bb74b",
+      "changedPixels": 3288,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-north",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-north/005.png",
+      "sourceSha256": "eeff9cbcd6ef084b9ad9c9bd5f75e99806a54942a89a7f3ff329323f00e6c349",
+      "changedPixels": 3288,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/000.png",
+      "sourceSha256": "f11a3114187d7f9c2d8c49de7ad4b09526c83a9e8d785f1cbc0a6511203cfb5c",
+      "changedPixels": 2625,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/000.png",
+      "sourceSha256": "19f8a0615d6e5ccfbb0b430d7a38d93fdecbce57abe302ec29b7398988b2a040",
+      "changedPixels": 2625,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/001.png",
+      "sourceSha256": "3e131a023402768fc5878b50b7bfaecfab3c898fc471c422b6366a151ffa0a8b",
+      "changedPixels": 2804,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/001.png",
+      "sourceSha256": "0271512358ae58efe04d629d25cfa2aaff845846911f7c97525764d36981a47d",
+      "changedPixels": 2804,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/002.png",
+      "sourceSha256": "de5b35c04525e6a64d88be0d5ee49aa73f75f199a6362bbe6f4bc3bbf00431cb",
+      "changedPixels": 2857,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/002.png",
+      "sourceSha256": "77c91e38649f990328f1f5941a69c6b50bcc3ec127e478aa5baf31c1876ee0af",
+      "changedPixels": 2857,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/003.png",
+      "sourceSha256": "c71b5297de00306752695a9c1cc4b715b615e87a2a344fceb217821526a15663",
+      "changedPixels": 3042,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/003.png",
+      "sourceSha256": "cf122e9792370b536120048136d6f4e902a217dc6a13ea6b4c46e8fff65f3de9",
+      "changedPixels": 3042,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/004.png",
+      "sourceSha256": "b8d22db2f5692c5a8c4aa60ab38343c255649ec61307ad0e4894f53b830fb9ea",
+      "changedPixels": 2967,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/004.png",
+      "sourceSha256": "840c5da232a3cad88d7a232b4f48eae73643bf9ac609790b30457d13d0ef3546",
+      "changedPixels": 2967,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-east/005.png",
+      "sourceSha256": "7a6823ba4068639f7502d64d44a06c7dcaf484aca1699dec4c4f96a0ada581e1",
+      "changedPixels": 2882,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-east",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-east/005.png",
+      "sourceSha256": "fea0ee5ee9ac56fbb1b12d035eca826389481dd240896a0aa066c913b6445a75",
+      "changedPixels": 2882,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/000.png",
+      "sourceSha256": "78aee3c7ac10de6cae2f59e1b559af7014e8cfe059d1cdc235b5c84d33b9b0ba",
+      "changedPixels": 3238,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/000.png",
+      "sourceSha256": "bbe50e89a8b8c9ca305498901d525a05877ba69f2d6fd6fa5b2250dc61e04b48",
+      "changedPixels": 3238,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/001.png",
+      "sourceSha256": "96317635a2c5be2ae730f82a58e584e07c439501b8ce6c7540903cb36e15577f",
+      "changedPixels": 3272,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/001.png",
+      "sourceSha256": "4e77ce78fda4237bad248519be755c973122d68f9fe70f655811c11a33bc5a24",
+      "changedPixels": 3272,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/002.png",
+      "sourceSha256": "0dba6cae588a4aa8c04b2651e17a88bef75eed976cdce6945840d2e8a6760e47",
+      "changedPixels": 3091,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/002.png",
+      "sourceSha256": "8989f2d2ecaf7888ed9638bf27ff832428a2f30d540a10d5c7c2f4da37d2ffd3",
+      "changedPixels": 3091,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/003.png",
+      "sourceSha256": "7d93173cbcb99be44ef43d2c10db54b56ea9c0c0d6e699d867f48320b377f74a",
+      "changedPixels": 3224,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/003.png",
+      "sourceSha256": "4db09102ddb34b0c7433a724653b1ab0a746221ca79fc0f64ae715260a92bca1",
+      "changedPixels": 3224,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/004.png",
+      "sourceSha256": "1688971d5c071a547fae724f134558cb7c4a8b2374a3ce668bb25b06d821a2fd",
+      "changedPixels": 3203,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/004.png",
+      "sourceSha256": "dce1cbbb08574945664f20cf080054d59a561d2a06df95f07d104b5a1f417e99",
+      "changedPixels": 3203,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-south/005.png",
+      "sourceSha256": "e037cb1f1f043a220b8646492c5bb67722823078f0d62acdb93231fd7e74cec7",
+      "changedPixels": 3185,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-south",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-south/005.png",
+      "sourceSha256": "d6c1943547ddfd2603d445aaf9afb024ebb9a58ae957eb3548d7116c8058a530",
+      "changedPixels": 3185,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/000.png",
+      "sourceSha256": "85d6b777094a68e03bdc184e76491e26f4d151fe98826499429fff0871f15d04",
+      "changedPixels": 2646,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/000.png",
+      "sourceSha256": "c393ce1387e6473e4af38e6df791d3f7d3a3a6f077d09ae8379f8ea6b6684854",
+      "changedPixels": 2646,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/001.png",
+      "sourceSha256": "d72a2d289ca1cd75091d47dfac2ef1cd68ec890dd7129b28c6bc5224b0a13942",
+      "changedPixels": 2635,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/001.png",
+      "sourceSha256": "b775b170e9c7f650ae2da808091afa9d72bab20297802914a9dd15c39fb83ca5",
+      "changedPixels": 2635,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/002.png",
+      "sourceSha256": "b2b9c46267e7d475eef812fe9571667264a0f4b2c54e524a7bc810bef5b594a9",
+      "changedPixels": 2607,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/002.png",
+      "sourceSha256": "d04a38cac79c1f46a5aea1d8c7f623999346f821a5168baab2a238cc7dad6064",
+      "changedPixels": 2607,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/003.png",
+      "sourceSha256": "ae931407b4108cdeac08dbee43b9a5bdf4246e8c7139758836c7911da36f986a",
+      "changedPixels": 2856,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/003.png",
+      "sourceSha256": "ce6a6938b9c53812f6eaa6b958e35cff9b4e2a69cea38a0e414ae6851b482164",
+      "changedPixels": 2856,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/004.png",
+      "sourceSha256": "a8fccd295bc0848100fb1b01c3cf93b3c5c28c2a84571869628b237f985c8476",
+      "changedPixels": 2692,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/004.png",
+      "sourceSha256": "0f91118d66eae992f050bb8fbcd6d20e5cc4483056d8083c8e8d4318379476aa",
+      "changedPixels": 2692,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/tread-west/005.png",
+      "sourceSha256": "6eac0970b4dfc4a94041676a0df4abc2976c853d2727e7910a8bd6936e9452b3",
+      "changedPixels": 2632,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "tread-west",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/tread-west/005.png",
+      "sourceSha256": "4803b6ceec490d2281dda1cbd50c7b12e4b03b511a7e2fd88f26f495035f1f75",
+      "changedPixels": 2632,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/000.png",
+      "sourceSha256": "f257de322a3b1cfd5dd3359f3d672cd9947e8f0add9ccb30d1483c79fcb3574b",
+      "changedPixels": 4957,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/000.png",
+      "sourceSha256": "7bdec4f63728e71d1ed5c66ee8a1b93d4f7100e477f1f108070d67dab1d53e88",
+      "changedPixels": 4957,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/001.png",
+      "sourceSha256": "ab40be69a47a69031054eb78a67f75845fb3edb2ef25791a6f1a4068700c5ab3",
+      "changedPixels": 5920,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/001.png",
+      "sourceSha256": "1f6b7d94f2ab763fc3490812c4c9cb26727eb2a9ec9cdafca1d9c339339a0f27",
+      "changedPixels": 5920,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/002.png",
+      "sourceSha256": "f2add0f34bcc69d8a8fd9b39e460cd57dd4b55d057b09ea2b8d2acafabe8b26e",
+      "changedPixels": 4991,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/002.png",
+      "sourceSha256": "0d661796c06a3bcfea884176200856a0dded05d629ab81fcc33a8211def5c9cb",
+      "changedPixels": 4991,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/003.png",
+      "sourceSha256": "8f9e6c5b00c581c229d45be694eecb07f75c3f5d53b854791ff9f2567ee9f1d4",
+      "changedPixels": 5104,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/003.png",
+      "sourceSha256": "49a01d83c3a3e017358d6d660cebd9e948433e862dde08c389404a1b8f376a38",
+      "changedPixels": 5104,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/004.png",
+      "sourceSha256": "52ed24616e2d5ee6262b7611f80e6f0c9bf2236a91c794239f883ba140b121e5",
+      "changedPixels": 4912,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/004.png",
+      "sourceSha256": "83e8f217ae1232275f32bb293560ab7b4471b9763971f1a07c6cb71b008a701e",
+      "changedPixels": 4912,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-north/005.png",
+      "sourceSha256": "b8fabb98d14fb3ec7c3181cc4487b859c34168993254c9fb30e8abe8ca3fc7e5",
+      "changedPixels": 4686,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-north",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-north/005.png",
+      "sourceSha256": "76a259ddcf43e9508fcf8aeab5d93061ef47cc08ee7eae99f6fe5b3d7ad43432",
+      "changedPixels": 4686,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/000.png",
+      "sourceSha256": "b598eb03a12bfd9cc8cffa73417eb4bf5291c3bacf5b47d3739f490a91819690",
+      "changedPixels": 3393,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/000.png",
+      "sourceSha256": "fba3b78710ae64c9d22c43588e88d24319bcef87350c42f7ebb758a9a5f8e628",
+      "changedPixels": 3393,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/001.png",
+      "sourceSha256": "da382c676c1bcc607c15d9e9b91d561d6e9a8f52f34a908ea22d3f02bf9cac45",
+      "changedPixels": 3043,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/001.png",
+      "sourceSha256": "8d09ea8ad1e6c3540af9f40c843690a2fbc2665d55c0e7693d5ebdd3870549a1",
+      "changedPixels": 3043,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/002.png",
+      "sourceSha256": "da5fe72d2f05d7ec56ffd1b852fea11941674e0624146a0b7b08e5a5ce87e798",
+      "changedPixels": 2405,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/002.png",
+      "sourceSha256": "b3e5ccdfd22505aae8ad7a8cd8a2c96f1eaf70c565fb5ffe49170582c9d5d6d6",
+      "changedPixels": 2405,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/003.png",
+      "sourceSha256": "682d98473ce7bae724aff2cb2858c5dbd7305357eb3b961174fbba07426191bc",
+      "changedPixels": 2822,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/003.png",
+      "sourceSha256": "9594b2cccc49c6f55dc79f9bf7e9f6460c8acbd3872fc9e5363fc08f41d69972",
+      "changedPixels": 2822,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/004.png",
+      "sourceSha256": "8f604ab1e6c2fad472d7cdff4813ae6bdcf83c9b348b13304006c93cf9395e10",
+      "changedPixels": 2741,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/004.png",
+      "sourceSha256": "eb1b15a7f7dee449964979d7fafe4bc6ae3e71c53d6f483fd10f438914c6acda",
+      "changedPixels": 2741,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-east/005.png",
+      "sourceSha256": "3f15800e1bf2fe7dd51405ce5df1823602d2e9368488cab074c2a0790f923467",
+      "changedPixels": 2958,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-east",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-east/005.png",
+      "sourceSha256": "b97098469558c72dbd3ce70a7b97154db421f58b9600de5ae6218ec2ba91310c",
+      "changedPixels": 2958,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/000.png",
+      "sourceSha256": "326abc0b80a19508a7f919f6571d709ba16bcec60e4494d35a5c729e2366bf2f",
+      "changedPixels": 3089,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/000.png",
+      "sourceSha256": "353606e0d9dbc26c615fa81758734d8e9618ce36f080e350e14ae1f66048980f",
+      "changedPixels": 3089,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/001.png",
+      "sourceSha256": "8c17df920f3e79db2663d2f67b26031d8d63fd862396636a7d8a636eea01dc18",
+      "changedPixels": 3173,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/001.png",
+      "sourceSha256": "aafe916da271c4b1d2c88056e4835935efe59acfbdcf5555b779fd367d7036ea",
+      "changedPixels": 3173,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/002.png",
+      "sourceSha256": "2b2a023088c8ff2b006eb6c8663097e6b1eb9a2e76e08c28d25af28193859508",
+      "changedPixels": 2149,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/002.png",
+      "sourceSha256": "32353b360c150a79b9ea0fcddf46a1e0ad5be48563df7078691447411e69861d",
+      "changedPixels": 2149,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/003.png",
+      "sourceSha256": "85e5d9bb1866547c89d8e3bae3153fd7be525c0fcdbb45ff240160fb69239163",
+      "changedPixels": 2370,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/003.png",
+      "sourceSha256": "b9a22172b1603ce4bcfe2dff5fb35ef4163d56a6a2d0870a4e22115508c47fe8",
+      "changedPixels": 2370,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/004.png",
+      "sourceSha256": "b6c42c18dada9a77d84faa5230aabea5b521ea66d2581c87f37bc7a92bb234b6",
+      "changedPixels": 2883,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/004.png",
+      "sourceSha256": "0cf3edce160a18fc1bb041ab4151fadd3e8d798a95e0b57baab84df825def08a",
+      "changedPixels": 2883,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-south/005.png",
+      "sourceSha256": "f528edbe3d8a09432caeb21d746f1a2ee75d10880641691b9d44efce82178353",
+      "changedPixels": 3014,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-south",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-south/005.png",
+      "sourceSha256": "b0bdacaf9bf11b6acfd610677386475f21b83b7d73f95c8f1dc7655a1bd58b42",
+      "changedPixels": 3014,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 0,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/000.png",
+      "sourceSha256": "b7462159d6c84516ac1ba1bd4aa19cca1701971ce7d3b42cdaf98e05a33101c1",
+      "changedPixels": 2839,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 0,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/000.png",
+      "sourceSha256": "50fe1fc137cd4ecc042d9764ee26144107b1526697a4e262f2b692295a32bcda",
+      "changedPixels": 2839,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 1,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/001.png",
+      "sourceSha256": "a372dfa82452a6c8e8b7bd449344b0e387786e8d2c5fe5d8fc233ceaac725f43",
+      "changedPixels": 2523,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 1,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/001.png",
+      "sourceSha256": "5e627ac2e1180d715e666a635070b3964712eadb598913634cd81a509cd330f0",
+      "changedPixels": 2523,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 2,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/002.png",
+      "sourceSha256": "a4f8041550dc0cd9db2585bd49483f471971fd8c26eb179bc2ccbbefda931e1c",
+      "changedPixels": 2370,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 2,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/002.png",
+      "sourceSha256": "eddd161f68516779e154ffde2ad074c85181fa678f95bfe9100e53f8e32304c8",
+      "changedPixels": 2370,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 3,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/003.png",
+      "sourceSha256": "b1a54f3f8c52fc79f10e349f2f1d0c9b82f1b76f0344cca01dbbe836746512ca",
+      "changedPixels": 2368,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 3,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/003.png",
+      "sourceSha256": "a63aabd839b6a83cb7632d8fa82c64bd2b28d538305aecb08daf9291c16a1e9e",
+      "changedPixels": 2368,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 4,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/004.png",
+      "sourceSha256": "b21b96ad337b52831bf12cdbcee0e4fe20df57e74d3c9937108fd4c2428964b4",
+      "changedPixels": 2376,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 4,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/004.png",
+      "sourceSha256": "a1b2c16436ca7ffc46f7239c74c0b446c4e0d8815622467181b771d4ae7d505b",
+      "changedPixels": 2376,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 5,
+      "variant": "bare",
+      "source": "character/dr-veld-v2/frames/bare/swim-west/005.png",
+      "sourceSha256": "b24054c682f7243f13e6b87c2a5b9aaff6db3560ed69d1cfae886c89ac8de3b6",
+      "changedPixels": 2486,
+      "protectedHeadAndEquipment": true
+    },
+    {
+      "key": "swim-west",
+      "slot": 5,
+      "variant": "helmet",
+      "source": "character/veld-water-master-audit-v1/frames/helmet/swim-west/005.png",
+      "sourceSha256": "260111de8bbdf54b564dcac4cb3157e26e5df71ee7b15a15291e59823dd2bdcc",
+      "changedPixels": 2486,
+      "protectedHeadAndEquipment": true
+    }
+  ],
+  "nativeHeadEquipmentPixelsUnchanged": true,
+  "geometryAlphaUnchanged": true,
+  "transitionInteriorsUnchanged": true,
+  "installed": false
+}

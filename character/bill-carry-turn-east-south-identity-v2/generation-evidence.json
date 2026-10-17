@@ -1,0 +1,29 @@
+{
+  "method": "built-in imagegen edits",
+  "outputs": {
+    "bare": "exec-fd98bf1e-5584-4063-8048-fd354f9f5cd3",
+    "helmet": "exec-68b6627d-8c8c-4bdf-807c-98fe2e02e582"
+  },
+  "prompts": {
+    "bare": {
+      "file": "sources/prompt-bare-v1.txt",
+      "sha256": "9ba72a5ef13c7e1431ddaebe2e75aa753bc8a26779a976aa950a96259ae4e2d4"
+    },
+    "helmet": {
+      "file": "sources/prompt-helmet-v1.txt",
+      "sha256": "de7800903edafa69e78d3db5fb26a0323e45951a16127384c76769a4959ba5f4"
+    }
+  },
+  "rawSources": {
+    "bare": {
+      "file": "sources/bare-v1.png",
+      "sha256": "7d8d5c44b83f5418a1b9f2fefdd3317cab07f95b0254d5aaf4dfc2a9eec6c9a8"
+    },
+    "helmet": {
+      "file": "sources/helmet-v1.png",
+      "sha256": "8957fadde0d719b64bf8c17a21745ba173e971fd183c86fc046c6bb90a2955f5"
+    }
+  },
+  "scope": "New heads only; altered generated body scale/placement and background halos excluded. Original bare body/case/feet retained in both profiles.",
+  "calibration": "Complete bare east source0 stature352px to148native; same148/352 ruler for all8heads; no per-frame normalization."
+}

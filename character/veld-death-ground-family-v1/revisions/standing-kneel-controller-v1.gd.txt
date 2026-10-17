@@ -1,0 +1,82 @@
+extends RefCounted
+## Exact live entrance plus finite authored collapse; saved selectors, not textures.
+const DIRECTIONS=["east","west","north","south"]
+
+static func capture(game,actor) -> Dictionary:
+	if actor.dead:return {}
+	var player=game.grid_view.veld_player
+	var current:Texture2D=actor.water_death_last_frame
+	if current==null:current=game.grid_view._get_veld_frame_source(game)
+	if current==null:return {}
+	var gear:String="diving-helmet" if actor.helmet_equipped else ""
+	var clips:Dictionary=player.frames if gear.is_empty() else player.equipment_frames.get(gear,{})
+	var entry_gear:String=gear
+	var entry_key:=""
+	var entry_index:=-1
+	for key in clips:
+		var index:int=clips[key].find(current)
+		if index>=0:entry_key=key;entry_index=index;break
+	if entry_index<0:
+		entry_gear="" if not gear.is_empty() else "diving-helmet"
+		var previous:Dictionary=player.frames if entry_gear.is_empty() else player.equipment_frames.get(entry_gear,{})
+		for key in previous:
+			var index:int=previous[key].find(current)
+			if index>=0:entry_key=key;entry_index=index;break
+	if entry_index<0:return {}
+	var facing:String=current.get_meta("crew_water_facing",actor.direction)
+	if facing not in DIRECTIONS:facing=actor.direction
+	var kind:String=current.get_meta("crew_water_kind","")
+	if actor.movement_medium=="dry":
+		var ground:String="death-ground-"+facing
+		# Opt-in authored dry family; legacy rows retain their existing behavior.
+		if not clips.has(ground) or not clips[ground][0].get_meta("crew_lowered_death_entry",false):return {}
+		var lowered:bool=entry_key.begins_with("kneel-") or entry_key.begins_with("repair-")
+		if entry_key.begins_with("stand-"):
+			lowered=current.get_meta("crew_alpha_extent").size.y<clips[ground][0].get_meta("crew_alpha_extent").size.y*.78
+		return {"entry_key":entry_key,"entry_index":entry_index,"equipment":gear,"entry_equipment":entry_gear,"clip":ground,"first":2 if lowered else 1,"started":game.get_visual_time_seconds()}
+	var upright:bool=kind=="tread" or entry_key.begins_with("swim-start-") or entry_key.begins_with("swim-stop-")
+	var clip:String=("death-water-tread-" if upright else "death-water-")+facing
+	if not clips.has(clip):return {}
+	var first:=1
+	if entry_key.begins_with("swim-start-"):first=clampi(entry_index,1,4)
+	elif entry_key.begins_with("swim-stop-"):first=clampi(5-entry_index,1,4)
+	return {"entry_key":entry_key,"entry_index":entry_index,"equipment":gear,"entry_equipment":entry_gear,"clip":clip,"first":first,"started":game.get_visual_time_seconds()}
+
+static func frame(game,actor) -> Texture2D:
+	var saved:Dictionary=actor.water_death_motion
+	if saved.is_empty() or not actor.dead or actor.state not in ["death-water","death-ground"]:return null
+	var player=game.grid_view.veld_player
+	var clips:Dictionary=player.frames if saved.equipment.is_empty() else player.equipment_frames.get(saved.equipment,{})
+	var entry_clips:Dictionary=player.frames if saved.entry_equipment.is_empty() else player.equipment_frames.get(saved.entry_equipment,{})
+	var entrance:Array=entry_clips.get(saved.entry_key,[])
+	if not clips.has(saved.clip) or saved.entry_index>=entrance.size():return null
+	var elapsed:float=maxf(0,game.get_visual_time_seconds()-float(saved.started))
+	# Keep the exact whole live pose, including carried gear and partial pitch.
+	# Directional collapse interiors follow; no first-frame idle/tread replacement.
+	if elapsed<0.18:return entrance[saved.entry_index]
+	var timing:Dictionary=player.timing if saved.equipment.is_empty() else player.equipment_timing[saved.equipment]
+	var skip:=0.0
+	for index in saved.first:skip+=float(timing[saved.clip].durations[index])/1000.0
+	return player.frame_at_elapsed(saved.clip,elapsed-0.18+skip,saved.equipment)
+
+static func valid(data:Variant,actor:Dictionary) -> bool:
+	if not data is Dictionary:return false
+	if data.is_empty():return true # Existing checkpoints remain readable.
+	if not actor.get("dead",false) or actor.get("state","") not in ["death-water","death-ground"]:return false
+	for key in ["entry_key","equipment","entry_equipment","clip"]:
+		if not data.get(key) is String:return false
+	if data.entry_key.is_empty() or data.entry_key.length()>96 or "/" in data.entry_key or ":" in data.entry_key:return false
+	if data.entry_equipment not in ["","diving-helmet"]:return false
+	if data.equipment!=("diving-helmet" if actor.get("helmet_equipped",false) else ""):return false
+	var allowed:=[]
+	for facing in DIRECTIONS:allowed.append("death-water-"+facing);allowed.append("death-water-tread-"+facing);allowed.append("death-ground-"+facing)
+	if data.clip not in allowed:return false
+	var dry:bool=data.clip.begins_with("death-ground-")
+	if actor.get("state","")!=("death-ground" if dry else "death-water"):return false
+	if dry and actor.get("movement_medium","")!="dry":return false
+	if not data.get("entry_index") is int or data.entry_index<0 or data.entry_index>255:return false
+	if not data.get("first") is int or data.first<1 or data.first>4:return false
+	if dry:
+		if data.first not in [1,2]:return false
+	elif not data.clip.begins_with("death-water-tread-") and data.first!=1:return false
+	return (data.get("started") is float or data.get("started") is int) and is_finite(float(data.started)) and data.started>=0

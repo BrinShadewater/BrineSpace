@@ -1,0 +1,225 @@
+{
+  "fittings": [
+    {
+      "pose": 1,
+      "crown": [
+        160,
+        194
+      ],
+      "pitchDegrees": 85,
+      "source": "bill-swim-helmet-south-coherent-v1/sources/canonical-head.png",
+      "sourceSHA256": "501ac3a8886024e2459e03dc8fb39f613de1a3a02bdc8c8aa632eddc9f73550f",
+      "shellPosition": [
+        144,
+        190
+      ],
+      "nativeShellSize": [
+        33,
+        30
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        192,
+        173,
+        220
+      ],
+      "proneHeadRemnantPixels": 68,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 234,
+      "protectedBodyExact": true
+    },
+    {
+      "pose": 2,
+      "crown": [
+        160,
+        167
+      ],
+      "pitchDegrees": 65,
+      "source": "bill-swim-helmet-south-coherent-v1/components/002.png",
+      "sourceSHA256": "f5e4df66c89e21336ebd2c2970a9212ed3d152bf606677a70ed4c74629569f16",
+      "shellPosition": [
+        144,
+        162
+      ],
+      "nativeShellSize": [
+        32,
+        31
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        165,
+        173,
+        193
+      ],
+      "proneHeadRemnantPixels": 63,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 207,
+      "protectedBodyExact": true
+    },
+    {
+      "pose": 3,
+      "crown": [
+        160,
+        135
+      ],
+      "pitchDegrees": 35,
+      "source": "bill-swim-helmet-south-coherent-v1/components/001.png",
+      "sourceSHA256": "6dae766356467a72bc71a9784ce42bf67df4b5b75a5379072c7fb4e16b7177b8",
+      "shellPosition": [
+        145,
+        129
+      ],
+      "nativeShellSize": [
+        31,
+        31
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        133,
+        173,
+        160
+      ],
+      "proneHeadRemnantPixels": 75,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 175,
+      "protectedBodyExact": true
+    },
+    {
+      "pose": 4,
+      "crown": [
+        160,
+        109
+      ],
+      "pitchDegrees": 0,
+      "source": "bill-shared-helmet-south-v1/fitted-helmet.png",
+      "sourceSHA256": "a49d7d92c18f4ff72c550c59423f20ab1003c92a1d66df3a82f063a5f36201d6",
+      "shellPosition": [
+        143,
+        100
+      ],
+      "nativeShellSize": [
+        35,
+        39
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        107,
+        173,
+        139
+      ],
+      "proneHeadRemnantPixels": 0,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 139,
+      "protectedBodyExact": true
+    },
+    {
+      "pose": 5,
+      "crown": [
+        160,
+        99
+      ],
+      "pitchDegrees": 0,
+      "source": "bill-shared-helmet-south-v1/fitted-helmet.png",
+      "sourceSHA256": "a49d7d92c18f4ff72c550c59423f20ab1003c92a1d66df3a82f063a5f36201d6",
+      "shellPosition": [
+        143,
+        90
+      ],
+      "nativeShellSize": [
+        35,
+        39
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        97,
+        173,
+        129
+      ],
+      "proneHeadRemnantPixels": 0,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 129,
+      "protectedBodyExact": true
+    },
+    {
+      "pose": 6,
+      "crown": [
+        160,
+        74
+      ],
+      "pitchDegrees": 0,
+      "source": "bill-shared-helmet-south-v1/fitted-helmet.png",
+      "sourceSHA256": "a49d7d92c18f4ff72c550c59423f20ab1003c92a1d66df3a82f063a5f36201d6",
+      "shellPosition": [
+        143,
+        65
+      ],
+      "nativeShellSize": [
+        35,
+        39
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "eraseBox": [
+        148,
+        72,
+        173,
+        104
+      ],
+      "proneHeadRemnantPixels": 0,
+      "foregroundOutsideCentralHeadExact": true,
+      "bodyOutsideAllowedMaskExact": true,
+      "protectedBodyFromY": 104,
+      "protectedBodyExact": true
+    }
+  ],
+  "pairedFrames": 16,
+  "decodedAPNGFramesExact": 16,
+  "timelineMs": 500,
+  "finiteLoopCount": 1,
+  "helmetEndpointsExact": true,
+  "scope": "Equipment packaging with existing canonical authored pitch resources, no new body poses or normal selection. Protected bare body pixels; full neck/perspective/material/motion/native acceptance pending.",
+  "visualReview": "Inspected original master, two old/new whole source poses, full paired sheet, six neck pairs, fixed-density master/before/after/selected-idle comparison, and sampled quarter browser sheet. Near-standing head materially closer to master; squat head improved modestly but still broader. Neutral cloth darker while fine quilt stays readable and face exposure retained. Full grade/segment/hardware/camera/pose-join/contact/motion acceptance pending; reauthored whole source poses, not protected colour-only edits.",
+  "browserMotionReview": {
+    "samples": 63,
+    "gearLabels": {
+      "bare": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "helmet": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "speed": "quarter",
+    "pausedInitialBoth": 0,
+    "scope": "Two gears quarter source-browser sampled screenshots; AX labels precede capture and may cross holds. No normal-speed advancing samples or fresh native proof."
+  },
+  "nativeAcceptance": false,
+  "normalSelected": false
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Veld west authored dry breathing recovery",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "frames/recover-air-west/000.png",
+        "frames/recover-air-west/001.png",
+        "frames/recover-air-west/002.png",
+        "frames/recover-air-west/003.png",
+        "frames/recover-air-west/004.png",
+        "frames/recover-air-west/005.png"
+      ],
+      "frameDurationsMs": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

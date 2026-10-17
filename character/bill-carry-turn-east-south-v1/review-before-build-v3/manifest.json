@@ -1,0 +1,75 @@
+{
+  "name": "Bill east/south authored cargo turn",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_owner_visual_review",
+  "states": [
+    {
+      "id": "carry-turn-east-south",
+      "frameFiles": [
+        "frames/carry-turn-east-south/000.png",
+        "frames/carry-turn-east-south/001.png",
+        "frames/carry-turn-east-south/002.png",
+        "frames/carry-turn-east-south/003.png",
+        "frames/carry-turn-east-south/004.png",
+        "frames/carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "provenance": "stationary pivot source cells1/2/3/4;exact loaded neutral pickup endpoints;reverse derived without mirroring"
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameFiles": [
+        "frames/carry-turn-south-east/000.png",
+        "frames/carry-turn-south-east/001.png",
+        "frames/carry-turn-south-east/002.png",
+        "frames/carry-turn-south-east/003.png",
+        "frames/carry-turn-south-east/004.png",
+        "frames/carry-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "provenance": "stationary pivot source cells1/2/3/4;exact loaded neutral pickup endpoints;reverse derived without mirroring"
+    }
+  ]
+}

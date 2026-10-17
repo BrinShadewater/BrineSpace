@@ -1,0 +1,25 @@
+extends "res://character/james-cargo-return-bridges-v1/return_player.gd"
+const FLOOR=preload("res://character/james-floor-case-west-v1/checkpoint_floor_state_v2.gd")
+var game
+var case_texture:Texture2D
+func _init()->void:
+	var image:=Image.new()
+	if preload("res://scripts/safe_image.gd").load_png(image,FLOOR.ART_PATH)==OK:case_texture=ImageTexture.create_from_image(image)
+func floor_texture()->Texture2D:
+	if game!=null:
+		var view=game.grid_view.rare_room_views.get("salvage_workshop")
+		if is_instance_valid(view) and view.has_method("case_rect"):return view.case_texture
+	return case_texture
+func observe()->void:
+	if game==null:return
+	FLOOR.observe_plan(game,game.branforth_npc,self,game.get_visual_time_seconds())
+func frame(state:String,direction:String,time:float,position_cells:Vector2,equipment:String="",allow_water_transition:bool=false)->Texture2D:
+	var texture:Texture2D=super.frame(state,direction,time,position_cells,equipment,allow_water_transition)
+	observe();return texture
+func frame_at_elapsed(key:String,elapsed:float,equipment:String="")->Texture2D:
+	if game!=null and key=="unload-north":
+		var arrival:Dictionary=preload("res://scripts/james_workshop_arrival.gd").presentation(game.branforth_npc,self,elapsed,equipment)
+		if not arrival.is_empty():
+			key=arrival.key;elapsed=arrival.elapsed
+	var texture:Texture2D=super.frame_at_elapsed(key,elapsed,equipment)
+	observe();return texture

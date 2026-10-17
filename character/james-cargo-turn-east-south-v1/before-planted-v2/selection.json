@@ -1,0 +1,37 @@
+{
+  "status": "staged_carry_turn_east_south_v1",
+  "runtimeInstalled": false,
+  "coverage": [
+    "carry-turn-east-south",
+    "carry-turn-south-east"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet.png",
+  "helmetPrompt": "prompt-helmet.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.26666666666666666,
+  "timingMs": 800,
+  "derivation": "Independent quarter turn; reverse exact poses; exact installed east/south bare/equipped frame0 endpoints",
+  "helmet": "Intermediate generated matched head angles calibrated toward selected35-to39px facing width; head-only overlay; all body pixels at/below headCutoff byte-identical to bare",
+  "matte": "Accepted fixed material highlight and engineering gold pipeline; head preserved",
+  "checks": "99 packaging /121 native checks,0 failures;8 captures; actual player turn-to-carry frame0 reset verified in both directions and equipment modes",
+  "profileAudit": "Scratch asserted and real profile unchanged",
+  "visualReview": "Source/contact/native at148/82/54/27px inspected; owner review pending",
+  "remaining": [
+    "Owner first carrying-turn review",
+    "Install accepted east/south turn pair",
+    "Remaining10 dry carrying turns; swimming separate"
+  ]
+}

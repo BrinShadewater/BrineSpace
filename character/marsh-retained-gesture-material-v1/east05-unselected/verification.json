@@ -1,0 +1,185 @@
+{
+  "source": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/east-gesture-05.png",
+    "sha256": "d1ae5951277afa132b05ba357c702b1a10a55a28d2997033eb8f11b3be1cbaa0",
+    "generationId": "exec-345fa412-0676-447d-8a71-ceee80f3bf03",
+    "bodyHeights": [
+      659,
+      657,
+      657,
+      656,
+      657
+    ],
+    "commonScale": 0.2237442922374429,
+    "neutralBodyWidthAtOwnHeight": 34.00913242009132,
+    "ownOccupiedRuler": [
+      32,
+      147
+    ],
+    "assessment": "Staged for common-scale native/source review; no admission."
+  },
+  "frames": [
+    {
+      "cell": 0,
+      "bodyBox": [
+        150,
+        66,
+        315,
+        725
+      ],
+      "wholeFigureCrop": [
+        146,
+        62,
+        319,
+        729
+      ],
+      "commonScale": 0.2237442922374429,
+      "file": "character/marsh-retained-gesture-material-v1/east05-unselected/gesture-00.png",
+      "sha256": "1d6dc64dcd65560a49d4d2f36292f2773c0636af0ad3d6fdbba9a2dc1578f7eb",
+      "occupiedSize": [
+        39,
+        149
+      ]
+    },
+    {
+      "cell": 1,
+      "bodyBox": [
+        525,
+        67,
+        710,
+        724
+      ],
+      "wholeFigureCrop": [
+        521,
+        63,
+        714,
+        728
+      ],
+      "commonScale": 0.2237442922374429,
+      "file": "character/marsh-retained-gesture-material-v1/east05-unselected/gesture-01.png",
+      "sha256": "ab8a96f4166cd0eb8af68caf78722b609dc0aa6672a0af8d34fa82c10667e3c2",
+      "occupiedSize": [
+        43,
+        149
+      ]
+    },
+    {
+      "cell": 2,
+      "bodyBox": [
+        924,
+        67,
+        1109,
+        724
+      ],
+      "wholeFigureCrop": [
+        920,
+        63,
+        1113,
+        728
+      ],
+      "commonScale": 0.2237442922374429,
+      "file": "character/marsh-retained-gesture-material-v1/east05-unselected/gesture-02.png",
+      "sha256": "34e23391266c602d0ca3f539e4e47c1fe4f16c3fbbd925f03943fc880c8fccbc",
+      "occupiedSize": [
+        43,
+        149
+      ]
+    },
+    {
+      "cell": 3,
+      "bodyBox": [
+        1306,
+        68,
+        1461,
+        724
+      ],
+      "wholeFigureCrop": [
+        1302,
+        64,
+        1465,
+        728
+      ],
+      "commonScale": 0.2237442922374429,
+      "file": "character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+      "sha256": "638339d05b7fd0a2297535de3efa44e81077fbf774ca3aa1a25b912e6ca76244",
+      "occupiedSize": [
+        36,
+        149
+      ]
+    },
+    {
+      "cell": 4,
+      "bodyBox": [
+        1697,
+        67,
+        1849,
+        724
+      ],
+      "wholeFigureCrop": [
+        1693,
+        63,
+        1853,
+        728
+      ],
+      "commonScale": 0.2237442922374429,
+      "file": "character/marsh-retained-gesture-material-v1/east05-unselected/neutral-ruler.png",
+      "sha256": "9cbfc4bafa64836955f302aad2913b381fead0eb8bebff4617321f462ef1bb36",
+      "occupiedSize": [
+        36,
+        149
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    }
+  ],
+  "slots": 12,
+  "apngDecodedExactFrames": 6,
+  "apngTotalDurationMs": 900,
+  "board": "character/marsh-retained-gesture-material-v1/east05-unselected/cross-family-contact.png",
+  "boardSha256": "45d410800dc036153bdd6713d9b98cbbc4a19c62b7e3804a2f49caf2aea76863",
+  "actuallyInspected": false,
+  "wholeScalePolicy": "One common own occupied height/generated neutral factor. Whole figure crop plus fixed4px fringe; no anatomy patch/recolour/mirror/per-pose fit.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "nativeEvidence": null
+}

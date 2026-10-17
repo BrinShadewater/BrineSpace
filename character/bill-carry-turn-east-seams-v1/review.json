@@ -1,0 +1,763 @@
+{
+  "records": [
+    {
+      "key": "carry-turn-east-south",
+      "changedSlots": [
+        0
+      ],
+      "originalState": {
+        "id": "carry-turn-east-south",
+        "frameFiles": [
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+      },
+      "candidateState": {
+        "id": "carry-turn-east-south",
+        "frameFiles": [
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-south-east",
+      "changedSlots": [
+        5
+      ],
+      "originalState": {
+        "id": "carry-turn-south-east",
+        "frameFiles": [
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          120,
+          160,
+          160,
+          140,
+          120,
+          100
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "east",
+          "east"
+        ],
+        "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+      },
+      "candidateState": {
+        "id": "carry-turn-south-east",
+        "frameFiles": [
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          120,
+          160,
+          160,
+          140,
+          120,
+          100
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "east",
+          "east"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-north-east",
+      "changedSlots": [
+        5
+      ],
+      "originalState": {
+        "id": "carry-turn-north-east",
+        "frameFiles": [
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+      },
+      "candidateState": {
+        "id": "carry-turn-north-east",
+        "frameFiles": [
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-east-north",
+      "changedSlots": [
+        0
+      ],
+      "originalState": {
+        "id": "carry-turn-east-north",
+        "frameFiles": [
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png"
+        ],
+        "frameDurationsMs": [
+          120,
+          160,
+          160,
+          140,
+          120,
+          100
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east",
+          "north",
+          "north"
+        ],
+        "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+      },
+      "candidateState": {
+        "id": "carry-turn-east-north",
+        "frameFiles": [
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png"
+        ],
+        "frameDurationsMs": [
+          120,
+          160,
+          160,
+          140,
+          120,
+          100
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east",
+          "north",
+          "north"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-east-west",
+      "changedSlots": [
+        0
+      ],
+      "originalState": {
+        "id": "carry-turn-east-west",
+        "frameFiles": [
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/001.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/002.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/003.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/004.png",
+          "res://character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+      },
+      "candidateState": {
+        "id": "carry-turn-east-west",
+        "frameFiles": [
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/001.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/002.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/003.png",
+          "res://character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/004.png",
+          "res://character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-west-east",
+      "changedSlots": [
+        10
+      ],
+      "originalState": {
+        "id": "carry-turn-west-east",
+        "frameFiles": [
+          "res://character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/001.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/002.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/003.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/004.png",
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "west",
+          "west",
+          "north",
+          "north",
+          "north",
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+      },
+      "candidateState": {
+        "id": "carry-turn-west-east",
+        "frameFiles": [
+          "res://character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/001.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/002.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/003.png",
+          "res://character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/004.png",
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "west",
+          "west",
+          "north",
+          "north",
+          "north",
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    },
+    {
+      "key": "carry-turn-north-south",
+      "changedSlots": [
+        5
+      ],
+      "originalState": {
+        "id": "carry-turn-north-south",
+        "frameFiles": [
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+      },
+      "candidateState": {
+        "id": "carry-turn-north-south",
+        "frameFiles": [
+          "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+          "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+          "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png",
+          "res://character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png",
+          "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+        ],
+        "frameDurationsMs": [
+          100,
+          120,
+          140,
+          160,
+          160,
+          220,
+          120,
+          140,
+          160,
+          160,
+          120
+        ],
+        "loop": false,
+        "water": false,
+        "facings": [
+          "north",
+          "north",
+          "east",
+          "east",
+          "east",
+          "east",
+          "east",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "provenance": "Existing whole turn program and original clock; repaired whole East static-held endpoint shared with pickup10 and carry-entry0."
+      }
+    }
+  ],
+  "protectedInputs": {
+    "character/bill-carry-turn-identity-matrix-v5/bare-manifest.json": "ea94b995eedfcc7899faf500847b289521072be40403c8b57cbdfd2104b927c1",
+    "character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png": "400e2ab5ecf01f1da914cfa9e8409e4414e34c24ab25e5349542bbcf00b7ec4c",
+    "character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/001.png": "30e57836541f956cc115b8c75679eb65b3131dd17ea67c9ea33f24754fcb07bf",
+    "character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/002.png": "d413374f6dc38b2552767cd8774eab5597bfd590fa079647e43e53c6c1fbdc6e",
+    "character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/003.png": "73d5202e753a13647dea9f5a1b7de2d958a1c38c1134a06a2d684665955df0b6",
+    "character/bill-carry-turn-east-south-identity-v2/frames/bare/carry-turn-east-south/004.png": "014600a29f1d8f3ab16e169f9b585b28e7cd866782311084032af9a549074f8c",
+    "character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png": "56058fe3a8bb1cb246383fd9c6201cd1f46e168faadd8e0a197223640f0a921e",
+    "character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png": "ea5ee948dad4cce9113ad75693ed4556f0114c22ec7a73c72a74e632dcc19d53",
+    "character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png": "0fb00e2018443b5f918a70ffa62104815859f43b50170f70816e8739a6ae90ab",
+    "character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png": "01454d0e08b6c3892b87d896beec91c56d650210e44c25fe66f8da29a52266d1",
+    "character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png": "13a301cfc5fa15f13833a22130788ca21e3868af9d3af7156bea7c70b63a6952",
+    "character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png": "2ef3debbfa5550025432b30f24675c3ae2fa748936e1135d85d0b667bda37a44",
+    "character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png": "0a63e85971b6786f17a2da8287987a5c5b3eeb323f0381e2336b79b4fa39718c",
+    "character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/001.png": "09b0b165daa057158cd85bca90fac432ddaa79afa142ba4f2d83ef79817dbf34",
+    "character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/002.png": "c020b4b29b4500d8ac6f2c65e1a07951b45b493fae121b060f45930c3452b821",
+    "character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/003.png": "a205f51a505419947ef706820e2d40e232050dc4ab0c22bf674796a4b7f49ddb",
+    "character/bill-carry-turn-south-west-identity-v2/frames/bare/carry-turn-south-west/004.png": "d184ed523f5cf7f44fc178121ce6a6791b4d4c1f0abf0ac82fd7e6edb533030f",
+    "character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png": "17b5c859dbf145aedba0bed8d27a65476494a63797e90162c7dbe4137a51000a",
+    "character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/001.png": "49d02ba190f3139c7ff1cb51c69b1dc1c808dad2fbb3b5ad659ad60c4c101125",
+    "character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/002.png": "431a37fa95af3bbbac30560de112637c1634bdfbf5ca65a5181f01a13d42878e",
+    "character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/003.png": "4144ac021c57807dbae9384d8b8f48d50eb808bb019ca287671f71a7a1da0a8e",
+    "character/bill-carry-turn-west-north-identity-v2/frames/bare/carry-turn-west-north/004.png": "4848aad7c06b7ed8aa1166027eddb0fd78898518edd938dc95cc30ce442118d5"
+  },
+  "movies": [
+    {
+      "file": "carry-turn-east-south-previous-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-east-south-previous-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-east-south-candidate-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-east-south-candidate-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-south-east-previous-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-south-east-previous-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-south-east-candidate-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-south-east-candidate-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-north-east-previous-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-north-east-previous-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-north-east-candidate-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-north-east-candidate-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-east-north-previous-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-east-north-previous-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-east-north-candidate-1.png",
+      "decodedFrames": 6,
+      "durationMs": 800
+    },
+    {
+      "file": "carry-turn-east-north-candidate-4.png",
+      "decodedFrames": 6,
+      "durationMs": 3200
+    },
+    {
+      "file": "carry-turn-east-west-previous-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-east-west-previous-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    },
+    {
+      "file": "carry-turn-east-west-candidate-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-east-west-candidate-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    },
+    {
+      "file": "carry-turn-west-east-previous-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-west-east-previous-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    },
+    {
+      "file": "carry-turn-west-east-candidate-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-west-east-candidate-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    },
+    {
+      "file": "carry-turn-north-south-previous-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-north-south-previous-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    },
+    {
+      "file": "carry-turn-north-south-candidate-1.png",
+      "decodedFrames": 11,
+      "durationMs": 1600
+    },
+    {
+      "file": "carry-turn-north-south-candidate-4.png",
+      "decodedFrames": 11,
+      "durationMs": 6400
+    }
+  ],
+  "pages": [
+    "carry-turn-east-south-comparison.png",
+    "carry-turn-south-east-comparison.png",
+    "carry-turn-north-east-comparison.png",
+    "carry-turn-east-north-comparison.png",
+    "carry-turn-east-west-comparison.png",
+    "carry-turn-west-east-comparison.png",
+    "carry-turn-north-south-comparison.png"
+  ],
+  "changedWholeAliases": 7,
+  "newArtSources": 0,
+  "unchangedSourceSlots": 50,
+  "normalAdmission": true,
+  "visualReviewed": true,
+  "nativeValidation": {
+    "passed": true,
+    "engineExit": 0,
+    "engineLogClean": true,
+    "seconds": 37.87,
+    "checks": 5040,
+    "failures": 0,
+    "captures": 57,
+    "inputCount": 5348,
+    "inputChanges": [],
+    "ownerNonLogCount": 2936,
+    "ownerChanges": [],
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-turn-east-seams-native-v1\\scratch-appdata",
+    "normalAdmission": false
+  },
+  "nativeScope": "Seven selected-production carry turn programs with fixture-only repaired bare East endpoint/entry/gait. Actual .005s actor.update on prescribed legal96-unit floor segments: full57turn slots, planted pivots and resumed physical headings. Original800/1600ms clocks; seven exact whole East aliases,50other poses unchanged. Not natural dispatch, continuous cadence, equipment, normal admission or Continue.",
+  "nativePages": [
+    "carry-turn-east-south.png",
+    "carry-turn-south-east.png",
+    "carry-turn-north-east.png",
+    "carry-turn-east-north.png",
+    "carry-turn-east-west.png",
+    "carry-turn-west-east.png",
+    "carry-turn-north-south.png"
+  ],
+  "findings": "Seven native first/middle/last boards reviewed at actual station pixels. Exact whole repaired East pickup10 replaces seven held aliases; 50 existing turn slots and all original timings/geometry retained. Existing intermediate detail/directional shading judged acceptable at station scale. Source comparison boards retained; not all enlarged comparison boards inspected.",
+  "installedRegistry": "res://character/bill-master-install-v1/registry.json"
+}

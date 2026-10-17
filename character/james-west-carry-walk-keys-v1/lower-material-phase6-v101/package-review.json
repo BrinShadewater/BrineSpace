@@ -1,0 +1,50 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1040,
+  "outsideExactPixels": 64496,
+  "changedPixels": 1040,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    92,
+    76,
+    164,
+    225
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      40.46,
+      62.96,
+      91.71,
+      174.01
+    ],
+    "after": [
+      38.26,
+      62.43,
+      93.86,
+      166.86
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "retain_provisional_lower_material_refinement",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "visualReviewer": "Codex",
+  "nativeIncluded": true,
+  "findings": [
+    "Toe and ankle highlights are warmer and less stark in six reviewed source boards and all six paired native captures at four sizes.",
+    "Original alpha, one-pixel rim, rows above181 and paired body below110 are exact; interior hardware landmarks are visually assessed rather than pixel-protected geometry.",
+    "Phase3 retains simpler boot construction than phases4..8; bright protected rim pixels remain. Complete sequence finish and absence of temporal flashing remain unproven.",
+    "Original-master body proportions, full49-frame continuous motion, normal carry lifecycle and cross-family consistency are still pending."
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "name": "James north seated candidate",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_seated_master_revision",
+  "states": [
+    {
+      "id": "sit-down-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/sit-down/000.png",
+        "frames/sit-down/001.png",
+        "frames/sit-down/002.png",
+        "frames/sit-down/003.png",
+        "frames/sit-down/004.png",
+        "frames/sit-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly"
+      }
+    },
+    {
+      "id": "sit-idle-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/sit-idle/000.png",
+        "frames/sit-idle/001.png",
+        "frames/sit-idle/002.png",
+        "frames/sit-idle/003.png",
+        "frames/sit-idle/004.png",
+        "frames/sit-idle/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly"
+      }
+    },
+    {
+      "id": "read-seated-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/read-seated/000.png",
+        "frames/read-seated/001.png",
+        "frames/read-seated/002.png",
+        "frames/read-seated/003.png",
+        "frames/read-seated/004.png",
+        "frames/read-seated/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        500,
+        600,
+        400,
+        400
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly"
+      }
+    },
+    {
+      "id": "sit-rise-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/sit-rise/000.png",
+        "frames/sit-rise/001.png",
+        "frames/sit-rise/002.png",
+        "frames/sit-rise/003.png",
+        "frames/sit-rise/004.png",
+        "frames/sit-rise/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly"
+      }
+    }
+  ]
+}

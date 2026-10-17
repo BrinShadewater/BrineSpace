@@ -1,0 +1,66 @@
+{
+  "captures": [
+    {
+      "foot": [
+        7796.1396484375,
+        8096.0
+      ],
+      "key": "carry-start-east",
+      "label": "before Title Continue / bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+      "slot": 2,
+      "sourceFile": "source-000.png",
+      "variant": "before",
+      "worldFile": "world-000.png"
+    },
+    {
+      "foot": [
+        7796.1396484375,
+        8096.0
+      ],
+      "key": "carry-start-east",
+      "label": "after normal Title Continue / bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+      "slot": 2,
+      "sourceFile": "source-001.png",
+      "variant": "after",
+      "worldFile": "world-001.png"
+    },
+    {
+      "foot": [
+        7796.1396484375,
+        8096.0
+      ],
+      "key": "carry-start-east",
+      "label": "before Title Continue / bill-east-master-family-v1-cardinal-arrival3",
+      "slot": 2,
+      "sourceFile": "source-002.png",
+      "variant": "before",
+      "worldFile": "world-002.png"
+    },
+    {
+      "foot": [
+        7796.1396484375,
+        8096.0
+      ],
+      "key": "carry-start-east",
+      "label": "after normal Title Continue / bill-east-master-family-v1-cardinal-arrival3",
+      "slot": 2,
+      "sourceFile": "source-003.png",
+      "variant": "after",
+      "worldFile": "world-003.png"
+    }
+  ],
+  "cases": [
+    {
+      "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+      "futureSteps": 30,
+      "scope": "Same native process; fresh normal title and main scenes, normal Continue/loading buttons and pending disk restoration. Bare legacy/current source versions."
+    },
+    {
+      "binding": "bill-east-master-family-v1-cardinal-arrival3",
+      "futureSteps": 30,
+      "scope": "Same native process; fresh normal title and main scenes, normal Continue/loading buttons and pending disk restoration. Bare legacy/current source versions."
+    }
+  ],
+  "checks": 101,
+  "failures": 0
+}

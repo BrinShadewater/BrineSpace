@@ -1,0 +1,297 @@
+{
+  "name": "Krusher Dom distress helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-distress-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/07d933eec22c28bded00b3b556b4e39a117b89ac251f5b8d5a232451d62394af.png",
+        "res://character/krusher-animation-package-v10/frames/42c846dcb4e578e5558421b1bb3248f9dcde2d3fd0d4e2aaa821ad6c608d9bef.png",
+        "res://character/krusher-animation-package-v10/frames/75744f956f6532e308eeed874f874bb40d4189cce15f70b36a5a9170ffa888d3.png",
+        "res://character/krusher-animation-package-v10/frames/7bba73f75c2dfe6198fcb9b03601c69cddfb3e4ba349e98fd13f718e157abf34.png",
+        "res://character/krusher-animation-package-v10/frames/9bb1fab37895f0ea9dd16d7d9bde261bd8b872fa6d7c6a6b11c2b4d406021cea.png",
+        "res://character/krusher-animation-package-v10/frames/07d933eec22c28bded00b3b556b4e39a117b89ac251f5b8d5a232451d62394af.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "source": "Independent two-row facing source",
+          "sourcePoses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+        }
+      }
+    },
+    {
+      "id": "swim-distress-north",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/911943f6fef49a2dd260183a5791fb5e2e6509d0784b44751e786fe3d52f5c3b.png",
+        "res://character/krusher-animation-package-v10/frames/210eb84574efb69e274debe3fe58bb6d1b3c7f2bffc294e06cafd3f3ca194eb2.png",
+        "res://character/krusher-animation-package-v10/frames/800c004596f1f03d92a2146e223f633aec0e828d10b881be6eabaffd9d88f754.png",
+        "res://character/krusher-animation-package-v10/frames/2e9d171b32aec2909eea6839ed3e41cc52dcd3e4e3ed498b2f0ebef06259fb06.png",
+        "res://character/krusher-animation-package-v10/frames/069b894bbc8ad12598b057639b253cfc79e5b788981bd0f7b2a4277679cc4ed7.png",
+        "res://character/krusher-animation-package-v10/frames/911943f6fef49a2dd260183a5791fb5e2e6509d0784b44751e786fe3d52f5c3b.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "source": "Independent two-row facing source",
+          "sourcePoses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+        }
+      }
+    },
+    {
+      "id": "swim-distress-south",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/d37c0e3928a8b7cfa6d0562f05a25649cc426798062b44e6fb29c3cbfc1361ef.png",
+        "res://character/krusher-animation-package-v10/frames/2a221cf4853e501a54fa23901c673bfcd853d32d7358d7ad5bb744fb785f72c8.png",
+        "res://character/krusher-animation-package-v10/frames/bafbfd56b57bbbc64740683ad426f01c1d7334c5d6ce86f7901fd9904f2b30a8.png",
+        "res://character/krusher-animation-package-v10/frames/9388c6238f8c1e891bbe98d6f5675de17070f66fc006ba5b1bbbe7b1106d5a67.png",
+        "res://character/krusher-animation-package-v10/frames/56584b79c9833cd8cea74cdb280db433fe6937b96b15d0ef8adbe27987e10632.png",
+        "res://character/krusher-animation-package-v10/frames/d37c0e3928a8b7cfa6d0562f05a25649cc426798062b44e6fb29c3cbfc1361ef.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "source": "Independent two-row facing source",
+          "sourcePoses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+        }
+      }
+    },
+    {
+      "id": "swim-distress-west",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/ae8dff2f244e86f338affbdd7c3a87021aa116e844891a14d8789fa56f93236c.png",
+        "res://character/krusher-animation-package-v10/frames/07a0af376adfe73fc74e25e8efe418a6c3af7549ebe4a10f621600745a52cb38.png",
+        "res://character/krusher-animation-package-v10/frames/bbdaa760c1b3476bf66ba25a2164fb5209bf58aa873be9067023808d2abfec85.png",
+        "res://character/krusher-animation-package-v10/frames/089c3e758b2e85469cba0dca34075729689d36d77afdbbcce85dd13eb22cdf7c.png",
+        "res://character/krusher-animation-package-v10/frames/454de183ea5b0835976b81e5913f8f504ae1caa4a3400e30b89e696919a69efb.png",
+        "res://character/krusher-animation-package-v10/frames/ae8dff2f244e86f338affbdd7c3a87021aa116e844891a14d8789fa56f93236c.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "source": "Independent two-row facing source",
+          "sourcePoses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+        }
+      }
+    }
+  ]
+}

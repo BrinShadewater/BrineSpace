@@ -1,0 +1,69 @@
+{
+  "name": "Bill east/south authored cargo turn",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_owner_visual_review",
+  "states": [
+    {
+      "id": "carry-turn-east-south",
+      "frameFiles": [
+        "frames/carry-turn-east-south/000.png",
+        "frames/carry-turn-east-south/001.png",
+        "frames/carry-turn-east-south/002.png",
+        "frames/carry-turn-east-south/003.png",
+        "frames/carry-turn-east-south/004.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        180,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "provenance": "authored source cells2/3/4;exact selected cargo frame-zero endpoints;reverse derived without mirroring"
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameFiles": [
+        "frames/carry-turn-south-east/000.png",
+        "frames/carry-turn-south-east/001.png",
+        "frames/carry-turn-south-east/002.png",
+        "frames/carry-turn-south-east/003.png",
+        "frames/carry-turn-south-east/004.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        180,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "provenance": "authored source cells2/3/4;exact selected cargo frame-zero endpoints;reverse derived without mirroring"
+    }
+  ]
+}

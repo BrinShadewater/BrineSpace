@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+SOUTH PLAN curiosity (20, 19) [(7968.0, 7392.0)]
+SOUTH ARRIVAL false { "social_partner": "", "social_cooldown": 0.0, "primary_room": (-1, -1), "air_recovery": 0.0, "air_was_low": false, "tank_oxygen": 60.0, "breath_oxygen": 15.0, "starvation": 0.0, "expedition": {  }, "moonbay_assignment": {  }, "helmet_equipped": false, "movement_medium": "dry", "dead": false, "active": true, "foot": (7872.0, 7472.0), "state": "interact", "direction": "north", "activity": "checking diagnostic readings", "goal": "curiosity", "goal_cell": (20, 19), "path": [], "locker_request": {  }, "movement_heading": {  }, "timer": 2.39999999999991, "stage": "", "tablet_exit_pose": -1, "inspection_return_pose": -1, "needs": { "maintenance": 5.49999999999969, "hunger": 98.0000000000143, "fatigue": 2.49999999999998, "curiosity": 1.25216666666668 }, "visits": { (20, 19): 3 }, "traffic_wait": 0.0, "traffic_retry": 0.0, "traffic_activity": "", "decision_rng": -4415872090572607090, &"branforth_meal_return": {  }, &"branforth_helmet_return": false, &"branforth_bunk": {  }, &"branforth_console": {  } } stations=[{ "point": (112.0, 64.0), "facing": "south", "room": "galley", "prop": "library/sp-galley-2", "service_limit": 144.0 }]
+ERROR: Normal chooser reaches actual South galley service
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-pickup-south-v1/native-candidate.gd:16)
+       [1] run (res://character/james-meal-pickup-south-v1/native-candidate.gd:68)
+ERROR: Candidate pickup joins actual held meal pixels
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-pickup-south-v1/native-candidate.gd:16)
+       [1] run (res://character/james-meal-pickup-south-v1/native-candidate.gd:80)
+ERROR: All six candidate source poses actually drawn
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-pickup-south-v1/native-candidate.gd:16)
+       [1] run (res://character/james-meal-pickup-south-v1/native-candidate.gd:83)
+JAMES SOUTH BOWL CANDIDATE: 6 checks; 3 failures

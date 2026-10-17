@@ -1,0 +1,40 @@
+{
+  "sourceSha256": {
+    "character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-033.png": "af91c7977e50a157ab2140d2e264335f9de6546dbd85773d0c8fbea10d443d05"
+  },
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full raw square resampled once to original96crop; no fitting, translation or warp.",
+  "admittedPixelCount": 2557,
+  "outsideExactPixels": 62979,
+  "changedPixels": 2542,
+  "alphaExact": true,
+  "outerTwoPixelRingExact": true,
+  "headTop110Exact": true,
+  "bootsBelow200Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    99,
+    76,
+    158,
+    224
+  ],
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "reviewedSourceBoards": [
+    "crop-detail-review.png",
+    "paired-local-review.png"
+  ],
+  "visualReviewer": "Codex",
+  "findings": [
+    "Phase30 original knee fitting and buffer restored exactly; surrounding V138 fabric unchanged. This fixes generated drift relative to same-phase source, not master anatomy acceptance.",
+    "Phase33 fitting highlights subdued and quilt retained. Source crop and paired boards visually reviewed. Head, outer silhouette and boots protected; internal landmarks remain provisional.",
+    "All five paired native captures at four sizes and source window reviewed; unrepaired34 retains stronger fittings and original lower highlights differ.",
+    "Static review does not establish absence of flashes, full continuous gait, complete master proportions or normal lifecycle acceptance."
+  ],
+  "nativeIncluded": true,
+  "disposition": "retain_provisional_candidate"
+}

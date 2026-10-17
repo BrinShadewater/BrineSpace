@@ -1,0 +1,124 @@
+{
+  "records": {
+    "checks": 269,
+    "failures": 0,
+    "records": [
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7808.0,
+          8096.0
+        ],
+        "helmet": false,
+        "name": "bare-0.3",
+        "sample": 0.3
+      },
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7814.8994140625,
+          8096.0
+        ],
+        "helmet": false,
+        "name": "bare-0.95",
+        "sample": 0.95
+      },
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7847.0966796875,
+          8096.0
+        ],
+        "helmet": false,
+        "name": "bare-1.65",
+        "sample": 1.65
+      },
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7808.0,
+          8096.0
+        ],
+        "helmet": true,
+        "name": "helmet-0.3",
+        "sample": 0.3
+      },
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7814.8994140625,
+          8096.0
+        ],
+        "helmet": true,
+        "name": "helmet-0.95",
+        "sample": 0.95
+      },
+      {
+        "afterStage": "",
+        "afterState": "idle",
+        "followupSteps": 24,
+        "foot": [
+          7847.0966796875,
+          8096.0
+        ],
+        "helmet": true,
+        "name": "helmet-1.65",
+        "sample": 1.65
+      }
+    ],
+    "scope": "Actual main/workshop dispatch, prescribed graph-clear East route, actual room service suspension during turn/first-step/gait, normal inherited interruption/chooser and24future60Hz updates. Staged candidate only; no natural suspension or standard title Continue claim."
+  },
+  "validation": {
+    "capturePassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 40.47,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-service-loss-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "visualReview": "Both corrected boards reviewed:12native/source before/after presentations. Cargo vanishes and hands snap to idle immediately; interruption motion FAILED. No stature drift after common82/148 ruler/native-pivot correction.",
+  "normalSelectionChanged": false,
+  "goalComplete": false,
+  "sourceMeasurements": {
+    "bareBeforeCanvas": 256,
+    "bareAfterCanvas": 184,
+    "bareBeforeOpaqueHeight": 145,
+    "bareAfterOpaqueHeight": 148,
+    "helmetBeforeOpaqueHeight": 149,
+    "helmetAfterOpaqueHeight": 152,
+    "alphaThreshold": 180,
+    "sourceDisplayRuler": 0.5540540540540541,
+    "sourcePivots": {
+      "256": [
+        128,
+        224
+      ],
+      "184": [
+        92,
+        172
+      ]
+    },
+    "meaning": "Opaque bounds are diagnostic, not per-pose normalization; different canvas dimensions cannot be fitted into identical review boxes."
+  },
+  "inputHashesAfterRun": {
+    "tests/test_bill_carry_service_loss_v1.gd": "a18afb04d9af2ab04f8779313b72eb9294d64699ce8bd0526a6908504f2fc0e5",
+    "character/bill-carry-continuation-v1/carry_actor.gd": "96cda7e045541980ebf61a44b1548bba7fd4c4a05bad4c796cff7b8762996a54",
+    "character/bill-carry-continuation-v1/carry_player.gd": "4ca0dd105e453574c2aa9a7e08c585ccf71a85f7da50b40f0bc0550478aef377",
+    "scripts/bill_npc.gd": "eb56b029a2ca82da2f281df25a6ee44a3ef3b273a02a3e90975acbffbda499dd",
+    "scripts/grid_canvas.gd": "aea93af8d8872b9dc825ac0c67571672fd9e463d572a6b991948e3334e5422f8"
+  },
+  "hashScope": "After-run snapshots only; interval stability unmeasured."
+}

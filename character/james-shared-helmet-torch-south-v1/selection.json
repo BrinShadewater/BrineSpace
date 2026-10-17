@@ -1,0 +1,63 @@
+{
+  "status": "installed_owner_accepted_south_torch_forward_aim_v2",
+  "runtimeInstalled": true,
+  "coverage": [
+    "torch-draw-south",
+    "weld-south",
+    "torch-stow-south"
+  ],
+  "framesPerMode": 63,
+  "states": {
+    "torch-draw-south": {
+      "frames": 8,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-south": {
+      "frames": 43,
+      "durationMs": 1200,
+      "loop": true
+    },
+    "torch-stow-south": {
+      "frames": 12,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-south-direct-v1",
+  "derivation": "Quick draw0/8/12/16/20/24/28/32; work32-74 every2 + reverse72-32 every2; stow join32 + actual130-140; late colour-flash section omitted. Exact idle/action/loop joins.",
+  "perspective": "Owner correction supersedes previous assessment: previous downward nozzle rejected. New foreshortened circular nozzle faces outward toward viewer.",
+  "beltEquipment": "Exact selected idle wrench core restored all126 bare/equipped frames, no held wrench removal required",
+  "helmet": "Selected frontal shell, crown13/order2 smooth path, maximum adjacent0/1px",
+  "colour": "Fixed neutral grade with intentional blue flame protected; no per-frame colour/brightness repair",
+  "native": "Actual installed loader539 checks/0 failures;12 captures; real profile unchanged",
+  "visualReview": "Owner accepted forward-aim-v2; native and equipped maintenance station work reviewed",
+  "estimatedGenerationUSD": 0.38,
+  "verifiedBilling": null,
+  "pending": [
+    "North standing torch and retained special actions"
+  ],
+  "toolAim": "Owner accepted forward-aim-v2; installed",
+  "preview": "review-forward-aim-v2.gif",
+  "localCorrectionChecks": {
+    "checks": 252,
+    "failures": 0,
+    "boundedEdit": [
+      62,
+      65,
+      105,
+      102
+    ],
+    "outsidePixels": "Exact previous frame pixels in all126 outputs",
+    "greenSpill": "No newly introduced green spill in edited neighborhood",
+    "native": "539 checks/0 failures;12 captures; actual owner profile unchanged"
+  },
+  "generationTool": "built-in imagegen",
+  "generationPrompt": "forward-aim-prompt.txt",
+  "generatedImage": "forward-torch-generated.png",
+  "generatedImageSha256": "c152865680d6a21bbaf0603bc501aedffb112f8b5e4b32c1fdddba6d36370c1f",
+  "generationCostUSD": null,
+  "ownerAcceptance": "Okay keep going",
+  "station": "Production renderer30 captures/0 failures through draw/weld/stow; scratch asserted; real profile unchanged",
+  "validationRepair": "Initial shared renderer declaration-order parse error corrected by moving class_name before EnvironmentArt constant; preserves parallel environment work. Initial timeout interval real profile changes only Godot logs; reruns unchanged."
+}

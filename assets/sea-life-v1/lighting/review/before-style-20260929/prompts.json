@@ -1,0 +1,16 @@
+{
+  "caustics": {
+    "tool": "built-in image_gen",
+    "prompt": "Game texture, BrineSpace underwater caustics: a seamless square greyscale caustic ripple map, fine irregular interlocking refracted water-light veins with quiet dark gaps, subtle hand-painted fine pixel-scale dithered edges, restrained matte finish. White luminance on black, no color, no objects, no text, no border, no vignette, uniform density across entire square, perfectly repeating opposite edges. Broad gently curved cells with smaller fragmented threads, no sharp vector lines or glossy photographic highlights. Intended to be reduced to 512x512 and gently added to deep teal water.",
+    "source": "sources/caustics-generated.png",
+    "bake": "512px luminance, separable sin-squared half-period blending, matched opposite texels, contrast exponent 1.55"
+  },
+  "native_shapes": {
+    "tool": "deterministic Python/NumPy bake extending existing procedural art",
+    "lamp": "Original RoomLighting 64px squared radial profile and Bayer threshold expanded 2x. Warm/cool identical luminance; runtime tint controls color.",
+    "wide": "Squared elliptical falloff radii 62x27, seven alpha bands with 4x4 Bayer thresholds. Review-only.",
+    "shafts": "Three diagonal Gaussian beam profiles with sine-squared end fades, fine dim sinusoidal threads and 24 alpha bands. Review-only.",
+    "bubbles": "Four registered 32px thin rims with northwest white highlight, radius 12, slightly varied rim widths; rim alpha .84 times runtime .5 gives original .42 fade.",
+    "beacon": "Squared radial base plus positive-X Gaussian lobe, transparent circular extent; existing red tint, radius, quarter-turn rate and orbit."
+  }
+}

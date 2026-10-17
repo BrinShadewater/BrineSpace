@@ -1,5 +1,13 @@
 # Underwater animation and equipment workflow
 
+## Current shared human helmets
+
+For Bill, Veld and James shared-shell fit and colour continuity, read
+[crew consistency](crew-consistency.md). Use the selected directional head/shell,
+track collar through leaning motion, inspect alpha seams, and preserve individual
+faces inside the common matte graphite/silver/glass design. The September 29 actor
+handoffs distinguish installed equipment from retained and staged action coverage.
+
 Use for requested swimming, death or wearable extensions. Preserve the user's full
 scope; these requirements do not apply to an unrelated concept-only task.
 
@@ -370,3 +378,164 @@ separate opposite builder is included in canonical rebuild and all76
 turn frames are reproduction-tested. All twelve directed swimming turns
 are required in the native handoff test. Composition is derived motion,
 not new authored art or owner visual acceptance.
+
+
+### Water-family promotion - September 30, 2026
+Audit selected full-density water frames rather than legacy pilot fittings. A
+master-matching treading head alone does not repair start/stop/swim continuity.
+Stage the coherent family until required joins match, then update actual selected
+clearance and verify runtime loads. Native upright master components may fit
+upright treading at unchanged scale; pitched/foreshortened swimmers need separate
+camera and collar decisions. Keep body material drift explicitly open when only
+head identity has been repaired; inventory counts do not certify motion quality.
+
+
+### Axial swim head camera - September 30, 2026
+For prone swimming toward the camera, explicitly place rear collar upscreen,
+crown dominant and visor as lower crescent; a smaller front portrait still has
+wrong pitch. Preserve a rejected candidate and state the camera defect. Exact
+side components can be rotated at measured per-pose face anchors; overhead views
+may need generated source artwork. Calibrate fixed head width against equipped
+masters, grade source once and preserve source foreground limbs. Retain complete
+manifest metadata when writing supplemental packs, including canvas dimensions,
+precomposition, water flags and stride. Local fit/packaging checks do not prove
+full water-family joins or motion quality.
+
+
+### Water transition anatomy - September 30, 2026
+Check full start/stop body silhouettes as well as endpoint pixels: inherited middle
+poses can enlarge the head and torso despite exact joins. Repair body source when
+that happens; a helmet graft cannot fix anatomy. Calibrate one source anatomy
+scale, register at named head/shoulder anchors and preserve exact loop endpoints.
+Generated atlas bodies can overlap equal-cell bounding boxes while remaining
+separate alpha components; use inspected connected bodies for extraction rather
+than blindly equal-width cuts. Keep source-wide grade and independent opposite
+views. Functional join checks do not establish body-grade or motion acceptance.
+
+
+### Protect completed heads during cloth grading - September 30, 2026
+When water bodies retain an older blue-green material cast, derive one source-family
+cloth correction against selected directional masters and apply it from immutable
+inputs. Protect exact head/component support as well as changed pixel masks:
+coincidentally equal body/head colors do not establish material ownership. Preserve
+alpha, non-cloth accents and independently completed grade on new source interiors;
+replace transition endpoints from corrected loops to retain exact joins. Native
+candidate loading proves playback/metadata, not installed selection or full identity.
+Godot load_manifest returns void and defaults to replacement; supplementary native
+fixtures must append explicitly and inspect loaded states. Save diagnostics and
+profile fingerprints even on fixture timeout/failure.
+
+
+### Directional water transition source authority - September 30, 2026
+Inspect original opposite-view body master before drawing: west Veld exposes the
+scanner where east exposes cylinders. Referencing only a looping pose can retain
+old equipment or lose details; use independent full-body construction plus registered
+motion endpoints. A generated atlas's requested virtual scale remains a hypothesis:
+record fixed fitted scale and inspect physical head/shoulder rulers and silhouette
+bounds without normalizing projected pose height. Save new axial sources as pending
+until camera/pitch and anatomy are fitted. Expand native review canvases with added
+state rows; green playback checks can coexist with a clipped review screenshot.
+
+### Axial transition source scale audit — September 30, 2026
+Do not transfer a side-atlas extraction scale to an independently generated axial
+atlas without physical rulers. A fixed-scale contact bracketed by exact directional
+loop endpoints exposed oversized head/shoulder mass in both Veld axial sources.
+Center silhouettes only for anatomy diagnostics; motion acceptance needs named
+landmarks and world-pivot registration. Compare upright and prone helmet components
+before authoring intermediates: preserve shell construction while changing pitch.
+Keep raw source, pending status and camera defects separate from staged clip counts.
+
+### Master authority versus old water endpoints — September 30, 2026
+An exact join to an inherited loop can preserve a wrong body. Veld north source
+fitting exposed different rear armor and projected proportions in the older swim
+body despite previously corrected cloth/head fits. Compare old endpoint and new
+source directly with selected dry and original construction masters. If the old
+body remains unproven, rebuild the loop and transition as a coherent family rather
+than distort new source anatomy solely to meet it. Keep preview manifests outside
+candidate-selection counts until motion is repaired. Record source-specific ruler
+hypotheses and native head XY calibration; dimension checks are not motion proof.
+
+### Coherent axial water body family — September 30, 2026
+Repair tread/swim/start/stop together when their inherited rear armor/proportions
+have drifted. Veld north uses independent six-pose loop sources, fixed physical
+head-ruler calibration per atlas, named world head anchors and one combined cloth/
+patch curve. Replace transition joins with exact new loop endpoints; reverse stop
+is derived. Compare native anatomical scales, not equal canvas heights. Retain
+foreground gloves where they cross fitted shell support. Explicit candidate loaders
+must stage older body/equipment together before a differently-sized paired override:
+load_equipment_manifest validates against the currently loaded body canvas. Classify
+combined helmet manifests explicitly, skip shadowed old states in assertions/counts,
+and preserve failed-run logs/profile evidence before rerunning a repaired fixture.
+
+### South overhead body and shell source fitting — September 30, 2026
+South prone source must keep rear collar upscreen and face as a lower crescent for
+ALL stroke phases. A visible hair silhouette changes when crown/bun is exposed;
+calibrate head together with shoulder/hip rulers, not a north/upright hair-width
+constant. Preserve isolated dense source crops, exact generation refs/prompts and
+trial status. Width-correct helmet sources can still miss endpoint height/camera:
+Veld35px trial heads were5px shorter than masters. Record that gap and review
+collar/crown fitting with body rather than presenting dimension checks as completion.
+
+### Near-prone collar ownership and body anchor trials — September 30, 2026
+A width/height-correct source may still put the neck gasket on the wrong side of
+an overhead face. Revised Veld south pitch matched native dimensions within1px,
+but last source retained a front buckle below chin; exact prone master places rear
+collar upscreen. Reuse canonical prone component for near-prone final interior when
+camera already approaches it, and record derived reuse rather than claim a new
+angle. Review visible face/collar landmarks, not just silhouette counts. Register
+south bare swimmer at a measured face-bottom anchor, pair it with physical shoulder/
+hip rulers, and preserve provisional body fits outside selected manifests until
+paired occlusion, material grade, exact joins and native playback are verified.
+
+### Facial anchors and material ownership — September 30, 2026
+Warm boot metal can satisfy skin RGB thresholds. Veld south's first composite put
+helmets down the body while border/protected-body checks passed; visual review
+caught it. Use connected face support for geometric anchors AND face grading, not
+all warm pixels. Keep cyan scanner/chest lamps separate from blue patch correction;
+RGB mask overlap can silently dim equipment. Source/camera/identity review is a
+separate gate from native loaded pixels/clocks. Rerun native checks when material
+ownership changes exported pixels; keep prior evidence scoped to prior revision.
+North's earlier broad blue selector remains an explicit cross-family audit item.
+
+### Veld coherent side water source fitting — September30,2026
+Replace inherited side bodies when face/hair/outfit construction differs from
+master, rather than adding whole-sprite exposure fixes. Pair independent tread,
+prone and pitch sources against original directional master; source references
+must preserve visible hip equipment ownership. One fixed scale per atlas from
+selected face ruler (east17px) is a hypothesis verified with torso/hip/camera
+boards, not a per-pose face resize or automatic anatomy acceptance. Head support
+must be excluded from neutral cloth/blue patch masks so brown hair and silver
+streak are not accidentally graded; skin still gets its connected face curve.
+Derive starts/stops from new exact loop endpoints; never join coherent new bodies
+to inherited incompatible loops. Review pitch progression and cadence separately
+from exact joins and native API coverage. Preserve original source/prompt/hash.
+
+### West water ruler and clean evidence — September30,2026
+Use each selected direction's measured face ruler: Veld west16px, east17px.
+Calibrate one scale per atlas, then inspect torso/hip/limb proportions and camera;
+matching a face ruler does not prove all anatomy. Independent west sources keep
+nearhip scanner and partially hidden farhip cylinders; do not mirror east bodies.
+Verify alpha and pixels outside all explicit grade masks before resampling.
+Paired browser previews need one shared clock and original duration ratios;
+independently loaded GIFs can show different phases and obscure head/body fit.
+A Godot exit0 and all candidate assertions can coexist with engine parse errors.
+Parse complete logs for SCRIPT ERROR/ERROR and reject such runs as clean native
+integration. Preserve failed evidence, isolate the first failing dependency,
+repair a clear syntax defect narrowly, and rerun only the affected gate with
+scratch APPDATA/profile fingerprints. Never claim world/owner acceptance from
+candidate texture/clock checks alone.
+
+### Selected water installation and scoped route evidence — September30,2026
+
+For partial water replacement, measure alpha-qualified bounds at the actual
+renderer scale and declared pivot, union new swim/tread/start-stop geometry with
+old conservative envelopes until retained turn art is also replaced. Leave other
+action/life bounds intact. Verify normal-loader pixels, per-frame containment,
+actual collision probes and furnished graph routes separately. Veld32states192refs
+passed1338 installed checks and8 direction/profile routes; this does not establish
+exterior/traffic/flood simulation or owner acceptance. Record reused clean cases
+and why the changed fixture cannot affect their route assertions. Reject engine
+errors even when route assertions and process exit pass. On fixture shutdown,
+disable processors before stop_audio clears streams, then drain playback as the
+normal shutdown does; do not suppress Ogg leaks or null-stream errors. Preserve
+failed evidence and isolate every Godot invocation from real owner profiles.

@@ -1,0 +1,240 @@
+{
+  "direction": "north",
+  "source": "character/marsh-seated-match-v1/sources/north-sheet-01.png",
+  "sourceSha256": "869edb57b301c20382e5be5c742cf4dcce3b114c776df3b6bf71fc779260ed51",
+  "fixedScale": 0.4207492795389049,
+  "poses": [
+    {
+      "pose": 0,
+      "sourceBox": [
+        155,
+        67,
+        289,
+        414
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 66.0,
+      "sourceSole": 347,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        65,
+        25
+      ],
+      "bounds": [
+        65,
+        25,
+        121,
+        171
+      ]
+    },
+    {
+      "pose": 1,
+      "sourceBox": [
+        596,
+        102,
+        736,
+        414
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 69.5,
+      "sourceSole": 312,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        63,
+        40
+      ],
+      "bounds": [
+        63,
+        40,
+        122,
+        171
+      ]
+    },
+    {
+      "pose": 2,
+      "sourceBox": [
+        1040,
+        138,
+        1177,
+        414
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 68.5,
+      "sourceSole": 276,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        64,
+        55
+      ],
+      "bounds": [
+        64,
+        55,
+        122,
+        171
+      ]
+    },
+    {
+      "pose": 3,
+      "sourceBox": [
+        1484,
+        141,
+        1621,
+        414
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 69.0,
+      "sourceSole": 273,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        63,
+        56
+      ],
+      "bounds": [
+        63,
+        56,
+        121,
+        171
+      ]
+    },
+    {
+      "pose": 4,
+      "sourceBox": [
+        153,
+        554,
+        291,
+        820
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 68.5,
+      "sourceSole": 266,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        64,
+        59
+      ],
+      "bounds": [
+        64,
+        59,
+        122,
+        171
+      ]
+    },
+    {
+      "pose": 5,
+      "sourceBox": [
+        598,
+        552,
+        736,
+        820
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 67.5,
+      "sourceSole": 268,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        64,
+        58
+      ],
+      "bounds": [
+        64,
+        58,
+        122,
+        171
+      ]
+    },
+    {
+      "pose": 6,
+      "sourceBox": [
+        1040,
+        550,
+        1178,
+        820
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 68.5,
+      "sourceSole": 270,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        64,
+        57
+      ],
+      "bounds": [
+        64,
+        57,
+        122,
+        171
+      ]
+    },
+    {
+      "pose": 7,
+      "sourceBox": [
+        1485,
+        553,
+        1622,
+        820
+      ],
+      "scale": 0.4207492795389049,
+      "footCenter": 67.5,
+      "sourceSole": 267,
+      "targetSupport": [
+        92.5,
+        171
+      ],
+      "position": [
+        64,
+        59
+      ],
+      "bounds": [
+        64,
+        59,
+        122,
+        171
+      ]
+    }
+  ],
+  "registration": "Boot center/sole at active idle support; fixed body scale throughout sitting and reading",
+  "derivation": {
+    "sit-down": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sit-idle": [
+      3,
+      4
+    ],
+    "read-seated": [
+      5,
+      6,
+      7
+    ],
+    "sit-rise": [
+      3,
+      2,
+      1,
+      0
+    ]
+  }
+}

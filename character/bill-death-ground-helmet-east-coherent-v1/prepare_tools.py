@@ -1,0 +1,18 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;ROOT=P.parents[1];B=P.parent/'bill-death-ground-east-coherent-v1'
+s=(B/'index.html').read_text(encoding='utf-8').replace('south','east').replace('ground collapse','helmet ground collapse').replace('Authored bareheaded candidate','Canonical helmet candidate').replace('equipped version or ','')
+(P/'index.html').write_text(s,encoding='utf-8')
+s=(ROOT/'tests/test_bill_death_ground_east_candidates.gd').read_text(encoding='utf-8').replace('bill-death-ground-east-coherent-v1','bill-death-ground-helmet-east-coherent-v1').replace('BILL DEATH GROUND EAST','BILL DEATH GROUND HELMET EAST')
+s=s.replace('player.equipment_frames["diving-helmet"]["death-ground-east"]','player.frames["death-ground-east"]')
+s=s.replace('var row: Array=player.frames[state.id]','var row: Array=player.equipment_frames["diving-helmet"][state.id]')
+s=s.replace('player.load_manifest(PACK,true)','player.load_equipment_manifest("diving-helmet",PACK)')
+s=s.replace('var prior: Array=', 'player.load_manifest("res://character/bill-death-ground-east-coherent-v1/manifest.json",true)\n\tvar prior: Array=')
+s=s.replace('player.load_equipment_manifest("diving-helmet",PACK);','check(player.load_equipment_manifest("diving-helmet",PACK),"Compatible paired equipment loaded");if failures:quit(2);return\n\t')
+s=s.replace('player.equipment_frames["diving-helmet"][state.id]==prior,"Bare candidate preserves selected equipment"','player.frames[state.id]==prior,"Helmet candidate preserves selected bare artwork"')
+s=s.replace('Helmet candidate preserves selected bare artwork','Helmet candidate preserves paired bare candidate')
+s=s.replace('frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000)','frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000,"diving-helmet")').replace('frame_at_elapsed(state.id,2)','frame_at_elapsed(state.id,2,"diving-helmet")').replace('frame_at_elapsed(state.id,99)','frame_at_elapsed(state.id,99,"diving-helmet")')
+s=s.replace('res://character/bill-seated-east-coherent-v1/frames/sit-down-east/000.png','res://character/bill-seated-helmet-east-coherent-v1/frames/sit-down-east/000.png').replace('bill-death-ground-east-candidate-native-v1','bill-death-ground-helmet-east-candidate-native-v1')
+(ROOT/'tests/test_bill_death_ground_helmet_east_candidates.gd').write_text(s,encoding='utf-8')
+(ROOT/'tests/test_bill_death_ground_helmet_east_candidates.gd.uid').write_text('uid://p8b8w3m6p2r9v\n',encoding='utf-8')
+s=(ROOT/'tools/run_bill_death_ground_east_candidate_validation.py').read_text(encoding='utf-8').replace('bill-death-ground-east-candidate-native-v1','bill-death-ground-helmet-east-candidate-native-v1').replace('test_bill_death_ground_east_candidates.gd','test_bill_death_ground_helmet_east_candidates.gd').replace('BILL DEATH GROUND EAST','BILL DEATH GROUND HELMET EAST').replace('eating candidate','helmet ground-collapse candidate')
+(ROOT/'tools/run_bill_death_ground_helmet_east_candidate_validation.py').write_text(s,encoding='utf-8')

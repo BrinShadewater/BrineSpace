@@ -1,0 +1,255 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/entry-v1.png",
+      "count": 6,
+      "heads": [
+        [
+          385,
+          14
+        ],
+        [
+          768,
+          14
+        ],
+        [
+          1154,
+          14
+        ],
+        [
+          385,
+          526
+        ],
+        [
+          768,
+          526
+        ],
+        [
+          1153,
+          526
+        ]
+      ],
+      "fixedRuler": [
+        0.29,
+        0.31224
+      ],
+      "density": 1.02,
+      "generation": "exec-94b7d0bd-4e3b-4d2a-8732-e211c1e650a6",
+      "sourceHeights": [
+        474,
+        474,
+        474,
+        468,
+        468,
+        468
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      5
+    ]
+  ],
+  "excludedPrimaryPoses": [
+    0,
+    4
+  ],
+  "excludedReason": "Exact selected idle replaces source0; source4 has an unwanted glove at right rear waist/backpack. Reader/gloves naturally occluded in front during held poses; four clean authored arm poses retain a single source ruler.",
+  "sourcesSha256": {
+    "primary": "3207ecd6f8e1935f9c8e06e53455abf32eed170e5c9a76ffb121b2ce6a891f59"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        644,
+        11,
+        884,
+        491
+      ],
+      "fixedRuler": [
+        0.29,
+        0.31224
+      ],
+      "position": [
+        90,
+        75
+      ],
+      "headAxis": [
+        126,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1042,
+        11,
+        1265,
+        491
+      ],
+      "fixedRuler": [
+        0.29,
+        0.31224
+      ],
+      "position": [
+        94,
+        75
+      ],
+      "headAxis": [
+        126,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        274,
+        523,
+        498,
+        997
+      ],
+      "fixedRuler": [
+        0.29,
+        0.31224
+      ],
+      "position": [
+        95,
+        77
+      ],
+      "headAxis": [
+        127,
+        78
+      ],
+      "protectedBodyFromY": 109,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 5,
+      "sourceBox": [
+        1040,
+        523,
+        1267,
+        997
+      ],
+      "fixedRuler": [
+        0.29,
+        0.31224
+      ],
+      "position": [
+        94,
+        77
+      ],
+      "headAxis": [
+        127,
+        78
+      ],
+      "protectedBodyFromY": 109,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        0.0,
+        3.0,
+        34.666666666666664,
+        59.666666666666664,
+        81.0,
+        94.33333333333333,
+        114.33333333333333,
+        197.33333333333334,
+        255.0
+      ],
+      "neutralOutput": [
+        0.0,
+        10.333333333333334,
+        19.0,
+        35.0,
+        43.666666666666664,
+        53.0,
+        60.333333333333336,
+        88.66666666666667,
+        119.33333333333333,
+        174.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          0.9014084507042254,
+          1.0714285714285714,
+          1.09375
+        ],
+        "burgundy": [
+          0.8992805755395683,
+          0.8642857142857143,
+          0.8676470588235294
+        ]
+      }
+    }
+  },
+  "donors": {
+    "bare": [
+      {
+        "path": "bill-seated-north-coherent-v1/frames/sit-down-north/000.png",
+        "sha256": "c7025ef5cbd66c43bc58590e2e5222b49c6f7b81b7e322dd7f15c65d0b8f61aa"
+      },
+      {
+        "path": "bill-inspect-north-coherent-v1/frames/bare/000.png",
+        "sha256": "f5545331b4753d1cedd9e1d958ee79582b66b2e15123ff87e4ab4ef21b90c8d5"
+      }
+    ],
+    "helmet": [
+      {
+        "path": "bill-seated-helmet-north-coherent-v1/frames/sit-down-north/000.png",
+        "sha256": "5886d7b0720cae3e08a83497e1e05d910f548cdb16e9fa6cdcb86e0524f2987c"
+      },
+      {
+        "path": "bill-inspect-north-coherent-v1/frames/helmet/000.png",
+        "sha256": "be29918ae77f5025fca789dd97f0844070aeec2824e01bf2484a9bf803ce9e53"
+      }
+    ]
+  },
+  "helmetComponent": {
+    "path": "bill-seated-helmet-north-coherent-v1/sources/canonical-head.png",
+    "sha256": "9e67ebe38ed54f0f2ee185de82d8030807264a44d93e33764d1e5b4a30021f10"
+  },
+  "scope": "authored standing reader draw/reversed stow; exact idle/held joins; actor selection/wiring pending"
+}

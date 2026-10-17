@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Survey Probe Bay · four-wall motion study</title><style>
+*{box-sizing:border-box}body{margin:0;background:#171e22;color:#dee5e5;font:15px system-ui}main{max-width:1100px;margin:30px auto;padding:0 24px}h1{font-size:27px;margin-bottom:6px}p{color:#9cacae;line-height:1.5}.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:22px 0}button,select{background:#303e44;color:#eef4f4;border:1px solid #5b7074;padding:9px 16px;border-radius:5px}input{flex:1;min-width:180px;accent-color:#76a7ad}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}article{background:#222c31;border:1px solid #405158;border-radius:9px;overflow:hidden}h2{font-size:15px;margin:16px 20px 0;display:flex;justify-content:space-between}h2 span{font-weight:400;color:#97b5b7}canvas{width:100%;display:block}small{display:block;color:#8d9d9f;margin:20px 0}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style></head><body><main><h1>Survey Probe Bay</h1><p>Four-wall launch and recovery study · fixed elevated camera · charcoal and muted cyan</p>
+<div class="controls"><button id="play">Pause</button><button id="reset">Restart loaded</button><select id="speed"><option value=".5">Half speed</option><option value="1" selected>Normal speed</option><option value="2">Double speed</option></select><input id="scrub" aria-label="Cycle position" type="range" min="0" max="13" step=".01" value="0"><output id="time"></output></div>
+<label>Probe status <select id="status"><option value="auto">Automatic: docked / operational</option><option value="blue">Blue · operational</option><option value="red">Red · stopped</option><option value="yellow">Yellow · charging / low power</option></select></label>
+<p>Yellow launcher beacon · blinking probe status: blue operational, red stopped, yellow charging / low power.</p>
+<div class="grid"></div><small>Loaded → launch → empty cradle → return → loaded. Probe reverses into its cradle on recovery. Motion study only; wall line indicates concealed tube passage. Hatch mechanics and in-game scale remain separate work.</small></main>
+<script>
+const dirs=['north','east','south','west'];const grid=document.querySelector('.grid');
+dirs.forEach(d=>grid.insertAdjacentHTML('beforeend','<article><h2>'+d[0].toUpperCase()+d.slice(1)+' wall <span id="'+d+'-state"></span></h2><canvas id="'+d+'" width="480" height="380"></canvas></article>'));
+let config,art={},t=0,running=true,speed=1,last=0,ready=false;
+const ease=x=>x*x*(3-2*x);
+function lamp(ctx,x,y,color,power,beacon=false){
+ ctx.save();ctx.translate(x,y);
+ ctx.fillStyle='#151c20';ctx.strokeStyle='#687477';ctx.lineWidth=1;
+ ctx.beginPath();ctx.ellipse(0,1,beacon?7:4.5,beacon?5:3.5,0,0,Math.PI*2);ctx.fill();ctx.stroke();
+ ctx.fillStyle=color;ctx.globalAlpha=.23+.77*power;
+ ctx.beginPath();ctx.ellipse(0,-1,beacon?4.5:2.7,beacon?4:2.2,0,0,Math.PI*2);ctx.fill();
+ if(beacon){ctx.globalAlpha=1;ctx.strokeStyle='#41494a';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-2,-5);ctx.lineTo(-2,3);ctx.moveTo(2,-5);ctx.lineTo(2,3);ctx.stroke();}
+ ctx.restore();
+}
+function launchBeacon(ctx,x,y,time){
+ const active=time>=.4&&time<2;
+ ctx.save();ctx.translate(x,y);
+ ctx.fillStyle='#182024';ctx.strokeStyle='#778084';ctx.lineWidth=1;
+ ctx.beginPath();ctx.ellipse(0,1,9,7,0,0,Math.PI*2);ctx.fill();ctx.stroke();
+ ctx.fillStyle=active?'#80652b':'#403b2c';
+ ctx.beginPath();ctx.arc(0,-1,6,0,Math.PI*2);ctx.fill();
+ if(active){
+  const angle=(time-.4)/.8*Math.PI*2;
+  ctx.strokeStyle='#e7b943';ctx.lineWidth=3;
+  ctx.beginPath();ctx.arc(0,-1,4.2,angle,angle+Math.PI*.72);ctx.stroke();
+  ctx.fillStyle='#ffe39a';ctx.beginPath();ctx.arc(Math.cos(angle+Math.PI*.72)*4.2,-1+Math.sin(angle+Math.PI*.72)*4.2,1.6,0,Math.PI*2);ctx.fill();
+ }
+ ctx.fillStyle=active?'#c29138':'#625032';ctx.beginPath();ctx.arc(0,-1,2,0,Math.PI*2);ctx.fill();
+ ctx.restore();
+}
+function phase(time){let t=((time%13)+13)%13; if(t<2)return {p:0,state:'Loaded'};if(t<4.5)return {p:ease((t-2)/2.5),state:'Launching'};if(t<8)return {p:1,state:'Empty'};if(t<11)return {p:1-ease((t-8)/3),state:'Returning'};return {p:0,state:'Loaded'};}
+function draw(d,time){
+ const canvas=document.getElementById(d),ctx=canvas.getContext('2d');const c=config.directions[d],a=art[d],s=.65,ps=.43;const ph=phase(time);
+ const vx=d==='east'?1:d==='west'?-1:0,vy=d==='south'?1:d==='north'?-1:0;
+ const plane=d==='north'?139:d==='south'?308:d==='east'?381:105;
+ ctx.clearRect(0,0,480,380);ctx.fillStyle='#29343a';ctx.fillRect(0,0,480,380);
+ ctx.fillStyle='#1e2a31';
+ if(d==='north')ctx.fillRect(0,0,480,plane);if(d==='south')ctx.fillRect(0,plane,480,380-plane);if(d==='east')ctx.fillRect(plane,0,480-plane,380);if(d==='west')ctx.fillRect(0,0,plane,380);
+ ctx.strokeStyle='#53656b';ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.beginPath();
+ if(vx){ctx.moveTo(plane,0);ctx.lineTo(plane,380)}else{ctx.moveTo(0,plane);ctx.lineTo(480,plane)}ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='#859a9f';ctx.font='11px system-ui';ctx.fillText('EXTERIOR',vx===1?393:18,vy===1?359:28);
+ ctx.drawImage(a.launcher,240-c.anchor[0]*s,220-c.anchor[1]*s,a.launcher.width*s,a.launcher.height*s);
+ const lightTime=((time%13)+13)%13;
+ const beaconPositions={north:[311,110],east:[400,251],south:[312,284],west:[100,247]};
+ launchBeacon(ctx,...beaconPositions[d],lightTime);
+ ctx.save();ctx.beginPath();
+ const mouth=d==='south'?278:plane;
+ if(d==='north')ctx.rect(0,mouth,480,380-mouth);if(d==='south')ctx.rect(0,0,480,mouth);if(d==='east')ctx.rect(0,0,mouth,380);if(d==='west')ctx.rect(mouth,0,480-mouth,380);
+ ctx.clip();
+ const distance=Math.abs(mouth-(vx?240:220))+(vx?a.probe.width:a.probe.height)*ps/2+12;
+ const x=240+vx*ph.p*distance,y=220+vy*ph.p*distance;
+ ctx.drawImage(a.probe,x-a.probe.width*ps/2,y-a.probe.height*ps/2,a.probe.width*ps,a.probe.height*ps);
+ const choice=document.getElementById('status').value;
+ const status=choice==='auto'?(ph.state==='Loaded'?'yellow':'blue'):choice;
+ const colors={blue:'#60b4e2',red:'#d9665b',yellow:'#e6b84d'};
+ const blink=.5+.5*Math.cos(lightTime/13*13*Math.PI*2);
+ const offsets={north:[0,-9],east:[9,-13],south:[0,-9],west:[-9,-13]};
+ lamp(ctx,x+offsets[d][0],y+offsets[d][1],colors[status],blink);
+ ctx.restore();document.getElementById(d+'-state').textContent=lightTime>=.4&&lightTime<2?'Preparing to launch':ph.state;
+}
+window.renderAt=time=>{t=time;dirs.forEach(d=>draw(d,time));document.getElementById('scrub').value=time%13;document.getElementById('time').value=(time%13).toFixed(1)+' / 13 s';};
+window.previewState=()=>({ready,time:t,running,phase:phase(t),directions:dirs});
+async function init(){config=await(await fetch('manifest.json')).json();await Promise.all(dirs.map(async d=>{art[d]={};await Promise.all(['launcher','probe'].map(role=>new Promise((resolve,reject)=>{let im=new Image;im.onload=()=>{art[d][role]=im;resolve()};im.onerror=reject;im.src=d+'-'+role+'.png'})))}));ready=true;renderAt(0);requestAnimationFrame(tick);}
+function tick(now){if(last&&running)renderAt((t+(now-last)/1000*speed)%13);last=now;requestAnimationFrame(tick)}
+document.getElementById('play').onclick=()=>{running=!running;document.getElementById('play').textContent=running?'Pause':'Play'};
+document.getElementById('reset').onclick=()=>renderAt(0);
+document.getElementById('speed').onchange=e=>speed=+e.target.value;
+document.getElementById('status').onchange=()=>renderAt(t);
+document.getElementById('scrub').oninput=e=>{running=false;document.getElementById('play').textContent='Play';renderAt(+e.target.value)};
+init();
+</script></body></html>

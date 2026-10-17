@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "title": "Seabed replacement pilot",
+  "assets": [
+    {
+      "id": "basalt-outcrop",
+      "kind": "prop",
+      "selected_source": "runtime/basalt-outcrop.png",
+      "versions": [
+        {
+          "file": "basalt-outcrop-v1.png",
+          "sha256": "e57cae1f50c38eaa7b89c58e5569ff87ae7ab92b1efdd30842b96b2f5d52e3c6",
+          "rejection": "exterior halo; superseded by v2"
+        },
+        {
+          "file": "basalt-outcrop-v2.png",
+          "sha256": "b383c7aa541df71673266e760a7ea8a75e8fe33ab790aea984bec6aa71cadaf8",
+          "rejection": null
+        },
+        {
+          "file": "runtime/basalt-outcrop.png",
+          "sha256": "d10dfb3d6659534cb8bef5346199f44b8e10332551b93b5d4936632482de7375",
+          "rejection": null
+        },
+        {
+          "file": "review/basalt-pale-v2.png",
+          "sha256": "7dedb81aa030d19594430f8c03356f9f32fb542b1abb55edcb8d7b35f5b1ec3a",
+          "rejection": "review evidence only"
+        },
+        {
+          "file": "review/native-station-v1.png",
+          "sha256": "dd3b761f5a0a5d59a929d9a8ba9da9dd5db935cd3e664d3c5d019c54ec523390",
+          "rejection": "review evidence only"
+        },
+        {
+          "file": "review/native-density-v1.png",
+          "sha256": "a293dddde17a598139158ada2ca6a7bb79bb4e8d29e4da415695f8bb9845fe85",
+          "rejection": "review evidence only"
+        },
+        {
+          "file": "review/native-density-v2.png",
+          "sha256": "686283ba011d68b65e1c9dfb4f81363f002ec1ad96dcbf1c4aff379a051f5cd8",
+          "rejection": null,
+          "role": "native density evidence"
+        }
+      ],
+      "stage": "integrated locally; native density and station review complete; owner approval and packaged review pending"
+    },
+    {
+      "id": "wreck-timbers",
+      "kind": "prop",
+      "selected_source": "runtime/wreck-timbers.png",
+      "versions": [
+        {
+          "file": "wreck-timbers-v1.png",
+          "sha256": "feab473979aadabd9f23700566faa2d06b7f4135e4f3e5416593650da0faaf63",
+          "rejection": null
+        },
+        {
+          "file": "runtime/wreck-timbers.png",
+          "sha256": "0ba47d62fdedf866063e16904a4defeb6329cb5a6de85f9aaad8e419dc22f15b",
+          "rejection": null
+        }
+      ],
+      "stage": "integrated locally; native density and station review complete; owner approval and packaged review pending"
+    },
+    {
+      "id": "ribbon-kelp",
+      "kind": "prop",
+      "selected_source": "runtime/ribbon-kelp.png",
+      "versions": [
+        {
+          "file": "ribbon-kelp-v1.png",
+          "sha256": "b1acbbd4c1ffef5cd10139f10f51475d15ecf54a681e8f5826265899b4980323",
+          "rejection": null
+        },
+        {
+          "file": "runtime/ribbon-kelp.png",
+          "sha256": "4ce17c2de18e6dd78778f1476b0d611bc4e34ab267873a466b68e3b3f90e54f7",
+          "rejection": null
+        }
+      ],
+      "stage": "integrated locally; native density and station review complete; owner approval and packaged review pending"
+    }
+  ],
+  "prompt_records": [
+    "prompts.json"
+  ],
+  "bake": "bake.py",
+  "native_previews": [
+    {
+      "path": "review/native-density-v2.png",
+      "label": "Source/runtime tint on pale/dark seabed; 95px rocks/timber,120px kelp; nearest sampling"
+    },
+    {
+      "path": "review/native-station-v1.png",
+      "label": "1600x900 production lighting/fog; 0.35 zoom; decorative art fixture"
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "method": "Whole generated bodies; explicit cell extraction, one uniform density per direction, head registration, alpha threshold, exact unchanged registered slot 0. No arm cutouts, mirroring, retiming of total cycle, or pose stretching.",
+  "frames": {
+    "swim-east": {
+      "source": "character/marsh-swim-stroke-v1/sources/east-01.png",
+      "sourceSha256": "4f5f16015add7cc63da4d4c6036d301b1635395375fa5e4855a75278cc1f15fc",
+      "anchor": "character/marsh-master-repair-v1/frames/swim-east/000.png",
+      "anchorSha256": "b12510473d47eefb15453510f0d0e9c594c1effd723747e86ea0bbd4705f4337",
+      "targetHead": [
+        123.0,
+        125.0
+      ],
+      "registration": [
+        {
+          "cell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourcePose": 4,
+          "headBox": [
+            306,
+            121,
+            382,
+            197
+          ],
+          "offset": [
+            1,
+            69
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourcePose": 5,
+          "headBox": [
+            300,
+            121,
+            374,
+            190
+          ],
+          "offset": [
+            3,
+            70
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourcePose": 1,
+          "headBox": [
+            296,
+            185,
+            370,
+            265
+          ],
+          "offset": [
+            5,
+            45
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourcePose": 3,
+          "headBox": [
+            327,
+            120,
+            403,
+            201
+          ],
+          "offset": [
+            -7,
+            68
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourcePose": 2,
+          "headBox": [
+            293,
+            185,
+            368,
+            264
+          ],
+          "offset": [
+            6,
+            45
+          ],
+          "density": 0.355
+        }
+      ]
+    },
+    "swim-west": {
+      "source": "character/marsh-swim-stroke-v1/sources/west-01.png",
+      "sourceSha256": "7621c76608b1ef8f75bc523f916279885494191495ad7340948796aeebb4c0fb",
+      "anchor": "character/marsh-master-repair-v1/frames/swim-west/000.png",
+      "anchorSha256": "c6557235181e267e8599e20783d08008ffc704025f88b6f3beca1c36f38f4390",
+      "targetHead": [
+        62.5,
+        127.0
+      ],
+      "registration": [
+        {
+          "cell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourcePose": 1,
+          "headBox": [
+            123,
+            210,
+            199,
+            289
+          ],
+          "offset": [
+            5,
+            38
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourcePose": 2,
+          "headBox": [
+            111,
+            211,
+            185,
+            277
+          ],
+          "offset": [
+            10,
+            40
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourcePose": 3,
+          "headBox": [
+            121,
+            145,
+            198,
+            224
+          ],
+          "offset": [
+            6,
+            62
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourcePose": 4,
+          "headBox": [
+            121,
+            144,
+            199,
+            224
+          ],
+          "offset": [
+            6,
+            62
+          ],
+          "density": 0.355
+        },
+        {
+          "cell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourcePose": 5,
+          "headBox": [
+            111,
+            145,
+            186,
+            223
+          ],
+          "offset": [
+            10,
+            62
+          ],
+          "density": 0.355
+        }
+      ]
+    },
+    "swim-north": {
+      "source": "character/marsh-swim-stroke-v1/sources/north-02.png",
+      "sourceSha256": "4ca5d44ebd7a527c92a10a7130cbc274b1a12095b6d8f8d028082a46390f2510",
+      "anchor": "character/marsh-swim-joins-v1/swim-north-000.png",
+      "anchorSha256": "9d038cdb7627b34701da7f7cd2e35b2f6477a92639c52817c26e88ff66dee8e0",
+      "targetHead": [
+        90.0,
+        104.0
+      ],
+      "registration": [
+        {
+          "cell": [
+            512,
+            0,
+            1024,
+            512
+          ],
+          "sourcePose": 1,
+          "headBox": [
+            209,
+            125,
+            309,
+            197
+          ],
+          "offset": [
+            23,
+            62
+          ],
+          "density": 0.26
+        },
+        {
+          "cell": [
+            1024,
+            0,
+            1536,
+            512
+          ],
+          "sourcePose": 2,
+          "headBox": [
+            191,
+            126,
+            291,
+            198
+          ],
+          "offset": [
+            27,
+            62
+          ],
+          "density": 0.26
+        },
+        {
+          "cell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourcePose": 3,
+          "headBox": [
+            224,
+            119,
+            326,
+            191
+          ],
+          "offset": [
+            18,
+            64
+          ],
+          "density": 0.26
+        },
+        {
+          "cell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourcePose": 4,
+          "headBox": [
+            208,
+            119,
+            307,
+            191
+          ],
+          "offset": [
+            23,
+            64
+          ],
+          "density": 0.26
+        },
+        {
+          "cell": [
+            960,
+            512,
+            1536,
+            1024
+          ],
+          "sourcePose": 5,
+          "headBox": [
+            252,
+            124,
+            352,
+            196
+          ],
+          "offset": [
+            11,
+            62
+          ],
+          "density": 0.26
+        }
+      ]
+    },
+    "swim-south": {
+      "source": "character/marsh-swim-stroke-v1/sources/south-01.png",
+      "sourceSha256": "5741c8499396a4aac368a4328e296428ed0b494240ae97bb285f3dc5dd70ead1",
+      "anchor": "character/marsh-master-repair-v1/frames/swim-south/000.png",
+      "anchorSha256": "15d679cf3e93feaeef49494c7edbb46ca3c2e3e84b32ffefa5115541e6daf88d",
+      "targetHead": [
+        100.5,
+        114.0
+      ],
+      "registration": [
+        {
+          "cell": [
+            448,
+            0,
+            1088,
+            512
+          ],
+          "sourcePose": 1,
+          "headBox": [
+            262,
+            147,
+            375,
+            279
+          ],
+          "offset": [
+            19,
+            60
+          ],
+          "density": 0.255
+        },
+        {
+          "cell": [
+            1088,
+            0,
+            1536,
+            512
+          ],
+          "sourcePose": 2,
+          "headBox": [
+            152,
+            146,
+            266,
+            279
+          ],
+          "offset": [
+            47,
+            60
+          ],
+          "density": 0.255
+        },
+        {
+          "cell": [
+            0,
+            512,
+            512,
+            1024
+          ],
+          "sourcePose": 3,
+          "headBox": [
+            186,
+            114,
+            299,
+            247
+          ],
+          "offset": [
+            39,
+            68
+          ],
+          "density": 0.255
+        },
+        {
+          "cell": [
+            512,
+            512,
+            1024,
+            1024
+          ],
+          "sourcePose": 4,
+          "headBox": [
+            198,
+            115,
+            311,
+            247
+          ],
+          "offset": [
+            36,
+            68
+          ],
+          "density": 0.255
+        },
+        {
+          "cell": [
+            1024,
+            512,
+            1536,
+            1024
+          ],
+          "sourcePose": 5,
+          "headBox": [
+            216,
+            114,
+            330,
+            247
+          ],
+          "offset": [
+            31,
+            68
+          ],
+          "density": 0.255
+        }
+      ]
+    }
+  },
+  "rejected": {
+    "north-01.png": "Excessively elongated body relative to installed foreshortened pose."
+  }
+}

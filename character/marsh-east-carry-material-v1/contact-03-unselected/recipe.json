@@ -1,0 +1,59 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "commonNeutralScale": 0.1701388888888889,
+  "neutralOccupiedTargetHeight": 147,
+  "rawSha256": "c7c98213793ede7b96847f2e1121aec9e8982bb7011cd5e10e6e756d9b4aa72f",
+  "records": [
+    {
+      "file": "far-contact.png",
+      "sourceCell": [
+        0,
+        0,
+        854,
+        1024
+      ],
+      "wholeTranslation": [
+        16,
+        15
+      ],
+      "bounds": [
+        54,
+        28,
+        131,
+        172
+      ],
+      "size": [
+        77,
+        144
+      ],
+      "sha256": "99753bb7eec314c79ddf932a2c027259dd08a67b1a815279d647680c7bec0416"
+    },
+    {
+      "file": "ruler.png",
+      "sourceCell": [
+        854,
+        0,
+        1536,
+        1024
+      ],
+      "wholeTranslation": [
+        45,
+        12
+      ],
+      "bounds": [
+        75,
+        25,
+        109,
+        172
+      ],
+      "size": [
+        34,
+        147
+      ],
+      "sha256": "f534f20ea52f2049cc21931404ba630cbe1c3b3c54e0c15edee76bb1c34aa9b4"
+    }
+  ],
+  "operations": "Two complete alpha128 cells, one neutral BOX scale, whole translation to bbox bottom172, no clipping, mirroring, patches, recolour or per-pose fitting. Standard alpha threshold only; raw retained.",
+  "visualReview": "Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending. Transparent corners and middle gutter confirmed; renderer preview haze is not proof of an opaque background."
+}

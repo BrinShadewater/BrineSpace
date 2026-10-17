@@ -1,0 +1,166 @@
+{
+  "status": "rejected motion/contact draft; retained source provenance",
+  "rawSha256": "208fc8952d874fad150b440862d23e1f6eb13e9c2bddd6c93542ba8ec74d649e",
+  "sharedNeutralScale": 0.2096317280453258,
+  "neutralCell": 3,
+  "gaitPath": "character/marsh-south-walk-material-v1/candidate-02/000.png",
+  "gaitSha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e",
+  "idlePath": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+  "idleSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+  "grade": "none",
+  "cells": [
+    {
+      "cell": [
+        0,
+        0,
+        444,
+        887
+      ],
+      "wholeFigureOffset": [
+        40,
+        0
+      ],
+      "supportSide": "viewer-left",
+      "supportTarget": [
+        83.5,
+        171
+      ],
+      "bounds": [
+        59,
+        23,
+        121,
+        172
+      ],
+      "leftSole": [
+        83.25,
+        171
+      ],
+      "rightSole": [
+        98.5,
+        164
+      ],
+      "headAlphaCentroid": [
+        89.51346153846154,
+        36.753846153846155
+      ],
+      "sha256": "f1b09346b5b5a58e45efbf513f2e80b6f55d56300b1baf8035347c54b0fa1a6f"
+    },
+    {
+      "cell": [
+        444,
+        0,
+        887,
+        887
+      ],
+      "wholeFigureOffset": [
+        44,
+        0
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        60,
+        23,
+        124,
+        171
+      ],
+      "leftSole": [
+        79.0,
+        170
+      ],
+      "rightSole": [
+        106.0,
+        170
+      ],
+      "headAlphaCentroid": [
+        91.3282149712092,
+        36.85028790786948
+      ],
+      "sha256": "7b10efc8473966bd65fd2a9d74ce87c918d07e18200c36e22de3d3192f4566b2"
+    },
+    {
+      "cell": [
+        887,
+        0,
+        1330,
+        887
+      ],
+      "wholeFigureOffset": [
+        45,
+        0
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        58,
+        23,
+        122,
+        171
+      ],
+      "leftSole": [
+        75.0,
+        170
+      ],
+      "rightSole": [
+        105.5,
+        170
+      ],
+      "headAlphaCentroid": [
+        89.37739463601532,
+        36.82183908045977
+      ],
+      "sha256": "ab5ee7015cace8dc9370d59f2c01f576fca76d23eee101151022317a5368c654"
+    },
+    {
+      "cell": [
+        1330,
+        0,
+        1774,
+        887
+      ],
+      "wholeFigureOffset": [
+        48,
+        0
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        60,
+        23,
+        122,
+        171
+      ],
+      "leftSole": [
+        76.5,
+        170
+      ],
+      "rightSole": [
+        105.5,
+        170
+      ],
+      "headAlphaCentroid": [
+        90.07224334600761,
+        36.747148288973385
+      ],
+      "sha256": "ccdda37fc32c0802a1ac127c2c4ff76c6770bfa02b9ca175d33430e4312fcd13"
+    }
+  ],
+  "frameHashes": {
+    "000.png": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e",
+    "001.png": "f1b09346b5b5a58e45efbf513f2e80b6f55d56300b1baf8035347c54b0fa1a6f",
+    "002.png": "7b10efc8473966bd65fd2a9d74ce87c918d07e18200c36e22de3d3192f4566b2",
+    "003.png": "ab5ee7015cace8dc9370d59f2c01f576fca76d23eee101151022317a5368c654",
+    "004.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+  },
+  "limits": "Whole figures only; no independent anatomy/scale edits. Source support targets are a study, not a validated root/controller. No native, arbitrary phase, safety, save, title Continue or normal admission.",
+  "visualReview": "Rejected motion/contact draft. Full raw and packaged six-pose comparison reviewed against original master and exact gait0/idle. First interior right sole164 vs outgoing167 adds3dense-pixel lift instead of descent; third interior left75 vs idle78.5 over-widens3.5dense pixels. Support left residual0.25dense early, right0.5dense at transfer. Width62-64 vs exact idle58; figure bulk/detail grade remains broader than endpoint. No limb patch or per-frame normalization; common neutral148 ruler. No native/runtime/save proof or controller binding."
+}

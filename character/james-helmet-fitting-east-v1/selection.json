@@ -1,0 +1,87 @@
+{
+  "status": "installed_owner_accepted_james_helmet_fitting_east_v1",
+  "runtimeInstalled": true,
+  "source": "sources/actions.png",
+  "prompt": "prompt.txt",
+  "generationTool": "built-in imagegen",
+  "poses": 12,
+  "frameReferences": 24,
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148,
+    "padding": [
+      36,
+      52
+    ]
+  },
+  "timingMs": {
+    "equip-helmet-east": 2140,
+    "remove-helmet-east": 2240
+  },
+  "derivation": "Removal reverses12 authored fitting poses; separate retained timing and locker event metadata",
+  "endpoints": "Exact selected bare/equipped east idles",
+  "sourceRegistration": "source-registration.json",
+  "packaging": "94 checks/0 failures",
+  "native": "Actual installed loader87 checks/0 failures; native capture; scratch asserted; real profile unchanged",
+  "visualReview": "Owner accepted GIF; installed native and station lifted-helmet pose inspected",
+  "limitations": [
+    "Standard fitting/reversal/Continue/refill plus12 sampled two-crew handoffs verified. Other crowd placements, crowd disk Continue, customized layouts, bare refill requests, hose/valve source motion and emergency journeys remain separate."
+  ],
+  "next": "Continue furniture/meal and full exterior-return joins; full James goal active.",
+  "ownerAcceptance": "Okay looks good, keep going",
+  "station": "Production renderer24 captures/0 failures across both transitions; selected pixels and equipment completion checked; clean exit; real profile delta only Godot log rotation, all save data unchanged",
+  "productionLockerJourneys": {
+    "evidence": "character/james-locker-journeys-v1/native-locker-evidence.json",
+    "checks": 44260,
+    "transitions": 8,
+    "selectedSlots": 96,
+    "nextTaskJourneys": 8,
+    "arrivalFacing": "east",
+    "review": "Agent-reviewed actual locker endpoints/lift and middle fitting pose in all four rotations; earlier owner art acceptance retained.",
+    "fullSetComplete": false
+  },
+  "productionFittingGuards": {
+    "continueChecks": 44341,
+    "actualRestores": 8,
+    "powerChecks": 50672,
+    "serviceLosses": 8,
+    "abortVisualPolicy": "Service loss reverses the exact held source pose to original unchanged-gear idle; other safety cancellation remains immediate.",
+    "evidence": [
+      "character/james-locker-journeys-v1/native-locker-restore-evidence.json",
+      "character/james-locker-journeys-v1/native-locker-power-evidence.json"
+    ],
+    "fullSetComplete": false,
+    "powerEvidenceRevision": "The 50,672-check immediate-cancel report is historical, superseded for visual policy by productionFittingReturn."
+  },
+  "productionFittingReturn": {
+    "checks": 54925,
+    "serviceLosses": 8,
+    "actualMidReturnRestores": 8,
+    "evidence": "character/james-locker-journeys-v1/native-locker-return-evidence.json",
+    "review": "Agent reviewed 18 native sampled reverse poses; owner fitting-art acceptance retained, new reversal awaits owner visual review.",
+    "fullSetComplete": false
+  },
+  "productionFittingRefill": {
+    "checks": 11686,
+    "journeys": 4,
+    "actualRestores": 4,
+    "evidence": "character/james-locker-journeys-v1/native-locker-refill-evidence.json",
+    "art": "Existing selected equipped idle cycle; no new refill art.",
+    "fullSetComplete": false
+  },
+  "productionFittingCrowd": {
+    "checks": 88266,
+    "twoCrewJourneys": 12,
+    "evidence": "character/james-locker-journeys-v1/native-locker-crowd-evidence.json",
+    "minimumFootSeparation": 31.994026184082,
+    "review": "Agent reviewed occupied and next-crew native views; no new owner acceptance.",
+    "fullSetComplete": false
+  }
+}

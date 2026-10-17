@@ -1,0 +1,53 @@
+{
+  "arguments": {
+    "prompt": "Create a transparent reference strip containing exactly FOUR separate isolated heads of Krusher Dom, matching the four supplied native pixel-art heads in identity, art style and low pixel density. Brown side-parted swept hair, short brown beard, fair skin. No goggles, no hat, no helmet. Maintain ONE consistent physical skull size and hair/beard appearance. The heads should be upright and neutral. Left to right: 1 front-right three-quarter view, halfway between front-facing and profile looking screen RIGHT; 2 front-left three-quarter view looking screen LEFT; 3 rear-right three-quarter view, halfway between rear and profile, mostly the BACK of the head with right-facing ear and only a sliver of cheek, no visible paired eyes; 4 rear-left three-quarter view, mostly back of head with left-facing ear and only a sliver of cheek. Each head fully isolated with generous transparent margins, no neck beyond a few pixels, no shoulders, no body, no text or labels. Strict game sprite pixel-art with crisp coherent chunky pixel clusters; reference art has skull width about23 native pixels and height28 native pixels, so do not introduce fine subpixel strand or photorealistic texture. Return one wide horizontal strip; all four heads on same level, not touching. Preserve the reference asymmetrical parting through genuine different views.",
+    "referenced_image_paths": [
+      "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/south-head-native.png",
+      "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/east-head-native.png",
+      "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/north-head-native.png",
+      "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/west-head-native.png"
+    ],
+    "transparent_background": true
+  },
+  "raw": {
+    "path": "generated-strip.png",
+    "sha256": "0958983222b4fce4294f768c13fbdf0511cd40ea00cdbc6186382dd24815ce46"
+  },
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/south-head-native.png",
+      "sha256": "74720d1ed7eea3e1bc7bcc4e7a48e9cc97a454ab9a73c650f78df46778298557"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/east-head-native.png",
+      "sha256": "960d493d287c23516db45fb4147b1b01cc90e5189a49d38d20eeedb62650619c"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/north-head-native.png",
+      "sha256": "8cda2f5aea7979e86077633bd336e719031be84554fb4820911eaf70e1079025"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/character/krusher-bill-base-test-v2/sources/west-head-native.png",
+      "sha256": "bd35c22f454472297a49b31df932be3f5823f543e45265203bacb26ad2c4baa1"
+    }
+  ],
+  "heads": [
+    {
+      "path": "head-0.png",
+      "sha256": "26e035f2ea12857004d3c40131cbd0464fa46bc6275d1501018247afd33ec495"
+    },
+    {
+      "path": "head-1.png",
+      "sha256": "c30c8db615ab940d34e8debeea3e299980aa96a7e8a2a698f44d30f4c99aa9c0"
+    },
+    {
+      "path": "head-2.png",
+      "sha256": "008a780f41c2539197dc6c3e6bc8815544ecdd5c8b9d6f21c1408968884ff88f"
+    },
+    {
+      "path": "head-3.png",
+      "sha256": "a36fd3b58dbc6c0e730e0977411bff354a992bc6b93155eae9829c4015aa0e83"
+    }
+  ],
+  "scope": "Four upright independent intermediate yaw heads. One23px maximum width ruler; no per-head size normalization. Fitted cargo sources in cargo-family-v1."
+}

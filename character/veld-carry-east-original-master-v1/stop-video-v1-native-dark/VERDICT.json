@@ -1,0 +1,48 @@
+{
+  "status": "Requested single-stop timeline rejected; final recovery suffix pending review",
+  "taskId": "448598058795475",
+  "estimatedUSD": 0.28,
+  "billingVerified": false,
+  "frameCount": 142,
+  "durationMs": 5917,
+  "exactReplayChecks": 284,
+  "failures": 0,
+  "ranges": {
+    "height": [
+      141,
+      148
+    ],
+    "headWidth": [
+      24,
+      26
+    ],
+    "headAxis": [
+      122.5,
+      123.5
+    ],
+    "headTop": [
+      75,
+      79
+    ],
+    "floor": [
+      219,
+      223
+    ],
+    "upperBodyWidth": [
+      41,
+      51
+    ]
+  },
+  "visualReview": "All six raw boards and master/head/body comparison reviewed. Repeated walking cycles violate requested single-stop timeline. Enlarged source115..120 raw/alpha boundary review, viewed after initial verdict, shows successive rear-foot recovery poses rather than the older grounded140->141 jump. Whole clip unsuitable as single stop, but ending suffix may be reusable and is NOT finally rejected. No helmet/native/normal adoption.",
+  "input": "Byte-exact whole source25 native3x dark plate first, unchanged exact original standing plate last. No anatomy/local grade/per-frame registration correction.",
+  "next": "Inspect complete final recovery suffix approximately111..122 against original endpoints/support and loop phase; package all consecutive useful suffix poses if identity/contact/joins hold. Do not regenerate blindly or discard usable ending merely because whole clip repeats steps.",
+  "priorNativeInputsUnchanged": 307,
+  "bindings": {
+    "source.mp4": "fbf699b79d56dd9e8d7258f6e76cab5d35163d642ec6707c361510267c6a460b",
+    "start-input.png": "7fbd31db8326649a2a466373363155c3ee5157c5330e623845b06e1f0b6677ea",
+    "end-input.png": "cf01e640089255d929eb0d3f646463863aea14e36a870e0f5da418ae169e7459",
+    "prompt.txt": "582fe17a695806d68959db728a07c8ba72ab635a1e51292d9cc74183c7e29c61",
+    "input-record.json": "15dc7bc8a2ce5a4f735c1ccd0552be50cc644c871e8c1a5d46cbde568968c017",
+    "source-registration-v2.json": "da3f96fcc1378bd7139edd0e8d7acafdf4ebb39e83fc0ea1c7fb4b80b6db3963"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "checks": 52,
+  "failures": 0,
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "scale": 0.2375601926163724,
+  "ruler": "one first standing148 source ruler, no pose height normalization",
+  "rows": [
+    {
+      "phase": 0,
+      "floor": 648,
+      "bootCenter": 216.0,
+      "sourceHeadAxis": 207.0,
+      "registration": "whole body translated to canonical held head axis125, physical boot floor224; leg swing width preserved",
+      "offset": [
+        76,
+        70
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 29,
+      "shellPosition": [
+        108,
+        66
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 1,
+      "floor": 648,
+      "bootCenter": 218.5,
+      "sourceHeadAxis": 167.5,
+      "registration": "whole body translated to canonical held head axis125, physical boot floor224; leg swing width preserved",
+      "offset": [
+        85,
+        70
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 28,
+      "shellPosition": [
+        108,
+        66
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 2,
+      "floor": 648,
+      "bootCenter": 309.5,
+      "sourceHeadAxis": 207.5,
+      "registration": "whole body translated to canonical held head axis125, physical boot floor224; leg swing width preserved",
+      "offset": [
+        76,
+        70
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 28,
+      "shellPosition": [
+        108,
+        66
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 3,
+      "floor": 648,
+      "bootCenter": 367.5,
+      "sourceHeadAxis": 258.0,
+      "registration": "whole body translated to canonical held head axis125, physical boot floor224; leg swing width preserved",
+      "offset": [
+        64,
+        70
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 28,
+      "shellPosition": [
+        108,
+        66
+      ],
+      "edgePixels": 0
+    }
+  ],
+  "gutters": [
+    0,
+    543,
+    1086,
+    1629,
+    2172
+  ],
+  "bindings": {
+    "character/veld-carry-east-start-master-v1/frames/bare/000.png": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329",
+    "character/veld-carry-east-start-master-v1/frames/bare/001.png": "8ad86bf33494ea095eaadc72962173be916e8ff4443e6fd8b1ef8d42113e6f3d",
+    "character/veld-carry-east-start-master-v1/frames/bare/002.png": "89a12173f64048544513ed0f0d91c3ecd03fe39a91aefdd0efad9a96df94537a",
+    "character/veld-carry-east-start-master-v1/frames/bare/003.png": "cbf75be42c67f952f36197933d8605cfcc40675b010d7a8affec1f451edecfc7",
+    "character/veld-carry-east-start-master-v1/frames/helmet/000.png": "acb642717d0b3b3345a907b55d2fc26fb2a454220c2d026b5f2db50472a49578",
+    "character/veld-carry-east-start-master-v1/frames/helmet/001.png": "70d1dfab6efa71b0a0cb0ba5c541ccf764f1f409ac31ed7b74024d6be0f0502e",
+    "character/veld-carry-east-start-master-v1/frames/helmet/002.png": "5a5c4567f1e6119df9efefb34951352dc74b7db8d88f743af0ca678be1b67a54",
+    "character/veld-carry-east-start-master-v1/frames/helmet/003.png": "077682afc67b9d643c5c38dcf9109cf54c7ab67ad5b96a3c0eb453a5d7853736"
+  },
+  "caseGripProtectedBox": [
+    120,
+    117,
+    174,
+    162
+  ],
+  "recipeSHA256": "7dc4d05eddb95795eb8e160086f09008574a6776a5c3c6976e8c3d822b0d5f8d",
+  "shellSource": "character/veld-helmet-fitting-east-v2/frames/equipped-idle-east/000.png",
+  "shellCrop": [
+    82,
+    17,
+    116,
+    55
+  ],
+  "shellScale": 1,
+  "sourceSHA256": "bd794fe14264afb6647cea13c25c0d72c755bf9f51d08050b32b29d09b008f62",
+  "scope": "Whole authored small steps, exact held and carry0 endpoints, staged finite320start/reversed stop. No controller travel/phase/adoption/full cadence or original-master complete-library acceptance.",
+  "visualReview": "Raw corrected fourpose source,8paired exports and4chronological boards/all48source-native pairs seen. Head proxy28 vs canonical26/27 closer than rejected30/31; compact case and continuous wholebody steps. Whole-body horizontal registration avoids planted-boot centroid drift. Material/grip/stride geometry/cadence/world travel remain polish."
+}

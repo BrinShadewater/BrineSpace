@@ -1,0 +1,62 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 444,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "captures": 8,
+  "exactSources": 8,
+  "actorPlayerRestores": 6,
+  "controlledSamples": 95,
+  "wraps": 2,
+  "strideDistanceCells": 0.11027027027027,
+  "stableBoundedInputs": 77,
+  "unchangedOwnerNonLogFiles": 2931,
+  "sourceParity": [
+    {
+      "capture": 0,
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "capture": 1,
+      "path": "character/marsh-west-run-material-v1/candidate-02/000.png",
+      "sha256": "9feea86f56fbdd60b26fdf61794c496d4a25c81aaa94f4d56af3117d9d16b6a7"
+    },
+    {
+      "capture": 2,
+      "path": "character/marsh-west-run-material-v1/candidate-02/001.png",
+      "sha256": "e1431c01a5bb2a734be160b9bcb788b6060ad89dc7607eb4fc91c24e73a983cc"
+    },
+    {
+      "capture": 3,
+      "path": "character/marsh-west-run-material-v1/candidate-02/002.png",
+      "sha256": "c76cad2ca2d3c1b155873cd999750b50d4b0974c7a0a25d700c8ba9ee9ac4055"
+    },
+    {
+      "capture": 4,
+      "path": "character/marsh-west-run-material-v1/candidate-02/003.png",
+      "sha256": "458772950054dd21e90d6a96edba5357de88be615875033a3386124df52741b0"
+    },
+    {
+      "capture": 5,
+      "path": "character/marsh-west-run-material-v1/candidate-02/004.png",
+      "sha256": "f4784c4aef3745e609b2abbde3a59bbc7f8e606527464f361bdfc97583787653"
+    },
+    {
+      "capture": 6,
+      "path": "character/marsh-west-run-material-v1/candidate-02/005.png",
+      "sha256": "395a3cceff87263b6c76f84e37c9acbd59734ebf9e365f6849d82fb2a84c7602"
+    },
+    {
+      "capture": 7,
+      "path": "character/marsh-v2/frames/bare/walk-west/004.png",
+      "sha256": "401315928f5ae07da3efa45a9a6ebe258dd67a1cd27517fda3ffda5c18241915"
+    }
+  ],
+  "scope": "Normal Marsh.move/run guards/rate, main/grid/player with explicit staged run manifest on clear168world furnished-room segment; controlled95x20ms simulation/render samples, six actor+player restores/pause holds, near-destination walk. No fullRunSave/TitleContinue or realtime film/contact acceptance.",
+  "visualReviewed": true,
+  "fixturePrecision": "Existing0.001world-unit movement tolerance, no failed West native interval.",
+  "nativeApng": "Six exact captured crops,100ms illustrative holds; no realtime moving/contact acceptance."
+}

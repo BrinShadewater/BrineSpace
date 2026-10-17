@@ -1,0 +1,41 @@
+{
+  "status": "installed_owner_accepted_east_construction_torch",
+  "runtimeInstalled": true,
+  "coverage": [
+    "torch-draw-east",
+    "weld-east",
+    "torch-stow-east"
+  ],
+  "framesPerMode": 158,
+  "states": {
+    "torch-draw-east": {
+      "frames": 19,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-east": {
+      "frames": 113,
+      "durationMs": 4708,
+      "loop": true
+    },
+    "torch-stow-east": {
+      "frames": 26,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-east-direct-v1",
+  "derivation": "Draw0-18; weld18-74 then reverse73-18 for exact loop; stow join18 + original75-99 flame-off/stow; exact selected idle entry/exit",
+  "toolMeaning": "Standing construction forward blowtorch; belt wrench retained",
+  "helmet": "Selected east shell,13-frame quadratic face path smoothing; max adjacent1/0px",
+  "colour": "Fixed neutral material grade preserves intended blue flame explicitly",
+  "native": "Installed loader1299 checks/0 failures,12 captures; production renderer30 captures/0 failures. Scratch paths asserted. Loader profile delta logs/godot.log only while normal game active; final station profile unchanged, no errors.",
+  "visualReview": "Owner accepted east GIF; installed. Native equipped station crop inspected.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "pending": [
+    "Owner west torch review",
+    "South/north torch and retained special actions"
+  ],
+  "ownerAcceptance": "Looks good, keep going"
+}

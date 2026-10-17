@@ -1,0 +1,101 @@
+{
+  "status": "Complete21-pose local loop exercised; neither tested uniform stride accepted",
+  "sourceFrames": [
+    8,
+    28
+  ],
+  "sourceDurationMs": 875,
+  "native": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 8.65,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 306,
+    "targetedInputsUnchanged": true,
+    "scope": "Actual distance-driven full21-pose two-cycle two-hypothesis stride trial, both gears/three scales. No final rigid contact/stride/start-stop or normal integration acceptance."
+  },
+  "replayChecks": 528,
+  "sourcePosePixelChecks": 176,
+  "supportSummary": [
+    {
+      "trial": 0,
+      "strideNativePixels": 117.6,
+      "windows": [
+        {
+          "role": "far smaller-pad front support",
+          "height": 93,
+          "horizontalSpans": [
+            1,
+            1
+          ]
+        },
+        {
+          "role": "far smaller-pad front support",
+          "height": 148,
+          "horizontalSpans": [
+            2,
+            2
+          ]
+        },
+        {
+          "role": "near larger-pad front support",
+          "height": 93,
+          "horizontalSpans": [
+            3,
+            3
+          ]
+        },
+        {
+          "role": "near larger-pad front support",
+          "height": 148,
+          "horizontalSpans": [
+            4,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "strideNativePixels": 140.7,
+      "windows": [
+        {
+          "role": "far smaller-pad front support",
+          "height": 93,
+          "horizontalSpans": [
+            3,
+            3
+          ]
+        },
+        {
+          "role": "far smaller-pad front support",
+          "height": 148,
+          "horizontalSpans": [
+            5,
+            5
+          ]
+        },
+        {
+          "role": "near larger-pad front support",
+          "height": 93,
+          "horizontalSpans": [
+            1,
+            1
+          ]
+        },
+        {
+          "role": "near larger-pad front support",
+          "height": 148,
+          "horizontalSpans": [
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "visualReview": "All four native full21-pose cycle boards plus all eight wrap captures reviewed. Local wrap preserves sequential leg progression, head/gear stable visually. Opposing short flat-support residuals persist in actual rendered moving captures:117.6px stride far1px/near3px at93;140.7px stride far3px/near1px at93. Near match confidence roughly.66..73 and pitch/roll limits weaken literal sliding inference. Neither trial proves both-foot physical support. No final root or ordinary adoption.",
+  "next": "Contact-role and toe/heel landmarks over both phases; investigate whole-cycle authored phase timing while preserving all poses and original proportions, then dense starting/stopping joins.",
+  "scope": "Actual distance-driven player, two cycles/two hypotheses/both gears/three display sizes; no normal station/controller/save acceptance."
+}

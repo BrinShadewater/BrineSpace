@@ -1,0 +1,34 @@
+{
+  "method": "Frontmost opaque point in bottom three rows of planted sole. Only flat-foot transitions; heel-roll frames excluded. +/-1 source pixel landmark uncertainty.",
+  "travel_source_pixels_per_cycle": 102.00000000000001,
+  "segments": [
+    {
+      "frames": [
+        1,
+        2
+      ],
+      "sole_front_x": [
+        126,
+        113
+      ],
+      "expected_travel_px": 14.733333333333336,
+      "residual_px": 1.733333333333336,
+      "residual_at_45px_standing": 0.5270270270270279
+    },
+    {
+      "frames": [
+        4,
+        5
+      ],
+      "sole_front_x": [
+        128,
+        112
+      ],
+      "expected_travel_px": 14.733333333333336,
+      "residual_px": -1.266666666666664,
+      "residual_at_45px_standing": -0.3851351351351343
+    }
+  ],
+  "within_two_source_pixels": true,
+  "limits": "Not proof of zero sliding across heel roll, toe off, holds or station occlusion."
+}

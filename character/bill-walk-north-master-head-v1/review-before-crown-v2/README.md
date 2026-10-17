@@ -1,0 +1,1 @@
+Frozen pre-crown-repair exports and recipes. Original res paths in archived reports identify the historical revision; use archived local PNGs for its pixels. Current root exports are the revised selection.

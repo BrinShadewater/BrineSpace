@@ -198,9 +198,13 @@ func matrix():
 			for i in range(2000):
 				var previous: Vector2=actor.foot
 				var was_active: bool=actor.active
+				var was_running: bool=id=="marsh" and actor.run_motion_active()
 				step()
 				if was_active:
-					check(actor.foot.distance_to(previous)<=4.61,"Construction approach obeys walking speed")
+					# Marsh's accepted long-route run is 46 * 1.5 units/second.
+					# Keep the walking bound unless this step enters/leaves that run.
+					var run_step: bool=id=="marsh" and (was_running or actor.run_motion_active())
+					check(actor.foot.distance_to(previous)<=(6.91 if run_step else 4.61),"Construction approach obeys selected movement speed")
 				if actor.state=="weld":
 					check(actor.direction==["north","east","south","west"][side],"Tool faces the connecting side")
 					check(actor.can_stand(actor.foot),"Construction foot clears installed furniture")

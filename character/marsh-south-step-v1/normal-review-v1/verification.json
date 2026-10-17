@@ -1,0 +1,637 @@
+{
+  "normalAdmission": true,
+  "artAcceptance": "provisional; body/face/arm/material/contact joins and entire-family consistency still open",
+  "unitChecks": 4048,
+  "nativeChecks": 150,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCodes": [
+    0,
+    0
+  ],
+  "fullRunSaveCheckpoints": 8,
+  "freshVisibleTitleContinues": 8,
+  "sourcePairs": [
+    {
+      "case": "phase-10",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff"
+      ]
+    },
+    {
+      "case": "phase-30",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "af5a02ad789679e9f7cf111e9ced2be9bb142acb8fe5feab098dc06a874add12",
+        "af5a02ad789679e9f7cf111e9ced2be9bb142acb8fe5feab098dc06a874add12"
+      ]
+    },
+    {
+      "case": "phase-42",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+        "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247"
+      ]
+    },
+    {
+      "case": "phase-54",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+        "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107"
+      ]
+    },
+    {
+      "case": "phase-66",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "43280c4f2ba71c3a4b1a17beb71d49be4acf18b11badc0f5255351f422ae301a",
+        "43280c4f2ba71c3a4b1a17beb71d49be4acf18b11badc0f5255351f422ae301a"
+      ]
+    },
+    {
+      "case": "phase-78",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff"
+      ]
+    },
+    {
+      "case": "cancelled-reach",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+        "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247"
+      ]
+    },
+    {
+      "case": "idle-handoff",
+      "sourceRGBAExact": true,
+      "sourceSha256s": [
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+        "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "case": "phase-10",
+      "file": "native-000.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-000.png",
+      "nativeSha256": "425cf5314816d07f08be8e2661b1abc5dc3e4f768ea982bd404669444efdd2b4",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-30",
+      "file": "native-001.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-001.png",
+      "nativeSha256": "60379ec410dd08845857536dcec37aac27461b9259b485e4edb57ea6bd3e33e0",
+      "sourceSha256": "af5a02ad789679e9f7cf111e9ced2be9bb142acb8fe5feab098dc06a874add12",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-42",
+      "file": "native-002.png",
+      "foot": [
+        8176.0,
+        7714.8671875
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-002.png",
+      "nativeSha256": "cfa8b732f34952cc52f0a99ead8fbc3a29dbf251bf3be9422238b3b2904c2ecf",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-54",
+      "file": "native-003.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-003.png",
+      "nativeSha256": "361fb661612a8f1d3d78475b9f030395077ae8c5a3389b6e3cc8037fc37feade",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-66",
+      "file": "native-004.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-004.png",
+      "nativeSha256": "60b16559046dbd77ae83a653234c9acb2f6d1d984a88dfd851141f5fb6561d76",
+      "sourceSha256": "43280c4f2ba71c3a4b1a17beb71d49be4acf18b11badc0f5255351f422ae301a",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-78",
+      "file": "native-005.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-005.png",
+      "nativeSha256": "20abe0a16bef6ebb1249cf5f2e7dafc4d63c7c29414ea947111552328262168d",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "cancelled-reach",
+      "file": "native-006.png",
+      "foot": [
+        8176.0,
+        7715.82275390625
+      ],
+      "key": "walk-step-south",
+      "moment": "before",
+      "sourceFile": "source-006.png",
+      "nativeSha256": "4e9d6e363428048ad50c8bdb4cdf0f900e94f1ab8c94a9c91103566cacc7b888",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "idle-handoff",
+      "file": "native-007.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "idle-south",
+      "moment": "before",
+      "sourceFile": "source-007.png",
+      "nativeSha256": "805ebc7c63d3a581858dc9f936faace738fc87d3b43a7a7777e9ad345f0fc960",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-10",
+      "file": "native-008.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-008.png",
+      "nativeSha256": "5d6697267bc4f6f4a56abc3a6ec84b48efc3823c74222df6f4339b52a0d7692f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-30",
+      "file": "native-009.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-009.png",
+      "nativeSha256": "0176943d323c026b09db5557e26bca55ea2603c0766bd6db219eaba25b348933",
+      "sourceSha256": "af5a02ad789679e9f7cf111e9ced2be9bb142acb8fe5feab098dc06a874add12",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-42",
+      "file": "native-010.png",
+      "foot": [
+        8176.0,
+        7714.8671875
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-010.png",
+      "nativeSha256": "9b042ba70a1fbc92ae2dce55891bd03cacaeaee2bec16b6d766da53d306fd565",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-54",
+      "file": "native-011.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-011.png",
+      "nativeSha256": "51178d2041d6887fc9d17b0cc152c1790a7ad6295c00d4d526c22ce62cd65738",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-66",
+      "file": "native-012.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-012.png",
+      "nativeSha256": "7c18567b1ed558dcd3d9480ee63eaa700d54f57e0759c6b6538cd7be97ef7613",
+      "sourceSha256": "43280c4f2ba71c3a4b1a17beb71d49be4acf18b11badc0f5255351f422ae301a",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "phase-78",
+      "file": "native-013.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-013.png",
+      "nativeSha256": "8d99c027ff4c866875bcf806230c80e8a6b11593794541303b42b17f4d28499a",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "cancelled-reach",
+      "file": "native-014.png",
+      "foot": [
+        8176.0,
+        7715.82275390625
+      ],
+      "key": "walk-step-south",
+      "moment": "continued",
+      "sourceFile": "source-014.png",
+      "nativeSha256": "2e86d54618bbd1dd3bc4510cb41215a56568a68352a2c0fe3128aeb4ee8edc95",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    },
+    {
+      "case": "idle-handoff",
+      "file": "native-015.png",
+      "foot": [
+        8176.0,
+        7717.73388671875
+      ],
+      "key": "idle-south",
+      "moment": "continued",
+      "sourceFile": "source-015.png",
+      "nativeSha256": "9403a245756b484ca6e5f2aa7c140917d1077d353e6ccb863014c5a422d7672a",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ]
+    }
+  ],
+  "targetedNativeInputs": {
+    "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a",
+    "character/marsh-south-idle-material-v1/candidate-01/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-idle-material-v1/candidate-01/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-idle-material-v1/candidate-01/manifest.json": "da4065b0650d5d81089ee56f3af1674110b9c08fe7072bb795580887d092ceef",
+    "character/marsh-south-step-v1/candidate-01/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-01/001.png": "bfacce792eb712b8328cb41c7857557c4fe1261584bd3c824d7c09267a6b78c8",
+    "character/marsh-south-step-v1/candidate-01/002.png": "ebfe526ed6a2b13ab15a1d6515659d4f6976f8dedc81ff86a4ad5bcf401166d7",
+    "character/marsh-south-step-v1/candidate-01/003.png": "1b709feb1910e7c0889dcd5c217bbd9a4e2973c573607eb9b0bd2754235ba99d",
+    "character/marsh-south-step-v1/candidate-01/004.png": "93647d74fad0d5c6a67ca2926a279d9d69753f3fe5c9d1afe0c0dc2e5ed5bb10",
+    "character/marsh-south-step-v1/candidate-01/005.png": "e63f40dc1891c5d26cf767e49dab0e2183b3cacfab87391a62e6c664e4436485",
+    "character/marsh-south-step-v1/candidate-01/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-01/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-01/recipe.json": "875b834499dcea380652f1928effc0822e22d87a94e7957f53765830840ea995",
+    "character/marsh-south-step-v1/candidate-01/ruler.png": "40e868e035311a4e64e0d4a3e1c2054b8c95fc9853852ecf2abddf76835fb01d",
+    "character/marsh-south-step-v1/candidate-02/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-02/001.png": "c1eb4c079d8b1675bf9b848e2bb60f5b707929e79160d0d54b3d317f78280268",
+    "character/marsh-south-step-v1/candidate-02/002.png": "202b60b5734b2a1dcf123aa9777af52ff9a6490702e5f7c3a60b01b8ad0cb4c9",
+    "character/marsh-south-step-v1/candidate-02/003.png": "4402b6bd06935c426b4e70053ff44d59a2028ca84f5f8fc7c02637dd81e74a4e",
+    "character/marsh-south-step-v1/candidate-02/004.png": "abed82590e9720140287e2bb1ad08eccaf9e1d47b8fa3ede343c4ccc38cb116a",
+    "character/marsh-south-step-v1/candidate-02/005.png": "2a22d2fd77b6b9a819ba5b6fa5ad40449182ac31b9a0d1d3aada515fd2e88b7c",
+    "character/marsh-south-step-v1/candidate-02/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-02/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-02/recipe.json": "259ff6f116e0cf479e99af7506f23496f62c3f186d256f3929dacb4c103e77b8",
+    "character/marsh-south-step-v1/candidate-02/ruler.png": "9b33461ee01b21f99e09eb350c47e494a77f0ffcad05b889651bd0f895c48eae",
+    "character/marsh-south-step-v1/candidate-03/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-03/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-03/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-03/003.png": "e4c76c3ad704d490fbd2955e97b4879eb446d6d1b6b531e12e39d9555eb1f4bc",
+    "character/marsh-south-step-v1/candidate-03/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-03/005.png": "b7e8407de29639efe74265a89c3dc52b919e660591dbe8dcf349639b8b764c42",
+    "character/marsh-south-step-v1/candidate-03/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-03/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-03/recipe.json": "b3bf3b850ddd529296d707cba7678e976bbbf30a36606546cb42d3366fd5a9f3",
+    "character/marsh-south-step-v1/candidate-03/ruler.png": "0a22e3bead2a71ff34337649e4c34d0fdec57869495f28c16268907e5417793f",
+    "character/marsh-south-step-v1/candidate-04/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-04/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-04/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-04/003.png": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe",
+    "character/marsh-south-step-v1/candidate-04/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-04/005.png": "7b7f8d7190bd2bce73eec164502eba686d34f156be916f6ae91b4bd4c208fbd5",
+    "character/marsh-south-step-v1/candidate-04/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-04/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-04/recipe.json": "88a01179cbda69ae8f00a6945c8cbbaf557d51a981ad4aa102a0d782596a786a",
+    "character/marsh-south-step-v1/candidate-04/ruler.png": "4059bd5bd5be4c2ed09d6ba7e9986ea0b627fb0fa9e30ef41ede20104809afa2",
+    "character/marsh-south-step-v1/candidate-05/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-05/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-05/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-05/003.png": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe",
+    "character/marsh-south-step-v1/candidate-05/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-05/005.png": "b97ae9de290f086147f2a91950e3290e93321c02f8f29c8665632b9998e449de",
+    "character/marsh-south-step-v1/candidate-05/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-05/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-05/recipe.json": "bd61b39ac32d25a6e3be0d1ea8caa5c8837a260e735eb51d18f5ca958b5f11bd",
+    "character/marsh-south-step-v1/candidate-05/ruler.png": "3d4c8ab7059edd94987fe295bac813cd998316197d8ea262ec3861c70aa2ed53",
+    "character/marsh-south-step-v1/sources/close-neutral-guide-05.png": "c884d277914041393b4d72b6eb4355071a3145d56f1796fdc5b416fdb04cd3cc",
+    "character/marsh-south-step-v1/sources/idle-gait-reference.png": "3fb606162d054b6d41f4b728423c541eee0422b056ea50b4c041ff4a398a2dc3",
+    "character/marsh-south-step-v1/sources/reach-close-guide-04.png": "10912a7b80fde2c539e3587e67337d6fa01e133af09e55e0a4918c2ec51912f8",
+    "character/marsh-south-step-v1/sources/step-01.prompt.txt": "e1d65c776ec2c7b887253c3bc163a468a222714872fe5882e135e4784b370528",
+    "character/marsh-south-step-v1/sources/step-01.raw.png": "05344f445ac340b4ac189891a2a577b194ad4206998d09a3c9dd499a89275634",
+    "character/marsh-south-step-v1/sources/step-01.request.json": "f5cefca1776df745605b7cf9fa5cf58b8a348b9b97452efd952930496802d25f",
+    "character/marsh-south-step-v1/sources/step-02.prompt.txt": "3aa7c92ba3da5f2a2c1359d7cf1466015a214301f7667d8694f9d5ae315867f9",
+    "character/marsh-south-step-v1/sources/step-02.raw.png": "e55b3fc228235eb78a337c62dc7dc3fc51b0ba3643c651f8b12617c24f3f1cd8",
+    "character/marsh-south-step-v1/sources/step-02.request.json": "a250ef3f808b5360d12de981b50726f907b5565c28d99145c61dfe95d1bdcd6a",
+    "character/marsh-south-step-v1/sources/step-03.prompt.txt": "7530ab07f617f00e5277061eeee248ea6a19cffeac02b26dacc0726979c870ce",
+    "character/marsh-south-step-v1/sources/step-03.raw.png": "fb07c4685a031905105d6437606cb7f83f8de4e4a14cb714dc48a057472badc3",
+    "character/marsh-south-step-v1/sources/step-03.request.json": "3811a326e658d4e1125111c049578b9a0798a07d43da790acd22fe49c1d440fa",
+    "character/marsh-south-step-v1/sources/step-04.prompt.txt": "1c43baed953d504060b83c8104718278ade41531bc55b4f997fca5dcc596c30f",
+    "character/marsh-south-step-v1/sources/step-04.raw.png": "999f2ab84cc4637e6684aa4bce9ce13d676a98f24d1b811b1601756d6cdba3c9",
+    "character/marsh-south-step-v1/sources/step-04.request.json": "574769f8e07685d39822a802d953e177ec551a1682c40b03e04bea891d8d37b7",
+    "character/marsh-south-step-v1/sources/step-05.prompt.txt": "e329292b52cfbe0a53fbca751968806bed5509820219ece0d442da02339e47c8",
+    "character/marsh-south-step-v1/sources/step-05.raw.png": "e162e388378dc1cfb9b6fb741aa539bcb650046a848ea58af744101deb6cd93a",
+    "character/marsh-south-step-v1/sources/step-05.request.json": "f2137acfba7cf4510f87711c68939a15ef30c90d9bd439b2211f947aa8f66be6",
+    "character/marsh-south-step-v1/sources/whole-pose-guide-03.png": "4cebafbec4ce5397d8416157b0cef25762ed848eca4b0dfe9334c76a4abd6570",
+    "character/marsh-south-step-v1/step_controller.gd": "d646956d6dfde0b8ca43237af4f63d0630080e02c712886856c00e22edb62f85",
+    "character/marsh-south-step-v1/step_controller.gd.uid": "2672d8dc78832d636a65a37abf801fc804c5b0ee8763af8492d0935a674e8ea0",
+    "character/marsh-south-walk-material-v1/candidate-02/000.png": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e",
+    "character/marsh-south-walk-material-v1/candidate-02/003.png": "4fa6ad6d58f9222cf46eeb154a3250445133127d4eed8519beebf3b313f9829e",
+    "character/marsh-v2/catalog.json": "f5cfb8683e20d5f41144a4dd7673941bedd6664a7a3e50781f46d2cdcc4aa6e3",
+    "scripts/bill_npc.gd": "f24ace890b53671de9b97eafc5dc804b0913ca88fda7f5b043b2a35358ee9486",
+    "scripts/crew_sprite_player.gd": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08",
+    "scripts/grid_canvas.gd": "9e3940bfdcd35b00e383ab621ae897080ac92cf8ef24b7f397ddae5580d75467",
+    "scripts/loading_transition.gd": "ab1e37d9402aaf4ef789d7911899b42b79f65b97f5fa52d49657edb0e264aba9",
+    "scripts/main.gd": "b82246b4d111883616b458bc7643c78de1881e772adbc4598f3cdea806b152a8",
+    "scripts/marsh_ground_motion.gd": "b1a93ed735d3112356e63db671cee49a2ba8a9d5ad46a381dd45adae957aa339",
+    "scripts/marsh_npc.gd": "0a2279773cc64822ea282a0100d66500efec3ad60ed81d4171a54cf90eddf1fe",
+    "scripts/marsh_south_snapshot.gd": "e8fe5c8217eba33c89261d14b2636fb7161f7d0f969a1eba40c960c460aac225",
+    "scripts/marsh_west_motion.gd": "a8d91619d16a44b4328a1de5509651719657a9319be1024dc5831ead3e5c2e3f",
+    "scripts/run_save.gd": "3e26803b15314c2845fd34c6a28721caf6bb5b53c7b676cdfd9eb2d30663162e",
+    "tests/test_marsh_south_step_controller.gd": "82be1f76b12bf90a8cc9ddeecf951d1fa7ea7d712036c89f837514b449a6626f",
+    "tests/test_marsh_south_step_controller.gd.uid": "37d7e36dcb8b57fcd51bb0001c9204eb7f6f0b52b63f78a1c6da542f7da2f0c5",
+    "tools/build_marsh_south_step.py": "43995d15e1ad750caf1f5a53e9646c021205dbc666188435969e6a32e8190a55",
+    "tools/build_marsh_south_step_close.py": "c7baa297530828bcebe8dc89a073fb7fed083050d0e1c0277d8799a7cba52e1b",
+    "tools/build_marsh_south_step_correction.py": "1e9413b337bcbd79348e4fa4d4d3d38616b8c0f28ae077c17069c3b72e10e0a7",
+    "tools/fingerprint_marsh_south_step_inputs.py": "8ccd22d557943c7095af4c47d1ccf2902a50299e95b754405c8f22072d2f6b9d",
+    "tools/prepare_marsh_south_step.py": "5002f421999a4acddda6e1444f90cf52924be8a2ab2bdf6e876ad25ad3a3234b",
+    "tools/prepare_marsh_south_step_correction.py": "8660c82a8296ac97c924e611aad93a2c9f53a53dda7a71a092520225b616fca7",
+    "tools/review_marsh_south_step.gd": "ee7644f2bd77ac6fe91b01b9d52b119abe429326e5095d33d4d52211e099a020",
+    "tools/review_marsh_south_step.gd.uid": "9f01d08244869d2e19a6c5ac8189fd8415f2e7fe8351118a356322b08e45b89c",
+    "tools/review_marsh_south_step_world.gd": "da1db60989ebee79a5fce4a754953ca34f0a562e82b233fdee7ec01f00ed216c",
+    "tools/review_marsh_south_step_world.gd.uid": "59c31e9b5f529ed116d26c7cdf837ed005047802955883352a7c80636867e44d",
+    "tests/test_marsh_south_step_production.gd": "c79d4bd982fb6a6f9217e3df6b4b56787bccdb12f0ed025c7c0a9ab81f7084b3",
+    "tests/test_marsh_south_step_production.gd.uid": "077dde56f2cac58429f8d8f07646c25e1c28e12dcb4f3dd565d4945481d383fc",
+    "tools/fingerprint_marsh_south_step_normal.py": "437304508f647607e9364740d6e0142febd1a9285eb33b781283da15697aa6a0",
+    "tests/index.json": "d6431016a9c8e38b5b8f0752ee5b88af190f9e9dbea6d7774c1d2a457b88989b",
+    "tests/test_marsh_north_step_controller.gd": "80fa5af194bca19563edd825905a86753717429fbc5ebe158032980903746b2f",
+    "tests/test_marsh_south_start_controller.gd": "cf720ffd830efb14c834f3ec33ef003bade506916dfcd49475d1697b3dd91bf3",
+    "tests/test_marsh_south_stop_controller.gd": "bba963c826f875e7822286caae6e915fdb6376a15c4c029f60740ba76a6582db",
+    "tests/test_marsh_south_snapshots.gd": "80de325a56fa61737cea96597f26dc9e541d39369f1d9ef3c2d2ad5a811857df"
+  },
+  "inputsStable": true,
+  "ownerNonLogFiles": 2931,
+  "ownerUnchanged": true,
+  "unitEvidence": [
+    {
+      "test": "test_marsh_south_step_controller",
+      "checks": 1526,
+      "logSha256": "7bb97f2b1926b55de91ace675c89141327306a1d38530c1b779faf37c0613086"
+    },
+    {
+      "test": "test_marsh_south_snapshots",
+      "checks": 387,
+      "logSha256": "b32bdc7cbe16efd15de3c8644995c95722448b2d0684672b1f76ca79b2f49870"
+    },
+    {
+      "test": "test_marsh_north_step_controller",
+      "checks": 1529,
+      "logSha256": "b6db189894d1fdc4be4d11f2bb63258fc6ca2ed6a9d47b4109a9213a996d666e"
+    },
+    {
+      "test": "test_marsh_south_start_controller",
+      "checks": 155,
+      "logSha256": "0ad11cb3e55b5520238d6a8a27819535442afc4de4d1e853d693c9a482b84cd9"
+    },
+    {
+      "test": "test_marsh_south_stop_controller",
+      "checks": 451,
+      "logSha256": "d662a62d533cd14f1c0f9729f88c081b31fcfc3befe9445bd29904596ce9f5a9"
+    }
+  ],
+  "nativeLogSha256": "872d9154e6aa7400f35c1c040f857edb942fded90b5c5d6efb19309cc52fb6dd",
+  "visualReview": "Both four-row original/visible-Continue plates and four-direction short-step sheet inspected. All restored sources identical; South reach/plant/body/face/arm/detail joins and whole-family grade/contact remain provisional.",
+  "scope": "Exact normal Marsh/main/grid/catalog. Eight full RunSave checkpoints and eight fresh Title Continue stations, actual transmission acknowledged before capture. Six short-step phases, service-cancelled reach and pending idle handoff. Prescribed furnished room, peers/world paused, normal costs/failure flags. Not natural traffic or full-family art acceptance.",
+  "limits": [
+    "Prescribed routes; staged service/hazard/coordinator evidence predates integration, normal regression guards are unit-scoped.",
+    "No natural moving-peer traffic or full-family master/grade acceptance.",
+    "Native comparisons are paused first-restored-source views, not a complete motion polish pass."
+  ],
+  "shortStepFamilyComparison": [
+    {
+      "direction": "east",
+      "standingHeight": 148,
+      "pivot": [
+        128,
+        224
+      ],
+      "idleSha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a",
+      "stepSha256s": [
+        "3c95e6bb090b42649a572bf9224a3804f53c28dbd9d113d0e7d88beef5a95937",
+        "924db08fc51337c782149255a87f9d1ae1c3083b41cbce5cc118253cd063582e",
+        "fa3a5a0b286f8b498040d3fa9a3987fa8a0de2da4b9960b571331bdd13a3558c",
+        "d0ae1d6a6e180e757d7933e9c5f817de5a1ed3ff5afd71b75b404c5803ca0d40",
+        "f36005474ed537c1e540847c53ff79dfd99c008986db5ddad687259b818b6d35",
+        "e8df26a1bd82cecb1b9825eea9b17171f811d6055a6c0334cb8df9f6fe2d7916",
+        "c2a2749cb58118edad722fdbfaf770572a21e119a64cfbde1cd1b157ba3942c5"
+      ],
+      "endpointRGBAExact": [
+        false,
+        false
+      ]
+    },
+    {
+      "direction": "west",
+      "standingHeight": 148,
+      "pivot": [
+        128,
+        224
+      ],
+      "idleSha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812",
+      "stepSha256s": [
+        "a051eec3802cbe64e8ebdd9c9fe766fb22e6356f01f7c3b114b0d40aae1dbf97",
+        "20ad2beae5820bb44bf19b7bbbdb38e32545a7944c986b4dad8b75eae620c110",
+        "b7ad6c920207011b4cdab27be464e455ce13f468a99312c4054e11c562dd050a",
+        "9d245403d974c22498c6ddbe87064ecdb3c0af0eea4cb03af60457dd804e499c",
+        "b2e1b67fe2a3304b618227379f4be6e681612511d1722385d38d51587805a3d1",
+        "9645cfa16ef3a2d4c9b036836bd85cbc04f7524699596fffabef6b94dcc1c3ad",
+        "33b3fc1ea67006cb57f7d7455afcef12fbcd549596a7b7e5b84127cf4fc4eb3d"
+      ],
+      "endpointRGBAExact": [
+        false,
+        false
+      ]
+    },
+    {
+      "direction": "north",
+      "standingHeight": 148,
+      "pivot": [
+        92,
+        172
+      ],
+      "idleSha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+      "stepSha256s": [
+        "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+        "55f874c6689eb542589c769b7d551b6a969b2d128a87a0a29f5faa3d59441bb7",
+        "7f1810b84289442aa9d46aaf10a360c1eeddea53b03193bbe9a2c4fce159702d",
+        "1a8bd31421fd8c79e2b754791cb00704a2fbbfcd9c5933e2286066b35c95fdf4",
+        "3007794e84d3bb20dfcbd177855661c2373ad56c406ced4cde8aaf81ec457100",
+        "cb158e4d52d41495a8bd2dba3d3ec49c4bfa5dab118eb7f0777f67e00e049bea",
+        "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+      ],
+      "endpointRGBAExact": [
+        true,
+        true
+      ]
+    },
+    {
+      "direction": "south",
+      "standingHeight": 148,
+      "pivot": [
+        92,
+        172
+      ],
+      "idleSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+      "stepSha256s": [
+        "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+        "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+        "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe",
+        "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+        "b97ae9de290f086147f2a91950e3290e93321c02f8f29c8665632b9998e449de",
+        "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      ],
+      "endpointRGBAExact": [
+        true,
+        true
+      ]
+    }
+  ],
+  "selectedCatalogCoverage": {
+    "states": 228,
+    "slots": 1190,
+    "orderedBodyManifests": 65
+  },
+  "retainedFailedInterval": {
+    "path": "output/marsh-animation-audit/south-step-normal-native-site-failed-2026-10-02",
+    "checks": 38,
+    "failures": 17,
+    "exitCode": 1,
+    "cause": "Fixture placed furnished room over occupied(20,20), making full room layout invalid. No successful checkpoints or images. Fixed fixture chooses actual unoccupied site and aborts otherwise; no runtime save rule relaxed. Owner/input fingerprints stable."
+  },
+  "publisherRepair": "Initial cross-family publisher assumed184square for every facing and failed on256square East/West. Corrected review uses recorded pivots and whole integer translation into common256square p128224 canvas with no clipping/scale/art edits. No Godot repeat needed."
+}

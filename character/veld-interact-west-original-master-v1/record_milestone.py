@@ -1,0 +1,24 @@
+from pathlib import Path
+import json,hashlib
+P=Path(__file__).resolve().parent;R=P.parents[1]
+for version in ['v1','v2']:
+ path=P/('AUDIT-'+version+'.json');d=json.loads(path.read_bytes())
+ for name,expected in d['bindings'].items():assert hashlib.sha256((P/name).read_bytes()).hexdigest()==expected,name
+ d['visualReview']='Raw result and direct original/motion/new-key board inspected October 3, 2026. Handoff retains scoped verdict.'
+ path.write_text(json.dumps(d,indent=2)+'\n')
+ledger={'v1':{'builtinExecution':'exec-eb1189d4-a65c-4488-806a-fc25a42aec1f','status':'terminal generated, copied, registered and reviewed; promising key, grade/detail pending'},'v2':{'builtinExecution':'exec-cbb5d846-a447-4353-921e-444489fceabb','status':'terminal generated, copied and reviewed; refinement rejected for head/framing regression'},'normalAdoption':False,'scope':'Whole-source interaction key trials only; no completed sequence/gear/native integration.'}
+for v in ['v1','v2']:ledger[v]['rawSHA256']=hashlib.sha256((P/('raw-key-'+v+'.png')).read_bytes()).hexdigest()
+ledger['refinementInputs']={name:hashlib.sha256((P/name).read_bytes()).hexdigest() for name in ['key-input-v1.png','master-input.png','refine-prompt.txt']}
+(P/'EXECUTIONS.json').write_text(json.dumps(ledger,indent=2)+'\n')
+page='<!doctype html><meta charset="utf-8"><title>Veld West interaction master repair</title><style>body{background:#202a30;color:white;font:16px system-ui;margin:24px}.row{display:flex;align-items:end;gap:32px}.row img{image-rendering:pixelated}figure{margin:12px}figcaption{margin-top:8px}a{color:#b8dcef}</style><h1>Veld West interaction master repair</h1><p>Whole-source key trials. First pose restores master registration; suit grade/detail remains under review. Refinement is retained for comparison.</p>'
+for scale in [47,93,148]:
+ page+=f'<h2>Standing height {scale}</h2><div class="row">'
+ for name,label in [('master-native.png','Original master'),('motion-native.png','Old action'),('key-native-v1.png','New key'),('key-native-v2.png','Refinement')]:page+=f'<figure><img src="{name}" width="{256*scale/148}"><figcaption>{label}</figcaption></figure>'
+ page+='</div>'
+page+='<p><a href="master-key-comparison-v1.png">Detailed first comparison</a> · <a href="master-key-comparison-v2.png">Refinement comparison</a> · <a href="HANDOFF.md">Findings</a></p>'
+(P/'index.html').write_text(page,encoding='utf-8')
+title='## Veld original West interaction key registration trial — October 3, 2026'
+note=title+'\n\ncharacter/veld-interact-west-original-master-v1 retains builtin whole-source trials\nexec-eb1189d4-a65c-4488-806a-fc25a42aec1f and exec-cbb5d846-a447-4353-921e-444489fceabb,\nraw PNGs, exact prompts, unchanged original/motion inputs, fixed whole256 exports,\naudits/direct comparison boards and executions. Both raws and comparisons viewed.\nOriginal independent West foundation is appearance authority; old interact002 is\nmotion-only. Native184 sources padded36,52 then whole3x768; outputs reduced by whole\nsquare->256 atoffset0, no recenter/per-key height/local RGB/head/limb repair.\n\nV1 H148/top76/floor223 matches original; top20 head/bun width28 vs27, axis132.5 vs133.\nOld selected action H156/top68/head31/axis121. V1 restores much original brown hair,\nwarm skin, neutral suit texture/equipment and connected scanner sleeves. Trouser\npatch remains lighter:69.5/69/69 versus original59/58/57; old cool63/69/73. Fixed\npatch coverage differs; diagnostic is not full material or anatomical correspondence\nproof. V2 cloth67/65/65 improves value slightly but H150/top74/head31 regresses\nframing/head. V2 rejected; no blanket success from better median. No exact protected\npose/pixel preservation claim. No sequence/helmet/native/normal adoption yet.\n\nLesson: separate appearance authority from old action semantics; source motion\nreference can contain oversized shifted identity despite shared manifestH148.\nWhole-source key can restore registration while cloth value remains wrong; a\nmaterial-targeted generative refinement can enlarge the head and alter framing.\nCheck each original invariant independently before expanding sequence or gear.\nNext resolve V1 whole cloth/detail fidelity, complete West action and native joins,\nthen North/South actions and full cargo/furniture/water/death/controller/save/Continue\nintegration and cross-library polish. Full goal active/incomplete; no live job.\nHandoff:character/veld-interact-west-original-master-v1/HANDOFF.md.\n\n'
+code=(R/'character/veld-carry-east-original-master-v1/record_native_milestone.py').read_text(encoding='utf-8')
+exec('from pathlib import Path\nimport shutil,uuid,time\n'+code[code.index('paths=['):],dict(P=P,R=R,title=title,note=note))
+print('2 completed source trials recorded; bound inputs stable; no normal adoption')

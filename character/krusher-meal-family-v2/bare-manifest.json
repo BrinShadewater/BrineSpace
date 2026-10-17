@@ -1,0 +1,478 @@
+{
+  "name": "Krusher Dom meals",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "eat-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/eat-south/000.png",
+        "frames/bare/eat-south/001.png",
+        "frames/bare/eat-south/002.png",
+        "frames/bare/eat-south/003.png",
+        "frames/bare/eat-south/004.png",
+        "frames/bare/eat-south/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/eat-east/000.png",
+        "frames/bare/eat-east/001.png",
+        "frames/bare/eat-east/002.png",
+        "frames/bare/eat-east/003.png",
+        "frames/bare/eat-east/004.png",
+        "frames/bare/eat-east/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/eat-north/000.png",
+        "frames/bare/eat-north/001.png",
+        "frames/bare/eat-north/002.png",
+        "frames/bare/eat-north/003.png",
+        "frames/bare/eat-north/004.png",
+        "frames/bare/eat-north/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/eat-west/000.png",
+        "frames/bare/eat-west/001.png",
+        "frames/bare/eat-west/002.png",
+        "frames/bare/eat-west/003.png",
+        "frames/bare/eat-west/004.png",
+        "frames/bare/eat-west/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/drink-south/000.png",
+        "frames/bare/drink-south/001.png",
+        "frames/bare/drink-south/002.png",
+        "frames/bare/drink-south/003.png",
+        "frames/bare/drink-south/004.png",
+        "frames/bare/drink-south/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/drink-east/000.png",
+        "frames/bare/drink-east/001.png",
+        "frames/bare/drink-east/002.png",
+        "frames/bare/drink-east/003.png",
+        "frames/bare/drink-east/004.png",
+        "frames/bare/drink-east/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/drink-north/000.png",
+        "frames/bare/drink-north/001.png",
+        "frames/bare/drink-north/002.png",
+        "frames/bare/drink-north/003.png",
+        "frames/bare/drink-north/004.png",
+        "frames/bare/drink-north/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/drink-west/000.png",
+        "frames/bare/drink-west/001.png",
+        "frames/bare/drink-west/002.png",
+        "frames/bare/drink-west/003.png",
+        "frames/bare/drink-west/004.png",
+        "frames/bare/drink-west/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    }
+  ]
+}

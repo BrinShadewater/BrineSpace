@@ -1,0 +1,41 @@
+{
+  "status": "installed_owner_accepted_west_torch_draw_tempo_v3",
+  "runtimeInstalled": true,
+  "coverage": [
+    "torch-draw-west",
+    "weld-west",
+    "torch-stow-west"
+  ],
+  "framesPerMode": 82,
+  "states": {
+    "torch-draw-west": {
+      "frames": 9,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-west": {
+      "frames": 41,
+      "durationMs": 1200,
+      "loop": true
+    },
+    "torch-stow-west": {
+      "frames": 32,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-west-direct-v1",
+  "derivation": "Fast draw source0/8/12/16/20/24/32/40/44; work44-64 + reverse63-44; stow join44 + actual110-140, exact idle/action/loop joins.",
+  "helmet": "Selected west shell,13/order2 face smoothing; max adjacent1/1px",
+  "colour": "Fixed neutral material grade preserves small forward blue flame; no local shadow lift added",
+  "native": "Installed loader691 checks/0 failures,12 native captures; production renderer30 captures/0 failures across draw/weld/stow. Both scratch assertions passed, real profile unchanged, clean exits.",
+  "visualReview": "Owner accepted review-draw-tempo-v3.gif. Installed west draw/weld/stow; equipped station work crop inspected.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "pending": [
+    "South/north standing torch and retained special actions"
+  ],
+  "tempo": "draw-tempo-v3: remove initial idle/redundant lift poses. Original source0/8/12/16/20/24/32/40/44, durations20/25/30/35/40/40/45/45/240ms; arm raised by190ms, lit by280ms, remainder holds ready within520ms phase. Work remains1200ms.",
+  "review": "review-draw-tempo-v3.gif",
+  "ownerAcceptance": "Okay, lets go with that"
+}

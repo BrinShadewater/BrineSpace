@@ -1,0 +1,97 @@
+{
+  "selected": false,
+  "visualReviewPending": false,
+  "rawSize": [
+    1237,
+    1271
+  ],
+  "preCallInputHashesUnchanged": true,
+  "rawSha256": "55d19d7b60b6e515a43928a6c1e23d2d132648fe8ce0b45fb3a84485bdfdd04c",
+  "recipe": {
+    "scaleFromFirstAlpha32HeightOnly": 0.2766355140186916,
+    "firstFootRightBottomDiagnosticAnchor": [
+      425,
+      622
+    ],
+    "oneCommonOffset": [
+      10,
+      52
+    ],
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingReferenceHeight": 148,
+    "perPoseFitting": false,
+    "gradeApplied": false
+  },
+  "diagnostics": [
+    {
+      "index": 0,
+      "rawBounds": [
+        253,
+        87,
+        474,
+        622
+      ],
+      "packagedBounds": [
+        80,
+        76,
+        141,
+        224
+      ]
+    },
+    {
+      "index": 1,
+      "rawBounds": [
+        138,
+        87,
+        373,
+        622
+      ],
+      "packagedBounds": [
+        48,
+        76,
+        113,
+        224
+      ]
+    },
+    {
+      "index": 2,
+      "rawBounds": [
+        228,
+        45,
+        476,
+        590
+      ],
+      "packagedBounds": [
+        73,
+        64,
+        142,
+        216
+      ]
+    },
+    {
+      "index": 3,
+      "rawBounds": [
+        129,
+        44,
+        375,
+        590
+      ],
+      "packagedBounds": [
+        45,
+        64,
+        114,
+        216
+      ]
+    }
+  ],
+  "scope": "Unselected source review. First alpha-height ruler and bottom/right foot proxy are diagnostics, not anatomical/contact acceptance. No native actor, helmet, timing or normal admission.",
+  "sourceAcceptance": false,
+  "finding": "Raw1237x1271 four-pose atlas and six endpoint/intermediate whole views plus six upper crops inspected. Correct carry-to-unload semantic direction, but generated margins do not honor equal-cell root registration: right column shifted, lower row raised. First alpha32 ruler yields148px top poses vs152px lower poses; alpha bounds not anatomical proof. Face/hair and shoulder emblem drift; middle pair is a larger advance than first/last pair. REJECTED before helmet/native expansion. Cell-placement offsets are atlas layout failure, not proven animated foot sliding. Do not treat independent relocation as motion repair."
+}

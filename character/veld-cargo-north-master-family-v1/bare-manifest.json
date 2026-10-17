@@ -1,0 +1,122 @@
+{
+  "name": "Veld North master cargo actions bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "status": "staged_not_installed",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "unload-north",
+      "frameFiles": [
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/000.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/001.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/002.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/003.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/004.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "pickup-north",
+      "frameFiles": [
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/005.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/004.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/003.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/002.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/001.png",
+        "res://character/veld-cargo-north-master-family-v1/frames/bare/unload-north/000.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    }
+  ]
+}

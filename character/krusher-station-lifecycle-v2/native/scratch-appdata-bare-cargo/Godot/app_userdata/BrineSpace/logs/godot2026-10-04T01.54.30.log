@@ -1,0 +1,22 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+ERROR: Bare flooded cargo physically arrives south
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tests/playtest_nursery_art.gd:50)
+       [1] check (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:7)
+       [2] run (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:78)
+       [3] snapshot (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:134)
+       [4] capture (res://tests/playtest_nursery_art.gd:42)
+       [5] settle (res://tests/playtest_nursery_art.gd:20)
+ERROR: Bare flooded cargo physically arrives north
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] expect (res://tests/playtest_nursery_art.gd:50)
+       [1] check (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:7)
+       [2] run (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:78)
+       [3] snapshot (res://character/krusher-station-lifecycle-v2/native/bare_cargo.gd:134)
+       [4] capture (res://tests/playtest_nursery_art.gd:42)
+       [5] settle (res://tests/playtest_nursery_art.gd:20)
+KRUSHER_BARE_CARGO checks=11687 failures=2 cases=52 captures=100

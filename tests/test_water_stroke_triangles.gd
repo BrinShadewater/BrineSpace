@@ -52,6 +52,7 @@ func run():
 						if a.get_data()!=b.get_data():
 							failures+=1
 							if failures==1:a.save_png("user://reference.png");b.save_png("user://candidate.png");print("FIRST ",examples.find(path)," ",width," ",factor," ",mirrored," ",wet)
+	packet_cache_checks(paints[1])
 	var topology:Dictionary={}
 	var strip:=PackedVector2Array([Vector2(1,2),Vector2(2,3),Vector2(3,4),Vector2(4,5)])
 	var colors:=PackedColorArray([Color.RED,Color.GREEN,Color.BLUE,Color.WHITE])
@@ -73,3 +74,23 @@ func run():
 	for view in views:view.queue_free()
 	views.clear();paints.clear();await process_frame;await process_frame
 	print("STROKE_PROBE ",pairs," pairs; ",failures," failures");quit(1 if failures else 0)
+
+func packet_cache_checks(canvas:CanvasItem):
+	var packet_topology:Dictionary={}
+	for n in range(200):
+		var direct:Dictionary=Strokes.empty()
+		var packet:Dictionary=Strokes.empty(packet_topology,true)
+		for line in range(1+n%5):
+			var path:=PackedVector2Array()
+			for i in range(2+n%31):path.append(Vector2(float(i)*3.75,sin(float(i)*.75+float(line))*2.0))
+			check_cache(Strokes.add(direct,path,Color(.55,.76,.73,.095),1.1)==Strokes.add(packet,path,Color(.55,.76,.73,.095),1.1),"Packet stroke acceptance")
+		Strokes.draw(canvas,packet)
+		for field in ["points","colors","indices"]:check_cache(direct[field].to_byte_array()==packet[field].to_byte_array(),"Packet preserves ordered geometry "+field)
+		var layout:PackedInt32Array=packet.strip_counts.duplicate()
+		packet.indices[0]=-1
+		check_cache(packet_topology[["packet",layout]].to_byte_array()==direct.indices.to_byte_array(),"Packet caller cannot mutate cached indices")
+		packet.strip_counts.append(12345)
+		check_cache(packet_topology.has(["packet",layout]),"Packet cache snapshots mutable layout keys")
+		check_cache(packet_topology.size()<=64,"Packet cache remains bounded")
+	check_cache(packet_topology.size()==64,"Packet cache eviction exercised")
+	RenderingServer.canvas_item_clear(canvas.get_canvas_item())

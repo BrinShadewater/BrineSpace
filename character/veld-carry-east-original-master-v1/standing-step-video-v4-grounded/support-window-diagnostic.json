@@ -1,0 +1,129 @@
+{
+  "windows": [
+    {
+      "role": "far smaller-pad front support",
+      "frames": [
+        19,
+        23
+      ],
+      "templateFrame": 21,
+      "box": [
+        135,
+        201,
+        155,
+        221
+      ],
+      "maskPixels": 226,
+      "rows": [
+        {
+          "frame": 19,
+          "NCC": 0.8588,
+          "dx": 9,
+          "dy": 0,
+          "nativeX": 154.0,
+          "nativeY": 211.0
+        },
+        {
+          "frame": 20,
+          "NCC": 0.922,
+          "dx": 6,
+          "dy": 0,
+          "nativeX": 151.0,
+          "nativeY": 211.0
+        },
+        {
+          "frame": 21,
+          "NCC": 1.0,
+          "dx": 0,
+          "dy": 0,
+          "nativeX": 145.0,
+          "nativeY": 211.0
+        },
+        {
+          "frame": 22,
+          "NCC": 0.9483,
+          "dx": -6,
+          "dy": 0,
+          "nativeX": 139.0,
+          "nativeY": 211.0
+        },
+        {
+          "frame": 23,
+          "NCC": 0.9248,
+          "dx": -13,
+          "dy": 0,
+          "nativeX": 132.0,
+          "nativeY": 211.0
+        }
+      ],
+      "sourceHorizontalRatePxPerSecond": -134.40000000000003,
+      "candidateConstantRootSpeedPxPerSecond": 134.40000000000003,
+      "candidateStrideFor21Frames": 117.60000000000002,
+      "minimumNCC": 0.8588,
+      "verticalSpan": 0.0
+    },
+    {
+      "role": "near larger-pad front support",
+      "frames": [
+        9,
+        13
+      ],
+      "templateFrame": 11,
+      "box": [
+        127,
+        201,
+        149,
+        223
+      ],
+      "maskPixels": 208,
+      "rows": [
+        {
+          "frame": 9,
+          "NCC": 0.8109,
+          "dx": 13,
+          "dy": -1,
+          "nativeX": 151.0,
+          "nativeY": 211.0
+        },
+        {
+          "frame": 10,
+          "NCC": 0.8177,
+          "dx": 6,
+          "dy": 0,
+          "nativeX": 144.0,
+          "nativeY": 212.0
+        },
+        {
+          "frame": 11,
+          "NCC": 1.0,
+          "dx": 0,
+          "dy": 0,
+          "nativeX": 138.0,
+          "nativeY": 212.0
+        },
+        {
+          "frame": 12,
+          "NCC": 0.7708,
+          "dx": -7,
+          "dy": 0,
+          "nativeX": 131.0,
+          "nativeY": 212.0
+        },
+        {
+          "frame": 13,
+          "NCC": 0.6904,
+          "dx": -14,
+          "dy": 1,
+          "nativeX": 124.0,
+          "nativeY": 213.0
+        }
+      ],
+      "sourceHorizontalRatePxPerSecond": -160.79999999999987,
+      "candidateConstantRootSpeedPxPerSecond": 160.79999999999987,
+      "candidateStrideFor21Frames": 140.6999999999999,
+      "minimumNCC": 0.6904,
+      "verticalSpan": 2.0
+    }
+  ],
+  "scope": "Read-only two five-frame FLAT/front support windows, excluding initial heel-landing frames18/8. Expanded search20px avoids former12px saturation; all source poses remain intact. Near/far role assigned from visually reviewed original-size knee-pad continuity, not nearest boot match across occlusion. Warm boot material translation is an appearance proxy, not literal rigid sole/roll contact or approved world speed. No artwork changed."
+}

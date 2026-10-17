@@ -1,0 +1,276 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-v1.png",
+      "count": 6,
+      "heads": [
+        [
+          337,
+          74
+        ],
+        [
+          771,
+          74
+        ],
+        [
+          1205,
+          74
+        ],
+        [
+          337,
+          554
+        ],
+        [
+          771,
+          554
+        ],
+        [
+          1205,
+          554
+        ]
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "density": 1.0,
+      "sourceHeights": [
+        428,
+        428,
+        428,
+        428,
+        428,
+        428
+      ],
+      "generation": "exec-75c814d9-c88e-49e7-8875-5e4e0585ee84"
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ],
+    [
+      "primary",
+      5
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "selectionReason": "Use authored short empty reach/full empty reach/grasp/mid draw/low hold; exact idle/drink-held donors replace regenerated endpoints.",
+  "sourcesSha256": {
+    "primary": "871d809f69177d5c7fef991cae08cf61a1dec1925fd23b530121718f234eceb8"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        692,
+        71,
+        845,
+        505
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "position": [
+        106,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1126,
+        71,
+        1336,
+        505
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "position": [
+        106,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        258,
+        551,
+        481,
+        985
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "position": [
+        106,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        692,
+        551,
+        852,
+        985
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "position": [
+        106,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 5,
+      "sourceBox": [
+        1126,
+        551,
+        1270,
+        985
+      ],
+      "fixedRuler": [
+        0.31,
+        0.3458
+      ],
+      "position": [
+        106,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        3.6666666666666665,
+        11.333333333333334,
+        28.333333333333332,
+        37.666666666666664,
+        49.666666666666664,
+        61.333333333333336,
+        95.0,
+        121.0,
+        212.0
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        11.666666666666666,
+        20.666666666666668,
+        35.333333333333336,
+        44.333333333333336,
+        55.0,
+        67.0,
+        116.33333333333333,
+        141.48666666666682,
+        193.66666666666666
+      ],
+      "gains": {
+        "hair": [
+          1.0888888888888888,
+          1.21875,
+          1.25
+        ],
+        "face": [
+          1.0122699386503067,
+          1.0849056603773586,
+          1.051948051948052
+        ],
+        "burgundy": [
+          1.0,
+          1.0952380952380953,
+          1.0975609756097562
+        ]
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-east-coherent-v1/frames/sit-down-east/000.png",
+      "sha256": "4a41e4b8e16ee703fa537ed36b5f9306ab2aaec0b4e858d5213b8d84a3d563e0"
+    },
+    {
+      "path": "bill-drink-east-coherent-v1/frames/drink-east/000.png",
+      "sha256": "fff7f3aee6d56b88482e5b9d1a65dad1a22a55720557c3effdaab43e78115643"
+    }
+  ],
+  "scope": "authored cup pickup and reversed return; exact idle/drinking-held endpoints; normal service pending"
+}

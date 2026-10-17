@@ -1,0 +1,198 @@
+{
+	"captures": [
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after helmet",
+			"slot": 0,
+			"sourceFile": "source-000.png",
+			"variant": "candidate",
+			"worldFile": "world-000.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after water",
+			"slot": 0,
+			"sourceFile": "source-001.png",
+			"variant": "candidate",
+			"worldFile": "world-001.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after west",
+			"slot": 0,
+			"sourceFile": "source-002.png",
+			"variant": "candidate",
+			"worldFile": "world-002.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "run-east",
+			"label": "run",
+			"slot": 0,
+			"sourceFile": "source-003.png",
+			"variant": "selected activity",
+			"worldFile": "world-003.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after run",
+			"slot": 0,
+			"sourceFile": "source-004.png",
+			"variant": "candidate",
+			"worldFile": "world-004.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "carry-east",
+			"label": "carry",
+			"slot": 0,
+			"sourceFile": "source-005.png",
+			"variant": "selected activity",
+			"worldFile": "world-005.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after carry",
+			"slot": 0,
+			"sourceFile": "source-006.png",
+			"variant": "candidate",
+			"worldFile": "world-006.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "weld-east",
+			"label": "weld",
+			"slot": 0,
+			"sourceFile": "source-007.png",
+			"variant": "selected activity",
+			"worldFile": "world-007.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after weld",
+			"slot": 0,
+			"sourceFile": "source-008.png",
+			"variant": "candidate",
+			"worldFile": "world-008.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after construction enter",
+			"slot": 0,
+			"sourceFile": "source-009.png",
+			"variant": "candidate",
+			"worldFile": "world-009.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after inspection",
+			"slot": 0,
+			"sourceFile": "source-010.png",
+			"variant": "candidate",
+			"worldFile": "world-010.png"
+		},
+		{
+			"foot": [
+				7864.0,
+				8080.0
+			],
+			"key": "idle-east",
+			"label": "idle after meal",
+			"slot": 0,
+			"sourceFile": "source-011.png",
+			"variant": "candidate",
+			"worldFile": "world-011.png"
+		}
+	],
+	"checks": 82,
+	"contexts": [
+		{
+			"context": "helmet",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "water",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "west",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "run",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "carry",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "weld",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "construction enter",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "inspection",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		},
+		{
+			"context": "meal",
+			"returnMatchesIdle": true,
+			"sourceMatchesBaseline": true
+		}
+	],
+	"failures": 0,
+	"scope": "Actual grid getter dispatch, nine prescribed activity/equipment contexts and dry East idle return; default furnished room capture. No autonomous activity choice, physical water contact, full gear/action loops or normal candidate admission."
+}

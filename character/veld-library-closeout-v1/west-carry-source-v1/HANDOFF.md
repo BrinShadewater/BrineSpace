@@ -1,0 +1,3 @@
+# West carry video source rejection
+
+October 4, 2026. One Hailuo02 job448738642895348, USD0.28 estimate/billing unverified. All142 source poses retained and reviewed, grouped APNG284 checks pass. Rejected before loop/helmet/native expansion: repeated supporting boot outline elevation with fixed head/torso; no per-pose refloor or partial-cycle rescue. Same cargo conditioning controls preserved. SOURCE_VERDICT.json and contact-failure.png contain scoped evidence. Continuation method changed to whole-body authored pose trials; current useful but incomplete contact key is ../west-carry-contact-v3/. No normal changes.

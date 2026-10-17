@@ -1,0 +1,77 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "original",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/000.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/001.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/002.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/003.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/004.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false
+    },
+    {
+      "id": "candidate",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png",
+        "res://character/james-west-carry-walk-keys-v1/north-unload-start-source-v309/fixed-canvas-source.png",
+        "res://character/james-west-carry-walk-keys-v1/north-unload-bend-source-v313/fixed-canvas-source.png",
+        "res://character/james-west-carry-walk-keys-v1/north-unload-low-source-v314/fixed-canvas-source.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/004.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false
+    },
+    {
+      "id": "turnend",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false
+    },
+    {
+      "id": "master",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/north-unload-join-review-v308/bare-runtime-master-review.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false
+    }
+  ]
+}

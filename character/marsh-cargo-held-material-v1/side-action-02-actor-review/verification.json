@@ -1,0 +1,196 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 1019,
+  "failures": 0,
+  "captures": 16,
+  "exactSources": 16,
+  "samples": 252,
+  "actorPlayerRestores": 16,
+  "decodedHeldFrames": 16,
+  "stableBoundedInputs": 551,
+  "unchangedOwnerNonLogFiles": 2931,
+  "cases": [
+    {
+      "action": "pickup",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 0,
+      "exitDirection": "east",
+      "exitElapsed": -1.0,
+      "exitPose": "carry",
+      "exitStage": "workshop_carry",
+      "exitState": "walk",
+      "facing": "east",
+      "sampleStart": 0,
+      "samples": 26,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "action": "unload",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 4,
+      "exitDirection": "east",
+      "exitElapsed": -1.0,
+      "exitPose": "idle",
+      "exitStage": "",
+      "exitState": "idle",
+      "facing": "east",
+      "sampleStart": 26,
+      "samples": 100,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "action": "pickup",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 8,
+      "exitDirection": "west",
+      "exitElapsed": -1.0,
+      "exitPose": "carry",
+      "exitStage": "workshop_carry",
+      "exitState": "walk",
+      "facing": "west",
+      "sampleStart": 126,
+      "samples": 26,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "action": "unload",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 12,
+      "exitDirection": "west",
+      "exitElapsed": -1.0,
+      "exitPose": "idle",
+      "exitStage": "",
+      "exitState": "idle",
+      "facing": "west",
+      "sampleStart": 152,
+      "samples": 100,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "sourceParity": [
+    {
+      "key": "pickup-east",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/pickup-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/pickup-east/001.png",
+      "sha256": "6813a2848c528ab05691b3ca28a76c01c74c511e1ef33b217c1d1ada725f4a34"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/pickup-east/002.png",
+      "sha256": "139dcffb6cd8e32ebed8929a25774ed16cf5c4ea937eac2e2a302f20942e08d6"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/pickup-east/003.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "key": "unload-east",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/unload-east/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "key": "unload-east",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/unload-east/001.png",
+      "sha256": "139dcffb6cd8e32ebed8929a25774ed16cf5c4ea937eac2e2a302f20942e08d6"
+    },
+    {
+      "key": "unload-east",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/unload-east/002.png",
+      "sha256": "6813a2848c528ab05691b3ca28a76c01c74c511e1ef33b217c1d1ada725f4a34"
+    },
+    {
+      "key": "unload-east",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-02-unselected/unload-east/003.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "key": "pickup-west",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/pickup-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "key": "pickup-west",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/pickup-west/001.png",
+      "sha256": "b0fadc5292ba0252c054bceff5d9391fb2f541867f972b72411c4690486b0a1d"
+    },
+    {
+      "key": "pickup-west",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/pickup-west/002.png",
+      "sha256": "1c0788f6579f6f0c04eeb45b695131fc65e2f00404811c7d2559ecf338221d89"
+    },
+    {
+      "key": "pickup-west",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/pickup-west/003.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "key": "unload-west",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/unload-west/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "key": "unload-west",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/unload-west/001.png",
+      "sha256": "1c0788f6579f6f0c04eeb45b695131fc65e2f00404811c7d2559ecf338221d89"
+    },
+    {
+      "key": "unload-west",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/unload-west/002.png",
+      "sha256": "b0fadc5292ba0252c054bceff5d9391fb2f541867f972b72411c4690486b0a1d"
+    },
+    {
+      "key": "unload-west",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/west-unload-02-unselected/unload-west/003.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Normal Marsh.update/main/grid/player staged East andWest pickups entered from work timer; unloads seeded valid timed states. Four130ms frames,normal .52pickup and2secondunload finalidle hold,actor/player restores andpause. NOT actual workshop arrival (it forcesNorth),expedition/fullsave/TitleContinue/contactfilm/normal admission/fullsetacceptance.",
+  "limits": "East/West unloads seeded valid timed actions, not actual workshop arrival which forces North. No expedition delivery/fullsave/TitleContinue/continuous contact/normal admission/fullset acceptance."
+}

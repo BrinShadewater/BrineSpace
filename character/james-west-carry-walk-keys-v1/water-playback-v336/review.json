@@ -1,0 +1,36 @@
+{
+  "sourceSlots": 192,
+  "uniqueSourceFiles": 120,
+  "sourceBindingsStable": true,
+  "reviewScreenshotsViewed": [
+    "west-quarter.png",
+    "west-advancing.png",
+    "east-normal.png",
+    "north-normal.png",
+    "south-normal.png"
+  ],
+  "actualBrowserAdvance": {
+    "westNormalMs": 6596,
+    "westQuarterMs": [
+      14,
+      3025
+    ],
+    "westCargoQuarterPoses": [
+      0,
+      3
+    ],
+    "eastNormalMs": 79,
+    "northNormalMs": 75,
+    "southNormalMs": 73
+  },
+  "fullContinuousObservation": false,
+  "ordinaryControllerSimulation": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "findings": [
+    "West cargo shoulder bulk remains apparent at sampled advancing kick phases.",
+    "Bare/helmet loops use same source clock and maintain selected gear in observed views.",
+    "All four directions have functioning comparison playback; source sequence uses phase-zero swim entry and two loops, not an actual controller trace."
+  ],
+  "next": "Inspect actual game water transition phase selection/interruptions and isolate cargo shoulder/cloth proportion against masters before authoring replacement; hazard/death and full set polish still open."
+}

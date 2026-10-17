@@ -1,0 +1,36 @@
+{
+  "tool": "built-in image_gen",
+  "transparent": true,
+  "sources": [
+    {
+      "source": "late-start-rejected-v1.png",
+      "generationId": "exec-cabe0dab-7021-4aa0-99d2-0f51b6b989f3",
+      "prompt": "prompt-v1.txt",
+      "decision": "rejected: endpoint reference biased already late onset",
+      "sha256": "28f085afbf83b0b1aaebb2c2d6feb84708dddb4b0ebda32fefebd0a47199f7ec"
+    },
+    {
+      "source": "early-start-v2.png",
+      "generationId": "exec-c07487ab-f29e-4c40-8d18-7349d8f77c9d",
+      "prompt": "prompt-v2.txt",
+      "decision": "samples0,1 used, screen-right initial foot",
+      "sha256": "a6c78c76a92b628df71246d6bfdb1ef78c76f8b6b3e623c593524ef369341b74"
+    },
+    {
+      "source": "high-step-rejected-v3.png",
+      "generationId": "exec-96efcbb2-47ea-4772-b995-f5d073906283",
+      "prompt": "prompt-v3.txt",
+      "decision": "rejected high knee/boot lift overshoot",
+      "sha256": "00b08ed76a7290e65c6f9a4494b9f937f6c064de7f6c9cc8a2b410b407ec8d2f"
+    },
+    {
+      "source": "low-step-v4.png",
+      "generationId": "exec-5ad766ce-270d-4c3c-a5ac-fe0fce5ae386",
+      "prompt": "prompt-v4.txt",
+      "decision": "sample2 used as modest flat forward placement",
+      "sha256": "e6c961cf18318d146549ef231dd3531caffcbc336188c24109cb1d617ad400a8"
+    }
+  ],
+  "registration": "149 actual North opaque master height / per-family whole standing ruler; nominal runtime standingHeight remains148",
+  "cycleOrder": "held0,early-source0,early-source1,low-step-source2,gait0,gait0"
+}

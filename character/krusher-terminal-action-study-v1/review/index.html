@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Krusher terminal action study</title>
+<style>body{font:18px system-ui;background:#272b2e;color:#e5ebee;margin:24px}canvas{max-width:100%;image-rendering:pixelated}button{font:inherit;padding:8px;margin:4px}p{max-width:800px}</style>
+<h1>Krusher Dom / terminal action study</h1><p>West-facing candidate: retrieve, open, type, close and stow. Canonical head and legs retained. Arm and waist patch seams remain under review.</p>
+<button id="play">Pause</button><button id="step">Next pose</button><span id="status">Loading</span><br><canvas width="736" height="368"></canvas>
+<p>Left: canonical idle. Right: action candidate. Eight authored poses; repeated typing poses and timing holds add no new in-between art.</p>
+<script>
+const c=document.querySelector('canvas'),ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;
+const order=[0,1,2,3,4,5,4,5,4,5,3,6,7,0],durations=[240,160,180,200,160,160,160,160,160,160,120,180,200,240];
+let images=[],index=0,elapsed=0,last=0,playing=true,cycles=0;
+function draw(){ctx.clearRect(0,0,736,368);ctx.drawImage(images[0],0,0,368,368);ctx.drawImage(images[order[index]],368,0,368,368);document.querySelector('#status').textContent=`Pose ${order[index]} / step ${index+1} of ${order.length} / cycles ${cycles}`;}
+function tick(now){const delta=last?now-last:0;last=now;if(images.length===8&&playing){elapsed+=Math.min(delta,100);while(elapsed>=durations[index]){elapsed-=durations[index];index=(index+1)%order.length;if(index===0)cycles++;}draw();}requestAnimationFrame(tick);}
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play';};
+document.querySelector('#step').onclick=()=>{playing=false;document.querySelector('#play').textContent='Play';index=(index+1)%order.length;elapsed=0;draw();};
+Promise.all(Array.from({length:8},(_,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src='../frames/'+String(i).padStart(3,'0')+'.png';}))).then(list=>{images=list;draw();requestAnimationFrame(tick);}).catch(()=>document.querySelector('#status').textContent='Image load failed');
+</script>

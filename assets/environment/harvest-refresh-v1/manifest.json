@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "title": "Dedicated finite extraction graphics",
+  "assets": [
+    {
+      "id": "mining",
+      "kind": "prop",
+      "selected_source": "runtime/mining.png",
+      "stage": "locally selected; agent native review complete; owner acceptance pending",
+      "versions": [
+        {
+          "file": "mining-v1.png",
+          "sha256": "dbf6e3254548070267394c8c0468657de539e93cac5627587ab53510698ec223",
+          "rejection": null
+        },
+        {
+          "file": "runtime/mining.png",
+          "sha256": "9733e5f3d7b7b927d0af4691d4d8c4bcf76080d4cd0467bc0e2b34072d96758e",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "kind": "prop",
+      "selected_source": "runtime/frame.png",
+      "stage": "locally selected; agent native review complete; owner acceptance pending",
+      "versions": [
+        {
+          "file": "frame-v1.png",
+          "sha256": "6837c90ae9334843ddea9e96df1ebae0728babdb094c139fb850b6dc0c5e5038",
+          "rejection": "too much oblique side face; replaced by overhead v2"
+        },
+        {
+          "file": "frame-v2.png",
+          "sha256": "eaa22149cdceab8c7302e9ec8e624a3f97c5013c30b6cd08f61e664831bcd938",
+          "rejection": null
+        },
+        {
+          "file": "runtime/frame.png",
+          "sha256": "133981b2eb88eaac6d4eb438fb7645f7a0d5dcb00d86a29d592f28d1045f0f6f",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "cable",
+      "kind": "prop",
+      "selected_source": "runtime/cable.png",
+      "stage": "locally selected; agent native review complete; owner acceptance pending",
+      "versions": [
+        {
+          "file": "cable-v1.png",
+          "sha256": "0f8f7e12297f86fe75e938282500f2fd82793a282b2ae167e783b1ba12225c44",
+          "rejection": null
+        },
+        {
+          "file": "runtime/cable.png",
+          "sha256": "20383c26b3b30744cd22da22f241f4c2a5b3875a4c85a7c38c94c6549c141496",
+          "rejection": null
+        }
+      ]
+    }
+  ]
+}

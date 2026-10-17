@@ -1,0 +1,43 @@
+{
+  "status": "installed_master_height_revision_visual_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-east-north",
+    "carry-turn-north-east"
+  ],
+  "source": "source-height-v3.png",
+  "prompt": "prompt-height-v3.txt",
+  "helmetSource": "source-helmet-height-v3.png",
+  "helmetPrompt": "prompt-helmet-height-v3.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.2642857142857143,
+  "timingMs": 800,
+  "derivation": "New continuous full-body master-proportioned poses, one fixed scale/floor; no older short endpoint substitution or leg splice; exact reverse",
+  "helmet": "Generated intermediate angles fitted toward standing master crowns68east/74north; exact selected standing-master heads at endpoints; below headCutoff identical to bare",
+  "checks": "123 packaging /121 installed-loader native checks,0 failures;8 captures",
+  "profileAudit": "Scratch APPDATA asserted; real profile unchanged",
+  "visualReview": "Selected source, contact, master comparison and native reviewed; final owner visual review pending",
+  "remaining": [
+    "Final owner visual review",
+    "Four dry half-turn states",
+    "Remaining full-set family master audit/replacement and cross-family polish"
+  ],
+  "review": "review-master-v4.gif",
+  "palette": "Fixed shared gold gain [.7298,.816,1.026] plus fixed matte curve; no per-frame exposure or bounds normalization; pre-grade evidence preserved in before-gold-master-v4",
+  "materialEvidence": "../james-animation-coverage-2026-09-30/turn-material-audit.json",
+  "selectedSourceHashes": {
+    "source": "f9fa13c1144c523ef8fcecd6dfd75a9f97452a63bcd80c9bee5ba52818e5a00d",
+    "helmetSource": "a322283dd251c702ca30c4b33ea5ca4ac72214fa337bd22af719749bd7924df2"
+  }
+}

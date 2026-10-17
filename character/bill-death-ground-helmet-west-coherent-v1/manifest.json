@@ -1,0 +1,70 @@
+{
+  "name": "Bill west dry ground collapse with canonical helmet candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "death-ground-west",
+      "frameFiles": [
+        "frames/death-ground-west/000.png",
+        "frames/death-ground-west/001.png",
+        "frames/death-ground-west/002.png",
+        "frames/death-ground-west/003.png",
+        "frames/death-ground-west/004.png",
+        "frames/death-ground-west/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        300,
+        350,
+        400,
+        400,
+        300
+      ],
+      "loop": false,
+      "terminalFrame": 5,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "exact equipped standing entry; native selected dry helmet follows authored neck/tilt over bare collapse bodies"
+    }
+  ],
+  "equipment": "diving-helmet"
+}

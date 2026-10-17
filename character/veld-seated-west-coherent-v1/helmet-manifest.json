@@ -1,0 +1,145 @@
+{
+  "name": "Veld west seated native helmet candidate",
+  "status": "staged_candidate",
+  "precomposed": true,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "sit-down-west",
+      "frameFiles": [
+        "frames/helmet/sit-down-west/000.png",
+        "frames/helmet/sit-down-west/001.png",
+        "frames/helmet/sit-down-west/002.png",
+        "frames/helmet/sit-down-west/003.png",
+        "frames/helmet/sit-down-west/004.png",
+        "frames/helmet/sit-down-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        140,
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "sit-rise-west",
+      "frameFiles": [
+        "frames/helmet/sit-down-west/005.png",
+        "frames/helmet/sit-down-west/004.png",
+        "frames/helmet/sit-down-west/003.png",
+        "frames/helmet/sit-down-west/002.png",
+        "frames/helmet/sit-down-west/001.png",
+        "frames/helmet/sit-down-west/000.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        140,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "sit-idle-west",
+      "frameFiles": [
+        "frames/helmet/sit-down-west/005.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "west"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "waterKinds": [
+        "seated"
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "seatContactDepth": true
+    }
+  ],
+  "equipment": "diving-helmet"
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Veld core candidate, not production selection",
+  "walk": {
+    "east": "veld-east-v2.png",
+    "west": "veld-west-v2.png",
+    "south": "veld-south-v3.png",
+    "north": "veld-north-v3.png"
+  },
+  "actions": "Four directional actions-v1 sources; use shared idle and work endpoints, reverse lowering for stand",
+  "work": "Dedicated sample-loop-v1 except south sample-loop-v2",
+  "superseded": {
+    "veld-study": "Initial 24-pose review remains as history",
+    "veld-south-v2.png": "Repeated contact instead of distinct passing pose",
+    "veld-north-v2.png": "Repeated contact instead of distinct passing pose",
+    "veld-south-sample-loop-v1.png": "Touching sprites; only four extractable components",
+    "actions-v1 slots 5 and 6": "Tool-hand inconsistencies; not selected"
+  },
+  "remaining": [
+    "Six-pose gait still needs authored intermediate motion",
+    "Five-pose lowering needs smoother tool retrieval",
+    "Remaining production action joins are not repainted",
+    "Bill Branforth Marsh paint cleanup",
+    "Native room-contact and production selection"
+  ]
+}

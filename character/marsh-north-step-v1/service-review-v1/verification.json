@@ -1,0 +1,4199 @@
+{
+  "normalAdmission": false,
+  "controllerChecks": 1521,
+  "nativeChecks": 900,
+  "failures": 0,
+  "cases": 36,
+  "stagedActorRestores": 36,
+  "ownerNonLogFiles": 2931,
+  "ownerUnchanged": true,
+  "targetedInputs": {
+    "character/marsh-north-step-v1/step_controller.gd": "5afcbca8a822452e024250cdf398a5fcdbde0df8662415265e4237cb291a17ac",
+    "tools/review_marsh_north_step_world.gd": "b18c5aab75958a04ba43606188e53d93112678b8dc0fade7386da49b225ce0e4",
+    "tools/build_marsh_north_step_sequence.py": "fe352e4f571661b9439d9cbae1af9dec5c0859ce30a91526aba55214c3ef0c79",
+    "tests/test_marsh_north_step_controller.gd": "c3d53b68da64e50cbb5615790c9305de71138e64ca28ba2aa7253020b2fadca7",
+    "character/marsh-north-step-v1/sequence-v1/manifest.json": "3fc786ee490fba4e6b2de2e6e758a2345e1d0def1b0e0500a834cc4a7190cae3",
+    "character/marsh-north-step-v1/sequence-v1/000.png": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+    "character/marsh-north-step-v1/sequence-v1/001.png": "55f874c6689eb542589c769b7d551b6a969b2d128a87a0a29f5faa3d59441bb7",
+    "character/marsh-north-step-v1/sequence-v1/002.png": "7f1810b84289442aa9d46aaf10a360c1eeddea53b03193bbe9a2c4fce159702d",
+    "character/marsh-north-step-v1/sequence-v1/003.png": "1a8bd31421fd8c79e2b754791cb00704a2fbbfcd9c5933e2286066b35c95fdf4",
+    "character/marsh-north-step-v1/sequence-v1/004.png": "3007794e84d3bb20dfcbd177855661c2373ad56c406ced4cde8aaf81ec457100",
+    "character/marsh-north-step-v1/sequence-v1/005.png": "5a1ce3cdb976384b4311e5172f48cbdcc59097007d821307c7aeb913aef16d5c",
+    "character/marsh-north-step-v1/sequence-v1/006.png": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+    "character/marsh-v2/catalog.json": "3d630b722c31daa267447eb0a6a4567c54a36626f6f363f27431750d07be55ef",
+    "character/marsh-v2/frames/bare/idle-north/000.png": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+    "scripts/main.gd": "529fdff58a8d58b75122530f81607a2c082f028590c48add9390506751be6082",
+    "scripts/marsh_npc.gd": "ad6b9739af2b0674aa64903f74d2c7d41f713b25d9365e51949aeb5635094446",
+    "scripts/grid_canvas.gd": "935523ad22a14547671e5d5d760c9f1ae55dc11b6abe8c5453c19e2d7a8a8a78",
+    "scripts/crew_sprite_player.gd": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08",
+    "scripts/marsh_ground_motion.gd": "b1a93ed735d3112356e63db671cee49a2ba8a9d5ad46a381dd45adae957aa339",
+    "scripts/marsh_west_motion.gd": "a8d91619d16a44b4328a1de5509651719657a9319be1024dc5831ead3e5c2e3f",
+    "scripts/bill_npc.gd": "f24ace890b53671de9b97eafc5dc804b0913ca88fda7f5b043b2a35358ee9486",
+    "scripts/fire_safety.gd": "4c6e8e161640e4d75349717ab0cf42138b2252c8d9251aa5dda4166ca2850f51",
+    "scripts/flood_safety.gd": "8cdb555790ad0c53914885a9e691b34bd0785dad1001fe10233c9a3d8aad75c3",
+    "rooms/underwater/corridor_dressing.gd": "62bb4f2cb313db35bacac496e9a6877aaeda397333981a04abff3886a10d7c15"
+  },
+  "targetedInputsUnchanged": true,
+  "inputsHashTiming": "24 targeted inputs frozen before/after native interval and publication; not recursive world dependency freeze.",
+  "captures": [
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-000.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot0",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-000.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "c0f869826715d31bfe79411700d30fbcaec5532d1a220d8e212e104499b32d53",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-001.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot1",
+      "phase": 0.0,
+      "slot": 1,
+      "sourceFile": "source-001.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "a5d7f57a9629b189f7b0906b4eb3c1fa2cea7f1208b83ab6dd912c76de2e3854",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.26,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-002.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot2",
+      "phase": 0.0,
+      "slot": 2,
+      "sourceFile": "source-002.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "d1fad89b87ef0e1722c3373fd27c6c9b5517f40c42f65e8ada458afdf65736fe",
+      "submittedSourceSha256": "32444d33ead2d6947b186b18384623068c9b9b6072e439da7ac8ffd96dab3d7d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.36,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-003.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot3",
+      "phase": 0.0,
+      "slot": 3,
+      "sourceFile": "source-003.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "45dfeac05db993887520ff21dc664f23ecbcba5a13f9b2aa3f50ad177e53265c",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.48,
+      "drawOffset": [
+        0.0,
+        4.48359314695408e-15
+      ],
+      "file": "service-004.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot4",
+      "phase": 0.0,
+      "slot": 4,
+      "sourceFile": "source-004.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.6,
+      "drawOffset": [
+        0.0,
+        5.32907051820075e-15
+      ],
+      "file": "service-005.png",
+      "foot": [
+        8176.0,
+        7724.76904296875
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot5",
+      "phase": 0.0,
+      "slot": 5,
+      "sourceFile": "source-005.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "0b6a22f327ffbeac9f1251d02b836c35f7632f3a870a47943b04d077c693a484",
+      "submittedSourceSha256": "216cc7b4a3bac7cd39b2bacf7b03e7279d7b66f8b20598628a3c759378ef3a04",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.72,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-006.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot6",
+      "phase": 0.0,
+      "slot": 6,
+      "sourceFile": "source-006.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-007.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-north",
+      "kind": "available",
+      "moment": "finished",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-007.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-008.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-008.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-009.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-009.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "bf2b7ea3dcbb2bf23b184e2e0b5aa1b4c01bc3da3e325c6390c82be25fc9d823",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-010.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-010.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-011.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-011.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-012.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-012.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "2f1832573905266d6c401984bd0fe535c303393911b9d3f3b5092a4c256da366",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-013.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-013.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-014.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-014.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-015.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-015.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "4eceb0f4b2d14b0704807d9802679db4c2aa5951d10a693defc88a9f54669db4",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-016.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-016.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-017.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-017.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-018.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-018.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "850ab81ebbe73f4f1f0d900d63ab8859c7d4625b4b4a07a7181aa56eaad723cd",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-019.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-019.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-020.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-020.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-021.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-021.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "0e0451cbf572952c9e1e88e6ad62b20534db1b26c647de2ddf6a5a82611e4e77",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-022.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-022.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-023.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-023.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-024.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-024.png",
+      "stage": "",
+      "state": "walk",
+      "work": "curiosity",
+      "nativeSha256": "8fe9343d50a11ffe1fe1d270399e7ab08815651d88b1b0c2e019ea8d99090b43",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-025.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-025.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-026.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-026.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-027.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-027.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-028.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-028.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-029.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-029.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-030.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-030.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-031.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-031.png",
+      "stage": "",
+      "state": "idle",
+      "work": "curiosity",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-032.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot0",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-032.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-033.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot1",
+      "phase": 0.0,
+      "slot": 1,
+      "sourceFile": "source-033.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "8162c5c368e0dd3230f16ca43952512023e237e1313cd49df5235804597dbf62",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.26,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-034.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot2",
+      "phase": 0.0,
+      "slot": 2,
+      "sourceFile": "source-034.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "c93e050e33f078fe1bd71f0d4ed99444ffc7a1728d75607b94cc836fba2de0d1",
+      "submittedSourceSha256": "32444d33ead2d6947b186b18384623068c9b9b6072e439da7ac8ffd96dab3d7d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.36,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-035.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot3",
+      "phase": 0.0,
+      "slot": 3,
+      "sourceFile": "source-035.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.48,
+      "drawOffset": [
+        0.0,
+        4.48359314695408e-15
+      ],
+      "file": "service-036.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot4",
+      "phase": 0.0,
+      "slot": 4,
+      "sourceFile": "source-036.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.6,
+      "drawOffset": [
+        0.0,
+        5.32907051820075e-15
+      ],
+      "file": "service-037.png",
+      "foot": [
+        8176.0,
+        7724.76904296875
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot5",
+      "phase": 0.0,
+      "slot": 5,
+      "sourceFile": "source-037.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "0b6a22f327ffbeac9f1251d02b836c35f7632f3a870a47943b04d077c693a484",
+      "submittedSourceSha256": "216cc7b4a3bac7cd39b2bacf7b03e7279d7b66f8b20598628a3c759378ef3a04",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.72,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-038.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot6",
+      "phase": 0.0,
+      "slot": 6,
+      "sourceFile": "source-038.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-039.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "hunger",
+      "key": "idle-north",
+      "kind": "available",
+      "moment": "finished",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-039.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-040.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-040.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-041.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-041.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "bf2b7ea3dcbb2bf23b184e2e0b5aa1b4c01bc3da3e325c6390c82be25fc9d823",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-042.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-042.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-043.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-043.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-044.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-044.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "2f1832573905266d6c401984bd0fe535c303393911b9d3f3b5092a4c256da366",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-045.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-045.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-046.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-046.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-047.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-047.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "4eceb0f4b2d14b0704807d9802679db4c2aa5951d10a693defc88a9f54669db4",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-048.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-048.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-049.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-049.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-050.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-050.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "850ab81ebbe73f4f1f0d900d63ab8859c7d4625b4b4a07a7181aa56eaad723cd",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-051.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-051.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-052.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-052.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-053.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-053.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "0e0451cbf572952c9e1e88e6ad62b20534db1b26c647de2ddf6a5a82611e4e77",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-054.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-054.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-055.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-055.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-056.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-056.png",
+      "stage": "",
+      "state": "walk",
+      "work": "hunger",
+      "nativeSha256": "8fe9343d50a11ffe1fe1d270399e7ab08815651d88b1b0c2e019ea8d99090b43",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-057.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-057.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-058.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-058.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-059.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-059.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-060.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-060.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-061.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-061.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-062.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-062.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-063.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-063.png",
+      "stage": "",
+      "state": "idle",
+      "work": "hunger",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-064.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot0",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-064.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-065.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot1",
+      "phase": 0.0,
+      "slot": 1,
+      "sourceFile": "source-065.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "8162c5c368e0dd3230f16ca43952512023e237e1313cd49df5235804597dbf62",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.26,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-066.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot2",
+      "phase": 0.0,
+      "slot": 2,
+      "sourceFile": "source-066.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "c93e050e33f078fe1bd71f0d4ed99444ffc7a1728d75607b94cc836fba2de0d1",
+      "submittedSourceSha256": "32444d33ead2d6947b186b18384623068c9b9b6072e439da7ac8ffd96dab3d7d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.36,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-067.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot3",
+      "phase": 0.0,
+      "slot": 3,
+      "sourceFile": "source-067.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.48,
+      "drawOffset": [
+        0.0,
+        4.48359314695408e-15
+      ],
+      "file": "service-068.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot4",
+      "phase": 0.0,
+      "slot": 4,
+      "sourceFile": "source-068.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.6,
+      "drawOffset": [
+        0.0,
+        5.32907051820075e-15
+      ],
+      "file": "service-069.png",
+      "foot": [
+        8176.0,
+        7724.76904296875
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot5",
+      "phase": 0.0,
+      "slot": 5,
+      "sourceFile": "source-069.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "0b6a22f327ffbeac9f1251d02b836c35f7632f3a870a47943b04d077c693a484",
+      "submittedSourceSha256": "216cc7b4a3bac7cd39b2bacf7b03e7279d7b66f8b20598628a3c759378ef3a04",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.72,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-070.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot6",
+      "phase": 0.0,
+      "slot": 6,
+      "sourceFile": "source-070.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-071.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "fatigue",
+      "key": "idle-north",
+      "kind": "available",
+      "moment": "finished",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-071.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-072.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-072.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-073.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-073.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "bf2b7ea3dcbb2bf23b184e2e0b5aa1b4c01bc3da3e325c6390c82be25fc9d823",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-074.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-074.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-075.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-075.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-076.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-076.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "2f1832573905266d6c401984bd0fe535c303393911b9d3f3b5092a4c256da366",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-077.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-077.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-078.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-078.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-079.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-079.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "4eceb0f4b2d14b0704807d9802679db4c2aa5951d10a693defc88a9f54669db4",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-080.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-080.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-081.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-081.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-082.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-082.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "850ab81ebbe73f4f1f0d900d63ab8859c7d4625b4b4a07a7181aa56eaad723cd",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-083.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-083.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-084.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-084.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-085.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-085.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "0e0451cbf572952c9e1e88e6ad62b20534db1b26c647de2ddf6a5a82611e4e77",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-086.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-086.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-087.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-087.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-088.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-088.png",
+      "stage": "",
+      "state": "walk",
+      "work": "fatigue",
+      "nativeSha256": "8fe9343d50a11ffe1fe1d270399e7ab08815651d88b1b0c2e019ea8d99090b43",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-089.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-089.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-090.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-090.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-091.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-091.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-092.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-092.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-093.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-093.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-094.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-094.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-095.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-095.png",
+      "stage": "",
+      "state": "idle",
+      "work": "fatigue",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-096.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot0",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-096.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-097.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot1",
+      "phase": 0.0,
+      "slot": 1,
+      "sourceFile": "source-097.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "8162c5c368e0dd3230f16ca43952512023e237e1313cd49df5235804597dbf62",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.26,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-098.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot2",
+      "phase": 0.0,
+      "slot": 2,
+      "sourceFile": "source-098.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "c93e050e33f078fe1bd71f0d4ed99444ffc7a1728d75607b94cc836fba2de0d1",
+      "submittedSourceSha256": "32444d33ead2d6947b186b18384623068c9b9b6072e439da7ac8ffd96dab3d7d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.36,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-099.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot3",
+      "phase": 0.0,
+      "slot": 3,
+      "sourceFile": "source-099.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.48,
+      "drawOffset": [
+        0.0,
+        4.48359314695408e-15
+      ],
+      "file": "service-100.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot4",
+      "phase": 0.0,
+      "slot": 4,
+      "sourceFile": "source-100.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.6,
+      "drawOffset": [
+        0.0,
+        5.32907051820075e-15
+      ],
+      "file": "service-101.png",
+      "foot": [
+        8176.0,
+        7724.76904296875
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot5",
+      "phase": 0.0,
+      "slot": 5,
+      "sourceFile": "source-101.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "0b6a22f327ffbeac9f1251d02b836c35f7632f3a870a47943b04d077c693a484",
+      "submittedSourceSha256": "216cc7b4a3bac7cd39b2bacf7b03e7279d7b66f8b20598628a3c759378ef3a04",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.72,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-102.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "available",
+      "moment": "slot6",
+      "phase": 0.0,
+      "slot": 6,
+      "sourceFile": "source-102.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-103.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "maintenance",
+      "key": "kneel-north",
+      "kind": "available",
+      "moment": "finished",
+      "phase": 0.0,
+      "slot": 0,
+      "sourceFile": "source-103.png",
+      "stage": "kneel",
+      "state": "kneel",
+      "work": "maintenance",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-104.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-104.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-105.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-105.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "bf2b7ea3dcbb2bf23b184e2e0b5aa1b4c01bc3da3e325c6390c82be25fc9d823",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-106.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-106.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-107.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-107.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "34559807cf104bfdec4575652bf9223be2e88f3d9783c51c38c35a1adfc1ab1b",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-108.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.1,
+      "slot": 1,
+      "sourceFile": "source-108.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "2f1832573905266d6c401984bd0fe535c303393911b9d3f3b5092a4c256da366",
+      "submittedSourceSha256": "6ce92d67370f5b480692fef822fada993199469a28b212c850b44912fa2a0642",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-109.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.1,
+      "slot": 0,
+      "sourceFile": "source-109.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-110.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-110.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-111.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-111.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "4eceb0f4b2d14b0704807d9802679db4c2aa5951d10a693defc88a9f54669db4",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-112.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-112.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.38,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-113.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-113.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "3143b100365ac35215c67719a461a16f263ed88cd9d05f03187f80180b097069",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.4,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-114.png",
+      "foot": [
+        8176.0,
+        7728.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.38,
+      "slot": 3,
+      "sourceFile": "source-114.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "850ab81ebbe73f4f1f0d900d63ab8859c7d4625b4b4a07a7181aa56eaad723cd",
+      "submittedSourceSha256": "b82a0db867802106eb6336ac1243d4ee9560296f02a79929d9690b824bcb5b95",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-115.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.38,
+      "slot": 0,
+      "sourceFile": "source-115.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-116.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-116.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-117.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-117.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "0e0451cbf572952c9e1e88e6ad62b20534db1b26c647de2ddf6a5a82611e4e77",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-118.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-118.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        1.61538457870483
+      ],
+      "file": "service-119.png",
+      "foot": [
+        8176.0,
+        7726.384765625
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-119.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "085664a137e7c8bb2d558feed6d106d39163a5c99a653eaf5249f97d2b83626a",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        2.1538462638855
+      ],
+      "file": "service-120.png",
+      "foot": [
+        8176.0,
+        7725.84619140625
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.54,
+      "slot": 4,
+      "sourceFile": "source-120.png",
+      "stage": "",
+      "state": "walk",
+      "work": "maintenance",
+      "nativeSha256": "8fe9343d50a11ffe1fe1d270399e7ab08815651d88b1b0c2e019ea8d99090b43",
+      "submittedSourceSha256": "359e2721789a6c1f220b190d208049a2712970cdc78991c8feddea9c9b05d0bb",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-121.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.54,
+      "slot": 0,
+      "sourceFile": "source-121.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-122.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-122.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-123.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "power",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-123.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-124.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "power",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-124.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "b550d501701218c619625e949f49569ad49408110ddc63fb8958fbcfc8520e71",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-125.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "before",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-125.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "a5ba5498ac8e6b17f376e40a848ee23dd568980ebf4763665ba1ed338fedd2bd",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-126.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "walk-step-north",
+      "kind": "suspension",
+      "moment": "after",
+      "phase": 0.74,
+      "slot": 6,
+      "sourceFile": "source-126.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "service-127.png",
+      "foot": [
+        8176.0,
+        7722.0
+      ],
+      "goal": "",
+      "key": "idle-north",
+      "kind": "suspension",
+      "moment": "finished",
+      "phase": 0.74,
+      "slot": 0,
+      "sourceFile": "source-127.png",
+      "stage": "",
+      "state": "idle",
+      "work": "maintenance",
+      "nativeSha256": "2f97449e0d04fc317a0024beac307e95886e7b5c322f2d02d26fe6506d0cdb34",
+      "submittedSourceSha256": "c6195169ba56f09d24cd08b726c2fe5f9aaed030d0bf995c1e78ae4c927ee16d",
+      "crop": [
+        400,
+        200,
+        550,
+        355
+      ]
+    }
+  ],
+  "losslessNativeMotionPairs": 32,
+  "previews": [
+    {
+      "file": "curiosity.png",
+      "durationsMs": [
+        120,
+        140,
+        100,
+        120,
+        120,
+        120,
+        120,
+        600
+      ]
+    },
+    {
+      "file": "hunger.png",
+      "durationsMs": [
+        120,
+        140,
+        100,
+        120,
+        120,
+        120,
+        120,
+        600
+      ]
+    },
+    {
+      "file": "fatigue.png",
+      "durationsMs": [
+        120,
+        140,
+        100,
+        120,
+        120,
+        120,
+        120,
+        600
+      ]
+    },
+    {
+      "file": "maintenance.png",
+      "durationsMs": [
+        120,
+        140,
+        100,
+        120,
+        120,
+        120,
+        120,
+        600
+      ]
+    }
+  ],
+  "scope": "Unselected CountedStep plus StudyMain contact presentation and explicit manifest; real normal main/default furnished cold_store, costs/failure flags retained, peers/world paused. Four available ordinary goals and32actual power/suspension losses at four prescribed clocks on6unit routes. Fresh-route/ongoing-gait guard and36binary actor-only staged restores. No safety/traffic/normal RunSave disk/title Continue/normal selection or natural chooser acceptance.",
+  "normalRunSaveVerified": false,
+  "titleContinueVerified": false,
+  "safetyTrafficVerified": false,
+  "logs": {
+    "unit.log": "7591d1b3c591384fcab4f5a8b716a6e51722da4c4863cbc4d5c1ec02f5914c5b",
+    "native.log": "a806e95a557b9b6d524c284da1d584448284c30c8fbefe25e318d05fbd5a2267"
+  }
+}

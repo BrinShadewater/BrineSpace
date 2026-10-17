@@ -1,0 +1,122 @@
+{
+  "name": "Veld independent side seated breathing helmet",
+  "status": "staged_candidate",
+  "precomposed": true,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "sit-idle-east",
+      "frameFiles": [
+        "frames/helmet/sit-idle-east/000.png",
+        "frames/helmet/sit-idle-east/001.png",
+        "frames/helmet/sit-idle-east/002.png",
+        "frames/helmet/sit-idle-east/003.png",
+        "frames/helmet/sit-idle-east/004.png",
+        "frames/helmet/sit-idle-east/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "sit-idle-west",
+      "frameFiles": [
+        "frames/helmet/sit-idle-west/000.png",
+        "frames/helmet/sit-idle-west/001.png",
+        "frames/helmet/sit-idle-west/002.png",
+        "frames/helmet/sit-idle-west/003.png",
+        "frames/helmet/sit-idle-west/004.png",
+        "frames/helmet/sit-idle-west/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    }
+  ],
+  "equipment": "diving-helmet"
+}

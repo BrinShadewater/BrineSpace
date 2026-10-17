@@ -1,0 +1,90 @@
+{
+  "scope": "Source-only seven pose500ms West entry revision, unselected. Smaller crouch/push bodies; visual acceptance pending. No native motion/helmet/Continue/normal admission claim.",
+  "registrations": {
+    "crouch": {
+      "source": "bill-land-water-west-v1\\sources\\crouch-canvas-v3.png",
+      "generation": "exec-8b370156-7165-4781-8e72-8ade255a3b08",
+      "prompt": "bill-land-water-west-v1/sources/crouch-prompt-v3.txt",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        -15
+      ],
+      "soleBefore": 239,
+      "paintedSupportPreserved": true,
+      "nativeAlphaBBox": [
+        112,
+        112,
+        197,
+        227
+      ]
+    },
+    "push": {
+      "source": "bill-land-water-west-v1\\sources\\push-canvas-v2.png",
+      "generation": "exec-cd0be74a-4083-4b82-b17d-7049a30e2384",
+      "prompt": "bill-land-water-west-v1/sources/push-prompt-v2.txt",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        0
+      ],
+      "soleBefore": null,
+      "paintedSupportPreserved": true,
+      "nativeAlphaBBox": [
+        100,
+        115,
+        218,
+        222
+      ]
+    }
+  },
+  "exactPreservedFrameIndices": [
+    0,
+    1,
+    4,
+    5,
+    6
+  ],
+  "decodedAPNGFramesExact": 7,
+  "durationsMs": [
+    60,
+    70,
+    80,
+    60,
+    80,
+    90,
+    60
+  ],
+  "totalMs": 500,
+  "sourceSHA256": {
+    "bill-land-water-west-v1\\sources\\reference-idle-native.png": "a1d749ecadb287991038f0b737b8d9ca6713e9d678e8aa7cfad2711d8f2cf534",
+    "bill-land-water-west-v1\\sources\\arm-ready-native-v3.png": "69201b176f01890dedbbbbb8a857ecc70b1455be3df177ee4a79ed70be786e2a",
+    "bill-land-water-west-v2\\sources\\crouch-native-v3.png": "9b667da3fd97c264959a49f2c6ba36a833cfbc21beb53706e97764d8ebe69afa",
+    "bill-land-water-west-v2\\sources\\push-native-v2.png": "0b2c0e825740e1b2c9b7a593d76777a46d581f7587824b00d596bd03e22b51ee",
+    "bill-land-water-west-v1\\sources\\lift-native-v2.png": "c4661657d9658b9c86fab8fcda618cac3b62462f59e9d94b4278b80d64c5bb8a",
+    "bill-land-water-west-v1\\sources\\prone-native-v1.png": "c0cc6c57090668286af33a32735d3aeea1088bd579ba040b23485d8d35d9cf2f",
+    "bill-land-water-west-v1\\sources\\reference-swim-native.png": "9fc09bdc18673625bb7a35e2f19c5b86ca4d0bbacadb154f65d8da52de968195"
+  },
+  "visualReview": "Original master, both seven-pose rows and common4x head/shoulder crops inspected. Revised crouch/push have slimmer torso/shorter compact arms and smaller heads than V1, closer to standing and later compact endpoints. Crouch-v2 merged gloves; crouch-v3 exposes two recognizable gloves. Exact identity, shoulder patch/detail, subtle grade and continuous motion remain unaccepted; no native proof for West.",
+  "visualAcceptance": "Improved source anatomy/readability; full-family identity and continuous motion pending.",
+  "generationMode": "built-in image_gen",
+  "generatedRawAndPromptSHA256": {
+    "bill-land-water-west-v1\\sources\\crouch-canvas-v3.png": "2812b9cf72c18f9a7bd82168113e777c8c4b4fbbf6a59671f7cc2fc0acbd00c6",
+    "bill-land-water-west-v1\\sources\\crouch-prompt-v3.txt": "6b82f8b8b76e5bbb382226dc680505af9a2cc570b9eb1bdc3e6f4eed9824a3f1",
+    "bill-land-water-west-v1\\sources\\push-canvas-v2.png": "65f0c6d98a41036be59a3b587e9e57790e90fe02c999e2becc2b90b4b8f4bcec",
+    "bill-land-water-west-v1\\sources\\push-prompt-v2.txt": "f2d6699b497c7ece26c82b874d0a933cc16447124409550d4e00c7655c24fb8a"
+  },
+  "retainedDraft": {
+    "source": "bill-land-water-west-v1/sources/crouch-canvas-v2.png",
+    "generation": "exec-a2fb1022-f360-4646-a091-b57fe9f588bd",
+    "reason": "Compact torso improved but gloves merged; superseded by v3 far-arm edit. Raw/native/comparison retained."
+  }
+}

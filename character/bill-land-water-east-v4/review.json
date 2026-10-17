@@ -1,0 +1,90 @@
+{
+  "floorContactY": 224,
+  "semanticFrontBootRegions": {
+    "0": [
+      150,
+      216,
+      180,
+      229
+    ],
+    "1": [
+      150,
+      216,
+      180,
+      234
+    ],
+    "2": [
+      130,
+      236,
+      150,
+      255
+    ]
+  },
+  "alphaThresholdExclusive": 180,
+  "wholePoseTranslations": {
+    "1": [
+      0,
+      -6
+    ],
+    "2": [
+      0,
+      -27
+    ]
+  },
+  "scale": 1,
+  "standingHeight": 148,
+  "pivot": [
+    160,
+    224
+  ],
+  "preservedIndicesPerGear": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "translatedOpaquePixelsAndRGBAExact": true,
+  "noClipping": true,
+  "APNGDecodedFramesExact": 12,
+  "durationMsPerGear": 500,
+  "frameSHA256": {
+    "bare/frames/land-swim-east/000.png": "44c13bdda36b5ae7426373a7a3b1e6ba092b608c16485a5578673b92ee0718ae",
+    "bare/frames/land-swim-east/001.png": "1ccb3718710e355e89b70ce785a7e37f05fd4d6939ee05c1732ea227354978b1",
+    "bare/frames/land-swim-east/002.png": "4c12d81672d87e1b9bee0891a4bfe7ece869bb47e7d746a956a74d6448f942dd",
+    "bare/frames/land-swim-east/003.png": "f2ec7cff7311b41ebb2f6ea095742b36804e4fff97cb4cf648907088870440d5",
+    "bare/frames/land-swim-east/004.png": "c305ea16227ab1107b9efd0b4b21f55fcbab0a3cc617424872a29d73cc4c6530",
+    "bare/frames/land-swim-east/005.png": "c2cb61e1441e72505bc288fb7cfda30d0e07375ac95af9b051106f507570de7d",
+    "helmet/frames/land-swim-east/000.png": "be625c528cbd037e97ddbdadc6b811d4c755dedeaa006098cd5f3e622c65d37e",
+    "helmet/frames/land-swim-east/001.png": "ac14704c15406a1784588fda2e0fb05e95f08cc2e89313413322505ff7cd7fe1",
+    "helmet/frames/land-swim-east/002.png": "ab55fbabb3d59f707b354908fc360d3d28bb29f22204968e24ed8b64d06d2719",
+    "helmet/frames/land-swim-east/003.png": "2bfe1142fe3b37df6f3bf1ecfc3187ae4a9dca57aec214afa7629f9ec7ac3f29",
+    "helmet/frames/land-swim-east/004.png": "e17b21056903a88a7073d1504a8885d62f5fad2dd6e65fd568699c6c9aa941ce",
+    "helmet/frames/land-swim-east/005.png": "90bd6902a5d64ff279a731f30b5765989a42296988fa29eb05e28da7c6f04d08"
+  },
+  "sourceBankPaths": [
+    "character/bill-land-water-east-v3/manifest.json",
+    "character/bill-land-water-helmet-east-v1/manifest.json"
+  ],
+  "crownRegistrationForNextRuntime": [
+    [
+      171,
+      82
+    ],
+    [
+      177,
+      91
+    ],
+    [
+      183,
+      157
+    ],
+    [
+      187,
+      188
+    ]
+  ],
+  "newSpacingGapPx": 66,
+  "runtimeWaterMetadataPending": true,
+  "scope": "Deterministic source contact registration trial only. Two original whole figures shifted vertically without pixel/scale/grade/helmet/body changes. Contacts use explicit semantic sole regions, not full-body bounding-box normalization. Corrected early dry-support line exposes66px crown gap to first buoyant pose; authored intermediate still needed. Earlier all-wet source-study flags omitted, actual runtime classification still pending. Not world contact/collision/continuous native/master-motion acceptance; normal and staged runtime selectors unchanged.",
+  "visualReview": "Four before/after source pairs inspected in contact board; complete bare/helmet six-pose rows compared at original common148 ruler against original master. Early front soles now meet idle contact line224 without changing painted anatomy/material/helmet. Crouch-to-buoyant pitch spacing remains visibly large; not final continuous motion or physical world support acceptance."
+}

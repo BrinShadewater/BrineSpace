@@ -1,0 +1,27 @@
+{
+  "nativeChecks": 60,
+  "nativeFailures": 0,
+  "pairedSourceSlots": 8,
+  "reviewedNativeCaptures": 4,
+  "reviewedSourceWindowBoard": true,
+  "sourceIndices": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "durationsMs": [
+    40,
+    40,
+    40,
+    40
+  ],
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "continuousVisualMotionAcceptance": false,
+  "findings": [
+    "Local phase4 crop preserves actual pose more successfully than rejected full-body outputs.",
+    "Phase4 still brighter at boots/seams than prior matte phase3; preserve as provisional repair candidate, not whole-family finish acceptance."
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "name": "Krusher Dom helmet fitting east",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3db493605e03592d2f89c9e7bf5f3a3b64c9a56f0719ba13bbb86f22bafda252.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2e019221b99836b110cce04f076aff1f489dde5cf4b4f9d069b5021c201e767e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c2b477589c59bceba7db55635de0ee787761de016ee79bf29a07b4b762548bcd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c4a7eb941922867129cb699a3f23b492ff0d6928b9c3f789fa2ffca8a9327b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eebf13fadc74ba947ad9908c7dfa2d5b27f49a79a2822f0b33bedfe58224b166.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40a6c62214619e46fbfb76351d272ec3a3eee47f8412e2f7f8e8193d7b2535bc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/af6ebd0f634e423fd5a7c3929cd9bce5a00a0728c45164b4b16622c36fdb22cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/411753ca804dbdd0115783bad97d589b8f067b78e39a93e0d18898f0b73a0004.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3e4aeb2471f41f58cb768dba696cd8ec8630d39e515f6162a141a9061cf5d9ce.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22187f410c0b57aec44eae5a2c8c3aa9e380957cf578669928e91b55af72b589.png",
+        "res://character/krusher-style-neck-bank-v1/frames/83b0741840ed1de9b1324f73fdc5f7934e78e5a76c8fe10e5ee68c3b5ee9ac29.png",
+        "res://character/krusher-style-neck-bank-v1/frames/761086eb0c498f00767e5311ff6aca4631ff7b1943787a8c86b7c27a2acf4e0b.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/761086eb0c498f00767e5311ff6aca4631ff7b1943787a8c86b7c27a2acf4e0b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/83b0741840ed1de9b1324f73fdc5f7934e78e5a76c8fe10e5ee68c3b5ee9ac29.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22187f410c0b57aec44eae5a2c8c3aa9e380957cf578669928e91b55af72b589.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3e4aeb2471f41f58cb768dba696cd8ec8630d39e515f6162a141a9061cf5d9ce.png",
+        "res://character/krusher-style-neck-bank-v1/frames/411753ca804dbdd0115783bad97d589b8f067b78e39a93e0d18898f0b73a0004.png",
+        "res://character/krusher-style-neck-bank-v1/frames/af6ebd0f634e423fd5a7c3929cd9bce5a00a0728c45164b4b16622c36fdb22cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40a6c62214619e46fbfb76351d272ec3a3eee47f8412e2f7f8e8193d7b2535bc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eebf13fadc74ba947ad9908c7dfa2d5b27f49a79a2822f0b33bedfe58224b166.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c4a7eb941922867129cb699a3f23b492ff0d6928b9c3f789fa2ffca8a9327b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c2b477589c59bceba7db55635de0ee787761de016ee79bf29a07b4b762548bcd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2e019221b99836b110cce04f076aff1f489dde5cf4b4f9d069b5021c201e767e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3db493605e03592d2f89c9e7bf5f3a3b64c9a56f0719ba13bbb86f22bafda252.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "runtimeInstalled": false,
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  }
+}

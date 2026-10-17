@@ -1,0 +1,11 @@
+from pathlib import Path
+import json
+P=Path(__file__).resolve().parent
+m=json.loads((P/'manifest.json').read_text());s=m['states'][0]
+data={'files':['../../'+f[6:] for f in s['frameFiles']],'durations':s['frameDurationsMs']}
+h='''<!doctype html><meta charset="utf-8"><title>Bill southeast walk review</title>
+<style>body{background:#152027;color:#e6eff1;font:16px system-ui;margin:24px}canvas{background:#22343e}button,select{font:inherit;margin:8px;padding:8px}img{width:100%;max-width:1800px}</style>
+<h1>Bill · south-east walk candidate</h1><p>Six source poses, fixed scale per sheet, master material grade. Candidate only: no normal-loader replacement. Check leg alternation, head and shoulder proportions, camera and the join between the two sheets.</p>
+<button id="play">Pause</button><button id="step">Next frame</button><select id="size"><option>148</option><option>82</option><option>54</option><option>27</option></select><span id="phase">Loading</span><br><canvas width="350" height="300"></canvas><br><img src="master-review.png">
+<script>const data=DATA;let playing=true,time=0,last=performance.now(),manual=0;let frames=data.files.map(f=>{let a=new Image;a.src=f;return a});document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play'};document.querySelector('#step').onclick=()=>{playing=false;manual=(manual+1)%6;document.querySelector('#play').textContent='Play'};Promise.all(frames.map(a=>new Promise((resolve,reject)=>{if(a.complete&&a.naturalWidth)resolve();else{a.onload=resolve;a.onerror=reject}}))).then(()=>{function draw(now){if(playing)time+=now-last;last=now;let t=time%720,i=manual;if(playing){i=0;while(i<5&&t>=data.durations[i])t-=data.durations[i++]}let scale=Number(document.querySelector('#size').value)/148,c=document.querySelector('canvas').getContext('2d');c.clearRect(0,0,350,300);c.drawImage(frames[i],175-128*scale,270-224*scale,256*scale,256*scale);document.querySelector('#phase').textContent='walk-south-east · '+i+' / 6';requestAnimationFrame(draw)}requestAnimationFrame(draw)}).catch(()=>document.querySelector('#phase').textContent='Image load failed');</script>'''.replace('DATA',json.dumps(data))
+(P/'index.html').write_text(h,encoding='utf-8')

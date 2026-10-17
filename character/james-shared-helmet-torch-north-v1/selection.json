@@ -1,0 +1,43 @@
+{
+  "status": "installed_owner_accepted_north_construction_torch",
+  "runtimeInstalled": true,
+  "framesPerMode": 45,
+  "coverage": [
+    "torch-draw-north",
+    "weld-north",
+    "torch-stow-north"
+  ],
+  "states": {
+    "torch-draw-north": {
+      "frames": 9,
+      "durationMs": 520
+    },
+    "weld-north": {
+      "frames": 27,
+      "durationMs": 1200,
+      "loop": true
+    },
+    "torch-stow-north": {
+      "frames": 9,
+      "durationMs": 520
+    }
+  },
+  "source": "character/james-torch-north-direct-v2",
+  "sourceSha256": "88f7b1b63b956b495b3e28e28a16a79b7f6b47803ddfb2a709b1d0c23215aaeb",
+  "sourceSelection": "Draw0/8/16/24/36/40/44/48/83; work83-96 then95-83 reverse; stow reverses selected draw. Raw source oversized flare/clipping sections excluded.",
+  "toolCorrection": "Built-in imagegen local torch object replaces source held-wrench artifact; belt wrench restored from selected idle; ignite raised, extinguish before stow.",
+  "generatedImage": "forward-torch-generated.png",
+  "generatedSha256": "290e55a4280ef2a06181a311906a7d7301fc57214b59b01ca71d941f89d01764",
+  "prompt": "forward-tool-prompt.txt",
+  "estimatedVideoUSD": 0.38,
+  "verifiedBilling": null,
+  "imagegenCostUSD": null,
+  "native": "Actual installed loader395 checks/0 failures;12 captures; scratch asserted; real profile delta only logs/godot.log while owner game active, save data unchanged",
+  "helmet": "Selected north shell; smoothed rear-head silhouette, max adjacent0/1px",
+  "review": "Owner accepted GIF; installed native and equipped maintenance-station work visually reviewed",
+  "pending": [
+    "Retained special actions"
+  ],
+  "ownerAcceptance": "Looks good",
+  "station": "Production renderer30 captures/0 failures through draw/weld/stow; clean exit; scratch asserted; real profile unchanged"
+}

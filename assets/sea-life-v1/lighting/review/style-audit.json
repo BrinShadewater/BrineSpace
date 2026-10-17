@@ -1,0 +1,104 @@
+{
+  "revision": "painted-v2",
+  "textures": {
+    "lamp-glow-warm-128.png": {
+      "dimensions_preserved": true,
+      "changed": false,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.126,
+      "mean_alpha_after": 0.126
+    },
+    "lamp-glow-cool-128.png": {
+      "dimensions_preserved": true,
+      "changed": false,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.126,
+      "mean_alpha_after": 0.126
+    },
+    "lamp-glow-wide-128.png": {
+      "dimensions_preserved": true,
+      "changed": false,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.0519,
+      "mean_alpha_after": 0.0519
+    },
+    "light-shaft-256x1024.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.0423,
+      "mean_alpha_after": 0.0378
+    },
+    "light-shaft-256x1024-v2.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.0524,
+      "mean_alpha_after": 0.047
+    },
+    "light-shaft-256x1024-v3.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.0626,
+      "mean_alpha_after": 0.0561
+    },
+    "caustics-tile-512.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 0.1264,
+      "mean_luminance_after": 0.0433,
+      "mean_alpha_before": 1.0,
+      "mean_alpha_after": 1.0
+    },
+    "hull-bubbles-atlas.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 0.9824,
+      "mean_luminance_after": 0.9829,
+      "mean_alpha_before": 0.0438,
+      "mean_alpha_after": 0.0436
+    },
+    "beacon-glow-128.png": {
+      "dimensions_preserved": true,
+      "changed": true,
+      "mean_luminance_before": 1.0,
+      "mean_luminance_after": 1.0,
+      "mean_alpha_before": 0.066,
+      "mean_alpha_after": 0.0653
+    }
+  },
+  "palette": "Runtime colors unchanged; halos/beacon/shafts white RGB, caustic greyscale, bubbles original blue-white.",
+  "sea_life": {
+    "lantern_world_units_per_pixel": [
+      0.7456310679611652,
+      1.4912621359223304
+    ],
+    "glass_and_veil_world_units_per_pixel": [
+      0.6981818181818182,
+      1.3963636363636365
+    ],
+    "ribbon_world_units_per_pixel": 0.9268965517241378,
+    "tidewalker_world_units_per_active_pixel": 4.048661800486618,
+    "result": "Reviewed against native captures: retain detailed tissue, navy body and separated luminous cores; no source or animation changes."
+  },
+  "lighting_density": {
+    "lamp_world_units_per_art_pixel": 1.09375,
+    "lamp_Bayer_cluster_world_units": 2.1875,
+    "beacon_world_units_per_art_pixel": 0.8400000000000001,
+    "bubble_world_diameter_range": [
+      5.12,
+      11.2
+    ],
+    "bubble_art_rim_diameter": 24,
+    "caustic_world_units_per_texel": 4.5,
+    "caustic_note": "Optical field sampled linearly; texel density is not a physical object-detail standard.",
+    "shaft_note": "Review-only; 256x1024 authored size, no installed world scale."
+  }
+}

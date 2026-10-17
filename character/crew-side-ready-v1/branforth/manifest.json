@@ -1,0 +1,36 @@
+{
+  "name": "branforth approved-master side idle holds",
+  "status": "candidate_not_installed",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "states": [
+    {
+      "id": "idle-east",
+      "frameCount": 1,
+      "frameFiles": [
+        "idle-east.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-west",
+      "frameCount": 1,
+      "frameFiles": [
+        "idle-west.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true
+    }
+  ]
+}

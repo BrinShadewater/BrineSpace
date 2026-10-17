@@ -1,0 +1,1 @@
+Historical metadata/review only, not a complete byte rollback. Original generated source and sprite pixels are unchanged. Some bound external files have changed. Native depth diagnosis intervals remain under output/veld-seated-north-station-v1/interval-before-*.

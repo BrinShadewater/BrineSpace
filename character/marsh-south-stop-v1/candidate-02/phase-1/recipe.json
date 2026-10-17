@@ -1,0 +1,166 @@
+{
+  "status": "rejected motion/contact draft",
+  "rawSha256": "f113cb85b45604d55721753d5be6710a6b743ab1183b8c283ab2f1656353b95c",
+  "sharedNeutralScale": 0.23529411764705882,
+  "neutralCell": 3,
+  "gaitPath": "character/marsh-south-walk-material-v1/candidate-02/001.png",
+  "gaitSha256": "fa836f2fee5dc2c66893a8a0eadbc33411b4bcc3c3fdc4f9c653997a2c0a8716",
+  "idlePath": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+  "idleSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+  "grade": "none",
+  "cells": [
+    {
+      "cell": [
+        0,
+        0,
+        590,
+        756
+      ],
+      "wholeFigureOffset": [
+        10,
+        13
+      ],
+      "supportSide": "viewer-left",
+      "supportTarget": [
+        83.5,
+        171
+      ],
+      "bounds": [
+        64,
+        24,
+        126,
+        172
+      ],
+      "leftSole": [
+        84.0,
+        171
+      ],
+      "rightSole": [
+        104.0,
+        162
+      ],
+      "headAlphaCentroid": [
+        94.45436893203883,
+        37.04466019417476
+      ],
+      "sha256": "90c7d4059d4f7eb7c46d34b52b08ee08e967af3da2fd716140a58190801ee201"
+    },
+    {
+      "cell": [
+        590,
+        0,
+        1020,
+        756
+      ],
+      "wholeFigureOffset": [
+        38,
+        13
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        61,
+        24,
+        123,
+        172
+      ],
+      "leftSole": [
+        79.5,
+        171
+      ],
+      "rightSole": [
+        105.0,
+        170
+      ],
+      "headAlphaCentroid": [
+        92.33462282398453,
+        36.95551257253385
+      ],
+      "sha256": "acfe4246c592fc59afccb494f4547f7753c0064ae78477e5efc45a86c5dfcd29"
+    },
+    {
+      "cell": [
+        1020,
+        0,
+        1450,
+        756
+      ],
+      "wholeFigureOffset": [
+        38,
+        12
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        66,
+        23,
+        125,
+        171
+      ],
+      "leftSole": [
+        83.5,
+        170
+      ],
+      "rightSole": [
+        105.5,
+        170
+      ],
+      "headAlphaCentroid": [
+        94.7918215613383,
+        36.44423791821561
+      ],
+      "sha256": "c4a379e6c2a8730bc9585026a0a9dbeb9c16e5b898e579c57c93bac02b3f4d70"
+    },
+    {
+      "cell": [
+        1450,
+        0,
+        2079,
+        756
+      ],
+      "wholeFigureOffset": [
+        32,
+        12
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        63,
+        23,
+        123,
+        171
+      ],
+      "leftSole": [
+        79.5,
+        170
+      ],
+      "rightSole": [
+        105.0,
+        170
+      ],
+      "headAlphaCentroid": [
+        92.58921933085502,
+        36.63754646840149
+      ],
+      "sha256": "7b665f66492d56ff9c4003f4e9b10ca7ea19d067dd601c69533ec8c21e856ca0"
+    }
+  ],
+  "frameHashes": {
+    "000.png": "fa836f2fee5dc2c66893a8a0eadbc33411b4bcc3c3fdc4f9c653997a2c0a8716",
+    "001.png": "90c7d4059d4f7eb7c46d34b52b08ee08e967af3da2fd716140a58190801ee201",
+    "002.png": "acfe4246c592fc59afccb494f4547f7753c0064ae78477e5efc45a86c5dfcd29",
+    "003.png": "c4a379e6c2a8730bc9585026a0a9dbeb9c16e5b898e579c57c93bac02b3f4d70",
+    "004.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+  },
+  "limits": "Whole figures only; no independent anatomy/scale edits. Source support targets are a study, not a validated root/controller. No native, arbitrary phase, safety, save, title Continue or normal admission.",
+  "visualReview": "Rejected: recovering right162 vs outgoing163 adds1dense lift, terminal left83.5 vs idle78.5 under-widens5dense. First figure and master material inspected; whole-pose shared phase0 recovery instead descends163\u2192168\u2192170 and has1dense terminal seam. No native/controller proof."
+}

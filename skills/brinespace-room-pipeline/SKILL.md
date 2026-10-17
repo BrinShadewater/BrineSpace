@@ -5,6 +5,20 @@ description: Use when generating, repairing, reviewing, or integrating BrineSpac
 
 # BrineSpace room pipeline
 
+For a mixed ocean asset family, overhead fungi, upright grass-shaped kelp or
+smooth anchored foliage, read [ocean foliage and closeout](references/ocean-foliage-and-closeout.md).
+It covers native scale review, production clock/accessibility checks and scoped completion evidence.
+
+For cryopod masters, physical sliding doors, thaw/fog sequences and visible
+character landing handoffs, read [cryopod emergence](references/cryopod-emergence.md).
+Use both pipelines and the latest owner-selected encounter geometry.
+
+For ambient sea-life art, underwater effect textures and card frames/emblems,
+read [effects and card artwork](references/effects-and-card-art.md). It covers
+source contrast, independent alpha/color, foreground outlines, actual pixel
+density, reproducible bakes and revision-specific native previews.
+
+
 For companion rescue crates, occupant reveals and recovery handoffs, read
 [companion rescue workflow](references/companion-rescue.md) and use both pipelines.
 
@@ -97,6 +111,9 @@ For underwater terrain, scenery, wreckage or blocker art, read
 [references/environment.md](references/environment.md). It routes environment
 geometry, source provenance and native review; room-specific door and card gates
 below apply only when those consumers are in scope.
+Its combined ocean-art review section covers cell-scale density, fine-grain
+materials and deterministic variant integration. For this session's final scope,
+read `docs/OCEAN_ART_SESSION_CLOSEOUT_2026-09-30.md` after CURRENT_STATUS.md.
 
 For current scope, read `docs/CURRENT_STATUS.md` first. For takeover or closeout,
 use `docs/CLAUDE_HANDOFF_2026-09-24.md` and the maintained

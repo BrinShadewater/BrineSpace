@@ -1,0 +1,77 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "tiles": [
+    {
+      "phase": 28,
+      "admittedPixels": 65,
+      "outsideExact": 65471,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 54.28479999999999,
+      "medianAfter": 64.6378,
+      "p95Before": 78.90028,
+      "p95After": 85.74828000000001
+    },
+    {
+      "phase": 29,
+      "admittedPixels": 102,
+      "outsideExact": 65434,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 46.357000000000006,
+      "medianAfter": 55.173899999999996,
+      "p95Before": 70.62375999999999,
+      "p95After": 69.62716999999999
+    },
+    {
+      "phase": 30,
+      "admittedPixels": 63,
+      "outsideExact": 65473,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 45.2848,
+      "medianAfter": 57.4252,
+      "p95Before": 74.95299999999999,
+      "p95After": 84.06921999999999
+    },
+    {
+      "phase": 31,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_far_thigh_construction_refinement",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nearThighProtectedBothGears": true,
+  "nativeWindow": 284,
+  "nativeIncluded": true,
+  "findings": [
+    "Far-side cloth28..30 has softer folds/fine stitching, reduced bold parallel stripes.65/102/63RGB pixels admitted; original alpha/silhouette/full knee/glove/near-thigh polygons remain exact. Entire31 reference byte-exact.",
+    "Raw authoring changed belt details and lower-leg seams; excluded from packaged sources. Near/far separation and outline remain from originals; physical moving contact/anatomy not proven by pixel guards.",
+    "Same-mask medians54.28to64.64/46.36to55.17/45.28to57.43. Material lighter than old folds but these old pixels alone are not master-colour target. Full temporal/master grade and remaining transitions pending."
+  ]
+}

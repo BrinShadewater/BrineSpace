@@ -1,0 +1,95 @@
+{
+  "status": "Whole recovery key demonstrates intended intermediate pose; master proportion acceptance fails",
+  "firstArtifact": "exec-e1c6a49b-f681-4429-b786-ec4c0e2e417b",
+  "refinedArtifact": "exec-164e33b0-e563-4f08-ae86-51b775cad44d",
+  "first": {
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "fixedWholeScale": 0.20414673046251994,
+    "fixedWholeOffset": [
+      0,
+      0
+    ],
+    "master": {
+      "height": 148,
+      "headWidth": 26,
+      "headAxis": 123.5,
+      "headTop": 76,
+      "floor": 223,
+      "upperBodyWidth": 42,
+      "clothMedian": [
+        66.0,
+        64.0,
+        63.0
+      ]
+    },
+    "walkingEntry": {
+      "height": 144,
+      "headWidth": 25,
+      "headAxis": 123.0,
+      "headTop": 77,
+      "floor": 220,
+      "upperBodyWidth": 42,
+      "clothMedian": [
+        70.0,
+        67.0,
+        66.5
+      ]
+    },
+    "candidate": {
+      "height": 145,
+      "headWidth": 28,
+      "headAxis": 123.5,
+      "headTop": 76,
+      "floor": 220,
+      "upperBodyWidth": 46,
+      "clothMedian": [
+        69.0,
+        67.0,
+        66.0
+      ]
+    },
+    "scope": "Whole returned square resampled to original native256 canvas per frozen input registration; no height fit, recenter, refloor or local RGB/anatomy changes."
+  },
+  "refined": {
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "fixedWholeScale": 0.20414673046251994,
+    "fixedWholeOffset": [
+      0,
+      0
+    ],
+    "candidate": {
+      "height": 146,
+      "headWidth": 28,
+      "headAxis": 123.5,
+      "headTop": 76,
+      "floor": 221,
+      "upperBodyWidth": 45,
+      "clothMedian": [
+        67.0,
+        65.0,
+        64.0
+      ]
+    },
+    "scope": "Whole-square frozen registration; no geometry, grading or per-key height/axis/floor correction."
+  },
+  "visualReview": "Both whole reference inputs, first raw key/direct original-walk comparison, refined raw key/side-by-side original-first-refined comparison viewed. Raised rear boot now low beside ankle/under hips and one forward support boot remains near original far220plane; isolated key does not prove trajectory/contact. Fixed whole1254square->256/offset0 preserved original axis123.5/top76. Head remains28 versus original26, upper46 then45 versus42. Refined cloth67/65/64 closer to original66/64/63 than first69/67/66. Refinement changes source floor220to221, so requested lower pose was not strictly pixel-preserved. No procedural RGB/head/limb/density/refloor correction.",
+  "limits": "Height145/146 versus original148 naturally depends on bent pose/support plane; not by itself a density defect. Floor220/221 corresponds far support versus original near223 depth; do not force near-foot baseline onto the far boot. Numeric colour medians alone are not palette/identity acceptance. No helmet/native/normal adoption.",
+  "next": "Resolve complete whole-source upper identity fidelity while retaining supported foot pose. Do not apply local code head shrink/body narrowing/skin grade or erase the pose with per-key height fit. Existing video recovery14 remains staged with final contact/entry open.",
+  "priorFlatNativeInputsUnchanged": 307,
+  "priorRecoveryNativeInputsUnchanged": 87,
+  "bindings": {
+    "raw-recovery-key-v1.png": "e61cd6bfc7359f7ac78629381577eb0c4f2cc225a760804600ac3afc3044053a",
+    "raw-recovery-key-refined-v1.png": "3b7703df2ba32a03ef62f2af5815ba5bfb828db4e8353e37de5cc1ed257d8a24",
+    "prompt.txt": "31dfeab0f07d7b873c8e7a5f348c63ab8f93a9fee9f8089209f11c4b78794954",
+    "refine-prompt.txt": "90f1906e0ca16abc09e8aeed6bb14280ff671686b54e6bfb50fa661e23c61e14",
+    "INPUT.json": "55145456fb97f5143073fa62d6a50dce40043d9045d7afe62341d2d4fa246f00",
+    "AUDIT.json": "52e1bbe5cd179b9b92f1aca63d0df1dea2a471366cf60a36d1e765d181ee42c3",
+    "REFINED_AUDIT.json": "be297a32acb568cfabd82f110c9a1e30e68f8e849e38f9a7c9fd9a3b0cff42fb"
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "scales": {
+    "bare": 0.3787878787878788,
+    "helmet": 0.4186046511627907
+  },
+  "calibration": [
+    {
+      "gear": "bare",
+      "cell": 1,
+      "sourceNeutralBox": [
+        228,
+        80,
+        289,
+        146
+      ],
+      "targetFile": "character/bill-cargo-north-master-head-v1/sources/bare-master-head.png",
+      "targetSize": [
+        24,
+        25
+      ],
+      "scale": 0.3787878787878788
+    },
+    {
+      "gear": "helmet",
+      "cell": 0,
+      "sourceNeutralBox": [
+        210,
+        125,
+        304,
+        211
+      ],
+      "targetFile": "character/bill-cargo-north-master-head-v1/sources/helmet-master-head.png",
+      "targetSize": [
+        35,
+        36
+      ],
+      "scale": 0.4186046511627907
+    }
+  ],
+  "ruler": "complete bare rear-quarter source1 and helmet rear source0 head components to accepted north master head component,one fixed ruler per independent sheet;original bodies stay native148;never perpose",
+  "sourceScope": "new heads only;generated body changes and halos excluded",
+  "donors": [
+    {
+      "gear": "bare",
+      "cell": 1,
+      "box": [
+        228,
+        80,
+        289,
+        146
+      ],
+      "scale": 0.3787878787878788,
+      "headAxis": 12.68939393939394,
+      "componentSize": [
+        23,
+        25
+      ],
+      "rawSha256": "5b4679b7440a1a2711819e6b0496d2edfdc6a99e6e00425b90d23971cc13cb42"
+    },
+    {
+      "gear": "bare",
+      "cell": 2,
+      "box": [
+        224,
+        80,
+        287,
+        146
+      ],
+      "scale": 0.3787878787878788,
+      "headAxis": 12.878787878787879,
+      "componentSize": [
+        24,
+        25
+      ],
+      "rawSha256": "5b4679b7440a1a2711819e6b0496d2edfdc6a99e6e00425b90d23971cc13cb42"
+    },
+    {
+      "gear": "bare",
+      "cell": 3,
+      "box": [
+        220,
+        53,
+        282,
+        119
+      ],
+      "scale": 0.3787878787878788,
+      "headAxis": 12.68939393939394,
+      "componentSize": [
+        23,
+        25
+      ],
+      "rawSha256": "5b4679b7440a1a2711819e6b0496d2edfdc6a99e6e00425b90d23971cc13cb42"
+    },
+    {
+      "gear": "bare",
+      "cell": 4,
+      "box": [
+        225,
+        53,
+        288,
+        119
+      ],
+      "scale": 0.3787878787878788,
+      "headAxis": 12.878787878787879,
+      "componentSize": [
+        24,
+        25
+      ],
+      "rawSha256": "5b4679b7440a1a2711819e6b0496d2edfdc6a99e6e00425b90d23971cc13cb42"
+    },
+    {
+      "gear": "helmet",
+      "cell": 1,
+      "box": [
+        207,
+        123,
+        298,
+        209
+      ],
+      "scale": 0.4186046511627907,
+      "headAxis": 20.511627906976745,
+      "componentSize": [
+        38,
+        36
+      ],
+      "rawSha256": "5b49127ce574bf949dfce1aaab78784deca1941f2b933adf84b30faeda755466"
+    },
+    {
+      "gear": "helmet",
+      "cell": 2,
+      "box": [
+        208,
+        123,
+        298,
+        209
+      ],
+      "scale": 0.4186046511627907,
+      "headAxis": 19.46511627906977,
+      "componentSize": [
+        38,
+        36
+      ],
+      "rawSha256": "5b49127ce574bf949dfce1aaab78784deca1941f2b933adf84b30faeda755466"
+    },
+    {
+      "gear": "helmet",
+      "cell": 3,
+      "box": [
+        205,
+        119,
+        300,
+        205
+      ],
+      "scale": 0.4186046511627907,
+      "headAxis": 20.30232558139535,
+      "componentSize": [
+        40,
+        36
+      ],
+      "rawSha256": "5b49127ce574bf949dfce1aaab78784deca1941f2b933adf84b30faeda755466"
+    },
+    {
+      "gear": "helmet",
+      "cell": 4,
+      "box": [
+        206,
+        119,
+        298,
+        205
+      ],
+      "scale": 0.4186046511627907,
+      "headAxis": 19.046511627906977,
+      "componentSize": [
+        39,
+        36
+      ],
+      "rawSha256": "5b49127ce574bf949dfce1aaab78784deca1941f2b933adf84b30faeda755466"
+    }
+  ],
+  "frames": [
+    {
+      "gear": "bare",
+      "frame": 0,
+      "originalBare": "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+      "originalBareSha256": "0fb00e2018443b5f918a70ffa62104815859f43b50170f70816e8739a6ae90ab",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/000.png",
+      "endpoint": true,
+      "position": null,
+      "eraseMask": "sources/erase-000.png",
+      "headAxis": 126.5,
+      "neckY": 104
+    },
+    {
+      "gear": "helmet",
+      "frame": 0,
+      "originalBare": "res://character/bill-cargo-north-master-head-v1/frames/bare/pickup-north/011.png",
+      "originalBareSha256": "0fb00e2018443b5f918a70ffa62104815859f43b50170f70816e8739a6ae90ab",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/000.png",
+      "endpoint": true,
+      "position": null,
+      "eraseMask": "sources/erase-000.png",
+      "headAxis": 126.5,
+      "neckY": 104
+    },
+    {
+      "gear": "bare",
+      "frame": 1,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/001.png",
+      "originalBareSha256": "c9ea8954671f3057a4f30b6ca0af87ffc22322240e66e67bca6d6d6f933b67de",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/001.png",
+      "endpoint": false,
+      "position": [
+        114,
+        77
+      ],
+      "eraseMask": "sources/erase-001.png",
+      "headAxis": 126.5,
+      "neckY": 100
+    },
+    {
+      "gear": "helmet",
+      "frame": 1,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/001.png",
+      "originalBareSha256": "c9ea8954671f3057a4f30b6ca0af87ffc22322240e66e67bca6d6d6f933b67de",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/001.png",
+      "endpoint": false,
+      "position": [
+        106,
+        70
+      ],
+      "eraseMask": "sources/erase-001.png",
+      "headAxis": 126.5,
+      "neckY": 100
+    },
+    {
+      "gear": "bare",
+      "frame": 2,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/002.png",
+      "originalBareSha256": "bc01de8cb8de466a22a21231340eea4eaeac1477813549909c29caf13d587f55",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/002.png",
+      "endpoint": false,
+      "position": [
+        114,
+        76
+      ],
+      "eraseMask": "sources/erase-002.png",
+      "headAxis": 126.5,
+      "neckY": 100
+    },
+    {
+      "gear": "helmet",
+      "frame": 2,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/002.png",
+      "originalBareSha256": "bc01de8cb8de466a22a21231340eea4eaeac1477813549909c29caf13d587f55",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/002.png",
+      "endpoint": false,
+      "position": [
+        107,
+        70
+      ],
+      "eraseMask": "sources/erase-002.png",
+      "headAxis": 126.5,
+      "neckY": 100
+    },
+    {
+      "gear": "bare",
+      "frame": 3,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/003.png",
+      "originalBareSha256": "778d8dd2c7320179f5ca148df010d6ca05ec03d27f9c1bddb33af3b128ca7156",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/003.png",
+      "endpoint": false,
+      "position": [
+        114,
+        77
+      ],
+      "eraseMask": "sources/erase-003.png",
+      "headAxis": 127.0,
+      "neckY": 100
+    },
+    {
+      "gear": "helmet",
+      "frame": 3,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/003.png",
+      "originalBareSha256": "778d8dd2c7320179f5ca148df010d6ca05ec03d27f9c1bddb33af3b128ca7156",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/003.png",
+      "endpoint": false,
+      "position": [
+        107,
+        70
+      ],
+      "eraseMask": "sources/erase-003.png",
+      "headAxis": 127.0,
+      "neckY": 100
+    },
+    {
+      "gear": "bare",
+      "frame": 4,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/004.png",
+      "originalBareSha256": "371d5f716f3723a8d671fe056a864b78136941bad0177fb470f378308751f502",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/004.png",
+      "endpoint": false,
+      "position": [
+        114,
+        77
+      ],
+      "eraseMask": "sources/erase-004.png",
+      "headAxis": 127.0,
+      "neckY": 100
+    },
+    {
+      "gear": "helmet",
+      "frame": 4,
+      "originalBare": "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-north-east-v1/frames/carry-turn-north-east/004.png",
+      "originalBareSha256": "371d5f716f3723a8d671fe056a864b78136941bad0177fb470f378308751f502",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/004.png",
+      "endpoint": false,
+      "position": [
+        108,
+        70
+      ],
+      "eraseMask": "sources/erase-004.png",
+      "headAxis": 127.0,
+      "neckY": 100
+    },
+    {
+      "gear": "bare",
+      "frame": 5,
+      "originalBare": "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+      "originalBareSha256": "400e2ab5ecf01f1da914cfa9e8409e4414e34c24ab25e5349542bbcf00b7ec4c",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/bare/carry-turn-north-east/005.png",
+      "endpoint": true,
+      "position": null,
+      "eraseMask": "sources/erase-005.png",
+      "headAxis": 126.0,
+      "neckY": 108
+    },
+    {
+      "gear": "helmet",
+      "frame": 5,
+      "originalBare": "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+      "originalBareSha256": "400e2ab5ecf01f1da914cfa9e8409e4414e34c24ab25e5349542bbcf00b7ec4c",
+      "output": "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/005.png",
+      "endpoint": true,
+      "position": null,
+      "eraseMask": "sources/erase-005.png",
+      "headAxis": 126.0,
+      "neckY": 108
+    }
+  ]
+}

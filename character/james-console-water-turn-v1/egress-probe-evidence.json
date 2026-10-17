@@ -1,0 +1,1063 @@
+{
+  "checks": 5,
+  "failures": 0,
+  "results": [
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 0,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 0,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 0,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 0,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 0,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 1,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.81982, 143.7085)"
+          }
+        ],
+        "direction": "west",
+        "point": "(-384.0, 0.0)",
+        "ticks": 1467,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.81982, 143.7085)"
+          },
+          {
+            "key": "swim-turn-north-west",
+            "point": "(-48.36865, 48.01758)"
+          }
+        ]
+      },
+      "plannedPoints": 5,
+      "rawPoints": 27,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(-48.0, 48.0)",
+        "(-96.0, 48.0)",
+        "(-160.0, 0.0)",
+        "(-384.0, 0.0)"
+      ],
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          }
+        ],
+        "direction": "east",
+        "point": "(384.0, 0.0)",
+        "ticks": 1433,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          },
+          {
+            "key": "swim-turn-north-east",
+            "point": "(32.20557, 48.0)"
+          }
+        ]
+      },
+      "plannedPoints": 5,
+      "rawPoints": 28,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(32.0, 48.0)",
+        "(96.0, 48.0)",
+        "(160.0, 0.0)",
+        "(384.0, 0.0)"
+      ],
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          }
+        ],
+        "direction": "north",
+        "point": "(0.0, -384.0)",
+        "ticks": 1927,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          },
+          {
+            "key": "swim-turn-north-east",
+            "point": "(32.20557, 48.0)"
+          },
+          {
+            "key": "swim-turn-east-north",
+            "point": "(96.0, 47.7832)"
+          },
+          {
+            "key": "swim-turn-north-west",
+            "point": "(95.78613, -80.10693)"
+          },
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.8335, -96.24951)"
+          }
+        ]
+      },
+      "plannedPoints": 8,
+      "rawPoints": 40,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(32.0, 48.0)",
+        "(96.0, 48.0)",
+        "(96.0, -80.0)",
+        "(64.0, -96.0)",
+        "(32.0, -96.0)",
+        "(0.0, -144.0)",
+        "(0.0, -384.0)"
+      ],
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 1
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 1,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.81982, 143.7085)"
+          }
+        ],
+        "direction": "west",
+        "point": "(-384.0, 0.0)",
+        "ticks": 1467,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.81982, 143.7085)"
+          },
+          {
+            "key": "swim-turn-north-west",
+            "point": "(-48.36865, 48.01758)"
+          }
+        ]
+      },
+      "plannedPoints": 5,
+      "rawPoints": 27,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(-48.0, 48.0)",
+        "(-96.0, 48.0)",
+        "(-160.0, 0.0)",
+        "(-384.0, 0.0)"
+      ],
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          }
+        ],
+        "direction": "east",
+        "point": "(384.0, 0.0)",
+        "ticks": 1433,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          },
+          {
+            "key": "swim-turn-north-east",
+            "point": "(32.20557, 48.0)"
+          }
+        ]
+      },
+      "plannedPoints": 5,
+      "rawPoints": 28,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(32.0, 48.0)",
+        "(96.0, 48.0)",
+        "(160.0, 0.0)",
+        "(384.0, 0.0)"
+      ],
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          }
+        ],
+        "direction": "north",
+        "point": "(0.0, -384.0)",
+        "ticks": 1927,
+        "turns": [
+          {
+            "key": "swim-turn-west-north",
+            "point": "(32.06494, 143.6196)"
+          },
+          {
+            "key": "swim-turn-north-east",
+            "point": "(32.20557, 48.0)"
+          },
+          {
+            "key": "swim-turn-east-north",
+            "point": "(96.0, 47.7832)"
+          },
+          {
+            "key": "swim-turn-north-west",
+            "point": "(95.78613, -80.10693)"
+          },
+          {
+            "key": "swim-turn-west-north",
+            "point": "(31.8335, -96.24951)"
+          }
+        ]
+      },
+      "plannedPoints": 8,
+      "rawPoints": 40,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(32.0, 48.0)",
+        "(96.0, 48.0)",
+        "(96.0, -80.0)",
+        "(64.0, -96.0)",
+        "(32.0, -96.0)",
+        "(0.0, -144.0)",
+        "(0.0, -384.0)"
+      ],
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 1,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 2,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 2,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 2,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 2,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 2,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 3,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "bare",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 3,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    },
+    {
+      "from": "(-1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(1, 0)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(0, -1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3
+    },
+    {
+      "from": "(0, 1)",
+      "gate": "(16.0, 128.0)",
+      "kind": "approach",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "east",
+        "point": "(117.0498, 147.5015)",
+        "ticks": 986,
+        "turns": [
+          {
+            "key": "swim-turn-north-east",
+            "point": "(0.111328, 128.0591)"
+          }
+        ]
+      },
+      "plannedPoints": 3,
+      "rawPoints": 17,
+      "rotation": 3,
+      "route": [
+        "(0.0, 128.0)",
+        "(36.7002, 147.5015)",
+        "(117.0498, 147.5015)"
+      ]
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(-1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(1, 0)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "rawPoints": 0,
+      "rotation": 3,
+      "to": "(0, -1)"
+    },
+    {
+      "join": "(32.0, 144.0)",
+      "kind": "departureAfterStationaryNorthWest",
+      "mode": "helmet",
+      "motion": {
+        "arrived": true,
+        "bodyIntersections": [],
+        "canceledTurns": [],
+        "direction": "south",
+        "point": "(0.0, 384.0)",
+        "ticks": 966,
+        "turns": [
+          {
+            "key": "swim-turn-west-south",
+            "point": "(0.0, 144.3872)"
+          }
+        ]
+      },
+      "plannedPoints": 4,
+      "rawPoints": 17,
+      "rotation": 3,
+      "route": [
+        "(32.0, 144.0)",
+        "(16.0, 128.0)",
+        "(0.0, 144.0)",
+        "(0.0, 384.0)"
+      ],
+      "to": "(0, 1)"
+    }
+  ],
+  "scope": "Scratch candidate manifests, actual James navigation and move plus normal grid player sampled at120Hz. Fine contact/lane supplied explicitly; exact turn envelope used only in scratch action gate. Diagnostics record canceled turns and body intersections rather than concealing them. No production route integration, safety update loop, console activity, save or owner acceptance."
+}

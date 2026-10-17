@@ -1,0 +1,136 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; packing/review provisional",
+  "promptSha256": "aa798a66e0f710536800c56f76e7380411e263c37c06161b998e569fd41eb4f7",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-south-body-primary.png",
+      "sha256": "064a6d96ba07befbaa631d812bdef069d04f7595e2a0edc63c8265cd9b2d894f"
+    },
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-south-swim-endpoints.png",
+      "sha256": "8ab67b48f738d60ed182c576cb6a45273e15f884641b7e388e92ede90d0e3086"
+    },
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-south-old-motion-only.png",
+      "sha256": "b96d30f6750324ce35e698b4b382d447bea20b3edb489be1add11ab5a5d6d960"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png",
+      "sha256": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/000.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/000.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/001.png",
+      "sha256": "56d73be15fd880a7ccd68013e2bea669c1c23842917976bb43bfb3b6dd0efae7"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/002.png",
+      "sha256": "8ba63502963b6bcf3c09cca99adc3edd86fcbb6635fd76c4d4ca55bbc958394c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/003.png",
+      "sha256": "321852311c19ccaa1953ab2da5be52fcad3bc8fc976f2bbb3a967925566c44bb"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/004.png",
+      "sha256": "d43b6193b62efddeb6660be81625c1fdb1f280885ed52a7eb69d5df85e8ca109"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/000.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    }
+  ],
+  "selectedTurnManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTurnState": {
+    "id": "swim-carry-turn-east-south",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-south/004.png"
+    ],
+    "frameDurationsMs": [
+      60,
+      90,
+      100,
+      90,
+      60
+    ],
+    "loop": false,
+    "facings": [
+      "east",
+      "east",
+      "south",
+      "south",
+      "south"
+    ],
+    "waterKinds": [
+      "transition",
+      "transition",
+      "transition",
+      "transition",
+      "transition"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "neutralOccupiedTargetHeight": 147,
+  "anglesFromOwnSide": [
+    22.5,
+    45,
+    67.5
+  ],
+  "rules": "Own frontal yaw/prone water camera, physical case side/front hardware/temple visibility, one own South147 ruler; no mirrored source/head patch/perposefit. Root/proportions/grade/joins provisional.",
+  "generationId": "exec-73c5df9f-b7e3-448d-ba38-6e6987ee0cb3",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-73c5df9f-b7e3-448d-ba38-6e6987ee0cb3.png",
+  "rawSha256": "18f84292e92b797b58efd0e7f2df73f5adc37fffae456bd8086f45c5da8bf394"
+}

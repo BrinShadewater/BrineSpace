@@ -1,0 +1,6 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[1]
+text=(R/'tools/run_veld_north_gather_original_v1.py').read_text()
+for before,after in [('veld-turn-north-east-original-master-v1','veld-turn-north-east-original-master-v2'),('veld-north-gather-original-v1','veld-north-east-original-turn-v2'),('test_veld_north_gather_original_v1','test_veld_north_east_original_turn_v2'),('package_gather.py','package_turn.py'),('inspect_gather.py','inspect_source.py'),('gather-registration.json','registration.json'),('gather-*-manifest.json','*-manifest.json'),('veld-cargo-north-original-master-v3','veld-helmet-original-turntable-v1'),('veld-gather-scratch','veld-turn-v2-scratch'),('Actual sprite player held/gathered static source comparison47/93/148both gears. No gather transition, turn chronology, gait, controller/world or save acceptance.','Actual finite sprite-player NE/EN turn chronology paired gear47/93/148. Exact gathered North alias; East action join/gather motion/gait/controller/world/save acceptance separate.')]:text=text.replace(before,after)
+dest=R/'tools/run_veld_north_east_original_turn_v2.py';assert not dest.exists(),'Preserve prepared runner';dest.write_text(text)
+print('Isolated paired-turn native runner prepared')

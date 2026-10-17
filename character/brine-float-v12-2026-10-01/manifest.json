@@ -1,0 +1,74 @@
+{
+  "status": "installed in source project; owner visual acceptance pending",
+  "source": "source-v1.png",
+  "alpha_threshold": 240,
+  "source_crop": [
+    272,
+    166,
+    759,
+    1349
+  ],
+  "export_size": [
+    61,
+    148
+  ],
+  "reference_height": 148,
+  "source_ids": [
+    "exec-55d4269c-de43-407b-becb-453506fee41f.png",
+    "exec-69fa0ef9-9195-46b8-93e9-63d35d9f98a6.png"
+  ],
+  "rejected": "cutout-v2 changed source anatomy/face and retained halo; source-v1 selected for extraction",
+  "hashes": {
+    "source-v1.png": "d130cd2b90a994035dbfbe616926a1c05cdcb775777c20d18459f104917a9e69",
+    "rejected-cutout-v2.png": "dd0ac44d5fb2ebff884a28ad6dfddec22253d835cb32f0849d8ac59d89221c8a",
+    "body.png": "44922073e96b789035904a063087f237eb5cbfa908d751bd32a9b8bf1178dc64",
+    "prompt.txt": "033e4cebb67fd8a0916de09b34bc3e980da90ab818c59237fa6f406749675587",
+    "cutout-prompt.txt": "6f9ae0909d57c720225d9caf693cc9b79a977f724cd37f0ad8fe834c9c0e4dc3",
+    "startup_review.gd": "da3c7bf7749bd1b709c79131d5232b379e59c148d2b7b24272d02cb4eebd5661",
+    "fresh_continue.gd": "8e964792085781847555721aa3e2d6864a297fe7efc36d00b4f27ae62bd47632"
+  },
+  "extraction_limits": "Threshold discards faint source fringe/hair as well as halo; native silhouette review required.",
+  "native_evidence": {
+    "frames": 200,
+    "fps": 25,
+    "seconds": 8,
+    "loop_and_rigid_face_assertions": "passed",
+    "overall_native_run": "FAILED: unrelated ui_widgets dependency compile errors remain",
+    "profile_guard": "both intervals unchanged, 2931 non-log files",
+    "sessions": [
+      "output/brine-float-v12/session-9beac0a7d89940c696e31a87853525ce",
+      "output/brine-float-v12/session-c9e506d17970418aac3d803860f18f7e"
+    ],
+    "runtime_selection": "unchanged"
+  },
+  "production_verification": {
+    "chamber_test": "PASS: four rotations, 16 door entries/returns, 3565 movement samples; containment, rigid face, loop, pause, offline, three native window sizes",
+    "chamber_output": "output/brine-v12-production-native-2026-10-01",
+    "chamber_session": "output/brine-float-v12/session-e7d9af1efa9246a19735b85a4cf086c8",
+    "motion_test": "PASS: 200 native 512x512 frames, 25fps, 8s, actual production renderer",
+    "motion_session": "output/brine-float-v12/session-1a9a688de3364946a4557c84a4bf985c",
+    "profile_guards": "2931 non-log files unchanged each interval",
+    "UI_dependency": "current ui_widgets.gd check-only passes without source edits; earlier compile error no longer reproduces",
+    "scope": "Source-project fixture startup and fresh actual title Continue now covered; no export or owner visual acceptance."
+  },
+  "production_gif_sha256": "0fee8d120b545f4717989e9f4ed06a41d425a1d3f77b30fe349e7c60862f7668",
+  "startup_and_continue_verification": {
+    "startup": "PASS after stale blue-emergence assertion corrected to accepted natural-colour handoff",
+    "startup_session": "output/brine-float-v12/session-fc0b858a861c4b04b6ad5938fbe30498",
+    "startup_output": "output/brine-v12-startup-v2-2026-10-01",
+    "startup_first_failure": "output/brine-float-v12/session-86a64a92b4e340bf9700e2d2ae3c3b48",
+    "fresh_continue": {
+      "nativePassed": true,
+      "profileGuardPassed": true,
+      "wrapperPassed": false,
+      "wrapperLimitation": "Invocation incorrectly expected16checks; actual15all pass. Retained original result, independently checked existing native report/log/exit/guard; no rerun.",
+      "checks": 15,
+      "failures": 0,
+      "session": "output\\brine-float-v12\\session-762fd55452b64e7393334fc0a491a8c8"
+    },
+    "fresh_capture": "output/brine-v12-fresh-continue-2026-10-01/continued-station.png",
+    "guards": "2931non-log owner files unchanged per startup/Continue interval",
+    "visual_review": "Restored-station and startup-awake native captures inspected",
+    "scope": "Source-project native tests; disposable fixture checkpoint, no packaged build or owner save used"
+  }
+}

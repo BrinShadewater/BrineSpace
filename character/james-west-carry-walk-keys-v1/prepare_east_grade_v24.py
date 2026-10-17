@@ -1,0 +1,13 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+p=Path(__file__).resolve().parent;r=p.parents[1];out=r/'character/james-east-inspect-body-grade-v24';out.mkdir(exist_ok=True)
+inventory=r/'character/james-full-set-review-2026-10-02/source-inventory.json';d=json.loads(inventory.read_bytes())
+base=r/d['states']['bare']['inspect-east']['frameFiles'][70];master=r/d['states']['bare']['idle-east']['frameFiles'][0]
+for f,label in [(base,'target'),(master,'idle-master')]:Image.open(f).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(out/f'{label}.png')
+prompt='''Use case: lighting-weather. Precise sprite material/color repair, not a new pose. IMAGE1 is James East tablet-reading source phase70, full184x184 sprite enlarged4x. IMAGE2 is the selected same-direction idle master, identical canvas/pivot/standing ruler. Keep IMAGE1 exactly the same character silhouette, head tilt looking toward the tablet, body proportions, all joints, leg stance, boot positions, both hands and tablet shape/angle/size. Keep holstered anatomical-right belt wrench in its existing place. Do not put it in a hand, remove it, or swap it with the tablet. Match IMAGE2 neutral matte material/color: grey hair without IMAGE1 purple highlights; neutral graphite cloth without purple shadow tint; subdued mustard-yellow shoulder/belt accents rather than olive/green; warm natural skin from IMAGE2, muted dull metal knee/strap details. Preserve soft detailed painted sprite density and lighting values, broad fabric shading and existing folds; remove unwanted purple/green cast rather than brighten everything or flatten into grey blocks. Keep tablet already neutral matte grey, no illuminated front display facing viewer; it faces James. No shiny suit, bright outlines, broad black patches, new folds, simplified pads/boots or equipment. Keep exact placement/canvas and transparent background. This is a color/material reference study for the full source cycle; do not alter motion or recenter/rescale the character. Return one same-sized square image1 with corrected body/hair color matching image2.'''
+(out/'prompt.txt').write_text(prompt+'\n',encoding='utf-8')
+files=[base,master,inventory,Path(__file__),out/'target.png',out/'idle-master.png',out/'prompt.txt']
+(out/'inputs.json').write_text(json.dumps(dict(baseFile=base.relative_to(r).as_posix(),masterFile=master.relative_to(r).as_posix(),slot=70,
+    preCallSha256={f.relative_to(r).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in files},scope='Single source-phase material study, not complete141-frame repair or normal adoption.'),indent=2)+'\n')
+print('East body/hair material study prepared from selected normal phase70 and selected idle0.')

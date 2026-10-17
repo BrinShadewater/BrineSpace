@@ -1,0 +1,1858 @@
+{
+  "scope": "Bill only;actual _load_major_bill_animations manifest sequence plus base catalog;staged scan scoped to cargo/carry-turn/swim/tread v1 families;runtime-derived joins not simulated",
+  "loaderSha256": "e4df4b0482bea0f8c2a568c24c86f5110301803cc9506cb37708f2d3477d05a0",
+  "loadOrder": {
+    "bare": [
+      "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+      "character/major-bill-v3/packs/bare-208x184-p122-88/manifest.json",
+      "character/major-bill-v3/packs/bare-208x224-p104-152/manifest.json",
+      "character/major-bill-v3/packs/bare-208x224-p104-72/manifest.json",
+      "character/major-bill-v3/packs/bare-208x184-p86-88/manifest.json",
+      "character/major-bill-v3/packs/bare-184x184-p92-70/manifest.json",
+      "character/major-bill-v3/packs/bare-184x184-p122-88/manifest.json",
+      "character/major-bill-v3/packs/bare-184x208-p92-196/manifest.json",
+      "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+      "character/major-bill-v3/packs/bare-256x256-p128-128/manifest.json",
+      "character/major-bill-v3/supplemental/bunk-east/bare/manifest.json",
+      "character/crew-runtime-matte-v1/bill/manifest.json",
+      "character/bill-equipped-west-selected-v1/bare-timing-manifest.json",
+      "character/bill-equipped-south-selected-v1/bare-timing-manifest.json",
+      "character/bill-equipped-north-selected-v1/bare-timing-manifest.json",
+      "character/bill-bare-east-selected-v1/manifest.json",
+      "character/bill-bare-west-selected-v1/manifest.json",
+      "character/bill-bare-south-selected-v1/manifest.json",
+      "character/bill-bare-north-selected-v1/manifest.json",
+      "character/bill-torch-actions-v1/manifest.json",
+      "character/bill-helmet-fitting-east-v1/manifest.json",
+      "character/bill-cargo-east-coherent-v1/manifest.json",
+      "character/bill-cargo-west-coherent-v1/manifest.json",
+      "character/bill-cargo-south-coherent-v1/manifest.json",
+      "character/bill-cargo-north-coherent-v1/manifest.json",
+      "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+      "character/bill-swim-east-coherent-v1/manifest.json",
+      "character/bill-tread-east-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-east-coherent-v1/manifest.json",
+      "character/bill-swim-west-coherent-v1/manifest.json",
+      "character/bill-tread-west-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-west-coherent-v1/manifest.json",
+      "character/bill-swim-north-coherent-v1/manifest.json",
+      "character/bill-tread-north-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-north-coherent-v1/manifest.json",
+      "character/bill-swim-south-coherent-v1/manifest.json",
+      "character/bill-tread-south-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-south-coherent-v1/manifest.json",
+      "character/bill-swim-carry-east-coherent-v1/manifest.json",
+      "character/bill-swim-carry-west-coherent-v1/manifest.json",
+      "character/bill-swim-carry-north-coherent-v1/manifest.json",
+      "character/bill-swim-carry-south-coherent-v1/manifest.json",
+      "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+      "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+      "character/bill-distress-family-v1/bare-manifest.json",
+      "character/bill-salvage-pickup-family-v1/bare-manifest.json"
+    ],
+    "helmet": [
+      "character/major-bill-v3/packs/helmet-208x184-p122-88/manifest.json",
+      "character/major-bill-v3/packs/helmet-208x224-p104-152/manifest.json",
+      "character/major-bill-v3/packs/helmet-208x224-p104-72/manifest.json",
+      "character/major-bill-v3/packs/helmet-208x184-p86-88/manifest.json",
+      "character/major-bill-v3/packs/helmet-184x184-p92-70/manifest.json",
+      "character/major-bill-v3/packs/helmet-184x184-p122-88/manifest.json",
+      "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+      "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+      "character/major-bill-v3/packs/helmet-256x256-p128-128/manifest.json",
+      "character/major-bill-v3/supplemental/bunk-east/helmet/manifest.json",
+      "character/bill-shared-helmet-runtime-v2/manifest.json",
+      "character/bill-equipped-east-selected-v1/manifest.json",
+      "character/bill-equipped-west-selected-v1/manifest.json",
+      "character/bill-equipped-south-selected-v1/manifest.json",
+      "character/bill-equipped-north-selected-v1/manifest.json",
+      "character/bill-cargo-helmet-east-v1/manifest.json",
+      "character/bill-cargo-helmet-west-v1/manifest.json",
+      "character/bill-cargo-helmet-south-v1/manifest.json",
+      "character/bill-cargo-helmet-north-v1/manifest.json",
+      "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+      "character/bill-swim-helmet-east-coherent-v1/manifest.json",
+      "character/bill-tread-helmet-east-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-helmet-east-coherent-v1/manifest.json",
+      "character/bill-swim-helmet-west-coherent-v1/manifest.json",
+      "character/bill-tread-helmet-west-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-helmet-west-coherent-v1/manifest.json",
+      "character/bill-swim-helmet-north-coherent-v1/manifest.json",
+      "character/bill-tread-helmet-north-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-helmet-north-coherent-v1/manifest.json",
+      "character/bill-swim-helmet-south-coherent-v1/manifest.json",
+      "character/bill-tread-helmet-south-coherent-v1/manifest.json",
+      "character/bill-swim-transitions-helmet-south-coherent-v1/manifest.json",
+      "character/bill-swim-carry-helmet-east-coherent-v1/manifest.json",
+      "character/bill-swim-carry-helmet-west-coherent-v1/manifest.json",
+      "character/bill-swim-carry-helmet-north-coherent-v1/manifest.json",
+      "character/bill-swim-carry-helmet-south-coherent-v1/manifest.json",
+      "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+      "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+      "character/bill-distress-family-v1/helmet-manifest.json",
+      "character/bill-salvage-pickup-family-v1/helmet-manifest.json"
+    ]
+  },
+  "selectedStateSources": {
+    "bare": {
+      "weld-east": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "weld-south": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "weld-west": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "weld-north": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "idle-south": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 73,
+        "revision": "current_master_replacement"
+      },
+      "idle-north": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "idle-east": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "idle-west": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "walk-south": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 59,
+        "revision": "current_master_replacement"
+      },
+      "walk-north": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 30,
+        "revision": "current_master_replacement"
+      },
+      "walk-east": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 48,
+        "revision": "current_master_replacement"
+      },
+      "walk-west": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 48,
+        "revision": "current_master_replacement"
+      },
+      "run-south": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-north": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-east": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-west": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "interact-east": {
+        "manifest": "character/bill-bare-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-east": {
+        "manifest": "character/bill-bare-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-east": {
+        "manifest": "character/bill-bare-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-east": {
+        "manifest": "character/bill-bare-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "walk-south-east": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-east": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "swim-east": {
+        "manifest": "character/bill-swim-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-south": {
+        "manifest": "character/bill-swim-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-north": {
+        "manifest": "character/bill-swim-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-west": {
+        "manifest": "character/bill-swim-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-south": {
+        "manifest": "character/bill-tread-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-east": {
+        "manifest": "character/bill-tread-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-north": {
+        "manifest": "character/bill-tread-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-west": {
+        "manifest": "character/bill-tread-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "death-water-east": {
+        "manifest": "character/major-bill-v3/packs/bare-184x184-p122-88/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "equip-helmet-east": {
+        "manifest": "character/bill-helmet-fitting-east-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "remove-helmet-east": {
+        "manifest": "character/bill-helmet-fitting-east-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "carry-east": {
+        "manifest": "character/bill-cargo-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-north": {
+        "manifest": "character/bill-cargo-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-south": {
+        "manifest": "character/bill-cargo-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-west": {
+        "manifest": "character/bill-cargo-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-north": {
+        "manifest": "character/bill-bare-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-south": {
+        "manifest": "character/bill-bare-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-west": {
+        "manifest": "character/bill-bare-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-north": {
+        "manifest": "character/bill-bare-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-north": {
+        "manifest": "character/bill-bare-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-south": {
+        "manifest": "character/bill-bare-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-south": {
+        "manifest": "character/bill-bare-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-west": {
+        "manifest": "character/bill-bare-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-west": {
+        "manifest": "character/bill-bare-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-north": {
+        "manifest": "character/bill-bare-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-south": {
+        "manifest": "character/bill-bare-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-west": {
+        "manifest": "character/bill-bare-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-draw-east": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-stow-east": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-draw-north": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-stow-north": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-draw-south": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-stow-south": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-draw-west": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-stow-west": {
+        "manifest": "character/bill-torch-actions-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "unload-east": {
+        "manifest": "character/bill-cargo-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "unload-north": {
+        "manifest": "character/bill-cargo-north-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "unload-south": {
+        "manifest": "character/bill-cargo-south-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "unload-west": {
+        "manifest": "character/bill-cargo-west-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "death-ground-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-east": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "pickup-east": {
+        "manifest": "character/bill-cargo-east-coherent-v1/manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "pickup-south": {
+        "manifest": "character/bill-cargo-south-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "pickup-west": {
+        "manifest": "character/bill-cargo-west-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "pickup-north": {
+        "manifest": "character/bill-cargo-north-coherent-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "salvage-east": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-north": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-south": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-west": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-east": {
+        "manifest": "character/bill-swim-carry-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-north": {
+        "manifest": "character/bill-swim-carry-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-south": {
+        "manifest": "character/bill-swim-carry-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-west": {
+        "manifest": "character/bill-swim-carry-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-east": {
+        "manifest": "character/bill-swim-transitions-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-east": {
+        "manifest": "character/bill-swim-transitions-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-north": {
+        "manifest": "character/bill-swim-transitions-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-north": {
+        "manifest": "character/bill-swim-transitions-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-south": {
+        "manifest": "character/bill-swim-transitions-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-south": {
+        "manifest": "character/bill-swim-transitions-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-west": {
+        "manifest": "character/bill-swim-transitions-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-west": {
+        "manifest": "character/bill-swim-transitions-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "death-water-north": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-water-south": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-water-west": {
+        "manifest": "character/major-bill-v3/packs/bare-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "swim-carry-turn-east-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-east-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-east": {
+        "manifest": "character/bill-distress-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-north": {
+        "manifest": "character/bill-distress-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-south": {
+        "manifest": "character/bill-distress-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-west": {
+        "manifest": "character/bill-distress-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-east": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-north": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-south": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-west": {
+        "manifest": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-east-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "bunk-enter-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/bare/manifest.json",
+        "frames": 7,
+        "revision": "retained_older_library"
+      },
+      "bunk-exit-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/bare/manifest.json",
+        "frames": 7,
+        "revision": "retained_older_library"
+      },
+      "bunk-sleep-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/bare/manifest.json",
+        "frames": 1,
+        "revision": "retained_older_library"
+      }
+    },
+    "helmet": {
+      "swim-east": {
+        "manifest": "character/bill-swim-helmet-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-south": {
+        "manifest": "character/bill-swim-helmet-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-north": {
+        "manifest": "character/bill-swim-helmet-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-west": {
+        "manifest": "character/bill-swim-helmet-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-south": {
+        "manifest": "character/bill-tread-helmet-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-east": {
+        "manifest": "character/bill-tread-helmet-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-north": {
+        "manifest": "character/bill-tread-helmet-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "tread-west": {
+        "manifest": "character/bill-tread-helmet-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "death-water-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p122-88/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "idle-south": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 73,
+        "revision": "current_master_replacement"
+      },
+      "idle-north": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "idle-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "idle-west": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 72,
+        "revision": "current_master_replacement"
+      },
+      "walk-south": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 59,
+        "revision": "current_master_replacement"
+      },
+      "walk-north": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 30,
+        "revision": "current_master_replacement"
+      },
+      "walk-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 48,
+        "revision": "current_master_replacement"
+      },
+      "walk-west": {
+        "manifest": "character/bill-shared-helmet-runtime-v2/manifest.json",
+        "frames": 48,
+        "revision": "current_master_replacement"
+      },
+      "run-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "run-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-184x184-p92-172/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "interact-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-east": {
+        "manifest": "character/bill-equipped-east-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-east": {
+        "manifest": "character/bill-cargo-helmet-east-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-north": {
+        "manifest": "character/bill-cargo-helmet-north-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-south": {
+        "manifest": "character/bill-cargo-helmet-south-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-west": {
+        "manifest": "character/bill-cargo-helmet-west-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-north": {
+        "manifest": "character/bill-equipped-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-south": {
+        "manifest": "character/bill-equipped-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "interact-west": {
+        "manifest": "character/bill-equipped-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-north": {
+        "manifest": "character/bill-equipped-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-north": {
+        "manifest": "character/bill-equipped-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-south": {
+        "manifest": "character/bill-equipped-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-south": {
+        "manifest": "character/bill-equipped-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "kneel-west": {
+        "manifest": "character/bill-equipped-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "stand-west": {
+        "manifest": "character/bill-equipped-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-north": {
+        "manifest": "character/bill-equipped-north-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-south": {
+        "manifest": "character/bill-equipped-south-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "repair-west": {
+        "manifest": "character/bill-equipped-west-selected-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "torch-draw-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-stow-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-draw-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-stow-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-draw-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-stow-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-draw-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "torch-stow-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "unload-east": {
+        "manifest": "character/bill-cargo-helmet-east-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "unload-north": {
+        "manifest": "character/bill-cargo-helmet-north-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "unload-south": {
+        "manifest": "character/bill-cargo-helmet-south-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "unload-west": {
+        "manifest": "character/bill-cargo-helmet-west-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "death-ground-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-ground-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "drink-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "eat-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "inspect-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "lie-down-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "get-up-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "read-seated-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "recover-air-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-down-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-rise-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sit-idle-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-east": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "sleep-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-224/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "pickup-east": {
+        "manifest": "character/bill-cargo-helmet-east-v1/manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "pickup-south": {
+        "manifest": "character/bill-cargo-helmet-south-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "pickup-west": {
+        "manifest": "character/bill-cargo-helmet-west-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "pickup-north": {
+        "manifest": "character/bill-cargo-helmet-north-v1/manifest.json",
+        "frames": 12,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-east-west": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-west-east": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-north-south": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "carry-turn-south-north": {
+        "manifest": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "salvage-east": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-north": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-south": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "salvage-west": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-east": {
+        "manifest": "character/bill-swim-carry-helmet-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-north": {
+        "manifest": "character/bill-swim-carry-helmet-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-south": {
+        "manifest": "character/bill-swim-carry-helmet-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-west": {
+        "manifest": "character/bill-swim-carry-helmet-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-east": {
+        "manifest": "character/bill-swim-transitions-helmet-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-east": {
+        "manifest": "character/bill-swim-transitions-helmet-east-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-north": {
+        "manifest": "character/bill-swim-transitions-helmet-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-north": {
+        "manifest": "character/bill-swim-transitions-helmet-north-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-south": {
+        "manifest": "character/bill-swim-transitions-helmet-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-south": {
+        "manifest": "character/bill-swim-transitions-helmet-south-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-start-west": {
+        "manifest": "character/bill-swim-transitions-helmet-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-stop-west": {
+        "manifest": "character/bill-swim-transitions-helmet-west-coherent-v1/manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-east-west": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-west-east": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-north-south": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-turn-south-north": {
+        "manifest": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "death-water-north": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-water-south": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "death-water-west": {
+        "manifest": "character/major-bill-v3/packs/helmet-256x256-p128-128/manifest.json",
+        "frames": 6,
+        "revision": "retained_older_library"
+      },
+      "swim-carry-turn-east-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-east-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-east": {
+        "manifest": "character/bill-distress-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-north": {
+        "manifest": "character/bill-distress-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-south": {
+        "manifest": "character/bill-distress-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-distress-west": {
+        "manifest": "character/bill-distress-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-east": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-north": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-south": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-pickup-west": {
+        "manifest": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+        "frames": 6,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-east-west": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-west-east": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-north-south": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "swim-carry-turn-south-north": {
+        "manifest": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+        "frames": 11,
+        "revision": "current_master_replacement"
+      },
+      "bunk-enter-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/helmet/manifest.json",
+        "frames": 7,
+        "revision": "retained_older_library"
+      },
+      "bunk-exit-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/helmet/manifest.json",
+        "frames": 7,
+        "revision": "retained_older_library"
+      },
+      "bunk-sleep-east": {
+        "manifest": "character/major-bill-v3/supplemental/bunk-east/helmet/manifest.json",
+        "frames": 1,
+        "revision": "retained_older_library"
+      }
+    }
+  },
+  "stagedPacks": {},
+  "uniqueStagedStateKeys": {
+    "bare": [],
+    "helmet": []
+  },
+  "visualAcceptanceProven": false,
+  "runtimeJoinsToReview": [
+    "whole-station carry travel/settle/turn/resume visual motion",
+    "new swim/tread/start/stop and equipment endpoint continuity"
+  ],
+  "completion": false
+}

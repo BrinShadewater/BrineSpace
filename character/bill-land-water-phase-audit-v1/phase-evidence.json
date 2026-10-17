@@ -1,0 +1,679 @@
+{
+  "plans": [
+    {
+      "id": "bare-enter",
+      "gear": "",
+      "rows": [
+        {
+          "file": "frames/bare-enter/000.png",
+          "sha256": "77114b7c963b5de67d8ce8308b4ef11ccac3c8f5ee6bfc4c8b8058f18ab0adcd",
+          "seconds": 0.06
+        },
+        {
+          "file": "frames/bare-enter/001.png",
+          "sha256": "50d044e7f24abc047e584cfa6d46dcc366ec766a6e23aa4b0b9db05d12f73215",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/bare-enter/002.png",
+          "sha256": "58d878aeaadd382fccf9706b441e4d1008114fa1d67b0ac44f5800829a031a16",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/bare-enter/003.png",
+          "sha256": "f2ec7cff7311b41ebb2f6ea095742b36804e4fff97cb4cf648907088870440d5",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/bare-enter/004.png",
+          "sha256": "c305ea16227ab1107b9efd0b4b21f55fcbab0a3cc617424872a29d73cc4c6530",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/bare-enter/005.png",
+          "sha256": "c2cb61e1441e72505bc288fb7cfda30d0e07375ac95af9b051106f507570de7d",
+          "seconds": 0.06
+        }
+      ],
+      "originalStudy": "bill-land-water-east-v3",
+      "key": "land-swim-east",
+      "sourceBoundary": [
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-064-candidate-source.png",
+          "captureSHA256": "79954691eebac7da87413fd08b427706d91d2cdc78d36773473be55e98e6977b",
+          "decodedSHA256": "804c225b83925a001681366a7beac15100d037b077f7393767f2fd4a2a7391b6",
+          "normalMatches": [
+            {
+              "gear": "",
+              "index": 28,
+              "key": "walk-east",
+              "pivot": [
+                128.0,
+                224.0
+              ],
+              "size": [
+                256,
+                256
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 1.08333333333333,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7784.44677734375,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "dry",
+            "name": "bare-064-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "walk",
+            "tick": 64,
+            "water": 0.533333333333333
+          },
+          "position": [
+            32,
+            0
+          ]
+        },
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-066-candidate-source.png",
+          "captureSHA256": "aac8602ba4f5e9d979d4232c49ee0e79baa80bee2d700631c3f15aee002096e8",
+          "decodedSHA256": "d89ef6227514f86bf9041baebc02ab4b42c5a2e6c2ff426eac7805b534a81195",
+          "normalMatches": [
+            {
+              "gear": "",
+              "index": 0,
+              "key": "swim-east",
+              "pivot": [
+                122.0,
+                88.0
+              ],
+              "size": [
+                208,
+                184
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 1.11666666666667,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7785.3671875,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "flooded",
+            "name": "bare-066-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "swim",
+            "tick": 66,
+            "water": 0.55
+          },
+          "position": [
+            38,
+            136
+          ]
+        }
+      ],
+      "timelineMs": 500,
+      "APNGDecodeExact": true,
+      "endpointReplacementExact": true,
+      "interiorsUnchanged": true,
+      "root": [
+        160,
+        224
+      ],
+      "standingHeight": 148,
+      "sourceStudyOnly": true
+    },
+    {
+      "id": "bare-leave",
+      "gear": "",
+      "rows": [
+        {
+          "file": "frames/bare-leave/000.png",
+          "sha256": "5319e686ccac784654c92ca695c03abd510c6e2143f858d1dc7615f22ff5ce2a",
+          "seconds": 0.06
+        },
+        {
+          "file": "frames/bare-leave/001.png",
+          "sha256": "c305ea16227ab1107b9efd0b4b21f55fcbab0a3cc617424872a29d73cc4c6530",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/bare-leave/002.png",
+          "sha256": "f2ec7cff7311b41ebb2f6ea095742b36804e4fff97cb4cf648907088870440d5",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/bare-leave/003.png",
+          "sha256": "58d878aeaadd382fccf9706b441e4d1008114fa1d67b0ac44f5800829a031a16",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/bare-leave/004.png",
+          "sha256": "50d044e7f24abc047e584cfa6d46dcc366ec766a6e23aa4b0b9db05d12f73215",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/bare-leave/005.png",
+          "sha256": "f6c09591253489f21bb7c48c19313d3213362e973057014f284d9373a839de4c",
+          "seconds": 0.06
+        }
+      ],
+      "originalStudy": "bill-land-water-east-v3",
+      "key": "swim-land-east",
+      "sourceBoundary": [
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-412-candidate-source.png",
+          "captureSHA256": "1f45fda59003bf73776cfe7ffa62e2ba845d077ceb57ac9344a8c7afe4945733",
+          "decodedSHA256": "1c65d3f8e0f8785c58a487f689607d43d994771cbf1ec0e37db3e7b0a3a1dc76",
+          "normalMatches": [
+            {
+              "gear": "",
+              "index": 2,
+              "key": "swim-east",
+              "pivot": [
+                122.0,
+                88.0
+              ],
+              "size": [
+                208,
+                184
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 6.88333333333331,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7931.3359375,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "flooded",
+            "name": "bare-412-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "swim",
+            "tick": 412,
+            "water": 0.566666666666667
+          },
+          "position": [
+            38,
+            136
+          ]
+        },
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-414-candidate-source.png",
+          "captureSHA256": "b85da2b97ad738389a15469b6f54100071fbf4e064bb2a83fbc4d1c4a266d76f",
+          "decodedSHA256": "d965f55f27b320a8d7883207dfd5b6351edc7e80cc4d506a9ed5709d9c1932a2",
+          "normalMatches": [
+            {
+              "gear": "",
+              "index": 34,
+              "key": "walk-east",
+              "pivot": [
+                128.0,
+                224.0
+              ],
+              "size": [
+                256,
+                256
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 6.91666666666665,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7932.25634765625,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "dry",
+            "name": "bare-414-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "walk",
+            "tick": 414,
+            "water": 0.55
+          },
+          "position": [
+            32,
+            0
+          ]
+        }
+      ],
+      "timelineMs": 500,
+      "APNGDecodeExact": true,
+      "endpointReplacementExact": true,
+      "interiorsUnchanged": true,
+      "root": [
+        160,
+        224
+      ],
+      "standingHeight": 148,
+      "sourceStudyOnly": true
+    },
+    {
+      "id": "helmet-enter",
+      "gear": "diving-helmet",
+      "rows": [
+        {
+          "file": "frames/helmet-enter/000.png",
+          "sha256": "6815a5fe9b070e70a5fe9b1413fc96766c6342cc80be58016043f64c0f389002",
+          "seconds": 0.06
+        },
+        {
+          "file": "frames/helmet-enter/001.png",
+          "sha256": "76c2cda48613dc04cc08d715cfd5b06ad51cd360c98ac996bb028c5ad96c719c",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/helmet-enter/002.png",
+          "sha256": "785320f7f5daa773fcbe5dda41025643f4fd5c6374e21685ac047c53fb1edb09",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/helmet-enter/003.png",
+          "sha256": "2bfe1142fe3b37df6f3bf1ecfc3187ae4a9dca57aec214afa7629f9ec7ac3f29",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/helmet-enter/004.png",
+          "sha256": "e17b21056903a88a7073d1504a8885d62f5fad2dd6e65fd568699c6c9aa941ce",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/helmet-enter/005.png",
+          "sha256": "90bd6902a5d64ff279a731f30b5765989a42296988fa29eb05e28da7c6f04d08",
+          "seconds": 0.06
+        }
+      ],
+      "originalStudy": "bill-land-water-helmet-east-v1",
+      "key": "land-swim-east",
+      "sourceBoundary": [
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/helmet-064-candidate-source.png",
+          "captureSHA256": "cc5b7560e322c8ed0c89ec657f387d343d5f29291c67b940783a4568b14b29a4",
+          "decodedSHA256": "a3282166ec78d21d32cd9dbecb45a1017cc91fd24d30f3d9aa78c0917d9f1e52",
+          "normalMatches": [
+            {
+              "gear": "diving-helmet",
+              "index": 28,
+              "key": "walk-east",
+              "pivot": [
+                128.0,
+                224.0
+              ],
+              "size": [
+                256,
+                256
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 1.08333333333333,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7784.44677734375,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "dry",
+            "name": "helmet-064-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "walk",
+            "tick": 64,
+            "water": 0.533333333333333
+          },
+          "position": [
+            32,
+            0
+          ]
+        },
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/helmet-066-candidate-source.png",
+          "captureSHA256": "5faed198047eab35d5681e7ccfcab3fa43aff30dded42cada1e124d0f19c017f",
+          "decodedSHA256": "3ba591a1b45c9d04c44856047f1345fcb4694b2322ed00b0a93a3e446a8f75ac",
+          "normalMatches": [
+            {
+              "gear": "diving-helmet",
+              "index": 0,
+              "key": "swim-east",
+              "pivot": [
+                122.0,
+                88.0
+              ],
+              "size": [
+                208,
+                184
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 1.11666666666667,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7785.3671875,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "flooded",
+            "name": "helmet-066-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "swim",
+            "tick": 66,
+            "water": 0.55
+          },
+          "position": [
+            38,
+            136
+          ]
+        }
+      ],
+      "timelineMs": 500,
+      "APNGDecodeExact": true,
+      "endpointReplacementExact": true,
+      "interiorsUnchanged": true,
+      "root": [
+        160,
+        224
+      ],
+      "standingHeight": 148,
+      "sourceStudyOnly": true
+    },
+    {
+      "id": "helmet-leave",
+      "gear": "diving-helmet",
+      "rows": [
+        {
+          "file": "frames/helmet-leave/000.png",
+          "sha256": "2eb0d4309253421db91e5292c306da7c9b65882f49736e32ff4b6a038a33a126",
+          "seconds": 0.06
+        },
+        {
+          "file": "frames/helmet-leave/001.png",
+          "sha256": "e17b21056903a88a7073d1504a8885d62f5fad2dd6e65fd568699c6c9aa941ce",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/helmet-leave/002.png",
+          "sha256": "2bfe1142fe3b37df6f3bf1ecfc3187ae4a9dca57aec214afa7629f9ec7ac3f29",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/helmet-leave/003.png",
+          "sha256": "785320f7f5daa773fcbe5dda41025643f4fd5c6374e21685ac047c53fb1edb09",
+          "seconds": 0.1
+        },
+        {
+          "file": "frames/helmet-leave/004.png",
+          "sha256": "76c2cda48613dc04cc08d715cfd5b06ad51cd360c98ac996bb028c5ad96c719c",
+          "seconds": 0.09
+        },
+        {
+          "file": "frames/helmet-leave/005.png",
+          "sha256": "42b35412be5c3d067c5fdcf6ad2a80e8c58aa1263d6b906a194d8e4bff075d44",
+          "seconds": 0.06
+        }
+      ],
+      "originalStudy": "bill-land-water-helmet-east-v1",
+      "key": "swim-land-east",
+      "sourceBoundary": [
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/helmet-412-candidate-source.png",
+          "captureSHA256": "f9be86f45dd47550d6a923bd8fcbe399b729f1b365ec1d96b290e44645efb047",
+          "decodedSHA256": "1929b8c621f90c4cf200df5536020646de1125462669a7f2bb2e6c5c7bfaf14c",
+          "normalMatches": [
+            {
+              "gear": "diving-helmet",
+              "index": 2,
+              "key": "swim-east",
+              "pivot": [
+                122.0,
+                88.0
+              ],
+              "size": [
+                208,
+                184
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 6.88333333333331,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7931.3359375,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "flooded",
+            "name": "helmet-412-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "swim",
+            "tick": 412,
+            "water": 0.566666666666667
+          },
+          "position": [
+            38,
+            136
+          ]
+        },
+        {
+          "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/helmet-414-candidate-source.png",
+          "captureSHA256": "409bfbdb471e4c2dd37eaa0e6177e18441123e9550fe4a491d6dbc25a6c0ff5d",
+          "decodedSHA256": "714cfcd2116573f2f520028c8baa08bde0cfda84e2491c79f5865aa84ef45668",
+          "normalMatches": [
+            {
+              "gear": "diving-helmet",
+              "index": 0,
+              "key": "walk-east",
+              "pivot": [
+                128.0,
+                224.0
+              ],
+              "size": [
+                256,
+                256
+              ],
+              "standingHeight": 148.0
+            }
+          ],
+          "record": {
+            "anchor": [
+              0.0,
+              0.0
+            ],
+            "caseEnabled": false,
+            "caseOwned": false,
+            "cell": [
+              20,
+              21
+            ],
+            "clock": 6.91666666666665,
+            "direction": "east",
+            "embedded": false,
+            "finishActive": false,
+            "foot": [
+              7932.25634765625,
+              8368.0
+            ],
+            "goal": "flood-retreat",
+            "medium": "dry",
+            "name": "helmet-414-candidate",
+            "pathPoints": 4,
+            "propRect": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "sortY": 0.0,
+            "state": "walk",
+            "tick": 414,
+            "water": 0.55
+          },
+          "position": [
+            32,
+            0
+          ]
+        }
+      ],
+      "timelineMs": 500,
+      "APNGDecodeExact": true,
+      "endpointReplacementExact": true,
+      "interiorsUnchanged": true,
+      "root": [
+        160,
+        224
+      ],
+      "standingHeight": 148,
+      "sourceStudyOnly": true
+    }
+  ],
+  "normalSelected": false,
+  "nativeBridgePlayed": false,
+  "scope": "Actual original route source samples bind entrance/exit phase audit. Authored interiors unchanged. New 500ms montage does not replay original world positions, elapsed route or prove collision/support; endpoint substitution is not gait admission."
+}

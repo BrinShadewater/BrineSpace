@@ -1,0 +1,282 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-size-v3.png",
+      "generation": "exec-578ba632-4c56-4c26-be0a-77fddf716933",
+      "heads": [
+        [
+          255,
+          39
+        ],
+        [
+          765,
+          39
+        ],
+        [
+          1273,
+          39
+        ],
+        [
+          255,
+          527
+        ],
+        [
+          765,
+          526
+        ],
+        [
+          1273,
+          526
+        ]
+      ],
+      "sourceHeights": [
+        474,
+        474,
+        474,
+        475,
+        476,
+        476
+      ],
+      "count": 6,
+      "density": 1.08,
+      "fixedRuler": [
+        0.28,
+        0.313
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      0
+    ],
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "excludedPrimaryPoses": [
+    5
+  ],
+  "sourceCorrections": [
+    "distinct short reach v2",
+    "equal standing row heights v3"
+  ],
+  "sourcesSha256": {
+    "primary": "796a988d09dced967b71ebb2fc19a0b72221ca1e445d52b3632f866eb7a1f672"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 0,
+      "sourceBox": [
+        134,
+        36,
+        341,
+        516
+      ],
+      "fixedRuler": [
+        0.28,
+        0.313
+      ],
+      "position": [
+        91,
+        75
+      ],
+      "headAxis": [
+        125,
+        76
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        602,
+        36,
+        852,
+        516
+      ],
+      "fixedRuler": [
+        0.28,
+        0.313
+      ],
+      "position": [
+        79,
+        75
+      ],
+      "headAxis": [
+        125,
+        76
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1117,
+        36,
+        1359,
+        516
+      ],
+      "fixedRuler": [
+        0.28,
+        0.313
+      ],
+      "position": [
+        81,
+        75
+      ],
+      "headAxis": [
+        125,
+        76
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        162,
+        524,
+        343,
+        1005
+      ],
+      "fixedRuler": [
+        0.28,
+        0.313
+      ],
+      "position": [
+        97,
+        74
+      ],
+      "headAxis": [
+        123,
+        75
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        686,
+        523,
+        852,
+        1005
+      ],
+      "fixedRuler": [
+        0.28,
+        0.313
+      ],
+      "position": [
+        102,
+        74
+      ],
+      "headAxis": [
+        124,
+        75
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        5.666666666666667,
+        15.666666666666666,
+        39.666666666666664,
+        54.666666666666664,
+        73.33333333333333,
+        88.33333333333333,
+        106.33333333333333,
+        126.0,
+        255.0
+      ],
+      "neutralOutput": [
+        4.0,
+        12.666666666666666,
+        21.333333333333332,
+        35.666666666666664,
+        44.0,
+        55.333333333333336,
+        67.66666666666667,
+        121.86666666666649,
+        144.33333333333334,
+        191.0
+      ],
+      "gains": {
+        "hair": [
+          0.7817258883248731,
+          0.8076923076923077,
+          0.8229166666666666
+        ],
+        "face": [
+          0.6748878923766816,
+          0.7066666666666667,
+          0.6504424778761062
+        ],
+        "burgundy": [
+          0.678082191780822,
+          0.7868852459016393,
+          0.8303571428571429
+        ]
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-west-coherent-v1/frames/sit-down-west/000.png",
+      "sha256": "4511e79ec9d142757f8c99616defd1cbe0a6efac655fb4eb10c4d7df9dafab4e"
+    },
+    {
+      "path": "bill-drink-west-coherent-v1/frames/drink-west/000.png",
+      "sha256": "7ab9f172431aea6caa7b09c6a713b661ba3b4b39c2a00bc679be71c430f3a4d6"
+    }
+  ],
+  "scope": "authored cup pickup and reversed return; exact idle/drinking-held endpoints; normal service pending"
+}

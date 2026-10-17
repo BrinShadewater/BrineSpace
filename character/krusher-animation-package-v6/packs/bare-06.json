@@ -1,0 +1,56 @@
+{
+  "frameHeight": 256.0,
+  "frameWidth": 256.0,
+  "name": "Krusher Dom West cargo settle bare",
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "precomposed": true,
+  "standingHeight": 148.0,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0
+      ],
+      "frameFiles": [
+        "../frames/70fbfa1c55f2c3566a03ca0b31f156e072973f85b7d74f84a71d7f94ae947625.png",
+        "../frames/c42d4cb7482ac7e3090d2f9cc621238aa50afce2b218a8fb06988c27b13ba117.png",
+        "../frames/dd2d25afc046b933c8815946fb286fdf79c3053f8360a71472e288600f369814.png",
+        "../frames/ab9b7ab344535650d5a63a64c7f355d71cf2eafa9d7f81518ce494b5c23cc69a.png",
+        "../frames/8e3f03dcbe4e568f13f9315cab74bd7b965b74473359e7d521648eb719c37cfd.png",
+        "../frames/01249fe970a746ad60c2e8e73aa8d8ca74f2a91c6377c51e8171ee0d8512b455.png"
+      ],
+      "id": "carry-settle-west",
+      "loop": false,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling",
+        "sourceManifest": "res://character/james-cargo-return-bridges-v1/bare-joined-manifest-v9.json",
+        "profileRepair": "Exact frozen original root filter profile, no raster or clock change"
+      }
+    }
+  ]
+}

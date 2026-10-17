@@ -1,0 +1,213 @@
+{
+  "name": "Bill bare east cargo candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "run": 0.168,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.10567567567567569,
+    "walk-west": 0.10567567567567569
+  },
+  "precomposed": true,
+  "status": "staged_owner_visual_review",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "frames/pickup-east/000.png",
+        "frames/pickup-east/001.png",
+        "frames/pickup-east/002.png",
+        "frames/pickup-east/003.png",
+        "frames/pickup-east/004.png",
+        "frames/pickup-east/005.png",
+        "frames/pickup-east/006.png",
+        "frames/pickup-east/007.png",
+        "frames/pickup-east/008.png",
+        "frames/pickup-east/009.png",
+        "frames/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        35,
+        35,
+        40,
+        40,
+        45,
+        45,
+        50,
+        50,
+        50,
+        65,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent authored whole figures; one frozen anatomy calibration; current idle plus preserved ground case endpoints"
+    },
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "frames/carry-east/000.png",
+        "frames/carry-east/001.png",
+        "frames/carry-east/002.png",
+        "frames/carry-east/003.png",
+        "frames/carry-east/004.png",
+        "frames/carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent authored whole figures; one frozen anatomy calibration; current idle plus preserved ground case endpoints"
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "frames/unload-east/000.png",
+        "frames/unload-east/001.png",
+        "frames/unload-east/002.png",
+        "frames/unload-east/003.png",
+        "frames/unload-east/004.png",
+        "frames/unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent authored whole figures; one frozen anatomy calibration; current idle plus preserved ground case endpoints"
+    }
+  ]
+}

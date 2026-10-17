@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-03",
+  "reviewed": true,
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "effectiveStagedStates": 7,
+  "changedSlots": 12,
+  "uniqueRevisedDrawings": 6,
+  "unchangedLaterStopFrames": 24,
+  "manifestSha256": "324e7b4da7b0853c045212193270f91cbef4ed58b21e8fa272ce84adae567a09",
+  "stopEntryAliasesSha256": "8085c3a193f2b1447f37cb1d9e9c31cc9cbc7c46d7de4ab8456ea070b8fac89f",
+  "historicalSourceOnlyAcceptanceSha256": "180e4b4400a3be9b6b455c5d96587c159e26344890cf11de3e729f0ad11c2613",
+  "verificationPath": "character/marsh-north-walk-family-detail-v1/world-review/verification.json",
+  "verificationSha256": "cf9862c08ea4d696fcda642833b1288e479498ff72b3c65c3483002ceace4d0b",
+  "nativeRun": "output/marsh-animation-audit/north-walk-world-v3-2026-10-03",
+  "checks": 3816,
+  "failures": 0,
+  "pairedCaptures": 104,
+  "actorRestores": 9,
+  "movementSamples": 513,
+  "arrivals": 8,
+  "testedInputsStillExactAtRecord": 5579,
+  "ownerNonLogStable": 2931,
+  "engineExit": 0,
+  "warnings": 0,
+  "boardsReviewed": 18,
+  "firstFullCaptureReviewed": true,
+  "browserReview": {
+    "sampledAdvanceNormal": true,
+    "sampledAdvanceQuarter": true,
+    "pauseSameClockAndPhase": true,
+    "pausedClockMs": 57034,
+    "pausedPhase": 2,
+    "drawsAtPauseAndLaterScreenshot": [
+      12515,
+      13242
+    ],
+    "continuousWatchedCadence": false,
+    "artifacts": [
+      {
+        "path": "character/marsh-north-walk-family-detail-v1/motion-review/motion-review.html",
+        "sha256": "bb8e7e22d2ec373f58d593705ad455782ce8e02cbd38f23430615b2e82379b43"
+      },
+      {
+        "path": "character/marsh-north-walk-family-detail-v1/motion-review/browser-quarter.png",
+        "sha256": "dfeb65d487240264b50e6926a5c57cc6736b1f190073ce696c10086ac8d6e412"
+      },
+      {
+        "path": "character/marsh-north-walk-family-detail-v1/motion-review/browser-paused.png",
+        "sha256": "0bbcb74e1ab8f7c1b7077c4f26ab9d07091185e89ee055b348521e09fd4a113a"
+      }
+    ]
+  },
+  "history": [
+    {
+      "run": "v1",
+      "checks": 3792,
+      "failures": 208,
+      "cause": "Visibility neighborhood omitted viewport final transform; source/contact checks passed. Failed run preserved."
+    },
+    {
+      "run": "v2",
+      "checks": 3810,
+      "failures": 0,
+      "boardsActuallyReviewed": 9,
+      "scope": "Walk-only stage; review revealed six stop-entry material discontinuities."
+    },
+    {
+      "run": "v3",
+      "checks": 3816,
+      "failures": 0,
+      "boardsActuallyReviewed": 18,
+      "scope": "Walk plus six phase-specific stop-entry aliases."
+    }
+  ],
+  "limits": "Strict same-root source sole depth established. Not complete2Dplanted-foot geometry, continuous watched cadence, natural goal selection, paid building, all rooms/rotations, disk fullRunSave/TitleContinue or whole-family identity/grade acceptance.",
+  "next": "Admit walk-north and six stop-entry aliases together; prove other221 states unchanged, then actual normal catalogue without staged override.",
+  "artifactChecks": {
+    "newPngLfsFilters": 540,
+    "pythonAst": 2,
+    "pairedUidUnique": true,
+    "newToolsHandoffAndAppendedNotesWhitespaceClean": true,
+    "skillMirrorByteEqual": true
+  }
+}

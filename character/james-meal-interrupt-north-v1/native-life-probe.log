@@ -1,0 +1,92 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+LIFE SETTLE STATE {"actor":"bill","initial":"life_lie","room":"crew_hab","rotation":0,"stage":"life_sleep","tabletSequence":true,"timer":10.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_lie","room":"crew_hab","rotation":0,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_lie","room":"crew_hab","rotation":0,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_lie","room":"crew_hab","rotation":1,"stage":"life_sleep","tabletSequence":true,"timer":10.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_lie","room":"crew_hab","rotation":1,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_lie","room":"crew_hab","rotation":1,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_lie","room":"crew_hab","rotation":2,"stage":"life_sleep","tabletSequence":true,"timer":10.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_lie","room":"crew_hab","rotation":2,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_lie","room":"crew_hab","rotation":2,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_lie","room":"crew_hab","rotation":3,"stage":"life_sleep","tabletSequence":true,"timer":10.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_lie","room":"crew_hab","rotation":3,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_lie","room":"crew_hab","rotation":3,"stage":"life_sleep","tabletSequence":false,"timer":10.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_sit","room":"crew_lounge","rotation":0,"stage":"life_seated","tabletSequence":true,"timer":7.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_sit","room":"crew_lounge","rotation":0,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_sit","room":"crew_lounge","rotation":0,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_sit","room":"crew_lounge","rotation":1,"stage":"life_seated","tabletSequence":true,"timer":7.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_sit","room":"crew_lounge","rotation":1,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_sit","room":"crew_lounge","rotation":1,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_sit","room":"crew_lounge","rotation":2,"stage":"life_seated","tabletSequence":true,"timer":7.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_sit","room":"crew_lounge","rotation":2,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_sit","room":"crew_lounge","rotation":2,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"life_sit","room":"crew_lounge","rotation":3,"stage":"life_seated","tabletSequence":true,"timer":7.4}
+LIFE SETTLE STATE {"actor":"veld","initial":"life_sit","room":"crew_lounge","rotation":3,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"branforth","initial":"life_sit","room":"crew_lounge","rotation":3,"stage":"life_seated","tabletSequence":false,"timer":7.4}
+LIFE SETTLE STATE {"actor":"bill","initial":"observation_sit","room":"observation_room","rotation":0,"stage":"observation_read_enter","tabletSequence":true,"timer":0.48}
+ERROR: observation_room settled
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:49)
+LIFE INTERRUPT STATE {"actor":"bill","room":"observation_room","rotation":0,"stage":"observation_read_exit","tabletSequence":true,"timer":0.0}
+ERROR: observation_room reader rises on interruption
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:66)
+LIFE SETTLE STATE {"actor":"veld","initial":"observation_sit","room":"observation_room","rotation":0,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"veld","room":"observation_room","rotation":0,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"branforth","initial":"observation_sit","room":"observation_room","rotation":0,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"branforth","room":"observation_room","rotation":0,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"bill","initial":"observation_sit","room":"observation_room","rotation":1,"stage":"observation_read_enter","tabletSequence":true,"timer":0.48}
+ERROR: observation_room settled
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:49)
+LIFE INTERRUPT STATE {"actor":"bill","room":"observation_room","rotation":1,"stage":"observation_read_exit","tabletSequence":true,"timer":0.0}
+ERROR: observation_room reader rises on interruption
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:66)
+LIFE SETTLE STATE {"actor":"veld","initial":"observation_sit","room":"observation_room","rotation":1,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"veld","room":"observation_room","rotation":1,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"branforth","initial":"observation_sit","room":"observation_room","rotation":1,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"branforth","room":"observation_room","rotation":1,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"bill","initial":"observation_sit","room":"observation_room","rotation":2,"stage":"observation_read_enter","tabletSequence":true,"timer":0.48}
+ERROR: observation_room settled
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:49)
+LIFE INTERRUPT STATE {"actor":"bill","room":"observation_room","rotation":2,"stage":"observation_read_exit","tabletSequence":true,"timer":0.0}
+ERROR: observation_room reader rises on interruption
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:66)
+LIFE SETTLE STATE {"actor":"veld","initial":"observation_sit","room":"observation_room","rotation":2,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"veld","room":"observation_room","rotation":2,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"branforth","initial":"observation_sit","room":"observation_room","rotation":2,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"branforth","room":"observation_room","rotation":2,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"bill","initial":"observation_sit","room":"observation_room","rotation":3,"stage":"observation_read_enter","tabletSequence":true,"timer":0.48}
+ERROR: observation_room settled
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:49)
+LIFE INTERRUPT STATE {"actor":"bill","room":"observation_room","rotation":3,"stage":"observation_read_exit","tabletSequence":true,"timer":0.0}
+ERROR: observation_room reader rises on interruption
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:6)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-life-probe.gd:66)
+LIFE SETTLE STATE {"actor":"veld","initial":"observation_sit","room":"observation_room","rotation":3,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"veld","room":"observation_room","rotation":3,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+LIFE SETTLE STATE {"actor":"branforth","initial":"observation_sit","room":"observation_room","rotation":3,"stage":"observation_read","tabletSequence":false,"timer":12.0}
+LIFE INTERRUPT STATE {"actor":"branforth","room":"observation_room","rotation":3,"stage":"observation_rise","tabletSequence":false,"timer":0.55}
+CREW LIFE ROOMS: 8 failures / 72 room/rotation/actor cases

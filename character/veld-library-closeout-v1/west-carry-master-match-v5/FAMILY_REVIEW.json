@@ -1,0 +1,199 @@
+{
+  "checks": 30,
+  "failures": 0,
+  "sourcePoseOrder": [
+    "near-contact",
+    "near-down",
+    "near-support/far-pass",
+    "far-contact",
+    "far-down",
+    "far-support/near-pass"
+  ],
+  "slotsPerGear": 6,
+  "durationMs": 840,
+  "strideDistanceCells": 0.07351351351351351,
+  "fixedUniformScale": 0.10832719233603537,
+  "fixedWholeOffset": [
+    73,
+    73
+  ],
+  "noPerPoseRegistrationOrGrade": true,
+  "bodyOutsideHelmetExactFrames": 6,
+  "rows": [
+    {
+      "slot": 0,
+      "pose": "near-contact",
+      "source": "character/veld-library-closeout-v1/west-carry-contact-v3/source.png",
+      "height": 148,
+      "headTop": 76,
+      "headWidth": 27,
+      "headAxis": 130.0,
+      "floorAlpha128": 223,
+      "blueMedianRGB": [
+        56.0,
+        84.0,
+        128.0
+      ],
+      "helmetPosition": [
+        114,
+        66
+      ],
+      "helmetClearBox": [
+        115,
+        77,
+        148,
+        104
+      ]
+    },
+    {
+      "slot": 1,
+      "pose": "near-down",
+      "source": "character/veld-library-closeout-v1/west-carry-master-match-v5/down-a/source.png",
+      "height": 149,
+      "headTop": 77,
+      "headWidth": 29,
+      "headAxis": 128.0,
+      "floorAlpha128": 225,
+      "blueMedianRGB": [
+        60.0,
+        87.0,
+        130.0
+      ],
+      "helmetPosition": [
+        111,
+        67
+      ],
+      "helmetClearBox": [
+        112,
+        78,
+        145,
+        105
+      ]
+    },
+    {
+      "slot": 2,
+      "pose": "near-support/far-pass",
+      "source": "character/veld-library-closeout-v1/west-carry-master-match-v5/passing-a/source.png",
+      "height": 148,
+      "headTop": 77,
+      "headWidth": 28,
+      "headAxis": 132.5,
+      "floorAlpha128": 224,
+      "blueMedianRGB": [
+        59.0,
+        88.0,
+        133.0
+      ],
+      "helmetPosition": [
+        116,
+        66
+      ],
+      "helmetClearBox": [
+        117,
+        77,
+        150,
+        104
+      ]
+    },
+    {
+      "slot": 3,
+      "pose": "far-contact",
+      "source": "character/veld-library-closeout-v1/west-carry-master-match-v5/opposite/source.png",
+      "height": 150,
+      "headTop": 76,
+      "headWidth": 29,
+      "headAxis": 130.0,
+      "floorAlpha128": 225,
+      "blueMedianRGB": [
+        59.0,
+        88.0,
+        139.0
+      ],
+      "helmetPosition": [
+        113,
+        65
+      ],
+      "helmetClearBox": [
+        114,
+        76,
+        147,
+        103
+      ]
+    },
+    {
+      "slot": 4,
+      "pose": "far-down",
+      "source": "character/veld-library-closeout-v1/west-carry-master-match-v5/down-b/source.png",
+      "height": 149,
+      "headTop": 77,
+      "headWidth": 29,
+      "headAxis": 130.0,
+      "floorAlpha128": 225,
+      "blueMedianRGB": [
+        59.5,
+        90.0,
+        143.0
+      ],
+      "helmetPosition": [
+        113,
+        67
+      ],
+      "helmetClearBox": [
+        114,
+        78,
+        147,
+        105
+      ]
+    },
+    {
+      "slot": 5,
+      "pose": "far-support/near-pass",
+      "source": "character/veld-library-closeout-v1/west-carry-master-match-v5/passing-b/source.png",
+      "height": 149,
+      "headTop": 76,
+      "headWidth": 28,
+      "headAxis": 129.5,
+      "floorAlpha128": 224,
+      "blueMedianRGB": [
+        57.0,
+        86.0,
+        134.0
+      ],
+      "helmetPosition": [
+        113,
+        66
+      ],
+      "helmetClearBox": [
+        114,
+        77,
+        147,
+        104
+      ]
+    }
+  ],
+  "scope": "Whole-body authored six-pose candidate; preserve accepted840ms stride contract. Source/loop/material/physical contact review separate; no normal admission.",
+  "bindings": {
+    "character/veld-library-closeout-v1/west-carry-contact-v3/source.png": "2edca4aec47e4b749cb907a3587148a8794179779887837c57b7aea62145ceec",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/000.png": "897a4f7edb44d970e72cd8102a4539f100dddee603c23539f10919e7469d0905",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/000.png": "d2803186a6213d38e1fa44b4fa3c301e606a74c2c1d34fa98f1964bc63a9f925",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/down-a/source.png": "56d7cb945ac235c06213090fdd62bebe0712d8c0cf2f2a376e3ae3f4096eb563",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/001.png": "3b6802d11fad3a6c65508f83f733510989b1e4dbf0fa5648d346e9a4d1960576",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/001.png": "6c5707a546bb7241a0f04c0bc9681a0b4264b155894dc920965295e8318f0265",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/passing-a/source.png": "b1106f014f687e6435613b06ca2739cb22abdd7991db4b2a81005cbe3ea788ab",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/002.png": "5e27b6aaa6f65362fabf0d01c31169f3a1c6e8c58065bd962f79574e721f204d",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/002.png": "52ae459a4dfcae6c8929c7090687c8c1e1b42f7058a33195fd019b90dbd53e32",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/opposite/source.png": "01d2fce7b2ead676492714c99f86984daf1f1d1624d474cc9f832410b505b0c5",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/003.png": "ba7a4d8bff58e3cbafe8757a792800810ef1f7115d0fef1fb8b0c360f328f62a",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/003.png": "27260a9b87cac3159021f6e025f9242d7ad9640e1f510920bea3bbaf03e43f71",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/down-b/source.png": "84667f9a473e9b6784a0192ae77154bc8a55f2992bfa06f2796ac4b2b9d857cb",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/004.png": "a24af3fadd7471a9dd6c606b2a0258391734109cfdc3d9253387d0b99c2c6de1",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/004.png": "a78377144f273f47e7f9714e06a19e9e08bc30407d637d7f83f1124b8e3afc50",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/passing-b/source.png": "0680db823c8a2c3186dab763c989a964150e9cff8883e4829ac840cd4d903ca3",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/bare/005.png": "5eda5b3a1e830b53205a3aa6dec79478e331b73c87e969435dbe87f4c7d6f011",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/frames/helmet/005.png": "246dbbc904a846655b1455ce384baf5ee5d04511286494927a2e0feabd5cc299",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/bare-manifest.json": "5fa7b4574c0ffde091eff507204811b45d5e2ac7f1ad1c4e0a0b37e199e63eae",
+    "character/veld-library-closeout-v1/west-carry-master-match-v5/helmet-manifest.json": "59b54cfd375914b2985136ebd6c5cd6b04524c43dd67db8319e62ff7998b6a9b",
+    "character/veld-helmet-original-turntable-west-v1/mixed-v5-study/shells/005.png": "4e3c5ab7a04070c29570f105411c987d8eef9bb7f970470c396353dcaff8018f",
+    "character/veld-library-closeout-v1/west-cargo-anchor-highres-v3/BUILD_REVIEW.json": "d191b9e1f8ec2d296fe9ace0395977b07c211d7b7cc433f3513b68b8aebdf5ed"
+  }
+}

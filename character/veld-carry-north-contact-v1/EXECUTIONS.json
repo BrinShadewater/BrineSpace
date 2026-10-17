@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "executions": {
+    "v1": "b4bef9ba-18bd-470d-b5f8-620391b141bd",
+    "v2": "74ae2081-93d2-47cf-bca5-7702088981d4",
+    "v3": "e7990864-a53f-4f27-93c6-6976f234e7ac",
+    "v4": "a94456d8-c76c-4995-b6fa-74c9fea6ce94"
+  },
+  "selected": null,
+  "v1Status": "rejected: repeated stationary support contacts, compressed body",
+  "v2Status": "diagnostic only:24px fore/aft support travel, insufficient36target and narrow body; not a gait",
+  "v3Status": "rejected: contact span regressed24to13; fabric too dark",
+  "v4Status": "rejected: contact span19, body65–66too broad, fabric too light",
+  "prompts": ["prompt-contact-v1.txt", "prompt-contact-v2.txt", "prompt-contact-v3.txt", "prompt-contact-v4.txt"],
+  "references": [
+    "character/veld-carry-north-original-master-v1/raw-gait-v3.png",
+    "character/veld-idle-north-original-master-v1/raw-clean-master-v1.png"
+  ]
+}

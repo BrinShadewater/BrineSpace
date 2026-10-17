@@ -1,0 +1,4242 @@
+{
+  "name": "Krusher Dom meal service and returns",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "meal-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-0-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-1-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-2-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-3-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-4-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-1-north",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/5942eac38f46356daed5fa287f79ad26c6fa43e913e661970ade2bb18107bfb7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-2-north",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0b2e9cee4317ca7c51b2a9465c0b367b957574e955cd9b7998180d255f2a0fde.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5942eac38f46356daed5fa287f79ad26c6fa43e913e661970ade2bb18107bfb7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-3-north",
+      "frameCount": 9,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f2b347f67baa1a01dbd06b91180833a33271ecf1f071698b24be44ef022cdff9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0b2e9cee4317ca7c51b2a9465c0b367b957574e955cd9b7998180d255f2a0fde.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5942eac38f46356daed5fa287f79ad26c6fa43e913e661970ade2bb18107bfb7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-4-north",
+      "frameCount": 10,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/5c569e73379a1f222ae02406d84e1f3b34be86457f73aefff064e0a0838f4428.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f2b347f67baa1a01dbd06b91180833a33271ecf1f071698b24be44ef022cdff9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0b2e9cee4317ca7c51b2a9465c0b367b957574e955cd9b7998180d255f2a0fde.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5942eac38f46356daed5fa287f79ad26c6fa43e913e661970ade2bb18107bfb7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/293e4139b6658a5c13c381ce7520b9746ce5288af6a25a3f283d296b6e51ac21.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-1-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26c966cd366bb10587a82d1478ac37006d62a54861bd6c39a5ff5f711e9ff0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-2-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/05c0357cdd88ad80c73be7339c05026bcb7b06e6e5b355506e13bd7305d6624f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-3-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/155e17cccd3407e3bec1f8522582e2cdaa88936f852d6639fe441c3564fe9dd6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-4-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/249b66e30bf2c99a7b2a69e81c2b317613b096ed3dc9b49a44a5ba6c4c370ff5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-5-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-0-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-1-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-2-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-3-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-4-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-1-north",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0b6dcd9b921ca95ed6d1c2e74befeab74580ccd2e113bdc77b35e93fcfb89b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-2-north",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c5d2c82c4803e43efb71acee6e5d81b16e12dda1a4074845faf214d3c562da1e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0b6dcd9b921ca95ed6d1c2e74befeab74580ccd2e113bdc77b35e93fcfb89b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-3-north",
+      "frameCount": 9,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/9cdeb8e10f73d4a10c643fbd4257a1e2c6ad2fdf2d6c1580ea8b2a690ca11f4c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c5d2c82c4803e43efb71acee6e5d81b16e12dda1a4074845faf214d3c562da1e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0b6dcd9b921ca95ed6d1c2e74befeab74580ccd2e113bdc77b35e93fcfb89b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-4-north",
+      "frameCount": 10,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3a44302e995f2a29a139b4bf4736911480545fefdab641b860db618a5f5153bf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9cdeb8e10f73d4a10c643fbd4257a1e2c6ad2fdf2d6c1580ea8b2a690ca11f4c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c5d2c82c4803e43efb71acee6e5d81b16e12dda1a4074845faf214d3c562da1e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0b6dcd9b921ca95ed6d1c2e74befeab74580ccd2e113bdc77b35e93fcfb89b60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ff79df432f5858ba2aaee1739435794db990e14dab6129406bb83596a3566136.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-1-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26422f4a7f5ceed3ef9b8fa4cec8b058e57e9d77ccbf9a255b6b91b7d13e089a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-2-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/17e97c5c3eefd2dfdc5066b1faf30be7e31ba97e9a107a6c2e1f235ac35d1ac7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-3-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/05e6c661322b896698640ab372ca94648ebc295ce5a37a7d6aeb6969ea6dc8af.png",
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-4-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/62dbe21c775d40c8665123858c73e658cfc1088927ad7acb12d452aef7f4e176.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-5-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e8483daa0a493c8784c9a9427621b5205bc29c9e8456d1a049c2b8b5fa2eb3e8.png"
+      ],
+      "frameDurationsMs": [
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/894b34dce8d80b18a720cfcd529b9eaf0691bfc6f821b04ff6175157d5bf2cfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/367de6a095875ef8c6f45e8dbb24dc1de971fe1bd8f64826dff567ffc8af596f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/894b34dce8d80b18a720cfcd529b9eaf0691bfc6f821b04ff6175157d5bf2cfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/4339960056a92f99ffbc096b4699403cb7ba29701bcf90254ddc63596d87b078.png",
+        "res://character/krusher-style-neck-bank-v1/frames/367de6a095875ef8c6f45e8dbb24dc1de971fe1bd8f64826dff567ffc8af596f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/894b34dce8d80b18a720cfcd529b9eaf0691bfc6f821b04ff6175157d5bf2cfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/68ac7ba2a91934861b98c763b3d6ed4867c93d2bd82080afec98a64f42c64e04.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4339960056a92f99ffbc096b4699403cb7ba29701bcf90254ddc63596d87b078.png",
+        "res://character/krusher-style-neck-bank-v1/frames/367de6a095875ef8c6f45e8dbb24dc1de971fe1bd8f64826dff567ffc8af596f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/894b34dce8d80b18a720cfcd529b9eaf0691bfc6f821b04ff6175157d5bf2cfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3b2a4e0fb4514ac8ae5720a0ec46df176861a95522fc29de560f53341d774752.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eace0ae442375cdbdde6ba40986db661abbb8ee15e89809291cef5baeddc7f84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/12f0d42e78e599503d07ff134eb202cbd6819074b4e612727970ba8b39785c43.png",
+        "res://character/krusher-style-neck-bank-v1/frames/91a8ffeaee5c5e9697c2104b6c595bf56d2f44703962dc1e790eae4789185793.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/019be0096b643f9c7d7c5d039c53f292c52f7c467ca73d592565ff419acd886e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c2879d379b111e2e4757f67ee02bdee50d9e99c090de143f8a18dd50b9ff1475.png",
+        "res://character/krusher-style-neck-bank-v1/frames/019be0096b643f9c7d7c5d039c53f292c52f7c467ca73d592565ff419acd886e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e71960733b49c5fed51e603ae54a61b3c44b4d3872a54228f53ef0b215ec53b4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c2879d379b111e2e4757f67ee02bdee50d9e99c090de143f8a18dd50b9ff1475.png",
+        "res://character/krusher-style-neck-bank-v1/frames/019be0096b643f9c7d7c5d039c53f292c52f7c467ca73d592565ff419acd886e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/5c961f012e3822e8b1098967cf520aedadeed5275273c0957e0522e9327d1d3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e71960733b49c5fed51e603ae54a61b3c44b4d3872a54228f53ef0b215ec53b4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c2879d379b111e2e4757f67ee02bdee50d9e99c090de143f8a18dd50b9ff1475.png",
+        "res://character/krusher-style-neck-bank-v1/frames/019be0096b643f9c7d7c5d039c53f292c52f7c467ca73d592565ff419acd886e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        850,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/36baac72ac48a908da7b5a42e99932fe791908b00daae3f6655fbaeba0ebb64b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/92493c8b84a5d0486a0ea794a6ecdc89044c58fd66be20e2f45ba1cc47ba33df.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8936fa52395eda153faf8a99bdbe5b3cd5a42eae3877a0d02c12287006bf2556.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d14024039b686697ae5772e522b722f040f2b11a6bac29d564640ad0b5abf72.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7be03b30d73e8a5fab2fb1b4d16f46077057968a14729ec91a06feffb8b9ac.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40447e6c974de72fa4bc4643acca3efd3f862189edcf6f33ce154971e2f0d3c6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b51ce10e004af1623a8626fb0423fcf10119c186e8e6e8b6f2eeb7948b01b714.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6a1408aa74701cec53b2dcc81bfe95b77d385f9d9438b1997f45231475ee25ce.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    }
+  ]
+}

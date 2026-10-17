@@ -1,0 +1,38 @@
+{
+  "status": "installed_owner_accepted_carry_turn_planted_v2",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-east-south",
+    "carry-turn-south-east"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet.png",
+  "helmetPrompt": "prompt-helmet.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.26666666666666666,
+  "timingMs": 800,
+  "derivation": "Compact feet through entire turn including endpoints; reverse exact poses; prior upper-body/head/helmet pixels preserved above each legCutoff; original walking begins only after turn",
+  "helmet": "Intermediate generated matched head angles calibrated toward selected35-to39px facing width; head-only overlay; all body pixels at/below headCutoff byte-identical to bare",
+  "matte": "Accepted fixed material highlight and engineering gold pipeline; head preserved",
+  "checks": "123 packaging /121 actual-loader native checks,0 failures;8 captures; final compact turn and destination carry0 clock reset verified",
+  "profileAudit": "Installed actual-loader scratch assertion passed; concurrent bug-report,last_session,Studio config changes observed; attribution unresolved, no restoration",
+  "visualReview": "Owner accepted compact planted feet east/south turns",
+  "remaining": [
+    "Remaining10 carrying turns, with east/north pair now staged"
+  ],
+  "legSource": "source-planted-v2.png",
+  "legPrompt": "prompt-planted-v2.txt",
+  "review": "review-planted-v2.gif"
+}

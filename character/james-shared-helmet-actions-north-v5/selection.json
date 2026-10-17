@@ -1,0 +1,36 @@
+{
+  "status": "installed_owner_selected_north_v5",
+  "runtimeInstalled": true,
+  "ownerRequest": "Repair/blowtorch in front of him, not sideways.",
+  "source": "character/james-repair-north-direct-v5",
+  "framesPerMode": 84,
+  "coverage": [
+    "kneel-north",
+    "repair-north",
+    "stand-north"
+  ],
+  "direction": "Single torch nozzle aimed forward/upward toward top of rear-view image, ahead of right shoulder; left hand braces knee.",
+  "derivation": "Kneel source0-32; work32/69/68/66/63/62/63/66/68/69/32; stand32 then102-140 actual source stow/ascent. Exact installed idle endpoints.",
+  "helmet": "Selected rear shell; central dark head tracker excludes raised torch/blue flare, smooth upright fit.",
+  "limitations": [
+    "Raised welding work, rather than low floor panel.",
+    "Initial tool draw includes a brief larger ignition flare.",
+    "Construction tool-state coverage and earlier directional repair torch continuity remain separate work."
+  ],
+  "visualReview": "Contact sheet and native work pose reviewed; full GIF owner review pending.",
+  "native": "Actual installed loader707 checks/0 failures,12 captures; production station30 captures/0 failures. Scratch save directory asserted; real profile unchanged during both checks.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "rejectedAttemptsThisTurn": [
+    "north-direct-v3 duplicated side tools",
+    "north-direct-v4 downward side torch"
+  ],
+  "estimatedGenerationThisTurnUSD": 0.57,
+  "pending": [],
+  "ownerFeedback": "He shouldnt kneel as a far down",
+  "ownerAcceptance": {
+    "feedback": "Lets go back to this one and move on",
+    "attachmentSha256": "fe3a5aa882fe91b13025a015b4b0839149ee5d458d218d8d1e3755dbf8677dec",
+    "match": "Exact GIF SHA256 and all decoded frames match north-v5"
+  }
+}

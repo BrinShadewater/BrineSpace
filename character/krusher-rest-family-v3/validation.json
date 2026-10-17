@@ -1,0 +1,27 @@
+{
+  "checks": 902,
+  "errors": [],
+  "joins": [
+    "bare east lie-down -> sleep",
+    "bare east sleep -> get-up",
+    "bare north lie-down -> sleep",
+    "bare north sleep -> get-up",
+    "bare south lie-down -> sleep",
+    "bare south sleep -> get-up",
+    "bare west lie-down -> sleep",
+    "bare west sleep -> get-up",
+    "bare bunk-enter-east -> bunk-sleep-east",
+    "bare bunk-sleep-east -> bunk-exit-east",
+    "helmet east lie-down -> sleep",
+    "helmet east sleep -> get-up",
+    "helmet north lie-down -> sleep",
+    "helmet north sleep -> get-up",
+    "helmet south lie-down -> sleep",
+    "helmet south sleep -> get-up",
+    "helmet west lie-down -> sleep",
+    "helmet west sleep -> get-up",
+    "helmet bunk-enter-east -> bunk-sleep-east",
+    "helmet bunk-sleep-east -> bunk-exit-east"
+  ],
+  "scope": "Source/output/head hashes; native canvas and ruler; protected pixels and distant body; original state timing, facings, depths and furniture flags; exact rest endpoint and reverse choreography. Does not assert identity quality or station furniture contact."
+}

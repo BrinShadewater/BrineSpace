@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+JAMES WORKSHOP BOOT
+ERROR: Normal renderer selection
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:14)
+       [1] install_candidate (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:75)
+       [2] run (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:208)
+       [3] record_case (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:69)
+       [4] capture (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:55)
+SCRIPT ERROR: Invalid access to property or key 'case_enabled' on a base object of type 'Node2D (brine_core_view.gd)'.
+   at: record_case (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:67)
+   GDScript backtrace (most recent call first):
+       [0] record_case (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:67)
+       [1] capture (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:55)
+SCRIPT ERROR: Invalid access to property or key 'case_enabled' on a base object of type 'Node2D (brine_core_view.gd)'.
+   at: record_case (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:67)
+   GDScript backtrace (most recent call first):
+       [0] record_case (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:67)
+       [1] capture (res://character/james-floor-case-west-v1/normal_checkpoint_probe.gd:55)
+JAMES FLOOR CHECKPOINT bare before failures=1

@@ -1,0 +1,236 @@
+{
+  "helmetIdle": "character/veld-shared-helmet-v1/frames/idle-south/000.png",
+  "helmetIdleSha256": "593aa02488bc38b436e24cd7ffabfdcd43972c11e24cd35ab8a31866da9b15ed",
+  "nativeComponent": "character/veld-shared-helmet-south-v1/fitted-helmet.png",
+  "nativeComponentSha256": "73d7d03a449d2b2debe24491d57ad36ceb9f064d68891403d4dfc828915880bb",
+  "nativeAnchor": [
+    17,
+    36
+  ],
+  "sourceNecks": [
+    [
+      253,
+      172
+    ],
+    [
+      784,
+      270
+    ],
+    [
+      1284,
+      371
+    ],
+    [
+      151,
+      789
+    ],
+    [
+      650,
+      873
+    ],
+    [
+      1168,
+      883
+    ]
+  ],
+  "frames": [
+    {
+      "pose": 1,
+      "neck": [
+        128.39837398373984,
+        133.1788617886179
+      ],
+      "headCenter": [
+        128.09756097560975,
+        118.13821138211382
+      ],
+      "sourceNeck": [
+        784,
+        270
+      ],
+      "tiltCounterclockwise": 0,
+      "forwardPitchDegrees": 15,
+      "nativeScale": 1,
+      "componentSource": "sources/fitted-pitch-01.png",
+      "componentPosition": [
+        110,
+        97
+      ],
+      "componentSize": [
+        36,
+        39
+      ],
+      "eraseRadius": 18,
+      "expression": "master"
+    },
+    {
+      "pose": 2,
+      "neck": [
+        128.90243902439025,
+        162.78048780487805
+      ],
+      "headCenter": [
+        128.90243902439025,
+        148.04065040650406
+      ],
+      "sourceNeck": [
+        1284,
+        371
+      ],
+      "tiltCounterclockwise": 0,
+      "forwardPitchDegrees": 25,
+      "nativeScale": 1,
+      "componentSource": "sources/fitted-pitch-02.png",
+      "componentPosition": [
+        111,
+        128
+      ],
+      "componentSize": [
+        36,
+        38
+      ],
+      "eraseRadius": 18,
+      "expression": "master"
+    },
+    {
+      "pose": 3,
+      "neck": [
+        95.1788617886179,
+        181.0650406504065
+      ],
+      "headCenter": [
+        84.04878048780488,
+        171.4390243902439
+      ],
+      "sourceNeck": [
+        151,
+        789
+      ],
+      "tiltCounterclockwise": 40,
+      "forwardPitchDegrees": 0,
+      "nativeScale": 1,
+      "componentSource": "selected master",
+      "componentPosition": [
+        58,
+        142
+      ],
+      "componentSize": [
+        53,
+        53
+      ],
+      "eraseRadius": 18,
+      "expression": "master"
+    },
+    {
+      "pose": 4,
+      "neck": [
+        94.47967479674797,
+        204.1707317073171
+      ],
+      "headCenter": [
+        80.9430894308943,
+        202.66666666666666
+      ],
+      "sourceNeck": [
+        650,
+        873
+      ],
+      "tiltCounterclockwise": 82,
+      "forwardPitchDegrees": 0,
+      "nativeScale": 1,
+      "componentSource": "selected closed expression",
+      "componentPosition": [
+        56,
+        181
+      ],
+      "componentSize": [
+        45,
+        41
+      ],
+      "eraseRadius": 18,
+      "expression": "closed"
+    },
+    {
+      "pose": 5,
+      "neck": [
+        93.97560975609755,
+        206.46341463414635
+      ],
+      "headCenter": [
+        81.04065040650407,
+        204.0569105691057
+      ],
+      "sourceNeck": [
+        1168,
+        883
+      ],
+      "tiltCounterclockwise": 87,
+      "forwardPitchDegrees": 0,
+      "nativeScale": 1,
+      "componentSource": "selected closed expression",
+      "componentPosition": [
+        57,
+        187
+      ],
+      "componentSize": [
+        41,
+        37
+      ],
+      "eraseRadius": 18,
+      "expression": "closed"
+    }
+  ],
+  "expression": {
+    "generation": "exec-bf6e7f3c-ec9c-4fee-8dc2-91edbd2991d3",
+    "source": "sources/closed-v1.png",
+    "sourceSha256": "aeb678ce3afcb53bf2d05870d9f3e16b6404f84c1337640a06d312349309ddd4",
+    "sourceSkinReference": [
+      460,
+      720,
+      520,
+      810
+    ],
+    "eyeRegions": [
+      {
+        "source": [
+          424,
+          609,
+          568,
+          699
+        ],
+        "native": [
+          12,
+          18,
+          16,
+          20
+        ]
+      },
+      {
+        "source": [
+          624,
+          609,
+          768,
+          699
+        ],
+        "native": [
+          19,
+          18,
+          23,
+          20
+        ]
+      }
+    ],
+    "gain": [
+      0.9162790697674419,
+      0.8851351351351351,
+      0.9019607843137255
+    ],
+    "affectedFrames": [
+      4,
+      5
+    ],
+    "protected": "all original component alpha and RGB outside16pixel paired eye regions"
+  },
+  "scope": "paired candidate with authored15/25degree depth-pitch heads; no normal selection or full-family motion acceptance",
+  "pitchRegistrationSha256": "a0fbd66d4ab2437e214df32572335d30455ce765a436ff101b8690ffa7736610"
+}

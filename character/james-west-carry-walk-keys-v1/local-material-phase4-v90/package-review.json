@@ -1,0 +1,38 @@
+{
+  "sourceSha256": {
+    "character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-004.png": "28c7edd7dcf97d022b10c626bd00feb7fe600fff27b06ea318d7d95a82bfc269"
+  },
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full raw square resampled once to original96crop; no fitting, translation or warp.",
+  "admittedPixelCount": 2547,
+  "outsideExactPixels": 62989,
+  "changedPixels": 2536,
+  "alphaExact": true,
+  "outerTwoPixelRingExact": true,
+  "headTop110Exact": true,
+  "bootsBelow200Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    98,
+    76,
+    155,
+    224
+  ],
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "retain_provisional_local_material_candidate",
+  "reviewedSourceBoards": [
+    "paired-local-review.png",
+    "crop-detail-review.png"
+  ],
+  "findings": [
+    "Fixed96crop/material-only master sample avoids full-figure standing-pose transfer. Knee/case positioning remains close in reviewed source/native poses.",
+    "Original alpha/rim/top110head and rows200+boots exact; interior material pixels remain a generated candidate, not strict landmark equality.",
+    "Seam finish somewhat reduced but original boot/edge highlights remain brighter than preceding V83phase3. Neighbor material transition unresolved.",
+    "Full49gait, original-master anatomy/proportions, normal lifecycle and continuous visual motion remain open."
+  ]
+}

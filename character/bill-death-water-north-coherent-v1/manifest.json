@@ -1,0 +1,68 @@
+{
+  "name": "Bill north underwater death candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "frames/death-water-north/000.png",
+        "frames/death-water-north/001.png",
+        "frames/death-water-north/002.png",
+        "frames/death-water-north/003.png",
+        "frames/death-water-north/004.png",
+        "frames/death-water-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        220,
+        220,
+        260,
+        500
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "five authored rear loss-of-motion poses;exact selected swim entry;limp terminal"
+    }
+  ]
+}

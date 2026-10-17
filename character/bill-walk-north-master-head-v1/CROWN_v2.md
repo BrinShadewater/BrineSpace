@@ -1,0 +1,1 @@
+Current native head includes complete master crown and soft edges. See ../bill-run-head-locked-v1/HANDOFF_CROWN_v2.md and runtime-evidence-crown-v2.json. Earlier exports/evidence are frozen under review-before-crown-v2.

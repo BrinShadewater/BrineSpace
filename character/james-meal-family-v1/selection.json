@@ -1,0 +1,91 @@
+{
+  "status": "installed_meal_family_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "eat-east",
+    "drink-east",
+    "eat-south",
+    "drink-south",
+    "eat-west",
+    "drink-west",
+    "eat-north",
+    "drink-north"
+  ],
+  "sources": [
+    "character/james-meal-east-v1/source.png",
+    "character/james-meal-south-v1/source.png",
+    "character/james-meal-west-v1/source.png",
+    "character/james-meal-north-v1/source.png"
+  ],
+  "bareReferences": 48,
+  "helmetReferences": 48,
+  "checks": "500 packaging /481 installed-loader native checks,0 failures;32 captures",
+  "profileAudit": {
+    "scratchDirectoryAsserted": true,
+    "realProfileUnchanged": false,
+    "profileDelta": [
+      "logs\\godot2026-09-30T05.05.01.log",
+      "logs\\godot2026-09-30T05.07.16.log"
+    ],
+    "nonLogFilesUnchanged": true
+  },
+  "helmetPolicy": "Closed-visor inspection substitute, never eat or drink through glass; actual crew_life pose mapping unchanged",
+  "visualReview": "Independent sources, contacts, master sizes, decoded previews and native eating/drinking contact reviewed; final owner visual review pending",
+  "remaining": [
+    "Owner visual review",
+    "Genuine hazard/changed-counter interruption and other source-index/native entry proofs",
+    "Other facing/custom counter handoffs, exterior full journeys and full cross-family polish"
+  ],
+  "productionGalleyJourneys": {
+    "checks": 64615,
+    "actualJourneys": 8,
+    "freshSceneDiskRestores": 8,
+    "actualFacings": [
+      "north"
+    ],
+    "evidence": "character/james-meal-journeys-v1/native-meal-evidence.json",
+    "review": "Native front counter poses reviewed; owner review pending; pickup transition unproven.",
+    "fullSetComplete": false
+  },
+  "historicalSouthGalleyJourneys": {
+    "checks": 60495,
+    "actualJourneys": 8,
+    "freshSceneDiskRestores": 8,
+    "actualFacings": [
+      "south"
+    ],
+    "evidence": "character/james-meal-journeys-v1/prior-south-journey-evidence.json",
+    "supersededBy": "Front contact correction; historical report retains original scope."
+  },
+  "northBowlAcquisition": {
+    "manifest": "character/james-meal-pickup-north-v1/manifest.json",
+    "source": "character/james-meal-pickup-north-v1/source.png",
+    "checks": 7189,
+    "actualJourneys": 1,
+    "freshSceneDiskRestores": 1,
+    "seconds": 0.9,
+    "scope": "Opening900ms of original6s bare North meal; exact accepted idle/held endpoints; other facings/equipped rules unchanged.",
+    "evidence": "character/james-meal-pickup-north-v1/native-journey-evidence.json",
+    "ownerReviewPending": true
+  },
+  "northMealHandoffs": {
+    "manifest": "character/james-cup-pickup-north-v1/handoffs-manifest.json",
+    "checks": 7306,
+    "actualJourneys": 1,
+    "freshSceneDiskRestores": 4,
+    "seconds": 9,
+    "scope": "Default bare North: bowl pickup, three mouthfuls, bowl deposit, cup pickup, full sip and cup deposit; standard6+3s stage budgets.",
+    "evidence": "character/james-cup-pickup-north-v1/native-journey-evidence.json",
+    "ownerReviewPending": true
+  },
+  "northInterruptedMealReturns": {
+    "manifest": "character/james-meal-interrupt-north-v1/manifest.json",
+    "profiles": 36,
+    "checks": 1041,
+    "actualJourneys": 6,
+    "freshSceneDiskRestores": 6,
+    "scope": "Safe default bare North service power loss; exact current source3 pose to empty idle. All36 profile endpoint packaging checked; no completed-meal reward or premature restart.",
+    "evidence": "character/james-meal-interrupt-north-v1/native-return-evidence.json",
+    "ownerReviewPending": true
+  }
+}

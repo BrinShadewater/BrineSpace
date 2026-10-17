@@ -1,0 +1,111 @@
+{
+  "references": [
+    {
+      "path": "character/marsh-south-step-v1/candidate-05/003.png",
+      "sha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    }
+  ],
+  "candidates": [
+    {
+      "version": "01",
+      "rawPath": "character/marsh-south-step-detail-v1/candidate-01.raw.png",
+      "rawSha256": "a3b4de052ecda517d5dc19568f57970e9975c997e400a24f4adf5228d75d3467",
+      "framePath": "character/marsh-south-step-detail-v1/candidate-01-frame.png",
+      "frameSha256": "6d5002fa70cb9e8345af650c62d6779906f24f0dfea569fd81d517a88627346d",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "rawOpaqueBounds": [
+        448,
+        189,
+        808,
+        1081
+      ],
+      "fixedWholeCanvasFactor": 0.1467304625199362,
+      "opaqueBounds": [
+        66,
+        28,
+        119,
+        159
+      ],
+      "originalOpaqueBounds": [
+        66,
+        27,
+        128,
+        179
+      ],
+      "opaqueIoU": 0.61693822131704,
+      "heightRatio": 0.8618421052631579,
+      "soleDisplacement": -20,
+      "crownDisplacement": 1,
+      "method": "One whole-canvas184/raw-width scale, no crop/pivot shift/pose fit/paint/splice/recolour/alpha repair."
+    },
+    {
+      "version": "02",
+      "rawPath": "character/marsh-south-step-detail-v1/candidate-02.raw.png",
+      "rawSha256": "cb6c324ef116b06cf7fa758ccd30fc903b90c45f06ed9f5c76dd0a692ffc4fbd",
+      "framePath": "character/marsh-south-step-detail-v1/candidate-02-frame.png",
+      "frameSha256": "8ee276539fa3c4251d3002d691e237ac2e83f68bc1d60d789fa3af86c0d5baca",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "rawOpaqueBounds": [
+        449,
+        186,
+        868,
+        1215
+      ],
+      "fixedWholeCanvasFactor": 0.1467304625199362,
+      "opaqueBounds": [
+        66,
+        27,
+        127,
+        178
+      ],
+      "originalOpaqueBounds": [
+        66,
+        27,
+        128,
+        179
+      ],
+      "opaqueIoU": 0.9526813880126183,
+      "heightRatio": 0.993421052631579,
+      "soleDisplacement": -1,
+      "crownDisplacement": 0,
+      "method": "One whole-canvas184/raw-width scale, no crop/pivot shift/pose fit/paint/splice/recolour/alpha repair."
+    }
+  ],
+  "masterDisplayScale": 0.11931818181818182,
+  "masterStandingSourceRuler": 1232,
+  "normalAdmission": true,
+  "fullGoalComplete": false,
+  "visualReviewed": true,
+  "reviewedBoards": [
+    {
+      "file": "comparison-2x.png",
+      "sha256": "b1bb4888c13b97c34608f9f34c4c0a8dae1eb76ea539c9111fce5788c2b4e142",
+      "actuallyInspected": true
+    },
+    {
+      "file": "neighbors-candidate02.png",
+      "sha256": "b2addcc86fd2b666154563cb01245ee735e4ef310f9eafcc679c0b14bcbc9dc0",
+      "actuallyInspected": true
+    }
+  ],
+  "selection": {
+    "rejected": "01",
+    "selected": "02",
+    "reason": "01 shrinks original pose to86.18%height and raises sole20pixels at fixed canvas scale.02 preserves crown,sole-1pixel,height99.34%,opaqueIoU.95268; whole collar/harness construction closer to own idle/master and neighboring pose. Detail/grade/cadence/contact/full-family polish still provisional.",
+    "admissionReceipt": "character/marsh-v2/supplemental/south-step-detail-v1/admission.json"
+  }
+}

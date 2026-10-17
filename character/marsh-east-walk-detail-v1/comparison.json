@@ -1,0 +1,104 @@
+{
+  "scope": "Whole-pose and all six walking neighbors at fixed native density; no native/motion acceptance.",
+  "references": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/000.png",
+      "sha256": "e8d86f73bfd09e502d91e8b714e2187d3237f35ee69e08717337bc84e586ca7b"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/001.png",
+      "sha256": "4c0c6cdb7cd2e093749bcfe2c076f9516166ad28ed18994f240a3c1666a78aeb"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/002.png",
+      "sha256": "0981d6a1194591e2cd1c094434d3e1bebb318049c25ed4b0787858d641a31155"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/003.png",
+      "sha256": "fb923e1c5c406cb5bbffb26c28a2f99857875ff74d4b08f6be4d17d90c22e915"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/004.png",
+      "sha256": "8468ba9137c0f8db7fbd5b573c2800fdde602892c795fcba13abc139a8398a1d"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-east/005.png",
+      "sha256": "66663fbe9e36a3d67d41367eab6b0cdf352e50126b4eba598b9a81d97abc2f17"
+    }
+  ],
+  "masterPath": "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png",
+  "masterSha256": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d",
+  "masterDisplayScale": 0.11931818181818182,
+  "candidates": [
+    {
+      "candidate": "01",
+      "rawPath": "character/marsh-east-walk-detail-v1/candidate-01.raw.png",
+      "rawSha256": "748d08d1411b3a1a823798d1dc59f6cd4d9333bbf81832d92c6818d7fc91a6b4",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "framePath": "character/marsh-east-walk-detail-v1/candidate-01-frame.png",
+      "frameSha256": "905b00523bd7cf211ea3028a9ae0c267738f9a2539c23ff94aa1197214124f71",
+      "fixedWholeCanvasFactor": 0.1467304625199362,
+      "opaqueBounds": [
+        56,
+        24,
+        128,
+        170
+      ],
+      "originalOpaqueBounds": [
+        56,
+        23,
+        128,
+        171
+      ],
+      "heightRatio": 0.9864864864864865,
+      "crownDisplacement": 1,
+      "soleDisplacement": -1,
+      "opaqueIoU": 0.9521475256769374,
+      "normalAdmission": false,
+      "reviewed": true,
+      "decision": "Rejected: conspicuous riveted visible temple plate conflicts with current ownidle despite explicit negative prompt."
+    },
+    {
+      "candidate": "02",
+      "rawPath": "character/marsh-east-walk-detail-v1/candidate-02.raw.png",
+      "rawSha256": "3d925529536b1b3bfc3eba233c05138694cc59f8b412ee363efb100ef6258d38",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "framePath": "character/marsh-east-walk-detail-v1/candidate-02-frame.png",
+      "frameSha256": "10e2ed97e7d84a5525409daf05008ce7dc2c91aaddfdcf8b95bfcb98f9a837d6",
+      "fixedWholeCanvasFactor": 0.1467304625199362,
+      "opaqueBounds": [
+        56,
+        24,
+        128,
+        170
+      ],
+      "originalOpaqueBounds": [
+        56,
+        23,
+        128,
+        171
+      ],
+      "heightRatio": 0.9864864864864865,
+      "crownDisplacement": 1,
+      "soleDisplacement": -1,
+      "opaqueIoU": 0.9456623134328358,
+      "normalAdmission": false,
+      "reviewed": true,
+      "decision": "Provisional whole-pose source: clearer collar/strap/seam construction; conspicuous riveted plate absent, gray temple/hair patch remains. Brighter ivory and stronger panel contrast differ from current neighboring walking frames. Crown+1/sole-1 must be evaluated with gait/contact; not admitted."
+    }
+  ],
+  "normalArtChanged": false,
+  "fullGoalComplete": false,
+  "wholeNeighborhoodReviewed": true,
+  "reviewScope": "Native whole master/idle/before/two candidates and all six current/provisional walk neighbors inspected. Enlarged overview also seen but tool display resized it; native board establishes actual-density comparison. No cadence/native acceptance."
+}

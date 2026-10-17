@@ -1,0 +1,67 @@
+{
+  "name": "Veld north authored dry breathing recovery",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "frames/recover-air-north/000.png",
+        "frames/recover-air-north/001.png",
+        "frames/recover-air-north/002.png",
+        "frames/recover-air-north/003.png",
+        "frames/recover-air-north/004.png",
+        "frames/recover-air-north/005.png"
+      ],
+      "frameDurationsMs": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

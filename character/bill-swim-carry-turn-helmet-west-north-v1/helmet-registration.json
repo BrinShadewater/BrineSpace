@@ -1,0 +1,254 @@
+{
+  "source": "sources/helmet-shell-v1.png",
+  "sourceGeneration": "exec-98e5fcbf-abe0-4a8c-ab72-9ea8cc43a36e",
+  "sourceSha256": "6f04ab48eaf6390a1b4f2e5ec85125fe75f0e2b955f0ca81c4d570f065bb064b",
+  "scale": 0.09,
+  "neutralInput": [
+    0.0,
+    3.6666666666666665,
+    29.0,
+    50.333333333333336,
+    58.333333333333336,
+    72.66666666666667,
+    86.66666666666667,
+    104.33333333333333,
+    255.0
+  ],
+  "neutralOutput": [
+    0.0,
+    24.150000000000002,
+    40.26666666666667,
+    57.0,
+    64.66666666666667,
+    78.66666666666667,
+    95.66666666666667,
+    120.84999999999998,
+    245.66666666666666
+  ],
+  "unusedSourcePoses": [
+    0,
+    5
+  ],
+  "components": [
+    {
+      "file": "components/000.png",
+      "sourceBox": [
+        112,
+        127,
+        451,
+        474
+      ],
+      "scale": 0.09,
+      "size": [
+        31,
+        31
+      ],
+      "sha256": "ccc36c29585896826d7fb3b9430b6e2f03f75fdf7ee50d00c3c697958f8b950e"
+    },
+    {
+      "file": "components/001.png",
+      "sourceBox": [
+        593,
+        123,
+        947,
+        475
+      ],
+      "scale": 0.09,
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "63d64c6a8129c9ec3b0efeaf0d6bd88a1bac3e3413855f524cd400f482c4bcaf"
+    },
+    {
+      "file": "components/002.png",
+      "sourceBox": [
+        1087,
+        130,
+        1434,
+        482
+      ],
+      "scale": 0.09,
+      "size": [
+        31,
+        32
+      ],
+      "sha256": "faaae582de203c4a96f7c7789423c6516ed8c8979a4d761d7d843945ea3338a8"
+    },
+    {
+      "file": "components/003.png",
+      "sourceBox": [
+        120,
+        568,
+        477,
+        917
+      ],
+      "scale": 0.09,
+      "size": [
+        32,
+        31
+      ],
+      "sha256": "2a8ddee927239f8e277a83ad483021ee20242043b8d4f63000d93d6dbfa87d3e"
+    },
+    {
+      "file": "components/004.png",
+      "sourceBox": [
+        593,
+        565,
+        956,
+        918
+      ],
+      "scale": 0.09,
+      "size": [
+        33,
+        32
+      ],
+      "sha256": "57028b09cabc2b1cc58d9026c52b2134e6b409849cc1d0068463e0e02d248a7f"
+    },
+    {
+      "file": "components/005.png",
+      "sourceBox": [
+        1068,
+        567,
+        1463,
+        909
+      ],
+      "scale": 0.09,
+      "size": [
+        36,
+        31
+      ],
+      "sha256": "09c513821e374ee9ff36c760f006485c7c79bcfc21211520408cebd976335706"
+    }
+  ],
+  "endpointAuthorities": [
+    {
+      "path": "bill-swim-carry-helmet-west-coherent-v1/frames/swim-carry-west/000.png",
+      "padding": [
+        42,
+        40
+      ]
+    },
+    {
+      "path": "bill-swim-carry-helmet-north-coherent-v1/frames/swim-carry-north/000.png",
+      "padding": [
+        24,
+        56
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "sourcePose": 1,
+      "file": "frames/swim-carry-turn-west-north/001.png",
+      "component": "components/001.png",
+      "position": [
+        91,
+        101
+      ],
+      "crownAxis": [
+        107,
+        104
+      ],
+      "eraseBox": [
+        83,
+        102,
+        132,
+        135
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt remains intact",
+      "protectedCaseBox": [
+        77,
+        118,
+        105,
+        144
+      ],
+      "protectedBodyFromY": 135,
+      "bareSha256": "611ee40d23012aab47558e651ff533248ec0bfe2108d1302b2db7ddca4fe6ed3"
+    },
+    {
+      "sourcePose": 2,
+      "file": "frames/swim-carry-turn-west-north/002.png",
+      "component": "components/002.png",
+      "position": [
+        97,
+        101
+      ],
+      "crownAxis": [
+        112,
+        104
+      ],
+      "eraseBox": [
+        88,
+        102,
+        137,
+        135
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt remains intact",
+      "protectedCaseBox": [
+        80,
+        108,
+        110,
+        134
+      ],
+      "protectedBodyFromY": 135,
+      "bareSha256": "e30826b0ea26faad3599a4fdd47b5f29b8388e373b75c57a9a36d168277c9452"
+    },
+    {
+      "sourcePose": 3,
+      "file": "frames/swim-carry-turn-west-north/003.png",
+      "component": "components/003.png",
+      "position": [
+        102,
+        101
+      ],
+      "crownAxis": [
+        118,
+        104
+      ],
+      "eraseBox": [
+        94,
+        102,
+        143,
+        135
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt remains intact",
+      "protectedCaseBox": [
+        86,
+        88,
+        115,
+        113
+      ],
+      "protectedBodyFromY": 135,
+      "bareSha256": "3e7547fa179af06638d631875ddde888c6d2d7b6c6d73e4e93d7e4e44ee0786a"
+    },
+    {
+      "sourcePose": 4,
+      "file": "frames/swim-carry-turn-west-north/004.png",
+      "component": "components/004.png",
+      "position": [
+        107,
+        101
+      ],
+      "crownAxis": [
+        123,
+        104
+      ],
+      "eraseBox": [
+        99,
+        102,
+        148,
+        135
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt remains intact",
+      "protectedCaseBox": [
+        107,
+        85,
+        135,
+        104
+      ],
+      "protectedBodyFromY": 135,
+      "bareSha256": "dbd3c62583f1b70e592521a199f0ec76bf55e8ada13067a88bee8783b8255df1"
+    }
+  ]
+}

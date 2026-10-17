@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veld lounge seating review</title>
+<style>body{margin:24px;background:#202a30;color:#e1e7eb;font:16px system-ui}p{max-width:78ch;line-height:1.5}a{color:#8cc6e7}.row{display:flex;gap:24px;flex-wrap:wrap}.card{background:#29363d;padding:14px;border-radius:8px}canvas{display:block}button,select{font:inherit;background:#344b57;color:white;padding:7px;border:1px solid #647f8e;border-radius:5px}.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:20px 0}input{width:250px}.masters{max-width:100%;height:auto}</style>
+<h1>Veld — lounge seating contact</h1>
+<p>The chair’s registered front edge now keeps Veld visible while she sits and rises. Her artwork, scale, palette and navigation position are preserved. Both versions below come from the actual lounge renderer. These are prescribed pose samples played slowly for inspection; the candidate remains staged.</p>
+<div class="controls"><label>Room rotation <select id="rotation"><option>0</option><option>1</option><option>2</option><option>3</option></select></label><button id="play">Play pose samples</button><input id="slot" type="range" min="0" max="13" value="6"><span id="status">Loading</span></div>
+<div class="row"><div class="card"><strong>Bare</strong><canvas id="bare" width="312" height="488"></canvas></div><div class="card"><strong>Helmet</strong><canvas id="helmet" width="312" height="488"></canvas></div></div>
+<p><a id="scene" href="../../output/veld-seated-north-station-v1/rotation-0-bare-held.png">Full room capture</a> · <a href="../../output/veld-seated-north-station-v1/held-room-board.png">All rotations and both versions</a> · <a href="../../output/veld-seated-north-station-v1/legacy-depth-room-board.png">Previous depth comparison</a> · <a href="paired-contact-sheet.png">All source poses beside the master</a> · <a href="./">Source animation review</a></p>
+<p>Native contact, source ordering and interruption checks pass. Natural furniture routing, fresh Continue and held breathing still need review.</p>
+<script>
+const phases=['entry','down-1','down-2','down-3','down-4','down-5','held','rise-0','rise-1','rise-2','rise-3','rise-4','rise-5','exit'];
+const durations=[80,100,140,160,160,160,1200,160,160,160,140,100,80,1000];
+const rotation=document.querySelector('#rotation'),slider=document.querySelector('#slot'),status=document.querySelector('#status'),play=document.querySelector('#play');
+let cache={},playing=false,slot=6,elapsed=0,last=performance.now(),token=0;
+async function load(){const mine=++token;status.textContent='Loading room captures';const row={};await Promise.all(['bare','helmet'].map(async gear=>{row[gear]=await Promise.all(phases.map(phase=>new Promise((yes,no)=>{const im=new Image;im.onload=()=>yes(im);im.onerror=no;im.src=`../../output/veld-seated-north-station-v1/rotation-${rotation.value}-${gear}-${phase}.png`})))}));if(mine!==token)return;cache=row;draw();}
+function draw(){if(!cache.bare)return;for(const gear of ['bare','helmet']){const ctx=document.querySelector('#'+gear).getContext('2d');ctx.imageSmoothingEnabled=false;ctx.drawImage(cache[gear][slot],270,280,78,122,0,0,312,488)}status.textContent=`Pose ${slot} / 13 · ${phases[slot]}`;document.querySelector('#scene').href=`../../output/veld-seated-north-station-v1/rotation-${rotation.value}-bare-${phases[slot]}.png`;}
+slider.oninput=()=>{playing=false;play.textContent='Play pose samples';slot=Number(slider.value);elapsed=0;draw()};rotation.onchange=()=>{cache={};load().catch(()=>status.textContent='Capture unavailable')};play.onclick=()=>{playing=!playing;play.textContent=playing?'Pause':'Play pose samples'};
+function tick(now){const dt=now-last;last=now;if(playing&&cache.bare){elapsed+=dt/3;while(elapsed>=durations[slot]){elapsed-=durations[slot];slot=(slot+1)%14}slider.value=slot;draw()}requestAnimationFrame(tick)}
+load().catch(()=>status.textContent='Capture unavailable');requestAnimationFrame(tick);
+</script>

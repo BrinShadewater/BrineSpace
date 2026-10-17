@@ -45,9 +45,11 @@ static func frame_style(fill: Color, border: Color) -> StyleBoxTexture:
 			var p:=source.get_pixel(x,y)
 			# Inset painted department line is the backing; authored metal paints last.
 			var trim:=Color(p.r*.70,p.g*.76,p.b*.79,1.0)
-			var inner_q: Vector2 = (Vector2(x+.5,y+.5)-Vector2(100,142)).abs()-Vector2(88,130)
+			# Move the painted outline beneath the inner edge of the authored rail.
+			# Four pixels of backing keep its exposed colour solid when the card turns.
+			var inner_q: Vector2 = (Vector2(x+.5,y+.5)-Vector2(100,142)).abs()-Vector2(90,132)
 			var inner_distance := inner_q.max(Vector2.ZERO).length()+minf(maxf(inner_q.x,inner_q.y),0.0)-6.0
-			var coverage := clampf(.5-inner_distance,0.0,1.0)*clampf(inner_distance+3.5,0.0,1.0)
+			var coverage := clampf(.5-inner_distance,0.0,1.0)*clampf(inner_distance+4.5,0.0,1.0)
 			var backing := fill.lerp(border,coverage)
 			# Near-opaque authored rail pixels are solid metal, not paint-tinted stock.
 			var metal_alpha := 1.0 if p.a >= .98 else p.a
@@ -56,6 +58,7 @@ static func frame_style(fill: Color, border: Color) -> StyleBoxTexture:
 			var distance:=q.max(Vector2.ZERO).length()+minf(maxf(q.x,q.y),0.0)-12.0
 			out.a=lerpf(fill.a,1.0,p.a)*clampf(.5-distance,0.0,1.0)
 			image.set_pixel(x,y,out)
+	image.generate_mipmaps()
 	var style:=StyleBoxTexture.new()
 	style.texture=ImageTexture.create_from_image(image)
 	for side in [SIDE_LEFT,SIDE_TOP,SIDE_RIGHT,SIDE_BOTTOM]:style.set_texture_margin(side,16)

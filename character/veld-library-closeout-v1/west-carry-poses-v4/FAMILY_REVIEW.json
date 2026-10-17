@@ -1,0 +1,199 @@
+{
+  "checks": 30,
+  "failures": 0,
+  "sourcePoseOrder": [
+    "near-contact",
+    "near-down",
+    "near-support/far-pass",
+    "far-contact",
+    "far-down",
+    "far-support/near-pass"
+  ],
+  "slotsPerGear": 6,
+  "durationMs": 840,
+  "strideDistanceCells": 0.07351351351351351,
+  "fixedUniformScale": 0.10832719233603537,
+  "fixedWholeOffset": [
+    73,
+    73
+  ],
+  "noPerPoseRegistrationOrGrade": true,
+  "bodyOutsideHelmetExactFrames": 6,
+  "rows": [
+    {
+      "slot": 0,
+      "pose": "near-contact",
+      "source": "character/veld-library-closeout-v1/west-carry-contact-v3/source.png",
+      "height": 148,
+      "headTop": 76,
+      "headWidth": 27,
+      "headAxis": 130.0,
+      "floorAlpha128": 223,
+      "blueMedianRGB": [
+        56.0,
+        84.0,
+        128.0
+      ],
+      "helmetPosition": [
+        114,
+        66
+      ],
+      "helmetClearBox": [
+        115,
+        77,
+        148,
+        104
+      ]
+    },
+    {
+      "slot": 1,
+      "pose": "near-down",
+      "source": "character/veld-library-closeout-v1/west-carry-poses-v4/down-a/source.png",
+      "height": 146,
+      "headTop": 78,
+      "headWidth": 28,
+      "headAxis": 128.5,
+      "floorAlpha128": 223,
+      "blueMedianRGB": [
+        58.0,
+        85.0,
+        131.0
+      ],
+      "helmetPosition": [
+        112,
+        67
+      ],
+      "helmetClearBox": [
+        113,
+        78,
+        146,
+        105
+      ]
+    },
+    {
+      "slot": 2,
+      "pose": "near-support/far-pass",
+      "source": "character/veld-library-closeout-v1/west-carry-poses-v4/passing-a/source.png",
+      "height": 148,
+      "headTop": 77,
+      "headWidth": 28,
+      "headAxis": 132.5,
+      "floorAlpha128": 224,
+      "blueMedianRGB": [
+        58.0,
+        86.0,
+        136.0
+      ],
+      "helmetPosition": [
+        116,
+        66
+      ],
+      "helmetClearBox": [
+        117,
+        77,
+        150,
+        104
+      ]
+    },
+    {
+      "slot": 3,
+      "pose": "far-contact",
+      "source": "character/veld-library-closeout-v1/west-carry-poses-v4/opposite/source.png",
+      "height": 150,
+      "headTop": 76,
+      "headWidth": 28,
+      "headAxis": 129.5,
+      "floorAlpha128": 225,
+      "blueMedianRGB": [
+        59.0,
+        94.0,
+        153.5
+      ],
+      "helmetPosition": [
+        113,
+        66
+      ],
+      "helmetClearBox": [
+        114,
+        77,
+        147,
+        104
+      ]
+    },
+    {
+      "slot": 4,
+      "pose": "far-down",
+      "source": "character/veld-library-closeout-v1/west-carry-poses-v4/down-b/source.png",
+      "height": 148,
+      "headTop": 78,
+      "headWidth": 29,
+      "headAxis": 128.0,
+      "floorAlpha128": 225,
+      "blueMedianRGB": [
+        61.0,
+        94.0,
+        153.5
+      ],
+      "helmetPosition": [
+        111,
+        67
+      ],
+      "helmetClearBox": [
+        112,
+        78,
+        145,
+        105
+      ]
+    },
+    {
+      "slot": 5,
+      "pose": "far-support/near-pass",
+      "source": "character/veld-library-closeout-v1/west-carry-poses-v4/passing-b/source.png",
+      "height": 149,
+      "headTop": 76,
+      "headWidth": 29,
+      "headAxis": 131.0,
+      "floorAlpha128": 224,
+      "blueMedianRGB": [
+        62.0,
+        96.0,
+        154.0
+      ],
+      "helmetPosition": [
+        114,
+        66
+      ],
+      "helmetClearBox": [
+        115,
+        77,
+        148,
+        104
+      ]
+    }
+  ],
+  "scope": "Whole-body authored six-pose candidate; preserve accepted840ms stride contract. Source/loop/material/physical contact review separate; no normal admission.",
+  "bindings": {
+    "character/veld-library-closeout-v1/west-carry-contact-v3/source.png": "2edca4aec47e4b749cb907a3587148a8794179779887837c57b7aea62145ceec",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/000.png": "897a4f7edb44d970e72cd8102a4539f100dddee603c23539f10919e7469d0905",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/000.png": "d2803186a6213d38e1fa44b4fa3c301e606a74c2c1d34fa98f1964bc63a9f925",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/down-a/source.png": "a2c33ca56b2deac26141d7be51655201d7556d5ef0cc49a53086d7b20643c5da",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/001.png": "00aab81936234e303a46526975a31899887210be63857a3002d0b584d3f5a346",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/001.png": "40792575a633268c9dca8c3b24dec69f176a4c4571d52225ec342902c1ebf63c",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/passing-a/source.png": "6966d0ba85cbf3ec4fb608bdbf421bb8586836ae18e64b1f7de26112453c48ce",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/002.png": "24a403ee4a99d26a9f75a3f52b4d4ea13a6f2908dbd36a91510e681dc6fdc74e",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/002.png": "a58299fb81942ebbcb39b1f071fc9f965cf8112309ab5be3517feb0e90f147ea",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/opposite/source.png": "a1168585284f321a1b7f7d391fcdf33f065a41df88e536416e0edb7ac5c19374",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/003.png": "7f9b734e0bc5f331d59154aa202426bd7bfee6b344617841a296acb8ba538063",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/003.png": "265a9b1e76f722031acc4931c2261f1f3d3c44d6cb4163cdcf4cde41a0eebe16",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/down-b/source.png": "a334cefc31412f10b0fa89710b14d334b54e20ad2bcdd5da6c93f45dae414093",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/004.png": "112ba26bd037ac05c4a22bef37ef688ca0b5ab135241ee940e635d5c029dd1e3",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/004.png": "2d1516a30b46db0cf9641ae9456542175e981512d7eaa3a285125d4004037e1c",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/passing-b/source.png": "3ba2e596e359d89f944b7f97479c1da0c9eb5cc7d71ed7ba8e0c6a1455bdf38b",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/bare/005.png": "d3dda389a1b4d204c766b6b969d5d55cf8fed26f1a2b898be927aa6fce20bc87",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/frames/helmet/005.png": "f24f18b59431a1a5b433fbde9cf74e2aed470aec0f69dcb826946bdc874173ca",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/bare-manifest.json": "7317a42ebd85c05fca7ec71d28fc53b7111e62c916d15ea270f78eed88e9850c",
+    "character/veld-library-closeout-v1/west-carry-poses-v4/helmet-manifest.json": "8fa8ff3041f39f02e5860865bd9e35d73dc6c1094ba9e7e31d9991b64eea0bad",
+    "character/veld-helmet-original-turntable-west-v1/mixed-v5-study/shells/005.png": "4e3c5ab7a04070c29570f105411c987d8eef9bb7f970470c396353dcaff8018f",
+    "character/veld-library-closeout-v1/west-cargo-anchor-highres-v3/BUILD_REVIEW.json": "d191b9e1f8ec2d296fe9ace0395977b07c211d7b7cc433f3513b68b8aebdf5ed"
+  }
+}

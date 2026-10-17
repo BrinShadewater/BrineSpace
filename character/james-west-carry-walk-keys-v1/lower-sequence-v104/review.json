@@ -1,0 +1,97 @@
+{
+  "nativeChecks": 86,
+  "nativeFailures": 0,
+  "pairedSourceSlots": 12,
+  "reviewedNativeCaptures": 6,
+  "reviewedNativeBoards": [
+    "native-review-0.png",
+    "native-review-1.png"
+  ],
+  "reviewedSourceWindowBoard": "lower-source-review.png",
+  "visualReviewer": "Codex",
+  "sourceIndices": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "durationsMs": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    30
+  ],
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "continuousVisualMotionAcceptance": false,
+  "findings": [
+    "Toe and ankle highlights are warmer and less stark in six reviewed source boards and all six paired native captures at four sizes.",
+    "Original alpha, one-pixel rim, rows above181 and paired body below110 are exact; interior hardware landmarks are visually assessed rather than pixel-protected geometry.",
+    "Phase3 retains simpler boot construction than phases4..8; bright protected rim pixels remain. Complete sequence finish and absence of temporal flashing remain unproven.",
+    "Original-master body proportions, full49-frame continuous motion, normal carry lifecycle and cross-family consistency are still pending."
+  ],
+  "metrics": [
+    {
+      "phase": 6,
+      "admitted": 1040,
+      "outsideExact": 64496,
+      "luma": {
+        "before": [
+          40.46,
+          62.96,
+          91.71,
+          174.01
+        ],
+        "after": [
+          38.26,
+          62.43,
+          93.86,
+          166.86
+        ]
+      }
+    },
+    {
+      "phase": 7,
+      "admitted": 1032,
+      "outsideExact": 64504,
+      "luma": {
+        "before": [
+          42.06,
+          65.14,
+          90.73,
+          173.15
+        ],
+        "after": [
+          37.11,
+          63.64,
+          93.35,
+          164.71
+        ]
+      }
+    },
+    {
+      "phase": 8,
+      "admitted": 1042,
+      "outsideExact": 64494,
+      "luma": {
+        "before": [
+          44.0,
+          64.31,
+          90.87,
+          172.0
+        ],
+        "after": [
+          43.53,
+          67.85,
+          94.37,
+          161.08
+        ]
+      }
+    }
+  ]
+}

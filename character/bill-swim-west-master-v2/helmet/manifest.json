@@ -1,0 +1,91 @@
+{
+  "name": "Bill West original-master extended stroke source study",
+  "frameWidth": 320,
+  "frameHeight": 320,
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "source_study_unselected",
+  "states": [
+    {
+      "id": "swim-west-extend",
+      "frameFiles": [
+        "frames/swim-west-extend/000.png"
+      ],
+      "frameDurationsMs": [
+        160
+      ],
+      "loop": false,
+      "facings": [
+        "west"
+      ],
+      "waterKinds": [
+        "swim"
+      ],
+      "waterPoses": [
+        true
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": "Representative single source pose, not a complete swim loop. Original148/956 drawing density and whole-crown registration; no runtime admission."
+    },
+    {
+      "id": "swim-west-sweep",
+      "frameFiles": [
+        "frames/swim-west-sweep/000.png"
+      ],
+      "frameDurationsMs": [
+        160
+      ],
+      "loop": false,
+      "facings": [
+        "west"
+      ],
+      "waterKinds": [
+        "swim"
+      ],
+      "waterPoses": [
+        true
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": "Representative single source pose, not a complete swim loop. Original148/956 drawing density and whole-crown registration; no runtime admission."
+    },
+    {
+      "id": "swim-west-partial-study",
+      "frameFiles": [
+        "frames/swim-west-extend/000.png",
+        "frames/swim-west-sweep/000.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": "Two-pose finite320ms source study, NOT complete swim loop or runtime replacement."
+    }
+  ],
+  "equipment": "diving-helmet"
+}

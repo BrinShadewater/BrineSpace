@@ -1,0 +1,106 @@
+{
+  "status": "installed_dry_helmet_hull_lifecycle_native_fixtures_reviewed_owner_review_pending",
+  "productionFiles": [
+    "scripts/branforth_npc.gd",
+    "scripts/hull_repair.gd",
+    "scripts/james_hull_resume.gd",
+    "scripts/bill_npc.gd"
+  ],
+  "sourcesChanged": false,
+  "newSourceStates": 0,
+  "fullSetComplete": false,
+  "explicitChecks": 28549,
+  "failures": 0,
+  "captures": 455,
+  "originalHelmetRGBAMatches": 455,
+  "freshContinues": 9,
+  "review": "review-evidence.json",
+  "compatibility": {
+    "bareHullCanonical": {
+      "checks": 740,
+      "failures": 0,
+      "helmetWardAdmissionCases": [
+        {
+          "constructionAndWetRejected": true,
+          "defaultSharedRejected": true,
+          "direction": "north",
+          "helmetWardAdmitted": true
+        },
+        {
+          "constructionAndWetRejected": true,
+          "defaultSharedRejected": true,
+          "direction": "east",
+          "helmetWardAdmitted": true
+        },
+        {
+          "constructionAndWetRejected": true,
+          "defaultSharedRejected": true,
+          "direction": "south",
+          "helmetWardAdmitted": true
+        },
+        {
+          "constructionAndWetRejected": true,
+          "defaultSharedRejected": true,
+          "direction": "west",
+          "helmetWardAdmitted": true
+        }
+      ],
+      "samples": 180,
+      "scope": "720 prescribed bare hull source-clock/recipe/legacy snapshot comparisons: four facings x five duration budgets x nine seams. Twenty separate family/admission checks preserve default shared rejection while admitting dry helmet James ward, admitting dry helmet Hull while rejecting construction and flooded welding. No full physical hull job/Continue/visual acceptance proof."
+    },
+    "billHull": "Original tests/test_hull_repair.gd passes, including submerged generic repair behavior; no invented assertion count."
+  },
+  "guards": {
+    "north": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "cardinal": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "return": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "reassign": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "bill_compat": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "hull_regression": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    }
+  },
+  "frozenInputs": "Ten whole-file input hashes equal before all six native launches and after terminal results.",
+  "scope": {
+    "north": "Prescribed four helmet directions/five paid budgets/source phase seams plus one actual normal North dry helmeted paid rupture job, genuine core release,52 native captures and three paused real disk fresh-scene Continues. Original14seconds/5Metal/work/effects/completion. Worn gear through supported setter; not locker fitting or all natural owner layouts.",
+    "cardinal": "Three actual dry helmeted paid rupture jobs, East/South/West in dedicated life-support fixture. Prescribed clear physical interior start and available wall band through inherited James floor/prop checks; ordinary Hull.approach/path/move and paid game updates.305 native captures. Not natural other-wall routing in owner layouts, cross-room travel, other-facing Continues or interruption acceptance.",
+    "return": "Three actual dry helmeted North paid job cancellations during draw/held/stow, normal cancellation/refund/requeue,39 captures and three paused real disk fresh-scene Continues. Exact source-to-neutral recipe and fixed foot. Prescribed worn gear, not locker fitting, all facings or critical hazards.",
+    "reassign": "Three actual dry helmeted North paid jobs with same-worker no-op and outgoing reassignment to temporary prescribed present waiting Bill, rapid return to James before peer update/claim, same paid work reentry.59 captures and three fresh-scene disk Continues. Not incoming Bill claim/service animation or other-facing interruption proof."
+  },
+  "lessons": [
+    "Original paired timing parity is required before sharing paid-clock recipes across equipment.",
+    "Authoritative work controller, animation eligibility and save admission must agree: original controller forced helmeted dry James to generic repair.",
+    "Optional shared helmet Hull admission is explicit for James only; shared default, construction and flooded weld remain rejected. Generic submerged repair retained.",
+    "Canonical gear-bound return/reentry from the preceding ward milestone works for dry Hull after family exclusion is removed; missing equipment remains bare.",
+    "Do not infer natural cardinal routing or all-facing fresh Continue from dedicated wall-band fixtures."
+  ],
+  "helmetConstructionReview": "character/james-construction-helmet-v1/selection-review.json"
+}

@@ -1,0 +1,76 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "tiles": [
+    {
+      "phase": 28,
+      "admittedPixels": 215,
+      "outsideExact": 65321,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 72.4974,
+      "medianAfter": 73.6418,
+      "p95Before": 97.06039999999987,
+      "p95After": 96.75305999999999
+    },
+    {
+      "phase": 29,
+      "admittedPixels": 142,
+      "outsideExact": 65394,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 73.7441,
+      "medianAfter": 74.8504,
+      "p95Before": 92.05136999999999,
+      "p95After": 104.50876999999991
+    },
+    {
+      "phase": 30,
+      "admittedPixels": 126,
+      "outsideExact": 65410,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 73.6378,
+      "medianAfter": 75.14179999999999,
+      "p95Before": 94.459,
+      "p95After": 100.8664
+    },
+    {
+      "phase": 31,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_crossing_stitch_refinement",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeWindow": 282,
+  "nativeIncluded": true,
+  "findings": [
+    "28..30 near-thigh stitching has softer narrower ridges; original alpha/silhouette/full knee and glove guards unchanged in both gears. Generator changed calf seams and reference31 in raw; protected pixels and entire reference31 preserved in package.",
+    "Same-mask medians move72.50to73.64,73.74to74.85,73.64to75.14; p95 rises29/30. Numerical old-source preservation cannot certify actual master fabric grade; whole moving material still pending.",
+    "Far-side parallel folds/stripes remain outside these masks; do not certify all thigh cloth. Native112/0/8 verifies26..33 sources/clocks/rulers, not traveling contact or normal controller lifecycle."
+  ]
+}

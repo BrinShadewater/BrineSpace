@@ -1,0 +1,116 @@
+{
+  "generationId": "01a0ef89-fc47-7e22-953f-3c02a051b0f6",
+  "mode": "built-in imagegen",
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "promptFile": "submitted-prompt.txt",
+  "promptSha256": "99245ea36df877329ca6095ecc482a182d8f39a675174ac8d346c3c576369c1a",
+  "geometry": [
+    {
+      "pose": 0,
+      "bounds": [
+        81,
+        69,
+        175,
+        256
+      ],
+      "height": 187
+    },
+    {
+      "pose": 1,
+      "bounds": [
+        81,
+        80,
+        175,
+        256
+      ],
+      "height": 176
+    },
+    {
+      "pose": 2,
+      "bounds": [
+        83,
+        99,
+        182,
+        256
+      ],
+      "height": 157
+    },
+    {
+      "pose": 3,
+      "bounds": [
+        77,
+        0,
+        179,
+        242
+      ],
+      "height": 242
+    },
+    {
+      "pose": 4,
+      "bounds": [
+        75,
+        0,
+        182,
+        242
+      ],
+      "height": 242
+    },
+    {
+      "pose": 5,
+      "bounds": [
+        78,
+        0,
+        187,
+        242
+      ],
+      "height": 242
+    },
+    {
+      "pose": 6,
+      "bounds": [
+        79,
+        39,
+        181,
+        223
+      ],
+      "height": 184
+    },
+    {
+      "pose": 7,
+      "bounds": [
+        81,
+        28,
+        177,
+        222
+      ],
+      "height": 194
+    },
+    {
+      "pose": 8,
+      "bounds": [
+        83,
+        23,
+        181,
+        223
+      ],
+      "height": 200
+    }
+  ],
+  "referenceHeight": 148,
+  "referenceSole": 224,
+  "normalChanged": false,
+  "nativeRun": false,
+  "selected": false,
+  "status": "rejected_before_native_scale_registration_cell_spill_and_stance",
+  "findings": [
+    "nine-slot sheet exceeds standing scale; full-sheet registration not preserved",
+    "floor height varies across rows",
+    "lowest pose still widens knees and boots",
+    "master curve/material not fully matched; gear and backpack redrawn",
+    "first row spills boots across equal cell boundaries; middle-row alpha heights include preceding-row fragments, not anatomical heights"
+  ],
+  "nextAction": "Use a temporally coherent first/last-source video trial with equal whole-source registration; inspect entire clip, preserving original masters as fidelity authority. Do not fit this rejected sheet pose by pose."
+}

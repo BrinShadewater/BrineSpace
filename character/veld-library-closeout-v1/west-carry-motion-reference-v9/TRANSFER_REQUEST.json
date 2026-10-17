@@ -1,0 +1,33 @@
+{
+  "status": "authorized_preflight",
+  "authorization": "Owner keep going after explicit request to release reserved free attempt; one free run only, no paid fallback.",
+  "params": {
+    "model": "hf_mult_motion_control",
+    "prompt": "Transfer the natural alternating walking leg motion and coordinated hip/torso weight shifts from the reference video to the exact West-facing woman carrying the cargo case in the reference image. Preserve this woman's mature face, warm matte skin, brown bun and silver temple streak, original charcoal quilted suit, muted blue sleeve badge, cream hardware and adult proportions. Keep BOTH hands holding the same rigid closed charcoal case at waist level throughout; no free arm swing, dropped case or changing grip. Use the video's lower-body foot contacts, low swing feet and smooth continuous passing phases. Fixed camera and canvas placement, original body scale and dark background. No kicks, marching, repeated same-leg lifts, zoom, light/exposure shifts or glow. Transfer motion only; preserve carrying appearance and fine costume/case construction.",
+    "count": 1,
+    "medias": [
+      {
+        "role": "video_references",
+        "value": "589b34c3-bde2-4af3-8a8d-175e64e60ce7"
+      },
+      {
+        "role": "image_references",
+        "value": "e099276c-52f5-446d-89f8-bef8aaa1a97a"
+      }
+    ],
+    "use_free_gens": true,
+    "duration": 6,
+    "resolution": "720p"
+  },
+  "cost": {
+    "credits": 0,
+    "credits_exact": 0
+  },
+  "input_check": {
+    "required_media_present": true,
+    "image_count": 1,
+    "video_count": 1,
+    "missing_roles": [],
+    "generation_validated": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "sourceSha256": {
+    "character/james-west-carry-gait-master-v2/near-feet2.png": "9deea53e3dae5457c06d1333b585875716f01615e0f8bb520bc2a586ec8a1766",
+    "character/james-west-carry-passing-v1/passing-near-support.png": "4ca801db47187a758068332bc62fd799f87e9fbc1a420d923b89dc175924815a",
+    "character/james-west-carry-gait-master-v2/contact-far-feet.png": "cba62d61338eb4af00a59b38e6501e7d9b1fee005f8c021cdd5d6f7a87ddfc86",
+    "character/james-carry-authored-helmet-v1/frames/004.png": "36f69b32646f3c0ac1e7ae7e626fa2e74bfee4c7e44ebe1d487d81a45b37bfe5",
+    "character/james-west-carry-passing-v1/passing-near-support-helmet.png": "8961013c9772f2fc98247ca5b96f579d5e9ce7ecd29ae3059016a85a09a8341c"
+  },
+  "supportSwingRegions": [
+    [
+      88,
+      197,
+      120,
+      240
+    ],
+    [
+      124,
+      197,
+      152,
+      240
+    ]
+  ],
+  "regionBounds": [
+    [
+      6,
+      0,
+      32,
+      17
+    ],
+    [
+      0,
+      0,
+      28,
+      27
+    ]
+  ],
+  "rawContact": {
+    "pose": "passing-near-support",
+    "rawNativeBounds": [
+      14,
+      0,
+      72,
+      80
+    ],
+    "rawBottomWorld": 224,
+    "rawAlpha128PixelsAtOrBelowWorld224": 0,
+    "rawRedGuidePixels": 0
+  },
+  "visualReviewPending": false,
+  "sourceAcceptance": false,
+  "selected": false,
+  "scope": "Three source poses show near contact -> gold-near support/plain-far swing -> far contact. Not complete loop, temporal gait or context acceptance.",
+  "findings": [
+    "Three adjacent source poses and paired helmet/full/detail boards inspected. Near support contributes one genuine lifted-foot pose; not complete loop.",
+    "Existing contact sources use common224line. That technical condition is not proof of correct master camera depth; original standing foot planes differ and must be reconciled before gait selection."
+  ]
+}

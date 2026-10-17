@@ -1,0 +1,47 @@
+{
+  "installed": false,
+  "method": "Built-in imagegen independent whole-body cargo yaws; retained authored prone helmet atlas",
+  "bodySources": [
+    {
+      "path": "character/veld-swim-carry-turn-north-east-coherent-v1/body-source-v1.png",
+      "sha256": "ac7a1a6771c1148cee4d45ebf294b6cc2c91f556a01bc02fd0c09777bd9a36d1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-north-east-coherent-v1/body-prompt-v1.txt",
+      "promptSha256": "28e63de21822b4862bcd053e8c360f102551a9e976220b75b1916d1e29c3271a",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-e48f3814-45a4-42a5-84af-5c24d77c423e.png",
+      "selection": "All four independent cargo intermediates",
+      "references": [
+        {
+          "path": "character/veld-swim-turn-north-east-coherent-v1/bare-source-v2.png",
+          "sha256": "75e0e618ca8b4bfd61efcd571de08588a2200f292ffd5e2e7275e4f8f14cf8e8"
+        },
+        {
+          "path": "character/veld-swim-carry-east-coherent-v1/source-v2.png",
+          "sha256": "3f37f9651282d24cd2a37bdb5d39b389fb5f227c9e1c50d0b850e5a4196aa0e0"
+        },
+        {
+          "path": "character/veld-swim-carry-north-coherent-v1/source-v3.png",
+          "sha256": "3a9aeb3fd92f4e80c6cb03e0b93fdf341a8c4cf2f6f507f051dc73b623387729"
+        }
+      ]
+    }
+  ],
+  "helmetSources": [
+    {
+      "path": "character/veld-swim-turn-north-east-coherent-v1/helmet-source-v1.png",
+      "sha256": "39b6fdf5f22893c885259cc9486f05dfb9c78cbc0b6ad0814f40fb36944c7e70",
+      "cells": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "scale": 0.083
+    }
+  ],
+  "scaleRule": "One .22 body/.083 helmet atlas ruler; explicit full-head centers, case-priority grade exclusions; no silhouette size normalization",
+  "semanticLandmarksSha256": "8b934f79480dc26fa90069f3d0722b2df2bd6db9f4dd5058e6cd4b33ff8eb9f5"
+}

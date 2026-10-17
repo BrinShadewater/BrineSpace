@@ -1,0 +1,23 @@
+{
+  "mode": "built-in imagegen edit",
+  "jobs": [
+    {
+      "raw": "sources/pull-from-extend-v1.png",
+      "prompt": "sources/pull-from-extend-prompt-v1.txt",
+      "generation": "exec-871a536c-aee0-4e74-a858-bdb63d1abd6c",
+      "references": [
+        "../bill-swim-west-master-v3/sources/extend-controls-v3.png",
+        "../crew-side-masters-v1/bill-side-master-01.png"
+      ]
+    },
+    {
+      "raw": "sources/pull-head-v2.png",
+      "prompt": "sources/pull-head-prompt-v2.txt",
+      "generation": "exec-ab44c714-a881-4bf6-b2e0-a309642da9cb",
+      "references": [
+        "sources/pull-from-extend-v1.png",
+        "../bill-land-water-west-v9/sources/master-head-reference.png"
+      ]
+    }
+  ]
+}

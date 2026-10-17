@@ -1,0 +1,13 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+p=Path(__file__).resolve().parent;r=p.parents[1];out=p/'case-contact-v43';out.mkdir(exist_ok=True)
+fs=[p/'whole-belt-admission-v35/bare-candidate.png',r/'character/james-carry-headcaps-v1/frames/004.png',p/'master-head-review-v16/bare-000.png'];crop=[88,112,152,176];refs=[]
+for f,label in zip(fs,['profile-target','standing-case-authority','following-walk-pose']):
+    dst=out/(label+'.png');Image.open(f).convert('RGBA').crop(crop).resize((768,768),Image.Resampling.NEAREST).save(dst);refs.append(dst)
+prompt='''Use case: precise-object-edit. Edit Image1, a small crop from James holding a case in a west-facing intermediate pose. Image1 EDIT TARGET owns case position/orientation, both glove grips, wrist contacts and every body pixel. Image2 is the original case design/material authority; Image3 is the immediately following walking pose for continuity only. All are identical64-square native crops enlarged12x. Return this same crop, framing and scale, transparent where original is transparent.
+Correct ONLY the compact graphite case and its four corner fittings in Image1. It must be the same sturdy rectangular hard case from Image2: flat matte graphite panels, straight top/bottom edges, compact mildly beveled rectangular corners, dull square silver corner latches. The current Image1 case looks rounded with bright circular fittings; replace those with subdued squared hardware matching Image2. Maintain Image1 exact projected width, height, center and waist level, no growth/forward overshoot; keep the slightly more side-on orientation of Image1, rather than flattening to Image2 frontal projection. Keep both existing gloves holding the same corner contacts and wrist continuity; do not move, recolor or redraw sleeves/chest/belt/tablet/tool/legs. No new handle sticking out, no circular bright buttons, no glossy highlights, no purple, no bright outline, no deep black shadow. Case cannot clip through body or float away from gloves. Do not copy Image3 extra contrast or change pose. This is one local case-detail correction, not a full sprite, sheet or new animation pose. No text or background.'''
+(out/'prompt.txt').write_text(prompt+'\n',encoding='utf-8')
+files=fs+refs+[Path(__file__),out/'prompt.txt']
+(out/'inputs.json').write_text(json.dumps(dict(base=fs[0].relative_to(r).as_posix(),crop=crop,admission=[94,123,134,149],references=[f.relative_to(r).as_posix() for f in refs],preCallSha256={f.relative_to(r).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in files},normalChanged=False),indent=2)+'\n')
+print('V43 local case correction inputs frozen.')

@@ -1,0 +1,15 @@
+ check(game.get_script().resource_path=="res://character/bill-land-water-material-west-v2/fixture_main.gd","Exact current fixture main selected")
+ check(game.grid_view.get_script().resource_path=="res://character/bill-land-water-material-west-v2/grid.gd","Exact current bridge renderer selected")
+ for gear in ["","diving-helmet"]:
+  var bank:Array=game.grid_view.bridge_bank(gear,true)[0]
+  var paths:Array=["res://character/bill-land-water-west-v4/bare/manifest.json","res://character/bill-land-water-west-v4/helmet/manifest.json"]
+  var manifest_path:String=paths[0 if gear.is_empty() else 1]
+  var manifest:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
+  check(bank.size()==7,"Current source bank has seven frames")
+  for index in range(bank.size()):
+   var image=Image.new()
+   var path:String=manifest_path.get_base_dir().path_join(manifest.states[0].frameFiles[index])
+   check(image.load(path)==OK,"Current raw frame available")
+   image.convert(Image.FORMAT_RGBA8)
+   var loaded:Image=bank[index].get_image();loaded.convert(Image.FORMAT_RGBA8)
+   check(image.get_data()==loaded.get_data(),"Actual loaded source pixels equal current V4 frame")

@@ -1,0 +1,344 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-v1.png",
+      "count": 6,
+      "heads": [
+        [
+          294,
+          45
+        ],
+        [
+          778,
+          46
+        ],
+        [
+          1266,
+          44
+        ],
+        [
+          286,
+          546
+        ],
+        [
+          778,
+          546
+        ],
+        [
+          1266,
+          546
+        ]
+      ],
+      "fixedRuler": [
+        0.31,
+        0.332
+      ],
+      "density": 1.0,
+      "sourceHeights": [
+        448,
+        447,
+        449,
+        444,
+        444,
+        444
+      ],
+      "generation": "exec-84ef5a85-15bb-4bdb-ad4b-79defd58a607"
+    },
+    "reach": {
+      "source": "sources/reach-v2.png",
+      "count": 2,
+      "heads": [
+        [
+          329,
+          242
+        ],
+        [
+          878,
+          242
+        ]
+      ],
+      "fixedRuler": [
+        0.156,
+        0.17536
+      ],
+      "density": 1.89,
+      "sourceHeights": [
+        844,
+        844
+      ],
+      "generation": "exec-bb8b1f90-8d45-499a-8d4e-97ea8a7c5c6b"
+    }
+  },
+  "sequence": [
+    [
+      "reach",
+      0
+    ],
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "selectionReason": "Add missing short empty reach before primary full reach. Reach pose1 repeats existing full extension; retained raw but unused. Exact idle/held donors replace generated primary poses0/5.",
+  "sourcesSha256": {
+    "primary": "27eacc64575b14595e6eead2f03f83ccef37ae971f72f426e72fb9e8c6acf6c1",
+    "reach": "149204e7fa28af50241b1e8c0981e17c31232b62edfef61f9e40be1b2a8163f9"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "reach",
+      "sourcePose": 0,
+      "sourceBox": [
+        191,
+        239,
+        558,
+        1089
+      ],
+      "fixedRuler": [
+        0.156,
+        0.17536
+      ],
+      "position": [
+        107,
+        76
+      ],
+      "headAxis": [
+        129,
+        77
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        706,
+        43,
+        945,
+        496
+      ],
+      "fixedRuler": [
+        0.31,
+        0.332
+      ],
+      "position": [
+        107,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1186,
+        41,
+        1443,
+        496
+      ],
+      "fixedRuler": [
+        0.31,
+        0.332
+      ],
+      "position": [
+        107,
+        74
+      ],
+      "headAxis": [
+        132,
+        75
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        218,
+        543,
+        403,
+        993
+      ],
+      "fixedRuler": [
+        0.31,
+        0.332
+      ],
+      "position": [
+        107,
+        76
+      ],
+      "headAxis": [
+        128,
+        77
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        699,
+        543,
+        863,
+        993
+      ],
+      "fixedRuler": [
+        0.31,
+        0.332
+      ],
+      "position": [
+        107,
+        76
+      ],
+      "headAxis": [
+        131,
+        77
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        5.333333333333333,
+        16.0,
+        34.666666666666664,
+        44.0,
+        56.666666666666664,
+        68.33333333333333,
+        117.0,
+        144.66666666666666,
+        247.33333333333334
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        11.666666666666666,
+        20.666666666666668,
+        35.333333333333336,
+        44.333333333333336,
+        55.0,
+        67.0,
+        116.33333333333333,
+        141.48666666666682,
+        193.66666666666666
+      ],
+      "gains": {
+        "hair": [
+          0.98,
+          1.0263157894736843,
+          1.0344827586206897
+        ],
+        "face": [
+          0.9763313609467456,
+          1.0,
+          0.9642857142857143
+        ],
+        "burgundy": [
+          0.9494949494949495,
+          1.0,
+          1.0227272727272727
+        ]
+      }
+    },
+    "reach": {
+      "neutralInput": [
+        0.0,
+        2.0,
+        15.0,
+        39.333333333333336,
+        51.666666666666664,
+        64.0,
+        74.0,
+        111.0,
+        137.33333333333334,
+        253.66666666666666
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        11.666666666666666,
+        20.666666666666668,
+        35.333333333333336,
+        44.333333333333336,
+        55.0,
+        67.0,
+        116.33333333333333,
+        141.48666666666682,
+        193.66666666666666
+      ],
+      "gains": {
+        "hair": [
+          0.8596491228070176,
+          0.9512195121951219,
+          0.967741935483871
+        ],
+        "face": [
+          0.9141274238227147,
+          0.9913793103448276,
+          0.9878048780487805
+        ],
+        "burgundy": [
+          0.8392857142857143,
+          0.9019607843137255,
+          0.9183673469387755
+        ]
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-east-coherent-v1/frames/sit-down-east/000.png",
+      "sha256": "4a41e4b8e16ee703fa537ed36b5f9306ab2aaec0b4e858d5213b8d84a3d563e0"
+    },
+    {
+      "path": "bill-meal-east-coherent-v1/frames/eat-east/000.png",
+      "sha256": "dd72d5a3cdd20fbfd364cb1db8ca51e87a8edae0d1d0e1c1084e760238cc6d65"
+    }
+  ],
+  "scope": "authored bowl pickup and reversed return; exact idle/eating-held endpoints; normal service pending"
+}

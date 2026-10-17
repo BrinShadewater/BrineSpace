@@ -1,0 +1,479 @@
+{
+  "name": "Krusher Dom cargo bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "swim-carry": 0.16
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-carry-east",
+      "frameFiles": [
+        "../frames/40d6a9f730bf454a40a6a0d61e7226bba77100b53fbc75e088952793bd8d518c.png",
+        "../frames/f6e5ff8e84ba175b3e2fe51031693d64af8893734a103da07627397742f13d64.png",
+        "../frames/75b84110af5bcd7deaf124784b3b289bf36dd27544238de3029a07c600834ea0.png",
+        "../frames/1c581f7a332105e6df03fcd4087a50a997aeadd7673a147394e0db46b8538b1b.png",
+        "../frames/8873110f111d921636a4fd4faa8f769e7e630f966da3f110beb9a54d7899a196.png",
+        "../frames/40d6a9f730bf454a40a6a0d61e7226bba77100b53fbc75e088952793bd8d518c.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-north",
+      "frameFiles": [
+        "../frames/7243a6757ecd152086fc5c7e1e5081b38e61b2d79709858a83396b6add56c5d3.png",
+        "../frames/be89f2766226d2e6a50135189d73d123d988fd2986d48205b468bb8200e169b1.png",
+        "../frames/207fc49410bf0eb76f546c33a59e441ea0b472321ded50208244aaf2455b3754.png",
+        "../frames/2073d9621bb503c3da072c7c329eccb7638c35d8f354746d78eb173c8311eac9.png",
+        "../frames/9737c6e05cd0d3e826ba7a9b8e192a03851b16a42f4839dfd6667601a4e333c8.png",
+        "../frames/7243a6757ecd152086fc5c7e1e5081b38e61b2d79709858a83396b6add56c5d3.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-south",
+      "frameFiles": [
+        "../frames/7a207b90ae2c977b4f12858e14f18fc66cf542d2d4f1e0872724fdae1acac340.png",
+        "../frames/73525b9b40f339b3f8697712f55b34b5fdb5a174f0972760e918f78184782ac9.png",
+        "../frames/439913a465cc423033454ab7284f5ced82d34e34cd34f53cc08fd998ffd22327.png",
+        "../frames/60e6515591678da85650e1cb2f5b2e3f8a170855fd3d61d12173e09c3cfef45f.png",
+        "../frames/359155d08c0dd6146a636c63f76f5418cbf0f10652603154d5e22b3069e484f9.png",
+        "../frames/7a207b90ae2c977b4f12858e14f18fc66cf542d2d4f1e0872724fdae1acac340.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-west",
+      "frameFiles": [
+        "../frames/06147b5da29d2db48462c22d131a4ae523342b96e57944b19a842381346d5dac.png",
+        "../frames/144eddab301edcae08cb4d2f74b864b55d114fff24b8951a2c8f34c47d63e5c9.png",
+        "../frames/c778edf74c7957d96a906b3319bce6d11e3b2bba32b9e2296e82bbd98f6e51be.png",
+        "../frames/258a09568a16d79475d620c239f06963c09ac280f7d2f6d9fb9b599d28f0e110.png",
+        "../frames/5243a0bda8102af29524b480a52fcd61a138c1c45c316f2cca4d8a7833d3224b.png",
+        "../frames/06147b5da29d2db48462c22d131a4ae523342b96e57944b19a842381346d5dac.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "../frames/1cb89160a0a11d8e933b06a2991c91b25903d4395d0b5ff4bb186a73d5221a73.png",
+        "../frames/071d9b97eb9cdfde6b1aeda320d2ea1d8b9053b7307331bd760e438612a3e918.png",
+        "../frames/e26523f2ed2c0e29c691a5e6d1af5d573bb1b8412c5ffc8a68ee7d778a5db03c.png",
+        "../frames/331f32d556cc8cf77c37d796056db6e9895006fb4117250f29c820fb15eb5a8e.png",
+        "../frames/3dc4c46573071a3e357bfdd889b905ef9f56d9777db40be30653d74cb2c493ad.png",
+        "../frames/40d6a9f730bf454a40a6a0d61e7226bba77100b53fbc75e088952793bd8d518c.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        80.0,
+        90.0,
+        100.0,
+        100.0,
+        80.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "salvage",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "../frames/00f816657a2e8a6bb076718ba3d915b3835d6694c89b663ab19f8322cd1950fc.png",
+        "../frames/54cb318972c56509f2269314e2684c08a98f2d0a581a4a9ee443b91b36be4c8a.png",
+        "../frames/ddf2985b61f20f66df50e346c5fe93af915b62850f7bd6a46603ad8f18d16c48.png",
+        "../frames/0f3dfc305c469f855ae76f5d0e538fc784f0abf1432bee107556fbfe553f8596.png",
+        "../frames/0098acc78a76b9f84f42115bc6a8168f53950f44e8b0a4298dfce7a7f6c5c4be.png",
+        "../frames/7243a6757ecd152086fc5c7e1e5081b38e61b2d79709858a83396b6add56c5d3.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        80.0,
+        90.0,
+        100.0,
+        100.0,
+        80.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "salvage",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-pickup-south",
+      "frameFiles": [
+        "../frames/9ecb6c9a0c8ca5d3e82471fd1f3a293e811de0a957011e6636dc558f532d3d10.png",
+        "../frames/b8ebccd69c19a650abe621cc2d721a22d187c4fc9f37d315a504ab6ac2941d0c.png",
+        "../frames/855204f32120a8159d77a1d095018a39d9d48ea3299cb22f309849f9f238332d.png",
+        "../frames/daee32eb50821d75e2e08141b43d94d5d23388d4d8156d6e41ce43b1e8a9e5bc.png",
+        "../frames/80265cb5c991445658266d8a390a8b13987f5fa7b85203dbc478a52fae905682.png",
+        "../frames/7a207b90ae2c977b4f12858e14f18fc66cf542d2d4f1e0872724fdae1acac340.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        80.0,
+        90.0,
+        100.0,
+        100.0,
+        80.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "salvage",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "../frames/0b93764764e97de68260ec582064abac37e5d93e318e3734c7c780833f54579b.png",
+        "../frames/65cb3b8c5b64118ed39a588e780391ebc96c8e182aacb81e05b1735387d1a7cc.png",
+        "../frames/d02a7ff6ca29ce1852c90a0e8c6a2cef219926b903756d769166d9e08d179971.png",
+        "../frames/d887f381f3eca9cb3b658bc1a94ea3cbed19ddf56a92588be4320ddfdd0c3ec6.png",
+        "../frames/e7d002ef8d411f956ff2345607baa3eb7c01c63af07619ac9063ea7d65cc7592.png",
+        "../frames/06147b5da29d2db48462c22d131a4ae523342b96e57944b19a842381346d5dac.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        80.0,
+        90.0,
+        100.0,
+        100.0,
+        80.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "salvage",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    }
+  ]
+}

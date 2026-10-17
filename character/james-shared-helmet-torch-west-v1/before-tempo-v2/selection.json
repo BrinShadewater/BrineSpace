@@ -1,0 +1,40 @@
+{
+  "status": "staged_west_construction_torch",
+  "runtimeInstalled": false,
+  "coverage": [
+    "torch-draw-west",
+    "weld-west",
+    "torch-stow-west"
+  ],
+  "framesPerMode": 118,
+  "states": {
+    "torch-draw-west": {
+      "frames": 45,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-west": {
+      "frames": 41,
+      "durationMs": 1708,
+      "loop": true
+    },
+    "torch-stow-west": {
+      "frames": 32,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-west-direct-v1",
+  "derivation": "Independent west draw0-44, quiet work44-64 then reverse63-44 exact seam; join44 + actual flame-off/stow110-140. Original late extra hand gesture excluded. Exact idle/action/loop joins.",
+  "helmet": "Selected west shell,13/order2 face smoothing; max adjacent1/1px",
+  "colour": "Fixed neutral material grade preserves small forward blue flame; no local shadow lift added",
+  "native": "979 checks/0 failures,12 captures; scratch path asserted. Real profile delta only last_session.json during concurrent normal game process; progress/checkpoint/other files unchanged; no restoration.",
+  "visualReview": "Source/contact/stow join/native midpoint reviewed at148/82/54/27px; preview shows weld loop twice, full GIF owner review pending.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "pending": [
+    "Owner west torch GIF review",
+    "Install west if accepted and validate actual loader/renderer",
+    "South/north torch and retained special actions"
+  ]
+}

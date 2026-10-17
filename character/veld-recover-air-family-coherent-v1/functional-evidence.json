@@ -1,0 +1,244 @@
+{
+  "states": 8,
+  "references": 48,
+  "candidateExplicitlyInjected": true,
+  "runtimeChanged": false,
+  "survivalChecks": 1923,
+  "lowAirSafeAirCases": 64,
+  "actualDiskRestores": 24,
+  "interruptionCases": 32,
+  "interruptions": [
+    "walking pose override/resumed performed clock",
+    "task stage pose override/resumed clock",
+    "renewed flooded-low-air episode",
+    "actual die plus normal survival dispatch excluding dead actors"
+  ],
+  "survivalValidation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 30.91,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-recover-air-family-candidate-native-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "furnishedValidation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 32.48,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-recovery-furnished-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "furnishedReport": {
+    "checks": 114,
+    "failures": 0,
+    "graphNodes": 1625,
+    "results": [
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-east-bare.png",
+        "foot": [
+          7920.0,
+          7776.0
+        ],
+        "gear": "bare",
+        "newOverlapsVsPriorRecovery": 93,
+        "newOverlapsVsSelectedIdle": 92,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 526,
+        "selectedIdleOverlappingNodes": 495,
+        "state": "recover-air-east",
+        "visualEnvelopeClearNodes": 1038,
+        "visualEnvelopeOverlappingNodes": 587
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-west-bare.png",
+        "foot": [
+          7824.0,
+          7776.0
+        ],
+        "gear": "bare",
+        "newOverlapsVsPriorRecovery": 61,
+        "newOverlapsVsSelectedIdle": 51,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 529,
+        "selectedIdleOverlappingNodes": 499,
+        "state": "recover-air-west",
+        "visualEnvelopeClearNodes": 1075,
+        "visualEnvelopeOverlappingNodes": 550
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-north-bare.png",
+        "foot": [
+          7936.0,
+          7776.0
+        ],
+        "gear": "bare",
+        "newOverlapsVsPriorRecovery": 0,
+        "newOverlapsVsSelectedIdle": 0,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 540,
+        "selectedIdleOverlappingNodes": 540,
+        "state": "recover-air-north",
+        "visualEnvelopeClearNodes": 1085,
+        "visualEnvelopeOverlappingNodes": 540
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-south-bare.png",
+        "foot": [
+          7808.0,
+          7776.0
+        ],
+        "gear": "bare",
+        "newOverlapsVsPriorRecovery": 49,
+        "newOverlapsVsSelectedIdle": 0,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 489,
+        "selectedIdleOverlappingNodes": 536,
+        "state": "recover-air-south",
+        "visualEnvelopeClearNodes": 1094,
+        "visualEnvelopeOverlappingNodes": 531
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-east-helmet.png",
+        "foot": [
+          7808.0,
+          7776.0
+        ],
+        "gear": "helmet",
+        "newOverlapsVsPriorRecovery": 72,
+        "newOverlapsVsSelectedIdle": 84,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 542,
+        "selectedIdleOverlappingNodes": 495,
+        "state": "recover-air-east",
+        "visualEnvelopeClearNodes": 1046,
+        "visualEnvelopeOverlappingNodes": 579
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-west-helmet.png",
+        "foot": [
+          7824.0,
+          7776.0
+        ],
+        "gear": "helmet",
+        "newOverlapsVsPriorRecovery": 61,
+        "newOverlapsVsSelectedIdle": 51,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 529,
+        "selectedIdleOverlappingNodes": 499,
+        "state": "recover-air-west",
+        "visualEnvelopeClearNodes": 1075,
+        "visualEnvelopeOverlappingNodes": 550
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-north-helmet.png",
+        "foot": [
+          7936.0,
+          7776.0
+        ],
+        "gear": "helmet",
+        "newOverlapsVsPriorRecovery": 0,
+        "newOverlapsVsSelectedIdle": 0,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 577,
+        "selectedIdleOverlappingNodes": 540,
+        "state": "recover-air-north",
+        "visualEnvelopeClearNodes": 1085,
+        "visualEnvelopeOverlappingNodes": 540
+      },
+      {
+        "capture": "res://output/veld-recovery-furnished-v1/recover-air-south-helmet.png",
+        "foot": [
+          7808.0,
+          7776.0
+        ],
+        "gear": "helmet",
+        "newOverlapsVsPriorRecovery": 49,
+        "newOverlapsVsSelectedIdle": 0,
+        "ordinaryStandableNodes": 1625,
+        "priorRecoveryOverlappingNodes": 489,
+        "selectedIdleOverlappingNodes": 536,
+        "state": "recover-air-south",
+        "visualEnvelopeClearNodes": 1094,
+        "visualEnvelopeOverlappingNodes": 531
+      }
+    ],
+    "scope": "Five authored rooms,dry selected standing geometry,candidate loaded explicitly,all48poses at8reviewed clear points. Projected sprite-envelope overlap counts are diagnostic,not3D collision or universal recovery pose safety. No clearance gate/runtime changes."
+  },
+  "sourceBindingsSha256": "d990c61c26509a4c0d897db6c5f227f5b8d27bddf1d950fc938983b4f7a92145",
+  "sourceBindings": {
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/000.png": "c0d5719837629e8c122d84aff31fb663783bf1b5eea4a865eae69c2f3889b365",
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/001.png": "2743966869bebf164f05cce21570d1d61e5d313b60b4dfe7a6d0118a1cf70d36",
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/002.png": "611c7b4e024ca988d9b50c0c474bbaf2691649d2458db36cdf4c68d74cd8fa61",
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/003.png": "d98a48e160e9e6e12dc5148c28ba9ffb9ded081bb07b6b85d40fdec7dd6d44f4",
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/004.png": "e474815360a18e53266839865012fd7bce3bd27788a55541f38fd849e1e8f4b7",
+    "character/veld-recover-air-east-coherent-v1/frames/recover-air-east/005.png": "c0d5719837629e8c122d84aff31fb663783bf1b5eea4a865eae69c2f3889b365",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/000.png": "7da339af2331545956bd867fb226f9b278cc69f6367713dc060a034bf0bf2290",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/001.png": "33cc262e66b78a496256a87cdd90e1e57b2706fa6c5420504c4a02e8130e2636",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/002.png": "214b3c9af33e9ca41f7689075509078bfc2bf746db719f1c818c92869b0f59cf",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/003.png": "7fe7473d3e92649d85acefd0ff6525226d619f7c6c8807081635a277a037fdf4",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/004.png": "f192c24eafe97129ce522dc96d39d96620e6d278070355e8d5e1bad0a02b82aa",
+    "character/veld-recover-air-west-coherent-v1/frames/recover-air-west/005.png": "7da339af2331545956bd867fb226f9b278cc69f6367713dc060a034bf0bf2290",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/000.png": "0b37c006385fce3408b948dd77f1c983d424efa03a0d10773e1c5aa580462583",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/001.png": "b42b242023522b93f9e81f6d9eef5a2f13951db9f36e06aefd72e128d12f1513",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/002.png": "e787f0343c8861c2ea940165717d0153de3dafc4476c6df210aa4ae2fd6e1f21",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/003.png": "79e75c5130f865d4801d3d9a7b002f2598e18966a83424d3e09410a589e8bf52",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/004.png": "d84770f9005fc82811e444c6b0f43c8cd7933d7e97df9d076215379cf71f6312",
+    "character/veld-recover-air-north-coherent-v1/frames/recover-air-north/005.png": "0b37c006385fce3408b948dd77f1c983d424efa03a0d10773e1c5aa580462583",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/000.png": "9c6cfe0a457e6e9d67f65b0e773f3216d5637ef3bbb6941840092b4c412622bc",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/001.png": "c9a1c295f7ab102ab3af558191dabb4ac92922b36786a77864f9dd98fd91abe2",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/002.png": "0e1eed00d71a6fecbaf1674ba68b485870b3838f7cb27d6df89fc86602ecfdbf",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/003.png": "bce57326754a602311f78b0df9ab6cfb722393d5ddd3a5263a4ae9711feb0c38",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/004.png": "5074f03dc025d7de6e989c82e06b14a4cc9d14df3dff34b64cff3095b6ff2629",
+    "character/veld-recover-air-south-coherent-v1/frames/recover-air-south/005.png": "9c6cfe0a457e6e9d67f65b0e773f3216d5637ef3bbb6941840092b4c412622bc",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/000.png": "6bc89e3002c99f4762b77ac3e13c37da0996f7418e172cdbb32a1912f1f5a003",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/001.png": "c5859a8d81fd119fb91ddc4ddd7b83108a92fd58b80a918f070329f893f61d94",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/002.png": "87b846ddf92d94be1686652760cd933e7a7ec69dfa18d7f6bfbe09feb0aa6377",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/003.png": "4f88fb19e76be556c6b15d2cc11ddf7a597f0dfeb3bd23626a7f7a11fb748431",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/004.png": "2f2375a78641b9b20ace9d84ced79104f5f0ab5f3d989c68d9066f7c4d0bc79a",
+    "character/veld-recover-air-east-coherent-v1/frames/helmet/recover-air-east/005.png": "6bc89e3002c99f4762b77ac3e13c37da0996f7418e172cdbb32a1912f1f5a003",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/000.png": "cbe9f585427aef951e030c2068a49543da1b45bd1b55c2f3644dbfbe12e20bdb",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/001.png": "7d6e0a08c8f336144d8bce3e236d53bbc4c65618b29d5b39e0a8642f618f928d",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/002.png": "d12f206c35f7c849c408ea920431f2eeb29c5906db489be3a4e2493ecc11fe51",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/003.png": "c0b47a98390dfa4856f86e7075b05f12e1c87f483fc165a63d60b4eecaa0b5ab",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/004.png": "5b5343fcb52c92a71a3522e5e925bed1b3c1a95065f61c83a8153c265ac6c832",
+    "character/veld-recover-air-west-coherent-v1/frames/helmet/recover-air-west/005.png": "cbe9f585427aef951e030c2068a49543da1b45bd1b55c2f3644dbfbe12e20bdb",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/000.png": "2bea9e9f3a4218e8e54ef1e64b2c42f3bff427d1e3701036fbb74315b28fdc12",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/001.png": "646cac5cd6e036b2caa6ea09f1de21e000a640a54651e8c7ef4644895e3ebc86",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/002.png": "06cc9bedeb317f78826f2860e277c5d502d66f072178d3e19c27ada56ef97a39",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/003.png": "f558493368a7917648535f2085e548396aeda83867b63aeb0db6e5dcd4873888",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/004.png": "04bb8ac28eba3633fa4bdd777cc8c2acb52964149604b59a03d5e1c602ee4e2f",
+    "character/veld-recover-air-north-coherent-v1/frames/helmet/recover-air-north/005.png": "2bea9e9f3a4218e8e54ef1e64b2c42f3bff427d1e3701036fbb74315b28fdc12",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/000.png": "41865d172695979c8448e3f40f665f8841f929777a84ee5e67b9ab8fde6380ed",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/001.png": "b92dc29af4b1d3e550c1cdfafe086575a1f9d5e4ec5eb56d273504b6f4c9c109",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/002.png": "5439f5cd89fe425b8d9149eb070e95010545c7f363b6fcbbcf26244d7d0d271a",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/003.png": "29a3063d784b88e6bada3773491c53824f90669d705b4dd07c6fe1fd00d2c45f",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/004.png": "a8927e8af27b335beb2cffec3d6c59971bd2c0b553e1bf31cd67f07500931401",
+    "character/veld-recover-air-south-coherent-v1/frames/helmet/recover-air-south/005.png": "41865d172695979c8448e3f40f665f8841f929777a84ee5e67b9ab8fde6380ed"
+  },
+  "captureHashes": {
+    "res://output/veld-recovery-furnished-v1/recover-air-east-bare.png": "492a814b48274dc8b626c114832bb3507efb9c020c3ca0e57889c53dfa69b731",
+    "res://output/veld-recovery-furnished-v1/recover-air-west-bare.png": "c805ee0fc88841fb064970008b9e666afa15371cd4a6d6f5f3a97821f4aae706",
+    "res://output/veld-recovery-furnished-v1/recover-air-north-bare.png": "9f766f8d2a72d49a6f51e9775ac3df5021a2c7ef375935242af24c0db671d4e8",
+    "res://output/veld-recovery-furnished-v1/recover-air-south-bare.png": "004233c4b784f470d2b0324cc3d5fa6a996b72313b32034f1897f8c7baf471c0",
+    "res://output/veld-recovery-furnished-v1/recover-air-east-helmet.png": "336992ddb5dd58ba4d7e02de9462327d1ecaefa4a55201abab6be8d8b3249418",
+    "res://output/veld-recovery-furnished-v1/recover-air-west-helmet.png": "fd7dd59f4f890b341b88edaac936842b8d19a4bf3f1a056eae4ee67000b2602f",
+    "res://output/veld-recovery-furnished-v1/recover-air-north-helmet.png": "ae9ba4b19a4bf750d5933a2dd740c83baa49ed58ebb8049c464d2795f991357d",
+    "res://output/veld-recovery-furnished-v1/recover-air-south-helmet.png": "572c9ec2b32f48ea79f9d918407f1afc240cf7d41543073aeb61258dc95f71bc"
+  },
+  "clearanceAuditSha256": "5863665825569a73d74ec0b26414a66d5c151f04cd995427a012253a28468a59",
+  "evidenceHashes": {
+    "output\\veld-recover-air-family-candidate-native-v1\\native.log": "d8d435dcc449c9ebc7d40b17931bfe7c15275a700b7cc9783e6d178579eac755",
+    "output\\veld-recover-air-family-candidate-native-v1\\validation.json": "166505baacd46e668efcf3f9879febc87720affe6b9e2ee70051f9f12959a66b",
+    "output\\veld-recovery-furnished-v1\\native.log": "cf0239e92e70f4909704acd1eafd3bd5525a0126084885e9c6d7afe5ece0794d",
+    "output\\veld-recovery-furnished-v1\\validation.json": "762d5ae2fa71c1af9d87bef1fd3ac1945aea747a6ab7b470e7f48413156d41c1",
+    "output\\veld-recovery-furnished-v1\\furnished-checks.json": "d6201e24f879c3410af5a202b4fdcfca5a31aec1f06795194b17399322307c5a",
+    "tests\\test_veld_recover_air_family_candidates.gd": "6be8c4ecbe78c9b40b8d8331c9b9801789cffb0f3bed2fb2b1a9e93b4e804353",
+    "tools\\review_veld_recovery_furnished_v1.gd": "343e0cbad210d19342012b89d6feb340408a8dddd79ff9c8b0a36127e5c54d94"
+  },
+  "visualReview": "native82family contact;furnished deepest east/west bare,north/south helmet screenshots reviewed. Projected overlap counts do not establish3D collision/universal safety;continuous motion and front helmet pitch polish pending."
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Bill helmeted north/east planted carry turn",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_owner_visual_review",
+  "states": [
+    {
+      "id": "carry-turn-north-east",
+      "frameFiles": [
+        "frames/carry-turn-north-east/000.png",
+        "frames/carry-turn-north-east/001.png",
+        "frames/carry-turn-north-east/002.png",
+        "frames/carry-turn-north-east/003.png",
+        "frames/carry-turn-north-east/004.png",
+        "frames/carry-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "approved bare planted body; one rotating helmet atlas row; exact equipped neutral endpoints; reverse derived without mirroring"
+    },
+    {
+      "id": "carry-turn-east-north",
+      "frameFiles": [
+        "frames/carry-turn-east-north/000.png",
+        "frames/carry-turn-east-north/001.png",
+        "frames/carry-turn-east-north/002.png",
+        "frames/carry-turn-east-north/003.png",
+        "frames/carry-turn-east-north/004.png",
+        "frames/carry-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "provenance": "approved bare planted body; one rotating helmet atlas row; exact equipped neutral endpoints; reverse derived without mirroring"
+    }
+  ],
+  "equipment": "diving-helmet",
+  "integration": "selected_by_grid_canvas_native_frame_clock_checked_2026_09_30"
+}

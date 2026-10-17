@@ -1,0 +1,99 @@
+{
+  "checks": 56,
+  "failures": 0,
+  "fits": [
+    {
+      "phase": 0,
+      "exactPreviouslyFittedWholeAlias": "res://character/veld-turn-north-east-original-master-v1/gather-frames/helmet/000.png"
+    },
+    {
+      "phase": 1,
+      "exactPreviouslyFittedWholeAlias": "res://character/veld-turn-north-east-original-master-v2/frames/helmet/001.png"
+    },
+    {
+      "phase": 2,
+      "wholeSource": "character/veld-helmet-original-turntable-v1/v3-study/shells/004.png",
+      "shellSize": [
+        29,
+        36
+      ],
+      "position": [
+        111,
+        68
+      ],
+      "clearBox": [
+        108,
+        76,
+        141,
+        103
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 3,
+      "wholeSource": "character/veld-turn-north-east-helmet-aligned-v1/intermediate-v5-shell.png",
+      "shellSize": [
+        30,
+        37
+      ],
+      "position": [
+        110,
+        67
+      ],
+      "clearBox": [
+        106,
+        76,
+        140,
+        103
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 4,
+      "wholeSource": "character/veld-helmet-original-turntable-v1/v3-study/shells/005.png",
+      "shellSize": [
+        31,
+        38
+      ],
+      "position": [
+        105,
+        66
+      ],
+      "clearBox": [
+        104,
+        77,
+        139,
+        103
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 5,
+      "exactPreviouslyFittedWholeAlias": "res://character/veld-turn-north-east-original-master-v2/frames/helmet/005.png"
+    }
+  ],
+  "bindings": {
+    "character/veld-helmet-original-turntable-v1/v3-study/shells/004.png": "a3c429e4002d9df9fec3bd95c06b61f4267861abcb96bbc1a83fb73fd16e0036",
+    "character/veld-turn-north-east-helmet-aligned-v1/intermediate-v5-shell.png": "811f48bd0a873eaa0afc7707d2e480938aa9403f728058a0a0b4edce0a23aaaf",
+    "character/veld-helmet-original-turntable-v1/v3-study/shells/005.png": "a25caeb64ae37d0db92f417d70761436dab649062a93b8d3868d566836e3c523",
+    "character/veld-turn-north-east-original-master-v1/gather-frames/bare/000.png": "9652be811b61a8e235e98d5d4b2e47b5f87239f2403c425fda05c3199d173ce4",
+    "character/veld-turn-north-east-original-master-v2/frames/bare/001.png": "86fac33485092fb7c6daa2ab785276953cec0ab80755671bec0110c02f21c748",
+    "character/veld-turn-north-east-original-master-v2/frames/bare/002.png": "331f67f3b1830d4ef02a5491cd12c19fa433cfd97af28bd209f81c4223f8e02b",
+    "character/veld-turn-north-east-original-master-v2/frames/bare/003.png": "347ebdb274233ba15f7a20d215f44a9b7a642760618e43716b24e5118b2561a9",
+    "character/veld-turn-north-east-original-master-v2/frames/bare/004.png": "03f8801fb7d7f2ae8fd36a01a5c8fc45554387ae8979cec9bca629e25b598095",
+    "character/veld-turn-north-east-original-master-v2/frames/bare/005.png": "d54b6d118b3d471629d1539d53e42980e7d7714e4ff3dbfb070d61f313ecb855",
+    "character/veld-turn-north-east-original-master-v1/gather-frames/helmet/000.png": "f6cc1c6d783169d1bc0130294c8b60edbb44fafa0d494400e371b6ac415c9270",
+    "character/veld-turn-north-east-original-master-v2/frames/helmet/001.png": "9c4d6010d11d35cba6c4b8ff7a2734dcff57c6e54313e88a456c35c31c778885",
+    "character/veld-turn-north-east-helmet-aligned-v2/frames/helmet/002.png": "e12cf7c76bc183173a2c16a846c456541971183e30f92e2dcff2719b34da79ff",
+    "character/veld-turn-north-east-helmet-aligned-v2/frames/helmet/003.png": "71988328fce27c6e914299838e2573c013153601f3c7d47f5d096a104c27d161",
+    "character/veld-turn-north-east-helmet-aligned-v2/frames/helmet/004.png": "fa71251e4d99318bd19b3fe396a3b0cbfb4affe9b72d36b80fb0cb9f1045eb47",
+    "character/veld-turn-north-east-original-master-v2/frames/helmet/005.png": "41f37fa3595a68aaf32ac8a53498c5ae9179df351ba9b4dffca7445d4c13533e",
+    "character/veld-turn-north-east-original-master-v2/registration.json": "b3b5ff0d519542d60e464eebb4669429f15b63ea42e8b17f7ad4c0f387545ae2",
+    "character/veld-turn-north-east-helmet-aligned-v1/intermediate-v5-registration.json": "c5e428a84f75e65e785c5605d8654046876a12595ac1deff30b96afcf23fdd4e",
+    "character/veld-turn-north-east-helmet-aligned-v1/raw-intermediate-v5.png": "676059773bc67063762bb5d209feaca6b193e6f11f18bacb7e224ba3a22cfc74"
+  },
+  "exactBareFrameAliases": true,
+  "exactNorthAndEastEquippedEndpoints": true,
+  "durationMs": 800,
+  "scope": "Whole helmet yaw fit only. Body and finite timing unchanged. Late actual-head correspondence reuses exact original profile at phase4; no normal adoption, gather/gait/world/save acceptance."
+}

@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+TURN COMPLETION TRACE swim-turn-south-west time=2.35 foot=(7843.909, 7904.0) action_clear=false direction=west state=walk motion={ "state": "swim", "direction": "west", "clip": "", "started": 2.35 }
+ERROR: Exact master loop0 after route turn
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/review_veld_swim_turn_routes_v1.gd:11)
+       [1] run (res://tools/review_veld_swim_turn_routes_v1.gd:88)
+ERROR: Actual route exercises every phase: swim-turn-south-west
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/review_veld_swim_turn_routes_v1.gd:11)
+       [1] run (res://tools/review_veld_swim_turn_routes_v1.gd:91)
+VELD SWIMMING TURN ROUTES: 38 checks, 2 failures

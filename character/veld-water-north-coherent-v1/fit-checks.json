@@ -1,0 +1,635 @@
+{
+  "checks": 48,
+  "failures": 0,
+  "installed": false,
+  "physicalRulers": {
+    "targetBareHairWidth": 21,
+    "treadSourceHairWidth": 93,
+    "treadSourceHairRow": 106,
+    "swimSourceHairWidth": 97,
+    "swimSourceHairRow": 161,
+    "transitionSourceHairWidth": 95
+  },
+  "curves": {
+    "cloth": {
+      "knots": [
+        20.333333333333332,
+        33.0,
+        49.0,
+        64.33333333333333,
+        78.66666666666667,
+        91.33333333333333,
+        129.66666666666666
+      ],
+      "targets": [
+        [
+          14.0,
+          10.0,
+          15.0
+        ],
+        [
+          33.0,
+          32.0,
+          33.0
+        ],
+        [
+          47.0,
+          46.0,
+          48.0
+        ],
+        [
+          58.0,
+          58.0,
+          59.0
+        ],
+        [
+          69.0,
+          68.0,
+          69.0
+        ],
+        [
+          85.0,
+          82.0,
+          79.70000000000027
+        ],
+        [
+          136.0,
+          130.0,
+          127.0
+        ]
+      ]
+    },
+    "patch": {
+      "knots": [
+        12.333333333333334,
+        47.666666666666664,
+        68.66666666666667,
+        82.66666666666667,
+        99.66666666666667,
+        117.66666666666667,
+        197.33333333333334
+      ],
+      "targets": [
+        [
+          6.0,
+          0.0,
+          37.0
+        ],
+        [
+          28.0,
+          18.0,
+          50.0
+        ],
+        [
+          35.0,
+          52.0,
+          82.0
+        ],
+        [
+          41.0,
+          64.0,
+          95.0
+        ],
+        [
+          49.0,
+          74.0,
+          103.0
+        ],
+        [
+          60.0,
+          82.0,
+          114.0
+        ],
+        [
+          74.0,
+          96.0,
+          131.0
+        ]
+      ]
+    }
+  },
+  "sources": [
+    {
+      "path": "character/veld-water-north-coherent-v1/tread-source-v1.png",
+      "sha256": "231a2599eed13d1b15d6902e6b6562e3ebbd82770250efd3e602bd960bbc61b1"
+    },
+    {
+      "path": "character/veld-water-north-coherent-v1/swim-source-v1.png",
+      "sha256": "6e660cd298112d3c515bf879167fb21263be2c255060cc13fcc54c365b3aed45"
+    },
+    {
+      "path": "character/veld-water-material-v2/north-transition-source-v2.png",
+      "sha256": "be6fb4a2d1c0a5ac51f3fad77242c9e25d20c5daa7b6cbf8264464a231af0214"
+    }
+  ],
+  "records": [
+    {
+      "state": "tread-north",
+      "slot": 0,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        35,
+        53,
+        373,
+        611
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        203,
+        53,
+        139
+      ],
+      "bodyPosition": [
+        90,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "tread-north",
+      "slot": 1,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        438,
+        50,
+        808,
+        605
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        627,
+        50,
+        138
+      ],
+      "bodyPosition": [
+        85,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "tread-north",
+      "slot": 2,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        851,
+        53,
+        1239,
+        596
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        1049,
+        53,
+        140
+      ],
+      "bodyPosition": [
+        83,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "tread-north",
+      "slot": 3,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        31,
+        653,
+        369,
+        1207
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        204,
+        653,
+        739
+      ],
+      "bodyPosition": [
+        89,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "tread-north",
+      "slot": 4,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        449,
+        658,
+        806,
+        1212
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        628,
+        658,
+        745
+      ],
+      "bodyPosition": [
+        88,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "tread-north",
+      "slot": 5,
+      "source": "tread-source-v1.png",
+      "sourceBox": [
+        875,
+        657,
+        1223,
+        1214
+      ],
+      "anatomicalScale": 0.22580645161290322,
+      "sourceHeadLandmark": [
+        1050,
+        657,
+        744
+      ],
+      "bodyPosition": [
+        88,
+        107
+      ],
+      "bareCrown": 107,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        106,
+        142,
+        129
+      ],
+      "foregroundPixels": 0
+    },
+    {
+      "state": "swim-north",
+      "slot": 0,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        134,
+        21,
+        343,
+        633
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        235,
+        106,
+        191
+      ],
+      "bodyPosition": [
+        106,
+        86
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 247
+    },
+    {
+      "state": "swim-north",
+      "slot": 1,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        504,
+        74,
+        750,
+        643
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        627,
+        107,
+        192
+      ],
+      "bodyPosition": [
+        101,
+        97
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 194
+    },
+    {
+      "state": "swim-north",
+      "slot": 2,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        816,
+        102,
+        1204,
+        638
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        1008,
+        102,
+        192
+      ],
+      "bodyPosition": [
+        86,
+        104
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 47
+    },
+    {
+      "state": "swim-north",
+      "slot": 3,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        89,
+        699,
+        382,
+        1235
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        235,
+        699,
+        784
+      ],
+      "bodyPosition": [
+        96,
+        104
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 51
+    },
+    {
+      "state": "swim-north",
+      "slot": 4,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        506,
+        673,
+        753,
+        1238
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        627,
+        718,
+        803
+      ],
+      "bodyPosition": [
+        102,
+        94
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 218
+    },
+    {
+      "state": "swim-north",
+      "slot": 5,
+      "source": "swim-source-v1.png",
+      "sourceBox": [
+        914,
+        639,
+        1121,
+        1231
+      ],
+      "anatomicalScale": 0.21649484536082475,
+      "sourceHeadLandmark": [
+        1018,
+        716,
+        801
+      ],
+      "bodyPosition": [
+        105,
+        87
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 247
+    },
+    {
+      "state": "swim-start-north",
+      "slot": 1,
+      "source": "character/veld-water-material-v2/north-transition-source-v2.png",
+      "sourceBox": [
+        131,
+        81,
+        460,
+        684
+      ],
+      "anatomicalScale": 0.22105263157894736,
+      "bodyPosition": [
+        92,
+        106
+      ],
+      "bareCrown": 106,
+      "headPosition": [
+        112,
+        101
+      ],
+      "clear": [
+        114,
+        105,
+        142,
+        128
+      ],
+      "foregroundPixels": 56
+    },
+    {
+      "state": "swim-start-north",
+      "slot": 2,
+      "source": "character/veld-water-material-v2/north-transition-source-v2.png",
+      "sourceBox": [
+        702,
+        94,
+        966,
+        693
+      ],
+      "anatomicalScale": 0.22105263157894736,
+      "bodyPosition": [
+        99,
+        93
+      ],
+      "bareCrown": 105,
+      "headPosition": [
+        112,
+        100
+      ],
+      "clear": [
+        114,
+        104,
+        142,
+        127
+      ],
+      "foregroundPixels": 135
+    },
+    {
+      "state": "swim-start-north",
+      "slot": 3,
+      "source": "character/veld-water-material-v2/north-transition-source-v2.png",
+      "sourceBox": [
+        1263,
+        97,
+        1472,
+        690
+      ],
+      "anatomicalScale": 0.22105263157894736,
+      "bodyPosition": [
+        105,
+        87
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 216
+    },
+    {
+      "state": "swim-start-north",
+      "slot": 4,
+      "source": "character/veld-water-material-v2/north-transition-source-v2.png",
+      "sourceBox": [
+        1792,
+        61,
+        1975,
+        692
+      ],
+      "anatomicalScale": 0.22105263157894736,
+      "bodyPosition": [
+        108,
+        80
+      ],
+      "bareCrown": 104,
+      "headPosition": [
+        112,
+        99
+      ],
+      "clear": [
+        114,
+        103,
+        142,
+        126
+      ],
+      "foregroundPixels": 254
+    }
+  ]
+}

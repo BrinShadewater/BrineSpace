@@ -1,0 +1,44 @@
+{
+  "installed": false,
+  "checks": 34612,
+  "routes": 96,
+  "nominalCargoReturnCases": 48,
+  "all12HalfPhasesPerNominalCase": true,
+  "distinctNominalWorkExits": {
+    "east bare": 6,
+    "east helmet": 6,
+    "west bare": 6,
+    "west helmet": 6,
+    "north bare": 6,
+    "north helmet": 6,
+    "south bare": 6,
+    "south helmet": 6
+  },
+  "exactNominalPickupCargoBoundaries": true,
+  "validation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 34.2,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-cargo-controller-matrix-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "freshTimeline": true
+  },
+  "hashes": {
+    "tools/review_veld_cargo_controller_matrix_v1.gd": "199d8d13eecc733c1e2c159c249f49f469e6fd0c965eb7f48f96df31983cfa08",
+    "scripts/crew_expedition.gd": "182437e71b58d9d879ebf6322aece0637c2cc065207a4ccd2ccace765eb60182",
+    "scripts/crew_sprite_player.gd": "bc38a80ed2f40e22f0fdb1d031641b04067f0a969df930d8ea0f13733b302012",
+    "character/veld-salvage-pickup-family-coherent-v1/bare-manifest.json": "dfeba1b1f39254984ae67b250511ee2f74cc53b570b544ff931a43804786be19",
+    "character/veld-salvage-pickup-family-coherent-v1/helmet-manifest.json": "cd268f07523a64e3b440ea6b5e9d5ddc89d1d5afa230caee10bd55fa315704b3",
+    "character/veld-swim-carry-matrix-coherent-v1/bare-manifest.json": "10aed726b79950c7e3b96f87ce8b8adbd4768949b4f3ed4239f76bb7a8285daa",
+    "character/veld-swim-carry-matrix-coherent-v1/helmet-manifest.json": "ec1b2dcecb4bc8ea354364d3e8a941097c4e85f2c81bf449d3f7077028bdd195",
+    "character/veld-swim-carry-turn-matrix-coherent-v1/bare-manifest.json": "8d5845a354a961013efcce684533672d6d11c55303d5239f1d4f3d66da7ebb1c",
+    "character/veld-swim-carry-turn-matrix-coherent-v1/helmet-manifest.json": "7c9edd5a02ebdd43cd9517b4efe7ddbceaa4b3d15148e1698ed1f210507a5246",
+    "character/veld-swim-carry-turn-matrix-coherent-v1/validation-checks.json": "3a953ef6b171cdee77f4650ddf610151007d772068c4460cd4fde8b1166c3423",
+    "output/veld-cargo-controller-matrix-v1/validation.json": "dbeafee010218d256716835b505f0e9ca734841d1cdb9d70b0fe5fee96f72c58",
+    "output/veld-cargo-controller-matrix-v1/native.log": "c9eab0a54a37b1987387bb36bd03c4a50e66dc9373f9dc59a605eab0cddfdfac",
+    "output/veld-cargo-controller-matrix-v1/timeline.json": "d5c95b12232c33535af3bb2c0791a05edfeb2a150454712bd1ecd268e3fa96fa"
+  },
+  "scope": "Actual Veld controller/grid work-pickup-return with candidate actions/cargo/turns and inherited ordinary recall turns. Not full furnished/exterior/traffic journey or owner visual acceptance."
+}

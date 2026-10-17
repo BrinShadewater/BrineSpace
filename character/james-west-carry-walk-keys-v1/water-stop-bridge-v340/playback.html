@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>James staged swimming transitions</title>
+<style>body{background:#303b40;color:#ddd;font:14px Arial;margin:16px}button,select{padding:7px;margin:5px}main{display:grid;grid-template-columns:repeat(4,256px);gap:8px}canvas{background:#303b40;width:256px;height:320px}p{margin:4px}small{color:#ccc}</style>
+<h2>James swimming transitions — staged</h2><p>Exact poses returned by the staged player. Each panel shows standing ruler 148, 82, 54 and 27px. Finite clips hold their last pose. This review does not simulate actor collisions.</p>
+<label>Direction <select id="direction"><option>west</option><option>east</option><option>north</option><option>south</option></select></label>
+<label>Transition <select id="type"><option value="swim-stop-phase">Stop from stroke</option><option value="swim-restart-phase">Resume from rise</option><option value="swim-stop-resume">Stop during restart</option></select></label>
+<label>Speed <select id="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label><button id="replay">Replay</button><button id="pause">Pause</button><button id="step">Next pose</button><p id="clock">Loading</p><main></main>
+<script>
+let bank,images={},held=0,last=performance.now(),paused=false;const panels=[];
+for(const gear of ['bare','diving-helmet'])for(let phase=1;phase<=4;phase++){const div=document.createElement('div'),title=document.createElement('p'),canvas=document.createElement('canvas'),status=document.createElement('small');title.textContent=gear+' / entry '+phase;canvas.width=256;canvas.height=320;div.append(title,canvas,status);document.querySelector('main').append(div);panels.push({gear,phase,canvas,status});}
+function reset(){held=0;last=performance.now();}
+for(const id of ['direction','type','speed'])document.getElementById(id).onchange=reset;
+document.getElementById('replay').onclick=reset;
+document.getElementById('pause').onclick=()=>{paused=!paused;document.getElementById('pause').textContent=paused?'Play':'Pause';last=performance.now();};
+function key(p){return p.gear+'/'+document.getElementById('type').value+'-'+p.phase+'-'+document.getElementById('direction').value;}
+document.getElementById('step').onclick=()=>{paused=true;document.getElementById('pause').textContent='Play';const boundaries=new Set();for(const p of panels){let t=0;for(const f of bank[key(p)]){boundaries.add(t);t+=f.duration;}}held=[...boundaries].sort((a,b)=>a-b).find(t=>t>held+.01)??0;last=performance.now();};
+fetch('playback-bank.json').then(r=>r.json()).then(async b=>{bank=b;await Promise.all([...new Set(Object.values(bank).flat().map(f=>f.src))].map(src=>new Promise((resolve,reject)=>{let im=new Image();images[src]=im;im.onload=resolve;im.onerror=reject;im.src=src;})));reset();requestAnimationFrame(draw);});
+function draw(now){if(!paused)held+=(now-last)*Number(document.getElementById('speed').value);last=now;document.getElementById('clock').textContent=(paused?'Paused':'Playing')+' · '+Math.floor(held)+' ms';
+for(const p of panels){const row=bank[key(p)];let cursor=held,f=row.at(-1);for(const candidate of row){if(cursor<candidate.duration){f=candidate;break;}cursor-=candidate.duration;}
+const ctx=p.canvas.getContext('2d');ctx.clearRect(0,0,256,320);ctx.imageSmoothingEnabled=false;for(const [height,x,y] of [[148,128,150],[82,50,275],[54,150,275],[27,224,275]]){const scale=height/f.height,im=images[f.src];ctx.drawImage(im,x-f.pivot[0]*scale,y-f.pivot[1]*scale,im.width*scale,im.height*scale);ctx.fillStyle='#bbb';ctx.fillText(height+'px',x-15,y+35);}p.status.textContent='pose '+f.slot+' / '+(row.length-1)+' · '+row.reduce((t,f)=>t+f.duration,0)+'ms';}
+requestAnimationFrame(draw);}
+</script>

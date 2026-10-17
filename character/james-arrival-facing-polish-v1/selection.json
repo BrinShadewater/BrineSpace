@@ -1,0 +1,15 @@
+{
+  "status": "installed_owner_review_pending",
+  "fullSetComplete": false,
+  "script": "scripts/branforth_npc.gd",
+  "scriptSha256": "fe7a9a6491fcb368b70fa9f7cd90e109638056b5b6454ed9f97c3d6462712a6e",
+  "baselineChecks": 67,
+  "baselineFacingMismatches": 12,
+  "installedChecks": 3793,
+  "cases": 16,
+  "captures": 72,
+  "dryDiagnosticSeconds": 6,
+  "wetDiagnosticSeconds": 1.02,
+  "artChanged": false,
+  "scope": "16 explicit collision-checked generic maintenance-room arrival paths through real James move/arrive and normal grid; dry/flooded, four incoming directions, bare/helmet. Full six-slot same-facing swim stops; all dry tablet slots through actual NPC.update, six-second completion/need relief. Not pathfinder, workstation-specific rotation or exterior journey proof."
+}

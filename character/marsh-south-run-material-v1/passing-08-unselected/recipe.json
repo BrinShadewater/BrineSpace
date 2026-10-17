@@ -1,0 +1,59 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "rawSha256": "500c0d0165b62626502a72a03827295c9e4f110546d92e74ad6b129e2e1c9ef9",
+  "commonNeutralScale": 0.175,
+  "records": [
+    {
+      "file": "passing.png",
+      "sourceCell": [
+        0,
+        0,
+        791,
+        1024
+      ],
+      "wholeTranslation": [
+        -4,
+        10
+      ],
+      "bounds": [
+        60,
+        31,
+        123,
+        172
+      ],
+      "size": [
+        63,
+        141
+      ],
+      "sha256": "778150791f54a2d9a6ee4774aa576771b478c1e7834b8c98827d37a1e3b977ea"
+    },
+    {
+      "file": "ruler.png",
+      "sourceCell": [
+        791,
+        0,
+        1536,
+        1024
+      ],
+      "wholeTranslation": [
+        52,
+        10
+      ],
+      "bounds": [
+        63,
+        25,
+        120,
+        172
+      ],
+      "size": [
+        57,
+        147
+      ],
+      "sha256": "3a5c737b4bda7249ba811b44d7d8f35e0989e7c0c9f0a2f6de05c3975a452ab0"
+    }
+  ],
+  "heldSourceReviewed": true,
+  "finding": "Correct viewer RIGHT support in raw source; head/torso/grade/stride and alpha edges pending whole-cycle review.",
+  "operations": "One neutral BOX scale, binary alpha128, whole translations only."
+}

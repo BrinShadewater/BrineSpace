@@ -1,0 +1,288 @@
+{
+  "checks": 95,
+  "failures": 0,
+  "extraction": {
+    "scale": 0.2642857142857143,
+    "gutters": [
+      0,
+      309,
+      595,
+      932,
+      1264,
+      1556,
+      1853,
+      2172
+    ],
+    "rows": [
+      {
+        "phase": 0,
+        "sourceBootFloor": 674,
+        "sourceBootCenter": 155.5,
+        "offset": [
+          87,
+          46
+        ],
+        "nativeHeight": 147,
+        "headTop": 77,
+        "warmTop16Width": 22,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 1,
+        "sourceBootFloor": 676,
+        "sourceBootCenter": 149.5,
+        "offset": [
+          88,
+          45
+        ],
+        "nativeHeight": 137,
+        "headTop": 86,
+        "warmTop16Width": 23,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 2,
+        "sourceBootFloor": 676,
+        "sourceBootCenter": 175.5,
+        "offset": [
+          82,
+          45
+        ],
+        "nativeHeight": 93,
+        "headTop": 130,
+        "warmTop16Width": 23,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 3,
+        "sourceBootFloor": 676,
+        "sourceBootCenter": 156.5,
+        "offset": [
+          87,
+          45
+        ],
+        "nativeHeight": 93,
+        "headTop": 130,
+        "warmTop16Width": 22,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 4,
+        "sourceBootFloor": 678,
+        "sourceBootCenter": 145.5,
+        "offset": [
+          90,
+          45
+        ],
+        "nativeHeight": 111,
+        "headTop": 113,
+        "warmTop16Width": 23,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 5,
+        "sourceBootFloor": 678,
+        "sourceBootCenter": 149.5,
+        "offset": [
+          88,
+          45
+        ],
+        "nativeHeight": 130,
+        "headTop": 94,
+        "warmTop16Width": 23,
+        "gutterEdgeOpaque": 0
+      },
+      {
+        "phase": 6,
+        "sourceBootFloor": 678,
+        "sourceBootCenter": 157.0,
+        "offset": [
+          87,
+          45
+        ],
+        "nativeHeight": 148,
+        "headTop": 76,
+        "warmTop16Width": 22,
+        "gutterEdgeOpaque": 0
+      }
+    ],
+    "sourceSHA256": "c6817bb0a57a1ce10019c0f1767e06b834894807fff17abce08b23820b4b5fd0",
+    "ruler": "One firststanding148 source ruler, whole-body boot-center/ground registration; no per-pose scaling"
+  },
+  "fits": [
+    {
+      "phase": 1,
+      "position": [
+        110,
+        78
+      ],
+      "clearBox": [
+        113,
+        86,
+        142,
+        110
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    },
+    {
+      "phase": 2,
+      "position": [
+        111,
+        122
+      ],
+      "clearBox": [
+        114,
+        130,
+        143,
+        154
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    },
+    {
+      "phase": 3,
+      "position": [
+        112,
+        122
+      ],
+      "clearBox": [
+        115,
+        130,
+        143,
+        154
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    },
+    {
+      "phase": 4,
+      "position": [
+        111,
+        105
+      ],
+      "clearBox": [
+        114,
+        113,
+        143,
+        137
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    },
+    {
+      "phase": 5,
+      "position": [
+        110,
+        86
+      ],
+      "clearBox": [
+        113,
+        94,
+        142,
+        118
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    },
+    {
+      "phase": 6,
+      "position": [
+        110,
+        68
+      ],
+      "clearBox": [
+        113,
+        76,
+        143,
+        100
+      ],
+      "headBand": 16,
+      "shellScale": 1,
+      "shellGradeChanged": false
+    }
+  ],
+  "grade": [
+    {
+      "phase": 1,
+      "protectedCaseGripBox": [
+        98,
+        140,
+        158,
+        186
+      ],
+      "clothPixels": 2063
+    },
+    {
+      "phase": 2,
+      "protectedCaseGripBox": [
+        103,
+        192,
+        153,
+        227
+      ],
+      "clothPixels": 1913
+    },
+    {
+      "phase": 3,
+      "protectedCaseGripBox": null,
+      "clothPixels": 2473
+    },
+    {
+      "phase": 4,
+      "protectedCaseGripBox": null,
+      "clothPixels": 2845
+    },
+    {
+      "phase": 5,
+      "protectedCaseGripBox": null,
+      "clothPixels": 3561
+    }
+  ],
+  "shellSource": "character/veld-shared-helmet-south-v1/fitted-helmet.png",
+  "shellDimensions": [
+    35,
+    39
+  ],
+  "shellSHA256": "73d7d03a449d2b2debe24491d57ad36ceb9f064d68891403d4dfc828915880bb",
+  "recipeSHA256": "7dc4d05eddb95795eb8e160086f09008574a6776a5c3c6976e8c3d822b0d5f8d",
+  "bindings": {
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/000.png": "e23d7b1a81681a810ab7f039c19eb34397051ca013f66c51948894e5e0bc2122",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/001.png": "a66dfbf204d33fb3daf7ec0b9772377520bd9840939f27ee72f5e78e6491720f",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/002.png": "ddd13fa860a57241dca0d920c9ec1edbce4c76edd6388bbb3903863d2fbdb258",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/003.png": "f6a1341cdb5c5133b8ea8d1752439672210d008251276a72215ea1ceabcf5691",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/004.png": "598070fe53c7100d2b76f3e0107faee9309a193232bab361879699103e40cfb5",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/005.png": "82c2cc26afe0260c5e99cd0b5bb54409864dbbdb1a5a3bb110665e9fecbeebe4",
+    "character/veld-cargo-south-master-family-v1/frames/bare/unload-south/006.png": "9c6cfe0a457e6e9d67f65b0e773f3216d5637ef3bbb6941840092b4c412622bc",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/000.png": "c0cfdd30a917c5c59b3a3c7b6cd5b0aac7f071931e9f23471c253891b6d3d511",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/001.png": "51d781f06c3980dd92be7210df2a78bea825af0ff76580b7a7ce825a8e26efea",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/002.png": "944013b0cf0724a10f0138e83bcec884b8e21a40f137d27c9812a2300e7d1867",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/003.png": "fbaf058571747a22d40e8a7cb3e2eac8d7320b2604bc955140c899a6b881ecf1",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/004.png": "a362225d12abc8a7aae6bf1626e614aaafdef9971bd85c21e5826a93e607b2d6",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/005.png": "9cc17aa5a81bcd4b118de0cc5cee43c8b01c99e3de52d4720d3358eda3c8f7a7",
+    "character/veld-cargo-south-master-family-v1/frames/helmet/unload-south/006.png": "1be5954d64dfbe81b867c65228abedb5f3cd8a9c6539c52cad39c3f878ee2da6"
+  },
+  "casePosition": [
+    112,
+    199
+  ],
+  "caseDimensions": [
+    33,
+    24
+  ],
+  "timing": [
+    70,
+    90,
+    100,
+    60,
+    65,
+    65,
+    70
+  ],
+  "scope": "Whole authored unload/pickup, exact held and original bare idle endpoints, fixed independent case. No world/controller/normal adoption/ownership/save/full cadence or complete idle acceptance."
+}

@@ -1,0 +1,93 @@
+{
+  "sourceSha256": {
+    "character/james-carry-headcaps-v1/frames/004.png": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994",
+    "character/james-west-carry-walk-keys-v1/walk00-tool-fix.png": "aff00f250db18b6bfb88b1ff105dc37954d3b7a5d33e03fecf6c7ba6ed0b8f09",
+    "character/james-west-carry-depth-v1/walk12-carry.png": "b9238020d23bc1610fccda9f79aafff816d5b469339ee295e050de812ca43bab",
+    "character/james-west-carry-walk-keys-v1/walk28-tool-fix.png": "39881bb5bc1b68831786b6a6ad41092784ab7f59db4a6258699bc08ec0f97acc",
+    "character/james-west-carry-walk-keys-v1/walk36-tool-fix.png": "f6f619b6d6e5e50d9e573faec4e9d533b562ca15a5128df61717c1571428dc1a",
+    "character/james-west-carry-walk-keys-v1/walk00-carry-original.png": "ca53e34ad704bd8a099804cc8ac704ecf1b49a0bd1b679aad9aa7b81dc254020",
+    "character/james-west-carry-depth-v1/walk12-original.png": "e0c970469d3e85387c92733fc413bfafc6f8e01839f93fbbeaff013952fa6e2b",
+    "character/james-west-carry-walk-keys-v1/walk28-carry-original.png": "73740bc0ae3da15817f559964be4b99ae7064294df8821b2d79a1dcc1335b19f",
+    "character/james-west-carry-walk-keys-v1/walk36-carry-original.png": "16197696ba887a6e2d2180aab7bd6fd308b2ebaa1ab52dce9fd4276eea318063"
+  },
+  "poses": [
+    {
+      "index": 0,
+      "source": "character/james-west-carry-walk-keys-v1/walk00-tool-fix.png",
+      "outside60466Exact": true,
+      "donorBounds": [
+        109,
+        76,
+        155,
+        223
+      ],
+      "carryBounds": [
+        102,
+        76,
+        155,
+        223
+      ]
+    },
+    {
+      "index": 12,
+      "source": "character/james-west-carry-depth-v1/walk12-carry.png",
+      "outside60466Exact": true,
+      "donorBounds": [
+        87,
+        76,
+        174,
+        225
+      ],
+      "carryBounds": [
+        87,
+        76,
+        174,
+        225
+      ]
+    },
+    {
+      "index": 28,
+      "source": "character/james-west-carry-walk-keys-v1/walk28-tool-fix.png",
+      "outside60466Exact": true,
+      "donorBounds": [
+        109,
+        76,
+        157,
+        226
+      ],
+      "carryBounds": [
+        100,
+        76,
+        157,
+        226
+      ]
+    },
+    {
+      "index": 36,
+      "source": "character/james-west-carry-walk-keys-v1/walk36-tool-fix.png",
+      "outside60466Exact": true,
+      "donorBounds": [
+        95,
+        76,
+        167,
+        223
+      ],
+      "carryBounds": [
+        95,
+        76,
+        167,
+        223
+      ]
+    }
+  ],
+  "visualReviewPending": false,
+  "sourceAcceptance": false,
+  "selected": false,
+  "scope": "Four authored source keys plus master comparison, no interpolated/repeated fake49frame bank. Complete carrying gait/cadence/native and owner acceptance pending.",
+  "disposition": "four_provisional_source_keys_require_case_grip_consistency",
+  "findings": [
+    "Full, upper and station four-key comparisons inspected. Phase0 case higher/smaller than standing master and other keys; refine before expanding gait.",
+    "Head above104 and legs below169 remain donor-exact; hip/upper thigh inside upper admission may change. No per-pose height fitting.",
+    "No continuous playback, complete49frame carrying bank, paired helmet gait, native/context/owner acceptance."
+  ]
+}

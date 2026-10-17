@@ -1,0 +1,29 @@
+{
+  "status": "owner_accepted_visual_candidate",
+  "runtimeInstalled": false,
+  "ownerRequest": "Correct colour grading and awkward arm motion during kneel descent.",
+  "revision": "Same installed idle input; arm stays near waist during descent, reaches after kneeling. Fixed neutral material grade; original extracted frames preserved.",
+  "checks": "141 frames, zero clipping; alpha and pixels outside grade mask exact.",
+  "visualReview": "18 temporal samples inspected before and after grade; full motion and owner acceptance pending.",
+  "remaining": [
+    "Foot drift and final stance differ from idle; exact joins not established.",
+    "Repair reaches lower than v1; review before segmentation.",
+    "Shared helmet, runtime/native checks pending."
+  ],
+  "attemptsThisRevision": 1,
+  "estimatedUSD": 0.19,
+  "verifiedBilling": null,
+  "colourRevision": "neutral-v3: owner still saw purple. Broader cold-neutral mask now includes upper shoulder/backpack; luminance-matched neutral graphite/silver. Separate warm face spill and hair treatment. Yellow patches preserved.",
+  "review": "neutral-review-v3.gif",
+  "ownerAcceptance": {
+    "date": "2026-09-29",
+    "revision": "neutral-v3",
+    "feedback": "Looks good",
+    "scope": "Visual approval of the neutral-v3 review following colour corrections; runtime integration remains pending."
+  },
+  "pending": [
+    "Foot registration and exact action joins",
+    "Shared helmet and collar fitting",
+    "Native integration validation"
+  ]
+}

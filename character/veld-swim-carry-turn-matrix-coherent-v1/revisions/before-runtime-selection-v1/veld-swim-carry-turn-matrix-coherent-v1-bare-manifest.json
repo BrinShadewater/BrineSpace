@@ -1,0 +1,783 @@
+{
+  "name": "Veld coherent cargo swimming turn matrix bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_pending_full_motion_controller_world_review",
+  "states": [
+    {
+      "id": "swim-carry-turn-east-south",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-east-south/000.png",
+        "frames/bare/swim-carry-turn-east-south/001.png",
+        "frames/bare/swim-carry-turn-east-south/002.png",
+        "frames/bare/swim-carry-turn-east-south/003.png",
+        "frames/bare/swim-carry-turn-east-south/004.png",
+        "frames/bare/swim-carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-south-east",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-south-east/000.png",
+        "frames/bare/swim-carry-turn-south-east/001.png",
+        "frames/bare/swim-carry-turn-south-east/002.png",
+        "frames/bare/swim-carry-turn-south-east/003.png",
+        "frames/bare/swim-carry-turn-south-east/004.png",
+        "frames/bare/swim-carry-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-south-west",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-south-west/000.png",
+        "frames/bare/swim-carry-turn-south-west/001.png",
+        "frames/bare/swim-carry-turn-south-west/002.png",
+        "frames/bare/swim-carry-turn-south-west/003.png",
+        "frames/bare/swim-carry-turn-south-west/004.png",
+        "frames/bare/swim-carry-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-west-south",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-west-south/000.png",
+        "frames/bare/swim-carry-turn-west-south/001.png",
+        "frames/bare/swim-carry-turn-west-south/002.png",
+        "frames/bare/swim-carry-turn-west-south/003.png",
+        "frames/bare/swim-carry-turn-west-south/004.png",
+        "frames/bare/swim-carry-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-west-north",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-west-north/000.png",
+        "frames/bare/swim-carry-turn-west-north/001.png",
+        "frames/bare/swim-carry-turn-west-north/002.png",
+        "frames/bare/swim-carry-turn-west-north/003.png",
+        "frames/bare/swim-carry-turn-west-north/004.png",
+        "frames/bare/swim-carry-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-north-west",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-north-west/000.png",
+        "frames/bare/swim-carry-turn-north-west/001.png",
+        "frames/bare/swim-carry-turn-north-west/002.png",
+        "frames/bare/swim-carry-turn-north-west/003.png",
+        "frames/bare/swim-carry-turn-north-west/004.png",
+        "frames/bare/swim-carry-turn-north-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-north-east",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-north-east/000.png",
+        "frames/bare/swim-carry-turn-north-east/001.png",
+        "frames/bare/swim-carry-turn-north-east/002.png",
+        "frames/bare/swim-carry-turn-north-east/003.png",
+        "frames/bare/swim-carry-turn-north-east/004.png",
+        "frames/bare/swim-carry-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-east-north",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-east-north/000.png",
+        "frames/bare/swim-carry-turn-east-north/001.png",
+        "frames/bare/swim-carry-turn-east-north/002.png",
+        "frames/bare/swim-carry-turn-east-north/003.png",
+        "frames/bare/swim-carry-turn-east-north/004.png",
+        "frames/bare/swim-carry-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-east-west/000.png",
+        "frames/bare/swim-carry-turn-east-west/001.png",
+        "frames/bare/swim-carry-turn-east-west/002.png",
+        "frames/bare/swim-carry-turn-east-west/003.png",
+        "frames/bare/swim-carry-turn-east-west/004.png",
+        "frames/bare/swim-carry-turn-east-west/005.png",
+        "frames/bare/swim-carry-turn-east-west/006.png",
+        "frames/bare/swim-carry-turn-east-west/007.png",
+        "frames/bare/swim-carry-turn-east-west/008.png",
+        "frames/bare/swim-carry-turn-east-west/009.png",
+        "frames/bare/swim-carry-turn-east-west/010.png",
+        "frames/bare/swim-carry-turn-east-west/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-west-east/000.png",
+        "frames/bare/swim-carry-turn-west-east/001.png",
+        "frames/bare/swim-carry-turn-west-east/002.png",
+        "frames/bare/swim-carry-turn-west-east/003.png",
+        "frames/bare/swim-carry-turn-west-east/004.png",
+        "frames/bare/swim-carry-turn-west-east/005.png",
+        "frames/bare/swim-carry-turn-west-east/006.png",
+        "frames/bare/swim-carry-turn-west-east/007.png",
+        "frames/bare/swim-carry-turn-west-east/008.png",
+        "frames/bare/swim-carry-turn-west-east/009.png",
+        "frames/bare/swim-carry-turn-west-east/010.png",
+        "frames/bare/swim-carry-turn-west-east/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-north-south",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-north-south/000.png",
+        "frames/bare/swim-carry-turn-north-south/001.png",
+        "frames/bare/swim-carry-turn-north-south/002.png",
+        "frames/bare/swim-carry-turn-north-south/003.png",
+        "frames/bare/swim-carry-turn-north-south/004.png",
+        "frames/bare/swim-carry-turn-north-south/005.png",
+        "frames/bare/swim-carry-turn-north-south/006.png",
+        "frames/bare/swim-carry-turn-north-south/007.png",
+        "frames/bare/swim-carry-turn-north-south/008.png",
+        "frames/bare/swim-carry-turn-north-south/009.png",
+        "frames/bare/swim-carry-turn-north-south/010.png",
+        "frames/bare/swim-carry-turn-north-south/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-south-north",
+      "frameFiles": [
+        "frames/bare/swim-carry-turn-south-north/000.png",
+        "frames/bare/swim-carry-turn-south-north/001.png",
+        "frames/bare/swim-carry-turn-south-north/002.png",
+        "frames/bare/swim-carry-turn-south-north/003.png",
+        "frames/bare/swim-carry-turn-south-north/004.png",
+        "frames/bare/swim-carry-turn-south-north/005.png",
+        "frames/bare/swim-carry-turn-south-north/006.png",
+        "frames/bare/swim-carry-turn-south-north/007.png",
+        "frames/bare/swim-carry-turn-south-north/008.png",
+        "frames/bare/swim-carry-turn-south-north/009.png",
+        "frames/bare/swim-carry-turn-south-north/010.png",
+        "frames/bare/swim-carry-turn-south-north/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

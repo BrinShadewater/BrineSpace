@@ -1,0 +1,367 @@
+{
+  "inputSHA256": {
+    "bill-swim-west-master-v7/build.py": "f07a4a2c2d161e08595a304ce0b3100ab934f28f46b53d737b81756cf8cc7706",
+    "bill-swim-west-master-v6/sources/canonical-bare-head-v1.png": "699cb3c5bbf1c4c7c4ef8e964472c6c68e21d13078883bc9d4b8564d87755b51",
+    "bill-swim-west-master-v6/sources/master-head-isolated-v1.png": "6d21d8523c4150b1c2866f78c36564f95f091eb35bfd25aa4c9259cf81724d09",
+    "bill-swim-west-master-v6/sources/master-head-isolation-prompt-v1.txt": "211ef7367f13a0c98d45ec37e89231e464c983787b64d8fc85075e63a4ffb505",
+    "bill-swim-west-master-v6/prepare_head.py": "287f2037a820520e2c5f36188473fe04e08a3b6eb8dd836ef45230a4e4cdedbe",
+    "bill-swim-west-master-v6/head-component-review.json": "0874000a016b743b2252dc2fd08a79d17338c50cb16604cd04c2ca40b52bb932",
+    "bill-land-water-west-v9/sources/master-head-reference.png": "5603f3fd6b9fd3b18804719203685b5a545be0baea37db4b16c2518a5428ada1",
+    "crew-side-masters-v1/bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "bill-swim-west-master-v7/body-source/review.json": "80e2e61ae9c220e19065365ab1cfc428ebb5d6f22c61fca5b5c7d11cc9327a89",
+    "bill-swim-west-master-v7/body-source/index.html": "4ef7738c3b9a1b3a47bc4028f31dc169c8ff5457b41a37f0cd757140c9cb1309",
+    "bill-land-water-west-v11/bare/frames/land-swim-west/005.png": "78bcf4cadf7646e6d2d782ffedc2dc4acb3171a87b5e1dccf36cc2c8773977c5",
+    "bill-land-water-west-v11/helmet/frames/land-swim-west/005.png": "85a143283da7744ce9cb2de89442a93ba2fe0b142e4196afc313a01c1064ff21",
+    "bill-swim-west-master-v7/body-source/bare/manifest.json": "1b6d08530b49374bebd4f348f521f39a7aecacbad5c8d7381c0c9c882e6570e1",
+    "bill-swim-west-master-v7/body-source/helmet/manifest.json": "2c122df225ced35a603c62bfb931e8945d327bb8d92a604573a6a0f397748f8b",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/000.png": "de7b8b7bde9ddfe498323e60593ea60790c68d37aa06f0cde0f3dab81f19c18e",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/001.png": "ced7e83f5163793fe888322daafcf5f8255dced298a7984219c953105bc76478",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/002.png": "6df9f9834912258f60073edf6c58ced88475b4bf3afd6f9f3a3fec03df2fd78f",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/003.png": "ced6189cdfce129cd33d28e0dfe43d5c9b1a2ef06d9738c23e88c812cf759638",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/004.png": "4b69d5bd3589f9d87e0a34e47754861d5b33a24ce6113ad9c74ddd47df862a36",
+    "bill-swim-west-master-v7/body-source/bare/frames/swim-west/005.png": "9d71d197b6df1e1bf3859864b71cf098f2f920f124d69d42b031243eeda9d936",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/000.png": "c25ddba294de0c5960c870eeee68e9ce56c54c2724b7133fb10e767e3f67a538",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/001.png": "a1e24352bc265c9197f29026bd05e03a844f3ea7e2222f6c809168b240bcf72b",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/002.png": "d55a142e51bd6dd1f0956357ef3c829af762de45a929c5667a52447fac6ba8e5",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/003.png": "562e955ffa213671caaee14c2497989e5dd30c59f1d1023e9839324f8c1b9373",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/004.png": "998c28df672a0c9dd73b7deefc139ef7141d7484125d1f2e278a4992022d2679",
+    "bill-swim-west-master-v7/body-source/helmet/frames/swim-west/005.png": "b5eba3316c00b67bba782e6b64e06a8d51eae62bef57e3901ad686d4d6cf11a5"
+  },
+  "frozenInputsStable": 26,
+  "frames": [
+    {
+      "index": 0,
+      "name": "Extend",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        133,
+        200
+      ],
+      "donorPosition": [
+        122,
+        200,
+        143,
+        223
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          115,
+          197
+        ],
+        [
+          151,
+          197
+        ],
+        [
+          151,
+          208
+        ],
+        [
+          136,
+          225
+        ],
+        [
+          115,
+          225
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    },
+    {
+      "index": 1,
+      "name": "Sweep",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        127,
+        198
+      ],
+      "donorPosition": [
+        116,
+        198,
+        137,
+        221
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          109,
+          195
+        ],
+        [
+          145,
+          195
+        ],
+        [
+          145,
+          206
+        ],
+        [
+          130,
+          223
+        ],
+        [
+          109,
+          223
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    },
+    {
+      "index": 2,
+      "name": "Pull",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        118,
+        197
+      ],
+      "donorPosition": [
+        107,
+        197,
+        128,
+        220
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          100,
+          194
+        ],
+        [
+          136,
+          194
+        ],
+        [
+          136,
+          205
+        ],
+        [
+          121,
+          222
+        ],
+        [
+          100,
+          222
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    },
+    {
+      "index": 3,
+      "name": "Recover",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        130,
+        195
+      ],
+      "donorPosition": [
+        119,
+        195,
+        140,
+        218
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          112,
+          192
+        ],
+        [
+          148,
+          192
+        ],
+        [
+          148,
+          203
+        ],
+        [
+          133,
+          220
+        ],
+        [
+          112,
+          220
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    },
+    {
+      "index": 4,
+      "name": "Reach",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        131,
+        198
+      ],
+      "donorPosition": [
+        120,
+        198,
+        141,
+        221
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          113,
+          195
+        ],
+        [
+          149,
+          195
+        ],
+        [
+          149,
+          206
+        ],
+        [
+          134,
+          223
+        ],
+        [
+          113,
+          223
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    },
+    {
+      "index": 5,
+      "name": "Glide",
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "sourceCrown": [
+        133,
+        199
+      ],
+      "donorPosition": [
+        122,
+        199,
+        143,
+        222
+      ],
+      "donorSize": [
+        21,
+        23
+      ],
+      "donorScale": 1,
+      "donorRotationDegrees": 0,
+      "erasePolygon": [
+        [
+          115,
+          196
+        ],
+        [
+          151,
+          196
+        ],
+        [
+          151,
+          207
+        ],
+        [
+          136,
+          224
+        ],
+        [
+          115,
+          224
+        ]
+      ],
+      "bodyOutsideHeadUnionExact": true,
+      "originalGreyCollarForegroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueDonorPixelsExactOutsideCollarForeground": true,
+      "oneConnectedFigureAboveAlpha180": true,
+      "helmetFrameExactMatteBodyBank": true,
+      "scope": "Authored donor reused at one calibrated physical scale; original master identity/collar and moving acceptance still subject to visual review."
+    }
+  ],
+  "canvas": [
+    352,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "bodySourceDensity": 0.15481171548117154,
+  "decodedAPNGFramesExact": 12,
+  "loopMs": 960,
+  "helmetFramesExactMatteBodyBank": 6,
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "visualAcceptance": "Pending whole body/head/collar/grade/motion review; donor is authored master-derived, not original exact pixel extraction."
+}

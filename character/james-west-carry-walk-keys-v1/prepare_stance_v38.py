@@ -1,0 +1,13 @@
+from pathlib import Path
+from PIL import Image
+import json, hashlib
+p=Path(__file__).resolve().parent; r=p.parents[1]; out=p/'stance-inbetween-v38'; out.mkdir(exist_ok=True)
+sources=[r/'character/james-carry-headcaps-v1/frames/004.png',p/'leg-bridge-v20/candidate.png',p/'master-head-review-v16/bare-000.png']
+refs=[]
+for f,label in zip(sources,['standing-target','next-leg-pose','walk-material-reference']):
+    dst=out/(label+'.png'); Image.open(f).convert('RGBA').resize((1024,1024),Image.Resampling.NEAREST).save(dst); refs.append(dst)
+prompt='''Use case: precise-object-edit. Single transparent pixel-art character sprite, James facing west, same exact framing and character scale. Image1 is the EDIT TARGET and standing carry authority. Image2 is the NEXT leg pose, not the desired output. Image3 is the following walk and matte material reference. Author a genuinely distinct first weight-shift pose BEFORE Image2. Keep Image1 head, chest, backpack, both hands and compact graphite case completely unchanged. Only change his legs below the case. In Image1 the near boot is the viewer-right boot, and the farther boot is viewer-left. Shift the near knee and near boot slightly toward the left boot, leaving a clearly visible gap between the two legs and two separate planted boot soles. The near boot must still sit between its Image1 location and its Image2 location; do NOT collapse immediately into Image2 single narrow profile stance. Bring the far knee only slightly inward. Show a subtle weight transfer with both feet still firmly grounded, ankles intact, no stepping forward, no raised heel, no new bent knee. Keep original leg length, knee pad size, boot size and ground line. Preserve muted charcoal matte fabric, subdued mustard, fine native pixel detail, warm gray metal, original lighting and alpha. No purple, shiny finish, black shadow patches, resizing, redrawn upper body, case changes, perspective turn, text, ground shadow or backdrop. All references are identical 256-square native sprites enlarged four times with nearest-neighbor. Return the same square canvas with transparent background. Output ONLY the edited Image1 with this mild but visible intermediate leg pose.'''
+(out/'prompt.txt').write_text(prompt+'\n',encoding='utf-8')
+files=sources+refs+[Path(__file__),out/'prompt.txt']
+(out/'inputs.json').write_text(json.dumps(dict(base=sources[0].relative_to(r).as_posix(),references=[f.relative_to(r).as_posix() for f in refs],admission=[88,147,166,228],preCallSha256={f.relative_to(r).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in files},normalChanged=False),indent=2)+'\n')
+print('V38 first weight-shift source inputs frozen.')

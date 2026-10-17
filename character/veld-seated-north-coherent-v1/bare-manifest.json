@@ -1,0 +1,144 @@
+{
+  "name": "Veld north seated bare candidate",
+  "status": "staged_candidate",
+  "precomposed": true,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "sit-down-north",
+      "frameFiles": [
+        "frames/bare/sit-down-north/000.png",
+        "frames/bare/sit-down-north/001.png",
+        "frames/bare/sit-down-north/002.png",
+        "frames/bare/sit-down-north/003.png",
+        "frames/bare/sit-down-north/004.png",
+        "frames/bare/sit-down-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        140,
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "sit-rise-north",
+      "frameFiles": [
+        "frames/bare/sit-down-north/005.png",
+        "frames/bare/sit-down-north/004.png",
+        "frames/bare/sit-down-north/003.png",
+        "frames/bare/sit-down-north/002.png",
+        "frames/bare/sit-down-north/001.png",
+        "frames/bare/sit-down-north/000.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        140,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "sit-idle-north",
+      "frameFiles": [
+        "frames/bare/sit-down-north/005.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "waterKinds": [
+        "seated"
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "seatContactDepth": true
+    }
+  ]
+}

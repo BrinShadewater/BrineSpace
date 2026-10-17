@@ -1,0 +1,55 @@
+{
+	"checks": 37,
+	"failures": 0,
+	"graphNodes": 1625,
+	"results": [
+		{
+			"arrived": true,
+			"cancelledSafely": true,
+			"capture": "",
+			"completed": false,
+			"cornerFound": true,
+			"directionChanges": [
+				{
+					"foot": [
+						7855.408203125,
+						7904.0
+					],
+					"from": "south",
+					"next": "(7744.0, 7904.0)",
+					"path": "[(7744.0, 7904.0)]",
+					"tick": 83,
+					"to": "west"
+				},
+				{
+					"foot": [
+						7744.0,
+						7904.0
+					],
+					"from": "west",
+					"next": "arrived",
+					"path": "[]",
+					"tick": 180,
+					"to": "east"
+				}
+			],
+			"equipment": "",
+			"incoming": "[(7856.0, 7904.0)]",
+			"outgoing": "[(7744.0, 7904.0)]",
+			"pathPoints": 2,
+			"phases": [
+				0,
+				1,
+				2
+			],
+			"planned": "[(7856.0, 7904.0), (7744.0, 7904.0)]",
+			"started": true,
+			"state": "swim-turn-south-west",
+			"vertex": [
+				7856.0,
+				7904.0
+			]
+		}
+	],
+	"scope": "Explicit staged12direction candidates; forced flooded Veld on actual five authored furnished rooms, real graph route/smoothing/move/grid frame source. No exterior, natural flooding or concurrent traffic claim."
+}

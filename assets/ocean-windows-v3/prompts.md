@@ -1,0 +1,35 @@
+# Built-in image_gen prompts
+
+All calls used `transparent_background: true`. Existing cold-store, bio-lab and airlock riser masters and the old panoramic window were visible reference images in the conversation. Source PNG bytes are retained unchanged; runtime uses registered regions and uniform scaling. Actual proportions differ from requested proportions; see manifest and native captures.
+
+## porthole-steel (edit; num_last_images_to_include: 1)
+
+Revise this porthole into an isolated production GAME SPRITE. REMOVE the entire surrounding square wall, leave true alpha transparency outside the outer circular mounting flange. Preserve the complete round ring and opaque ocean in glass. Change photoreal noisy metal into simplified hand-painted industrial game art: clean broad matte charcoal surfaces, softly painted grey bevels, restrained bolts, zero rust, zero gritty scratches, zero bright specular highlights. Match BrineSpace wall art shown earlier. Ocean interior should be painted broad layered dark teal rock silhouettes with sparse kelp, not photoreal. Entire isolated circular porthole centered with transparent 15% padding all around. This is a small 28-unit wall fitting, simplify details for native game reading. NO background panel.
+
+## viewing-warm
+
+BrineSpace production game sprite, ONE medium bulkhead observation window, horizontal 2:1 width to height. Isolated transparent exterior, no wall backdrop. Use the established matte hand-painted industrial wall style shown earlier in conversation: warm desaturated grey enamel frame with charcoal gasket and inset steel retaining lip. Thin flush mounting flange, six subtle recessed screws, rounded chamfer corners, straight front-facing wall insert with subtle top thickness. A broad single opaque dark teal pane shows stylized painted rocky seabed and sparse muted kelp through deep water; use broad readable shaded silhouettes not photographic texture. Fine crisp game-art density like existing riser reference, no coarse pixel grid, no glossy 3D, no bright glare, no rust, no glowing edges, no text. The window is a pressure-tight architectural aperture not a wall-hung picture. Full silhouette with transparent margin. Keep frame slim to leave a generous view.
+
+## bulkhead-sage
+
+Create ONE compact nearly square rounded-rectangle bulkhead pressure window for a hand-painted industrial underwater-station game. Outer frame width ONLY 1.3 times height, NOT panoramic. Isolated asset on transparent background. Matte sage enamel flush flange with charcoal inner gasket, steel bevel and eight recessed bolts, straightforward inset architecture, subtle upper rim depth. Opaque teal glass shows a painted seabed, broad rocks and sparse marine plants, with layered dim ocean depth. Crisp detailed hand-painted construction with restrained diffuse shading matching BrineSpace's muted industrial riser walls. No shine, glow, coarse pixel blocks, text, white glints, grit or photographic surface. No surrounding wall or scenery outside frame. Full asset uncut in generous transparent margin. Intended for biological/hydroponic room north-wall risers.
+
+## corridor-twin
+
+ONE horizontal NARROW TRANSIT CORRIDOR observation window sprite for BrineSpace. A short paired-light pressure window: two adjacent small rounded rectangular panes in ONE continuous matte neutral grey steel flange, divided by a structural mullion. Overall width 2.5 times height. Slim inset seals, restrained recessed fasteners, flat flush architectural insert. True transparent exterior and generous margins; opaque panes depict painted dim teal deep water and broad low rocky seabed shapes. Match the hand-painted matte practical industrial wall references from conversation. Fine crisp game-art density, restrained diffuse modelling, smooth clean paint, no chrome, rust, glare, glow, text or photoreal grit. Straight front-facing north-riser mount, tiny upper bevel only. For small corridor north-wall panels, keep detail spare and readable. Not a complete wall or floor.
+
+## corner-graphite
+
+One compact CORNER CORRIDOR north-riser window insert for BrineSpace. Straight front facing compact single horizontal capsule window, outer ratio 1.7:1, NOT bent around a corner and NOT isometric. Slight clipped upper corners on the flat mounting flange distinguish a turning-bay fitting. Matte graphite steel with subdued grey edge and black rubber gasket; four inset fasteners. Painted opaque dark teal ocean with simple seabed rock forms and one sparse kelp silhouette. Hand-painted industrial game art, crisp construction and soft restrained diffuse shading matching existing BrineSpace walls. Practical flush pressure-tight architectural insert. Tiny upper bevel only. Clean true transparent exterior with ample margin, complete frame visible. No backing wall, lettering, glow, shiny metal, grit or photographic detail. Keep aperture large and frame narrow, optimized for 45 by 28 game units.
+
+## tee-viewing
+
+BrineSpace game production asset: ONE wide TEE-JUNCTION viewing window insert, a horizontal three-pane pressure window with two narrow structural mullions. Neutral matte slate steel flush flange, muted steel inner lip and dark rubber seals, recessed screws. Broad horizontal silhouette 3:1 outer width to height, straight-on north-riser face, not T-shaped, not bent or isometric. Clean hand-painted industrial sprite with crisp edges and restrained diffuse shading, same surface density as the BrineSpace wall references earlier. Opaque deep teal ocean glazing shows continuous painted rocky seabed across all three panes, broad layered rock silhouettes and very sparse kelp. Fine controlled brush detail, no photographic grit, rust, shiny highlights, bright cyan glow or text. True transparent exterior with clear margin around full silhouette. No surrounding wall. Looks built into a pressure hull, not hung on it. For a sealed north wall at a junction.
+
+## bulkhead-blue
+
+ONE small-to-medium nearly square scientific pressure window insert for BrineSpace north riser wall. Outer aspect ratio 1.2:1. Clean muted desaturated blue-grey enamel frame with graphite gasket and narrow steel retaining lip, four understated recessed fasteners. Very thin flat flush flange, broad opaque deep teal glass looking into simple painted rocky seabed with restrained soft rock silhouettes, no fish or stars. Hand-painted matte industrial game sprite consistent with BrineSpace's clean lab and cold-store walls, crisp contours and controlled diffuse shading. No scuffed paint, photographic noise, gloss, bright highlights, thick cartoon outlines, glow, or text. Straight front-facing architectural aperture, subtle top rim depth only. Isolated true transparent exterior and generous margin, no surrounding wall. Legible when fitted into a 40 by 30 game-unit mount.
+
+## Rejected first trials
+
+`rejected/charcoal-wide.png`: photographic seabed and excessive source detail. `rejected/porthole-wall.png`: unwanted square wall backing and photographic metal. Neither is referenced at runtime. Porthole-wall was the input to the retained porthole edit.

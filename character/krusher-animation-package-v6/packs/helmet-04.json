@@ -1,0 +1,1414 @@
+{
+  "name": "Krusher Dom helmet seated and reading",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "sit-down-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/408a0768b61935aa0baa08a881ff96ffd21453c4598efcfa370e0f77fd7a6302.png",
+        "../frames/0764925732821ff53702abadfe15930b24e774a08dfb18db9d34353b8508e2af.png",
+        "../frames/b6b859cc9f2487f9094190426f9d679dad70ee2388dc2e5be064f0e82b80d764.png",
+        "../frames/252f4fbb875b39bc89249f595c9179d35631291677e8bb2b467292a3ccb5e612.png",
+        "../frames/b59c8db1cbe8127c05ef8168cc9b2b83e18bfc3125751394e8adcb2219161547.png",
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png",
+        "../frames/57984ce813d91a8ed536dd132f0c703348af627c4c5aa3976d51e73d3fcc8b75.png",
+        "../frames/d4d34b4f336bc93b59e0cfd72933d2a6d79a4c183e8d6f757a12066b4d0adb31.png",
+        "../frames/fb8357bf582faa7f1419b6a3eeacf783e435f474031f40495f4ea21de384a87c.png",
+        "../frames/46b1348a4cb77735745f44f62b36841402e6d9d60469ce9af61a9507ba25f340.png",
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png",
+        "../frames/b59c8db1cbe8127c05ef8168cc9b2b83e18bfc3125751394e8adcb2219161547.png",
+        "../frames/252f4fbb875b39bc89249f595c9179d35631291677e8bb2b467292a3ccb5e612.png",
+        "../frames/b6b859cc9f2487f9094190426f9d679dad70ee2388dc2e5be064f0e82b80d764.png",
+        "../frames/0764925732821ff53702abadfe15930b24e774a08dfb18db9d34353b8508e2af.png",
+        "../frames/408a0768b61935aa0baa08a881ff96ffd21453c4598efcfa370e0f77fd7a6302.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png",
+        "../frames/1d4f449594da33267394a944b1f3f0f07046def99d8f0fa7aa4d76c2b079ddc3.png",
+        "../frames/1d4f449594da33267394a944b1f3f0f07046def99d8f0fa7aa4d76c2b079ddc3.png",
+        "../frames/100595b3848d596dd9e3f5b89c7395432b0eb51e97e4556342e1dfd53070afa0.png",
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/100595b3848d596dd9e3f5b89c7395432b0eb51e97e4556342e1dfd53070afa0.png",
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/100595b3848d596dd9e3f5b89c7395432b0eb51e97e4556342e1dfd53070afa0.png",
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/100595b3848d596dd9e3f5b89c7395432b0eb51e97e4556342e1dfd53070afa0.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/7fea6a1a06425291b3440a33965d25adbbaa5407cbc615313db296dbd5b9bbe1.png",
+        "../frames/100595b3848d596dd9e3f5b89c7395432b0eb51e97e4556342e1dfd53070afa0.png",
+        "../frames/1d4f449594da33267394a944b1f3f0f07046def99d8f0fa7aa4d76c2b079ddc3.png",
+        "../frames/1d4f449594da33267394a944b1f3f0f07046def99d8f0fa7aa4d76c2b079ddc3.png",
+        "../frames/bc78adcbed58a4836fc32bfe295139be51107777651d93c662525de91e11e003.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/dc675925d85cd28a786649925e7f2bb91f86ba175e61b9d1c23b4b035be2c194.png",
+        "../frames/4cc8054adb29eaeb43653ac2720b4505478354f2208add305c653edf9fde1ecf.png",
+        "../frames/34a6817b2d275cfabbb9d8a96abdbc4ac9eb771466a38c19c618055ee3238ce5.png",
+        "../frames/ca27a37f66603bd28431fcfd3bdd2323e36095c5f874e52a17e9ce9224d72293.png",
+        "../frames/ef7253395b2b41e006ca3605cea01e2e4e1e6e6919a4a73ffca3cae7eeb2aa0a.png",
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png",
+        "../frames/17e05b603038f16ea35b77f081d48e9776ca9522115f96c4c7ca3a0b134bdad2.png",
+        "../frames/b4a5d108bc7d96dc4fbd671733c259ad35a34386766c3084ec656300b870477c.png",
+        "../frames/c25bbfcc43e9ac6e5c1fd347b37f5b1c04a0314e4de1598bf31932fdf2e350f7.png",
+        "../frames/248d4d5a625373273420cd1cb043c709b3844f2306001b4d59f32bea6f04b52e.png",
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png",
+        "../frames/ef7253395b2b41e006ca3605cea01e2e4e1e6e6919a4a73ffca3cae7eeb2aa0a.png",
+        "../frames/ca27a37f66603bd28431fcfd3bdd2323e36095c5f874e52a17e9ce9224d72293.png",
+        "../frames/34a6817b2d275cfabbb9d8a96abdbc4ac9eb771466a38c19c618055ee3238ce5.png",
+        "../frames/4cc8054adb29eaeb43653ac2720b4505478354f2208add305c653edf9fde1ecf.png",
+        "../frames/dc675925d85cd28a786649925e7f2bb91f86ba175e61b9d1c23b4b035be2c194.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png",
+        "../frames/a8422c6bbc341f9fbd6950ba32870196e2e76080d65578d3e5f5347fad860a28.png",
+        "../frames/a8422c6bbc341f9fbd6950ba32870196e2e76080d65578d3e5f5347fad860a28.png",
+        "../frames/c8b8a13b6c007f38357844212b3d4a8e8528d9ab5c3fac872581ca5649e4b5e4.png",
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/c8b8a13b6c007f38357844212b3d4a8e8528d9ab5c3fac872581ca5649e4b5e4.png",
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/c8b8a13b6c007f38357844212b3d4a8e8528d9ab5c3fac872581ca5649e4b5e4.png",
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/c8b8a13b6c007f38357844212b3d4a8e8528d9ab5c3fac872581ca5649e4b5e4.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/e015a4a0375fa652eabc129734235607fab45043bd3aebdc01c5351fdc8340f1.png",
+        "../frames/c8b8a13b6c007f38357844212b3d4a8e8528d9ab5c3fac872581ca5649e4b5e4.png",
+        "../frames/a8422c6bbc341f9fbd6950ba32870196e2e76080d65578d3e5f5347fad860a28.png",
+        "../frames/a8422c6bbc341f9fbd6950ba32870196e2e76080d65578d3e5f5347fad860a28.png",
+        "../frames/41ab851408e21d23747317e5904883f906c3f9c2941e690f72f0d0b96e586122.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e57cfa873d1287d2804b101304bfc49e6dcfd16a23ce71b0f9105799ca0d33f0.png",
+        "../frames/1a5d8b958fd85fd3b54ba282edd3a6b962b0a74c9c2e3780a1c39e0ce4be1c7f.png",
+        "../frames/3a072642605b82284a42a2405d415a79fd1fc10a961d64e417cdf66fa3b09cf0.png",
+        "../frames/2aba0d792369bf031a892ce8b78f0f84e2c56020f644dba55be3aa497161e167.png",
+        "../frames/5651728febd79b126547c93953444423619e22a2a2d0778b700a5e7ca69fe6f8.png",
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png",
+        "../frames/8999ff88f0da55258dfbc9f3bdeba92fd5dd67679885059d83ad52d7ad99ca75.png",
+        "../frames/4ddb40bc2a5b41125805ddf98cfe32898dbe41a5748a7884f4cb14801e99b42f.png",
+        "../frames/1e752304d3a6d381a4be93c757d1cf8d005f06f2b13264932d1df1b0f21c64f2.png",
+        "../frames/65162903af7c1b5f05df8fbcb15bfc2aba6339a68f426bd262e0ada370b98229.png",
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png",
+        "../frames/5651728febd79b126547c93953444423619e22a2a2d0778b700a5e7ca69fe6f8.png",
+        "../frames/2aba0d792369bf031a892ce8b78f0f84e2c56020f644dba55be3aa497161e167.png",
+        "../frames/3a072642605b82284a42a2405d415a79fd1fc10a961d64e417cdf66fa3b09cf0.png",
+        "../frames/1a5d8b958fd85fd3b54ba282edd3a6b962b0a74c9c2e3780a1c39e0ce4be1c7f.png",
+        "../frames/e57cfa873d1287d2804b101304bfc49e6dcfd16a23ce71b0f9105799ca0d33f0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png",
+        "../frames/6ee7162eefddc46a3d1aac982ebd40af414360fa516a33ceca357f0dd24738a8.png",
+        "../frames/6ee7162eefddc46a3d1aac982ebd40af414360fa516a33ceca357f0dd24738a8.png",
+        "../frames/cb63afb04827dead5144739a833f8df23cab53b73d7222e5a745e2e41b14a23b.png",
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/cb63afb04827dead5144739a833f8df23cab53b73d7222e5a745e2e41b14a23b.png",
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/cb63afb04827dead5144739a833f8df23cab53b73d7222e5a745e2e41b14a23b.png",
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/cb63afb04827dead5144739a833f8df23cab53b73d7222e5a745e2e41b14a23b.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/88e54f8a94b2a7541a56063a206e6af411e143bd4017b420ac9cf34220895f50.png",
+        "../frames/cb63afb04827dead5144739a833f8df23cab53b73d7222e5a745e2e41b14a23b.png",
+        "../frames/6ee7162eefddc46a3d1aac982ebd40af414360fa516a33ceca357f0dd24738a8.png",
+        "../frames/6ee7162eefddc46a3d1aac982ebd40af414360fa516a33ceca357f0dd24738a8.png",
+        "../frames/4a864a0d54b5dea8f09122a4f37df5cab7caf6714fc9d76f995b5ddf49bba4d3.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0eb52073722fca3763771720f152494739e60b2ebc1bc39c082f0afb92e3b675.png",
+        "../frames/87f61203d04ad1b8d32905500ffdb01bf0c76c5ebdc27b7b9a3c03e72a4d36b1.png",
+        "../frames/0b8398ec4337dcfb298ba4b1b07232231d5f5f349bf6f8e4b5574ad00cc9b8dc.png",
+        "../frames/25957ea64fa7e1b2736cd6a94e9f267deb41c665f7f44b91d0dd9f24ddc5f021.png",
+        "../frames/dab07d117d83f01599e4d741f6650fd18414a660aa031bbee057a4d5099b3f4e.png",
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png",
+        "../frames/06fcc8c50f2a1fe08fbc9a64fd57ea8c2fc027ccef67840ac881721bf7bbedca.png",
+        "../frames/8d894ed726494627613642fa4368778c4aa3068dd51fba48853fbe5ff8b5f63a.png",
+        "../frames/6bba33a9249c7ad213e6cdb471aa210a22dc2fa463c2531c2dc7503f8aff6a34.png",
+        "../frames/1a7e8b0f2199e7433b434b9ed45ff5641bb0a703e7e35ee820b76a8f29cf4f73.png",
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png",
+        "../frames/dab07d117d83f01599e4d741f6650fd18414a660aa031bbee057a4d5099b3f4e.png",
+        "../frames/25957ea64fa7e1b2736cd6a94e9f267deb41c665f7f44b91d0dd9f24ddc5f021.png",
+        "../frames/0b8398ec4337dcfb298ba4b1b07232231d5f5f349bf6f8e4b5574ad00cc9b8dc.png",
+        "../frames/87f61203d04ad1b8d32905500ffdb01bf0c76c5ebdc27b7b9a3c03e72a4d36b1.png",
+        "../frames/0eb52073722fca3763771720f152494739e60b2ebc1bc39c082f0afb92e3b675.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png",
+        "../frames/25303c6270638d9d498c3db9aec7d5fc73bdba452ccd016a9f14fba179622a72.png",
+        "../frames/25303c6270638d9d498c3db9aec7d5fc73bdba452ccd016a9f14fba179622a72.png",
+        "../frames/902dfc40ea47060349f1743777f0a032eed3c7a44ea3a9943cd2b9276cce6308.png",
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/902dfc40ea47060349f1743777f0a032eed3c7a44ea3a9943cd2b9276cce6308.png",
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/902dfc40ea47060349f1743777f0a032eed3c7a44ea3a9943cd2b9276cce6308.png",
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/902dfc40ea47060349f1743777f0a032eed3c7a44ea3a9943cd2b9276cce6308.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/b758655123eb1b7d1edd442851efa36a6d645087dfae3af6b059e6b3c41cd45b.png",
+        "../frames/902dfc40ea47060349f1743777f0a032eed3c7a44ea3a9943cd2b9276cce6308.png",
+        "../frames/25303c6270638d9d498c3db9aec7d5fc73bdba452ccd016a9f14fba179622a72.png",
+        "../frames/25303c6270638d9d498c3db9aec7d5fc73bdba452ccd016a9f14fba179622a72.png",
+        "../frames/c7bdbe47d03145210a7a68aa003d463176fe9f2c6ddfda4d124461d295145e2a.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    }
+  ]
+}

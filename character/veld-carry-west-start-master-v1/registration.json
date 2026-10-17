@@ -1,0 +1,123 @@
+{
+  "checks": 52,
+  "failures": 0,
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "scale": 0.22255639097744362,
+  "ruler": "one first standing148 source ruler, no pose height normalization",
+  "rows": [
+    {
+      "phase": 0,
+      "floor": 689,
+      "bootCenter": 282.5,
+      "sourceHeadAxis": 306.5,
+      "registration": "whole body translated to canonical held head axis134, physical boot floor224; leg swing width preserved",
+      "offset": [
+        66,
+        71
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 30,
+      "shellPosition": [
+        111,
+        67
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 1,
+      "floor": 686,
+      "bootCenter": 292.0,
+      "sourceHeadAxis": 266.5,
+      "registration": "whole body translated to canonical held head axis134, physical boot floor224; leg swing width preserved",
+      "offset": [
+        75,
+        71
+      ],
+      "nativeHeight": 147,
+      "headTop": 77,
+      "headWidthTop20": 30,
+      "shellPosition": [
+        111,
+        67
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 2,
+      "floor": 685,
+      "bootCenter": 165.5,
+      "sourceHeadAxis": 234.5,
+      "registration": "whole body translated to canonical held head axis134, physical boot floor224; leg swing width preserved",
+      "offset": [
+        82,
+        72
+      ],
+      "nativeHeight": 146,
+      "headTop": 78,
+      "headWidthTop20": 30,
+      "shellPosition": [
+        111,
+        68
+      ],
+      "edgePixels": 0
+    },
+    {
+      "phase": 3,
+      "floor": 680,
+      "bootCenter": 252.5,
+      "sourceHeadAxis": 240.0,
+      "registration": "whole body translated to canonical held head axis134, physical boot floor224; leg swing width preserved",
+      "offset": [
+        81,
+        73
+      ],
+      "nativeHeight": 145,
+      "headTop": 79,
+      "headWidthTop20": 30,
+      "shellPosition": [
+        111,
+        69
+      ],
+      "edgePixels": 0
+    }
+  ],
+  "gutters": [
+    0,
+    543,
+    1086,
+    1629,
+    2172
+  ],
+  "bindings": {
+    "character/veld-carry-west-start-master-v1/frames/bare/000.png": "a19f29bb56a4529de1bc31f558129ef71ddb0ce011f3e4e9956ad0fb351a37ac",
+    "character/veld-carry-west-start-master-v1/frames/bare/001.png": "51a8799528f0a5f4c6fdcebc991cd23aa93b13580bbcb1d722eaa90b4a479f3f",
+    "character/veld-carry-west-start-master-v1/frames/bare/002.png": "06097f7f5c9afcc963b17d9bce9b79ca9c82909e64acaa902a8e96464ac10d09",
+    "character/veld-carry-west-start-master-v1/frames/bare/003.png": "ab2aaba17271734abecdb04be73ba0924da88d2287931e07b5ca95abeacc7111",
+    "character/veld-carry-west-start-master-v1/frames/helmet/000.png": "a5ab3300e7923b2b26b4338379af1066586c54b2752edb658279295f42fb6723",
+    "character/veld-carry-west-start-master-v1/frames/helmet/001.png": "212602eb14c2bad5b04097f35a31c3ed773545cc49a7d1a9d2e77e022899c149",
+    "character/veld-carry-west-start-master-v1/frames/helmet/002.png": "bf08c7ad00c9214c08ff07e91a2cb4da2be517d592ed6302b3ff159c738f9daf",
+    "character/veld-carry-west-start-master-v1/frames/helmet/003.png": "f23cd991e273e77267fac6e3ec136bda43efc0e0333903fbceff34c3dc241cce"
+  },
+  "caseGripProtectedBox": [
+    82,
+    107,
+    128,
+    157
+  ],
+  "recipeSHA256": "7dc4d05eddb95795eb8e160086f09008574a6776a5c3c6976e8c3d822b0d5f8d",
+  "shellSource": "character/veld-shared-helmet-v1/frames/idle-west/000.png",
+  "shellCrop": [
+    64,
+    14,
+    108,
+    60
+  ],
+  "shellScale": 1,
+  "sourceSHA256": "72300ade82be8b7a3a10ab56a77f904287540a0c2eb1bae9e519fde09cd4a73b",
+  "scope": "Whole authored small steps, exact held and carry0 endpoints, staged finite320start/reversed stop. No controller travel/phase/adoption/full cadence or original-master complete-library acceptance.",
+  "visualReview": "Raw4pose source and8paired exports reviewed against exact West held/gait0 and original master. All48standalone native/source pairs reviewed in4boards, plus full helmet-stop0native. Correct West asymmetric device retained; wholebody continuity improves first step, material/head/grip/foot cadence remains scoped polish."
+}

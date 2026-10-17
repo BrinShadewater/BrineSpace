@@ -1,0 +1,68 @@
+{
+  "reviewedBoards": [
+    "bare-all-gaits.png",
+    "bare-leg-detail.png",
+    "helmet-all-gaits.png",
+    "../../output/bill-carry-east-start-station-v4/staged-bare-review.png",
+    "../../output/bill-carry-east-start-station-v4/staged-helmet-review.png"
+  ],
+  "browser": [
+    {
+      "gear": "bare",
+      "size": 148,
+      "motion": "gait"
+    },
+    {
+      "gear": "helmet",
+      "size": 82,
+      "motion": "bridge"
+    }
+  ],
+  "sourceChecks": 138,
+  "native": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 55.98,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-east-start-station-v4\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "recordedSourceEvidence": {
+    "scope": "Actual60Hz recorded source bytes and next-frame gait progression at prescribed workshop join. Does not prove anatomical foot lock or snapshot lifecycle.",
+    "passed": true,
+    "exactRecordedSourceSelections": 290,
+    "joins": [
+      {
+        "exactLastTurnToFirstBridgeBytes": true,
+        "helmet": false,
+        "exactLastBridgeToFirstGaitBytes": true,
+        "resumePhase": 0.104,
+        "nextFrameSlot": 1,
+        "nextFrameSeconds": 0.016666666666669272,
+        "gaitCycles": 2,
+        "sourceStancePixelsUnchanged": true
+      },
+      {
+        "exactLastTurnToFirstBridgeBytes": true,
+        "helmet": true,
+        "exactLastBridgeToFirstGaitBytes": true,
+        "resumePhase": 0.104,
+        "nextFrameSlot": 1,
+        "nextFrameSeconds": 0.016666666666669272,
+        "gaitCycles": 2,
+        "sourceStancePixelsUnchanged": true
+      }
+    ],
+    "journeysSha256": "930ea1485728b9e30ff2957274346ed14fb06cfda5c73b763f0a668c17810aef"
+  },
+  "normalSelectionChanged": false,
+  "remaining": [
+    "North physical stride/contact review",
+    "Latest cardinal controller and natural routes",
+    "Older return/stow source bindings",
+    "Full animation set and polish"
+  ]
+}

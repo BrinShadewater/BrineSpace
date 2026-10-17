@@ -1,0 +1,171 @@
+{
+  "name": "Veld North staged original-master idle join bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "status": "staged_rise_join_not_complete_idle_or_lifecycle",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "unload-north",
+      "frameFiles": [
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/000.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/001.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/002.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/003.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/004.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/005.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/006.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        60,
+        65,
+        65,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 7
+    },
+    {
+      "id": "pickup-north",
+      "frameFiles": [
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/006.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/005.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/004.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/003.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/002.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/001.png",
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/000.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        65,
+        65,
+        60,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 7
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "res://character/veld-cargo-north-master-family-v1/rise-join-v3/frames/bare/unload-north/006.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "frameCount": 1,
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterKinds": [
+        "idle"
+      ],
+      "waterPoses": [
+        false
+      ]
+    }
+  ],
+  "floorPropStudy": {
+    "canvas": "res://character/veld-cargo-north-master-family-v1/rise-join-v3/floor-case-canvas.png",
+    "displayUnloadIndices": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "displayPickupIndices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "handoffSeconds": 0.26,
+    "scope": "separate fixed prop after contact; lifecycle pending"
+  }
+}

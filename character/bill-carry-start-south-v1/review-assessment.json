@@ -1,0 +1,32 @@
+{
+  "packageValidation": {
+    "checks": 72,
+    "passed": true,
+    "scope": "Package registration, paired exact upper/lower/endpoints, inputs and finite clock. No anatomical contact or lifecycle acceptance claim."
+  },
+  "revisedGaitPackageValidation": {
+    "checks": 45,
+    "passed": true,
+    "oldPassingFootLiftPixels": 28,
+    "newPassingFootLiftPixels": 13,
+    "scope": "Exact other5slots/master upper/paired legs/fixed clock and discrete lift metric; not contact or full smoothness certification"
+  },
+  "visualReview": {
+    "uniqueNativeSourcePairsReviewed": 24,
+    "nativeCapturesProduced": 88,
+    "bridgeSourcePresentations": 12,
+    "passingComparisonPresentations": 10,
+    "browserSizes": [
+      82,
+      148
+    ],
+    "scope": "Both native first-step/gait boards and full-size source/old-new passing boards reviewed. Browser/GIF replay source clocks, not continuous native footage or anatomical foot-contact proof."
+  },
+  "rawSourceHashAfterNative": "4732831065ef8b1648ed77f2bdd862f73de64d78955462948e6d0c3ec9b0d689",
+  "limits": [
+    "Source4 foot lift reduced28->13 but not gait-contact certification",
+    "First-step interior foot shape/material still needs cross-family polish",
+    "Natural chooser/short routes, interruption/gear/medium/Continue and arrival/floor-case semantics remain open",
+    "Normal loader unchanged; full Bill set incomplete"
+  ]
+}

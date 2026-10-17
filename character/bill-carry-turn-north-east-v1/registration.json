@@ -1,0 +1,145 @@
+{
+  "source": "sources/turn-v1.png",
+  "sourceSha256": "8d9c12f772bef5d69bf9ad17468f714591ddf6409ce43bffc45b6ca4a897e93d",
+  "scale": 0.3272921108742004,
+  "scaleX": 0.25,
+  "widthCalibration": "one frozen shoulder-width calibration from both neutral cardinal authorities;no per-pose normalization",
+  "omittedSourceCells": [
+    0,
+    5
+  ],
+  "endpointAuthorities": [
+    "bill-cargo-north-coherent-v1/frames/pickup-north/011.png",
+    "bill-cargo-east-coherent-v1/frames/pickup-east/010.png"
+  ],
+  "material": {
+    "quantiles": [
+      0,
+      0.05,
+      0.15,
+      0.35,
+      0.5,
+      0.7,
+      0.85,
+      0.95,
+      0.98,
+      1
+    ],
+    "neutralInput": [
+      0.0,
+      3.0,
+      14.666666666666666,
+      40.333333333333336,
+      51.666666666666664,
+      64.0,
+      74.66666666666667,
+      96.0,
+      136.66666666666666,
+      253.66666666666666
+    ],
+    "neutralOutput": [
+      2.3333333333333335,
+      11.666666666666666,
+      20.333333333333332,
+      35.0,
+      44.333333333333336,
+      54.666666666666664,
+      65.66666666666667,
+      117.34999999999991,
+      142.6066666666667,
+      193.66666666666666
+    ],
+    "hair": [
+      0.6,
+      0.64,
+      0.7
+    ],
+    "skin": [
+      0.84,
+      0.9,
+      0.96
+    ],
+    "burgundy": [
+      0.52,
+      0.6,
+      0.74
+    ],
+    "clothDetail": {
+      "radiusSourcePixels": 2.2,
+      "gain": 1.1,
+      "residualLimit": 18
+    },
+    "authority": "crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/000.png",
+    "facing": "east"
+  },
+  "frames": [
+    {
+      "sourceCell": 1,
+      "sourceBox": [
+        674,
+        25,
+        889,
+        499
+      ],
+      "position": [
+        102,
+        69
+      ],
+      "scale": 0.3272921108742004,
+      "scaleX": 0.25,
+      "headAxisSourceX": 773.0,
+      "targetHeadAxisX": 127.00000000000001
+    },
+    {
+      "sourceCell": 2,
+      "sourceBox": [
+        1098,
+        25,
+        1322,
+        499
+      ],
+      "position": [
+        103,
+        69
+      ],
+      "scale": 0.3272921108742004,
+      "scaleX": 0.25,
+      "headAxisSourceX": 1192.5,
+      "targetHeadAxisX": 127.0
+    },
+    {
+      "sourceCell": 3,
+      "sourceBox": [
+        266,
+        522,
+        490,
+        998
+      ],
+      "position": [
+        103,
+        69
+      ],
+      "scale": 0.3272921108742004,
+      "scaleX": 0.25,
+      "headAxisSourceX": 361.0,
+      "targetHeadAxisX": 127.0
+    },
+    {
+      "sourceCell": 4,
+      "sourceBox": [
+        676,
+        522,
+        892,
+        998
+      ],
+      "position": [
+        103,
+        69
+      ],
+      "scale": 0.3272921108742004,
+      "scaleX": 0.25,
+      "headAxisSourceX": 771.0,
+      "targetHeadAxisX": 127.0
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "rejected_operation_source_before_native",
+  "sourceTask": "448641262993922",
+  "sourceSlots": 142,
+  "sourceDurationMs": 5917,
+  "technicalChecks": 710,
+  "technicalFailures": 0,
+  "reviewed": [
+    "master-control-source-comparison.png",
+    "raw-chronology-00.png",
+    "raw-chronology-01.png",
+    "raw-chronology-02.png",
+    "raw-chronology-03.png",
+    "raw-chronology-04.png",
+    "raw-chronology-05.png"
+  ],
+  "observed": [
+    "Head rotates to frontal view away from master angle during arm gestures.",
+    "Several alternating arm release/return gestures replace requested single small finger press.",
+    "Scanner remains visible but sustained two-hand support is lost."
+  ],
+  "lesson": "Prompt eyes facing front contradicts authored master head angle. Identical endpoint images do not constrain middle orientation or single-action semantics.",
+  "nativeRun": false,
+  "installed": false
+}

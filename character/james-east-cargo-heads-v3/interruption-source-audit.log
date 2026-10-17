@@ -1,0 +1,158 @@
+[
+  {
+    "mode": "bare",
+    "stage": "workshop_pickup",
+    "endpointFacing": "east",
+    "locomotionCacheFacing": "east",
+    "displayedSourceAliases": [
+      {
+        "state": "pickup-east",
+        "index": 3,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/pickup-east/003.png"
+      },
+      {
+        "state": "unload-east",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/unload-east/002.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  },
+  {
+    "mode": "bare",
+    "stage": "workshop_carry",
+    "endpointFacing": "west",
+    "locomotionCacheFacing": "west",
+    "displayedSourceAliases": [
+      {
+        "state": "carry-turn-east-south",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/002.png"
+      },
+      {
+        "state": "carry-turn-south-east",
+        "index": 3,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/003.png"
+      },
+      {
+        "state": "carry-turn-east-west",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/002.png"
+      },
+      {
+        "state": "carry-turn-west-east",
+        "index": 8,
+        "path": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/008.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  },
+  {
+    "mode": "bare",
+    "stage": "workshop_unload",
+    "endpointFacing": "north",
+    "locomotionCacheFacing": "west",
+    "displayedSourceAliases": [
+      {
+        "state": "pickup-north",
+        "index": 0,
+        "path": "character/james-cargo-material-joined-v1/frames/bare/pickup-north/000.png"
+      },
+      {
+        "state": "unload-north",
+        "index": 5,
+        "path": "character/james-cargo-material-joined-v1/frames/bare/unload-north/005.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  },
+  {
+    "mode": "helmet",
+    "stage": "workshop_pickup",
+    "endpointFacing": "east",
+    "locomotionCacheFacing": "east",
+    "displayedSourceAliases": [
+      {
+        "state": "pickup-east",
+        "index": 3,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/pickup-east/003.png"
+      },
+      {
+        "state": "unload-east",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/unload-east/002.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  },
+  {
+    "mode": "helmet",
+    "stage": "workshop_carry",
+    "endpointFacing": "west",
+    "locomotionCacheFacing": "west",
+    "displayedSourceAliases": [
+      {
+        "state": "carry-turn-east-south",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/002.png"
+      },
+      {
+        "state": "carry-turn-south-east",
+        "index": 3,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/003.png"
+      },
+      {
+        "state": "carry-turn-east-west",
+        "index": 2,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/002.png"
+      },
+      {
+        "state": "carry-turn-north-south",
+        "index": 7,
+        "path": "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/007.png"
+      },
+      {
+        "state": "carry-turn-west-east",
+        "index": 8,
+        "path": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/008.png"
+      },
+      {
+        "state": "carry-turn-south-north",
+        "index": 3,
+        "path": "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/003.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  },
+  {
+    "mode": "helmet",
+    "stage": "workshop_unload",
+    "endpointFacing": "north",
+    "locomotionCacheFacing": "west",
+    "displayedSourceAliases": [
+      {
+        "state": "pickup-north",
+        "index": 0,
+        "path": "character/james-cargo-material-joined-v1/frames/helmet/pickup-north/000.png"
+      },
+      {
+        "state": "unload-north",
+        "index": 5,
+        "path": "character/james-cargo-material-joined-v1/frames/helmet/unload-north/005.png"
+      }
+    ],
+    "pickupFirstEqualsIdle": false,
+    "unloadLastEqualsIdle": false,
+    "pickupUnloadExactReversal": true
+  }
+]

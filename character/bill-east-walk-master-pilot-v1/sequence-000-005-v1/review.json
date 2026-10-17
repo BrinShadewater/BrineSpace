@@ -1,0 +1,150 @@
+{
+  "status": "rejected_before_extraction",
+  "generationId": "exec-e04768b1-78a9-47ee-ad32-569cdbc466a6",
+  "rawPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\sequence-000-005-v1\\raw-sheet.png",
+  "rawSha256": "dd8f6b75f7468ab580aadfa803a69efb4b9c172a19ce8e9e89c298b6bfa65f61",
+  "promptSha256": "320b76547ef6d0e34d919464c86a66e33709cda34e9d4b2eb70fd94d5bc34ab4",
+  "references": [
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\sequence-000-005-v1\\edit-target.png",
+      "sha256": "d947e53e9a92a2dec509a8c070ad20e98798921c32fe390429d1918e01623796",
+      "role": "Only edit target; exact six consecutive poses, row-major 3x2 grid, 512px square cells"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\sequence-000-005-v1\\preferred-walk-reference.png",
+      "sha256": "cbefc7c48556b49711fa9681dabc94e9250ff0221cd3f4b5701b2a18990dc7de",
+      "source": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\stride-000-v1\\raw-000.png",
+      "sourceSha256": "cbefc7c48556b49711fa9681dabc94e9250ff0221cd3f4b5701b2a18990dc7de",
+      "role": "Whole detailed walking Bill identity/material continuity, not a sheet layout or pose replacement"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\sequence-000-005-v1\\original-master.png",
+      "sha256": "c2f10d863df23d31392322b9963e70f562870609789fa28670ee20ad7bec5757",
+      "source": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-walk-master-pilot-v1\\original-master.png",
+      "sourceSha256": "c2f10d863df23d31392322b9963e70f562870609789fa28670ee20ad7bec5757",
+      "role": "Original master identity/material authority, not a pose replacement"
+    }
+  ],
+  "rawSize": [
+    1536,
+    1024
+  ],
+  "alphaRange": [
+    0,
+    254
+  ],
+  "cells": [
+    {
+      "slot": 0,
+      "rawCellBounds": [
+        131,
+        112,
+        413,
+        490
+      ],
+      "targetCellBounds": [
+        166,
+        160,
+        368,
+        448
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 38437
+    },
+    {
+      "slot": 1,
+      "rawCellBounds": [
+        128,
+        112,
+        413,
+        490
+      ],
+      "targetCellBounds": [
+        164,
+        160,
+        370,
+        448
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 38949
+    },
+    {
+      "slot": 2,
+      "rawCellBounds": [
+        127,
+        112,
+        411,
+        490
+      ],
+      "targetCellBounds": [
+        162,
+        160,
+        370,
+        448
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 38379
+    },
+    {
+      "slot": 3,
+      "rawCellBounds": [
+        126,
+        79,
+        416,
+        454
+      ],
+      "targetCellBounds": [
+        162,
+        162,
+        366,
+        448
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 39431
+    },
+    {
+      "slot": 4,
+      "rawCellBounds": [
+        126,
+        79,
+        409,
+        455
+      ],
+      "targetCellBounds": [
+        162,
+        160,
+        362,
+        446
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 39232
+    },
+    {
+      "slot": 5,
+      "rawCellBounds": [
+        128,
+        79,
+        409,
+        455
+      ],
+      "targetCellBounds": [
+        166,
+        160,
+        358,
+        446
+      ],
+      "cornerAlpha": 0,
+      "opaquePixels": 39192
+    }
+  ],
+  "visualReviewed": true,
+  "findings": [
+    "Whole raw sheet inspected. Figures enlarged/repositioned inside cells, inconsistent with original source geometry.",
+    "Background has brown/grey luminous halo; transparency request did not produce clean cutouts.",
+    "Six figures are very similar; precise original consecutive motion was not retained reliably."
+  ],
+  "normalAdmission": false,
+  "nativeTested": false,
+  "frameExtraction": false,
+  "coverageAdded": 0
+}

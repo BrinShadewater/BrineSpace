@@ -1,0 +1,200 @@
+{
+  "sourceSha256": "d2f4fbee40c3318926b1984f87810a631bf575b323ccb934a4cde4c3bbd062d7",
+  "fixedRuler": [
+    0.214,
+    0.251
+  ],
+  "density": 1.4,
+  "sourcePoses": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "generation": "exec-a6999412-1ee7-47c1-a98e-41476adfece3",
+  "correctedSourceSha256": "647730c89801db768b36d7c65a0dc1b9c63c200edcfeefc11325edec52bdea08",
+  "correctedPose": 1,
+  "correctedGeneration": "exec-e66eb374-e924-4be9-8f4f-a905d3b27743",
+  "correctedOpaqueThreshold": 240,
+  "correctedRuler": [
+    0.214,
+    0.2455
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "sourcePose": 1,
+      "sourceBox": [
+        618,
+        14,
+        945,
+        513
+      ],
+      "position": [
+        90,
+        100
+      ],
+      "headAxis": [
+        122,
+        101
+      ],
+      "protectedBodyFromY": 132,
+      "fixedSourceRuler": [
+        0.214,
+        0.2455
+      ],
+      "source": "entry-right-arm-v2.png"
+    },
+    {
+      "frame": 2,
+      "sourcePose": 2,
+      "sourceBox": [
+        1118,
+        13,
+        1430,
+        502
+      ],
+      "position": [
+        90,
+        101
+      ],
+      "headAxis": [
+        121,
+        102
+      ],
+      "protectedBodyFromY": 133,
+      "fixedSourceRuler": [
+        0.214,
+        0.251
+      ],
+      "source": "entry-v1.png"
+    },
+    {
+      "frame": 3,
+      "sourcePose": 3,
+      "sourceBox": [
+        131,
+        531,
+        419,
+        1007
+      ],
+      "position": [
+        91,
+        105
+      ],
+      "headAxis": [
+        121,
+        106
+      ],
+      "protectedBodyFromY": 137,
+      "fixedSourceRuler": [
+        0.214,
+        0.251
+      ],
+      "source": "entry-v1.png"
+    },
+    {
+      "frame": 4,
+      "sourcePose": 4,
+      "sourceBox": [
+        621,
+        535,
+        913,
+        1007
+      ],
+      "position": [
+        90,
+        106
+      ],
+      "headAxis": [
+        121,
+        107
+      ],
+      "protectedBodyFromY": 138,
+      "fixedSourceRuler": [
+        0.214,
+        0.251
+      ],
+      "source": "entry-v1.png"
+    }
+  ],
+  "grade": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        1.0,
+        12.0,
+        46.666666666666664,
+        65.66666666666667,
+        85.66666666666667,
+        98.0,
+        113.0,
+        146.33333333333334,
+        255.0
+      ],
+      "neutralOutput": [
+        0.0,
+        10.333333333333334,
+        19.0,
+        35.0,
+        43.666666666666664,
+        53.0,
+        60.333333333333336,
+        88.66666666666667,
+        119.33333333333333,
+        174.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          0.7804878048780488,
+          0.8823529411764706,
+          0.9459459459459459
+        ],
+        "burgundy": [
+          0.8333333333333334,
+          0.9307692307692308,
+          0.9076923076923077
+        ]
+      }
+    },
+    "corrected": {
+      "neutralInput": [
+        0.0,
+        1.0,
+        12.0,
+        46.666666666666664,
+        65.66666666666667,
+        85.66666666666667,
+        98.0,
+        113.0,
+        146.33333333333334,
+        255.0
+      ],
+      "neutralOutput": [
+        0.0,
+        10.333333333333334,
+        19.0,
+        35.0,
+        43.666666666666664,
+        53.0,
+        60.333333333333336,
+        88.66666666666667,
+        119.33333333333333,
+        174.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          0.7804878048780488,
+          0.8823529411764706,
+          0.9459459459459459
+        ],
+        "burgundy": [
+          0.8333333333333334,
+          0.9307692307692308,
+          0.9076923076923077
+        ]
+      }
+    }
+  },
+  "scope": "authored tablet entry/reversed exit;exact neutral/reading joins;runtime stage wiring pending"
+}

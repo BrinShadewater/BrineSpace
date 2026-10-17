@@ -1,0 +1,188 @@
+{
+  "status": "native_controller_verified_owner_review_pending",
+  "runtimeInstalled": true,
+  "fullSetComplete": false,
+  "newlyAuthoredDrawings": 0,
+  "newSourceStates": 0,
+  "runtimeHashes": {
+    "scripts/james_construction_motion.gd": "8282aa1ec222fd3a01349d467388076835ad5110ad39dd7062c8078be128b5b4",
+    "scripts/branforth_npc.gd": "fe681cf5d415a2a4e8c13d20a4f746cf6bc7e8aa0fbe91792d08a85b986e4c81",
+    "scripts/crew_construction.gd": "27ba8e091357a6ba9fb13b68d31b908d75ea62936c52f8cf5850ce7912d50d29",
+    "scripts/grid_canvas.gd": "eb59070a579800ded89643bcbdcaa4281328eec2a11c1aec952b68c1125e1535"
+  },
+  "native": {
+    "checks": 6209,
+    "failures": 0,
+    "cases": 24,
+    "repeatedPowerLossCases": 4,
+    "captures": 833,
+    "scope": "Four bare cardinal real paid construction jobs; draw/held/stow power and door holds; repeated power loss during held return. Frozen paid progress/contact, sparks off, normal completion once."
+  },
+  "continue": {
+    "checks": 1496,
+    "failures": 0,
+    "cases": 3,
+    "captures": 21,
+    "scope": "Fresh disk Continue: North partial exit, East neutral hold, South partial return. Exact paused actor/source/playback/work/clock, no second charge, completion once. Not all facing/phase combinations."
+  },
+  "safety": {
+    "checks": 21,
+    "failures": 0,
+    "scope": "Real South partial retraction: removed order, death, critical flooding. Normal safety clears motion; death renderer pre-update cannot retain stale torch. Not all hazard/gear/path combinations."
+  },
+  "sourcePaths": {
+    "arbitrarySourceEntries": 348,
+    "checks": 7602,
+    "failures": 0,
+    "scope": "Exact whole-RGBA entry/idle/reversed return/re-interrupted return seams for all348 selected bare torch source indices. Admission corruption checks use actual saved partial exit. Source-path algebra, not native gameplay coverage of all348 phases."
+  },
+  "profileGuards": {
+    "north": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-4hcw3n_v",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES MOTION TRACE north-torch-draw-power step=0 state=idle phase=exit elapsed=0.0 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE north-torch-draw-power step=30 state=idle phase=exit elapsed=0.5 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE north-torch-draw-power step=60 state=idle phase=return elapsed=0.45 timer=0.41666666666667 power=true doors=false",
+        "JAMES MOTION TRACE north-torch-draw-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE north-torch-draw-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE north-torch-draw-doors step=60 state=idle phase=return elapsed=0.46666666666667 timer=0.43333333333333 power=true doors=false",
+        "JAMES MOTION TRACE north-weld-power step=0 state=idle phase=exit elapsed=0.0 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE north-weld-power step=30 state=idle phase=exit elapsed=0.5 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE north-weld-power step=60 state=idle phase=return elapsed=0.08333333333333 timer=2.76666666666666 power=true doors=false",
+        "JAMES MOTION TRACE north-weld-power step=90 state=idle phase=done elapsed=0.57 timer=2.76666666666666 power=true doors=false",
+        "JAMES MOTION TRACE north-weld-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE north-weld-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE north-weld-doors step=60 state=idle phase=return elapsed=0.41666666666667 timer=2.78333333333333 power=true doors=false",
+        "JAMES MOTION TRACE north-torch-stow-power step=0 state=idle phase=exit elapsed=0.0 timer=9.68333333333339 power=false doors=false",
+        "JAMES MOTION TRACE north-torch-stow-power step=30 state=idle phase=return elapsed=0.13333333333333 timer=9.68333333333339 power=true doors=false",
+        "JAMES MOTION TRACE north-torch-stow-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=9.70000000000006 power=true doors=true",
+        "JAMES MOTION TRACE north-torch-stow-doors step=30 state=idle phase=return elapsed=0.15 timer=9.70000000000006 power=true doors=false",
+        "JAMES CONSTRUCTION MOTION CASE north captures=131 completed=true",
+        "JAMES CONSTRUCTION MOTION: 1433 checks, 0 failures"
+      ]
+    },
+    "east": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-h0_bvuky",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES MOTION TRACE east-torch-draw-power step=0 state=idle phase=exit elapsed=0.0 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE east-torch-draw-power step=30 state=idle phase=return elapsed=0.03333333333333 timer=0.41666666666667 power=true doors=false",
+        "JAMES MOTION TRACE east-torch-draw-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE east-torch-draw-doors step=30 state=idle phase=return elapsed=0.05 timer=0.43333333333333 power=true doors=false",
+        "JAMES MOTION TRACE east-weld-power step=0 state=idle phase=exit elapsed=0.0 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE east-weld-power step=30 state=idle phase=exit elapsed=0.5 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE east-weld-power step=60 state=idle phase=return elapsed=0.13333333333333 timer=2.76666666666666 power=true doors=false",
+        "JAMES MOTION TRACE east-weld-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE east-weld-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE east-weld-doors step=60 state=idle phase=return elapsed=0.41666666666667 timer=2.78333333333333 power=true doors=false",
+        "JAMES MOTION TRACE east-torch-stow-power step=0 state=idle phase=exit elapsed=0.0 timer=9.68333333333339 power=false doors=false",
+        "JAMES MOTION TRACE east-torch-stow-power step=30 state=idle phase=return elapsed=0.15 timer=9.68333333333339 power=true doors=false",
+        "JAMES MOTION TRACE east-torch-stow-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=9.70000000000006 power=true doors=true",
+        "JAMES MOTION TRACE east-torch-stow-doors step=30 state=idle phase=return elapsed=0.2 timer=9.70000000000006 power=true doors=false",
+        "JAMES CONSTRUCTION MOTION CASE east captures=271 completed=true",
+        "JAMES CONSTRUCTION MOTION: 1620 checks, 0 failures"
+      ]
+    },
+    "south": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-czgqo6lw",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES MOTION TRACE south-torch-draw-power step=0 state=idle phase=exit elapsed=0.0 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE south-torch-draw-power step=30 state=idle phase=exit elapsed=0.5 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE south-torch-draw-power step=60 state=idle phase=return elapsed=0.45 timer=0.41666666666667 power=true doors=false",
+        "JAMES MOTION TRACE south-torch-draw-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE south-torch-draw-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE south-torch-draw-doors step=60 state=idle phase=return elapsed=0.46666666666667 timer=0.43333333333333 power=true doors=false",
+        "JAMES MOTION TRACE south-weld-power step=0 state=idle phase=exit elapsed=0.0 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE south-weld-power step=30 state=idle phase=exit elapsed=0.5 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE south-weld-power step=60 state=idle phase=return elapsed=0.13333333333333 timer=2.76666666666666 power=true doors=false",
+        "JAMES MOTION TRACE south-weld-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE south-weld-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE south-weld-doors step=60 state=idle phase=return elapsed=0.41666666666667 timer=2.78333333333333 power=true doors=false",
+        "JAMES MOTION TRACE south-torch-stow-power step=0 state=idle phase=exit elapsed=0.0 timer=9.68333333333339 power=false doors=false",
+        "JAMES MOTION TRACE south-torch-stow-power step=30 state=idle phase=return elapsed=0.13333333333333 timer=9.68333333333339 power=true doors=false",
+        "JAMES MOTION TRACE south-torch-stow-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=9.70000000000006 power=true doors=true",
+        "JAMES MOTION TRACE south-torch-stow-doors step=30 state=idle phase=return elapsed=0.18333333333333 timer=9.70000000000006 power=true doors=false",
+        "JAMES CONSTRUCTION MOTION CASE south captures=145 completed=true",
+        "JAMES CONSTRUCTION MOTION: 1440 checks, 0 failures"
+      ]
+    },
+    "west": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-7o4h9378",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES MOTION TRACE west-torch-draw-power step=0 state=idle phase=exit elapsed=0.0 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE west-torch-draw-power step=30 state=idle phase=exit elapsed=0.5 timer=0.41666666666667 power=false doors=false",
+        "JAMES MOTION TRACE west-torch-draw-power step=60 state=idle phase=return elapsed=0.45 timer=0.41666666666667 power=true doors=false",
+        "JAMES MOTION TRACE west-torch-draw-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE west-torch-draw-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=0.43333333333333 power=true doors=true",
+        "JAMES MOTION TRACE west-torch-draw-doors step=60 state=idle phase=return elapsed=0.46666666666667 timer=0.43333333333333 power=true doors=false",
+        "JAMES MOTION TRACE west-weld-power step=0 state=idle phase=exit elapsed=0.0 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE west-weld-power step=30 state=idle phase=exit elapsed=0.5 timer=2.76666666666666 power=false doors=false",
+        "JAMES MOTION TRACE west-weld-power step=60 state=idle phase=return elapsed=0.13333333333333 timer=2.76666666666666 power=true doors=false",
+        "JAMES MOTION TRACE west-weld-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE west-weld-doors step=30 state=idle phase=exit elapsed=0.51666666666667 timer=2.78333333333333 power=true doors=true",
+        "JAMES MOTION TRACE west-weld-doors step=60 state=idle phase=return elapsed=0.41666666666667 timer=2.78333333333333 power=true doors=false",
+        "JAMES MOTION TRACE west-torch-stow-power step=0 state=idle phase=exit elapsed=0.0 timer=9.68333333333339 power=false doors=false",
+        "JAMES MOTION TRACE west-torch-stow-power step=30 state=idle phase=return elapsed=0.15 timer=9.68333333333339 power=true doors=false",
+        "JAMES MOTION TRACE west-torch-stow-doors step=0 state=idle phase=exit elapsed=0.01666666666667 timer=9.70000000000006 power=true doors=true",
+        "JAMES MOTION TRACE west-torch-stow-doors step=30 state=idle phase=return elapsed=0.18333333333333 timer=9.70000000000006 power=true doors=false",
+        "JAMES CONSTRUCTION MOTION CASE west captures=286 completed=true",
+        "JAMES CONSTRUCTION MOTION: 1716 checks, 0 failures"
+      ]
+    },
+    "continue": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-17l8rkwv",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES CONSTRUCTION CONTINUE CASE north-exit completed=true",
+        "JAMES CONSTRUCTION CONTINUE CASE east-hold completed=true",
+        "JAMES CONSTRUCTION CONTINUE CASE south-return completed=true",
+        "JAMES CONSTRUCTION CONTINUE: 1496 checks, 0 failures"
+      ]
+    },
+    "safety": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-ykizu4pi",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES MOTION SAFETY TRACE cancel goal= medium=dry dead=false motion={  }",
+        "JAMES MOTION SAFETY TRACE death goal= medium=dry dead=true motion={  }",
+        "JAMES MOTION SAFETY TRACE flood goal= medium=flooded dead=false motion={  }",
+        "JAMES CONSTRUCTION SAFETY: 21 checks, 0 failures"
+      ]
+    },
+    "source_paths": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-mvvmqkpz",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES CONSTRUCTION SOURCE PATHS: 7602 checks, 348 entries, 0 failures"
+      ]
+    }
+  },
+  "visualReview": "All 833 source-change captures across 19 boards and all 21 fresh Continue views inspected. Matte selected sources, stable apparent proportions/height and fixed feet; whole-source tool retraction/return replaces instant idle snap. South hand occlusion corrected in fixture and recaptured. Native room lighting and thaw fog are separate from unchanged source pixels.",
+  "previewTiming": "Source-order GIFs use 50ms per captured pose; simplified pose sequence, not continuous real-time gameplay recording.",
+  "remaining": "Repair contacts, wider family/gear/furniture/rotation contexts, release gameplay and owner visual acceptance. Full James animation goal remains active.",
+  "helmetConstructionReview": "character/james-construction-helmet-v1/selection-review.json"
+}

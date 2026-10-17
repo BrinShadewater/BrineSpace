@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Salvage motion comparison</title>
+<style>body{background:#17272e;color:#d3e2e6;font:15px system-ui;margin:24px}select,button{background:#263d47;color:inherit;padding:8px;border:1px solid #68818a;margin:5px}#grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}article{background:#1e323b;border:1px solid #425d69;padding:8px}canvas{width:250px;height:250px}a{color:#a3c7d5}#status{margin:12px 0}</style>
+<h1>Salvage · synchronized motion review</h1><p>All available headings at the same scale. Authored export frames; the main preview tests continuous controller transitions.</p>
+<label>Animation <select id="state"><option>idle</option><option>swim</option><option>reverse</option><option>carry</option><option>start</option><option>stop</option><option>retrieve</option><option>release</option><option>blocked</option><option>power-on</option><option>power-off</option><option>charging</option><option>disabled</option></select></label>
+<label>Scale <select id="scale"><option value="0.34">Native 0.34</option><option value="0.46">Enlarged 0.46</option></select></label>
+<label>Speed <select id="speed"><option value="1">Normal</option><option value="0.25">Quarter</option></select></label><button id="replay">Replay</button><button id="pause">Pause</button>
+<div id="status" role="status">Loading</div><div id="grid"></div><p><a href="../">Main preview</a> · <a href="polish-native-directions.png">Dark/light density board</a></p>
+<script type="module">
+const manifest=await (await fetch('../manifest.json')).json(),order=['north','northeast','east','southeast','south','southwest','west','northwest'];
+const el=id=>document.getElementById(id);let views=[],time=0,last=0,paused=false,ready=false,generation=0;
+const load=path=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(path));im.src='../'+path});
+async function select(){const token=++generation;ready=false;views=[];el('grid').replaceChildren();el('status').textContent='Loading '+el('state').value;
+ const entries=order.map(h=>manifest.states.find(e=>e.heading===h&&e.state===el('state').value)).filter(Boolean);
+ try{const next=await Promise.all(entries.map(async e=>{const [body,cargo]=await Promise.all([load(e.atlas.path),load(e.cargoAtlas.path)]);return {e,body,cargo}}));if(token!==generation)return;
+ for(const v of next){const article=document.createElement('article'),label=document.createElement('div'),canvas=document.createElement('canvas');label.textContent=v.e.heading.toUpperCase();canvas.width=250;canvas.height=250;article.append(label,canvas);el('grid').append(article);v.ctx=canvas.getContext('2d');}views=next;time=0;ready=true;
+ }catch(e){el('status').textContent='Load failed: '+e.message}}
+el('state').onchange=select;el('replay').onclick=()=>time=0;el('pause').onclick=()=>{paused=!paused;el('pause').textContent=paused?'Resume':'Pause'};
+function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;if(!ready)return;if(!paused)time+=dt*+el('speed').value;
+ for(const {e,body,cargo,ctx} of views){const n=e.loop?Math.floor(time*30)%e.frameCount:Math.min(e.frameCount-1,Math.floor(time*30)),s=+el('scale').value,w=512*s,x=125-w/2;
+ ctx.fillStyle='#17272e';ctx.fillRect(0,0,250,250);for(const im of [cargo,body])ctx.drawImage(im,n%6*512,Math.floor(n/6)*512,512,512,x,x,w,w);
+ const lamp=manifest.headings[e.heading].lamp;ctx.save();ctx.globalAlpha=e.lampSamples[n]*(.35+.65*(.5+.5*Math.cos(time/.85*Math.PI*2)));ctx.fillStyle=manifest.lamp.colors[e.lampColor];ctx.beginPath();ctx.arc(x+lamp[0]*s,x+lamp[1]*s,2.4*s,0,Math.PI*2);ctx.fill();ctx.restore();
+ }el('status').textContent=`${paused?'Paused':'Playing'} · ${el('state').value} · ${views.length} headings · ${time.toFixed(2)} seconds${!views[0].e.loop&&time>=views[0].e.frameCount/30?' · End pose held':''}`;}
+await select();requestAnimationFrame(tick);
+</script></html>

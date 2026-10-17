@@ -1,0 +1,42 @@
+{
+  "status": "source_bound_bridge_head_candidate_unselected",
+  "validation": {
+    "capturePassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 117.14,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-land-water-material-west-v9\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true,
+    "targetedInputCount": 560,
+    "targetedChanges": []
+  },
+  "checks": 4011,
+  "failures": 0,
+  "currentFrozenInputsExact": 560,
+  "normalSelected": false,
+  "fullVisualAcceptance": false,
+  "sourceArtworkChanged": false,
+  "headBindings": {
+    "inactive": 98,
+    "historical-gait-fallback": 14,
+    "current-source-donor-center": 110,
+    "nonpresentation": 10
+  },
+  "comparison": {
+    "progressingPresentationsMatched": 190,
+    "sourcePixelsExact": 190,
+    "physicalRootClockWaterStateMaterialExact": 190,
+    "selectedComparisonPoses": 22,
+    "artworkChanged": false,
+    "scope": "Selected22current vs baseline native comparisons. No normal-swim renderer or dynamic gait endpoint center correction."
+  },
+  "visualReview": {
+    "boardsSeen": [
+      "all four current baseline/fitted head boards"
+    ],
+    "finding": "Face/helmet readability follows current pose more closely in selected bridge views. Unchanged13x12world ellipse still includes nearby collar/shoulder pixels; effect footprint needs source-bound refinement. Ordinary swimming renderer still uses old fixed cardinal offsets, and dynamic gait endpoints fallback. Full material/contact/cadence remains pending."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "selected": [
+    {
+      "interiorSlot": 1,
+      "source": "bare-source-v2.png",
+      "sourceSlot": 0,
+      "crop": "source-crops-v2/000.png"
+    },
+    {
+      "interiorSlot": 2,
+      "source": "bare-source-v1.png",
+      "sourceSlot": 1,
+      "crop": "source-crops/001.png"
+    },
+    {
+      "interiorSlot": 3,
+      "source": "bare-yaw54-source-v3.png",
+      "sourceSlot": 0,
+      "crop": "selected-crops/002.png",
+      "fixedScale": 0.115
+    },
+    {
+      "interiorSlot": 4,
+      "source": "bare-source-v1.png",
+      "sourceSlot": 3,
+      "crop": "source-crops/003.png"
+    }
+  ],
+  "rejected": [
+    "v1slot0 too far toward east at source start",
+    "v2slots1-2 duplicate current middle poses",
+    "v2slot3 too horizontal relative near-east/interior endpoint",
+    "v1slot2 clustered middle heading, replaced by independent yaw54v3"
+  ],
+  "headingReview": "v2slot0 near north;v1slot1 early diagonal;v3 independent later diagonal;v1slot3 near east. Prompt angle labels do not certify screen axis.",
+  "installed": false
+}

@@ -1,0 +1,60 @@
+{
+  "scope": "New standalone West arm-ready pose trial, not complete transition/normal admitted bank. Exact West idle and swim reference endpoints on same fixed320canvas/p160224/H148; no mirrored East anatomy. New crouch/lift/prone intermediates, helmet pair, exact live phases/timing/native/Continue and full-family consistency remain.",
+  "authoringCanvas": [
+    1254,
+    1254
+  ],
+  "wholeCanvasScale": 0.2551834130781499,
+  "translation": [
+    0,
+    2
+  ],
+  "semanticBootROI": [
+    130,
+    190,
+    185,
+    260
+  ],
+  "soleBefore": 222,
+  "soleAfter": 224,
+  "perPoseBBoxHeightFit": false,
+  "grade": "Conditioned on graded West refs/original right master; no unrelated old raw-source curve reapplied. Visual grade acceptance pending.",
+  "coreOpaqueBBox": [
+    449,
+    309,
+    717,
+    870
+  ],
+  "nativeAlphaBBox": [
+    111,
+    78,
+    186,
+    227
+  ],
+  "sha256": {
+    "arm-ready-canvas-v3.png": "6f2f57156dee3d04d8b3a376a1f582c7225ea4fafa57b8208102a672dc3c133d",
+    "arm-ready-native-v3.png": "69201b176f01890dedbbbbb8a857ecc70b1455be3df177ee4a79ed70be786e2a",
+    "reference-idle-native.png": "a1d749ecadb287991038f0b737b8d9ca6713e9d678e8aa7cfad2711d8f2cf534",
+    "reference-swim-native.png": "9fc09bdc18673625bb7a35e2f19c5b86ca4d0bbacadb154f65d8da52de968195"
+  },
+  "generation": {
+    "method": "built-in imagegen",
+    "id": "exec-6f0d6dbd-8ac3-4236-b798-db590933aecb",
+    "prompt": "sources/arm-ready-prompt-v3.txt"
+  },
+  "rejected": [
+    {
+      "id": "exec-b6fb064d-7735-4126-96ec-f0b64c4625e5",
+      "source": "sources/lean-canvas-v1.png",
+      "prompt": "sources/lean-prompt-v1.txt",
+      "reason": "Head too large and boot contact low on common canvas."
+    },
+    {
+      "id": "exec-7f59ff9d-55b8-494a-bfe9-fb0fcca465ea",
+      "source": "sources/rejected-lean-head-v2.png",
+      "prompt": "sources/lean-head-prompt-v2.txt",
+      "reason": "Requested head reduction insufficient; body/detail regenerated rather than exact local correction."
+    }
+  ],
+  "visualReview": "Master/idle/arm-ready/swim common-ruler board viewed. Third arm-ready draft closer to idle standing anatomy and matte silhouette; two separate forward gloves. Warm face/suit/head details require later complete-family grade review; not accepted complete motion or native animation."
+}

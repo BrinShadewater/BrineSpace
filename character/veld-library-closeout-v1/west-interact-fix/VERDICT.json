@@ -1,0 +1,148 @@
+{
+  "status": "All three redraws rejected; current selected sources and normal Veld loader order unchanged",
+  "mapping": "Equal2x2 crop and fixed184/cellwidth scale. No pose-bound fit, local grade/anatomy edits, recentering, re-flooring, or rescue crop.",
+  "reference": {
+    "height": 148,
+    "top": 24,
+    "floor": 171
+  },
+  "measurements": [
+    {
+      "version": 1,
+      "slot": 1,
+      "height": 162,
+      "top": 17,
+      "floor": 178,
+      "left": 58,
+      "right": 109
+    },
+    {
+      "version": 1,
+      "slot": 2,
+      "height": 162,
+      "top": 17,
+      "floor": 178,
+      "left": 54,
+      "right": 107
+    },
+    {
+      "version": 1,
+      "slot": 3,
+      "height": 160,
+      "top": 18,
+      "floor": 177,
+      "left": 52,
+      "right": 111
+    },
+    {
+      "version": 1,
+      "slot": 4,
+      "height": 161,
+      "top": 17,
+      "floor": 177,
+      "left": 65,
+      "right": 113
+    },
+    {
+      "version": 2,
+      "slot": 1,
+      "height": 154,
+      "top": 16,
+      "floor": 169,
+      "left": 62,
+      "right": 109
+    },
+    {
+      "version": 2,
+      "slot": 2,
+      "height": 153,
+      "top": 17,
+      "floor": 169,
+      "left": 59,
+      "right": 104
+    },
+    {
+      "version": 2,
+      "slot": 3,
+      "height": 153,
+      "top": 17,
+      "floor": 169,
+      "left": 54,
+      "right": 104
+    },
+    {
+      "version": 2,
+      "slot": 4,
+      "height": 153,
+      "top": 17,
+      "floor": 169,
+      "left": 62,
+      "right": 105
+    },
+    {
+      "version": 3,
+      "slot": 1,
+      "height": 139,
+      "top": 26,
+      "floor": 164,
+      "left": 71,
+      "right": 112
+    },
+    {
+      "version": 3,
+      "slot": 2,
+      "height": 139,
+      "top": 26,
+      "floor": 164,
+      "left": 63,
+      "right": 104
+    },
+    {
+      "version": 3,
+      "slot": 3,
+      "height": 139,
+      "top": 18,
+      "floor": 156,
+      "left": 64,
+      "right": 110
+    },
+    {
+      "version": 3,
+      "slot": 4,
+      "height": 139,
+      "top": 18,
+      "floor": 156,
+      "left": 66,
+      "right": 105
+    }
+  ],
+  "reasons": {
+    "v1": "160\u2013162px tall, enlarged head, floor177\u2013178 instead of171",
+    "v2": "153\u2013154px tall; head top16\u201317 instead of24, floor169; identity/panels drift",
+    "v3": "139px tall; reflow puts row1floor164 and row2floor156; figure shifted laterally"
+  },
+  "sourcePresentationsVerified": 250,
+  "bindings": {
+    "character/veld-action-west-matched-v1/manifest.json": "a461f2b428521561aa178da0efd88adcb57b8d27a9f94c0a11f6eeee7fa789c6",
+    "character/veld-side-foundation-v1/west-standing.png": "404ade8da3047d536c4d4de3d6d0b7f7e2b1f05e624514e3abe8267199ab9f4e",
+    "character/crew-runtime-matte-v1/veld/frames/idle-west-transition-matte-v1/000.png": "025f5a80b040e39fa16db2c192d36588c096d02c0867b3d28258bdd9afd5fdce",
+    "character/veld-action-west-matched-v1/frames/interact-west/000.png": "025f5a80b040e39fa16db2c192d36588c096d02c0867b3d28258bdd9afd5fdce",
+    "character/veld-action-west-matched-v1/frames/interact-west/001.png": "1352c1fadad6cbcb6ea5eb6ebdd0d54eac1d404a24201726f42de50ff03a31b7",
+    "character/veld-action-west-matched-v1/frames/interact-west/002.png": "29f62fba453846412d592116a1088860475fe0025059960405e0e2335b1a8630",
+    "character/veld-action-west-matched-v1/frames/interact-west/003.png": "7a357f9839c20c40044df54f1c2cfc2264a1af5f1f0954ab18aaf0a5cd76e6dd",
+    "character/veld-action-west-matched-v1/frames/interact-west/004.png": "65164b29923e9b5ef4556a21a7f6869a118a4170e55f30e3e4c949d2a0d8e327",
+    "character/veld-action-west-matched-v1/frames/interact-west/005.png": "025f5a80b040e39fa16db2c192d36588c096d02c0867b3d28258bdd9afd5fdce",
+    "character/veld-library-closeout-v1/west-interact-fix/raw-v1.png": "b2f3408c37722ec71ef709c14ccb697f6cbb7303f83b3728639fbf8b61cf426f",
+    "character/veld-library-closeout-v1/west-interact-fix/raw-v2.png": "939f247ecf142cc0aa1f176412353b29ec1e2dc91cbbc05c7b4f52018cb575f0",
+    "character/veld-library-closeout-v1/west-interact-fix/raw-v3.png": "7e0a3c02bd184d0a8ff7eb35c5993f4e9009044629d1007b9972e29c78d70ab2",
+    "character/veld-library-closeout-v1/west-interact-fix/prompt.txt": "af28ace11ed3d34053a04b9b713f691ae8acda3fc17e4a8940548460e7f2cbac",
+    "character/veld-library-closeout-v1/west-interact-fix/prompt-v2.txt": "66220a26238ec618108fee602a15b7ef4335019fcc5707199fe537301339f7d6",
+    "character/veld-library-closeout-v1/west-interact-fix/prompt-v3.txt": "b7249fcd98413c0437ba954f2d54654a919fd98d4e023d47008cf69831e4439b",
+    "character/veld-library-closeout-v1/west-interact-fix/edit-target-four-poses.png": "45ddb9917f13d55f8f8c20187f4c18ba0b56aa5695383b345788fc2e8a0ccb7d",
+    "character/veld-library-closeout-v1/west-interact-fix/edit-target-registered-idle-grid.png": "501ca8006881b216dc4e1d22d05a39e0fbcbbd1f3567bd98220d715fd10a1250",
+    "character/veld-library-closeout-v1/west-interact-fix/appearance-original-west.png": "0548ee85f6d2e0d37fae33c575d49ea8739fe97828c815b2917df488e7618976",
+    "character/veld-library-closeout-v1/west-interact-fix/appearance-selected-idle.png": "4eaf6ab9b34977b972fc92f8a264f882e2744b6407fa881010024fde8580141f"
+  },
+  "nativeTests": "Not run: candidates fail source visual/registration review before admission. Prior native passes refer only to their original sources.",
+  "scope": "One West interaction repair attempt; no completed correction or full-set acceptance."
+}

@@ -1,0 +1,29 @@
+{
+  "version": 342,
+  "clearanceChecks": 3697,
+  "entryChecks": 290,
+  "interruptChecks": 2289,
+  "failures": 0,
+  "directionChangesPreserved": 816,
+  "gearChangesChecked": 272,
+  "collisionCases": 32,
+  "initialDiagnostic": {
+    "checks": 1153,
+    "failures": 0,
+    "directionResets": 816,
+    "finding": "Diagnostic established every changed heading canceled the stop before its finite rise completed."
+  },
+  "postRunCodeBindings": {
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\phase_player.gd": "29e0832b5e33480ce96556a8431e525131ab37ea08f6a91b8ae37c657c440f32",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\staged_grid.gd": "ae1e16f651fba5aeb83bec5af6eb6ee173423c566186758c6fc6ef21658f265a",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\clearance_probe.gd": "71fba98f857377b30f8b09374e6cdfc4ccea791d562d385485b29b534cde75c1",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\interrupt_probe.gd": "6fe5ed3ebf71bc27115d39766613d122c8e3183de892811ea25fe762627ab8cb",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\probe.gd": "d4b99aa6a73c252a7e340f9d3e8d11aa7f2c6255e0cba4e2751ae13af5f78b1e"
+  },
+  "prelaunchFreeze": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false,
+  "ownerProfileUnchanged": true,
+  "scope": "Staged whole-stop pose retention on tread heading changes; nonmutating clearance prediction; fixture renderer hook and actual James collision primitive on synthetic flooded geometry. No main-scene drawing, exterior geometry, cross-heading swimming restart or whole-run Continue acceptance."
+}

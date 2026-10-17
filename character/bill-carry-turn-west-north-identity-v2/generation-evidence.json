@@ -1,0 +1,20 @@
+{
+  "route": "built-in image_gen",
+  "bareGeneration": "exec-20965fd2-442f-4350-a226-c69932ccbec6",
+  "helmetGeneration": "exec-a7c305ea-74ee-4aab-a5bd-8728a27bcf2c",
+  "prompts": {
+    "bare": "Edit the FIRST reference image: a transparent six-pose 3-column by 2-row sprite sheet, 1536 by 1024. This is Major Bill from BrineSpace, a small detailed matte industrial diver sprite viewed from the station camera. The SECOND image is the accepted west identity and the THIRD is the accepted north identity. Correct ONLY the heads/hair/beards of all six figures in the first sheet to transition consistently between these accepted master identities. Main problem: existing heads are round, tall and swollen, hair forms a dome and is too dark/smooth. Match the compact native master skull, dark brown subtly textured hair (not orange, not black), precise short beard, angular face and restrained matte shading. Respect each existing intermediate rear-quarter angle and gaze, with the head connected naturally to its original neck and shoulders. The sequence goes left-facing west at top-left through increasingly rear-left angles to fully rear north at bottom-right. Do not turn the body or change posture: preserve all existing figure placement, native cell scale, feet planted, proportions, arms, suit fabric texture, shoulder patches, backpack details, hands and cargo case. Keep exact 3x2 grid layout, identical 512x512 cells, no text, no background or ground shadows, genuine transparent alpha. Keep the small game-sprite pixel texture; do not turn it into painted concept art or a shiny 3D render. The heads should have roughly the same compact native height as the masters (about 25 native pixels, or50 pixels on this enlarged sheet), rather than increasing or independently scaling figure size. Do not add helmets. Output the edited whole six-figure source sheet.\n",
+    "helmet": "Edit FIRST reference sheet only. Keep its six figures in the identical 3-column2-row512x512 cell grid on1536x1024 transparent canvas. Correct the helmet on every figure so its design is exactly the same model as the SECOND accepted west master and THIRD accepted rear north master. Make a coherent small matte industrial diving helmet viewed at each existing rear-quarter angle: low compact domed shell, circular side ear housing, blue-gray window rim around visible face on west, broad DARK vertical rear center panel tapering to neck, one small plain horizontal rear slot. No tall rear grille or stack of bright rectangle stripes; no broad light silver rear panel. Match master charcoal-gray casing and restrained soft highlights; no shiny/chrome effect. These are one helmet seen progressively from west left-facing (top-left) to rear north (bottom-right), with four existing intermediate rear-left angles. Face features must remain Bill's compact short-bearded identity. Keep whole figures, original planted feet/arms/case/backpack/suit anatomy, existing angles and placement. Keep the fine detailed matte game-sprite texture, not smooth concept art. Absolutely no glow, vignette or cast shadows; fully transparent background between cutout figures. Keep relative helmet-to-body scale equal to the accepted two masters; do not enlarge heads. Output whole six-pose edited sheet at1536x1024.\n"
+  },
+  "outputs": {
+    "bare": {
+      "file": "sources/bare-v1.png",
+      "sha256": "1e50567077ccba39bc572b418f57e9d75a0755c972bfb71cb688712067a3fcdb"
+    },
+    "helmet": {
+      "file": "sources/helmet-v1.png",
+      "sha256": "1da59d1686fd52df36bb5f5b8c9bbf48f39bcaff3e00fd0ccfae7885274e123f"
+    }
+  },
+  "scope": "New generated heads extracted; changed generated bodies, shifted cells/feet and faint halos not installed. Source0 bare neutral clips at cell floor, excluded from ruler; complete rear source5 defines single148/349ruler. Four interior headcomponents pergear fitted over frozen original bare turn bodies. Exact current cardinal endpoint images replace source0/5. One pooled hair/skin/shell gain,not per-frame exposure."
+}

@@ -1,0 +1,91 @@
+{
+  "sourceFiles": [
+    "character/james-south-master-carry-v1/carry-pose.png",
+    "character/james-carry-authored-turn-v1/early-pose.png",
+    "character/james-carry-authored-midpoint-v1/midpoint-lower-v2.png",
+    "character/james-carry-authored-turn-v1/late-pose.png",
+    "character/james-west-master-carry-v1/local-v3-carry-pose.png"
+  ],
+  "sourceSha256": {
+    "character/james-south-master-carry-v1/carry-pose.png": "9fc2ee0dd2b15962f9aeed6bb84cbadeaaf84d837190118df2f956347837bdc0",
+    "character/james-carry-authored-turn-v1/early-pose.png": "cb62a90b376f38b7d5c48c702c9b4ede761c83147a83fc5e91bd18a11689e156",
+    "character/james-carry-authored-midpoint-v1/midpoint-lower-v2.png": "25adbc3744930e2e66fa960ddf3d67dd632e964151c6eb9493885891d36d4592",
+    "character/james-carry-authored-turn-v1/late-pose.png": "780fe8d1e08b90c91d28a76210d7bb8d711593c68d9db5a9cf49b5671814aa5e",
+    "character/james-west-master-carry-v1/local-v3-carry-pose.png": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994"
+  },
+  "nativeAlpha128Bounds": [
+    [
+      95,
+      76,
+      161,
+      224
+    ],
+    [
+      95,
+      76,
+      157,
+      226
+    ],
+    [
+      96,
+      76,
+      157,
+      224
+    ],
+    [
+      95,
+      76,
+      156,
+      226
+    ],
+    [
+      97,
+      76,
+      155,
+      224
+    ]
+  ],
+  "standingRuler": 148,
+  "pivot": [
+    128,
+    224
+  ],
+  "perPoseFit": false,
+  "runtimeDurationsMs": [
+    100,
+    200,
+    200,
+    200,
+    100
+  ],
+  "previewDurationsMs": [
+    100,
+    200,
+    200,
+    200,
+    600
+  ],
+  "previewDecodeChecks": 10,
+  "visualReviewPending": false,
+  "selected": false,
+  "sourceAcceptance": false,
+  "scope": "Five bare whole-body poses, reused cardinal endpoints/midpoint and two new source poses. Chronology evidence only until reviewed; reversed state is same poses reversed, not new art. Preview endpoint hold/replay is viewer only, no native or actual lifecycle proof.",
+  "disposition": "rejected-angular-clustering-and-height",
+  "findings": [
+    "All five raw sources/new raws, whole/upper/legs/station chronology reviewed. Both newly authored intermediate poses copy the middle diagonal too closely, leaving angle clusters and endpoint jumps.",
+    "Crowns76all but new soles226 instead224:150height versus148. No whole-body fitting or grade applied."
+  ],
+  "wholeChronologyReviewed": true,
+  "upperChronologyReviewed": true,
+  "legsChronologyReviewed": true,
+  "stationChronologyReviewed": true,
+  "reusedEndpointAndMidpointRGBAExact": true,
+  "continuouslyWatchedPlayback": false,
+  "generationExecutions": {
+    "early": "exec-f5c8d786-cccb-4ead-817f-79aa3b646301",
+    "late": "exec-0ad0afc3-10e8-4bf5-b294-b49aea5cad2d",
+    "early-v2": "exec-c2f40688-bbac-40a7-b83d-2f1bf36e60b1",
+    "late-v2": "exec-29bfff71-5362-4489-8f45-7c22e7de6f6c",
+    "early-v3": "exec-a5331a89-5d62-49f6-b3ac-23f3220cc90e"
+  }
+}

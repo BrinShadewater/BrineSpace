@@ -1,0 +1,1 @@
+South paired gait3, October 2, 2026. Staged; see ../bill-carry-start-south-v2/HANDOFF.md for actual-master144ruler, source rejections, paired/native/cardinal review, checks and remaining source-version/lifecycle/full-set work.

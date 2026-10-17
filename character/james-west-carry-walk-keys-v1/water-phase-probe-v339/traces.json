@@ -1,0 +1,776 @@
+{
+	"checks": 242,
+	"failures": 0,
+	"normalChanged": false,
+	"scope": "Actual selected player locomotion-phase stop entry and player snapshot restoration; no actor route/physical clearance/drawing/whole-run Continue acceptance.",
+	"traces": [
+		{
+			"after": "bare-east-0-after.png",
+			"before": "bare-east-0-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "bare-east-1-after.png",
+			"before": "bare-east-1-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "bare-east-2-after.png",
+			"before": "bare-east-2-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "bare-east-3-after.png",
+			"before": "bare-east-3-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "bare-east-4-after.png",
+			"before": "bare-east-4-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "bare-east-5-after.png",
+			"before": "bare-east-5-before.png",
+			"direction": "east",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "bare-south-0-after.png",
+			"before": "bare-south-0-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "bare-south-1-after.png",
+			"before": "bare-south-1-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "bare-south-2-after.png",
+			"before": "bare-south-2-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "bare-south-3-after.png",
+			"before": "bare-south-3-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "bare-south-4-after.png",
+			"before": "bare-south-4-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "bare-south-5-after.png",
+			"before": "bare-south-5-before.png",
+			"direction": "south",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "bare-west-0-after.png",
+			"before": "bare-west-0-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "bare-west-1-after.png",
+			"before": "bare-west-1-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "bare-west-2-after.png",
+			"before": "bare-west-2-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "bare-west-3-after.png",
+			"before": "bare-west-3-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "bare-west-4-after.png",
+			"before": "bare-west-4-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "bare-west-5-after.png",
+			"before": "bare-west-5-before.png",
+			"direction": "west",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "bare-north-0-after.png",
+			"before": "bare-north-0-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "bare-north-1-after.png",
+			"before": "bare-north-1-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "bare-north-2-after.png",
+			"before": "bare-north-2-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "bare-north-3-after.png",
+			"before": "bare-north-3-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "bare-north-4-after.png",
+			"before": "bare-north-4-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "bare-north-5-after.png",
+			"before": "bare-north-5-before.png",
+			"direction": "north",
+			"gear": "",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "helmet-east-0-after.png",
+			"before": "helmet-east-0-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "helmet-east-1-after.png",
+			"before": "helmet-east-1-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "helmet-east-2-after.png",
+			"before": "helmet-east-2-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "helmet-east-3-after.png",
+			"before": "helmet-east-3-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "helmet-east-4-after.png",
+			"before": "helmet-east-4-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "helmet-east-5-after.png",
+			"before": "helmet-east-5-before.png",
+			"direction": "east",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-east",
+				"direction": "east",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "helmet-south-0-after.png",
+			"before": "helmet-south-0-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "helmet-south-1-after.png",
+			"before": "helmet-south-1-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "helmet-south-2-after.png",
+			"before": "helmet-south-2-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "helmet-south-3-after.png",
+			"before": "helmet-south-3-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "helmet-south-4-after.png",
+			"before": "helmet-south-4-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "helmet-south-5-after.png",
+			"before": "helmet-south-5-before.png",
+			"direction": "south",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-south",
+				"direction": "south",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "helmet-west-0-after.png",
+			"before": "helmet-west-0-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "helmet-west-1-after.png",
+			"before": "helmet-west-1-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "helmet-west-2-after.png",
+			"before": "helmet-west-2-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "helmet-west-3-after.png",
+			"before": "helmet-west-3-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "helmet-west-4-after.png",
+			"before": "helmet-west-4-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "helmet-west-5-after.png",
+			"before": "helmet-west-5-before.png",
+			"direction": "west",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-west",
+				"direction": "west",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		},
+		{
+			"after": "helmet-north-0-after.png",
+			"before": "helmet-north-0-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.08,
+			"stopSlot": 0,
+			"swimSlot": 0
+		},
+		{
+			"after": "helmet-north-1-after.png",
+			"before": "helmet-north-1-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.24,
+			"stopSlot": 0,
+			"swimSlot": 1
+		},
+		{
+			"after": "helmet-north-2-after.png",
+			"before": "helmet-north-2-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.4,
+			"stopSlot": 0,
+			"swimSlot": 2
+		},
+		{
+			"after": "helmet-north-3-after.png",
+			"before": "helmet-north-3-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.56,
+			"stopSlot": 0,
+			"swimSlot": 3
+		},
+		{
+			"after": "helmet-north-4-after.png",
+			"before": "helmet-north-4-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": false,
+			"sampledPhase": 0.72,
+			"stopSlot": 0,
+			"swimSlot": 4
+		},
+		{
+			"after": "helmet-north-5-after.png",
+			"before": "helmet-north-5-before.png",
+			"direction": "north",
+			"gear": "diving-helmet",
+			"motion": {
+				"clip": "swim-stop-north",
+				"direction": "north",
+				"started": 10.11,
+				"state": "tread"
+			},
+			"pixelsEqual": true,
+			"sampledPhase": 0.88,
+			"stopSlot": 0,
+			"swimSlot": 5
+		}
+	]
+}

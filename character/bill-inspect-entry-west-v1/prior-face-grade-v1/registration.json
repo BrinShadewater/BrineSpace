@@ -1,0 +1,330 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/entry-v1.png",
+      "count": 6,
+      "heads": [
+        [
+          282,
+          30
+        ],
+        [
+          761,
+          30
+        ],
+        [
+          1241,
+          30
+        ],
+        [
+          282,
+          532
+        ],
+        [
+          761,
+          532
+        ],
+        [
+          1241,
+          532
+        ]
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3136
+      ],
+      "density": 1.0,
+      "generation": "exec-ef68fc13-5496-4b4a-86d3-f184b23959db",
+      "sourceHeights": [
+        472,
+        472,
+        472,
+        471,
+        471,
+        471
+      ]
+    },
+    "lower": {
+      "source": "sources/lower-interiors-v2.png",
+      "count": 2,
+      "heads": [
+        [
+          378,
+          111
+        ],
+        [
+          875,
+          111
+        ]
+      ],
+      "fixedRuler": [
+        0.127,
+        0.14785
+      ],
+      "density": 2.12,
+      "generation": "exec-ce4095b6-00bd-4b75-b38d-23210ab8029e",
+      "sourceHeights": [
+        1001,
+        1001
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      1
+    ],
+    [
+      "lower",
+      0
+    ],
+    [
+      "lower",
+      1
+    ],
+    [
+      "primary",
+      2
+    ]
+  ],
+  "excludedPrimaryPoses": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "excludedReason": "Exact selected idle/held endpoints replace source0/5; late source4 overshoots. Focused source supplies low reader contact; fixed ruler per source, no per-pose normalization.",
+  "sourcesSha256": {
+    "primary": "a653e6511e7216c97f39b1175b28118939939c1dc593b4044e7ef954ec54b80b",
+    "lower": "293fb3fb082c802df58f0436694d955631d9b58800ef8495023610e07323a130"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        688,
+        27,
+        872,
+        505
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3136
+      ],
+      "position": [
+        102,
+        75
+      ],
+      "headAxis": [
+        122,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "lower",
+      "sourcePose": 0,
+      "sourceBox": [
+        248,
+        108,
+        590,
+        1115
+      ],
+      "fixedRuler": [
+        0.127,
+        0.14785
+      ],
+      "position": [
+        107,
+        76
+      ],
+      "headAxis": [
+        124,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "lower",
+      "sourcePose": 1,
+      "sourceBox": [
+        731,
+        108,
+        1088,
+        1115
+      ],
+      "fixedRuler": [
+        0.127,
+        0.14785
+      ],
+      "position": [
+        105,
+        76
+      ],
+      "headAxis": [
+        123,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1163,
+        27,
+        1353,
+        505
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3136
+      ],
+      "position": [
+        100,
+        75
+      ],
+      "headAxis": [
+        121,
+        76
+      ],
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        4.333333333333333,
+        18.0,
+        40.666666666666664,
+        55.666666666666664,
+        69.33333333333333,
+        81.33333333333333,
+        122.0,
+        155.0,
+        255.0
+      ],
+      "neutralOutput": [
+        4.0,
+        12.666666666666666,
+        21.333333333333332,
+        35.666666666666664,
+        44.0,
+        55.333333333333336,
+        67.66666666666667,
+        121.86666666666649,
+        144.33333333333334,
+        191.0
+      ],
+      "gains": {
+        "hair": [
+          0.7623762376237624,
+          0.9210526315789473,
+          1.0675675675675675
+        ],
+        "face": [
+          0.7065727699530516,
+          0.848,
+          0.875
+        ],
+        "burgundy": [
+          0.7983870967741935,
+          0.9230769230769231,
+          0.9893617021276596
+        ]
+      }
+    },
+    "lower": {
+      "neutralInput": [
+        0.0,
+        1.6666666666666667,
+        18.0,
+        47.0,
+        63.333333333333336,
+        77.0,
+        90.66666666666667,
+        130.0,
+        155.66666666666666,
+        255.0
+      ],
+      "neutralOutput": [
+        4.0,
+        12.666666666666666,
+        21.333333333333332,
+        35.666666666666664,
+        44.0,
+        55.333333333333336,
+        67.66666666666667,
+        121.86666666666649,
+        144.33333333333334,
+        191.0
+      ],
+      "gains": {
+        "hair": [
+          0.7,
+          0.7894736842105263,
+          0.8586956521739131
+        ],
+        "face": [
+          0.7032710280373832,
+          0.828125,
+          0.8352272727272727
+        ],
+        "burgundy": [
+          0.7333333333333333,
+          0.8,
+          0.8611111111111112
+        ]
+      }
+    }
+  },
+  "donors": {
+    "bare": [
+      {
+        "path": "bill-seated-west-coherent-v1/frames/sit-down-west/000.png",
+        "sha256": "4511e79ec9d142757f8c99616defd1cbe0a6efac655fb4eb10c4d7df9dafab4e"
+      },
+      {
+        "path": "bill-inspect-west-coherent-v1/frames/bare/000.png",
+        "sha256": "c7188403a8be372ac490299391211cbf9551ea3644a6ba82df182a5e0ff049df"
+      }
+    ],
+    "helmet": [
+      {
+        "path": "bill-seated-helmet-west-coherent-v1/frames/sit-down-west/000.png",
+        "sha256": "8511ceffdfbd123d7aaa0120ff43309eabbac0c287f9b33ff053b87b20ed5a7a"
+      },
+      {
+        "path": "bill-inspect-west-coherent-v1/frames/helmet/000.png",
+        "sha256": "bb4d31cb1b0a00443ac1fefa0aa8f8a72550968488b73d95d80254b3e4a06719"
+      }
+    ]
+  },
+  "helmetComponent": {
+    "path": "bill-seated-helmet-west-coherent-v1/sources/canonical-head.png",
+    "sha256": "b1531011f1205161beca7336b896ad0d50acd9feb6e1b805859a4f2c318ec1be"
+  },
+  "scope": "authored standing reader draw/reversed stow; exact idle/held joins; actor selection/wiring pending"
+}

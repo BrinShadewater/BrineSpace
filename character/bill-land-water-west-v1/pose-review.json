@@ -1,0 +1,69 @@
+{
+  "scope": "Five source poses including exact idle/swim references. Crouch/push authored West; missing lift/prone intermediates, no complete transition or normal admission. No borrowed East mirrors, per-pose scale fit or grade reapplication.",
+  "canvas": [
+    320,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "registrations": {
+    "crouch": {
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        -12
+      ],
+      "semanticBootROI": [
+        130,
+        190,
+        205,
+        260
+      ],
+      "soleBefore": 236,
+      "allPaintedSupportPreserved": true,
+      "generation": "exec-e54443bb-3bfa-40d8-ad93-33c1e37570bd",
+      "prompt": "sources/crouch-prompt-v1.txt",
+      "nativeAlphaBBox": [
+        102,
+        115,
+        200,
+        227
+      ]
+    },
+    "push": {
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        0
+      ],
+      "semanticBootROI": null,
+      "soleBefore": null,
+      "allPaintedSupportPreserved": true,
+      "generation": "exec-de353a1d-a1f6-4b13-b0e9-da41351515a6",
+      "prompt": "sources/push-prompt-v1.txt",
+      "nativeAlphaBBox": [
+        86,
+        116,
+        237,
+        237
+      ]
+    }
+  },
+  "headAndMaterialAcceptance": "pending complete source/native motion review",
+  "sha256": {
+    "crouch-native-v1.png": "dbdafa33bd40cdf61b0cebd6e5e6c9987ae864f98d5d85b7805b9940018b5172",
+    "push-native-v1.png": "02cca9d826d94091e4a00c1df551cd8982e6d49b2e77852bfe52bd8284761343"
+  },
+  "visualReview": "Complete common148ruler master/idle/arm-ready/crouch/push/swim board inspected. Compact squat uses two knees/boots; push has connected shoulders/two forward hands. Matte/warm face reasonably coherent; slight head/detail differences and large pitch gap to swim remain, no full motion acceptance."
+}

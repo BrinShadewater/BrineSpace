@@ -1,0 +1,18 @@
+<!doctype html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Bill — West water exit</title><style>body{margin:24px;background:#182932;color:#edf1f2;font:16px system-ui}main{max-width:1200px;margin:auto}.pair{display:flex;flex-wrap:wrap;gap:20px}.pose{text-align:center}canvas{background:#14242c;width:480px;height:480px;max-width:100%}button{padding:8px 15px;margin-right:8px}input{width:min(650px,95%)}img{max-width:100%}p{line-height:1.5}summary{cursor:pointer;margin:20px 0}</style>
+<main><h1>Bill — West water exit</h1><p>New push-up and rise sequence: low elbow support, palm push, knee tuck, half-kneel and standing rise.</p><p>Source candidate. Face and suit matching, full-speed motion and movement in the station still need review.</p>
+<div class="pair"><div class="pose"><h2>Bare</h2><canvas id="bare" width="640" height="640"></canvas></div><div class="pose"><h2>Helmet</h2><canvas id="helmet" width="640" height="640"></canvas></div></div>
+<p><button id="play">Play</button><button id="prev">Previous pose</button><button id="next">Next pose</button><select id="speed"><option value="1">Normal speed</option><option value="0.25">Quarter speed</option></select></p><input id="scrub" type="range" min="0" max="500" value="0"><p id="label">Loading poses…</p>
+<details><summary>Original master and all poses at one scale</summary><img src="master-review.png"><img src="paired-helmet-review.png"></details>
+<details><summary>Head, collar and shoulder close-ups</summary><img src="helmet-neck-details.png"></details></main>
+<script>
+const times=[60, 50, 60, 70, 100, 100, 60],starts=[0];times.forEach(t=>starts.push(starts.at(-1)+t));const banks={},names=['Swimming context','Low elbow','Palm push','Knee tuck','Half kneel','Rise','Standing context'];let ready=false,playing=false,time=0,last=0;
+function frame(){let i=0;while(i<6&&time>=starts[i+1])i++;return i}
+function draw(){if(!ready)return;const i=frame();for(const gear of ['bare','helmet']){const c=document.getElementById(gear),ctx=c.getContext('2d');ctx.clearRect(0,0,640,640);ctx.imageSmoothingEnabled=false;ctx.drawImage(banks[gear][i],0,0,640,640)}document.getElementById('scrub').value=Math.round(time);document.getElementById('label').textContent=names[i]+' · pose '+(i+1)+' of 7 · '+Math.round(time)+' ms'}
+function pause(){playing=false;document.getElementById('play').textContent='Play'}
+document.getElementById('play').onclick=()=>{if(!playing&&time>=500)time=0;playing=!playing;document.getElementById('play').textContent=playing?'Pause':'Play'};
+document.getElementById('scrub').oninput=e=>{pause();time=Number(e.target.value);draw()};
+document.getElementById('prev').onclick=()=>{pause();time=starts[Math.max(0,frame()-1)];draw()};document.getElementById('next').onclick=()=>{pause();time=starts[Math.min(6,frame()+1)];draw()};
+function animate(now){if(last&&playing&&ready){time=Math.min(500,time+(now-last)*Number(document.getElementById('speed').value));if(time>=500)pause()}last=now;draw();requestAnimationFrame(animate)}
+Promise.all(['bare','helmet'].map(async gear=>{banks[gear]=await Promise.all(times.map((_,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=gear+'/frames/swim-land-west/'+String(i).padStart(3,'0')+'.png'})))})).then(()=>{ready=true;requestAnimationFrame(animate)}).catch(()=>{document.getElementById('label').textContent='Could not load a pose.'});
+</script></html>

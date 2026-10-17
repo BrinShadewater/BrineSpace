@@ -1,0 +1,284 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-v1.png",
+      "generation": "exec-96a429af-3216-4956-8b5f-7f2f63d25527",
+      "heads": [
+        [
+          238,
+          94
+        ],
+        [
+          613,
+          95
+        ],
+        [
+          989,
+          94
+        ],
+        [
+          238,
+          684
+        ],
+        [
+          613,
+          684
+        ],
+        [
+          989,
+          684
+        ]
+      ],
+      "count": 6,
+      "density": 1.16,
+      "fixedRuler": [
+        0.267,
+        0.289
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      0
+    ],
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "excludedPrimaryPoses": [
+    5
+  ],
+  "sourcesSha256": {
+    "primary": "d15f6130695927772bd0cdfe200877d72215f519840802d3483d68b2b079b594"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 0,
+      "sourceBox": [
+        117,
+        91,
+        357,
+        609
+      ],
+      "fixedRuler": [
+        0.267,
+        0.289
+      ],
+      "position": [
+        96,
+        75
+      ],
+      "headAxis": [
+        128,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        504,
+        92,
+        732,
+        609
+      ],
+      "fixedRuler": [
+        0.267,
+        0.289
+      ],
+      "position": [
+        100,
+        76
+      ],
+      "headAxis": [
+        129,
+        77
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        881,
+        91,
+        1109,
+        609
+      ],
+      "fixedRuler": [
+        0.267,
+        0.289
+      ],
+      "position": [
+        100,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        121,
+        681,
+        357,
+        1199
+      ],
+      "fixedRuler": [
+        0.267,
+        0.289
+      ],
+      "position": [
+        98,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        498,
+        681,
+        731,
+        1199
+      ],
+      "fixedRuler": [
+        0.267,
+        0.289
+      ],
+      "position": [
+        98,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        3.3333333333333335,
+        17.0,
+        37.0,
+        48.0,
+        58.333333333333336,
+        76.66666666666667,
+        142.33333333333334,
+        161.0,
+        213.66666666666666
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        13.333333333333334,
+        26.333333333333332,
+        42.0,
+        50.333333333333336,
+        61.333333333333336,
+        79.66666666666667,
+        130.33333333333334,
+        153.0,
+        196.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          0.9464285714285714,
+          0.918918918918919,
+          0.9285714285714286
+        ],
+        "face": [
+          1.0421686746987953,
+          1.0,
+          0.974025974025974
+        ],
+        "burgundy": [
+          1.247191011235955,
+          1.0,
+          1.0952380952380953
+        ]
+      },
+      "shoulderPlateOverride": {
+        "gain": [
+          0.9045801526717557,
+          0.9137931034482759,
+          0.9310344827586207
+        ],
+        "sourceSampleMinRed": 100,
+        "masterSampleMinRed": 80,
+        "masterRawY": [
+          49,
+          74
+        ],
+        "scope": "bounded red shoulder material; sample plate interiors rather than dark outlines; alpha unchanged"
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-south-coherent-v1/frames/sit-down-south/000.png",
+      "sha256": "d7c6c0851a936755bdab52a614f56da149322a7c456692e65fc7a3dcfe33fdac"
+    },
+    {
+      "path": "bill-drink-south-coherent-v1/frames/drink-south/000.png",
+      "sha256": "861a433ffe901aa24e9b40f7e668b9691a79a3de525187a78edb84d7ce53abc4"
+    }
+  ],
+  "scope": "authored cup pickup and reversed return; exact idle/drinking-held endpoints; normal service pending"
+}

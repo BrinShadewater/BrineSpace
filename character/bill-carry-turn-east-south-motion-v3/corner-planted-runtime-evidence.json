@@ -1,0 +1,96 @@
+{
+  "scope": "Authoring-only Bill movement subclass versus production BillNPC.move, fixture-only clear geometry/prescribed corner, real animation_state and CrewSpritePlayer. Not main-scene draw, natural navigation, services, or Continue/checkpoint compatible.",
+  "checks": 2274,
+  "validation": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 12.63,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-corner-planted-preview\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "visualFinding": "Preview physical foot stays planted during turn; reverse still exits abruptly into large East stride.",
+  "turnTravelWorldUnits": [
+    0.76666259765625,
+    36.7998046875,
+    0.76666259765625,
+    36.7998046875,
+    0.76666259765625,
+    36.7998046875,
+    0.76666259765625,
+    36.7998046875
+  ],
+  "normalSelectionChanged": false,
+  "goalComplete": false,
+  "hashTiming": "Recorded after native interval; dependency stability during interval unmeasured.",
+  "hashes": {
+    "output/bill-carry-corner-planted-preview/corner-board.png": "290141d00e876171dcc06292a166498648101af21c19dfe883d0a19b14a428ff",
+    "output/bill-carry-corner-planted-preview/journeys.json": "e8a0f8b6795ad9938897f352f1ba29cf61961e4bf4798c6b5ec1580429395d29",
+    "tests/test_bill_carry_corner_staged.gd": "f29a0b0eeacc505ccf5692cc2f2aa465d6233e4aa34274a88bdd4330983f822d",
+    "scripts/bill_npc.gd": "49af7ab6544af645b6f8e8572e38337cf7ecdf16f5a84b5652b2b625c39d5d66",
+    "scripts/crew_sprite_player.gd": "03a651fc7990a62e755eee71162209aebffc3caf731163c5a8886a10774da0a6",
+    "tests/test_bill_carry_corner_planted_preview.gd": "63f4ec40e8a28b6b96f4606957e0f7a2750972f9b20a14a2a3dc9e716c40e461",
+    "character/bill-carry-turn-east-south-motion-v3/carry_motion_preview.gd": "ec112eba8aadf9e17fe2a896cf0e048edd455f45a0356a12563315c5c71a2eb8"
+  },
+  "displayedTurnFootRanges": [
+    {
+      "candidate": true,
+      "gear": "",
+      "reverse": false,
+      "rangeX": 0.0,
+      "rangeY": 0.0
+    },
+    {
+      "candidate": false,
+      "gear": "",
+      "reverse": false,
+      "rangeX": 0.0,
+      "rangeY": 36.033142089844006
+    },
+    {
+      "candidate": true,
+      "gear": "",
+      "reverse": true,
+      "rangeX": 0.0,
+      "rangeY": 0.0
+    },
+    {
+      "candidate": false,
+      "gear": "",
+      "reverse": true,
+      "rangeX": 36.033142089844006,
+      "rangeY": 0.0
+    },
+    {
+      "candidate": true,
+      "gear": "diving-helmet",
+      "reverse": false,
+      "rangeX": 0.0,
+      "rangeY": 0.0
+    },
+    {
+      "candidate": false,
+      "gear": "diving-helmet",
+      "reverse": false,
+      "rangeX": 0.0,
+      "rangeY": 36.033142089844006
+    },
+    {
+      "candidate": true,
+      "gear": "diving-helmet",
+      "reverse": true,
+      "rangeX": 0.0,
+      "rangeY": 0.0
+    },
+    {
+      "candidate": false,
+      "gear": "diving-helmet",
+      "reverse": true,
+      "rangeX": 36.033142089844006,
+      "rangeY": 0.0
+    }
+  ]
+}

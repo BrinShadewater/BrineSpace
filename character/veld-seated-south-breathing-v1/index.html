@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>Veld seated breathing candidate</title>
+<style>body{background:#202a30;color:#e1e7eb;font:16px system-ui;margin:24px}p{max-width:75ch;line-height:1.5}.row{display:flex;gap:20px;flex-wrap:wrap}canvas{background:#202a30}button,input{font:inherit}a{color:#8cc6e7}</style>
+<h1>Veld — south seated breathing</h1>
+<p>Staged local breathing candidate. The original matte seated figure supplies every material and detail; locally authored rib and sleeve expansion uses the north breathing amplitude. Head, helmet, collar, central chest fittings, belt and seated supports stay fixed. Six poses, 3.6 seconds; neutral joins match the down and rise animation. No normal library selection yet.</p>
+<button id="play">Pause</button> <label>Pose <input id="slot" type="range" min="0" max="5" value="0"></label> <span id="status">Loading</span>
+<div class="row"><div><h2>Current neutral</h2><canvas id="neutral" width="256" height="256"></canvas></div><div><h2>Bare breathing</h2><canvas id="bare" width="256" height="256"></canvas></div><div><h2>Helmet breathing</h2><canvas id="helmet" width="256" height="256"></canvas></div></div>
+<p>Torso comparison, enlarged for checking collar, straps and belt:</p><canvas id="detail" width="612" height="150"></canvas>
+<p>Gameplay sizes:</p><canvas id="scales" width="500" height="150"></canvas>
+<p><a href="contact.png">All paired poses</a> · <a href="../veld-seated-south-coherent-v1/index.html">Paired down/rise source review</a> · <a href="HANDOFF.md">Evidence and remaining work</a></p>
+<script>
+let running=true,slot=0,start=performance.now();const range=document.querySelector('#slot'),button=document.querySelector('#play');
+button.onclick=()=>{running=!running;button.textContent=running?'Pause':'Play';start=performance.now()-slot*600};range.oninput=()=>{slot=Number(range.value);running=false;button.textContent='Play'};
+const load=p=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(p);im.src=p});
+Promise.all([load('../veld-seated-south-coherent-v1/frames/bare/sit-down-south/005.png'),...['bare','helmet'].flatMap(g=>Array.from({length:6},(_,i)=>load(`frames/${g}/sit-idle-south/${String(i).padStart(3,'0')}.png`)))]).then(images=>{
+function draw(now){if(running){slot=Math.floor((now-start)%3600/600);range.value=slot}document.querySelector('#status').textContent=`Pose ${slot} / 5`;
+const current=[images[0],images[1+slot],images[7+slot]];
+['neutral','bare','helmet'].forEach((id,i)=>{const c=document.querySelector('#'+id).getContext('2d');c.clearRect(0,0,256,256);c.drawImage(current[i],0,0)});
+const d=document.querySelector('#detail').getContext('2d');d.clearRect(0,0,612,150);d.imageSmoothingEnabled=false;current.forEach((im,i)=>d.drawImage(im,94,135,68,50,i*204,0,204,150));
+const c=document.querySelector('#scales').getContext('2d');c.clearRect(0,0,500,150);let x=0;for(const h of [142,93,47]){c.drawImage(current[1],x,150-h,h,h);x+=h+25}requestAnimationFrame(draw)}requestAnimationFrame(draw)
+}).catch(e=>document.querySelector('#status').textContent='Missing source: '+e);
+</script>

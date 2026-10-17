@@ -1,0 +1,56 @@
+{
+  "reviewed": true,
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "reviewSha256": "a0556adb7e0cf9bb518261468886c534897372cb23741df16c56b0767d8a7c40",
+  "inventorySha256": "46e99310091e8a75b7f9f01f7ad99cffd6388b45480d1e4627128511c77b2048",
+  "nativeRuntimeChecked": false,
+  "boards": [
+    {
+      "path": "character/marsh-north-walk-family-detail-v1/family-joins-native.png",
+      "sha256": "168fd648dbd8b14dcbae0a1cd89d2197c06ba78e295e0652c0b8cf6d4cb0e79e",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-north-walk-family-detail-v1/heads-2x.png",
+      "sha256": "b6eede5424df26f8427b897799d025ee4317326f061e56af3468b8230d9ff9c5",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-north-walk-family-detail-v1/closing-join-station.png",
+      "sha256": "346959fc586e27b0309c7600f7abfb4bd9f74089f4161a91b378bfc87a6fa490",
+      "reviewed": true
+    },
+    {
+      "path": "character/marsh-north-walk-family-detail-v1/phase-stop-joins-native.png",
+      "sha256": "031e124b8e0c29354aaca95740b03bce0210b47611ca7bb4ead4bf4c0a4498d7",
+      "reviewed": true
+    }
+  ],
+  "crownsOriginalAndRevised": [
+    24,
+    25,
+    23,
+    24,
+    25,
+    23
+  ],
+  "solesOriginalAndRevised": [
+    172,
+    170,
+    170,
+    171,
+    170,
+    170
+  ],
+  "wholePoseRepairs": [
+    4,
+    5
+  ],
+  "initialSoleErrors": {
+    "4": -2,
+    "5": 1
+  },
+  "method": "Eight built-in whole-pose transparent edits; first4/5 retained. One fixed184/raw-width whole-canvas LANCZOS resample, original alpha, no translation or anatomical fit. Six poses now retain exact crown/sole bounds and occupied heights.",
+  "limits": "Source bounds and reviewed still boards do not prove cadence, native world floor contact, complete2D planted feet, original-pair capture coverage or normal selection. Phase5 silhouette IoU .910878; assess actual loop before admission."
+}

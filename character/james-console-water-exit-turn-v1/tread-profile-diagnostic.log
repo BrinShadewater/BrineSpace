@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+ERROR: Selected pose and full body clear actual geometry: foot=(7632.068, 7876.297) direction=west key={ "state": "tread", "direction": "west", "clip": "", "started": 139.058333333346 } actor tread-west phase={  } state=tread extent=[-13.2324323654175, -18.9664859771729, 9.70378398895264, 42.3437805175781]
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-console-water-exit-turn-v1/native-traffic.gd:8)
+       [1] selected_clear (res://character/james-console-water-exit-turn-v1/native-traffic.gd:150)
+       [2] run (res://character/james-console-water-exit-turn-v1/native-traffic.gd:118)
+       [3] capture (res://character/james-console-water-exit-turn-v1/native-traffic.gd:38)
+JAMES TRAFFIC JOURNEYS: 98869 checks; 1 failures; 8 normal journeys

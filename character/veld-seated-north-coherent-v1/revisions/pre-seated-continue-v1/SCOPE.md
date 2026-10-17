@@ -1,0 +1,1 @@
+Earlier source/default lounge depth evidence and notes; not a complete byte rollback. Sources/frames unchanged. Failed snapshot fixture and prior incomplete first camera capture are retained in output/veld-seated-north-continue-v1/interval-before-*.

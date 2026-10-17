@@ -1,0 +1,37 @@
+{
+  "status": "staged_carry_turn_planted_v1",
+  "runtimeInstalled": false,
+  "coverage": [
+    "carry-turn-east-north",
+    "carry-turn-north-east"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet.png",
+  "helmetPrompt": "prompt-helmet.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.26811594202898553,
+  "timingMs": 800,
+  "derivation": "Independent compact planted quarter turn; exact reverse; east selected endpoint retained; north selected upper body above legCutoff with compact source legs",
+  "helmet": "Generated intermediate angles composited only above headCutoff; body below cutoff identical to bare",
+  "checks": "111 packaging /121 native checks,0 failures;8 captures; final compact pose and destination carry0 clock reset verified both directions/equipment modes",
+  "profileAudit": "Scratch APPDATA asserted; concurrent last_session.json change observed, attribution unresolved; no owner files restored",
+  "visualReview": "Source/contact/decoded preview/native148/82/54/27px inspected; owner review pending",
+  "remaining": [
+    "Owner review",
+    "Install accepted pair",
+    "Remaining8 carrying turns after installation"
+  ],
+  "review": "review.gif"
+}

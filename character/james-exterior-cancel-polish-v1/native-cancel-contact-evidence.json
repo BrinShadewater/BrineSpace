@@ -1,0 +1,1083 @@
+{
+	"checks": 9365,
+	"failures": 0,
+	"journeys": [
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q0-recall-work-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-work-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-work-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-work-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-work-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-work-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-work-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 44.7666666666675
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-work-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim",
+					"tank": 44.7333333333342
+				},
+				{
+					"direction": "west",
+					"file": "q0-recall-work-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 42.1666666666677
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-work-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 35.5333333333347
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-work-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 32.7000000000016
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-work-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 32.7000000000016
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.527299270072994,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 2.4,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-work-before",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-before.png",
+					"phase": "salvage",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-before-source.png",
+					"state": "salvage"
+				},
+				{
+					"actionElapsed": 0.527299270072994,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 2.4,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-work-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-00.png",
+					"phase": "salvage",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-00-source.png",
+					"state": "salvage"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-work-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-01.png",
+					"phase": "pickup",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-01-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-work-after-02",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-02.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-02-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8053.92, 7104.0)",
+					"label": "recall-work-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-03-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "recall-work-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-04-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8041.92, 7104.0)",
+					"label": "recall-work-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-08-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8032.321, 7104.0)",
+					"label": "recall-work-after-12",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-12.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-12-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8020.321, 7104.0)",
+					"label": "recall-work-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8010.722, 7104.0)",
+					"label": "recall-work-after-21",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8001.122, 7104.0)",
+					"label": "recall-work-after-25",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7989.123, 7104.0)",
+					"label": "recall-work-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "recall-work-after-34",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-34.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-work-after-34-source.png",
+					"state": "swim"
+				}
+			],
+			"joins": {
+				"pickupCarry": false,
+				"salvagePickup": false
+			},
+			"mode": "recall-work",
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0
+			],
+			"recalled": true,
+			"restored": false,
+			"rotation": 0,
+			"tank": 32.7000000000016,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "west",
+					"file": "q0-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-pickup-before",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-pickup-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-01-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8053.92, 7104.0)",
+					"label": "recall-pickup-after-02",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-02.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-02-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-03-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8041.92, 7104.0)",
+					"label": "recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-07-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8032.321, 7104.0)",
+					"label": "recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-11-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8020.321, 7104.0)",
+					"label": "recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-16-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8010.722, 7104.0)",
+					"label": "recall-pickup-after-20",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-20.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-20-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8001.122, 7104.0)",
+					"label": "recall-pickup-after-24",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-24.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-24-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7989.123, 7104.0)",
+					"label": "recall-pickup-after-29",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "recall-pickup-after-33",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.2666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/recall-pickup-after-33-source.png",
+					"state": "swim"
+				}
+			],
+			"joins": {
+				"pickupCarry": false,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": false,
+			"rotation": 0,
+			"tank": 29.4000000000015,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q0-low-air-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q0-low-air-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-low-air-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-low-air-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "q0-low-air-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "q0-low-air-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "q0-low-air-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 24.9666666666667
+				},
+				{
+					"direction": "east",
+					"file": "q0-low-air-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim",
+					"tank": 24.9333333333333
+				},
+				{
+					"direction": "west",
+					"file": "q0-low-air-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 22.3666666666665
+				},
+				{
+					"direction": "south",
+					"file": "q0-low-air-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 15.7333333333329
+				},
+				{
+					"direction": "north",
+					"file": "q0-low-air-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 12.8999999999996
+				},
+				{
+					"direction": "south",
+					"file": "q0-low-air-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 12.8999999999996
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.527299270072994,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 2.4,
+					"foot": "(8056.32, 7104.0)",
+					"label": "low-air-before",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-before.png",
+					"phase": "salvage",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-before-source.png",
+					"state": "salvage"
+				},
+				{
+					"actionElapsed": 0.527299270072994,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 2.4,
+					"foot": "(8056.32, 7104.0)",
+					"label": "low-air-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-00.png",
+					"phase": "salvage",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-00-source.png",
+					"state": "salvage"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "low-air-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-01.png",
+					"phase": "pickup",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-01-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "low-air-after-02",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-02.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-02-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8053.92, 7104.0)",
+					"label": "low-air-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-03-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "low-air-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-04-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8041.92, 7104.0)",
+					"label": "low-air-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-08-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8032.321, 7104.0)",
+					"label": "low-air-after-12",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-12.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-12-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8020.321, 7104.0)",
+					"label": "low-air-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8010.722, 7104.0)",
+					"label": "low-air-after-21",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8001.122, 7104.0)",
+					"label": "low-air-after-25",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7989.123, 7104.0)",
+					"label": "low-air-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "low-air-after-34",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 27.9666666666672,
+						"state": "swim"
+					},
+					"native": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-34.png",
+					"phase": "return",
+					"source": "res://character/james-exterior-cancel-polish-v1/captures/low-air-after-34-source.png",
+					"state": "swim"
+				}
+			],
+			"joins": {
+				"pickupCarry": false,
+				"salvagePickup": false
+			},
+			"mode": "low-air",
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0
+			],
+			"recalled": true,
+			"restored": false,
+			"rotation": 0,
+			"tank": 12.8999999999996,
+			"turns": [],
+			"unload": []
+		}
+	],
+	"scope": "Real dispatch/needs/airlock/exterior/controller/render/unload and loaded disk restore; dedicated station, normal runtime selected manifests/profile. Existing James selected source only. Three actual late work/pickup/low-air recalls with selected pose textures and native contact-window captures. No disk Continue or traffic certification."
+}

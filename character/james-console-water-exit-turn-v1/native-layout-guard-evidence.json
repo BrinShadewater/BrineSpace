@@ -1,0 +1,43 @@
+{
+  "checks": 46,
+  "failures": 0,
+  "results": [
+    {
+      "bodyClear": true,
+      "dead": false,
+      "event": "clip-blocker",
+      "goal": "",
+      "mode": "bare",
+      "phase": "entry",
+      "state": "idle"
+    },
+    {
+      "bodyClear": true,
+      "dead": false,
+      "event": "clip-blocker",
+      "goal": "",
+      "mode": "bare",
+      "phase": "exit",
+      "state": "idle"
+    },
+    {
+      "bodyClear": true,
+      "dead": false,
+      "event": "clip-blocker",
+      "goal": "",
+      "mode": "helmet",
+      "phase": "entry",
+      "state": "idle"
+    },
+    {
+      "bodyClear": true,
+      "dead": false,
+      "event": "clip-blocker",
+      "goal": "",
+      "mode": "helmet",
+      "phase": "exit",
+      "state": "idle"
+    }
+  ],
+  "scope": "Four normal chooser/update held-phase scenarios, two gear/two quarters. Scratch geometry acquires a padded blocker outside destination body/standing feet but inside full held-clip envelope. Normal guard cancels invalid quarter and retains clear body. This is geometry invalidation proof, not Layout Studio interaction. No owner profile use."
+}

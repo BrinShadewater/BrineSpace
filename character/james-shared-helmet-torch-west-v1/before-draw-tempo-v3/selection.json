@@ -1,0 +1,42 @@
+{
+  "status": "staged_west_construction_torch",
+  "runtimeInstalled": false,
+  "coverage": [
+    "torch-draw-west",
+    "weld-west",
+    "torch-stow-west"
+  ],
+  "framesPerMode": 118,
+  "states": {
+    "torch-draw-west": {
+      "frames": 45,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-west": {
+      "frames": 41,
+      "durationMs": 1200,
+      "loop": true
+    },
+    "torch-stow-west": {
+      "frames": 32,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-west-direct-v1",
+  "derivation": "Independent west draw0-44, quiet work44-64 then reverse63-44 exact seam; join44 + actual flame-off/stow110-140. Original late extra hand gesture excluded. Exact idle/action/loop joins.",
+  "helmet": "Selected west shell,13/order2 face smoothing; max adjacent1/1px",
+  "colour": "Fixed neutral material grade preserves small forward blue flame; no local shadow lift added",
+  "native": "979 checks/0 failures,12 captures after tempo-v2; scratch asserted, real profile unchanged",
+  "visualReview": "Owner liked poses, requested faster cadence. Same reviewed poses, faster work timing; updated GIF pending timing acceptance.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "pending": [
+    "Owner west torch GIF review",
+    "Install west if accepted and validate actual loader/renderer",
+    "South/north torch and retained special actions"
+  ],
+  "tempo": "tempo-v2: owner liked motion but requested faster feel. Work cycle1708->1200ms (about42percent faster playback), draw/stow520ms unchanged, all236 runtime poses byte-identical.",
+  "review": "review-tempo-v2.gif"
+}

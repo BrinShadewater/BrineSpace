@@ -1,0 +1,69 @@
+{
+  "selected": false,
+  "fullGoalComplete": false,
+  "nativeChecks": 677,
+  "failures": 0,
+  "nativePairsReviewed": 90,
+  "losslessApngRgbDurationChecks": 180,
+  "targetedInputsUnchanged": 32,
+  "ownerProfileUnchanged": true,
+  "canonicalBodyMethod": "Exact currently selected West idle source/pivot registration, no resampling/repaint; terminal endpoint deliberately revised.",
+  "upperOriginalPixelChecks": 98816,
+  "bodyBindings": {
+    "bare": {
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-west-breathing-v1\\000.png",
+      "sha256": "87d07ba644bb5b85179769377c4003479c2a8c71a098841780bd11d155181a29",
+      "manifest": "character\\crew-runtime-matte-v1\\branforth\\manifest.json",
+      "manifestSha256": "770ac815ba88e5f6b48378db0b26268e2d45f037bc252ea97b53c70dee11964a",
+      "originalStanding": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-west\\005.png",
+      "originalStandingSha256": "88307072ed30f464e8bacee6eed8118737df644dbef3e2bac85131245d6c5d9d",
+      "originalPivot": [
+        92.0,
+        172.0
+      ],
+      "registeredTranslation": [
+        36,
+        52
+      ],
+      "height": 148.0,
+      "originalUpper193RowsExact": true,
+      "originalVisibleRightLowerPixelsChanged": 27,
+      "scope": "Upper body matches exact original standing; boots below193 differ from original terminal and deliberately reuse exact next selected idle body. This revises terminal endpoint, not an unchanged-original endpoint claim."
+    },
+    "helmet": {
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-west\\000.png",
+      "sha256": "6578fe30a4413834c5bd5d3954bf5d9ebefa17ae35019ae345174cae6a7e0655",
+      "manifest": "character\\james-shared-helmet-runtime-v1\\manifest.json",
+      "manifestSha256": "f06ecda249e4f8d1d10e884a41e2518441a26ae92a5351d57c7f1b2045d6f714",
+      "originalStanding": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-west\\005.png",
+      "originalStandingSha256": "766b5f797b0abd1d65aa957940d24537237e5caa152074fc1c31d19408700c86",
+      "originalPivot": [
+        92.0,
+        172.0
+      ],
+      "registeredTranslation": [
+        36,
+        52
+      ],
+      "height": 148.0,
+      "originalUpper193RowsExact": true,
+      "originalVisibleRightLowerPixelsChanged": 27,
+      "scope": "Upper body matches exact original standing; boots below193 differ from original terminal and deliberately reuse exact next selected idle body. This revises terminal endpoint, not an unchanged-original endpoint claim."
+    }
+  },
+  "generatedDraft": {
+    "raw": "standing-body-only-generated-v1.png",
+    "prompt": "standing-body-only-prompt-v1.txt",
+    "method": "Built-in image_gen",
+    "preferred": false,
+    "reason": "Generated lower boots do not match exact next idle; original idle source reuse preferred."
+  },
+  "standingToIdleSourceBootSeamResolved": true,
+  "wholeRiseCaseSeamResolved": false,
+  "remaining": [
+    "Embedded midpoint->canonical terminal separate case hardware still changes; unify case across released source frames.",
+    "New terminal/bank/floor-art checkpoint binding; ordinary unload actor path and full native return.",
+    "Normal title/disk/new-process Continue and natural scheduling.",
+    "V9 collar/head turn; full directional masters and cross-family polish."
+  ]
+}

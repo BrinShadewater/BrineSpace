@@ -1,0 +1,21 @@
+{
+  "selected": false,
+  "normalV9Unchanged": true,
+  "nativeChecks": 1317,
+  "nativeFailures": 0,
+  "sourceNativePairsReviewed": 102,
+  "inputHashesUnchanged": 70,
+  "apngRgbDurationChecks": 200,
+  "method": "Built-in image_gen, separate bare15/helmet16 edits of original80square upper crop enlarged8x; raw1254square, native Godot uniform80/1254resample and original96/56crop origin; no grade or pose normalization.",
+  "finding": "Closer collar/source registration but temporal join not resolved. Helmet crown156,156,156,156,158,158 delays original2px rise one frame. Largest upper-region premultiplied pixel step190505 vs190487 normal. Bare peak117943 vs118680; neither pixel diagnostic proves anatomical motion. Need adjacent articulated intermediate poses, not single-frame cleanup.",
+  "protectedPixelsEach": 61476,
+  "scope": "Staged paired complete prescribed return; no candidate normal save/title or full natural/master acceptance.",
+  "raw": [
+    "upper-crop-v15/raw.png",
+    "upper-crop-v16/raw.png"
+  ],
+  "prompts": [
+    "upper-crop-v15/prompt.txt",
+    "upper-crop-v16/prompt.txt"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_two_consecutive_window_studies",
+  "states": [
+    {
+      "id": "carry-middle-review-west",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase22-v64/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase23-v58/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/sleeve-phase24-v63/bare-candidate.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase25-v59/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase26-v65/bare-head-protected.png"
+      ],
+      "frameDurationsMs": [
+        30,
+        40,
+        40,
+        40,
+        40
+      ],
+      "loop": false,
+      "sourceIndices": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "id": "carry-seam-review-west",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase47-v67/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase48-v55/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-v49/bare-head-protected.png",
+        "res://character/james-west-carry-walk-keys-v1/master-material-phase1-v66/bare-head-protected.png"
+      ],
+      "frameDurationsMs": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "loop": false,
+      "sourceIndices": [
+        47,
+        48,
+        0,
+        1
+      ]
+    }
+  ],
+  "scope": "Middle22..26 and seam47/48/0/1 windows only; not full49source motion or normal selection."
+}

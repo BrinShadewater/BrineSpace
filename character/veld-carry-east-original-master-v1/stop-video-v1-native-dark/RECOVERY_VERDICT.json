@@ -1,0 +1,26 @@
+{
+  "status": "Consecutive14-pose paired recovery packaged/native reviewed; walking/standing/contact joins pending",
+  "sourceRange": [
+    109,
+    122
+  ],
+  "durationMs": 583,
+  "sourceChecks": 70,
+  "nativeChecks": 65,
+  "nativePresentations": 28,
+  "nativeReplayChecks": 56,
+  "nativeValidation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 5.59,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 87,
+    "targetedInputsUnchanged": true,
+    "scope": "Complete14-pose paired recovery source-clock native three-scale master comparison only; no accepted gait/world contacts/controller/save integration."
+  },
+  "visualReview": "Complete source109..122 enlarged board, all14 native148px poses both gears, whole47/93/148 bare ending/helmet intermediate master-and-walking comparison, and all14 far-plane silhouette overlays viewed. Consecutive rear foot recovery is smoother than grounded source140->141, but entry differs from existing loop and final footprint transition119->120 remains unproven. Colour/head/helmet close in native comparison, final full material/proportion acceptance pending.",
+  "contactLimits": "Whole-component bottom-envelope becomes ambiguous when near/far boots merge119..122; fixed original far-plane218..220 rightmost outline135->147 at119->120 changes12nativepx. This may be contour/leg-role switch or actual endpoint placement jump; not a validated toe correspondence. Do not drive a root correction from it or claim rigid support. No world contact/native controller/save integration tested.",
+  "bindings": "recovery-source-record.json plus output/veld-east-recovery-source-v1/inputs-after.json",
+  "next": "Resolve last-foot role and endpoint placement, and phase-compatible entry from loop. Retain every consecutive recovery pose and actual original standing reference. No per-frame body/sole/RGB repair; no blind similar-generation retry."
+}

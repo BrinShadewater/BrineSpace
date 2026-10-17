@@ -1,0 +1,194 @@
+{
+  "name": "Veld West master carry start/stop bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry-west": 0.07351351351351351
+  },
+  "precomposed": true,
+  "status": "staged_phase2_stop_route_not_normal_controller",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "carry-start-west",
+      "frameFiles": [
+        "res://character/veld-carry-west-start-master-v1/frames/bare/000.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/001.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/002.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/003.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-stop-west",
+      "frameFiles": [
+        "res://character/veld-carry-west-start-master-v1/frames/bare/003.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/002.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/001.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-west",
+      "frameFiles": [
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/000.png",
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/001.png",
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/002.png",
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/003.png",
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/004.png",
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "carry-stop-phase2-west",
+      "frameFiles": [
+        "res://character/veld-carry-west-master-proportions-v1/frames/bare/002.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/002.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/001.png",
+        "res://character/veld-carry-west-start-master-v1/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,519 @@
+{
+  "name": "James staged East-connected turns v3 bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_unselected_head_join_review",
+  "states": [
+    {
+      "id": "carry-turn-east-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "turn-head-v3/carry-turn-east-north-000.0.png",
+        "turn-head-v3/carry-turn-east-north-001.0.png",
+        "turn-head-v3/carry-turn-east-north-002.0.png",
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-east-north/003.png",
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-east-north/004.png",
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-height-v3.png",
+        "helmetSource": "source-helmet-height-v3.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.2642857142857143,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    },
+    {
+      "id": "carry-turn-east-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "turn-head-v3/carry-turn-east-north-000.0.png",
+        "turn-head-v3/carry-turn-east-south-001.0.png",
+        "turn-head-v3/carry-turn-east-south-002.0.png",
+        "turn-head-v3/carry-turn-east-south-003.0.png",
+        "../james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/004.png",
+        "../james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-master-v3.png",
+        "helmetSource": "source-helmet-master-v3.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.26972477064220185,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    },
+    {
+      "id": "carry-turn-east-west",
+      "frameCount": 11,
+      "frameFiles": [
+        "turn-head-v3/carry-turn-east-north-000.0.png",
+        "turn-head-v3/carry-turn-east-south-001.0.png",
+        "turn-head-v3/carry-turn-east-south-002.0.png",
+        "turn-head-v3/carry-turn-east-south-003.0.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/004.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/005.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/006.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/007.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/008.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/009.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-east-west/010.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "derivation": "Exact independently drawn quarter frames composed at shared directional pose; duplicate seam merged by summing its holds; reverse exact; no pixel modification",
+        "sourceFrames": [
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/000.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/001.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/002.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/003.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/004.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/005.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/001.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/002.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/003.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/004.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/005.png"
+        ],
+        "sourcePixelHashes": [
+          "e6dfc598b6a2df8c959ca226bbb2bec796fa756af8c02eece4d4f46fe81869ea",
+          "6f5d422bf7d8cf8687f4d76ebb8cc74692a6b66387ff87232991c6348ec0a33e",
+          "cf1614e6114eefc71c77c92694b1a41c183f6af88e5a1f3cffe6051d83de39b3",
+          "5b15cb1cb77b8fe05005da529d711d9b01ef7f52d0f6a735e8844db961e4fdfd",
+          "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+          "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+          "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+          "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+          "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+          "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+          "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461"
+        ],
+        "equipment": "Donor selected head angles; below-neck body identity retained",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    },
+    {
+      "id": "carry-turn-north-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-north-east/000.png",
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-north-east/001.png",
+        "../james-cargo-turn-east-north-v1/frames/bare/carry-turn-north-east/002.png",
+        "turn-head-v3/carry-turn-east-north-002.0.png",
+        "turn-head-v3/carry-turn-east-north-001.0.png",
+        "turn-head-v3/carry-turn-east-north-000.0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-height-v3.png",
+        "helmetSource": "source-helmet-height-v3.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.2642857142857143,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-south-east/000.png",
+        "../james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-south-east/001.png",
+        "turn-head-v3/carry-turn-east-south-003.0.png",
+        "turn-head-v3/carry-turn-east-south-002.0.png",
+        "turn-head-v3/carry-turn-east-south-001.0.png",
+        "turn-head-v3/carry-turn-east-north-000.0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-master-v3.png",
+        "helmetSource": "source-helmet-master-v3.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.26972477064220185,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    },
+    {
+      "id": "carry-turn-west-east",
+      "frameCount": 11,
+      "frameFiles": [
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/000.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/001.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/002.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/003.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/004.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/005.png",
+        "../james-cargo-half-turns-v1/frames/bare/carry-turn-west-east/006.png",
+        "turn-head-v3/carry-turn-east-south-003.0.png",
+        "turn-head-v3/carry-turn-east-south-002.0.png",
+        "turn-head-v3/carry-turn-east-south-001.0.png",
+        "turn-head-v3/carry-turn-east-north-000.0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "derivation": "Exact independently drawn quarter frames composed at shared directional pose; duplicate seam merged by summing its holds; reverse exact; no pixel modification",
+        "sourceFrames": [
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/005.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/004.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/003.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/002.png",
+          "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/001.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/005.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/004.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/003.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/002.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/001.png",
+          "character/james-cargo-turn-east-south-height-v3/frames/bare/carry-turn-east-south/000.png"
+        ],
+        "sourcePixelHashes": [
+          "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+          "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+          "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+          "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+          "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+          "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+          "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+          "5b15cb1cb77b8fe05005da529d711d9b01ef7f52d0f6a735e8844db961e4fdfd",
+          "cf1614e6114eefc71c77c92694b1a41c183f6af88e5a1f3cffe6051d83de39b3",
+          "6f5d422bf7d8cf8687f4d76ebb8cc74692a6b66387ff87232991c6348ec0a33e",
+          "e6dfc598b6a2df8c959ca226bbb2bec796fa756af8c02eece4d4f46fe81869ea"
+        ],
+        "equipment": "Donor selected head angles; below-neck body identity retained",
+        "headReview": "Staged compact bare head repair only for exact original full RGBA aliases; original turn metadata/clocks and unchanged paired shell. Unselected pending source/native/task joins."
+      }
+    }
+  ]
+}

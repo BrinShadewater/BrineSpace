@@ -1,0 +1,441 @@
+{
+  "checks": 15221,
+  "failures": 0,
+  "actualCompletedExpeditions": 1,
+  "phases": [
+    "approach",
+    "enter",
+    "pressurize",
+    "leave",
+    "outbound",
+    "salvage",
+    "pickup",
+    "return",
+    "entry",
+    "drain",
+    "exit",
+    "unload"
+  ],
+  "sourceNativePairs": 62,
+  "samples": 3710,
+  "actorPlayerRestores": 62,
+  "stableBoundedInputs": 2836,
+  "unchangedOwnerNonLogFiles": 2931,
+  "boards": [
+    {
+      "file": "route-00-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-01-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-02-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-03-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-04-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-05-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-06-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-07-pairs.png",
+      "pairs": 6
+    }
+  ],
+  "sourceParity": [
+    {
+      "key": "swim-pickup-west",
+      "slot": 0,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/endpoint-origin.png",
+      "sha256": "8ed1543986eb9e7040d922272fbd5c266e3cfce99e5bd02aa7300d1cf02ca438"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 1,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-1.png",
+      "sha256": "11439cbf481a535028f510d17fa6d16a8d74b2c594b421a83a3add4a69cb4690"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 2,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-2.png",
+      "sha256": "b7dec1e2bbcac350b9b6b1cc856dc93afbc5e217d56774beb2a3a6d44f2d7455"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 3,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-3.png",
+      "sha256": "7982a8914c6b969f92642d806b835ac85c3ed8f93481418f2969b286a2ebee3f"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 4,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/intermediate-4.png",
+      "sha256": "c303eeb259530d6db4a9d6d066c90f86f16bebc7fb6678517c20d54c60cea608"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 5,
+      "path": "character/marsh-water-transition-material-v1/pickup-west-03-unselected/endpoint-destination.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "key": "swim-carry-west",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-1.png",
+      "sha256": "70dcf74ed374c70f84e65d7ce11b928bcc4542c2d3a60c5d7c13e41b27baae95"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-2.png",
+      "sha256": "cce5dd552a141c6852c2ad6dedb4ef475a94b7d6e3ccf24912f2d01849a21af5"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-3.png",
+      "sha256": "92bfd76b64ad1dd456bcb7b1a99298d5a6c2fd93e07b4e1889e334e4f4e3cb67"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 5,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-3.png",
+      "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 6,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-2.png",
+      "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 7,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-1.png",
+      "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 8,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/001.png",
+      "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/002.png",
+      "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/003.png",
+      "sha256": "80a5c2fa703c45983a4c98bb2384aa9db933f46f3553f1cb5f38c2edb1f185f9"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/002.png",
+      "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 5,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/001.png",
+      "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-1.png",
+      "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-2.png",
+      "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-3.png",
+      "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/001.png",
+      "sha256": "bc58aad2787d99eefa54b8665af8633b62e3e8ce271d0731f510ae5bab22f84d"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/002.png",
+      "sha256": "0d827b81e8acc4c45eedba5c2c93a63deec627c3ff6a14011ac07aabbefc43d2"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/003.png",
+      "sha256": "3776a93fddf358adca62084f743649d4dd45660ce3e925e41b5f2408cfce0cfa"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/002.png",
+      "sha256": "0d827b81e8acc4c45eedba5c2c93a63deec627c3ff6a14011ac07aabbefc43d2"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 5,
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/001.png",
+      "sha256": "bc58aad2787d99eefa54b8665af8633b62e3e8ce271d0731f510ae5bab22f84d"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/000.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/001.png",
+      "sha256": "153af39be07485a8cb2803c799b3859da44ead6543dcc04539d131fcc93a1291"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/002.png",
+      "sha256": "e678f45330df8772214e86d74b2ee6e7c764a97c7a248e180a6c5d58236e2420"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/003.png",
+      "sha256": "dc9f23685b941e1fe08702163b23b97fb6da5192574696ff27413462fa51b98f"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/002.png",
+      "sha256": "e678f45330df8772214e86d74b2ee6e7c764a97c7a248e180a6c5d58236e2420"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 5,
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/001.png",
+      "sha256": "153af39be07485a8cb2803c799b3859da44ead6543dcc04539d131fcc93a1291"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 0,
+      "path": "character/marsh-water-transition-material-v1/drain-south-06-unselected/endpoint-origin.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 1,
+      "path": "character/marsh-water-transition-material-v1/drain-south-06-unselected/intermediate-1.png",
+      "sha256": "1a79b225ba4587319ddd242b96e9516d3ec56546072c5149523f89d3be68dad9"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 2,
+      "path": "character/marsh-water-transition-material-v1/drain-south-06-unselected/intermediate-2.png",
+      "sha256": "d682f02bbb27046ae2473d2226d5e1e2699c11204ead46b00b32606c1d6ffb50"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 3,
+      "path": "character/marsh-water-transition-material-v1/drain-south-06-unselected/intermediate-3.png",
+      "sha256": "1aa10f28c12e6e2c47b6b7a041afaf1b704b33cf1fa0ce753a9090c25d2c36fd"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 4,
+      "path": "character/marsh-water-transition-material-v1/drain-south-06-unselected/intermediate-4.png",
+      "sha256": "5180b6f6ad1e55ca614267644e5a84187bef5d00228bc720ed03112d5c8952e1"
+    },
+    {
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/001.png",
+      "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/002.png",
+      "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/003.png",
+      "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/004.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 5,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/005.png",
+      "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 6,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/006.png",
+      "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 7,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/007.png",
+      "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "slot": 8,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/008.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "key": "carry-north",
+      "slot": 1,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/001.png",
+      "sha256": "ecbf95d1d500e58419d0b52e325582e2b2f7bade03035f09a08e59da7f82026f"
+    },
+    {
+      "key": "carry-north",
+      "slot": 2,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/002.png",
+      "sha256": "933ddedfc3de7aea36546b51802edd490ca16c6a51c7811fb50a3639ba02a1df"
+    },
+    {
+      "key": "carry-north",
+      "slot": 3,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/003.png",
+      "sha256": "d106f817d4b0aaf10a623c991d2664033c053d988ede5443b7aa320c962aeec6"
+    },
+    {
+      "key": "unload-north",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "key": "unload-north",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/001.png",
+      "sha256": "68b4ea1d925ce4e0bf164b5b9d84be57bb16bc3469e8b1dbc03c4ef7aeb8f5a1"
+    },
+    {
+      "key": "unload-north",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/002.png",
+      "sha256": "9553a6b8a1be3f2da2463d2881c1b1e70aea0f39623eaa92e8627b33f6cf9ec1"
+    },
+    {
+      "key": "unload-north",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/003.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    }
+  ],
+  "endpointChecks": [],
+  "scope": "One actual normal dispatched q2 Southdrain06 expedition with free authored airlock/site fixture and normal cost/failure flags. Actual normal actor/update/Cycle/grid/player pickup/return/east staged loop/turns/drain/exit/unload/credit. Private sixteen water states plus dry carry/turn/held banks and all eight private cardinal pickup/drain states; original per-manifest metadata retained. All eight transitions staged; art provisional. Actual keys establish witnessed scope, not all staged states. Actor/player restore/pause. Not all route rotations/fullRunSave/visibleTitleContinue/helmet/continuousmotion/physicalcontact/coherent-family admission/fullset acceptance.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "visualReviewed": {
+    "allEightPairedBoardsActuallyInspected": true,
+    "assessment": "character/marsh-water-transition-material-v1/drain-south06-cross-review/visual-assessment.json",
+    "continuousMotionAccepted": false
+  }
+}

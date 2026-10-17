@@ -1,0 +1,5 @@
+{
+  "failedAssertion": "APNG encoded frame count equals original source slots",
+  "reason": "PNG encoder merges exact consecutive real source frames; not a source motion failure.",
+  "repair": "Retain all original manifest slots; verify grouped pixel equality and summed source timing in new review_source_v2.py."
+}

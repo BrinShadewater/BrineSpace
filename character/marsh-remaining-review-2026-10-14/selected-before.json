@@ -1,0 +1,5370 @@
+{
+  "swim-pickup-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-001.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-002.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-003.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-004.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-000.png",
+        "sha256": "1c00a775b54fdfe9a6e4e8200512bf34f0d6050792273623f91a26467030c31c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-001.png",
+        "sha256": "eca472e3130015e81ebd11018ea9c91214d4a3f671b5f7cad5651b7e46a11e0a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-002.png",
+        "sha256": "ba71837b57977027af14374449cf2c5600d6a9f99eee63b3981ae70d6edfccc3"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-003.png",
+        "sha256": "846d0e0010580cbb4f355d44e01513fb95c4acf935c98a53b6cfd8fbad03433f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-004.png",
+        "sha256": "d966ff26e1ebaf6e0ea099a6b5347d764939244f75396b47edae2f891e5a5e60"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-005.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      }
+    ]
+  },
+  "swim-carry-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-009.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-010.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-011.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-010.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-009.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-009.png",
+        "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-010.png",
+        "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-011.png",
+        "sha256": "80a5c2fa703c45983a4c98bb2384aa9db933f46f3553f1cb5f38c2edb1f185f9"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-010.png",
+        "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-009.png",
+        "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+      }
+    ]
+  },
+  "swim-pickup-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-006.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-007.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-009.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-010.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-011.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-006.png",
+        "sha256": "8ed1543986eb9e7040d922272fbd5c266e3cfce99e5bd02aa7300d1cf02ca438"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-007.png",
+        "sha256": "11439cbf481a535028f510d17fa6d16a8d74b2c594b421a83a3add4a69cb4690"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-008.png",
+        "sha256": "b7dec1e2bbcac350b9b6b1cc856dc93afbc5e217d56774beb2a3a6d44f2d7455"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-009.png",
+        "sha256": "7982a8914c6b969f92642d806b835ac85c3ed8f93481418f2969b286a2ebee3f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-010.png",
+        "sha256": "c303eeb259530d6db4a9d6d066c90f86f16bebc7fb6678517c20d54c60cea608"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-011.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      }
+    ]
+  },
+  "swim-carry-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-013.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-014.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-015.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-014.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-013.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-013.png",
+        "sha256": "1348a727c4eed70625822b94338d5900ed2167b96ba1a0dede6ee7ed7b1de818"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-014.png",
+        "sha256": "c38dfda9a02890cdf37aa08ea1849b21b54183fd7c7d0ce503ec11c0de0acc24"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-015.png",
+        "sha256": "62db621fbde80640494b69f10deb813162978a20196502e7a0f70b4c47c55c00"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-014.png",
+        "sha256": "c38dfda9a02890cdf37aa08ea1849b21b54183fd7c7d0ce503ec11c0de0acc24"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-013.png",
+        "sha256": "1348a727c4eed70625822b94338d5900ed2167b96ba1a0dede6ee7ed7b1de818"
+      }
+    ]
+  },
+  "swim-pickup-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-013.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-014.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-015.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-017.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-012.png",
+        "sha256": "9b0265af4324fe12dd2f0d03d287abdb981644d823794b96776260b5e09b4684"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-013.png",
+        "sha256": "a5d5c8f5a48e6dcc3c2fd577d9b3cdf636f737a9a74b55a16056ceb0699a9378"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-014.png",
+        "sha256": "211b53551713c5cb939a472aab1a68517651ee667eddd314c18b463202d6090a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-015.png",
+        "sha256": "bc246b761eeb0488da25a3247b3ac048583c1a10620a4ca016deb325dfa439ae"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-016.png",
+        "sha256": "a5e4db2c480aa6de57b24bb370dd8413a13eb08a0d93271f57ed7cf0441ef23c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-017.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      }
+    ]
+  },
+  "swim-carry-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-001.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-002.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-003.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-002.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-001.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-001.png",
+        "sha256": "bc58aad2787d99eefa54b8665af8633b62e3e8ce271d0731f510ae5bab22f84d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-002.png",
+        "sha256": "0d827b81e8acc4c45eedba5c2c93a63deec627c3ff6a14011ac07aabbefc43d2"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-003.png",
+        "sha256": "3776a93fddf358adca62084f743649d4dd45660ce3e925e41b5f2408cfce0cfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-002.png",
+        "sha256": "0d827b81e8acc4c45eedba5c2c93a63deec627c3ff6a14011ac07aabbefc43d2"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-001.png",
+        "sha256": "bc58aad2787d99eefa54b8665af8633b62e3e8ce271d0731f510ae5bab22f84d"
+      }
+    ]
+  },
+  "swim-pickup-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "swim-pickup-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-019.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-023.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-018.png",
+        "sha256": "2b5b06cf4d963fb6dab12b4c23ab38992b299fb4e22349a6569d095a83b598fd"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-019.png",
+        "sha256": "344adf5e6cbabd2b37c5e71124f07344125ba81f656826c46f7aa2e49d2944e5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-020.png",
+        "sha256": "c0d076a77085872da2525841fea5fb00b249a2b76e7cdee0dd6aa8bdfa79950c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-021.png",
+        "sha256": "c835959214803f1a49e142dcdb3d4250c8a32dc72a1d1642d6a1dddde8702394"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-022.png",
+        "sha256": "38d6753ad28c8cb7e2f64f0d569f23a4b0239130823d5d68be0cbde9c0f0dbb6"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-023.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      }
+    ]
+  },
+  "swim-carry-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-005.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-006.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-007.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-006.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-005.png",
+        "sha256": "153af39be07485a8cb2803c799b3859da44ead6543dcc04539d131fcc93a1291"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-006.png",
+        "sha256": "e678f45330df8772214e86d74b2ee6e7c764a97c7a248e180a6c5d58236e2420"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-007.png",
+        "sha256": "dc9f23685b941e1fe08702163b23b97fb6da5192574696ff27413462fa51b98f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-006.png",
+        "sha256": "e678f45330df8772214e86d74b2ee6e7c764a97c7a248e180a6c5d58236e2420"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-005.png",
+        "sha256": "153af39be07485a8cb2803c799b3859da44ead6543dcc04539d131fcc93a1291"
+      }
+    ]
+  },
+  "swim-carry-turn-east-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-east-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      }
+    ]
+  },
+  "swim-carry-turn-north-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-north-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      }
+    ]
+  },
+  "swim-carry-turn-west-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-west-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "sha256": "70dcf74ed374c70f84e65d7ce11b928bcc4542c2d3a60c5d7c13e41b27baae95"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "sha256": "cce5dd552a141c6852c2ad6dedb4ef475a94b7d6e3ccf24912f2d01849a21af5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "sha256": "92bfd76b64ad1dd456bcb7b1a99298d5a6c2fd93e07b4e1889e334e4f4e3cb67"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      }
+    ]
+  },
+  "swim-carry-turn-north-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-north-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "sha256": "92bfd76b64ad1dd456bcb7b1a99298d5a6c2fd93e07b4e1889e334e4f4e3cb67"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "sha256": "cce5dd552a141c6852c2ad6dedb4ef475a94b7d6e3ccf24912f2d01849a21af5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "sha256": "70dcf74ed374c70f84e65d7ce11b928bcc4542c2d3a60c5d7c13e41b27baae95"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      }
+    ]
+  },
+  "swim-carry-turn-east-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-east-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "sha256": "cb0601d6f02bcc7db842bced028080660cfff0f27f0ce86e94c3710beed311a1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "sha256": "3da7a5057ffb02eb89d305719c8cfcaf7a72e5859c2d5d7c8e839d1be128c40d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "sha256": "3c32e8870f56bfe0a119d2e9c57e86fbf1633829b08d6de5a3fd0181398c9b25"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      }
+    ]
+  },
+  "swim-carry-turn-south-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-south-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "sha256": "3c32e8870f56bfe0a119d2e9c57e86fbf1633829b08d6de5a3fd0181398c9b25"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "sha256": "3da7a5057ffb02eb89d305719c8cfcaf7a72e5859c2d5d7c8e839d1be128c40d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "sha256": "cb0601d6f02bcc7db842bced028080660cfff0f27f0ce86e94c3710beed311a1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      }
+    ]
+  },
+  "swim-carry-turn-west-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-west-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-025.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-026.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-027.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-025.png",
+        "sha256": "010d41e1c4b977aaedd950f1655f02d561f329d3ff31800e204a9fc5e53823eb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-026.png",
+        "sha256": "9e5a1da3caffb0d2a1abb78c9c37d7fd23cb995fadcd9d72ec2788063bba7f2b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-027.png",
+        "sha256": "b4e69998b4ede6d11dfe8e6d506e6ec489a0d802c0bb34dab3b5cc0173c7f7ad"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      }
+    ]
+  },
+  "swim-carry-turn-south-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-south-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-027.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-026.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-025.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-027.png",
+        "sha256": "b4e69998b4ede6d11dfe8e6d506e6ec489a0d802c0bb34dab3b5cc0173c7f7ad"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-026.png",
+        "sha256": "9e5a1da3caffb0d2a1abb78c9c37d7fd23cb995fadcd9d72ec2788063bba7f2b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-025.png",
+        "sha256": "010d41e1c4b977aaedd950f1655f02d561f329d3ff31800e204a9fc5e53823eb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      }
+    ]
+  },
+  "swim-carry-turn-east-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "sha256": "92bfd76b64ad1dd456bcb7b1a99298d5a6c2fd93e07b4e1889e334e4f4e3cb67"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "sha256": "cce5dd552a141c6852c2ad6dedb4ef475a94b7d6e3ccf24912f2d01849a21af5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "sha256": "70dcf74ed374c70f84e65d7ce11b928bcc4542c2d3a60c5d7c13e41b27baae95"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      }
+    ]
+  },
+  "swim-carry-turn-west-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-012.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-019.png",
+        "sha256": "70dcf74ed374c70f84e65d7ce11b928bcc4542c2d3a60c5d7c13e41b27baae95"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-020.png",
+        "sha256": "cce5dd552a141c6852c2ad6dedb4ef475a94b7d6e3ccf24912f2d01849a21af5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-021.png",
+        "sha256": "92bfd76b64ad1dd456bcb7b1a99298d5a6c2fd93e07b4e1889e334e4f4e3cb67"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      }
+    ]
+  },
+  "swim-carry-turn-north-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-north-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "sha256": "cb0601d6f02bcc7db842bced028080660cfff0f27f0ce86e94c3710beed311a1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "sha256": "3da7a5057ffb02eb89d305719c8cfcaf7a72e5859c2d5d7c8e839d1be128c40d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "sha256": "3c32e8870f56bfe0a119d2e9c57e86fbf1633829b08d6de5a3fd0181398c9b25"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      }
+    ]
+  },
+  "swim-carry-turn-south-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-loaded-swim-all-turns-family01-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "swim-carry-turn-south-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-004.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-024.png",
+        "sha256": "3c32e8870f56bfe0a119d2e9c57e86fbf1633829b08d6de5a3fd0181398c9b25"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-023.png",
+        "sha256": "3da7a5057ffb02eb89d305719c8cfcaf7a72e5859c2d5d7c8e839d1be128c40d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-022.png",
+        "sha256": "cb0601d6f02bcc7db842bced028080660cfff0f27f0ce86e94c3710beed311a1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-008.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-016.png",
+        "sha256": "5d6a793928b126b742f709d2012cb4411b89d51eecbe2e1cb2c3ac1abf198e33"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-017.png",
+        "sha256": "75e5f0a7ce71288fe143174a5e6db355439c1670c544175277082be1a71fc739"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-018.png",
+        "sha256": "3387793217d6d796c537f082892e9d46f8a1a6681724e48b9a7e5340657fcc96"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/loaded-water-loops-turns/frame-000.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      }
+    ]
+  },
+  "cargo-drain-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "cargo-drain-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-024.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-025.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-026.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-027.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-028.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-029.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-024.png",
+        "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-025.png",
+        "sha256": "b0968f581e0287978c5b7c8a8a8012ccfb2b45260c9b94ed9064b609404c6f17"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-026.png",
+        "sha256": "94780351b7912c51ac85ea100e3b38e64e4b53909766f9bea69a9230a0a791db"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-027.png",
+        "sha256": "4ed9e3ef8e38a909f807f029f4a0159020fd47f6fd6a4f1491bbbd7b1493191d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-028.png",
+        "sha256": "124a1d01a1a1d9232fd2c255d0ff11f45fb9c770dfabd74e60ce3cc0679767c9"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-029.png",
+        "sha256": "2994d4d87b9578ae3a9cce565571d9b62b821bf91e7b65eea9471f35f945abd4"
+      }
+    ]
+  },
+  "cargo-drain-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "cargo-drain-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-030.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-031.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-032.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-033.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-034.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-035.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-030.png",
+        "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-031.png",
+        "sha256": "1406ed9c147ec54b71679d42281a29e532ff2a8ca70cb8061288d26f9b45cd31"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-032.png",
+        "sha256": "0c53f35bc9af3addbde89e8f77ff0332e588edd76c98e59ce90b622f65332638"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-033.png",
+        "sha256": "65931a807acc0ca917e56fde2c5ecbf1ce05f49bfcc543383b6f89b0ab9f0721"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-034.png",
+        "sha256": "a2b95922c2ca403a67b548d061cefcd793f789c994b2aa2ba7db68e3c27c7ce5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-035.png",
+        "sha256": "f78288ae71f85249b7cb769b5fe61de615bc427451ae52c65a24acc32ce2fbc5"
+      }
+    ]
+  },
+  "cargo-drain-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "cargo-drain-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-036.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-037.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-038.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-039.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-040.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-041.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-036.png",
+        "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-037.png",
+        "sha256": "84ac9c1b4f382a60110fac8c12b3875da26770ec8507ece34ed0a32d765e3d48"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-038.png",
+        "sha256": "404d9e808bf40c33bcdd0a84c0efc179995edfbb5210f347189e9ed5667ad694"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-039.png",
+        "sha256": "3d2d940eb63415ccbfdf992ade06f7bc3bb6e76279c7dfac488cf4f822184ad4"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-040.png",
+        "sha256": "4f4542008aa1f1cc789bcd15b76fecbb0632638a8fe9fa6c1271e0326abd2b07"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-041.png",
+        "sha256": "cc9ef780d030de26a633ae93cc05f31a72c5b5a3fb47c3abef79a32fc437bb58"
+      }
+    ]
+  },
+  "cargo-drain-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/manifest.json",
+    "metadata": {
+      "frameWidth": 224,
+      "frameHeight": 208,
+      "pivot": [
+        112,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "revision": "marsh-cardinal-water-transitions-05-staged-selected-normal-v1",
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "sources": [
+        "pickup-east-02",
+        "pickup-west-03",
+        "pickup-north-02",
+        "pickup-south-02",
+        "drain-east-01",
+        "drain-west-01",
+        "drain-north-01",
+        "drain-south-06"
+      ]
+    },
+    "state": {
+      "id": "cargo-drain-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-042.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-043.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-044.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-045.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-046.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-047.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-042.png",
+        "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-043.png",
+        "sha256": "1a79b225ba4587319ddd242b96e9516d3ec56546072c5149523f89d3be68dad9"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-044.png",
+        "sha256": "d682f02bbb27046ae2473d2226d5e1e2699c11204ead46b00b32606c1d6ffb50"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-045.png",
+        "sha256": "1aa10f28c12e6e2c47b6b7a041afaf1b704b33cf1fa0ce753a9090c25d2c36fd"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-046.png",
+        "sha256": "5180b6f6ad1e55ca614267644e5a84187bef5d00228bc720ed03112d5c8952e1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/water-pickup-drain/frame-047.png",
+        "sha256": "94c5137f79d250a68a702420d649f9ba402f85120be8612e0611d72807c7a8b0"
+      }
+    ]
+  },
+  "tread-south": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "tread-south",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/tread-south/000.png",
+        "../../character/marsh-master-repair-v1/frames/tread-south/001.png",
+        "../../character/marsh-master-repair-v1/frames/tread-south/002.png",
+        "../../character/marsh-master-repair-v1/frames/tread-south/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-south/000.png",
+        "sha256": "a0b23d17e9ebbb6ae1101bd81bb9bd7d9bd8ff5bfaf4ad2662e05bb64ea90c93"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-south/001.png",
+        "sha256": "b48b0457ed7249d0d9a52889d9a6208d08bd4c6009e88d2842d780a305402e2d"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-south/002.png",
+        "sha256": "1a10fa63e1bd1e4e5f6bd5436cdd3ddf8e2041f3cc8d211be8901a04ce0cc97b"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-south/003.png",
+        "sha256": "97188cc2711aaa5700c34ca441c71f0ec39bd7797c1c69637254011a009b5550"
+      }
+    ]
+  },
+  "tread-north": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "tread-north",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/tread-north/000.png",
+        "../../character/marsh-master-repair-v1/frames/tread-north/001.png",
+        "../../character/marsh-master-repair-v1/frames/tread-north/002.png",
+        "../../character/marsh-master-repair-v1/frames/tread-north/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-north/000.png",
+        "sha256": "35d5be99780a2b751530bd9d45419226d3df090efa6f8bfc3caccce59c6f221b"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-north/001.png",
+        "sha256": "8c367c5f2fe5369d1bbec626ac5500b72c9a6abdfff2912c4edbc62696fa7e08"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-north/002.png",
+        "sha256": "380214766c476bfd9ecc7e5ac870a3d2f577039f8a5b021632814a25b2c50e20"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-north/003.png",
+        "sha256": "f3ce75b745c0a588f81f7524456e3a26a1c82eade12a0f5a504ec870e72af7b4"
+      }
+    ]
+  },
+  "tread-east": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "tread-east",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/tread-east/000.png",
+        "../../character/marsh-master-repair-v1/frames/tread-east/001.png",
+        "../../character/marsh-master-repair-v1/frames/tread-east/002.png",
+        "../../character/marsh-master-repair-v1/frames/tread-east/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-east/000.png",
+        "sha256": "a19bf49a6241ca807ba8eaa7aa50ad4486b8ae04a4ff7097572b4b68f02f693c"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-east/001.png",
+        "sha256": "04a51046aad8000e26363bfb78745da44f7df2e108d779b7e61524e46a1a4151"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-east/002.png",
+        "sha256": "fb767ac92fbab1ce520c5b0bf68143b8041f4bde3193e182f01cdec4922051b5"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-east/003.png",
+        "sha256": "a16350519be0e78be493811c9259eb74719b69e571ff8223687fd2b4b442d1fb"
+      }
+    ]
+  },
+  "tread-west": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "tread-west",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/tread-west/000.png",
+        "../../character/marsh-master-repair-v1/frames/tread-west/001.png",
+        "../../character/marsh-master-repair-v1/frames/tread-west/002.png",
+        "../../character/marsh-master-repair-v1/frames/tread-west/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-west/000.png",
+        "sha256": "e89fb6a376eb3c1ca7ac753bda83c6a43bcc215f36b2e4850a50c87b78e85561"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-west/001.png",
+        "sha256": "008d119fd0361d0cd7ce9754a5c926fdfe4e7d02dba0b8b677f5b4917c233cb9"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-west/002.png",
+        "sha256": "8587a433a53584717e756a743a4fdbee6d60eea7db8081c3e200e277de0425cf"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/tread-west/003.png",
+        "sha256": "305f442e8fd93e2d606d479514dad3d365b1f7d9d76a4fa8ef154589d4c66da3"
+      }
+    ]
+  },
+  "swim-distress-south": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "swim-distress-south",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/000.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/001.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/002.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/003.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/004.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/000.png",
+        "sha256": "783b3f1b85541717b3cfcbca014f1aa726155286ffca64a8933a524e6697f3da"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/001.png",
+        "sha256": "5f6c7a0d1eeaaf44fdbc1c7fc45e06016d09cc62718d642212a7cdfa2c7b4f80"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/002.png",
+        "sha256": "9f769638f37b4ec40337e4e353d7b1af10c8c91a6fc6179c0d32af9a9dac87b5"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/003.png",
+        "sha256": "090f6c8df7b7355077feba844427ecdd066e24acbbf24b837d9f92c36c18e26d"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/004.png",
+        "sha256": "01533aa0eb285f02a36a7d962237eb798cb9dc03e9689f230f23bfa99f108778"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-south/005.png",
+        "sha256": "f2dfaaebb6fe82d2e224cced3dad2a2fd4fe01066da53f05d6ad758582ca05f5"
+      }
+    ]
+  },
+  "swim-distress-north": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "swim-distress-north",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/000.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/001.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/002.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/003.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/004.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/000.png",
+        "sha256": "6f16444b90683459b056f1fc49ec2bc572a6b1c0a9d38e6a8cd6a5e3bfbc2cdc"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/001.png",
+        "sha256": "8cb704c45e011dfb88db5153a62e2a17673f7bbfeb299a9c383b1d1ebac480e7"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/002.png",
+        "sha256": "f6d7313a38f8becd795c9b64de2e0f4c3ce60e0006c8baaa2fe315aa5fdf6c3e"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/003.png",
+        "sha256": "cb4a7d6f13509c6b0c42ba07af4db791857ff77c764c051019a4b61a32a9f559"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/004.png",
+        "sha256": "4e9ff2bde88998e912169d50ac0936609f4bc3b7458e7970ae6cc727a6dd42c9"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-north/005.png",
+        "sha256": "a14d2b5208b91ab4b927cfc0a4112ae05b2dd6f2d8f416569760f3cd73763190"
+      }
+    ]
+  },
+  "swim-distress-east": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "swim-distress-east",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/000.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/001.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/002.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/003.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/004.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/000.png",
+        "sha256": "ded8b01c743cc1883e0012bb910c95ed9f9e75bd398fac11700983fe42805592"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/001.png",
+        "sha256": "824e95636c0cc823f2256e0d876fe81e24bb8700c1d76ca6af9cde3f9cc1d66d"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/002.png",
+        "sha256": "aeb482a3d0f41fa59ffeedc5642d36a4d655b7084230888fa8871711786dbbe7"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/003.png",
+        "sha256": "bd55dad3f91fc6565079243e5b4663efe318ca40632f107f64da66d21cab6798"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/004.png",
+        "sha256": "9830c0f166d8c0b69f8d37dbfa42a011351e72bb4fd9a8a59c08daed37efce55"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-east/005.png",
+        "sha256": "aefdb2a653e288d2ec1bf618f7dff6949183a44836828a3969046ac9042e3ce7"
+      }
+    ]
+  },
+  "swim-distress-west": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "swim-distress-west",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/000.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/001.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/002.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/003.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/004.png",
+        "../../character/marsh-master-repair-v1/frames/swim-distress-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/000.png",
+        "sha256": "bcce6b469cfe771bf7603df5faae039cfc4b199e194ca18a202c501b1fe8fe76"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/001.png",
+        "sha256": "f48ab82e689f34a186c6df1fc1860072c73694d86dc4946398de4fa0fac989dc"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/002.png",
+        "sha256": "26fee3bea6f97b14728117c97202931b6daa70a803a5dbd01f7219e94ce5817a"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/003.png",
+        "sha256": "43f0f927d33d96777c268c2ed43a33dbe07580535be1898c123f44a7b9e82c6a"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/004.png",
+        "sha256": "849ba852a6d0606d23dccd16cb5c787e6c97c6d55a66ba18bcb0b592cd41977a"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/swim-distress-west/005.png",
+        "sha256": "df67ee823591008d9d8b033c0842392af4f2fb48aa26ffc4ac9e1bd8e5a4b6fc"
+      }
+    ]
+  },
+  "death-water-south": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "death-water-south",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/death-water-south/000.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-south/001.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-south/002.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-south/003.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-south/004.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/000.png",
+        "sha256": "a0b23d17e9ebbb6ae1101bd81bb9bd7d9bd8ff5bfaf4ad2662e05bb64ea90c93"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/001.png",
+        "sha256": "3d5ab91fa527cbab0ee8a3ce9599fcc27fed5d3918d2213d00c651be688c2fcb"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/002.png",
+        "sha256": "0844248bbb9f6d1855806138d325aaf5ad1aa8a3d2e67f356a663ad5723ede24"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/003.png",
+        "sha256": "d98250e7792a20a88ff4f221f4e154903e5927db343e523d52968f75f9df15d6"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/004.png",
+        "sha256": "898d5a2b8eb530d7df3f833dc49d13c6d9fe0acb584c9f493da6db8ccfe4984c"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-south/005.png",
+        "sha256": "dff450442901de64e8c9b9d84b81395ca67a6cd4e535839e0556bd3686071a19"
+      }
+    ]
+  },
+  "death-water-north": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "death-water-north",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/death-water-north/000.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-north/001.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-north/002.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-north/003.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-north/004.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/000.png",
+        "sha256": "35d5be99780a2b751530bd9d45419226d3df090efa6f8bfc3caccce59c6f221b"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/001.png",
+        "sha256": "1e8cc1265161b1743d1afc3f7854655790587d004b67ab6a2e7a8dbb4391635d"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/002.png",
+        "sha256": "65d06bea46a7a9a2fd357c05f81ef7106861476939b16a032f77c54a099a26e9"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/003.png",
+        "sha256": "53c3eb45c5f58a2f2657f6dfeedc5160a627ee64467b908b89469afd90fb54f1"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/004.png",
+        "sha256": "ed927b827ba3652d96e0145f62635e998d4da5e156d35f9a86b6d74db3d48e07"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-north/005.png",
+        "sha256": "3ad055d2ffceb6cf3d91d974b702781df9044957c6e952d2c9aa0083ace7dd7b"
+      }
+    ]
+  },
+  "death-water-east": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "death-water-east",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/death-water-east/000.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-east/001.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-east/002.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-east/003.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-east/004.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/000.png",
+        "sha256": "a19bf49a6241ca807ba8eaa7aa50ad4486b8ae04a4ff7097572b4b68f02f693c"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/001.png",
+        "sha256": "7bd35a4f5e115e53f2ee5240cd8b45338eeeb236cbbffca52fd530b1cc8d08c5"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/002.png",
+        "sha256": "df33d0189949d353b7c89e939a51b4b5f2b62c3c21204208349c08cff79ae767"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/003.png",
+        "sha256": "025e4e802d47b28a9c4332555eb40b0c4391e66d0377e74457fd307e6df4962c"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/004.png",
+        "sha256": "5235b81b5f479fca0b78f7a9f8bf5a63c51991571d9fe1945fb6323e769e841a"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-east/005.png",
+        "sha256": "abb84cc80e27c005ae9b57221ef9bdbd771b2a8ffb154bfee909ad44a2b38ee3"
+      }
+    ]
+  },
+  "death-water-west": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "death-water-west",
+      "frameFiles": [
+        "../../character/marsh-master-repair-v1/frames/death-water-west/000.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-west/001.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-west/002.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-west/003.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-west/004.png",
+        "../../character/marsh-master-repair-v1/frames/death-water-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/000.png",
+        "sha256": "e89fb6a376eb3c1ca7ac753bda83c6a43bcc215f36b2e4850a50c87b78e85561"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/001.png",
+        "sha256": "60b6de8d2fcb7276322a3cfa323a2460118a898f4e3dad1acdb5a5625b5602a1"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/002.png",
+        "sha256": "d8cf6ccd1f0831a06862fc1e79a45025720bdf33e01cb46ec08f2c9c63136408"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/003.png",
+        "sha256": "92b36d7de20f0408a824057962005a37bec18c51e8adf43ce1798afeac9bf9ad"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/004.png",
+        "sha256": "3634c47acae9e518c720f18401ee361f49e3d2fc648c0e5ccf21d19a067f1236"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/death-water-west/005.png",
+        "sha256": "281e18398d590da854ad2ca5cf1161a859c58c2a637365651f64bc9af3dfdff6"
+      }
+    ]
+  },
+  "carry-turn-east-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-east-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-020.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-021.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-022.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-023.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-024.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-020.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-021.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-022.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-023.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-024.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      }
+    ]
+  },
+  "carry-turn-north-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-north-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-025.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-026.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-027.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-028.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-029.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-025.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-026.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-027.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-028.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-029.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      }
+    ]
+  },
+  "carry-turn-west-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-west-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-030.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-031.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-032.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-033.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-034.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-030.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-031.png",
+        "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-032.png",
+        "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-033.png",
+        "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-034.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      }
+    ]
+  },
+  "carry-turn-north-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-north-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-035.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-036.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-037.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-038.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-039.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-035.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-036.png",
+        "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-037.png",
+        "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-038.png",
+        "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-039.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      }
+    ]
+  },
+  "carry-turn-east-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-east-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-000.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-001.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-002.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-003.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-000.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-001.png",
+        "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-002.png",
+        "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-003.png",
+        "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-004.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      }
+    ]
+  },
+  "carry-turn-south-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-south-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-005.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-006.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-007.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-008.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-009.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-005.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-006.png",
+        "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-007.png",
+        "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-008.png",
+        "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-009.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      }
+    ]
+  },
+  "carry-turn-west-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-west-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-010.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-011.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-012.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-013.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-014.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-010.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-011.png",
+        "sha256": "efd218a728224f39767a975a66867e1a8e926902802b55138850059b7fea6f69"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-012.png",
+        "sha256": "b5838c724209ab2204e3ab33fdde7a3889f6449ae4e0c62525f10ad975f50e6b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-013.png",
+        "sha256": "7a476beb1b6719ab10a79c8f1bcf256118424df53b078e16251d5ec4a38a792c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-014.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      }
+    ]
+  },
+  "carry-turn-south-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-south-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-015.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-016.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-017.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-018.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-019.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-015.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-016.png",
+        "sha256": "7a476beb1b6719ab10a79c8f1bcf256118424df53b078e16251d5ec4a38a792c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-017.png",
+        "sha256": "b5838c724209ab2204e3ab33fdde7a3889f6449ae4e0c62525f10ad975f50e6b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-018.png",
+        "sha256": "efd218a728224f39767a975a66867e1a8e926902802b55138850059b7fea6f69"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-019.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      }
+    ]
+  },
+  "carry-turn-east-west": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-east-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-040.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-041.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-042.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-043.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-044.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-045.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-046.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-047.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-048.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-040.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-041.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-042.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-043.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-044.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-045.png",
+        "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-046.png",
+        "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-047.png",
+        "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-048.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      }
+    ]
+  },
+  "carry-turn-west-east": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-west-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-049.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-050.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-051.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-052.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-053.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-054.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-055.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-056.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-057.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-049.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-050.png",
+        "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-051.png",
+        "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-052.png",
+        "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-053.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-054.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-055.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-056.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-057.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      }
+    ]
+  },
+  "carry-turn-north-south": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-north-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-058.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-059.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-060.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-061.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-062.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-063.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-064.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-065.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-066.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-058.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-059.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-060.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-061.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-062.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-063.png",
+        "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-064.png",
+        "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-065.png",
+        "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-066.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      }
+    ]
+  },
+  "carry-turn-south-north": {
+    "manifest": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/manifest.json",
+    "metadata": {
+      "revision": "marsh-carry-turn-family-01-unselected-selected-normal-v1",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "carry-turn-south-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-067.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-068.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-069.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-070.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-071.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-072.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-073.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-074.png",
+        "res://character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-075.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-067.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-068.png",
+        "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-069.png",
+        "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-070.png",
+        "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-071.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-072.png",
+        "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-073.png",
+        "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-074.png",
+        "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/cargo-matched-v1/dry-turns/frame-075.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+      }
+    ]
+  },
+  "recover-air-south": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "recover-air-south",
+      "frameFiles": [
+        "../../character/marsh-v2/frames/bare/recover-air-south/000.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-south/001.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-south/002.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-south/003.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-south/004.png",
+        "../../character/marsh-v2/frames/bare/recover-air-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-south/000.png",
+        "sha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-south/001.png",
+        "sha256": "1357c0f9190a964691012ce76e8027cfd9701766df0ce4cbfca317eb0860a166"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-south/002.png",
+        "sha256": "2d91cb8201a79bb062c2c019eacb26aca9c67e209df117b6876e28219e7d4ae9"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-south/003.png",
+        "sha256": "8d2d999b8b4247ab4cd813dc99605f50e0c0ebdea72d1f112ab01c27b162519b"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-south/004.png",
+        "sha256": "ff4dfd135c7476ac54bf3fdc1d33aeefbbaab33e98d88a9f30aae17633a4fd13"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-south/005.png",
+        "sha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+      }
+    ]
+  },
+  "recover-air-north": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "../../character/marsh-v2/frames/bare/recover-air-north/000.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-north/001.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-north/002.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-north/003.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-north/004.png",
+        "../../character/marsh-v2/frames/bare/recover-air-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-north/000.png",
+        "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-north/001.png",
+        "sha256": "f13a11b36d85981d8d444fe60434de97c20ed3328d2571f4cf5892490f7080a9"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-north/002.png",
+        "sha256": "c306f7a1744a71675576742c4e6d8ae597c42099c4790b37c7fb58c63d2aed16"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-north/003.png",
+        "sha256": "e5bb3347f03c88ed1fbb006b563ba428b3a61aa5d44da55038c86d8741031438"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-north/004.png",
+        "sha256": "cc2592a4e85a1f33d4b0249860d3cefc0b8abfc397800b17fdbba01b3ea14f95"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-north/005.png",
+        "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+      }
+    ]
+  },
+  "recover-air-east": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "recover-air-east",
+      "frameFiles": [
+        "../../character/marsh-v2/frames/bare/recover-air-east/000.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-east/001.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-east/002.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-east/003.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-east/004.png",
+        "../../character/marsh-v2/frames/bare/recover-air-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-east/000.png",
+        "sha256": "b2fb25c6ec3af50b28182081104d25033e90ea3681eb3dad3d70883e56625550"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-east/001.png",
+        "sha256": "11bfd3a560b6dd6d0238591a2d0757d088a100fad2b0097f0bd6e5cff6228c4e"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-east/002.png",
+        "sha256": "81fc82a613f6a871ff7a8baa9177628f8174710c6f3ef83330a6043c8b111b84"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-east/003.png",
+        "sha256": "eda34ef45a125ccc07853205d83cc68373e9b3b0806494ff57f461c219add365"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-east/004.png",
+        "sha256": "f70697819fb1fa14c190f5ef6c85c7bc456d05786bc4991d1891eee15f929682"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-east/005.png",
+        "sha256": "b2fb25c6ec3af50b28182081104d25033e90ea3681eb3dad3d70883e56625550"
+      }
+    ]
+  },
+  "recover-air-west": {
+    "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+    "metadata": {
+      "revision": "marsh-master-repair-v1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest"
+    },
+    "state": {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "../../character/marsh-v2/frames/bare/recover-air-west/000.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-west/001.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-west/002.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-west/003.png",
+        "../../character/marsh-master-repair-v1/frames/recover-air-west/004.png",
+        "../../character/marsh-v2/frames/bare/recover-air-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-west/000.png",
+        "sha256": "5748175c17c1306874c549a6d43582ac04bc13d4637c23a3107a9744b9e0e9f2"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-west/001.png",
+        "sha256": "57a1740db72f5c2e0cc832366f894c68e10d8a46b0fea0e24fe11129fce26c09"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-west/002.png",
+        "sha256": "4744dc19d63a2332b87f71b1032f6d40c5768f2b88d116874c7142bd04885e99"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-west/003.png",
+        "sha256": "61914420483b839a3f650946e033b50fcbf31bce1fd0a04e17ff7931d90efb45"
+      },
+      {
+        "path": "character/marsh-master-repair-v1/frames/recover-air-west/004.png",
+        "sha256": "ec5d2692153d5cecce16cd0f7d5bc8730a286ee90e30b63e618f878dccc7ab40"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/recover-air-west/005.png",
+        "sha256": "5748175c17c1306874c549a6d43582ac04bc13d4637c23a3107a9744b9e0e9f2"
+      }
+    ]
+  },
+  "equip-helmet-south": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "equip-helmet-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-00.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-01.png",
+        "sha256": "a01dbbfc11f523721b85d91c25223f00eef1a86b7a55a10f15d8af0ace647e48"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-02.png",
+        "sha256": "049383d6605351e96c56af19e86ce9b60a71d7d591a9e770c55f3a213d408dfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-03.png",
+        "sha256": "2b1ed8e9028f3d6898df34f95faffb3aab1624d29201ae7acf7d8dad9cb401a6"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-04.png",
+        "sha256": "85878416e482be6a39e68ad7d3cbb9dd441734d1166b8ee930dd33c238bd7d30"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-05.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      }
+    ]
+  },
+  "equip-helmet-north": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "equip-helmet-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-00.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-01.png",
+        "sha256": "51e048fa54a050d0ad3e887402049209cdbe1d699def386747d2be641ac17038"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-02.png",
+        "sha256": "e0d1224c09a8190beaf3f3084cc1d03bb0008853bfd06b3071cd8783e4e84fce"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-03.png",
+        "sha256": "ad6ea69bd69cee87cba6f5479280396b6991e4329270c6cb0eecc5340e48d590"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-04.png",
+        "sha256": "9381e9a12bec3741999010e94fde5b64ad6600f494e5e2faebc9f255ef8bffcf"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-05.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+      }
+    ]
+  },
+  "equip-helmet-east": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-00.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-01.png",
+        "sha256": "266f47329ad33a0c78c059725df074904d5b9b35b8b4f7630a24b7879efac252"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-02.png",
+        "sha256": "fdb6c8b836ec4af8e28f4f7e273458bc72505c97cf8a24e9a730bc9cb624d11f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-03.png",
+        "sha256": "3e04f474ad67f7f48f17b0af9c26a9be8275503fccae3b240baa5431c4f20a5f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-04.png",
+        "sha256": "a025d9ee6e574a25762576b230c7874aee7d8939dfb6301e1e00f0ed6b7cbe60"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-05.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+      }
+    ]
+  },
+  "equip-helmet-west": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "equip-helmet-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-00.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-01.png",
+        "sha256": "5468bb3af12267162a392a8331045764ddeaca6b931117e906f445cd5e18c4d5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-02.png",
+        "sha256": "d62f6134879e862b98b09107a543b4ecbe662eece147ce4cc1be484fa0dd2f87"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-03.png",
+        "sha256": "e61a8b0c6973aab39169f095a4b2f5980b543286d55c3e1c429d821a253c33db"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-04.png",
+        "sha256": "5e4c1f84c8d70312fc05e0cebe5930658487f42bb7073762f9c7f24be162ab2e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-05.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+      }
+    ]
+  },
+  "remove-helmet-south": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "remove-helmet-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/south-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-00.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-01.png",
+        "sha256": "a01dbbfc11f523721b85d91c25223f00eef1a86b7a55a10f15d8af0ace647e48"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-02.png",
+        "sha256": "049383d6605351e96c56af19e86ce9b60a71d7d591a9e770c55f3a213d408dfa"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-03.png",
+        "sha256": "2b1ed8e9028f3d6898df34f95faffb3aab1624d29201ae7acf7d8dad9cb401a6"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-04.png",
+        "sha256": "85878416e482be6a39e68ad7d3cbb9dd441734d1166b8ee930dd33c238bd7d30"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/south-05.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      }
+    ]
+  },
+  "remove-helmet-north": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "remove-helmet-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/north-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-00.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-01.png",
+        "sha256": "51e048fa54a050d0ad3e887402049209cdbe1d699def386747d2be641ac17038"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-02.png",
+        "sha256": "e0d1224c09a8190beaf3f3084cc1d03bb0008853bfd06b3071cd8783e4e84fce"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-03.png",
+        "sha256": "ad6ea69bd69cee87cba6f5479280396b6991e4329270c6cb0eecc5340e48d590"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-04.png",
+        "sha256": "9381e9a12bec3741999010e94fde5b64ad6600f494e5e2faebc9f255ef8bffcf"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/north-05.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+      }
+    ]
+  },
+  "remove-helmet-east": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/east-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-00.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-01.png",
+        "sha256": "266f47329ad33a0c78c059725df074904d5b9b35b8b4f7630a24b7879efac252"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-02.png",
+        "sha256": "fdb6c8b836ec4af8e28f4f7e273458bc72505c97cf8a24e9a730bc9cb624d11f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-03.png",
+        "sha256": "3e04f474ad67f7f48f17b0af9c26a9be8275503fccae3b240baa5431c4f20a5f"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-04.png",
+        "sha256": "a025d9ee6e574a25762576b230c7874aee7d8939dfb6301e1e00f0ed6b7cbe60"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/east-05.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+      }
+    ]
+  },
+  "remove-helmet-west": {
+    "manifest": "character/marsh-v2/supplemental/retained-gesture-return-v1/manifest.json",
+    "metadata": {
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "scope": "Selected master-matched latent generic gesture art. Original six150ms finite timing; Marsh helmet behavior stays disabled. Cadence polish/full-set acceptance remain open."
+    },
+    "state": {
+      "id": "remove-helmet-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-00.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-01.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-02.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-03.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-04.png",
+        "res://character/marsh-v2/supplemental/retained-gesture-return-v1/west-05.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-00.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-01.png",
+        "sha256": "5468bb3af12267162a392a8331045764ddeaca6b931117e906f445cd5e18c4d5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-02.png",
+        "sha256": "d62f6134879e862b98b09107a543b4ecbe662eece147ce4cc1be484fa0dd2f87"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-03.png",
+        "sha256": "e61a8b0c6973aab39169f095a4b2f5980b543286d55c3e1c429d821a253c33db"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-04.png",
+        "sha256": "5e4c1f84c8d70312fc05e0cebe5930658487f42bb7073762f9c7f24be162ab2e"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/retained-gesture-return-v1/west-05.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+      }
+    ]
+  }
+}

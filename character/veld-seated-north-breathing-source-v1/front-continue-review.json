@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "name": "bare-front",
+      "roomCropByteExact": false,
+      "maxRoomCropChannelDifference": 5,
+      "sourcePixelsExact": "verified by native fixture; room shade distinct"
+    },
+    {
+      "name": "bare-legacy",
+      "roomCropByteExact": true,
+      "maxRoomCropChannelDifference": 0,
+      "sourcePixelsExact": "verified by native fixture; room shade distinct"
+    },
+    {
+      "name": "helmet-front",
+      "roomCropByteExact": true,
+      "maxRoomCropChannelDifference": 0,
+      "sourcePixelsExact": "verified by native fixture; room shade distinct"
+    },
+    {
+      "name": "helmet-legacy",
+      "roomCropByteExact": true,
+      "maxRoomCropChannelDifference": 0,
+      "sourcePixelsExact": "verified by native fixture; room shade distinct"
+    }
+  ],
+  "records": [
+    {
+      "depth": 141.01,
+      "foot": "(7999.5, 8421.0)",
+      "gear": false,
+      "legacy": false,
+      "name": "bare-front",
+      "offset": "(0.0, -32.0)"
+    },
+    {
+      "depth": 141.01,
+      "foot": "(7936.0, 8352.0)",
+      "gear": false,
+      "legacy": true,
+      "name": "bare-legacy",
+      "offset": "(63.5, 37.0)"
+    },
+    {
+      "depth": 141.01,
+      "foot": "(7999.5, 8421.0)",
+      "gear": true,
+      "legacy": false,
+      "name": "helmet-front",
+      "offset": "(0.0, -32.0)"
+    },
+    {
+      "depth": 141.01,
+      "foot": "(7936.0, 8352.0)",
+      "gear": true,
+      "legacy": true,
+      "name": "helmet-legacy",
+      "offset": "(63.5, 37.0)"
+    }
+  ],
+  "scope": "four prescribed actual disk/fresh-scene front/retained-side contact restores; paired staged sources, exact source/offset/depth/clock/pause; natural route proven separately",
+  "files": {
+    "output/veld-seat-front-continue-v1/bare-front-before.png": "72b9dc389fe025fc0b66aa8a60e31925be26756d75e88b9ecd6d6ae5eaac6139",
+    "output/veld-seat-front-continue-v1/bare-front-after.png": "d7c70e558ab12c3aa20c93b824982421d26fcac24e6a4e5b022f5650c1a0ff3f",
+    "output/veld-seat-front-continue-v1/bare-legacy-before.png": "3a802e44fcd31bdbadeeec0646128bcde3f8f76acf8fdef861e563edc6234b2c",
+    "output/veld-seat-front-continue-v1/bare-legacy-after.png": "6c1e8d1dc73ad0d8c3c07a997debea2c89995ade8f26191bfa22203cc514c071",
+    "output/veld-seat-front-continue-v1/helmet-front-before.png": "532e22c3d72f688e532e4e5d30330ec8dbec5a9b2cb2c2344484a5a4e687319f",
+    "output/veld-seat-front-continue-v1/helmet-front-after.png": "3583c4b3de6a78866bb6bf956977f2238aafbcf74df65614cb1be9a87fc08176",
+    "output/veld-seat-front-continue-v1/helmet-legacy-before.png": "54fa1f695bf4351ee011074e890fff68608164cd7b390bf55d1e7a3455cb3aab",
+    "output/veld-seat-front-continue-v1/helmet-legacy-after.png": "ce02d5a0338a7537e7e4186808693c9b81865041ab0c59e505d42154e01839e0",
+    "character/veld-seated-north-breathing-source-v1/front-continue-room-board.png": "10d353e386163c5269ece1adadb3e3f812c9ad385e4ff212afb9057d7bfb222e",
+    "output/veld-seat-front-continue-v1/contacts.json": "8fe19b2ec321e693d1851af82432e489891b2fbbddcbf36a1f0a9e340acc7c5f",
+    "output/veld-seat-front-continue-v1/validation.json": "8a8f63a0c775f0fb9a82ab719551fb55d0361ed511a952c98ed8d2e5fc37087d",
+    "output/veld-seat-front-continue-v1/native.log": "7384003285bb8454a432f8acaf0dc5f5b44997e7fe8e4b9e7e1674e3c7c373c0",
+    "output/veld-seat-front-continue-v1/profile-before.json": "0e1aa7d2a18c6c92ed69da623c340fbac3d686dc58fa70ab7512d84b669a6030",
+    "output/veld-seat-front-continue-v1/profile-after.json": "0e1aa7d2a18c6c92ed69da623c340fbac3d686dc58fa70ab7512d84b669a6030",
+    "output/veld-seat-front-continue-v1/final.png": "ce02d5a0338a7537e7e4186808693c9b81865041ab0c59e505d42154e01839e0",
+    "tests/test_veld_seat_front_continue.gd": "b50db9708e1963136b27da340ef7919a741bcc94229523fcd07b0a2b9c004202",
+    "tests/test_veld_seat_front_continue.gd.uid": "93be64d9e6b5bcc39b537b7be094d5c4c57ef59be56fb859a8c3ca4de6412e53",
+    "tools/run_veld_seat_front_continue.py": "0cddfe4e87569a7fb2a5678b2ff07a21364b600ff8b2d7125dc12932ac497d87"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "status": "actual_paid_construction_reviewed_owner_pending",
+  "fullSetComplete": false,
+  "runtimeChanges": false,
+  "nativeChecks": 12654,
+  "failures": 0,
+  "cases": [
+    {
+      "captures": 121,
+      "completed": true,
+      "direction": "north",
+      "seconds": 14.1500000000003,
+      "spentMetal": 5.0,
+      "stages": [
+        "torch-draw",
+        "weld",
+        "torch-stow"
+      ]
+    },
+    {
+      "captures": 268,
+      "completed": true,
+      "direction": "east",
+      "seconds": 16.866666666667,
+      "spentMetal": 5.0,
+      "stages": [
+        "torch-draw",
+        "weld",
+        "torch-stow"
+      ]
+    },
+    {
+      "captures": 140,
+      "completed": true,
+      "direction": "south",
+      "seconds": 14.5500000000003,
+      "spentMetal": 5.0,
+      "stages": [
+        "torch-draw",
+        "weld",
+        "torch-stow"
+      ]
+    },
+    {
+      "captures": 128,
+      "completed": true,
+      "direction": "west",
+      "seconds": 11.1000000000001,
+      "spentMetal": 5.0,
+      "stages": [
+        "torch-draw",
+        "weld",
+        "torch-stow"
+      ]
+    }
+  ],
+  "uniqueWorkCaptures": 347,
+  "allCaptures": 657,
+  "sourceTransitions": 1940,
+  "profileGuard": {
+    "exitCode": 0,
+    "timedOut": false,
+    "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-dhznzzo1",
+    "realProfileUnchanged": true,
+    "profileDelta": [],
+    "summary": [
+      "JAMES CONSTRUCTION CASE north captures=121 completed=true",
+      "JAMES CONSTRUCTION CASE east captures=268 completed=true",
+      "JAMES CONSTRUCTION CASE south captures=140 completed=true",
+      "JAMES CONSTRUCTION CASE west captures=128 completed=true",
+      "JAMES CONSTRUCTION: 12654 checks, 0 failures"
+    ]
+  },
+  "visualReview": "All347 distinct torch work captures reviewed on nine fixed viewport boards: coherent matte material, planted feet, stable apparent standing height, belt tools and forward-facing torch. Doorway overlay intentionally differs from PNG flame position. All approach sources were captured, but not exhaustively visually reviewed here.",
+  "scope": "Four real paid construction jobs, genuine core release, normal game updates at 60Hz with initial scene resets, actual approach/draw/held/stow/completion and doorway sparks. Bare eligibility only. Screenshots capture distinct selected sources; repeat intervals reuse their capture. No helmet construction eligibility, interruption, Continue or continuous real-time recording claim.",
+  "remaining": [
+    "Generalize to arbitrary actual source indices; integrate stow/return while preserving paid work, safety precedence, contact and progress",
+    "Capture every new native source transition, including repeated loss/restoration during exit/return",
+    "Fresh disk Continue inside new interruption motion and all facing-phase combinations",
+    "Repair effect/contact and full James consistency, owner/export acceptance"
+  ],
+  "reviewBoards": [
+    {
+      "path": "north-page0.png",
+      "sha256": "95544d2077b8d9451c2171fc9b322ac36d010a6be47810ec2d2e455f72bf27e6"
+    },
+    {
+      "path": "east-page0.png",
+      "sha256": "8fd0cab20e7924d9d4259af227aa0a20f2dfa042c5a2c9fb749a9a818d4e484b"
+    },
+    {
+      "path": "east-page1.png",
+      "sha256": "0e014aa0211e515b88774fa26d17f3774c0109dd8ca27adc7a30ec74731e6479"
+    },
+    {
+      "path": "east-page2.png",
+      "sha256": "2bf2a7d11b82128dc587d880feada164136202f1cd9f944e125feffbee7e9586"
+    },
+    {
+      "path": "east-page3.png",
+      "sha256": "7dff01960a4db676fcf626992c179d70684ec0eb0e7a6a3d52e2444561aa3eca"
+    },
+    {
+      "path": "south-page0.png",
+      "sha256": "c93254a8de06c978b4ce5d3ea87ff3ff8421798086d70885217bad9f4e210df8"
+    },
+    {
+      "path": "south-page1.png",
+      "sha256": "a5f3c09c3bc3dd9168b274e282813d84bb2897524ea8483408bbf6f3b6740ed5"
+    },
+    {
+      "path": "west-page0.png",
+      "sha256": "96cd7f419a6415fc61cc8dde9f4c92339d08e0fdbbabdb9f2f83a1720d62b815"
+    },
+    {
+      "path": "west-page1.png",
+      "sha256": "fe6e43942b63480da6af333c9964d0679064d0ab4918321f530a381978ae6625"
+    }
+  ],
+  "constructionInterruptReview": {
+    "path": "character/james-construction-interrupt-v1/selection-review.json",
+    "simulationVerified": true,
+    "visualDefectUnfixed": true,
+    "candidateInstalled": false,
+    "freshContinueCases": 3
+  },
+  "runtimeMotionReview": "res://character/james-construction-motion-v1/selection-review.json",
+  "constructionInterruptionDefect": "Resolved by parameterized whole-source runtime retraction/return; 24 native cases and four repeated holds reviewed. Earlier staged 24 aliases remain uninstalled.",
+  "helmetConstructionReview": "character/james-construction-helmet-v1/selection-review.json"
+}

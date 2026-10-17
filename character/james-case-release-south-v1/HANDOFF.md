@@ -1,0 +1,21 @@
+# Project handoff
+
+Updated: 2026-10-01 · Project: Brine Space · Task: James South empty case release
+
+## Objective and acceptance
+Full James set and continual master/style/perspective/size/height/proportions/grade checks remain active. All four cardinal case-release packs now integrated; owner visual acceptance pending. Remaining life/rest/mortality contexts and full cross-family polish are not complete.
+
+## Accepted decisions and constraints
+Independent South front-overhead prone bodies, trailing boots image-top/empty gloves below face. Permanent wrench image-left/torch holstered image-right. Original South case touches its glove, so do not extract a clipped case or fabricate missing hand pixels; author complete separated case with the bodies at one .25 ruler. Preserve exact selected entrances and swim0 endpoint. Shared native South helmet changes only cranial ownership.
+
+## Current state
+New pack has source.png (exec5b32c764-bf58-4335-9ed1-8361077eac70) plus exact prompt. Initial later poses retained excessively bent legs. source-v2.png (exec6411b2bc-b089-4159-a1d5-f84a2335d28e) reauthors entire cells0/3/4 for glove clearance/progressive leg extension; exact prompt-v2 retained. Original whole cells1/2 and separate case preserved. Five whole poses, fixed .25 ruler/selected cranial anchor, pooled per-source-atlas neutral/gold/skin grades; original/revised neutral gains .933333/.756757 avoid mixed-atlas flashes. No per-frame anatomy normalization. Case41x30 at[111,187], South native helmet at[107,122]. Ten profiles480..680ms: exact selected reverse index..1, authored0..4, exact selected empty swim0. Main actor/normal grid loader/case helper now support East/West/North/South. Site-owned case captured before movement and drawn in crew pass. No route/economy/extraction rule changes. Current negative fixtures use diagonal as invalid direction. Native scripts have Godot-generated paired UIDs; earlier newly created North noncanonical UID strings corrected by engine round-trip check, no existing production UID regeneration.
+
+## Verification
+69package checks pass: fixed ruler/finite pooled grade, complete new case dimensions, paired exact full body outside head, release glove/core clearance, ten paired exact input/reverse/empty endpoints/clocks/native plane. Native-world4,304 checks pass: one actual South normal dispatch/recall/airlock return, indexed source2 release, moving return/empty join, fixed world case, no extraction/credit, paused fresh-scene disk Continue and dry alive completion. Normal loader checks all ten paired sources/finite endpoints. Native-indexed3,980 checks pass:12 controlled work/pickup branches from one actual arrival, all six naturally advanced indexes/action, exact entrances/empty joins, actor-only restores/site resets, physical movement; pickup1..5 place cases. Not12 full journeys/Continues or actual bare exterior dispatch. Both fixtures terminal0/clean/no timeout/scratch resolved. Both strict full owner-profile guards FAILED with last_session.json delta; cause unproven/no owner restore/no clean-guard retry. UID utility also0, same strict guard delta. Paired fitted sheet and actual scene samples04/11 visually reviewed;21 authoritative contactSamples.native captures form runtime GIF. Metadata148 is not anatomical master-height acceptance.
+
+## Next action
+World case invalidation/depletion/new attempt/death/traffic/hazard checks. Remaining South meal/cup context, life/rest/mortality coverage, then full-set cross-family master/height/proportion/material/motion polish and owner review. Goal active; no commit/export requested.
+
+## October 1 lifecycle follow-up
+Current shared runtime preserves release-facing death, renders deceased James in open sea after expedition clears, and removes the extra .038cell case offset. All four facings tested in james-case-release-lifecycle-v1:13,764checks/0fail, four parent recalls/fresh-scene Continues plus four real second dispatches/returns and36controlled interruption branches. Current rendered clip: native-lifecycle-world-review.gif. Older native-world review/report retains its original pre-origin-fix revision/scope. Strict owner-profile guard failed with last_session.json delta; mortality pose joins/peer traffic/full-set polish remain.

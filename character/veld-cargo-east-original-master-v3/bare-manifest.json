@@ -1,0 +1,168 @@
+{
+  "name": "Veld original East cargo body / separate prop bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_not_installed",
+  "states": [
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "idle"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0.0
+      ],
+      "frameCount": 1
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/000.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/001.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/002.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/003.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/004.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/005.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/004.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/003.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/002.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/001.png",
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "res://character/veld-cargo-east-original-master-v3/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "idle"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0.0
+      ],
+      "frameCount": 1
+    }
+  ]
+}

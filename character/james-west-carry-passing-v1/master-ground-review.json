@@ -1,0 +1,40 @@
+{
+  "source": "character/james-carry-headcaps-v1/frames/004.png",
+  "baseSha256": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994",
+  "samples": [
+    {
+      "label": "far-side toe-only columns",
+      "region": [
+        100,
+        205,
+        112,
+        240
+      ],
+      "bounds": [
+        1,
+        2,
+        12,
+        15
+      ],
+      "bottomExclusiveWorld": 220
+    },
+    {
+      "label": "near-side outer sole columns",
+      "region": [
+        140,
+        205,
+        152,
+        240
+      ],
+      "bounds": [
+        0,
+        0,
+        11,
+        18
+      ],
+      "bottomExclusiveWorld": 223
+    }
+  ],
+  "scope": "Limited non-overlapping toe/outer-sole columns: screen-depth difference evidence, not complete anatomical foot isolation. Original whole-foot masks/contact planes still need reconciliation.",
+  "decision": "Do not impose common224sole on every support phase. Preserve148standing ruler/pivot independently from visible pose bounds; audit master perspective before more height repair."
+}

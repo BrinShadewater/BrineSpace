@@ -1,0 +1,153 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "metrics": [
+    {
+      "slot": 0,
+      "beforeBounds": [
+        97,
+        76,
+        155,
+        223
+      ],
+      "afterBounds": [
+        80,
+        54,
+        158,
+        245
+      ]
+    },
+    {
+      "slot": 6,
+      "beforeBounds": [
+        92,
+        76,
+        164,
+        225
+      ],
+      "afterBounds": [
+        81,
+        53,
+        183,
+        247
+      ]
+    },
+    {
+      "slot": 12,
+      "beforeBounds": [
+        87,
+        76,
+        174,
+        225
+      ],
+      "afterBounds": [
+        87,
+        53,
+        206,
+        247
+      ]
+    },
+    {
+      "slot": 18,
+      "beforeBounds": [
+        92,
+        76,
+        174,
+        225
+      ],
+      "afterBounds": [
+        74,
+        44,
+        185,
+        236
+      ]
+    },
+    {
+      "slot": 24,
+      "beforeBounds": [
+        97,
+        76,
+        170,
+        226
+      ],
+      "afterBounds": [
+        87,
+        43,
+        186,
+        236
+      ]
+    },
+    {
+      "slot": 30,
+      "beforeBounds": [
+        98,
+        76,
+        155,
+        226
+      ],
+      "afterBounds": [
+        99,
+        43,
+        177,
+        236
+      ]
+    },
+    {
+      "slot": 36,
+      "beforeBounds": [
+        95,
+        76,
+        167,
+        223
+      ],
+      "afterBounds": [
+        77,
+        30,
+        177,
+        220
+      ]
+    },
+    {
+      "slot": 42,
+      "beforeBounds": [
+        88,
+        76,
+        170,
+        224
+      ],
+      "afterBounds": [
+        75,
+        30,
+        191,
+        220
+      ]
+    },
+    {
+      "slot": 48,
+      "beforeBounds": [
+        98,
+        76,
+        155,
+        223
+      ],
+      "afterBounds": [
+        100,
+        30,
+        178,
+        221
+      ]
+    }
+  ],
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "reject_atlas_geometry_drift",
+  "visualReviewPending": false,
+  "reviewedBoards": 3,
+  "findings": [
+    "All9sprites enlarged from roughly147..150 to190..194opaque pixels and shifted crown from76 to30..54.",
+    "Material improvement cannot justify anatomy/registration drift; rejected without per-cell fitting or runtime testing."
+  ]
+}

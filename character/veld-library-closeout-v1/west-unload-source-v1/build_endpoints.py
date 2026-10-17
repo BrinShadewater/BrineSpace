@@ -1,0 +1,12 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np,json,hashlib
+from scipy.ndimage import label
+P=Path(__file__).resolve().parent;R=P.parents[2];sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest();key=P.parent/'west-cargo-anchor-highres-v3/bare.png';master=P.parent/'west-sample-family-v3/master-native.png';src=Image.open(P/'case-source.png').convert('RGBA');a=np.array(src);lab,_=label(a[:,:,3]>8);counts=np.bincount(lab.ravel());keep=counts>=20;keep[0]=False;a[~keep[lab]]=0;im=Image.fromarray(a);case=im.crop(im.getbbox());case=case.resize((32,round(case.height*32/case.width)),Image.Resampling.LANCZOS);case.save(P/'case-native.png');pos=(72,224-case.height)
+standing=Image.open(master).convert('RGBA');end=standing.copy();end.alpha_composite(case,pos);end.save(P/'last-native.png');first=Image.open(key).convert('RGBA');first.save(P/'first-native.png');b=np.array(standing);c=np.array(end);outside=np.ones((256,256),bool);outside[pos[1]:224,72:104]=False;assert np.array_equal(b[outside],c[outside]);assert not np.any(b[~outside,3]);assert np.array_equal(b[b[:,:,3]>0],c[b[:,:,3]>0])
+for name,img in [('first',first),('last',end)]:
+ bg=Image.new('RGB',(768,768),(12,18,24));up=img.resize((768,768),Image.Resampling.NEAREST);bg.paste(up,mask=up);bg.save(P/f'{name}-input.png')
+board=Image.new('RGB',(768,570),'#202a30');d=ImageDraw.Draw(board)
+for i,(name,img) in enumerate([('Cargo start',first),('Original standing',standing),('Deposited endpoint',end)]):
+ board.paste(img,(i*256,30),img);d.text((i*256+4,5),name,fill='white');feet=img.crop((60,195,160,227)).resize((250,80),Image.Resampling.NEAREST);board.paste(feet,(i*256+3,330),feet)
+board.save(P/'endpoints.png');files=[Path(__file__),key,master,P/'case-source.png',P/'case-prompt.txt',P/'first-native.png',P/'last-native.png',P/'first-input.png',P/'last-input.png',P/'case-native.png'];report={'checks':3,'failures':0,'sourceMode':'Built-in imagegen reconstructed only occluded case edges from high-resolution held master. Fixed packaging with unchanged complete original standing; no regenerated/anatomy/body pixels.','caseSize':case.size,'casePosition':pos,'originalStandingPixelsExact':True,'firstWholeCargoKeyExact':True,'scope':'Paired conditioning endpoints only; rigid prop motion/grip and all generated intermediate anatomy still pending.','bindings':{f.relative_to(R).as_posix():sha(f) for f in files}};(P/'ENDPOINT_REVIEW.json').write_text(json.dumps(report,indent=2)+'\n');print({'caseSize':case.size,'position':pos,'checks':3})

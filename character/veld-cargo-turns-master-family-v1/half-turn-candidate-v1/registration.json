@@ -1,0 +1,441 @@
+{
+  "routes": {
+    "east-west": [
+      [
+        "east-south",
+        false
+      ],
+      [
+        "south-west",
+        false
+      ]
+    ],
+    "west-east": [
+      [
+        "north-west",
+        true
+      ],
+      [
+        "north-east",
+        false
+      ]
+    ],
+    "north-south": [
+      [
+        "north-east",
+        false
+      ],
+      [
+        "east-south",
+        false
+      ]
+    ],
+    "south-north": [
+      [
+        "south-west",
+        false
+      ],
+      [
+        "north-west",
+        true
+      ]
+    ]
+  },
+  "quarterPackages": {
+    "north-east": "north-east-candidate-v5",
+    "east-south": "east-south-candidate-v3",
+    "south-west": "candidate-v7",
+    "north-west": "north-west-candidate-v4"
+  },
+  "frameBindings": {
+    "frames/bare/east-west/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/000.png",
+      "sha256": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329"
+    },
+    "frames/bare/east-west/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/001.png",
+      "sha256": "a9ba49c14258a1d36f64d086df0d27387bd57d22de2216c99d4e08fc98efe513"
+    },
+    "frames/bare/east-west/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/002.png",
+      "sha256": "0b74ea62648dde472e90d6765da8e88b8b007f19a532831f2fb1a624fd8585d3"
+    },
+    "frames/bare/east-west/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/003.png",
+      "sha256": "78f6eb85083bbd796c8089f93f06727c2d11930847356553c61c7fc85540cf7a"
+    },
+    "frames/bare/east-west/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/004.png",
+      "sha256": "71ae2005cea09355d0d9e6c4018318466fe32b0d8e0bed2270e4bc1cee0d18e9"
+    },
+    "frames/bare/east-west/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/005.png",
+      "sha256": "e23d7b1a81681a810ab7f039c19eb34397051ca013f66c51948894e5e0bc2122"
+    },
+    "frames/bare/east-west/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/000.png",
+      "sha256": "e23d7b1a81681a810ab7f039c19eb34397051ca013f66c51948894e5e0bc2122"
+    },
+    "frames/bare/east-west/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/001.png",
+      "sha256": "4c10cf153f5e0d70a8ca233bd95c573d832d8f67cb4746bf59f9a6de03e3c7d3"
+    },
+    "frames/bare/east-west/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/002.png",
+      "sha256": "c39cc54d74f44ebf56dd159edb8ff660e0bfbdb29a1be5d161fcea54fc2def2c"
+    },
+    "frames/bare/east-west/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/003.png",
+      "sha256": "bdc4b006c4492474bf2a0e1485804c8d5dab0ea660e0e27756d544a136d8891a"
+    },
+    "frames/bare/east-west/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/004.png",
+      "sha256": "ee5e26c43927e41dcd8b19d7672545ff4428885e2e99991f054390c9bb8b24f8"
+    },
+    "frames/bare/east-west/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/005.png",
+      "sha256": "a19f29bb56a4529de1bc31f558129ef71ddb0ce011f3e4e9956ad0fb351a37ac"
+    },
+    "frames/bare/west-east/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/005.png",
+      "sha256": "a19f29bb56a4529de1bc31f558129ef71ddb0ce011f3e4e9956ad0fb351a37ac"
+    },
+    "frames/bare/west-east/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/004.png",
+      "sha256": "468fd7a06e37a638173ad66d2366c6a8070d291df40059c6ed486c34ec24aad6"
+    },
+    "frames/bare/west-east/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/003.png",
+      "sha256": "2e0e4f00858134e5d1fe39a82f6d000c4d55dcc1b33f362ed7c86ecde8fe9582"
+    },
+    "frames/bare/west-east/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/002.png",
+      "sha256": "2cd3501dc2a4a683ed5c5103e9b57dc6b0bb03c6a438ae734caeb175de97cae6"
+    },
+    "frames/bare/west-east/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/001.png",
+      "sha256": "c3181f5e60f4c69aec657c59be8f25a3e1975ff404bd03eae63d71ffe60343d0"
+    },
+    "frames/bare/west-east/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/000.png",
+      "sha256": "f0fe366e5a85f4955e3a3e9a91d2de9a1b3e9af76991c59e4950f9be21666c9c"
+    },
+    "frames/bare/west-east/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/000.png",
+      "sha256": "f0fe366e5a85f4955e3a3e9a91d2de9a1b3e9af76991c59e4950f9be21666c9c"
+    },
+    "frames/bare/west-east/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/001.png",
+      "sha256": "56442fd8582c690fd34359ecb4a9a41764a6a427533c7f956615b62e02d1da1e"
+    },
+    "frames/bare/west-east/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/002.png",
+      "sha256": "0fd1657bc487cafc5bce03207f846016c773bca71ac6618fe6d08548aaa7ca0c"
+    },
+    "frames/bare/west-east/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/003.png",
+      "sha256": "d0f0b2d2ad7b854f452f2669a67c301bc5accf0aef37d604716aa50094883be8"
+    },
+    "frames/bare/west-east/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/004.png",
+      "sha256": "c6efe2ebaba2020895ea4f1fbcd62c6edac9b1282a2dd1075182ba007976050c"
+    },
+    "frames/bare/west-east/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/005.png",
+      "sha256": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329"
+    },
+    "frames/bare/north-south/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/000.png",
+      "sha256": "f0fe366e5a85f4955e3a3e9a91d2de9a1b3e9af76991c59e4950f9be21666c9c"
+    },
+    "frames/bare/north-south/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/001.png",
+      "sha256": "56442fd8582c690fd34359ecb4a9a41764a6a427533c7f956615b62e02d1da1e"
+    },
+    "frames/bare/north-south/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/002.png",
+      "sha256": "0fd1657bc487cafc5bce03207f846016c773bca71ac6618fe6d08548aaa7ca0c"
+    },
+    "frames/bare/north-south/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/003.png",
+      "sha256": "d0f0b2d2ad7b854f452f2669a67c301bc5accf0aef37d604716aa50094883be8"
+    },
+    "frames/bare/north-south/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/004.png",
+      "sha256": "c6efe2ebaba2020895ea4f1fbcd62c6edac9b1282a2dd1075182ba007976050c"
+    },
+    "frames/bare/north-south/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/005.png",
+      "sha256": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329"
+    },
+    "frames/bare/north-south/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/000.png",
+      "sha256": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329"
+    },
+    "frames/bare/north-south/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/001.png",
+      "sha256": "a9ba49c14258a1d36f64d086df0d27387bd57d22de2216c99d4e08fc98efe513"
+    },
+    "frames/bare/north-south/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/002.png",
+      "sha256": "0b74ea62648dde472e90d6765da8e88b8b007f19a532831f2fb1a624fd8585d3"
+    },
+    "frames/bare/north-south/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/003.png",
+      "sha256": "78f6eb85083bbd796c8089f93f06727c2d11930847356553c61c7fc85540cf7a"
+    },
+    "frames/bare/north-south/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/004.png",
+      "sha256": "71ae2005cea09355d0d9e6c4018318466fe32b0d8e0bed2270e4bc1cee0d18e9"
+    },
+    "frames/bare/north-south/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/bare/005.png",
+      "sha256": "e23d7b1a81681a810ab7f039c19eb34397051ca013f66c51948894e5e0bc2122"
+    },
+    "frames/bare/south-north/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/000.png",
+      "sha256": "e23d7b1a81681a810ab7f039c19eb34397051ca013f66c51948894e5e0bc2122"
+    },
+    "frames/bare/south-north/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/001.png",
+      "sha256": "4c10cf153f5e0d70a8ca233bd95c573d832d8f67cb4746bf59f9a6de03e3c7d3"
+    },
+    "frames/bare/south-north/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/002.png",
+      "sha256": "c39cc54d74f44ebf56dd159edb8ff660e0bfbdb29a1be5d161fcea54fc2def2c"
+    },
+    "frames/bare/south-north/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/003.png",
+      "sha256": "bdc4b006c4492474bf2a0e1485804c8d5dab0ea660e0e27756d544a136d8891a"
+    },
+    "frames/bare/south-north/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/004.png",
+      "sha256": "ee5e26c43927e41dcd8b19d7672545ff4428885e2e99991f054390c9bb8b24f8"
+    },
+    "frames/bare/south-north/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/bare/005.png",
+      "sha256": "a19f29bb56a4529de1bc31f558129ef71ddb0ce011f3e4e9956ad0fb351a37ac"
+    },
+    "frames/bare/south-north/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/005.png",
+      "sha256": "a19f29bb56a4529de1bc31f558129ef71ddb0ce011f3e4e9956ad0fb351a37ac"
+    },
+    "frames/bare/south-north/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/004.png",
+      "sha256": "468fd7a06e37a638173ad66d2366c6a8070d291df40059c6ed486c34ec24aad6"
+    },
+    "frames/bare/south-north/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/003.png",
+      "sha256": "2e0e4f00858134e5d1fe39a82f6d000c4d55dcc1b33f362ed7c86ecde8fe9582"
+    },
+    "frames/bare/south-north/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/002.png",
+      "sha256": "2cd3501dc2a4a683ed5c5103e9b57dc6b0bb03c6a438ae734caeb175de97cae6"
+    },
+    "frames/bare/south-north/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/001.png",
+      "sha256": "c3181f5e60f4c69aec657c59be8f25a3e1975ff404bd03eae63d71ffe60343d0"
+    },
+    "frames/bare/south-north/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/000.png",
+      "sha256": "f0fe366e5a85f4955e3a3e9a91d2de9a1b3e9af76991c59e4950f9be21666c9c"
+    },
+    "frames/helmet/east-west/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/000.png",
+      "sha256": "acb642717d0b3b3345a907b55d2fc26fb2a454220c2d026b5f2db50472a49578"
+    },
+    "frames/helmet/east-west/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/001.png",
+      "sha256": "cc10eb94d567c97440f4afab688711ccc86c34a659be8bef9fe1b81e4ec2e362"
+    },
+    "frames/helmet/east-west/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/002.png",
+      "sha256": "1725ec5637c56bb920a2d458040f56a1392e59ebb528581fb45f80805e339d36"
+    },
+    "frames/helmet/east-west/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/003.png",
+      "sha256": "35c8ab14e0fa218a78a44b8cda2a05b4eb549da5a5634cc3e266deb1a0f530d3"
+    },
+    "frames/helmet/east-west/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/004.png",
+      "sha256": "de15ac0ece8a7d39e330966a27399ad45dc6bcc10b3e896bfddf0ec2fb4c73a4"
+    },
+    "frames/helmet/east-west/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/005.png",
+      "sha256": "c0cfdd30a917c5c59b3a3c7b6cd5b0aac7f071931e9f23471c253891b6d3d511"
+    },
+    "frames/helmet/east-west/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/000.png",
+      "sha256": "c0cfdd30a917c5c59b3a3c7b6cd5b0aac7f071931e9f23471c253891b6d3d511"
+    },
+    "frames/helmet/east-west/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/001.png",
+      "sha256": "3c1c32aa18da57677c753e1864d5082d6bae00a1567d72119682c82055a0f41a"
+    },
+    "frames/helmet/east-west/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/002.png",
+      "sha256": "d336bf2ae650685342201641a1c7adfb17f7c7a4f9f14c26985cd6d8e7426867"
+    },
+    "frames/helmet/east-west/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/003.png",
+      "sha256": "f2349ec126bc49513baa920d3a358fe3bd6d02488fe7eac1da3f2b17088c0388"
+    },
+    "frames/helmet/east-west/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/004.png",
+      "sha256": "0da842cbf684dccaccfe330f557fd86b7e776fc3a953b09c0d9f56281694c17d"
+    },
+    "frames/helmet/east-west/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/005.png",
+      "sha256": "a5ab3300e7923b2b26b4338379af1066586c54b2752edb658279295f42fb6723"
+    },
+    "frames/helmet/west-east/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/005.png",
+      "sha256": "a5ab3300e7923b2b26b4338379af1066586c54b2752edb658279295f42fb6723"
+    },
+    "frames/helmet/west-east/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/004.png",
+      "sha256": "611fa47a15fcd7c953369b80e45af9995ac7b1e68d799e82ee540ab85195be54"
+    },
+    "frames/helmet/west-east/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/003.png",
+      "sha256": "902693cbebd7f23d38460f762f6d0c4e54b38c902358a1a73f7c0fcd9e65f652"
+    },
+    "frames/helmet/west-east/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/002.png",
+      "sha256": "50ea1364a8fd79b57b7d75ca843267502f26a53f89053caa23f35ad7888a51ec"
+    },
+    "frames/helmet/west-east/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/001.png",
+      "sha256": "730d9d02d7e4bd70b299b2c27809bd615564a6e4cb2a65e7bcd82a96c0eb7fd2"
+    },
+    "frames/helmet/west-east/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/000.png",
+      "sha256": "f31061ac32602fcf0bb69fa0229f3fc214acb063994964bbffa7ce926a103479"
+    },
+    "frames/helmet/west-east/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/000.png",
+      "sha256": "f31061ac32602fcf0bb69fa0229f3fc214acb063994964bbffa7ce926a103479"
+    },
+    "frames/helmet/west-east/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/001.png",
+      "sha256": "835126b95e7c5e14f14cfbed509eb05417cd255f30faec6b9760493128634503"
+    },
+    "frames/helmet/west-east/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/002.png",
+      "sha256": "247c2fe300548f44db70d46300e7e28f4f6aecfccf7416c8a75430c9146c7ddb"
+    },
+    "frames/helmet/west-east/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/003.png",
+      "sha256": "0fb405f2a1a0d4bbafb366b7ccbe93f9fb408e3bce9020bd111a04f521470d26"
+    },
+    "frames/helmet/west-east/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/004.png",
+      "sha256": "814ca0f616028c1078109c0a312302ad3086f85bcafd033bb479cc7945285a23"
+    },
+    "frames/helmet/west-east/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/005.png",
+      "sha256": "acb642717d0b3b3345a907b55d2fc26fb2a454220c2d026b5f2db50472a49578"
+    },
+    "frames/helmet/north-south/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/000.png",
+      "sha256": "f31061ac32602fcf0bb69fa0229f3fc214acb063994964bbffa7ce926a103479"
+    },
+    "frames/helmet/north-south/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/001.png",
+      "sha256": "835126b95e7c5e14f14cfbed509eb05417cd255f30faec6b9760493128634503"
+    },
+    "frames/helmet/north-south/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/002.png",
+      "sha256": "247c2fe300548f44db70d46300e7e28f4f6aecfccf7416c8a75430c9146c7ddb"
+    },
+    "frames/helmet/north-south/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/003.png",
+      "sha256": "0fb405f2a1a0d4bbafb366b7ccbe93f9fb408e3bce9020bd111a04f521470d26"
+    },
+    "frames/helmet/north-south/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/004.png",
+      "sha256": "814ca0f616028c1078109c0a312302ad3086f85bcafd033bb479cc7945285a23"
+    },
+    "frames/helmet/north-south/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/helmet/005.png",
+      "sha256": "acb642717d0b3b3345a907b55d2fc26fb2a454220c2d026b5f2db50472a49578"
+    },
+    "frames/helmet/north-south/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/000.png",
+      "sha256": "acb642717d0b3b3345a907b55d2fc26fb2a454220c2d026b5f2db50472a49578"
+    },
+    "frames/helmet/north-south/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/001.png",
+      "sha256": "cc10eb94d567c97440f4afab688711ccc86c34a659be8bef9fe1b81e4ec2e362"
+    },
+    "frames/helmet/north-south/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/002.png",
+      "sha256": "1725ec5637c56bb920a2d458040f56a1392e59ebb528581fb45f80805e339d36"
+    },
+    "frames/helmet/north-south/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/003.png",
+      "sha256": "35c8ab14e0fa218a78a44b8cda2a05b4eb549da5a5634cc3e266deb1a0f530d3"
+    },
+    "frames/helmet/north-south/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/004.png",
+      "sha256": "de15ac0ece8a7d39e330966a27399ad45dc6bcc10b3e896bfddf0ec2fb4c73a4"
+    },
+    "frames/helmet/north-south/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/east-south-candidate-v3/frames/helmet/005.png",
+      "sha256": "c0cfdd30a917c5c59b3a3c7b6cd5b0aac7f071931e9f23471c253891b6d3d511"
+    },
+    "frames/helmet/south-north/000.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/000.png",
+      "sha256": "c0cfdd30a917c5c59b3a3c7b6cd5b0aac7f071931e9f23471c253891b6d3d511"
+    },
+    "frames/helmet/south-north/001.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/001.png",
+      "sha256": "3c1c32aa18da57677c753e1864d5082d6bae00a1567d72119682c82055a0f41a"
+    },
+    "frames/helmet/south-north/002.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/002.png",
+      "sha256": "d336bf2ae650685342201641a1c7adfb17f7c7a4f9f14c26985cd6d8e7426867"
+    },
+    "frames/helmet/south-north/003.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/003.png",
+      "sha256": "f2349ec126bc49513baa920d3a358fe3bd6d02488fe7eac1da3f2b17088c0388"
+    },
+    "frames/helmet/south-north/004.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/004.png",
+      "sha256": "0da842cbf684dccaccfe330f557fd86b7e776fc3a953b09c0d9f56281694c17d"
+    },
+    "frames/helmet/south-north/005.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/candidate-v7/frames/helmet/005.png",
+      "sha256": "a5ab3300e7923b2b26b4338379af1066586c54b2752edb658279295f42fb6723"
+    },
+    "frames/helmet/south-north/006.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/005.png",
+      "sha256": "a5ab3300e7923b2b26b4338379af1066586c54b2752edb658279295f42fb6723"
+    },
+    "frames/helmet/south-north/007.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/004.png",
+      "sha256": "611fa47a15fcd7c953369b80e45af9995ac7b1e68d799e82ee540ab85195be54"
+    },
+    "frames/helmet/south-north/008.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/003.png",
+      "sha256": "902693cbebd7f23d38460f762f6d0c4e54b38c902358a1a73f7c0fcd9e65f652"
+    },
+    "frames/helmet/south-north/009.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/002.png",
+      "sha256": "50ea1364a8fd79b57b7d75ca843267502f26a53f89053caa23f35ad7888a51ec"
+    },
+    "frames/helmet/south-north/010.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/001.png",
+      "sha256": "730d9d02d7e4bd70b299b2c27809bd615564a6e4cb2a65e7bcd82a96c0eb7fd2"
+    },
+    "frames/helmet/south-north/011.png": {
+      "quarterSource": "character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/helmet/000.png",
+      "sha256": "f31061ac32602fcf0bb69fa0229f3fc214acb063994964bbffa7ce926a103479"
+    }
+  },
+  "checks": 120,
+  "failures": 0,
+  "duplicateMidpointWholeFramesExact": true,
+  "status": "staged_not_installed",
+  "scope": "deterministic concatenation of reviewed authored whole quarter poses; original680ms metadata; no new anatomy, normal selection or world/lifecycle acceptance"
+}

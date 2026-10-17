@@ -1,0 +1,122 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "Retained before-correction study; oversized swimmer heads/wider neutral; not admitted",
+  "promptSha256": "c0e7623c622f9f2954211da1afafb5bfd0efc76c2bcc080f670b721c91630e02",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/east-cargo-endpoint.png",
+      "sha256": "2b532859db7fd415e9148903535b97b1b8f2c96343e0856552f353a993b04f68"
+    },
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/east-body-primary.png",
+      "sha256": "63e17eeb354ca4688d0877b19331c2eda5810719d5c661ccb9add54e47de8ee2"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/sources/east-selected-motion-only.png",
+      "sha256": "e0fa2c553a7e7e92b318c8f0edf10507043071a1799b6309f482a2cb92883fb7"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png",
+      "sha256": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/000.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/001.png",
+      "sha256": "88a5d291c56af034b6bda6893c9c91ada19e49e12048ee0622ccbbab59e94ec1"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/002.png",
+      "sha256": "1278911fa92fe75fbe79c77b285f9eec0ffbc2bcfed480ef04820b70884ab1e4"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/003.png",
+      "sha256": "8b5a23084ea5f24d10fe0e6ebb482de982c5ccac2b8e05bbafcedc115649040e"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/004.png",
+      "sha256": "1278911fa92fe75fbe79c77b285f9eec0ffbc2bcfed480ef04820b70884ab1e4"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/005.png",
+      "sha256": "88a5d291c56af034b6bda6893c9c91ada19e49e12048ee0622ccbbab59e94ec1"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    }
+  ],
+  "selectedMotionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedMotionState": {
+    "id": "swim-carry-east",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/005.png"
+    ],
+    "frameDurationsMs": [
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "loop": true,
+    "facings": [
+      "east",
+      "east",
+      "east",
+      "east",
+      "east",
+      "east"
+    ],
+    "waterKinds": [
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "catalogue": {
+    "path": "character/marsh-v2/catalog.json",
+    "sha256": "a7a94c16b558c63129b74bb210adf1e7a8beb730fa658861c886efb3496fe39a"
+  },
+  "rules": "Five whole cells, common own-East standing neutral scale, no clipping/mirroring/body or case patches/per-pose fitting. Source then native review; not admitted.",
+  "generationId": "exec-615ef03a-d289-4d71-989d-c6355b68577e",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-615ef03a-d289-4d71-989d-c6355b68577e.png",
+  "rawSha256": "cb4e8b14ea448833383c8657da98075477df5c717d71c7d1016bd69f8ceecb27"
+}

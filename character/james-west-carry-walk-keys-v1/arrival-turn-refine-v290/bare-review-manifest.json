@@ -1,0 +1,46 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "master",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-west-master-carry-v1/registered-original-master.png"
+      ],
+      "frameDurationsMs": [
+        140
+      ],
+      "loop": false
+    },
+    {
+      "id": "original",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/003.png"
+      ],
+      "frameDurationsMs": [
+        140
+      ],
+      "loop": false
+    },
+    {
+      "id": "candidate",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/arrival-turn-refine-v290/fixed-canvas-source.png"
+      ],
+      "frameDurationsMs": [
+        140
+      ],
+      "loop": false
+    }
+  ]
+}

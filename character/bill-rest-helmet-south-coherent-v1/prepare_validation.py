@@ -1,0 +1,16 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[1]
+t=(R/'tests/test_bill_rest_south_candidates.gd').read_text(encoding='utf-8').replace('bill-rest-south-coherent-v1/manifest.json','bill-rest-helmet-south-coherent-v1/manifest.json').replace('BILL REST SOUTH','BILL REST HELMET SOUTH')
+t=t.replace('var prior: Array=player.equipment_frames["diving-helmet"]["sleep-south"].duplicate()','player.load_manifest("res://character/bill-rest-south-coherent-v1/manifest.json",true)')
+t=t.replace('player.load_manifest(PACK,true);','check(player.load_equipment_manifest("diving-helmet",PACK),"Paired profile compatible");')
+t=t.replace('check(player.equipment_frames["diving-helmet"]["sleep-south"]==prior,"Bare candidate preserves existing gear")','check(player.frames.has("sleep-south"),"Paired bare rest present")')
+t=t.replace('player.frames[state.id]','player.equipment_frames["diving-helmet"][state.id]').replace('player.frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000)','player.frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000,"diving-helmet")').replace('player.frame_at_elapsed(state.id,99)','player.frame_at_elapsed(state.id,99,"diving-helmet")')
+t=t.replace('0.0,Vector2.ZERO)','0.0,Vector2.ZERO,"diving-helmet")').replace('elapsed+.001,Vector2.ZERO)','elapsed+.001,Vector2.ZERO,"diving-helmet")')
+for state in ['lie-down-south','get-up-south','sleep-south']:t=t.replace('player.frames["'+state+'"]','player.equipment_frames["diving-helmet"]["'+state+'"]')
+t=t.replace('bill-seated-south-coherent-v1/frames','bill-seated-helmet-south-coherent-v1/frames').replace('bill-rest-south-candidate-native-v1','bill-rest-helmet-south-candidate-native-v1')
+(R/'tests/test_bill_rest_helmet_south_candidates.gd').write_text(t,encoding='utf-8');(R/'tests/test_bill_rest_helmet_south_candidates.gd.uid').write_text('uid://x9b8w3m6p2r9v\n')
+runner=(R/'tools/run_bill_rest_south_candidate_validation.py').read_text().replace('bill-rest-south-candidate-native-v1','bill-rest-helmet-south-candidate-native-v1').replace('test_bill_rest_south_candidates.gd','test_bill_rest_helmet_south_candidates.gd').replace('BILL REST SOUTH','BILL REST HELMET SOUTH')
+(R/'tools/run_bill_rest_helmet_south_candidate_validation.py').write_text(runner,encoding='utf-8')
+html=(P.parent/'bill-rest-south-coherent-v1/index.html').read_text(encoding='utf-8').replace('Bill south rest candidate','Bill south helmet rest candidate').replace('Bill · North rest','Bill · North helmet rest').replace('Bare candidate.','Shared helmet candidate.').replace('Equipment, furniture contacts and normal runtime selection remain pending.','Compatible furniture contacts and normal runtime selection remain pending. Current habitation uses the selected east bunk.').replace('bill-seated-south-coherent-v1','bill-seated-helmet-south-coherent-v1')
+(P/'index.html').write_text(html,encoding='utf-8')
+print('Prepared south paired equipment native fixture/UID, scratch runner and preview')

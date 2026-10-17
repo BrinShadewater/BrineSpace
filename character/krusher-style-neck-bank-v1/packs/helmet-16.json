@@ -1,0 +1,825 @@
+{
+  "name": "Krusher Dom cargo-turn helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-carry-turn-east-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d3d0dbde6849e031bd41a5e2b6202e38902305d9d8a096bc1dddf14b03627798.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c9077b3bacb45e0059f00ac9a91ddde064bc05a4a04deb26d00f8cb2af1edfd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c6f7f8a05fb13587f339e51df9aa135ef47a8f666fcf2eee0f8e841ab2ccc75.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5e0fa208a85865b052a73f41250e5a6b93c630a972cf1f93ffd86144791da21c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5e0fa208a85865b052a73f41250e5a6b93c630a972cf1f93ffd86144791da21c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c6f7f8a05fb13587f339e51df9aa135ef47a8f666fcf2eee0f8e841ab2ccc75.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c9077b3bacb45e0059f00ac9a91ddde064bc05a4a04deb26d00f8cb2af1edfd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d3d0dbde6849e031bd41a5e2b6202e38902305d9d8a096bc1dddf14b03627798.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef0cfa0163a4298ed3af685c0ac347280a8bf612fa6576679e43ad62bbf02035.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b3a2d3b06e2de30c5d06f6626a5dd66fcbdb14876dfd999e6f0464fe47375542.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f497090c06a73b69a252b9dfa7cfde42fb6b5b44f1b526dec42c69f0acb09527.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc949520dc92f90684c6982a62e30cba5bd51a137ec4487fb0d5e0103fa1ea90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc949520dc92f90684c6982a62e30cba5bd51a137ec4487fb0d5e0103fa1ea90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f497090c06a73b69a252b9dfa7cfde42fb6b5b44f1b526dec42c69f0acb09527.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b3a2d3b06e2de30c5d06f6626a5dd66fcbdb14876dfd999e6f0464fe47375542.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef0cfa0163a4298ed3af685c0ac347280a8bf612fa6576679e43ad62bbf02035.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60176b2e1fc8503547892eda2627e01ac75160d1e4752e0d23bea90b9c2817c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ecd881c92814604216f83a41629ca1512cae6679b2c6e99ce44df210ddd774c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/431f304516246b1a80795d8746d646f9be27ab6d07afdd3190d2e286b6f75f90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3fa2a40c11691ec4886988714a7925053ac6df80c909d1bcea16a86d7f80a186.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3fa2a40c11691ec4886988714a7925053ac6df80c909d1bcea16a86d7f80a186.png",
+        "res://character/krusher-style-neck-bank-v1/frames/431f304516246b1a80795d8746d646f9be27ab6d07afdd3190d2e286b6f75f90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ecd881c92814604216f83a41629ca1512cae6679b2c6e99ce44df210ddd774c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60176b2e1fc8503547892eda2627e01ac75160d1e4752e0d23bea90b9c2817c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60176b2e1fc8503547892eda2627e01ac75160d1e4752e0d23bea90b9c2817c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ecd881c92814604216f83a41629ca1512cae6679b2c6e99ce44df210ddd774c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/431f304516246b1a80795d8746d646f9be27ab6d07afdd3190d2e286b6f75f90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3fa2a40c11691ec4886988714a7925053ac6df80c909d1bcea16a86d7f80a186.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3fa2a40c11691ec4886988714a7925053ac6df80c909d1bcea16a86d7f80a186.png",
+        "res://character/krusher-style-neck-bank-v1/frames/431f304516246b1a80795d8746d646f9be27ab6d07afdd3190d2e286b6f75f90.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ecd881c92814604216f83a41629ca1512cae6679b2c6e99ce44df210ddd774c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60176b2e1fc8503547892eda2627e01ac75160d1e4752e0d23bea90b9c2817c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d3d0dbde6849e031bd41a5e2b6202e38902305d9d8a096bc1dddf14b03627798.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c9077b3bacb45e0059f00ac9a91ddde064bc05a4a04deb26d00f8cb2af1edfd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c6f7f8a05fb13587f339e51df9aa135ef47a8f666fcf2eee0f8e841ab2ccc75.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5e0fa208a85865b052a73f41250e5a6b93c630a972cf1f93ffd86144791da21c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73d2af6eaa0b970d3f3d40ca398562cfde12fefe88cfea139a1bb75cca9320f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68640231123d410793d8b18e4e7e6485c460d4fea34402b21ad5f866e28be99f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/617a413ba18ce8c9c78a3a2442b1812a922170aa22e0ad634d8967031ae3d2c4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/16dc7ffe8db3b2cd984ab06222f61158676d2dd0cee3d8760fb3822313b10f01.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5e0fa208a85865b052a73f41250e5a6b93c630a972cf1f93ffd86144791da21c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c6f7f8a05fb13587f339e51df9aa135ef47a8f666fcf2eee0f8e841ab2ccc75.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c9077b3bacb45e0059f00ac9a91ddde064bc05a4a04deb26d00f8cb2af1edfd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d3d0dbde6849e031bd41a5e2b6202e38902305d9d8a096bc1dddf14b03627798.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    }
+  ]
+}

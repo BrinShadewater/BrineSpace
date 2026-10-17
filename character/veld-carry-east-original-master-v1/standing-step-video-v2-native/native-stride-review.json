@@ -1,0 +1,676 @@
+{
+  "checks": 468,
+  "failures": 0,
+  "sourcePosePixelChecks": 156,
+  "nativeInputsStillStable": 308,
+  "nativeValidation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 7.8,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 308,
+    "targetedInputsUnchanged": true,
+    "scope": "Actual distance-driven full38-pose two-cycle stride trial, both gears/three scales. No final rigid contact/stride/start-stop or normal integration acceptance."
+  },
+  "independentRenderedMaterialWindows": [
+    {
+      "gear": "bare",
+      "cycle": 0,
+      "height": 93,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9725
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9908
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9928
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9771
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9725
+    },
+    {
+      "gear": "bare",
+      "cycle": 0,
+      "height": 93,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.728
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.963
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.991
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9769
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.728
+    },
+    {
+      "gear": "bare",
+      "cycle": 0,
+      "height": 148,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.929
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9847
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9859
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9642
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.929
+    },
+    {
+      "gear": "bare",
+      "cycle": 0,
+      "height": 148,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": -1,
+          "NCC": 0.7609
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9596
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9902
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9643
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 1,
+      "minimumNCC": 0.7609
+    },
+    {
+      "gear": "bare",
+      "cycle": 1,
+      "height": 93,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9682
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9905
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9926
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.975
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9682
+    },
+    {
+      "gear": "bare",
+      "cycle": 1,
+      "height": 93,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.7539
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9687
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9908
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9745
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.7539
+    },
+    {
+      "gear": "bare",
+      "cycle": 1,
+      "height": 148,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9596
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9895
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9899
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9668
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9596
+    },
+    {
+      "gear": "bare",
+      "cycle": 1,
+      "height": 148,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": -1,
+          "NCC": 0.7467
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9599
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9898
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9625
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 1,
+      "minimumNCC": 0.7467
+    },
+    {
+      "gear": "helmet",
+      "cycle": 0,
+      "height": 93,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9725
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9908
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9928
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9771
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9725
+    },
+    {
+      "gear": "helmet",
+      "cycle": 0,
+      "height": 93,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.728
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.963
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.991
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9769
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.728
+    },
+    {
+      "gear": "helmet",
+      "cycle": 0,
+      "height": 148,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.929
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9847
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9859
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9642
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.929
+    },
+    {
+      "gear": "helmet",
+      "cycle": 0,
+      "height": 148,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": -1,
+          "NCC": 0.7609
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9596
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9902
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9643
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 1,
+      "minimumNCC": 0.7609
+    },
+    {
+      "gear": "helmet",
+      "cycle": 1,
+      "height": 93,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9682
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9905
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9926
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.975
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9682
+    },
+    {
+      "gear": "helmet",
+      "cycle": 1,
+      "height": 93,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.7539
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9687
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9908
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9745
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.7539
+    },
+    {
+      "gear": "helmet",
+      "cycle": 1,
+      "height": 148,
+      "role": "far smaller-pad front support",
+      "matches": [
+        {
+          "rawSlot": 16,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9596
+        },
+        {
+          "rawSlot": 17,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9895
+        },
+        {
+          "rawSlot": 18,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 19,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9899
+        },
+        {
+          "rawSlot": 20,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9668
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 0,
+      "minimumNCC": 0.9596
+    },
+    {
+      "gear": "helmet",
+      "cycle": 1,
+      "height": 148,
+      "role": "near larger-pad front support",
+      "matches": [
+        {
+          "rawSlot": 34,
+          "dx": 0,
+          "dy": -1,
+          "NCC": 0.7467
+        },
+        {
+          "rawSlot": 35,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9599
+        },
+        {
+          "rawSlot": 36,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 1.0
+        },
+        {
+          "rawSlot": 37,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9898
+        },
+        {
+          "rawSlot": 38,
+          "dx": 0,
+          "dy": 0,
+          "NCC": 0.9625
+        }
+      ],
+      "screenMaterialDxSpan": 0,
+      "screenMaterialDySpan": 1,
+      "minimumNCC": 0.7467
+    }
+  ],
+  "scope": "Two actual distance-driven cycles/all38poses/both gears/47,93,148. Exact timestamped native replay and exact selected source pixels. Independent rendered warm-boot appearance correspondence in two short support windows/cycle at93/148. Not physical rigid sole, complete heel/toe roll, near/far occlusion continuity, final loop/contact/start-stop or normal station integration.",
+  "visualReview": "Enlarged24leg phase board, separate near/far support window board, both complete native38pose148 boards, actual moving wrap53->16 both gears and full47/93/148 raw35 pair viewed. Promising short-window stability, near heel first frame changes shape/vertical, complete roll/occlusion/material/standing handoffs remain."
+}

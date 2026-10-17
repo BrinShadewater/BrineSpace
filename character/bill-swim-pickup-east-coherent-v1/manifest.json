@@ -1,0 +1,68 @@
+{
+  "name": "Bill east underwater pickup candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "frames/swim-pickup-east/000.png",
+        "frames/swim-pickup-east/001.png",
+        "frames/swim-pickup-east/002.png",
+        "frames/swim-pickup-east/003.png",
+        "frames/swim-pickup-east/004.png",
+        "frames/swim-pickup-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "salvage",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "four authored pickup interiors;exact staged work and selected cargo endpoints"
+    }
+  ]
+}

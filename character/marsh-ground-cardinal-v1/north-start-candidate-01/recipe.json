@@ -1,0 +1,123 @@
+{
+  "status": "staged-unselected-motion-and-master-review-pending",
+  "generation": "built-in imagegen exec-455f0e43-0748-4a97-ac5d-308bcbe435e2",
+  "prompt": "character/marsh-ground-cardinal-v1/sources/north-start-01.prompt.txt",
+  "promptSha256": "6a15f0ed192dac9c3a3d13eb757fd864b118ccde941bc1d76cdd8a7e3ca12281",
+  "source": "character/marsh-ground-cardinal-v1/sources/north-start-01.png",
+  "sourceSha256": "3f9a84cfbf50fdc1c34f035d9b20a8d2572c25e3238296e897543a51612f91e2",
+  "references": [
+    {
+      "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+      "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/walk-north/000.png",
+      "sha256": "ee4f57aa34c24b415332479ab470986e71d0484eb37d0cc6eed9a69e5bb520ec"
+    }
+  ],
+  "extraction": [
+    {
+      "cell": 0,
+      "sourceBox": [
+        120,
+        65,
+        452,
+        950
+      ],
+      "scale": 0.16497175141242937,
+      "offset": [
+        47,
+        13
+      ],
+      "bounds": [
+        67,
+        24,
+        121,
+        170
+      ],
+      "sourceRightContact": [
+        342.0,
+        949.0
+      ]
+    },
+    {
+      "cell": 1,
+      "sourceBox": [
+        85,
+        66,
+        423,
+        946
+      ],
+      "scale": 0.16497175141242937,
+      "offset": [
+        52,
+        14
+      ],
+      "bounds": [
+        66,
+        25,
+        121,
+        170
+      ],
+      "sourceRightContact": [
+        311.0,
+        945.0
+      ]
+    },
+    {
+      "cell": 2,
+      "sourceBox": [
+        51,
+        66,
+        393,
+        948
+      ],
+      "scale": 0.16497175141242937,
+      "offset": [
+        57,
+        14
+      ],
+      "bounds": [
+        65,
+        25,
+        122,
+        171
+      ],
+      "sourceRightContact": [
+        278.5,
+        947.0
+      ]
+    }
+  ],
+  "oneStandingRuler": 0.16497175141242937,
+  "visibleIdleRuler": 146,
+  "onePlantedRightContact": {
+    "target": [
+      103.0,
+      170.0
+    ],
+    "method": "same planted right-boot floor strip per cell; no full-body centroid registration"
+  },
+  "alpha": "128 threshold then BOX resize and 128 threshold, transparent RGB zeroed",
+  "grade": "no material transform applied",
+  "frameSha256": {
+    "000.png": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+    "001.png": "16972a07e02fa95cadfdcdb642f22193db8737968467938b4149a50d465f1f4b",
+    "002.png": "191f13032451409f4737bd0f4cbfd785b4cb8511fe9fc0bcc0d1444b680ccd3c",
+    "003.png": "aa217bb8f7c1b02beb4c35ab2942abf0cf9b1da893398fa9d14000825e233321",
+    "004.png": "3533d49b1e6634a9a9ee0e2cd595b86be2484aee8525254a55695d2e01faf44b"
+  },
+  "limits": "New authored interiors, exact idle and walk1 endpoints. 400ms candidate timing; production needs compatible root curve and explicit gait phase handoff. No stop/short-step or native-world acceptance.",
+  "endpoint": {
+    "key": "walk-north",
+    "slot": 1,
+    "path": "character/marsh-v2/frames/bare/walk-north/001.png",
+    "sha256": "6929bddddc07bd87922ff16247193d5e10232a3433880fcf302224fe9ce86c9c",
+    "gaitPhaseSeconds": 0.15,
+    "reason": "Generated left toe-off/lift is closer to existing lifted-left-boot slot1; preserve generated reference0 provenance separately."
+  }
+}

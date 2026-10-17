@@ -1,0 +1,284 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-contact-badge-v2.png",
+      "generation": "exec-0721ab24-21ce-40b0-823b-c655b5aa960a",
+      "heads": [
+        [
+          247,
+          127
+        ],
+        [
+          611,
+          128
+        ],
+        [
+          975,
+          128
+        ],
+        [
+          247,
+          697
+        ],
+        [
+          610,
+          697
+        ],
+        [
+          974,
+          698
+        ]
+      ],
+      "count": 6,
+      "density": 1.13,
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      0
+    ],
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "excludedPrimaryPoses": [
+    5
+  ],
+  "sourcesSha256": {
+    "primary": "9b0670161e94b13ef6f1c82cfcad5458e7ef3d0b2600d8b861314c93e6eb6e25"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 0,
+      "sourceBox": [
+        125,
+        124,
+        370,
+        623
+      ],
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ],
+      "position": [
+        96,
+        75
+      ],
+      "headAxis": [
+        130,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        505,
+        125,
+        720,
+        623
+      ],
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ],
+      "position": [
+        100,
+        76
+      ],
+      "headAxis": [
+        129,
+        77
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        868,
+        125,
+        1085,
+        623
+      ],
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ],
+      "position": [
+        100,
+        76
+      ],
+      "headAxis": [
+        130,
+        77
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        134,
+        694,
+        357,
+        1193
+      ],
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ],
+      "position": [
+        98,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        499,
+        694,
+        723,
+        1193
+      ],
+      "fixedRuler": [
+        0.278,
+        0.3001
+      ],
+      "position": [
+        98,
+        75
+      ],
+      "headAxis": [
+        129,
+        76
+      ],
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        1.0,
+        8.333333333333334,
+        34.0,
+        47.666666666666664,
+        59.666666666666664,
+        67.33333333333333,
+        96.66666666666667,
+        124.33333333333333,
+        255.0
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        13.333333333333334,
+        26.333333333333332,
+        42.0,
+        50.333333333333336,
+        61.333333333333336,
+        79.66666666666667,
+        130.33333333333334,
+        153.0,
+        196.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          1.127659574468085,
+          1.1724137931034482,
+          1.2380952380952381
+        ],
+        "face": [
+          0.9453551912568307,
+          0.9803921568627451,
+          0.9615384615384616
+        ],
+        "burgundy": [
+          1.48,
+          1.3529411764705883,
+          1.5862068965517242
+        ]
+      },
+      "shoulderPlateOverride": {
+        "gain": [
+          0.8172413793103448,
+          0.9137931034482759,
+          0.9642857142857143
+        ],
+        "sourceSampleMinRed": 100,
+        "masterSampleMinRed": 80,
+        "masterRawY": [
+          49,
+          74
+        ],
+        "scope": "bounded red shoulder material; sample plate interiors rather than dark outlines; alpha unchanged"
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-south-coherent-v1/frames/sit-down-south/000.png",
+      "sha256": "d7c6c0851a936755bdab52a614f56da149322a7c456692e65fc7a3dcfe33fdac"
+    },
+    {
+      "path": "bill-meal-south-coherent-v1/frames/eat-south/000.png",
+      "sha256": "f70f1739d93bccdc052e77a2b7f1f3ebe6e82a88b6fbd341676b2e2d3a54c32b"
+    }
+  ],
+  "scope": "authored bowl pickup and reversed return; exact idle/eating-held endpoints; normal service pending"
+}

@@ -1,0 +1,68 @@
+{
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "checks": 9821,
+  "failures": 0,
+  "selectedStates": {
+    "bare": 338,
+    "diving-helmet": 248
+  },
+  "selectedPoses": {
+    "bare": 4287,
+    "diving-helmet": 3771
+  },
+  "coreFamilies": [
+    "idle",
+    "walk",
+    "interact",
+    "inspect",
+    "repair",
+    "weld",
+    "carry",
+    "unload"
+  ],
+  "coreCoverageMissing": [],
+  "sourceReconciliation": {
+    "manifests": 143,
+    "sourceFiles": 11453,
+    "selectedSlots": 8058,
+    "unmatched": 0,
+    "afterRunSourceBindingsStable": true,
+    "prelaunchSourceFreeze": false
+  },
+  "visualReview": {
+    "boardsViewed": [
+      "bare-family-00",
+      "bare-family-01",
+      "bare-family-02",
+      "bare-family-03",
+      "diving-helmet-family-00",
+      "diving-helmet-family-01",
+      "diving-helmet-family-02",
+      "diving-helmet-family-03",
+      "south-tablet-head-diagnosis"
+    ],
+    "representativeSlots": 192,
+    "fullContinuousMotion": false,
+    "nativeRenderedReview": false
+  },
+  "equipmentDifference": {
+    "bareOnlyCount": 90,
+    "helmetOnlyCount": 0,
+    "bareOnlyFamilies": {
+      "cup": 4,
+      "equip": 1,
+      "meal": 84,
+      "remove": 1
+    },
+    "interpretation": "Meal/cup and equipment handoff keys; actor predicates require helmet off for meal lifecycle/returns. This is not a blanket missing-helmet diagnosis."
+  },
+  "findings": [
+    "All eight tested core families have four directions in both gear banks",
+    "carry limb/suit bulk differs from selected idle/diagnostics and remains master-polish priority",
+    "North unload retains known wide stance/final rise mismatch",
+    "South tablet head detail confirms helmet retained at sampled start/middle/end; small-gallery impression of bare head was not a verified defect",
+    "repair/weld and core sampled poses do not cover full life/water/death/turn/controller transitions"
+  ],
+  "next": "Review full selected carry/idle and turn/unload motion for master identity, cloth, support and bulk; expand actual-source comparison to life/water/hazard/death families, then ordinary lifecycle interruptions/Continue. Keep unload support repair open; do not repeat identical failed leg-edit prompts."
+}

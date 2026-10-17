@@ -1,0 +1,60 @@
+"""Record the 28 bespoke wall briefs before generation; never rewrite owner data."""
+import hashlib
+import json
+from pathlib import Path
+
+PACK = Path(__file__).resolve().parent
+ROOT = PACK.parents[1]
+BRIEFS = {
+    'echo_chamber': ('Anomaly', 'Acoustic wave measurement', 'Charcoal and muted mauve panel infill. Left end: two small recessed acoustic pickups; right end: concentric mechanical resonator rings. Lower side bands: dark acoustic baffles and a small analog amplitude meter.'),
+    'fold_chamber': ('Anomaly', 'Containment of folded geometry', 'Graphite structure, subdued slate-violet flat panel infill. Left end: stacked square calibration rings; right end: compact mechanical alignment fixture. Lower bands: inset interlocking metal chevrons and isolated violet ceramic insulators, no glow.'),
+    'pressure_garden': ('Anomaly', 'Cultivation under unusual pressure', 'Muted grey-green infill with restrained violet identification strips. Left end: tiny protected pressure gauges; right end: narrow sealed root observation tube with a subdued purple root. Lower bands: neat irrigation channels and pressure-rated couplings.'),
+    'stillwater_observatory': ('Anomaly', 'Monitoring anomalously still water', 'Blue-grey and desaturated violet infill, dark steel framing. Left end: narrow sealed still-water sample tube; right end: plumb-line instrument under a slim protective cover. Lower bands: damped mechanical sensors and a small unlit recording module. No ocean or windows.'),
+    'atmospheric_scrubber': ('Life Support', 'Removing contaminants from breathable air', 'Muted sage infill, charcoal structural frame. Left end: two compact particulate gauges; right end: a narrow replaceable filter cartridge housing. Lower side bands: horizontal intake louvers and a neat trio of filter latches, no mask rack.'),
+    'habitat_recovery': ('Life Support', 'Restoring damaged living environments', 'Soft grey-green infill, intact charcoal frame and subtle olive trim. Left end: a recessed seedling recovery vial; right end: short narrow row of clean repair sealant capsules. Lower bands: folded absorbent pads behind an inset grille and soil-condition sample ports.'),
+    'seed_vault': ('Life Support', 'Preserving the station seed collection', 'Muted olive-green broad infill with dull steel structure. Left end: narrow stacked shallow seed drawers; right end: a small recessed humidity dial. Lower side bands: orderly little seed cassette slots and a fine perforated ventilation strip. No books or tall shelves.'),
+    'water_reclamation': ('Life Support', 'Filtering and reclaiming station water', 'Sage-grey broad infill with muted blue-green plumbing identification. Left end: slim sediment filter tube; right end: compact shutoff valve and small pressure dial. Lower bands: paired horizontal covered pipes and flush membrane cartridge doors. Dry matte surfaces, no flowing water.'),
+    'bulkhead_control': ('Operations', 'Monitoring pressure doors and compartment seals', 'Matte dark red-brown infill with charcoal steel structure and restrained burgundy trims. Left end: small mechanical latch position indicator; right end: protected manual isolation crank. Lower bands: neat interlock relay covers and gasket inspection ports, no big screens.'),
+    'cargo_dispatch': ('Operations', 'Routing supplies across the station', 'Muted oxide-red infill with charcoal structure and warm grey trim. Left end: recessed manifest card slots; right end: compact scanner cradle. Lower bands: short rows of dispatch tag holders and shallow parcel-routing switch plates. No crates or loose paper in main panels.'),
+    'damage_control': ('Operations', 'Coordinating emergency hull repairs', 'Muted burgundy broad infill with dark steel framing. Left end: compact folded emergency patch kit; right end: two short sealant cartridges held by a bracket. Lower bands: covered leak-test ports and a small protected mechanical pressure gauge. Maintained rather than damaged.'),
+    'sonar_mapping': ('Operations', 'Charting the surrounding seabed', 'Dark muted red-brown infill and charcoal framing, sparse dull blue instrumentation accents. Left end: a narrow analog bearing dial; right end: compact hydrophone connector block. Lower bands: a recessed horizontal unlit sonar receiver and folded chart tube slots. No large displays or printed maps in the main panels.'),
+    'aquarium': ('Recreation', 'Caring for collected ocean life', 'Warm pale sand infill with dark steel and restrained aged-brass joints. Left end: slim fish-feed canister and dosing dial; right end: narrow external aeration manifold. Lower bands: understated sea-green enamel service hatches and small tidy filtration fittings. No tanks, fish or windows in the three main panel reserves.'),
+    'art_studio': ('Recreation', 'Painting and making art in the station', 'Warm cream broad infill, honey-brown wood trim and charcoal structure. Left end: recessed cup of a few short paintbrushes; right end: narrow stacked pigment tins. Lower bands: shallow wood tool drawers with small dull-brass pulls. Tiny localized paint marks only on tool fittings, blank clean main panels.'),
+    'bathhouse': ('Recreation', 'Bathing and maintaining personal hygiene', 'Warm muted ivory broad infill with sage ceramic lower service bands, charcoal frame and dull brass fittings. Left end: recessed folded towel cubby; right end: small temperature control and soap dispenser. Lower bands: flush ceramic service hatches with discreet ventilation slots, no water shine.'),
+    'botanical_conservatory': ('Recreation', 'A quiet place among cultivated plants', 'Warm cream broad infill, natural wood trim and charcoal structural posts. Left end: small inset fern planter; right end: a narrow pruning-tool recess. Lower bands: tidy terracotta irrigation feed fittings and wood ventilation lattice. Leaves remain within the narrow columns, main panels blank.'),
+    'crew_cinema': ('Recreation', 'Shared film screenings', 'Muted warm terracotta acoustic cloth infill, charcoal structure and dark walnut trim. Left end: a small recessed speaker; right end: two slim stored film canisters. Lower bands: acoustic slots and a compact projection connector plate. No screen or poster on the main panels.'),
+    'crew_fitness': ('Recreation', 'Exercise and physical conditioning', 'Muted warm orange broad infill with dark steel structure and rubber lower bands. Left end: neatly hooked pair of resistance straps; right end: small analog interval timer. Lower bands: recessed gym towel slot and ventilation grille. No dangling straps crossing the main panels.'),
+    'games_room': ('Recreation', 'Shared table games and recreation', 'Warm tan broad infill with honey wood trim and charcoal structure. Left end: small inset stack of boxed board games; right end: shallow score-token rack. Lower bands: compact wood storage drawers and a subtle black-and-cream checker inlay confined to the lower band. No game board across main panels.'),
+    'memorial_room': ('Recreation', 'Remembering absent crew', 'Quiet warm stone-grey broad infill with charcoal frame and muted walnut trim. Left end: one small dried-flower recess; right end: a modest unlit brass votive holder. Lower bands: a restrained row of blank small remembrance plaques, no readable names. Solemn, calm, uncluttered.'),
+    'music_room': ('Recreation', 'Playing and listening to music', 'Warm honey-brown wood and charcoal structure, subdued burnt-orange acoustic fabric main panels. Narrow left service column has a small recessed pair of headphone hooks with one black headset; narrow right column has a compact circular speaker. The two lower side bands are wood acoustic diffuser slats with a modest inset audio jack plate. Quiet domestic warmth, distinct acoustics, no instrument silhouettes filling main panels.'),
+    'reading_room': ('Recreation', 'Quiet reading and reference', 'Warm cream broad infill, walnut wood trim, dull brass and charcoal structure. Left end: narrow built-in column of a few books; right end: a small shaded unlit reading lamp above a book slot. Lower bands: shallow wooden library card drawers with small pulls. Main panels blank, books confined to narrow end columns.'),
+    'tea_lounge': ('Recreation', 'Sharing tea during rest periods', 'Warm linen broad infill, honey wood trim and charcoal structure. Left end: recessed stack of three matte ceramic cups; right end: two small tea tins in a narrow inset niche. Lower bands: delicate wood ventilation lattice and shallow tray slots. No kettle or shelf across main panels.'),
+    'battery_service_bay': ('Robotics', 'Maintaining service robot batteries', 'Charcoal and grey steel, subdued cyan identification only, matte grey broad infill. Left end: two small insulated battery connectors; right end: compact analog charge tester. Lower bands: protected busbar covers and latching battery diagnostic sockets. No yellow-painted machinery, no glowing indicators.'),
+    'droid_workshop': ('Robotics', 'Repairing station droids', 'Charcoal and grey steel, matte grey broad panel infill with restrained cyan trim. Left end: narrow inset precision tool holder; right end: a little recessed droid optical sensor awaiting repair. Lower bands: sorted small-component drawers and a protected soldering socket. No full robot or freestanding tools.'),
+    'drone_repair_depot': ('Robotics', 'Servicing underwater drones', 'Dark graphite and dull steel, muted grey broad panels and tiny cyan identification accents. Left end: narrow diagnostic connector column; right end: small replacement thruster impeller recessed in a mount. Lower bands: orderly pressure seal storage and covered power sockets. No yellow machine paint, no large drone.'),
+    'sensor_calibration_lab': ('Robotics', 'Calibrating station instruments', 'Matte grey broad infill with dark graphite posts, restrained cyan accents. Left end: small circular calibration target instrument; right end: protected reference lens. Lower bands: tidy recessed test terminals and a slim analog vernier scale, no legible text or large screen.'),
+    'survey_probe_bay': ('Robotics', 'Preparing seabed survey probes', 'Matte grey steel broad infill, graphite structure and minimal cyan identification. Left end: narrow inset probe sample cartridge; right end: compact depth gauge and tether connector. Lower bands: neat probe docking sockets and a covered spool service hatch. No spacecraft or large probe body.'),
+}
+
+def main():
+    walls = json.loads((ROOT/'assets/architecture-rollout-2026-09-26/walls.json').read_text())
+    expected = {k for k,v in walls.items() if Path(v['base']['source']).stem != k}
+    assert set(BRIEFS) == expected, (set(BRIEFS)^expected)
+    for name in ['masters', 'prompts', 'review', 'evidence']:
+        (PACK/name).mkdir(exist_ok=True)
+    records = {}
+    for key, (dept, story, details) in BRIEFS.items():
+        reference_id = {'Anomaly':'anomaly_lab','Life Support':'life_support','Operations':'command_center','Recreation':'crew_lounge','Robotics':'construction_drone_bay'}[dept]
+        source=ROOT/walls[reference_id]['base']['source'].removeprefix('res://')
+        prompt=(PACK/'prompt-common.txt').read_text().strip()+' ROOM: '+key.replace('_',' ').upper()+'. '+details
+        (PACK/'prompts'/f'{key}.txt').write_text(prompt+'\n')
+        records[key] = dict(department=dept, function=story, condition='restored/maintained',
+            details=details, reference=str(source), reference_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+            reference_id=reference_id, reference_registration=walls[reference_id]['base'],
+            reference_roles='architecture/camera/matte material style; fittings replaced by room identity',
+            state_anchor='none; static wall artwork; live light and window behavior unchanged',
+            previous=walls[key], stage='briefed')
+    (PACK/'briefs.json').write_text(json.dumps(records,indent=2)+'\n')
+    print(f'Recorded {len(records)} unique wall briefs; previous bindings preserved.')
+
+if __name__ == '__main__': main()

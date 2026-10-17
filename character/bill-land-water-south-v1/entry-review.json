@@ -1,0 +1,308 @@
+{
+  "scope": "Source-only South9pose500ms finite study. Seven authored intermediates, no reused widened crouch; no helmet, native proof, normal selection or owner-profile access.",
+  "generation": "exec-618c4264-bb20-4644-9063-27256558e2aa",
+  "earlyGeneration": "exec-d2f67ae8-e264-4ce6-bd02-e021c9d0d457",
+  "middleGeneration": "exec-d8e63537-4571-43b9-87c8-b70f958fae4a",
+  "sourceCalibration": {
+    "originalStandingSpan": 1295,
+    "originalHairComponent": 135,
+    "earlyHairComponent": 149,
+    "middleHairComponent": 166,
+    "earlyDensity": 0.10354745925215723,
+    "middleDensity": 0.09294320137693632,
+    "scope": "Fixed density per complete independent source based on hair semantic component, not complete head or segment proof; no posed height fitting."
+  },
+  "refs": {
+    "bill-video-south-v1/master-source.png": "0043da08157ab00b61ec1bd1c53946004874a14cc9cf9031e9514b077b8942d7",
+    "bill-swim-south-coherent-v1/sources/swim-v1.png": "9b60e132ec82811af92e1dddab93e5d1fab49ee47f37922814b9edc552506992",
+    "crew-runtime-matte-v1/bill/frames/idle-south-breathing-v1/000.png": "ea016571c2f8ade7a2f388eb0fda0be4bb63d5023b20acc3d260d5eb83941806"
+  },
+  "sourceHashes": {
+    "early-crouch-prompt-v1.txt": "9b7adf5bf0199cbe94a093923aabef01ca8a4bf46036425a3180a1838b978922",
+    "early-crouch-v1.png": "fce9d13b283a204afc627808456837dac4c617d9781de52314655a3d5e7d7a3f",
+    "entry-atlas-v1.png": "0aed2ba5bbbf2aa520541731b022f3d72b878163c9097665c27547a26594913b",
+    "entry-prompt-v1.txt": "819e6d1b243e6e45be27e44ba99acde8d78328488f650d681e5aee475e3e0da5",
+    "middle-crouch-prompt-v1.txt": "3f9e6413cd4d28069d5c2e549b7c0d0b64353b565de046dfd22210eb2ca18ef1",
+    "middle-crouch-v1.png": "5e9db569ce3d4381bf93d45880420ea1b93d007eed4ca6c526ab588073ba396b"
+  },
+  "registrations": [
+    {
+      "scale": 0.10354745925215723,
+      "translation": [
+        107,
+        82
+      ],
+      "crown": [
+        160,
+        95
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        126,
+        92,
+        194,
+        227
+      ],
+      "source": "sources/early-crouch-v1.png",
+      "role": "authored gentle first crouch",
+      "sourceDensityAuthority": "original hair component135px vsnew149px at original master148/1295; fixed whole source density, no posed-height fit"
+    },
+    {
+      "scale": 0.09294320137693632,
+      "translation": [
+        111,
+        94
+      ],
+      "crown": [
+        160,
+        110
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        123,
+        107,
+        195,
+        227
+      ],
+      "source": "sources/middle-crouch-v1.png",
+      "role": "authored middle crouch replacing widened legacy context",
+      "sourceDensityAuthority": "original hair component135px vsnew166px at original master148/1295; fixed whole source density, no posed-height fit"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        93,
+        95
+      ],
+      "crown": [
+        160,
+        130
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        125,
+        121,
+        194,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 1,
+      "sourceCrown": [
+        256,
+        136
+      ],
+      "hairComponentWidth": 71,
+      "role": "crouch"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        92,
+        100
+      ],
+      "crown": [
+        160,
+        158
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        127,
+        139,
+        194,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 2,
+      "sourceCrown": [
+        261,
+        223
+      ],
+      "hairComponentWidth": 71,
+      "role": "deep crouch"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        84,
+        125
+      ],
+      "crown": [
+        160,
+        180
+      ],
+      "opaqueBottom": 246,
+      "alphaBounds": [
+        126,
+        140,
+        194,
+        248
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 3,
+      "sourceCrown": [
+        291,
+        213
+      ],
+      "hairComponentWidth": 75,
+      "role": "push"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        94,
+        133
+      ],
+      "crown": [
+        160,
+        194
+      ],
+      "opaqueBottom": 254,
+      "alphaBounds": [
+        126,
+        140,
+        195,
+        257
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 4,
+      "sourceCrown": [
+        255,
+        236
+      ],
+      "hairComponentWidth": 75,
+      "role": "takeoff"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        91,
+        144
+      ],
+      "crown": [
+        160,
+        206
+      ],
+      "opaqueBottom": 267,
+      "alphaBounds": [
+        130,
+        146,
+        190,
+        270
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 5,
+      "sourceCrown": [
+        264,
+        240
+      ],
+      "hairComponentWidth": 75,
+      "role": "near-prone"
+    }
+  ],
+  "hairDiagnostics": [
+    {
+      "cell": 0,
+      "roi": [
+        235,
+        5,
+        335,
+        85
+      ],
+      "axis": 284,
+      "crown": 20,
+      "componentWidth": 64,
+      "pixels": 1740
+    },
+    {
+      "cell": 1,
+      "roi": [
+        200,
+        120,
+        325,
+        215
+      ],
+      "axis": 256,
+      "crown": 136,
+      "componentWidth": 71,
+      "pixels": 3074
+    },
+    {
+      "cell": 2,
+      "roi": [
+        200,
+        190,
+        325,
+        305
+      ],
+      "axis": 261,
+      "crown": 223,
+      "componentWidth": 71,
+      "pixels": 4071
+    },
+    {
+      "cell": 3,
+      "roi": [
+        215,
+        185,
+        350,
+        300
+      ],
+      "axis": 291,
+      "crown": 213,
+      "componentWidth": 75,
+      "pixels": 3611
+    },
+    {
+      "cell": 4,
+      "roi": [
+        200,
+        200,
+        330,
+        320
+      ],
+      "axis": 255,
+      "crown": 236,
+      "componentWidth": 75,
+      "pixels": 3658
+    },
+    {
+      "cell": 5,
+      "roi": [
+        200,
+        200,
+        330,
+        325
+      ],
+      "axis": 264,
+      "crown": 240,
+      "componentWidth": 75,
+      "pixels": 4432
+    }
+  ],
+  "ruler": {
+    "scale": 0.26,
+    "translation": [
+      86,
+      94
+    ],
+    "crown": [
+      160,
+      99
+    ],
+    "opaqueBottom": 224,
+    "alphaBounds": [
+      125,
+      96,
+      194,
+      227
+    ]
+  },
+  "rulerDecision": "Rejected as anatomical height authority: source opaque span483 at shared .26 gives125.58native vsselected148. Do not solve by posed bbox scaling. Action atlas .26 follows existing South head/hardware density; full segment/proportion acceptance provisional.",
+  "endpointExact": true,
+  "rejectedReusedCrouch": "bill-bare-south-selected-v1/frames/kneel-south/002.png",
+  "decodedFramesExact": 9,
+  "finiteLoopCount": 1,
+  "timelineMs": 500,
+  "materialGrade": "Unmodified authored source colours; shared master grading still pending.",
+  "visualReview": "Inspected original South master, selected dry idle, existing South swim atlas, two selected crouch contexts, all three generated raws and both registered ten-column studies. Reused crouch context widened noticeably against neighbours and was replaced by newly authored whole middle crouch. Revised nine-pose sequence has connected neck/shoulders in inspected bare poses and clearer progressive body pitch. Early/middle singles remain lighter and cloth/head/body-camera joins need full master grading/motion review. Atlas neutral shortened at existing .26 density is excluded from animation and rejected as scale authority. Hair-component source calibration is a density proxy, not full anatomy acceptance. Whole source floor registration is not actual floor/water contact proof."
+}

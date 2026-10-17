@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrineSpace — Drone motion review</title>
+<style>
+:root{color-scheme:dark;font:15px system-ui,sans-serif;color:#d5e2e7;background:#101b22}*{box-sizing:border-box}body{margin:0;padding:24px;max-width:1180px;margin:auto}h1{font-size:26px;letter-spacing:-.6px;margin:0 0 7px}p{color:#9eb3bd;margin:8px 0 18px;line-height:1.5}.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}button,select{font:inherit;color:#d5e2e7;background:#23353f;border:1px solid #45616c;border-radius:6px;padding:9px 13px;cursor:pointer}button[aria-pressed=true]{background:#3c6874;border-color:#85aeb7}button:hover{background:#38525e}label{color:#aac0ca;margin-left:10px}canvas{width:100%;background:#17272e;border:1px solid #304a56;border-radius:10px;display:block}#readout{font-variant-numeric:tabular-nums;min-height:23px;color:#91c6d3}small{color:#a3b6bf}.links a{color:#9acbd6;margin-right:20px}kbd{background:#283b45;padding:1px 5px;border-radius:3px}
+</style>
+<h1>Drone motion review · polished v2</h1>
+<p>Eight travel headings and a continuous top status light. Complete reach/work/stow jobs and pickup-to-deposit collection in North, East, South and West.</p>
+<div class="bar" id="modes"><button data-mode="patrol" aria-pressed="true">Patrol</button><button data-mode="manual">Arrow-key movement</button><button data-mode="mine">Mine</button><button data-mode="collect">Collect</button><button data-mode="weld">Weld</button><button data-mode="repair">Repair</button></div>
+<div class="bar"><button id="pause">Pause</button><label for="heading">Heading</label><select id="heading"><option value="north">North</option><option value="northeast">North-east</option><option value="east">East</option><option value="southeast">South-east</option><option value="south" selected>South</option><option value="southwest">South-west</option><option value="west">West</option><option value="northwest">North-west</option></select><label for="status">Top light</label><select id="status"><option value="operational">Blue · operational</option><option value="stopped">Red · stopped</option><option value="charging">Yellow · charging</option></select><label for="speed">Playback</label><select id="speed"><option value="0.25">¼ speed</option><option value="0.5">½ speed</option><option value="1" selected>Normal</option></select></div>
+<div class="bar"><label for="sequence">Animation</label><select id="sequence"><option value="job" selected>Complete job</option><option value="loop">Work loop</option></select><button id="replay">Replay job</button></div>
+<canvas id="stage" width="1100" height="580" aria-label="Animated drone review canvas"></canvas>
+<p id="readout" role="status">Loading review assets…</p>
+<small>Use arrow keys in movement mode; diagonals work with two keys. Space pauses. Large view is enlarged; the lower-right inset uses 1 screen pixel per world unit. Final scale and game integration remain pending.</small>
+<p class="links"><a href="polish/surface-polish-comparison.png">Polish comparison</a><a href="review/collection-jobs.gif">Collection sequence</a><a href="review/job-transitions.png">Reach / work / stow</a><a href="review/size-pass.png">Size comparison</a></p>
+<script>
+'use strict';
+const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d'),readout=document.querySelector('#readout');
+let manifest,mode='patrol',heading='south',status='operational',paused=false,time=0,last=0,speed=1,pos={x:550,y:285};
+let sequence='job',jobStart=null;
+const keys=new Set(),clipCache=new Map(),imageCache=new Map();let lastFrame=null,errors=[];
+const directions=['east','southeast','south','southwest','west','northwest','north','northeast'];
+function image(path){if(!imageCache.has(path))imageCache.set(path,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Missing '+path));im.src=path}));return imageCache.get(path)}
+function clip(id){if(!clipCache.has(id)){const entry=manifest.states.find(s=>s.id===id);if(!entry)throw Error('Missing clip '+id);const value={ready:false,entry};clipCache.set(id,value);Promise.all([image(entry.atlas.path),entry.effectAtlas?image(entry.effectAtlas.path):Promise.resolve(null),entry.cargoAtlas?image(entry.cargoAtlas.path):Promise.resolve(null),entry.groundCargo?image(entry.groundCargo):Promise.resolve(null)]).then(([f,e,c,g])=>{value.atlas=f;value.effect=e;value.cargo=c;value.ground=g;value.ready=true}).catch(e=>errors.push(e.message))}return clipCache.get(id)}
+const lightCache={};
+const workModes=['mine','collect','weld','repair'],cardinals=['north','east','south','west'];
+function selectMode(next){jobStart=null;lastFrame=null;mode=next;const work=workModes.includes(next);if(work){heading=({northeast:'north',southeast:'east',southwest:'south',northwest:'west'})[heading]||heading;pos={x:550,y:270}}document.querySelectorAll('#heading option').forEach(o=>o.disabled=work&&!cardinals.includes(o.value));document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===next)))}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>selectMode(b.dataset.mode));
+document.querySelector('#pause').onclick=()=>{paused=!paused;document.querySelector('#pause').textContent=paused?'Resume':'Pause'};
+document.querySelector('#heading').onchange=e=>{heading=e.target.value;jobStart=null;lastFrame=null;if(!workModes.includes(mode))selectMode('manual')};
+document.querySelector('#status').onchange=e=>status=e.target.value;
+document.querySelector('#sequence').onchange=e=>{sequence=e.target.value;jobStart=null;lastFrame=null};
+document.querySelector('#replay').onclick=()=>{jobStart=null;lastFrame=null};
+document.querySelector('#speed').onchange=e=>speed=Number(e.target.value);
+window.addEventListener('keydown',e=>{if(e.target.tagName==='SELECT')return;if(e.code.startsWith('Arrow')){e.preventDefault();keys.add(e.code);selectMode('manual')}if(e.code==='Space'){e.preventDefault();document.querySelector('#pause').click()}});
+window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>keys.clear());
+function drawPlane(frame,x,y,scale){ctx.drawImage(frame.image,(frame.index%8)*256,Math.floor(frame.index/8)*256,256,256,x,y,256*scale,256*scale)}
+function drawSprite(frame,effect,light,at,scale,lamp){drawPlane(frame,at.x-128*scale,at.y-128*scale,scale);if(effect)drawPlane(effect,at.x-128*scale,at.y-128*scale,scale);if(light)drawPlane(light,at.x+(lamp[0]-256)*scale,at.y+(lamp[1]-256)*scale,scale)}
+function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;if(!manifest)return;if(!paused)time+=dt*speed;
+ let moving=false;
+ if(mode==='patrol'){const segment=time/1.7,index=Math.floor(segment)%8,f=segment%1,a=index*Math.PI/4,b=(index+1)*Math.PI/4;const p={x:550+Math.cos(a)*160,y:280+Math.sin(a)*130},q={x:550+Math.cos(b)*160,y:280+Math.sin(b)*130};pos={x:p.x+(q.x-p.x)*f,y:p.y+(q.y-p.y)*f};heading=directions[(Math.round(Math.atan2(q.y-p.y,q.x-p.x)/(Math.PI/4))+8)%8];moving=true}
+ else if(mode==='manual'){const x=Number(keys.has('ArrowRight'))-Number(keys.has('ArrowLeft')),y=Number(keys.has('ArrowDown'))-Number(keys.has('ArrowUp'));if(x||y){moving=true;heading=directions[(Math.round(Math.atan2(y,x)/(Math.PI/4))+8)%8];if(!paused){const norm=Math.hypot(x,y);pos.x=Math.max(175,Math.min(925,pos.x+x/norm*100*dt*speed));pos.y=Math.max(170,Math.min(410,pos.y+y/norm*100*dt*speed))}}}
+ const working=workModes.includes(mode);const isJob=working&&sequence==='job';const id=working?(isJob?'job-':'work-')+mode+'-'+heading:(moving?'move-':'idle-')+heading;
+ const loaded=clip(id);let frameIndex=0,phase='';
+ if(loaded.ready){if(isJob&&jobStart===null)jobStart=time;const elapsed=Math.floor((isJob?time-jobStart:time)*30),entry=loaded.entry;frameIndex=elapsed%entry.frameCount;if(isJob){frameIndex=elapsed<entry.frameCount?elapsed:entry.holdStart+(elapsed-entry.holdStart)%(entry.frameCount-entry.holdStart);phase=entry.phases[frameIndex]}
+ lastFrame={frame:{image:loaded.atlas,index:frameIndex},effect:loaded.effect?{image:loaded.effect,index:frameIndex}:null,cargo:loaded.cargo?{image:loaded.cargo,index:frameIndex}:null,ground:loaded.ground,cargoState:entry.cargoState?.[frameIndex],deposit:entry.depositOffset,root:entry.rootOffsets?.[frameIndex]||[0,0],lamp:working?entry.lamp:manifest.headings[heading].lamp};}
+
+ ctx.fillStyle='#17272e';ctx.fillRect(0,0,1100,580);ctx.strokeStyle='#20343e';ctx.lineWidth=1;for(let x=20;x<1100;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,580);ctx.stroke()}for(let y=20;y<580;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(1100,y);ctx.stroke()}
+ ctx.font='15px system-ui';ctx.fillStyle='#93acb8';ctx.fillText('ENLARGED MOTION',24,30);ctx.fillText('GAME-SIZE INSET',875,450);
+ if(lastFrame){const light=lightCache[status]?{image:lightCache[status],index:Math.floor(time*30)%51}:null;for(const [origin,scale] of [[pos,1.25],[{x:947,y:500},.34*1100/canvas.clientWidth]]){const root=lastFrame.root,at={x:origin.x+root[0]*scale,y:origin.y+root[1]*scale};if(lastFrame.ground&&lastFrame.cargoState!=='held'){const offset=lastFrame.cargoState==='deposited'?lastFrame.deposit:[0,0];ctx.drawImage(lastFrame.ground,origin.x+(offset[0]-128)*scale,origin.y+(offset[1]-128)*scale,256*scale,256*scale)}drawSprite(lastFrame.frame,lastFrame.effect,light,at,scale,lastFrame.lamp);if(lastFrame.cargo)drawPlane(lastFrame.cargo,at.x-128*scale,at.y-128*scale,scale)}}
+ document.querySelector('#heading').value=heading;
+ readout.textContent=errors.length?errors.join(' · '):`${paused?'Paused':'Playing'} · ${id}${phase?' · '+phase:''} · frame ${frameIndex+1} · ${status} light · ${time.toFixed(1)} s${loaded.ready?'':' · loading clip'}`;
+}
+fetch('manifest.json').then(r=>r.json()).then(async d=>{manifest=d;for(const name of Object.keys(d.statusClips))lightCache[name]=await image(d.statusClips[name].atlas.path);for(const name of Object.keys(d.headings))clip('move-'+name);requestAnimationFrame(tick)}).catch(e=>readout.textContent=e.message);
+</script></html>

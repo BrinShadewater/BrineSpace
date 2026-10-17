@@ -49,12 +49,12 @@ func travel(amount: float) -> float:
 	return t*t*(3.0-2.0*t)
 func region(canvas: CanvasItem, kind: String, dest: Rect2, source: Rect2) -> void:
 	canvas.draw_texture_rect_region(texture(kind),dest,source,Color(.43,.46,.49) if family=="hallway" else Color.WHITE)
-func raised_at(canvas: CanvasItem, amount: float, center: float, top: float, height: float) -> void:
+func raised_at(canvas: CanvasItem, amount: float, center: float, top: float, height: float, backing := Color("101a20")) -> void:
 	var opening:=travel(amount)
 	# Scale the complete visual assembly around its threshold. Door travel and
 	# navigation retain their existing world-space contracts.
 	var anchor:=Vector2(center,top+height)
-	canvas.draw_rect(raised_rect(Rect2(center-36,top,72,height),anchor),Color("101a20"))
+	canvas.draw_rect(raised_rect(Rect2(center-36,top,72,height),anchor),backing)
 	for left in [true,false]:
 		var width:=36.0*(1.0-opening)
 		if width<=0.001: continue

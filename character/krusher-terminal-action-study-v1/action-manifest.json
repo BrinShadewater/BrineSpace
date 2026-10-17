@@ -1,0 +1,86 @@
+{
+  "name": "Krusher Dom / west terminal action candidate",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "status": "unselected pose-patch candidate; seam and motion review pending",
+  "states": [
+    {
+      "id": "terminal-raise-west",
+      "frameDurationsMs": [
+        120,
+        160,
+        180,
+        200
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/000.png",
+        "frames/001.png",
+        "frames/002.png",
+        "frames/003.png"
+      ],
+      "frameCount": 4
+    },
+    {
+      "id": "terminal-type-west",
+      "frameDurationsMs": [
+        180,
+        160,
+        160,
+        160,
+        160,
+        180
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/003.png",
+        "frames/004.png",
+        "frames/005.png",
+        "frames/004.png",
+        "frames/005.png",
+        "frames/003.png"
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "terminal-lower-west",
+      "frameDurationsMs": [
+        120,
+        180,
+        200,
+        120
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/003.png",
+        "frames/006.png",
+        "frames/007.png",
+        "frames/000.png"
+      ],
+      "frameCount": 4
+    }
+  ],
+  "actionMeaning": "retrieve and open hip terminal, type on supported keyboard, close and stow",
+  "transitions": [
+    "idle-west -> terminal-raise-west -> terminal-type-west -> terminal-lower-west -> idle-west"
+  ],
+  "canonicalIdleSource": "character\\krusher-equipment-study-v1\\review\\fitted-west.png",
+  "canonicalIdleSha256": "620f0ed54e37dc17c9485fedf4e555b0a874d53a09aca5689cc250aa39da14a3",
+  "patchBounds": [
+    49,
+    62,
+    115,
+    106
+  ],
+  "limitations": [
+    "Patch contains authored arms, equipment and waist; torso seam has not passed visual acceptance",
+    "Eight authored poses; holds and repeated typing poses are not new inbetweens",
+    "West bare only; no helmet/cardinal counterparts or native station evidence"
+  ]
+}

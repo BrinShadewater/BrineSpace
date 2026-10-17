@@ -1,0 +1,57 @@
+{
+  "mode": "builtin image_gen edit",
+  "generatedSource": "exec-3bd5cce1-775c-49dc-94f1-a8ce7276a059.png",
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "squareNormalization": [
+    320,
+    320
+  ],
+  "normalization": "Whole square only, nearest; no bbox scale/translation/grade alteration.",
+  "bounds": {
+    "selectedCargo": [
+      116,
+      130,
+      246,
+      189
+    ],
+    "candidate": [
+      88,
+      121,
+      263,
+      199
+    ],
+    "ordinarySwim": [
+      109,
+      128,
+      231,
+      172
+    ]
+  },
+  "disposition": "rejected_scale_and_equipment_drift_before_native",
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "findings": [
+    "Quilt fabric refinement improved versus coarse input, but body/case enlarged and shifted on unchanged square canvas.",
+    "Belt wrench visible in selected cargo source is not retained in candidate; hip equipment redesigned.",
+    "No candidate fitting or pixel surgery used to rescue the failed invariants."
+  ],
+  "next": "Use high-density authored cargo source when available and an explicit fixed composition reference; require case/head/tool positions before extending keys. No identical prompt-only retry.",
+  "rawSha256": "9c343c6af5dcd095ad0b41bc69cc33d172fe559721723bc17ea842853366e220",
+  "visualReview": {
+    "rawViewed": true,
+    "comparisonViewed": true,
+    "originalMasterViewed": true,
+    "actualDisplayHeights": [
+      148,
+      82,
+      54,
+      27
+    ],
+    "normalChanged": false
+  },
+  "equipmentDiagnosisCorrection": "V338 source trace: equipment redesign is visible, but specific belt-wrench disappearance cannot be established from the ambiguous hip unit/ring silhouette. Earlier stronger missing-wrench claim withdrawn;337 still rejected for measured scale/composition drift."
+}

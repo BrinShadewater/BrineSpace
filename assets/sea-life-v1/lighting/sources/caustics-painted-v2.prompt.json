@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit Image 1, the existing square greyscale caustic map. Image 2 is a STYLE REFERENCE ONLY: BrineSpace's accepted matte, finely hand-painted game props. Produce a square seamless GREYSCALE underwater light-caustic texture: substantially simplify the original dense photographic spiderweb into broad irregular drifting islands/arcs of diffuse water light, with quiet dark open areas occupying roughly 70 percent of the image. Around 10 to 16 broad cells across the square, a few short broken secondary threads. Softly painted fine pixel-scale edges, subtle tonal stepping, controlled detail and gently uneven line widths. No crisp geometric lattice, bright white veins, chrome glints, photographic sparkle, noisy grit, muddy blur, vignette or border. Most light is middle grey, occasional small brighter intersections; keep a dark background for the shader's luminance channel. Preserve the square tile purpose and seamless opposite edges, uniform visual density across the whole image. No props or objects from the style reference, no color, no text. This is ambient light behind the station, secondary to alien sea life.",
+  "inputs": [
+    {
+      "path": "caustics-generated.png",
+      "role": "edit target"
+    },
+    {
+      "path": "docs/art-style-reference-2026-09-26.png",
+      "role": "style reference only"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[2]
+old='character/veld-carry-east-original-master-v1/standing-step-video-v4-grounded';new='character/veld-interact-west-original-master-v1/original-action-video-v1'
+test=(R/'tests/test_veld_east_grounded_source_v1.gd').read_text(encoding='utf-8')
+for a,b in [(old,new),('veld-east-grounded-source','veld-west-interact-source'),('source-carry-east','source-interact-west'),('carry-held-east','reference-west'),('idle-east','idle-west'),('Full walking source','Scanner action'),('Held master','Original master'),('Original empty','Selected idle'),('full grounded source','full West scanner source'),('VELD EAST GROUNDED SOURCE','VELD WEST INTERACT SOURCE'),('No selected gait loop, world movement/contact, start/stop or normal integration.','No complete material/contact/action-idle joins or normal integration acceptance.')]:test=test.replace(a,b)
+path=R/'tests/test_veld_west_interact_source_v1.gd';assert not path.exists();path.write_text(test,encoding='utf-8');path.with_suffix('.gd.uid').write_text('uid://cveldwestinteract1\n')
+runner=(R/'tools/run_veld_east_grounded_source_v1.py').read_text(encoding='utf-8')
+for a,b in [(old,new),('veld-east-grounded-source','veld-west-interact-source'),('test_veld_east_grounded_source_v1','test_veld_west_interact_source_v1'),('Complete paired source-clock native three-scale master comparison only; no accepted gait/world contacts/controller/save integration.','Complete paired West interaction source-clock native three-scale master/selected-idle comparison only; material/contact/joins/controller/save acceptance separate.')]:runner=runner.replace(a,b)
+path=R/'tools/run_veld_west_interact_source_v1.py';assert not path.exists();path.write_text(runner,encoding='utf-8')
+review=(R/old/'review_native.py').read_text(encoding='utf-8').replace('veld-east-grounded-source','veld-west-interact-source').replace('no world movement/contact, selected loop, final identity/alpha or normal controller acceptance','no final material/contact/action-idle joins or normal controller acceptance')
+(P/'review_native.py').write_text(review,encoding='utf-8');print('Paired UID test, isolated native runner and replay review saved')

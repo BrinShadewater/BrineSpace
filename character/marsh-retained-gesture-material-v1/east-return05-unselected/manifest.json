@@ -1,0 +1,54 @@
+{
+  "canvas": [
+    184,
+    184
+  ],
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east04-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east05-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    }
+  ],
+  "scope": "Staged East04 first three whole gestures plus East05 whole return figure, exact own-idle endpoints; original900ms holds. No local anatomy patch or actual helmet behavior."
+}

@@ -1,0 +1,29 @@
+{
+  "checks": 841,
+  "failures": 0,
+  "journeys": [
+    {
+      "actualBerthApproach": true,
+      "captures": [
+        "res://character/james-rest-material-continuity-v1/native/bare-sleep-0.png",
+        "res://character/james-rest-material-continuity-v1/native/bare-sleep-8.png",
+        "res://character/james-rest-material-continuity-v1/native/bare-sleep-16.png"
+      ],
+      "freshSceneMidSleepContinue": true,
+      "mode": "bare",
+      "sleepSourceSlots": 18
+    },
+    {
+      "actualBerthApproach": true,
+      "captures": [
+        "res://character/james-rest-material-continuity-v1/native/helmet-sleep-0.png",
+        "res://character/james-rest-material-continuity-v1/native/helmet-sleep-8.png",
+        "res://character/james-rest-material-continuity-v1/native/helmet-sleep-16.png"
+      ],
+      "freshSceneMidSleepContinue": true,
+      "mode": "helmet",
+      "sleepSourceSlots": 18
+    }
+  ],
+  "scope": "All144 ordinary rest source references/metadata/clocks through normal loader; all eight sleep states, three visual cycles each; actual retained q0 North berth approach/sleep/get-up in both gear modes, two fresh-scene disk Continues and normal fatigue relief. Other bunk layouts/rotations and actual gear changes not exercised."
+}

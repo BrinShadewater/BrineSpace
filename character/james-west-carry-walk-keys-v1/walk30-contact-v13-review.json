@@ -1,0 +1,20 @@
+{
+  "protectedOutsideExact": true,
+  "protectedOutsidePixels": 62701,
+  "boundsAlpha128": [
+    98,
+    76,
+    155,
+    226
+  ],
+  "visualReviewPending": false,
+  "sourceAcceptance": false,
+  "selected": false,
+  "rawSha256": "bd55c20ae59df17e2832923745796366df83819f9fc5a295f05b0892dc5f6f22",
+  "scope": "One generated contact pose, source review only; no native/full gait/cadence/context acceptance.",
+  "disposition": "rejected",
+  "findings": [
+    "Rejected: direction was misread during initial review; old pose is already lower than neighbours, and downward prompt worsens the correction. Prior dense-v6 retained."
+  ],
+  "neighbourBoard": "contact-review-v13/neighbours-30.png"
+}

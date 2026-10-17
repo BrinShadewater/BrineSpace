@@ -1,0 +1,138 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; provisional packaging/review",
+  "promptSha256": "95bd6692097c7b356a3ef7c6843121c9bb473e3267f540c3db9c4b435f9f9258",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-west-01-body-primary.png",
+      "sha256": "b6f357d903abc8c850a70bdb233b089700fa2f1491011c78416439b0fb6e5c97"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-west-01-endpoints.png",
+      "sha256": "fe0863f98d9d3197cb8e4f7c8f6233720553c0250da54a1c3ccd62cecab770a7"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-west-01-old-motion-only.png",
+      "sha256": "145ea7bfd1a4e10e6b6296fa0f88c31b6aba5faf2a1ae1bd872db6f820935c75"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/west-standing-identity-01.png",
+      "sha256": "b966ca363b4e97d414ade9ccc392b24ad9737756d935e7ad64f9305dd2f01261"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/000.png",
+      "sha256": "2eb94fea41b75957d82fd7ce0be7422177b9e78ac405814ac34dfb4a0e8c8abf"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/001.png",
+      "sha256": "1ab78a970350f4bf059a028fc48e176a8d7ed895e682cccbf5ceb573e7b7c267"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/002.png",
+      "sha256": "4bcaf464a7dd0580b0c47429dc28d1d78534539739ccf3b42f6272be142fe94c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/003.png",
+      "sha256": "f3e97dd5cb7013ea2e390c42b8d0f85d6f9d2182f631e2fa15e67c4ac01c4a3c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/004.png",
+      "sha256": "f9f093fbfb79c2d9a09f02476e72759b7d59b52ccd8cc8999c157d68c530b706"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-west/005.png",
+      "sha256": "d5d058ad3154c5f8cf1f7f85c5db645753f1412ecab4173a61264acf1f442bd7"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+      "sha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    }
+  ],
+  "selectedTransitionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTransitionState": {
+    "id": "cargo-drain-west",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/000.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/001.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/002.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/003.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/004.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-west/005.png"
+    ],
+    "frameDurationsMs": [
+      120,
+      180,
+      220,
+      220,
+      180,
+      120
+    ],
+    "loop": false,
+    "facings": [
+      "west",
+      "west",
+      "west",
+      "west",
+      "west",
+      "west"
+    ],
+    "waterKinds": [
+      "transition",
+      "transition",
+      "transition",
+      "transition",
+      "carry",
+      "carry"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "selectedIdleMaster": {
+    "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+    "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+  },
+  "neutralOccupiedTargetHeight": 147,
+  "intermediateFigures": 4,
+  "rules": "Whole independent own direction; one neutral ruler, exact endpoints/normal timing; no patches/mirror/per-pose fitting. Physical contact/root/proportions/camera/grade remain review requirements.",
+  "generationId": "exec-4127accf-5ede-4f6b-90aa-37111e360ce9",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-4127accf-5ede-4f6b-90aa-37111e360ce9.png",
+  "rawSha256": "82d4772d174be8cf7f14ebefdebadbc3280af9792933cd08b3ba13bc1090ef03"
+}

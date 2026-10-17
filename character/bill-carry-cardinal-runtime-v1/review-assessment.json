@@ -1,0 +1,139 @@
+{
+  "reviewedNativeBoards": [
+    "bare-natural-review.png",
+    "helmet-natural-review.png"
+  ],
+  "native": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 56.62,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-cardinal-natural-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "headless": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 5.03,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-cardinal-player-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "headlessPlaybackGuard": true
+  },
+  "nativeSourceSamples": 74,
+  "findings": [
+    {
+      "helmet": false,
+      "unalteredRoute": [
+        [
+          7792.0,
+          8416.0
+        ],
+        [
+          7760.0,
+          8416.0
+        ]
+      ],
+      "beforeArrival": {
+        "clip": "",
+        "direction": "west",
+        "foot": [
+          7760.6123046875,
+          8416.0
+        ],
+        "phase": 4.82045620217547,
+        "source": "bare-149-source.png",
+        "stage": "workshop_carry",
+        "startMotion": {},
+        "starting": false,
+        "time": 7.56666666666702,
+        "timer": 0.0
+      },
+      "arrival": {
+        "clip": "",
+        "direction": "north",
+        "foot": [
+          7760.0,
+          8416.0
+        ],
+        "phase": 4.82045620217547,
+        "source": "bare-454-source.png",
+        "stage": "workshop_unload",
+        "startMotion": {},
+        "starting": false,
+        "time": 7.58333333333368,
+        "timer": 2.0
+      },
+      "observedDirections": [
+        "east",
+        "north",
+        "west"
+      ],
+      "observedTurnClips": [
+        "carry-turn-east-west"
+      ],
+      "unloadReached": true,
+      "arrivalSnapUnresolved": true
+    },
+    {
+      "helmet": true,
+      "unalteredRoute": [
+        [
+          7792.0,
+          8416.0
+        ],
+        [
+          7760.0,
+          8416.0
+        ]
+      ],
+      "beforeArrival": {
+        "clip": "",
+        "direction": "west",
+        "foot": [
+          7760.6123046875,
+          8416.0
+        ],
+        "phase": 4.82045620217547,
+        "source": "helmet-149-source.png",
+        "stage": "workshop_carry",
+        "startMotion": {},
+        "starting": false,
+        "time": 7.56666666666702,
+        "timer": 0.0
+      },
+      "arrival": {
+        "clip": "",
+        "direction": "north",
+        "foot": [
+          7760.0,
+          8416.0
+        ],
+        "phase": 4.82045620217547,
+        "source": "helmet-454-source.png",
+        "stage": "workshop_unload",
+        "startMotion": {},
+        "starting": false,
+        "time": 7.58333333333368,
+        "timer": 2.0
+      },
+      "observedDirections": [
+        "east",
+        "north",
+        "west"
+      ],
+      "observedTurnClips": [
+        "carry-turn-east-west"
+      ],
+      "unloadReached": true,
+      "arrivalSnapUnresolved": true
+    }
+  ],
+  "normalSelectionChanged": false,
+  "goalComplete": false
+}

@@ -1,0 +1,186 @@
+{
+  "source": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/east-gesture-03.png",
+    "sha256": "43fd5d9a69bca1702a6417d1c7f06ddfcaa6ee33aa083b1f9e889965b9e61d00",
+    "generationId": "exec-d470a3e6-a534-4ade-a9f6-5a3b43ba1f2b",
+    "bodyHeights": [
+      651,
+      650,
+      650,
+      651,
+      650
+    ],
+    "commonScale": 0.22615384615384615,
+    "neutralBodyWidthAtOwnHeight": 33.92307692307692,
+    "ownOccupiedRuler": [
+      32,
+      147
+    ],
+    "assessment": "Staged for common-scale native/source review; no admission."
+  },
+  "frames": [
+    {
+      "cell": 0,
+      "bodyBox": [
+        145,
+        69,
+        301,
+        720
+      ],
+      "wholeFigureCrop": [
+        141,
+        65,
+        305,
+        724
+      ],
+      "commonScale": 0.22615384615384615,
+      "file": "character/marsh-retained-gesture-material-v1/east03-unselected/gesture-00.png",
+      "sha256": "de22aad99ed89b42f77261456f0bb955b14ee40b9980fba7145fb0564e7574ee",
+      "occupiedSize": [
+        37,
+        149
+      ]
+    },
+    {
+      "cell": 1,
+      "bodyBox": [
+        531,
+        70,
+        703,
+        720
+      ],
+      "wholeFigureCrop": [
+        527,
+        66,
+        707,
+        724
+      ],
+      "commonScale": 0.22615384615384615,
+      "file": "character/marsh-retained-gesture-material-v1/east03-unselected/gesture-01.png",
+      "sha256": "140b76c17f85af22f92257512d3b20e276870ca5c6eae2775ee98dd2d26f12df",
+      "occupiedSize": [
+        41,
+        149
+      ]
+    },
+    {
+      "cell": 2,
+      "bodyBox": [
+        927,
+        70,
+        1102,
+        720
+      ],
+      "wholeFigureCrop": [
+        923,
+        66,
+        1106,
+        724
+      ],
+      "commonScale": 0.22615384615384615,
+      "file": "character/marsh-retained-gesture-material-v1/east03-unselected/gesture-02.png",
+      "sha256": "2b03b18b434ecb04b8445432560e1fc2bc35984f0164459f2cd622b55d335d94",
+      "occupiedSize": [
+        41,
+        149
+      ]
+    },
+    {
+      "cell": 3,
+      "bodyBox": [
+        1302,
+        69,
+        1456,
+        720
+      ],
+      "wholeFigureCrop": [
+        1298,
+        65,
+        1460,
+        724
+      ],
+      "commonScale": 0.22615384615384615,
+      "file": "character/marsh-retained-gesture-material-v1/east03-unselected/gesture-03.png",
+      "sha256": "bb7a4a644b8b25ee4355252da6f7b8c13ab17837abda244139a7b08fb995996b",
+      "occupiedSize": [
+        37,
+        149
+      ]
+    },
+    {
+      "cell": 4,
+      "bodyBox": [
+        1701,
+        70,
+        1851,
+        720
+      ],
+      "wholeFigureCrop": [
+        1697,
+        66,
+        1855,
+        724
+      ],
+      "commonScale": 0.22615384615384615,
+      "file": "character/marsh-retained-gesture-material-v1/east03-unselected/neutral-ruler.png",
+      "sha256": "b733c0e11365d2e1b73d273a5f19ad723c7e4688a9ee35c921fa16af795053f0",
+      "occupiedSize": [
+        36,
+        149
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/marsh-v2/frames/bare/idle-east/000.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/east03-unselected/gesture-03.png",
+        "res://character/marsh-v2/frames/bare/idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    }
+  ],
+  "slots": 12,
+  "apngDecodedExactFrames": 6,
+  "apngTotalDurationMs": 900,
+  "board": "character/marsh-retained-gesture-material-v1/east03-unselected/cross-family-contact.png",
+  "boardSha256": "5a116c2e9f99a20ec7be7264a5be409abbe04a5e02fca06ddce948350471c406",
+  "actuallyInspected": true,
+  "wholeScalePolicy": "One common own occupied height/generated neutral factor. Whole figure crop plus fixed4px fringe; no anatomy patch/recolour/mirror/per-pose fit.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "nativeEvidence": null,
+  "visualAssessment": "Compact bent-glove gesture and bare near-left temple restored. More coherent/slimmer than coarse old bank; generated neutral body width33.923vs own32 remains a proportion concern. Head/collar/profile/material and continuous joins remain provisional."
+}

@@ -1,0 +1,67 @@
+{
+  "method": "built-in imagegen",
+  "installed": false,
+  "sources": [
+    {
+      "source": "character/veld-salvage-pickup-west-coherent-v1/work-source-v1.png",
+      "sha256": "63a7a59b6675ee86d87310c429a26b6a33e22d3a48339100d6e9f3d25d1c7f90",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "prompt": "character/veld-salvage-pickup-west-coherent-v1/work-prompt-v1.txt",
+      "promptSha256": "2495b3a00f72ae7f1ca598000d92afb14cf7ecab9f973b81dc83bfc04b6493e5",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-ec40f66d-9199-4c7b-ac13-3ed7c8bcc7f3.png",
+      "references": [
+        {
+          "path": "character/veld-swim-carry-west-coherent-v1/source-v1.png",
+          "sha256": "44b9135c426ad42792e514cddf25f06a745d75393c5db79125a302748a92f39a"
+        }
+      ],
+      "selection": "all six work poses"
+    },
+    {
+      "source": "character/veld-salvage-pickup-west-coherent-v1/pickup-source-v2.png",
+      "sha256": "23780b28f915773ede2b8c62b87e5c06216a600193cc1e5e03ce1f020e1f858f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "prompt": "character/veld-salvage-pickup-west-coherent-v1/pickup-prompt-v2.txt",
+      "promptSha256": "4399e315f3b7d779ba4dcb98d3c4d05465a9f2289b3af089f6afa1b4d608410d",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-9b25379d-b51f-4745-a264-10f1b3c88129.png",
+      "references": [
+        {
+          "path": "character/veld-salvage-pickup-west-coherent-v1/pickup-source-v1.png",
+          "sha256": "87de23b16dc9736b4fbf09cdbb01ff5bcb3583c32796de9e31bc3ad8fe508230"
+        }
+      ],
+      "selection": "interiors1..4; endpoints replaced by exact fitted work/cargo authority"
+    },
+    {
+      "source": "character/veld-salvage-pickup-west-coherent-v1/pickup-source-v1.png",
+      "sha256": "87de23b16dc9736b4fbf09cdbb01ff5bcb3583c32796de9e31bc3ad8fe508230",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "prompt": "character/veld-salvage-pickup-west-coherent-v1/pickup-prompt-v1.txt",
+      "promptSha256": "ea96b830970297f3f6a2e1318375718c4b9cec6d07949c862b4a46ff89abf0af",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-fd61b37a-c1cb-4bba-b664-844fb98217cc.png",
+      "references": [
+        {
+          "path": "character/veld-salvage-pickup-west-coherent-v1/work-source-v1.png",
+          "sha256": "63a7a59b6675ee86d87310c429a26b6a33e22d3a48339100d6e9f3d25d1c7f90"
+        },
+        {
+          "path": "character/veld-swim-carry-west-coherent-v1/source-v1.png",
+          "sha256": "44b9135c426ad42792e514cddf25f06a745d75393c5db79125a302748a92f39a"
+        }
+      ],
+      "selection": "rejected missing case cell2 and raised stow elbow; retained"
+    }
+  ]
+}

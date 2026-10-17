@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "goal": "",
+      "medium": "dry",
+      "state": "death-ground",
+      "trigger": "death"
+    },
+    {
+      "goal": "",
+      "medium": "flooded",
+      "state": "walk",
+      "trigger": "flood"
+    },
+    {
+      "goal": "",
+      "medium": "dry",
+      "state": "idle",
+      "trigger": "foreign-goal"
+    },
+    {
+      "goal": "hull-repair",
+      "medium": "dry",
+      "state": "repair",
+      "trigger": "helmet"
+    }
+  ],
+  "checks": 61,
+  "failures": 0,
+  "scope": "Four actual North held-work cancellations followed by death, critical flood, prescribed foreign goal or helmet. Nine corrupted snapshot variants each. No all-facing, reassignment, physical-floor removal or all-hazard claim."
+}

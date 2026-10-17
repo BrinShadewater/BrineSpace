@@ -1,0 +1,49 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 763,
+  "outsideExactPixels": 64773,
+  "changedPixels": 762,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    98,
+    76,
+    155,
+    226
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      48.36,
+      69.14,
+      103.5,
+      178.84
+    ],
+    "after": [
+      45.31,
+      67.2,
+      109.3,
+      169.75
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "retain_provisional_lower_finish",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "findings": [
+    "Four selected lower repairs retain readable overlapping feet/hardware in eight source repair boards, six-frame source board and all six paired native captures/four sizes. Source review preceded native launch.",
+    "Phase29upper-tail178.84to169.75/median69.14to67.20;30upper-tail181.69to170.68/median69.00to62.43;31upper-tail158.68to154.26/median58.93to59.71;32upper-tail159.62to156.56/median60.49to56.70.31/32were already darker before repair; different admitted masks and overlap prevent treating these as identical material samples. Full moving grade remains open;33original boots brighter.",
+    "Phase30uses knee-protectionV142as base, not earlier unprotectedV138. Rectangle108,157,127,183excluded and exact to V142 and original same-phase pixels in both gear variants. Original knee brightness retained; no master anatomy/grade acceptance.",
+    "Full original alpha/one-pixel rim/rows above181/paired body below110 exact. Six40ms sources240ms finite fixture verified. Not continuous full49motion/contact/no-flash/seam, normal lifecycle or all-family acceptance."
+  ],
+  "nativeIncluded": true
+}

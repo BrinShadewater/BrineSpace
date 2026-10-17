@@ -1,0 +1,23 @@
+{
+  "disposition": "normal_south_arrival_half_turn_enabled",
+  "checks": 2542,
+  "failures": 0,
+  "routes": 2,
+  "nativeCapturesReviewed": 42,
+  "freshSceneWholeRunDiskRestores": 4,
+  "normalHalfTurnMs": 1600,
+  "arrivalHalfTurnMs": 1480,
+  "middleHoldMs": 80,
+  "unloadMs": 520,
+  "totalArrivalMs": 2000,
+  "rawArtworkChanged": false,
+  "visualMotionAcceptance": false,
+  "fullGoalComplete": false,
+  "findings": [
+    "Earlier missing-south-clip diagnosis was wrong. The11-pose half-turn exists and is normally loaded; its1600ms plus520ms unload exceeded2s arrival guard. Key existence and budget admission had been conflated.",
+    "Arrival-specific remap shortens only duplicated200ms stationary side-view hold to80ms. Moving pose intervals and all11drawings preserved. Generic half-turn timing remains1600ms; unknown timing profile keeps fallback. JSON float clocks compared numerically with known profile, not strict Array type equality.",
+    "Actual collision-clear96-unit south approaches through normal update/move/arrive, both gears: all11turn and6unload slots seen, physically fixed arrival root and stage completion, exact north endpoint reuse.4fresh normal whole-run disk restores, source pose/actor/playback/clocks exact and pause holds.2542checks0;42native capture regions plus full11-pose bare source board viewed.",
+    "Review crop originally centered on clipped screenshot height and cut off resumed feet. Original full capture proved feet visible; assembler now anchors to nominal square capture centre using width. No original screenshot/body manipulation; no new native run needed for review crop correction.",
+    "These are prescribed controller routes/static advancing samples, not autonomous goal choice, title-screen Continue or continuous real-time motion acceptance. Existing source anatomy/material/head/gear/height/support and full family polish remain. Latest49carry/306turn/317and320unload candidates unselected."
+  ]
+}

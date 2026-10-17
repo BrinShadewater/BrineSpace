@@ -1,0 +1,73 @@
+{
+  "name": "James South bowl acquisition",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "single_pose_contact_diagnostic_not_motion",
+  "states": [
+    {
+      "id": "meal-acquire-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "contact-diagnostic/meal-acquire-south/000.png",
+        "contact-diagnostic/meal-acquire-south/001.png",
+        "contact-diagnostic/meal-acquire-south/002.png",
+        "fresh-contact.png",
+        "contact-diagnostic/meal-acquire-south/004.png",
+        "contact-diagnostic/meal-acquire-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          "exact accepted idle",
+          1,
+          2,
+          3,
+          4,
+          "exact accepted held meal"
+        ],
+        "fixedScale": 0.2552083333333333,
+        "derivation": "Whole independently authored source poses; one fixed registration/grade; exact accepted endpoints, no body splices or per-pose warps."
+      }
+    }
+  ]
+}

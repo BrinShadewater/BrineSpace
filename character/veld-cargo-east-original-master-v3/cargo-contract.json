@@ -1,0 +1,32 @@
+{
+  "textureFile": "res://character/veld-cargo-east-original-master-v3/floor-case.png",
+  "frameSize": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "topLeftOffsetFromFoot": [
+    22,
+    -20
+  ],
+  "unloadDepositMs": 260,
+  "pickupTakeMs": 260,
+  "sourceOwnership": {
+    "heldCaseEmbeddedPoses": [
+      0,
+      1,
+      2
+    ],
+    "bodyOnlyPoses": [
+      3,
+      4,
+      5
+    ]
+  },
+  "storagePolicy": "Caller retires visual floor case when ordinary cargo delivery is credited. This pack does not change gameplay delivery or make a collectible.",
+  "scope": "Staged visual prop contract; world lifetime/departure/checkpoint fixture, normal integration pending."
+}

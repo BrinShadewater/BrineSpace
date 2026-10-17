@@ -1,0 +1,61 @@
+{
+  "prompt": "Edit the LAST image. Preserve its FIVE full connected Marsh figures, exact hand gestures, identity, muted ivory/sage/charcoal matte materials, transparent background and3columns x2rows positions. Fix ONLY their inconsistent WHOLE-body scale: the top three figures are510pixels tall and the bottom two459pixels tall. All FIVE figures must have exactly the SAME approximately459pixel occupied full height, the same head size, shoulder width, chest/waist/limb/boot proportions as the bottom middle neutral figure. Reduce the whole top-row figures by about10percent, not individual heads or limbs. Retain their planted boots at the same top-row baseline around608pixels and center in their existing cells. Bottom two figures remain at baseline1129pixels and retain current scale; bottom-right cell stays empty. FIRST image is exact primary current South idle silhouette/proportion/material reference at3x. SECOND is supporting original identity master. The LAST image is the edit target, entire five-figure sheet. Keep RIGHT temple implant on viewer LEFT and other temple bare, bare blond head, two small chest fasteners, fixed knees and pouches. No helmet, new prop, detached wrist, wider torso, extra figures, labels, grid, shadow, checkerboard or opaque background. Same elevated South camera for all five. Return whole transparent sheet, no cropped bodies.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\south-own-idle-3x.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-motion-polish-v1\\sources\\south-standing-identity-01.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\sources\\south-gesture-01.png"
+  ],
+  "references": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/south-own-idle-3x.png",
+      "sha256": "69d9407c0ced0535a83249d2324501d72bb2b8ff0fdf98ff0c0997190695c55c"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/sources/south-gesture-01.png",
+      "sha256": "6bec02401449033b471685e280901dadc182211970e315b2f1b94846a958d1d1"
+    }
+  ],
+  "result": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/south-gesture-02.png",
+    "sha256": "25f2d61a90ea4977ceb8dc6c1124a910272f8d4b6eb59583d86be6374646ff39",
+    "generationId": "exec-0a5f5718-bf60-4446-9041-477fbf201a0b",
+    "boxes": [
+      [
+        151,
+        96,
+        369,
+        610
+      ],
+      [
+        574,
+        96,
+        798,
+        610
+      ],
+      [
+        996,
+        96,
+        1222,
+        610
+      ],
+      [
+        149,
+        650,
+        371,
+        1121
+      ],
+      [
+        580,
+        650,
+        794,
+        1121
+      ]
+    ],
+    "assessment": "Rejected: two-row whole-figure scale remains inconsistent. No installation."
+  }
+}

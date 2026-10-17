@@ -1,0 +1,10 @@
+from pathlib import Path
+import hashlib,json
+p=Path(__file__).resolve().parent
+base='''Use case: precise-object-edit. Edit ONLY image1 into one James upper-body pose, transparent square, same scale and exact framing. Image2 is the new midpoint, supporting identity and halfway orientation. Image3 is the other immutable endpoint. Preserve image1's mature face identity, head size, grey-brown hair, goggles, moustache, matte graphite suit and muted ochre patches/backpack. Head, collar and shoulder should move together in a very slight anatomical adjustment; keep source shoulder patch design/volume and torso camera perspective. No generic portrait redesign, enlarged face, pink/purple or warmer skin, shiny suit, invented badge or equipment. Crop native80square from global96,56 enlarged8x: keep margins, crown near nativey20, collar registration and backpack placement. Output one square pose, no translation, scale change, tight cropping, text, atlas, border or background. Preserve lower crop y54..80 where possible; final outside-region pixels are original.
+'''
+for name,phase in [('early','Image1 is incoming profile-left endpoint. Advance just a quarter of the way toward outgoing image3, halfway between image1 and midpoint image2. Keep much closer to incoming profile than midpoint. Slightly open the near shoulder toward viewer; head rotates only a few degrees, never a nod.'),('late','Image1 is outgoing slightly three-quarter-left endpoint. Move just a quarter of the way BACK toward incoming image3, halfway between midpoint image2 and image1. Keep much closer to outgoing angle than midpoint. Near shoulder/collar and head should remain slightly more viewer-facing than midpoint, never a nod.')]:
+    (p/(name+'-v2-prompt.txt')).write_text(base+phase+'\n',encoding='utf-8')
+names=['entry.png','exit.png','midpoint-reference.png','early-v2-prompt.txt','late-v2-prompt.txt']
+(p/'v2-inputs.json').write_text(json.dumps({n:hashlib.sha256((p/n).read_bytes()).hexdigest() for n in names},indent=2)+'\n')
+print('Endpoint-targeted adjacent prompts frozen;earlier trial preserved.')

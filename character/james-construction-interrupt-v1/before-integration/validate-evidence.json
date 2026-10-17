@@ -1,0 +1,1185 @@
+{
+  "cases": [
+    {
+      "direction": "north",
+      "mode": "power",
+      "phase": "torch-draw",
+      "workAfter": 0.25,
+      "workBefore": 0.233333333333333
+    },
+    {
+      "direction": "north",
+      "mode": "doors",
+      "phase": "torch-draw",
+      "workAfter": 0.266666666666667,
+      "workBefore": 0.25
+    },
+    {
+      "direction": "north",
+      "mode": "power",
+      "phase": "weld",
+      "workAfter": 2.78333333333333,
+      "workBefore": 2.76666666666666
+    },
+    {
+      "direction": "north",
+      "mode": "doors",
+      "phase": "weld",
+      "workAfter": 2.79999999999999,
+      "workBefore": 2.78333333333333
+    },
+    {
+      "direction": "north",
+      "mode": "power",
+      "phase": "torch-stow",
+      "workAfter": 9.7333333333334,
+      "workBefore": 9.71666666666673
+    },
+    {
+      "direction": "north",
+      "mode": "doors",
+      "phase": "torch-stow",
+      "workAfter": 9.75000000000006,
+      "workBefore": 9.7333333333334
+    },
+    {
+      "direction": "east",
+      "mode": "power",
+      "phase": "torch-draw",
+      "workAfter": 0.25,
+      "workBefore": 0.233333333333333
+    },
+    {
+      "direction": "east",
+      "mode": "doors",
+      "phase": "torch-draw",
+      "workAfter": 0.266666666666667,
+      "workBefore": 0.25
+    },
+    {
+      "direction": "east",
+      "mode": "power",
+      "phase": "weld",
+      "workAfter": 2.78333333333333,
+      "workBefore": 2.76666666666666
+    },
+    {
+      "direction": "east",
+      "mode": "doors",
+      "phase": "weld",
+      "workAfter": 2.79999999999999,
+      "workBefore": 2.78333333333333
+    },
+    {
+      "direction": "east",
+      "mode": "power",
+      "phase": "torch-stow",
+      "workAfter": 9.7333333333334,
+      "workBefore": 9.71666666666673
+    },
+    {
+      "direction": "east",
+      "mode": "doors",
+      "phase": "torch-stow",
+      "workAfter": 9.75000000000006,
+      "workBefore": 9.7333333333334
+    },
+    {
+      "direction": "south",
+      "mode": "power",
+      "phase": "torch-draw",
+      "workAfter": 0.25,
+      "workBefore": 0.233333333333333
+    },
+    {
+      "direction": "south",
+      "mode": "doors",
+      "phase": "torch-draw",
+      "workAfter": 0.266666666666667,
+      "workBefore": 0.25
+    },
+    {
+      "direction": "south",
+      "mode": "power",
+      "phase": "weld",
+      "workAfter": 2.78333333333333,
+      "workBefore": 2.76666666666666
+    },
+    {
+      "direction": "south",
+      "mode": "doors",
+      "phase": "weld",
+      "workAfter": 2.79999999999999,
+      "workBefore": 2.78333333333333
+    },
+    {
+      "direction": "south",
+      "mode": "power",
+      "phase": "torch-stow",
+      "workAfter": 9.7333333333334,
+      "workBefore": 9.71666666666673
+    },
+    {
+      "direction": "south",
+      "mode": "doors",
+      "phase": "torch-stow",
+      "workAfter": 9.75000000000006,
+      "workBefore": 9.7333333333334
+    },
+    {
+      "direction": "west",
+      "mode": "power",
+      "phase": "torch-draw",
+      "workAfter": 0.25,
+      "workBefore": 0.233333333333333
+    },
+    {
+      "direction": "west",
+      "mode": "doors",
+      "phase": "torch-draw",
+      "workAfter": 0.266666666666667,
+      "workBefore": 0.25
+    },
+    {
+      "direction": "west",
+      "mode": "power",
+      "phase": "weld",
+      "workAfter": 2.78333333333333,
+      "workBefore": 2.76666666666666
+    },
+    {
+      "direction": "west",
+      "mode": "doors",
+      "phase": "weld",
+      "workAfter": 2.79999999999999,
+      "workBefore": 2.78333333333333
+    },
+    {
+      "direction": "west",
+      "mode": "power",
+      "phase": "torch-stow",
+      "workAfter": 9.7333333333334,
+      "workBefore": 9.71666666666673
+    },
+    {
+      "direction": "west",
+      "mode": "doors",
+      "phase": "torch-stow",
+      "workAfter": 9.75000000000006,
+      "workBefore": 9.7333333333334
+    }
+  ],
+  "checks": 1581,
+  "failures": 0,
+  "records": [
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-power-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-power-before",
+      "sourceHash": "dd0a90864d910e544b4428a09a9773653541405b89af2d77d89a765924024ebf",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-power-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-power-held",
+      "sourceHash": "6c40310ba0872872f180175cd82d02419f3701a0c956f7128e4106473928d131",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-power-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-power-resumed",
+      "sourceHash": "b35e1a0d4772ddeeedad327e1605e771575fcda059fde7689a2282205f016cc2",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-doors-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-doors-before",
+      "sourceHash": "b35e1a0d4772ddeeedad327e1605e771575fcda059fde7689a2282205f016cc2",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-doors-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-doors-held",
+      "sourceHash": "e1eedd6e7f49d1d8b2cf50146427084d09d7c0bdfa1ae012901fcade5f151a61",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-draw-doors-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-draw-doors-resumed",
+      "sourceHash": "b35e1a0d4772ddeeedad327e1605e771575fcda059fde7689a2282205f016cc2",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.266666666666667
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-power-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-power-before",
+      "sourceHash": "2d4373da76a38318723d1c5eab04de3139bce142932a36f5186ef1ed72a1bfdd",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-power-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-power-held",
+      "sourceHash": "6c40310ba0872872f180175cd82d02419f3701a0c956f7128e4106473928d131",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-power-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-power-resumed",
+      "sourceHash": "01d9fb5a0a7fef7e1464c02390563d093ef5c5ba2ed9fae8c2ea3fff51171da1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-doors-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-doors-before",
+      "sourceHash": "01d9fb5a0a7fef7e1464c02390563d093ef5c5ba2ed9fae8c2ea3fff51171da1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-doors-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-doors-held",
+      "sourceHash": "6c40310ba0872872f180175cd82d02419f3701a0c956f7128e4106473928d131",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-weld-doors-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-weld-doors-resumed",
+      "sourceHash": "01d9fb5a0a7fef7e1464c02390563d093ef5c5ba2ed9fae8c2ea3fff51171da1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.79999999999999
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-power-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-power-before",
+      "sourceHash": "c8e3ba54f0ec58c7701b64aaa7e201e7a6c69815a455e27660332699a4c42ddd",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-power-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-power-held",
+      "sourceHash": "6c40310ba0872872f180175cd82d02419f3701a0c956f7128e4106473928d131",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-power-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-power-resumed",
+      "sourceHash": "c8e3ba54f0ec58c7701b64aaa7e201e7a6c69815a455e27660332699a4c42ddd",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-doors-before.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-doors-before",
+      "sourceHash": "c8e3ba54f0ec58c7701b64aaa7e201e7a6c69815a455e27660332699a4c42ddd",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-doors-held.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-doors-held",
+      "sourceHash": "e1eedd6e7f49d1d8b2cf50146427084d09d7c0bdfa1ae012901fcade5f151a61",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/north-torch-stow-doors-resumed.png",
+      "direction": "north",
+      "foot": [
+        7871.69970703125,
+        7712.3759765625
+      ],
+      "goal": "construction",
+      "label": "north-torch-stow-doors-resumed",
+      "sourceHash": "c8e3ba54f0ec58c7701b64aaa7e201e7a6c69815a455e27660332699a4c42ddd",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.75000000000006
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-power-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-power-before",
+      "sourceHash": "f605483138eccf2042afeaa42276930fb903ae906a479140f11d50f61a2baa88",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-power-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-power-held",
+      "sourceHash": "702a9de742c834bf82bdbad2acee4b5f08a35f0d6c6c0bb00981d30cf4c75914",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-power-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-power-resumed",
+      "sourceHash": "b577e096bb58555d8f9ea02084fa632fc46772c73dbaae1cd0b0c39d156f85c3",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-doors-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-doors-before",
+      "sourceHash": "b577e096bb58555d8f9ea02084fa632fc46772c73dbaae1cd0b0c39d156f85c3",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-doors-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-doors-held",
+      "sourceHash": "28ce4fbd3178fa3f002275fd99fc2262e3ab924bb0dab621bebba54efc505822",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-draw-doors-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-draw-doors-resumed",
+      "sourceHash": "b577e096bb58555d8f9ea02084fa632fc46772c73dbaae1cd0b0c39d156f85c3",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.266666666666667
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-power-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-power-before",
+      "sourceHash": "87a90f91b7b51771baa9938700a1021ae1347a1960df85032db2c1c2624b1a74",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-power-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-power-held",
+      "sourceHash": "702a9de742c834bf82bdbad2acee4b5f08a35f0d6c6c0bb00981d30cf4c75914",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-power-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-power-resumed",
+      "sourceHash": "e25a0b5a1d7c1c11b5463555c833fdf41f837b842924a26eba6a9fe3a378de3f",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-doors-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-doors-before",
+      "sourceHash": "e25a0b5a1d7c1c11b5463555c833fdf41f837b842924a26eba6a9fe3a378de3f",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-doors-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-doors-held",
+      "sourceHash": "702a9de742c834bf82bdbad2acee4b5f08a35f0d6c6c0bb00981d30cf4c75914",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-weld-doors-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-weld-doors-resumed",
+      "sourceHash": "e25a0b5a1d7c1c11b5463555c833fdf41f837b842924a26eba6a9fe3a378de3f",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.79999999999999
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-power-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-power-before",
+      "sourceHash": "24268fb9de40f9ab64202b132820f554b7b6c24871898eb12b762d7fd9917c03",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-power-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-power-held",
+      "sourceHash": "702a9de742c834bf82bdbad2acee4b5f08a35f0d6c6c0bb00981d30cf4c75914",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-power-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-power-resumed",
+      "sourceHash": "4ecc482cc23dd168c5b29f20c7892ec5c70a6d6c080dbf92690817ac79cf9202",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-doors-before.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-doors-before",
+      "sourceHash": "4ecc482cc23dd168c5b29f20c7892ec5c70a6d6c080dbf92690817ac79cf9202",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-doors-held.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-doors-held",
+      "sourceHash": "28ce4fbd3178fa3f002275fd99fc2262e3ab924bb0dab621bebba54efc505822",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/east-torch-stow-doors-resumed.png",
+      "direction": "east",
+      "foot": [
+        8031.4384765625,
+        7872.28076171875
+      ],
+      "goal": "construction",
+      "label": "east-torch-stow-doors-resumed",
+      "sourceHash": "f7102c6fa05af84db5546c50c999922f3d2f05cae4508864b4b560c150106adb",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.75000000000006
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-power-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-power-before",
+      "sourceHash": "0a99a2ec8a4004ee2628220997258f507c1519d5cca6a631deb5d31cf7f9ba88",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-power-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-power-held",
+      "sourceHash": "cbcea4d716ad5885184d59c7a5b03b7f0a00eba9ecc14aa09dcd0e486db62476",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-power-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-power-resumed",
+      "sourceHash": "0a99a2ec8a4004ee2628220997258f507c1519d5cca6a631deb5d31cf7f9ba88",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-doors-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-doors-before",
+      "sourceHash": "0a99a2ec8a4004ee2628220997258f507c1519d5cca6a631deb5d31cf7f9ba88",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-doors-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-doors-held",
+      "sourceHash": "6ccbb12924329ab5916dc27019e0c1fe5d3f5a37f5db3f0c5866c22fd9b86456",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-draw-doors-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-draw-doors-resumed",
+      "sourceHash": "0a99a2ec8a4004ee2628220997258f507c1519d5cca6a631deb5d31cf7f9ba88",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.266666666666667
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-power-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-power-before",
+      "sourceHash": "683ea849e00e2cf4b12b0d136f40b103019d2a22f8fe0a295f1aa188e654d195",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-power-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-power-held",
+      "sourceHash": "cbcea4d716ad5885184d59c7a5b03b7f0a00eba9ecc14aa09dcd0e486db62476",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-power-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-power-resumed",
+      "sourceHash": "426fa03ef57109d4727cb5d494bca8805771c90bb2a6db3ebe4aca76bdfec89a",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-doors-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-doors-before",
+      "sourceHash": "426fa03ef57109d4727cb5d494bca8805771c90bb2a6db3ebe4aca76bdfec89a",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-doors-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-doors-held",
+      "sourceHash": "cbcea4d716ad5885184d59c7a5b03b7f0a00eba9ecc14aa09dcd0e486db62476",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-weld-doors-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-weld-doors-resumed",
+      "sourceHash": "426fa03ef57109d4727cb5d494bca8805771c90bb2a6db3ebe4aca76bdfec89a",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.79999999999999
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-power-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-power-before",
+      "sourceHash": "355123bc38ddd32656273234e11fd2256ac045dc3e6276cdd6b770b7aeb85da7",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-power-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-power-held",
+      "sourceHash": "cbcea4d716ad5885184d59c7a5b03b7f0a00eba9ecc14aa09dcd0e486db62476",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-power-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-power-resumed",
+      "sourceHash": "355123bc38ddd32656273234e11fd2256ac045dc3e6276cdd6b770b7aeb85da7",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-doors-before.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-doors-before",
+      "sourceHash": "355123bc38ddd32656273234e11fd2256ac045dc3e6276cdd6b770b7aeb85da7",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-doors-held.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-doors-held",
+      "sourceHash": "6ccbb12924329ab5916dc27019e0c1fe5d3f5a37f5db3f0c5866c22fd9b86456",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/south-torch-stow-doors-resumed.png",
+      "direction": "south",
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "goal": "construction",
+      "label": "south-torch-stow-doors-resumed",
+      "sourceHash": "e5e722715cc3d70a3e82e629c41a1ef484f934d695b507c06033debcbd5aad95",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.75000000000006
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-power-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-power-before",
+      "sourceHash": "99c13b6ec37485e85bf339d95e327cfb2afcef67a500dabe5d56f11d31a1c45c",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-power-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-power-held",
+      "sourceHash": "11ac711404e57d5d774fab12ab8cb5a6f5eb493994ed47542d0c250bc4d007ba",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.233333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-power-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-power-resumed",
+      "sourceHash": "7e147f5157ff0f0628e9ed4e0d97c0b3e177f941e7d49ce8e0dfe2e83bb508aa",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-doors-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-doors-before",
+      "sourceHash": "7e147f5157ff0f0628e9ed4e0d97c0b3e177f941e7d49ce8e0dfe2e83bb508aa",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-doors-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-doors-held",
+      "sourceHash": "d4194916687b9e686141a0ebe5538896846981fac42d1b96e1a6d254d628c6a6",
+      "sparks": false,
+      "state": "idle",
+      "timer": 0.25
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-draw-doors-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-draw-doors-resumed",
+      "sourceHash": "7e147f5157ff0f0628e9ed4e0d97c0b3e177f941e7d49ce8e0dfe2e83bb508aa",
+      "sparks": false,
+      "state": "torch-draw",
+      "timer": 0.266666666666667
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-power-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-power-before",
+      "sourceHash": "dd34f00316f705e415db0c80a2c4606cd24ef43e073c1e51a62b286a2841b7c9",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-power-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-power-held",
+      "sourceHash": "11ac711404e57d5d774fab12ab8cb5a6f5eb493994ed47542d0c250bc4d007ba",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-power-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-power-resumed",
+      "sourceHash": "981cd32fbb609073fd30d9a9153fa3f1bcf75bacb63de3fc931c1fbf80806cf1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-doors-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-doors-before",
+      "sourceHash": "981cd32fbb609073fd30d9a9153fa3f1bcf75bacb63de3fc931c1fbf80806cf1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-doors-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-doors-held",
+      "sourceHash": "11ac711404e57d5d774fab12ab8cb5a6f5eb493994ed47542d0c250bc4d007ba",
+      "sparks": false,
+      "state": "idle",
+      "timer": 2.78333333333333
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-weld-doors-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-weld-doors-resumed",
+      "sourceHash": "981cd32fbb609073fd30d9a9153fa3f1bcf75bacb63de3fc931c1fbf80806cf1",
+      "sparks": true,
+      "state": "weld",
+      "timer": 2.79999999999999
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-power-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-power-before",
+      "sourceHash": "2c64705f8a8da3c40280e895c3129c11a9bbdf08a432b89db025e27c255aa23e",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-power-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-power-held",
+      "sourceHash": "11ac711404e57d5d774fab12ab8cb5a6f5eb493994ed47542d0c250bc4d007ba",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.71666666666673
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-power-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-power-resumed",
+      "sourceHash": "87cdf4674bafb439378e02228b979195b11df688c943486bbc3be5eb2e817790",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-doors-before.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-doors-before",
+      "sourceHash": "87cdf4674bafb439378e02228b979195b11df688c943486bbc3be5eb2e817790",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-doors-held.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-doors-held",
+      "sourceHash": "d4194916687b9e686141a0ebe5538896846981fac42d1b96e1a6d254d628c6a6",
+      "sparks": false,
+      "state": "idle",
+      "timer": 9.7333333333334
+    },
+    {
+      "capture": "res://character/james-construction-interrupt-v1/native/west-torch-stow-doors-resumed.png",
+      "direction": "west",
+      "foot": [
+        7712.43359375,
+        7871.8427734375
+      ],
+      "goal": "construction",
+      "label": "west-torch-stow-doors-resumed",
+      "sourceHash": "b70528da513329901725ea1fedcef3f6c33a8668ded06e9f382d3a6b0a5da0ee",
+      "sparks": false,
+      "state": "torch-stow",
+      "timer": 9.75000000000006
+    }
+  ],
+  "scope": "24 actual power/locked-door holds across draw/held/stow and four bare directions in four genuine paid jobs. Normal60Hz controller. Initial room resets, no helmet eligibility or fresh Continue claim. Visual transition quality must be assessed separately from preserved simulation state."
+}

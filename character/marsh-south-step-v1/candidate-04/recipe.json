@@ -1,0 +1,157 @@
+{
+  "status": "unselected whole-figure reach/closing correction; visual/contact review pending",
+  "normalAdmission": false,
+  "rawPath": "character/marsh-south-step-v1/sources/step-04.raw.png",
+  "rawSha256": "999f2ab84cc4637e6684aa4bce9ce13d676a98f24d1b811b1601756d6cdba3c9",
+  "requestSha256": "574769f8e07685d39822a802d953e177ec551a1682c40b03e04bea891d8d37b7",
+  "commonNeutralScale": 0.17809867629362214,
+  "newAuthoredInteriors": 2,
+  "retainedWholeSources": [
+    {
+      "slot": 0,
+      "wholeSource": "character/marsh-south-step-v1/candidate-03/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+      "operation": "byte-exact complete pose; no art edits"
+    },
+    {
+      "slot": 1,
+      "wholeSource": "character/marsh-south-step-v1/candidate-03/001.png",
+      "sha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+      "operation": "byte-exact complete pose; no art edits"
+    },
+    {
+      "slot": 2,
+      "wholeSource": "character/marsh-south-step-v1/candidate-03/002.png",
+      "sha256": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+      "operation": "byte-exact complete pose; no art edits"
+    },
+    {
+      "slot": 4,
+      "wholeSource": "character/marsh-south-step-v1/candidate-03/004.png",
+      "sha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+      "operation": "byte-exact complete pose; no art edits"
+    },
+    {
+      "slot": 6,
+      "wholeSource": "character/marsh-south-step-v1/candidate-03/006.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+      "operation": "byte-exact complete pose; no art edits"
+    }
+  ],
+  "records": [
+    {
+      "sourceCell": [
+        0,
+        0,
+        513,
+        1021
+      ],
+      "commonNeutralScale": 0.17809867629362214,
+      "wholeTranslation": [
+        46,
+        12
+      ],
+      "support": "image-right",
+      "bounds": [
+        66,
+        27,
+        128,
+        179
+      ],
+      "width": 62,
+      "height": 152,
+      "contacts": [
+        [
+          82.5,
+          178
+        ],
+        [
+          106.0,
+          170
+        ]
+      ],
+      "file": "003.png",
+      "sha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "sourceCell": [
+        513,
+        0,
+        1027,
+        1021
+      ],
+      "commonNeutralScale": 0.17809867629362214,
+      "wholeTranslation": [
+        44,
+        7
+      ],
+      "support": "image-left",
+      "bounds": [
+        59,
+        22,
+        121,
+        171
+      ],
+      "width": 62,
+      "height": 149,
+      "contacts": [
+        [
+          78.0,
+          170
+        ],
+        [
+          99.0,
+          163
+        ]
+      ],
+      "file": "005.png",
+      "sha256": "7b7f8d7190bd2bce73eec164502eba686d34f156be916f6ae91b4bd4c208fbd5"
+    },
+    {
+      "sourceCell": [
+        1027,
+        0,
+        1540,
+        1021
+      ],
+      "commonNeutralScale": 0.17809867629362214,
+      "wholeTranslation": [
+        51,
+        7
+      ],
+      "support": "neutral-midpoint",
+      "bounds": [
+        62,
+        22,
+        123,
+        171
+      ],
+      "width": 61,
+      "height": 149,
+      "contacts": [
+        [
+          80.5,
+          170
+        ],
+        [
+          103.0,
+          170
+        ]
+      ],
+      "file": "ruler.png",
+      "sha256": "4059bd5bd5be4c2ed09d6ba7e9986ea0b627fb0fa9e30ef41ede20104809afa2"
+    }
+  ],
+  "grade": "none; one neutral-ruler BOX scale, alpha128, complete figure integer translation; no anatomy edits, mirror or per-pose fit",
+  "rootDenseAtHoldStart": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    13,
+    13
+  ],
+  "nominalWorldTravel": 5.734054054054054,
+  "limits": "Mixed complete-source audition. Source03 lift/plant retained byte-exact; source04 reach/close authored together. Root plan unimplemented; contact/material/identity joins and native/controller/safety/Continue pending."
+}

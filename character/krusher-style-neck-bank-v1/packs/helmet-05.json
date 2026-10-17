@@ -1,0 +1,1545 @@
+{
+  "name": "Krusher Dom cargo helmet",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "states": [
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/3c9a5b5eb53dee0c4fad429db01a8d53cb6ec6853b6be7153910a5a14d9abf54.png",
+        "res://character/krusher-style-neck-bank-v1/frames/325d77a57e21add22ecb76f652a1b69eeb04875d14d8c84907baa7fddd91c1a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/52792b994110d5b3430f1aa3573f0f980e89a708741182521708a10d817dab1e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/573af2dcc7cc671faf8165385f5dda3a3e7e06373278358369550d440c3086c3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ae4ace9455c39746d1f5662fcda1236c12d05e086b4393900d311cf3bc0a7555.png",
+        "res://character/krusher-style-neck-bank-v1/frames/42fabee3b7672d56b014ca459c1a22a05fb3fb2471603fe08bbe5eafaee05431.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/27065ce23f3d562d9c481a2525738b78dcce13182667892fc19a090d915fd1a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1126ae658c41b45022cdf7fd7584219876dfc4950ad2304d009dc0a30d405b17.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d311c6090d407c74f73dad4ec8cb26708fa5734385857dbd4e0dcee49c3d6d47.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4c46c2967b8f2a4610d160dc5d6e4b2cc1ed771901e30b2e5537b2d9575b4e1f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2d348305e1481d7af5d3bbbaf25731abf94480ddc53990afd223e5f7c82ebed8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d0c83645faaf2e584743cb8fed86039d1c541d8e0aefa410e4bcabdc3562eb72.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ec832f4b2bb94f75b620d54aeae2f018f6135d2fcf0dc0456d5fbc3b67bc55a8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/49e6d5abacf805496cf91745f3e9ef3053e786cced6358d878fd0f16b8e1db13.png",
+        "res://character/krusher-style-neck-bank-v1/frames/69e4633e08345bb9ab0f96563fe31d0def6b0133c88cf018976f8af7606f00d4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b83f9f536b75e76b63b518acd7c244103d17384270cec6595567c1627bf4a3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/35ba669637e1015f73261b7e3b88efa79c9d7b8a5afb191abea479d8aa751624.png",
+        "res://character/krusher-style-neck-bank-v1/frames/54bfdf6e81d94077b864fe3929a304dd0b596b831953de622fd0c3d394ece6d6.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9a3c3108e5be69cf9e8a62b501ab30942b4c468f152b8501a3c5c8c38f74b58a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/bc7fe61d0349e6c91361907c29681099efc8fbf12a7077c18a73593bfb906d1b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff4c46b18bd16920c63880b999d8496f9923ad4445873d99aa1e0d65bac3165b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb7abc20df606b4691a89a2e9250f20a4ac06c48d6bddddccb62b35c5adb3a7b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-west",
+      "frameCount": 11,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b0a6521d35a3be9789d3fb8e67d6d45278e73c6e2e91dcbe74fcae3695162b9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b4d40d8b57fe7922e28c6b12a0505c5ef74dd849e8f42d918e92c5889b2d82e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f6ac1be02e494c0844e33f6272a725b1b50086e83eb1517cd20f4d589aace54.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5493740de98fa24d441fd165c709a776135771e01595ac97e7d8f9cdd38118dc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb7abc20df606b4691a89a2e9250f20a4ac06c48d6bddddccb62b35c5adb3a7b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff4c46b18bd16920c63880b999d8496f9923ad4445873d99aa1e0d65bac3165b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/bc7fe61d0349e6c91361907c29681099efc8fbf12a7077c18a73593bfb906d1b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9a3c3108e5be69cf9e8a62b501ab30942b4c468f152b8501a3c5c8c38f74b58a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-south",
+      "frameCount": 11,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb7abc20df606b4691a89a2e9250f20a4ac06c48d6bddddccb62b35c5adb3a7b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff4c46b18bd16920c63880b999d8496f9923ad4445873d99aa1e0d65bac3165b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/bc7fe61d0349e6c91361907c29681099efc8fbf12a7077c18a73593bfb906d1b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9a3c3108e5be69cf9e8a62b501ab30942b4c468f152b8501a3c5c8c38f74b58a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eaa5545544519bebcbcaa1f1f7edadddf506ada4e84d35105c66be676beac999.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dced36172c47a859cf27e7d55b98b5c6710dda5f1ff087f501a498764d6171a0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fff07f0cd970bb7931bfc56c413830020689104da56d3c8d3c22e23267264d8a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cc64401778e3cc35e54369212c6cf7884abdbc8e183d562ec300bc7ed729a00d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-north",
+      "frameCount": 11,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9a3c3108e5be69cf9e8a62b501ab30942b4c468f152b8501a3c5c8c38f74b58a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/bc7fe61d0349e6c91361907c29681099efc8fbf12a7077c18a73593bfb906d1b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff4c46b18bd16920c63880b999d8496f9923ad4445873d99aa1e0d65bac3165b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb7abc20df606b4691a89a2e9250f20a4ac06c48d6bddddccb62b35c5adb3a7b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b0a6521d35a3be9789d3fb8e67d6d45278e73c6e2e91dcbe74fcae3695162b9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b4d40d8b57fe7922e28c6b12a0505c5ef74dd849e8f42d918e92c5889b2d82e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f6ac1be02e494c0844e33f6272a725b1b50086e83eb1517cd20f4d589aace54.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5493740de98fa24d441fd165c709a776135771e01595ac97e7d8f9cdd38118dc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-east",
+      "frameCount": 11,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5493740de98fa24d441fd165c709a776135771e01595ac97e7d8f9cdd38118dc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f6ac1be02e494c0844e33f6272a725b1b50086e83eb1517cd20f4d589aace54.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b4d40d8b57fe7922e28c6b12a0505c5ef74dd849e8f42d918e92c5889b2d82e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b0a6521d35a3be9789d3fb8e67d6d45278e73c6e2e91dcbe74fcae3695162b9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3dd8cf63865f1b1d119cbbd460d087ddfae09faf26d3c4cf4517a6005a935496.png",
+        "res://character/krusher-style-neck-bank-v1/frames/72e558df1e7b4d72b4f85647ab0d6058150ff1d410f4d85b24feb1195ff1b8eb.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a27ee0ec026c2239c1c6ccb6d0bb8663efd001f38050172f84008dd497db69f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/88c4ffc90b37740961fdcdb237bbd2c717549e6c76663e32b76cb5d22cae992c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b397acb499fe6fc6391d66445bd0599e266b590db9991cc479ddc528ba9c8be0.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cc64401778e3cc35e54369212c6cf7884abdbc8e183d562ec300bc7ed729a00d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fff07f0cd970bb7931bfc56c413830020689104da56d3c8d3c22e23267264d8a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dced36172c47a859cf27e7d55b98b5c6710dda5f1ff087f501a498764d6171a0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/eaa5545544519bebcbcaa1f1f7edadddf506ada4e84d35105c66be676beac999.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d40632b19a3438f91425a94736772ce8ed70f08515eb5592fd834a533ce16a5f.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b426e85cca3427041de1f4b2ef826f00ad02c83e7311a6a0010965d2fc270e18.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5493740de98fa24d441fd165c709a776135771e01595ac97e7d8f9cdd38118dc.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0f6ac1be02e494c0844e33f6272a725b1b50086e83eb1517cd20f4d589aace54.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b4d40d8b57fe7922e28c6b12a0505c5ef74dd849e8f42d918e92c5889b2d82e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b0a6521d35a3be9789d3fb8e67d6d45278e73c6e2e91dcbe74fcae3695162b9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/31655db29cfe429bfc4403e46329a9ca9929d15361100062400bac68512c1e88.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c0bd115136e32cc4eeec9a127a2ad28c3d19fd08e38cd8c31be5bae0aa9c64d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/95d951ab9941d2895a8352493a272706f2da0146b80e1b72ff4ed31680b17d08.png",
+        "res://character/krusher-style-neck-bank-v1/frames/94320188585cc842ce86a531f72f1bd45b82a2f79afb2114bb1449314cd98916.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48d1303bb5ab3c58a57d455df1fe9dfef68f75a1d3bf7199cc1eb9e3b5cb411f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3bfdfb35059576cb91065bbf5d389a7efb19036aea48dd6dcc49beedcb4e5990.png",
+        "res://character/krusher-style-neck-bank-v1/frames/94bb5e1e139ee3ddac646c9c7a9ba750dbb7ae54987cb7028feb4f348e0d96dd.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/7c3b3b6cef64a0e24361fefe73a5e00cb8935d8d704a7e187832454bcd4e2d3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a7b39f290b4b4ff6e5f49d4eba96c665dbe33caae693ae1bd3bd54a7a88aa56b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26d7ad650eaa0112579effcf685befa88855c666e3fe0610b7f173a8f01156bd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/acbd96a7135d7c2e02e1e49274326598e3236e92a1a6cace66a02ace8c388071.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0bce09caabadb774b727fa886295ab93e6ef00ea65158eea38b1b3844f84251e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6d9541aa53d3f1dbb07a509f454794de00fb4cd32d0b9f499cf35b49b527c310.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/376a54b5488894d19c77b4bf300ab1dce6d8ee75c8018ac2933aba67143f4139.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf199408408adf0f1cab1fb349cd1ab7ae61b32442f6d1f9822d5f1ee4e49c3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/54014de0000af53d3e5437ec0b4675fb74b9b71d40ee150d47f6c5e590532978.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73ea2ea20c966ce7d3f6eaa32a7499f1aff8a21df6b43db4bb942d2c692b3ea9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/063143c756f2f17837941a976ed0339c65df28f70f2f331b027bfce1a7d27d6d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/27065ce23f3d562d9c481a2525738b78dcce13182667892fc19a090d915fd1a5.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/496b60c4e0c5fd543e5062b3e1236d016983070b78292b5c4fca28249a14caad.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05459e6cb34aa8574560660b12e7a7ef0df50605ba2bd2e73028c8495af528a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a4695716f34fe4fb25773433a7c7bc57c8a847c806d0a358fa5edc8778e05102.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7912bec3c82d3fb6e8a1a79cdd6f62a0ed4f7d8f32f5680d002186d785ab5e5e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fd1b97df41befce0330680b9b9cd68165b88581ed4becbf8f75bdcb71c7b17ff.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ec832f4b2bb94f75b620d54aeae2f018f6135d2fcf0dc0456d5fbc3b67bc55a8.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/fa90a06805901a94787ce570f2a5f982ffb1f74097008a3c1d5482433be89d84.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b72fcb2cb2e2fc64361062aeae4f793edfb939258aec7dcf668f1f78311b6a3d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/95fc61b92e6c1aef4cde04844b024fc514f03686029064edd5d93df1fb6db6c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2d0263c46b791071303324412737a69d438fad26369bf10cca439de82eccebff.png",
+        "res://character/krusher-style-neck-bank-v1/frames/38b7766981a672976a4948db017705eb69d89d0b341ed6be95965bf66482a8b7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c0bd115136e32cc4eeec9a127a2ad28c3d19fd08e38cd8c31be5bae0aa9c64d5.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/6d9541aa53d3f1dbb07a509f454794de00fb4cd32d0b9f499cf35b49b527c310.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0bce09caabadb774b727fa886295ab93e6ef00ea65158eea38b1b3844f84251e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/acbd96a7135d7c2e02e1e49274326598e3236e92a1a6cace66a02ace8c388071.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26d7ad650eaa0112579effcf685befa88855c666e3fe0610b7f173a8f01156bd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a7b39f290b4b4ff6e5f49d4eba96c665dbe33caae693ae1bd3bd54a7a88aa56b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c3b3b6cef64a0e24361fefe73a5e00cb8935d8d704a7e187832454bcd4e2d3c.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/27065ce23f3d562d9c481a2525738b78dcce13182667892fc19a090d915fd1a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/063143c756f2f17837941a976ed0339c65df28f70f2f331b027bfce1a7d27d6d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/73ea2ea20c966ce7d3f6eaa32a7499f1aff8a21df6b43db4bb942d2c692b3ea9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/54014de0000af53d3e5437ec0b4675fb74b9b71d40ee150d47f6c5e590532978.png",
+        "res://character/krusher-style-neck-bank-v1/frames/edf199408408adf0f1cab1fb349cd1ab7ae61b32442f6d1f9822d5f1ee4e49c3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/376a54b5488894d19c77b4bf300ab1dce6d8ee75c8018ac2933aba67143f4139.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ec832f4b2bb94f75b620d54aeae2f018f6135d2fcf0dc0456d5fbc3b67bc55a8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fd1b97df41befce0330680b9b9cd68165b88581ed4becbf8f75bdcb71c7b17ff.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7912bec3c82d3fb6e8a1a79cdd6f62a0ed4f7d8f32f5680d002186d785ab5e5e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a4695716f34fe4fb25773433a7c7bc57c8a847c806d0a358fa5edc8778e05102.png",
+        "res://character/krusher-style-neck-bank-v1/frames/05459e6cb34aa8574560660b12e7a7ef0df50605ba2bd2e73028c8495af528a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/496b60c4e0c5fd543e5062b3e1236d016983070b78292b5c4fca28249a14caad.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-west",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c0bd115136e32cc4eeec9a127a2ad28c3d19fd08e38cd8c31be5bae0aa9c64d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/38b7766981a672976a4948db017705eb69d89d0b341ed6be95965bf66482a8b7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2d0263c46b791071303324412737a69d438fad26369bf10cca439de82eccebff.png",
+        "res://character/krusher-style-neck-bank-v1/frames/95fc61b92e6c1aef4cde04844b024fc514f03686029064edd5d93df1fb6db6c7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b72fcb2cb2e2fc64361062aeae4f793edfb939258aec7dcf668f1f78311b6a3d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0bde75e328170520fd2ecf009c04b6ea6462c1241b7fbfde656a8cdef1f015ce.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0bfdf1c81a521b1860b2b79d51e7ea4293416bc7fe12adc8bbac46ed4019ae94.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    }
+  ],
+  "strideDistanceCells": {
+    "carry-east": 0.0872972972972973,
+    "carry-north": 0.0827027027027027,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.07351351351351351
+  }
+}

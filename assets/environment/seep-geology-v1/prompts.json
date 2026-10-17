@@ -1,0 +1,33 @@
+{
+  "initial": {
+    "seep-stones": "Create one original BrineSpace underwater station-game environment sprite. Strict orthographic top-down camera looking straight down; low relief, footprint dominates. Detailed matte hand-painted game raster, finely articulated mineral grain and restrained small edge highlights, crisp natural outline. Muted slate gray, warm gray, bone and dull ochre local colors. No glossy 3D rendering, no coarse pixel blocks, no photograph, no light bloom. Flat isolated sprite on truly transparent background; no exterior haze, cloud, shadow wash, pedestal, text or border. Keep entire silhouette inside canvas with modest clear margins. Must read as a small seabed prop at 100–170 screen pixels wide beside a detailed top-down industrial station. Subject: a loose asymmetric group of five low flat brine-seep stones, pale gray salt crust following shallow cracks in dark slate stone; one fractured plate, three unequal rounded plates and a few small shards. Distinct islands with transparent gaps. Thin irregular salt rinds, tiny dull ochre seep stains. Avoid tall piled boulders.",
+    "nodule-cluster": "Create one original BrineSpace underwater station-game environment sprite. Strict orthographic top-down camera looking straight down; low relief, footprint dominates. Detailed matte hand-painted game raster, finely articulated mineral grain and restrained small edge highlights, crisp natural outline. Muted slate gray, warm gray, bone and dull ochre local colors. No glossy 3D rendering, no coarse pixel blocks, no photograph, no light bloom. Flat isolated sprite on truly transparent background; no exterior haze, cloud, shadow wash, pedestal, text or border. Keep entire silhouette inside canvas with modest clear margins. Must read as a small seabed prop at 100–170 screen pixels wide beside a detailed top-down industrial station. Subject: an asymmetric cluster of seven manganese nodules partially embedded in a VERY SMALL amount of dark silt. Unequal flattened charcoal-gray disks with rough concentric mineral accretion rings; large dominant disk, two medium disks, four small ones. Broken boundaries and slight dull iron-brown freckles; avoid spherical polished marbles. Silt confined within the stone group's silhouette, transparent outside.",
+    "mineral-ledges": "Create one original BrineSpace underwater station-game environment sprite. Strict orthographic top-down camera looking straight down; low relief, footprint dominates. Detailed matte hand-painted game raster, finely articulated mineral grain and restrained small edge highlights, crisp natural outline. Muted slate gray, warm gray, bone and dull ochre local colors. No glossy 3D rendering, no coarse pixel blocks, no photograph, no light bloom. Flat isolated sprite on truly transparent background; no exterior haze, cloud, shadow wash, pedestal, text or border. Keep entire silhouette inside canvas with modest clear margins. Must read as a small seabed prop at 100–170 screen pixels wide beside a detailed top-down industrial station. Subject: three connected low iron-seep shale ledges seen directly from above, irregular stepped flattened slate-gray plates with angular chipped fractures, sparse muted rust-ochre seams, a small fractured black recess. Broad flattened footprint, thin visible edges only. Strong unequal plate sizes, no tall cliff or side-view stack."
+  },
+  "v2": {
+    "seep-stones": "Flat top-down game sprite of five scattered low brine seep stone plates. Unequal charcoal slate slabs with thin pale gray salt crust seams and dull ochre flecks, transparent gaps between stones. Detailed matte painted texture, subdued fine grain matching an overhead industrial station game. Low relief, small crisp natural contour. Truly transparent exterior, clean cutout silhouette. No shadow, halo or background.",
+    "mineral-ledges": "Flat top-down game sprite of three connected low iron seep shale plates. One broad angular slate gray plate, a second half its size and a tiny third one. Shallow cracks, thin dull rust seams, a small black fractured recess. Detailed matte painted texture, subdued fine grain matching an overhead industrial station game. Low relief, crisp natural contour. Truly transparent exterior, clean cutout silhouette. No shadow, halo or background."
+  },
+  "v3": {
+    "prompt": "Remove the diffuse exterior gray cloud from this sprite. Keep only the existing solid stones with their exact matte texture and shapes. Every pixel outside the solid rock contours and in gaps between the stones must be fully transparent, with crisp natural rock edges. No cast shadow. Preserve the stone colours, overhead camera, fine detail and composition.",
+    "references": [
+      {
+        "id": "seep-stones",
+        "version": 2,
+        "path": "C:\\Users\\Alex\\.codex\\generated_images\\01a0f334-4664-74c0-9021-ec40d7d1565f\\exec-64084bf9-6581-49cc-b5b9-72dc78d480c2.png"
+      },
+      {
+        "id": "mineral-ledges",
+        "version": 2,
+        "path": "C:\\Users\\Alex\\.codex\\generated_images\\01a0f334-4664-74c0-9021-ec40d7d1565f\\exec-a4acc1c9-6d77-4ad2-963f-516d08fda270.png"
+      }
+    ]
+  },
+  "v4": {
+    "prompts": {
+      "seep-stones": "Use this clean transparent game sprite as the material and transparency reference. Replace its three mineral rings with FIVE FLAT DARK SLATE STONE PLATES in the same asymmetric overall footprint, viewed straight overhead. Thin bone gray salt veins and tiny muted ochre flecks. Match the reference's matte painted grain, fine detail, pixel density and restrained highlights. Transparent exterior exactly like the reference, no cloud or broad shadow. This is a flat game asset.",
+      "mineral-ledges": "Use this clean transparent game sprite as the material and transparency reference. Replace its mineral rings with THREE FLAT ANGULAR IRON-SHALE PLATES connected in the same asymmetric overall footprint, viewed straight overhead. Dark slate gray surfaces with shallow fractures, narrow muted rust ochre seams, one black broken notch. Match the reference's matte painted grain, fine detail, pixel density and restrained highlights. Transparent exterior exactly like the reference, no cloud or broad shadow. This is a flat game asset."
+    },
+    "reference": "res://assets/environment/mineral-habitat-refresh-v1/runtime/anhydrite.png"
+  }
+}

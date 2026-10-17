@@ -1,0 +1,470 @@
+{
+  "source": "source-v7-muted-patches.png",
+  "source_sha256": "3aff8027ae073a7c87bfa02921f5758995f0ba4da12e3a41bc972758379b8719",
+  "scale": 0.3645320197044335,
+  "destination_foot_anchor": [
+    104.0,
+    195
+  ],
+  "idle_endpoints": [
+    {
+      "path": "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png",
+      "sha256": "d010facbf575cf52bbd0293dbed9fef11b94b80830f4270fdd98757c7e6d4dfa"
+    },
+    {
+      "path": "character/veld-shared-helmet-v1/frames/idle-east/000.png",
+      "sha256": "3608ae9fa62bb5d8cd48882f3068292d3004aa6a6daa382c8d8f3ca976d2d7ff"
+    }
+  ],
+  "rejected": [
+    {
+      "file": "source-v1.png",
+      "reason": "exterior bun in fitted poses; oversized shell"
+    },
+    {
+      "file": "source-v2-rejected.png",
+      "reason": "duplicate face inside carried helmet"
+    }
+  ],
+  "frames": [
+    {
+      "state": "equip-helmet-east",
+      "index": 0,
+      "source_cell": 0,
+      "sha256": "a392d4c37a6b9d02c46915c05496aa7d98b5f12bbeadde5e036d374ff423b7ca",
+      "opaque_pixels": 4432
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 1,
+      "source_cell": 1,
+      "sha256": "025d835dedaaf9f04292b7f59828154ef31b735079f91cb4344583912f690017",
+      "opaque_pixels": 4897
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 2,
+      "source_cell": 2,
+      "sha256": "e26627875fa0fb15b408d41feb3edf846ec1800baf3d797a1228774370a273f4",
+      "opaque_pixels": 4902
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 3,
+      "source_cell": 3,
+      "sha256": "b60266d76636328f68601742c7063d414dc50c2194b03bf0babbeea5fe1ed15e",
+      "opaque_pixels": 5334
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 4,
+      "source_cell": 4,
+      "sha256": "e82d837bc25657a325321cbd170d17914aea32ddda5fd80891989105c48b4eed",
+      "opaque_pixels": 5246
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 5,
+      "source_cell": 5,
+      "sha256": "d7f5c9d6d84efab855d02cb8453c7244ac8dbf4f9310a8f80a0f91c84569ce45",
+      "opaque_pixels": 4809
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 6,
+      "source_cell": 6,
+      "sha256": "f578f3779210e6421a8ed5b13f6ddcc82c2fd0dd5fd466de5bf981381111c5ce",
+      "opaque_pixels": 4723
+    },
+    {
+      "state": "equip-helmet-east",
+      "index": 7,
+      "source_cell": 7,
+      "sha256": "78be9a6929b08ae144a7278414c61ffbd93f1a001435312db431d7615c6dd3ea",
+      "opaque_pixels": 4730
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 0,
+      "source_cell": 7,
+      "sha256": "78be9a6929b08ae144a7278414c61ffbd93f1a001435312db431d7615c6dd3ea",
+      "opaque_pixels": 4730
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 1,
+      "source_cell": 6,
+      "sha256": "f578f3779210e6421a8ed5b13f6ddcc82c2fd0dd5fd466de5bf981381111c5ce",
+      "opaque_pixels": 4723
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 2,
+      "source_cell": 5,
+      "sha256": "d7f5c9d6d84efab855d02cb8453c7244ac8dbf4f9310a8f80a0f91c84569ce45",
+      "opaque_pixels": 4809
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 3,
+      "source_cell": 4,
+      "sha256": "e82d837bc25657a325321cbd170d17914aea32ddda5fd80891989105c48b4eed",
+      "opaque_pixels": 5246
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 4,
+      "source_cell": 3,
+      "sha256": "b60266d76636328f68601742c7063d414dc50c2194b03bf0babbeea5fe1ed15e",
+      "opaque_pixels": 5334
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 5,
+      "source_cell": 2,
+      "sha256": "e26627875fa0fb15b408d41feb3edf846ec1800baf3d797a1228774370a273f4",
+      "opaque_pixels": 4902
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 6,
+      "source_cell": 1,
+      "sha256": "025d835dedaaf9f04292b7f59828154ef31b735079f91cb4344583912f690017",
+      "opaque_pixels": 4897
+    },
+    {
+      "state": "remove-helmet-east",
+      "index": 7,
+      "source_cell": 0,
+      "sha256": "a392d4c37a6b9d02c46915c05496aa7d98b5f12bbeadde5e036d374ff423b7ca",
+      "opaque_pixels": 4432
+    }
+  ],
+  "checks": "16 non-clipped frames; both exact idle endpoints; timing cardinality preserved. Native runtime and owner acceptance pending.",
+  "alpha_cleanup": {
+    "far_halo_pixels": 3,
+    "definition": "alpha 6..199 more than four source pixels from alpha >=200",
+    "prior_source_v3_far_halo_pixels": 320296,
+    "source_dimensions_preserved": true
+  },
+  "registration": [
+    {
+      "source_cell": 0,
+      "source_boot_anchor": [
+        232.0,
+        511
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 1,
+      "source_boot_anchor": [
+        201.5,
+        473
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 2,
+      "source_boot_anchor": [
+        193.5,
+        473
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 3,
+      "source_boot_anchor": [
+        168.5,
+        473
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 4,
+      "source_boot_anchor": [
+        211.0,
+        474
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 5,
+      "source_boot_anchor": [
+        205.5,
+        475
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 6,
+      "source_boot_anchor": [
+        202.5,
+        474
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    },
+    {
+      "source_cell": 7,
+      "source_boot_anchor": [
+        205.5,
+        475
+      ],
+      "target_anchor": [
+        104.0,
+        195
+      ]
+    }
+  ],
+  "clean_matte": {
+    "source": "source-v5-alpha.png",
+    "sha256": "cd2860121000b1788293f6f0590d437704b25c84a398ba3f41e49efe23d0339a"
+  },
+  "stationary_shins_boots": {
+    "copied_from": "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png",
+    "rows": [
+      168,
+      207
+    ],
+    "all_frames_pixel_exact": true
+  },
+  "preview_exterior": {
+    "decoded_gif_frames_checked": 16,
+    "max_background_error_per_channel": 3,
+    "criterion": "fully transparent pixels more than two output pixels from opaque silhouette"
+  },
+  "material_grade": {
+    "hair": {
+      "pooled_source_luma_knots": [
+        0.0,
+        7.0,
+        21.0,
+        36.666666666666664,
+        56.0,
+        77.33333333333333,
+        97.33333333333333,
+        140.66666666666666,
+        213.33333333333334
+      ],
+      "reference_rgb_knots": [
+        [
+          1.0,
+          1.0,
+          0.0
+        ],
+        [
+          12.0,
+          5.0,
+          1.6000000000000014
+        ],
+        [
+          25.799999999999997,
+          12.799999999999997,
+          7.0
+        ],
+        [
+          40.0,
+          24.0,
+          14.0
+        ],
+        [
+          58.0,
+          37.0,
+          26.0
+        ],
+        [
+          72.0,
+          50.0,
+          36.39999999999998
+        ],
+        [
+          87.0,
+          66.0,
+          51.19999999999999
+        ],
+        [
+          138.0,
+          113.79999999999995,
+          102.19999999999982
+        ],
+        [
+          208.0,
+          186.0,
+          184.0
+        ]
+      ],
+      "pixels": 14497
+    },
+    "skin": {
+      "pooled_source_luma_knots": [
+        45.333333333333336,
+        67.33333333333333,
+        96.33333333333333,
+        123.43333333333332,
+        145.0,
+        158.0,
+        168.33333333333334,
+        184.33333333333334,
+        245.33333333333334
+      ],
+      "reference_rgb_knots": [
+        [
+          12.0,
+          1.0,
+          0.0
+        ],
+        [
+          53.9,
+          36.9,
+          25.700000000000003
+        ],
+        [
+          137.85,
+          81.85,
+          54.7
+        ],
+        [
+          164.1,
+          98.7,
+          68.0
+        ],
+        [
+          185.0,
+          107.0,
+          75.0
+        ],
+        [
+          192.0,
+          114.0,
+          79.0
+        ],
+        [
+          199.0,
+          122.29999999999998,
+          85.14999999999999
+        ],
+        [
+          208.0,
+          130.2,
+          96.05
+        ],
+        [
+          212.0,
+          146.0,
+          110.0
+        ]
+      ],
+      "pixels": 5743
+    },
+    "skin_through_glass": {
+      "pooled_source_luma_knots": [
+        45.333333333333336,
+        57.5,
+        68.16666666666666,
+        82.66666666666667,
+        119.66666666666667,
+        139.66666666666666,
+        150.33333333333334,
+        159.66666666666666,
+        193.33333333333334
+      ],
+      "reference_rgb_knots": [
+        [
+          88.0,
+          50.0,
+          32.0
+        ],
+        [
+          112.75,
+          73.5,
+          53.5
+        ],
+        [
+          153.5,
+          102.0,
+          68.25
+        ],
+        [
+          178.5,
+          120.0,
+          82.0
+        ],
+        [
+          190.0,
+          126.0,
+          85.0
+        ],
+        [
+          197.5,
+          132.5,
+          90.0
+        ],
+        [
+          205.0,
+          138.0,
+          92.0
+        ],
+        [
+          211.0,
+          147.75,
+          104.75
+        ],
+        [
+          211.0,
+          153.0,
+          117.0
+        ]
+      ],
+      "pixels": 2375
+    },
+    "cloth": {
+      "input_luma": [
+        0,
+        25,
+        40,
+        60,
+        80,
+        100,
+        125
+      ],
+      "output_luma": [
+        0,
+        19,
+        31,
+        46,
+        57,
+        69,
+        90
+      ],
+      "pixels": 120694
+    },
+    "source": "source-v7-muted-patches.png",
+    "palette_references": [
+      "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png",
+      "character/veld-shared-helmet-v1/frames/idle-east/000.png"
+    ],
+    "scope": "Fixed pooled clip LUTs; explicit per-pose masks; unchanged alpha and outside-material RGB. No per-frame normalization."
+  },
+  "geometry_preservation": "One palette pass from preserved v7 source; unchanged clean matte, registration and pose geometry."
+}

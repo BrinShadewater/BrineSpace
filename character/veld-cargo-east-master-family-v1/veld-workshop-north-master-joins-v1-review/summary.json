@@ -1,0 +1,492 @@
+{
+  "scope": "Default workshop generated route/grid source with normal actor versus fixture-only Veld planted-turn subclass and staged East/West/master turns. Prescribed powered room/service entry; no normal selection, natural chooser, ownership, interruption/needs safety or Continue acceptance.",
+  "checks": 5055,
+  "failures": 0,
+  "journeys": [
+    {
+      "tag": "normal-bare",
+      "ticks": 481,
+      "nativeCaptureCount": 73,
+      "uniqueCapturedRows": 32,
+      "reviewPages": [],
+      "turns": [
+        {
+          "clip": "carry-turn-east-west",
+          "firstStep": 33,
+          "lastStep": 73,
+          "tickCount": 41,
+          "travelWorldUnits": 30.658588285251025,
+          "foot": [
+            7983.314453125,
+            7888.3427734375
+          ]
+        }
+      ],
+      "stageBoundaries": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-bare-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "poseKey": "pickup-east",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-bare-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "poseKey": "carry-east",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-bare-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "poseKey": "unload-north",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-bare-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "poseKey": "idle-north",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ]
+    },
+    {
+      "tag": "normal-helmet",
+      "ticks": 481,
+      "nativeCaptureCount": 73,
+      "uniqueCapturedRows": 32,
+      "reviewPages": [],
+      "turns": [
+        {
+          "clip": "carry-turn-east-west",
+          "firstStep": 33,
+          "lastStep": 73,
+          "tickCount": 41,
+          "travelWorldUnits": 30.658588285251025,
+          "foot": [
+            7983.314453125,
+            7888.3427734375
+          ]
+        }
+      ],
+      "stageBoundaries": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-helmet-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "poseKey": "pickup-east",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-helmet-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry"
+          },
+          "pose": "carry",
+          "poseKey": "carry-east",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "normal-helmet-0359",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "",
+            "direction": "west",
+            "started": 7.552,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "poseKey": "unload-north",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 359,
+          "time": 12.9853333333336,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "normal-helmet-0480",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 15.0020000000003,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "poseKey": "idle-north",
+          "slot": 0,
+          "stage": "",
+          "step": 480,
+          "time": 15.0020000000003,
+          "timer": 0.0
+        }
+      ]
+    },
+    {
+      "tag": "staged-bare",
+      "ticks": 570,
+      "nativeCaptureCount": 85,
+      "uniqueCapturedRows": 38,
+      "reviewPages": [
+        "staged-bare-1.png",
+        "staged-bare-2.png",
+        "staged-bare-3.png"
+      ],
+      "turns": [
+        {
+          "clip": "carry-turn-east-west",
+          "firstStep": 33,
+          "lastStep": 73,
+          "tickCount": 41,
+          "travelWorldUnits": 0.0,
+          "foot": [
+            7984.0,
+            7888.0
+          ]
+        },
+        {
+          "clip": "carry-turn-west-north",
+          "firstStep": 400,
+          "lastStep": 447,
+          "tickCount": 48,
+          "travelWorldUnits": 0.0,
+          "foot": [
+            7760.0,
+            8000.0
+          ]
+        }
+      ],
+      "stageBoundaries": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-bare-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "poseKey": "pickup-east",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-bare-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-held-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry-held"
+          },
+          "pose": "carry-held",
+          "poseKey": "carry-held-east",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-bare-0448",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "carry-turn-west-north",
+            "direction": "north",
+            "started": 13.6686666666669,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "poseKey": "unload-north",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 448,
+          "time": 14.468666666667,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-bare-0569",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 16.4853333333337,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "poseKey": "idle-north",
+          "slot": 0,
+          "stage": "",
+          "step": 569,
+          "time": 16.4853333333337,
+          "timer": 0.0
+        }
+      ]
+    },
+    {
+      "tag": "staged-helmet",
+      "ticks": 570,
+      "nativeCaptureCount": 85,
+      "uniqueCapturedRows": 38,
+      "reviewPages": [
+        "staged-helmet-1.png",
+        "staged-helmet-2.png",
+        "staged-helmet-3.png"
+      ],
+      "turns": [
+        {
+          "clip": "carry-turn-east-west",
+          "firstStep": 33,
+          "lastStep": 73,
+          "tickCount": 41,
+          "travelWorldUnits": 0.0,
+          "foot": [
+            7984.0,
+            7888.0
+          ]
+        },
+        {
+          "clip": "carry-turn-west-north",
+          "firstStep": 400,
+          "lastStep": 447,
+          "tickCount": 48,
+          "travelWorldUnits": 0.0,
+          "foot": [
+            7760.0,
+            8000.0
+          ]
+        }
+      ],
+      "stageBoundaries": [
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-helmet-0000",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "pickup-east",
+          "motion": {},
+          "pose": "pickup",
+          "poseKey": "pickup-east",
+          "slot": 0,
+          "stage": "workshop_pickup",
+          "step": 0,
+          "time": 7.002,
+          "timer": 0.52
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-helmet-0032",
+          "direction": "east",
+          "foot": [
+            7984.0,
+            7888.0
+          ],
+          "key": "carry-held-east",
+          "motion": {
+            "clip": "",
+            "direction": "east",
+            "started": 7.53533333333333,
+            "state": "carry-held"
+          },
+          "pose": "carry-held",
+          "poseKey": "carry-held-east",
+          "slot": 0,
+          "stage": "workshop_carry",
+          "step": 32,
+          "time": 7.53533333333333,
+          "timer": 0.0
+        },
+        {
+          "actionElapsed": 0.0,
+          "capture": "staged-helmet-0448",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "unload-north",
+          "motion": {
+            "clip": "carry-turn-west-north",
+            "direction": "north",
+            "started": 13.6686666666669,
+            "state": "carry"
+          },
+          "pose": "unload",
+          "poseKey": "unload-north",
+          "slot": 0,
+          "stage": "workshop_unload",
+          "step": 448,
+          "time": 14.468666666667,
+          "timer": 2.0
+        },
+        {
+          "actionElapsed": -1.0,
+          "capture": "staged-helmet-0569",
+          "direction": "north",
+          "foot": [
+            7760.0,
+            8000.0
+          ],
+          "key": "idle-north",
+          "motion": {
+            "clip": "",
+            "direction": "north",
+            "started": 16.4853333333337,
+            "state": "idle"
+          },
+          "pose": "idle",
+          "poseKey": "idle-north",
+          "slot": 0,
+          "stage": "",
+          "step": 569,
+          "time": 16.4853333333337,
+          "timer": 0.0
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "reviewedPages": [
+      "staged-bare-2.png",
+      "staged-bare-3.png",
+      "staged-helmet-2.png",
+      "staged-helmet-3.png"
+    ],
+    "sourceNativePairsReviewed": 40,
+    "fullNativeFrames": [
+      "staged-helmet-0464-native.png"
+    ],
+    "observations": [
+      "Exact whole North held source matches turn endpoint.",
+      "New squat/release interiors maintain smaller head and original graphite/harness/canisters.",
+      "Terminal authored standing still changes body/grade when older selected idle appears.",
+      "Floor case retained within whole source, not independently owned; contact/occlusion continuity still pending."
+    ],
+    "scope": "Changed North and arrival/West context pose review only; first page unchanged sources reused from prior scoped review, not all316 captures or uninterrupted native motion."
+  }
+}

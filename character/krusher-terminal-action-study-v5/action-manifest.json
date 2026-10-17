@@ -1,0 +1,98 @@
+{
+  "name": "Krusher Dom / west terminal action with glove-corrected shared master",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "status": "unselected; shared idle/held joins packaged, visual polish pending",
+  "states": [
+    {
+      "id": "terminal-raise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/idle.png",
+        "frames/key-001.png",
+        "frames/key-007.png",
+        "frames/key-002.png",
+        "frames/open.png",
+        "frames/key-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        120,
+        180
+      ],
+      "loop": false
+    },
+    {
+      "id": "terminal-type-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/key-003.png",
+        "frames/key-004.png",
+        "frames/key-005.png",
+        "frames/key-004.png",
+        "frames/key-005.png",
+        "frames/key-003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        160,
+        160,
+        160,
+        180
+      ],
+      "loop": true
+    },
+    {
+      "id": "terminal-lower-west",
+      "frameCount": 7,
+      "frameFiles": [
+        "frames/key-003.png",
+        "frames/close-004.png",
+        "frames/key-006.png",
+        "frames/key-007.png",
+        "frames/close-006.png",
+        "frames/release.png",
+        "frames/idle.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        120,
+        120,
+        100,
+        100,
+        120
+      ],
+      "loop": false
+    }
+  ],
+  "actionMeaning": "retrieve and open hip terminal, type on supported keyboard, close and stow",
+  "transitions": [
+    "idle-west -> terminal-raise-west -> terminal-type-west -> terminal-lower-west -> idle-west"
+  ],
+  "canonicalIdleSource": "character\\krusher-moving-equipment-test-v2\\frames\\bare\\idle-west\\000.png",
+  "canonicalIdleSha256": "f0643954d344de02284bcc76345b0d640fa4c5ba6c37baa2bb9be7ef3448690b",
+  "patchBounds": [
+    49,
+    62,
+    115,
+    110
+  ],
+  "limitations": [
+    "Action arm/waist patch now extends to y110 using original registered source art; small transition band needs visual review",
+    "West bare only; no continuous-motion/native station or owner acceptance",
+    "No newly generated anatomy in this revision; lower pose remains derived reuse during raise"
+  ],
+  "seamMethod": "Four-row deterministic feather at y62..66; no geometric warping",
+  "releasePatch": "Only near forearm/glove (91,84)-(106,110), excluding exact hip hardware (88,92)-(96,108); three-row upper seam feather"
+}

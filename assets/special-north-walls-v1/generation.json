@@ -1,0 +1,40 @@
+[
+  {
+    "id": "airlock",
+    "prompt": "Edit reference 1, the wide Diving Airlock north wall. Reference 2 is the existing separate ocean hatch, a material and construction reference only. Redesign wall as a cohesive pressure-lock backdrop matching that hatch: matte charcoal/grey steel, chunky layered bevels, dark rubber seams, round steel bolts, very small muted amber safety tabs. Replace copper/brass piping with dull steel pressure manifolds, two small gauges at outer left and compact pressure equalization valves at outer right. Keep the exact wide wall silhouette, cap, proportions, perspective, margins and three-bay structure from reference 1. CENTRAL bay must remain a QUIET dark steel mounting panel because the existing functional hatch is drawn over its centre separately; add only reinforcing shoulders near its edges, DO NOT paint a hatch or doorway into it. Keep large upper left/right panels blank and quiet to mount separate outside windows later; keep machinery at outer ends and in narrow bottom service bands. No windows baked into image. Refined hand-painted game art matching the hatch, restrained highlights, no shiny glare or glow. No floor, no new standalone props, no text. Isolated wall with genuine transparent exterior.",
+    "generated_source": "C:\\Users\\Alex\\.codex\\generated_images\\01a0e5c1-ac7f-7713-b287-c8f59ade127d\\exec-31486bbd-67d2-4580-af89-6fbade408267.png",
+    "tool": "built-in image_gen",
+    "copied_without_pixel_edits": true,
+    "references": [
+      {
+        "role": "wall geometry",
+        "path": "res://assets/room-risers-v4/masters/airlock.png",
+        "sha256": "64d37e07950605294de3b7bdacfcd880b98f0c5fd3adb8fdd1690c1883a67e5a"
+      },
+      {
+        "role": "equipment material and construction",
+        "path": "res://assets/door-polish-v3/ocean-hatch-interior.png",
+        "sha256": "5c2df92fdd5051b0a7bffa8f3f563b9e1ccf05dbc1e34ce83650ddbfa19873e3"
+      }
+    ]
+  },
+  {
+    "id": "survey_probe_bay",
+    "prompt": "Edit reference 1 (wide probe-bay wall) into a bespoke north wall backing for the launcher shown in reference 2 (subject and material reference only). Preserve exact wall silhouette, dimensions, cap, three bay proportions, and true transparent exterior. Transform the CENTRAL panel into an integrated industrial launcher service backplate: matte charcoal steel, bolted concentric reinforcement surrounding a dark central lower docking recess, thick restrained pipes and a small desaturated teal pressure accumulator on the right, matching reference 2's construction. Machinery confined to central panel between the two ribs. The separate existing launcher will stand in front, so DO NOT draw a second launcher, launch ramp, probe, floor, or projecting machine. Backplate and pipes should visually continue down to the bottom edge of the central bay, behind the separate launcher. Keep left and right large upper panels quiet and clear for separately drawn ocean windows; maintain their lower service bands. Reduce bright cyan trim to muted petrol teal. Hand-painted game art, modest matte highlights matching both references, no glow, no text. Preserve cap/face alignment and margins. Output isolated wall on true alpha background.",
+    "generated_source": "C:\\Users\\Alex\\.codex\\generated_images\\01a0e5c1-ac7f-7713-b287-c8f59ade127d\\exec-9a40ea23-abd0-4858-8696-46214cda1930.png",
+    "tool": "built-in image_gen",
+    "copied_without_pixel_edits": true,
+    "references": [
+      {
+        "role": "wall geometry",
+        "path": "res://assets/room-risers-expansion-v1/masters/survey_probe_bay.png",
+        "sha256": "f714ba1b400db163a68a05a2041913fdae0fe9131173ee30ad747780bb0b1805"
+      },
+      {
+        "role": "equipment material and construction",
+        "path": "res://assets/survey-probe-v1-2026-09-26/sources/north-launcher.png",
+        "sha256": "8ea15631d42b08986d847486683a4f2a3b1dedef5b7bc6fa910d7325a16254f6"
+      }
+    ]
+  }
+]

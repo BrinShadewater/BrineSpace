@@ -1,0 +1,329 @@
+{
+  "name": "Veld South original-master breathing idle helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry-south": 0.0827027027027027
+  },
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_idle_not_installed",
+  "states": [
+    {
+      "id": "unload-south",
+      "frameFiles": [
+        "res://character/veld-south-material-master-v2/frames/helmet/000.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/001.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/002.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/003.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/004.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/005.png",
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/000.png"
+      ],
+      "frameCount": 7,
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        60,
+        65,
+        65,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "pickup-south",
+      "frameFiles": [
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/000.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/005.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/004.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/003.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/002.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/001.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/000.png"
+      ],
+      "frameCount": 7,
+      "frameDurationsMs": [
+        70,
+        65,
+        65,
+        60,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-south",
+      "frameFiles": [
+        "res://character/veld-south-material-master-v2/frames/helmet/007.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/008.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/009.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/010.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/011.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/012.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "carry-start-south",
+      "frameFiles": [
+        "res://character/veld-south-material-master-v2/frames/helmet/013.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/014.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/015.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/016.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-stop-south",
+      "frameFiles": [
+        "res://character/veld-south-material-master-v2/frames/helmet/016.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/015.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/014.png",
+        "res://character/veld-south-material-master-v2/frames/helmet/013.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/000.png",
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/001.png",
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/002.png",
+        "res://character/veld-idle-south-original-master-v1/frames/helmet/003.png"
+      ],
+      "frameCount": 4,
+      "frameDurationsMs": [
+        375,
+        375,
+        375,
+        375
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "floorPropStudy": {
+    "canvas": "res://character/veld-cargo-south-master-family-v1/floor-case-canvas.png",
+    "displayUnloadIndices": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "displayPickupIndices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "handoffSeconds": 0.26,
+    "scope": "fixed independent case in front of body after authored release, not production ownership/lifetime"
+  }
+}

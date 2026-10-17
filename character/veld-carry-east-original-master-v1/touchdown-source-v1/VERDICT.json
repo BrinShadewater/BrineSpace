@@ -1,0 +1,80 @@
+{
+  "id": "cbac3b06-8895-4638-9331-de0377e99f8e",
+  "folder": "touchdown-source-v1",
+  "raw": "touchdown-source-v1/raw-touchdown-v1.png",
+  "prompt": "touchdown-source-v1/prompt.txt",
+  "references": [
+    "../veld-east-held-original-master-v1/raw-held-v1.png",
+    "single-transition-source-v1/raw-transition-v1.png"
+  ],
+  "status": "Completed; rejected requested motion state",
+  "verdict": "Rejected requested touchdown: forward far heel remains airborne, head28 exceeds original26-27 range; upper body45 vs42.",
+  "sourceAudit": {
+    "sourceSHA256": "8ea65dccb1e6fad2fd9b60c5ac22b8431fb887f6bd119860c145afc85e526c23",
+    "sourceSize": [
+      725,
+      2168
+    ],
+    "scale": 0.08210332103321033,
+    "offset": [
+      104,
+      59
+    ],
+    "rows": [
+      {
+        "height": 148,
+        "headWidth": 26,
+        "headTop": 76,
+        "upperBodyWidth": 42,
+        "floor": 223,
+        "clothRGBMedian": [
+          66.0,
+          64.0,
+          63.0
+        ],
+        "clipped": false
+      },
+      {
+        "height": 148,
+        "headWidth": 28,
+        "headTop": 76,
+        "upperBodyWidth": 45,
+        "floor": 223,
+        "clothRGBMedian": [
+          66.0,
+          65.0,
+          64.0
+        ],
+        "clipped": false
+      },
+      {
+        "height": 148,
+        "headWidth": 27,
+        "headTop": 76,
+        "upperBodyWidth": 37,
+        "floor": 223,
+        "clothRGBMedian": [
+          62.0,
+          62.0,
+          61.0
+        ],
+        "clipped": false
+      }
+    ],
+    "scope": "Independent whole figure, unchanged pose upper body guided only by original held source, one entire-source148 density ruler/shared foot floor and whole head-axis translation. No head/limb/body RGB patch or per-region resize. Head/material/proportion/contact/native fidelity independently pending."
+  },
+  "footExtentDiagnostic": {
+    "rightFootRegionXMin": 143,
+    "opaqueBottom": 217,
+    "wholeFigureFloor": 223,
+    "scope": "Screen-right boot opaque extent, not a calibrated physical heel landmark."
+  },
+  "visualReview": "Complete same-scale master/source comparison plus enlarged heads and legs inspected. No native packaging/adoption for rejected state.",
+  "bindings": {
+    "raw-touchdown-v1.png": "8ea65dccb1e6fad2fd9b60c5ac22b8431fb887f6bd119860c145afc85e526c23",
+    "prompt.txt": "db720bf5c81ec08d92d0ccca95e9a884a3cc4d0e8abb7125f1c71452f18592b1",
+    "source-audit.json": "5a8def79f4472f1016d81625786bd01cff46d3135db201dd87c9fa9bd7a5f941",
+    "transition-candidate.png": "3864a8ea9eb141b55f3dab3f47ec7f7cb682d21f3d176dbb008d936bf998295c",
+    "source-master-review.png": "a4e86475333bf0d47ac556b9df287488cfa327dd2627e4a199e16543deb05e44"
+  }
+}

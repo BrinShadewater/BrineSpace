@@ -1,0 +1,1669 @@
+{
+	"checks": 13076,
+	"failures": 4,
+	"journeys": [
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "east",
+					"file": "q0-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "west",
+					"file": "q0-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "north",
+					"file": "q0-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "south",
+					"file": "q0-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "candidate-q0-recall-pickup-before",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.233333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.3000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8049.12, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.3333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8044.32, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.4000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8039.521, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.4666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-08-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8034.721, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-10",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.5333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-10.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-10-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8027.521, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-13",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.6333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-13.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-13-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8022.721, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-15",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 31.7000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-15.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-15-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8017.921, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8005.922, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-22",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-22.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-22-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7996.322, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-26",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7986.723, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7974.723, 7104.0)",
+					"label": "candidate-q0-recall-pickup-after-35",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q0-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 0,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q1-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "q1-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "q1-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "q1-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "west",
+					"file": "q1-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "south",
+					"file": "q1-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "south",
+					"file": "q1-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "south",
+					"file": "q1-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "north",
+					"file": "q1-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "west",
+					"file": "q1-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "east",
+					"file": "q1-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "west",
+					"file": "q1-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.233333333333333,
+					"foot": "(8640.0, 8056.32)",
+					"label": "candidate-q1-recall-pickup-before",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.233333333333333,
+					"foot": "(8640.0, 8056.32)",
+					"label": "candidate-q1-recall-pickup-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8056.32)",
+					"label": "candidate-q1-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.0000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8051.52)",
+					"label": "candidate-q1-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8049.12)",
+					"label": "candidate-q1-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.1000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8044.32)",
+					"label": "candidate-q1-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.1666666666673,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8039.521)",
+					"label": "candidate-q1-recall-pickup-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.233333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-08-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8034.721)",
+					"label": "candidate-q1-recall-pickup-after-10",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.3000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-10.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-10-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8027.521)",
+					"label": "candidate-q1-recall-pickup-after-13",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.4000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-13.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-13-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8022.721)",
+					"label": "candidate-q1-recall-pickup-after-15",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 33.4666666666673,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-15.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-15-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8017.921)",
+					"label": "candidate-q1-recall-pickup-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 33.533333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8005.922)",
+					"label": "candidate-q1-recall-pickup-after-22",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 33.533333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-22.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-22-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7996.322)",
+					"label": "candidate-q1-recall-pickup-after-26",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 33.533333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7986.723)",
+					"label": "candidate-q1-recall-pickup-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 33.533333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7974.723)",
+					"label": "candidate-q1-recall-pickup-after-35",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 33.533333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q1-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 1,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q2-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "q2-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q2-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "q2-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "north",
+					"file": "q2-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "west",
+					"file": "q2-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "west",
+					"file": "q2-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "west",
+					"file": "q2-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "east",
+					"file": "q2-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "north",
+					"file": "q2-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "south",
+					"file": "q2-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "north",
+					"file": "q2-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.233333333333333,
+					"foot": "(7687.68, 8640.0)",
+					"label": "candidate-q2-recall-pickup-before",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.233333333333333,
+					"foot": "(7687.68, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7687.68, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7692.48, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.6000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7694.88, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.6333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7699.68, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7704.479, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.7666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-08-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7709.279, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-10",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.8333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-10.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-10-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7716.479, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-13",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 31.9333333333341,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-13.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-13-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7721.279, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-15",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 32.0000000000007,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-15.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-15-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7726.079, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7738.078, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-22",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-22.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-22-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7747.678, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-26",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7757.277, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7769.277, 8640.0)",
+					"label": "candidate-q2-recall-pickup-after-35",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q2-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 2,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "q3-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "q3-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "q3-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "q3-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "east",
+					"file": "q3-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "north",
+					"file": "q3-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "north",
+					"file": "q3-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "north",
+					"file": "q3-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "south",
+					"file": "q3-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "east",
+					"file": "q3-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "west",
+					"file": "q3-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "east",
+					"file": "q3-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.233333333333333,
+					"foot": "(7104.0, 7687.68)",
+					"label": "candidate-q3-recall-pickup-before",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.233333333333333,
+					"foot": "(7104.0, 7687.68)",
+					"label": "candidate-q3-recall-pickup-after-00",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7687.68)",
+					"label": "candidate-q3-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.2000000000006,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7692.48)",
+					"label": "candidate-q3-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.2666666666673,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7694.88)",
+					"label": "candidate-q3-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.3000000000006,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7699.68)",
+					"label": "candidate-q3-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.3666666666673,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7704.479)",
+					"label": "candidate-q3-recall-pickup-after-08",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.433333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-08.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-08-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7709.279)",
+					"label": "candidate-q3-recall-pickup-after-10",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.5000000000006,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-10.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-10-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7716.479)",
+					"label": "candidate-q3-recall-pickup-after-13",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.6000000000006,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-13.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-13-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7721.279)",
+					"label": "candidate-q3-recall-pickup-after-15",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 29.6666666666673,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-15.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-15-source.png",
+					"state": "swim-cancel-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7726.079)",
+					"label": "candidate-q3-recall-pickup-after-17",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 29.733333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7738.078)",
+					"label": "candidate-q3-recall-pickup-after-22",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 29.733333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-22.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-22-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7747.678)",
+					"label": "candidate-q3-recall-pickup-after-26",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 29.733333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7757.277)",
+					"label": "candidate-q3-recall-pickup-after-30",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 29.733333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-30.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-30-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7769.277)",
+					"label": "candidate-q3-recall-pickup-after-35",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 29.733333333334,
+						"state": "swim"
+					},
+					"native": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-water-cancel-profiles-v1/captures/candidate-q3-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 3,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		}
+	],
+	"resolvedUserDataDir": "C:/Users/Alex/AppData/Local/Temp/brine-james-native-5c_7diqz/Godot/app_userdata/BrineSpace",
+	"scope": "Real dispatch/needs/airlock/exterior/controller/render/unload and loaded disk restore; dedicated station, normal runtime selected manifests/profile. Existing James selected source only. Four actual cardinal pickup recalls using production James and shared expedition clock, separate visual heading, paused fresh-scene disk Continue. Indexed work/other indexes/gears and traffic still require broader certification.",
+	"scratchAppData": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-5c_7diqz"
+}

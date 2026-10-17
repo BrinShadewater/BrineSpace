@@ -1,0 +1,61 @@
+{
+  "repairs": [
+    "aspect-preserving glass crop with shared 60-unit scene scale",
+    "uniform wall panel sampling with cropped/repeated spans",
+    "explicit floor tiles through actual atlas divisions and 24-unit module path",
+    "lower-contrast sage and bronze source revisions",
+    "matte outlet source revision"
+  ],
+  "sources": {
+    "sage": {
+      "path": "assets/corridor-risers-v2/floor-sage-v2.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "792d21a05426546d17bb8bb868c5ba1a1ffc8463bd02973320b0661cb99a90df",
+      "mean_luma": 0.297,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "unchanged_generated_bytes": true
+    },
+    "bronze": {
+      "path": "assets/corridor-risers-v2/floor-bronze-v2.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "da706727949a0be675f7259abf59b645290ae8b807b27daa1ed82b6ce3df80d5",
+      "mean_luma": 0.265,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "unchanged_generated_bytes": true
+    },
+    "outlet": {
+      "path": "assets/probe-outlet-stub-v3/outlet-matte-v2.png",
+      "size": [
+        1247,
+        1261
+      ],
+      "sha256": "92ba3d5070ce6c1bbf289bf6dcf5ab556b5e9f027c12a64a0fb3b27863f959e9",
+      "mean_luma": 0.246,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "unchanged_generated_bytes": true
+    }
+  },
+  "locked_launcher_hashes": {
+    "scripts/probe_launcher_mechanics.gd": true,
+    "assets/probe-launcher-v2/base.png": true,
+    "assets/probe-launcher-v2/cradle.png": true,
+    "assets/probe-launcher-v2/launch-recovery.webp": true
+  },
+  "checks": "288-view runs for default/sage/bronze plus 48 manual tile cases and glass aspect/scene-scale assertions; 4 native outlet rotations; profiles unchanged",
+  "owner_acceptance": "pending"
+}

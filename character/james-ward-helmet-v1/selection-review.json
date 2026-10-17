@@ -1,0 +1,102 @@
+{
+  "status": "installed_dry_helmet_ward_native_fixture_reviewed_owner_review_pending",
+  "productionFiles": [
+    "scripts/branforth_npc.gd",
+    "scripts/james_hull_resume.gd",
+    "scripts/james_hull_return.gd",
+    "scripts/bill_npc.gd"
+  ],
+  "sourcesChanged": false,
+  "newSourceStates": 0,
+  "fullSetComplete": false,
+  "explicitChecks": 31839,
+  "failures": 0,
+  "nativeCaptures": 402,
+  "sourceRGBAMatches": 402,
+  "freshContinues": 14,
+  "lifecycleReview": "review-evidence.json",
+  "pauseReview": "pause-review.json",
+  "compatibility": {
+    "bareHull": {
+      "checks": 740,
+      "failures": 0,
+      "helmetWardAdmissionCases": [
+        {
+          "defaultSharedRejected": true,
+          "direction": "north",
+          "helmetWardAdmitted": true,
+          "otherFamiliesAndWetRejected": true
+        },
+        {
+          "defaultSharedRejected": true,
+          "direction": "east",
+          "helmetWardAdmitted": true,
+          "otherFamiliesAndWetRejected": true
+        },
+        {
+          "defaultSharedRejected": true,
+          "direction": "south",
+          "helmetWardAdmitted": true,
+          "otherFamiliesAndWetRejected": true
+        },
+        {
+          "defaultSharedRejected": true,
+          "direction": "west",
+          "helmetWardAdmitted": true,
+          "otherFamiliesAndWetRejected": true
+        }
+      ],
+      "samples": 180,
+      "scope": "720 prescribed bare hull source-clock/recipe/legacy snapshot comparisons: four facings x five duration budgets x nine seams. Twenty separate family/admission checks preserve default shared rejection while admitting dry helmet James ward, rejecting other repair families and flooded welding. No full physical hull job/Continue/visual acceptance proof."
+    },
+    "billWard": "Original tests/test_ward_repair.gd passes; no invented assertion count."
+  },
+  "guards": {
+    "north": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "east": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "south": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "west": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "pause": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "hull_regression": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    },
+    "bill_compat": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": []
+    }
+  },
+  "frozenInputs": "Eleven whole-file hashes equal before all seven final launches and afterward.",
+  "archive": "before-helmet-ward-admission: first North/West runs rejected helmet weld snapshots in shared validator. Archived failed logs and evidence; fixtures now fail fast. Narrow explicit James ward admission fixed production mismatch without stripping equipment or relaxing default shared validation.",
+  "scope": "Four dedicated dry helmet cryo-ward lifecycle fixtures; North actual pause/return/reentry. Prescribed worn gear, not locker fitting. Original source timing and cost retained. Source-only paid-clock GIF is not continuous native effects footage. Full set and owner acceptance remain pending.",
+  "hullHelmetLifecycleReview": "character/james-hull-helmet-v1/selection-review.json"
+}

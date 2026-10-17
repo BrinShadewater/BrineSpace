@@ -1,0 +1,2 @@
+# Source provenance
+No new image generation in this interval. Complete corrected endpoint from veld-gather-north-original-master-v1/v5; interior gathers from whole V2/V3 sources recorded by veld-gather-north-original-master-v2; turn interiors/equipment from veld-turn-north-east-helmet-aligned-v3. Only endpoint aliases changed, earlier sources/manifests preserved. All raw generation execution IDs/prompts remain in originating folders. Newbuild.py reproduces consolidation. Native verification binds actual used source bytes, not artistic acceptance.

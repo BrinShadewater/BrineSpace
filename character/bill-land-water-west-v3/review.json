@@ -1,0 +1,140 @@
+{
+  "scope": "Source-only seven pose500ms West entry revision, unselected. Crouch/push graphite texture and badge edits; complete material/identity acceptance pending. No native motion/helmet/Continue/normal admission claim.",
+  "registrations": {
+    "crouch": {
+      "source": "bill-land-water-west-v1\\sources\\crouch-canvas-v4.png",
+      "generation": "exec-2c5760c3-9a86-44e2-83f3-ca31153cd4ed",
+      "prompt": "bill-land-water-west-v1/sources/crouch-prompt-v4.txt",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        -15
+      ],
+      "soleBefore": 239,
+      "paintedSupportPreserved": true,
+      "nativeAlphaBBox": [
+        112,
+        111,
+        198,
+        227
+      ]
+    },
+    "push": {
+      "source": "bill-land-water-west-v1\\sources\\push-canvas-v3.png",
+      "generation": "exec-23fd84d8-f757-4075-8d82-f3f87cd535f2",
+      "prompt": "bill-land-water-west-v1/sources/push-prompt-v3.txt",
+      "rawCanvas": [
+        1254,
+        1254
+      ],
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        0
+      ],
+      "soleBefore": null,
+      "paintedSupportPreserved": true,
+      "nativeAlphaBBox": [
+        100,
+        115,
+        219,
+        222
+      ]
+    }
+  },
+  "exactPreservedFrameIndices": [
+    0,
+    1,
+    4,
+    5,
+    6
+  ],
+  "decodedAPNGFramesExact": 7,
+  "durationsMs": [
+    60,
+    70,
+    80,
+    60,
+    80,
+    90,
+    60
+  ],
+  "totalMs": 500,
+  "sourceSHA256": {
+    "bill-land-water-west-v1\\sources\\reference-idle-native.png": "a1d749ecadb287991038f0b737b8d9ca6713e9d678e8aa7cfad2711d8f2cf534",
+    "bill-land-water-west-v1\\sources\\arm-ready-native-v3.png": "69201b176f01890dedbbbbb8a857ecc70b1455be3df177ee4a79ed70be786e2a",
+    "bill-land-water-west-v3\\sources\\crouch-native-v4.png": "f7f7351d2338cf1cdfefb692ecaaf14ff06667355469d7eb4611c24ad5d626ec",
+    "bill-land-water-west-v3\\sources\\push-native-v3.png": "16c2fd9323c7a9dbea40c82cbd64f4a0b205cd61ba9502e00fe34ce508892532",
+    "bill-land-water-west-v1\\sources\\lift-native-v2.png": "c4661657d9658b9c86fab8fcda618cac3b62462f59e9d94b4278b80d64c5bb8a",
+    "bill-land-water-west-v1\\sources\\prone-native-v1.png": "c0cc6c57090668286af33a32735d3aeea1088bd579ba040b23485d8d35d9cf2f",
+    "bill-land-water-west-v1\\sources\\reference-swim-native.png": "9fc09bdc18673625bb7a35e2f19c5b86ca4d0bbacadb154f65d8da52de968195"
+  },
+  "generationMode": "built-in image_gen",
+  "materialGeometryDiagnostics": [
+    {
+      "pose": 2,
+      "opaqueAlphaThresholdExclusive": 180,
+      "oldAlphaBBox": [
+        112,
+        112,
+        197,
+        227
+      ],
+      "newAlphaBBox": [
+        112,
+        111,
+        198,
+        227
+      ],
+      "opaqueSilhouetteIoU": 0.9688306104901118,
+      "identicalRGBA": false,
+      "scope": "Silhouette overlap diagnostic, not anatomy/texture/grade acceptance."
+    },
+    {
+      "pose": 3,
+      "opaqueAlphaThresholdExclusive": 180,
+      "oldAlphaBBox": [
+        100,
+        115,
+        218,
+        222
+      ],
+      "newAlphaBBox": [
+        100,
+        115,
+        219,
+        222
+      ],
+      "opaqueSilhouetteIoU": 0.9409057883264713,
+      "identicalRGBA": false,
+      "scope": "Silhouette overlap diagnostic, not anatomy/texture/grade acceptance."
+    }
+  ],
+  "priorSourceBank": "bill-land-water-west-v2",
+  "visualAcceptance": "Two source detail/material corrections improved; whole family and new bank native proof pending.",
+  "rawAndPromptSHA256": {
+    "bill-land-water-west-v1\\sources\\crouch-canvas-v4.png": "01f9e2c188f01a223e83b80dfb65da2b0e4abbec4a11088fdb033b07dd22aebb",
+    "bill-land-water-west-v1\\sources\\crouch-prompt-v4.txt": "77c37375568ac25f2ac453ae020232e5a1160673f114efc9f46c679201969aa0",
+    "bill-land-water-west-v1\\sources\\push-canvas-v3.png": "bcb579cfd0b467b6feba00f08d951ab96f4b5fa5993c0fd3217b99a0582b5e49",
+    "bill-land-water-west-v1\\sources\\push-prompt-v3.txt": "4f3da1bdeb1636de18a4890c0e1d02852409176776829da69240f1f885e93889"
+  },
+  "exactUnchangedV2Frames": [
+    "bare/frames/land-swim-west/000.png",
+    "bare/frames/land-swim-west/001.png",
+    "bare/frames/land-swim-west/004.png",
+    "bare/frames/land-swim-west/005.png",
+    "bare/frames/land-swim-west/006.png",
+    "helmet/frames/land-swim-west/000.png",
+    "helmet/frames/land-swim-west/001.png",
+    "helmet/frames/land-swim-west/004.png",
+    "helmet/frames/land-swim-west/005.png",
+    "helmet/frames/land-swim-west/006.png"
+  ],
+  "previousNativeV2SourceInputsStable": 16,
+  "decodedAPNGFramesExactBothGears": 14,
+  "visualReview": "Original master/right West figure, complete V2/V3 common148 comparison, before/after native4x material crops and all fourteen bare/helmet neck crops inspected. New crouch/push have more neutral graphite quilting, worn metal detail and square/ring shoulder badges, with compact two-hand poses retained. Metals are brighter; face/hair pixels regenerated. Other three intermediate poses and walking/equipped endpoint material differences remain; no complete family grade/master identity or continuous motion acceptance."
+}

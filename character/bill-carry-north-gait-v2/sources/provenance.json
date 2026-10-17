@@ -1,0 +1,29 @@
+{
+  "tool": "built-in image_gen",
+  "transparent": true,
+  "sources": [
+    {
+      "source": "first-half-v1.png",
+      "generationId": "exec-73d75d7d-4f65-423a-8bf7-c18ccf5782b3",
+      "prompt": "prompt-v1.txt",
+      "decision": "samples0,1,2 used before cycle rotation",
+      "sha256": "7bf908ade70e6f559a93ff5ac278138e659114f97d94cc0d0f75a7cec85fa623"
+    },
+    {
+      "source": "opposite-half-v1.png",
+      "generationId": "exec-bb606250-cd96-4b1d-b109-f60b68ff48be",
+      "prompt": "prompt-v2.txt",
+      "decision": "samples0,1 used; sample2 rejected wrong support leg",
+      "sha256": "6324af9f6bac94cf07446b4e79c98c9f02fc4e4ff8c74c07f7ef0cb0db8e179e"
+    },
+    {
+      "source": "opposite-half-corrected-v2.png",
+      "generationId": "exec-5ecbc39b-ddda-46e1-8623-6b023b3e2ee0",
+      "prompt": "prompt-v3.txt",
+      "decision": "sample2 used; no mirror",
+      "sha256": "746bb3be1c157f1a9b3a8b6e4138ba42cc909b965af1734c45ae0c5d90ab61ec"
+    }
+  ],
+  "registration": "149 actual North opaque master height / per-family whole standing ruler; nominal runtime standingHeight remains148",
+  "cycleOrder": "2,3,4,5,0,1 from authored first3/opposite3 for right-foot onset"
+}

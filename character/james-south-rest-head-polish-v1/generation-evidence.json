@@ -1,0 +1,33 @@
+{
+  "method": "Built-in image_gen edit; original raw output retained. Canvas normalization is review-only, not accepted registration or a runtime source.",
+  "prompt": "frame-edit-prompt.txt",
+  "output": "generated-frame-edit.png",
+  "outputSha256": "63dd3d4ec20a75a526a667c06d8e8296d4b4880a5a179a921171a9beace4b25c",
+  "originalSize": [
+    256,
+    256
+  ],
+  "outputSize": [
+    1254,
+    1254
+  ],
+  "originalAlphaBounds": [
+    76,
+    108,
+    180,
+    225
+  ],
+  "normalizedCandidateAlphaBounds": [
+    80,
+    110,
+    182,
+    221
+  ],
+  "normalizedChangedAlphaPixels": 3380,
+  "normalizedChangedRGBAPixels": 6837,
+  "decision": "Not installed: raw edit changes complete source geometry/material/equipment despite head-only request. Face appears less round, but precise head registration, master width and adjacent-pose/helmet continuity are unproven. Do not use a full-frame replacement.",
+  "references": {
+    "character\\james-rest-material-continuity-v1\\frames\\bare\\lie-down-south\\002.png": "a86ff37d5ab8df983b2f785c90b2d3ca5704823dc35bdfe9823f5a9f46ad7588",
+    "character\\james-rest-material-continuity-v1\\frames\\bare\\lie-down-south\\000.png": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8"
+  }
+}

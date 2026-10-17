@@ -1,0 +1,45 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "allFourRawSourcesInspected": true,
+  "allFourPackedComparisonsInspected": true,
+  "findings": "Source01 repeats near-leading/support in both halves. Half02 still repeats near support and changes crate front projection. Contact03 literal opposite thigh geometry succeeds but front far boot angled/projected above rear and crate differs. Contact04 keeps opposite thighs and flattens front boot; requested five-row clearance and original crate panel restoration not reached. No coherent complete cycle accepted.",
+  "bootDiagnostics": [
+    {
+      "source": "contact-03-unselected",
+      "rearLeftLowerROI": [
+        0,
+        150,
+        85,
+        184
+      ],
+      "frontRightLowerROI": [
+        100,
+        150,
+        184,
+        184
+      ],
+      "rearAlphaBottom": 172,
+      "frontAlphaBottom": 169
+    },
+    {
+      "source": "contact-04-unselected",
+      "rearLeftLowerROI": [
+        0,
+        150,
+        85,
+        184
+      ],
+      "frontRightLowerROI": [
+        100,
+        150,
+        184,
+        184
+      ],
+      "rearAlphaBottom": 172,
+      "frontAlphaBottom": 171
+    }
+  ],
+  "limits": "Read-only lower-boot alpha envelopes only, not anatomical sole/physical contact certification. No Godot/native/full-save/Continue acceptance in this milestone.",
+  "next": "Generate frozen far-passing05 from contact04, then regenerate/review near half for consistent body/crate projection before cycle assembly/native validation; West carry and turns/held joins/full-set polish remain."
+}

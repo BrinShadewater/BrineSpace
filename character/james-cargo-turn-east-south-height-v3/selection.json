@@ -1,0 +1,43 @@
+{
+  "status": "installed_master_height_repair_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-east-south",
+    "carry-turn-south-east"
+  ],
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.26972477064220185,
+  "timingMs": 800,
+  "checks": "127 packaging /121 installed-loader native checks,0 failures;8 captures",
+  "profileAudit": "Scratch APPDATA asserted; real profile unchanged",
+  "visualReview": "Selected source, contact, master comparison and native reviewed; final owner visual review pending",
+  "review": "review-master-v4.gif",
+  "palette": "Fixed shared gold gain [.7298,.816,1.026] plus fixed matte curve; no per-frame exposure or bounds normalization; pre-grade evidence preserved in before-gold-master-v4",
+  "materialEvidence": "../james-animation-coverage-2026-09-30/turn-material-audit.json",
+  "remaining": [
+    "Final owner visual review",
+    "Four dry half-turn states",
+    "Remaining full-set family master audit/replacement and cross-family polish"
+  ],
+  "source": "source-master-v3.png",
+  "prompt": "prompt-master-v3.txt",
+  "helmetSource": "source-helmet-master-v3.png",
+  "helmetPrompt": "prompt-helmet-master-v3.txt",
+  "rejected": "rejected-reused-source: inherited full-source interiors changed body density despite corrected endpoints",
+  "sharedEndpoints": "Exact east/north 000 and south/west 000, bare and helmet",
+  "selectedSourceHashes": {
+    "source": "a4f27de572bfbeb2de4293ef4ea7f14dfa9f3c9206e559741a7a0d3dae2f4792",
+    "helmetSource": "0b41e97022e5ed8408469f436652bd0fe6ac49148c326108d799ca9fe00d90aa"
+  }
+}

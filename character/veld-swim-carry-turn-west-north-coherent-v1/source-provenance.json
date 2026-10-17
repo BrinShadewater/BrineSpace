@@ -1,0 +1,65 @@
+{
+  "installed": false,
+  "method": "Built-in imagegen authored cargo body with revised yaw; retained independently authored ordinary prone helmet heads",
+  "bodySources": [
+    {
+      "path": "character/veld-swim-carry-turn-west-north-coherent-v1/body-source-v1.png",
+      "sha256": "23e99305098dd8a64236cb39bf8046a35e0b76267c0378a27e834d9281c3308b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-west-north-coherent-v1/body-prompt-v1.txt",
+      "promptSha256": "a255c9b5561bfd88a56d02051d2d897971af51d4467fd128fd712fb50e94b678",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-96aff425-11cd-47a2-b39a-358510091f65.png",
+      "selection": "Rejected: early yaw repeated, last cell cardinal north",
+      "references": [
+        {
+          "path": "character/veld-swim-turn-west-north-coherent-v1/bare-source-v1.png",
+          "sha256": "7f921f867a88899b3c5843f293c5250b4dd7e029b22d272c3bcd19c0e21dfcf7"
+        },
+        {
+          "path": "character/veld-swim-carry-west-coherent-v1/source-v1.png",
+          "sha256": "44b9135c426ad42792e514cddf25f06a745d75393c5db79125a302748a92f39a"
+        },
+        {
+          "path": "character/veld-swim-carry-north-coherent-v1/source-v3.png",
+          "sha256": "3a9aeb3fd92f4e80c6cb03e0b93fdf341a8c4cf2f6f507f051dc73b623387729"
+        }
+      ]
+    },
+    {
+      "path": "character/veld-swim-carry-turn-west-north-coherent-v1/body-source-v2.png",
+      "sha256": "e81b61bbb72b8221974807e48c5af66836caf5fca2388197d652712a10fea6c2",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-west-north-coherent-v1/body-prompt-v2.txt",
+      "promptSha256": "2409624381696d852e5cdeed96310e85083a47c009744f666a0afd7cd00e9669",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-b05fca40-20c3-40ca-887a-f0e916eabc5a.png",
+      "selection": "Selected all four revised yaws",
+      "references": [
+        {
+          "path": "character/veld-swim-carry-turn-west-north-coherent-v1/body-source-v1.png",
+          "sha256": "23e99305098dd8a64236cb39bf8046a35e0b76267c0378a27e834d9281c3308b"
+        }
+      ]
+    }
+  ],
+  "helmetSources": [
+    {
+      "path": "character/veld-swim-turn-west-north-coherent-v1/helmet-source-v2.png",
+      "sha256": "c63c3f51090a313a776eee82fc4f2a6d03250044dceb63e900fb586a3556f8f2",
+      "cells": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "scale": 0.07
+    }
+  ],
+  "scaleRule": "Uniform .22 body/.07 helmet atlas rulers; explicit full-head centers and case ownership; no pose-size normalization",
+  "semanticLandmarksSha256": "48c1617bb792545b377d105e293f06f5ba3247063e46546c22507067b470f5a0"
+}

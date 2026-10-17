@@ -1,0 +1,26 @@
+{
+  "replayChecks": 328,
+  "failures": 0,
+  "targetedInputsUnchanged": 335,
+  "regions": {
+    "head": {
+      "commonPixels": 495,
+      "meanAbsRGBDifference": 5.551,
+      "pixelsWithRGBDifferenceAbove8": 174,
+      "note": "Fixed spatial correspondence mixes small geometry, detail and grade; not pure colour."
+    },
+    "torso": {
+      "commonPixels": 2667,
+      "meanAbsRGBDifference": 9.179,
+      "pixelsWithRGBDifferenceAbove8": 1224,
+      "note": "Fixed spatial correspondence mixes small geometry, detail and grade; not pure colour."
+    },
+    "legs": {
+      "commonPixels": 2367,
+      "meanAbsRGBDifference": 6.032,
+      "pixelsWithRGBDifferenceAbove8": 695,
+      "note": "Fixed spatial correspondence mixes small geometry, detail and grade; not pure colour."
+    }
+  },
+  "scope": "Full source-clock native replay plus fixed whole-key region diagnostics, not continuous scene or visual acceptance"
+}

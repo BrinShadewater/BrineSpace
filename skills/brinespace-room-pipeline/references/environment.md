@@ -66,6 +66,33 @@ baseline. Preserve `.gd`/`.uid` pairs, raw-PNG loading and the export bridge.
 
 ## Choose the visual review
 
+### Combined ocean-art review
+
+Compare new features with existing living species, shell beds, rocks and rooms at
+the same cell scale. Record viewport size, design-to-physical scale and visible
+body bounds: export dimensions alone do not establish pixel density. The September
+30 reference board measured 270 physical pixels per cell, small remains at
+0.20-0.24 cells, sample rocks at 0.36 and habitat anchors at 0.48. These are reviewed
+examples, not universal sizing limits. Transparent 512px prop exports and opaque
+1024px ground fields have different sampling roles.
+
+Keep source colours matte and natural; judge production underwater tint separately.
+Reject oblique rock ridges even when alpha and dimensions pass. Ground grain must
+stay quieter than habitat silhouettes at full-field scale: coarse shell chips
+passed loading tests but failed the native material review. Preserve rejected
+masters/exports and selected revision hashes; packaging may crop/resize isotropically
+but must not silently repaint or grade sources. Review partial alpha on pale and
+dark terrain before assuming a thin creature is missing or enlarging it.
+
+Use whole literal runtime paths and cached raw-PNG loading. Derive decorative
+variants from saved region/placement data without consuming gameplay RNG or
+mutating it. Preserve continuous ground UVs, feathering, original fallbacks and
+existing habitat hooks. Check several generated seeds for both old/new selections.
+Add new loaders to `tests/test_runtime_environment_art.gd`; use the combined native
+fixture and isolated runner only when that scope changes. See
+`docs/OCEAN_ART_CONSISTENCY_HANDOFF_2026-09-30.md` for the measured reference and
+`tools/verify_ocean_art_consistency.py` for the executable review workflow.
+
 | Asset | Required comparison |
 |---|---|
 | Ground | Four panels: ordinary/mirrored sampling crossed with source/runtime tint, at fixed world scale. Inspect multiple repeats for bands and bilateral diamonds. |
@@ -173,3 +200,11 @@ A native station review needs powered exterior lamps and a settled camera/retain
 renderer. Normal fog hides unlit seabed and foundation supports. Label a fog-hidden
 capture diagnostic; never remove production fog to make an art review pass. Keep
 image loading, visible gameplay, aesthetic acceptance and release validation separate.
+
+## Mixed ocean families and anchored foliage
+
+For native style/density/size review, the approved upright-kelp camera exception,
+fixed-root continuous sway and full-family integration closeout, read
+[ocean foliage and closeout](ocean-foliage-and-closeout.md). Current selected
+counts are scoped in the dated handoff; the 66-image September 20 count above
+is historical, not a current runtime total.

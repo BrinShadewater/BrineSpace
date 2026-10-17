@@ -1,0 +1,37 @@
+{
+  "status": "rejected_color_flash_before_extraction",
+  "productionInstalled": false,
+  "taskId": "447775814107624",
+  "sourceSha256": "3154c6bad3cd14bda20cf1265ce00548219612ae79a9be5566241a2cce9f0b35",
+  "frames": 141,
+  "fps": 24,
+  "fixedScale": [
+    0.25,
+    0.25
+  ],
+  "offset": [
+    -4,
+    -4
+  ],
+  "newAuthoredMotion": true,
+  "reference": "reference.json",
+  "prompt": "prompt.txt",
+  "initialReview": "18 full-body source samples inspected: separate rectangular tablet appears, belt wrench remains visible in sampled lift/read/stow; no source crop loss. Full141-frame prop/motion review remains.",
+  "concerns": [
+    "Source sample82 appears warmer than neighboring read poses; quantify and review fixed source-level material treatment, never per-pose normalization.",
+    "Tablet rear casing too pale versus graphite prompt; material review needed.",
+    "Complete source hand/prop/body/head and master ruler comparison",
+    "Shared shell fitting and exact selected endpoints",
+    "Normal loading/action clocks/generic approaches/disk Continue before selection"
+  ],
+  "billing": "Recorded submission estimate only; verified billing unavailable.",
+  "fullMotionReviewed": true,
+  "visualFindings": [
+    "All141 body/head/bounded tool poses reviewed. Separate tablet lift/read/stow and belt wrench continuity are improved.",
+    "Brief whole-character yellow and green shifts at82/83, with background RGB shifts before extraction. Separate FFmpeg invocation matches imageio exactly. Same decoder implementation; no independent decoder claim.",
+    "One fixed material treatment cannot remove time-varying illumination without changing frames individually. Reject this source; do not drop poses or normalize each frame.",
+    "Tablet rear pale versus graphite request; retained as secondary review concern."
+  ],
+  "nextCandidate": "james-tablet-east-belt-fixed-source-v2",
+  "revisionScope": "Exact reference and action prompt retained; append constant neutral diffuse lighting/white balance only."
+}

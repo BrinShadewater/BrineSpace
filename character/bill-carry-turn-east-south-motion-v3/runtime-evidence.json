@@ -1,0 +1,62 @@
+{
+  "scope": "Fixture-only staged sprite-player turn admission/clock/direction/terminalcarry0;not actualNPCroute/contact/Continue or normal selection",
+  "checks": 118,
+  "failures": 0,
+  "engine": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 12.36,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-east-south-motion-v3-staged-native\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "joins": [
+    {
+      "gear": "",
+      "terminalCarry0ByteEqual": false,
+      "turn": "carry-turn-east-south"
+    },
+    {
+      "gear": "",
+      "terminalCarry0ByteEqual": false,
+      "turn": "carry-turn-south-east"
+    },
+    {
+      "gear": "diving-helmet",
+      "terminalCarry0ByteEqual": false,
+      "turn": "carry-turn-east-south"
+    },
+    {
+      "gear": "diving-helmet",
+      "terminalCarry0ByteEqual": false,
+      "turn": "carry-turn-south-east"
+    }
+  ],
+  "visualReview": "Native fullsize32pose/current/terminalcarry0 comparison and48gameplay82/27samples viewed",
+  "inputHashScope": "Recorded after run;cross-file dependency stability during interval was not measured",
+  "inputHashes": {
+    "tests/test_bill_east_south_motion_v3_staged.gd": "ac1af765aa4de44c19752b00e3ae7c7f9d03d9968cb615feff5c72f58695a066",
+    "tests/test_bill_east_south_motion_v3_staged.gd.uid": "a668690bd652c51da5d682b3c7afb99bcedbe780612a595a22e1d69f110fa3ff",
+    "tools/run_bill_east_south_motion_v3_staged_validation.py": "f9c56d0456327c73a93505bc6dcc19f5b37e577e8f91d975090de49c271dbe97",
+    "scripts/crew_sprite_player.gd": "03a651fc7990a62e755eee71162209aebffc3caf731163c5a8886a10774da0a6",
+    "scripts/grid_canvas.gd": "2b63509e323967782e0d8f018f04bb1857c918791c59057dec09fdb89f0609c6",
+    "character/bill-carry-turn-east-south-motion-v3/bare-manifest.json": "debae99f0f9f48eba8eea1b0d7cf375097f790069b0265a75a1773e98646d690",
+    "character/bill-carry-turn-east-south-motion-v3/helmet-manifest.json": "4252da601ed5ef7c6bb38c7317546f71a1f51478e889ce6a7ba80745967d0f47",
+    "character/bill-carry-turn-east-south-motion-v3/build.py": "1bbdf8c590ca1871cb2ba60afd12c84d4fd0b155e24ac84de8d097a88a8cc74c",
+    "character/bill-carry-turn-east-south-motion-v3/verify.py": "9d35dbb93298d85f665e9128e6efb1a7e9235159dcbc24a4af93fdb034c24233",
+    "character/bill-carry-turn-east-south-motion-v3/registration.json": "f37cd904615f6070d84d956d6e2d65fa473a44e0610cabb2c3ab5282304f2d75",
+    "character/bill-carry-turn-east-south-motion-v3/material-grade.json": "76275d292acb15a6c8db7a44f5b54a4e75303f06d550509e10756b803d52197a"
+  },
+  "outputHashes": {
+    "native.log": "5ca98b64c93e2701c07bd3928bce915ed9f42fe46cae36b9ae1bd7bf3086c5a8",
+    "validation.json": "708adea34b2c03377c260e877bdcf589e07cee224a0ac078d691293551e5961f",
+    "profile-before.json": "0e1aa7d2a18c6c92ed69da623c340fbac3d686dc58fa70ab7512d84b669a6030",
+    "profile-after.json": "0e1aa7d2a18c6c92ed69da623c340fbac3d686dc58fa70ab7512d84b669a6030",
+    "full-size.png": "892bad37a8b028eecc7828a03fdabbaa72a68785ef41f7682c9f88454327298f",
+    "gameplay-size.png": "89cce777eef0996b7a2decef53d65851bacf8b2b533ed00ec2e90df0a917cc6e",
+    "player-joins.json": "09a3576f46e643efb0456bb96ddeaf0d34b53f8f6a08b406e00e77d7b2ec8c02"
+  }
+}

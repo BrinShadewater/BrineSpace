@@ -1,0 +1,84 @@
+{
+  "sourcePoses": 4,
+  "finiteDurationMs": 250,
+  "startWalkFrames": 52,
+  "startWalkDurationMs": 1890,
+  "nativeChecks": 102,
+  "nativeFailures": 0,
+  "reviewedNativeCaptures": 8,
+  "reviewedNativeBoards": 2,
+  "sourceRecords": [
+    {
+      "mode": "bare",
+      "slot": 0,
+      "source": "res://character/james-carry-headcaps-v1/frames/004.png",
+      "sourceSha256": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "helmet",
+      "slot": 0,
+      "source": "res://character/james-carry-authored-helmet-v1/frames/004.png",
+      "sourceSha256": "36f69b32646f3c0ac1e7ae7e626fa2e74bfee4c7e44ebe1d487d81a45b37bfe5",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "bare",
+      "slot": 1,
+      "source": "res://character/james-west-carry-walk-keys-v1/leg-bridge-v20/candidate.png",
+      "sourceSha256": "2d96b86cf88ee4799b85b911c4c08025411d013cb2d72542f54f5920deb12824",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "helmet",
+      "slot": 1,
+      "source": "res://character/james-west-carry-walk-keys-v1/finite-bridge-v36/helmet-leg-study.png",
+      "sourceSha256": "0fef06d90675c1ceab57d4ed7df28957cb8c99e922a891e0f552357df3dd19c2",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "bare",
+      "slot": 2,
+      "source": "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/bare-candidate.png",
+      "sourceSha256": "9034d45827d3288da64ac4ee8b82e89f887393092fe11ea65c86f8d1bdb8c2e0",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "helmet",
+      "slot": 2,
+      "source": "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/helmet-candidate.png",
+      "sourceSha256": "650b0d8a96b64276b463ec9949cfd5b9b2c662e5b900040989561bcc675c05da",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "bare",
+      "slot": 3,
+      "source": "res://character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-000.png",
+      "sourceSha256": "c8dccdb8a55fa8dd4929ad174de72d02ad8dddd64eca79c1aa3826750837625e",
+      "alpha128Components": 1
+    },
+    {
+      "mode": "helmet",
+      "slot": 3,
+      "source": "res://character/james-west-carry-walk-keys-v1/master-head-review-v16/helmet-000.png",
+      "sourceSha256": "9154183878859358d85bde8dcd2e2e4ab8a8d61f9ebcfc2cf3c795ba0deff9fc",
+      "alpha128Components": 1
+    }
+  ],
+  "masterFaceAbove104Exact": true,
+  "registeredHelmetCapExact": true,
+  "pairedBodyBelow110Exact": true,
+  "all8Alpha128SilhouettesConnected": true,
+  "previewDecodedRgbaClockExact": true,
+  "continuousVisualMotionReviewed": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false,
+  "nativeProgramSha256AtClose": "97b1929c595959e3da616dae5507040b98f0e9112c690166eb61dd5fd847c8e2",
+  "findings": [
+    "Two paired four-pose source boards and eight native four-size preparation/reversed-order captures reviewed. Four distinct authored poses; no fabricated tween or repeated-key gait.",
+    "Collar/shoulder detail changes in bare source rows104..109; previous fixed whole head/collar guard is deliberately superseded for this source, face remains exact. Paired original helmet cap is restored and body below110 exact.",
+    "250ms timings are staged; reverse order is a derived preparation study, not authored case unloading or floor contact. Actual49frame walking chronology/1680ms retained in combined preview.",
+    "Cadence, remaining leg-step abruptness, shoulder/case projection through full49, actual cargo dispatch/rooms/interruptions/Continue and full master acceptance remain open. Existing normal cargo binding unchanged."
+  ]
+}

@@ -1,0 +1,663 @@
+{
+  "source": "Existing reviewed style-v2 wall and hull fitting collections; no new raster generation",
+  "rooms": {
+    "cold_store": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "digital_clock",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "galley": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/poster_marine.png",
+      "subjects": [
+        "analog_clock",
+        "notice_board",
+        "poster_marine"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "salvage_workshop": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "tool_rack",
+        "pressure_gauge",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "observation_room": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "subjects": [
+        "picture_ocean",
+        "sample_display",
+        "station_map"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "current_turbine": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "monitor_dual",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "biomass_digester": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "subjects": [
+        "pressure_gauge",
+        "vent_fan",
+        "monitor_single"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "heat_recovery": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "vent_fan",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "airlock": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/poster_diver.png",
+      "subjects": [
+        "pressure_gauge",
+        "oxygen_masks",
+        "poster_diver"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "construction_drone_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "subjects": [
+        "tool_rack",
+        "monitor_dual",
+        "station_map"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "brine_core": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "monitor_dual",
+        "digital_clock",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "solar_array": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "monitor_dual",
+        "pressure_gauge",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "reactor": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "monitor_dual",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "battery_array": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "status_display_wide",
+        "vent_fan",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "mining_drone_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "subjects": [
+        "tool_rack",
+        "pressure_gauge",
+        "station_map"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "salvage_drone_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "tool_rack",
+        "com_handset",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "gravity_loom": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "monitor_dual",
+        "sample_display",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "tidal_condenser": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "monitor_single",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "mycelium_nursery": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/wall_planter.png",
+      "subjects": [
+        "picture_botanical",
+        "pressure_gauge",
+        "wall_planter"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "hydroponics_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/wall_calendar.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "picture_botanical",
+        "wall_calendar",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "life_support": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "pressure_gauge",
+        "oxygen_masks",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "crew_hab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "picture_ocean",
+        "analog_clock",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "research_lab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "subjects": [
+        "sample_display",
+        "monitor_dual",
+        "station_map"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "cryo_chamber": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "subjects": [
+        "digital_clock",
+        "monitor_dual",
+        "emergency_box"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "clone_lab": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "subjects": [
+        "monitor_dual",
+        "pressure_gauge",
+        "emergency_box"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "quarantine_cell": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "subjects": [
+        "com_panel",
+        "pressure_gauge",
+        "emergency_box"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "data_archive": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "digital_clock",
+        "monitor_dual",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "ore_refinery": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "tool_rack",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "storage_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/key_rack.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "notice_board",
+        "key_rack",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "med_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "subjects": [
+        "com_panel",
+        "digital_clock",
+        "emergency_box"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "biodome": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/wall_planter.png",
+      "subjects": [
+        "picture_botanical",
+        "sample_display",
+        "wall_planter"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "xeno_lab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/poster_marine.png",
+      "subjects": [
+        "sample_display",
+        "monitor_single",
+        "poster_marine"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "anomaly_lab": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "subjects": [
+        "monitor_dual",
+        "sample_display",
+        "station_map"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "bio_lab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "subjects": [
+        "sample_display",
+        "pressure_gauge",
+        "picture_botanical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "command_center": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "station_map",
+        "digital_clock",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "corridor": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "station_map",
+        "com_handset",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "corner": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/alarm_beacon.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/poster_diver.png",
+      "subjects": [
+        "station_map",
+        "alarm_beacon",
+        "poster_diver"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "pressure_control": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "subjects": [
+        "pressure_gauge",
+        "monitor_dual",
+        "oxygen_masks"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "listening_post": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "subjects": [
+        "com_handset",
+        "monitor_dual",
+        "digital_clock"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "isolation_vault": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/alarm_beacon.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "com_panel",
+        "alarm_beacon",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "tee_corridor": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "station_map",
+        "digital_clock",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "crew_lounge": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "subjects": [
+        "picture_ocean",
+        "analog_clock",
+        "picture_botanical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "holographic_core": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "subjects": [
+        "monitor_dual",
+        "com_panel",
+        "status_display_wide"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "maintenance_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "tool_rack",
+        "pressure_gauge",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "med_center": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "subjects": [
+        "digital_clock",
+        "com_panel",
+        "emergency_box"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "med_office": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/wall_calendar.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "wall_calendar",
+        "picture_botanical",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "radio_lab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "subjects": [
+        "com_handset",
+        "digital_clock",
+        "monitor_dual"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "shield_generator": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "pressure_gauge",
+        "monitor_dual",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    }
+  }
+}

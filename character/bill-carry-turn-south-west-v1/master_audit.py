@@ -1,0 +1,37 @@
+"""Reproducible visual comparison; does not alter candidate artwork."""
+import json
+from pathlib import Path
+import numpy as np
+from PIL import Image,ImageDraw
+HERE=Path(__file__).resolve().parent
+MASTER=HERE.parent/'crew-side-masters-v1/bill-side-master-01.png'
+master=Image.open(MASTER).convert('RGB');selected_reg=json.loads((HERE/'registration.json').read_text());source=Image.open(HERE/selected_reg['source']).convert('RGBA')
+# The right master figure is the independently authored west view.
+regions=[('Face and hair',(967,9,1134,166),(694,522,805,625)),('Shoulder insignia',(991,168,1139,310),(778,622,854,696)),('Chest controls',(918,216,1005,333),(727,613,791,696)),('Quilting and cuff',(1000,308,1148,498),(743,691,857,824)),('Boot construction',(897,762,1202,982),(682,877,853,995))]
+out=Image.new('RGB',(900,950),(28,42,50));draw=ImageDraw.Draw(out)
+draw.text((16,12),'BILL MASTER CONSISTENCY AUDIT - SOUTH / WEST CARGO TURN',fill='white')
+draw.text((16,34),'Left: west master    Middle: authored intermediate (before runtime grade)    Right: selected turn',fill=(190,210,216))
+selected=Image.open(HERE/'frames/carry-turn-south-west/004.png').convert('RGBA')
+reg=json.loads((HERE/'registration.json').read_text());record=reg['frames'][3];box=record['sourceBox'];pos=record['position'];sx=record['scaleX'];sy=record['scale']
+for row,(label,mb,sb) in enumerate(regions):
+ y=70+row*172;draw.text((16,y),label,fill='white')
+ for col,im in enumerate([master.crop(mb),source.crop(sb),selected.crop((round(pos[0]+(sb[0]-box[0])*sx),round(pos[1]+(sb[1]-box[1])*sy),round(pos[0]+(sb[2]-box[0])*sx),round(pos[1]+(sb[3]-box[1])*sy)))]):
+  factor=min(270/im.width,142/im.height);im=im.resize((round(im.width*factor),round(im.height*factor)),Image.Resampling.NEAREST if col==2 else Image.Resampling.LANCZOS);x=col*300+(300-im.width)//2;out.paste(im,(x,y+22),im if im.mode=='RGBA' else None)
+out.save(HERE/'master-comparison.png')
+rows=[]
+for i in range(6):
+ a=np.array(Image.open(HERE/'frames/carry-turn-south-west'/f'{i:03}.png'));rgb=a[155:195,:,:3].astype(float);mask=(a[155:195,:,3]>200)&(np.ptp(rgb,axis=2)<20)
+ rows.append({'pose':i,'clothMedian':round(float(np.median(rgb.mean(2)[mask])),2),'shoulderWidthAtY110':int(np.ptp(np.where(a[110,:,3]>180)[0])+1)})
+report={'authority':MASTER.relative_to(HERE.parent).as_posix(),'candidate':'grade-v2','scope':'independent west master detail comparison plus neutral-endpoint continuity;no native review','observations':[{'feature':'shoulder insignia','result':'mismatch','detail':'Master square frame contains a circular ring; intermediate source contains crossed diagonal X strokes.'},{'feature':'chest controls','result':'mismatch','detail':'Master burgundy control panel with button grid and cyan strip is reduced to a smaller pale/grey control module.'},{'feature':'hair silhouette','result':'mismatch','detail':'Master has swept, tufted warm-brown hair; intermediates have shorter, close-cropped texture.'},{'feature':'quilted suit/cuff rivets','result':'partial match','detail':'Quilting and metal cuffs remain, but seam rhythm and small fastener placement are simplified.'},{'feature':'boots/cargo contact','result':'broad match','detail':'Segmented boots and close planted feet remain; case stays held in front with two attached hands.'},{'feature':'mid-turn material','result':'improved endpoint continuity','detail':'Cloth median49.7–55.7 against endpoint52–52.7; high-resolution master raw exposure is not the selected matte grade authority.'}],'measurements':rows,'recommendation':'Repair intermediate master details before expanding further. Preserve planted feet, slim build, exact endpoints and grade-v2 material continuity. Do not regenerate approved endpoints.'}
+report['observations'][1]['detail']='Master burgundy panel/button grid/cyan strip becomes vague markings and a pale companion module; the burgundy panel remains in side poses.'
+report['candidate']='master-v4';report['observations'][0].update(result='restored',detail='Square-framed circular ring replaces crossed X in every selected intermediate source.')
+report['observations'][1].update(result='restored',detail='Burgundy button-grid panel and adjacent cyan strip restored; small export naturally reduces button separation.')
+report['observations'][2].update(result='restored',detail='Warm-brown swept/tufted hair replaces close-cropped texture; canonical endpoint head sizes retained.')
+report['observations'][3].update(result='improved',detail='Diamond quilting, cuff/collar fasteners and boot seams restored in master-directed source edits.')
+report['recommendation']='Review restored details with preserved planted stance/build/color in complete playback; owner/native acceptance remain separate.'
+(HERE/'master-audit.json').write_text(json.dumps(report,indent=2)+'\n')
+html='''<!doctype html><meta charset="utf-8"><title>Bill master comparison</title><style>body{background:#152027;color:#e6eff1;font:16px system-ui;margin:20px;max-width:1000px}img{max-width:100%;height:auto}p,li{line-height:1.5}a{color:#9ed9e5}</style><h1>Bill — master consistency check</h1><p>Current south/west turn: grade-v2. This compares the original west master with authored intermediate details and the selected export. The master supplies identity/design; approved cargo endpoints supply the matte palette and scale.</p><img src="master-comparison.png" alt="Five detail comparisons: face, insignia, chest controls, quilting, boots"><h2>Remaining mismatches</h2><ul><li>Shoulder ring emblem became crossed X strokes.</li><li>Burgundy chest control panel/button grid/cyan strip simplified into a pale control module.</li><li>Hair is shorter and less swept than the master.</li><li>Quilting and cuff fasteners lose some master structure.</li></ul><p>Planted stance, case contact and overall slim build remain coherent. Cloth brightness is within four levels of the neutral endpoints; comparing raw master exposure directly would bypass the selected matte grade.</p><p>Recommendation: repair the intermediate master details before expanding the turn family. Approved endpoints stay intact. This audit does not certify native or owner acceptance.</p><a href="./?v=grade-v2">Return to animation preview</a> · <a href="master-audit.json">Detailed audit</a>'''
+html=html.replace('Burgundy chest control panel/button grid/cyan strip simplified into a pale control module.','Chest button grid and cyan strip simplify into vague markings and a pale companion module.')
+html=html.replace('grade-v2','master-v4').replace('Remaining mismatches','Restored master details').replace('Shoulder ring emblem became crossed X strokes.','Circular ring shoulder emblems restored.').replace('Chest button grid and cyan strip simplify into vague markings and a pale companion module.','Burgundy chest button grid and cyan strip restored.').replace('Hair is shorter and less swept than the master.','Warm brown swept/tufted hair restored.').replace('Quilting and cuff fasteners lose some master structure.','Quilting, cuff and collar fasteners refined toward the master.').replace('Recommendation: repair the intermediate master details before expanding the turn family.','Review the restored intermediate details and complete turn playback before expanding the turn family.')
+(HERE/'master-audit.html').write_text(html,encoding='utf-8')
+print('Master repair audit:emblems,hair,controls restored;quilting refined;comparison saved')

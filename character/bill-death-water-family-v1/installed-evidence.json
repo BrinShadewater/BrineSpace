@@ -1,0 +1,66 @@
+{
+  "status": "installed_runtime_reviewed",
+  "checks": {
+    "bill-death-water-family-selected-native-v1": {
+      "validation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 32.55,
+        "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-death-water-family-selected-native-v1\\scratch-appdata",
+        "realProfileScope": "all non-log files",
+        "realProfileFileCount": 2914,
+        "realProfileChanges": [],
+        "nativeScreenshot": true
+      },
+      "logSha256": "5f3232d037d3fbc00bc2f927bf760cfdb521a601f7c36bf226b289f79620d383"
+    },
+    "bill-work-pickup-family-selected-native-v1": {
+      "validation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 12.67,
+        "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-work-pickup-family-selected-native-v1\\scratch-appdata",
+        "realProfileScope": "all non-log files",
+        "realProfileFileCount": 2914,
+        "realProfileChanges": [],
+        "nativeScreenshot": true
+      },
+      "logSha256": "bfe24ec82072b37b792bf0b420c506383cee0f8bad72e3620f73971daefc12b9"
+    },
+    "bill-basic-swim-turn-selected-native-v1": {
+      "validation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 13.63,
+        "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-basic-swim-turn-selected-native-v1\\scratch-appdata",
+        "realProfileScope": "all non-log files",
+        "realProfileFileCount": 2914,
+        "realProfileChanges": [],
+        "nativeScreenshot": true
+      },
+      "logSha256": "6e4239eafdb6e7c901a5b9cee60cdf6b2b442472669909bf8786769658728f47"
+    }
+  },
+  "sourceFiles": {
+    "character/bill-death-water-family-v1/bare-manifest.json": "97bcfd4fb6fb88a8461edeb6f680c6f121d26108c19022404aabb4d6e2c3c0d3",
+    "character/bill-death-water-family-v1/helmet-manifest.json": "fb899b236b40b65249499aee18bb6417ad7d4a502f8c808782621338e3e67062",
+    "character/bill-death-water-family-v1/source-bindings.json": "e24eef67cc6b68899f152651c452ebf1988054c0748643118b9318f26c49e31f",
+    "scripts/grid_canvas.gd": "8696ea27b4f55542c67e50ec94f9ecfc479238ff987aed3a96b1376f9fec947b",
+    "scripts/crew_sprite_player.gd": "bc38a80ed2f40e22f0fdb1d031641b04067f0a969df930d8ea0f13733b302012",
+    "character/ACTIVE_ASSETS.json": "604caee4782d6b4bf9e84cbf2df3ede269c81cd9b6e14e4c61b859c898c01cc0",
+    "tests/test_bill_death_water_family_selected.gd": "ea35eab10e78bad7a4b708c07277fb80c923c7d0f4548028a46d0313ca3fe435",
+    "tools/run_bill_death_water_family_selected_validation.py": "36ca251ed118f12b3f2d0f125e513eee587dec5fa33afda1aeb5408260aeb96f",
+    "output/bill-death-water-family-selected-native-v1/loaded-water-carry.png": "d96a1ca0b1276c8506d76c03963d1f01cebfdee623617e3c84c6701641f3e2bc"
+  },
+  "mortalityCases": 128,
+  "mortalityScope": "96 oxygen/food exhaustion cases in flooded rooms or helmeted exterior;32 bare exterior exposure cases;idle/walk at two visual offsets",
+  "diskRestores": 16,
+  "restoreScope": "all4directions x bothgear x midpoint/terminal actual RunSave writes/reads/restores with exact renderer pixels",
+  "visualReview": "actual selected renderer terminal sprites at82px and prior master/candidate material/fit boards",
+  "pending": [
+    "mortality from work/cargo/turn poses in full-set polish",
+    "retained dry life/recovery/grounddeath",
+    "complete worldjourneys and envelopes",
+    "final cross-animation consistency and owner acceptance"
+  ]
+}

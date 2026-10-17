@@ -1,0 +1,34 @@
+{
+  "status": "selected_runtime_east_case_release",
+  "ownerVisualAcceptance": false,
+  "scope": "East pickup1..5 indexed cancellation: exact input sources reverse tofloor1, authored empty release, selected stow/empty swim. Site-owned case anchor captured before physical return movement, saved through normal fleet state. Other directions retain previous cancellation. Full James goal remains active.",
+  "productionFiles": [
+    "scripts/branforth_npc.gd",
+    "scripts/crew_expedition.gd",
+    "scripts/grid_canvas.gd",
+    "scripts/harvest_sites.gd",
+    "scripts/james_case_deposit.gd",
+    "scripts/james_case_deposit.gd.uid"
+  ],
+  "assetHashes": {
+    "body-bare.png": "ec69d407ca96b20b0bb5a252974350fa856bf89e553e1ba51e6b5463ac9e3f90",
+    "body-helmet.png": "fc1a89b62fa8b29fca1a58a75bc0c65e2aa12d60837421876e07aad27a239d12",
+    "case.png": "da47dff67b3a0d8ed5f7ee150669af3b851c6236601852d667f728368e2c8643",
+    "runtime-bare-manifest.json": "cd04fbe34d000f391e40b170d2c9ba29c27cfc9d31205f6514c88959717a78c7",
+    "runtime-helmet-manifest.json": "f12d0d286942f79b0f1a4b87c7df4edc571523c15eec02efc5bcbbd5df29e086"
+  },
+  "evidence": {
+    "layerPackage": "layer-evidence.json",
+    "runtimePackage": "runtime-contract-evidence.json",
+    "actualFourDirectionReturn": "native-world-evidence.json",
+    "actualEastAfterRenderRepair": "native-render-evidence.json",
+    "actualEastIndexed": "native-indexed-evidence.json"
+  },
+  "limitations": [
+    "Paired package source contracts; actual exterior journeys use helmet.",
+    "12East branches are controlled from one actual arrival and use actor-only restore; not12full trips or fresh-scene Continues.",
+    "Broader invalidation/hazards/death/traffic and other cardinal case release remain.",
+    "Strict profile guards failed: last_session.json changed; no causal attribution or real data reset.",
+    "Master/cross-family final polish and owner visual acceptance remain."
+  ]
+}

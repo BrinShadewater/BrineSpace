@@ -1,0 +1,591 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "catalogSha256": "a7a94c16b558c63129b74bb210adf1e7a8beb730fa658861c886efb3496fe39a",
+  "facings": {
+    "south": {
+      "selectedUnloadManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "timing": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "unload",
+          "unload",
+          "unload",
+          "unload"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "selectedUnloadFrames": [
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-south/000.png",
+          "sha256": "a8ff3a43e2f1f8d985c2a346e0895535284a689c02f21a9d4dcd63a1fc721f9a"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-south/001.png",
+          "sha256": "9c65e3aeb212d63c1c8861287bf10f9d939faae9306a89da739fba784219f960"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-south/002.png",
+          "sha256": "d4dd90247bbcc12342b6fa70995b6f85bd806977c1b0bf611a1836c2b497f400"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/unload-south/003.png",
+          "sha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d"
+        }
+      ],
+      "selectedPickupFrames": [
+        {
+          "path": "character/marsh-v2/frames/bare/pickup-south/000.png",
+          "sha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-south/001.png",
+          "sha256": "d4dd90247bbcc12342b6fa70995b6f85bd806977c1b0bf611a1836c2b497f400"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-south/002.png",
+          "sha256": "9c65e3aeb212d63c1c8861287bf10f9d939faae9306a89da739fba784219f960"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-south/003.png",
+          "sha256": "a8ff3a43e2f1f8d985c2a346e0895535284a689c02f21a9d4dcd63a1fc721f9a"
+        }
+      ],
+      "selectedPickupTiming": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "pickup",
+          "pickup",
+          "pickup",
+          "pickup"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pickupReverseWholePixelsExact": true,
+      "primaryIdle": {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "occupiedBounds": [
+          63,
+          24,
+          121,
+          171
+        ]
+      },
+      "stagedCargoEndpoint": {
+        "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+        "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d",
+        "occupiedBounds": [
+          60,
+          25,
+          124,
+          172
+        ]
+      },
+      "guides": [
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/south-held-motion-review.png",
+          "sha256": "336518829b822ea2c3ae6b1a5ddd011d20b3d3309cc770c0ef5ac4e4ba8adda4"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/south-body-primary.png",
+          "sha256": "e58f5764de813e95c1b697a2f5bb9f83904e9fd63363feee8274252712fb2f7b"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/south-cargo-endpoint.png",
+          "sha256": "e685d88a5a518ce86bbc05370cb44df1339c42ba69882d6c15003cefb9f1d3fb"
+        }
+      ]
+    },
+    "north": {
+      "selectedUnloadManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "timing": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "north",
+          "north",
+          "north",
+          "north"
+        ],
+        "waterKinds": [
+          "unload",
+          "unload",
+          "unload",
+          "unload"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "selectedUnloadFrames": [
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-north/000.png",
+          "sha256": "620502b986f405b3ba1251b975f6d157ef0459ea481fa1d2ae97d8ade8d9f11b"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-north/001.png",
+          "sha256": "4ea56b021ccba265a5e1f89573d77ef88cd9a5519a72d62f72974a48dc6c6118"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-north/002.png",
+          "sha256": "56870e6c7395bb0ef2ce9db624ba1f032db35550275bbbaa748874ac724e14d6"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/unload-north/003.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "selectedPickupFrames": [
+        {
+          "path": "character/marsh-v2/frames/bare/pickup-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-north/001.png",
+          "sha256": "56870e6c7395bb0ef2ce9db624ba1f032db35550275bbbaa748874ac724e14d6"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-north/002.png",
+          "sha256": "4ea56b021ccba265a5e1f89573d77ef88cd9a5519a72d62f72974a48dc6c6118"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-north/003.png",
+          "sha256": "620502b986f405b3ba1251b975f6d157ef0459ea481fa1d2ae97d8ade8d9f11b"
+        }
+      ],
+      "selectedPickupTiming": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "north",
+          "north",
+          "north",
+          "north"
+        ],
+        "waterKinds": [
+          "pickup",
+          "pickup",
+          "pickup",
+          "pickup"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pickupReverseWholePixelsExact": true,
+      "primaryIdle": {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "occupiedBounds": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      "stagedCargoEndpoint": {
+        "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+        "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb",
+        "occupiedBounds": [
+          64,
+          26,
+          121,
+          172
+        ]
+      },
+      "guides": [
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/north-held-motion-review.png",
+          "sha256": "df1926ed42023732cbf28b3535c7926080399b75a49be1480bfcc9439a78696d"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/north-body-primary.png",
+          "sha256": "d3add71a008357bfcf861db379bcf75f293d359563801e92f2b3d726979c749c"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/north-cargo-endpoint.png",
+          "sha256": "fabbf7c418abaf7016c79f16e66f119890fc41ead658d127531208acac5d0f3e"
+        }
+      ]
+    },
+    "east": {
+      "selectedUnloadManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "timing": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "waterKinds": [
+          "unload",
+          "unload",
+          "unload",
+          "unload"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "selectedUnloadFrames": [
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-east/000.png",
+          "sha256": "b8dd3ff24b6a243221fc34b0a22554bd567d4a2ded77ef85f9a71f36d9dbc5ab"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-east/001.png",
+          "sha256": "794cab77e3dc84494c3a4d754b39ca9dc2c389c1edfb13b74837d84a8e47a301"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-east/002.png",
+          "sha256": "646735fbf75275d231bd7ee1bb725f33884f32886adf98501011f59219ef2491"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/unload-east/003.png",
+          "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+        }
+      ],
+      "selectedPickupFrames": [
+        {
+          "path": "character/marsh-v2/frames/bare/pickup-east/000.png",
+          "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-east/001.png",
+          "sha256": "646735fbf75275d231bd7ee1bb725f33884f32886adf98501011f59219ef2491"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-east/002.png",
+          "sha256": "794cab77e3dc84494c3a4d754b39ca9dc2c389c1edfb13b74837d84a8e47a301"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-east/003.png",
+          "sha256": "b8dd3ff24b6a243221fc34b0a22554bd567d4a2ded77ef85f9a71f36d9dbc5ab"
+        }
+      ],
+      "selectedPickupTiming": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "waterKinds": [
+          "pickup",
+          "pickup",
+          "pickup",
+          "pickup"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pickupReverseWholePixelsExact": true,
+      "primaryIdle": {
+        "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a",
+        "occupiedBounds": [
+          75,
+          25,
+          107,
+          172
+        ]
+      },
+      "stagedCargoEndpoint": {
+        "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+        "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8",
+        "occupiedBounds": [
+          47,
+          26,
+          136,
+          172
+        ]
+      },
+      "guides": [
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/east-held-motion-review.png",
+          "sha256": "feebe4f051c730f098e1886405383d848464e0db1b821ce04c771c5a2fa3b6a3"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/east-body-primary.png",
+          "sha256": "63e17eeb354ca4688d0877b19331c2eda5810719d5c661ccb9add54e47de8ee2"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/east-cargo-endpoint.png",
+          "sha256": "2b532859db7fd415e9148903535b97b1b8f2c96343e0856552f353a993b04f68"
+        }
+      ]
+    },
+    "west": {
+      "selectedUnloadManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "timing": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "waterKinds": [
+          "unload",
+          "unload",
+          "unload",
+          "unload"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "selectedUnloadFrames": [
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-west/000.png",
+          "sha256": "18fb3d06b76413669f6d1b371629fe7e9403bf74b1cfd6cf63b964b4f0be55f2"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-west/001.png",
+          "sha256": "5f6430a584cd995791562f8b191a141247fedc48a8a52cf9149fb4d8a3f675c0"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/unload-west/002.png",
+          "sha256": "1cdbfef709d7d913d993a6fef762794930897aa3bc5bbb6664132a2a2b567220"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/unload-west/003.png",
+          "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+        }
+      ],
+      "selectedPickupFrames": [
+        {
+          "path": "character/marsh-v2/frames/bare/pickup-west/000.png",
+          "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-west/001.png",
+          "sha256": "1cdbfef709d7d913d993a6fef762794930897aa3bc5bbb6664132a2a2b567220"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-west/002.png",
+          "sha256": "5f6430a584cd995791562f8b191a141247fedc48a8a52cf9149fb4d8a3f675c0"
+        },
+        {
+          "path": "character/marsh-master-repair-v1/frames/pickup-west/003.png",
+          "sha256": "18fb3d06b76413669f6d1b371629fe7e9403bf74b1cfd6cf63b964b4f0be55f2"
+        }
+      ],
+      "selectedPickupTiming": {
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "waterKinds": [
+          "pickup",
+          "pickup",
+          "pickup",
+          "pickup"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pickupReverseWholePixelsExact": true,
+      "primaryIdle": {
+        "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812",
+        "occupiedBounds": [
+          76,
+          25,
+          107,
+          172
+        ]
+      },
+      "stagedCargoEndpoint": {
+        "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+        "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467",
+        "occupiedBounds": [
+          49,
+          27,
+          135,
+          172
+        ]
+      },
+      "guides": [
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/west-held-motion-review.png",
+          "sha256": "7a0572c5774353d45b533ed91371eee08630370d32aeb22f88e155623b45bed3"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/west-body-primary.png",
+          "sha256": "6434ad8dbf207dc20fa363549ddccffc801e701d5a384e7617d902003b3ccc4f"
+        },
+        {
+          "path": "character/marsh-cargo-held-material-v1/sources/west-cargo-endpoint.png",
+          "sha256": "46aa820c38fae6e4be03ea8d7ed18be21a2a55cf57b1a5dbab41038fffa54e3a"
+        }
+      ]
+    }
+  },
+  "pickupRuntime": "Current orderedcatalog selects FOUR pickup andunload frames at130ms each=520;pickup wholepixels reverse unload exactly for all4facings. crew_life.gd legacy load_into defines a sixduration reverse helper,not evidence of selected Marsh runtime contract. Grid replacementloader reads orderedcatalog. Preserve selected4frame timing unless motion authoring deliberately revises it;verify actual runtime before adoption.",
+  "runtimeDependencies": [
+    {
+      "path": "scripts/crew_life.gd",
+      "sha256": "7fb23ca94e1b2bd8c1571f17e9e1f3947e34d08004fcff849dd42eaf4f3f23eb"
+    },
+    {
+      "path": "scripts/bill_npc.gd",
+      "sha256": "b2b7be87d13e04467925051b66e9905ce8932854c88cf4318bf180af3354e9a8"
+    },
+    {
+      "path": "scripts/grid_canvas.gd",
+      "sha256": "31ab24ac7962bd7e4f8dd1c608b172103d4dd5edfb2938f09e0f8473817a4b82"
+    },
+    {
+      "path": "scripts/crew_sprite_player.gd",
+      "sha256": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08"
+    }
+  ],
+  "scope": "Whole old-unload motion boards+own stagedcargo/primarybody guides only;not authored replacement or pickup/unload/native acceptance."
+}

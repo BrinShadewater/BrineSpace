@@ -1,0 +1,117 @@
+{
+  "source": "source.png",
+  "sha256": "e80fceb43b9adf3a9e37610f11619917df3eb98bad99d5953e44576e28dd5762",
+  "native_size": [
+    1774,
+    887
+  ],
+  "tool": "built-in image_gen",
+  "unchanged_generated_bytes": true,
+  "registrations": 36,
+  "raised_views": 144,
+  "low_views": 144,
+  "agent_reviewed_raised_views": 144,
+  "owner_acceptance": "pending",
+  "height_before": 35,
+  "height_after": 60,
+  "door_header_reserve": 8,
+  "live_flood_checks": {
+    "variants": 9,
+    "closing_captures": 36,
+    "rotated_water_masks": 36,
+    "diagnostic_run": "pass",
+    "initial_pause_mismatch": "one failure, not reproduced",
+    "real_profile_unchanged": true,
+    "latest_bay_revision": "pass",
+    "furnished_depth_sorted_revision": "pass",
+    "join_cleanup": "pass"
+  },
+  "fitting_revision": "shared clear bays; larger windows; separate arrow bays; pipes below glazing",
+  "furnishing_revision": {
+    "new_sources": {
+      "floor.png": "dcae56d6d993e14f0210aa4b49752e90c2ac394c9ee148463f1484c8b342ba6f",
+      "wall-details.png": "6e129449d7279a7f2f89e3e2e42cd0eec11f7ca330e6a445288ef64cd99475b9"
+    },
+    "props": "existing calibrated bench, utility cart and crate",
+    "navigation_rotations_passed": 12,
+    "door_family": "hallway",
+    "door_material": "default steel texture with scoped neutral dark-grey modulation",
+    "owner_layouts": "unchanged; shipped corridor defaults updated, prior keys backed up"
+  },
+  "join_cleanup": "textured concave hull backing and subdued grey edge trim",
+  "alternate_walls": {
+    "source": "alternate-walls.png",
+    "sha256": "8eb1fc5ee5a6f574d9473e532ab95741b24c91781192b1b0ce2aa4a71fb0f01e",
+    "native_size": [
+      1916,
+      821
+    ],
+    "finishes": [
+      "reinforced",
+      "service",
+      "acoustic"
+    ],
+    "unchanged_generated_bytes": true,
+    "native_rotation_checks": "pass",
+    "real_profile_unchanged": true
+  },
+  "muted_colour_walls": {
+    "sage": {
+      "source": "sage-wall.png",
+      "sha256": "ee9847fe764c2cd8a3bc248ee6d830b744d5f08f79ee6492e97b05270025966d",
+      "native_size": [
+        2172,
+        724
+      ],
+      "unchanged_generated_bytes": true
+    },
+    "clay": {
+      "source": "clay-wall.png",
+      "sha256": "abf77f2847cf9387b81c4872e51b34563f8ec3238e2210dee346c40dbce2426d",
+      "native_size": [
+        2172,
+        724
+      ],
+      "unchanged_generated_bytes": true
+    },
+    "slate": {
+      "source": "slate-wall.png",
+      "sha256": "1539f1f17e063d455962e4998b52ee163a5a6edc49c1a9ac317f9eede144702d",
+      "native_size": [
+        2172,
+        724
+      ],
+      "unchanged_generated_bytes": true
+    }
+  },
+  "muted_colour_checks": "216 rotated raised/low captures pass; owner profile unchanged; charcoal perimeter revision",
+  "tunnel_glass": {
+    "source": "tunnel-glass.png",
+    "sha256": "85290ab5eb8743c2053fa8257bb99908bf67a6b53e4bee81fd365a053c414ae1",
+    "native_size": [
+      2172,
+      724
+    ],
+    "variants": [
+      "panoramic",
+      "ribbed"
+    ],
+    "unchanged_generated_bytes": true,
+    "ocean": "static painted panorama",
+    "checks": "264 raised/low rotated views pass; 24 new raised views visually reviewed; owner profile unchanged"
+  },
+  "bulkhead_revision": {
+    "variant": 11,
+    "framing": "8-unit uprights, 5-unit rails using existing steel source",
+    "opposite_wall": "18-unit cutaway glazing on exposed non-entry south edges for variants 9\u201311",
+    "checks": "288 raised/low captures pass; 36 updated glass raised views visually reviewed; owner profile unchanged"
+  },
+  "pane_frame_revision": "Continuous top/bottom metal rails on all glass finishes; individual dark recessed seals; 288 native captures pass, owner profile unchanged; heavy horizontal corridor visually reviewed",
+  "floor_default_revision": {
+    "source": "res://assets/corridor-risers-v2/floor.png",
+    "layout": "24-unit modules in authored atlas order; retired centre-lane algorithm removed",
+    "checks": "288 native captures pass; horizontal bulkhead corridor visually reviewed; owner profile unchanged",
+    "supersedes": "Incorrect plain hallway-floor-tiles-v1 selection"
+  },
+  "consistency_repairs": "../room-risers-expansion-v1/consistency/repairs.json"
+}

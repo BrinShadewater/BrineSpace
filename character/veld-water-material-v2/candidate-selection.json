@@ -1,0 +1,148 @@
+{
+  "status": "installed_basic_water_pending_full_motion_world_and_owner_acceptance",
+  "manifests": [
+    {
+      "variant": "bare",
+      "path": "character/veld-water-north-coherent-v1/bare-manifest.json",
+      "sha256": "34ccd5acabc4a25abae4b17847f5f698b78a664c4482fb0e2319de2c8365dd67",
+      "states": [
+        "tread-north",
+        "swim-north",
+        "swim-start-north",
+        "swim-stop-north"
+      ],
+      "effectiveStates": [
+        "tread-north",
+        "swim-north",
+        "swim-start-north",
+        "swim-stop-north"
+      ]
+    },
+    {
+      "variant": "helmet",
+      "path": "character/veld-water-north-coherent-v1/helmet-manifest.json",
+      "sha256": "1511ee1f3485051ad0053e79f0ae61ab9757be9ed8708a7347092afd352e7215",
+      "states": [
+        "tread-north",
+        "swim-north",
+        "swim-start-north",
+        "swim-stop-north"
+      ],
+      "effectiveStates": [
+        "tread-north",
+        "swim-north",
+        "swim-start-north",
+        "swim-stop-north"
+      ]
+    },
+    {
+      "variant": "bare",
+      "path": "character/veld-water-south-coherent-v1/bare-manifest.json",
+      "sha256": "dda4b1d6061225fdcac05d117845eeee2529638a5e6928475f8608f458fc53c2",
+      "states": [
+        "tread-south",
+        "swim-south",
+        "swim-start-south",
+        "swim-stop-south"
+      ],
+      "effectiveStates": [
+        "tread-south",
+        "swim-south",
+        "swim-start-south",
+        "swim-stop-south"
+      ]
+    },
+    {
+      "variant": "helmet",
+      "path": "character/veld-water-south-coherent-v1/helmet-manifest.json",
+      "sha256": "cc3b2be4c2d0be130813cd1560b8937eea5fd02e596ed5a6257e7ada2c71db2e",
+      "states": [
+        "tread-south",
+        "swim-south",
+        "swim-start-south",
+        "swim-stop-south"
+      ],
+      "effectiveStates": [
+        "tread-south",
+        "swim-south",
+        "swim-start-south",
+        "swim-stop-south"
+      ]
+    },
+    {
+      "variant": "bare",
+      "path": "character/veld-water-east-coherent-v1/bare-manifest.json",
+      "sha256": "81bf2502fe192471e5f5168d43bb4e9a007019f603c2c9a85067a812b58d9267",
+      "states": [
+        "tread-east",
+        "swim-east",
+        "swim-start-east",
+        "swim-stop-east"
+      ],
+      "effectiveStates": [
+        "tread-east",
+        "swim-east",
+        "swim-start-east",
+        "swim-stop-east"
+      ]
+    },
+    {
+      "variant": "helmet",
+      "path": "character/veld-water-east-coherent-v1/helmet-manifest.json",
+      "sha256": "a5e0a239469913f41f9a6d20d7b8b914252156373c8c7eaa28c56fa286e5eff2",
+      "states": [
+        "tread-east",
+        "swim-east",
+        "swim-start-east",
+        "swim-stop-east"
+      ],
+      "effectiveStates": [
+        "tread-east",
+        "swim-east",
+        "swim-start-east",
+        "swim-stop-east"
+      ]
+    },
+    {
+      "variant": "bare",
+      "path": "character/veld-water-west-coherent-v1/bare-manifest.json",
+      "sha256": "16193d240a9bfe1e9141422786aefb566b3a231edfeb09219ac596989ec28ef3",
+      "states": [
+        "tread-west",
+        "swim-west",
+        "swim-start-west",
+        "swim-stop-west"
+      ],
+      "effectiveStates": [
+        "tread-west",
+        "swim-west",
+        "swim-start-west",
+        "swim-stop-west"
+      ]
+    },
+    {
+      "variant": "helmet",
+      "path": "character/veld-water-west-coherent-v1/helmet-manifest.json",
+      "sha256": "4fc107eb3903ea61a97419db56df051bd7219b450357ee8aff09cc9ebc5628b2",
+      "states": [
+        "tread-west",
+        "swim-west",
+        "swim-start-west",
+        "swim-stop-west"
+      ],
+      "effectiveStates": [
+        "tread-west",
+        "swim-west",
+        "swim-start-west",
+        "swim-stop-west"
+      ]
+    }
+  ],
+  "remaining": "cross-animation anatomy/camera/grade/cadence review; coherent water promotion/world clearances; turns/cargo/actions/distress/death; crew-life; final full-set polish",
+  "states": 32,
+  "frameFiles": 192,
+  "nativeGate": "character/veld-water-west-coherent-v1/native-candidate-v8-checks.json",
+  "nativeChecks": 1098,
+  "selectionRule": "load listed manifests in order, later same variant/state wins; effectiveStates counts remove shadows",
+  "installedGate": "character/veld-water-material-v2/native-installed-basic-v1-checks.json"
+}

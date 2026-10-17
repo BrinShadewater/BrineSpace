@@ -1,0 +1,58 @@
+{
+  "balanceBefore": 48,
+  "estimatedCredits": 4,
+  "params": {
+    "model": "minimax_hailuo",
+    "variant": "minimax-2.3-fast",
+    "duration": 6,
+    "resolution": "768",
+    "count": 1,
+    "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+    "prompt_optimizer": false,
+    "use_unlim": false,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "cffa1b37-dff0-41c8-993e-9d58daa856e6"
+      }
+    ],
+    "prompt": "[Static shot] The character walks in place facing the camera with a steady relaxed gait. His feet alternate short heel-to-toe steps on two separate parallel tracks, hip-width apart, maintaining a visible gap between his knees and boots. His arms swing gently beside his hips. His broad torso stays centered at the same size. Preserve the reference head size, face, dark brown hair and beard, dark matte graphite suit, burgundy patches and subdued silver fittings. Constant colours and lighting. Plain green background."
+  },
+  "submission": {
+    "content": [
+      {
+        "type": "text",
+        "text": "This tool provides an auto-updating generation widget for these jobs. Do not call job_display, show_generations, or show_generation_by_ids to display these jobs again, either before or after completion, unless the user explicitly requests a separate display. If you need to await completion, use jobs_wait with timeout_seconds <= 15. Use job_display only if the user explicitly requests a separate re-display of one specific job."
+      },
+      {
+        "type": "text",
+        "text": "Submitted 1 job. If a widget is visible, it polls automatically — do not call job_status or show_generations as a follow-up poll. In text-only clients, use job_status with sync:true to poll for completion.\n- 9c7a75f8-589a-4aca-a260-f8dc73f8e2cf  \"[Static shot] The character walks in place facing the camera with a steady relaxed gait. His feet alternate short heel-to-toe steps on two separate parallel tracks, hip-width apart, maintaining a visible gap between his knees and boots. His arms swing gently beside his hips. His broad torso stays centered at the same size. Preserve the reference head size, face, dark brown hair and beard, dark matte graphite suit, burgundy patches and subdued silver fittings. Constant colours and lighting. Plain green background.\""
+      },
+      {
+        "type": "text",
+        "text": "If the user requests a combined display of multiple generations, including jobs submitted through separate generate_* calls, collect all requested job IDs, wait for the complete set with jobs_wait, then call show_generation_by_ids with jobs: [{\"index\":0,\"job_id\":\"<first actual job ID>\"},{\"index\":1,\"job_id\":\"<second actual job ID>\"}, ...]. job_display accepts only one id: never pass ids to it or loop over it to show a group. Do not create an extra display when the existing generation widgets already satisfy the request."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "id": "9c7a75f8-589a-4aca-a260-f8dc73f8e2cf",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The character walks in place facing the camera with a steady relaxed gait. His feet alternate short heel-to-toe steps on two separate parallel tracks, hip-width apart, maintaining a visible gap between his knees and boots. His arms swing gently beside his hips. His broad torso stays centered at the same size. Preserve the reference head size, face, dark brown hair and beard, dark matte graphite suit, burgundy patches and subdued silver fittings. Constant colours and lighting. Plain green background.",
+            "duration": 6,
+            "reference_images": [
+              "cffa1b37-dff0-41c8-993e-9d58daa856e6"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    },
+    "isError": false
+  }
+}

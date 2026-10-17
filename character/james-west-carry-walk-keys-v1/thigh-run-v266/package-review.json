@@ -1,0 +1,101 @@
+{
+  "rawSize": [
+    1536,
+    1024
+  ],
+  "tiles": [
+    {
+      "phase": 5,
+      "admittedPixels": 293,
+      "outsideExact": 65243,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 49.49739999999999,
+      "medianAfter": 64.714,
+      "p95Before": 97.86211999999996,
+      "p95After": 97.76111999999999
+    },
+    {
+      "phase": 6,
+      "admittedPixels": 312,
+      "outsideExact": 65224,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 50.9272,
+      "medianAfter": 64.8183,
+      "p95Before": 88.77953,
+      "p95After": 100.00520999999996
+    },
+    {
+      "phase": 7,
+      "admittedPixels": 330,
+      "outsideExact": 65206,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 58.533500000000004,
+      "medianAfter": 65.6378,
+      "p95Before": 94.57329000000001,
+      "p95After": 102.26219999999999
+    },
+    {
+      "phase": 8,
+      "admittedPixels": 352,
+      "outsideExact": 65184,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 49.49739999999999,
+      "medianAfter": 65.71,
+      "p95Before": 107.18638,
+      "p95After": 97.23125999999992
+    },
+    {
+      "phase": 9,
+      "admittedPixels": 356,
+      "outsideExact": 65180,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 48.4974,
+      "medianAfter": 64.4974,
+      "p95Before": 86.36904999999999,
+      "p95After": 98.5045
+    },
+    {
+      "phase": 10,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_construction_run_original_brightness_not_met",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeIncluded": true,
+  "findings": [
+    "Five target poses now have quilt/yellow thigh construction; original knee/alpha/silhouette and all outside component exact. Pose10 reference stays entirely unchanged despite raw generator adding a panel there.",
+    "Raw backdrop excluded by original component/alpha admission; no raw transparency claim. Original charcoal brightness not met: medians rise roughly7..16 levels across all five. Retained construction studies only, not final material acceptance.",
+    "All eight paired native captures4..11 at four display sizes and source board reviewed. Narrow source/time checks do not establish full49 material motion, anatomy/perspective/contact or normal lifecycle."
+  ]
+}

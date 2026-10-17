@@ -1,0 +1,169 @@
+{
+  "source": "generated-quarter-heads.png",
+  "sourceHash": "071e9d72d8390d61264f7760b8021c502eca2d07b486478fd16236a17ab6c312",
+  "method": "Four generated quarter views plus deep pitch and upright control; deterministic generated-alpha matte cleanup and one uniform scale established by upright calibration head. No RGB edits, no independent width/height fit.",
+  "records": [
+    {
+      "name": "quarter-control-south",
+      "cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBox": [
+        97,
+        55,
+        402,
+        459
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        305,
+        404
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        22,
+        29
+      ],
+      "output": "sources/quarter-control-south-native.png",
+      "outputHash": "213178413ba8bb38e754625534d4e817633e302d0936a929a0c52b6148d07af5"
+    },
+    {
+      "name": "clean-bare-se",
+      "cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "alphaBox": [
+        82,
+        60,
+        420,
+        463
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        338,
+        403
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        24,
+        29
+      ],
+      "output": "sources/clean-bare-se-native.png",
+      "outputHash": "f2ed3458daa5a545f744e261ba5d1e9680f6464a94a07b004a07286706a693f8"
+    },
+    {
+      "name": "clean-bare-sw",
+      "cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "alphaBox": [
+        88,
+        59,
+        431,
+        463
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        343,
+        404
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        25,
+        29
+      ],
+      "output": "sources/clean-bare-sw-native.png",
+      "outputHash": "1660f87d204b617288d9ced3f4fc9b9d88485e1689b385387534b7bf785ab510"
+    },
+    {
+      "name": "clean-bare-ne",
+      "cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "alphaBox": [
+        94,
+        22,
+        410,
+        415
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        316,
+        393
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        23,
+        28
+      ],
+      "output": "sources/clean-bare-ne-native.png",
+      "outputHash": "e71a791e64a3e35bcde99a8a78ecae4cd2cca3829a2d61964eb9bc7ab4f03645"
+    },
+    {
+      "name": "clean-bare-nw",
+      "cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "alphaBox": [
+        87,
+        21,
+        416,
+        415
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        329,
+        394
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        24,
+        28
+      ],
+      "output": "sources/clean-bare-nw-native.png",
+      "outputHash": "eb01c19688d100aa4c836b88697159c8778caa50c897b967db6092eaa54c1423"
+    },
+    {
+      "name": "clean-bare-south-fully-bowed",
+      "cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "alphaBox": [
+        81,
+        21,
+        406,
+        438
+      ],
+      "alphaMatteCutoff": 240,
+      "sourceSize": [
+        325,
+        417
+      ],
+      "uniformScale": 0.07178217821782178,
+      "nativeSize": [
+        23,
+        30
+      ],
+      "output": "sources/clean-bare-south-fully-bowed-native.png",
+      "outputHash": "652dd2831977bcb90544c56d071ecfa3e8b355913c8a06afa40450134b22e585"
+    }
+  ]
+}

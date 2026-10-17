@@ -1,0 +1,62 @@
+{
+  "run": "output/marsh-animation-audit/south-salvage-job-v2-2026-10-04",
+  "checks": 13401,
+  "failures": 0,
+  "samples": 3176,
+  "captures": 22,
+  "phases": [
+    "approach",
+    "enter",
+    "pressurize",
+    "leave",
+    "outbound",
+    "salvage",
+    "pickup",
+    "return",
+    "entry",
+    "drain",
+    "exit",
+    "unload"
+  ],
+  "southSalvageSlots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "actorPlayerRestores": 22,
+  "scope": "One actual normal dispatched q2 expedition to a prescribed South salvage site. Actual route derives South exterior salvage; every selected South work source exact at all six timing holds, pickup, return/drain/exit/unload and one resource credit. Authored airlock/site fixture, normal economy/failure flags, normal catalogue and production actor/Cycle/player, no state or art injection. Actor/player snapshot restore and pause at captured boundaries. Not all route rotations/fullRunSave/visibleTitleContinue/helmet/continuous motion/physical contact/full-set acceptance.",
+  "reportSha256": "2d8bad968ff2d98fdcb5b29d5ebf502cb7679ec9a3a6ecb18c8b52e7471ae44c",
+  "boards": [
+    {
+      "path": "character/marsh-south-salvage-job-v1/salvage-review.png",
+      "sha256": "9d34384cfcac87148b8aa86209ddb0910d064f9046ffec9d67b280daf2ce1418",
+      "visuallyReviewed": true,
+      "captures": 6
+    },
+    {
+      "path": "character/marsh-south-salvage-job-v1/pickup-review.png",
+      "sha256": "684b9dd9dd12a60811196783f874884726207e60ce3440b4394da0c5ff4fb5a5",
+      "visuallyReviewed": true,
+      "captures": 6
+    },
+    {
+      "path": "character/marsh-south-salvage-job-v1/journey-review.png",
+      "sha256": "0ec118c634c8ec09a77de50ad07a0b774b115a3cb63c951870f3fdf099e5debe",
+      "visuallyReviewed": true,
+      "captures": 10
+    }
+  ],
+  "rejectedReview": "v1 all gameplay/source checks passed but native crops missed actor: fixture omitted root.get_final_transform. Rejected boards,receipt,fixture retained in v1 raw output. v2 fixes capture coordinates only.",
+  "profile": {
+    "count": 2936,
+    "stable": true
+  },
+  "inputs": {
+    "count": 5766,
+    "stable": true
+  },
+  "fullNativeReviewed": "captures/world-006.png"
+}

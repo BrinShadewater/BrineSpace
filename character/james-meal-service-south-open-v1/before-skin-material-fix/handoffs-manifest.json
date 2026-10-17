@@ -1,0 +1,2567 @@
+{
+  "name": "James South supported meal handoffs staged",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate_not_installed_native_lifecycle_review_pending",
+  "states": [
+    {
+      "id": "meal-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "reach-staged/000.png",
+        "reach-staged/001.png",
+        "reach-staged/002.png",
+        "reach-staged/003.png",
+        "reach-staged/004.png",
+        "reach-staged/005.png",
+        "reach-staged/006.png",
+        "reach-staged/007.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cup-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "cup-staged/000.png",
+        "cup-staged/001.png",
+        "cup-staged/002.png",
+        "cup-staged/003.png",
+        "cup-staged/004.png",
+        "cup-staged/005.png",
+        "cup-staged/006.png",
+        "cup-staged/007.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "meal-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "reach-staged/007.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "derivation": "Exact reverse of complete authored South pickup; held to table contact/release then exact empty standing. Same facing, no mirror/limb splice."
+      }
+    },
+    {
+      "id": "cup-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "cup-staged/007.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "derivation": "Exact reverse of complete authored South pickup; held to table contact/release then exact empty standing. Same facing, no mirror/limb splice."
+      }
+    },
+    {
+      "id": "eat-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "loop-staged/eat-south/000.png",
+        "loop-staged/eat-south/001.png",
+        "loop-staged/eat-south/002.png",
+        "loop-staged/eat-south/003.png",
+        "loop-staged/eat-south/004.png",
+        "loop-staged/eat-south/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "independentFacing": "south",
+        "fixedScale": 0.3259423503325942,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          0
+        ],
+        "materialGain": [
+          0.855,
+          0.95,
+          1.359
+        ],
+        "derivation": "Independent meal source at one fixed scale; translated by source foot anchor, no per-frame resizing; exact shared neutral loop endpoint"
+      }
+    },
+    {
+      "id": "drink-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "loop-staged/drink-south/000.png",
+        "loop-staged/drink-south/001.png",
+        "loop-staged/drink-south/002.png",
+        "loop-staged/drink-south/003.png",
+        "loop-staged/drink-south/004.png",
+        "loop-staged/drink-south/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "independentFacing": "south",
+        "fixedScale": 0.3259423503325942,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          6
+        ],
+        "materialGain": [
+          0.855,
+          0.95,
+          1.359
+        ],
+        "derivation": "Independent meal source at one fixed scale; translated by source foot anchor, no per-frame resizing; exact shared neutral loop endpoint"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 6,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/007.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-acquire-south",
+        "sourceIndex": 7,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 6,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/007.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-acquire-south",
+        "sourceIndex": 7,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/007.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 6,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "sourceState": "meal-deposit-south",
+        "sourceIndex": 7,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/007.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 6,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "sourceState": "cup-deposit-south",
+        "sourceIndex": 7,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/000.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/001.png",
+        "loop-staged/eat-south/000.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/002.png",
+        "loop-staged/eat-south/001.png",
+        "loop-staged/eat-south/000.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/003.png",
+        "loop-staged/eat-south/002.png",
+        "loop-staged/eat-south/001.png",
+        "loop-staged/eat-south/000.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/004.png",
+        "loop-staged/eat-south/003.png",
+        "loop-staged/eat-south/002.png",
+        "loop-staged/eat-south/001.png",
+        "loop-staged/eat-south/000.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-eat-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/eat-south/005.png",
+        "reach-staged/006.png",
+        "reach-staged/005.png",
+        "reach-staged/004.png",
+        "reach-staged/003.png",
+        "reach-staged/002.png",
+        "reach-staged/001.png",
+        "reach-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "eat-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/000.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 0,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/001.png",
+        "loop-staged/drink-south/000.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 1,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/002.png",
+        "loop-staged/drink-south/001.png",
+        "loop-staged/drink-south/000.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 2,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/003.png",
+        "loop-staged/drink-south/002.png",
+        "loop-staged/drink-south/001.png",
+        "loop-staged/drink-south/000.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 3,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/004.png",
+        "loop-staged/drink-south/003.png",
+        "loop-staged/drink-south/002.png",
+        "loop-staged/drink-south/001.png",
+        "loop-staged/drink-south/000.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        850,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 4,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    },
+    {
+      "id": "meal-return-drink-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "loop-staged/drink-south/005.png",
+        "cup-staged/006.png",
+        "cup-staged/005.png",
+        "cup-staged/004.png",
+        "cup-staged/003.png",
+        "cup-staged/002.png",
+        "cup-staged/001.png",
+        "cup-staged/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "sourceState": "drink-south",
+        "sourceIndex": 5,
+        "derivation": "Exact current pose then complete source prefix reversal or deposit suffix; mouth poses lower to exact neutral before deposit. Reuses authored South figures, not new pose coverage."
+      }
+    }
+  ]
+}

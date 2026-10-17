@@ -1,0 +1,58 @@
+{
+  "balanceBeforeLastConfirmed": 24,
+  "estimatedCredits": 4,
+  "params": {
+    "model": "minimax_hailuo",
+    "variant": "minimax-2.3-fast",
+    "duration": 6,
+    "resolution": "768",
+    "count": 1,
+    "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+    "prompt_optimizer": false,
+    "use_unlim": false,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "6621a916-ad28-4587-a41b-2e992f796a6c"
+      }
+    ],
+    "prompt": "[Static shot] The character slowly walks in place facing away from the camera, like walking on a very slow treadmill. Small easy steps, relaxed arms close to his sides. The camera and the character's position remain fixed; he stays the same size throughout. His appearance, colours and green background stay unchanged."
+  },
+  "submission": {
+    "content": [
+      {
+        "type": "text",
+        "text": "This tool provides an auto-updating generation widget for these jobs. Do not call job_display, show_generations, or show_generation_by_ids to display these jobs again, either before or after completion, unless the user explicitly requests a separate display. If you need to await completion, use jobs_wait with timeout_seconds <= 15. Use job_display only if the user explicitly requests a separate re-display of one specific job."
+      },
+      {
+        "type": "text",
+        "text": "Submitted 1 job. If a widget is visible, it polls automatically — do not call job_status or show_generations as a follow-up poll. In text-only clients, use job_status with sync:true to poll for completion.\n- 0981eed2-2185-46ef-9b62-43a73d46f290  \"[Static shot] The character slowly walks in place facing away from the camera, like walking on a very slow treadmill. Small easy steps, relaxed arms close to his sides. The camera and the character's position remain fixed; he stays the same size throughout. His appearance, colours and green background stay unchanged.\""
+      },
+      {
+        "type": "text",
+        "text": "If the user requests a combined display of multiple generations, including jobs submitted through separate generate_* calls, collect all requested job IDs, wait for the complete set with jobs_wait, then call show_generation_by_ids with jobs: [{\"index\":0,\"job_id\":\"<first actual job ID>\"},{\"index\":1,\"job_id\":\"<second actual job ID>\"}, ...]. job_display accepts only one id: never pass ids to it or loop over it to show a group. Do not create an extra display when the existing generation widgets already satisfy the request."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "id": "0981eed2-2185-46ef-9b62-43a73d46f290",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The character slowly walks in place facing away from the camera, like walking on a very slow treadmill. Small easy steps, relaxed arms close to his sides. The camera and the character's position remain fixed; he stays the same size throughout. His appearance, colours and green background stay unchanged.",
+            "duration": 6,
+            "reference_images": [
+              "6621a916-ad28-4587-a41b-2e992f796a6c"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 438,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "captures": 8,
+  "exactSources": 8,
+  "actorPlayerRestores": 6,
+  "controlledSamples": 95,
+  "wraps": 2,
+  "strideDistanceCells": 0.11027027027027,
+  "stableBoundedInputs": 87,
+  "unchangedOwnerNonLogFiles": 2931,
+  "sourceParity": [
+    {
+      "capture": 0,
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "capture": 1,
+      "path": "character/marsh-south-run-material-v1/candidate-04/000.png",
+      "sha256": "23fb46a1cdfb44dd6cbdeed5c06a7ac8db3c7024347f9e1a638e39b4d2c8896f"
+    },
+    {
+      "capture": 2,
+      "path": "character/marsh-south-run-material-v1/candidate-04/001.png",
+      "sha256": "cd7ab716dd387d3b21d3e91370fe5e8b7333b2a2312c22f49e172bdb628f05c5"
+    },
+    {
+      "capture": 3,
+      "path": "character/marsh-south-run-material-v1/candidate-04/002.png",
+      "sha256": "898b8b5c428dbb7c5666cd2b4be793046abc9f0b508bfa8753eebd3caabbbb36"
+    },
+    {
+      "capture": 4,
+      "path": "character/marsh-south-run-material-v1/candidate-04/003.png",
+      "sha256": "578c418d2a289b132b6a57adf009b2dcf3ed379e55c9dc2eccdb7f8d7a7cb906"
+    },
+    {
+      "capture": 5,
+      "path": "character/marsh-south-run-material-v1/candidate-04/004.png",
+      "sha256": "f3a398d5fbd7b8b121ffc99fa908ef5873685e5defe786274322786d7f411428"
+    },
+    {
+      "capture": 6,
+      "path": "character/marsh-south-run-material-v1/candidate-04/005.png",
+      "sha256": "a113bdefe8ecc38d886af53deb194b0db7c29f3383917305be5ca1f8b4ffcb59"
+    },
+    {
+      "capture": 7,
+      "path": "character/marsh-south-walk-material-v1/candidate-02/004.png",
+      "sha256": "230768fe361725d284ae1920430d0290338408be8b8758b51e91d460cf2e7cde"
+    }
+  ],
+  "scope": "Normal Marsh.move/run guards/rate, main/grid/player with explicit staged run manifest on clear168world furnished-room segment; controlled95x20ms simulation/render samples, six actor+player restores/pause holds, near-destination walk. No fullRunSave/TitleContinue or realtime film/contact acceptance.",
+  "visualReviewed": true,
+  "retainedFailedInterval": "south-run-actor-04-2026-10-02:438checks/76fixture speed-tolerance failures; measured1.37988281 vs ideal1.38, worlds float precision; fixture.gd retained. v2 tolerance0.001worldunit.",
+  "nativeApng": "Six exact captured crops,100ms illustrative holds; no realtime moving/contact acceptance."
+}

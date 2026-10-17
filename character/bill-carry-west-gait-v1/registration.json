@@ -1,0 +1,132 @@
+{
+  "calibration": [
+    {
+      "source": "sources/first-legs-v4.png",
+      "cutY": 330,
+      "sourceHeight": 558,
+      "canonicalThighToSole": 70,
+      "scale": 0.12544802867383512
+    },
+    {
+      "source": "sources/opposite-legs-v3.png",
+      "cutY": 380,
+      "sourceHeight": 365,
+      "canonicalThighToSole": 70,
+      "scale": 0.1917808219178082
+    }
+  ],
+  "hipX": 124.5,
+  "protectedUpper": "Exact accepted West held master RGBA above y164 in all6phases; no reflection, translation or resize",
+  "neutralGainPooled": [
+    0.95,
+    0.9491525423728814,
+    0.9322033898305084
+  ],
+  "sharedMatteCurve": {
+    "neutralThreshold": 100,
+    "highlightSlope": 0.82,
+    "scope": "neutral opaque lower legs only, all six poses and both gears"
+  },
+  "frames": [
+    {
+      "source": "sources/first-legs-v4.png",
+      "cell": 0,
+      "sourceBox": [
+        107,
+        330,
+        743,
+        888
+      ],
+      "scale": 0.12544802867383512,
+      "hipAxis": 386.0,
+      "position": [
+        90,
+        155
+      ]
+    },
+    {
+      "source": "sources/first-legs-v4.png",
+      "cell": 1,
+      "sourceBox": [
+        972,
+        330,
+        1426,
+        896
+      ],
+      "scale": 0.12544802867383512,
+      "hipAxis": 1125.5,
+      "position": [
+        105,
+        154
+      ]
+    },
+    {
+      "source": "sources/opposite-legs-v3.png",
+      "cell": 0,
+      "sourceBox": [
+        45,
+        380,
+        356,
+        745
+      ],
+      "scale": 0.1917808219178082,
+      "hipAxis": 196.0,
+      "position": [
+        96,
+        155
+      ]
+    },
+    {
+      "source": "sources/opposite-legs-v3.png",
+      "cell": 1,
+      "sourceBox": [
+        447,
+        380,
+        763,
+        748
+      ],
+      "scale": 0.1917808219178082,
+      "hipAxis": 578.0,
+      "position": [
+        99,
+        154
+      ]
+    },
+    {
+      "source": "sources/opposite-legs-v3.png",
+      "cell": 2,
+      "sourceBox": [
+        855,
+        380,
+        1077,
+        748
+      ],
+      "scale": 0.1917808219178082,
+      "hipAxis": 956.0,
+      "position": [
+        105,
+        154
+      ]
+    },
+    {
+      "source": "sources/opposite-legs-v3.png",
+      "cell": 3,
+      "sourceBox": [
+        1168,
+        380,
+        1499,
+        751
+      ],
+      "scale": 0.1917808219178082,
+      "hipAxis": 1345.5,
+      "position": [
+        90,
+        154
+      ]
+    }
+  ],
+  "masterSha256": {
+    "character\\bill-cargo-west-master-head-v1\\frames\\bare\\pickup-west\\011.png": "17b5c859dbf145aedba0bed8d27a65476494a63797e90162c7dbe4137a51000a",
+    "character\\bill-cargo-west-master-head-v1\\frames\\helmet\\pickup-west\\011.png": "686f92b8e202cb747a3d3e7a1e952219c884450b71429acbd90c67b29b38127d"
+  }
+}

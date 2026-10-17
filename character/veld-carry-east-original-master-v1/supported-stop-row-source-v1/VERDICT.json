@@ -1,0 +1,95 @@
+{
+  "status": "Six-pose source rejected: proportions, common registration and recovery chronology fail",
+  "builtinArtifactId": "exec-79a0e635-bafa-464c-9a6a-b7eb2126f321",
+  "rows": [
+    {
+      "cell": 0,
+      "height": 150,
+      "headBandWidth": 30,
+      "headBandAxis": 129.5,
+      "top": 97,
+      "floor": 246,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    },
+    {
+      "cell": 1,
+      "height": 150,
+      "headBandWidth": 31,
+      "headBandAxis": 128.0,
+      "top": 97,
+      "floor": 246,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    },
+    {
+      "cell": 2,
+      "height": 151,
+      "headBandWidth": 30,
+      "headBandAxis": 122.5,
+      "top": 97,
+      "floor": 247,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    },
+    {
+      "cell": 3,
+      "height": 148,
+      "headBandWidth": 30,
+      "headBandAxis": 128.5,
+      "top": 76,
+      "floor": 223,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    },
+    {
+      "cell": 4,
+      "height": 148,
+      "headBandWidth": 30,
+      "headBandAxis": 126.5,
+      "top": 76,
+      "floor": 223,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    },
+    {
+      "cell": 5,
+      "height": 148,
+      "headBandWidth": 31,
+      "headBandAxis": 123.0,
+      "top": 76,
+      "floor": 223,
+      "upperBandWidth": 48,
+      "partialAlphaOutsideDilatedBodyPixels": 0,
+      "alphaMax": 255
+    }
+  ],
+  "globalRuler": {
+    "heightRaw": 337,
+    "scale": 0.4391691394658754,
+    "uniformCellSize": [
+      225,
+      225
+    ],
+    "fixedOffset": [
+      16,
+      36
+    ]
+  },
+  "visualReview": "Full generated sheet, all six fixed-ruler whole/detail cells and direct original/walking/generated entry/generated standing comparison viewed. Generated head30..31 versus original26; upper48 versus42 after one global original148 standing calibration. Top-row floor246..247 versus223 bottom row, top97 versus76. Cells0/1 repeat raised rear boot then2 already standing; requested supported recovery/weight-transfer keys missing. No source head/body/limb/colour repair, per-row/per-pose registration or density rescue. No helmet/native/normal adoption.",
+  "alphaClarification": "Tool display initially appeared to show diffuse coloured glow. Actual generated RGBA has alpha0..254 with1397351alpha0 and175513nonzero partial-alpha pixels. Fixed-ruler alpha-aware composites show0alpha>5 pixels outside3px dilated strong body component per cell, so a meaningful exported halo is not established. Rejection rests on measured proportions, layout and missing motion, not the provisional glow impression.",
+  "nativeInputsUnchanged": 307,
+  "next": "Refine individual whole supported recovery pose from original master/valid gait reference; keep direct same-scale reference comparison before assembling a sequence. Six-cell prompting and duplicated whole guide anchors do not guarantee intermediate poses or master dimensions.",
+  "bindings": {
+    "raw-supported-stop-v1.png": "d8019f7931e0c1d67c48abdc3797b4a254ffc9d95ff435d886cd59c4e189ea76",
+    "whole-pose-guide.png": "8edf037cfcf68dad2a5887eda51700300acb11e6be1e3312629bad089bb0ea70",
+    "prompt.txt": "0a17a9488f08bcabec4f8d854c076363f783861252df2a0ed81c5e40e7ca42b1",
+    "INPUT.json": "672789b12692c4e536a8cc49c8982eb35bac8d658c55d895861ee01a995b1a50",
+    "AUDIT.json": "ecab8e0f5626d4129c5ed8baa02cf106b188edaa8ff120f3155cb0b0c2835376"
+  }
+}

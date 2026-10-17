@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veld — first step preparation</title>
+<style>body{margin:0;background:#172127;color:#e5edf0;font:16px system-ui}main{max-width:1640px;margin:auto;padding:28px}h1{font-size:28px;margin-bottom:8px}p{max-width:850px;line-height:1.5;color:#b9c9d0}.views{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px}img{width:100%;background:#202a30}h2{font-size:18px}button{background:#8fc6d4;color:#122027;border:0;border-radius:6px;padding:10px 18px;font:inherit;cursor:pointer}details{margin:24px 0}summary{cursor:pointer;padding:10px 0}.status{color:#d7b986}</style>
+<main><h1>Veld — first step preparation</h1><p class="status">Work in progress · six poses · original-master comparison</p>
+<p>The suit colour stays much closer to the original in this study. The torso and case still need to be narrower, and the planted boot needs to stay steadier. The first standing variations also need a clearer heel peel. This is a motion study, not the finished walking transition.</p>
+<button id="replay">Replay both versions</button>
+<div class="views"><section><h2>Without helmet</h2><img id="bare" src="bare-native-source-review.png" alt="Six poses compared with the original Veld at three gameplay sizes"></section><section><h2>With helmet</h2><img id="helmet" src="helmet-native-source-review.png" alt="Six helmet poses compared with original Veld at three gameplay sizes"></section></div>
+<details><summary>Compare every pose with the originals</summary><div class="views"><img src="bare-native-all-pose-review.png" alt="Every bare pose beside the held and empty original masters"><img src="helmet-native-all-pose-review.png" alt="Every helmet pose beside the original masters"></div></details>
+<script>document.getElementById('replay').onclick=()=>{for(const gear of ['bare','helmet'])document.getElementById(gear).src=gear+'-native-source-review.png?replay='+Date.now()}</script>
+</main></html>

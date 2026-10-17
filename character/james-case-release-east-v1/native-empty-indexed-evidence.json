@@ -1,0 +1,765 @@
+{
+	"checks": 3874,
+	"failures": 0,
+	"journeys": [
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "empty-indexed-q0-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "empty-indexed-q0-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "empty-indexed-q0-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "empty-indexed-q0-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "empty-indexed-q0-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "empty-indexed-q0-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "empty-indexed-q0-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "east",
+					"file": "empty-indexed-q0-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-release-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "west",
+					"file": "empty-indexed-q0-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "south",
+					"file": "empty-indexed-q0-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "north",
+					"file": "empty-indexed-q0-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "south",
+					"file": "empty-indexed-q0-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-before",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 68.0333333333348,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-00",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 68.0333333333348,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 73.8000000000011,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 73.8666666666678,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8049.12, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 73.9000000000011,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8044.32, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 73.9666666666678,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8041.92, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 74.0000000000011,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-07-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8037.121, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-09",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 74.0666666666678,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-09.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-09-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.333333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8032.321, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 74.1333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-11-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.433333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8025.121, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-14",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 74.2333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-14.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-14-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.5,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8020.321, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 74.3000000000011,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-16-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8017.921, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-17",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8013.122, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-19",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-19.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-19-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8008.322, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-21",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8003.522, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-23",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-23.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-23-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7998.722, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-25",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7996.322, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-26",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7989.123, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-29",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7984.323, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-31",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-31.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-31-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-33",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-33-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7974.723, 7104.0)",
+					"label": "empty-indexed-q0-recall-pickup-after-35",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 74.3333333333344,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-east-v1/captures/empty-indexed-q0-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 0,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		}
+	],
+	"matrix": [
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 0,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 1,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 2,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 3,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 4,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "work",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 5,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(inf, inf)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"facing": "east",
+			"index": 0,
+			"layeredRelease": false,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(8052.719, 7104.0)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			],
+			"facing": "east",
+			"index": 1,
+			"layeredRelease": true,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(8049.119, 7104.0)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"facing": "east",
+			"index": 2,
+			"layeredRelease": true,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(8045.518, 7104.0)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"facing": "east",
+			"index": 3,
+			"layeredRelease": true,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(8041.917, 7104.0)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"facing": "east",
+			"index": 4,
+			"layeredRelease": true,
+			"moved": true,
+			"rotation": 0
+		},
+		{
+			"action": "pickup",
+			"actorOnlyRestore": true,
+			"caseAnchor": "(8038.317, 7104.0)",
+			"drawn": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
+			],
+			"facing": "east",
+			"index": 5,
+			"layeredRelease": true,
+			"moved": true,
+			"rotation": 0
+		}
+	],
+	"resolvedUserDataDir": "C:/Users/Alex/AppData/Local/Temp/brine-james-native-aw1910gi/Godot/app_userdata/BrineSpace",
+	"scope": "Real dispatch/needs/airlock/exterior/controller/render/unload and loaded disk restore; dedicated station, normal runtime selected manifests/profile. Existing James selected source only. One actual East parent pickup trip/Continue with12controlled work/pickup branches from its actual work arrival; all6naturally advanced source indexes per action, exact entrance/empty join, five indexed pickup release world anchors and actor-only restore. Site state restored between branches; not12full journeys or fresh-scene Continues. Bare gear/traffic/invalidation remain unproven.",
+	"scratchAppData": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-aw1910gi"
+}

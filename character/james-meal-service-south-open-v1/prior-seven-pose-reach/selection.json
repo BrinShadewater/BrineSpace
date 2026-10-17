@@ -1,0 +1,112 @@
+{
+  "status": "south_seven_pose_reach_staged_source_motion_polish_required",
+  "ownerVisualAcceptance": false,
+  "productionArtInstalled": false,
+  "counter": "library/sp-generated-counter-galley-prep",
+  "fixturePosition": [
+    0,
+    126
+  ],
+  "actualSouthLocalFoot": [
+    48,
+    128
+  ],
+  "serviceContactFractions": {
+    "north": [
+      0.5,
+      1
+    ],
+    "south": [
+      0.5,
+      0.45
+    ]
+  },
+  "counterFloorRect": [
+    0,
+    126,
+    91.12,
+    50.32
+  ],
+  "checks": {
+    "southChooserContact": 235,
+    "currentNorthRegression": 51
+  },
+  "rejectedSource": {
+    "path": "rejected-reach-source.png",
+    "original": "C:/Users/Alex/.codex/generated_images/01a0ef89-fc47-7e22-953f-3c02a051b0f6/exec-a998860c-0a05-4cbc-a91d-eff5eb391118.png",
+    "prompt": "rejected-reach-prompt.txt",
+    "sha256": "49fc5357838ea88201243d5a40f5fa51866540514bcb36702d2260d129be8e6d",
+    "reason": "Maximum pose still keeps bowl/hands near waist, does not perform requested worktop reach; never extracted/selected/installed."
+  },
+  "limitations": [
+    "235 checks prove supported chooser/route, source clocks and hull-bounded counter; visual hand/worktop contact FAILS.",
+    "South bowl uses temporary CandidateJames subclass/current older v3 sources; production art selection unchanged.",
+    "North51 geometry/idle/copy-side checks include four expected raw-UI-icon export warnings; not export or full journeys.",
+    "Both strict real-profile guards fail with last_session.json delta; attribution unproven, no owner restore.",
+    "Bowl/cup/returns/interrupts/Continue/current full-set polish remain."
+  ],
+  "deepReachDiagnostic": {
+    "source": "deep-contact-source-v4.png",
+    "prompt": "deep-contact-prompt-v4.txt",
+    "sourceSha256": "9c098674d3500a148e47c0c5ab7f8cf89594ad232c4980e42008c59d22b2675f",
+    "fixedWholeFigureScale": 0.13,
+    "bootAnchor": [
+      614,
+      995
+    ],
+    "deepCandidateChecks": 235,
+    "freshCandidateChecks": 237,
+    "nativeContactReview": "fresh-counter-contact-review.png",
+    "normalDepthHidesBowl": true,
+    "diagnosticDepthOffset": 64,
+    "actualDepthChangedPixelsBounds": [
+      200,
+      216,
+      233,
+      227
+    ],
+    "productionDepthSelected": false,
+    "motionSelected": false,
+    "rejectedRevision3": "deep-contact-source-v3-rejected.png",
+    "reasonRevision3Rejected": "Hands/bowl still above boot baseline despite requested forward correction",
+    "strictProfileGuards": [
+      false,
+      false
+    ],
+    "profileDeltas": [
+      [
+        "last_session.json"
+      ],
+      [
+        "last_session.json"
+      ]
+    ]
+  },
+  "reachCandidate": {
+    "manifest": "reach-manifest.json",
+    "sourceSheet": "reach-sheet-source-v2.png",
+    "prompt": "reach-sheet-prompt-v2.txt",
+    "sourceSheetSha256": "c3d88b9ddbf8b598f62add6753352198d2af557416de0e8965892c439ddc08b3",
+    "wholeIndependentEmptyContactSource": "empty-contact-source.png",
+    "sourcePrompts": [
+      "empty-contact-prompt.txt"
+    ],
+    "frameCount": 7,
+    "durationMs": 900,
+    "checks": 237,
+    "failures": 0,
+    "nativeReview": "reach-native-review.gif",
+    "footAudit": "reach-foot-audit.json",
+    "sheetFixedScale": 0.3147751605995717,
+    "sourceVisualAcceptance": false,
+    "productionInstalled": false,
+    "remainingSourceDefects": [
+      "Frame2 sole-band left -4.612/right+3.457 native px versus standing: stance drift remains",
+      "Contact-to-retract still lacks intermediate lift; rejected lift sources contain duplicated tools then changed ruler/stance"
+    ],
+    "strictProfileUnchanged": false,
+    "profileDelta": [
+      "last_session.json"
+    ]
+  }
+}

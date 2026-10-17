@@ -1,0 +1,75 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "tiles": [
+    {
+      "phase": 10,
+      "admittedPixels": 355,
+      "outsideExact": 65181,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 49.212599999999995,
+      "medianAfter": 61.49739999999999,
+      "p95Before": 89.83626000000002,
+      "p95After": 89.60460000000002
+    },
+    {
+      "phase": 11,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    },
+    {
+      "phase": 14,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    },
+    {
+      "phase": 15,
+      "admittedPixels": 335,
+      "outsideExact": 65201,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 55.1404,
+      "medianAfter": 62.353,
+      "p95Before": 81.75528000000001,
+      "p95After": 97.82604000000003
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_boundary_construction_master_grade_pending",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeIncluded": true,
+  "findings": [
+    "Target10/15 now have fine quilting/yellow seam in protected thigh component; original knees/alpha/silhouette/equipment exact. Reference11/14 pixels remain wholly original despite generator rewriting them in raw sheet.",
+    "Same-mask medians10:49.21to61.50,15:55.14to62.35; phase15p95:81.76to97.83. Requested original brightness not met; candidate retained only as construction study, not final material acceptance.",
+    "Complete mixed49 source cycle shows panel/quilt design changes persist in other regions. Native939/0/49 covers exact sources/clocks/pivots and three time-based fixture loops; no normal lifecycle/world contact or full visual acceptance."
+  ]
+}

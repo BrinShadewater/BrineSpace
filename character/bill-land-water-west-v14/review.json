@@ -1,0 +1,391 @@
+{
+  "inputSHA256": {
+    "bill-land-water-west-v14/build.py": "882f93429644208f29076f482331b210fe6fe2b3a6e767193069f91114cec0d5",
+    "bill-swim-west-master-v7/prepare_body.py": "397ab12ff016f704fb674f682f338b63925ab7827d73f501f791c726b3607be6",
+    "bill-land-water-west-v13/build.py": "b7799e6ec14f2128dd3e240e38443580584fd43ed2123d18e98e618f5db29e21",
+    "bill-swim-west-master-v6/sources/canonical-bare-head-v1.png": "699cb3c5bbf1c4c7c4ef8e964472c6c68e21d13078883bc9d4b8564d87755b51",
+    "bill-cargo-helmet-west-v1/sources/canonical-head.png": "226417bf28083f77bd4d0eae1de504bf5885a8b3d0b3cf54b15419bd8eb3653d",
+    "crew-side-masters-v1/bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "bill-water-exit-west-master-v8/sources/master-west-reference.png": "b1c6fc168514e8154de9a5a83a6488f23d9878bd4d89025305afed9c48ca35e6",
+    "bill-water-exit-west-master-v8/sources/master-west-reference.json": "ea08b9d1c54f5dec530c02d2792586af8db04786ef1362fe2b7347b36b2676e5",
+    "bill-land-water-west-v14/generation-job-v1.json": "9cbd12cf8ba6298ce58bcbde0053ff6f9708ebff569b09eac25963c70c0b2402",
+    "bill-land-water-west-v14/generation-provenance-v1.json": "8ea6dd8c8184b96c49500d2c0b2ebc85cbaae30abd8c8cd66a125939c5a91f46",
+    "bill-land-water-west-v14/sources/ready-crouch-calibrated-prompt-v1.txt": "018ad94c1298797ccff7d057ff5a70fb7c047cc4e57837b3c7aeddd8610a549d",
+    "bill-land-water-west-v14/sources/ready-crouch-calibrated-v1.png": "fb644203b58fc0a9de5f6357e410ade67c3156affdafc1111f38fac75129b176",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/000.png": "63599c1e64035f1e633b56b46b967dc6e59f73bf93cfbd621132f3bae63ec2d8",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/001.png": "a41e136afda27b6d4020bb260666f0c7fc161068a813c6ad71bd457357bf1aa3",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/002.png": "dbb65f2e63b61285e849ecda7b3128bfe437b3cb6b7400ae2987d9f748aedd56",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/003.png": "36e9a9d39985e73e690721c3057d9e9f7d07c7c2f8644d4553d660c6bba7a5dd",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/004.png": "95523214a94a38e6d205619086d5d5acec85b2b208fffd355320d3dacee5d85f",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/005.png": "7744890a23f051f98314948611d7cd9d503d198f33f005505d079b71d680fd8f",
+    "bill-land-water-west-v13/bare/frames/land-swim-west/006.png": "63bd2d3a7c60806edf8f099b85d0ea5c16ec42e3ef5cc660e060eedfd5a1b843",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/000.png": "4b16dc9e96ce2f9cba0d7f65bdd2cef6e352e5443e73e4f22aab1f7537fcfd94",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/001.png": "055c6cb9bab63d32af6602af56210cad6bb1b3a8751b40088a33c62d9601bbe5",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/002.png": "481701f2a68ad0b321c4ed4b2d4cf753d3ba86123dd6040ea5db77430f3502cc",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/003.png": "266ab7c23f52afcd407e944e7ab89cdf360a69d1717ef57877b4554abff07303",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/004.png": "71eb062a7d0c997693e163ff9417daafa67fe3cd93883020f21e46f74eb70f42",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/005.png": "eddb89f97854c0535ae187174000e4a52b3a9e2414d2d9fa11f81b532f43dbaf",
+    "bill-land-water-west-v13/helmet/frames/land-swim-west/006.png": "e77be3964f11a90e3b2badc16cfe49229683a560d947a18eb73b7bc38365fda2",
+    "bill-land-water-west-v13/bare/manifest.json": "de3e041d8a732c8c3a239c2541050998f736386aab1783d404bed56bfb90313f",
+    "bill-land-water-west-v13/helmet/manifest.json": "165de9453de51d422f7e17b38fbe132e19cd1619b20d491edbd66018f4b73500"
+  },
+  "frozenInputsStable": 28,
+  "frames": [
+    {
+      "sourceSoleBounds": [
+        682,
+        969,
+        853,
+        981
+      ],
+      "registeredSoleMid": 160,
+      "name": "Ready",
+      "source": "bill-land-water-west-v14/sources/ready-crouch-calibrated-v1.png",
+      "actionROI": [
+        490,
+        0,
+        915,
+        1010
+      ],
+      "headProxy": {
+        "roi": [
+          610,
+          0,
+          820,
+          230
+        ],
+        "bounds": [
+          30,
+          39,
+          168,
+          181
+        ],
+        "width": 138,
+        "height": 142,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          706,
+          39
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        42,
+        73
+      ],
+      "crown": [
+        150,
+        79
+      ],
+      "bareDonorPosition": [
+        144,
+        78
+      ],
+      "helmetDonorPosition": [
+        135,
+        65
+      ],
+      "erasePolygon": [
+        [
+          120,
+          76
+        ],
+        [
+          175,
+          76
+        ],
+        [
+          175,
+          90
+        ],
+        [
+          155,
+          106
+        ],
+        [
+          120,
+          106
+        ]
+      ],
+      "sourceLowestPaintedSupport": 981,
+      "registeredSupport": 224,
+      "hipMarker": {
+        "roi": [
+          690,
+          410,
+          740,
+          465
+        ],
+        "components": [
+          {
+            "pixels": 37,
+            "center": [
+              708.918918918919,
+              431.2432432432432
+            ]
+          },
+          {
+            "pixels": 35,
+            "center": [
+              710.6857142857143,
+              449.57142857142856
+            ]
+          }
+        ],
+        "sourceCenter": [
+          709.8023166023166,
+          440.4073359073359
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "registeredHipMarker": [
+        151,
+        141
+      ],
+      "registrationScope": "Whole-figure lowest painted sole midpoint160/support224 translation; actual foot contact/root acceptance pending",
+      "physicalContactAccepted": false,
+      "bareDonorSize": [
+        21,
+        23
+      ],
+      "helmetDonorSize": [
+        40,
+        40
+      ],
+      "donorScale": 1,
+      "donorRotation": 0,
+      "bodyOutsideHeadRegionsExact": true,
+      "foregroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueBareDonorExact": true,
+      "opaqueBareDonorPixelsChecked": 33,
+      "opaqueHelmetDonorExact": true,
+      "opaqueHelmetDonorPixelsChecked": 247
+    },
+    {
+      "sourceSoleBounds": [
+        1215,
+        970,
+        1380,
+        982
+      ],
+      "registeredSoleMid": 160,
+      "name": "Crouch",
+      "source": "bill-land-water-west-v14/sources/ready-crouch-calibrated-v1.png",
+      "actionROI": [
+        915,
+        80,
+        1490,
+        1010
+      ],
+      "headProxy": {
+        "roi": [
+          1040,
+          80,
+          1250,
+          290
+        ],
+        "bounds": [
+          34,
+          38,
+          173,
+          186
+        ],
+        "width": 139,
+        "height": 148,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          1146,
+          118
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        -39,
+        73
+      ],
+      "crown": [
+        137,
+        91
+      ],
+      "bareDonorPosition": [
+        131,
+        91
+      ],
+      "helmetDonorPosition": [
+        122,
+        78
+      ],
+      "erasePolygon": [
+        [
+          107,
+          88
+        ],
+        [
+          162,
+          88
+        ],
+        [
+          162,
+          102
+        ],
+        [
+          142,
+          119
+        ],
+        [
+          107,
+          119
+        ]
+      ],
+      "sourceLowestPaintedSupport": 982,
+      "registeredSupport": 224,
+      "hipMarker": {
+        "roi": [
+          1250,
+          455,
+          1300,
+          515
+        ],
+        "components": [
+          {
+            "pixels": 34,
+            "center": [
+              1273.5,
+              480.0
+            ]
+          },
+          {
+            "pixels": 34,
+            "center": [
+              1279.235294117647,
+              497.6764705882353
+            ]
+          }
+        ],
+        "sourceCenter": [
+          1276.3676470588234,
+          488.8382352941177
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "registeredHipMarker": [
+        157,
+        148
+      ],
+      "registrationScope": "Whole-figure lowest painted sole midpoint160/support224 translation; actual foot contact/root acceptance pending",
+      "physicalContactAccepted": false,
+      "bareDonorSize": [
+        21,
+        23
+      ],
+      "helmetDonorSize": [
+        40,
+        40
+      ],
+      "donorScale": 1,
+      "donorRotation": 0,
+      "bodyOutsideHeadRegionsExact": true,
+      "foregroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueBareDonorExact": true,
+      "opaqueBareDonorPixelsChecked": 33,
+      "opaqueHelmetDonorExact": true,
+      "opaqueHelmetDonorPixelsChecked": 247
+    }
+  ],
+  "calibration": {
+    "neutralROI": [
+      30,
+      0,
+      470,
+      1010
+    ],
+    "neutralOpaqueBounds": [
+      124,
+      18,
+      416,
+      982
+    ],
+    "neutralHeight": 964,
+    "neutralHeadProxy": {
+      "roi": [
+        160,
+        0,
+        370,
+        220
+      ],
+      "bounds": [
+        23,
+        20,
+        161,
+        165
+      ],
+      "width": 138,
+      "height": 145,
+      "componentTouchesROIEdge": false,
+      "sourceCrown": [
+        252,
+        20
+      ],
+      "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+    },
+    "actionROIs": [
+      [
+        490,
+        0,
+        915,
+        1010
+      ],
+      [
+        915,
+        80,
+        1490,
+        1010
+      ]
+    ],
+    "oneWholeSourceScale": 0.15352697095435686,
+    "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+    "actionFacing": "west",
+    "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+  },
+  "priorCompletePosesExact": 10,
+  "decodedAPNGFramesExact": 14,
+  "durationsMs": [
+    60,
+    70,
+    80,
+    60,
+    80,
+    90,
+    60
+  ],
+  "totalMs": 500,
+  "loop": 1,
+  "density": 0.15352697095435686,
+  "canvas": [
+    352,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "scope": "Shared-standing whole Ready/Crouch. Current idle/swim endpoints exact from V13; three older interiors unchanged. Full master/shoulder/grade/contact/native acceptance pending.",
+  "coupledExitEndpointsExact": 4,
+  "visualReview": {
+    "date": "2026-10-02",
+    "boardsSeen": [
+      "raw source",
+      "neck-review.png",
+      "master-comparison.png",
+      "paired-entry-review.png"
+    ],
+    "browser": "Normal/quarter playback reachesSwimming7/7 and restoresPlay entry. PausedReady2/7 screenshot retained.",
+    "screenshot": "browser-review.png",
+    "finding": "Ready/Crouch closer in scale and subdued quilt detail; current idle darker, three airborne older interiors larger/brighter. Full skeleton/camera/shoulder/grade/foot contact and native lifecycle not accepted."
+  }
+}

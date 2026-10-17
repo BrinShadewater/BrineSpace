@@ -1,0 +1,10 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+TURN COMPLETION TRACE swim-carry-turn-south-west time=2.92499999999999 foot=(7801.461, 7904.0) action_clear=true direction=west state=walk motion={ "state": "swim-carry", "direction": "west", "clip": "", "started": 2.1 }
+ERROR: Narrow-route transition cancelled safely before completion
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/review_veld_cargo_turn_routes_v1.gd:11)
+       [1] run (res://tools/review_veld_cargo_turn_routes_v1.gd:110)
+VELD CARGO TURN ROUTES: 107 checks, 1 failures

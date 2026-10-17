@@ -1,0 +1,753 @@
+{
+  "drawings": 35,
+  "states": 54,
+  "holds": 144,
+  "stateChanges": [
+    {
+      "key": "bare:carry-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:carry-turn-east-west",
+      "holds": 4
+    },
+    {
+      "key": "bare:carry-turn-north-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:carry-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "bare:carry-turn-south-north",
+      "holds": 2
+    },
+    {
+      "key": "bare:carry-turn-south-west",
+      "holds": 2
+    },
+    {
+      "key": "bare:carry-turn-west-east",
+      "holds": 4
+    },
+    {
+      "key": "bare:carry-turn-west-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-south-west",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-west-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-east-west",
+      "holds": 4
+    },
+    {
+      "key": "bare:swim-turn-west-east",
+      "holds": 4
+    },
+    {
+      "key": "bare:swim-turn-north-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-turn-south-north",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-south-west",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-west-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-east-west",
+      "holds": 4
+    },
+    {
+      "key": "bare:swim-carry-turn-west-east",
+      "holds": 4
+    },
+    {
+      "key": "bare:swim-carry-turn-north-south",
+      "holds": 2
+    },
+    {
+      "key": "bare:swim-carry-turn-south-north",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-east-west",
+      "holds": 4
+    },
+    {
+      "key": "helmet:carry-turn-north-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-south-north",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-south-west",
+      "holds": 2
+    },
+    {
+      "key": "helmet:carry-turn-west-east",
+      "holds": 4
+    },
+    {
+      "key": "helmet:carry-turn-west-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-south-west",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-west-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-north-east",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-east-north",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-turn-north-west",
+      "holds": 1
+    },
+    {
+      "key": "helmet:swim-turn-west-north",
+      "holds": 1
+    },
+    {
+      "key": "helmet:swim-turn-east-west",
+      "holds": 4
+    },
+    {
+      "key": "helmet:swim-turn-west-east",
+      "holds": 4
+    },
+    {
+      "key": "helmet:swim-turn-north-south",
+      "holds": 5
+    },
+    {
+      "key": "helmet:swim-turn-south-north",
+      "holds": 5
+    },
+    {
+      "key": "helmet:swim-carry-turn-east-south",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-carry-turn-south-east",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-carry-turn-north-east",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-carry-turn-east-north",
+      "holds": 2
+    },
+    {
+      "key": "helmet:swim-carry-turn-south-west",
+      "holds": 3
+    },
+    {
+      "key": "helmet:swim-carry-turn-west-south",
+      "holds": 3
+    },
+    {
+      "key": "helmet:swim-carry-turn-east-west",
+      "holds": 5
+    },
+    {
+      "key": "helmet:swim-carry-turn-west-east",
+      "holds": 5
+    },
+    {
+      "key": "helmet:swim-carry-turn-north-south",
+      "holds": 4
+    },
+    {
+      "key": "helmet:swim-carry-turn-south-north",
+      "holds": 4
+    }
+  ],
+  "records": [
+    {
+      "source": "character/krusher-animation-package-v11/frames/ecf62a3857664adc050fb94f9fcd4ee51ce0aaf56a6dcd4729ef1d96453a76d1.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/ecf62a3857664adc050fb94f9fcd4ee51ce0aaf56a6dcd4729ef1d96453a76d1.png",
+      "example": "bare:carry-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        126,
+        75
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/ecf62a3857664adc050fb94f9fcd4ee51ce0aaf56a6dcd4729ef1d96453a76d1.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a449e16aac551ab1ec77a99cb2528a5286247ac0f5598f7c02109bb7198297e9.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a449e16aac551ab1ec77a99cb2528a5286247ac0f5598f7c02109bb7198297e9.png",
+      "example": "bare:carry-turn-east-south",
+      "frame": 3,
+      "view": "se",
+      "at": [
+        125,
+        76
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a449e16aac551ab1ec77a99cb2528a5286247ac0f5598f7c02109bb7198297e9.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/109186b182cfb8f964cad9565acc981df02964479ab47fc9a875b7fa116e16a5.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/109186b182cfb8f964cad9565acc981df02964479ab47fc9a875b7fa116e16a5.png",
+      "example": "bare:carry-turn-east-west",
+      "frame": 6,
+      "view": "sw",
+      "at": [
+        119,
+        80
+      ],
+      "changedPixels": 205,
+      "mask": "character/krusher-turn-face-polish-v1/masks/109186b182cfb8f964cad9565acc981df02964479ab47fc9a875b7fa116e16a5.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/b23b0d14a3e160314ba571a7fcb26680d3f5f8cf91303aabc2d37ebec42d7b96.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/b23b0d14a3e160314ba571a7fcb26680d3f5f8cf91303aabc2d37ebec42d7b96.png",
+      "example": "bare:carry-turn-east-west",
+      "frame": 7,
+      "view": "sw",
+      "at": [
+        116,
+        75
+      ],
+      "changedPixels": 205,
+      "mask": "character/krusher-turn-face-polish-v1/masks/b23b0d14a3e160314ba571a7fcb26680d3f5f8cf91303aabc2d37ebec42d7b96.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/92642135507ef8d18d5d42d8d9cbd7efca45ae944dd7e7ff49cd67f6042ee149.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/92642135507ef8d18d5d42d8d9cbd7efca45ae944dd7e7ff49cd67f6042ee149.png",
+      "example": "bare:carry-turn-north-south",
+      "frame": 6,
+      "view": "se",
+      "at": [
+        126,
+        72
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/92642135507ef8d18d5d42d8d9cbd7efca45ae944dd7e7ff49cd67f6042ee149.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/783e2d484f2a93dcefb5f4e9b0958fe6e4a7b58e98a468e7d1068aeaa1afdd0e.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/783e2d484f2a93dcefb5f4e9b0958fe6e4a7b58e98a468e7d1068aeaa1afdd0e.png",
+      "example": "bare:carry-turn-north-south",
+      "frame": 7,
+      "view": "se",
+      "at": [
+        125,
+        76
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/783e2d484f2a93dcefb5f4e9b0958fe6e4a7b58e98a468e7d1068aeaa1afdd0e.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/1087ff407a7e586f224b9e7d504ee792f3e8f6b731f3e7b16ff979a37b9b0dcd.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/1087ff407a7e586f224b9e7d504ee792f3e8f6b731f3e7b16ff979a37b9b0dcd.png",
+      "example": "bare:swim-turn-east-south",
+      "frame": 1,
+      "view": "se",
+      "at": [
+        133,
+        110
+      ],
+      "changedPixels": 158,
+      "mask": "character/krusher-turn-face-polish-v1/masks/1087ff407a7e586f224b9e7d504ee792f3e8f6b731f3e7b16ff979a37b9b0dcd.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/f29b443ed697da3ebd1fc0e860daf17a45494e31029ee5f7e03d8e5cd0ba8003.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/f29b443ed697da3ebd1fc0e860daf17a45494e31029ee5f7e03d8e5cd0ba8003.png",
+      "example": "bare:swim-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        125,
+        117
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/f29b443ed697da3ebd1fc0e860daf17a45494e31029ee5f7e03d8e5cd0ba8003.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/d90acc8d7cc5719469662f12d79b93481768b142bf99ba15de5d844bd51ec7ec.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/d90acc8d7cc5719469662f12d79b93481768b142bf99ba15de5d844bd51ec7ec.png",
+      "example": "bare:swim-turn-south-west",
+      "frame": 1,
+      "view": "sw",
+      "at": [
+        115,
+        128
+      ],
+      "changedPixels": 199,
+      "mask": "character/krusher-turn-face-polish-v1/masks/d90acc8d7cc5719469662f12d79b93481768b142bf99ba15de5d844bd51ec7ec.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/f7dc5995dad225c9a5757705c8282e0a2f3cbbf5c69438a16fdfb7bcc4a07b8b.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/f7dc5995dad225c9a5757705c8282e0a2f3cbbf5c69438a16fdfb7bcc4a07b8b.png",
+      "example": "bare:swim-turn-south-west",
+      "frame": 2,
+      "view": "sw",
+      "at": [
+        110,
+        118
+      ],
+      "changedPixels": 200,
+      "mask": "character/krusher-turn-face-polish-v1/masks/f7dc5995dad225c9a5757705c8282e0a2f3cbbf5c69438a16fdfb7bcc4a07b8b.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+      "example": "bare:swim-carry-turn-east-south",
+      "frame": 1,
+      "view": "se",
+      "at": [
+        125,
+        110
+      ],
+      "changedPixels": 155,
+      "mask": "character/krusher-turn-face-polish-v1/masks/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+      "example": "bare:swim-carry-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        127,
+        114
+      ],
+      "changedPixels": 160,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+      "example": "bare:swim-carry-turn-south-west",
+      "frame": 1,
+      "view": "sw",
+      "at": [
+        114,
+        124
+      ],
+      "changedPixels": 205,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+      "example": "bare:swim-carry-turn-south-west",
+      "frame": 2,
+      "view": "sw",
+      "at": [
+        111,
+        118
+      ],
+      "changedPixels": 203,
+      "mask": "character/krusher-turn-face-polish-v1/masks/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/4ac9ab3e66213e4d9689bb8906437fbd7abf384a5e7197b7a2b1b1c3259d7643.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/4ac9ab3e66213e4d9689bb8906437fbd7abf384a5e7197b7a2b1b1c3259d7643.png",
+      "example": "helmet:carry-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        131,
+        72
+      ],
+      "changedPixels": 134,
+      "mask": "character/krusher-turn-face-polish-v1/masks/4ac9ab3e66213e4d9689bb8906437fbd7abf384a5e7197b7a2b1b1c3259d7643.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a8c69afe7fdd6cc0a0e6a9aa9e4c11239c5ca3894d0523016b247fcf1b07708f.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a8c69afe7fdd6cc0a0e6a9aa9e4c11239c5ca3894d0523016b247fcf1b07708f.png",
+      "example": "helmet:carry-turn-east-south",
+      "frame": 3,
+      "view": "se",
+      "at": [
+        127,
+        72
+      ],
+      "changedPixels": 145,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a8c69afe7fdd6cc0a0e6a9aa9e4c11239c5ca3894d0523016b247fcf1b07708f.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/1e9912efdae08c3ee212543517f31ee6b50222c807e4f3156fc4716e42e4699e.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/1e9912efdae08c3ee212543517f31ee6b50222c807e4f3156fc4716e42e4699e.png",
+      "example": "helmet:carry-turn-east-west",
+      "frame": 6,
+      "view": "sw",
+      "at": [
+        110,
+        71
+      ],
+      "changedPixels": 200,
+      "mask": "character/krusher-turn-face-polish-v1/masks/1e9912efdae08c3ee212543517f31ee6b50222c807e4f3156fc4716e42e4699e.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/0bc25b7002fec3e223cdc0d4391c2a55d03567494ffd848ce375dca98b60e461.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/0bc25b7002fec3e223cdc0d4391c2a55d03567494ffd848ce375dca98b60e461.png",
+      "example": "helmet:carry-turn-east-west",
+      "frame": 7,
+      "view": "sw",
+      "at": [
+        108,
+        73
+      ],
+      "changedPixels": 188,
+      "mask": "character/krusher-turn-face-polish-v1/masks/0bc25b7002fec3e223cdc0d4391c2a55d03567494ffd848ce375dca98b60e461.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/d4952173a62beb8d385c4bf927d5d6d0dfc518d9bd05d14ed030224a71297391.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/d4952173a62beb8d385c4bf927d5d6d0dfc518d9bd05d14ed030224a71297391.png",
+      "example": "helmet:swim-turn-east-south",
+      "frame": 1,
+      "view": "se",
+      "at": [
+        128,
+        104
+      ],
+      "changedPixels": 135,
+      "mask": "character/krusher-turn-face-polish-v1/masks/d4952173a62beb8d385c4bf927d5d6d0dfc518d9bd05d14ed030224a71297391.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/b396ffa94e56b4721faedcef03ca09a6a69c2d4252e5ecbae9d6ebfbd557f952.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/b396ffa94e56b4721faedcef03ca09a6a69c2d4252e5ecbae9d6ebfbd557f952.png",
+      "example": "helmet:swim-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        126,
+        111
+      ],
+      "changedPixels": 133,
+      "mask": "character/krusher-turn-face-polish-v1/masks/b396ffa94e56b4721faedcef03ca09a6a69c2d4252e5ecbae9d6ebfbd557f952.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/e440da9784a3be82a32e501a929c17eb2d172ad34074bba75e5e976f9ad2a54c.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/e440da9784a3be82a32e501a929c17eb2d172ad34074bba75e5e976f9ad2a54c.png",
+      "example": "helmet:swim-turn-south-west",
+      "frame": 1,
+      "view": "sw",
+      "at": [
+        110,
+        124
+      ],
+      "changedPixels": 175,
+      "mask": "character/krusher-turn-face-polish-v1/masks/e440da9784a3be82a32e501a929c17eb2d172ad34074bba75e5e976f9ad2a54c.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/2b4749f6fe8c4d5ed9d5e26dd428a7c6e00671f3c008eb203b15e6d12e3e729a.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/2b4749f6fe8c4d5ed9d5e26dd428a7c6e00671f3c008eb203b15e6d12e3e729a.png",
+      "example": "helmet:swim-turn-south-west",
+      "frame": 2,
+      "view": "sw",
+      "at": [
+        105,
+        117
+      ],
+      "changedPixels": 162,
+      "mask": "character/krusher-turn-face-polish-v1/masks/2b4749f6fe8c4d5ed9d5e26dd428a7c6e00671f3c008eb203b15e6d12e3e729a.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/d892a7a4a3bbab02c5dea934ce95dc980157f255260b43ca8d81f2f7a67a601f.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/d892a7a4a3bbab02c5dea934ce95dc980157f255260b43ca8d81f2f7a67a601f.png",
+      "example": "helmet:swim-turn-north-east",
+      "frame": 3,
+      "view": "se",
+      "at": [
+        130,
+        100
+      ],
+      "changedPixels": 111,
+      "mask": "character/krusher-turn-face-polish-v1/masks/d892a7a4a3bbab02c5dea934ce95dc980157f255260b43ca8d81f2f7a67a601f.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a967817d9923dbb49f0435c5efe8f7454ce31267e32d68e2d28e35e5dd6715b7.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a967817d9923dbb49f0435c5efe8f7454ce31267e32d68e2d28e35e5dd6715b7.png",
+      "example": "helmet:swim-turn-north-east",
+      "frame": 4,
+      "view": "se",
+      "at": [
+        133,
+        100
+      ],
+      "changedPixels": 124,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a967817d9923dbb49f0435c5efe8f7454ce31267e32d68e2d28e35e5dd6715b7.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/ef46846275cec43311715485be91a9e012d0e319e23f12c439d9487109e17ad2.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/ef46846275cec43311715485be91a9e012d0e319e23f12c439d9487109e17ad2.png",
+      "example": "helmet:swim-turn-north-west",
+      "frame": 4,
+      "view": "sw",
+      "at": [
+        97,
+        104
+      ],
+      "changedPixels": 161,
+      "mask": "character/krusher-turn-face-polish-v1/masks/ef46846275cec43311715485be91a9e012d0e319e23f12c439d9487109e17ad2.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/a00b47c6a175abdb4945da269cedb885ff71e4902829d6de474eac4bcfd9f0e7.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/a00b47c6a175abdb4945da269cedb885ff71e4902829d6de474eac4bcfd9f0e7.png",
+      "example": "helmet:swim-turn-north-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        125,
+        96
+      ],
+      "changedPixels": 149,
+      "mask": "character/krusher-turn-face-polish-v1/masks/a00b47c6a175abdb4945da269cedb885ff71e4902829d6de474eac4bcfd9f0e7.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/c518a1d33cb6edb70fa3fb5b626bea1dfe63c673c2455e3c3bb0cd95afe1b011.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/c518a1d33cb6edb70fa3fb5b626bea1dfe63c673c2455e3c3bb0cd95afe1b011.png",
+      "example": "helmet:swim-turn-north-south",
+      "frame": 3,
+      "view": "se",
+      "at": [
+        130,
+        100
+      ],
+      "changedPixels": 111,
+      "mask": "character/krusher-turn-face-polish-v1/masks/c518a1d33cb6edb70fa3fb5b626bea1dfe63c673c2455e3c3bb0cd95afe1b011.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/d0d20ad14b7efbb6c43ca4834cd033f6d04114d36e7d58d859d10cc2e9b53a65.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/d0d20ad14b7efbb6c43ca4834cd033f6d04114d36e7d58d859d10cc2e9b53a65.png",
+      "example": "helmet:swim-turn-north-south",
+      "frame": 4,
+      "view": "se",
+      "at": [
+        133,
+        100
+      ],
+      "changedPixels": 124,
+      "mask": "character/krusher-turn-face-polish-v1/masks/d0d20ad14b7efbb6c43ca4834cd033f6d04114d36e7d58d859d10cc2e9b53a65.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/6d7cf947adc9ebd8b5a10634aa0536569b2d643f31100366ef5f8ba5594ac133.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/6d7cf947adc9ebd8b5a10634aa0536569b2d643f31100366ef5f8ba5594ac133.png",
+      "example": "helmet:swim-carry-turn-east-south",
+      "frame": 1,
+      "view": "se",
+      "at": [
+        129,
+        104
+      ],
+      "changedPixels": 133,
+      "mask": "character/krusher-turn-face-polish-v1/masks/6d7cf947adc9ebd8b5a10634aa0536569b2d643f31100366ef5f8ba5594ac133.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/c6931259985169e93774d46005e5584613974f2181c679b999e0abbc8bd34021.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/c6931259985169e93774d46005e5584613974f2181c679b999e0abbc8bd34021.png",
+      "example": "helmet:swim-carry-turn-east-south",
+      "frame": 2,
+      "view": "se",
+      "at": [
+        125,
+        111
+      ],
+      "changedPixels": 135,
+      "mask": "character/krusher-turn-face-polish-v1/masks/c6931259985169e93774d46005e5584613974f2181c679b999e0abbc8bd34021.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/3e3468112882d477191c0e8bc4fa277cbe51def373eaf779d8462808e042a688.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/3e3468112882d477191c0e8bc4fa277cbe51def373eaf779d8462808e042a688.png",
+      "example": "helmet:swim-carry-turn-north-east",
+      "frame": 3,
+      "view": "se",
+      "at": [
+        129,
+        103
+      ],
+      "changedPixels": 108,
+      "mask": "character/krusher-turn-face-polish-v1/masks/3e3468112882d477191c0e8bc4fa277cbe51def373eaf779d8462808e042a688.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/bde4015d4d9bd3806d30f1ecd1d01277f12f00d2f16d65807e7e63379fd587a9.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/bde4015d4d9bd3806d30f1ecd1d01277f12f00d2f16d65807e7e63379fd587a9.png",
+      "example": "helmet:swim-carry-turn-north-east",
+      "frame": 4,
+      "view": "se",
+      "at": [
+        132,
+        105
+      ],
+      "changedPixels": 94,
+      "mask": "character/krusher-turn-face-polish-v1/masks/bde4015d4d9bd3806d30f1ecd1d01277f12f00d2f16d65807e7e63379fd587a9.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/2c2a2a2586b1c43f137812c95183c1f45b53d83de9881d5f59d3b6ff41e4189e.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/2c2a2a2586b1c43f137812c95183c1f45b53d83de9881d5f59d3b6ff41e4189e.png",
+      "example": "helmet:swim-carry-turn-south-west",
+      "frame": 1,
+      "view": "sw",
+      "at": [
+        111,
+        129
+      ],
+      "changedPixels": 107,
+      "mask": "character/krusher-turn-face-polish-v1/masks/2c2a2a2586b1c43f137812c95183c1f45b53d83de9881d5f59d3b6ff41e4189e.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/b5989f79c433aa1bcbffff83a3c00822ea0e4c67ce71f46efed982d0afdfef24.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/b5989f79c433aa1bcbffff83a3c00822ea0e4c67ce71f46efed982d0afdfef24.png",
+      "example": "helmet:swim-carry-turn-south-west",
+      "frame": 2,
+      "view": "sw",
+      "at": [
+        105,
+        121
+      ],
+      "changedPixels": 102,
+      "mask": "character/krusher-turn-face-polish-v1/masks/b5989f79c433aa1bcbffff83a3c00822ea0e4c67ce71f46efed982d0afdfef24.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    },
+    {
+      "source": "character/krusher-animation-package-v11/frames/9fa2b42acea8abba55812cfc15e7af07dba0ce82b0d58866d6d241dfdfdfff3d.png",
+      "output": "character/krusher-turn-face-polish-v1/frames/9fa2b42acea8abba55812cfc15e7af07dba0ce82b0d58866d6d241dfdfdfff3d.png",
+      "example": "helmet:swim-carry-turn-south-west",
+      "frame": 4,
+      "view": "sw",
+      "at": [
+        97,
+        109
+      ],
+      "changedPixels": 121,
+      "mask": "character/krusher-turn-face-polish-v1/masks/9fa2b42acea8abba55812cfc15e7af07dba0ce82b0d58866d6d241dfdfdfff3d.png",
+      "alphaExact": true,
+      "bodyAndEquipmentOutsideFaceExact": true
+    }
+  ],
+  "frameHolds": 8058,
+  "totalStates": 586,
+  "indexedPng": 3486
+}

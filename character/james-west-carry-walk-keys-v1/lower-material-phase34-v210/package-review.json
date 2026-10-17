@@ -1,0 +1,50 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 848,
+  "outsideExactPixels": 64688,
+  "changedPixels": 845,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    97,
+    76,
+    160,
+    224
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      44.44,
+      65.46,
+      88.49,
+      170.79
+    ],
+    "after": [
+      34.97,
+      55.35,
+      80.6,
+      147.01
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "protectedRectangles": [],
+  "protectedRectanglesExact": true,
+  "disposition": "reject_internal_boot_geometry_drift",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "findings": [
+    "Phase33 raw/protected crop and paired source boards visually reviewed before native launch; toe/heel and ankle arrangement retained provisionally. Local median64.21to61.67 and95th156.17to155.92: small finish change, not a measured quarter reduction.",
+    "Phase34V210 rejected at source review: generated boot angles, toe positions and ankle construction shifted; original-alpha admission fragments the moved interior. Not included in native window or ledger.",
+    "All five phase31..35 paired native captures at four sizes and source window reviewed. Original34/35 retain brighter toe highlights. Continuous moving grade, master anatomy/contact and full49 motion acceptance remain open."
+  ],
+  "nativeIncluded": false
+}

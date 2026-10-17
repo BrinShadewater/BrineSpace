@@ -1,0 +1,12 @@
+--- 
+
++++ 
+
+@@ -3594,4 +3594,6 @@
+
+ 
+ func _get_branforth_frame_source(main) -> Texture2D:
++	if preload("res://scripts/james_hull_resume.gd").eligible(main.branforth_npc):
++		return preload("res://scripts/james_hull_resume.gd").texture(main,main.branforth_npc)
+ 	if preload("res://scripts/james_hull_return.gd").eligible(main.branforth_npc):
+ 		return preload("res://scripts/james_hull_return.gd").texture(main,main.branforth_npc)

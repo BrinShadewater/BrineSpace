@@ -1,0 +1,24 @@
+{
+  "status": "updated reference sheet, owner review pending; accepted integrated v14 body retained",
+  "source_id": "exec-7fa2fe20-3ec9-488e-8109-f3c7ccf80788.png",
+  "generation_method": "built-in image_gen edit",
+  "references": {
+    "character/brine-slim-v14-2026-10-03/source.png": "b859a5fc9a0a796b7caf8e1276391a1be106f04f9bd2c40aa20ee318f7e6ea41",
+    "character/brine-reference-v3-2026-10-01/reference-sheet.png": "7206253f1fbd5f06afd6948ac41018a86183beb1043fda3ad49165816d9b6f74",
+    "character/crew-turnarounds-v4/bill-turnaround-01.png": "f030ed3e85a25193edd00a12956a04f8a154f09dbf0967d4c6a917f93979bfd2",
+    "character/brine-comms-v14/portrait.png": "dbcb634f4ab16a28aafe587e7126cace99e3eeb55f98beb30ce7dc573bf68ada"
+  },
+  "output_sha256": "f510402f37a62a3673914b1d8fd2c8418dd1e562d8e502126cbeb9dfc86a093d",
+  "prompt_sha256": "5390f49aa7e1eb4e4f47d751afe60e21d101f50dc13d6df914a59f3958c30869",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "visual_review": "Four cardinal bodies, face-detail and suspended-pose panels inspected. Slender contours, warm complexion, brown gathered hair and blue leotard visually coherent with v14. Labels and charcoal layout retained. Matching is visual, not pixel equality.",
+  "checks": [
+    "PNG decodes, 1536x1024",
+    "Bill source SHA matches owner-selected design-lock.json",
+    "No runtime source or motion changes; prior native evidence remains applicable to accepted v14"
+  ],
+  "runtime_baseline": "character/brine-slim-v14-2026-10-03/body.png"
+}

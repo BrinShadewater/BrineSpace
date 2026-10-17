@@ -1,0 +1,264 @@
+{
+  "frameHeight": 256.0,
+  "frameWidth": 256.0,
+  "name": "James East cargo head family v2 staged bare",
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "precomposed": true,
+  "standingHeight": 148.0,
+  "states": [
+    {
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        70.0,
+        80.0,
+        90.0,
+        100.0,
+        100.0,
+        80.0
+      ],
+      "frameFiles": [
+        "east-family-v2/pickup-east-000.png",
+        "east-family-v2/pickup-east-001.png",
+        "east-family-v2/pickup-east-002.png",
+        "east-family-v2/pickup-east-003.png",
+        "east-family-v2/pickup-east-004.png",
+        "east-family-v2/pickup-east-005.png"
+      ],
+      "id": "pickup-east",
+      "loop": false,
+      "provenance": {
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "fixedScale": [
+          0.397590361445783,
+          0.434017595307918
+        ],
+        "headRepair": "Generated upright and bent head/collar sources, explicit local source extraction/fit; original RGBA outside recorded window retained. Pickup/unload exact reverse sources reused; original clocks/registration. Staged bare only; helmet/turn joins pending.",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        },
+        "source": "source.png",
+        "sourcePoses": [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0
+        ]
+      },
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "frameFiles": [
+        "east-family-v2/carry-east-000.png",
+        "east-family-v2/carry-east-001.png",
+        "east-family-v2/carry-east-002.png",
+        "east-family-v2/carry-east-003.png",
+        "east-family-v2/carry-east-004.png",
+        "east-family-v2/carry-east-005.png"
+      ],
+      "id": "carry-east",
+      "loop": true,
+      "provenance": {
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "fixedScale": [
+          0.397590361445783,
+          0.448795180722892
+        ],
+        "headRepair": "Generated upright and bent head/collar sources, explicit local source extraction/fit; original RGBA outside recorded window retained. Pickup/unload exact reverse sources reused; original clocks/registration. Staged bare only; helmet/turn joins pending.",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        },
+        "source": "source.png",
+        "sourcePoses": [
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          10.0,
+          11.0
+        ]
+      },
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        80.0,
+        100.0,
+        100.0,
+        90.0,
+        80.0,
+        70.0
+      ],
+      "frameFiles": [
+        "east-family-v2/unload-east-000.png",
+        "east-family-v2/unload-east-001.png",
+        "east-family-v2/unload-east-002.png",
+        "east-family-v2/unload-east-003.png",
+        "east-family-v2/unload-east-004.png",
+        "east-family-v2/unload-east-005.png"
+      ],
+      "id": "unload-east",
+      "loop": false,
+      "provenance": {
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "fixedScale": [
+          0.397590361445783,
+          0.434017595307918
+        ],
+        "headRepair": "Generated upright and bent head/collar sources, explicit local source extraction/fit; original RGBA outside recorded window retained. Pickup/unload exact reverse sources reused; original clocks/registration. Staged bare only; helmet/turn joins pending.",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        },
+        "source": "source.png",
+        "sourcePoses": [
+          5.0,
+          4.0,
+          3.0,
+          2.0,
+          1.0,
+          0.0
+        ]
+      },
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "status": "staged_bare_family_review_pending_helmet_turn_joins",
+  "strideDistanceCells": {
+    "carry-east": 0.0872972972972973,
+    "carry-north": 0.0827027027027027,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.0735135135135135
+  },
+  "textureFilter": "linear"
+}

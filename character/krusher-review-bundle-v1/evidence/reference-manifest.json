@@ -1,0 +1,805 @@
+{
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "Matte muted grey-cyan",
+    "accentTarget": "#527C80"
+  },
+  "scope": "Production reference sheets assembled from existing sprites; unselected candidate, not owner acceptance or station integration.",
+  "canvas": [
+    184,
+    184
+  ],
+  "pivot": [
+    92,
+    172
+  ],
+  "standingRuler": 148,
+  "baseFamily": "Bill",
+  "headRegistration": {
+    "south": {
+      "size": [
+        23,
+        28
+      ],
+      "idlePaste": [
+        81,
+        23
+      ],
+      "idleAxis": 92,
+      "idleBottom": 50,
+      "source": "character/krusher-bill-base-test-v2/sources/south-head-native.png"
+    },
+    "east": {
+      "size": [
+        26,
+        29
+      ],
+      "idlePaste": [
+        79,
+        19
+      ],
+      "idleAxis": 94,
+      "idleBottom": 47,
+      "source": "character/krusher-bill-base-test-v2/sources/east-head-native.png"
+    },
+    "north": {
+      "size": [
+        24,
+        23
+      ],
+      "idlePaste": [
+        80,
+        22
+      ],
+      "idleAxis": 92,
+      "idleBottom": 44,
+      "source": "character/krusher-bill-base-test-v2/sources/north-head-native.png"
+    },
+    "west": {
+      "size": [
+        23,
+        29
+      ],
+      "idlePaste": [
+        80,
+        22
+      ],
+      "idleAxis": 90,
+      "idleBottom": 50,
+      "source": "character/krusher-bill-base-test-v2/sources/west-head-native.png"
+    }
+  },
+  "sourceHashes": {
+    "character/krusher-moving-equipment-test-v2/frames/bare/idle-south/000.png": "611a8987120d2800af2229f5c02bd30b9fae00dfd5a82749ad2ab53d091eca5b",
+    "character/krusher-moving-equipment-test-v2/frames/bare/idle-east/000.png": "9ade74af00d1442c445801cb091cbbacf352e2c976d08b38129fbb6451a3bb38",
+    "character/krusher-moving-equipment-test-v2/frames/bare/idle-north/000.png": "adc741a34a54d652a4b7146d886c5cd17d417a4f79abce47557a77b3d08f67ac",
+    "character/krusher-moving-equipment-test-v2/frames/bare/idle-west/000.png": "f0643954d344de02284bcc76345b0d640fa4c5ba6c37baa2bb9be7ef3448690b",
+    "character/krusher-moving-equipment-test-v2/frames/helmet/idle-south/000.png": "f851810cb630884401394e34bb9be6e786bfb34b2648dc03f913553e0862e2e0",
+    "character/krusher-moving-equipment-test-v2/frames/helmet/idle-east/000.png": "fb19e93002ea5911e94661464c8f8d53435f74a7cb36e4353f48c29039bc0d32",
+    "character/krusher-moving-equipment-test-v2/frames/helmet/idle-north/000.png": "06186296e2f9e4e162c5e6e436fc24f6a394a552299e94875344d9f10d28b694",
+    "character/krusher-moving-equipment-test-v2/frames/helmet/idle-west/000.png": "d6cf27af2046b9a39af9f4d9ed9acfe6c9625b96bcc7200af250e9398f8f3157",
+    "character/krusher-bill-base-test-v2/sources/south-head-native.png": "74720d1ed7eea3e1bc7bcc4e7a48e9cc97a454ab9a73c650f78df46778298557",
+    "character/krusher-bill-base-test-v2/sources/east-head-native.png": "960d493d287c23516db45fb4147b1b01cc90e5189a49d38d20eeedb62650619c",
+    "character/krusher-bill-base-test-v2/sources/north-head-native.png": "8cda2f5aea7979e86077633bd336e719031be84554fb4820911eaf70e1079025",
+    "character/krusher-bill-base-test-v2/sources/west-head-native.png": "bd35c22f454472297a49b31df932be3f5823f543e45265203bacb26ad2c4baa1",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/idle.png": "f0643954d344de02284bcc76345b0d640fa4c5ba6c37baa2bb9be7ef3448690b",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-001.png": "24202b64ca6753e46ddb3d28ae34cf18cdd51cd5d83499cb7fe3f015a977fa40",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-007.png": "01130f37ad115af1950448847c37c7652193c8e2dff9060fc90d37d8acacc05a",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-002.png": "701b6abd5841adc80ce7a578c1cb9317893dfac4dd1eac2b06e81a29e3bcedba",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/open.png": "007e5490776b2a1b20dcf541533b861e8c233e48cc22ed1c66a071c42516e762",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-003.png": "cdf81d56e2054a2be37f0a00dbff554c0fa83bc30184e0b3d65acd751cd0114a",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-004.png": "ebf309c50339d9a9a46a0eaf88f24467e5b1e0b8cdbc608aeaba522eae54b323",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-005.png": "78f7fec2a91096db4efacfbe68ec90a8358533f633e109157fd2a4449407a5f7",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/close-004.png": "17c0519b2bc5fb152391f71f37076ab1b398c73ef6d8c5886791f11bcb467c1b",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/key-006.png": "9a76adef438b2e0d73537cff63d9028c260cecc26884613ef20eb1780371bc69",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/close-006.png": "16336a4e983cf8436a00917687d362a1b1927b9c6b89fcf0648d5f226be409c5",
+    "character/krusher-terminal-gear-pair-v1/frames/bare/release.png": "d71d449a93655618569283e5be7c8e24d23d74f23ab93fd89477afc649eb4db6",
+    "character/krusher-equipment-study-v1/parts/native/closed-terminal-south.png": "1097f4637241f1d792c620de2d6f7fcc0addf2d4838ab45c69ba8cf61271cd19",
+    "character/krusher-equipment-study-v1/parts/native/closed-terminal-east.png": "8c0bdce31f3cbfc7ede31b6fdd029195515da275a5622375b8ce146e1a4e32f0",
+    "character/krusher-equipment-study-v1/parts/native/closed-terminal-north.png": "0b7ee90dadd038fb2442063370e12457dc446b92b2c9f973d538db0298f45776",
+    "character/krusher-equipment-study-v1/parts/native/closed-terminal-west.png": "e3efc76b282d8f41b02972b37b4c23eea8a80245e6d5b9e7c1486bf8371c5e83",
+    "character/krusher-equipment-study-v1/parts/native/open-terminal-south.png": "902df77ecfa2047d22f981bf59d757812ee017c227ce4d15ebe7814a01cadbae",
+    "character/krusher-equipment-study-v1/parts/native/open-terminal-east.png": "51f3dd8634de0400393e641265afcb4d21ad932ceca095742436d49ae0dcd4d4",
+    "character/krusher-equipment-study-v1/parts/native/open-terminal-north.png": "99202e6e2371f436f1db78dbf71ca5bd814b08cd902c8201e7e806701db94089",
+    "character/krusher-equipment-study-v1/parts/native/open-terminal-west.png": "943f72a075e88cd1bb116373529211add0fd9984cd06d892ff50fa608ae82741",
+    "character/krusher-equipment-study-v1/parts/native/data-cartridges-south.png": "65b1564081f9b5368d48b151149072f9933428562db59c237d74871aac487156",
+    "character/krusher-equipment-study-v1/parts/native/data-cartridges-east.png": "e5f106df499360704867a7edf0bd489e100445bee5d2e06922d6d31b7fd1a5e5",
+    "character/krusher-equipment-study-v1/parts/native/data-cartridges-north.png": "a84f4ec47a3efdfb290806942af6c5ec8d3f53cc20be3d22353ccae2f397b72c",
+    "character/krusher-equipment-study-v1/parts/native/data-cartridges-west.png": "a623eaa5f8dd123133019244bb8d78f13e3ed0eea432cb1b63c2657d80410967"
+  },
+  "tiles": [
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-south/000.png",
+      "xy": [
+        16,
+        135
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-east/000.png",
+      "xy": [
+        416,
+        135
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-north/000.png",
+      "xy": [
+        816,
+        135
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-west/000.png",
+      "xy": [
+        1216,
+        135
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/helmet/idle-south/000.png",
+      "xy": [
+        16,
+        575
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/helmet/idle-east/000.png",
+      "xy": [
+        416,
+        575
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/helmet/idle-north/000.png",
+      "xy": [
+        816,
+        575
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/helmet/idle-west/000.png",
+      "xy": [
+        1216,
+        575
+      ],
+      "size": [
+        368,
+        368
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-south/000.png",
+      "xy": [
+        145,
+        1000
+      ],
+      "size": [
+        92,
+        92
+      ],
+      "filter": "lanczos"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-east/000.png",
+      "xy": [
+        545,
+        1000
+      ],
+      "size": [
+        92,
+        92
+      ],
+      "filter": "lanczos"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-north/000.png",
+      "xy": [
+        945,
+        1000
+      ],
+      "size": [
+        92,
+        92
+      ],
+      "filter": "lanczos"
+    },
+    {
+      "sheet": "character-sheet.png",
+      "source": "character/krusher-moving-equipment-test-v2/frames/bare/idle-west/000.png",
+      "xy": [
+        1345,
+        1000
+      ],
+      "size": [
+        92,
+        92
+      ],
+      "filter": "lanczos"
+    },
+    {
+      "sheet": "head-registration-sheet.png",
+      "source": "character/krusher-bill-base-test-v2/sources/south-head-native.png",
+      "xy": [
+        90,
+        130
+      ],
+      "size": [
+        184,
+        224
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "head-registration-sheet.png",
+      "source": "character/krusher-bill-base-test-v2/sources/east-head-native.png",
+      "xy": [
+        490,
+        130
+      ],
+      "size": [
+        208,
+        232
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "head-registration-sheet.png",
+      "source": "character/krusher-bill-base-test-v2/sources/north-head-native.png",
+      "xy": [
+        890,
+        130
+      ],
+      "size": [
+        192,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "head-registration-sheet.png",
+      "source": "character/krusher-bill-base-test-v2/sources/west-head-native.png",
+      "xy": [
+        1290,
+        130
+      ],
+      "size": [
+        184,
+        232
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/idle.png",
+      "xy": [
+        41,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-001.png",
+      "xy": [
+        307,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-007.png",
+      "xy": [
+        573,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-002.png",
+      "xy": [
+        839,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/open.png",
+      "xy": [
+        1105,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-003.png",
+      "xy": [
+        1371,
+        145
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-003.png",
+      "xy": [
+        41,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-004.png",
+      "xy": [
+        307,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-005.png",
+      "xy": [
+        573,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-004.png",
+      "xy": [
+        839,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-005.png",
+      "xy": [
+        1105,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-003.png",
+      "xy": [
+        1371,
+        430
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-003.png",
+      "xy": [
+        22,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/close-004.png",
+      "xy": [
+        250,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-006.png",
+      "xy": [
+        478,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/key-007.png",
+      "xy": [
+        706,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/close-006.png",
+      "xy": [
+        934,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/release.png",
+      "xy": [
+        1162,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "terminal-key-pose-sheet.png",
+      "source": "character/krusher-terminal-gear-pair-v1/frames/bare/idle.png",
+      "xy": [
+        1390,
+        715
+      ],
+      "size": [
+        184,
+        184
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/closed-terminal-south.png",
+      "xy": [
+        80,
+        155
+      ],
+      "size": [
+        80,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/closed-terminal-east.png",
+      "xy": [
+        480,
+        155
+      ],
+      "size": [
+        56,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/closed-terminal-north.png",
+      "xy": [
+        880,
+        155
+      ],
+      "size": [
+        88,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/closed-terminal-west.png",
+      "xy": [
+        1280,
+        155
+      ],
+      "size": [
+        56,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/open-terminal-south.png",
+      "xy": [
+        80,
+        425
+      ],
+      "size": [
+        128,
+        136
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/open-terminal-east.png",
+      "xy": [
+        480,
+        425
+      ],
+      "size": [
+        120,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/open-terminal-north.png",
+      "xy": [
+        880,
+        425
+      ],
+      "size": [
+        136,
+        112
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/open-terminal-west.png",
+      "xy": [
+        1280,
+        425
+      ],
+      "size": [
+        120,
+        128
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/data-cartridges-south.png",
+      "xy": [
+        80,
+        695
+      ],
+      "size": [
+        88,
+        88
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/data-cartridges-east.png",
+      "xy": [
+        480,
+        695
+      ],
+      "size": [
+        56,
+        88
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/data-cartridges-north.png",
+      "xy": [
+        880,
+        695
+      ],
+      "size": [
+        88,
+        88
+      ],
+      "filter": "nearest"
+    },
+    {
+      "sheet": "equipment-reference-sheet.png",
+      "source": "character/krusher-equipment-study-v1/parts/native/data-cartridges-west.png",
+      "xy": [
+        1280,
+        695
+      ],
+      "size": [
+        56,
+        88
+      ],
+      "filter": "nearest"
+    }
+  ],
+  "sheets": [
+    "character-sheet.png",
+    "head-registration-sheet.png",
+    "terminal-key-pose-sheet.png",
+    "equipment-reference-sheet.png"
+  ],
+  "sources": {
+    "locomotion": "character/krusher-moving-equipment-test-v2",
+    "terminal": "character/krusher-terminal-gear-pair-v1",
+    "head": "character/krusher-bill-base-test-v2"
+  },
+  "remaining": [
+    "Continuous artistic motion signoff",
+    "Expression and turn inbetween sources if required by consumer",
+    "Compatibility tests for other base families before reuse"
+  ],
+  "equipmentIdleFits": [
+    {
+      "direction": "south",
+      "attachments": [
+        [
+          "closed-terminal-south",
+          [
+            106,
+            90
+          ]
+        ],
+        [
+          "data-cartridges-south",
+          [
+            75,
+            92
+          ]
+        ]
+      ]
+    },
+    {
+      "direction": "east",
+      "attachments": [
+        [
+          "data-cartridges-east",
+          [
+            92,
+            93
+          ]
+        ]
+      ]
+    },
+    {
+      "direction": "north",
+      "attachments": [
+        [
+          "closed-terminal-north",
+          [
+            75,
+            97
+          ]
+        ],
+        [
+          "data-cartridges-north",
+          [
+            103,
+            97
+          ]
+        ]
+      ]
+    },
+    {
+      "direction": "west",
+      "attachments": [
+        [
+          "closed-terminal-west",
+          [
+            88,
+            92
+          ]
+        ]
+      ]
+    }
+  ]
+}

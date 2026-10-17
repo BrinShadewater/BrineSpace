@@ -1,0 +1,36 @@
+{
+  "run": "output/marsh-animation-audit/south-work-dispatch-v5-2026-10-04",
+  "checks": 619,
+  "failures": 0,
+  "samples": 348,
+  "nativeSourcePairs": 16,
+  "inputCount": 5742,
+  "inputsStable": true,
+  "ownerNonLogFiles": 2931,
+  "ownerStable": true,
+  "reportSha256": "2a963979eceeb8359cbc3aa7e1b7483e63cb6bb90b706b8a2c63b2e30d15122c",
+  "scope": "Prescribed valid production room contacts and goals, then real arrive/update transitions at 40ms samples, current normal catalogue. No actor work state or stage injection after arrival. Not autonomous goal selection, route entry, wet salvage, continuously watched cadence or new full SaveContinue.",
+  "boards": [
+    {
+      "path": "character/marsh-south-work-dispatch-v1/repair-transitions.png",
+      "sha256": "c38eceadcded0ca90a663e7fbd7453f9a4cbc26f628d3513f182077c52409ecc",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "character/marsh-south-work-dispatch-v1/workshop-transitions.png",
+      "sha256": "baa4e5e24650d2505d2d65489d8c949cb757ca720287c86bfdef5f085b8699e7",
+      "visuallyReviewed": true
+    }
+  ],
+  "failedAttempts": [
+    "south-work-dispatch-v1-2026-10-04: shared renderer compile failure",
+    "south-work-dispatch-v2-2026-10-04: same compile failure, subsequently passed player/grid check-only",
+    "south-work-dispatch-v3-2026-10-04: occupied workshop fixture site",
+    "south-work-dispatch-v4-2026-10-04: free fixture placement resets rotation to zero; South station assertion failed"
+  ],
+  "normalArtChanged": false,
+  "gameplayCodeChanged": false,
+  "boardCorrection": "Initial source rows overlapped native crops and hid boot/256-canvas pixels. Rejected boards retained in raw run; final cells reserve all256 source pixels before native crop.",
+  "fullNativeReviewed": "captures/world-009.png",
+  "visualLimits": "Complete source/native transition boards reviewed. Older kneel/stand South drawings retain darker boots and cooler face than revised repair; this existing material join is visible, retained and not claimed pixel-identical. Sampled boards do not establish continuous motion acceptance."
+}

@@ -1,0 +1,495 @@
+{
+  "comparison": {
+    "before": {
+      "box": [
+        103,
+        202,
+        133,
+        224
+      ],
+      "warmMaskPixels": 249,
+      "matches": [
+        {
+          "pose": 0,
+          "NCC": 1.0,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 1,
+          "NCC": 0.9865,
+          "dx": -1,
+          "dy": 0
+        },
+        {
+          "pose": 2,
+          "NCC": 0.9196,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 3,
+          "NCC": 0.9297,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 4,
+          "NCC": 0.804,
+          "dx": 1,
+          "dy": 0
+        },
+        {
+          "pose": 5,
+          "NCC": 0.7939,
+          "dx": -1,
+          "dy": 0
+        }
+      ],
+      "dxSpan": 2,
+      "minimumNCC": 0.7939,
+      "sourceAudit": {
+        "originalMaster": {
+          "height": 148,
+          "headWidth": 26,
+          "upperBodyWidth": 42,
+          "clothMedian": [
+            66.0,
+            64.0,
+            63.0
+          ],
+          "floor": 223,
+          "nearSoleXs": [
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131
+          ],
+          "nearSoleMean": 125.5,
+          "distalFarBootBottom": 220
+        },
+        "rows": [
+          {
+            "pose": 0,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 45,
+            "clothMedian": [
+              67.0,
+              66.0,
+              65.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133
+            ],
+            "nearSoleMean": 127.5,
+            "distalFarBootBottom": 220
+          },
+          {
+            "pose": 1,
+            "height": 148,
+            "headWidth": 28,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              66.0,
+              65.0,
+              65.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132
+            ],
+            "nearSoleMean": 126.5,
+            "distalFarBootBottom": 220
+          },
+          {
+            "pose": 2,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132
+            ],
+            "nearSoleMean": 127.0,
+            "distalFarBootBottom": 220
+          },
+          {
+            "pose": 3,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              66.0,
+              65.0,
+              64.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133
+            ],
+            "nearSoleMean": 127.5,
+            "distalFarBootBottom": 214
+          },
+          {
+            "pose": 4,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              67.0,
+              66.0,
+              65.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134
+            ],
+            "nearSoleMean": 129.0,
+            "distalFarBootBottom": 210
+          },
+          {
+            "pose": 5,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              66.5,
+              65.0,
+              64.5
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132
+            ],
+            "nearSoleMean": 127.0,
+            "distalFarBootBottom": 208
+          }
+        ],
+        "distinctFrameHashes": 6,
+        "reviewReplayChecks": 12,
+        "reviewReplayFailures": 0,
+        "scope": "Whole-source six-pose initial preparation diagnostic at prescribed70ms holds. Distinct file hashes alone do not prove authored motion progression; far heel/toe identity/contact, rigid near-foot, materials/proportions and native visual review still required. No completed start-stop/controller acceptance."
+      }
+    },
+    "after": {
+      "box": [
+        103,
+        202,
+        133,
+        224
+      ],
+      "warmMaskPixels": 232,
+      "matches": [
+        {
+          "pose": 0,
+          "NCC": 1.0,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 1,
+          "NCC": 0.9809,
+          "dx": -2,
+          "dy": 0
+        },
+        {
+          "pose": 2,
+          "NCC": 0.9219,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 3,
+          "NCC": 0.8705,
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "pose": 4,
+          "NCC": 0.8571,
+          "dx": 1,
+          "dy": 0
+        },
+        {
+          "pose": 5,
+          "NCC": 0.8559,
+          "dx": -2,
+          "dy": 0
+        }
+      ],
+      "dxSpan": 3,
+      "minimumNCC": 0.8559,
+      "sourceAudit": {
+        "originalMaster": {
+          "height": 148,
+          "headWidth": 26,
+          "upperBodyWidth": 42,
+          "clothMedian": [
+            66.0,
+            64.0,
+            63.0
+          ],
+          "floor": 223,
+          "nearSoleXs": [
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131
+          ],
+          "nearSoleMean": 125.5,
+          "distalFarBootBottom": 220
+        },
+        "rows": [
+          {
+            "pose": 0,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 46,
+            "clothMedian": [
+              69.0,
+              68.0,
+              68.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132
+            ],
+            "nearSoleMean": 127.5,
+            "distalFarBootBottom": 220
+          },
+          {
+            "pose": 1,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              68.0,
+              67.0,
+              67.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130
+            ],
+            "nearSoleMean": 125.0,
+            "distalFarBootBottom": 220
+          },
+          {
+            "pose": 2,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 46,
+            "clothMedian": [
+              69.0,
+              68.0,
+              68.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131
+            ],
+            "nearSoleMean": 127.5,
+            "distalFarBootBottom": 219
+          },
+          {
+            "pose": 3,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 46,
+            "clothMedian": [
+              69.0,
+              68.0,
+              67.5
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133
+            ],
+            "nearSoleMean": 128.0,
+            "distalFarBootBottom": 214
+          },
+          {
+            "pose": 4,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              70.0,
+              69.0,
+              68.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133
+            ],
+            "nearSoleMean": 128.0,
+            "distalFarBootBottom": 209
+          },
+          {
+            "pose": 5,
+            "height": 148,
+            "headWidth": 27,
+            "upperBodyWidth": 47,
+            "clothMedian": [
+              70.0,
+              68.0,
+              68.0
+            ],
+            "floor": 223,
+            "nearSoleXs": [
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130
+            ],
+            "nearSoleMean": 125.5,
+            "distalFarBootBottom": 208
+          }
+        ],
+        "distinctFrameHashes": 6,
+        "reviewReplayChecks": 12,
+        "reviewReplayFailures": 0,
+        "scope": "Whole-source six-pose initial preparation diagnostic at prescribed70ms holds. Distinct file hashes alone do not prove authored motion progression; far heel/toe identity/contact, rigid near-foot, materials/proportions and native visual review still required. No completed start-stop/controller acceptance."
+      }
+    }
+  },
+  "scope": "Independent broad near-boot material translation proxy across complete six-source rows. Template region excludes most far boot, but occlusion/artistic shape changes still affect correspondence. Not rigid sole/support/native contact proof. No artwork changed."
+}

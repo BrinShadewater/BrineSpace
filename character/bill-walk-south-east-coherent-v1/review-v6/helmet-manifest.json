@@ -1,0 +1,39 @@
+{
+  "name": "Bill southeast native shared-helmet walk candidate",
+  "status": "review_candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "strideDistanceCells": {
+    "walk-south-east": 0.12
+  },
+  "states": [
+    {
+      "id": "walk-south-east",
+      "frameFiles": [
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/000.png",
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/001.png",
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/002.png",
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/003.png",
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/004.png",
+        "res://character/bill-walk-south-east-coherent-v1/frames/helmet/walk-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": true
+    }
+  ],
+  "equipment": "diving-helmet"
+}

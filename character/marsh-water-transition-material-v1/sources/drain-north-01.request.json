@@ -1,0 +1,138 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; provisional packaging/review",
+  "promptSha256": "9dccfb59ead64163cccaecb5dfd2fee5adb73650d7823970d5d77b7219190fde",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-north-01-body-primary.png",
+      "sha256": "2eb92bb4381d0a2b3b3dbc15dd3c38f97c9e209238a8b3aa17a0ec36d2ff68d0"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-north-01-endpoints.png",
+      "sha256": "f61b5792d305dcaa6c0dab9e6738388e081e6b61d99e33bb903c2ff091ee3610"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/drain-north-01-old-motion-only.png",
+      "sha256": "8c4e36a453bd7a19bb7034b5fb0cb9e89f6bad49f679c4c3eb053e1be78064cf"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+      "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/000.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/001.png",
+      "sha256": "7f0163397dadacc875d8c015e84083e54be3b089eb0a5c0092522a4f134c5a6e"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/002.png",
+      "sha256": "a8b3d46c3d0f3ebcd49962b895322bcb903afde70815089d6591f59540d2163f"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/003.png",
+      "sha256": "95e59a3be019f785e325b0fd0278cc9c4298f1b72ff380b8e09ad00f10ee3ca1"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/004.png",
+      "sha256": "35acfc8f6cc9c54226abd6c573d31ed5ef7bc99993c8436b60d46fbb09a03aa6"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-north/005.png",
+      "sha256": "4b200beb2eb644ce6fa449ba18e8d61dbfeb56a5b289c2eb74671bd6ba114390"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    }
+  ],
+  "selectedTransitionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTransitionState": {
+    "id": "cargo-drain-north",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/000.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/001.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/002.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/003.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/004.png",
+      "../../character/marsh-master-repair-v1/frames/cargo-drain-north/005.png"
+    ],
+    "frameDurationsMs": [
+      120,
+      180,
+      220,
+      220,
+      180,
+      120
+    ],
+    "loop": false,
+    "facings": [
+      "north",
+      "north",
+      "north",
+      "north",
+      "north",
+      "north"
+    ],
+    "waterKinds": [
+      "transition",
+      "transition",
+      "transition",
+      "transition",
+      "carry",
+      "carry"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "selectedIdleMaster": {
+    "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+    "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+  },
+  "neutralOccupiedTargetHeight": 146,
+  "intermediateFigures": 4,
+  "rules": "Whole independent own direction; one neutral ruler, exact endpoints/normal timing; no patches/mirror/per-pose fitting. Physical contact/root/proportions/camera/grade remain review requirements.",
+  "generationId": "exec-d060d494-7144-4e56-875a-bc7af6973611",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-d060d494-7144-4e56-875a-bc7af6973611.png",
+  "rawSha256": "53d174255bf6598959f4ecf86d5b8de4fc08aa40b5024f580079ba9ac427ac44"
+}

@@ -1,0 +1,60 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "nativeChecks": 192,
+  "samples": 54,
+  "captures": 6,
+  "playerRestores": 6,
+  "sameClockHolds": 6,
+  "finiteAPNGHolds": 6,
+  "inputsStableDuringInterval": 43,
+  "ownerFilesUnchanged": 2931,
+  "errors": 0,
+  "warnings": 0,
+  "failures": 0,
+  "exitCode": 0,
+  "nativeParity": [
+    {
+      "capture": "native-00.png",
+      "captureSha256": "93b631233fddd8f68e69d7806b15fccae6404194f5f95735f37b772899a63166",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-origin.png",
+      "sourceSha256": "d298a2f25fb47111f10cfcd9b5f7a4e092be20d55cee5d3fb04dce3ddaf8790c"
+    },
+    {
+      "capture": "native-01.png",
+      "captureSha256": "3244ff8b5138e665a9d6cb22a79cf5586a79270b4738a04c14ae2466d33d4987",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-1.png",
+      "sourceSha256": "1406ed9c147ec54b71679d42281a29e532ff2a8ca70cb8061288d26f9b45cd31"
+    },
+    {
+      "capture": "native-02.png",
+      "captureSha256": "02aa01edf96637b0399f423b8e1455a7f8fa47a7b3123d5affacacbea4ee4da4",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-2.png",
+      "sourceSha256": "0c53f35bc9af3addbde89e8f77ff0332e588edd76c98e59ce90b622f65332638"
+    },
+    {
+      "capture": "native-03.png",
+      "captureSha256": "4e6cf4da817e0bfafd2d8554b88fc638ae27cff1e1185bb0115fdce82b6cfcfc",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-3.png",
+      "sourceSha256": "65931a807acc0ca917e56fde2c5ecbf1ce05f49bfcc543383b6f89b0ab9f0721"
+    },
+    {
+      "capture": "native-04.png",
+      "captureSha256": "582e077d8facf8679cd1f9f8b4ea9dba1ba9c1461975e2386cb185600938ef16",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-4.png",
+      "sourceSha256": "a2b95922c2ca403a67b548d061cefcd793f789c994b2aa2ba7db68e3c27c7ce5"
+    },
+    {
+      "capture": "native-05.png",
+      "captureSha256": "8256f19e09e085a2908e586af651fc340eac79540351011bfccc978d9af23cf7",
+      "source": "character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-destination.png",
+      "sourceSha256": "f78288ae71f85249b7cb769b5fe61de615bc427451ae52c65a24acc32ce2fbc5"
+    }
+  ],
+  "boards": [
+    "native-pairs-00.png",
+    "native-pairs-01.png"
+  ],
+  "scope": "Actual stateful CrewSpritePlayer and grid frame_at_elapsed API finite normal timing,20ms(+1ms after initial) samples,6restores/same-clock holds,all6native source-size/world-height pairs,normalized exact endpoint pixels. Not exact internal boundary testing or actual actor/controller/grid .52pickup/drain interlock/contact/fullSave/helmet/art/admission/fullset acceptance.",
+  "boardOperations": "Whole native actors retained at source size and65.28world height; opaque crop guard before screenshot crop, noresize. Six full native captures retained."
+}

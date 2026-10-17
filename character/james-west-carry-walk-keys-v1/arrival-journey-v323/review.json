@@ -1,0 +1,23 @@
+{
+  "version": 323,
+  "disposition": "normal_paired_arrival_journey_review",
+  "checks": 2520,
+  "failures": 0,
+  "routes": 2,
+  "nativeCapturesReviewed": 32,
+  "freshSceneWholeRunDiskRestores": 4,
+  "candidateBanksLoaded": false,
+  "ownerProfileUnchanged": true,
+  "normalFirstUnloadSourceChanged": false,
+  "continuousVisualAcceptance": false,
+  "titleContinueTested": false,
+  "autonomousGoalSelectionTested": false,
+  "fullGoalComplete": false,
+  "findings": [
+    "Prescribed collision-clear96-world-unit west approaches use actual normal James update/move/arrive. Both equipment versions automatically enter north turn/unload, remain physically stationary through2s stage and release origin on completion. All6normal turn and6unload slots observed per gear.",
+    "Four actual whole-run disk checkpoints: mid-turn and mid-unload per gear. Fresh normal scene, no candidate reinstall, staged restore; actor/playback/visual clocks and source pose exact, paused processing holds. This is RunSave fresh-scene restore, not title-screen Continue.",
+    "All32native capture regions reviewed in4boards per run, no rescaling. Screenshot framing changes after fresh-scene restore; exact source checks separately establish resumed pose. Static advancing simulation samples are not continuously observed real-time motion.",
+    "323 visual evidence shows old first unload source steps one foot forward after planted turn endpoint.324 James-owned loader reuses whole exact turn endpoint as first north unload source in each gear, guarded by canvas/pivot/standing-height compatibility. Existing clocks, later poses, other crew and raw art files preserved. No body painting or fitting.",
+    "The next unloading stance, broad/deep bend, body/head/gear/material changes and final rise remain. Current normal bank is older artwork;317/320and latest49cargo/306turn candidates remain unselected. Master fidelity/full family/integration acceptance still incomplete."
+  ]
+}

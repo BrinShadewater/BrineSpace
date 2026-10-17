@@ -1,0 +1,51 @@
+{
+  "name": "James West finite preparation study helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_motion_review_pending",
+  "states": [
+    {
+      "id": "carry-prepare-west",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/james-carry-authored-helmet-v1/frames/004.png",
+        "res://character/james-west-carry-walk-keys-v1/finite-bridge-v36/helmet-leg-study.png",
+        "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/helmet-candidate.png",
+        "res://character/james-west-carry-walk-keys-v1/master-head-review-v16/helmet-000.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        70,
+        70,
+        40
+      ],
+      "loop": false
+    },
+    {
+      "id": "carry-unprepare-west",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/master-head-review-v16/helmet-000.png",
+        "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/helmet-candidate.png",
+        "res://character/james-west-carry-walk-keys-v1/finite-bridge-v36/helmet-leg-study.png",
+        "res://character/james-carry-authored-helmet-v1/frames/004.png"
+      ],
+      "frameDurationsMs": [
+        40,
+        70,
+        70,
+        70
+      ],
+      "loop": false,
+      "derivedFrom": "Explicit reversed source order of preparation study, not a newly authored unload/floor-case action."
+    }
+  ],
+  "scope": "Four authored source poses only; no invented tween frames, normal dispatch, cargo unload or room evidence."
+}

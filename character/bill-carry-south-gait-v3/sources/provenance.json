@@ -1,0 +1,37 @@
+[
+  {
+    "source": "first-half-v1.png",
+    "sha256": "bb9f5331f1c49e04724d6a3b63f7e6b80f028b33800b2fe16fe2bf00b3f79e6e",
+    "prompt": "prompt-first-v1.txt",
+    "outcome": "Use0,1,2; compact first half",
+    "method": "Built-in transparent image generation/edit; no mirror"
+  },
+  {
+    "source": "opposite-rejected-v1.png",
+    "sha256": "21bc01d1eff0c1b95d1793d9f8159976150fe081030f7e20de0c01e5254fdf18",
+    "prompt": "prompt-opposite-v1.txt",
+    "outcome": "Rejected wrong leading leg; no extracted poses",
+    "method": "Built-in transparent image generation/edit; no mirror"
+  },
+  {
+    "source": "opposite-rejected-v2.png",
+    "sha256": "f4843ca9c9cc85fdc4bc35771546665f9b0de0a610049a6d8994b15043d220bb",
+    "prompt": "prompt-opposite-corrected-v2.txt",
+    "outcome": "Rejected wrong first two legs; no extracted poses",
+    "method": "Built-in transparent image generation/edit; no mirror"
+  },
+  {
+    "source": "opposite-partial-v3.png",
+    "sha256": "806abcfa14b9370b1f9e6cc152160b14166b3f3427bd7d1c4aaac489487fce60",
+    "prompt": "prompt-opposite-edit-v3.txt",
+    "outcome": "Use0and2 only; sample1 wrong support",
+    "method": "Built-in transparent image generation/edit; no mirror"
+  },
+  {
+    "source": "opposite-low-pass-v4.png",
+    "sha256": "7603a296caf99819faad4177c70b0451aa426982397c0ed1b50b41fcb1ff4f01",
+    "prompt": "prompt-passing-only-v4.txt",
+    "outcome": "Use1 only; corrected low passing foot",
+    "method": "Built-in transparent image generation/edit; no mirror"
+  }
+]

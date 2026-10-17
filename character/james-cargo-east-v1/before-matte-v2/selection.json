@@ -1,0 +1,41 @@
+{
+  "status": "staged_james_east_cargo_v1",
+  "runtimeInstalled": false,
+  "coverage": [
+    "pickup-east",
+    "carry-east",
+    "unload-east"
+  ],
+  "framesPerMode": 18,
+  "totalReferences": 36,
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "timingMs": {
+    "pickup-east": 520,
+    "carry-east": 840,
+    "unload-east": 520
+  },
+  "derivation": "Independent6-pose pickup and full6-pose alternating gait; unloading reverses pickup",
+  "palette": "One fixed neutral material correction, preserves skin/brown hair/yellow",
+  "helmet": "Selected35x41 east shared shell; face-tracked movement, restrained10degree bend",
+  "registration": "Fixed anatomical scalesX0.39759/Y0.43402; pickup foot anchoring, carry horizontal camera registration to pickup ready face",
+  "checks": "142 packaging/169 native checks,0 failures;12 captures; scratch asserted; owner profile unchanged",
+  "visualReview": "Source/contact/native carry inspected at148/82/54/27px; owner GIF review pending",
+  "limits": [
+    "Phase joins are visually continuous rather than identical pixel endpoints.",
+    "Deposited case stays beside exact installed actor idle endpoint.",
+    "Uninstalled; no claim of actual cargo routes or release export."
+  ]
+}

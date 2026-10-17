@@ -1,0 +1,363 @@
+{
+  "name": "Bill north bare meal family",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "eat-enter-north",
+      "frameFiles": [
+        "res://character/bill-meal-entry-north-v1/frames/bare/000.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/001.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/002.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/003.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/004.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/005.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "eat-enter",
+        "eat-enter",
+        "eat-enter",
+        "eat-enter",
+        "eat-enter",
+        "eat-enter",
+        "eat-enter"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "eat-north",
+      "frameFiles": [
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/000.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/001.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/002.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/003.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/004.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/005.png",
+        "res://character/bill-meal-north-coherent-v1/frames/eat-north/006.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        120,
+        140,
+        180,
+        140,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "eat-exit-north",
+      "frameFiles": [
+        "res://character/bill-meal-entry-north-v1/frames/bare/006.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/005.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/004.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/003.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/002.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/001.png",
+        "res://character/bill-meal-entry-north-v1/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "eat-exit",
+        "eat-exit",
+        "eat-exit",
+        "eat-exit",
+        "eat-exit",
+        "eat-exit",
+        "eat-exit"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "drink-enter-north",
+      "frameFiles": [
+        "res://character/bill-drink-entry-north-v1/frames/bare/000.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/001.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/002.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/003.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/004.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/005.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "drink-north",
+      "frameFiles": [
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/000.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/001.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/002.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/003.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/004.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/005.png",
+        "res://character/bill-drink-north-coherent-v1/frames/drink-north/006.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        120,
+        140,
+        180,
+        140,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "drink-exit-north",
+      "frameFiles": [
+        "res://character/bill-drink-entry-north-v1/frames/bare/006.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/005.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/004.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/003.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/002.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/001.png",
+        "res://character/bill-drink-entry-north-v1/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

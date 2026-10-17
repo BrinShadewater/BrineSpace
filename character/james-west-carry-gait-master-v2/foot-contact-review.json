@@ -1,0 +1,55 @@
+{
+  "footRegions": [
+    [
+      88,
+      197,
+      132,
+      240
+    ],
+    [
+      132,
+      197,
+      168,
+      240
+    ]
+  ],
+  "poses": [
+    {
+      "source": "near-feet2",
+      "alpha128FootRegionBounds": [
+        [
+          9,
+          0,
+          44,
+          27
+        ],
+        [
+          0,
+          0,
+          29,
+          27
+        ]
+      ],
+      "bothBottoms": 224
+    },
+    {
+      "source": "contact-far-feet",
+      "alpha128FootRegionBounds": [
+        [
+          4,
+          0,
+          39,
+          27
+        ],
+        [
+          6,
+          0,
+          36,
+          27
+        ]
+      ],
+      "bothBottoms": 224
+    }
+  ],
+  "scope": "Static alpha128 foot-region contact geometry plus visual anatomy review; not walking foot sliding/cadence."
+}

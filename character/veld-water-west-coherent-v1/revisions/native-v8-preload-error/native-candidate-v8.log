@@ -1,0 +1,25 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+SCRIPT ERROR: Parse Error: Could not preload resource script "res://assets/environment/alien-fungi-biomes-v1/fungi_biome_view.gd".
+   at: GDScript::reload (res://assets/environment/seabed-v1/seabed_background.gd:26)
+SCRIPT ERROR: Parse Error: Could not resolve script "res://assets/environment/alien-fungi-biomes-v1/fungi_biome_view.gd".
+   at: GDScript::reload (res://assets/environment/seabed-v1/seabed_background.gd:26)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "FungiBiome" constant because the value doesn't have a set type.
+   at: GDScript::reload (res://assets/environment/seabed-v1/seabed_background.gd:26)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "fungi_biome" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://assets/environment/seabed-v1/seabed_background.gd:27)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/grid_canvas.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/performance_monitor.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/bug_report.gd:0)
+ERROR: Failed to load script "res://scripts/bug_report.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+   at: GridCanvas.@implicit_new (res://scripts/grid_canvas.gd:19)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_new (res://scripts/grid_canvas.gd:19)
+       [1] run (res://tools/review_veld_water_material_candidate_v8.gd:33)
+VELD WATER MATERIAL CANDIDATE V8: 1098 checks, 0 failures

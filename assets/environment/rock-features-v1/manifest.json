@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "title": "Decorative seabed rock features",
+  "assets": [
+    {
+      "id": "split-slab",
+      "kind": "prop",
+      "selected_source": "runtime/split-slab.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "split-slab-v1.png",
+          "sha256": "a38e9e45fa5bd03ec11915959c1e31483ba1f6d28270fb4aa260b0e6f2f8f47a",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/split-slab.png",
+          "sha256": "680787884434c5f25e2cd375dc1babdbdc253933c32cc757def9ff6f8154493a",
+          "dimensions": [
+            512,
+            308
+          ],
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "layered-ridge",
+      "kind": "prop",
+      "selected_source": "runtime/layered-ridge.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "layered-ridge-v1.png",
+          "sha256": "5e451009808006b533ea4df39dac815bc8aa3c14bf7581a360262aba78982297",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "rejection": "oblique camera with tall layered side walls"
+        },
+        {
+          "file": "layered-ridge-v2.png",
+          "sha256": "7d7a40e8a6175dc603a244cb8f1efa38d8931cff08d8c1a8fd796cc507a50045",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/layered-ridge.png",
+          "sha256": "5b90b368c69b88e339c20f24afb42deb86724d8280ae2f9bb7aeb388be16f5fc",
+          "dimensions": [
+            512,
+            248
+          ],
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "porous-rock",
+      "kind": "prop",
+      "selected_source": "runtime/porous-rock.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "porous-rock-v1.png",
+          "sha256": "ccc10fe07e4d1ed999a125ea767d99c002a5be7f8e4e51391709be6140f1e9dd",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/porous-rock.png",
+          "sha256": "18177d3b288d27027b2ee488afe9ba67e685ee741b6be8a75dc0ee9feb75bfa7",
+          "dimensions": [
+            512,
+            304
+          ],
+          "rejection": null
+        }
+      ]
+    }
+  ]
+}

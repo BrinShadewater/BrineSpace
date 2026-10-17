@@ -1,0 +1,85 @@
+{
+  "validation": {
+    "passed": true,
+    "targetedInputsUnchanged": true,
+    "targetedInputCount": 53,
+    "runtimePassed": true,
+    "returnCode": 0,
+    "seconds": 305.59,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-bunk-early-fall-native-v1\\scratch-appdata",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "freshScreenshot": true
+  },
+  "regressionValidation": {
+    "passed": true,
+    "runs": [
+      {
+        "name": "native",
+        "code": 0,
+        "passed": true,
+        "seconds": 69.59
+      },
+      {
+        "name": "held-regression",
+        "code": 0,
+        "passed": true,
+        "seconds": 74.48
+      },
+      {
+        "name": "water-regression",
+        "code": 0,
+        "passed": true,
+        "seconds": 39.34
+      }
+    ],
+    "seconds": 185.11,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 29,
+    "targetedInputsUnchanged": true,
+    "freshRecords": true,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-bunk-body-settle-v1\\scratch-appdata"
+  },
+  "nativeChecks": 21094,
+  "freshDiskRestores": 8,
+  "futureActorSteps": 2400,
+  "nativeRoomCaptures": 120,
+  "exactSourceCaptures": 120,
+  "sourcePNGsEqualArtworkMilestone": true,
+  "normalPairedSelection": false,
+  "visualReview": "Eight paired native/source boards against standing masters, actual floor contact in front of bunk",
+  "scope": "Prescribed early phases at rotation zero; actual world mortality API, actor-only future updates; not natural whole-world hazard cadence",
+  "bindings": {
+    "output/veld-bunk-early-fall-native-v1/native.log": "894c6eea32191eb80273bdb6e745517096e75be7c6c94eaf4b334878ac5f6251",
+    "output/veld-bunk-early-fall-native-v1/records.json": "d7caac61e9a245cf9d97598cce727233f2a7b92635f91435ddc7f8c52ccf08ef",
+    "output/veld-bunk-early-fall-native-v1/validation.json": "f377082932b4e6237209ba41515f488182d339938670d26be256eacc7d514ed5",
+    "output/veld-bunk-early-fall-native-v1/inputs-before.json": "c93d340b5e39d090d85dc72ed6229be5c67ce1e47f0cb546c01ed59db7a37de2",
+    "output/veld-bunk-early-fall-native-v1/inputs-after.json": "c93d340b5e39d090d85dc72ed6229be5c67ce1e47f0cb546c01ed59db7a37de2",
+    "output/veld-bunk-body-settle-v1/validation.json": "b5e41f8a558bc31d2b96c49bae01332879d6e2f150fce33508ebe0f137e05957",
+    "output/veld-bunk-body-settle-v1/native.log": "105e1f00b3882fd0bf56b25fb31bb346ce0b2f8cc08083b758405852ca1284bf",
+    "output/veld-bunk-body-settle-v1/held-regression.log": "0e79199b7573907a5597564d35374042a68ca116af1d06f2daf8599c964f55ff",
+    "output/veld-bunk-body-settle-v1/water-regression.log": "c022496d85cc60de6edac342c0801930eab3cd9674e3b54ba21e553da9ac7ebd",
+    "output/veld-bunk-body-settle-v1/inputs-before.json": "911493b8d01f244d1154f3022490830531769308422d16264e305346d1d0b61c",
+    "output/veld-bunk-body-settle-v1/inputs-after.json": "911493b8d01f244d1154f3022490830531769308422d16264e305346d1d0b61c",
+    "scripts/crew_sprite_player.gd": "29f26a8f88b41f5f332c6bfe59f7c63cf7a9d8b7de4a4280da7706ae2f2e5f24",
+    "scripts/veld_death_motion.gd": "27bc28b2e2d418feb32122b41e142323e3da04704e577daa6647dabc9b908219",
+    "tests/test_veld_bunk_early_fall_native.gd": "2fc65971742206df55c835068c1b84c0dec0dedbd2b614b8c6df3fb586773b2d",
+    "tests/test_veld_bunk_early_fall_native.gd.uid": "37b2ac551401600686ff7b23e83b091408c5f11c2f77a578bf891bfa3572158b",
+    "tools/run_veld_bunk_early_fall_native.py": "c1b4ffb2e63aeb1c3329096257a4d6e933002f7c263aed3340863e7653c6d31c",
+    "character/veld-bunk-early-fall-v1/native-floor-bare-lower-crouch.png": "1c222e9dea2738130ac40109393451859d27243ca01480a75ad27a456daa3fcc",
+    "character/veld-bunk-early-fall-v1/native-floor-bare-lower-standing.png": "903bf6076a91a9c023d7f92d9ba8a9a5dde92f0afb2d6ae2562bbcf55c841a00",
+    "character/veld-bunk-early-fall-v1/native-floor-bare-rise-crouch.png": "1c222e9dea2738130ac40109393451859d27243ca01480a75ad27a456daa3fcc",
+    "character/veld-bunk-early-fall-v1/native-floor-bare-rise-standing.png": "4e03f4291abe514605e5506f3205a81b0ba36b1530b67ff1360026bb5ec54ed3",
+    "character/veld-bunk-early-fall-v1/native-floor-helmet-lower-crouch.png": "cdab9531bfb4d981f127a55a13548f58cdc9ae489f3270f696d0fccbd84c4c1d",
+    "character/veld-bunk-early-fall-v1/native-floor-helmet-lower-standing.png": "bc4499ddde013cc90f187b96ca2f55a6428fa0e18a425b5b799a00ad086dfef2",
+    "character/veld-bunk-early-fall-v1/native-floor-helmet-rise-crouch.png": "cdab9531bfb4d981f127a55a13548f58cdc9ae489f3270f696d0fccbd84c4c1d",
+    "character/veld-bunk-early-fall-v1/native-floor-helmet-rise-standing.png": "bc4499ddde013cc90f187b96ca2f55a6428fa0e18a425b5b799a00ad086dfef2",
+    "character/veld-bunk-early-fall-v1/native-review.html": "c2bd1215f34d141c9312d027916451856c3bec8da7f48e14be738132e2e0db39",
+    "character/veld-bunk-early-fall-v1/review_native.py": "03a387df3b81e55952df27566ac769c3972804fc01fc6674ec48a353b76f5e1c",
+    "character/veld-bunk-early-fall-v1/record_native.py": "12f406722e37fa57b70a557a9ba9cbf7f1c8e650ce0551b935bb82ba340d8daa",
+    "character/veld-bunk-early-fall-v1/bare-manifest.json": "c2388bb0e25d3a022651331ccad98171b16f5bd3320a6ea08a6baed5e221c91b",
+    "character/veld-bunk-early-fall-v1/helmet-manifest.json": "cab00497def5ae926c651f9c632b825b6f99ba906d88c53233d29c7c3ec016aa",
+    "character/veld-bunk-early-fall-v1/package-checks.json": "ecc1a8973624f22fde7239f56e58cbbb6fa0051c5a7911e956fe7fa196f2f4da"
+  }
+}

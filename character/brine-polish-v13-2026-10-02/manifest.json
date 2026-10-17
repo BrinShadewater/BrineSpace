@@ -1,0 +1,47 @@
+{
+  "status": "installed source polish, agent verified; owner appearance review pending",
+  "source_id": "exec-f7224fd5-a0db-466e-b854-6d496e8a30cc.png",
+  "alpha_threshold": 240,
+  "source_crop": [
+    246,
+    67,
+    790,
+    1446
+  ],
+  "export_size": [
+    58,
+    148
+  ],
+  "reference_height": 148,
+  "references": {
+    "character/brine-reference-v3-2026-10-01/reference-sheet.png": "7206253f1fbd5f06afd6948ac41018a86183beb1043fda3ad49165816d9b6f74",
+    "character/brine-float-v12-2026-10-01/source-v1.png": "d130cd2b90a994035dbfbe616926a1c05cdcb775777c20d18459f104917a9e69",
+    "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png": "7f71e062079c729989e6ec15c8180f5923fe787addd81dd655fba039ecd9a119"
+  },
+  "outputs": {
+    "source.png": "756c135a97d9910ebcd1549deb41a750ee8a1b5deaf722fab0f1be314571494c",
+    "body.png": "651344469babef852899f11c5e47c83c66e9a598af98ff979ddc27dcbdfeafec",
+    "prompt.txt": "d9d023c38d22175e9e3f627883edd64ee0f3659f468a9aa026e082d7dcc2c465",
+    "master-comparison.png": "487d751ad64f15f3690c5314d00a64a6bb1f2f4098f69aa02fc4aa366fbf2cf1",
+    "production-float.gif": "481d2195690cf3c6d62462167b6cf61ed22ec8bacf7e7a2bf0314d7fde7b56c4",
+    "motion-review.png": "f23f3598afa82a58f1fb7e549d9d9d5a5723769f3f439cca506aeb5ff5f181a9",
+    "build.py": "b63fa73af7f3e76494797015450f5d16264952cdc50d377ce6f3460c0d64afcc",
+    "production_preview.gd": "d8cd27e7e149b69b65608c488c50e484ebd9ff360f3120af63fbf9f7e2f4d2e5",
+    "fresh_continue.gd": "5005533e52af85824b303939a9dc855f76095b3a58541c5a7b887e9754ab034b"
+  },
+  "limits": "Generated source includes diffuse low-opacity halo. Near-opaque body extraction discards faint hair/fringe as well as halo; preserved source RGB and shared148px ruler. Master crop has opaque charcoal background, not runtime art.",
+  "motion": "8secondperiod; quieter amplitudes, lateral-arm mask, rigid face/central torso; previous source snapshot preserved",
+  "native_sessions": {
+    "chamber": "output/brine-polish-v13/session-344e73a137024737ac2022c08c73ff54",
+    "motion": "output/brine-polish-v13/session-7601f1e1337946a6b8a3c007be9abb00",
+    "fresh_continue": "output/brine-polish-v13/session-b8b34f57fcf745be8c64f066db6fc0e5"
+  },
+  "checks": [
+    "Chamber:4rotations,16routes,3565movement samples,pause/offline,3viewports",
+    "Motion:200nativeframes25fps,201phase face/central torso and every UV seam position/velocity assertions",
+    "Fresh actual title/loading Continue:15checks,0failures",
+    "All3intervals2931non-log ownerfiles unchanged,clean logs,exit0",
+    "Body rebuild byte-exact,LFS filter,scoped diff check"
+  ],
+  "visual_review": "Master comparison/native room/eight sampled native poses inspected. No continuous artistic motion or owner acceptance claim."
+}

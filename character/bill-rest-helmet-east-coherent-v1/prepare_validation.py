@@ -1,0 +1,18 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[1]
+t=(R/'tests/test_bill_rest_east_candidates.gd').read_text()
+t=t.replace('bill-rest-east-coherent-v1/manifest.json','bill-rest-helmet-east-coherent-v1/manifest.json').replace('BILL REST EAST','BILL REST HELMET EAST')
+t=t.replace('var prior: Array=player.equipment_frames["diving-helmet"]["sleep-east"].duplicate()','player.load_manifest("res://character/bill-rest-east-coherent-v1/manifest.json",true)')
+t=t.replace('player.load_manifest(PACK,true);','check(player.load_equipment_manifest("diving-helmet",PACK),"Paired profile compatible");')
+t=t.replace('check(player.equipment_frames["diving-helmet"]["sleep-east"]==prior,"Bare candidate preserves existing gear")','check(player.frames.has("sleep-east"),"Paired bare rest present")')
+t=t.replace('player.frames[state.id]','player.equipment_frames["diving-helmet"][state.id]').replace('player.frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000)','player.frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000,"diving-helmet")').replace('player.frame_at_elapsed(state.id,99)','player.frame_at_elapsed(state.id,99,"diving-helmet")')
+t=t.replace('0.0,Vector2.ZERO)','0.0,Vector2.ZERO,"diving-helmet")').replace('elapsed+.001,Vector2.ZERO)','elapsed+.001,Vector2.ZERO,"diving-helmet")')
+for state in ['lie-down-east','get-up-east','sleep-east']:t=t.replace('player.frames["'+state+'"]','player.equipment_frames["diving-helmet"]["'+state+'"]')
+t=t.replace('bill-seated-east-coherent-v1/frames','bill-seated-helmet-east-coherent-v1/frames').replace('bill-rest-east-candidate-native-v1','bill-rest-helmet-east-candidate-native-v1')
+(R/'tests/test_bill_rest_helmet_east_candidates.gd').write_text(t,encoding='utf-8')
+(R/'tests/test_bill_rest_helmet_east_candidates.gd.uid').write_text('uid://s9b8w3m6p2r9v\n')
+runner=(R/'tools/run_bill_rest_east_candidate_validation.py').read_text().replace('bill-rest-east-candidate-native-v1','bill-rest-helmet-east-candidate-native-v1').replace('test_bill_rest_east_candidates.gd','test_bill_rest_helmet_east_candidates.gd').replace('BILL REST EAST','BILL REST HELMET EAST')
+(R/'tools/run_bill_rest_helmet_east_candidate_validation.py').write_text(runner,encoding='utf-8')
+html=(P.parent/'bill-rest-east-coherent-v1/index.html').read_text(encoding='utf-8').replace('Bill east rest candidate','Bill east helmet rest candidate').replace('Bill · East rest','Bill · East helmet rest').replace('Bare candidate.','Shared helmet candidate.').replace('Equipment, furniture contacts and normal runtime selection remain pending.','Furniture contacts and normal runtime selection remain pending.').replace('bill-seated-east-coherent-v1','bill-seated-helmet-east-coherent-v1')
+(P/'index.html').write_text(html,encoding='utf-8')
+print('Prepared paired equipment native fixture, scratch runner and preview')

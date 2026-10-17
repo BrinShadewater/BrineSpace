@@ -1,0 +1,478 @@
+{
+  "name": "Krusher Dom meals",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "eat-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/cb7d11ebc6942e4c22ccf714aab5f5064398a4442feb8b0c5b6cd4d73c866255.png",
+        "res://character/krusher-coherent-bank-v1/frames/c25b25c401913afd33c8861d0a99715e18b2736f09bed18eb01690d2ae6f43fa.png",
+        "res://character/krusher-coherent-bank-v1/frames/ddb10219082fd604fc1d48352b552af26d16b73818037846884107cff07f60f4.png",
+        "res://character/krusher-coherent-bank-v1/frames/389f18d095a58ca607b46b180fca94d587cca90fc3f915f2d1e85e38eb36634b.png",
+        "res://character/krusher-coherent-bank-v1/frames/b5e6ed63bae934740967d9ac06dd8c346376787951e2fd1cce4a55b79fea2657.png",
+        "res://character/krusher-coherent-bank-v1/frames/cb7d11ebc6942e4c22ccf714aab5f5064398a4442feb8b0c5b6cd4d73c866255.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/fe175d7bc6a427a4d029e875617e078c824432d35f816ee83493929db23d3d83.png",
+        "res://character/krusher-coherent-bank-v1/frames/e1fef6def7d37264d5f1930d378ea6c061baab01d3b899ea06f3b1e28f091aa8.png",
+        "res://character/krusher-coherent-bank-v1/frames/0a2bf329c517849f4c20348934cfdb171bae88561f3e1b0334acb4df375f14ea.png",
+        "res://character/krusher-coherent-bank-v1/frames/2e73c94942fa8359e002096727be91a810836fef404df964e63cacac2486beb0.png",
+        "res://character/krusher-coherent-bank-v1/frames/2d0911fbfcd883f3038344ee10a772c114bb091c6aead6bd7a46e568962fcc45.png",
+        "res://character/krusher-coherent-bank-v1/frames/fe175d7bc6a427a4d029e875617e078c824432d35f816ee83493929db23d3d83.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/49655e8eb1d11d5ca1024f24e90eb3c4e804ecc88bb8410c9923f91aed099924.png",
+        "res://character/krusher-coherent-bank-v1/frames/4483a8b04c091fe61c41ca1f4541feffd0f13a8ff8df4c059e7ada05ed52b238.png",
+        "res://character/krusher-coherent-bank-v1/frames/c28fc50acd84469e49529e9833b4e58f22ce77681a5b17bf01c5f575dcd53cd3.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd20cdf9b05c56dd32b42672778ec415cfc6e4a4f4bad11315da7d93351fbbe3.png",
+        "res://character/krusher-coherent-bank-v1/frames/883e999e3033be54d59d91dc44bf03c2c761eb1cbeb30a785811e680d67fe5c8.png",
+        "res://character/krusher-coherent-bank-v1/frames/49655e8eb1d11d5ca1024f24e90eb3c4e804ecc88bb8410c9923f91aed099924.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a578babf4f9d8c67e709ee617bbbc2ea0248e706712c8cb5a710f97e3ed18786.png",
+        "res://character/krusher-coherent-bank-v1/frames/9cc89f083c552171c694172ed3fdaf589a1e43aea9e037d9616da24185328b0e.png",
+        "res://character/krusher-coherent-bank-v1/frames/b2ddf0517d6878e4618e2ab5dbbfde08ad30d9eb944e73882a26525c8ef8fdfc.png",
+        "res://character/krusher-coherent-bank-v1/frames/4c893aa869d121a4a744babb630ef16c2b3e7f47f4dafac2d5ae31ee29601b0f.png",
+        "res://character/krusher-coherent-bank-v1/frames/d10699394b229e04f43be3a5f4cbac50d2ac42e29037a43ed0705009b0dcf6ca.png",
+        "res://character/krusher-coherent-bank-v1/frames/a578babf4f9d8c67e709ee617bbbc2ea0248e706712c8cb5a710f97e3ed18786.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/b175eecd25b7d777b28d999033dcd562b1431fdcbf5c92104f2c82ec85a6dd1c.png",
+        "res://character/krusher-coherent-bank-v1/frames/46a6831439570971a326c051573c3adb5012960e29c0d2a4ccb9be73a4d3032a.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7f3aa6af0d6d08175c065a858d2a7635eebeede8384b768b1c37d64313a2cf7.png",
+        "res://character/krusher-coherent-bank-v1/frames/e4489c2ade3bd73585022c046443bff55637654440448acb3f99611b772c9f4c.png",
+        "res://character/krusher-coherent-bank-v1/frames/62c1ab9904e39c5418cca3f36e2d07991b0ce17fdddfc30649a1035131740eb7.png",
+        "res://character/krusher-coherent-bank-v1/frames/b175eecd25b7d777b28d999033dcd562b1431fdcbf5c92104f2c82ec85a6dd1c.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/b9e46464872b4b1831a29bae1e91250888e6f3c1615787659a14734ab40db1b3.png",
+        "res://character/krusher-coherent-bank-v1/frames/4e61b48522f5a06e206abf7930f162bcfafd193c57e455e73061f749f4e89df3.png",
+        "res://character/krusher-coherent-bank-v1/frames/e087cd84dc41f9aeeb8117fefd6bf692782c61b68926c5fa94cd250db9051c1f.png",
+        "res://character/krusher-coherent-bank-v1/frames/408d881e5cc88d8815271f0b81101545e6aa45afa86624c16b8272a1a062eae6.png",
+        "res://character/krusher-coherent-bank-v1/frames/ca7a9429c716907ac890070f15f3663c3ed896bc16ae92c5ecd0d073ac8b9d08.png",
+        "res://character/krusher-coherent-bank-v1/frames/b9e46464872b4b1831a29bae1e91250888e6f3c1615787659a14734ab40db1b3.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/4b019be4ebfd15b2f67fcae94cf84d39c65b35a16ecd1e170a651a6e8a625414.png",
+        "res://character/krusher-coherent-bank-v1/frames/51fb0af22b69a15057dc57b9aa9b29990e75ca9751f8d8ff68ed7ee5ac32b968.png",
+        "res://character/krusher-coherent-bank-v1/frames/085392ac0f473c530958e5b322036539bff07782a2650e7c48ae90bc5b9040b4.png",
+        "res://character/krusher-coherent-bank-v1/frames/75d4a167876f5b19eca3990369a904fc9eb529789215ed62ff1335d094b86146.png",
+        "res://character/krusher-coherent-bank-v1/frames/05eb25cb63ad992d2cb2b87dfa475947216a4584c604216dc06cf0501d75ad42.png",
+        "res://character/krusher-coherent-bank-v1/frames/4b019be4ebfd15b2f67fcae94cf84d39c65b35a16ecd1e170a651a6e8a625414.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/f5c2025b00215ff2698ff214188d2fab3d0e833972f49eb2021a96e6cd57e4f3.png",
+        "res://character/krusher-coherent-bank-v1/frames/2926ea6839bb2d20f26fe592e4b805d69bb9a09c33a35f2ccc3a62c918a6fb53.png",
+        "res://character/krusher-coherent-bank-v1/frames/00338bb735f5a80d7f65dc453197f8d18290dc66556a5a901020062a83706f70.png",
+        "res://character/krusher-coherent-bank-v1/frames/e609f7c0e6da543143eb58e32c2ddc62c9b8b1fd2d58c846f0b2cab47413a29a.png",
+        "res://character/krusher-coherent-bank-v1/frames/b3dffe855a8696b25b0edf399f246aa8ba2f0b84dfefb1e1071a55fe04009285.png",
+        "res://character/krusher-coherent-bank-v1/frames/f5c2025b00215ff2698ff214188d2fab3d0e833972f49eb2021a96e6cd57e4f3.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Current selected James whole meal source; Krusher identity/upper suit markings only",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    }
+  ]
+}

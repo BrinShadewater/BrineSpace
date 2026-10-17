@@ -1,0 +1,101 @@
+[
+  {
+    "direction": "west",
+    "source": "character/veld-water-material-v2/west-transition-source-v1.png",
+    "sha256": "d7ea5425197dd59e4b0d3083ec10ca458657aef8aada023d8ca99157d55ad3aa",
+    "prompt": "west-transition-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/veld-video-walk-v1/master-input.png",
+        "sha256": "f8b137be48baae1be8a4c4ff549dd1358ac5705cf05f51c4c68b9891c418f292"
+      },
+      {
+        "path": "character/veld-water-material-v2/west-transition-endpoint-reference.png",
+        "sha256": "308df621830a4b3de985ef83d395d4438950aa334cadd3e251cae0a451bc51ad"
+      }
+    ],
+    "status": "staged_paired_clips",
+    "generation": "built-in imagegen",
+    "independentDirectionSource": true
+  },
+  {
+    "direction": "north",
+    "source": "character/veld-water-material-v2/north-transition-source-v1.png",
+    "sha256": "d546d07e53554c9eb8a9f6332c0102875f5e0570d3a208e04e6824b84e226438",
+    "prompt": "north-transition-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/veld-video-north-v6/master-input.png",
+        "sha256": "ec726a61aded90a0d7985538ae63b017fec9c5ef73ba735f14f28e718b17160b"
+      },
+      {
+        "path": "character/veld-water-material-v2/north-transition-endpoint-reference.png",
+        "sha256": "0bb8b97dfab69ad595a73a284246af7735cb89f117faa9d8651d06dd42f510aa"
+      }
+    ],
+    "status": "v1_body_fit_retained_for_comparison_not_selected",
+    "generation": "built-in imagegen",
+    "independentDirectionSource": true
+  },
+  {
+    "direction": "south",
+    "source": "character/veld-water-material-v2/south-transition-source-v1.png",
+    "sha256": "3760015c46b0ce770d2f1ab2c90d6d03f090d19854656c300d7b597f00f17800",
+    "prompt": "south-transition-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/veld-video-south-v1/master-input.png",
+        "sha256": "5dbf0bf08199ebecef25e916fcfdcdd9554e5f4ebda18a48dba63e781e0c7cf0"
+      },
+      {
+        "path": "character/veld-water-material-v2/south-transition-endpoint-reference.png",
+        "sha256": "978a1c2f7cef4c8aa5803e2f5732adb4253973839f02355c4512047614c6401b"
+      }
+    ],
+    "status": "raw_source_pending_scale_pitch_fitting",
+    "generation": "built-in imagegen",
+    "independentDirectionSource": true
+  },
+  {
+    "direction": "north",
+    "source": "character/veld-water-material-v2/north-transition-helmet-source-v1.png",
+    "sha256": "bf991ce82ff6c5ca14114edb2c492ac90b6eea9d410dd09148fa5e9ae3c6454d",
+    "prompt": "north-transition-helmet-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/shared-helmet-standard-v1/james-north-reference.png",
+        "sha256": "c5bc26dd9e9c47d4c4bd249038d2e210b77acf88bc0c0d4bb28dcbeb8dddc30e"
+      },
+      {
+        "path": "character/veld-water-material-v2/north-transition-head-endpoints.png",
+        "sha256": "a8f041243c1c7155772d3b5da2bd19e9f6dce2529b68454d92e77c91cf8ff0c7"
+      }
+    ],
+    "status": "helmet_pitch_components_fitted_pending_full_motion",
+    "generation": "built-in imagegen",
+    "independentDirectionSource": true
+  },
+  {
+    "direction": "north",
+    "source": "character/veld-water-material-v2/north-transition-source-v2.png",
+    "sha256": "be6fb4a2d1c0a5ac51f3fad77242c9e25d20c5daa7b6cbf8264464a231af0214",
+    "prompt": "north-transition-prompt-v2.txt",
+    "references": [
+      {
+        "path": "character/veld-water-material-v2/north-transition-source-v1.png",
+        "sha256": "d546d07e53554c9eb8a9f6332c0102875f5e0570d3a208e04e6824b84e226438"
+      },
+      {
+        "path": "character/veld-video-north-v6/master-input.png",
+        "sha256": "ec726a61aded90a0d7985538ae63b017fec9c5ef73ba735f14f28e718b17160b"
+      },
+      {
+        "path": "character/veld-water-material-v2/north-transition-endpoint-reference.png",
+        "sha256": "0bb8b97dfab69ad595a73a284246af7735cb89f117faa9d8651d06dd42f510aa"
+      }
+    ],
+    "status": "body_trial_pending_coherent_swim_loop_replacement",
+    "generation": "built-in imagegen",
+    "independentDirectionSource": true
+  }
+]

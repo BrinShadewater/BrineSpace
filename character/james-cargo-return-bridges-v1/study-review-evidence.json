@@ -1,0 +1,21 @@
+{
+  "selected": false,
+  "visualAcceptance": false,
+  "fullGoalComplete": false,
+  "method": "Built-in imagegen; exact prompts and both raw RGBA outputs retained. Native Godot extraction, shared nominal148/450 ruler, original256 canvas/p128224, cutoff32 provider alpha dust; no grading or anatomy repaint.",
+  "reviewed": [
+    "west-bridge-reference.png",
+    "west-bridge-generated-v1-alpha-review.png",
+    "west-bridge-generated-v2.png",
+    "west-bridge-endpoint-review.png",
+    "west-bridge-station-review.png"
+  ],
+  "findings": [
+    "v1 first two columns merge the far leg and read as pure side profile; rejected.",
+    "v2 reveals both boots and knees, readable matte materials and case held in front.",
+    "v2 shared helmet is visibly too small versus retained original shell at registered scale; not accepted.",
+    "v2 settles to a near-identical three-quarter pose too early; first-source and unload boundary still require a gradual anatomical join.",
+    "Bare and generated helmet bodies are independent drawings, not exact paired body pixels; no equivalence claim."
+  ],
+  "next": "Author more gradual West camera/grip bridge with original shell dimensions and stable paired body/foot stance; then source/native motion review, crate-floor/idle handoff, controller/safety/Continue."
+}

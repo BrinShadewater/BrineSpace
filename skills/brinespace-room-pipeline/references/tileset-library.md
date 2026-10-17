@@ -687,3 +687,9 @@ Use exact image bytes or all-channel differences for framebuffer parity: Pillow
 RGBA getbbox can ignore RGB changes when alpha differences are all zero. A test
 subclass can lose script.resource_path-based renderer identity; use a scoped switch
 on the actual renderer when comparing behavior.
+
+## Hallway Common prop closeout - September 28, 2026
+
+Reusable floor props belong in station-props-v2 with stable sp- IDs and category common; the Studio Common filter requires station group plus common category. Do not rename IDs to library/common-: that historical decoration prefix can be hidden in live rooms. Use searchable family labels, preserving owner name/category overrides and marks. Keep functional drone machinery excluded from furniture batches, and floors/risers in dedicated selectors.
+
+Use current manifest source selections, not historical add_*.py scripts with hardcoded original art and footprints. Compare apparent density at registered world size; retain matte muted paint, broad leaf clusters and pot-contact collision. Source resolution alone does not establish scale consistency. See docs/COMMON_PROPS_SESSION_CLOSEOUT_2026-09-28.md for the 19-prop inventory, native evidence and limits. Closure records local work and does not imply a commit or release.

@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+HAZARD SETUP eat/fire prior running=true paused=false crew=1
+HAZARD FIRST eat/fire running=true paused=false dead=false goal=fire-retreat return={  }
+HAZARD SETUP eat/flood prior running=true paused=false crew=1
+HAZARD FIRST eat/flood running=true paused=false dead=false goal=flood-retreat return={  }
+HAZARD SETUP eat/oxygen-loss prior running=true paused=false crew=1
+HAZARD FIRST eat/oxygen-loss running=false paused=true dead=true goal= return={  }
+HAZARD SETUP drink/fire prior running=false paused=true crew=0
+HAZARD FIRST drink/fire running=true paused=false dead=false goal=fire-retreat return={  }
+HAZARD SETUP drink/flood prior running=true paused=false crew=1
+HAZARD FIRST drink/flood running=true paused=false dead=false goal=flood-retreat return={  }
+HAZARD SETUP drink/oxygen-loss prior running=true paused=false crew=1
+HAZARD FIRST drink/oxygen-loss running=false paused=true dead=true goal= return={  }
+JAMES MEAL RETURN HAZARDS: 2571 checks; 0 failures

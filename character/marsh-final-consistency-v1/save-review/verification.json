@@ -1,0 +1,156 @@
+{
+  "checks": 2653,
+  "failures": 0,
+  "selectedFrameHolds": 1190,
+  "selectedStates": 228,
+  "cases": [
+    {
+      "freshVisibleTitleContinue": true,
+      "fullSave": true,
+      "label": "walk-south",
+      "presentation": {
+        "key": "walk-south"
+      }
+    },
+    {
+      "freshVisibleTitleContinue": true,
+      "fullSave": true,
+      "label": "stop-south",
+      "presentation": {
+        "key": "walk-stop-phase3-south"
+      }
+    }
+  ],
+  "captures": [
+    {
+      "canvasPosition": [
+        566.6669921875,
+        581.455078125
+      ],
+      "file": "world-000.png",
+      "foot": [
+        8256.0,
+        7935.1640625
+      ],
+      "imageSize": [
+        1333,
+        750
+      ],
+      "label": "walk-south",
+      "position": [
+        12384.0,
+        11880.8583984375
+      ],
+      "slot": -1,
+      "sourceFile": "source-000.png",
+      "visualTime": 1.02,
+      "actualPngSize": [
+        1600,
+        900
+      ],
+      "nativeSha256": "39295e54afcedb4a1bf47ce412e5e7e5c82b26526d5313b0e6f870c89fa20c79",
+      "sourceSha256": "0348a92f7026d2862a2ae03319794ba9470ec3ef3d34f6227114fa9847c948e3",
+      "reviewed": true
+    },
+    {
+      "canvasPosition": [
+        566.6669921875,
+        662.5
+      ],
+      "file": "world-001.png",
+      "foot": [
+        8256.0,
+        8000.0
+      ],
+      "imageSize": [
+        1333,
+        750
+      ],
+      "label": "stop-south",
+      "position": [
+        12384.0,
+        11978.1123046875
+      ],
+      "slot": -1,
+      "sourceFile": "source-001.png",
+      "visualTime": 3.62,
+      "actualPngSize": [
+        1600,
+        900
+      ],
+      "nativeSha256": "6c56bd2a9891c3b65ce187a6510d65f7f15f19db11d755bc73287f940e969148",
+      "sourceSha256": "a535c7e4e5149f1c908323bad84de09392547725050744359beaac3abb373c6f",
+      "reviewed": true
+    },
+    {
+      "canvasPosition": [
+        566.6669921875,
+        581.455078125
+      ],
+      "file": "world-002.png",
+      "foot": [
+        8256.0,
+        7935.1640625
+      ],
+      "imageSize": [
+        1333,
+        750
+      ],
+      "label": "walk-south",
+      "position": [
+        12384.0,
+        11880.8583984375
+      ],
+      "slot": -1,
+      "sourceFile": "source-002.png",
+      "visualTime": 1.02,
+      "actualPngSize": [
+        1600,
+        900
+      ],
+      "nativeSha256": "f456355d4707d78bdbb3cca79d13967beef2444fd0094827eedb901fdd68ce09",
+      "sourceSha256": "0348a92f7026d2862a2ae03319794ba9470ec3ef3d34f6227114fa9847c948e3",
+      "reviewed": true
+    },
+    {
+      "canvasPosition": [
+        566.6669921875,
+        662.5
+      ],
+      "file": "world-003.png",
+      "foot": [
+        8256.0,
+        8000.0
+      ],
+      "imageSize": [
+        1333,
+        750
+      ],
+      "label": "stop-south",
+      "position": [
+        12384.0,
+        11978.1123046875
+      ],
+      "slot": -1,
+      "sourceFile": "source-003.png",
+      "visualTime": 3.62,
+      "actualPngSize": [
+        1600,
+        900
+      ],
+      "nativeSha256": "a878ade65aa393ba24e3367d2b2f2413046435a028efd08c038a8fcfafdeb436",
+      "sourceSha256": "a535c7e4e5149f1c908323bad84de09392547725050744359beaac3abb373c6f",
+      "reviewed": true
+    }
+  ],
+  "reportSha256": "b247e2a7538473b8792353c4bd3452ecf8fca10c1f7bf42dcd886d40f378fae4",
+  "ownerNonLogStable": 2931,
+  "inputCount": 5731,
+  "fullInputsStable": false,
+  "concurrentChangedInput": [
+    "scripts/title_archive.gd"
+  ],
+  "animationSourcesAndActorUnchanged": true,
+  "scope": "Two full walk/stop checkpoints and two fresh actual visible TitleContinues plus228state/1190normal-source holds, current normal catalogue with no injected art. Actual96unit South route updated to observable walk/stop phases; whole actor/player/source/root/pause/resume parity. Not staged family persistence, complete routes, helmet acceptance or full-set artwork acceptance.",
+  "limits": "Root-reported imageSize differs from saved PNG size; actualPngSize is authoritative. Concurrent title_archive edit recorded, so no whole-checkout stability claim. Actual two Continue operations/source/root/pause/resume parity passed. No every-room/camera/continuous-watched-cadence claim."
+}

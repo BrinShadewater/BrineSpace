@@ -1,0 +1,69 @@
+{
+  "name": "Bill south lateral dry collapse candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "deathEntryMode": "lowered-start-v1",
+  "states": [
+    {
+      "id": "death-ground-south",
+      "frameFiles": [
+        "frames/death-ground-south/000.png",
+        "frames/death-ground-south/001.png",
+        "frames/death-ground-south/002.png",
+        "frames/death-ground-south/003.png",
+        "frames/death-ground-south/004.png",
+        "frames/death-ground-south/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        300,
+        350,
+        400,
+        400,
+        300
+      ],
+      "loop": false,
+      "terminalFrame": 5,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

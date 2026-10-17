@@ -1,0 +1,15 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;ROOT=P.parent.parent
+builder=(P.parent/'bill-reading-entry-south-v1/build.py').read_text()
+builder=builder.replace("L=P.parent/'bill-seated-loops-south-v1'","L=P.parent/'bill-reading-north-v1'").replace("B=P.parent/'bill-seated-south-coherent-v1'","B=P.parent/'bill-seated-north-coherent-v1'").replace("H=P.parent/'bill-seated-helmet-south-coherent-v1'","H=P.parent/'bill-seated-helmet-north-coherent-v1'")
+builder=builder.replace("L/'build.py'","B/'build.py'").replace("module.prepare(source,heads,1.3)","module.prepare(source,heads,6,1.4)").replace('sx,sy=.218,.251','sx,sy=.214,.251')
+builder=builder.replace("f'frames/{gear}/read-seated-south/000.png'","f'frames/{gear}/000.png'").replace('south','north').replace('hy+35','hy+31').replace('hx-18,hy-8','hx-17,hy-6').replace("'fixedRuler':[sx,sy],'density':1.3","'fixedRuler':[sx,sy],'density':1.4")
+(P/'build.py').write_text(builder)
+verifier=(P.parent/'bill-reading-entry-south-v1/verify.py').read_text().replace('south','north').replace('[.218,.251]','[.214,.251]').replace("'bill-seated-loops-north-v1'/f'frames/{gear}/read-seated-north/000.png'","'bill-reading-north-v1'/f'frames/{gear}/000.png'")
+(P/'verify.py').write_text(verifier)
+test=(ROOT/'tests/test_bill_reading_entry_south_candidates.gd').read_text().replace('south','north')
+(ROOT/'tests/test_bill_reading_entry_north_candidates.gd').write_text(test)
+(ROOT/'tests/test_bill_reading_entry_north_candidates.gd.uid').write_text('uid://r6b8w3m6p2r9v\n')
+runner=(ROOT/'tools/run_bill_reading_entry_south_candidate_validation.py').read_text().replace('south','north')
+(ROOT/'tools/run_bill_reading_entry_north_candidate_validation.py').write_text(runner)
+print('North tools scaffolded; source landmark registration required before build')

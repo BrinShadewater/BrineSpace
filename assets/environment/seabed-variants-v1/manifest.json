@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "title": "Remaining procedural scenery variants",
+  "assets": [
+    {
+      "id": "rounded-boulders",
+      "kind": "prop",
+      "selected_source": "runtime/rounded-boulders.png",
+      "stage": "locally selected; agent native density/station review complete; owner acceptance pending",
+      "versions": [
+        {
+          "file": "rounded-boulders-v1.png",
+          "sha256": "f9599988b666d8cf0142a83d83617603ca50976acfdaaef7f80cfe52a55401cc",
+          "rejection": null
+        },
+        {
+          "file": "runtime/rounded-boulders.png",
+          "sha256": "2fb8e15c3aeb0ca48c26a5a17f7acc755c76afb1d5c3dad1b4477fd9668f8163",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "pale-driftwood",
+      "kind": "prop",
+      "selected_source": "runtime/pale-driftwood.png",
+      "stage": "locally selected; agent native density/station review complete; owner acceptance pending",
+      "versions": [
+        {
+          "file": "pale-driftwood-v1.png",
+          "sha256": "28c2082f35d768573b8e9935b0fdcca7be6ca474f42aa9f1a56acbfd21fbad2d",
+          "rejection": "red fringe; superseded by v2"
+        },
+        {
+          "file": "pale-driftwood-v2.png",
+          "sha256": "f5d8b8d64af882cd52d493c9ab89460ae7d20c888c050f7d7b46334074ce1026",
+          "rejection": null
+        },
+        {
+          "file": "pale-driftwood-v3.png",
+          "sha256": "5f81ba4acf0148003aac3dcecb78df491bde92bd253b42069400699b3974a2ec",
+          "rejection": "alternate study; fringe persisted, lighter wood material less consistent with installed timbers"
+        },
+        {
+          "file": "runtime/pale-driftwood.png",
+          "sha256": "bec506c8181c7be65dd5138ad84f46efe7f2ccda3757afc1e4a01702b4dcb154",
+          "rejection": null
+        }
+      ]
+    }
+  ]
+}

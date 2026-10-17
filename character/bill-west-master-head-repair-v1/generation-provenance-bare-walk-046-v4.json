@@ -1,0 +1,77 @@
+{
+  "key": "bare-walk-046",
+  "revision": 4,
+  "status": "completed",
+  "method": "builtin imagegen",
+  "sourcePath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\bare-walk-046-face-detail-baseline-v1.png",
+  "sourceSha256": "168bd9a04643f419cf88d615e9c205e561840a2360dd26aa971d26bbe37faaf9",
+  "references": [
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-face-detail-target-v4.png",
+      "sha256": "350c05f9acb88641d50a239237186644a54b0602dd07d9ad008d21e91d031de5",
+      "role": "single whole-sprite edit target"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\original-master-face-common-canvas-reference.png",
+      "sha256": "aaf8d5c19b6f239bf15095e98f722fe5e9ab3f917a1ff591112274201ed94d33",
+      "role": "original master face support at fixed physical scale in equal reference canvas"
+    }
+  ],
+  "promptFile": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-prompt-v4.txt",
+  "promptSha256": "7ddc18706ad2156891ebc63d1a264b660703bff03da7fd68bbc1d19b12b3578b",
+  "submittedPromptSha256": "7ddc18706ad2156891ebc63d1a264b660703bff03da7fd68bbc1d19b12b3578b",
+  "originalCanvas": [
+    256,
+    256
+  ],
+  "commonCanvas": [
+    352,
+    352
+  ],
+  "targetTranslation": [
+    32,
+    0
+  ],
+  "returnCrop": [
+    32,
+    0,
+    288,
+    256
+  ],
+  "standingRuler": 148,
+  "normalAdmission": false,
+  "comparisonReference": {
+    "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\physical-master-reference-4x.png",
+    "sha256": "60fcc3999fc6a844b587858523128de89bd7f03da30c83155442c885113cc428",
+    "role": "post-generation diagnostic only"
+  },
+  "baselineRole": "frozen preferred candidate v1",
+  "supportOriginalPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-water-exit-west-master-v8\\sources\\master-west-reference.png",
+  "supportOriginalSha256": "b1c6fc168514e8154de9a5a83a6488f23d9878bd4d89025305afed9c48ca35e6",
+  "supportCrop": [
+    95,
+    10,
+    255,
+    175
+  ],
+  "supportResampledSize": [
+    99,
+    102
+  ],
+  "supportCanvasSize": [
+    1408,
+    1408
+  ],
+  "supportPastePoint": [
+    654,
+    653
+  ],
+  "supportResampling": "BICUBIC",
+  "supportPhysicalScale": 0.6192468619246861,
+  "originalPath": "C:\\Users\\Alex\\.codex\\generated_images\\01a0ef89-cf35-77f0-9b57-2a08e6ea987f\\exec-ae9a62bc-0781-4268-bd72-9136b752b6a6.png",
+  "savedPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-west-master-head-repair-v1\\sources\\bare-walk-046-edit-v4.png",
+  "sha256": "835062ceb5fe090f97dbe1183612cafd9624e21df19acf18f11edebd4e22f707",
+  "generationId": "exec-ae9a62bc-0781-4268-bd72-9136b752b6a6",
+  "rejected": true,
+  "rejectionReason": "Equal-canvas physical face support avoids gross enlargement but does not convincingly improve angular master facial definition; lower-body silhouette changes (IoU .94275) and side bounds widen1px. Retain registeredv1 rather than selecting geometry-compatible softness."
+}

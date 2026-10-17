@@ -1,0 +1,136 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "commonNeutralScale": 0.2727272727272727,
+  "neutralOccupiedTargetHeight": 147,
+  "rawSha256": "2b31ab80df82bee5896dec7fbc35a82e5f8fbd52b87beabc7eb173ab4d21790c",
+  "records": [
+    {
+      "file": "000.png",
+      "phase": "near-contact",
+      "sourceCell": [
+        0,
+        0,
+        462,
+        724
+      ],
+      "wholeTranslation": [
+        29,
+        -4
+      ],
+      "bounds": [
+        49,
+        27,
+        135,
+        172
+      ],
+      "size": [
+        86,
+        145
+      ],
+      "sha256": "27a37c42d0356e712d726492b5dd98d2f23036150b0a5050545cfab7439beea7"
+    },
+    {
+      "file": "001.png",
+      "phase": "near-passing-provisional",
+      "sourceCell": [
+        462,
+        0,
+        880,
+        724
+      ],
+      "wholeTranslation": [
+        36,
+        -4
+      ],
+      "bounds": [
+        56,
+        27,
+        127,
+        172
+      ],
+      "size": [
+        71,
+        145
+      ],
+      "sha256": "1bfb6c65d6210718281d0b3b2365de737f07c95b23fcd9f24dd604c756f42738"
+    },
+    {
+      "file": "002.png",
+      "phase": "requested-far-contact-wrong-near",
+      "sourceCell": [
+        880,
+        0,
+        1360,
+        724
+      ],
+      "wholeTranslation": [
+        27,
+        -4
+      ],
+      "bounds": [
+        50,
+        27,
+        134,
+        172
+      ],
+      "size": [
+        84,
+        145
+      ],
+      "sha256": "d6938051cff50f0d7a6ffe13c5773b69898f966d1738efeb0073a0ff308ceb48"
+    },
+    {
+      "file": "003.png",
+      "phase": "requested-far-passing-wrong-near",
+      "sourceCell": [
+        1360,
+        0,
+        1822,
+        724
+      ],
+      "wholeTranslation": [
+        32,
+        -5
+      ],
+      "bounds": [
+        56,
+        26,
+        128,
+        172
+      ],
+      "size": [
+        72,
+        146
+      ],
+      "sha256": "21f877687a7f9f2f9d1eb929aeb58d693a0c50a60c45fc86b8721367a332bba2"
+    },
+    {
+      "file": "ruler.png",
+      "phase": "neutral-ruler",
+      "sourceCell": [
+        1822,
+        0,
+        2172,
+        724
+      ],
+      "wholeTranslation": [
+        44,
+        -6
+      ],
+      "bounds": [
+        74,
+        25,
+        110,
+        172
+      ],
+      "size": [
+        36,
+        147
+      ],
+      "sha256": "0acb90a122ab21ab6708980c0923e6b408539acf7abf476ee2e10f56794d991e"
+    }
+  ],
+  "operations": "Five complete alpha128 cells, ONE unobstructed neutral BOX scale, whole translation to bbox bottom172, no clipped pixels. No mirror, limb/crate patch, recolour or pose/cargo-specific fitting.",
+  "limits": "Raw all four repeat near-support geometry; crate and body concept consistent but opposite half absent; packed body/head/camera/grade/cargo/hand joins and native motion remain provisional. Generic bbox anchor is not anatomical contact certification."
+}

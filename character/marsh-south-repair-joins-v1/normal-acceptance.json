@@ -1,0 +1,30 @@
+{
+  "profile": {
+    "count": 2936,
+    "stable": true,
+    "changed": [],
+    "added": []
+  },
+  "inputs": {
+    "count": 5755,
+    "stable": false,
+    "changed": [
+      "rooms/large-rooms/moonbay.gd",
+      "rooms/large-rooms/studio_view.gd",
+      "scripts/airlock_service.gd",
+      "scripts/crew_portrait_panel.gd"
+    ],
+    "added": []
+  },
+  "checks": 210,
+  "failures": 0,
+  "samples": 158,
+  "captures": 11,
+  "normalCatalogue": true,
+  "scope": "Prescribed valid maintenance contact and goal; production arrive/update at 40ms samples. Staged mode overrides only two texture arrays, normal mode reads installed catalogue; every selected transition source is exact. No actor work state or stage injection after arrival. Not autonomous goal selection, route entry, wet salvage, continuously watched cadence or new full SaveContinue.",
+  "visuallyReviewed": true,
+  "boardSha256": "76ea1d8b6b8595d3aa6293077e2023051b775bbb4a5ae29426bae7733013d07b",
+  "reportSha256": "d54fdabd08337f19883d3673f781719221e8265fda90420112135c1166449795",
+  "wholeBoardViewingCopy": "output/marsh-animation-audit/repair-joins-normal-v1-2026-10-04/whole-board-view.jpg",
+  "fullNativeReviewed": "normal-captures/world-008.png"
+}

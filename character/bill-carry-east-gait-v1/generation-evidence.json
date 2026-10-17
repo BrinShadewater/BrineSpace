@@ -1,0 +1,30 @@
+{
+  "method": "built-in image_gen",
+  "generations": [
+    {
+      "builtInExecution": "exec-1c8af543-5582-4035-bb0d-54a8993bcb7c",
+      "source": "character/bill-carry-east-gait-v1/sources/gait-legs-v1.png",
+      "prompt": "character/bill-carry-east-gait-v1/sources/prompt-gait-legs-v1.txt",
+      "sourceSha256": "17a40b59f75cb3e4d43967680a0fffed6764fa38ca3c109abec4b15a74238459",
+      "promptSha256": "eef764a33587595518a66f83536f5a648bf8354e91c77137d2b0bfb7a5d9074e",
+      "use": "First four leg assemblies only; repeated second half retained as diagnostic"
+    },
+    {
+      "builtInExecution": "exec-33fea6df-d7df-4a8f-ad87-923396f4559e",
+      "source": "character/bill-carry-east-gait-v1/sources/gait-legs-v2.png",
+      "prompt": "character/bill-carry-east-gait-v1/sources/prompt-gait-legs-v2.txt",
+      "sourceSha256": "a34f1bc33af93523363b8e68d52a291c76464682e4dc9197fe64427799c79043",
+      "promptSha256": "47d8f5a042204ed6d7f53b7bfcef83dbd6018daa5a97d9f7d0e88648d7a77de2",
+      "use": "Last four leg assemblies only; regenerated upper row excluded"
+    }
+  ],
+  "references": [
+    "sources/master-legs.png: exact held-master lower body x6 nearest",
+    "sources/held-master.png: exact held-master whole figure x4 nearest",
+    "v2 also references v1 generated leg sheet"
+  ],
+  "normalSelectionChanged": false,
+  "calibration": "Independent leg component ruler70/410 shared across all8; fixed pooled RGB gains; no per-pose resizing",
+  "diagnostics": "Initial cell-based extraction clipped assemblies crossing imaginary384x512 cell boundaries. Corrected to globally connected complete components. V1 opposite-half gait ordering required v2 targeted revision.",
+  "remaining": "Foot contact, anatomical crossover and loop flow require actual moving station review; package checks do not certify them."
+}

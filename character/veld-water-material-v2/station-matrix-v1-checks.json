@@ -1,0 +1,74 @@
+{
+  "scope": "Veld only,4 facings2equipment modes on actual five-room furnished station; helmet native captures,bare headless routes; no exterior/concurrent traffic proof",
+  "passed": false,
+  "results": [
+    {
+      "direction": "east",
+      "variant": "helmet",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/east-helmet-evidence-v1.json",
+      "reused_verified_run": true
+    },
+    {
+      "direction": "east",
+      "variant": "bare",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/east-bare-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 6,
+          "routePoints": 29,
+          "searchMs": 8.699
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": false
+    },
+    {
+      "direction": "north",
+      "variant": "helmet",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/north-helmet-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 0,
+          "routePoints": 19,
+          "searchMs": 2.348
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": true
+    },
+    {
+      "direction": "north",
+      "variant": "bare",
+      "exit_code": 0,
+      "engine_errors": [
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ],
+      "evidence": "station-review/north-bare-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 0,
+          "routePoints": 19,
+          "searchMs": 2.367
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": false
+    }
+  ],
+  "real_profile_changed_files": []
+}

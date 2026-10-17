@@ -1,0 +1,45 @@
+{
+  "status": "installed_composed_half_turns_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "carry-turn-east-west",
+    "carry-turn-west-east",
+    "carry-turn-north-south",
+    "carry-turn-south-north"
+  ],
+  "source": "Exact selected independently drawn quarter-turn PNGs; see registration.json per-frame paths/hashes/head cuts",
+  "derivation": "East/south+south/west; north/east+east/south; two exact reverses. Duplicate shared seam merged with combined hold. No mirroring, resizing, recolouring or regenerated heads.",
+  "sourceGeneration": "Donor built-in imagegen sources and exact prompts preserved in each quarter folder",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "runtimeMsPerHalfTurn": 1600,
+  "previousRuntimeMs": 680,
+  "timingReason": "Retain authored quarter angular pacing across180 degrees; no duplicate seam frame",
+  "checks": "597 packaging /401 actual-loader native checks,0 failures;16 native captures",
+  "profileAudit": {
+    "scratchDirectoryAsserted": true,
+    "realProfileUnchanged": false,
+    "profileDelta": [
+      "logs\\godot2026-09-30T04.21.54.log",
+      "logs\\godot2026-09-30T02.17.10.log"
+    ],
+    "realNonLogFilesUnchanged": true,
+    "interpretation": "Two real log paths changed during scratch validation; no real save/profile data delta. No restoration or deletion performed."
+  },
+  "visualReview": "Exact quarter donor poses, full contact, decoded GIF and native seam reviewed; final owner review pending",
+  "review": "review-v1.gif",
+  "remaining": [
+    "Owner visual review",
+    "Gold brightness correction across straight cargo/actions to avoid carry-turn material jump",
+    "111 retained body states and cross-family consistency/polish"
+  ]
+}

@@ -21,8 +21,10 @@ Solves the problems a naive headless sweep hits (2026-09-10 audit):
     output/ for that one test.
   - Other fixtures exit 2 unless BRINESPACE_TEST_USER_DIR equals user://, so
     that they only ever run in a profile someone chose. The runner sets it to
-    the profile APPDATA leads to, but only when APPDATA is a scratch folder:
-    run with the real roaming folder and those fixtures still refuse.
+    the chosen scratch profile. A normal launch now creates scratch storage;
+    a fixture redirecting tests to the real roaming folder is refused.
+    Inherited scratch APPDATA is intentionally replaced too: seed fixtures through
+    their named scratch path or run their isolated dedicated harness.
 
 Lanes are detected from test source at run time (always current); exceptions
 and subsystem groups live in tests/index.json.
@@ -47,6 +49,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from run_release_benchmark import isolated_environment
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_GODOT = {
@@ -230,6 +233,8 @@ def run(argv=None) -> int:
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     out_dir = ROOT / "output" / "test-runs" / f"{stamp}-{lane_wanted}"
     (out_dir / "logs").mkdir(parents=True, exist_ok=True)
+    # An unset per-fixture override must never inherit the player's profile.
+    default_env, default_profile = isolated_environment(out_dir / "scratch-appdata")
     summary_rows = []
     tally = {}
     for t, lane, reason in plan:
@@ -245,17 +250,17 @@ def run(argv=None) -> int:
                 cmd[1:1] = ["--screen", str(args.screen)]
             per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
             started = time.monotonic()
-            env = dict(os.environ)
+            env = dict(default_env)
             scratch = own_scratch(t)
             if scratch is not None and sys.platform == "win32":
                 scratch.mkdir(parents=True, exist_ok=True)
                 env["APPDATA"] = str(scratch)
-            profile = scratch_profile(env.get("APPDATA", ""))
+            profile = scratch_profile(env.get("APPDATA", "")) if sys.platform == "win32" else default_profile.as_posix()
             if profile is not None:
                 Path(profile).mkdir(parents=True, exist_ok=True)
                 env["BRINESPACE_TEST_USER_DIR"] = profile
             else:
-                env.pop("BRINESPACE_TEST_USER_DIR", None)
+                raise ValueError(f"Refusing test {t.stem}: profile is not isolated from player data")
             code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout, env=env)
             duration = time.monotonic() - started
             verdict, detail = classify_result(code, output, timed_out)

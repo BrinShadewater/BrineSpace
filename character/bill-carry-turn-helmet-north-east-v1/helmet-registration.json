@@ -1,0 +1,152 @@
+{
+  "source": "sources/helmet-angle-atlas-v1.png",
+  "selectedRow": 3,
+  "unselectedRows": [
+    0,
+    1,
+    2
+  ],
+  "repairSource": "sources/helmet-rear-angle-repair-v2.png",
+  "selectedRepairCells": [
+    1,
+    2
+  ],
+  "rejectedRepairCells": [
+    3,
+    4,
+    5
+  ],
+  "scale": [
+    0.18306636155606407,
+    0.18494623655913978
+  ],
+  "repairScale": [
+    0.11678832116788321,
+    0.11466666666666667
+  ],
+  "curveInput": [
+    3.0,
+    14.0,
+    45.0,
+    62.666666666666664,
+    80.0,
+    107.33333333333333,
+    226.0
+  ],
+  "curveOutput": [
+    23.383333333333333,
+    37.333333333333336,
+    53.666666666666664,
+    66.16666666666666,
+    83.33333333333333,
+    110.90000000000002,
+    147.33333333333334
+  ],
+  "skinGain": [
+    0.8796296296296297,
+    0.9094827586206896,
+    0.7241379310344828
+  ],
+  "endpointAuthorities": [
+    "bill-cargo-helmet-north-v1/frames/pickup-north/011.png",
+    "bill-cargo-helmet-east-v1/frames/pickup-east/010.png"
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "source": "helmet-rear-angle-repair-v2.png",
+      "sourceCell": [
+        0,
+        1
+      ],
+      "sourceBox": [
+        0,
+        164,
+        342,
+        532
+      ],
+      "helmetPosition": [
+        106,
+        64
+      ],
+      "helmetSize": [
+        40,
+        43
+      ],
+      "protectedBodyFromY": 107
+    },
+    {
+      "frame": 2,
+      "source": "helmet-rear-angle-repair-v2.png",
+      "sourceCell": [
+        0,
+        2
+      ],
+      "sourceBox": [
+        10,
+        164,
+        345,
+        534
+      ],
+      "helmetPosition": [
+        106,
+        64
+      ],
+      "helmetSize": [
+        40,
+        43
+      ],
+      "protectedBodyFromY": 107
+    },
+    {
+      "frame": 3,
+      "source": "helmet-angle-atlas-v1.png",
+      "sourceCell": [
+        3,
+        3
+      ],
+      "sourceBox": [
+        29,
+        6,
+        249,
+        239
+      ],
+      "helmetPosition": [
+        106,
+        65
+      ],
+      "helmetSize": [
+        41,
+        44
+      ],
+      "protectedBodyFromY": 109
+    },
+    {
+      "frame": 4,
+      "source": "helmet-angle-atlas-v1.png",
+      "sourceCell": [
+        3,
+        4
+      ],
+      "sourceBox": [
+        28,
+        6,
+        241,
+        240
+      ],
+      "helmetPosition": [
+        107,
+        65
+      ],
+      "helmetSize": [
+        40,
+        44
+      ],
+      "protectedBodyFromY": 109
+    }
+  ],
+  "sourceHashes": {
+    "helmet-angle-atlas-v1.png": "6bece3d1340d23521d3779d1e58265019284b5b4a6e8145c24169060103e1d8d",
+    "helmet-rear-angle-repair-v2.png": "ea39686a8e4ded1846da3a0ee94b9360aa5e532ee57c5cb25647815db6d5421a"
+  }
+}

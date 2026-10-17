@@ -1,0 +1,278 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/pickup-v1.png",
+      "generation": "exec-d8af5a0e-44fd-4973-8cbe-3bc1f07e8b97",
+      "heads": [
+        [
+          328,
+          32
+        ],
+        [
+          779,
+          32
+        ],
+        [
+          1224,
+          32
+        ],
+        [
+          328,
+          540
+        ],
+        [
+          779,
+          540
+        ],
+        [
+          1224,
+          540
+        ]
+      ],
+      "sourceHeights": [
+        444,
+        444,
+        444,
+        448,
+        448,
+        447
+      ],
+      "count": 6,
+      "density": 1.0,
+      "fixedRuler": [
+        0.29,
+        0.332
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      0
+    ],
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "durations": [
+    60,
+    80,
+    100,
+    100,
+    100,
+    80,
+    60
+  ],
+  "excludedPrimaryPoses": [
+    5
+  ],
+  "sourcesSha256": {
+    "primary": "55b41b73f44e81bc02e984b2bc9fe67ceaa9db6bbf46dcdbcf21d9f84d0a625c"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 0,
+      "sourceBox": [
+        206,
+        29,
+        400,
+        479
+      ],
+      "fixedRuler": [
+        0.29,
+        0.332
+      ],
+      "position": [
+        90,
+        76
+      ],
+      "headAxis": [
+        125,
+        77
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        630,
+        29,
+        852,
+        479
+      ],
+      "fixedRuler": [
+        0.29,
+        0.332
+      ],
+      "position": [
+        82,
+        76
+      ],
+      "headAxis": [
+        125,
+        77
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1080,
+        29,
+        1295,
+        479
+      ],
+      "fixedRuler": [
+        0.29,
+        0.332
+      ],
+      "position": [
+        84,
+        76
+      ],
+      "headAxis": [
+        126,
+        77
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        235,
+        537,
+        402,
+        991
+      ],
+      "fixedRuler": [
+        0.29,
+        0.332
+      ],
+      "position": [
+        98,
+        74
+      ],
+      "headAxis": [
+        125,
+        75
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    },
+    {
+      "frame": 5,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        691,
+        537,
+        852,
+        991
+      ],
+      "fixedRuler": [
+        0.29,
+        0.332
+      ],
+      "position": [
+        99,
+        74
+      ],
+      "headAxis": [
+        125,
+        75
+      ],
+      "targetFrontBoot": [
+        122.0,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        4.0,
+        14.666666666666666,
+        32.333333333333336,
+        40.666666666666664,
+        52.0,
+        64.0,
+        90.0,
+        115.0,
+        209.66666666666666
+      ],
+      "neutralOutput": [
+        4.0,
+        12.666666666666666,
+        21.333333333333332,
+        35.666666666666664,
+        44.0,
+        55.333333333333336,
+        67.66666666666667,
+        121.86666666666649,
+        144.33333333333334,
+        191.0
+      ],
+      "gains": {
+        "hair": [
+          0.9447852760736196,
+          1.0,
+          1.025974025974026
+        ],
+        "face": [
+          0.86,
+          0.9298245614035088,
+          0.8855421686746988
+        ],
+        "burgundy": [
+          1.010204081632653,
+          1.0434782608695652,
+          1.1071428571428572
+        ]
+      }
+    }
+  },
+  "donors": [
+    {
+      "path": "bill-seated-west-coherent-v1/frames/sit-down-west/000.png",
+      "sha256": "4511e79ec9d142757f8c99616defd1cbe0a6efac655fb4eb10c4d7df9dafab4e"
+    },
+    {
+      "path": "bill-meal-west-coherent-v1/frames/eat-west/000.png",
+      "sha256": "a60af9927e6ebcd1bc5138509929662a473f57a83ec3998fc7a2e608bdb9cd17"
+    }
+  ],
+  "scope": "authored bowl pickup and reversed return; exact idle/eating-held endpoints; normal service pending"
+}

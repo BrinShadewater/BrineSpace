@@ -1,0 +1,58 @@
+{
+  "checks": 48,
+  "failures": 0,
+  "cases": [
+    {
+      "freshVisibleTitleContinue": true,
+      "fullSave": true,
+      "label": "kneel-south",
+      "sequenceCompleted": true,
+      "slot": 1,
+      "visitedStages": [
+        "kneel",
+        "repair",
+        "stand",
+        ""
+      ]
+    },
+    {
+      "freshVisibleTitleContinue": true,
+      "fullSave": true,
+      "label": "stand-south",
+      "sequenceCompleted": true,
+      "slot": 1,
+      "visitedStages": [
+        "stand",
+        ""
+      ]
+    }
+  ],
+  "captures": 6,
+  "scope": "Two full normal repair transition middle-slot checkpoints and two fresh actual visible TitleContinues, produced through real arrive/update from a prescribed valid service contact. Whole actor/player/source/root/pause parity and actual repair completion. No injected art or work states. Not every save phase, autonomous route selection, continuous cadence, wet salvage or full-set artwork acceptance.",
+  "reportSha256": "f56bf8fde7d9a17ff07ed86e67f2c3bec4d7dfb126b70f4e5d597cbd65325240",
+  "boards": [
+    {
+      "path": "character/marsh-south-repair-continue-v1/kneel-south-continue.png",
+      "sha256": "933d53e8d900137c0bf1462a73b540e7e793001e82db1790fef8e7f0182b95a5",
+      "visuallyReviewed": true
+    },
+    {
+      "path": "character/marsh-south-repair-continue-v1/stand-south-continue.png",
+      "sha256": "74bba4b2f7b261756e0a8520145651989dc912531af834db6e3904f17a22a395",
+      "visuallyReviewed": true
+    }
+  ],
+  "profile": {
+    "count": 2936,
+    "stable": true,
+    "changed": [],
+    "added": []
+  },
+  "inputs": {
+    "count": 5763,
+    "stable": true,
+    "changed": [],
+    "added": []
+  },
+  "fullNativeReviewed": "captures/world-004.png"
+}

@@ -1,0 +1,53 @@
+{
+  "installed": false,
+  "method": "Built-in imagegen cargo body; retained independently authored ordinary-turn helmet sources",
+  "bodySources": [
+    {
+      "path": "character/veld-swim-carry-turn-south-west-coherent-v1/body-source-v1.png",
+      "sha256": "52632d47272e0c59379dca8110bb690236d25792b5228d2eda6c63fd13b27197",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-south-west-coherent-v1/body-prompt-v1.txt",
+      "promptSha256": "d1c6da8e6d8d51dacaec8eefc498dc71200a3aadb44eaf80e9a54fd4007a5344",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-88da6ffd-d39e-4134-8370-6a10a4386119.png",
+      "references": [
+        {
+          "path": "character/veld-swim-turn-south-west-coherent-v1/bare-source-v1.png",
+          "sha256": "e6c36aa40eeb6f75421439b203efc0a3a0286ed3a4e99a38729bbc7f792e25cb"
+        },
+        {
+          "path": "character/veld-swim-carry-west-coherent-v1/source-v1.png",
+          "sha256": "44b9135c426ad42792e514cddf25f06a745d75393c5db79125a302748a92f39a"
+        },
+        {
+          "path": "character/veld-swim-carry-south-coherent-v1/source-v3.png",
+          "sha256": "587632a8a5b41c1c83fef6798205965d6ef16df91dd1e16adc2023d3676adc77"
+        }
+      ],
+      "selection": "All4 authored intermediate cells"
+    }
+  ],
+  "helmetSources": [
+    {
+      "path": "character/veld-swim-turn-south-west-coherent-v1/helmet-source-v2.png",
+      "sha256": "353867ba4d32a0d0d8ca850d583a7c1a8ad71277c4a5e1dc928e7418e5e15491",
+      "cells": [
+        0,
+        1
+      ],
+      "scale": 0.083
+    },
+    {
+      "path": "character/veld-swim-turn-south-west-coherent-v1/helmet-source-v1.png",
+      "sha256": "d158b95bbafc009eb9127bb205e1ffd8584bd235b6ba08e0fcbd6c4679c6131b",
+      "cells": [
+        2,
+        3
+      ],
+      "scale": 0.095
+    }
+  ],
+  "scaleRule": "Uniform.21 atlas physical ruler; measured fitted endpoint face anchors; no per-frame size normalization"
+}

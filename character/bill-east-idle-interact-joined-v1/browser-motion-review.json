@@ -1,0 +1,33 @@
+{
+  "scope": "Browser playback and sampled poses; not continuous visual acceptance of every frame, natural game dispatch or normal admission.",
+  "timeline": "motion.html",
+  "durationMs": 6760,
+  "slots": 150,
+  "normalPlayback": {
+    "completedSequences": 1,
+    "sampledSlots": 150,
+    "lastTimeMs": 6760
+  },
+  "quarterSpeedPlayback": {
+    "completedSequencesTotal": 2,
+    "sampledSlots": 150,
+    "lastTimeMs": 6760
+  },
+  "visualPosesInspected": [
+    "idle0",
+    "interact1",
+    "interact2",
+    "interact3"
+  ],
+  "findings": "Endpoint head RGBA and floor depth match. Interior head/collar rasters remain visibly different in sampled poses; refine whole artwork against master before selecting. Pixel deltas include authored movement; not a style similarity score.",
+  "screenshots": [
+    "browser-reach-003.png",
+    "browser-reach-002.png",
+    "browser-slow-complete.png"
+  ],
+  "inputs": {
+    "character/bill-east-idle-interact-joined-v1/motion.html": "71e17e6a31d4bcc2f049d330680bc5b68706018adf1d1c2119e5b221b44c5cb4",
+    "character/bill-east-idle-interact-joined-v1/timeline.json": "2584011904f961a4c8f42ca2bdbdf66bb1a71a007e2688f64ffd47c6ac4bea00",
+    "character/bill-east-idle-interact-joined-v1/temporal-diagnostics.json": "7831e7d851be6f303f2cd3d16ebef2b7aa25ca1a3672a99819494af207627e9c"
+  }
+}

@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Crew finishing comparison</title>
+<style>body{background:#17252c;color:#eee;font:17px system-ui;margin:24px auto;max-width:1160px;padding:16px}select,button{font:inherit;padding:9px;background:#35474f;color:white;border:1px solid #91a4ac;margin:4px}img{display:block;max-width:none;width:1120px}#viewport{overflow:auto}p{max-width:950px}a{color:#9de}</style>
+<h1>Crew finishing comparison</h1><p>Native Godot renders at approximately your three reference scales. Columns isolate matte shading from texture sampling. Images are shown at their original pixel dimensions; scroll horizontally on smaller screens.</p>
+<select id="actor"><option value="bill">Bill</option><option value="veld" selected>Maria Veld</option><option value="branforth">James Branforth</option></select>
+<select id="direction"><option>south</option><option>east</option><option>north</option><option>west</option></select><button id="motion">Branforth side motion</button>
+<div id="viewport"><img id="comparison" src="veld-south.png" alt="Four render treatments at three viewing scales"></div>
+<p><b>Preview only.</b> The matte shader compresses highlights without changing poses or texture resolution. Maria also has a conservative warm-skin adjustment inside a face region; that mask is a study, not a finished face correction. Linear sampling smooths pixel specks but can soften silhouettes.</p>
+<p>Still open: Branforth's side gait, Bill/Branforth side head proportions, and Bill's south-facing art style. A filter cannot repair these. No generation credits spent or production rendering changed.</p>
+<script>const a=document.querySelector('#actor'),d=document.querySelector('#direction'),im=document.querySelector('#comparison');function update(){im.src=a.value+'-'+d.value+'.png'}a.onchange=d.onchange=update;document.querySelector('#motion').onclick=()=>im.src='branforth-east-motion.gif';</script>

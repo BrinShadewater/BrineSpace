@@ -1,0 +1,149 @@
+{
+  "name": "James south meals sealed-helmet substitutes",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_master_matched_meals_owner_review_pending",
+  "states": [
+    {
+      "id": "eat-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/000.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/025.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/056.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/084.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/112.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/140.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "visualSubstitution": "Closed-helmet tablet inspection; crew_life selects inspect instead of food action",
+        "sourceManifest": "character/james-inspect-tablet-v1/helmet-manifest.json",
+        "sourceState": "inspect-south",
+        "sourcePoses": [
+          0,
+          25,
+          56,
+          84,
+          112,
+          140
+        ],
+        "originalPixels": true
+      }
+    },
+    {
+      "id": "drink-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/000.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/025.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/056.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/084.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/112.png",
+        "../james-shared-helmet-interact-south-v3/frames/interact-south/140.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "visualSubstitution": "Closed-helmet tablet inspection; crew_life selects inspect instead of food action",
+        "sourceManifest": "character/james-inspect-tablet-v1/helmet-manifest.json",
+        "sourceState": "inspect-south",
+        "sourcePoses": [
+          0,
+          25,
+          56,
+          84,
+          112,
+          140
+        ],
+        "originalPixels": true
+      }
+    }
+  ]
+}

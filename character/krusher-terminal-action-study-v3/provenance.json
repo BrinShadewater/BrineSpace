@@ -1,0 +1,99 @@
+{
+  "records": [
+    {
+      "kind": "lift",
+      "source": "source-lift.png",
+      "sourceSha256": "f76f95f70b1e3ac6747e8fb23b06f0340a64b0ae4918f4bab0e734d375cbf454",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "standingScale": 0.11161387631975868,
+      "registration": [
+        28,
+        11
+      ],
+      "sourceBounds": [
+        313,
+        112,
+        762,
+        1438
+      ],
+      "outsidePatchExact": true,
+      "admitted": false,
+      "rejection": "Device too high instead of between hip and waist"
+    },
+    {
+      "kind": "open",
+      "source": "source-open.png",
+      "sourceSha256": "3b6be02c8c7d69b2a78df69abd50e10c38cdc79dc0cc15767bfba33f80e54a73",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "standingScale": 0.11144578313253012,
+      "registration": [
+        28,
+        11
+      ],
+      "sourceBounds": [
+        213,
+        113,
+        766,
+        1441
+      ],
+      "outsidePatchExact": true,
+      "admitted": true,
+      "rejection": null
+    },
+    {
+      "kind": "release",
+      "source": "source-release.png",
+      "sourceSha256": "d098c963d19297fe196b81b27bc1f11b05561c0eb0c6bc1eb829a348979c1d8d",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "standingScale": 0.1472636815920398,
+      "registration": [
+        0,
+        5
+      ],
+      "sourceBounds": [
+        468,
+        126,
+        773,
+        1131
+      ],
+      "outsidePatchExact": true,
+      "admitted": false,
+      "rejection": "Clipped device silhouette drift and hand boundary discontinuity"
+    }
+  ],
+  "sourceHashes": {
+    "character\\krusher-terminal-action-study-v2\\frames\\key-002.png": "c22123a60daeaaa8c30df3ac767caee2e55760354f3631005939b2d3be0f7eba",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-006.png": "e3440633b44375c9f54126bdd09591abcf6a73e15b62fdd3226322e0cff6c2d0",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-003.png": "0a897b0c0db42fe2bc4ccbbb32335ed65990fd678be3303895ca6bb441c26aed",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-007.png": "7ee7becd86438b3a0f8ebd085546995a90381544b214e893c6d6313122538da7",
+    "character\\krusher-terminal-action-study-v2\\frames\\close-006.png": "9f75d6218a140b569e18c25a6d7b1a97bdb99ec8161384308660cc763df9d44a",
+    "character\\krusher-terminal-action-study-v2\\frames\\idle.png": "620f0ed54e37dc17c9485fedf4e555b0a874d53a09aca5689cc250aa39da14a3",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-004.png": "d3c79a727cf38a6a37a04de906459496ec15310c874d372f1bf1cf85de5aee3b",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-001.png": "a847a4ec264f4e1da67c0408ed42c600f5951a3e5c1bc58d2484a8e96b332ffb",
+    "character\\krusher-terminal-action-study-v2\\frames\\close-004.png": "8b74a11fdf8bbdc1bc037e825f87adfea094135213674310a55ceac37b7ecfb2",
+    "character\\krusher-terminal-action-study-v2\\frames\\key-005.png": "d942123da52bd561d2c2b3625c3d34ca18ce365a736001cef5890e4f6c75569e"
+  },
+  "generationExecutionIds": {
+    "lift": "0596a086-701f-4fa3-9a25-df82189ab170",
+    "open": "a662834d-7ddf-40f3-a654-bd4f1787a5dd",
+    "release": "8eb6a970-af5b-4377-8c93-ca82069a70ec"
+  },
+  "generationMethod": "builtin imagegen isolated adjacent-pose references",
+  "rawSourceAdmission": "Only open admitted provisionally; lift/release rejected after native review",
+  "derivedPoseReuse": "Existing key-007 lowering pose reused during raise; no mirror or invented interpolation",
+  "patchBounds": [
+    49,
+    62,
+    115,
+    106
+  ]
+}

@@ -1,0 +1,628 @@
+{
+  "candidatePacks": {
+    "bare": [
+      "res://character/krusher-water-family-v3/water-bare-manifest.json",
+      "res://character/krusher-recovery-salvage-v2/salvage-bare-manifest.json",
+      "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json",
+      "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json",
+      "res://character/krusher-water-interruptions-v2/distress-bare-manifest.json"
+    ],
+    "helmet": [
+      "res://character/krusher-water-family-v3/water-helmet-manifest.json",
+      "res://character/krusher-recovery-salvage-v2/salvage-helmet-manifest.json",
+      "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json",
+      "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json",
+      "res://character/krusher-water-interruptions-v2/distress-helmet-manifest.json"
+    ]
+  },
+  "coverage": {
+    "bare": {
+      "available": {
+        "swim-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "tread-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "tread-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "tread-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "tread-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-start-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-start-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-start-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-start-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-stop-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-stop-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-stop-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "swim-stop-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-bare-manifest.json"
+        },
+        "salvage-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-bare-manifest.json"
+        },
+        "salvage-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-bare-manifest.json"
+        },
+        "salvage-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-bare-manifest.json"
+        },
+        "salvage-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-bare-manifest.json"
+        },
+        "swim-carry-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-carry-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-carry-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-carry-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-pickup-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-pickup-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-pickup-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-pickup-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-bare-manifest.json"
+        },
+        "swim-cancel-pickup-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-work-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-bare-manifest.json"
+        },
+        "swim-distress-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-bare-manifest.json"
+        },
+        "swim-distress-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-bare-manifest.json"
+        },
+        "swim-distress-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-bare-manifest.json"
+        },
+        "swim-distress-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-bare-manifest.json"
+        }
+      }
+    },
+    "helmet": {
+      "available": {
+        "swim-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "tread-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "tread-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "tread-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "tread-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-start-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-start-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-start-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-start-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-stop-east": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-stop-north": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-stop-south": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "swim-stop-west": {
+          "manifest": "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+        },
+        "salvage-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-helmet-manifest.json"
+        },
+        "salvage-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-helmet-manifest.json"
+        },
+        "salvage-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-helmet-manifest.json"
+        },
+        "salvage-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v2/salvage-helmet-manifest.json"
+        },
+        "swim-carry-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-carry-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-carry-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-carry-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-pickup-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-pickup-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-pickup-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-pickup-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v3/cargo-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-work-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-cancel-release-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/cancel-helmet-manifest.json"
+        },
+        "swim-distress-east": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-helmet-manifest.json"
+        },
+        "swim-distress-north": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-helmet-manifest.json"
+        },
+        "swim-distress-south": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-helmet-manifest.json"
+        },
+        "swim-distress-west": {
+          "manifest": "res://character/krusher-water-interruptions-v2/distress-helmet-manifest.json"
+        }
+      }
+    }
+  }
+}

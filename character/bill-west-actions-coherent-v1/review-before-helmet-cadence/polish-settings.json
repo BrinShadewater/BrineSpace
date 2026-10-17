@@ -1,0 +1,15 @@
+{
+  "revision": "hand-pacing-v1",
+  "duplicateHandCleanup": {
+    "1": {"yRange": [185, 235], "edgeX": [371, 373]},
+    "2": {"yRange": [185, 235], "edgeX": [639, 643]},
+    "3": {"yRange": [185, 235], "edgeX": [881, 885]}
+  },
+  "frameDurationsMs": {
+    "interact-west": [120, 180, 200, 180, 160, 120],
+    "kneel-west": [100, 140, 160, 160, 140, 100],
+    "repair-west": [100, 150, 170, 150, 170, 100],
+    "stand-west": [100, 140, 160, 160, 140, 100]
+  },
+  "policy": "source-space duplicate silhouette trim; six original poses retained per clip; no interpolation; future install must match body and equipment timing"
+}

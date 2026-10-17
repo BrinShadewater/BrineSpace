@@ -1,0 +1,5607 @@
+{
+  "normalAdmission": false,
+  "checks": 1225,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "availableServiceGoals": 4,
+  "realServiceLossCases": 32,
+  "hazardCases": 28,
+  "actorOnlyRestores": 36,
+  "exactSourceNativePairs": [
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-000.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "curiosity available finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-000.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ae979cfe6fb14952bbebe920d960c60db950ca5a3c9103d7cb82884607a4bcec",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-001.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-001.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "425cf5314816d07f08be8e2661b1abc5dc3e4f768ea982bd404669444efdd2b4",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-002.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-002.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "880a5c06be1ae2c4d5237d1dad94e38e516c8bf428680fdc1cb2df2e46d51522",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-003.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity power 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-003.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bcd204467c77ce43dfacddd5a241821068cf8da73edca100f868b395cecf1b2e",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-004.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-004.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-005.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-005.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "51b25a66a608129c74531ec88cc2fd17e328d734e1dea287bafdbbe472eebbd4",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-006.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity suspension 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-006.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-007.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-007.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-008.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-008.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "0436f0df2fc4c1feadc26198fbc141c57d1aface596117961a2de1997d9da844",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-009.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity power 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-009.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-010.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-010.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-011.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-011.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b19a30b5c7d596ae1b3a99db05311e6015e1560d0a26c5098a5c6ad9ff491ff5",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-012.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity suspension 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-012.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-013.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-013.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-014.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-014.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "3c154949a8357659f500f244b19c18aa64e060fe32e62d97037e88f44b01640b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-015.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity power 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-015.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-016.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-016.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-017.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-017.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "d7b767aeaaa5467fae29c7f541294d7293c474d360775e21e5fb8c01738a2d6b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-018.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity suspension 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-018.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-019.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-019.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-020.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity power 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-020.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-021.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity power 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-021.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-022.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-022.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-023.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "curiosity suspension 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-023.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-024.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "curiosity suspension 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-024.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-025.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "hunger",
+      "key": "idle-south",
+      "label": "hunger available finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-025.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-026.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger power 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-026.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-027.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger power 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-027.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "6c87b7d83449116ef9bcd9ba6f699a5519edbc81cfac4d2de68c72a7083f0c5d",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-028.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger power 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-028.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-029.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-029.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-030.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-030.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "51b25a66a608129c74531ec88cc2fd17e328d734e1dea287bafdbbe472eebbd4",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-031.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger suspension 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-031.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-032.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger power 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-032.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-033.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger power 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-033.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "0436f0df2fc4c1feadc26198fbc141c57d1aface596117961a2de1997d9da844",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-034.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger power 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-034.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-035.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-035.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-036.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-036.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b19a30b5c7d596ae1b3a99db05311e6015e1560d0a26c5098a5c6ad9ff491ff5",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-037.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger suspension 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-037.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-038.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger power 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-038.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-039.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger power 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-039.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "3c154949a8357659f500f244b19c18aa64e060fe32e62d97037e88f44b01640b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-040.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger power 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-040.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-041.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-041.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-042.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-042.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "d7b767aeaaa5467fae29c7f541294d7293c474d360775e21e5fb8c01738a2d6b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-043.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger suspension 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-043.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-044.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger power 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-044.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-045.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger power 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-045.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-046.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger power 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-046.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-047.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "hunger",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-047.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-048.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "hunger suspension 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-048.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-049.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "hunger suspension 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-049.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-050.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fatigue",
+      "key": "idle-south",
+      "label": "fatigue available finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-050.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "aff03d551d3e7440beb5cc1a5dd46977d81de8e7f9c253ebc337037d9dd0083a",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-051.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-051.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "300e52ca9522dd68ff59f69ad853f9c087ac1d2ceb8b0f3aa636a5cda72979d9",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-052.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-052.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "844910aaa52d6f3e585af914d685dca61271618975a2ec2d21050e582c814f9e",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-053.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue power 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-053.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b3d4beb490fa025943f77cd6a71b79dfe700ec283e6ef090ba255c2800145824",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-054.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-054.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-055.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-055.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "51b25a66a608129c74531ec88cc2fd17e328d734e1dea287bafdbbe472eebbd4",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-056.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue suspension 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-056.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-057.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-057.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-058.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-058.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "0436f0df2fc4c1feadc26198fbc141c57d1aface596117961a2de1997d9da844",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-059.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue power 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-059.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-060.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-060.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-061.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-061.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b19a30b5c7d596ae1b3a99db05311e6015e1560d0a26c5098a5c6ad9ff491ff5",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-062.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue suspension 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-062.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-063.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-063.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-064.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-064.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "3c154949a8357659f500f244b19c18aa64e060fe32e62d97037e88f44b01640b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-065.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue power 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-065.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-066.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-066.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-067.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-067.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "d7b767aeaaa5467fae29c7f541294d7293c474d360775e21e5fb8c01738a2d6b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-068.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue suspension 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-068.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-069.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-069.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-070.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue power 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-070.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-071.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue power 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-071.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-072.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fatigue",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-072.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-073.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "fatigue suspension 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-073.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-074.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "fatigue suspension 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-074.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 1,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-075.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "maintenance",
+      "key": "kneel-south",
+      "label": "maintenance available finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-075.png",
+      "stage": "kneel",
+      "state": "kneel",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1abd990aed2fcc7c8d84aaa6fbb04e60f9b19d6a98de5c5429a5c568440e5c8d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-diagnostics-v7/frames/kneel-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-076.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-076.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-077.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-077.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "6c87b7d83449116ef9bcd9ba6f699a5519edbc81cfac4d2de68c72a7083f0c5d",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-078.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance power 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-078.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-079.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-079.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.12,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-080.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 1,
+      "sourceFile": "source-080.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "51b25a66a608129c74531ec88cc2fd17e328d734e1dea287bafdbbe472eebbd4",
+      "sourceSha256": "bce39091ad9a61e5e524b056b18c36504dab7ed6078ebeab3f4bc263cbeadb39",
+      "canonical": "character/marsh-south-step-v1/candidate-05/001.png",
+      "canonicalSha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-081.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance suspension 0.10 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-081.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-082.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-082.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-083.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-083.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "0436f0df2fc4c1feadc26198fbc141c57d1aface596117961a2de1997d9da844",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-084.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance power 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-084.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-085.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-085.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.44,
+      "drawOffset": [
+        0.0,
+        -4.0
+      ],
+      "file": "world-086.png",
+      "foot": [
+        8176.0,
+        7716.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.42 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-086.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b19a30b5c7d596ae1b3a99db05311e6015e1560d0a26c5098a5c6ad9ff491ff5",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-087.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance suspension 0.42 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-087.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-088.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-088.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-089.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-089.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "3c154949a8357659f500f244b19c18aa64e060fe32e62d97037e88f44b01640b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-090.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance power 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-090.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-091.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-091.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.56,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-092.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-092.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "d7b767aeaaa5467fae29c7f541294d7293c474d360775e21e5fb8c01738a2d6b",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-093.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance suspension 0.54 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-093.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-094.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-094.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-095.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance power 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-095.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-096.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance power 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-096.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f0f57410577a349dfafc934973df4f86af551f39395be926064d2c4ec37961f",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-097.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "maintenance",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-097.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": true,
+      "clock": 0.76,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-098.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "walk-step-south",
+      "label": "maintenance suspension 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-098.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-099.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "idle-south",
+      "label": "maintenance suspension 0.74 finished",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-099.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9cf831daf3ea1163bbe13a73efdbc3b53def78dc59db4d60490fcd0f35201539",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-100.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "fire 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-100.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-101.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "fire-retreat",
+      "key": "idle-south",
+      "label": "fire 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-101.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "00ae6c776f266ece64a3dff60f328962a26d2ddb8720a16c0f2fdb585ac07638",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-102.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-medium 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-102.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-103.png",
+      "foot": [
+        8176.0,
+        7712.59814453125
+      ],
+      "goal": "curiosity",
+      "key": "walk-south",
+      "label": "water-medium 0.10 after",
+      "position": [
+        12264.0,
+        11547.0087890625
+      ],
+      "slot": 0,
+      "sourceFile": "source-103.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "9c869263b73879c95b5154fda4f1edc49084aefa5036698fa0d83bb553489aa5",
+      "sourceSha256": "ecbd17de7f64c545fc936b6040e203e6ceb406bc5e14735e567ae534041dc673",
+      "canonical": "character/marsh-v2/../marsh-south-walk-material-v1/candidate-02/000.png",
+      "canonicalSha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-104.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-high 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-104.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-105.png",
+      "foot": [
+        8176.0,
+        7712.505859375
+      ],
+      "goal": "curiosity",
+      "key": "walk-south",
+      "label": "water-high 0.10 after",
+      "position": [
+        12264.0,
+        11546.8701171875
+      ],
+      "slot": 0,
+      "sourceFile": "source-105.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "85c84f2d7cec95281c0cf93fcc0e6d34b811da89a56c5e0c09355cada25e816b",
+      "sourceSha256": "ecbd17de7f64c545fc936b6040e203e6ceb406bc5e14735e567ae534041dc673",
+      "canonical": "character/marsh-v2/../marsh-south-walk-material-v1/candidate-02/000.png",
+      "canonicalSha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-106.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "charge 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-106.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-107.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "recharge",
+      "key": "idle-south",
+      "label": "charge 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-107.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-108.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "injury 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-108.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-109.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "injury-ground-south",
+      "label": "injury 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-109.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "c1bd11f3b0184c9cba6ed33f2f91fe0da43b0374e9559491b5069ce5d5452d57",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-injury-runtime-v1/frames/injury-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-110.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "death 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-110.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-111.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "",
+      "key": "death-ground-south",
+      "label": "death 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-111.png",
+      "stage": "",
+      "state": "death-ground",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "c1bd11f3b0184c9cba6ed33f2f91fe0da43b0374e9559491b5069ce5d5452d57",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-v2/frames/bare/death-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.1,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-112.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "crew 0.10 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-112.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-113.png",
+      "foot": [
+        8176.0,
+        7712.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "crew 0.10 after",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-113.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "81f8e899db87ca3b512d08766351c513ad58d467e042141e4c1f6a5b7bed48b2",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-114.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "fire 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-114.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-115.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "fire-retreat",
+      "key": "idle-south",
+      "label": "fire 0.42 after",
+      "position": [
+        12264.0,
+        11550.6123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-115.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "946ecddd83d7c3005677d783be3c3614cee189e9e229a03cccbf1719dc75fb5d",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-116.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-medium 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-116.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-117.png",
+      "foot": [
+        8176.0,
+        7715.59814453125
+      ],
+      "goal": "curiosity",
+      "key": "walk-south",
+      "label": "water-medium 0.42 after",
+      "position": [
+        12264.0,
+        11551.5087890625
+      ],
+      "slot": 0,
+      "sourceFile": "source-117.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ae098c0e3562d232bfadf40612bbacad05a03346c952ea1986a8b19684cc2cbb",
+      "sourceSha256": "ecbd17de7f64c545fc936b6040e203e6ceb406bc5e14735e567ae534041dc673",
+      "canonical": "character/marsh-v2/../marsh-south-walk-material-v1/candidate-02/000.png",
+      "canonicalSha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-118.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-high 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-118.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-119.png",
+      "foot": [
+        8176.0,
+        7715.505859375
+      ],
+      "goal": "curiosity",
+      "key": "walk-south",
+      "label": "water-high 0.42 after",
+      "position": [
+        12264.0,
+        11551.3701171875
+      ],
+      "slot": 0,
+      "sourceFile": "source-119.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "a5c45e15ce4e588c35005100c374f9929b62791b5d7316ccd9705b4432f4df48",
+      "sourceSha256": "ecbd17de7f64c545fc936b6040e203e6ceb406bc5e14735e567ae534041dc673",
+      "canonical": "character/marsh-v2/../marsh-south-walk-material-v1/candidate-02/000.png",
+      "canonicalSha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-120.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "charge 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-120.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-121.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "recharge",
+      "key": "idle-south",
+      "label": "charge 0.42 after",
+      "position": [
+        12264.0,
+        11550.6123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-121.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f175f3a3743071a1331318d961ec2931d84a044c25fa10b85e7394da5ef19dc",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-122.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "injury 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-122.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-123.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "",
+      "key": "injury-ground-south",
+      "label": "injury 0.42 after",
+      "position": [
+        12264.0,
+        11550.6123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-123.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b20d4d046173fd260056d75828173258085f61e1dd7f7663a455b23df9aa645d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-injury-runtime-v1/frames/injury-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-124.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "death 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-124.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-125.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "",
+      "key": "death-ground-south",
+      "label": "death 0.42 after",
+      "position": [
+        12264.0,
+        11550.6123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-125.png",
+      "stage": "",
+      "state": "death-ground",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "b20d4d046173fd260056d75828173258085f61e1dd7f7663a455b23df9aa645d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-v2/frames/bare/death-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.42,
+      "drawOffset": [
+        0.0,
+        -3.0
+      ],
+      "file": "world-126.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "crew 0.42 before",
+      "position": [
+        12264.0,
+        11546.1123046875
+      ],
+      "slot": 3,
+      "sourceFile": "source-126.png",
+      "stage": "",
+      "state": "walk",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1e6be426782d7c01c7373886119971b81030069c596f59fa5d698e2f5ba15982",
+      "sourceSha256": "8cc631dd2cbdfa0af2a0f97a2a43c1e2b86cc2acebf53bde01c04959b49ae247",
+      "canonical": "character/marsh-south-step-v1/candidate-05/003.png",
+      "canonicalSha256": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-127.png",
+      "foot": [
+        8176.0,
+        7715.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "crew 0.42 after",
+      "position": [
+        12264.0,
+        11550.6123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-127.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "2f175f3a3743071a1331318d961ec2931d84a044c25fa10b85e7394da5ef19dc",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-128.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "fire 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-128.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-129.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fire-retreat",
+      "key": "idle-south",
+      "label": "fire 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-129.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "afd777ab07d12d331298a85825da079461ada77f6d4f48cfc078cdf16f2e3179",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-130.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-medium 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-130.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-131.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "water-medium 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-131.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "4c7a1b2e68b335ebd5c78364da868bdd667b5db88830bd89cd481ddb69d91336",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-132.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-high 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-132.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-133.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "water-high 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-133.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "67d964397e0bd6732d21d024a231be40c31b43f27005f58de6f0f1c7ca88effc",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-134.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "charge 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-134.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-135.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "recharge",
+      "key": "idle-south",
+      "label": "charge 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-135.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-136.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "injury 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-136.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-137.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "injury-ground-south",
+      "label": "injury 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-137.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1abd990aed2fcc7c8d84aaa6fbb04e60f9b19d6a98de5c5429a5c568440e5c8d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-injury-runtime-v1/frames/injury-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-138.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "death 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-138.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-139.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "death-ground-south",
+      "label": "death 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-139.png",
+      "stage": "",
+      "state": "death-ground",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1abd990aed2fcc7c8d84aaa6fbb04e60f9b19d6a98de5c5429a5c568440e5c8d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-v2/frames/bare/death-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.54,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-140.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "crew 0.54 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 4,
+      "sourceFile": "source-140.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "ed66955978ae6961479e0494a6cb18b55bf294d760420bcb86708b48afe13264",
+      "sourceSha256": "d72843b0980a8f3926aa4c4ae33f2c01940333965cc3dd910c8882ea2d67e107",
+      "canonical": "character/marsh-south-step-v1/candidate-05/004.png",
+      "canonicalSha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-141.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "crew 0.54 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-141.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-142.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "fire 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-142.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-143.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "fire-retreat",
+      "key": "idle-south",
+      "label": "fire 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-143.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "afd777ab07d12d331298a85825da079461ada77f6d4f48cfc078cdf16f2e3179",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-144.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-medium 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-144.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-145.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "water-medium 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-145.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "4c7a1b2e68b335ebd5c78364da868bdd667b5db88830bd89cd481ddb69d91336",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-146.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "water-high 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-146.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-147.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "water-high 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-147.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "67d964397e0bd6732d21d024a231be40c31b43f27005f58de6f0f1c7ca88effc",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-148.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "charge 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-148.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-149.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "recharge",
+      "key": "idle-south",
+      "label": "charge 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-149.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-150.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "injury 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-150.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-151.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "injury-ground-south",
+      "label": "injury 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-151.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1abd990aed2fcc7c8d84aaa6fbb04e60f9b19d6a98de5c5429a5c568440e5c8d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-injury-runtime-v1/frames/injury-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-152.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "death 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-152.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-153.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "",
+      "key": "death-ground-south",
+      "label": "death 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-153.png",
+      "stage": "",
+      "state": "death-ground",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "1abd990aed2fcc7c8d84aaa6fbb04e60f9b19d6a98de5c5429a5c568440e5c8d",
+      "sourceSha256": "aae5615bca3b3f18066a6f55294f06611c3a2ec115c986e71363ab4f673a653e",
+      "canonical": "character/marsh-v2/../marsh-master-repair-v1/../../character/marsh-v2/frames/bare/death-ground-south/000.png",
+      "canonicalSha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": 0.74,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-154.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "walk-step-south",
+      "label": "crew 0.74 before",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 6,
+      "sourceFile": "source-154.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-south-step-v1/candidate-05/006.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "arrivals": 0,
+      "cancelled": false,
+      "clock": -1.0,
+      "drawOffset": [
+        0.0,
+        0.0
+      ],
+      "file": "world-155.png",
+      "foot": [
+        8176.0,
+        7718.0
+      ],
+      "goal": "curiosity",
+      "key": "idle-south",
+      "label": "crew 0.74 after",
+      "position": [
+        12264.0,
+        11555.1123046875
+      ],
+      "slot": 0,
+      "sourceFile": "source-155.png",
+      "stage": "",
+      "state": "idle",
+      "crop": [
+        400,
+        180,
+        550,
+        365
+      ],
+      "nativeSha256": "bc6d2f333cfbf040615e2c050fd853565f5c426a207f56ff8988a43c1f378857",
+      "sourceSha256": "7b7e3df77bbc4fc266f6b1925eb046cf966714af902c1d27f29b09ae6c000eff",
+      "canonical": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "canonicalSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    }
+  ],
+  "targetedInputs": {
+    "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a",
+    "character/marsh-south-idle-material-v1/candidate-01/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-idle-material-v1/candidate-01/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-idle-material-v1/candidate-01/manifest.json": "da4065b0650d5d81089ee56f3af1674110b9c08fe7072bb795580887d092ceef",
+    "character/marsh-south-step-v1/candidate-01/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-01/001.png": "bfacce792eb712b8328cb41c7857557c4fe1261584bd3c824d7c09267a6b78c8",
+    "character/marsh-south-step-v1/candidate-01/002.png": "ebfe526ed6a2b13ab15a1d6515659d4f6976f8dedc81ff86a4ad5bcf401166d7",
+    "character/marsh-south-step-v1/candidate-01/003.png": "1b709feb1910e7c0889dcd5c217bbd9a4e2973c573607eb9b0bd2754235ba99d",
+    "character/marsh-south-step-v1/candidate-01/004.png": "93647d74fad0d5c6a67ca2926a279d9d69753f3fe5c9d1afe0c0dc2e5ed5bb10",
+    "character/marsh-south-step-v1/candidate-01/005.png": "e63f40dc1891c5d26cf767e49dab0e2183b3cacfab87391a62e6c664e4436485",
+    "character/marsh-south-step-v1/candidate-01/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-01/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-01/recipe.json": "875b834499dcea380652f1928effc0822e22d87a94e7957f53765830840ea995",
+    "character/marsh-south-step-v1/candidate-01/ruler.png": "40e868e035311a4e64e0d4a3e1c2054b8c95fc9853852ecf2abddf76835fb01d",
+    "character/marsh-south-step-v1/candidate-02/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-02/001.png": "c1eb4c079d8b1675bf9b848e2bb60f5b707929e79160d0d54b3d317f78280268",
+    "character/marsh-south-step-v1/candidate-02/002.png": "202b60b5734b2a1dcf123aa9777af52ff9a6490702e5f7c3a60b01b8ad0cb4c9",
+    "character/marsh-south-step-v1/candidate-02/003.png": "4402b6bd06935c426b4e70053ff44d59a2028ca84f5f8fc7c02637dd81e74a4e",
+    "character/marsh-south-step-v1/candidate-02/004.png": "abed82590e9720140287e2bb1ad08eccaf9e1d47b8fa3ede343c4ccc38cb116a",
+    "character/marsh-south-step-v1/candidate-02/005.png": "2a22d2fd77b6b9a819ba5b6fa5ad40449182ac31b9a0d1d3aada515fd2e88b7c",
+    "character/marsh-south-step-v1/candidate-02/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-02/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-02/recipe.json": "259ff6f116e0cf479e99af7506f23496f62c3f186d256f3929dacb4c103e77b8",
+    "character/marsh-south-step-v1/candidate-02/ruler.png": "9b33461ee01b21f99e09eb350c47e494a77f0ffcad05b889651bd0f895c48eae",
+    "character/marsh-south-step-v1/candidate-03/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-03/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-03/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-03/003.png": "e4c76c3ad704d490fbd2955e97b4879eb446d6d1b6b531e12e39d9555eb1f4bc",
+    "character/marsh-south-step-v1/candidate-03/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-03/005.png": "b7e8407de29639efe74265a89c3dc52b919e660591dbe8dcf349639b8b764c42",
+    "character/marsh-south-step-v1/candidate-03/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-03/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-03/recipe.json": "b3bf3b850ddd529296d707cba7678e976bbbf30a36606546cb42d3366fd5a9f3",
+    "character/marsh-south-step-v1/candidate-03/ruler.png": "0a22e3bead2a71ff34337649e4c34d0fdec57869495f28c16268907e5417793f",
+    "character/marsh-south-step-v1/candidate-04/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-04/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-04/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-04/003.png": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe",
+    "character/marsh-south-step-v1/candidate-04/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-04/005.png": "7b7f8d7190bd2bce73eec164502eba686d34f156be916f6ae91b4bd4c208fbd5",
+    "character/marsh-south-step-v1/candidate-04/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-04/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-04/recipe.json": "88a01179cbda69ae8f00a6945c8cbbaf557d51a981ad4aa102a0d782596a786a",
+    "character/marsh-south-step-v1/candidate-04/ruler.png": "4059bd5bd5be4c2ed09d6ba7e9986ea0b627fb0fa9e30ef41ede20104809afa2",
+    "character/marsh-south-step-v1/candidate-05/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-05/001.png": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+    "character/marsh-south-step-v1/candidate-05/002.png": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+    "character/marsh-south-step-v1/candidate-05/003.png": "5a94d195564cf4ecd9cc6606b09765b49028864c1e0112aa6387fe625f9d6efe",
+    "character/marsh-south-step-v1/candidate-05/004.png": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+    "character/marsh-south-step-v1/candidate-05/005.png": "b97ae9de290f086147f2a91950e3290e93321c02f8f29c8665632b9998e449de",
+    "character/marsh-south-step-v1/candidate-05/006.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-south-step-v1/candidate-05/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-step-v1/candidate-05/recipe.json": "bd61b39ac32d25a6e3be0d1ea8caa5c8837a260e735eb51d18f5ca958b5f11bd",
+    "character/marsh-south-step-v1/candidate-05/ruler.png": "3d4c8ab7059edd94987fe295bac813cd998316197d8ea262ec3861c70aa2ed53",
+    "character/marsh-south-step-v1/sources/close-neutral-guide-05.png": "c884d277914041393b4d72b6eb4355071a3145d56f1796fdc5b416fdb04cd3cc",
+    "character/marsh-south-step-v1/sources/idle-gait-reference.png": "3fb606162d054b6d41f4b728423c541eee0422b056ea50b4c041ff4a398a2dc3",
+    "character/marsh-south-step-v1/sources/reach-close-guide-04.png": "10912a7b80fde2c539e3587e67337d6fa01e133af09e55e0a4918c2ec51912f8",
+    "character/marsh-south-step-v1/sources/step-01.prompt.txt": "e1d65c776ec2c7b887253c3bc163a468a222714872fe5882e135e4784b370528",
+    "character/marsh-south-step-v1/sources/step-01.raw.png": "05344f445ac340b4ac189891a2a577b194ad4206998d09a3c9dd499a89275634",
+    "character/marsh-south-step-v1/sources/step-01.request.json": "f5cefca1776df745605b7cf9fa5cf58b8a348b9b97452efd952930496802d25f",
+    "character/marsh-south-step-v1/sources/step-02.prompt.txt": "3aa7c92ba3da5f2a2c1359d7cf1466015a214301f7667d8694f9d5ae315867f9",
+    "character/marsh-south-step-v1/sources/step-02.raw.png": "e55b3fc228235eb78a337c62dc7dc3fc51b0ba3643c651f8b12617c24f3f1cd8",
+    "character/marsh-south-step-v1/sources/step-02.request.json": "a250ef3f808b5360d12de981b50726f907b5565c28d99145c61dfe95d1bdcd6a",
+    "character/marsh-south-step-v1/sources/step-03.prompt.txt": "7530ab07f617f00e5277061eeee248ea6a19cffeac02b26dacc0726979c870ce",
+    "character/marsh-south-step-v1/sources/step-03.raw.png": "fb07c4685a031905105d6437606cb7f83f8de4e4a14cb714dc48a057472badc3",
+    "character/marsh-south-step-v1/sources/step-03.request.json": "3811a326e658d4e1125111c049578b9a0798a07d43da790acd22fe49c1d440fa",
+    "character/marsh-south-step-v1/sources/step-04.prompt.txt": "1c43baed953d504060b83c8104718278ade41531bc55b4f997fca5dcc596c30f",
+    "character/marsh-south-step-v1/sources/step-04.raw.png": "999f2ab84cc4637e6684aa4bce9ce13d676a98f24d1b811b1601756d6cdba3c9",
+    "character/marsh-south-step-v1/sources/step-04.request.json": "574769f8e07685d39822a802d953e177ec551a1682c40b03e04bea891d8d37b7",
+    "character/marsh-south-step-v1/sources/step-05.prompt.txt": "e329292b52cfbe0a53fbca751968806bed5509820219ece0d442da02339e47c8",
+    "character/marsh-south-step-v1/sources/step-05.raw.png": "e162e388378dc1cfb9b6fb741aa539bcb650046a848ea58af744101deb6cd93a",
+    "character/marsh-south-step-v1/sources/step-05.request.json": "f2137acfba7cf4510f87711c68939a15ef30c90d9bd439b2211f947aa8f66be6",
+    "character/marsh-south-step-v1/sources/whole-pose-guide-03.png": "4cebafbec4ce5397d8416157b0cef25762ed848eca4b0dfe9334c76a4abd6570",
+    "character/marsh-south-step-v1/step_controller.gd": "e8d59b54739ace45c16712992095cbf55cf22c447630375240dd18e4f1cfa74e",
+    "character/marsh-south-step-v1/step_controller.gd.uid": "2672d8dc78832d636a65a37abf801fc804c5b0ee8763af8492d0935a674e8ea0",
+    "character/marsh-south-walk-material-v1/candidate-02/000.png": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e",
+    "character/marsh-south-walk-material-v1/candidate-02/003.png": "4fa6ad6d58f9222cf46eeb154a3250445133127d4eed8519beebf3b313f9829e",
+    "character/marsh-v2/catalog.json": "65d49678858e48a5d78508eb639a6e0518768a860262d12bdabfa858d6181086",
+    "scripts/bill_npc.gd": "f24ace890b53671de9b97eafc5dc804b0913ca88fda7f5b043b2a35358ee9486",
+    "scripts/crew_sprite_player.gd": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08",
+    "scripts/grid_canvas.gd": "9e3940bfdcd35b00e383ab621ae897080ac92cf8ef24b7f397ddae5580d75467",
+    "scripts/loading_transition.gd": "ab1e37d9402aaf4ef789d7911899b42b79f65b97f5fa52d49657edb0e264aba9",
+    "scripts/main.gd": "9c3efc2ceab3f98b380857db419cac1b34807dbfa38d811b8d283207822b99a8",
+    "scripts/marsh_ground_motion.gd": "b1a93ed735d3112356e63db671cee49a2ba8a9d5ad46a381dd45adae957aa339",
+    "scripts/marsh_npc.gd": "66b3efd6eb374dfab099a8407a5cecaf76db8a4469c5ee2404fbb4bed0eda040",
+    "scripts/marsh_south_snapshot.gd": "e8fe5c8217eba33c89261d14b2636fb7161f7d0f969a1eba40c960c460aac225",
+    "scripts/marsh_west_motion.gd": "a8d91619d16a44b4328a1de5509651719657a9319be1024dc5831ead3e5c2e3f",
+    "scripts/run_save.gd": "3e26803b15314c2845fd34c6a28721caf6bb5b53c7b676cdfd9eb2d30663162e",
+    "tests/test_marsh_south_step_controller.gd": "1ebab6ad56b7458ba4b7d717f33ecca07f61e10491b2e07bed86e57e6a3d9f24",
+    "tests/test_marsh_south_step_controller.gd.uid": "37d7e36dcb8b57fcd51bb0001c9204eb7f6f0b52b63f78a1c6da542f7da2f0c5",
+    "tools/build_marsh_south_step.py": "43995d15e1ad750caf1f5a53e9646c021205dbc666188435969e6a32e8190a55",
+    "tools/build_marsh_south_step_close.py": "c7baa297530828bcebe8dc89a073fb7fed083050d0e1c0277d8799a7cba52e1b",
+    "tools/build_marsh_south_step_correction.py": "1e9413b337bcbd79348e4fa4d4d3d38616b8c0f28ae077c17069c3b72e10e0a7",
+    "tools/fingerprint_marsh_south_step_inputs.py": "8ccd22d557943c7095af4c47d1ccf2902a50299e95b754405c8f22072d2f6b9d",
+    "tools/prepare_marsh_south_step.py": "5002f421999a4acddda6e1444f90cf52924be8a2ab2bdf6e876ad25ad3a3234b",
+    "tools/prepare_marsh_south_step_correction.py": "8660c82a8296ac97c924e611aad93a2c9f53a53dda7a71a092520225b616fca7",
+    "tools/review_marsh_south_step.gd": "ee7644f2bd77ac6fe91b01b9d52b119abe429326e5095d33d4d52211e099a020",
+    "tools/review_marsh_south_step.gd.uid": "9f01d08244869d2e19a6c5ac8189fd8415f2e7fe8351118a356322b08e45b89c",
+    "tools/review_marsh_south_step_world.gd": "da1db60989ebee79a5fce4a754953ca34f0a562e82b233fdee7ec01f00ed216c",
+    "tools/review_marsh_south_step_world.gd.uid": "59c31e9b5f529ed116d26c7cdf837ed005047802955883352a7c80636867e44d",
+    "tools/review_marsh_south_step_priorities.gd": "b652e1b249b5a6d1d4f538b0b5fef384e05873a2f022398c002c4097038e51d3",
+    "tools/review_marsh_south_step_priorities.gd.uid": "465a54d4bb7292e9492d4e6285e944c2aefae4a99eb88bce95db7c3bf881139d",
+    "tools/fingerprint_marsh_south_step_priorities.py": "118c7fa0f662cace9583a4f19f3ad15fc0cb329acd33b301c65ae260e5586f0a",
+    "scripts/room_flooding.gd": "c95db5bc801fe72a55eaa1d4639fc1163b0b40b77d9276a08b636ff0f8ca0cf9",
+    "scripts/fire_safety.gd": "4c6e8e161640e4d75349717ab0cf42138b2252c8d9251aa5dda4166ca2850f51",
+    "scripts/flood_safety.gd": "8cdb555790ad0c53914885a9e691b34bd0785dad1001fe10233c9a3d8aad75c3"
+  },
+  "inputsStable": true,
+  "ownerNonLogFiles": 2931,
+  "ownerUnchanged": true,
+  "scope": "Staged candidate05 actor/StudyMain/manifest in real furnished Cold Store. Four available goals,32power/suspension losses,28hazards at four prescribed phases;36actor-only binary restores. Actual parent FireSafety/RoomFlooding/charge/impact/death and supplied peer collision. World and other actors paused; no natural traffic, floor removal, full RunSave/fresh Title Continue or normal admission.",
+  "visualReview": "Available-service board, all four service-loss boards and seven hazard boards inspected. Width/detail joins provisional; existing injury/death boots dark and grade cooler than selected idle.",
+  "boards": [
+    "available-board.png",
+    "curiosity-board.png",
+    "hunger-board.png",
+    "fatigue-board.png",
+    "maintenance-board.png",
+    "hazard-fire-board.png",
+    "hazard-water-medium-board.png",
+    "hazard-water-high-board.png",
+    "hazard-charge-board.png",
+    "hazard-injury-board.png",
+    "hazard-death-board.png",
+    "hazard-crew-board.png"
+  ],
+  "logSha256": "1b68683ddcb9c8642639a71f047dded1a0aae875d700d7b091c128aba68274a4",
+  "limits": [
+    "Takeover sources traced to selected catalog at publication;106 bounded pre/post inputs do not freeze every loaded catalog artwork.",
+    "Prescribed supplied peer collision; live coordinator and removed topology still pending.",
+    "Actor-only restores are not normal full RunSave or Title Continue.",
+    "Mixed source body/face/arm/material joins remain provisional."
+  ]
+}

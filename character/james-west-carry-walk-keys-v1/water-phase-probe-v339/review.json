@@ -1,0 +1,35 @@
+{
+  "checks": 242,
+  "failures": 0,
+  "scenarios": 48,
+  "pixelOutputsMatchedPriorSelectedInventory": 96,
+  "sourceMismatches": 32,
+  "stopEntrySlots": [
+    0
+  ],
+  "boardsActuallyViewed": [
+    "bare-east-comparison.png",
+    "bare-south-comparison.png",
+    "bare-west-comparison.png",
+    "bare-north-comparison.png",
+    "helmet-east-comparison.png",
+    "helmet-south-comparison.png",
+    "helmet-west-comparison.png",
+    "helmet-north-comparison.png"
+  ],
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false,
+  "ownerProfileUnchanged": true,
+  "scope": "Actual selected player locomotion-phase stop entry and player snapshot restoration; no actor route/physical clearance/drawing/whole-run Continue acceptance.",
+  "finding": "All swim phases select stop0; phase1..4 changes pose abruptly in every direction/both gears. Technical checks intentionally establish the actual behavior, not a continuity pass.",
+  "next": "Create James-specific phase-preserving stop handoff from exact selected poses, with finite clocks, clearance for whole bridge, pause/interrupt/equipment changes and saved playback/whole-run continuation; preserve existing master art and shared crew behavior.",
+  "postRunCodeBindings": {
+    "scripts/crew_sprite_player.gd": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08",
+    "scripts/james_cargo_player.gd": "51d59041d12cb496c363412a764f94699a6b353c0a1fbd16eb454f5c572774f1",
+    "scripts/grid_canvas.gd": "d28956990d15ffb37497ad8ac91d8629822ef71020623f2bbefc9bdd55cfa2ef",
+    "character/james-cargo-return-bridges-v1/return_player.gd": "cf2621af5ab816cac367b58f33c107e9f944b46198c6a3bb0aa35c532aa74131",
+    "character\\james-west-carry-walk-keys-v1\\water-phase-probe-v339\\probe.gd": "21e90051bcf54d40153a288295436382506487e5f9e599b701b21f3164d066bd"
+  },
+  "prelaunchFreeze": false
+}

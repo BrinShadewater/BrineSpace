@@ -1,0 +1,3001 @@
+{
+  "scope": "Original-faithful East carrying gait authoring. Full goal active; no completed gait/native acceptance.",
+  "generations": [
+    {
+      "id": "5213bf4b-343e-4098-82d8-99fd32f280e9",
+      "raw": "raw-gait-v1.png",
+      "prompt": "prompt-gait-v1.txt",
+      "references": [
+        "../veld-cargo-turns-master-family-v1/original-east-density-reference.png",
+        "../veld-east-held-original-master-v1/raw-held-v1.png",
+        "../veld-carry-east-consistent-v1/motion-source-v9.png"
+      ],
+      "verdict": "Rejected: native head31-33 vs original26-27,143-148body spread and6px floor span under single ruler. Repeated/nonsequential poses, altered outfit proportions and visually larger case. Old motion reference contaminated identity despite motion-only prompt. No native test or selector adoption."
+    },
+    {
+      "id": "1310316f-87b9-4f29-8b5f-42ca0790e7c0",
+      "raw": "raw-gait-v2.png",
+      "prompt": "prompt-gait-v2.txt",
+      "verdict": "Selected provisional six-key foundation. Original-only references prevent old gait identity contamination. Single atlas scale; all six body heights148/head27/floor223. Paired source keys24 checks0; not completed gait or native contact acceptance."
+    },
+    {
+      "id": "d6b09dfb-3571-48a7-b3eb-bd432af7cd7a",
+      "folder": "start-stop-source-v1",
+      "raw": "start-stop-source-v1/raw-start-stop-v1.png",
+      "prompt": "start-stop-source-v1/prompt.txt",
+      "rawSHA256": "daa6983a34a15e7eca8fbe4182aa79247787d83f576753f17ad5adc815901d39",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png",
+        "raw-gait-v2.png",
+        "continuous-video-v3-white/clip-frames/bare/018.png"
+      ],
+      "status": "Completed; rejected for final artwork",
+      "verdict": "Rejected final pair:12pose two-row atlas head27-29/body145-148; final stop standing146 vs original148, neighbour boot fragment caught and corrected component gutters. No anatomy repair, packaging/native test or normal admission."
+    },
+    {
+      "id": "0709e962-2866-471f-b130-f55b5ed87aa1",
+      "folder": "stop-source-v2",
+      "raw": "stop-source-v2/raw-stop-v2.png",
+      "prompt": "stop-source-v2/prompt.txt",
+      "rawSHA256": "057bbcdb3ebe86729dc551320af9cd81198a951813b198c54b65988abd643c45",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png",
+        "raw-gait-v2.png"
+      ],
+      "status": "Completed; rejected for final artwork",
+      "verdict": "Rejected final identity: single-row six stop keys with high-resolution originals only. Entire atlas single resample matched final standing148; body147-148/head28-29 vs original26-27/floor222-223/no clipping. Proportion drift persists; no packaging/native admission."
+    },
+    {
+      "id": "75bc5398-31b6-427d-a1b5-3c7c2067de8c",
+      "folder": "single-transition-source-v1",
+      "raw": "single-transition-source-v1/raw-transition-v1.png",
+      "prompt": "single-transition-source-v1/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "status": "Completed; provisional whole-source key",
+      "verdict": "Original-only single whole pose retains148height/head27 vs original26-27/floor223/no clipping; neutral materials much closer. Upperbody44vs42/cloth69,68,67vs66,64,63, final fidelity pending. Output lifts FAR boot despite near-lift prompt. Paired original shell protects body; native13checks0/2three-scale presentations/20inputs stable/2931ownerfiles unchanged. No complete start/stop, physical contact, root/stride or normal admission."
+    },
+    {
+      "id": "49343055-3798-4ceb-8613-c44a51788457",
+      "folder": "prelift-source-v1",
+      "raw": "prelift-source-v1/raw-prelift-v1.png",
+      "prompt": "prelift-source-v1/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png",
+        "single-transition-source-v1/raw-transition-v1.png"
+      ],
+      "status": "Completed; rejected requested motion state",
+      "verdict": "Rejected requested prelift: far boot already clearly airborne; insufficiently distinct from retained lifted-foot key.",
+      "sourceAudit": {
+        "sourceSHA256": "525a4cab5649d498e2c8a748fb24e9e03e9c19834ee251d4cfad8c5faf957016",
+        "sourceSize": [
+          725,
+          2169
+        ],
+        "scale": 0.07607192254495158,
+        "offset": [
+          105,
+          72
+        ],
+        "rows": [
+          {
+            "height": 148,
+            "headWidth": 26,
+            "headTop": 76,
+            "upperBodyWidth": 42,
+            "floor": 223,
+            "clothRGBMedian": [
+              66.0,
+              64.0,
+              63.0
+            ],
+            "clipped": false
+          },
+          {
+            "height": 148,
+            "headWidth": 26,
+            "headTop": 76,
+            "upperBodyWidth": 44,
+            "floor": 223,
+            "clothRGBMedian": [
+              68.0,
+              66.0,
+              66.0
+            ],
+            "clipped": false
+          },
+          {
+            "height": 148,
+            "headWidth": 27,
+            "headTop": 76,
+            "upperBodyWidth": 37,
+            "floor": 223,
+            "clothRGBMedian": [
+              62.0,
+              62.0,
+              61.0
+            ],
+            "clipped": false
+          }
+        ],
+        "scope": "Independent whole figure, unchanged pose upper body guided only by original held source, one entire-source148 density ruler/shared foot floor and whole head-axis translation. No head/limb/body RGB patch or per-region resize. Head/material/proportion/contact/native fidelity independently pending."
+      },
+      "footExtentDiagnostic": {
+        "rightFootRegionXMin": 143,
+        "opaqueBottom": 214,
+        "wholeFigureFloor": 223,
+        "scope": "Screen-right boot opaque extent, not a calibrated physical heel landmark."
+      },
+      "visualReview": "Complete same-scale master/source comparison plus enlarged heads and legs inspected. No native packaging/adoption for rejected state.",
+      "bindings": {
+        "raw-prelift-v1.png": "525a4cab5649d498e2c8a748fb24e9e03e9c19834ee251d4cfad8c5faf957016",
+        "prompt.txt": "770879f0321ded5997ba3f8a9eabe5eff340362a065c7abf1d2ef67d9b642642",
+        "source-audit.json": "bca540d4aa56a8450b82f544e2dda222752ba3b4c053f8488fbb1f90fe7999ed",
+        "transition-candidate.png": "f3e01af5a63ee121c476e556800f66fc06b26e9619702b26e104dcdc51dd6bac",
+        "source-master-review.png": "4c85ff995fe1794750e46f93eb6ce30dd79e98ef760b9936cc629a27924db73a"
+      }
+    },
+    {
+      "id": "cbac3b06-8895-4638-9331-de0377e99f8e",
+      "folder": "touchdown-source-v1",
+      "raw": "touchdown-source-v1/raw-touchdown-v1.png",
+      "prompt": "touchdown-source-v1/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png",
+        "single-transition-source-v1/raw-transition-v1.png"
+      ],
+      "status": "Completed; rejected requested motion state",
+      "verdict": "Rejected requested touchdown: forward far heel remains airborne, head28 exceeds original26-27 range; upper body45 vs42.",
+      "sourceAudit": {
+        "sourceSHA256": "8ea65dccb1e6fad2fd9b60c5ac22b8431fb887f6bd119860c145afc85e526c23",
+        "sourceSize": [
+          725,
+          2168
+        ],
+        "scale": 0.08210332103321033,
+        "offset": [
+          104,
+          59
+        ],
+        "rows": [
+          {
+            "height": 148,
+            "headWidth": 26,
+            "headTop": 76,
+            "upperBodyWidth": 42,
+            "floor": 223,
+            "clothRGBMedian": [
+              66.0,
+              64.0,
+              63.0
+            ],
+            "clipped": false
+          },
+          {
+            "height": 148,
+            "headWidth": 28,
+            "headTop": 76,
+            "upperBodyWidth": 45,
+            "floor": 223,
+            "clothRGBMedian": [
+              66.0,
+              65.0,
+              64.0
+            ],
+            "clipped": false
+          },
+          {
+            "height": 148,
+            "headWidth": 27,
+            "headTop": 76,
+            "upperBodyWidth": 37,
+            "floor": 223,
+            "clothRGBMedian": [
+              62.0,
+              62.0,
+              61.0
+            ],
+            "clipped": false
+          }
+        ],
+        "scope": "Independent whole figure, unchanged pose upper body guided only by original held source, one entire-source148 density ruler/shared foot floor and whole head-axis translation. No head/limb/body RGB patch or per-region resize. Head/material/proportion/contact/native fidelity independently pending."
+      },
+      "footExtentDiagnostic": {
+        "rightFootRegionXMin": 143,
+        "opaqueBottom": 217,
+        "wholeFigureFloor": 223,
+        "scope": "Screen-right boot opaque extent, not a calibrated physical heel landmark."
+      },
+      "visualReview": "Complete same-scale master/source comparison plus enlarged heads and legs inspected. No native packaging/adoption for rejected state.",
+      "bindings": {
+        "raw-touchdown-v1.png": "8ea65dccb1e6fad2fd9b60c5ac22b8431fb887f6bd119860c145afc85e526c23",
+        "prompt.txt": "db720bf5c81ec08d92d0ccca95e9a884a3cc4d0e8abb7125f1c71452f18592b1",
+        "source-audit.json": "5a8def79f4472f1016d81625786bd01cff46d3135db201dd87c9fa9bd7a5f941",
+        "transition-candidate.png": "3864a8ea9eb141b55f3dab3f47ec7f7cb682d21f3d176dbb008d936bf998295c",
+        "source-master-review.png": "a4e86475333bf0d47ac556b9df287488cfa327dd2627e4a199e16543deb05e44"
+      }
+    },
+    {
+      "id": "19601e31-7374-4d66-9319-672beace3802",
+      "folder": "touchdown-source-v2",
+      "raw": "touchdown-source-v2/raw-touchdown-v2.png",
+      "prompt": "touchdown-source-v2/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "status": "Completed; provisional projected heel-contact key",
+      "verdict": "Full original-only pose148/head27/near floor223/distal far boot220, original projected far floor220. Far heel low/toe raised, visibly distinct from airborne v1. Native bare/helmet47/93/148 reviewed; upperbody47vs42 and neutral cloth71,70,69vs66,64,63 remain final fidelity deviations. No calibrated physical contact/moving root/full transition/controller acceptance.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 4.84,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 20,
+        "targetedInputsUnchanged": true,
+        "scope": "One paired whole-source transition key appearance at47/93/148 only; no full start/stop/physical contact or normal integration."
+      },
+      "initialRunnerSetup": "First invocation omitted required engine argument and exited before Godot launch. Corrected invocation was sole actual native interval, passed under scratch APPDATA.",
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/touchdown-source-v2/raw-touchdown-v2.png": "a34b74e28dc04332d42548838b8656463010065d4b41a4e0325bd87c22abb1b1",
+        "character/veld-carry-east-original-master-v1/touchdown-source-v2/prompt.txt": "6d76789c9fd22db07c656e24d981376bd7746bd66628fce0581bf93027d69e74",
+        "character/veld-carry-east-original-master-v1/touchdown-source-v2/source-audit.json": "546f2968dec30cf5fd2751674dac11698894e072c3b3162e6d450728fe58a233",
+        "character/veld-carry-east-original-master-v1/touchdown-source-v2/key-record.json": "263095015611e9cda9d166b5855cbd4cbb0b6c74cca28ed5cf48769da648482c",
+        "character/veld-carry-east-original-master-v1/projected-contact-source-review.json": "56adbb26b1556ba24f0b28e6352b68fc793eb17fab7c9509a29b212612283968",
+        "output/veld-east-touchdown-key-v2/records.json": "7463ae918753877a9a2d861b385c3c72f77cc89e78f3b320a2304a9f4aceaadf",
+        "output/veld-east-touchdown-key-v2/bare-000-native.png": "1aa8c4c4f5da736259c45c9a280483864fedf993b408ac479f58f76f572d7407",
+        "output/veld-east-touchdown-key-v2/helmet-000-native.png": "44d5279ae9f33ab7173cad84deaf1abeaff66365663bde312e4a255dbff544c8"
+      }
+    },
+    {
+      "id": "4cedbbc8-4090-4fc5-bad3-9ce05271f0ae",
+      "folder": "prelift-source-v2",
+      "raw": "prelift-source-v2/raw-prelift-v2.png",
+      "prompt": "prelift-source-v2/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "status": "Completed; provisional near-standing initial clearance key",
+      "verdict": "Original-only minimal whole-pose source148/head26/upperbody42 matches original held148/26/42. Near opaque floor band122..130 vs held120..131, centroid126vs125.5; far distal floor219 vs original220. Output reads tiny whole-foot clearance, not confirmed requested toe-contact heel peel. Cloth71,69,68 vs66,64,63 lighter. Master/source and native both gear47/93/148 visually reviewed. Retain provisional source; no complete transition/physical-contact/final-grade acceptance.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 4.93,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 20,
+        "targetedInputsUnchanged": true,
+        "scope": "One paired whole-source transition key appearance at47/93/148 only; no full start/stop/physical contact or normal integration."
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/prelift-source-v2/raw-prelift-v2.png": "153bd20e87c8d58f82de38fd78379bd19febe8d1f246c0f758189b2d9fc87ca8",
+        "character/veld-carry-east-original-master-v1/prelift-source-v2/prompt.txt": "be6a90b9dbd9e741ebf102aef0e78c16a5a35989ade6f9fc1cef5e4ab3cc6051",
+        "character/veld-carry-east-original-master-v1/prelift-source-v2/source-audit.json": "6ab31020cab1fc37ad4e4736429c22006f6e6352432d6872a734f8c5e32e05ba",
+        "character/veld-carry-east-original-master-v1/prelift-source-v2/key-record.json": "707375a904e953670bd31a3cd4b68c3a13070518486d3532df1798a390745a5e",
+        "output/veld-east-initial-step-v2/records.json": "7463ae918753877a9a2d861b385c3c72f77cc89e78f3b320a2304a9f4aceaadf",
+        "output/veld-east-initial-step-v2/bare-000-native.png": "4c764a98d64dab1c0d1d53ece2fdaf59759b51d9726ac09f52f90ec393fb6b2d",
+        "output/veld-east-initial-step-v2/helmet-000-native.png": "ffb818bc3f7163e5a988a94b77e5323737068865a3dfec634c33652f092e590e"
+      }
+    },
+    {
+      "id": "448569058312574",
+      "provider": "MiniMax direct",
+      "folder": "standing-step-video-v1",
+      "status": "Success; rejected final in-place/master motion",
+      "model": "MiniMax-Hailuo-02",
+      "estimatedUSD": 0.28,
+      "billingVerified": false,
+      "raw": "standing-step-video-v1/source.mp4",
+      "prompt": "standing-step-video-v1/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "verdict": "Identical original first/last conditioned source produces142frames. End silhouette IoU.9937/.9943 but axis123.5..165, floor219..223/body141..148/head25..27; source darkening, body/case-angle drift, excess steps, late return left. Cannot adopt as in-place start/stop. No per-frame re-centering/RGB/body fixes or clipped half-cycle salvage. Full raw142 and extracted142 review boards inspected;284exact finite replay checks0.",
+      "masterAudit": {
+        "originalMaster": {
+          "height": 148,
+          "headWidth": 26,
+          "headAxis": 123.5,
+          "headTop": 76,
+          "floor": 223,
+          "upperBodyWidth": 42,
+          "clothMedian": [
+            66.0,
+            64.0,
+            63.0
+          ],
+          "clothMaskPixels": 773,
+          "clipped": false
+        },
+        "registeredInput": {
+          "height": 148,
+          "headWidth": 26,
+          "headAxis": 123.5,
+          "headTop": 76,
+          "floor": 223,
+          "upperBodyWidth": 43,
+          "clothMedian": [
+            65.0,
+            64.0,
+            63.0
+          ],
+          "clothMaskPixels": 767,
+          "clipped": false
+        },
+        "rows": [
+          {
+            "frame": 0,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 803,
+            "clipped": false
+          },
+          {
+            "frame": 1,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              65.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 2,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 805,
+            "clipped": false
+          },
+          {
+            "frame": 3,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 805,
+            "clipped": false
+          },
+          {
+            "frame": 4,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 805,
+            "clipped": false
+          },
+          {
+            "frame": 5,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 804,
+            "clipped": false
+          },
+          {
+            "frame": 6,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 804,
+            "clipped": false
+          },
+          {
+            "frame": 7,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 804,
+            "clipped": false
+          },
+          {
+            "frame": 8,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 9,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 10,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 11,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 807,
+            "clipped": false
+          },
+          {
+            "frame": 12,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 814,
+            "clipped": false
+          },
+          {
+            "frame": 13,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              66.0,
+              63.0,
+              64.0
+            ],
+            "clothMaskPixels": 830,
+            "clipped": false
+          },
+          {
+            "frame": 14,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 825,
+            "clipped": false
+          },
+          {
+            "frame": 15,
+            "height": 148,
+            "headWidth": 25,
+            "headAxis": 124.0,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 847,
+            "clipped": false
+          },
+          {
+            "frame": 16,
+            "height": 148,
+            "headWidth": 25,
+            "headAxis": 124.0,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              64.0,
+              64.0
+            ],
+            "clothMaskPixels": 836,
+            "clipped": false
+          },
+          {
+            "frame": 17,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 124.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              65.0,
+              63.0,
+              64.0
+            ],
+            "clothMaskPixels": 877,
+            "clipped": false
+          },
+          {
+            "frame": 18,
+            "height": 148,
+            "headWidth": 25,
+            "headAxis": 125.0,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              64.0,
+              61.0,
+              62.0
+            ],
+            "clothMaskPixels": 869,
+            "clipped": false
+          },
+          {
+            "frame": 19,
+            "height": 147,
+            "headWidth": 25,
+            "headAxis": 125.0,
+            "headTop": 76,
+            "floor": 222,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              63.0,
+              63.0
+            ],
+            "clothMaskPixels": 865,
+            "clipped": false
+          },
+          {
+            "frame": 20,
+            "height": 147,
+            "headWidth": 25,
+            "headAxis": 126.0,
+            "headTop": 76,
+            "floor": 222,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              65.0,
+              63.0,
+              63.0
+            ],
+            "clothMaskPixels": 869,
+            "clipped": false
+          },
+          {
+            "frame": 21,
+            "height": 146,
+            "headWidth": 25,
+            "headAxis": 127.0,
+            "headTop": 76,
+            "floor": 221,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 843,
+            "clipped": false
+          },
+          {
+            "frame": 22,
+            "height": 146,
+            "headWidth": 25,
+            "headAxis": 128.0,
+            "headTop": 76,
+            "floor": 221,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              64.0,
+              61.0,
+              62.0
+            ],
+            "clothMaskPixels": 817,
+            "clipped": false
+          },
+          {
+            "frame": 23,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 129.0,
+            "headTop": 76,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              61.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 782,
+            "clipped": false
+          },
+          {
+            "frame": 24,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 130.0,
+            "headTop": 76,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              63.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 767,
+            "clipped": false
+          },
+          {
+            "frame": 25,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 130.5,
+            "headTop": 76,
+            "floor": 219,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              61.0,
+              58.5,
+              59.0
+            ],
+            "clothMaskPixels": 758,
+            "clipped": false
+          },
+          {
+            "frame": 26,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 131.0,
+            "headTop": 76,
+            "floor": 219,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              60.0,
+              58.0,
+              58.0
+            ],
+            "clothMaskPixels": 780,
+            "clipped": false
+          },
+          {
+            "frame": 27,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 132.0,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              60.0,
+              58.0,
+              57.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 28,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 132.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.0,
+              58.0,
+              58.0
+            ],
+            "clothMaskPixels": 819,
+            "clipped": false
+          },
+          {
+            "frame": 29,
+            "height": 143,
+            "headWidth": 25,
+            "headAxis": 133.0,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              59.5,
+              59.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 30,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 133.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 810,
+            "clipped": false
+          },
+          {
+            "frame": 31,
+            "height": 143,
+            "headWidth": 25,
+            "headAxis": 134.0,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              63.0,
+              61.0,
+              60.0
+            ],
+            "clothMaskPixels": 841,
+            "clipped": false
+          },
+          {
+            "frame": 32,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 80,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              63.0,
+              60.0,
+              59.0
+            ],
+            "clothMaskPixels": 824,
+            "clipped": false
+          },
+          {
+            "frame": 33,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 135.5,
+            "headTop": 80,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 835,
+            "clipped": false
+          },
+          {
+            "frame": 34,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 135.5,
+            "headTop": 80,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              63.0,
+              60.0,
+              60.0
+            ],
+            "clothMaskPixels": 827,
+            "clipped": false
+          },
+          {
+            "frame": 35,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 80,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 842,
+            "clipped": false
+          },
+          {
+            "frame": 36,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              63.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 843,
+            "clipped": false
+          },
+          {
+            "frame": 37,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              64.0,
+              61.0,
+              62.0
+            ],
+            "clothMaskPixels": 837,
+            "clipped": false
+          },
+          {
+            "frame": 38,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 803,
+            "clipped": false
+          },
+          {
+            "frame": 39,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 766,
+            "clipped": false
+          },
+          {
+            "frame": 40,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              64.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 744,
+            "clipped": false
+          },
+          {
+            "frame": 41,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 136.0,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 804,
+            "clipped": false
+          },
+          {
+            "frame": 42,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 135.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              60.0,
+              58.0,
+              58.0
+            ],
+            "clothMaskPixels": 824,
+            "clipped": false
+          },
+          {
+            "frame": 43,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.5,
+              56.0,
+              57.0
+            ],
+            "clothMaskPixels": 840,
+            "clipped": false
+          },
+          {
+            "frame": 44,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 77,
+            "floor": 219,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              57.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 875,
+            "clipped": false
+          },
+          {
+            "frame": 45,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 133.5,
+            "headTop": 78,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.5,
+              55.0,
+              56.0
+            ],
+            "clothMaskPixels": 878,
+            "clipped": false
+          },
+          {
+            "frame": 46,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 132.5,
+            "headTop": 78,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 872,
+            "clipped": false
+          },
+          {
+            "frame": 47,
+            "height": 141,
+            "headWidth": 26,
+            "headAxis": 131.5,
+            "headTop": 79,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 876,
+            "clipped": false
+          },
+          {
+            "frame": 48,
+            "height": 141,
+            "headWidth": 26,
+            "headAxis": 131.5,
+            "headTop": 79,
+            "floor": 219,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.5,
+              56.0,
+              56.0
+            ],
+            "clothMaskPixels": 878,
+            "clipped": false
+          },
+          {
+            "frame": 49,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 130.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              56.0
+            ],
+            "clothMaskPixels": 890,
+            "clipped": false
+          },
+          {
+            "frame": 50,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 130.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              56.0
+            ],
+            "clothMaskPixels": 906,
+            "clipped": false
+          },
+          {
+            "frame": 51,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 130.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              55.5
+            ],
+            "clothMaskPixels": 916,
+            "clipped": false
+          },
+          {
+            "frame": 52,
+            "height": 142,
+            "headWidth": 25,
+            "headAxis": 131.0,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 41,
+            "clothMedian": [
+              58.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 903,
+            "clipped": false
+          },
+          {
+            "frame": 53,
+            "height": 143,
+            "headWidth": 25,
+            "headAxis": 131.0,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 878,
+            "clipped": false
+          },
+          {
+            "frame": 54,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 131.5,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              58.0,
+              55.5,
+              55.0
+            ],
+            "clothMaskPixels": 882,
+            "clipped": false
+          },
+          {
+            "frame": 55,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 132.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              60.0,
+              57.0,
+              58.0
+            ],
+            "clothMaskPixels": 832,
+            "clipped": false
+          },
+          {
+            "frame": 56,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 133.0,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              62.0,
+              60.0,
+              60.0
+            ],
+            "clothMaskPixels": 802,
+            "clipped": false
+          },
+          {
+            "frame": 57,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 133.5,
+            "headTop": 76,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              63.0,
+              59.0,
+              60.0
+            ],
+            "clothMaskPixels": 766,
+            "clipped": false
+          },
+          {
+            "frame": 58,
+            "height": 145,
+            "headWidth": 25,
+            "headAxis": 134.0,
+            "headTop": 76,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              60.0,
+              60.0
+            ],
+            "clothMaskPixels": 799,
+            "clipped": false
+          },
+          {
+            "frame": 59,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 76,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              59.0,
+              60.0
+            ],
+            "clothMaskPixels": 824,
+            "clipped": false
+          },
+          {
+            "frame": 60,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.5,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 844,
+            "clipped": false
+          },
+          {
+            "frame": 61,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 135.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              60.0,
+              60.0
+            ],
+            "clothMaskPixels": 851,
+            "clipped": false
+          },
+          {
+            "frame": 62,
+            "height": 144,
+            "headWidth": 25,
+            "headAxis": 136.0,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 867,
+            "clipped": false
+          },
+          {
+            "frame": 63,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 138.5,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.0,
+              58.5,
+              58.0
+            ],
+            "clothMaskPixels": 872,
+            "clipped": false
+          },
+          {
+            "frame": 64,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 139.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              61.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 886,
+            "clipped": false
+          },
+          {
+            "frame": 65,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 142.5,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              59.0,
+              57.0,
+              58.0
+            ],
+            "clothMaskPixels": 892,
+            "clipped": false
+          },
+          {
+            "frame": 66,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 144.0,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              60.0,
+              58.0,
+              57.0
+            ],
+            "clothMaskPixels": 885,
+            "clipped": false
+          },
+          {
+            "frame": 67,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 146.5,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              59.0,
+              57.0,
+              57.5
+            ],
+            "clothMaskPixels": 892,
+            "clipped": false
+          },
+          {
+            "frame": 68,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 147.5,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              57.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 870,
+            "clipped": false
+          },
+          {
+            "frame": 69,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 149.5,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              58.0,
+              56.0,
+              55.5
+            ],
+            "clothMaskPixels": 898,
+            "clipped": false
+          },
+          {
+            "frame": 70,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 150.0,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              58.0,
+              55.0,
+              56.0
+            ],
+            "clothMaskPixels": 897,
+            "clipped": false
+          },
+          {
+            "frame": 71,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 151.5,
+            "headTop": 78,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              57.0,
+              54.0,
+              54.0
+            ],
+            "clothMaskPixels": 873,
+            "clipped": false
+          },
+          {
+            "frame": 72,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 152.5,
+            "headTop": 78,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              57.0,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 841,
+            "clipped": false
+          },
+          {
+            "frame": 73,
+            "height": 146,
+            "headWidth": 26,
+            "headAxis": 153.5,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              56.0,
+              54.0,
+              54.0
+            ],
+            "clothMaskPixels": 781,
+            "clipped": false
+          },
+          {
+            "frame": 74,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 154.0,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              56.0,
+              53.0,
+              53.0
+            ],
+            "clothMaskPixels": 757,
+            "clipped": false
+          },
+          {
+            "frame": 75,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 154.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              52.0,
+              51.0,
+              51.0
+            ],
+            "clothMaskPixels": 789,
+            "clipped": false
+          },
+          {
+            "frame": 76,
+            "height": 145,
+            "headWidth": 27,
+            "headAxis": 155.0,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              52.0,
+              50.0,
+              50.0
+            ],
+            "clothMaskPixels": 796,
+            "clipped": false
+          },
+          {
+            "frame": 77,
+            "height": 145,
+            "headWidth": 27,
+            "headAxis": 156.0,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              50.0,
+              49.0,
+              49.0
+            ],
+            "clothMaskPixels": 822,
+            "clipped": false
+          },
+          {
+            "frame": 78,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 156.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              49.0,
+              48.0,
+              47.0
+            ],
+            "clothMaskPixels": 822,
+            "clipped": false
+          },
+          {
+            "frame": 79,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 157.0,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              48.0,
+              47.0,
+              47.0
+            ],
+            "clothMaskPixels": 815,
+            "clipped": false
+          },
+          {
+            "frame": 80,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 157.5,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              48.0,
+              46.0,
+              47.0
+            ],
+            "clothMaskPixels": 835,
+            "clipped": false
+          },
+          {
+            "frame": 81,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 158.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              48.0,
+              46.0,
+              46.0
+            ],
+            "clothMaskPixels": 845,
+            "clipped": false
+          },
+          {
+            "frame": 82,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 159.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              46.0,
+              46.0
+            ],
+            "clothMaskPixels": 868,
+            "clipped": false
+          },
+          {
+            "frame": 83,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 160.0,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              46.0,
+              45.0
+            ],
+            "clothMaskPixels": 867,
+            "clipped": false
+          },
+          {
+            "frame": 84,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 161.0,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 847,
+            "clipped": false
+          },
+          {
+            "frame": 85,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 162.0,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 851,
+            "clipped": false
+          },
+          {
+            "frame": 86,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 162.5,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              47.0,
+              45.0,
+              46.0
+            ],
+            "clothMaskPixels": 835,
+            "clipped": false
+          },
+          {
+            "frame": 87,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 163.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 811,
+            "clipped": false
+          },
+          {
+            "frame": 88,
+            "height": 145,
+            "headWidth": 27,
+            "headAxis": 164.0,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              47.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 805,
+            "clipped": false
+          },
+          {
+            "frame": 89,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 164.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              48.0,
+              47.0,
+              47.0
+            ],
+            "clothMaskPixels": 752,
+            "clipped": false
+          },
+          {
+            "frame": 90,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 76,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              49.0,
+              47.0,
+              47.0
+            ],
+            "clothMaskPixels": 763,
+            "clipped": false
+          },
+          {
+            "frame": 91,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 76,
+            "floor": 221,
+            "upperBodyWidth": 45,
+            "clothMedian": [
+              46.0,
+              45.0,
+              44.0
+            ],
+            "clothMaskPixels": 790,
+            "clipped": false
+          },
+          {
+            "frame": 92,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 76,
+            "floor": 221,
+            "upperBodyWidth": 45,
+            "clothMedian": [
+              46.0,
+              45.0,
+              44.0
+            ],
+            "clothMaskPixels": 826,
+            "clipped": false
+          },
+          {
+            "frame": 93,
+            "height": 147,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 76,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              45.0,
+              44.0,
+              44.0
+            ],
+            "clothMaskPixels": 840,
+            "clipped": false
+          },
+          {
+            "frame": 94,
+            "height": 147,
+            "headWidth": 26,
+            "headAxis": 164.5,
+            "headTop": 77,
+            "floor": 223,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              44.5,
+              43.5,
+              43.0
+            ],
+            "clothMaskPixels": 860,
+            "clipped": false
+          },
+          {
+            "frame": 95,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              45.0,
+              43.0,
+              43.0
+            ],
+            "clothMaskPixels": 863,
+            "clipped": false
+          },
+          {
+            "frame": 96,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 164.5,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              44.0,
+              43.0,
+              43.0
+            ],
+            "clothMaskPixels": 893,
+            "clipped": false
+          },
+          {
+            "frame": 97,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 45,
+            "clothMedian": [
+              43.0,
+              43.0,
+              42.0
+            ],
+            "clothMaskPixels": 882,
+            "clipped": false
+          },
+          {
+            "frame": 98,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              43.0,
+              42.0,
+              42.0
+            ],
+            "clothMaskPixels": 891,
+            "clipped": false
+          },
+          {
+            "frame": 99,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              43.0,
+              42.0,
+              42.0
+            ],
+            "clothMaskPixels": 881,
+            "clipped": false
+          },
+          {
+            "frame": 100,
+            "height": 143,
+            "headWidth": 27,
+            "headAxis": 165.0,
+            "headTop": 80,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              43.0,
+              42.0,
+              42.0
+            ],
+            "clothMaskPixels": 886,
+            "clipped": false
+          },
+          {
+            "frame": 101,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 164.5,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              42.0,
+              42.0,
+              41.0
+            ],
+            "clothMaskPixels": 907,
+            "clipped": false
+          },
+          {
+            "frame": 102,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 164.5,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              42.0,
+              41.0,
+              41.0
+            ],
+            "clothMaskPixels": 913,
+            "clipped": false
+          },
+          {
+            "frame": 103,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 163.5,
+            "headTop": 79,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              42.0,
+              42.0,
+              42.0
+            ],
+            "clothMaskPixels": 905,
+            "clipped": false
+          },
+          {
+            "frame": 104,
+            "height": 145,
+            "headWidth": 27,
+            "headAxis": 163.0,
+            "headTop": 78,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              42.0,
+              42.0,
+              41.0
+            ],
+            "clothMaskPixels": 906,
+            "clipped": false
+          },
+          {
+            "frame": 105,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 161.5,
+            "headTop": 78,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              43.0,
+              42.0,
+              42.0
+            ],
+            "clothMaskPixels": 866,
+            "clipped": false
+          },
+          {
+            "frame": 106,
+            "height": 146,
+            "headWidth": 26,
+            "headAxis": 160.5,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              44.0,
+              43.0,
+              42.5
+            ],
+            "clothMaskPixels": 834,
+            "clipped": false
+          },
+          {
+            "frame": 107,
+            "height": 146,
+            "headWidth": 26,
+            "headAxis": 159.5,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              45.0,
+              44.0,
+              43.0
+            ],
+            "clothMaskPixels": 798,
+            "clipped": false
+          },
+          {
+            "frame": 108,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 158.0,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              45.0,
+              44.0,
+              44.0
+            ],
+            "clothMaskPixels": 806,
+            "clipped": false
+          },
+          {
+            "frame": 109,
+            "height": 146,
+            "headWidth": 27,
+            "headAxis": 156.0,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              46.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 850,
+            "clipped": false
+          },
+          {
+            "frame": 110,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 154.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              46.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 844,
+            "clipped": false
+          },
+          {
+            "frame": 111,
+            "height": 145,
+            "headWidth": 26,
+            "headAxis": 152.5,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              46.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 847,
+            "clipped": false
+          },
+          {
+            "frame": 112,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 151.0,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              46.0,
+              45.0,
+              45.0
+            ],
+            "clothMaskPixels": 830,
+            "clipped": false
+          },
+          {
+            "frame": 113,
+            "height": 144,
+            "headWidth": 27,
+            "headAxis": 149.0,
+            "headTop": 78,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              47.0,
+              46.0,
+              45.0
+            ],
+            "clothMaskPixels": 842,
+            "clipped": false
+          },
+          {
+            "frame": 114,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 147.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              48.0,
+              47.0,
+              47.0
+            ],
+            "clothMaskPixels": 862,
+            "clipped": false
+          },
+          {
+            "frame": 115,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 145.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              48.5,
+              48.0,
+              47.0
+            ],
+            "clothMaskPixels": 864,
+            "clipped": false
+          },
+          {
+            "frame": 116,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 144.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              49.0,
+              48.0,
+              47.0
+            ],
+            "clothMaskPixels": 875,
+            "clipped": false
+          },
+          {
+            "frame": 117,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 142.5,
+            "headTop": 79,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              49.0,
+              48.0,
+              47.0
+            ],
+            "clothMaskPixels": 875,
+            "clipped": false
+          },
+          {
+            "frame": 118,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 141.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              51.0,
+              49.0,
+              49.0
+            ],
+            "clothMaskPixels": 877,
+            "clipped": false
+          },
+          {
+            "frame": 119,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 139.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              50.0,
+              50.0,
+              49.0
+            ],
+            "clothMaskPixels": 861,
+            "clipped": false
+          },
+          {
+            "frame": 120,
+            "height": 142,
+            "headWidth": 26,
+            "headAxis": 138.5,
+            "headTop": 79,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              51.0,
+              49.0,
+              49.0
+            ],
+            "clothMaskPixels": 863,
+            "clipped": false
+          },
+          {
+            "frame": 121,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 137.5,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              53.0,
+              52.0,
+              51.0
+            ],
+            "clothMaskPixels": 854,
+            "clipped": false
+          },
+          {
+            "frame": 122,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 136.5,
+            "headTop": 78,
+            "floor": 220,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              54.0,
+              52.0,
+              52.0
+            ],
+            "clothMaskPixels": 822,
+            "clipped": false
+          },
+          {
+            "frame": 123,
+            "height": 144,
+            "headWidth": 26,
+            "headAxis": 134.5,
+            "headTop": 77,
+            "floor": 220,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              55.5,
+              53.0,
+              53.0
+            ],
+            "clothMaskPixels": 774,
+            "clipped": false
+          },
+          {
+            "frame": 124,
+            "height": 143,
+            "headWidth": 26,
+            "headAxis": 133.5,
+            "headTop": 77,
+            "floor": 219,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              56.5,
+              55.0,
+              54.0
+            ],
+            "clothMaskPixels": 770,
+            "clipped": false
+          },
+          {
+            "frame": 125,
+            "height": 143,
+            "headWidth": 25,
+            "headAxis": 132.0,
+            "headTop": 77,
+            "floor": 219,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              56.0,
+              54.0,
+              54.0
+            ],
+            "clothMaskPixels": 769,
+            "clipped": false
+          },
+          {
+            "frame": 126,
+            "height": 143,
+            "headWidth": 25,
+            "headAxis": 131.0,
+            "headTop": 77,
+            "floor": 219,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              57.5,
+              55.0,
+              55.0
+            ],
+            "clothMaskPixels": 774,
+            "clipped": false
+          },
+          {
+            "frame": 127,
+            "height": 145,
+            "headWidth": 25,
+            "headAxis": 129.0,
+            "headTop": 77,
+            "floor": 221,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              61.0,
+              59.0,
+              59.0
+            ],
+            "clothMaskPixels": 743,
+            "clipped": false
+          },
+          {
+            "frame": 128,
+            "height": 146,
+            "headWidth": 26,
+            "headAxis": 128.5,
+            "headTop": 77,
+            "floor": 222,
+            "upperBodyWidth": 44,
+            "clothMedian": [
+              62.0,
+              60.0,
+              59.0
+            ],
+            "clothMaskPixels": 744,
+            "clipped": false
+          },
+          {
+            "frame": 129,
+            "height": 147,
+            "headWidth": 26,
+            "headAxis": 127.5,
+            "headTop": 76,
+            "floor": 222,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              63.0,
+              60.0,
+              60.0
+            ],
+            "clothMaskPixels": 769,
+            "clipped": false
+          },
+          {
+            "frame": 130,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 127.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              63.0,
+              61.0,
+              61.0
+            ],
+            "clothMaskPixels": 786,
+            "clipped": false
+          },
+          {
+            "frame": 131,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 126.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 43,
+            "clothMedian": [
+              64.0,
+              62.0,
+              61.0
+            ],
+            "clothMaskPixels": 800,
+            "clipped": false
+          },
+          {
+            "frame": 132,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 126.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              66.0,
+              63.0,
+              63.0
+            ],
+            "clothMaskPixels": 813,
+            "clipped": false
+          },
+          {
+            "frame": 133,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 125.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              68.0,
+              66.0,
+              66.0
+            ],
+            "clothMaskPixels": 825,
+            "clipped": false
+          },
+          {
+            "frame": 134,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 124.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 827,
+            "clipped": false
+          },
+          {
+            "frame": 135,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              68.0,
+              66.0,
+              66.0
+            ],
+            "clothMaskPixels": 828,
+            "clipped": false
+          },
+          {
+            "frame": 136,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 829,
+            "clipped": false
+          },
+          {
+            "frame": 137,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 828,
+            "clipped": false
+          },
+          {
+            "frame": 138,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 828,
+            "clipped": false
+          },
+          {
+            "frame": 139,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 826,
+            "clipped": false
+          },
+          {
+            "frame": 140,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 825,
+            "clipped": false
+          },
+          {
+            "frame": 141,
+            "height": 148,
+            "headWidth": 26,
+            "headAxis": 123.5,
+            "headTop": 76,
+            "floor": 223,
+            "upperBodyWidth": 42,
+            "clothMedian": [
+              67.0,
+              65.0,
+              65.0
+            ],
+            "clothMaskPixels": 825,
+            "clipped": false
+          }
+        ],
+        "endpoints": [
+          {
+            "frame": 0,
+            "silhouetteIoU": 0.993733681462141,
+            "intersectionRGBMAE": 4.398406025573656,
+            "scope": "Encoded-source appearance/pose diagnostic against fixed registered input, not exact endpoint admission or independent contact."
+          },
+          {
+            "frame": 141,
+            "silhouetteIoU": 0.994258872651357,
+            "intersectionRGBMAE": 4.787139107611549,
+            "scope": "Encoded-source appearance/pose diagnostic against fixed registered input, not exact endpoint admission or independent contact."
+          }
+        ],
+        "ranges": {
+          "height": [
+            141,
+            148
+          ],
+          "headWidth": [
+            25,
+            27
+          ],
+          "headAxis": [
+            123.5,
+            165.0
+          ],
+          "headTop": [
+            76,
+            80
+          ],
+          "floor": [
+            219,
+            223
+          ],
+          "upperBodyWidth": [
+            41,
+            45
+          ]
+        },
+        "scope": "Every extracted frame uses one input-frozen global ruler/offset. Cloth diagnostic sampling follows measured head-axis/top at constant master-relative offsets, without altering image pixels or source registration. Earlier fixed-viewport ROI became empty as figure moved, v0 preserved INVALID for materials. Master/material/endpoint/contact diagnostics only; no motion/native/ordinary integration acceptance. No colour/geometry normalization.",
+        "bindings": {
+          "character/veld-carry-east-original-master-v1/standing-step-video-v1/source.mp4": "96f651b51f8484c039d72646380f2ca8430dfb4fb3f9aca14ffeede82d052e79",
+          "character/veld-carry-east-original-master-v1/standing-step-video-v1/input-record.json": "cc5d10d46e7dd2d6b933dcc809b470717d13b075c132e2fb0f400fb35f054881",
+          "character/veld-carry-east-original-master-v1/standing-step-video-v1/prompt.txt": "25edbb0f33781703bae099168a20e5abaa271a3c0f6cab5acfbe5ca2f6f93016",
+          "character/veld-carry-east-original-master-v1/standing-step-video-v1/audit_masters.py": "afc3e4ad9cc166039da5d61da6589b8cac64192056757cb90d50f9cfee985b4b"
+        }
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/source.mp4": "96f651b51f8484c039d72646380f2ca8430dfb4fb3f9aca14ffeede82d052e79",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/master-input.png": "ea9553dcb90677a6812865670487e2c352b6c08bdb9b4b5bd0f34791b4909a3e",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/prompt.txt": "25edbb0f33781703bae099168a20e5abaa271a3c0f6cab5acfbe5ca2f6f93016",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/input-record.json": "cc5d10d46e7dd2d6b933dcc809b470717d13b075c132e2fb0f400fb35f054881",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/source-registration.json": "866b97e53ea0b911676d9b798cdf08b3668e0e52755e272178a5f5bcafe68e40",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/master-audit.json": "a4ffcec785b1791c6b84ffaa4402575bac18aa745c21b752e84c691a8be64077",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v1/replay-review.json": "122d87cabc7658c98c51791f4f14034de3093f3d05b7dad2a85784494e519d86",
+        "character/veld-east-held-original-master-v1/REFERENCE_STATUS.json": "35c7772ae9755f2caf605c472c5153dc1be382146795c135e895b3669317768a"
+      }
+    },
+    {
+      "id": "65b02932-42fe-41b6-9591-69237fbeb2e5",
+      "folder": "first-lift-row-source-v1",
+      "raw": "first-lift-row-source-v1/raw-first-lift-v1.png",
+      "prompt": "first-lift-row-source-v1/prompt.txt",
+      "references": [
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "status": "Completed; provisional whole-row motion study, final master/contact unaccepted",
+      "verdict": "All6poses H148/floor223, neutral cloth66..67vs66 original, no clipping. Head27-28vs26, torso45-47vs42, near-solecentroid126.5..129vs125.5 remain. First3near-standing variations do not prove heel-peel/toe contact; far distalfloor220,220,220,214,210,208 reveals coarse later lift and excess final advance. Complete row preserved, no clipped pose subset/region edits. Original shells protect all6bodies;18sourcechecks0. Native33checks0/12three-scale presentations reviewed;30replay/lowerbody checks0,36inputs stable/2931owner unchanged. No accepted full start/stop/stride/ordinary integration.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 4.9,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 36,
+        "targetedInputsUnchanged": true,
+        "scope": "Six-pose preparation source appearance at47/93/148; master fidelity/rigid contact/full start-stop/ordinary integration unaccepted."
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/raw-first-lift-v1.png": "987229077e77cbabc01a96ee07a22ec964b95b37355774567adea22d5518e9c8",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/prompt.txt": "8cb01fb9489d2cef72f4ae2161745488c1c8fadcf01baed0be76de6487f004f3",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/source-registration.json": "7640cb2ba990c65bf217efdf2b881384e8d17b60381eace29981b6c19e21394c",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/transition-audit.json": "a6244c4e88b20963e74c0916b940c37bb5c5f5fd3992b581dd3627dc42b82f4a",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/key-record.json": "7b5a0fccd9314bd8def45b7984dc003d3a8ee5926e766ba4f35ebe6089241aff",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/native-review.json": "d1f958255b2db744481afd2f0519f5ac710f651a5347c22e24497bf4870aae6a",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v1/index.html": "c266a6a93a325dfdc7bf1d9bfb56ea18974110828d2e406d7ed54561c04e330a",
+        "output/veld-east-first-lift-row-v1/records.json": "11c3795aa4e13042e89d413a6932a6c1981dded37206ee9799aba5cb1e452705"
+      }
+    },
+    {
+      "id": "9d5765c3-b6eb-4bdd-b5ee-72419fcda89c",
+      "folder": "first-lift-row-source-v2",
+      "raw": "first-lift-row-source-v2/raw-first-lift-v2.png",
+      "prompt": "first-lift-row-source-v2/prompt.txt",
+      "references": [
+        "first-lift-row-source-v1/raw-first-lift-v1.png",
+        "../veld-east-held-original-master-v1/raw-held-v1.png"
+      ],
+      "status": "Completed; rejected requested repair",
+      "verdict": "Whole-source row edit stabilizes all6head27vs V1head27-28, all148/floor223/no clipping. Does not narrow torso/case:46-47vs master42. Cloth68-70/67-69/67-68 brighter than V1andmaster. Nearsolecentroid125..128span3 vs V1span2.5; independent broad near-boot material matching dxSpan3 vs2, minNCC.856vs.794. Full before/after/master board and enlarged source reviewed. Wobble worsened despite requested rigid support. Complete rejected row preserved; no helmet/native packaging/adoption.",
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v2/raw-first-lift-v2.png": "bb0d028bbfa78ccf240584fafc243070df8f23e9ce42e85237455abdfd49f8df",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v2/prompt.txt": "cd0ecd0522fd9a13d311ee2edb99923fb473b26f3de5a075714e49f89fb71ff9",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v2/source-registration.json": "98b5060597960961fa676dd8ea02c19fb840e8ad2e2376f87b1eaa62d545c4d0",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v2/transition-audit.json": "b1b301684a32498857bc380150165a32ea9cbc05fcdb70e7d826172ec4768fda",
+        "character/veld-carry-east-original-master-v1/first-lift-row-source-v2/repair-comparison.json": "13bf9823a69bf75d1d49c9fbbc426b826b848f6dce54e3592fa806624d04b973"
+      }
+    },
+    {
+      "id": "a92ca06b-d33b-48db-81af-c3af120fbed6",
+      "folder": "small-clearance-source-v1",
+      "raw": "small-clearance-source-v1/raw-small-clearance-v1.png",
+      "prompt": "small-clearance-source-v1/prompt.txt",
+      "status": "Completed; requested forward first lift failed; alternate trailing recovery key provisional",
+      "verdict": "Whole source H148/head26/upper42 matches original held; cloth68,67,66 vs66,64,63 slightly lighter. Actual boot lifts backward behind support foot rather than requested forward. Retain actual trailing recovery semantics; near/far anatomical identity, physical support, joining gait and final grade unaccepted. Original whole helmet protects body; paired native appearance reviewed at47/93/148,13checks0/2presentations/engine0.20inputs stable and2931owner files unchanged. No normal adoption.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 4.77,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 20,
+        "targetedInputsUnchanged": true,
+        "scope": "One paired whole-source transition key appearance at47/93/148 only; no full start/stop/physical contact or normal integration."
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/small-clearance-source-v1/raw-small-clearance-v1.png": "543fa9235e3744acf7a4d559b6acb1ee151df87d578b6f4c28ab8dd700f04a76",
+        "character/veld-carry-east-original-master-v1/small-clearance-source-v1/prompt.txt": "cdf88627c0fa5d5cdd3da47b4d1c796c4d71eeddba2ac773b8f6614c670297f2",
+        "character/veld-carry-east-original-master-v1/small-clearance-source-v1/source-audit.json": "f99b37e8d594f2f3867ff2273c3c20ed05fc87c92932529b99323b4ea8d6cf94",
+        "character/veld-carry-east-original-master-v1/small-clearance-source-v1/key-record.json": "1e0494968d189e891489a1dd35069b2d7c327756c021bfb798c0e993d8dfdc77",
+        "output/veld-east-trailing-key-v1/records.json": "7463ae918753877a9a2d861b385c3c72f77cc89e78f3b320a2304a9f4aceaadf",
+        "character/veld-carry-east-original-master-v1/forward-lift-guide-v1/GUIDE.json": "e23b044c97d2f0be742da2387d788efd37aedae76eb66ba11069b6569ef5c1ca"
+      }
+    },
+    {
+      "id": "5c6d42d3-112c-4216-b914-d4c0ef62b780",
+      "folder": "guided-forward-lift-source-v1",
+      "raw": "guided-forward-lift-source-v1/raw-guided-lift-v1.png",
+      "prompt": "guided-forward-lift-source-v1/prompt.txt",
+      "references": [
+        "forward-lift-guide-v1/original-native-master-4x.png",
+        "forward-lift-guide-v1/foot-role-authoring-guide.png"
+      ],
+      "status": "Completed; provisional forward airborne key, final start/stride/contact unaccepted",
+      "verdict": "Explicit near/far motion guide resolves wrong backward lift. Whole H148/head27/upper43 vs original148/26/42; cloth65,64,63 vs66,64,63 substantially closer. Far boot advances screen right, distal floor213 vs original220; lift/advance exceeds requested tiny first-lift. Near boot material proxy dx-1/dy0/NCC.716 indicates shape/contact mismatch, not rigid support. Original whole helmet protects body;3source checks0. Native13checks0/2presentations/4.99s/engine0;20inputs stable,2931owner files unchanged; both complete47/93/148 boards viewed. No full gait, ordinary integration or acceptance claimed.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 4.99,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 20,
+        "targetedInputsUnchanged": true,
+        "scope": "One paired whole-source transition key appearance at47/93/148 only; no full start/stop/physical contact or normal integration."
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/raw-guided-lift-v1.png": "5731084073b42e38167abb5a3a46742ba96d3fc4d79a7525753a6a04ee713891",
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/prompt.txt": "ac3fc772a1ff12d448a15868769354cca241f26ee128c0f7cd08aaafb3db1f85",
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/source-audit.json": "9a4c5300059b1031841c4a54ca16d63c2843a454284079274ffd65116603289b",
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/key-record.json": "9f3a2406ca30a6e2488344c13fdae15d86067824da5bcefd204fbb53717ad204",
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/native-review.json": "de08f51be62620eaf21938ffd74e0ebd0de3e851e85f44432a8a3d26e46b72a4",
+        "character/veld-carry-east-original-master-v1/guided-forward-lift-source-v1/index.html": "95f0973ddba6b27a1b60e13bbd72312dc77117b5b6f45c96109249c655af20c1",
+        "output/veld-east-guided-lift-v1/records.json": "7463ae918753877a9a2d861b385c3c72f77cc89e78f3b320a2304a9f4aceaadf"
+      }
+    },
+    {
+      "id": "80491d7e-c5e0-436c-99d7-e719b33230c2",
+      "folder": "guided-heel-peel-source-v1",
+      "raw": "guided-heel-peel-source-v1/raw-heel-peel-v1.png",
+      "prompt": "guided-heel-peel-source-v1/prompt.txt",
+      "status": "Completed; rejected requested toe-down heel-peel source",
+      "verdict": "Separate original near/far/toe/heel annotations do not establish requested motion. Whole148/head27/upper44 vs original148/26/42; cloth68,66,65 vs66,64,63. Actual far foot shifts forward, heel remains insufficiently distinct; requested fixed toe/heel peel not proven. Complete source/master head/leg comparison viewed; no helmet/native packaging or normal adoption.",
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/guided-heel-peel-source-v1/raw-heel-peel-v1.png": "34337900e3e90d64c046710a96d5a20f94f3853e016a2ac96d2169af5325be06",
+        "character/veld-carry-east-original-master-v1/guided-heel-peel-source-v1/prompt.txt": "ddf77b5fd4b864e44640f4f2fdbf82e7e5fede88cab7dd7d8ad0b78742481c1a",
+        "character/veld-carry-east-original-master-v1/guided-heel-peel-source-v1/source-audit.json": "a87b5a984ea3d551b101b0c4514ec60ebe51dbce9e8f3a1c23ebbed805235b71",
+        "character/veld-carry-east-original-master-v1/heel-peel-guide-v1/GUIDE.json": "6d370e4d8daf258dbd398baf8951205a3b75ab3001d89640c0803a023d2c6e1d"
+      }
+    },
+    {
+      "id": "448578329612795",
+      "folder": "standing-step-video-v2-native",
+      "status": "Success; provisional complete dense motion study, final master/contact unaccepted",
+      "estimatedUSD": 0.28,
+      "billingVerified": false,
+      "raw": "standing-step-video-v2-native/source.mp4",
+      "prompt": "standing-step-video-v2-native/prompt.txt",
+      "verdict": "Native original3x input holds fixed headAxis123 throughout142frames vs earlier41.5px excursion. Head27vs26, upper43..48vs42, height143..150/floor221..224; start/endstanding150vs148. Repeated alternating steps exceed requested2; pale contour and torso/case/endpoint drift remain. Cloth64..70.5/60..68/60..68 vs66/64/63 materially closer than earlier midclip darkening. Complete source retained; no per-frame position/density/RGB rescue. All6raw/6alpha/master endpoint and6native chronology boards viewed. Paired original whole shell preserves all142bodies;710sourcechecks0. Native577checks0/284presentations/10.32s/engine0/301stable2931owner unchanged.568native exact replay checks0. No rigid near/far support, accepted stride/start-stop, normal controller/save adoption.",
+      "nativeValidation": {
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 10.32,
+        "realProfileFileCount": 2931,
+        "realProfileChanges": [],
+        "targetedInputCount": 301,
+        "targetedInputsUnchanged": true,
+        "scope": "Complete paired source-clock native three-scale master comparison only; no accepted gait/world contacts/controller/save integration."
+      },
+      "bindings": {
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/source.mp4": "2167ecfff3c9289074698c82ca206bad04c7fc9e2046ba47175e928acbb4693b",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/prompt.txt": "0c404236d38a5c34efddc8960e7216a8c58d01040d4ecdd1d4046504a81328dc",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/input-record.json": "e4440f2443815c747c702c6032339d6a31d8be6dce7e361f675294473761a7b9",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/master-audit.json": "0739d4286da0cba9c1566fed8efda131afa415ee00248ec7d6d0b6ff801525b5",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/full-source-record.json": "68126e23d92f01c524df52226543aa06b5e87090033fbaf5fec97416f56dd4eb",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/native-review.json": "4a611c251efc161e7bc48f950cd03fa40e09bfac62a12672ea4c53740b3e4303",
+        "character/veld-carry-east-original-master-v1/standing-step-video-v2-native/index.html": "4f0c52e8298561cb6cf76eb91bb471dcb390d788fc2e1f65c168ac8fb7ebaa05",
+        "output/veld-east-native-input-source-v1/records.json": "216ffee8dfb4745699011ae5ed1c77fcedf6dc6b401c36da85d30508b3a5b199"
+      },
+      "strideStudy": {
+        "status": "provisional complete38-pose stride trial, final contact/artwork unaccepted",
+        "evidence": "standing-step-video-v2-native/STRIDE_VERDICT.json",
+        "diagnosticStrideNativePixels": 106.4,
+        "nativeChecks": 1015,
+        "nativeFailures": 0
+      },
+      "fullRollReview": "standing-step-video-v2-native/ROLL_VERDICT.json",
+      "alternateGlobalRuler": "standing-step-video-v2-native/global-standing-ruler-v1/VERDICT.json"
+    },
+    {
+      "id": "exec-3792cae9-de82-4c2e-a153-4824acb96071",
+      "idType": "builtin output artifact UUID",
+      "folder": "native-cycle-art-repair-v1",
+      "raw": "native-cycle-art-repair-v1/raw-cycle-repair-v1.png",
+      "prompt": "native-cycle-art-repair-v1/prompt.txt",
+      "status": "Rejected full-cycle master-fidelity and grid-layout repair",
+      "verdict": "native-cycle-art-repair-v1/VERDICT.json"
+    },
+    {
+      "id": "448589965386249",
+      "provider": "MiniMax direct",
+      "folder": "standing-step-video-v3-dark",
+      "status": "Completed background trial; appearance improves, carrying-walk motion rejected",
+      "raw": "standing-step-video-v3-dark/source.mp4",
+      "prompt": "standing-step-video-v3-dark/prompt.txt",
+      "estimatedUSD": 0.28,
+      "billingVerified": false,
+      "verdict": "standing-step-video-v3-dark/VERDICT.json"
+    },
+    {
+      "id": "448592326328837",
+      "provider": "MiniMax direct",
+      "folder": "standing-step-video-v4-grounded",
+      "status": "Complete native appearance review; gait/contact and final master acceptance pending",
+      "raw": "standing-step-video-v4-grounded/source.mp4",
+      "prompt": "standing-step-video-v4-grounded/prompt.txt",
+      "estimatedUSD": 0.28,
+      "billingVerified": false,
+      "verdict": "standing-step-video-v4-grounded/VERDICT.json"
+    },
+    {
+      "id": "448598058795475",
+      "provider": "MiniMax direct",
+      "folder": "stop-video-v1-native-dark",
+      "status": "Requested single-stop timeline rejected; final recovery suffix pending review",
+      "raw": "stop-video-v1-native-dark/source.mp4",
+      "prompt": "stop-video-v1-native-dark/prompt.txt",
+      "estimatedUSD": 0.28,
+      "billingVerified": false,
+      "verdict": "stop-video-v1-native-dark/VERDICT.json"
+    },
+    {
+      "id": "exec-79a0e635-bafa-464c-9a6a-b7eb2126f321",
+      "provider": "builtin imagegen",
+      "folder": "supported-stop-row-source-v1",
+      "status": "Six-pose source rejected: proportions, common registration and recovery chronology fail",
+      "raw": "supported-stop-row-source-v1/raw-supported-stop-v1.png",
+      "prompt": "supported-stop-row-source-v1/prompt.txt",
+      "billingVerified": false,
+      "verdict": "supported-stop-row-source-v1/VERDICT.json"
+    },
+    {
+      "id": "exec-e1c6a49b-f681-4429-b786-ec4c0e2e417b",
+      "provider": "builtin imagegen",
+      "folder": "supported-recovery-key-source-v1",
+      "status": "Intermediate recovery pose exists; upper identity too broad",
+      "raw": "supported-recovery-key-source-v1/raw-recovery-key-v1.png",
+      "prompt": "supported-recovery-key-source-v1/prompt.txt",
+      "billingVerified": false,
+      "verdict": "supported-recovery-key-source-v1/VERDICT.json"
+    },
+    {
+      "id": "exec-164e33b0-e563-4f08-ae86-51b775cad44d",
+      "provider": "builtin imagegen",
+      "folder": "supported-recovery-key-source-v1",
+      "status": "Colour closer; head28/upper45 still fail original26/42",
+      "raw": "supported-recovery-key-source-v1/raw-recovery-key-refined-v1.png",
+      "prompt": "supported-recovery-key-source-v1/refine-prompt.txt",
+      "billingVerified": false,
+      "verdict": "supported-recovery-key-source-v1/VERDICT.json"
+    }
+  ],
+  "video": {
+    "taskId": "448373312799191",
+    "status": "Success",
+    "folder": "continuous-video-v1",
+    "rawFrames": 141,
+    "verdict": "Retained motion evidence, not final artwork: direct same-scale master comparison shows suit purple drift introduced by video despite neutral/olive-grey starting key. All raw/extracted frames inspected. Native diagnostic motion passed; full physical contact and original material acceptance unresolved."
+  },
+  "videoGradeTrial": {
+    "taskId": "448379855364450",
+    "folder": "continuous-video-v2",
+    "status": "Success; rejected for final artwork",
+    "change": "Same byte-identical master input and motion prompt; added explicit original neutral/olive-grey cloth grade preservation only. One scoped trial; no automatic paid retry.",
+    "verdict": "All141 raw frames reviewed, fixed-reference extraction and same-scale original comparison. Explicit no-purple wording did not preserve neutral/olive-grey cloth. Raw later motion remains plum-purple. Body147-152/head26-27/floor223-225 under unchanged source scale/offset; no per-frame normalization. No loop, helmet pack or native test admitted for V2. No live generation remains."
+  },
+  "nativeMotionProbe": {
+    "failedInterval": "output/veld-east-original-motion-probe-v1",
+    "failedReason": "Boundary-clock sampling skipped source slots;2275 checks64 frame-coverage failures. Source/player unmodified.",
+    "correctedInterval": "output/veld-east-original-motion-probe-v2",
+    "checks": 2299,
+    "failures": 0,
+    "presentations": 396,
+    "inputs": 75,
+    "ownerFilesUnchanged": 2931,
+    "scope": "All32 source slots/both gears/three diagnostic strides/47,93,148px actual distance-driven player. No accepted stride, complete rigid contacts, start/stop or normal controller integration."
+  },
+  "wholeSourceGradeEdit": {
+    "id": "8cad1051-1782-4150-b651-82081eef6489",
+    "folder": "whole-source-grade-edit-v1",
+    "prompt": "whole-source-grade-edit-v1/prompt.txt",
+    "status": "Completed; rejected for geometry drift",
+    "verdict": "Whole32-pose colour correction improves neutral grade but enlarges body156-160/head29-32 vs original source147-150/26; mean opaque silhouette IoU0.71986. No per-pose ruler repair, packaging or normal adoption."
+  },
+  "neutralBackgroundVideo": {
+    "taskId": "448383437771222",
+    "folder": "continuous-video-v3-white",
+    "status": "Success; promising source, not accepted gait",
+    "rawFrames": 141,
+    "inputSHA256": "ca8010acd5f40b8d94d7b961efdd090fc3fecd1fbc58dcf5560201111055124d",
+    "verdict": "All raw/extracted/paired native chronological boards inspected. Neutral suit much closer to originals; head27-28/body148-150/floor223-225, final identity and grade pending. Source705checks0/native573checks0/282presentations/299inputs stable/2931ownerfiles unchanged; exact native replay564checks0. No selected cycle, stride, world contact, authored start/stop, normal selector/controller/save integration."
+  },
+  "supportMaterialDiagnosis": {
+    "report": "continuous-video-v3-white/support-material-diagnostic.json",
+    "candidatePeriodFrames": 37,
+    "verdict": "Toe-cap implied travel91.31/118.78/89.82 native pixels per37 frames in three seven-frame windows. First/third heel templates visibly lose the intended heel, so invalid for calibration. Different support velocities require full physical contact/phase timing review; no stride accepted."
+  },
+  "phaseTimingStudy": {
+    "folder": "continuous-video-v3-white",
+    "record": "continuous-video-v3-white/phase-timing-study.json",
+    "nativeReview": "continuous-video-v3-white/native-phase-probe-review.json",
+    "status": "Diagnostic paced full-cycle candidate; final contacts unaccepted",
+    "sourceSlots": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "provisionalStrideNativePixels": 102.7632279338284,
+    "verdict": "Complete37-pose body preserved. Native1977checks0/304presentations/309inputs stable/2931ownerfiles unchanged; replay608checks0. Actual player root plus raw material points in two short support windows gives max93px span1.538 uniform ->0.554 paced. No complete foot contact, independently rendered material tracking, authored start/stop or normal integration admission."
+  },
+  "independentRenderedContactAudit": {
+    "reports": [
+      "continuous-video-v3-white/rendered-contact-audit.json",
+      "continuous-video-v3-white/rendered-boot-audit-v2.json"
+    ],
+    "status": "Flat-window improvement independently supported; full rolling contact unresolved",
+    "verdict": "Tiny native93px patches visibly mis-track, preserved invalid diagnostic. Broader boot registered93px spans1.210/0.960 uniform ->0.220/0.443 paced;148px2.329/2.093 ->0.332/0.673. Flat-template first push-off26..29 fails under rotation/occlusion; no full contact, final stride or gait admission."
+  },
+  "rotationContactStudy": {
+    "reports": [
+      "continuous-video-v3-white/rotating-boot-audit.json",
+      "continuous-video-v3-white/rotating-boot-audit-v2.json"
+    ],
+    "pairedNativeLowerBodyChecks": 74,
+    "status": "Rotation matches improve; high-score overlap identity ambiguity unresolved",
+    "verdict": "First support24->25 jumps0->-40deg and toe~23px despite0.87NCC. Physical boot continuity unproven; no final contact/stride admission. Initial second-boot sole marker beyond real toe corrected separately, original diagnostic retained."
+  }
+}

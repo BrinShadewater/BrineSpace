@@ -1,0 +1,60 @@
+{
+  "status": "installed_north_safe_service_returns_owner_review_pending",
+  "manifest": "manifest.json",
+  "generation": "Existing selected whole source poses only; no new raster",
+  "profileCount": 36,
+  "maxSeconds": 1.2,
+  "packageChecks": 108,
+  "audit": {
+    "checks": 107,
+    "actualJourneys": 13,
+    "priorPowerSnaps": 6,
+    "currentPowerSnaps": 0,
+    "credits": "One45-point completed-food relief; no cancelled or empty-food relief.",
+    "evidence": "native-audit-evidence.json"
+  },
+  "returns": {
+    "checks": 1041,
+    "actualJourneys": 6,
+    "freshSceneDiskRestores": 6,
+    "evidence": "native-return-evidence.json"
+  },
+  "visual": {
+    "checks": 118,
+    "manualSource3Sequences": 6,
+    "evidence": "native-review-evidence.json",
+    "review": "native-return-contact.png",
+    "scope": "All32 source3 return poses sampled at real default North counter; actual routes/Continue proved separately."
+  },
+  "remaining": [
+    "Owner visual review",
+    "Other source-index native entries, gears/facings/custom layouts and crowded hazards",
+    "Changed-contact fresh-scene disk Continue",
+    "Full exterior/mortality journeys and cross-family consistency/polish"
+  ],
+  "crowd": {
+    "checks": 29,
+    "actualJourneys": 2,
+    "minimumSeparation": 32.0,
+    "actualPeerNextService": true,
+    "evidence": "native-crowd-evidence.json"
+  },
+  "hazards": {
+    "checks": 2571,
+    "actualJourneys": 6,
+    "cases": [
+      "fire",
+      "flood",
+      "oxygen-loss"
+    ],
+    "evidence": "native-hazard-evidence.json"
+  },
+  "changedContacts": {
+    "checks": 39,
+    "actualJourneys": 4,
+    "runtimeCancellation": true,
+    "inMemoryRestoreRejection": true,
+    "freshSceneDiskChangeRestore": false,
+    "evidence": "native-contact-evidence.json"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "method": "built-in image_gen",
+  "builtInExecution": "exec-2d048c33-9b8f-4b96-859b-60959dd1fbeb",
+  "source": "character/bill-carry-east-gait-v2/sources/gait-legs-v3.png",
+  "prompt": "character/bill-carry-east-gait-v2/sources/prompt-gait-legs-v3.txt",
+  "sourceSha256": "4d135c8ed36b8cef66b6bc0c133e0cacc513a385bec3143567e7dc82cdbd78b9",
+  "promptSha256": "f79569eaf76b0ae97a0a6a789c4f4596b0b71dc0ebef1beae4cb087f33230d7a",
+  "references": [
+    "character/bill-carry-east-gait-v1/sources/master-legs.png",
+    "character/bill-carry-east-gait-v1/sources/held-master.png"
+  ],
+  "calibration": {
+    "source": "sources/gait-legs-v3.png",
+    "cell": 0,
+    "sourceHeight": 347,
+    "canonicalUpperThighToSoleHeight": 70,
+    "scale": 0.2017291066282421
+  },
+  "scope": "All8 new lower-body assemblies; protected master upper RGBA exact. Passing stance/boot lift improved but explicit supporting-leg rearward travel and full alternate weight/contact not yet accepted.",
+  "normalSelectionChanged": false,
+  "referenceHashes": {
+    "character/bill-carry-east-gait-v1/sources/master-legs.png": "7aec55a5b11aa6cf091d8497dee8535a023c497092151b0235fbfe27b3f02649",
+    "character/bill-carry-east-gait-v1/sources/held-master.png": "10cf69cd9a66c9d5908705f0ab20446f02857a882d9d4f73a4a30067c76a0f0a"
+  }
+}

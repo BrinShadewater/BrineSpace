@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+ERROR: Real collision-aware route barenorth
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-family-v1/native-north-probe.gd:11)
+       [1] run (res://character/james-water-family-v1/native-north-probe.gd:72)
+JAMES ROUTE DIAGNOSTIC barenorth start=(7872.0, 7952.0) target=(7872.0, 7488.0) retainedRoute=0 extent=[-28.6702702702703, -19.8486486486486, 27.347027027027, 28.2291891891892]
+ERROR: Real collision-aware route helmetnorth
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-water-family-v1/native-north-probe.gd:11)
+       [1] run (res://character/james-water-family-v1/native-north-probe.gd:72)
+JAMES ROUTE DIAGNOSTIC helmetnorth start=(7872.0, 7952.0) target=(7872.0, 7488.0) retainedRoute=0 extent=[-28.6702702702703, -19.8486486486486, 27.347027027027, 28.2291891891892]
+JAMES WATER ROUTES: 9 checks; 2 failures; 2 staged real routes

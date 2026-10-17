@@ -1,0 +1,494 @@
+{
+  "registrations": [
+    {
+      "pose": 1,
+      "source": "res://character/bill-water-exit-north-v1/sources/exit-atlas-v1.png",
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceHairCrown": [
+        271,
+        89
+      ],
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        92,
+        158
+      ],
+      "headAnchor": [
+        160,
+        180
+      ],
+      "opaqueSole": 273,
+      "alphaBounds": [
+        121,
+        177,
+        199,
+        276
+      ],
+      "phase": "elbow retract",
+      "generation": "exec-7f380377-ee3d-4b95-b7f3-b0883d796b75"
+    },
+    {
+      "pose": 2,
+      "source": "res://character/bill-water-exit-north-v1/sources/exit-atlas-v1.png",
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceHairCrown": [
+        767,
+        86
+      ],
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        96,
+        133
+      ],
+      "headAnchor": [
+        160,
+        155
+      ],
+      "opaqueSole": 246,
+      "alphaBounds": [
+        114,
+        151,
+        204,
+        249
+      ],
+      "phase": "palm push",
+      "generation": "exec-7f380377-ee3d-4b95-b7f3-b0883d796b75"
+    },
+    {
+      "pose": 3,
+      "source": "res://character/bill-water-exit-north-v1/sources/exit-atlas-v1.png",
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceHairCrown": [
+        1269,
+        58
+      ],
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        99,
+        108
+      ],
+      "headAnchor": [
+        160,
+        122
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        118,
+        119,
+        204,
+        227
+      ],
+      "phase": "knee tuck/plant",
+      "generation": "exec-7f380377-ee3d-4b95-b7f3-b0883d796b75"
+    },
+    {
+      "pose": 4,
+      "source": "res://character/bill-water-exit-north-v1/sources/exit-atlas-v1.png",
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceHairCrown": [
+        270,
+        517
+      ],
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        92,
+        111
+      ],
+      "headAnchor": [
+        160,
+        112
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        121,
+        111,
+        199,
+        227
+      ],
+      "phase": "half kneel",
+      "generation": "exec-7f380377-ee3d-4b95-b7f3-b0883d796b75"
+    },
+    {
+      "pose": 5,
+      "source": "res://character/bill-water-exit-north-v1/sources/rise-canvas-v2.png",
+      "sourceHairCrown": [
+        622,
+        248
+      ],
+      "scale": 0.15163934426229508,
+      "resampledCanvasSize": [
+        190,
+        190
+      ],
+      "wholeFigureTranslation": [
+        66,
+        55
+      ],
+      "headAnchor": [
+        160,
+        93
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        125,
+        90,
+        198,
+        227
+      ],
+      "phase": "rising squat",
+      "rawSHA256": "57e0cbe5f2298b3cdc7cd90651fb580842c491ae47d33d21f88c729b598c7cfc",
+      "generation": "exec-f34370fa-eb32-4b53-9457-01199c2adcdb"
+    },
+    {
+      "pose": 6,
+      "source": "res://character/bill-water-exit-north-v1/sources/near-stand-canvas-v3.png",
+      "sourceHairCrown": [
+        624,
+        201
+      ],
+      "scale": 0.15163934426229508,
+      "resampledCanvasSize": [
+        190,
+        190
+      ],
+      "wholeFigureTranslation": [
+        65,
+        49
+      ],
+      "headAnchor": [
+        160,
+        79
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        123,
+        77,
+        197,
+        227
+      ],
+      "phase": "near standing",
+      "rawSHA256": "53609f5bb2c67e9fce4c17606bae8e620ce48bcfad8d37b33d4fe2895291da19",
+      "generation": "exec-036cf8e7-4cfa-4e2a-b301-12cea1d22970"
+    }
+  ],
+  "sharedAtlasDrawingScale": 0.25,
+  "singlePoseMasterDensity": 0.15163934426229508,
+  "scaleReason": "First four new atlas poses share established North atlas anatomical density.25; two fresh original-master single poses share master148/976 density. No per-pose bounding-box normalization. Canvas sizes alone do not determine density.",
+  "sourceSHA256": "2eda5dd1e2d74a5f752ed974fee889fbd2ad31c18ebc46a3422fc9c776ecd46e",
+  "promptSHA256": "e632bcae39acfdd5b0cf962c8692491d4cfb0cca53f8ec4ed78306882959e0ec",
+  "timelineMs": 500,
+  "pairedFrames": 16,
+  "endpointExactToSelectedSources": true,
+  "rejectedAtlasCells": [
+    {
+      "cell": 4,
+      "reason": "Rising stature too short at common head/hardware density; replaced by original-master single pose."
+    },
+    {
+      "cell": 5,
+      "reason": "Near-standing stature too short at common head/hardware density; replaced by original-master single pose."
+    }
+  ],
+  "visualReview": "Agent inspected full paired8pose board and all6bare/helmet neck fitting pairs. New exit arm retraction/palm support/knee planting/rise progression visible; canonical shell/collar joins connected in inspected poses. Final near-standing head component much closer to original master. Rising pose5 has slightly broader bare hair/head than final pose6; full master/body/grade continuity and chronological playback remain provisional.",
+  "nativeAcceptance": false,
+  "normalSelected": false,
+  "helmetFittings": [
+    {
+      "pose": 1,
+      "headAnchor": [
+        160,
+        180
+      ],
+      "shellPosition": [
+        140,
+        171
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 205
+    },
+    {
+      "pose": 2,
+      "headAnchor": [
+        160,
+        155
+      ],
+      "shellPosition": [
+        140,
+        146
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 180
+    },
+    {
+      "pose": 3,
+      "headAnchor": [
+        160,
+        122
+      ],
+      "shellPosition": [
+        140,
+        113
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 147
+    },
+    {
+      "pose": 4,
+      "headAnchor": [
+        160,
+        112
+      ],
+      "shellPosition": [
+        140,
+        103
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 137
+    },
+    {
+      "pose": 5,
+      "headAnchor": [
+        160,
+        93
+      ],
+      "shellPosition": [
+        140,
+        84
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 118
+    },
+    {
+      "pose": 6,
+      "headAnchor": [
+        160,
+        79
+      ],
+      "shellPosition": [
+        140,
+        70
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 104
+    }
+  ],
+  "decodedPairedAPNGFramesExact": 16,
+  "canonicalShellSHA256": "80b446aa582da9916c8be4449559981ea466cab53c4181ae6f38b54fb2b3f413",
+  "helmetVisualReview": "pending collar/foreground board",
+  "generations": {
+    "exit-atlas-v1.png": "exec-7f380377-ee3d-4b95-b7f3-b0883d796b75",
+    "rise-canvas-v1.png": "exec-8de45eae-e998-4cda-a88f-015f844c280b",
+    "near-stand-canvas-v1.png": "exec-7d028dcf-8961-41ab-be2a-84a14a642ffc",
+    "rise-canvas-v2.png": "exec-f34370fa-eb32-4b53-9457-01199c2adcdb",
+    "near-stand-canvas-v2.png": "exec-cfa56fce-4314-4202-b59d-8e6d11465933",
+    "near-stand-canvas-v3.png": "exec-036cf8e7-4cfa-4e2a-b301-12cea1d22970"
+  },
+  "sourceHashes": {
+    "exit-atlas-prompt-v1.txt": "e632bcae39acfdd5b0cf962c8692491d4cfb0cca53f8ec4ed78306882959e0ec",
+    "exit-atlas-v1.png": "2eda5dd1e2d74a5f752ed974fee889fbd2ad31c18ebc46a3422fc9c776ecd46e",
+    "near-stand-canvas-v1.png": "5f7ef5b57c366aa30ed814355717cfa563c5658266bb474ed6edae557b721619",
+    "near-stand-canvas-v2.png": "a63a38c129a8b0986d6c8a9bb193848352c2ff2792d027348691dd3df1cee170",
+    "near-stand-canvas-v3.png": "53609f5bb2c67e9fce4c17606bae8e620ce48bcfad8d37b33d4fe2895291da19",
+    "near-stand-prompt-v1.txt": "3bcfd2f6158f95fd51cad20381cffa4807d888dafdf4976498aab22c03971410",
+    "near-stand-prompt-v2.txt": "e824ebaf744f0efe11be6e402033df57ee3630e0f3c8a45425fb72889e246f5a",
+    "near-stand-prompt-v3.txt": "8d8e18f1ad5726c4b5a8c01f5bca12910c749927bef762def97c336c5cd6b5bf",
+    "rise-canvas-v1.png": "b2b3a04c1bc035f714823788f591008e52dcb018b8a11e413f3bc73d324209d0",
+    "rise-canvas-v2.png": "57e0cbe5f2298b3cdc7cd90651fb580842c491ae47d33d21f88c729b598c7cfc",
+    "rise-prompt-v1.txt": "ca591a6196ac10db6783f3087af73a0c88ad47c3b094059d12d345c5d0760eb5",
+    "rise-prompt-v2.txt": "1c2268fbe9491c46fa9f9f826fb5b981da693b2fdd30b15bea30ab33dc854de4"
+  },
+  "referenceHashes": {
+    "character/bill-video-north-v5/master-source.png": "c71f05e3235662e6db4574ef47c581d218d153825345db79be2cb147d97c09c8",
+    "character/bill-swim-north-coherent-v1/sources/swim-v1.png": "d47b33f7a9191f02973658e5318a13fb7fc5b341946d633306c15d099462b739",
+    "character/bill-land-water-north-v1/sources/crouch-canvas-v2.png": "449ed2ecc563d456faec688ba5e61f1f068faba45b841ab87d1cb8beadd8ea82"
+  },
+  "rejectedSingleSources": {
+    "rise-canvas-v1.png": "Native fixed-density body and head enlarged; replaced by crouch-only editV2.",
+    "near-stand-canvas-v1.png": "Projected stature and head enlarged despite master density; replaced.",
+    "near-stand-canvas-v2.png": "Still too tall and large-headed at retained density; replaced by master-only editV3."
+  },
+  "browserMotionReview": {
+    "samples": 71,
+    "cases": [
+      {
+        "gear": "bare",
+        "speed": 4,
+        "samples": 30,
+        "observedAXPhasesBeforeScreenshot": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "final": 7
+      },
+      {
+        "gear": "helmet",
+        "speed": 4,
+        "samples": 30,
+        "observedAXPhasesBeforeScreenshot": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "final": 7
+      },
+      {
+        "gear": "bare",
+        "speed": 1,
+        "samples": 6,
+        "observedAXPhasesBeforeScreenshot": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "final": 7
+      },
+      {
+        "gear": "helmet",
+        "speed": 1,
+        "samples": 5,
+        "observedAXPhasesBeforeScreenshot": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "final": 7
+      }
+    ],
+    "screenshotDimensions": [
+      1265,
+      712
+    ],
+    "screenCrop": [
+      115,
+      220,
+      365,
+      630
+    ],
+    "captureSHA256": {
+      "bare-quarter-000.png": "90a4cbe0bf8aee6457556aad0f996c9b7f3c3ff2283b9bc4eca630d28e14d7db",
+      "bare-quarter-001.png": "90a4cbe0bf8aee6457556aad0f996c9b7f3c3ff2283b9bc4eca630d28e14d7db",
+      "bare-quarter-002.png": "90a4cbe0bf8aee6457556aad0f996c9b7f3c3ff2283b9bc4eca630d28e14d7db",
+      "bare-quarter-003.png": "b4551f9d3f534b122224ff2fe37eee0d50bfb232b077ed0f905dfc3c8756161f",
+      "bare-quarter-004.png": "b4551f9d3f534b122224ff2fe37eee0d50bfb232b077ed0f905dfc3c8756161f",
+      "bare-quarter-005.png": "b4551f9d3f534b122224ff2fe37eee0d50bfb232b077ed0f905dfc3c8756161f",
+      "bare-quarter-006.png": "b4551f9d3f534b122224ff2fe37eee0d50bfb232b077ed0f905dfc3c8756161f",
+      "bare-quarter-007.png": "b4551f9d3f534b122224ff2fe37eee0d50bfb232b077ed0f905dfc3c8756161f",
+      "bare-quarter-008.png": "e0c0e35d4fd49faae8d7bb37168bd30b6a0666cde895a38f5a4e7fd2f764b164",
+      "bare-quarter-009.png": "e0c0e35d4fd49faae8d7bb37168bd30b6a0666cde895a38f5a4e7fd2f764b164",
+      "bare-quarter-010.png": "e0c0e35d4fd49faae8d7bb37168bd30b6a0666cde895a38f5a4e7fd2f764b164",
+      "bare-quarter-011.png": "e0c0e35d4fd49faae8d7bb37168bd30b6a0666cde895a38f5a4e7fd2f764b164",
+      "bare-quarter-012.png": "e0c0e35d4fd49faae8d7bb37168bd30b6a0666cde895a38f5a4e7fd2f764b164",
+      "bare-quarter-013.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-014.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-015.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-016.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-017.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-018.png": "f055b2af6a1ca7d64603d677086cd8de01a53c1baaaeb9370d9148b3ada0daa7",
+      "bare-quarter-019.png": "6971b02b333e875372a9e1a7ebe43c3ec9fef4b4a9abbfc7cb041a9b221ca300",
+      "bare-quarter-020.png": "6971b02b333e875372a9e1a7ebe43c3ec9fef4b4a9abbfc7cb041a9b221ca300",
+      "bare-quarter-021.png": "6971b02b333e875372a9e1a7ebe43c3ec9fef4b4a9abbfc7cb041a9b221ca300",
+      "bare-quarter-022.png": "6971b02b333e875372a9e1a7ebe43c3ec9fef4b4a9abbfc7cb041a9b221ca300",
+      "bare-quarter-023.png": "6971b02b333e875372a9e1a7ebe43c3ec9fef4b4a9abbfc7cb041a9b221ca300",
+      "bare-quarter-024.png": "78b571ea31bffff955b59c8a741f99b810823acf93c689b9ecae4b62caabdd99",
+      "bare-quarter-025.png": "78b571ea31bffff955b59c8a741f99b810823acf93c689b9ecae4b62caabdd99",
+      "bare-quarter-026.png": "78b571ea31bffff955b59c8a741f99b810823acf93c689b9ecae4b62caabdd99",
+      "bare-quarter-027.png": "78b571ea31bffff955b59c8a741f99b810823acf93c689b9ecae4b62caabdd99",
+      "bare-quarter-028.png": "78b571ea31bffff955b59c8a741f99b810823acf93c689b9ecae4b62caabdd99",
+      "bare-quarter-029.png": "17c9bd34edd4c0bb2d9fb30063d25914b621f46a5b67ed2d342b234adc89b2f9",
+      "helmet-quarter-000.png": "d173f2ff21f9a48a66f88438a5d4efa695928e843fdce243309b25a725725d22",
+      "helmet-quarter-001.png": "d173f2ff21f9a48a66f88438a5d4efa695928e843fdce243309b25a725725d22",
+      "helmet-quarter-002.png": "d173f2ff21f9a48a66f88438a5d4efa695928e843fdce243309b25a725725d22",
+      "helmet-quarter-003.png": "d173f2ff21f9a48a66f88438a5d4efa695928e843fdce243309b25a725725d22",
+      "helmet-quarter-004.png": "5d4bff83094ac029143ce79c906979307c58df95646dc5dabce1ce2e2d28dbb5",
+      "helmet-quarter-005.png": "5d4bff83094ac029143ce79c906979307c58df95646dc5dabce1ce2e2d28dbb5",
+      "helmet-quarter-006.png": "5d4bff83094ac029143ce79c906979307c58df95646dc5dabce1ce2e2d28dbb5",
+      "helmet-quarter-007.png": "5d4bff83094ac029143ce79c906979307c58df95646dc5dabce1ce2e2d28dbb5",
+      "helmet-quarter-008.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-009.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-010.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-011.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-012.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-013.png": "e57d7b4bc639b238a254e615a3d2d0bf3bd0632fd572c6c51d101da7b6c5eefc",
+      "helmet-quarter-014.png": "8e41dff328ed1270d69b8d1cfc71e5d471ec68c39ea49fb048d1a1fe43b6a836",
+      "helmet-quarter-015.png": "8e41dff328ed1270d69b8d1cfc71e5d471ec68c39ea49fb048d1a1fe43b6a836",
+      "helmet-quarter-016.png": "8e41dff328ed1270d69b8d1cfc71e5d471ec68c39ea49fb048d1a1fe43b6a836",
+      "helmet-quarter-017.png": "8e41dff328ed1270d69b8d1cfc71e5d471ec68c39ea49fb048d1a1fe43b6a836",
+      "helmet-quarter-018.png": "8e41dff328ed1270d69b8d1cfc71e5d471ec68c39ea49fb048d1a1fe43b6a836",
+      "helmet-quarter-019.png": "ff3929549cae006d133b7751b0c099b9a1b1e1b73b489f355daafc1a1d5652da",
+      "helmet-quarter-020.png": "ff3929549cae006d133b7751b0c099b9a1b1e1b73b489f355daafc1a1d5652da",
+      "helmet-quarter-021.png": "ff3929549cae006d133b7751b0c099b9a1b1e1b73b489f355daafc1a1d5652da",
+      "helmet-quarter-022.png": "ff3929549cae006d133b7751b0c099b9a1b1e1b73b489f355daafc1a1d5652da",
+      "helmet-quarter-023.png": "ff3929549cae006d133b7751b0c099b9a1b1e1b73b489f355daafc1a1d5652da",
+      "helmet-quarter-024.png": "5239f10fcd98c40a2e31debb911f98d11642f9203823707507c2495eaecf9b44",
+      "helmet-quarter-025.png": "5239f10fcd98c40a2e31debb911f98d11642f9203823707507c2495eaecf9b44",
+      "helmet-quarter-026.png": "5239f10fcd98c40a2e31debb911f98d11642f9203823707507c2495eaecf9b44",
+      "helmet-quarter-027.png": "5239f10fcd98c40a2e31debb911f98d11642f9203823707507c2495eaecf9b44",
+      "helmet-quarter-028.png": "271cc568803ff7ae44bb18ee80551a5d4721e251e99930fd8972184b96786935",
+      "helmet-quarter-029.png": "271cc568803ff7ae44bb18ee80551a5d4721e251e99930fd8972184b96786935",
+      "bare-normal-000.png": "77bacd70150597a0715d591c10062ba3d6231ae477468668bc461675c4721b1f",
+      "bare-normal-001.png": "77bacd70150597a0715d591c10062ba3d6231ae477468668bc461675c4721b1f",
+      "bare-normal-002.png": "76d266a3360565a10599d84bbdc925ba07143751b343732a980014b9c676415b",
+      "bare-normal-003.png": "aae29113a06bb6a9751319f6761a9eb2294c6ba6479bee2b53ff72ededa709d0",
+      "bare-normal-004.png": "aae29113a06bb6a9751319f6761a9eb2294c6ba6479bee2b53ff72ededa709d0",
+      "bare-normal-005.png": "649799c9b039acd296d0c9e3ff7fa3f9462de00395999d8099a30dfba0604fb5",
+      "helmet-normal-000.png": "5353ab2b79b0d3b7e68c14e8b3afb84a6b21b563bf82e7d08656ba4c87c5b690",
+      "helmet-normal-001.png": "c037c6b93c61e48c98f7ae24ec68f0c22d628bb66487be65c94c00e13b6d1b7e",
+      "helmet-normal-002.png": "7697d8a9c50453bf1af9e1fd70d433ed258aa78017140a26f6905443ab42f3cc",
+      "helmet-normal-003.png": "f82b4137df6d8c97ef649ae176ba7e5deb9fc399bc918e440fd3f2d2b4e498de",
+      "helmet-normal-004.png": "f82b4137df6d8c97ef649ae176ba7e5deb9fc399bc918e440fd3f2d2b4e498de"
+    },
+    "scope": "Actual UI Play once at normal/quarter speed, both gears. AX sampled immediately before screenshot can cross a hold boundary; no source-phase pixel binding. No full browser duration assertion; elapsed starts after click returns. Initial0 observed separately paused. Normal-speed phase coverage partial. Native exit/contact/master acceptance separate.",
+    "visualReview": "Inspected fixed-crop progressing board from71 actual browser screenshots across bare/helmet normal/quarter playback. Canonical helmet/collar stays connected in sampled poses. Bare rising head slightly broader than near-standing; metal brightness and grade vary against normal endpoints. Quarter samples cover labels1..7; normal samples are partial, with no screenshot-to-source-phase pixel binding. Full motion/master acceptance remains pending."
+  },
+  "nativeCandidateReview": "res://character/bill-land-water-material-north-v3/review.json"
+}

@@ -1,0 +1,1 @@
+Historical broad-build v6 review, not selected. Frozen PNGs are under this folder's frames. Archived manifest/hash records name original paths which now hold selected v7. Archived build.py is documentary; the current parent build reproduces v7 from retained raw sources.

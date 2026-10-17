@@ -1,0 +1,48 @@
+{
+  "status": "selected_production_native_verified_owner_review_pending",
+  "sourceSha256": "cbf6a175b6bb230dda7cc59a03eec6c15d545d121811bd37f2670f5ed2f86c7c",
+  "prompt": "prompt.txt",
+  "registration": "registration.json",
+  "newWholeInteriorPoses": 4,
+  "exactHeldEndpoints": [
+    0,
+    5
+  ],
+  "derivedSourceIndexReturns": 6,
+  "ruler": {
+    "scale": 0.26475849731663686,
+    "rigidSoleCorrection": 1,
+    "crown": 23,
+    "sole": 170
+  },
+  "sourceMaterial": "Pooled neutral/ochre and fixed cap chroma calibration; no per-pose fitting, limb splice or mirroring.",
+  "nativeRuns": {
+    "native-open": {
+      "checks": 9160,
+      "failures": 0,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-_nvxnkmd",
+      "realProfileUnchanged": false,
+      "profileDelta": [
+        "last_session.json"
+      ]
+    },
+    "native-return": {
+      "checks": 1041,
+      "failures": 0,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-d2q8z0jw",
+      "realProfileUnchanged": false,
+      "profileDelta": [
+        "last_session.json"
+      ]
+    }
+  },
+  "packageChecks": 28,
+  "physicalReview": "Eight North open-prep courses, two placements across four room rotations. Native pickup/deposit/source loops reviewed. Rear body occludes exact grip; visual contact plausible, no numeric hidden-grip proof.",
+  "preview": "native-course-review.gif",
+  "previewScope": "Actual selected native source-event captures at producer clocks, not direct frame-rate recording.",
+  "ownerVisualAcceptance": false,
+  "remaining": [
+    "Full head identity/anatomy and cross-family consistency",
+    "Actual locker/crowd journeys and arbitrary scale/flip/off-grid/neighbor furniture contexts"
+  ]
+}

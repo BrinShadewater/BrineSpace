@@ -1,0 +1,66 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "original",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/000.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/001.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/002.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/003.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/004.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false
+    },
+    {
+      "id": "candidate",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/000.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/001.png",
+        "res://character/james-west-carry-walk-keys-v1/arrival-turn-pose2-v297/fixed-canvas-source.png",
+        "res://character/james-west-carry-walk-keys-v1/arrival-turn-pose3-v299/fixed-canvas-source.png",
+        "res://character/james-west-carry-walk-keys-v1/arrival-turn-pose4-v296/fixed-canvas-source.png",
+        "res://character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false
+    },
+    {
+      "id": "master",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/james-west-master-carry-v1/registered-original-master.png"
+      ],
+      "frameDurationsMs": [
+        140
+      ],
+      "loop": false
+    }
+  ]
+}

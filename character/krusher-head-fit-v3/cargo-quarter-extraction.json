@@ -1,0 +1,89 @@
+{
+  "method": "Four raw-alpha isolated authored components; fixed bounding boxes, nearest native extraction, original alpha preserved. No skull or neck painting.",
+  "regions": {
+    "se": {
+      "raw": "generated-cargo-quarters.png",
+      "rawHash": "8ad1db75c5c0d2a993f0c70d720c8f39f32d6c2dfe05564a0254bbfe20314d51",
+      "box": [
+        183,
+        69,
+        578,
+        564
+      ],
+      "size": [
+        29,
+        33
+      ],
+      "output": "sources/bare-se-native.png",
+      "outputHash": "52e8b9a2799f450a44996c537f624b4f411325607cf26ac46407d8b3960605ea",
+      "visor": {
+        "nativeCrop": [
+          0,
+          0,
+          29,
+          29
+        ],
+        "output": "sources/visor-se-native.png",
+        "outputHash": "ad5b221441122aa5ddddb8792751dc0b9565d74b24da9d83fc21a00f56660780"
+      }
+    },
+    "sw": {
+      "raw": "generated-cargo-quarters.png",
+      "rawHash": "8ad1db75c5c0d2a993f0c70d720c8f39f32d6c2dfe05564a0254bbfe20314d51",
+      "box": [
+        778,
+        69,
+        1171,
+        564
+      ],
+      "size": [
+        29,
+        33
+      ],
+      "output": "sources/bare-sw-native.png",
+      "outputHash": "b045801b39c20d8c1aeef1f1d9251d2e8c8e17ed428bad5d60b6c1161e961dc8",
+      "visor": {
+        "nativeCrop": [
+          0,
+          0,
+          29,
+          29
+        ],
+        "output": "sources/visor-sw-native.png",
+        "outputHash": "701f5fb67629504653aaaff525224927abbcd2f1018f794462f636703548e7fd"
+      }
+    },
+    "ne": {
+      "raw": "generated-cargo-quarters.png",
+      "rawHash": "8ad1db75c5c0d2a993f0c70d720c8f39f32d6c2dfe05564a0254bbfe20314d51",
+      "box": [
+        206,
+        604,
+        588,
+        1047
+      ],
+      "size": [
+        28,
+        32
+      ],
+      "output": "sources/bare-ne-native.png",
+      "outputHash": "cc5ae1547d04306a1c3d5f1cf5d41d98f2d0a19b5c34067d38270ea33dd468eb"
+    },
+    "nw": {
+      "raw": "generated-cargo-quarters.png",
+      "rawHash": "8ad1db75c5c0d2a993f0c70d720c8f39f32d6c2dfe05564a0254bbfe20314d51",
+      "box": [
+        765,
+        604,
+        1144,
+        1047
+      ],
+      "size": [
+        28,
+        32
+      ],
+      "output": "sources/bare-nw-native.png",
+      "outputHash": "66076502b6647508fca1ec71b94972ddb64c319f8514e79e638dd25a9c16ee80"
+    }
+  }
+}

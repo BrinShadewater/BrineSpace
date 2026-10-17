@@ -1,0 +1,6 @@
+test_airlock	PASS	25.0s	AIRLOCK PASS: bill/q0, bill/q1, bill/q2, bill/q3, veld/q0, branforth/q0, 1333 travel samples, equipment/return, ten interlock phases, power interruption, pause, disk saves and UI
+test_airlock_clearance	PASS	3.3s	AIRLOCK CLEARANCE: PASS failures=0
+test_door_polish	PASS	2.1s	DOOR POLISH LOGIC PASS: closing/hold/open/expiry/restore and 100 aperture states
+test_new_room_expansion	PASS	22.9s	
+test_riser_adjacency	SKIP-NATIVE	0.0s	awaits rendered frames with no headless guard
+RESULT: PASS=4, SKIP-NATIVE=1 -> output\test-runs\20260926-223221-headless

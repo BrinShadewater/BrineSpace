@@ -1,0 +1,17 @@
+from pathlib import Path
+import json,hashlib
+import numpy as np
+from PIL import Image,ImageDraw
+from scipy.ndimage import label,binary_dilation
+from material import masks,grade
+H=Path(__file__).resolve().parent;R=H.parents[1];fit=json.loads((H/'material-fit-v1.json').read_text());curves=fit['curves'];anchors={d:np.array(v) for d,v in fit['endpointFaceAnchors'].items()};source=H/'near-south-source-v2.png';a=np.array(Image.open(source).convert('RGBA'));lab,n=label(a[:,:,3]>160);c=np.bincount(lab.ravel());k=1+np.argmax(c[1:]);y,x=np.where(lab==k);box=[int(x.min())-2,int(y.min())-2,int(x.max())+3,int(y.max())+3];assert min(box[:2])>=0 and box[2]<=a.shape[1] and box[3]<=a.shape[0];cut=a.copy();cut[~binary_dilation(lab==k,iterations=2)]=0;raw=Image.fromarray(cut).crop(box);raw.save(H/'source-crops/near-south-v2.png');mapped,fb,m=grade(raw,curves);scale=.12;pose=mapped.resize((round(raw.width*scale),round(raw.height*scale)),Image.Resampling.LANCZOS);_,pfb,_=masks(np.array(pose));target=anchors['south']*.8+anchors['west']*.2;pos=np.rint(target-np.array([(pfb[0]+pfb[2])/2,pfb[3]])).astype(int);first=Image.new('RGBA',(256,256));first.alpha_composite(pose,tuple(pos));first.save(H/'graded-trials/000.png')
+s=Image.open(R/'character/veld-water-south-coherent-v1/frames/bare/swim-south/000.png').convert('RGBA');w=Image.open(R/'character/veld-water-west-coherent-v1/frames/bare/swim-west/000.png').convert('RGBA');images=[s]+[Image.open(H/f'graded-trials/{i:03}.png').convert('RGBA') for i in range(4)]+[w];cov=json.loads((R/'character/veld-consistency-audit-v3/coverage.json').read_text());states=[];checks=4
+for direction,row in [('south-west',images),('west-south',list(reversed(images)))]:
+ key='swim-turn-'+direction;ref=cov['selected']['bare'][key];old=json.loads((R/ref['manifest']).read_text());state=next(x for x in old['states'] if x['id']==key).copy();files=[]
+ for i,im in enumerate(row):
+  a=np.array(im);assert not np.any(np.concatenate([a[0,:,3],a[-1,:,3],a[:,0,3],a[:,-1,3]])>20);checks+=1;file=f'frames/bare/{key}/{i:03}.png';(H/file).parent.mkdir(parents=True,exist_ok=True);im.save(H/file);files.append(file)
+ state.update(frameFiles=files);states.append(state)
+manifest=json.loads((R/'character/veld-water-south-coherent-v1/bare-manifest.json').read_text());manifest.update(name='Veld coherent south west ordinary swim turns bare',states=states,status='staged_bare_yaw_pending_equipment_native_world_review');(H/'bare-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');board=Image.new('RGBA',(1536,560),'#202a30');d=ImageDraw.Draw(board)
+for i,im in enumerate(images):
+ board.alpha_composite(im,(i*256,24));board.alpha_composite(im.resize((142,142),Image.Resampling.LANCZOS),(i*256+57,304));board.alpha_composite(im.resize((93,93),Image.Resampling.LANCZOS),(i*256+82,459));d.text((i*256+4,4),str(i)+(' selected loop' if i in [0,5] else ' authored yaw'),fill='white')
+board.save(H/'bare-turn-contact-v1.png');(H/'bare-fit-v1.json').write_text(json.dumps({'checks':checks,'failures':0,'atlasScale':.21,'correctedScale':scale,'correctedScaleRule':'independent high-density first yaw: skull about165px maps20px; shoulder about330px maps40px; one.12 ruler','sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'sourceBox':box,'nativeFaceBox':pfb,'position':pos.tolist(),'registration':'face anchor measured after grade and resampling; interpolated selected endpoint anchors','exactEndpointPixels':True,'installed':False},indent=2)+'\n');print(f'{checks} corrected material/family border checks PASS;2states12refs staged')

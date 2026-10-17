@@ -1,0 +1,69 @@
+{
+  "checks": 3382,
+  "failures": 0,
+  "results": [
+    {
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/bare-workshop_pickup-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/bare-workshop_carry-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/bare-workshop_unload-000.png"
+      ],
+      "elapsed": 17.5799999999997,
+      "finalActivity": "exploring",
+      "finalCuriosity": 28.8676000000035,
+      "finalGoal": "curiosity",
+      "mode": "bare",
+      "poses": [
+        "inspect",
+        "interact",
+        "pickup",
+        "carry",
+        "unload"
+      ],
+      "savedStages": [
+        "workshop_pickup",
+        "workshop_carry",
+        "workshop_unload"
+      ],
+      "stages": [
+        "workshop_inspect",
+        "workshop_work",
+        "workshop_pickup",
+        "workshop_carry",
+        "workshop_unload"
+      ]
+    },
+    {
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/helmet-workshop_pickup-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/helmet-workshop_carry-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/helmet-workshop_unload-000.png"
+      ],
+      "elapsed": 17.5799999999997,
+      "finalActivity": "exploring",
+      "finalCuriosity": 28.8676000000035,
+      "finalGoal": "curiosity",
+      "mode": "helmet",
+      "poses": [
+        "inspect",
+        "interact",
+        "pickup",
+        "carry",
+        "unload"
+      ],
+      "savedStages": [
+        "workshop_pickup",
+        "workshop_carry",
+        "workshop_unload"
+      ],
+      "stages": [
+        "workshop_inspect",
+        "workshop_work",
+        "workshop_pickup",
+        "workshop_carry",
+        "workshop_unload"
+      ]
+    }
+  ],
+  "scope": "Default rotation0 workshop, prescribed collision-clear approach/curiosity goal, actual NPC.update/arrival/RoomActivity inspect-work-pickup-generated carrying route-unload; both initial gears; three ordinary disk/fresh-main Continues per gear. Main simulation otherwise paused/actor-stepped, not natural scheduling or full cardinal turns/interruptions."
+}

@@ -1,0 +1,24 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+JAMES EAST BUNK NORMAL bare-normal complete=true
+JAMES EAST BUNK NORMAL helmet-normal complete=true
+JAMES EAST BUNK CONTINUE bare-normal-entry-continue-power retainedExit=true
+JAMES EAST BUNK CONTINUE bare-normal-sleep-continue-power retainedExit=true
+ERROR: Power loss retains visible bunk return from life_get_up
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-east-bunk-lifecycle-v1/validate.gd:12)
+       [1] run (res://character/james-east-bunk-lifecycle-v1/validate.gd:109)
+       [2] capture_pose (res://character/james-east-bunk-lifecycle-v1/validate.gd:41)
+JAMES EAST BUNK CONTINUE bare-normal-exit-continue-power retainedExit=false
+JAMES EAST BUNK CONTINUE helmet-normal-entry-continue-power retainedExit=true
+JAMES EAST BUNK CONTINUE helmet-normal-sleep-continue-power retainedExit=true
+ERROR: Power loss retains visible bunk return from life_get_up
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-east-bunk-lifecycle-v1/validate.gd:12)
+       [1] run (res://character/james-east-bunk-lifecycle-v1/validate.gd:109)
+       [2] capture_pose (res://character/james-east-bunk-lifecycle-v1/validate.gd:41)
+JAMES EAST BUNK CONTINUE helmet-normal-exit-continue-power retainedExit=false
+JAMES EAST BUNK LIFECYCLE: 3780 checks; 2 failures; 64 captures

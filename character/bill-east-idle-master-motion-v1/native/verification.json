@@ -1,0 +1,128 @@
+{
+  "validation": {
+    "passed": true,
+    "engineExit": 0,
+    "seconds": 13.17,
+    "checks": 448,
+    "failures": 0,
+    "inputCount": 3688,
+    "inputChanges": [],
+    "ownerNonLogCount": 2931,
+    "ownerChanges": [],
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-east-master-breathing-native-v1\\scratch-appdata",
+    "normalAdmission": false,
+    "worldContactTested": false
+  },
+  "runReport": {
+    "actualCounts": {
+      "bare": 216,
+      "helmet": 198
+    },
+    "captures": [
+      "pose-00.png",
+      "pose-01.png",
+      "pose-09.png",
+      "pose-18.png",
+      "pose-27.png",
+      "pose-35.png",
+      "pose-36.png",
+      "pose-54.png",
+      "pose-71.png"
+    ],
+    "checks": 448,
+    "failures": 0,
+    "scope": "Actual normal loader with fixture-only full72slot idle override; source, clocks, snapshots, two wraps and nine H148/82/54/27 captures. No main/world contact, natural actor, continuous watched cadence, full save/titleContinue or normal admission."
+  },
+  "pages": [
+    {
+      "file": "page-0.png",
+      "sha256": "186c54443550c528baa0a920c7290b18803199306bda71724243c0b13759e6f4",
+      "captures": [
+        "pose-00.png",
+        "pose-01.png"
+      ],
+      "reviewed": true
+    },
+    {
+      "file": "page-1.png",
+      "sha256": "abb4311507f1fa313cba3d8b6a45f139ab4c90f11627de574773e0824c0b6ae3",
+      "captures": [
+        "pose-09.png",
+        "pose-18.png"
+      ],
+      "reviewed": true
+    },
+    {
+      "file": "page-2.png",
+      "sha256": "3633e755b048e0003cde397aaff8ca8f8617e53249e31e9e01a9ef56b7d1c3d6",
+      "captures": [
+        "pose-27.png",
+        "pose-35.png"
+      ],
+      "reviewed": true
+    },
+    {
+      "file": "page-3.png",
+      "sha256": "24fb3b9e11cd74226b48456cdf3f7fba911f391a22f3ee74804c6470174eaaea",
+      "captures": [
+        "pose-36.png",
+        "pose-54.png"
+      ],
+      "reviewed": true
+    },
+    {
+      "file": "page-4.png",
+      "sha256": "38c453d157962842873b7ac52c8303e437518a6533cc0811b8e18940e6d9aefa",
+      "captures": [
+        "pose-71.png"
+      ],
+      "reviewed": true
+    }
+  ],
+  "captures": {
+    "pose-00.png": "8e4e0ce0ae8518b5e6c33bc6fa7efd7c7abc866f3dafb45500d2c9bd0a5326fd",
+    "pose-01.png": "9e7dfd45315a189aa7cbf57795aee15bfc9bef2731da05160c3df75b514fc140",
+    "pose-09.png": "9bb0802b42fb98757f830afe53f7dd67eb1d560d5438332c3292c0019add0d51",
+    "pose-18.png": "4be8fea0b60940e5e337572ed02f06e43cc5ec7f187aec98e5f9ab8a420edead",
+    "pose-27.png": "2b88d05fce90742acfdeaf45d53527de57f82c6c4432960484233092f5d02b23",
+    "pose-35.png": "e55b54c25d2a153cbce1ca3e100c8a946530c8e53c6c95221737e41831495a49",
+    "pose-36.png": "278f86790aab0234f92b0f8257ccc0a3a5d0e25e365d5999eeddeb833406e377",
+    "pose-54.png": "794fc4d3267feb13bba6a71607d7b3d51a37fbb65540a59bd1c6c69298cbb145",
+    "pose-71.png": "f36a71d616970301f7c2549fe2b55ac7581ee20943935b3b8013eeaa540d4559"
+  },
+  "reportSha256": "e9eb495084b6ab6ca42cc182ca129caa4e7890b91ea51463b421ea8b56f29b41",
+  "validationSha256": "b1522b74548a6b811dc19f347e92792ef01785fa698de8760ca21b47f1852da7",
+  "motionReviewSha256": "9f58b8e3102fb7f31e814d4c1ada5b0447f53afa1c8f02296ec3da815a069574",
+  "visualReview": "All five native pages/nine actual player captures inspected at H148/82/54/27. Warmer readable face and detailed matte suit stay coherent across observed breathing phases. Fixed source face/feet and no gross size pop. Source density evidence only, not natural actor/world floor/continuous watched cadence or full identity acceptance.",
+  "normalAdmission": false,
+  "worldContactTested": false,
+  "adjacentDiagnostics": [
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "alphaMaskChanges": 0,
+      "premultipliedMeanAbsoluteRGBChange": 6.308919282899042e-05
+    },
+    {
+      "pair": [
+        35,
+        36
+      ],
+      "alphaMaskChanges": 0,
+      "premultipliedMeanAbsoluteRGBChange": 0.0016661106786760075
+    },
+    {
+      "pair": [
+        71,
+        0
+      ],
+      "alphaMaskChanges": 0,
+      "premultipliedMeanAbsoluteRGBChange": 6.308919282899042e-05
+    }
+  ],
+  "currentPhaseBoardSha256": "8f93932bf8f024a7e634d39583ef91c979b38c2a95bae65d60b85dc19df18d97",
+  "currentPreviewSha256": "fdd9b15510431bfafd232a219a8d40ef789f4d69b10fb6642c55de233cef8546",
+  "currentMotionReviewSha256": "55657512153b5cfadc9048edc9a78245d2651ae5b7184defddd42db01ef7fc23"
+}

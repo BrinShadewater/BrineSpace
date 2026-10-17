@@ -1,0 +1,50 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1034,
+  "outsideExactPixels": 64502,
+  "changedPixels": 1033,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    85,
+    76,
+    174,
+    224
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      45.28,
+      68.1,
+      93.4,
+      174.15
+    ],
+    "after": [
+      45.66,
+      69.28,
+      96.38,
+      163.34
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "protectedRectangles": [],
+  "protectedRectanglesExact": true,
+  "disposition": "retain_provisional_lower_finish",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "findings": [
+    "Six raw/protected and paired source boards reviewed before native launch. Wide stride boot angles and toe/heel/ankle arrangement retained provisionally.",
+    "40median68.10to69.28/95th174.15to163.34;41median65.61to62.53/95th168.75to155.07;42median67.56to64.12/95th173.79to163.28. Phase40 midtones slightly brighter,41 more subdued; continuous moving grade acceptance open. Original43 toe highlights brighter.",
+    "Source window and all five paired native captures/four sizes reviewed. Alpha protection and native clocks do not prove anatomy, physical planting or continuous flash-free motion."
+  ],
+  "nativeIncluded": true
+}

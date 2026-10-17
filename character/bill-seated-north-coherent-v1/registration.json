@@ -1,0 +1,178 @@
+{
+  "idleAuthority": "crew-runtime-matte-v1/bill/frames/idle-north-transition-matte-v1/000.png",
+  "idleSha256": "ed305a2094b04d9ebc313f7ca601067573740148fbc8b13389f6b6bb8403ace7",
+  "idlePadding": [
+    36,
+    52
+  ],
+  "sources": {
+    "sources/sit-v1.png": "aa733937e22a5d03b7b0323c58c1cacb70a746afd0a9f24e7de3aa0f3d323b78",
+    "sources/interiors-boots-v4.png": "6e250df6bfde9f334c1ce7c43c10b4d8c4345b8ee3b540494a1808a0ceaf76e6"
+  },
+  "primaryRuler": [
+    0.305,
+    0.3267
+  ],
+  "interiorRuler": [
+    0.165,
+    0.177
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 1,
+      "sourceBox": [
+        651,
+        82,
+        891,
+        506
+      ],
+      "scaleX": 0.305,
+      "scaleY": 0.3267,
+      "position": [
+        90,
+        86
+      ],
+      "sourceFrontBoot": [
+        807.0,
+        502.0
+      ],
+      "targetFrontBoot": [
+        138.0,
+        223
+      ],
+      "headAxis": [
+        126,
+        87
+      ],
+      "headTiltDegrees": 0
+    },
+    {
+      "frame": 2,
+      "source": "sources/interiors-boots-v4.png",
+      "sourcePose": 0,
+      "sourceBox": [
+        237,
+        119,
+        637,
+        896
+      ],
+      "scaleX": 0.165,
+      "scaleY": 0.177,
+      "position": [
+        92,
+        86
+      ],
+      "sourceFrontBoot": [
+        516.0,
+        892.0
+      ],
+      "targetFrontBoot": [
+        138.0,
+        223
+      ],
+      "headAxis": [
+        126,
+        87
+      ],
+      "headTiltDegrees": 0
+    },
+    {
+      "frame": 3,
+      "source": "sources/interiors-boots-v4.png",
+      "sourcePose": 1,
+      "sourceBox": [
+        908,
+        193,
+        1301,
+        896
+      ],
+      "scaleX": 0.165,
+      "scaleY": 0.177,
+      "position": [
+        89,
+        99
+      ],
+      "sourceFrontBoot": [
+        1206.0,
+        892.0
+      ],
+      "targetFrontBoot": [
+        138.0,
+        223
+      ],
+      "headAxis": [
+        121,
+        100
+      ],
+      "headTiltDegrees": 0
+    },
+    {
+      "frame": 4,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 4,
+      "sourceBox": [
+        659,
+        587,
+        881,
+        964
+      ],
+      "scaleX": 0.305,
+      "scaleY": 0.3267,
+      "position": [
+        85,
+        101
+      ],
+      "sourceFrontBoot": [
+        832.5,
+        960.0
+      ],
+      "targetFrontBoot": [
+        138.0,
+        223
+      ],
+      "headAxis": [
+        119,
+        102
+      ],
+      "headTiltDegrees": 0
+    },
+    {
+      "frame": 5,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 5,
+      "sourceBox": [
+        1123,
+        590,
+        1339,
+        964
+      ],
+      "scaleX": 0.305,
+      "scaleY": 0.3267,
+      "position": [
+        86,
+        102
+      ],
+      "sourceFrontBoot": [
+        1295.0,
+        960.0
+      ],
+      "targetFrontBoot": [
+        138.0,
+        223
+      ],
+      "headAxis": [
+        119,
+        103
+      ],
+      "headTiltDegrees": 0
+    }
+  ],
+  "excludedPrimaryPoses": [
+    0,
+    2,
+    3
+  ],
+  "scope": "fixed source rulers;body lowers naturally;local boot registration;retained furniture translation reviewed separately"
+}

@@ -1,0 +1,382 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "Retained unselected complete four-pose cargo cycle plus neutral",
+  "promptSha256": "a5adeb554504bda80a4e745afddd6cbdfd5cf5888349cade7fbc66345e71032e",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-south-carry-material-v1/sources/selected-idle0-only.png",
+      "sha256": "e58f5764de813e95c1b697a2f5bb9f83904e9fd63363feee8274252712fb2f7b"
+    },
+    {
+      "path": "character/marsh-south-carry-material-v1/sources/carry-motion-guide.png",
+      "sha256": "16eed00ace5cd9b56939fa66e7157e6a58e8069ea0548ab3b5bab13fa88eeca8"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "key": "idle-south",
+      "slot": 0,
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+      "manifest": "character/marsh-south-idle-material-v1/candidate-01/manifest.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        184,
+        184
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        63,
+        24,
+        121,
+        171
+      ],
+      "occupiedSize": [
+        58,
+        147
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          650.0,
+          650.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "idle-south",
+      "slot": 1,
+      "path": "character/marsh-south-idle-material-v1/candidate-01/001.png",
+      "sha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+      "manifest": "character/marsh-south-idle-material-v1/candidate-01/manifest.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        184,
+        184
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        62,
+        23,
+        122,
+        171
+      ],
+      "occupiedSize": [
+        60,
+        148
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          650.0,
+          650.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "walk-south",
+      "slot": 0,
+      "path": "character/marsh-south-walk-material-v1/candidate-02/000.png",
+      "sha256": "523fda6d515546cab71416b4d66251c5d9f1f2b907ec7d90ec81b2783d91080e",
+      "manifest": "character/marsh-south-walk-material-v1/candidate-02/manifest.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        184,
+        184
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        63,
+        25,
+        122,
+        172
+      ],
+      "occupiedSize": [
+        59,
+        147
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "walk-south",
+      "slot": 2,
+      "path": "character/marsh-south-walk-material-v1/candidate-02/002.png",
+      "sha256": "9d1fc3716e65279ad78a6fcbc525d14ac0b8063e22071ee9baac0ed7514a3398",
+      "manifest": "character/marsh-south-walk-material-v1/candidate-02/manifest.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        184,
+        184
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        61,
+        24,
+        121,
+        170
+      ],
+      "occupiedSize": [
+        60,
+        146
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/carry-south/000.png",
+      "sha256": "a8ff3a43e2f1f8d985c2a346e0895535284a689c02f21a9d4dcd63a1fc721f9a",
+      "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        null,
+        null
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        59,
+        24,
+        126,
+        173
+      ],
+      "occupiedSize": [
+        67,
+        149
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          180.0,
+          180.0,
+          180.0,
+          180.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "carry-south",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/carry-south/001.png",
+      "sha256": "b5040f9bbc5c6d9b91620893619ddd06166a26815bca0594eb01da4141505007",
+      "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        null,
+        null
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        59,
+        24,
+        126,
+        171
+      ],
+      "occupiedSize": [
+        67,
+        147
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          180.0,
+          180.0,
+          180.0,
+          180.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "carry-south",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/carry-south/002.png",
+      "sha256": "a721da80bbca15feab9ca372621794d6b4178076358bb1ee2d65cd16fd3d5b56",
+      "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        null,
+        null
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        58,
+        24,
+        126,
+        173
+      ],
+      "occupiedSize": [
+        68,
+        149
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          180.0,
+          180.0,
+          180.0,
+          180.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    },
+    {
+      "key": "carry-south",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/carry-south/003.png",
+      "sha256": "ab7f169263ab0d7da56b76938393f36d0082f71be171d8b8278160777ede9727",
+      "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "metadata": {
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "frameWidth": 184,
+        "frameHeight": 184
+      },
+      "declaredCanvasDimensions": [
+        null,
+        null
+      ],
+      "canvasDimensionsFromDecodedImage": true,
+      "occupiedBounds": [
+        59,
+        24,
+        126,
+        170
+      ],
+      "occupiedSize": [
+        67,
+        146
+      ],
+      "stateTiming": {
+        "frameDurationsMs": [
+          180.0,
+          180.0,
+          180.0,
+          180.0
+        ],
+        "loop": true
+      },
+      "guideWholeTranslation": [
+        36,
+        52
+      ]
+    }
+  ],
+  "sheetGrid": [
+    5,
+    1
+  ],
+  "transparentBackground": true,
+  "generationId": "exec-93058684-6a69-4380-ad91-8a7f50de23b5",
+  "originalGeneratedPath": "C:\\Users\\Alex\\.codex\\generated_images\\01a0fbf5-ac74-7c72-98e7-34736a220c96\\exec-93058684-6a69-4380-ad91-8a7f50de23b5.png",
+  "rawSha256": "ae1c3824fa92af4ffb7ce1f773a8d978b1a2393625cc9dbc1741d6c8f2d55a7b"
+}

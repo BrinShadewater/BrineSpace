@@ -1,0 +1,77 @@
+{
+  "name": "Veld North two-real-key breathing diagnostic helmet",
+  "status": "staged_key_comparison_not_final_motion",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "states": [
+    {
+      "id": "source-idle-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/veld-idle-north-original-master-v1/single-breath-key-v1/helmet-key-000.png",
+        "res://character/veld-idle-north-original-master-v1/single-breath-key-v1/helmet-key-001.png"
+      ],
+      "frameDurationsMs": [
+        750,
+        750
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "reference-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/veld-idle-north-original-master-v1/single-breath-key-v1/helmet-reference-north.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true
+    },
+    {
+      "id": "prepared-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/veld-idle-north-original-master-v1/single-breath-key-v1/helmet-prepared-north.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/veld-idle-north-original-master-v1/single-breath-key-v1/helmet-selected-idle.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "states": 8,
+  "slots": 48,
+  "newWholeIntermediateDrawings": 32,
+  "native": {
+    "pickup-north-02": {
+      "nativeChecks": 171,
+      "samples": 47,
+      "captures": 6,
+      "playerRestores": 6,
+      "inputsStableDuringInterval": 41,
+      "ownerFilesUnchanged": 2931
+    },
+    "pickup-south-01": {
+      "nativeChecks": 171,
+      "samples": 47,
+      "captures": 6,
+      "playerRestores": 6,
+      "inputsStableDuringInterval": 42,
+      "ownerFilesUnchanged": 2931
+    },
+    "drain-east-01": {
+      "nativeChecks": 192,
+      "samples": 54,
+      "captures": 6,
+      "playerRestores": 6,
+      "inputsStableDuringInterval": 43,
+      "ownerFilesUnchanged": 2931
+    },
+    "drain-west-01": {
+      "nativeChecks": 192,
+      "samples": 54,
+      "captures": 6,
+      "playerRestores": 6,
+      "inputsStableDuringInterval": 43,
+      "ownerFilesUnchanged": 2931
+    }
+  },
+  "world": {
+    "03": {
+      "checks": 15513,
+      "sourceNativePairs": 62,
+      "samples": 3783,
+      "actorPlayerRestores": 62,
+      "stableBoundedInputs": 1905,
+      "unchangedOwnerNonLogFiles": 2931,
+      "actualKeys": [
+        "cargo-drain-east",
+        "carry-east",
+        "carry-turn-east-west",
+        "carry-west",
+        "swim-carry-east",
+        "swim-carry-north",
+        "swim-carry-south",
+        "swim-carry-turn-north-west",
+        "swim-carry-turn-south-north",
+        "swim-carry-west",
+        "swim-pickup-south",
+        "unload-west"
+      ]
+    },
+    "04": {
+      "checks": 14761,
+      "sourceNativePairs": 66,
+      "samples": 3589,
+      "actorPlayerRestores": 66,
+      "stableBoundedInputs": 2038,
+      "unchangedOwnerNonLogFiles": 2931,
+      "actualKeys": [
+        "cargo-drain-west",
+        "carry-east",
+        "carry-turn-west-east",
+        "carry-west",
+        "swim-carry-east",
+        "swim-carry-south",
+        "swim-carry-turn-east-south",
+        "swim-carry-turn-south-east",
+        "swim-carry-turn-west-east",
+        "swim-carry-west",
+        "swim-pickup-west",
+        "unload-east"
+      ]
+    },
+    "05": {
+      "checks": 12920,
+      "sourceNativePairs": 50,
+      "samples": 3146,
+      "actorPlayerRestores": 50,
+      "stableBoundedInputs": 2181,
+      "unchangedOwnerNonLogFiles": 2931,
+      "actualKeys": [
+        "cargo-drain-north",
+        "carry-north",
+        "carry-south",
+        "carry-turn-north-south",
+        "swim-carry-north",
+        "swim-carry-south",
+        "swim-carry-turn-north-south",
+        "swim-pickup-north",
+        "unload-south"
+      ]
+    }
+  },
+  "limits": "Coverage and mechanical gates only; full cross-family art/contact/persistence/helmet/admission remain open."
+}

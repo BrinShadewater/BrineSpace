@@ -1,0 +1,825 @@
+{
+  "name": "Krusher Dom cargo-turn bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-carry-turn-east-south",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png",
+        "res://character/krusher-animation-package-v10/frames/b8cf5318397d6d8f02c7f2c9d15bcc2661072c436c3a2f79fb5ea0de263248b6.png",
+        "res://character/krusher-animation-package-v10/frames/3bc11f99ac9689f982547ff43706acda1b5cb94c79e7684a56fcb900507d1ef7.png",
+        "res://character/krusher-animation-package-v10/frames/0a013370ec6cf96fb4bc6b6b274e1e31ef59d027fad9c56df703960a4292e609.png",
+        "res://character/krusher-animation-package-v10/frames/e4ef8159808c9ee8ddc062b4997af14adf346fd30c1659379adf6764b6e7830c.png",
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-north",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png",
+        "res://character/krusher-animation-package-v10/frames/e4ef8159808c9ee8ddc062b4997af14adf346fd30c1659379adf6764b6e7830c.png",
+        "res://character/krusher-animation-package-v10/frames/0a013370ec6cf96fb4bc6b6b274e1e31ef59d027fad9c56df703960a4292e609.png",
+        "res://character/krusher-animation-package-v10/frames/3bc11f99ac9689f982547ff43706acda1b5cb94c79e7684a56fcb900507d1ef7.png",
+        "res://character/krusher-animation-package-v10/frames/b8cf5318397d6d8f02c7f2c9d15bcc2661072c436c3a2f79fb5ea0de263248b6.png",
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-west",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png",
+        "res://character/krusher-animation-package-v10/frames/13a6b79c5f56bc6641330807c6f52e0fa27c956e96d15cb773db0b7c554a1f5e.png",
+        "res://character/krusher-animation-package-v10/frames/763ceda2849481d4db097204ab61b030e52512f9e63ba0f9cb11f0d0ff48e453.png",
+        "res://character/krusher-animation-package-v10/frames/b85c275cc1703ce0f59d106eae2ffd9193bd12dc3b0a9dc3f8464c8a8b320e7a.png",
+        "res://character/krusher-animation-package-v10/frames/91ecf8ba0953e9068b481657db711dbde93138ccf96c7563707595d35a4d6e68.png",
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-north",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png",
+        "res://character/krusher-animation-package-v10/frames/91ecf8ba0953e9068b481657db711dbde93138ccf96c7563707595d35a4d6e68.png",
+        "res://character/krusher-animation-package-v10/frames/b85c275cc1703ce0f59d106eae2ffd9193bd12dc3b0a9dc3f8464c8a8b320e7a.png",
+        "res://character/krusher-animation-package-v10/frames/763ceda2849481d4db097204ab61b030e52512f9e63ba0f9cb11f0d0ff48e453.png",
+        "res://character/krusher-animation-package-v10/frames/13a6b79c5f56bc6641330807c6f52e0fa27c956e96d15cb773db0b7c554a1f5e.png",
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-west",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png",
+        "res://character/krusher-animation-package-v10/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+        "res://character/krusher-animation-package-v10/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+        "res://character/krusher-animation-package-v10/frames/751df018fb3be31b619c34cd10a323d87827e98d9d27a21ac8705d6d5a93c334.png",
+        "res://character/krusher-animation-package-v10/frames/3dbabec6a391f406889904e29346d805c704dfaf800a4d1e4fdbdcdde2b90444.png",
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-south",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png",
+        "res://character/krusher-animation-package-v10/frames/3dbabec6a391f406889904e29346d805c704dfaf800a4d1e4fdbdcdde2b90444.png",
+        "res://character/krusher-animation-package-v10/frames/751df018fb3be31b619c34cd10a323d87827e98d9d27a21ac8705d6d5a93c334.png",
+        "res://character/krusher-animation-package-v10/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+        "res://character/krusher-animation-package-v10/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png",
+        "res://character/krusher-animation-package-v10/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+        "res://character/krusher-animation-package-v10/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+        "res://character/krusher-animation-package-v10/frames/751df018fb3be31b619c34cd10a323d87827e98d9d27a21ac8705d6d5a93c334.png",
+        "res://character/krusher-animation-package-v10/frames/3dbabec6a391f406889904e29346d805c704dfaf800a4d1e4fdbdcdde2b90444.png",
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/5ce06404fb8615fe43ce8539982ba8f8b1ca6aca219378948c2d1b932820937e.png",
+        "res://character/krusher-animation-package-v10/frames/3dbabec6a391f406889904e29346d805c704dfaf800a4d1e4fdbdcdde2b90444.png",
+        "res://character/krusher-animation-package-v10/frames/751df018fb3be31b619c34cd10a323d87827e98d9d27a21ac8705d6d5a93c334.png",
+        "res://character/krusher-animation-package-v10/frames/45b7c9ce706f88076bfccb0f82c56c27c001b56f08f9faa64bf082f9bfca3d8d.png",
+        "res://character/krusher-animation-package-v10/frames/a6119ad8ebd9fbf9ffa49c6932ece3be4d188768620a0ff33a3feacab00dfac1.png",
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-south",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png",
+        "res://character/krusher-animation-package-v10/frames/b8cf5318397d6d8f02c7f2c9d15bcc2661072c436c3a2f79fb5ea0de263248b6.png",
+        "res://character/krusher-animation-package-v10/frames/3bc11f99ac9689f982547ff43706acda1b5cb94c79e7684a56fcb900507d1ef7.png",
+        "res://character/krusher-animation-package-v10/frames/0a013370ec6cf96fb4bc6b6b274e1e31ef59d027fad9c56df703960a4292e609.png",
+        "res://character/krusher-animation-package-v10/frames/e4ef8159808c9ee8ddc062b4997af14adf346fd30c1659379adf6764b6e7830c.png",
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-north",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/e5f32aed9c80ac4017a3ffd8f5bd8b3753fb1874343796b42feef67f535efd83.png",
+        "res://character/krusher-animation-package-v10/frames/9b285e2131de6c43db2d8e1facd20d58635425dac34e39fc99358b14eef945d3.png",
+        "res://character/krusher-animation-package-v10/frames/e50648c2cc62a8962e6f9f5b6f5c0d2185f3f0b759a522e42a78f3298324bb9d.png",
+        "res://character/krusher-animation-package-v10/frames/a25405136c0f7afc56f125f9d8add019f535b343021dc83a90bd1a7a8bbcf7c7.png",
+        "res://character/krusher-animation-package-v10/frames/c60e936d9ab9263bbdcaff3b9d049986f7144c0e4bdc09fffa88aae27d73c58d.png",
+        "res://character/krusher-animation-package-v10/frames/016737d1d0eb4a610807a242c4b60abdca276003d79e16b51cdf69e426316a24.png",
+        "res://character/krusher-animation-package-v10/frames/e4ef8159808c9ee8ddc062b4997af14adf346fd30c1659379adf6764b6e7830c.png",
+        "res://character/krusher-animation-package-v10/frames/0a013370ec6cf96fb4bc6b6b274e1e31ef59d027fad9c56df703960a4292e609.png",
+        "res://character/krusher-animation-package-v10/frames/3bc11f99ac9689f982547ff43706acda1b5cb94c79e7684a56fcb900507d1ef7.png",
+        "res://character/krusher-animation-package-v10/frames/b8cf5318397d6d8f02c7f2c9d15bcc2661072c436c3a2f79fb5ea0de263248b6.png",
+        "res://character/krusher-animation-package-v10/frames/4d61a7a0785e276d201fca491b8b3491fc19ae2a862c02f72a4d3168c5a40bb2.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-turn-family-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    }
+  ]
+}

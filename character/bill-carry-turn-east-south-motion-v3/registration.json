@@ -1,0 +1,212 @@
+{
+  "scale": 0.21700879765395895,
+  "ruler": "complete bare-v7 strip0 ->148native;one common body ruler;independent isolated helmet sheet uses one complete first-head ruler",
+  "bodyCalibration": {
+    "source": "sources/bare-v7.png",
+    "cell": 0,
+    "opaqueSourceHeight": 682,
+    "targetNativeHeight": 148,
+    "scale": 0.21700879765395895
+  },
+  "helmetCalibration": {
+    "source": "sources/helmet-components-v3.png",
+    "cell": 0,
+    "opaqueSourceHeight": 330,
+    "targetNativeHeight": 40.0,
+    "scale": 0.12121212121212122,
+    "masterPaths": [
+      "character/bill-cargo-east-master-head-v1/sources/helmet-master-head.png",
+      "character/bill-cargo-south-master-head-v1/sources/helmet-master-head.png"
+    ],
+    "masterHeights": [
+      38,
+      42
+    ],
+    "master": "fixed pooled median of exact current east/south complete helmet components"
+  },
+  "frames": [
+    {
+      "bodySource": "sources/bare-v7.png",
+      "sourceCell": 0,
+      "frame": 1,
+      "scale": 0.21700879765395895,
+      "helmetScale": 0.12121212121212122,
+      "sourceBox": [
+        45,
+        181,
+        316,
+        864
+      ],
+      "opaqueSourceHeight": 682,
+      "axis": 148.5,
+      "bodyPosition": [
+        106,
+        77
+      ],
+      "helmetSourceBox": [
+        62,
+        342,
+        345,
+        674
+      ],
+      "helmetAxis": 17.393939393939394,
+      "caseFit": {
+        "phase": 1,
+        "source": "sources/case-v9.png",
+        "sourceCell": 0,
+        "sourceBox": [
+          0,
+          430,
+          384,
+          605
+        ],
+        "scale": 0.21700879765395895,
+        "nativeFitBox": [
+          96,
+          131,
+          179,
+          169
+        ],
+        "component": "sources/component-case-v9-001.png",
+        "selectedRuntime": false,
+        "stagedAdoption": true
+      },
+      "helmetPosition": [
+        114,
+        73
+      ]
+    },
+    {
+      "bodySource": "sources/bare-v7.png",
+      "sourceCell": 1,
+      "frame": 2,
+      "scale": 0.21700879765395895,
+      "helmetScale": 0.12121212121212122,
+      "sourceBox": [
+        46,
+        175,
+        311,
+        864
+      ],
+      "opaqueSourceHeight": 688,
+      "axis": 154.5,
+      "bodyPosition": [
+        104,
+        75
+      ],
+      "helmetSourceBox": [
+        47,
+        339,
+        338,
+        675
+      ],
+      "helmetAxis": 18.242424242424242,
+      "caseFit": {
+        "phase": 2,
+        "source": "sources/case-v10.png",
+        "sourceCell": 1,
+        "sourceBox": [
+          0,
+          430,
+          384,
+          605
+        ],
+        "scale": 0.21700879765395895,
+        "nativeFitBox": [
+          94,
+          130,
+          177,
+          168
+        ],
+        "component": "sources/component-case-v10-002.png",
+        "selectedRuntime": false,
+        "stagedAdoption": true
+      },
+      "helmetPosition": [
+        113,
+        71
+      ]
+    },
+    {
+      "bodySource": "sources/bare-v8.png",
+      "sourceCell": 2,
+      "frame": 3,
+      "scale": 0.21700879765395895,
+      "helmetScale": 0.12121212121212122,
+      "sourceBox": [
+        52,
+        175,
+        325,
+        866
+      ],
+      "opaqueSourceHeight": 691,
+      "axis": 164.0,
+      "bodyPosition": [
+        104,
+        75
+      ],
+      "helmetSourceBox": [
+        34,
+        339,
+        350,
+        677
+      ],
+      "helmetAxis": 19.87878787878788,
+      "caseFit": {
+        "phase": 3,
+        "source": "sources/case-v10.png",
+        "sourceCell": 2,
+        "sourceBox": [
+          0,
+          430,
+          384,
+          605
+        ],
+        "scale": 0.21700879765395895,
+        "nativeFitBox": [
+          93,
+          130,
+          176,
+          168
+        ],
+        "component": "sources/component-case-v10-003.png",
+        "selectedRuntime": false,
+        "stagedAdoption": true
+      },
+      "helmetPosition": [
+        114,
+        71
+      ]
+    },
+    {
+      "bodySource": "sources/bare-v7.png",
+      "sourceCell": 3,
+      "frame": 4,
+      "scale": 0.21700879765395895,
+      "helmetScale": 0.12121212121212122,
+      "sourceBox": [
+        58,
+        177,
+        347,
+        864
+      ],
+      "opaqueSourceHeight": 686,
+      "axis": 202.0,
+      "bodyPosition": [
+        97,
+        76
+      ],
+      "helmetSourceBox": [
+        36,
+        338,
+        350,
+        679
+      ],
+      "helmetAxis": 19.09090909090909,
+      "helmetPosition": [
+        108,
+        72
+      ]
+    }
+  ]
+}

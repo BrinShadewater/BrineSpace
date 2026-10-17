@@ -1,0 +1,241 @@
+{
+  "scope": "Source case grade candidate only, no geometry edits/helmet/native/cadence/normal acceptance.",
+  "onePooledCurve": true,
+  "quantiles": [
+    5,
+    20,
+    40,
+    60,
+    80,
+    95
+  ],
+  "sourceLuminanceKnots": [
+    38.666666666666664,
+    57.333333333333336,
+    61.666666666666664,
+    67.0,
+    76.66666666666667,
+    96.33333333333333
+  ],
+  "masterLuminanceTargets": [
+    38.35,
+    52.733333333333334,
+    56.666666666666664,
+    58.333333333333336,
+    61.666666666666664,
+    69.88333333333331
+  ],
+  "master": "character/veld-cargo-turns-master-family-v1/north-east-candidate-v5/frames/bare/005.png",
+  "masterSHA256": "31f14b76344e90758d1d0a2436d5e9aa2be3c5c304a737df2d19c972c383a329",
+  "checks": 37,
+  "failures": 0,
+  "rows": [
+    {
+      "phase": 0,
+      "caseBounds": [
+        134,
+        125,
+        163,
+        146
+      ],
+      "claspProtected": [
+        146,
+        130,
+        157,
+        141
+      ],
+      "changedMaskPixels": 167,
+      "sourceSHA256": "0eda8fe37e6d60443b52c8883ebe007ec25ba967bffc80ad318f60f0e3690116",
+      "outputSHA256": "cbf75be42c67f952f36197933d8605cfcc40675b010d7a8affec1f451edecfc7",
+      "meanBefore": 58.838323353293426,
+      "meanAfter": 53.041916167664674
+    },
+    {
+      "phase": 1,
+      "caseBounds": [
+        134,
+        125,
+        162,
+        145
+      ],
+      "claspProtected": [
+        146,
+        130,
+        157,
+        141
+      ],
+      "changedMaskPixels": 139,
+      "sourceSHA256": "ed8228084e1fc0f48cfd9dfc973d8845825268d1b9cf7c873d59074a2da32d1c",
+      "outputSHA256": "1c0b388788a9f519921a7f5cfabcc585f9e6d6d3ac899af6d3f5ca8ee699bc20",
+      "meanBefore": 61.059952038369296,
+      "meanAfter": 53.985611510791365
+    },
+    {
+      "phase": 2,
+      "caseBounds": [
+        135,
+        122,
+        163,
+        144
+      ],
+      "claspProtected": [
+        147,
+        127,
+        158,
+        138
+      ],
+      "changedMaskPixels": 128,
+      "sourceSHA256": "647c5967c832a554d5aefa982f85acd476100eb62248203eb9e6ee120b69ff79",
+      "outputSHA256": "0d8a363f163ea28083ed861dc93f3752dbad02bd8bcc6b59b1854e681da01516",
+      "meanBefore": 78.60416666666666,
+      "meanAfter": 61.104166666666664
+    },
+    {
+      "phase": 3,
+      "caseBounds": [
+        136,
+        126,
+        165,
+        148
+      ],
+      "claspProtected": [
+        147,
+        131,
+        159,
+        142
+      ],
+      "changedMaskPixels": 167,
+      "sourceSHA256": "818465a53b3723f433ea8e8b75a104eee97aa7547bed74df5da58f55d36da61b",
+      "outputSHA256": "1050f45fbba5fa5e75a6d015d5c15fe3af1d72fb9c76ebbc292ac8ca355fa65a",
+      "meanBefore": 59.990019960079835,
+      "meanAfter": 54.40718562874252
+    },
+    {
+      "phase": 4,
+      "caseBounds": [
+        134,
+        123,
+        166,
+        146
+      ],
+      "claspProtected": [
+        146,
+        128,
+        159,
+        140
+      ],
+      "changedMaskPixels": 190,
+      "sourceSHA256": "ef7d5d43b93e942bc89dde8ef10480776ddba9c7e460aac6d2bc669f75e7e255",
+      "outputSHA256": "94af227b9e355950f15d8b0338998135da091ce3373c50eb08c387e53438794b",
+      "meanBefore": 78.2877192982456,
+      "meanAfter": 61.33684210526316
+    },
+    {
+      "phase": 5,
+      "caseBounds": [
+        134,
+        126,
+        163,
+        147
+      ],
+      "claspProtected": [
+        147,
+        131,
+        158,
+        142
+      ],
+      "changedMaskPixels": 161,
+      "sourceSHA256": "881158ebe1e13a24f83277a88b53d7058fc068d27058fde6cb6aab6769c22b68",
+      "outputSHA256": "cc3dcc1f3bb5fc1c46e81c7e0d28b7e2b03d3df94711c73ee185161245669911",
+      "meanBefore": 59.52795031055901,
+      "meanAfter": 53.72670807453416
+    }
+  ],
+  "visualReview": "Seven whole/case comparison columns and six explicit case masks visually inspected. Case tone closer to repaired held master, but phase2/4 surface pattern still differs. Six paused browser source poses inspected plus three playing screenshots after clock fix. No uninterrupted video/native/cadence or final case texture acceptance.",
+  "browserReview": {
+    "pausedPoseFiles": [
+      {
+        "pose": 1,
+        "path": "browser-review/pose-1.jpg",
+        "sha256": "2ef3dc018dc96abc9b7651e61eeea2426d61d736a308084f234437d19f002681"
+      },
+      {
+        "pose": 2,
+        "path": "browser-review/pose-2.jpg",
+        "sha256": "90a6f9971bc346de2284616be0b66305e7a9edab089f899a43800bc5c12f5326"
+      },
+      {
+        "pose": 3,
+        "path": "browser-review/pose-3.jpg",
+        "sha256": "771d978e011ba2e16600b6db227ac95f78eeedb8f8105584d06f218f67aa91a0"
+      },
+      {
+        "pose": 4,
+        "path": "browser-review/pose-4.jpg",
+        "sha256": "b3edc677f3a853d4ea81fe922040022af524844b1bb717f852fe9a565e6dda74"
+      },
+      {
+        "pose": 5,
+        "path": "browser-review/pose-5.jpg",
+        "sha256": "590ac2e99ebd4f8e470475c747bcd45263981a75568b2c092254afcd271ed24e"
+      },
+      {
+        "pose": 6,
+        "path": "browser-review/pose-6.jpg",
+        "sha256": "00e5f44032e733cfd92927aa50a1ef3ce132e8a4f4f6c84febc886811e0b1075"
+      }
+    ],
+    "initialPlaybackFailure": "Source rAF clock initialized with performance.now could receive earlier first frame timestamp, producing negative index and undefined frame src. Initial samples retained with elapsed0; no progress claim based on these.",
+    "clockFix": "Clamp frame delta to nonnegative before applying modulo840. Reload and observable next-pose wait verified advancement.",
+    "fixedSamples": {
+      "playing": [
+        {
+          "state": {
+            "elapsed": "317.0",
+            "phase": "2",
+            "src": "http://127.0.0.1:8791/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/002.png"
+          },
+          "path": "C:/Users/Alex/Documents/Brine Space/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/browser-review/playing-fixed-0.jpg"
+        },
+        {
+          "state": {
+            "elapsed": "383.7",
+            "phase": "2",
+            "src": "http://127.0.0.1:8791/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/002.png"
+          },
+          "path": "C:/Users/Alex/Documents/Brine Space/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/browser-review/playing-fixed-1.jpg"
+        },
+        {
+          "state": {
+            "elapsed": "433.7",
+            "phase": "3",
+            "src": "http://127.0.0.1:8791/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/003.png"
+          },
+          "path": "C:/Users/Alex/Documents/Brine Space/character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v1/browser-review/playing-fixed-2.jpg"
+        }
+      ],
+      "scope": "Browser pose-clock and rendered snapshots after first-timestamp fix; not uninterrupted video/native cadence acceptance."
+    },
+    "continuousVideoReviewed": false,
+    "nativeReview": false
+  },
+  "initialCaseGuardFailure": "Initial protected-glove assertion failed; mask now explicitly excludes y136:160/x125:157; all37checks pass after fix.",
+  "previewVerification": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "exactBytes": true
+    },
+    {
+      "file": "cycle.png",
+      "status": 200,
+      "exactBytes": true
+    },
+    {
+      "file": "case-master-comparison.png",
+      "status": 200,
+      "exactBytes": true
+    }
+  ],
+  "status": "reviewed_case_source_browser_snapshots_full_motion_pending"
+}

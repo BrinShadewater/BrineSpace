@@ -1,0 +1,373 @@
+{
+  "generator": "OpenAI image_gen built-in",
+  "new_candidates": 7,
+  "targeted_material_edits": 2,
+  "unselected_alpha_edits": 2,
+  "room_style_reference_snapshot": "before-native/reactor.png",
+  "square_edit_sources": [
+    "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+    "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png"
+  ],
+  "assets": [
+    {
+      "id": "alarm_beacon",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/alarm_beacon.png",
+      "sha256": "3c0c86377bfa83b8321a07ab758c9a0cde5de411bc8acabfeee8ce4fdc1f46a2",
+      "size": [
+        1448,
+        1086
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/alarm_beacon.txt",
+      "prompt_sha256": "c8a8c4b8ea452b7a2ec8cc719fd902622f87b73ac019a42d2ddeadb447b05db1",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "corner",
+          "slot": "right"
+        },
+        {
+          "room": "isolation_vault",
+          "slot": "right"
+        }
+      ]
+    },
+    {
+      "id": "com_handset",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/com_handset.png",
+      "sha256": "1dcfc3e82739cffdf1832b262699b80f23b77aee66ef200c3d4e0c6804805eb6",
+      "size": [
+        1073,
+        1466
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/com_handset.txt",
+      "prompt_sha256": "1dcecf9a55bed023ef0b7d169f29cb13b1bc4e3fbd1f214b5a8162a0e36b5f3a",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "salvage_drone_bay",
+          "slot": "right"
+        },
+        {
+          "room": "corridor",
+          "slot": "right"
+        }
+      ]
+    },
+    {
+      "id": "com_panel",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/com_panel.png",
+      "sha256": "e8365d6e8cacc7997b4b337f80f53910a3dd4d324dd3c280a773578c2ef06930",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/com_panel.txt",
+      "prompt_sha256": "2dd7e015279f85a026c63c900c7852d8b42bd255a6554791c5d27e33fb3386e4",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "quarantine_cell",
+          "slot": "left"
+        },
+        {
+          "room": "med_bay",
+          "slot": "left"
+        },
+        {
+          "room": "holographic_core",
+          "slot": "right"
+        }
+      ]
+    },
+    {
+      "id": "key_rack-clean",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/key_rack-clean.png",
+      "sha256": "fde94b2882b8d226df1e367ddf5d0983857cea0a8f6d042e4784f918e2aab769",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "prompt": "prompts/key_rack-alpha-repair.txt",
+      "prompt_sha256": "64f137610360db5036a8df3e8001b26181bcb480310b10e85edd52c2c3497ba4",
+      "status": "not selected: unnecessary alpha repair changed presentation",
+      "uses": []
+    },
+    {
+      "id": "key_rack",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/key_rack.png",
+      "sha256": "bbb7a93d0fd55bf64968f3cf45d4fccb7eff0b8d89ebd0d98fda2cd744994c85",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "prompt": "prompts/key_rack.txt",
+      "prompt_sha256": "623e86e98e363b0442176e69b9a7dfb5778ed29b0de8ebaca154a77ff9bc324d",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "storage_bay",
+          "slot": "right"
+        }
+      ]
+    },
+    {
+      "id": "oxygen_masks",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/oxygen_masks.png",
+      "sha256": "ee7a03657dd62dfcd2eb15983b6a63606719a46f3c7c11de5b892151126f97c4",
+      "size": [
+        1402,
+        1122
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/oxygen_masks.txt",
+      "prompt_sha256": "7dbed41faac24fffaee9e7adff5c2d43d3192d31031019f6169ebd8aa0df9616",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "airlock",
+          "slot": "right"
+        },
+        {
+          "room": "life_support",
+          "slot": "right"
+        }
+      ]
+    },
+    {
+      "id": "pressure_gauge",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/pressure_gauge.png",
+      "sha256": "b8c6d6e2f76152565c57709dfc9188f6dd83eea8d9172329d0539aed695df843",
+      "size": [
+        1402,
+        1122
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/pressure_gauge.txt",
+      "prompt_sha256": "404a90ffd02fc7ca69ec3fc3d581ebc968d6d73d81861b3323d410a505400208",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "salvage_workshop",
+          "slot": "right"
+        },
+        {
+          "room": "mining_drone_bay",
+          "slot": "right"
+        },
+        {
+          "room": "mycelium_nursery",
+          "slot": "right"
+        },
+        {
+          "room": "clone_lab",
+          "slot": "right"
+        },
+        {
+          "room": "bio_lab",
+          "slot": "right"
+        },
+        {
+          "room": "maintenance_bay",
+          "slot": "right"
+        },
+        {
+          "room": "shield_generator",
+          "slot": "left"
+        }
+      ]
+    },
+    {
+      "id": "square_pressure",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/square_pressure.png",
+      "sha256": "a4f63b47768da9f504f02bbea0141030263eab537cf242ca8336683e4cec261f",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/square_pressure.txt",
+      "prompt_sha256": "fcafef0dbab2096f470930626ccf37939d7ccae0f5f9fc9b5fdc14d73700e9b9",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "cold_store",
+          "slot": "center"
+        },
+        {
+          "room": "salvage_workshop",
+          "slot": "center"
+        },
+        {
+          "room": "current_turbine",
+          "slot": "center"
+        },
+        {
+          "room": "heat_recovery",
+          "slot": "center"
+        },
+        {
+          "room": "airlock",
+          "slot": "center"
+        },
+        {
+          "room": "reactor",
+          "slot": "center"
+        },
+        {
+          "room": "tidal_condenser",
+          "slot": "center"
+        },
+        {
+          "room": "life_support",
+          "slot": "center"
+        },
+        {
+          "room": "ore_refinery",
+          "slot": "center"
+        },
+        {
+          "room": "pressure_control",
+          "slot": "center"
+        },
+        {
+          "room": "maintenance_bay",
+          "slot": "center"
+        }
+      ]
+    },
+    {
+      "id": "square_telemetry",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/square_telemetry.png",
+      "sha256": "ceabc4792c968cbe31d3c44320f656388df276928f8edb5b281ae89f4970b146",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "prompt": "prompts/square_telemetry.txt",
+      "prompt_sha256": "49df5f81f35a3641761cca1904b609f41714ff3c0828e58effa4e4f042f21c7e",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "construction_drone_bay",
+          "slot": "center"
+        },
+        {
+          "room": "brine_core",
+          "slot": "center"
+        },
+        {
+          "room": "solar_array",
+          "slot": "center"
+        },
+        {
+          "room": "battery_array",
+          "slot": "center"
+        },
+        {
+          "room": "mining_drone_bay",
+          "slot": "center"
+        },
+        {
+          "room": "salvage_drone_bay",
+          "slot": "center"
+        },
+        {
+          "room": "data_archive",
+          "slot": "center"
+        },
+        {
+          "room": "command_center",
+          "slot": "center"
+        },
+        {
+          "room": "listening_post",
+          "slot": "center"
+        },
+        {
+          "room": "holographic_core",
+          "slot": "center"
+        },
+        {
+          "room": "radio_lab",
+          "slot": "center"
+        },
+        {
+          "room": "shield_generator",
+          "slot": "center"
+        }
+      ]
+    },
+    {
+      "id": "tool_rack-clean",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/tool_rack-clean.png",
+      "sha256": "055d8f4e87633f89debe949d8d465c5b878ca3fe90cc9ff69ec4de44ad1562f8",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "prompt": "prompts/tool_rack-alpha-repair.txt",
+      "prompt_sha256": "64f137610360db5036a8df3e8001b26181bcb480310b10e85edd52c2c3497ba4",
+      "status": "not selected: unnecessary alpha repair changed presentation",
+      "uses": []
+    },
+    {
+      "id": "tool_rack",
+      "path": "res://assets/room-risers-v4/polish-v1/masters/tool_rack.png",
+      "sha256": "3a45950c8263afd718ae18d167f8c05987d6d6e255fbe57d2e1e08eed791f3a7",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "prompt": "prompts/tool_rack.txt",
+      "prompt_sha256": "077e0095e809ecb2625c191e436ab243979a0cc06296a604b8ba4aa68a598d85",
+      "status": "selected native-preview candidate",
+      "uses": [
+        {
+          "room": "ore_refinery",
+          "slot": "right"
+        }
+      ]
+    }
+  ]
+}

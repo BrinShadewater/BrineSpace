@@ -1,0 +1,42 @@
+{
+  "disposition": "provisional_single_bare_planted_turn_source",
+  "rawVisuallyReviewed": true,
+  "sourceBoardReviewed": true,
+  "nativeBoardReviewed": true,
+  "nativeChecks": 22,
+  "nativeFailures": 0,
+  "nativeCaptures": 1,
+  "geometry": [
+    {
+      "label": "original",
+      "bounds": [
+        89,
+        77,
+        157,
+        225
+      ],
+      "height": 148
+    },
+    {
+      "label": "candidate",
+      "bounds": [
+        89,
+        76,
+        157,
+        225
+      ],
+      "height": 149
+    }
+  ],
+  "alpha128SilhouetteIoU": 0.9785814061772466,
+  "silhouetteExact": false,
+  "sourceAcceptance": false,
+  "selected": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "findings": [
+    "Existing planted pose anchor preserves gross registration: original148high/crown77/sole224, candidate149/crown76/sole224. One global1254to256 canvas resize; no body-fit or pose translation.",
+    "Fine quilt and restrained charcoal surface detail closer to original master; raw and native148/82/54/27 comparisons reviewed. Equipment remains on belt and case held; exact hardware/detail/case identity still needs sequence-wide review.",
+    "Whole raw generated silhouette is not byte-exact: same horizontal bounds do not prove same anatomy. Bare single source only; no helmet, full turn, endpoint joins, moving contacts or ordinary arrival integration."
+  ]
+}

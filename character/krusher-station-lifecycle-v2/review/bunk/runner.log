@@ -1,0 +1,15 @@
+{"timeout": true, "ownerFilesChanged": []}
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Brine Space\character\krusher-station-lifecycle-v2\run_bunk.py", line 13, in <module>
+    run=subprocess.run([str(godot),'--path',str(R),'--rendering-method','gl_compatibility','--resolution','1200x720','-s','res://character/krusher-station-lifecycle-v2/native/bunk.gd'],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+  File "C:\Python314\Lib\subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1240, in communicate
+    sts = self.wait(timeout=self._remaining_time(endtime))
+  File "C:\Python314\Lib\subprocess.py", line 1279, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 1608, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['C:\\Users\\Alex\\Desktop\\Projects\\Godot_v4.7.2\\Godot_v4.7.2-stable_win64.exe', '--path', 'C:\\Users\\Alex\\Documents\\Brine Space', '--rendering-method', 'gl_compatibility', '--resolution', '1200x720', '-s', 'res://character/krusher-station-lifecycle-v2/native/bunk.gd']' timed out after 120 seconds

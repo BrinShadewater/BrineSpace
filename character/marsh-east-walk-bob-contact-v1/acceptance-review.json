@@ -1,0 +1,83 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "sourceReviewSha256": "1b2abcb358736485e239c51b2b8491ea2c7a9fe01b5b7a1456572d31b9706919",
+  "nativeVerificationSha256": "a01f0988f7a3a56842c88c3259a930f582a18bc762efc9d4a27a584424a77e71",
+  "allTestedInputHashesStillExact": 5419,
+  "registeredOpaqueBounds": [
+    [
+      58,
+      24,
+      128,
+      170
+    ],
+    [
+      63,
+      23,
+      111,
+      171
+    ],
+    [
+      72,
+      22,
+      116,
+      171
+    ],
+    [
+      56,
+      24,
+      128,
+      171
+    ],
+    [
+      62,
+      22,
+      110,
+      168
+    ],
+    [
+      69,
+      22,
+      115,
+      168
+    ]
+  ],
+  "crowns": [
+    24,
+    23,
+    22,
+    24,
+    22,
+    22
+  ],
+  "visualFindings": [
+    "Three complete raw whole-pose figures, native family/joins board and2xhead board inspected.",
+    "Original first-half bob recovered toward original geometry; phase5 face darker and more consistent. Registered crowns24,23,22,24,22,22; original23,22,21,23,22,21. Small asymmetry/residual remains.",
+    "Phase1 sole1pixel high corrected with wholeRGBA Y+1/no visible loss. All six same-root source sole depths pass actual normal actor/main/grid routes.",
+    "Earlier enlarged colored edge samples all alpha1/255, not evidence of opaque fringe. Raw alpha preserved; no threshold cleanup."
+  ],
+  "reviewedSourceBoards": [
+    {
+      "path": "character/marsh-east-walk-bob-polish-v1/family-joins-native.png",
+      "sha256": "14242fb3913d19eb315d53db13779d0647e6678822bdbba74cafbf4bd1736f26"
+    },
+    {
+      "path": "character/marsh-east-walk-bob-polish-v1/heads-2x.png",
+      "sha256": "43136b3db445eb8e3bd1720853196b629cc68a70f31fa9a9936afe4634a4f2e3"
+    }
+  ],
+  "browser": {
+    "url": "http://127.0.0.1:8764/marsh-east-walk-bob-contact-v1/motion-review.html",
+    "htmlSha256": "9e8cc3c340a6b8aba8c911b7cf8fa1b9f41805f0ec8ffd008f623d184e8ecf6e",
+    "screenshotSha256": "212652041c530c5dd77d218a540e9cbfd9f6c70597b2e7eb93ecc9414662b7cb",
+    "observations": [
+      "normal phase0clock83draw6",
+      "quarter phase5clock6276draw384",
+      "screenshot quarter phase3clock8682draw961",
+      "quarter phase4clock10538draw1406",
+      "paused phase2clock12126draw1798"
+    ],
+    "scope": "Sampled advancing browser and controls; no continuously watched full-loop cadence acceptance."
+  },
+  "next": "Resolve remaining bob symmetry/head grade against idle/start/stop; continuously reviewed cadence and broader natural/save/full-set checks remain."
+}

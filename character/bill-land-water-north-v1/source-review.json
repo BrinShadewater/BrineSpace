@@ -1,0 +1,134 @@
+{
+  "scope": "North entry source development; one provisional early crouch, later phases rejected/pending. No complete bank, animation timing, helmet, native integration or acceptance.",
+  "authority": "character/bill-video-north-v5/master-source.png",
+  "registrations": [
+    {
+      "name": "original master",
+      "status": "authority",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "masterDefinedDensity": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        52
+      ],
+      "nativeAlphaBounds": [
+        123,
+        74,
+        197,
+        227
+      ],
+      "sourceSHA256": "c71f05e3235662e6db4574ef47c581d218d153825345db79be2cb147d97c09c8",
+      "scope": "Fixed sole-line diagnostic only; not final water/root registration or pose approval."
+    },
+    {
+      "name": "crouch v2",
+      "status": "provisional early squat",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "masterDefinedDensity": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        53
+      ],
+      "nativeAlphaBounds": [
+        125,
+        101,
+        195,
+        227
+      ],
+      "sourceSHA256": "449ed2ecc563d456faec688ba5e61f1f068faba45b841ab87d1cb8beadd8ea82",
+      "scope": "Fixed sole-line diagnostic only; not final water/root registration or pose approval."
+    },
+    {
+      "name": "push v2",
+      "status": "reject: drawing density too small",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "masterDefinedDensity": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        50
+      ],
+      "nativeAlphaBounds": [
+        136,
+        98,
+        184,
+        227
+      ],
+      "sourceSHA256": "5fbfcf0d3609a5b2bb445dc5dca7f2383d0f4b97a9c4a6a7fd30346045ef2b7a",
+      "scope": "Fixed sole-line diagnostic only; not final water/root registration or pose approval."
+    },
+    {
+      "name": "push v3",
+      "status": "reject: lowered posture lost",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "masterDefinedDensity": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        43
+      ],
+      "nativeAlphaBounds": [
+        127,
+        51,
+        193,
+        227
+      ],
+      "sourceSHA256": "b0684aa8344fa97854ed91a5227decbdfb89315a6ee2ecf3f066cc55fcb1d4bd",
+      "scope": "Fixed sole-line diagnostic only; not final water/root registration or pose approval."
+    },
+    {
+      "name": "prone v1",
+      "status": "reject: foreshortening/width",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "masterDefinedDensity": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        46
+      ],
+      "nativeAlphaBounds": [
+        97,
+        62,
+        196,
+        227
+      ],
+      "sourceSHA256": "04e8c7970b430cc3df72e8bf94c623a791dbad1491caae3984a4dbeedf93b4df",
+      "scope": "Fixed sole-line diagnostic only; not final water/root registration or pose approval."
+    }
+  ],
+  "provenance": {
+    "rejected-crouch-canvas-v1.png": "exec-7fc85e68-4b58-44df-8d9d-c5af2064d803",
+    "crouch-canvas-v2.png": "exec-7854b015-6129-4a7a-b52b-1ec82dca4ac4",
+    "rejected-push-canvas-v1.png": "exec-b199412d-b476-4fd8-b660-d127c1794dd3",
+    "push-canvas-v2.png": "exec-01afb59e-0e06-4c8b-b7a5-be6f0e5b4e87",
+    "push-canvas-v3.png": "exec-734b2695-c517-4f08-9e6f-ee4d5afaa46a",
+    "rejected-prone-canvas-v1.png": "exec-01209e51-a797-40f2-a7d7-10c53485da44"
+  },
+  "rawPromptSHA256": {
+    "crouch-canvas-v2.png": "449ed2ecc563d456faec688ba5e61f1f068faba45b841ab87d1cb8beadd8ea82",
+    "crouch-prompt-v1.txt": "b2571c51a505b069cc05a3e298755142d5889b870e9f4c34b58f323b2101d407",
+    "crouch-prompt-v2.txt": "3f1e7f18ab83697c9229683cf26b64c68d0b9cc7be61cb56b61575cba7e69819",
+    "prone-prompt-v1.txt": "a5b5e8e691fffb9b788d417745bd2bc5feeeeeaf8a8d1438c75b3dda3a4d1d4a",
+    "push-canvas-v2.png": "5fbfcf0d3609a5b2bb445dc5dca7f2383d0f4b97a9c4a6a7fd30346045ef2b7a",
+    "push-canvas-v3.png": "b0684aa8344fa97854ed91a5227decbdfb89315a6ee2ecf3f066cc55fcb1d4bd",
+    "push-prompt-v1.txt": "16e365b5d94172092e5fdaee25fd825a577f8aa424a9a2f0d547fe30a28ede8d",
+    "push-prompt-v2.txt": "7b2f960edb685dae9c5eb79e614af9c6570c462e065bfd6079f1b0bf390a60f9",
+    "push-prompt-v3.txt": "9415b5ca5179f75e51b8feb3ea3728373504bbe31ee808a85ccf54ad1a6228e5",
+    "rejected-crouch-canvas-v1.png": "d642a138237b9319fee56545094e32147fe54bf7659df90d925d6b0a7616e90d",
+    "rejected-prone-canvas-v1.png": "04e8c7970b430cc3df72e8bf94c623a791dbad1491caae3984a4dbeedf93b4df",
+    "rejected-push-canvas-v1.png": "a953e9085004a46008a288e3881778094ec7d7d0a3966aaf22ac33d68edfa7c1"
+  },
+  "visualReview": "Raw six candidates and five-column fixed-master-density/sole-line board inspected. Crouchv2 retains a plausibly matching small rear head, backpack, matte quilt detail and lowered body; provisional only. Pushv2 shrinks component drawing density; pushv3 restores component size but loses lowered foreshortening; pronev1 remains too upright/elongated. Other rejected candidates enlarged head/equipment or rolled camera. No later phase approved or complete bank inferred."
+}

@@ -1,0 +1,37 @@
+{
+  "checks": 27,
+  "failures": 0,
+  "all12AlphaPlanesExact": true,
+  "headAndHelmetPixelsExact": true,
+  "registrationAndTimingExact": true,
+  "materialSamples": {
+    "master": {
+      "kneeMedianLuma": 91.66666666666667,
+      "knee90thLuma": 144.53333333333333,
+      "goldMedianRGB": [
+        137.0,
+        115.0,
+        53.0
+      ]
+    },
+    "before": {
+      "kneeMedianLuma": 105.5,
+      "knee90thLuma": 165.36666666666667,
+      "goldMedianRGB": [
+        154.0,
+        120.0,
+        46.5
+      ]
+    },
+    "after": {
+      "kneeMedianLuma": 90.0,
+      "knee90thLuma": 129.20000000000002,
+      "goldMedianRGB": [
+        142.0,
+        123.0,
+        54.5
+      ]
+    }
+  },
+  "method": "One fixed material curve + gold RGB multipliers, rebuilt from unchanged source; no per-frame exposure"
+}

@@ -1,0 +1,455 @@
+{
+  "checks": 1283,
+  "errors": [],
+  "joins": [
+    {
+      "gear": "bare",
+      "from": "pickup-south",
+      "to": "carry-south",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "unload-south",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "unload-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-north",
+      "to": "carry-north",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "unload-north",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-west",
+      "to": "carry-west",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "unload-west",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-south",
+      "to": "carry-south",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "unload-south",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "unload-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-north",
+      "to": "carry-north",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "unload-north",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-west",
+      "to": "carry-west",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "unload-west",
+      "sourceEqual": true,
+      "candidateEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-west",
+      "to": "carry-west",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-east",
+      "to": "carry-east",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-north",
+      "to": "carry-north",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-south",
+      "to": "carry-south",
+      "sourceEqual": false,
+      "candidateEqual": false
+    }
+  ],
+  "scope": "Input/output/head hashes; source body, case/hands/lower limbs; helmet alpha; source clocks/flags/stride/registration and exact shared-source endpoints"
+}

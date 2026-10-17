@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><title>Bill locomotion consistency</title>
+<style>body{background:#152027;color:#e6eff1;font:16px system-ui;margin:24px}p{max-width:90ch;color:#bdd0d2}select{font:inherit;padding:8px}img{display:block;width:100%;margin-top:16px}</style>
+<h1>Bill · idle / walk / run consistency</h1>
+<p>Current selected artwork at common 148 and 82 pixel anatomical density. Each direction shows bare walk, bare run, helmet walk and helmet run against its selected idle master. Walk rows sample eight phases; run rows show all six. This is a source comparison, not whole-station playback or final acceptance.</p>
+<p>Review notes: matte color reads broadly consistent in the reviewed samples. Run lean, head/collar continuity and natural vertical compression still need moving comparisons at the idle–walk–run boundaries. The separate south-east walk now uses its narrowed v7 atlas and native quarter helmet in the normal catalog. Its earlier rejected sheet seam and repeated leading-leg candidates remain archived. <a href="join-review.html">Moving source join review</a></p>
+<label>Direction <select id="direction"><option value="east">East</option><option value="west">West</option><option value="south">South</option><option value="north">North</option></select></label>
+<img id="review" src="east-review.png" alt="Selected east idle, walk and run comparisons">
+<script>document.querySelector('#direction').onchange=e=>{let image=document.querySelector('#review');image.src=e.target.value+'-review.png';image.alt='Selected '+e.target.value+' idle, walk and run comparisons'};</script>

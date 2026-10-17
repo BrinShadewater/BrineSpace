@@ -1,0 +1,105 @@
+{
+  "name": "James West unload paired rise v4 bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "unselected_native_motion_review_pending",
+  "strideDistanceCells": {
+    "carry-east": 0.0872972972972973,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.07351351351351351,
+    "carry-north": 0.0827027027027027
+  },
+  "states": [
+    {
+      "id": "unload-west",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/000.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/001.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/002.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/003.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/004.png",
+        "res://character/james-floor-case-west-v1/rise-v4/bare/000.png",
+        "res://character/james-cargo-material-joined-v1/frames/bare/unload-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pickup-v1.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "fixedScale": 0.30390143737166325,
+        "registration": "Fixed source floor; planted rear boot horizontal camera registration",
+        "derivation": "Independent pickup; exact reversed unloading; idle and carry endpoints selected pixels",
+        "matte": "Fixed east-matte-v2 curve, once; warm and yellow protected",
+        "materialCorrection": {
+          "donorPack": "james-cargo-west-v1",
+          "fixedGoldGain": [
+            0.84,
+            0.93,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        }
+      }
+    }
+  ]
+}

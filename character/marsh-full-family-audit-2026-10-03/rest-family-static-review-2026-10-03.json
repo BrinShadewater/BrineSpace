@@ -1,0 +1,1329 @@
+{
+  "inventorySha256": "8f68fcb6d722c5052eccadda0b736801d12aa67f59094ca9c9937e207e79c4f0",
+  "boards": [
+    {
+      "family": "bunk-enter",
+      "board": "character/marsh-full-family-audit-2026-10-03/bunk-enter-contact.png",
+      "boardSha256": "2be8f855adb84ada8ae1ce8ffe4b4f7a73eadd4b4215c50988cb821f6825c4bc",
+      "sourceStates": {
+        "bunk-enter-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p128-224.json",
+          "manifestSha256": "bbddced7f65d88f583bc9da0cd2f9f21e5f12be935b3374771ffec873da00e11",
+          "pivot": [
+            128,
+            224
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            120,
+            240,
+            300,
+            300,
+            300,
+            300,
+            280
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/supplemental/bunk-east/bare/000.png",
+              "sha256": "0ca039befabbd2137bd18f6fd851af598f994094d8ec2b24b304ec998d731d96",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                111,
+                77,
+                143,
+                224
+              ],
+              "occupiedSize": [
+                32,
+                147
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/001.png",
+              "sha256": "d56700cf9e9b75253937bdac7cefa16ca1e00a43a56188135d55c8c45a9c28e1",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                88,
+                105,
+                156,
+                226
+              ],
+              "occupiedSize": [
+                68,
+                121
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/002.png",
+              "sha256": "68e0dc2acef949877416b90c850854b1a071d751b5b79d344a014321ef018a0b",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                82,
+                111,
+                143,
+                226
+              ],
+              "occupiedSize": [
+                61,
+                115
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/003.png",
+              "sha256": "eecdfa893e2ac5f472f87f42a854302fc9f9b8948fecac278ac5785472d2d5a1",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                80,
+                153,
+                186,
+                265
+              ],
+              "occupiedSize": [
+                106,
+                112
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/004.png",
+              "sha256": "ec52e1aa0c7dbecd6935a691aa91d387cc0cf68270f5710c54b8f0d89d7613c8",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                82,
+                169,
+                185,
+                224
+              ],
+              "occupiedSize": [
+                103,
+                55
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/005.png",
+              "sha256": "3b1da3bfa85298419339929fec3c7294a3469afb7eeed146f091fdc3a54560c5",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                77,
+                181,
+                179,
+                224
+              ],
+              "occupiedSize": [
+                102,
+                43
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-enter-east/006.png",
+              "sha256": "fd5295d9317f4d57e422d10436be510a3c27fbbc4b9f9a5b1d7ae0ef44bb88a3",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                60,
+                193,
+                178,
+                225
+              ],
+              "occupiedSize": [
+                118,
+                32
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "bunk-sleep",
+      "board": "character/marsh-full-family-audit-2026-10-03/bunk-sleep-contact.png",
+      "boardSha256": "513c436b9d40db633fccfb7192121f27c8f562cf4eee9338529a70c3396edec2",
+      "sourceStates": {
+        "bunk-sleep-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p128-224.json",
+          "manifestSha256": "bbddced7f65d88f583bc9da0cd2f9f21e5f12be935b3374771ffec873da00e11",
+          "pivot": [
+            128,
+            224
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            1000
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-sleep-east/000.png",
+              "sha256": "fd5295d9317f4d57e422d10436be510a3c27fbbc4b9f9a5b1d7ae0ef44bb88a3",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                60,
+                193,
+                178,
+                225
+              ],
+              "occupiedSize": [
+                118,
+                32
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "bunk-exit",
+      "board": "character/marsh-full-family-audit-2026-10-03/bunk-exit-contact.png",
+      "boardSha256": "bbd6482cd3d0d1436a6b42095664f0828030defdd774ff1c570fe8d369c5929a",
+      "sourceStates": {
+        "bunk-exit-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p128-224.json",
+          "manifestSha256": "bbddced7f65d88f583bc9da0cd2f9f21e5f12be935b3374771ffec873da00e11",
+          "pivot": [
+            128,
+            224
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            280,
+            300,
+            300,
+            300,
+            300,
+            240,
+            120
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/000.png",
+              "sha256": "fd5295d9317f4d57e422d10436be510a3c27fbbc4b9f9a5b1d7ae0ef44bb88a3",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                60,
+                193,
+                178,
+                225
+              ],
+              "occupiedSize": [
+                118,
+                32
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/001.png",
+              "sha256": "3b1da3bfa85298419339929fec3c7294a3469afb7eeed146f091fdc3a54560c5",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                77,
+                181,
+                179,
+                224
+              ],
+              "occupiedSize": [
+                102,
+                43
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/002.png",
+              "sha256": "ec52e1aa0c7dbecd6935a691aa91d387cc0cf68270f5710c54b8f0d89d7613c8",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                82,
+                169,
+                185,
+                224
+              ],
+              "occupiedSize": [
+                103,
+                55
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/003.png",
+              "sha256": "eecdfa893e2ac5f472f87f42a854302fc9f9b8948fecac278ac5785472d2d5a1",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                80,
+                153,
+                186,
+                265
+              ],
+              "occupiedSize": [
+                106,
+                112
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/004.png",
+              "sha256": "68e0dc2acef949877416b90c850854b1a071d751b5b79d344a014321ef018a0b",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                82,
+                111,
+                143,
+                226
+              ],
+              "occupiedSize": [
+                61,
+                115
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/bunk-exit-east/005.png",
+              "sha256": "d56700cf9e9b75253937bdac7cefa16ca1e00a43a56188135d55c8c45a9c28e1",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                88,
+                105,
+                156,
+                226
+              ],
+              "occupiedSize": [
+                68,
+                121
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-v2/supplemental/bunk-east/bare/000.png",
+              "sha256": "0ca039befabbd2137bd18f6fd851af598f994094d8ec2b24b304ec998d731d96",
+              "canvas": [
+                256,
+                272
+              ],
+              "bounds": [
+                111,
+                77,
+                143,
+                224
+              ],
+              "occupiedSize": [
+                32,
+                147
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "berth-lie",
+      "board": "character/marsh-full-family-audit-2026-10-03/berth-lie-contact.png",
+      "boardSha256": "8bae7d46fe3d5004141bdea9d44c05c74460b3d590b6cc757d13d8395536f0ca",
+      "sourceStates": {
+        "berth-lie-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            120,
+            300,
+            300,
+            300,
+            300,
+            280
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/supplemental/berth-east/000.png",
+              "sha256": "b2fb25c6ec3af50b28182081104d25033e90ea3681eb3dad3d70883e56625550",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                75,
+                25,
+                107,
+                172
+              ],
+              "occupiedSize": [
+                32,
+                147
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-lie-east/001.png",
+              "sha256": "ba15a5c0b52d78f582091273068bd5513d29b21c69dd7e2fa8d79c32e665249c",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                74,
+                39,
+                137,
+                166
+              ],
+              "occupiedSize": [
+                63,
+                127
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-lie-east/002.png",
+              "sha256": "87b8c86033f502d1dfdafddc50093b8f26fefe877774b976170b0f40606b89f8",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                72,
+                36,
+                146,
+                161
+              ],
+              "occupiedSize": [
+                74,
+                125
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-lie-east/003.png",
+              "sha256": "6578e5ac45b85edc07b61b72382f45ef15a386c02a04f18010cd111e04155c5a",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                42,
+                46,
+                135,
+                163
+              ],
+              "occupiedSize": [
+                93,
+                117
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-lie-east/004.png",
+              "sha256": "d4cea3aab236bf829bf15a88d0511df28fb7f60e01886d0efac3ead2b7464f15",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                54,
+                47,
+                132,
+                174
+              ],
+              "occupiedSize": [
+                78,
+                127
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-lie-east/005.png",
+              "sha256": "e6dd9e7ddfb96f16822d4b893854453ee4ac3af78465ec629d62a20b7bddba12",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                58,
+                47,
+                128,
+                178
+              ],
+              "occupiedSize": [
+                70,
+                131
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "berth-sleep",
+      "board": "character/marsh-full-family-audit-2026-10-03/berth-sleep-contact.png",
+      "boardSha256": "6f3b8043225eb6751adfbbd7d1f9d9653175066a0cc28b8728cc2dbcd0929478",
+      "sourceStates": {
+        "berth-sleep-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            1000
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-sleep-east/000.png",
+              "sha256": "e6dd9e7ddfb96f16822d4b893854453ee4ac3af78465ec629d62a20b7bddba12",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                58,
+                47,
+                128,
+                178
+              ],
+              "occupiedSize": [
+                70,
+                131
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "berth-rise",
+      "board": "character/marsh-full-family-audit-2026-10-03/berth-rise-contact.png",
+      "boardSha256": "a1715a78d6c22f6195c043dab0431478b194b270729cc5adc4e60187d8d58589",
+      "sourceStates": {
+        "berth-rise-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            280,
+            300,
+            300,
+            300,
+            300,
+            120
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-rise-east/000.png",
+              "sha256": "e6dd9e7ddfb96f16822d4b893854453ee4ac3af78465ec629d62a20b7bddba12",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                58,
+                47,
+                128,
+                178
+              ],
+              "occupiedSize": [
+                70,
+                131
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-rise-east/001.png",
+              "sha256": "d4cea3aab236bf829bf15a88d0511df28fb7f60e01886d0efac3ead2b7464f15",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                54,
+                47,
+                132,
+                174
+              ],
+              "occupiedSize": [
+                78,
+                127
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-rise-east/002.png",
+              "sha256": "6578e5ac45b85edc07b61b72382f45ef15a386c02a04f18010cd111e04155c5a",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                42,
+                46,
+                135,
+                163
+              ],
+              "occupiedSize": [
+                93,
+                117
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-rise-east/003.png",
+              "sha256": "87b8c86033f502d1dfdafddc50093b8f26fefe877774b976170b0f40606b89f8",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                72,
+                36,
+                146,
+                161
+              ],
+              "occupiedSize": [
+                74,
+                125
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/berth-rise-east/004.png",
+              "sha256": "ba15a5c0b52d78f582091273068bd5513d29b21c69dd7e2fa8d79c32e665249c",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                74,
+                39,
+                137,
+                166
+              ],
+              "occupiedSize": [
+                63,
+                127
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-v2/supplemental/berth-east/000.png",
+              "sha256": "b2fb25c6ec3af50b28182081104d25033e90ea3681eb3dad3d70883e56625550",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                75,
+                25,
+                107,
+                172
+              ],
+              "occupiedSize": [
+                32,
+                147
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "lie-down",
+      "board": "character/marsh-full-family-audit-2026-10-03/lie-down-contact.png",
+      "boardSha256": "d484765e8c82eacf48cea19b7ff61c0f576192068b98d609b6f28a2894db38e7",
+      "sourceStates": {
+        "lie-down-south": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            200.0,
+            200.0,
+            200.0,
+            200.0
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/frames/bare/lie-down-south/000.png",
+              "sha256": "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                63,
+                24,
+                121,
+                171
+              ],
+              "occupiedSize": [
+                58,
+                147
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-south/001.png",
+              "sha256": "e4b1dd35b34f9654ed2c88ffddbf30bad6595f5e55e95ecb418222aeb79af572",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                49,
+                81,
+                136,
+                172
+              ],
+              "occupiedSize": [
+                87,
+                91
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-south/002.png",
+              "sha256": "29cdace90f6c140cc150d597ea2bfacb339b98aa75977f275ea85c7bfe4d03a8",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                34,
+                92,
+                151,
+                172
+              ],
+              "occupiedSize": [
+                117,
+                80
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-south/003.png",
+              "sha256": "7e1b2f4e7840bf886e5e62a48aabd338be353822f09d3c023ac1de838ee8602d",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                129,
+                155,
+                172
+              ],
+              "occupiedSize": [
+                125,
+                43
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "lie-down-north": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            200.0,
+            200.0,
+            200.0,
+            200.0
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/frames/bare/lie-down-north/000.png",
+              "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                65,
+                25,
+                120,
+                171
+              ],
+              "occupiedSize": [
+                55,
+                146
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-north/001.png",
+              "sha256": "1acb95c0d68a3b21dba0140b2279ce85f51bc55e29a8e5dbc996b14a95fe70cf",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                54,
+                82,
+                131,
+                172
+              ],
+              "occupiedSize": [
+                77,
+                90
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-north/002.png",
+              "sha256": "13f7f6f42110f649810bf3c4a4e02aaec30eba172c6217bd9f7de125f98e72f5",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                29,
+                82,
+                156,
+                172
+              ],
+              "occupiedSize": [
+                127,
+                90
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-north/003.png",
+              "sha256": "1d83967284d6607f6f6e0a0efc1ed08de6a21ccb27a5f538b0fd56be6b8909d9",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                131,
+                154,
+                172
+              ],
+              "occupiedSize": [
+                124,
+                41
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "lie-down-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            200.0,
+            200.0,
+            200.0,
+            200.0
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/frames/bare/lie-down-east/000.png",
+              "sha256": "b2fb25c6ec3af50b28182081104d25033e90ea3681eb3dad3d70883e56625550",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                75,
+                25,
+                107,
+                172
+              ],
+              "occupiedSize": [
+                32,
+                147
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-east/001.png",
+              "sha256": "07b110c406536bf26d8fd3bef2f7a87912d3e260da5c3477c8452394782543dd",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                48,
+                84,
+                137,
+                172
+              ],
+              "occupiedSize": [
+                89,
+                88
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-east/002.png",
+              "sha256": "0a08105f5d9309f3167f39e1d764787269e92a61a65199c1dfc76a98863eefb2",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                29,
+                87,
+                155,
+                172
+              ],
+              "occupiedSize": [
+                126,
+                85
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-east/003.png",
+              "sha256": "6dec94a1f2bbd5e986ab35514585805f6dccd2b0340d15355b6db580f0f41339",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                23,
+                135,
+                161,
+                172
+              ],
+              "occupiedSize": [
+                138,
+                37
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "lie-down-west": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            200.0,
+            200.0,
+            200.0,
+            200.0
+          ],
+          "loop": false,
+          "frames": [
+            {
+              "path": "character/marsh-v2/frames/bare/lie-down-west/000.png",
+              "sha256": "5748175c17c1306874c549a6d43582ac04bc13d4637c23a3107a9744b9e0e9f2",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                76,
+                25,
+                107,
+                172
+              ],
+              "occupiedSize": [
+                31,
+                147
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-west/001.png",
+              "sha256": "faeb40ce806f5421a5b438baa67519d1fcdae6cd1f9a0917a813ae35fa6c2701",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                40,
+                81,
+                145,
+                172
+              ],
+              "occupiedSize": [
+                105,
+                91
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-west/002.png",
+              "sha256": "3816301a69b44626883ae90df2834775a4d6a58955b8faa1621280478d2b3092",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                31,
+                83,
+                153,
+                172
+              ],
+              "occupiedSize": [
+                122,
+                89
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/lie-down-west/003.png",
+              "sha256": "b50b4574b6020c616fd9f650b4709aa57ac3b6a707464479638bc0c7866d4513",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                20,
+                128,
+                165,
+                172
+              ],
+              "occupiedSize": [
+                145,
+                44
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    },
+    {
+      "family": "sleep",
+      "board": "character/marsh-full-family-audit-2026-10-03/sleep-contact.png",
+      "boardSha256": "63e4ae31f586073c5b8bf90e252056e22d6aa4fe1b701499ed21c9cb21ac3207",
+      "sourceStates": {
+        "sleep-south": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            900.0,
+            900.0
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-south/000.png",
+              "sha256": "7e1b2f4e7840bf886e5e62a48aabd338be353822f09d3c023ac1de838ee8602d",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                129,
+                155,
+                172
+              ],
+              "occupiedSize": [
+                125,
+                43
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-south/001.png",
+              "sha256": "b1eafbb80d4623d8ce9a62434aa8b03ce0e164b99c35f72b4ff67ad7ac0b67e8",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                130,
+                154,
+                172
+              ],
+              "occupiedSize": [
+                124,
+                42
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "sleep-north": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            900.0,
+            900.0
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-north/000.png",
+              "sha256": "1d83967284d6607f6f6e0a0efc1ed08de6a21ccb27a5f538b0fd56be6b8909d9",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                131,
+                154,
+                172
+              ],
+              "occupiedSize": [
+                124,
+                41
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-north/001.png",
+              "sha256": "b2573afae0cf5c3c248afc37cc3e4a35b228759c9af076f780f7644b754d5cc7",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                30,
+                132,
+                155,
+                172
+              ],
+              "occupiedSize": [
+                125,
+                40
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "sleep-east": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            900.0,
+            900.0
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-east/000.png",
+              "sha256": "6dec94a1f2bbd5e986ab35514585805f6dccd2b0340d15355b6db580f0f41339",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                23,
+                135,
+                161,
+                172
+              ],
+              "occupiedSize": [
+                138,
+                37
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-east/001.png",
+              "sha256": "27a9c53562cab1b1ab863b2d1e76efc7f97878f874f163ba1fd50ae426b43986",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                24,
+                136,
+                160,
+                172
+              ],
+              "occupiedSize": [
+                136,
+                36
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        },
+        "sleep-west": {
+          "manifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+          "manifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+          "pivot": [
+            92.0,
+            172.0
+          ],
+          "standingHeight": 148,
+          "durationsMs": [
+            900.0,
+            900.0
+          ],
+          "loop": true,
+          "frames": [
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-west/000.png",
+              "sha256": "b50b4574b6020c616fd9f650b4709aa57ac3b6a707464479638bc0c7866d4513",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                20,
+                128,
+                165,
+                172
+              ],
+              "occupiedSize": [
+                145,
+                44
+              ],
+              "edgeContact": false
+            },
+            {
+              "path": "character/marsh-master-repair-v1/frames/sleep-west/001.png",
+              "sha256": "6023983c75067bed874c04f18c9c309e411e1d0e22a17d23a435d64561ca7528",
+              "canvas": [
+                184,
+                184
+              ],
+              "bounds": [
+                22,
+                129,
+                163,
+                172
+              ],
+              "occupiedSize": [
+                141,
+                43
+              ],
+              "edgeContact": false
+            }
+          ],
+          "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+        }
+      },
+      "actuallyInspected": true
+    }
+  ],
+  "findings": [
+    "Bunk entry folds through seated/support and reclining whole poses; sleep retains its final source and exit reverses the whole sequence.",
+    "Berth uses a distinct reclined frontal body orientation after its East standing origin. Preserve supported furniture choreography rather than inferring missing directions from keys.",
+    "Generic lie-down/sleep retain four directions and natural body flexion; do not independently fit the low projected occupied heights.",
+    "Static source inspection shows connected body/head/limbs and retained standing anchors; native contact, timing and persistence need current scoped evidence.",
+    "Maintained bunk/berth tests were stale: their source assertions referenced old supplemental drawings instead of current repaired selections. Bind literal exact selected paths after source-hash review; preserve all behavioral assertions and original default capture directories, with optional dated output."
+  ],
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "continuousContactAccepted": false
+}

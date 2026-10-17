@@ -1,0 +1,3837 @@
+{
+  "idle-east": {
+    "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+    "metadata": {
+      "name": "marsh-v2-bare-184x184-p92.0-172.0",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "strideDistanceCells": {
+        "run": 0.16,
+        "walk": 0.12,
+        "run-east": 0.11027027027027027,
+        "run-north": 0.11027027027027027,
+        "run-south": 0.11027027027027027,
+        "run-west": 0.11027027027027027,
+        "walk-east": 0.11027027027027027,
+        "walk-north": 0.128,
+        "walk-south": 0.128,
+        "walk-west": 0.14472972972972975,
+        "carry-east": 0.0827027027027027,
+        "carry-north": 0.0827027027027027,
+        "carry-south": 0.0827027027027027,
+        "carry-west": 0.0827027027027027
+      },
+      "precomposed": true
+    },
+    "state": {
+      "id": "idle-east",
+      "frameFiles": [
+        "../../frames/bare/idle-east/000.png",
+        "../../frames/bare/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+        "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a",
+        "bbox": [
+          75,
+          25,
+          107,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-east/001.png",
+        "sha256": "e26a6e649423660cba707e879a446313092364b11c2d4b7d1703aa282356340a",
+        "bbox": [
+          73,
+          24,
+          108,
+          172
+        ]
+      }
+    ]
+  },
+  "walk-east": {
+    "manifest": "character/marsh-v2/supplemental/east-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-east",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/000.png",
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/001.png",
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/002.png",
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/003.png",
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/004.png",
+        "res://character/marsh-v2/supplemental/east-walk-polish-v1/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/000.png",
+        "sha256": "af3a2641126c9375853cad26b1fad924638f0812622256e57aae4736b94237d1",
+        "bbox": [
+          55,
+          7,
+          130,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/001.png",
+        "sha256": "9e0e0d34bd2106c181fc81c316c3582b8ba5558c4d9821a1bcc91758d2eab40a",
+        "bbox": [
+          61,
+          20,
+          113,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/002.png",
+        "sha256": "28ee668169ea2378e724279a8dd45b23b91a9b6056454806accd38ef699b839f",
+        "bbox": [
+          69,
+          19,
+          119,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/003.png",
+        "sha256": "44923774c28535538ab0e3a62208a7b18db24edec75ba9eacff1d5c29732cff4",
+        "bbox": [
+          31,
+          7,
+          131,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/004.png",
+        "sha256": "8675623bbee7f467d1a2aefdbd1680b05d768cd4f204f53c20b65c5092fb4d2d",
+        "bbox": [
+          59,
+          19,
+          113,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/east-walk-polish-v1/005.png",
+        "sha256": "9f6575242c88037ce00da3724dfa8cf03a0f9d92d53076919f0e7ac2e94ae664",
+        "bbox": [
+          67,
+          19,
+          118,
+          171
+        ]
+      }
+    ]
+  },
+  "run-east": {
+    "manifest": "character/marsh-east-run-material-v1/candidate-03/manifest.json",
+    "metadata": {
+      "revision": "marsh-east-run-material-03-unselected",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "strideDistanceCells": {
+        "run-east": 0.11027027027027027
+      }
+    },
+    "state": {
+      "id": "run-east",
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png"
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/000.png",
+        "sha256": "ce3e5182b19b03f5a3e2a07dc0a48201bc7e56faf022ca98d19b000b82abbcb3",
+        "bbox": [
+          41,
+          27,
+          144,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/001.png",
+        "sha256": "2893c24e97943fc5bcde9203678825f1d205e5adee040ae3e497885fb2c7b7de",
+        "bbox": [
+          58,
+          26,
+          126,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/002.png",
+        "sha256": "07df2c8368b437800a8e19e51323305447bf18dd7f849536a5d9944ee9bad553",
+        "bbox": [
+          44,
+          25,
+          140,
+          161
+        ]
+      },
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/003.png",
+        "sha256": "261d19b46bd393463c338301ce7280b9baca6ca4519ae90c904b305e3a52c251",
+        "bbox": [
+          42,
+          26,
+          143,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/004.png",
+        "sha256": "d8d529b4e91b436fe321a0aa5a2a2afc00d79660662cf633b652ee312b3b62bf",
+        "bbox": [
+          58,
+          28,
+          126,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-east-run-material-v1/candidate-03/005.png",
+        "sha256": "0668229c40fb011342cf8cfc9e61a029a58c2014aefd7f9e81f85825039e44e1",
+        "bbox": [
+          47,
+          25,
+          137,
+          165
+        ]
+      }
+    ]
+  },
+  "walk-start-east": {
+    "manifest": "character/marsh-v2/supplemental/ground-east/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-start-east",
+      "frameFiles": [
+        "walk-start-east-000.png",
+        "walk-start-east-001.png",
+        "walk-start-east-002.png",
+        "walk-start-east-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-start-east-000.png",
+        "sha256": "42cf2e1eb1c28489f7502bf024488fc6dde3a88b9db6daf8099ff07b1b4444ed",
+        "bbox": [
+          112,
+          78,
+          146,
+          224
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-start-east-001.png",
+        "sha256": "c02fdb186b2d150a80c372fcc68e2dfe75d0c5c175a444bfac697e1a61e66920",
+        "bbox": [
+          110,
+          78,
+          153,
+          222
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-start-east-002.png",
+        "sha256": "23a742c67083ac4c9e9062f1b7965cd5d3cf5d30eb4457e3f73ce54b336b28ed",
+        "bbox": [
+          106,
+          77,
+          162,
+          221
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-start-east-003.png",
+        "sha256": "83ec380f1586e396f72ec5adecc2414beaa9b35a16038c3cab323adbe6dc08d5",
+        "bbox": [
+          100,
+          79,
+          164,
+          223
+        ]
+      }
+    ]
+  },
+  "walk-stop-east": {
+    "manifest": "character/marsh-v2/supplemental/ground-east/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-stop-east",
+      "frameFiles": [
+        "walk-stop-east-000.png",
+        "walk-stop-east-001.png",
+        "walk-stop-east-002.png",
+        "walk-stop-east-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-stop-east-000.png",
+        "sha256": "81132fd72ecad7e8ae719b4910804296231f5c141bf398d46b91edff5b904377",
+        "bbox": [
+          102,
+          79,
+          163,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-stop-east-001.png",
+        "sha256": "39f3de83e0c8722aeb3fa515679bfc9235664a7f5149c36ee170d69c66c3b964",
+        "bbox": [
+          107,
+          79,
+          157,
+          224
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-stop-east-002.png",
+        "sha256": "9d4394637c67d9a1bec170985cbd0c05c30e993dbb0113af247a35937699ea46",
+        "bbox": [
+          111,
+          77,
+          148,
+          224
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-stop-east-003.png",
+        "sha256": "2a47450a2a1813d5b5cd9f96d6888dcfc102235c9f2f1d602a14177c12437105",
+        "bbox": [
+          111,
+          77,
+          145,
+          224
+        ]
+      }
+    ]
+  },
+  "walk-step-east": {
+    "manifest": "character/marsh-v2/supplemental/ground-east/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-step-east",
+      "frameFiles": [
+        "walk-step-east-000.png",
+        "walk-step-east-001.png",
+        "walk-step-east-002.png",
+        "walk-step-east-003.png",
+        "walk-step-east-004.png",
+        "walk-step-east-005.png",
+        "walk-step-east-006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-000.png",
+        "sha256": "3c95e6bb090b42649a572bf9224a3804f53c28dbd9d113d0e7d88beef5a95937",
+        "bbox": [
+          111,
+          77,
+          144,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-001.png",
+        "sha256": "924db08fc51337c782149255a87f9d1ae1c3083b41cbce5cc118253cd063582e",
+        "bbox": [
+          111,
+          77,
+          149,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-002.png",
+        "sha256": "fa3a5a0b286f8b498040d3fa9a3987fa8a0de2da4b9960b571331bdd13a3558c",
+        "bbox": [
+          109,
+          78,
+          162,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-003.png",
+        "sha256": "d0ae1d6a6e180e757d7933e9c5f817de5a1ed3ff5afd71b75b404c5803ca0d40",
+        "bbox": [
+          102,
+          77,
+          156,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-004.png",
+        "sha256": "f36005474ed537c1e540847c53ff79dfd99c008986db5ddad687259b818b6d35",
+        "bbox": [
+          105,
+          77,
+          150,
+          221
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-005.png",
+        "sha256": "e8df26a1bd82cecb1b9825eea9b17171f811d6055a6c0334cb8df9f6fe2d7916",
+        "bbox": [
+          112,
+          77,
+          147,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-east/walk-step-east-006.png",
+        "sha256": "c2a2749cb58118edad722fdbfaf770572a21e119a64cfbde1cd1b157ba3942c5",
+        "bbox": [
+          111,
+          76,
+          145,
+          223
+        ]
+      }
+    ]
+  },
+  "idle-west": {
+    "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+    "metadata": {
+      "name": "marsh-v2-bare-184x184-p92.0-172.0",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "strideDistanceCells": {
+        "run": 0.16,
+        "walk": 0.12,
+        "run-east": 0.11027027027027027,
+        "run-north": 0.11027027027027027,
+        "run-south": 0.11027027027027027,
+        "run-west": 0.11027027027027027,
+        "walk-east": 0.11027027027027027,
+        "walk-north": 0.128,
+        "walk-south": 0.128,
+        "walk-west": 0.14472972972972975,
+        "carry-east": 0.0827027027027027,
+        "carry-north": 0.0827027027027027,
+        "carry-south": 0.0827027027027027,
+        "carry-west": 0.0827027027027027
+      },
+      "precomposed": true
+    },
+    "state": {
+      "id": "idle-west",
+      "frameFiles": [
+        "../../frames/bare/idle-west/000.png",
+        "../../frames/bare/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+        "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812",
+        "bbox": [
+          76,
+          25,
+          107,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-west/001.png",
+        "sha256": "003c4b673eb22bac7dbb6d912c9bc1b2904a44daa7f4ffce6b300fd7b7962af9",
+        "bbox": [
+          76,
+          25,
+          107,
+          172
+        ]
+      }
+    ]
+  },
+  "walk-west": {
+    "manifest": "character/marsh-v2/supplemental/west-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-west",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/000.png",
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/001.png",
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/002.png",
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/003.png",
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/004.png",
+        "res://character/marsh-v2/supplemental/west-walk-polish-v1/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/000.png",
+        "sha256": "a5f480c7a7fe5d7bb80b27d670cba8924010531fb600a9419a2351aad23276d9",
+        "bbox": [
+          31,
+          24,
+          137,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/001.png",
+        "sha256": "063e51bbec99615a754ef537833cd2b9a5e2200d1b22c67807053dfca37ddea2",
+        "bbox": [
+          67,
+          22,
+          116,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/002.png",
+        "sha256": "f73d230fb5d7092017a81605ebbc264f44713fa79ce6f6fab543701e08bdf13e",
+        "bbox": [
+          47,
+          22,
+          127,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/003.png",
+        "sha256": "9ed455a5cf64886172d5d2de6cf2e9eedaf3642f930adcc50a8551acf0f5a8de",
+        "bbox": [
+          55,
+          23,
+          139,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/004.png",
+        "sha256": "5e5f2bef84c75b91091ccab041d117d20dc9159d94c2a8a14693dac34399536d",
+        "bbox": [
+          68,
+          7,
+          114,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/west-walk-polish-v1/005.png",
+        "sha256": "50c565a89435de062c09414a0f4782f4bb3676ff707971ea8acdb4952746bedf",
+        "bbox": [
+          31,
+          10,
+          129,
+          174
+        ]
+      }
+    ]
+  },
+  "run-west": {
+    "manifest": "character/marsh-west-run-material-v1/candidate-02/manifest.json",
+    "metadata": {
+      "revision": "marsh-west-run-material-02-unselected",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "strideDistanceCells": {
+        "run-west": 0.11027027027027027
+      }
+    },
+    "state": {
+      "id": "run-west",
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/000.png",
+        "sha256": "9feea86f56fbdd60b26fdf61794c496d4a25c81aaa94f4d56af3117d9d16b6a7",
+        "bbox": [
+          56,
+          29,
+          129,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/001.png",
+        "sha256": "e1431c01a5bb2a734be160b9bcb788b6060ad89dc7607eb4fc91c24e73a983cc",
+        "bbox": [
+          67,
+          29,
+          118,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/002.png",
+        "sha256": "c76cad2ca2d3c1b155873cd999750b50d4b0974c7a0a25d700c8ba9ee9ac4055",
+        "bbox": [
+          48,
+          24,
+          136,
+          164
+        ]
+      },
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/003.png",
+        "sha256": "458772950054dd21e90d6a96edba5357de88be615875033a3386124df52741b0",
+        "bbox": [
+          48,
+          27,
+          137,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/004.png",
+        "sha256": "f4784c4aef3745e609b2abbde3a59bbc7f8e606527464f361bdfc97583787653",
+        "bbox": [
+          53,
+          27,
+          131,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-west-run-material-v1/candidate-02/005.png",
+        "sha256": "395a3cceff87263b6c76f84e37c9acbd59734ebf9e365f6849d82fb2a84c7602",
+        "bbox": [
+          53,
+          26,
+          131,
+          160
+        ]
+      }
+    ]
+  },
+  "walk-start-west": {
+    "manifest": "character/marsh-v2/supplemental/ground-west/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-start-west",
+      "frameFiles": [
+        "walk-start-west-000.png",
+        "walk-start-west-001.png",
+        "walk-start-west-002.png",
+        "walk-start-west-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-start-west-000.png",
+        "sha256": "4c5a9e939ae9dd6d5ea1695af8ecaa9249e8fa4aa525b843d7645b5cfff65ac9",
+        "bbox": [
+          114,
+          76,
+          145,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-start-west-001.png",
+        "sha256": "9cf87d532cdc3af060f746d1c24cd348dbda393df8b11a2127246ca9ce11e2fe",
+        "bbox": [
+          107,
+          77,
+          148,
+          222
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-start-west-002.png",
+        "sha256": "ffaf423c806f2d855effa7960b73cfb516364968f26d5038d62858379a3e2f36",
+        "bbox": [
+          98,
+          76,
+          153,
+          220
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-start-west-003.png",
+        "sha256": "fbfbee24e76da5adfcb947dbb2408d7a86a3fb726ca0f039c426013e6a61139b",
+        "bbox": [
+          95,
+          78,
+          161,
+          222
+        ]
+      }
+    ]
+  },
+  "walk-stop-west": {
+    "manifest": "character/marsh-v2/supplemental/ground-west/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-stop-west",
+      "frameFiles": [
+        "walk-stop-west-000.png",
+        "walk-stop-west-001.png",
+        "walk-stop-west-002.png",
+        "walk-stop-west-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-stop-west-000.png",
+        "sha256": "c8db32ebef80285d91093f928118a7b62220d5eebb215ef30f948a150dff3f45",
+        "bbox": [
+          96,
+          78,
+          157,
+          222
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-stop-west-001.png",
+        "sha256": "44ace5ee40e136721340fbf7f0052290bb668cb15d5bab9b31e1bd751e423a43",
+        "bbox": [
+          102,
+          77,
+          152,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-stop-west-002.png",
+        "sha256": "89bda4d2da451c4a6d4eaf0b3d9e3febab558df13f42313e2affffa6fe83c644",
+        "bbox": [
+          110,
+          77,
+          147,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-stop-west-003.png",
+        "sha256": "4761cebd351184276401d18b56e1fdf8e5741f250a80b366ca41f8ab2aeae6ec",
+        "bbox": [
+          113,
+          76,
+          146,
+          223
+        ]
+      }
+    ]
+  },
+  "walk-step-west": {
+    "manifest": "character/marsh-v2/supplemental/ground-west/manifest.json",
+    "metadata": {
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "pivot": [
+        128,
+        224
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-step-west",
+      "frameFiles": [
+        "walk-step-west-000.png",
+        "walk-step-west-001.png",
+        "walk-step-west-002.png",
+        "walk-step-west-003.png",
+        "walk-step-west-004.png",
+        "walk-step-west-005.png",
+        "walk-step-west-006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-000.png",
+        "sha256": "a051eec3802cbe64e8ebdd9c9fe766fb22e6356f01f7c3b114b0d40aae1dbf97",
+        "bbox": [
+          111,
+          76,
+          144,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-001.png",
+        "sha256": "20ad2beae5820bb44bf19b7bbbdb38e32545a7944c986b4dad8b75eae620c110",
+        "bbox": [
+          103,
+          76,
+          144,
+          219
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-002.png",
+        "sha256": "b7ad6c920207011b4cdab27be464e455ce13f468a99312c4054e11c562dd050a",
+        "bbox": [
+          97,
+          77,
+          142,
+          222
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-003.png",
+        "sha256": "9d245403d974c22498c6ddbe87064ecdb3c0af0eea4cb03af60457dd804e499c",
+        "bbox": [
+          97,
+          78,
+          142,
+          222
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-004.png",
+        "sha256": "b2e1b67fe2a3304b618227379f4be6e681612511d1722385d38d51587805a3d1",
+        "bbox": [
+          97,
+          77,
+          142,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-005.png",
+        "sha256": "9645cfa16ef3a2d4c9b036836bd85cbc04f7524699596fffabef6b94dcc1c3ad",
+        "bbox": [
+          107,
+          76,
+          144,
+          223
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/ground-west/walk-step-west-006.png",
+        "sha256": "33b3fc1ea67006cb57f7d7455afcef12fbcd549596a7b7e5b84127cf4fc4eb3d",
+        "bbox": [
+          111,
+          77,
+          144,
+          223
+        ]
+      }
+    ]
+  },
+  "idle-north": {
+    "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+    "metadata": {
+      "name": "marsh-v2-bare-184x184-p92.0-172.0",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "strideDistanceCells": {
+        "run": 0.16,
+        "walk": 0.12,
+        "run-east": 0.11027027027027027,
+        "run-north": 0.11027027027027027,
+        "run-south": 0.11027027027027027,
+        "run-west": 0.11027027027027027,
+        "walk-east": 0.11027027027027027,
+        "walk-north": 0.128,
+        "walk-south": 0.128,
+        "walk-west": 0.14472972972972975,
+        "carry-east": 0.0827027027027027,
+        "carry-north": 0.0827027027027027,
+        "carry-south": 0.0827027027027027,
+        "carry-west": 0.0827027027027027
+      },
+      "precomposed": true
+    },
+    "state": {
+      "id": "idle-north",
+      "frameFiles": [
+        "../../frames/bare/idle-north/000.png",
+        "../../frames/bare/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/001.png",
+        "sha256": "0c42903721f72288975f5994ee2e1e349edfe80f39fd224a7300aa945436e11b",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/000.png",
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/001.png",
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/002.png",
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/003.png",
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/004.png",
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/000.png",
+        "sha256": "a718612470f909565eff1aafee121446be028923066448d3c3507c392c1289c9",
+        "bbox": [
+          61,
+          22,
+          122,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/001.png",
+        "sha256": "9fbb4ec056d32244f6182d4cabed32d7628f274d7f7bb962d82df65cbc8aab55",
+        "bbox": [
+          61,
+          7,
+          123,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/002.png",
+        "sha256": "9eecdb6a6e28c8581fa218b063e90cc048c72535cd485f6451d2f5570e7bced4",
+        "bbox": [
+          60,
+          6,
+          122,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/003.png",
+        "sha256": "8cfc9230f8109dfc4b96e38537fcbc3e3d65f9ac47eb4dcc656f6b7c66e5aa48",
+        "bbox": [
+          59,
+          22,
+          122,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/004.png",
+        "sha256": "8adcd59aa249192a65233da924748b05ff24d3626ba0bd1cec1f918ddce3d38d",
+        "bbox": [
+          60,
+          7,
+          121,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/005.png",
+        "sha256": "1ef3c4c22508fd027d4a8e0dfea6928f1bdb8e5302f348419a7f9e451cf98a99",
+        "bbox": [
+          61,
+          7,
+          122,
+          173
+        ]
+      }
+    ]
+  },
+  "run-north": {
+    "manifest": "character/marsh-north-run-material-v1/candidate-03/manifest.json",
+    "metadata": {
+      "revision": "marsh-north-run-material-03-unselected",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "strideDistanceCells": {
+        "run-north": 0.11027027027027027
+      }
+    },
+    "state": {
+      "id": "run-north",
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/000.png",
+        "sha256": "d39fd8c98f0c422bf13756c4bc1fb53c0bba9c8e285ff81cf294e1405d269569",
+        "bbox": [
+          63,
+          24,
+          121,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/001.png",
+        "sha256": "e7519357ae54a1e93d740d8e0d2e8d6951f0ce8f39bd30b47239b16debde2107",
+        "bbox": [
+          64,
+          27,
+          121,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/002.png",
+        "sha256": "a846927363d2225d4211864ce3a35becc598c9d86747dbaf001d6adac92f4c59",
+        "bbox": [
+          64,
+          27,
+          121,
+          167
+        ]
+      },
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/003.png",
+        "sha256": "c11bdcbcdd5a69ab9219b3b7b5b98d6e5c6a94c1dbb0e1ad3937875c1cfc0fb2",
+        "bbox": [
+          62,
+          26,
+          121,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/004.png",
+        "sha256": "41b0b9b240d655575466068b50464ff6fa3b7be2caff03cc4158efec23eaeab5",
+        "bbox": [
+          61,
+          25,
+          123,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-run-material-v1/candidate-03/005.png",
+        "sha256": "550e7c06e993c177ce32e5e97c69e7021f6022db6c49fa37098e5da3be52f197",
+        "bbox": [
+          63,
+          27,
+          121,
+          159
+        ]
+      }
+    ]
+  },
+  "walk-start-north": {
+    "manifest": "character/marsh-north-walk-material-v1/candidate-01/north-start/manifest.json",
+    "metadata": {
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-start-north",
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-north-walk-material-v1/candidate-01/north-start/000.png",
+        "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-north-walk-material-v1/candidate-01/north-start/001.png",
+        "sha256": "16972a07e02fa95cadfdcdb642f22193db8737968467938b4149a50d465f1f4b",
+        "bbox": [
+          67,
+          24,
+          121,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-walk-material-v1/candidate-01/north-start/002.png",
+        "sha256": "191f13032451409f4737bd0f4cbfd785b4cb8511fe9fc0bcc0d1444b680ccd3c",
+        "bbox": [
+          66,
+          25,
+          121,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-walk-material-v1/candidate-01/north-start/003.png",
+        "sha256": "aa217bb8f7c1b02beb4c35ab2942abf0cf9b1da893398fa9d14000825e233321",
+        "bbox": [
+          65,
+          25,
+          122,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-north-walk-material-v1/candidate-01/north-start/004.png",
+        "sha256": "e13a5873608e5821642db482a0a68a430d4419adacd3c0ee4f935d92a7c4f840",
+        "bbox": [
+          64,
+          25,
+          119,
+          170
+        ]
+      }
+    ]
+  },
+  "walk-stop-p0-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p0-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/000.png",
+        "res://character/marsh-north-stop-v1/candidate-09/001.png",
+        "res://character/marsh-north-stop-v1/candidate-09/002.png",
+        "res://character/marsh-north-stop-v1/candidate-09/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/000.png",
+        "sha256": "a718612470f909565eff1aafee121446be028923066448d3c3507c392c1289c9",
+        "bbox": [
+          61,
+          22,
+          122,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/001.png",
+        "sha256": "86144a91d1f4ce1d707e331a55f4a0abff7bbd256d0588228269c11310105560",
+        "bbox": [
+          67,
+          25,
+          123,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/002.png",
+        "sha256": "6777a3c88d0aad888163e154f264ea7f9aa4dd9f33fd45a3c03f9eb9837f784b",
+        "bbox": [
+          67,
+          25,
+          124,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/003.png",
+        "sha256": "cf345e5eb3fba4ce7700aad2511232b86f0eedc888fbca801dd83abd1e574b58",
+        "bbox": [
+          66,
+          25,
+          122,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-p1-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p1-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/001.png",
+        "res://character/marsh-north-stop-v1/candidate-09/001.png",
+        "res://character/marsh-north-stop-v1/candidate-09/002.png",
+        "res://character/marsh-north-stop-v1/candidate-09/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/001.png",
+        "sha256": "9fbb4ec056d32244f6182d4cabed32d7628f274d7f7bb962d82df65cbc8aab55",
+        "bbox": [
+          61,
+          7,
+          123,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/001.png",
+        "sha256": "86144a91d1f4ce1d707e331a55f4a0abff7bbd256d0588228269c11310105560",
+        "bbox": [
+          67,
+          25,
+          123,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/002.png",
+        "sha256": "6777a3c88d0aad888163e154f264ea7f9aa4dd9f33fd45a3c03f9eb9837f784b",
+        "bbox": [
+          67,
+          25,
+          124,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/003.png",
+        "sha256": "cf345e5eb3fba4ce7700aad2511232b86f0eedc888fbca801dd83abd1e574b58",
+        "bbox": [
+          66,
+          25,
+          122,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-p2-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p2-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/002.png",
+        "res://character/marsh-north-stop-v1/candidate-09/003.png",
+        "res://character/marsh-north-stop-v1/candidate-09/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/002.png",
+        "sha256": "9eecdb6a6e28c8581fa218b063e90cc048c72535cd485f6451d2f5570e7bced4",
+        "bbox": [
+          60,
+          6,
+          122,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/003.png",
+        "sha256": "cf345e5eb3fba4ce7700aad2511232b86f0eedc888fbca801dd83abd1e574b58",
+        "bbox": [
+          66,
+          25,
+          122,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-09/003.png",
+        "sha256": "cf345e5eb3fba4ce7700aad2511232b86f0eedc888fbca801dd83abd1e574b58",
+        "bbox": [
+          66,
+          25,
+          122,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-p3-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p3-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/003.png",
+        "res://character/marsh-north-stop-v1/candidate-12/001.png",
+        "res://character/marsh-north-stop-v1/candidate-12/002.png",
+        "res://character/marsh-north-stop-v1/candidate-12/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/003.png",
+        "sha256": "8cfc9230f8109dfc4b96e38537fcbc3e3d65f9ac47eb4dcc656f6b7c66e5aa48",
+        "bbox": [
+          59,
+          22,
+          122,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/001.png",
+        "sha256": "3dd2c934f3d6a2169fffab1995edc2cd0681303ede0e4b43872fa6b84ad8f6b7",
+        "bbox": [
+          62,
+          24,
+          119,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/002.png",
+        "sha256": "dad55a9a1e73f1f397f7d3e28d27d696bb84e8f0348a695005b98306697d2296",
+        "bbox": [
+          61,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/003.png",
+        "sha256": "6499669b74645940f7d21c054e3d0b9ac14f5b93706b8816e486d8468b0c1194",
+        "bbox": [
+          62,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-p4-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p4-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/004.png",
+        "res://character/marsh-north-stop-v1/candidate-12/001.png",
+        "res://character/marsh-north-stop-v1/candidate-12/002.png",
+        "res://character/marsh-north-stop-v1/candidate-12/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/004.png",
+        "sha256": "8adcd59aa249192a65233da924748b05ff24d3626ba0bd1cec1f918ddce3d38d",
+        "bbox": [
+          60,
+          7,
+          121,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/001.png",
+        "sha256": "3dd2c934f3d6a2169fffab1995edc2cd0681303ede0e4b43872fa6b84ad8f6b7",
+        "bbox": [
+          62,
+          24,
+          119,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/002.png",
+        "sha256": "dad55a9a1e73f1f397f7d3e28d27d696bb84e8f0348a695005b98306697d2296",
+        "bbox": [
+          61,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/003.png",
+        "sha256": "6499669b74645940f7d21c054e3d0b9ac14f5b93706b8816e486d8468b0c1194",
+        "bbox": [
+          62,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-p5-north": {
+    "manifest": "character/marsh-v2/supplemental/north-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-p5-north",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/north-walk-polish-v1/005.png",
+        "res://character/marsh-north-stop-v1/candidate-12/003.png",
+        "res://character/marsh-north-stop-v1/candidate-12/003.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png",
+        "res://character/marsh-v2/frames/bare/idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/005.png",
+        "sha256": "1ef3c4c22508fd027d4a8e0dfea6928f1bdb8e5302f348419a7f9e451cf98a99",
+        "bbox": [
+          61,
+          7,
+          122,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/003.png",
+        "sha256": "6499669b74645940f7d21c054e3d0b9ac14f5b93706b8816e486d8468b0c1194",
+        "bbox": [
+          62,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-stop-v1/candidate-12/003.png",
+        "sha256": "6499669b74645940f7d21c054e3d0b9ac14f5b93706b8816e486d8468b0c1194",
+        "bbox": [
+          62,
+          24,
+          118,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+        "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-step-north": {
+    "manifest": "character/marsh-north-step-v1/sequence-v2/manifest.json",
+    "metadata": {
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "state": {
+      "id": "walk-step-north",
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png",
+        "006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/000.png",
+        "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/001.png",
+        "sha256": "55f874c6689eb542589c769b7d551b6a969b2d128a87a0a29f5faa3d59441bb7",
+        "bbox": [
+          65,
+          25,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/002.png",
+        "sha256": "7f1810b84289442aa9d46aaf10a360c1eeddea53b03193bbe9a2c4fce159702d",
+        "bbox": [
+          70,
+          24,
+          125,
+          170
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/003.png",
+        "sha256": "1a8bd31421fd8c79e2b754791cb00704a2fbbfcd9c5933e2286066b35c95fdf4",
+        "bbox": [
+          68,
+          26,
+          122,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/004.png",
+        "sha256": "3007794e84d3bb20dfcbd177855661c2373ad56c406ced4cde8aaf81ec457100",
+        "bbox": [
+          65,
+          11,
+          124,
+          158
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/005.png",
+        "sha256": "cb158e4d52d41495a8bd2dba3d3ec49c4bfa5dab118eb7f0777f67e00e049bea",
+        "bbox": [
+          66,
+          19,
+          122,
+          165
+        ]
+      },
+      {
+        "path": "character/marsh-north-step-v1/sequence-v2/006.png",
+        "sha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836",
+        "bbox": [
+          65,
+          25,
+          120,
+          171
+        ]
+      }
+    ]
+  },
+  "idle-south": {
+    "manifest": "character/marsh-south-idle-material-v1/candidate-01/manifest.json",
+    "metadata": {
+      "name": "marsh-v2-bare-184x184-p92.0-172.0",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "strideDistanceCells": {
+        "run": 0.16,
+        "walk": 0.12,
+        "run-east": 0.11027027027027027,
+        "run-north": 0.11027027027027027,
+        "run-south": 0.11027027027027027,
+        "run-west": 0.11027027027027027,
+        "walk-east": 0.11027027027027027,
+        "walk-north": 0.128,
+        "walk-south": 0.128,
+        "walk-west": 0.14472972972972975,
+        "carry-east": 0.0827027027027027,
+        "carry-north": 0.0827027027027027,
+        "carry-south": 0.0827027027027027,
+        "carry-west": 0.0827027027027027
+      },
+      "precomposed": true
+    },
+    "state": {
+      "id": "idle-south",
+      "frameFiles": [
+        "000.png",
+        "001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/001.png",
+        "sha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+        "bbox": [
+          62,
+          23,
+          122,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+        "sha256": "89db7fd0351d9752fbcecab2a2a97e508e7b5e02312ab75efd1d0818ff7e01ff",
+        "bbox": [
+          61,
+          22,
+          124,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+        "sha256": "bccfb7a7ad283afd46f1414c8d88abb22d835680c4049df1f9974786f4d46645",
+        "bbox": [
+          59,
+          8,
+          124,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+        "sha256": "cffcc6bfec0147a41f3c83ee9aadb6345f3fdfbca5cc7ad5defb8409bb8e1b69",
+        "bbox": [
+          59,
+          22,
+          123,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+        "sha256": "c639391ef7dd11f89ebce02ee8ee738811002feebb217ab2fc64da39ca263cd5",
+        "bbox": [
+          60,
+          23,
+          129,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+        "sha256": "660d659fc84c9e5b83f3c5e38dd5d6733cf54740f2064e90d58bf02daee0e1d6",
+        "bbox": [
+          61,
+          22,
+          126,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/005.png",
+        "sha256": "c75d9a7607da6f17d336d369d9412e0a111ea9b7af7da0e74e8107561f564e3d",
+        "bbox": [
+          61,
+          22,
+          127,
+          172
+        ]
+      }
+    ]
+  },
+  "run-south": {
+    "manifest": "character/marsh-south-run-material-v1/candidate-05/manifest.json",
+    "metadata": {
+      "revision": "marsh-south-run-material-05-unselected",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "textureFilter": "nearest",
+      "strideDistanceCells": {
+        "run-south": 0.11027027027027027
+      }
+    },
+    "state": {
+      "id": "run-south",
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png"
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/000.png",
+        "sha256": "9f035473e20f5410347183b665f7a6920472b568115d31316558609ec38c18b5",
+        "bbox": [
+          61,
+          28,
+          124,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/001.png",
+        "sha256": "dd0d13f5125f9104b7f3adb6c1371b8bbbfc359985a5dc55c3befa7607293e98",
+        "bbox": [
+          60,
+          31,
+          124,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/002.png",
+        "sha256": "898b8b5c428dbb7c5666cd2b4be793046abc9f0b508bfa8753eebd3caabbbb36",
+        "bbox": [
+          61,
+          26,
+          124,
+          156
+        ]
+      },
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/003.png",
+        "sha256": "b674ea51bfbe39ad8a8134d20f7f133ef6654c2da32de0bf7d2a2c2dcb94459d",
+        "bbox": [
+          60,
+          26,
+          123,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/004.png",
+        "sha256": "778150791f54a2d9a6ee4774aa576771b478c1e7834b8c98827d37a1e3b977ea",
+        "bbox": [
+          60,
+          31,
+          123,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-run-material-v1/candidate-05/005.png",
+        "sha256": "a113bdefe8ecc38d886af53deb194b0db7c29f3383917305be5ca1f8b4ffcb59",
+        "bbox": [
+          61,
+          26,
+          124,
+          158
+        ]
+      }
+    ]
+  },
+  "walk-start-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-start-south",
+      "frameFiles": [
+        "res://character/marsh-south-idle-material-v1/candidate-01/south-start/000.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/south-start/001.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/south-start/002.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/south-start/003.png",
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/south-start/000.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/south-start/001.png",
+        "sha256": "8b2d6272e175006a5cb43dee18420e2141a44cd17372adb3f23f303c71fdc816",
+        "bbox": [
+          62,
+          23,
+          122,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/south-start/002.png",
+        "sha256": "13ce0e88ab65e77f761541224ca20b5b062f23906ba508367c4ab67a5b98da34",
+        "bbox": [
+          62,
+          23,
+          122,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-idle-material-v1/candidate-01/south-start/003.png",
+        "sha256": "33af6aeafb468343483c842f2f8ca9554a31f416cb31a83131566dd540719ca3",
+        "bbox": [
+          64,
+          27,
+          124,
+          176
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+        "sha256": "660d659fc84c9e5b83f3c5e38dd5d6733cf54740f2064e90d58bf02daee0e1d6",
+        "bbox": [
+          61,
+          22,
+          126,
+          174
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase0-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase0-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-0/001.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-0/002.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-0/003.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-0/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+        "sha256": "89db7fd0351d9752fbcecab2a2a97e508e7b5e02312ab75efd1d0818ff7e01ff",
+        "bbox": [
+          61,
+          22,
+          124,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-0/001.png",
+        "sha256": "f74b97d7184ab7d87ccabd958c3f6c9650a07efec0a3c689cb3b36a44202bed8",
+        "bbox": [
+          65,
+          24,
+          125,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-0/002.png",
+        "sha256": "73094028b80cc0d0b7f6c5c647c5c2e63d31240ced803158ed0523d5f6be6bfa",
+        "bbox": [
+          64,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-0/003.png",
+        "sha256": "6e224436b9bb2e41709d8220685ddeab4dcebb9d0396cc1d3846fd5fd8fddcb6",
+        "bbox": [
+          63,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-0/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase1-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase1-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-1/001.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-1/002.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-1/003.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-1/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+        "sha256": "bccfb7a7ad283afd46f1414c8d88abb22d835680c4049df1f9974786f4d46645",
+        "bbox": [
+          59,
+          8,
+          124,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-1/001.png",
+        "sha256": "f74b97d7184ab7d87ccabd958c3f6c9650a07efec0a3c689cb3b36a44202bed8",
+        "bbox": [
+          65,
+          24,
+          125,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-1/002.png",
+        "sha256": "73094028b80cc0d0b7f6c5c647c5c2e63d31240ced803158ed0523d5f6be6bfa",
+        "bbox": [
+          64,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-1/003.png",
+        "sha256": "6e224436b9bb2e41709d8220685ddeab4dcebb9d0396cc1d3846fd5fd8fddcb6",
+        "bbox": [
+          63,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-1/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase2-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase2-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-2/001.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-2/002.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-2/003.png",
+        "res://character/marsh-south-stop-v1/candidate-06/phase-2/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+        "sha256": "cffcc6bfec0147a41f3c83ee9aadb6345f3fdfbca5cc7ad5defb8409bb8e1b69",
+        "bbox": [
+          59,
+          22,
+          123,
+          173
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-2/001.png",
+        "sha256": "f74b97d7184ab7d87ccabd958c3f6c9650a07efec0a3c689cb3b36a44202bed8",
+        "bbox": [
+          65,
+          24,
+          125,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-2/002.png",
+        "sha256": "73094028b80cc0d0b7f6c5c647c5c2e63d31240ced803158ed0523d5f6be6bfa",
+        "bbox": [
+          64,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-2/003.png",
+        "sha256": "6e224436b9bb2e41709d8220685ddeab4dcebb9d0396cc1d3846fd5fd8fddcb6",
+        "bbox": [
+          63,
+          23,
+          124,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-06/phase-2/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase3-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase3-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-3/001.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-3/002.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-3/003.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-3/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+        "sha256": "c639391ef7dd11f89ebce02ee8ee738811002feebb217ab2fc64da39ca263cd5",
+        "bbox": [
+          60,
+          23,
+          129,
+          175
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-3/001.png",
+        "sha256": "a0f9beacf2aa6bcb03c0d8092a0fd4902115086ddecbca8f426badf9d53b5bf6",
+        "bbox": [
+          64,
+          26,
+          124,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-3/002.png",
+        "sha256": "05f1152676b8cfc3469319e13cccbf534ecf79407961bdcb9218fd5d324dea07",
+        "bbox": [
+          62,
+          23,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-3/003.png",
+        "sha256": "2b4943edf569f5c719dd76c34eed116e0cd9ad04e03a42cbd42a47127515447f",
+        "bbox": [
+          63,
+          23,
+          123,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-3/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase4-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase4-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+        "res://character/marsh-south-stop-v1/candidate-07/phase-4/001.png",
+        "res://character/marsh-south-stop-v1/candidate-07/phase-4/002.png",
+        "res://character/marsh-south-stop-v1/candidate-07/phase-4/003.png",
+        "res://character/marsh-south-stop-v1/candidate-07/phase-4/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+        "sha256": "660d659fc84c9e5b83f3c5e38dd5d6733cf54740f2064e90d58bf02daee0e1d6",
+        "bbox": [
+          61,
+          22,
+          126,
+          174
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-07/phase-4/001.png",
+        "sha256": "04fb0b1df87fd1e60bf2b7ff785e7e9e25e0ed7eaa41a1d87b8a6ad5816ad692",
+        "bbox": [
+          61,
+          24,
+          124,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-07/phase-4/002.png",
+        "sha256": "7dadf8678a7ce1414e30d9537b3d5b5ed016d40340d409cc230cfaa479e9d64d",
+        "bbox": [
+          59,
+          23,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-07/phase-4/003.png",
+        "sha256": "3985b1c65aa74c2296139ba187d0dbeb0be8a142d04557e4b8f68831523bf823",
+        "bbox": [
+          61,
+          23,
+          123,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-07/phase-4/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-stop-phase5-south": {
+    "manifest": "character/marsh-v2/supplemental/south-walk-polish-v1/manifest.json",
+    "metadata": {
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false
+    },
+    "state": {
+      "id": "walk-stop-phase5-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-walk-polish-v1/005.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-5/001.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-5/002.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-5/003.png",
+        "res://character/marsh-south-stop-v1/candidate-01/phase-5/004.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-v2/supplemental/south-walk-polish-v1/005.png",
+        "sha256": "c75d9a7607da6f17d336d369d9412e0a111ea9b7af7da0e74e8107561f564e3d",
+        "bbox": [
+          61,
+          22,
+          127,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-5/001.png",
+        "sha256": "a0f9beacf2aa6bcb03c0d8092a0fd4902115086ddecbca8f426badf9d53b5bf6",
+        "bbox": [
+          64,
+          26,
+          124,
+          172
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-5/002.png",
+        "sha256": "05f1152676b8cfc3469319e13cccbf534ecf79407961bdcb9218fd5d324dea07",
+        "bbox": [
+          62,
+          23,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-5/003.png",
+        "sha256": "2b4943edf569f5c719dd76c34eed116e0cd9ad04e03a42cbd42a47127515447f",
+        "bbox": [
+          63,
+          23,
+          123,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-stop-v1/candidate-01/phase-5/004.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  },
+  "walk-step-south": {
+    "manifest": "character/marsh-v2/supplemental/south-step-contact-v1/manifest.json",
+    "metadata": {
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "normalAdmission": true,
+      "fullGoalComplete": false,
+      "revision": "South step detail02 whole-frame Y+1 registration; supporting sole restored with exact pixels, no resampling or anatomy change."
+    },
+    "state": {
+      "id": "walk-step-south",
+      "frameFiles": [
+        "res://character/marsh-south-step-v1/candidate-05/000.png",
+        "res://character/marsh-south-step-v1/candidate-05/001.png",
+        "res://character/marsh-south-step-v1/candidate-05/002.png",
+        "res://character/marsh-v2/supplemental/south-step-contact-v1/phase-003.png",
+        "res://character/marsh-south-step-v1/candidate-05/004.png",
+        "res://character/marsh-south-step-v1/candidate-05/005.png",
+        "res://character/marsh-south-step-v1/candidate-05/006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "files": [
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/000.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/001.png",
+        "sha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+        "bbox": [
+          62,
+          23,
+          122,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/002.png",
+        "sha256": "5b1ceecacda8fbd59ee960beaa58d6f45add0195f241f208452d36b4cfef79f2",
+        "bbox": [
+          65,
+          23,
+          126,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-v2/supplemental/south-step-contact-v1/phase-003.png",
+        "sha256": "d401db811922b14e83c09a4aaceb7d4aae41798ccc18320b6344488993d517b1",
+        "bbox": [
+          31,
+          8,
+          130,
+          182
+        ]
+      },
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/004.png",
+        "sha256": "caf8b85d03dfbd9deefbddd0de0ce8130f3dc21fbd84ebccbc627004de449110",
+        "bbox": [
+          59,
+          22,
+          118,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/005.png",
+        "sha256": "b97ae9de290f086147f2a91950e3290e93321c02f8f29c8665632b9998e449de",
+        "bbox": [
+          59,
+          23,
+          119,
+          171
+        ]
+      },
+      {
+        "path": "character/marsh-south-step-v1/candidate-05/006.png",
+        "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "bbox": [
+          63,
+          24,
+          121,
+          171
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+from pathlib import Path
+import json
+P=Path(__file__).resolve().parent
+m=json.loads((P/'manifest.json').read_text());s=m['states'][0]
+data={'master':'../bill-seated-west-coherent-v1/frames/sit-down-west/000.png','files':['../../'+f[6:] for f in s['frameFiles']],'durations':s['frameDurationsMs']}
+h=json.loads((P/'helmet-manifest.json').read_text());data['helmetMaster']='../bill-seated-helmet-west-coherent-v1/frames/sit-down-west/000.png';data['helmetFiles']=['../../'+f[6:] for f in h['states'][0]['frameFiles']]
+html='''<!doctype html><meta charset="utf-8"><title>Bill west paired run</title>
+<style>body{background:#152027;color:#e6eff1;font:16px system-ui;margin:20px}p{max-width:88ch;color:#bdd0d2}.grid{display:flex;gap:12px}.card{background:#22343e;padding:12px}canvas{display:block}button,select{font:inherit;background:#29404a;color:white;padding:6px}</style>
+<h1>Bill - west paired run</h1><p>Six newly authored running poses against the selected west master. Fixed anatomy scale and pooled material grade. Review: compare shoulder/arm counter-swing, leg alternation, size, face and suit detail. Both profiles are selected in the normal loader. NPC movement behavior is unchanged; full-set motion polish remains open.</p>
+<label>Equipment <select id="gear"><option value="bare">Bare</option><option value="helmet">Shared helmet</option></select></label> <label>Height <select id="size"><option>148</option><option>82</option><option>54</option><option>27</option></select></label> <button id="play">Pause</button> <button id="step">Next frame</button> <span id="status">Loading</span>
+<div class="grid"><div class="card"><strong>Selected idle master</strong><canvas width="300" height="300"></canvas></div><div class="card"><strong>Selected run sequence</strong><canvas width="300" height="300"></canvas><small id="phase"></small></div></div><script>
+const data=DATA;let playing=true,time=0,last=performance.now(),manual=0;let master=new Image;master.src=data.master;let frames=data.files.map(f=>{let a=new Image;a.src=f;return a});
+let helmetMaster=new Image;helmetMaster.src=data.helmetMaster;let helmetFrames=data.helmetFiles.map(f=>{let a=new Image;a.src=f;return a});
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play'};
+document.querySelector('#step').onclick=()=>{playing=false;manual=(manual+1)%6;document.querySelector('#play').textContent='Play'};
+Promise.all([master,...frames,helmetMaster,...helmetFrames].map(a=>new Promise((resolve,reject)=>{if(a.complete&&a.naturalWidth)resolve();else{a.onload=resolve;a.onerror=reject}}))).then(()=>{document.querySelector('#status').textContent='All six phases loaded';function draw(now){if(playing)time+=now-last;last=now;let t=time%540,i=manual;if(playing){i=0;while(i<5&&t>=data.durations[i])t-=data.durations[i++]}const scale=Number(document.querySelector('#size').value)/148;(document.querySelector('#gear').value==='helmet'?[helmetMaster,helmetFrames[i]]:[master,frames[i]]).forEach((a,j)=>{let c=document.querySelectorAll('canvas')[j].getContext('2d');c.clearRect(0,0,300,300);c.drawImage(a,150-128*scale,270-224*scale,256*scale,256*scale)});document.querySelector('#phase').textContent='run-west - frame '+i;requestAnimationFrame(draw)}requestAnimationFrame(draw)}).catch(()=>document.querySelector('#status').textContent='Image load failed');</script>'''.replace('DATA',json.dumps(data))
+(P/'index.html').write_text(html,encoding='utf-8')

@@ -1,0 +1,15 @@
+from pathlib import Path
+from PIL import Image
+import json,hashlib
+p=Path(__file__).resolve().parent;r=p.parents[1]
+source=r/'character/james-carry-headcaps-v1/frames/004.png';base=Image.open(source).convert('RGBA');base.save(p/'base.png')
+base.crop((80,144,176,240)).resize((768,768),Image.Resampling.LANCZOS).save(p/'thighs-target.png')
+base.resize((1024,1024),Image.Resampling.LANCZOS).save(p/'whole-reference.png')
+prompt='''Edit IMAGE 1 ONLY: fixed96x96 native square lower-body crop enlarged8x. IMAGE 2 is whole James master-matched carrying pose, camera/material guide only. Preserve crop framing and transparent margins. The upper strip contains case/hip attachments; keep the case and hands exactly where they are. No zoom, recentering, added torso, text or ground shadow.
+Draw a real opposite walking contact facing image LEFT. Advance the ENTIRE NEAR LEG from its image-right hip: the thigh with GOLD SEAM originates at native x140,y155 (crop x60,y11), swings forward diagonally DOWN-LEFT to its knee near native x121,y179 (crop x41,y35), then the gold-seamed shin leads to the forward LEFT boot, sole center native x111,y224 (crop x31,y80). The seam must remain continuous from the original image-right hip through the forward thigh and shin. This requires moving the NEAR THIGH and knee left, not merely repainting the gold stripe onto the other shin.
+The plain FAR thigh originates native x125,y155 (crop x45,y11), trails DOWN-RIGHT behind near thigh, with knee near native x140,y180 (crop x60,y36), then plain shin goes backward RIGHT to boot/toe near native x151,y224 (crop x71,y80), heel slightly raised. Proper thigh overlap: forward gold-seamed near thigh visibly overlaps plain far thigh near crotch. Each leg has its own knee pad and boot connected with correct ankle anatomy. Keep original limb lengths, modest heavy-cargo stride, no squat, no broken rubber legs, no duplicated boots or painted costume swap. Two soles contact same original baseline y224; original hip/case positions unchanged. ALL lower pixels including upper thighs may change below native y154 (crop y10). Pixels above y154 remain unchanged.
+Exact subdued matte graphite cloth, muted ochre seam, worn dull silver knee/boot fittings from IMAGE 1. No purple/magenta, exposure increase, shiny surface, black cavity, white outline or changed boot design. Fine painted game sprite, clean genuine alpha transparency, same source scale. Return complete original square crop.'''
+(p/'contact-near-prompt.txt').write_text(prompt+'\n',encoding='utf-8')
+files=[source,p/'base.png',p/'thighs-target.png',p/'whole-reference.png',p/'contact-near-prompt.txt',Path(__file__)]
+(p/'contact-near-inputs.json').write_text(json.dumps({'preCallSha256':{f.relative_to(r).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in files},'crop':[80,144,176,240],'admissionRegion':[88,154,176,224],'selected':False},indent=2)+'\n',encoding='utf-8')
+print('Full thigh roots admitted below case; continuous near-leg ownership specified.')

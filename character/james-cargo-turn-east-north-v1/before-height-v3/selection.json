@@ -1,0 +1,39 @@
+{
+  "status": "staged_carry_turn_endpoint_v2",
+  "runtimeInstalled": false,
+  "coverage": [
+    "carry-turn-east-north",
+    "carry-turn-north-east"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "helmetSource": "source-helmet.png",
+  "helmetPrompt": "prompt-helmet.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedBodyScale": 0.26811594202898553,
+  "timingMs": 800,
+  "derivation": "Continuous repaired hips through boots below146; exact selected upper body above146, no mid-thigh splice/doubled wrench; other20 refs unchanged",
+  "helmet": "Generated intermediate angles composited only above headCutoff; body below cutoff identical to bare",
+  "checks": "122 packaging /121 native checks,0 failures;8 captures; both turn/equipment handoffs pass",
+  "profileAudit": "Scratch APPDATA asserted; concurrent last_session and Studio cfg changes observed, attribution unresolved; no owner files restored",
+  "visualReview": "Owner requested full-facing leg repair; revised source/comparison/decoded/native endpoint inspected; owner revised review pending",
+  "remaining": [
+    "Owner review",
+    "Install accepted pair",
+    "Remaining8 carrying turns after installation"
+  ],
+  "review": "review-endpoint-v2.gif",
+  "endpointLegSource": "source-endpoint-legs-v2.png",
+  "endpointLegPrompt": "prompt-endpoint-legs-v2.txt"
+}

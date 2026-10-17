@@ -1,0 +1,40 @@
+{
+  "prompt": "Edit SECOND image, the existing East04 five-figure whole-source strip. FIRST image is the exact current East idle enlarged3x, authoritative for identity, silhouette, boots, proportions, camera and material colors.\nMake one targeted motion change: FOURTH figure, the final gesture before idle, must LOWER BOTH gloves towards the upper thighs, elbows only slightly bent (about15-20degrees); closed gloves should sit just ABOVE the fifth neutral figure's relaxed gloves. Move shoulders/upper arms naturally as a connected whole figure. This fourth pose is a clear near-idle RETURN pose, not another chest-height bent-arm hold. First THREE figures retain their compact chest/waist glove gestures. FIFTH figure is unchanged neutral with arms fully down, the common scale ruler.\nPreserve the same Marsh face, sandy short hair, ivory armor, muted olive shoulder plates, charcoal gloves and seals, belt pouches, slender limb proportions and elevated EAST-facing camera. He faces viewer RIGHT; near LEFT temple BARE, no near-temple metal. Keep five complete same-size WHOLE figures in one horizontal row on real transparent alpha, generous margins, same crown/sole scale. Preserve East04's slimmer legs/boots; do not enlarge calf, boot, head or shoulder. No crouch, leaning, foot movement, prop, helmet, open palm, pointing, detached limbs, second row, text, grid, floor shadow, background or checkerboard. No local collage or anatomy splice. Return the whole coherent five-figure strip, every figure uncropped.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\east-own-idle-3x.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\sources\\east-gesture-04.png"
+  ],
+  "references": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/east-own-idle-3x.png",
+      "sha256": "e55f37b1e76530beb29515234730d029238180896e3c124968afd315183b6c84",
+      "role": "primary own idle"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/sources/east-gesture-04.png",
+      "sha256": "9ba1c33efc36e0aa8b213e8d53e5b424d0197673f66e4f5663165d26f8e0f203",
+      "role": "whole-source edit target"
+    }
+  ],
+  "scope": "Whole-source East fifth iteration: fourth gesture is lowered near-idle return; same original six150ms timing.",
+  "result": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/east-gesture-05.png",
+    "sha256": "d1ae5951277afa132b05ba357c702b1a10a55a28d2997033eb8f11b3be1cbaa0",
+    "generationId": "exec-345fa412-0676-447d-8a71-ceee80f3bf03",
+    "bodyHeights": [
+      659,
+      657,
+      657,
+      656,
+      657
+    ],
+    "commonScale": 0.2237442922374429,
+    "neutralBodyWidthAtOwnHeight": 34.00913242009132,
+    "ownOccupiedRuler": [
+      32,
+      147
+    ],
+    "assessment": "Staged for common-scale native/source review; no admission."
+  }
+}

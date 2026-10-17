@@ -1,0 +1,39 @@
+{
+  "version": 344,
+  "nativeChecks": 1314,
+  "nativeFailures": 0,
+  "nativeCaptures": 328,
+  "directionGearCases": 24,
+  "normalDispatchChecks": 38,
+  "normalDispatchFailures": 0,
+  "normalCodeChanged": true,
+  "stagedRepairSelected": false,
+  "sourceArtworkChanged": false,
+  "ownerProfileUnchanged": true,
+  "fullGoalComplete": false,
+  "sourceAcceptance": false,
+  "boardsActuallyViewed": [
+    "bare-west-native-comparison.png",
+    "bare-east-native-comparison.png",
+    "bare-north-native-comparison.png",
+    "bare-south-native-comparison.png",
+    "helmet-west-native-comparison.png",
+    "helmet-east-native-comparison.png",
+    "helmet-north-native-comparison.png",
+    "helmet-south-native-comparison.png"
+  ],
+  "reviewLimits": "Very dim deep-flood lighting; placement/pose/room visibility samples only. Fine helmet/material/grade and continuous motion acceptance remain.",
+  "postRunCodeBindings": {
+    "scripts\\grid_canvas.gd": "8d2e6acc385e52e8e358d3edc9e95b97877902e5db4856b5cffd5f3185d09a0a",
+    "scripts\\james_cargo_actor.gd": "81017b57fdc9367e016a4ef68f1163accb31b2f4bf9855814471fc2bf70eef95",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\phase_player.gd": "29e0832b5e33480ce96556a8431e525131ab37ea08f6a91b8ae37c657c440f32",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\reorient_player.gd": "f040d5eab55c02fa77525ab54266a140667459a6533d43d3e9faf3d9c648429b",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\staged_grid.gd": "08f430d396ebccc1f9e658ceb75dfc8e15b9f375cab1805ff056620f937902fe",
+    "character\\james-west-carry-walk-keys-v1\\water-native-review-v344\\native_probe.gd": "0e705f7d0b73d0e82718b5a64963b0aaeac151f824df5fb32b4acc13f4ca66e3",
+    "character\\james-west-carry-walk-keys-v1\\water-native-review-v344\\dispatch_probe.gd": "66251c713797badf3d4c9d0b89bec9ad1819742ee4b454290face4d1951fda97"
+  },
+  "prelaunchFreeze": false,
+  "finding": "Normal JamesCargoActor subclasses Branforth. Filename equality skipped James-specific clearance and generic action bounds canceled the staged stop before capture. Production grid now identifies James through script inheritance; other crew retain their branch. New phase/reorient banks are still fixture-only.",
+  "scope": "Real main scene/actor animation selection/staged Grid subclass/actual rendering in authored flooded workshop. Prescribed stationary pose clocks; not autonomous navigation, exterior, blocked fallback or whole-run Continue.",
+  "remaining": "Autonomous moving routes, blocked fallback, repeated command/completion behavior, exterior clearance, normal repair selection, fresh-scene disk Continue and full temporal/material/master/family polish."
+}

@@ -1,0 +1,6 @@
+# Whole near-angle stance corrections
+
+- 32c46aca-1b1d-4658-963c-586ffaab1ec5 — builtin whole edit, raw-near-v1.png / prompt-near-v1.txt. Target previous near raw; references original-rig midpoint, late source and original East held. Chest advances, but pelvis/knees remain rear-facing. H149/head27/upper47/sole42/clothmedian74.33. Rejected for resolving armor reveal; retained.
+- 7df7a05c-7992-4a21-8db2-e49fef0d34a6 — builtin whole correction, raw-near-v2.png / prompt-near-v2.txt. Target V1 whole source, late whole pose and original East held identity. Explicit coherent pelvis/thigh/knee/calf/boot rotation restores both partially revealed front plates. Selected staged phase3 source. H149/head27/upper45/sole44/clothmedian70.33 versus previous near149/26/48/44/70.67. Uniform independent whole-source density against actual same-angle source149; sole224 registration, no output RGB or anatomy patches. Some contours/projection/head differences remain; measurements do not prove master identity.
+
+Other turn phases reuse previous source assets; rear/mid/East held aliases exact. Complete existing near-angle helmet fitted with protected body outside head/collar. Six finite turn poses, reverse, gather/spread and exact East held state retained. This corrects the near-angle draft; further artistic smoothness and whole-set consistency remain pending.

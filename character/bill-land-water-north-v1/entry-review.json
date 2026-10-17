@@ -1,0 +1,320 @@
+{
+  "scope": "Nine-frame500ms paired bare/helmet source candidate. Static selected endpoint pixels preserved; no native integration, actual phase handoffs, continuous-motion or full master acceptance.",
+  "sharedAtlasDrawingScale": 0.25,
+  "scaleReason": "One fixed anatomical density for all six atlas cells against native rear-head/equipment ruler; not per-pose height/width fitting. Source canvas dimensions alone do not establish character drawing density.",
+  "registrations": [
+    {
+      "scale": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        53
+      ],
+      "headAnchor": [
+        160,
+        103
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        125,
+        101,
+        195,
+        227
+      ],
+      "source": "sources/crouch-canvas-v2.png",
+      "phase": "early crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        92,
+        103
+      ],
+      "headAnchor": [
+        160,
+        118
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        128,
+        115,
+        191,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 0,
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "phase": "crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        96,
+        103
+      ],
+      "headAnchor": [
+        160,
+        131
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        125,
+        127,
+        194,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 1,
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "phase": "deep crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        104,
+        125
+      ],
+      "headAnchor": [
+        160,
+        145
+      ],
+      "opaqueSole": 248,
+      "alphaBounds": [
+        131,
+        131,
+        188,
+        251
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 2,
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "phase": "push"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        86,
+        147
+      ],
+      "headAnchor": [
+        160,
+        169
+      ],
+      "opaqueSole": 265,
+      "alphaBounds": [
+        121,
+        155,
+        189,
+        267
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 3,
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "phase": "lift"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        94,
+        158
+      ],
+      "headAnchor": [
+        160,
+        184
+      ],
+      "opaqueSole": 261,
+      "alphaBounds": [
+        118,
+        173,
+        202,
+        264
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 4,
+      "sourceCell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "phase": "near-prone"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        97,
+        179
+      ],
+      "headAnchor": [
+        160,
+        198
+      ],
+      "opaqueSole": 299,
+      "alphaBounds": [
+        135,
+        182,
+        183,
+        302
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 5,
+      "sourceCell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "phase": "extend"
+    }
+  ],
+  "endpointExactToSelectedSources": true,
+  "decodedAPNGFramesExact": 9,
+  "timelineMs": 500,
+  "generation": "exec-cc306187-9f78-4e39-ad55-67b08baf571e",
+  "poseReferenceGeneration": "exec-03f2b8d7-7eb4-4ce6-a2c3-12927d641de4",
+  "sourceHashes": {
+    "entry-atlas-v1.png": "a895626b311481532e94d55dc60a87646816da83fd82870c094057e1aeae33b8",
+    "entry-atlas-prompt-v1.txt": "98ea6474694d6cc7271692c039470eb406c8ac4ff1b91e4f4991c86093262d50",
+    "near-prone-canvas-v2.png": "319a68b642d90540042bf78c000a62b99ad7f6e16e252e71e034cd34a1e0f3e3",
+    "near-prone-prompt-v2.txt": "796ab4968dbf926494b6b4ea84c6797352b9b2727370f81072b9f184569857b9"
+  },
+  "visualReview": "Complete bare and paired nine-pose contact boards and all seven close head/collar/body fitting pairs inspected. Crouch-to-prone projection now visible, matte quilt and rear equipment retained, shell/collar joins connected in inspected captures. Lift pose5 has slight lateral twist; hair/metal/normal-endpoint grade and timing/full motion remain pending. Atlas scale fixed. Board review does not prove temporal/physical contact.",
+  "helmetFittings": [
+    {
+      "pose": 1,
+      "headAnchor": [
+        160,
+        103
+      ],
+      "shellPosition": [
+        140,
+        94
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 128
+    },
+    {
+      "pose": 2,
+      "headAnchor": [
+        160,
+        118
+      ],
+      "shellPosition": [
+        140,
+        109
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 143
+    },
+    {
+      "pose": 3,
+      "headAnchor": [
+        160,
+        131
+      ],
+      "shellPosition": [
+        140,
+        122
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 156
+    },
+    {
+      "pose": 4,
+      "headAnchor": [
+        160,
+        145
+      ],
+      "shellPosition": [
+        140,
+        136
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 170
+    },
+    {
+      "pose": 5,
+      "headAnchor": [
+        160,
+        169
+      ],
+      "shellPosition": [
+        140,
+        160
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 194
+    },
+    {
+      "pose": 6,
+      "headAnchor": [
+        160,
+        184
+      ],
+      "shellPosition": [
+        140,
+        175
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 209
+    },
+    {
+      "pose": 7,
+      "headAnchor": [
+        160,
+        198
+      ],
+      "shellPosition": [
+        140,
+        189
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 223
+    }
+  ],
+  "decodedPairedAPNGFramesExact": 18,
+  "pairedFrames": 18,
+  "canonicalShellSHA256": "80b446aa582da9916c8be4449559981ea466cab53c4181ae6f38b54fb2b3f413",
+  "helmetVisualReview": "Seven native-scale canonical rear-shell fittings inspected in neck board. No visible collar gap; protected source-body/foreground pixels exact. Not full motion/occlusion acceptance.",
+  "browserMotionReview": "Not exercised; finite player generated, technical APNG decode exact only."
+}

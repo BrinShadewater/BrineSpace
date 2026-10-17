@@ -1,0 +1,149 @@
+{
+  "name": "James north meals sealed-helmet substitutes",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_master_matched_meals_owner_review_pending",
+  "states": [
+    {
+      "id": "eat-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/000.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/024.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/054.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/082.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/109.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/136.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "visualSubstitution": "Closed-helmet tablet inspection; crew_life selects inspect instead of food action",
+        "sourceManifest": "character/james-inspect-tablet-v1/helmet-manifest.json",
+        "sourceState": "inspect-north",
+        "sourcePoses": [
+          0,
+          24,
+          54,
+          82,
+          109,
+          136
+        ],
+        "originalPixels": true
+      }
+    },
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/000.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/024.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/054.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/082.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/109.png",
+        "../james-shared-helmet-interact-north-v2/frames/interact-north/136.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "visualSubstitution": "Closed-helmet tablet inspection; crew_life selects inspect instead of food action",
+        "sourceManifest": "character/james-inspect-tablet-v1/helmet-manifest.json",
+        "sourceState": "inspect-north",
+        "sourcePoses": [
+          0,
+          24,
+          54,
+          82,
+          109,
+          136
+        ],
+        "originalPixels": true
+      }
+    }
+  ]
+}

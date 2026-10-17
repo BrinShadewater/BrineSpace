@@ -1,0 +1,5103 @@
+{
+  "name": "Krusher Dom cancel helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-cancel-pickup-0-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/fbc2e57a02568b6377a04cb09d2c169e8561e0dfc27653c92b41233cd41dbabd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/1cd2e68740e9c289d12a179d41726390d6a57e4bb3fe50960ac2b6ab9b79c7f8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/22478f87c9d6d70878bf48a048358ec2279165eb10b6571c6c5507617a0572f6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/61ec9029e0d04a62739db000d27c58b4373d778b44898c5a4cce56f26a88e9ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/870d338829ab73308d31b7ccf4838345bfc93885f78248c9f1a9a93fb282b368.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/85f1205ecdab56bb3089c3baf16a0e12f83dccbe63c70cf6e13dad49f123a49f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/463a45bc928398eee2e873f10e23f8989cbb817279ffeb70c53e453ab936b030.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/87c846801527f9e46932df71016c08c5e4459735657ce410f6e2340ce3c69f66.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/39bbaa4414b0d761839ee127328661d5ab9eeeff73c0a4e4ebb1df200ab9d712.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/afce77a59563f5d10e21d43019b8f4f34f1298e00b398e156cfaa78043f3696e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/441a4e3f199ae208ede19245bf92a0413ce0de04c548dfa621da83cba0839c51.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/61ec9029e0d04a62739db000d27c58b4373d778b44898c5a4cce56f26a88e9ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/2b2ddfc1a8852ca5f4f381262782ef200de0d654f8b594ebc73e8f286a06e72b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/9a4e111c56d3d193e3f0a1eac93ba697931cd2e67a9d9d805e15adc06ea42174.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/115009e78cf9752511d2d5b752e7801512e6447453e2af9eb5e24d7949295b5d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/eab0283881c5650297911f77496c196cd89ac79012d61fa46e7832779b0ffc7f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/20bbeb2187ed045df2cc17fb5f366b235315b28b337888539ed599ceab7bc5aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1bd59b02887b07a6c6f0ac13e479e397653f896f8b10cf056eb2993ecc4d3f19.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9fb7880d702d0b94f86ff7fe4ef14bbf237aa62fbb7a4d219fccf0ffb58a25ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/506cbbf7c1ff5e1aa11e766c32c1cdd1972967aec085888fa1e3b8e5fd48b678.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c16681082b72aef585522a521572da4b9a4bb2ee6935a8f8705f5cfc4d0439f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 1",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb01c929bc97a243f916407ad4753c8846d4e8a7d36b9ca5aecf04ac7d269ea0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b9216f85064e5db88c82aea3ea4cc01f0376d1772ffcf6f48239b43724ace62.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c46993d6cfc6da85e0f9597e65ae5ff83becd1595a95fd40f6c52b623828cfa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22b96f7194c7c472ed24912a6918faf942164316afb7ede26a657aa8b252167c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc328e7135949c80c849d48335b7822e5b4a09460b1a05c5dd782abd4d580661.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup1",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/994d9152e3b492d03d5b3b472774216b07ec3b6b46d316c5ed1375b54b15ad0c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6fbec3d135e0da1f169f4cc6919b20f5c99b8dde8f0cb0c47f69061e3148c0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee4773222d6e45e865127513109a2c738670ef33b3a52cc4bd1849f050135902.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f89595bf09a141d1e760feb6db54b95782c5ed4963df0a05ae22bc4ad082c397.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2fb83df4e5a193ae3a0f7a3f206688b159673c1f663abfde277329c403230b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f0919b9692f44f3433ae854adce7cfcae61fd5b78a5244b19d8d4ae86317f3a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b745dea1a70dfb146ba34d16e823d00b8d1d27abbe5b9668767d61b9517d3227.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8144567bbefddf62e696801807de730fe4834d01e6c5f596ff4bb186833a36aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4b08d025c5442ec0d1892270565de32112ad2cf45c84323fa1513bb4e0997f97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/39efa2686bf74f9b2740479b0d702b68bfa78a043f65d33512545463097a0596.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/20bbeb2187ed045df2cc17fb5f366b235315b28b337888539ed599ceab7bc5aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1bd59b02887b07a6c6f0ac13e479e397653f896f8b10cf056eb2993ecc4d3f19.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9fb7880d702d0b94f86ff7fe4ef14bbf237aa62fbb7a4d219fccf0ffb58a25ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/506cbbf7c1ff5e1aa11e766c32c1cdd1972967aec085888fa1e3b8e5fd48b678.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c16681082b72aef585522a521572da4b9a4bb2ee6935a8f8705f5cfc4d0439f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 2",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb01c929bc97a243f916407ad4753c8846d4e8a7d36b9ca5aecf04ac7d269ea0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b9216f85064e5db88c82aea3ea4cc01f0376d1772ffcf6f48239b43724ace62.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c46993d6cfc6da85e0f9597e65ae5ff83becd1595a95fd40f6c52b623828cfa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22b96f7194c7c472ed24912a6918faf942164316afb7ede26a657aa8b252167c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc328e7135949c80c849d48335b7822e5b4a09460b1a05c5dd782abd4d580661.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup2",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/994d9152e3b492d03d5b3b472774216b07ec3b6b46d316c5ed1375b54b15ad0c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6fbec3d135e0da1f169f4cc6919b20f5c99b8dde8f0cb0c47f69061e3148c0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee4773222d6e45e865127513109a2c738670ef33b3a52cc4bd1849f050135902.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f89595bf09a141d1e760feb6db54b95782c5ed4963df0a05ae22bc4ad082c397.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2fb83df4e5a193ae3a0f7a3f206688b159673c1f663abfde277329c403230b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f0919b9692f44f3433ae854adce7cfcae61fd5b78a5244b19d8d4ae86317f3a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b745dea1a70dfb146ba34d16e823d00b8d1d27abbe5b9668767d61b9517d3227.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8144567bbefddf62e696801807de730fe4834d01e6c5f596ff4bb186833a36aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4b08d025c5442ec0d1892270565de32112ad2cf45c84323fa1513bb4e0997f97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/39efa2686bf74f9b2740479b0d702b68bfa78a043f65d33512545463097a0596.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/20bbeb2187ed045df2cc17fb5f366b235315b28b337888539ed599ceab7bc5aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1bd59b02887b07a6c6f0ac13e479e397653f896f8b10cf056eb2993ecc4d3f19.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9fb7880d702d0b94f86ff7fe4ef14bbf237aa62fbb7a4d219fccf0ffb58a25ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/506cbbf7c1ff5e1aa11e766c32c1cdd1972967aec085888fa1e3b8e5fd48b678.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c16681082b72aef585522a521572da4b9a4bb2ee6935a8f8705f5cfc4d0439f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 3",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb01c929bc97a243f916407ad4753c8846d4e8a7d36b9ca5aecf04ac7d269ea0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b9216f85064e5db88c82aea3ea4cc01f0376d1772ffcf6f48239b43724ace62.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c46993d6cfc6da85e0f9597e65ae5ff83becd1595a95fd40f6c52b623828cfa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22b96f7194c7c472ed24912a6918faf942164316afb7ede26a657aa8b252167c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc328e7135949c80c849d48335b7822e5b4a09460b1a05c5dd782abd4d580661.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup3",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/994d9152e3b492d03d5b3b472774216b07ec3b6b46d316c5ed1375b54b15ad0c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6fbec3d135e0da1f169f4cc6919b20f5c99b8dde8f0cb0c47f69061e3148c0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee4773222d6e45e865127513109a2c738670ef33b3a52cc4bd1849f050135902.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f89595bf09a141d1e760feb6db54b95782c5ed4963df0a05ae22bc4ad082c397.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2fb83df4e5a193ae3a0f7a3f206688b159673c1f663abfde277329c403230b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f0919b9692f44f3433ae854adce7cfcae61fd5b78a5244b19d8d4ae86317f3a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b745dea1a70dfb146ba34d16e823d00b8d1d27abbe5b9668767d61b9517d3227.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8144567bbefddf62e696801807de730fe4834d01e6c5f596ff4bb186833a36aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4b08d025c5442ec0d1892270565de32112ad2cf45c84323fa1513bb4e0997f97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/39efa2686bf74f9b2740479b0d702b68bfa78a043f65d33512545463097a0596.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/9f5d590a7bea89e7675c45c07ed24435ff7a8582b3784fa8b682a685d829d196.png",
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d03f3bbfbf4555174eaad1ce5082c376a09f1679b80eede327817dd3855eac8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/005a28a2928c5f01eb441a01b7f60331c9405c3b15c0a07372e2d745e0a2c8e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/904b09ac16cdf9b196b51eb742916fdca948a3fccde8919474adf0d125505d97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/9f5d590a7bea89e7675c45c07ed24435ff7a8582b3784fa8b682a685d829d196.png",
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/20bbeb2187ed045df2cc17fb5f366b235315b28b337888539ed599ceab7bc5aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1bd59b02887b07a6c6f0ac13e479e397653f896f8b10cf056eb2993ecc4d3f19.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9fb7880d702d0b94f86ff7fe4ef14bbf237aa62fbb7a4d219fccf0ffb58a25ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/506cbbf7c1ff5e1aa11e766c32c1cdd1972967aec085888fa1e3b8e5fd48b678.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c16681082b72aef585522a521572da4b9a4bb2ee6935a8f8705f5cfc4d0439f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 4",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8d03f3bbfbf4555174eaad1ce5082c376a09f1679b80eede327817dd3855eac8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb01c929bc97a243f916407ad4753c8846d4e8a7d36b9ca5aecf04ac7d269ea0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b9216f85064e5db88c82aea3ea4cc01f0376d1772ffcf6f48239b43724ace62.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c46993d6cfc6da85e0f9597e65ae5ff83becd1595a95fd40f6c52b623828cfa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22b96f7194c7c472ed24912a6918faf942164316afb7ede26a657aa8b252167c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc328e7135949c80c849d48335b7822e5b4a09460b1a05c5dd782abd4d580661.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup4",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/005a28a2928c5f01eb441a01b7f60331c9405c3b15c0a07372e2d745e0a2c8e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/994d9152e3b492d03d5b3b472774216b07ec3b6b46d316c5ed1375b54b15ad0c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6fbec3d135e0da1f169f4cc6919b20f5c99b8dde8f0cb0c47f69061e3148c0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee4773222d6e45e865127513109a2c738670ef33b3a52cc4bd1849f050135902.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f89595bf09a141d1e760feb6db54b95782c5ed4963df0a05ae22bc4ad082c397.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2fb83df4e5a193ae3a0f7a3f206688b159673c1f663abfde277329c403230b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/904b09ac16cdf9b196b51eb742916fdca948a3fccde8919474adf0d125505d97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f0919b9692f44f3433ae854adce7cfcae61fd5b78a5244b19d8d4ae86317f3a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b745dea1a70dfb146ba34d16e823d00b8d1d27abbe5b9668767d61b9517d3227.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8144567bbefddf62e696801807de730fe4834d01e6c5f596ff4bb186833a36aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4b08d025c5442ec0d1892270565de32112ad2cf45c84323fa1513bb4e0997f97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/39efa2686bf74f9b2740479b0d702b68bfa78a043f65d33512545463097a0596.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9f5d590a7bea89e7675c45c07ed24435ff7a8582b3784fa8b682a685d829d196.png",
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1a0501ee88e2be2e44682eb5e2b8264382d242e44db2487249439df204538dab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3710bb9fe1f462af18b562d5d3d9165a543afaa2d499a5c76e3a9d9f6ee84b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8deb31d5a8f6ce7418811e4e91f30bb493549f45d796c6619e9ccf804f887baa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b8c0159268dbfb72553a9fc8e2417480161341195b7c5810a12206e87c40cf24.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fc1752dd1c4c7ba912966e519a6944157e762871f4c5fdb98f7578fb158b85cf.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d03f3bbfbf4555174eaad1ce5082c376a09f1679b80eede327817dd3855eac8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e37d80e82c20b18c847d3e2838f9ef9fb8d5652734109aa1294f6505750d1115.png",
+        "res://character/krusher-style-neck-bank-v1/frames/60b1991439e2d34a9addc38da98a8d0887905f24cba2f0062c2f9886fbdc8808.png",
+        "res://character/krusher-style-neck-bank-v1/frames/55e0cf74b7624f0e42afd22ab67c00a8d750b4b7c1542fa286ab3a44df4e5a3f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2991bdbf93a623d4d071a0207c3afd59330c7d4a54e2666eaf45adf44113ea28.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d593578cb1610c5b155d23919232ecdb87873cc7319f6b0e9925f204eb5f0e8e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/005a28a2928c5f01eb441a01b7f60331c9405c3b15c0a07372e2d745e0a2c8e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e75eb8bb45d4e25cbd644f854131da90be517b1551f9e549a6cb25de88219b6e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e86c319bfd20c69ee9897ad3e9c37325406f69506321658de96091e9b5fa7754.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40130c548b3634e617b94ad993c4ee96457482b20116c10190094b95bc9ca95b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/86ba4ad2b2505e9f9d29a771182a628fe93d0f1302b290841842f1667c6e47e7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e47a91d5c384157aae48fe631f83031f78800462625af37809ea47838c3d4bfe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/904b09ac16cdf9b196b51eb742916fdca948a3fccde8919474adf0d125505d97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/975f85372c86df1d136d4516c48095b26e65209efbc7361f4469ab7c02b838a2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c78ac0f429b252380c8924eb7e5b91ed414856dba4b8e8f7a74cccbc24457e4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/de256f2441d1cd09176ba9628e6503da25c63a157f03712f8f9446c0c88897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ddbac96caf1c4b1b5e1c3071bb7698ee80f98cc5093051ffe1b1c0c36b8900a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7b7c452a595e2c6fd45cd37ff9ed6b0b6e3a4020f98700012d5aa0252fcbab3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b4b65d40df5dd5e22c7112c974e421e659b6569f5d21bff9b0fecda7acc0d02e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9f5d590a7bea89e7675c45c07ed24435ff7a8582b3784fa8b682a685d829d196.png",
+        "res://character/krusher-style-neck-bank-v1/frames/844a8f2afb20a45ac43c6345c5ef6f670531f4599a5decd2f17376fa8c031882.png",
+        "res://character/krusher-style-neck-bank-v1/frames/89bf655bca3a41b64c026481e21c720109cd7ffcc8b52c341a62f6d4a97a5f45.png",
+        "res://character/krusher-style-neck-bank-v1/frames/43dd91a278b8c450083c368c3a8db6f33ff01071f99f1ff055354ad10e3897a1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/20bbeb2187ed045df2cc17fb5f366b235315b28b337888539ed599ceab7bc5aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1bd59b02887b07a6c6f0ac13e479e397653f896f8b10cf056eb2993ecc4d3f19.png",
+        "res://character/krusher-style-neck-bank-v1/frames/9fb7880d702d0b94f86ff7fe4ef14bbf237aa62fbb7a4d219fccf0ffb58a25ae.png",
+        "res://character/krusher-style-neck-bank-v1/frames/506cbbf7c1ff5e1aa11e766c32c1cdd1972967aec085888fa1e3b8e5fd48b678.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c16681082b72aef585522a521572da4b9a4bb2ee6935a8f8705f5cfc4d0439f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/40fa6546f5c24012d7e4fb0a6d9687e7a56417f2f71555eb4cdb17755ce65076.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 5",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f56fb32f323c29887191ea91f258e1502756f43447d9c5c49beaf95b85314bb4.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d03f3bbfbf4555174eaad1ce5082c376a09f1679b80eede327817dd3855eac8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/da9aebd451efc1f5f1ee2f4346bdeb043c3335473f7e2b53a2b24e17e346b9d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/082ce30bf4ac9eba63a81c2139ca8ad934aac0a1b2947b07ee6938833d612fa5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d16f5d08486a7fe2f54b82bfe726eaa60fade860be7c4a4259e6a182705a8b20.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cb01c929bc97a243f916407ad4753c8846d4e8a7d36b9ca5aecf04ac7d269ea0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b9216f85064e5db88c82aea3ea4cc01f0376d1772ffcf6f48239b43724ace62.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6c46993d6cfc6da85e0f9597e65ae5ff83becd1595a95fd40f6c52b623828cfa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/22b96f7194c7c472ed24912a6918faf942164316afb7ede26a657aa8b252167c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/dc328e7135949c80c849d48335b7822e5b4a09460b1a05c5dd782abd4d580661.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f5d1d10a0a6ac3f0ab5e9c0bb4f0839cf557864dec36b33de27f11a2553b7a4e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup5",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/edf2a9db8ff3b611a72aa06bc6cd36bc8a716df1e10209fea3c04d15a4410b96.png",
+        "res://character/krusher-style-neck-bank-v1/frames/005a28a2928c5f01eb441a01b7f60331c9405c3b15c0a07372e2d745e0a2c8e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/560acbe2b09984aa8ea7c5fbac8405f94765bf45d59b7a582e06be560a394ff3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee3c464862064da800f26c286cd29cea6458b32a96f09fe5eed450514e77a5c1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/adfac756a1acd33c2f0fad605540402d008ba58b44253a90451fa32e67170fc6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/994d9152e3b492d03d5b3b472774216b07ec3b6b46d316c5ed1375b54b15ad0c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6fbec3d135e0da1f169f4cc6919b20f5c99b8dde8f0cb0c47f69061e3148c0ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ee4773222d6e45e865127513109a2c738670ef33b3a52cc4bd1849f050135902.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f89595bf09a141d1e760feb6db54b95782c5ed4963df0a05ae22bc4ad082c397.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2fb83df4e5a193ae3a0f7a3f206688b159673c1f663abfde277329c403230b8f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/48aab5dab06fbef47466b71d86114b550a8bdd5cb5e78ec1177bf57e5d6e8798.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/0f78d3e391a8a50535cb681030d155ad1c93bd81f3dbb476024c93a97f15721c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/904b09ac16cdf9b196b51eb742916fdca948a3fccde8919474adf0d125505d97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/58fe0706d83969fbd7fbe089d9c5e9f3d1e6d926407d9202b89f38b0fd73252f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/26ca5f0fb3df6b610c1324b8df71079fc865603b684e16a95dc3b7920a049745.png",
+        "res://character/krusher-style-neck-bank-v1/frames/08088d9f842621e49afdc2ed30c0a0644211240022558cab07d1e823c78af478.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f0919b9692f44f3433ae854adce7cfcae61fd5b78a5244b19d8d4ae86317f3a5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b745dea1a70dfb146ba34d16e823d00b8d1d27abbe5b9668767d61b9517d3227.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8144567bbefddf62e696801807de730fe4834d01e6c5f596ff4bb186833a36aa.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4b08d025c5442ec0d1892270565de32112ad2cf45c84323fa1513bb4e0997f97.png",
+        "res://character/krusher-style-neck-bank-v1/frames/39efa2686bf74f9b2740479b0d702b68bfa78a043f65d33512545463097a0596.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0e790593118db6ca89875edad6dd7d71bcfdbd9a66a10746eac6174352faee48.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    }
+  ]
+}

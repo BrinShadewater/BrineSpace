@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Brine Space\character\krusher-station-lifecycle-v2\run_chairs.py", line 4, in <module>
+    room=sys.argv[1];assert room in ['crew_lounge','observation_room'];review=P/'review/chairs'/room;review.mkdir(parents=True,exist_ok=True)
+         ~~~~~~~~^^^
+IndexError: list index out of range

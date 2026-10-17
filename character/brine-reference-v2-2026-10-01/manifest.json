@@ -1,0 +1,24 @@
+{
+  "status": "candidate, owner review pending, not installed",
+  "reference_hashes": {
+    "character/crew-turnarounds-v4/bill-turnaround-01.png": "f030ed3e85a25193edd00a12956a04f8a154f09dbf0967d4c6a917f93979bfd2",
+    "character/crew-turnarounds-v4/veld-turnaround-01.png": "9ab9bf1811669363cb82064abb3cfd3d9f7bbc7d0ed366f0d61cc6fb3d5de838",
+    "character/brine-comms-v14/portrait.png": "dbcb634f4ab16a28aafe587e7126cace99e3eeb55f98beb30ce7dc573bf68ada",
+    "character/brine-face-v7-2026-09-26/clean-master.png": "85f65e8fc438a1babec65e13c3c2101a6c1d88482b2acd06a26199c3aa3211fb",
+    "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png": "7f71e062079c729989e6ec15c8180f5923fe787addd81dd655fba039ecd9a119"
+  },
+  "bill_idle_south_load_chain": [
+    {
+      "manifest": "character/major-bill-v3/packs/bare-184x184-p92-172/manifest.json",
+      "frame": "character/major-bill-v3/frames/bare/idle-south/000.png"
+    },
+    {
+      "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "frame": "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png"
+    }
+  ],
+  "resolved_bill_idle_south": "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png",
+  "source_id": "exec-cd4410c3-b7fe-4ccb-b72a-476dbc4cf91e.png",
+  "output_sha256": "ac09c3f9ba2256feebe71dc3e5d3b683dbe207e23710a5442233e968b585bcad",
+  "prompt_sha256": "562aedfc3fc0ecab21e0486363dd8eff5f948e9df1e8cc6003ec4ff076269d89"
+}

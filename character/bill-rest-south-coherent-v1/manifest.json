@@ -1,0 +1,154 @@
+{
+  "name": "Bill south generic rest candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/000.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/001.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/002.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/003.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/004.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/005.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/006.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/007.png"
+      ],
+      "frameDurationsMs": [
+        65,
+        85,
+        100,
+        110,
+        120,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/007.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/006.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/005.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/004.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/003.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/002.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/001.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        120,
+        110,
+        100,
+        85,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7,
+      "derived": "exact reverse of authored lie-down"
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/007.png",
+        "res://character/bill-rest-south-coherent-v1/frames/lie-down-south/006.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "restHeadOffset": [
+        0.0,
+        -29.9572
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "name": "Krusher Dom salvage helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "swim-carry": 0.16
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "salvage-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c0c726793c4d826e269da397547e4ca04a3f16edceaef52d4df089fbfe80add5.png",
+        "res://character/krusher-coherent-bank-v2/frames/63cab7f74b6a7ab134e0c15be48bf855ea6ed6f1861808146eb9b9303ccfbc1d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4005df95446fc61c7be21371fc6a2b89e90ffb159cacc2f08f3e97c48de5c616.png",
+        "res://character/krusher-coherent-bank-v2/frames/b871ed93b553a648b23214680e33eaf343d1388e7deec83f9e38e3b255fd462d.png",
+        "res://character/krusher-coherent-bank-v2/frames/39c2c1ab64c330fb36612cea5e5e139cddbded2131bfb19dc3b795af323c9ac1.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c726793c4d826e269da397547e4ca04a3f16edceaef52d4df089fbfe80add5.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "salvage-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7677e0588fcbb0e4333c2508e8684edffc2d277cdda7659fdf7ea5abc6e921f2.png",
+        "res://character/krusher-coherent-bank-v2/frames/2d2b52caecef38a9a2efaa56e9f70ebc7a96bdd958a3daa7a5bad616bdb89f48.png",
+        "res://character/krusher-coherent-bank-v2/frames/50135a1bba13e341d81c09a73f31bc235e2ddd49960afcd0c854ddfe8c0575b3.png",
+        "res://character/krusher-coherent-bank-v2/frames/c1db05ec7e192a26f9d406361291bf9810ed17bcde29557c17fbe2309325f6c3.png",
+        "res://character/krusher-coherent-bank-v2/frames/f8cb672e96b5c7fae75159b84fe50d37fe4c70bb415901cc06a2f8acef39e4cb.png",
+        "res://character/krusher-coherent-bank-v2/frames/7677e0588fcbb0e4333c2508e8684edffc2d277cdda7659fdf7ea5abc6e921f2.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "salvage-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7625f9e47a758cfa71b7d298880e73aed95caa380958791efd180d1fd854fa6e.png",
+        "res://character/krusher-coherent-bank-v2/frames/37c2bdfbba87e92985d671dcb385ef51b1cdd1ef0c4bf490806ff56aa1dc82bb.png",
+        "res://character/krusher-coherent-bank-v2/frames/61c6695cb956a647dc550bfb9322dbdf9ee09277d0beec36b7b6fe37c43c00e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/0688ea099d336b373e3ba14b0ed4ebf4946ddff87b6b0e3ef935544126c55651.png",
+        "res://character/krusher-coherent-bank-v2/frames/cc44e90eae3a037bdd3cfbb9ad36a1e317dc415c9401ecdafcc500cf81d13f19.png",
+        "res://character/krusher-coherent-bank-v2/frames/7625f9e47a758cfa71b7d298880e73aed95caa380958791efd180d1fd854fa6e.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "salvage-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b25ebb27657a3d2f1a5c01433c478fd878bf93b3e307e5a1d77e1e0e30bd8491.png",
+        "res://character/krusher-coherent-bank-v2/frames/866fcf47f92d5cf05f2d722e237c35c29c0df5af8610f87aebdaffc17825456d.png",
+        "res://character/krusher-coherent-bank-v2/frames/aab2093fb2ee6f69b3a3630fa32c1636a095ee9195e369a78c58ff3d690c8ab6.png",
+        "res://character/krusher-coherent-bank-v2/frames/866fcf47f92d5cf05f2d722e237c35c29c0df5af8610f87aebdaffc17825456d.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1e4c6628347ad6db42c24319d1a5f935e132a4a0a24567e45eed257cbef6f15.png",
+        "res://character/krusher-coherent-bank-v2/frames/b25ebb27657a3d2f1a5c01433c478fd878bf93b3e307e5a1d77e1e0e30bd8491.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cargo-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    }
+  ]
+}

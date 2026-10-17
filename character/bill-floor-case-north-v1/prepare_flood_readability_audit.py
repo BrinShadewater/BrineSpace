@@ -1,0 +1,15 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent; R=P.parents[1]
+s=(R/'tests/test_bill_floor_case_flood_visibility_v1.gd').read_text()
+s=s.replace('bill-floor-case-flood-visibility-v1','bill-floor-case-flood-readability-v1').replace('flood_diagnostic_view.gd','flood_readability_view.gd')
+s=s.replace('["normal","crew-white","floor-hidden","foreground-hidden"]','["normal","alpha62","alpha78","alpha90"]')
+s=s.replace('view.white_crew=variant=="crew-white"','view.readability_alpha={"normal":-1.0,"alpha62":.62,"alpha78":.78,"alpha90":.90}[variant]')
+s=s.replace('view.white_crew=false','view.readability_alpha=-1.0')
+s=s.replace('Eight same-clock/same-source/same-foot native diagnostics, both gears after actual flood takeover of finite service-loss exit. Normal presentation versus white crew, hidden retained floor water surface, hidden foreground pass. Diagnostic variants only; no production changes or grade/contact/motion acceptance.','Eight same-clock/source/foot native presentations, both gears after actual flood takeover. Normal versus three Bill-only high-water tints; original bubbles/shadow/depth and water layers retained. Staged study; no production selection or continuous motion acceptance.')
+s=s.replace('BILL FLOOR CASE FLOOD VISIBILITY V1:','BILL FLOOR CASE FLOOD READABILITY V1:')
+(R/'tests/test_bill_floor_case_flood_readability_v1.gd').write_text(s)
+(R/'tests/test_bill_floor_case_flood_readability_v1.gd.uid').write_text('uid://w5n4r6s8t2v5w\n')
+(P/'flood_readability_view.gd.uid').write_text('uid://x5n4r6s8t2v5w\n')
+s=(R/'tools/run_bill_floor_case_flood_visibility_v1_validation.py').read_text().replace('bill-floor-case-flood-visibility-v1','bill-floor-case-flood-readability-v1').replace('test_bill_floor_case_flood_visibility_v1','test_bill_floor_case_flood_readability_v1').replace('BILL FLOOR CASE FLOOD VISIBILITY V1:','BILL FLOOR CASE FLOOD READABILITY V1:').replace('helmet-foreground-hidden-room.png','helmet-alpha90-room.png')
+(R/'tools/run_bill_floor_case_flood_readability_v1_validation.py').write_text(s)
+print('Prepared staged high-water readability comparison, both gears.')

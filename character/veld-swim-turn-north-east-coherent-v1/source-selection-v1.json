@@ -1,0 +1,54 @@
+{
+  "selected": [
+    {
+      "interiorSlot": 1,
+      "source": "bare-source-v2.png",
+      "sourceSlot": 0,
+      "crop": "source-crops-v2/000.png"
+    },
+    {
+      "interiorSlot": 2,
+      "source": "bare-source-v1.png",
+      "sourceSlot": 1,
+      "crop": "source-crops/001.png"
+    },
+    {
+      "interiorSlot": 3,
+      "source": "bare-diagonal-stroke-source-v5.png",
+      "sourceSlot": 0,
+      "sourceCount": 1,
+      "crop": "selected-crops/002.png",
+      "fixedScale": 0.095,
+      "headBox": [
+        910,
+        65,
+        1175,
+        291
+      ]
+    },
+    {
+      "interiorSlot": 4,
+      "source": "bare-near-east-stroke-source-v4.png",
+      "sourceSlot": 0,
+      "sourceCount": 1,
+      "crop": "selected-crops/003.png",
+      "fixedScale": 0.095,
+      "headBox": [
+        893,
+        2,
+        1220,
+        243
+      ]
+    }
+  ],
+  "rejected": [
+    "v1slot0 too far toward east at source start",
+    "v2slots1-2 duplicate current middle poses",
+    "v2slot3 too horizontal relative near-east/interior endpoint",
+    "v1slot2 clustered middle heading, replaced by independent yaw54v3",
+    "v1slot3 extended knees too abrupt against exact east swim0; superseded by moderate-bend v4",
+    "yaw54v3 fully extended calves; superseded by v5 early knee onset"
+  ],
+  "headingReview": "v2slot0 near north;v1slot1 early diagonal;v3 independent later diagonal;v1slot3 near east. Prompt angle labels do not certify screen axis. v4 retains near-east upper-body heading with moderate knee bend toward selected east stroke.",
+  "installed": false
+}

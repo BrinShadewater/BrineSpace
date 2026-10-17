@@ -1,0 +1,44 @@
+{
+  "status": "selected_runtime",
+  "checks": {
+    "package": 92,
+    "north": 559,
+    "southRegression": 559
+  },
+  "north": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 45.64,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-seated-north-selected-reading-chair-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "southRegression": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 42.8,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-seated-south-selected-sofa-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "hashes": {
+    "character/bill-seated-north-family-v1/build.py": "abb8eff1fddd9c4f3b200c060d948d3c8b12cc16fc7fd1cf8321dbacf0a2c4b2",
+    "character/bill-seated-north-family-v1/bare-manifest.json": "5b768d297595f2286e567f28de6fb28812376bad4a9372b5b9c350f293b83661",
+    "character/bill-seated-north-family-v1/helmet-manifest.json": "30e1f355027f705177970551791f7c01603a3a9f21b33e5ff66c3244bdd42d76",
+    "character/bill-seated-north-family-v1/source-bindings.json": "1b79192cbdcab577a1eb1c6435f3c187e692cb17fedc324655fc66381f335c5b",
+    "character/bill-seated-north-family-v1/verification.json": "05cda1c73482ce6a423c219ffe15164db82838c6c71345127a27656d9a99b6de",
+    "scripts/bill_npc.gd": "907c304def318dd1a4dc887a677ebbe8955c8a7468afda3b377b61868e805e72",
+    "scripts/grid_canvas.gd": "7246c5d2de4a59089593eb0e7692d3623a203b8b35b807382c2b31b36bffbcc0",
+    "tests/test_bill_seated_north_reading_selected.gd": "558830726b7a4eec2c38a6e46ce8f58a68e4ef38b17efbf53697608576adab49",
+    "output/bill-seated-north-selected-reading-chair-v1/validation.json": "8575357e1a8f5fc23d54d46f6c6459ffc878c64713926d8583dd53590d23e59c",
+    "output/bill-seated-south-selected-sofa-v1/validation.json": "c1debfeee80f217e0cef2f63b29f03162a3cde42cf1553db73903894bc0f5629",
+    "output/bill-seated-north-selected-reading-chair-v1/bare-enter-02.png": "704f72dea017a4d5f65473527a70fbf7024cca6b838e9a021d61d81df5560785",
+    "output/bill-seated-north-selected-reading-chair-v1/helmet-enter-02.png": "ae232055753b8366edd758b17b068ec6a9c498a50de81182891b745824e02d4b",
+    "output/bill-seated-north-selected-reading-chair-v1/sofa-samples.json": "b027e81fed02f55ee116acb6ef27f45ccce0532e2b513f388c9911afda263a7b"
+  },
+  "scope": "north normal loader and scripted reading stages at real lounge chair; south actual reading service regression; owner acceptance separate"
+}

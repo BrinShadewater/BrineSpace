@@ -1,0 +1,76 @@
+{
+  "nativeChecks": 86,
+  "nativeFailures": 0,
+  "reviewedNativeCaptures": 6,
+  "reviewedNativeBoards": [
+    "native-review-0.png",
+    "native-review-1.png"
+  ],
+  "reviewedSourceWindowBoard": "local-source-review.png",
+  "sourceIndices": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "durationsMs": [
+    30,
+    20,
+    20,
+    20,
+    20,
+    20
+  ],
+  "findings": [
+    "Both new lower finishes retain readable articulated hardware and softer toe/ankle highlights in four source boards, six-frame source board and all six paired four-size native captures.",
+    "Phase10 upper-tail luma176.02to160.36 and median64.56to64.20; phase11 upper-tail174.79to167.61 but median67.00to70.26. Midtone brightness is not uniformly reduced. Phase13 original boots remain brighter; broader finish coordination still open.",
+    "Full original alpha, one-pixel rim, rows above181 and paired body below110 exact. Internal hardware structure visually assessed; outline protection does not certify anatomy.",
+    "Original30/20/20/20/20/20ms window (130ms) verified in finite fixture. No continuous full49motion/flash/contact acceptance, normal controller integration or cross-family completion."
+  ],
+  "metrics": [
+    {
+      "phase": 10,
+      "admitted": 1030,
+      "outsideExact": 64506,
+      "luma": {
+        "before": [
+          42.37,
+          64.56,
+          91.0,
+          176.02
+        ],
+        "after": [
+          39.67,
+          64.2,
+          92.89,
+          160.36
+        ]
+      }
+    },
+    {
+      "phase": 11,
+      "admitted": 1032,
+      "outsideExact": 64504,
+      "luma": {
+        "before": [
+          45.23,
+          67.0,
+          95.62,
+          174.79
+        ],
+        "after": [
+          45.8,
+          70.26,
+          101.64,
+          167.61
+        ]
+      }
+    }
+  ],
+  "continuousVisualMotionAcceptance": false,
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false
+}

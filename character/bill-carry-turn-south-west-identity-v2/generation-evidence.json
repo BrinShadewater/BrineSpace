@@ -1,0 +1,29 @@
+{
+  "method": "built-in imagegen edits",
+  "outputs": {
+    "bare": "exec-92aea690-19a6-4613-b660-d739b017bee7",
+    "helmet": "exec-3773add2-3c58-4af2-abc9-9401c6c91a09"
+  },
+  "prompts": {
+    "bare": {
+      "file": "sources/prompt-bare-v1.txt",
+      "sha256": "fc22c1e96f8e335b121459cb575c1d78dbb2ffeee301f5192686677c71e34892"
+    },
+    "helmet": {
+      "file": "sources/prompt-helmet-v1.txt",
+      "sha256": "11e06cc8816c352292260d882e558947491444519c255c5b4115407cc0a53c39"
+    }
+  },
+  "rawSources": {
+    "bare": {
+      "file": "sources/bare-v1.png",
+      "sha256": "8676c4ea8519171ea148ad04014128dcf075cc000fe5007dae3187a4aad69612"
+    },
+    "helmet": {
+      "file": "sources/helmet-v1.png",
+      "sha256": "f9f5c7b7c09e59865a648b1acc490af079cd7df33d074388dfaf1c4fe7c7f6a5"
+    }
+  },
+  "scope": "New head components only; altered generated body scale/placement and background halos excluded. Original accepted bare body/case/feet retained in both profiles. No mirror of eastern artwork.",
+  "calibration": "Complete bare south source0 opaque stature305px to148native; same148/305 ruler across all8head components; no per-frame normalization."
+}

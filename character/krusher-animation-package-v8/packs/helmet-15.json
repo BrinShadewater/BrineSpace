@@ -1,0 +1,825 @@
+{
+  "name": "Krusher Dom turn helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-turn-east-south",
+      "frameFiles": [
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-south-east",
+      "frameFiles": [
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-south-west",
+      "frameFiles": [
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png",
+        "../frames/18a103e99e4c2edefb4bda3caef4779f9077c606da019ddd4a164ea1d7ae7cc0.png",
+        "../frames/f5149e2e0c0a3111d6e08361d5350b2771819fdf120499b9152511f50cb1d29a.png",
+        "../frames/5b3d29fd611affe456b91f5f9c8504b38a3ff27ac67403bff47af8d6764180aa.png",
+        "../frames/c3127e4b74d7f23c4ed7e920978c80dc795cce0a632ff490e18cb3be94b6548d.png",
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-west-south",
+      "frameFiles": [
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png",
+        "../frames/c3127e4b74d7f23c4ed7e920978c80dc795cce0a632ff490e18cb3be94b6548d.png",
+        "../frames/5b3d29fd611affe456b91f5f9c8504b38a3ff27ac67403bff47af8d6764180aa.png",
+        "../frames/f5149e2e0c0a3111d6e08361d5350b2771819fdf120499b9152511f50cb1d29a.png",
+        "../frames/18a103e99e4c2edefb4bda3caef4779f9077c606da019ddd4a164ea1d7ae7cc0.png",
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-north-east",
+      "frameFiles": [
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png",
+        "../frames/c53901cd7c432d5972490a450e3d25f6a02ef152fa7f97e41cab3a04f7388f63.png",
+        "../frames/dd3ca88d1b5f055438fd7c756868dc9909e1e5e09b4066fb664870ffed94e7a2.png",
+        "../frames/452e66061f2b8583dff97a09a0f306e37b89266c3042b368a68f810b36e9843a.png",
+        "../frames/e5910295a9790f926f538f27dcae760d59a6f7593923dfb1b616dbd26887360e.png",
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-console-water-turn-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-east-north",
+      "frameFiles": [
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png",
+        "../frames/e5910295a9790f926f538f27dcae760d59a6f7593923dfb1b616dbd26887360e.png",
+        "../frames/452e66061f2b8583dff97a09a0f306e37b89266c3042b368a68f810b36e9843a.png",
+        "../frames/dd3ca88d1b5f055438fd7c756868dc9909e1e5e09b4066fb664870ffed94e7a2.png",
+        "../frames/c53901cd7c432d5972490a450e3d25f6a02ef152fa7f97e41cab3a04f7388f63.png",
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-console-water-turn-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png",
+        "../frames/91c7dc76c87cd30466f7a910f89c47653ca96aba70f7f25a776f3a491e0f1bf4.png",
+        "../frames/262356d60944fadbeb6e23eca886f0423e6de866d655c2f43b14adacec1501c5.png",
+        "../frames/483155a0fa5d602b0eb76c8e0e8aecba4d9633258a4327b065179becd9448a5b.png",
+        "../frames/25155d57131c8addc98f5b85a5994b3f56d7bb2b6e084e5111fd04f4e089f3b6.png",
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-console-water-exit-turn-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png",
+        "../frames/25155d57131c8addc98f5b85a5994b3f56d7bb2b6e084e5111fd04f4e089f3b6.png",
+        "../frames/483155a0fa5d602b0eb76c8e0e8aecba4d9633258a4327b065179becd9448a5b.png",
+        "../frames/262356d60944fadbeb6e23eca886f0423e6de866d655c2f43b14adacec1501c5.png",
+        "../frames/91c7dc76c87cd30466f7a910f89c47653ca96aba70f7f25a776f3a491e0f1bf4.png",
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-console-water-exit-turn-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-east-west",
+      "frameFiles": [
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png",
+        "../frames/18a103e99e4c2edefb4bda3caef4779f9077c606da019ddd4a164ea1d7ae7cc0.png",
+        "../frames/f5149e2e0c0a3111d6e08361d5350b2771819fdf120499b9152511f50cb1d29a.png",
+        "../frames/5b3d29fd611affe456b91f5f9c8504b38a3ff27ac67403bff47af8d6764180aa.png",
+        "../frames/c3127e4b74d7f23c4ed7e920978c80dc795cce0a632ff490e18cb3be94b6548d.png",
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-west-east",
+      "frameFiles": [
+        "../frames/e13beb7fdb321ca57023be0b1c31a5599be65a71deeeccffbcc25929b8fbb07c.png",
+        "../frames/c3127e4b74d7f23c4ed7e920978c80dc795cce0a632ff490e18cb3be94b6548d.png",
+        "../frames/5b3d29fd611affe456b91f5f9c8504b38a3ff27ac67403bff47af8d6764180aa.png",
+        "../frames/f5149e2e0c0a3111d6e08361d5350b2771819fdf120499b9152511f50cb1d29a.png",
+        "../frames/18a103e99e4c2edefb4bda3caef4779f9077c606da019ddd4a164ea1d7ae7cc0.png",
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-north-south",
+      "frameFiles": [
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png",
+        "../frames/df1e7d6c2fa59d3c5c5f05788129dd8249fe61143a2c8f80f364b4339c03b0d2.png",
+        "../frames/62a3ccefa2acd83ade9baf1ce638490e74e20da300c48c1d316ec4d736b25e67.png",
+        "../frames/f45d1bb0bc22ecd7389bad0b78fb2df414af6c4c3a8937c679611eb3348c0d9d.png",
+        "../frames/67779ec548f7036548cd115a714e3c90de78092fdf3a5eec6e302e12c11fa11f.png",
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    },
+    {
+      "id": "swim-turn-south-north",
+      "frameFiles": [
+        "../frames/e8b9fb8b796bab1533218156dfa53148467919ce046a1222f1f74fdb94ea9514.png",
+        "../frames/c51c308b136e251210249752f388f9cc9d3ce18b54b37cc4ef99fdf923a8599f.png",
+        "../frames/b3964e334710eb4589a426f88bd2509da507416f1b2b744f8daaf5273504b11a.png",
+        "../frames/7244685ffe7bdc90d5129897925fa74dcc86c702acba6adda1f388b406b34507.png",
+        "../frames/846b25cdffe3012b064bfd31e15608ccd4fccbb2d4fb67bfc3dae57aef619ad6.png",
+        "../frames/42ab9a2d94623671a80a0be106918c2687880c5dd6ec4c293aa83a9714755960.png",
+        "../frames/67779ec548f7036548cd115a714e3c90de78092fdf3a5eec6e302e12c11fa11f.png",
+        "../frames/f45d1bb0bc22ecd7389bad0b78fb2df414af6c4c3a8937c679611eb3348c0d9d.png",
+        "../frames/62a3ccefa2acd83ade9baf1ce638490e74e20da300c48c1d316ec4d736b25e67.png",
+        "../frames/df1e7d6c2fa59d3c5c5f05788129dd8249fe61143a2c8f80f364b4339c03b0d2.png",
+        "../frames/f4e234e7e0b4e3b146b199c10af645b59eb1424b549f574b0e0b68ea7bcb7e6a.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "sourceManifest": "res://character/james-water-turn-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James underwater turn/cargo body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints"
+      }
+    }
+  ]
+}

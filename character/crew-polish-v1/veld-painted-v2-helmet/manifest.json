@@ -1,0 +1,399 @@
+{
+  "name": "Veld painted core candidate fitted helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "walk": 0.12,
+    "walk-east": 0.11716216216216217,
+    "walk-west": 0.12405405405405405
+  },
+  "states": [
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png",
+        "frames/idle-east/002.png"
+      ],
+      "frameDurationsMs": [
+        648.0,
+        288.0,
+        503.99999999999994
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "kneel-east",
+      "frameFiles": [
+        "frames/kneel-east/000.png",
+        "frames/kneel-east/001.png",
+        "frames/kneel-east/002.png",
+        "frames/kneel-east/003.png",
+        "frames/kneel-east/004.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        180.0,
+        240.0,
+        240.0,
+        220.0
+      ],
+      "loop": false,
+      "provenance": "authored lowering; shared idle/work endpoints"
+    },
+    {
+      "id": "stand-east",
+      "frameFiles": [
+        "frames/stand-east/000.png",
+        "frames/stand-east/001.png",
+        "frames/stand-east/002.png",
+        "frames/stand-east/003.png",
+        "frames/stand-east/004.png"
+      ],
+      "frameDurationsMs": [
+        220.0,
+        240.0,
+        240.0,
+        180.0,
+        120.0
+      ],
+      "loop": false,
+      "provenance": "reverse lowering; shared work/idle endpoints"
+    },
+    {
+      "id": "repair-east",
+      "frameFiles": [
+        "frames/repair-east/000.png",
+        "frames/repair-east/001.png",
+        "frames/repair-east/002.png",
+        "frames/repair-east/003.png",
+        "frames/repair-east/004.png",
+        "frames/repair-east/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        140.0,
+        180.0,
+        140.0,
+        160.0,
+        180.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png",
+        "frames/walk-west/004.png",
+        "frames/walk-west/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png",
+        "frames/idle-west/002.png"
+      ],
+      "frameDurationsMs": [
+        648.0,
+        288.0,
+        503.99999999999994
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "kneel-west",
+      "frameFiles": [
+        "frames/kneel-west/000.png",
+        "frames/kneel-west/001.png",
+        "frames/kneel-west/002.png",
+        "frames/kneel-west/003.png",
+        "frames/kneel-west/004.png"
+      ],
+      "frameDurationsMs": [
+        62.4,
+        93.6,
+        124.8,
+        124.8,
+        114.4
+      ],
+      "loop": false,
+      "provenance": "authored lowering; shared idle/work endpoints"
+    },
+    {
+      "id": "stand-west",
+      "frameFiles": [
+        "frames/stand-west/000.png",
+        "frames/stand-west/001.png",
+        "frames/stand-west/002.png",
+        "frames/stand-west/003.png",
+        "frames/stand-west/004.png"
+      ],
+      "frameDurationsMs": [
+        114.4,
+        124.8,
+        124.8,
+        93.6,
+        62.4
+      ],
+      "loop": false,
+      "provenance": "reverse lowering; shared work/idle endpoints"
+    },
+    {
+      "id": "repair-west",
+      "frameFiles": [
+        "frames/repair-west/000.png",
+        "frames/repair-west/001.png",
+        "frames/repair-west/002.png",
+        "frames/repair-west/003.png",
+        "frames/repair-west/004.png",
+        "frames/repair-west/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/000.png",
+        "frames/walk-south/001.png",
+        "frames/walk-south/002.png",
+        "frames/walk-south/003.png",
+        "frames/walk-south/004.png",
+        "frames/walk-south/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png",
+        "frames/idle-south/002.png"
+      ],
+      "frameDurationsMs": [
+        648.0,
+        288.0,
+        503.99999999999994
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "kneel-south",
+      "frameFiles": [
+        "frames/kneel-south/000.png",
+        "frames/kneel-south/001.png",
+        "frames/kneel-south/002.png",
+        "frames/kneel-south/003.png",
+        "frames/kneel-south/004.png"
+      ],
+      "frameDurationsMs": [
+        62.4,
+        93.6,
+        124.8,
+        124.8,
+        114.4
+      ],
+      "loop": false,
+      "provenance": "authored lowering; shared idle/work endpoints"
+    },
+    {
+      "id": "stand-south",
+      "frameFiles": [
+        "frames/stand-south/000.png",
+        "frames/stand-south/001.png",
+        "frames/stand-south/002.png",
+        "frames/stand-south/003.png",
+        "frames/stand-south/004.png"
+      ],
+      "frameDurationsMs": [
+        114.4,
+        124.8,
+        124.8,
+        93.6,
+        62.4
+      ],
+      "loop": false,
+      "provenance": "reverse lowering; shared work/idle endpoints"
+    },
+    {
+      "id": "repair-south",
+      "frameFiles": [
+        "frames/repair-south/000.png",
+        "frames/repair-south/001.png",
+        "frames/repair-south/002.png",
+        "frames/repair-south/003.png",
+        "frames/repair-south/004.png",
+        "frames/repair-south/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/000.png",
+        "frames/walk-north/001.png",
+        "frames/walk-north/002.png",
+        "frames/walk-north/003.png",
+        "frames/walk-north/004.png",
+        "frames/walk-north/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png",
+        "frames/idle-north/002.png"
+      ],
+      "frameDurationsMs": [
+        648.0,
+        288.0,
+        503.99999999999994
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "kneel-north",
+      "frameFiles": [
+        "frames/kneel-north/000.png",
+        "frames/kneel-north/001.png",
+        "frames/kneel-north/002.png",
+        "frames/kneel-north/003.png",
+        "frames/kneel-north/004.png"
+      ],
+      "frameDurationsMs": [
+        62.4,
+        93.6,
+        124.8,
+        124.8,
+        114.4
+      ],
+      "loop": false,
+      "provenance": "authored lowering; shared idle/work endpoints"
+    },
+    {
+      "id": "stand-north",
+      "frameFiles": [
+        "frames/stand-north/000.png",
+        "frames/stand-north/001.png",
+        "frames/stand-north/002.png",
+        "frames/stand-north/003.png",
+        "frames/stand-north/004.png"
+      ],
+      "frameDurationsMs": [
+        114.4,
+        124.8,
+        124.8,
+        93.6,
+        62.4
+      ],
+      "loop": false,
+      "provenance": "reverse lowering; shared work/idle endpoints"
+    },
+    {
+      "id": "repair-north",
+      "frameFiles": [
+        "frames/repair-north/000.png",
+        "frames/repair-north/001.png",
+        "frames/repair-north/002.png",
+        "frames/repair-north/003.png",
+        "frames/repair-north/004.png",
+        "frames/repair-north/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "provenance": "authored"
+    }
+  ],
+  "status": "candidate; native integration pending",
+  "precomposed": true
+}

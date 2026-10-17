@@ -1,0 +1,12 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+p=Path(__file__).resolve().parent;r=p.parents[1];out=p/'knee-material-phase30-v240';out.mkdir(exist_ok=True)
+base=p/'lower-material-phase30-v205';master=r/'character/branforth-west-direct-v2/master-input.png';box=(96,148,136,188)
+for role,f,crop in [('edit-target',base/'bare-head-protected.png',box),('master-metal-reference',master,(527,1063,551,1085))]:
+ im=Image.open(f).convert('RGBA').crop(crop);im.resize((1024,1024),Image.Resampling.NEAREST if role=='edit-target' else Image.Resampling.LANCZOS).save(out/f'{role}.png')
+prompt='''Edit Image1 only, a fixed40x40 crop around the existing near knee in James west carrying phase30. Image2 is ONLY a small warm-gray matte metal surface sample from the original master. It contains no hardware design to copy. In Image1, soften the broad pale near-knee highlight, retaining a gently lit upper edge and fine existing wear. Keep exactly the existing knee fitting construction, contour and its diagonal orientation. The fitting is centred at image coordinate(530,550); its native rectangle is x12..30,y9..34 within this40x40 crop. Preserve every original feature and its precise location, including the existing tiny fittings: NO new rivets, brass buttons, bolts, holes, buckles, outlines, seams or plate designs. Do not add details. Do not move, enlarge, straighten, rotate or reshape the fitting. Preserve the charcoal quilt and adjoining calf/strap contours unchanged. Change only the bright metal surface tone into subdued warm gray, with subtle existing highlights. Do not darken into black, introduce purple or smooth away original construction. Return exactly the same1024x1024 crop framing with genuine transparency, same registration, no background, text, glow or pixel-art conversion.'''
+(out/'prompt.txt').write_text(prompt,encoding='utf-8');sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+files=[base/'bare-head-protected.png',base/'helmet-head-protected.png',master];refs=[out/'edit-target.png',out/'master-metal-reference.png']
+(out/'inputs.json').write_text(json.dumps(dict(phase=30,baseFolder=base.relative_to(r).as_posix(),cropBox=box,materialBox=[527,1063,551,1085],admissionRectangle=[108,157,127,183],sourceSha256={f.relative_to(r).as_posix():sha(f) for f in files},referenceSha256={f.relative_to(r).as_posix():sha(f) for f in refs},promptSha256=sha(out/'prompt.txt'),normalChanged=False),indent=2)+'\n',encoding='utf-8')
+print('Prepared motif-free phase30 material repair.')

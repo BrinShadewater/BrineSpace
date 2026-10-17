@@ -1,0 +1,76 @@
+{
+  "status": "Rejected before helmet/native expansion",
+  "newWholeVideoTask": "448679751106893",
+  "estimatedVideoUSD": 0.28,
+  "billingVerified": false,
+  "wholeNewVideoFramesReviewed": 142,
+  "wholeNewPoseKeysReviewed": 2,
+  "sourceReplayChecks": 278,
+  "selectedWestSourcesUnchanged": 274,
+  "selectedWestManifestsUnchanged": 4,
+  "newRuntimeSelection": false,
+  "measurements": {
+    "anchor-v1": {
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "height": 107,
+      "top": 112,
+      "floor": 218,
+      "headWidth": 27,
+      "headAxis": 130.0,
+      "visibleFrontGroundLeft": null,
+      "mapping": "Uniform whole raw canvas to256,generated alpha preserved; no pose scaling or registration rescue."
+    },
+    "anchor-v2": {
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "height": 98,
+      "top": 125,
+      "floor": 222,
+      "headWidth": 24,
+      "headAxis": 137.5,
+      "visibleFrontGroundLeft": 101,
+      "mapping": "Uniform whole raw canvas to256,generated alpha preserved; no pose scaling or registration rescue."
+    }
+  },
+  "reasons": {
+    "video-v2": "Both legs fold under body instead of requested planted front boot; vial stays visible during start of rising and cyan prop/hand appearance varies. Original identity and standing finish substantially retained, but motion fix failed.",
+    "anchor-v1": "Head width27 is correct (earlier visual commentary corrected); boot placement too far left and floor218 instead of223.",
+    "anchor-v2": "Guide improves floor222 versus223 but head24 versus27 and upper-body density visibly shrinks; front groundleft101 versus107. Reject material/geometry tradeoff."
+  },
+  "bindings": {
+    "character/veld-library-closeout-v1/west-sample-family-v2/complete-sample-source.png": "3eb7d7299af10e5e0ec7b66f42dbd94a3cba516d1ce50e37d1f3d4deb6c79e8d",
+    "character/veld-library-closeout-v1/west-sample-family-v2/CONTACT_REVIEW.json": "17d8af4f3dda0529ee7bd50efbdba713b0f5df43f70bebd8572ae5433c2eec58",
+    "character/veld-library-closeout-v1/west-sample-family-v2/generation.json": "b10fa3b83d0da793bf68eb9994ddb4fe530845029d0f0dd8d5e3f7cc6ac3c0f6",
+    "character/veld-library-closeout-v1/west-sample-family-v2/input-alpha-control.png": "160206cb1b6961d313ba3e3a1b230f7c28c5b646f0b474e36a90278b393c685e",
+    "character/veld-library-closeout-v1/west-sample-family-v2/INPUTS.json": "bb8410560b1f2b8010a32546c6c88ebc7b34dad4a8e965d26bd386345e339a55",
+    "character/veld-library-closeout-v1/west-sample-family-v2/master-input.png": "cac85f4cec4f9137e0e4f6a12094fa43beb0d0160c2629facf0d1c7ef62f727d",
+    "character/veld-library-closeout-v1/west-sample-family-v2/master-native.png": "944a91a001594781c9655ea08d511a1fa7e64f74d5a7be7f59551cc47f6ead3c",
+    "character/veld-library-closeout-v1/west-sample-family-v2/prompt.txt": "5984fa4acf383e5596fdee009109729bf82a6c8d169b3d96710624b231f8cb23",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-00.png": "57d52c19ff53950219be1e49cbf189b39f31244dd97581cd68f8e3740d2fea82",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-01.png": "640aec8cbb3c884a3af464214df536ff803cdb6953b3f946f6089c16d9b3e446",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-02.png": "1a879678c6920ea8cdfc245d92f11dd5431697fe8177f35c9e3ed838bc96213d",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-03.png": "9b1924135434b27014bba7bedea1f6c62ad1b090401d5398ec898e91a1fad45e",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-04.png": "93b93c68cf70f4cfc667e1d2dfbec313c715cd4311275052f04b72ce2dd1a682",
+    "character/veld-library-closeout-v1/west-sample-family-v2/sample-chronology-05.png": "51466c1716447fd073b1710603f0100dd805858a90718e49f90679ffd3847522",
+    "character/veld-library-closeout-v1/west-sample-family-v2/source.mp4": "4ec14052672bd53d49751a766a1c79f75168ad25d256936fdba593898b9c5a2c",
+    "character/veld-library-closeout-v1/west-sample-family-v2/SOURCE_REVIEW.json": "ff3ad2be05983a0f6436f67ad33e8c153f4d957ae41a370c4ace82b8bc4be94f",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v1/INPUTS.json": "401f59d09ce8211b543d9a58f684bb75d402c2aa6135307cc4c5ac722eadc054",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v1/native.png": "eba4a202277ebdaa51f106585fe6eeef496587892b39baf4fc74bb9b76b00c59",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v1/prompt.txt": "66f0171401e428798a7d874f08a42bbe841c299df09d8087818e96ed82313610",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v1/raw.png": "bae434c7e021255a14ddd35e1b4a549357294a99e78286fb87b85a27da0b574b",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/comparison.png": "81b9abb9925bb3f748262fa82a5beda4cf614a06b4d8803dcca415fa2f01198e",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/guide.json": "a7e902179fceeb36e545a9d0b0efcf10c2e18aed10e6da08ba8356cce3a27a6f",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/INPUTS.json": "2ae4eceaca608f22a0676877fac2042506334ddd380a2705419baf0327a4e823",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/MEASUREMENTS.json": "631706b589b72a0fdb0c666ca6eb5081af14cc1c33ffb66f56b1525a38f2d766",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/native.png": "918c095db41a57ac4694f8a6b861bb7346d8a4383b67fe98faf4af38bcb77397",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/pose-guide.png": "a34f86b84d65d91f12dbdb77d9e6158a5e6c3826114aa3826f480c05df51046f",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/prompt.txt": "acf60f670f7b4cba7b49308992052c96b23667cebfd2c029382711e2e2261bec",
+    "character/veld-library-closeout-v1/west-kneel-anchor-v2/raw.png": "b43d4c7fe321cf5be21ad18296426e0f74bf44b37fec94a3d0dc31e26de1c95e"
+  },
+  "scope": "Complete source review only; no new helmet variants, native tests, source omission, per-pose recenter/refloor or local body/prop rescue. No owner profile access."
+}

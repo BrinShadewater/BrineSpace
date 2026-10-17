@@ -1,0 +1,145 @@
+{
+  "name": "veld-new-design-motion-pilot",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "review_candidate_not_installed",
+  "palettePolicy": "Brightness matched to idle, then skin/blue/neutral cloth mapped along locked material ramps preserving luminance. Other materials retained; not whole-cast 24-swatch quantization.",
+  "strideDistanceCells": {
+    "walk": 0.11716216216216217
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png",
+        "frames/idle-south/002.png",
+        "frames/idle-south/003.png",
+        "frames/idle-south/004.png",
+        "frames/idle-south/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-south-01.png",
+      "source_sha256": "48dd1a6967fc7df38135165c5600f86b532908aff532e0cd083d42f8531f98c3",
+      "mirrored": false,
+      "extractionScales": [
+        0.23987034035656402,
+        0.23948220064724918,
+        0.23987034035656402,
+        0.24143556280587275,
+        0.24143556280587275,
+        0.24143556280587275
+      ]
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png",
+        "frames/idle-east/002.png",
+        "frames/idle-east/003.png",
+        "frames/idle-east/004.png",
+        "frames/idle-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-east-01.png",
+      "source_sha256": "10f72166952e2a2ac3df31a18d523edb485fb58427da4f216b4ec4180da10e5a",
+      "mirrored": false,
+      "extractionScales": [
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3064182194616977,
+        0.3076923076923077,
+        0.3064182194616977
+      ]
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "loop": true,
+      "source": "sources/walk-east-01.png",
+      "source_sha256": "fcc2a6437cfcfe9e2363f75bc431fa4884eca827d70bff0f4c8a07f99d09b0d9",
+      "mirrored": false,
+      "extractionScales": [
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576
+      ]
+    },
+    {
+      "id": "interact-east",
+      "frameFiles": [
+        "frames/interact-east/000.png",
+        "frames/interact-east/001.png",
+        "frames/interact-east/002.png",
+        "frames/interact-east/003.png",
+        "frames/interact-east/004.png",
+        "frames/interact-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        180,
+        120,
+        140,
+        260,
+        140,
+        180
+      ],
+      "loop": false,
+      "source": "sources/interact-east-01.png",
+      "source_sha256": "79f34d8d6a72fd7dcd3012e38c88dfca0e1d106729110554f3da93dc03aa531b",
+      "mirrored": false,
+      "extractionScales": [
+        0.22664624808575803,
+        0.22664624808575803,
+        0.22664624808575803,
+        0.21356421356421357,
+        0.2138728323699422,
+        0.2132564841498559
+      ]
+    }
+  ]
+}

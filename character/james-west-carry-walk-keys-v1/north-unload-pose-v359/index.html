@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>James — north unload pose comparison</title>
+<style>body{background:#2f3a3f;color:#f4f1e8;font:16px system-ui;margin:24px}h1{font-size:25px}p{max-width:950px;line-height:1.5}select{font-size:16px;padding:5px}.row{display:flex;flex-wrap:wrap;gap:18px}.card{width:290px}canvas{width:280px;height:280px;background:#334147;border:1px solid #59666c}h2{font-size:18px}small{display:block;line-height:1.5;color:#c4ccd0}</style>
+<h1>James — north unload pose comparison</h1>
+<p>One new pose study for the narrower unloading stance. The current animation and
+tested Windows build remain selected. This comparison aligns the soles with a
+single translation and uniform canvas scale; it does not stretch the body.</p>
+<label>Standing height <select id="scale"><option value="148">148 px</option><option value="82">82 px</option><option value="54">54 px</option><option value="27">27 px</option></select></label>
+<div class="row"><section class="card"><h2>Current carry</h2><canvas id="carry" width="280" height="280"></canvas><small>Accepted equipment and standing proportions.</small></section><section class="card"><h2>Current unload</h2><canvas id="current" width="280" height="280"></canvas><small>Selected middle crouch pose.</small></section><section class="card"><h2>New pose study</h2><canvas id="candidate" width="280" height="280"></canvas><small>Unselected still. Motion, equipment fit and joins remain unproven.</small></section></div>
+<p id="status">Loading source images…</p>
+<script>
+const sources={carry:'/character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/000.png',current:'/character/james-cargo-north-v1/frames/bare/pickup-north/002.png',candidate:'source.png'};
+const images={};const scale=document.querySelector('#scale');
+function draw(){const q=Number(scale.value)/148;for(const [key,img] of Object.entries(images)){const canvas=document.querySelector('#'+key),ctx=canvas.getContext('2d');ctx.clearRect(0,0,280,280);const ruler=key==='candidate'?256/1254:1;const floor=key==='candidate'?978*ruler:224;const w=img.width*ruler*q,h=img.height*ruler*q;ctx.drawImage(img,140-w/2,235-floor*q,w,h);ctx.strokeStyle='#73838a';ctx.beginPath();ctx.moveTo(20,235);ctx.lineTo(260,235);ctx.stroke();}document.querySelector('#status').textContent='Loaded all three original source files. Comparison height: '+scale.value+' px.';}
+scale.onchange=draw;
+Promise.all(Object.entries(sources).map(([key,path])=>new Promise((resolve,reject)=>{const img=new Image;img.onload=()=>{images[key]=img;resolve()};img.onerror=reject;img.src=path}))).then(draw).catch(()=>document.querySelector('#status').textContent='A source image could not be loaded.');
+</script></html>

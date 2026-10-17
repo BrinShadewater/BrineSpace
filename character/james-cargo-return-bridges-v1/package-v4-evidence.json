@@ -1,0 +1,81 @@
+{
+  "actualFullCellResize": [
+    215,
+    215
+  ],
+  "alphaDustCutoff": 32,
+  "nominalRuler": 148,
+  "originals": {
+    "bare": "res://character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/010.png",
+    "helmet": "res://character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/010.png"
+  },
+  "outsideWindowExactChecks": 358440,
+  "rawBareRuler": 353,
+  "scope": "Native deterministic generated coherent torso/hip rectangle on retained original paired sources. Outside rectangle RGBA exact, not semantic head-only or full anatomy acceptance.",
+  "selected": false,
+  "sources": [
+    {
+      "anchor": [
+        15,
+        15
+      ],
+      "cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "index": 0,
+      "rawFootX": 269.0,
+      "rawSole": 498
+    },
+    {
+      "anchor": [
+        18,
+        15
+      ],
+      "cell": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "index": 1,
+      "rawFootX": 262.0,
+      "rawSole": 498
+    },
+    {
+      "anchor": [
+        17,
+        15
+      ],
+      "cell": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "index": 2,
+      "rawFootX": 264.5,
+      "rawSole": 498
+    }
+  ],
+  "window": [
+    80,
+    110,
+    84,
+    69
+  ],
+  "retainedV3FrameIndices": [
+    0,
+    1
+  ],
+  "transformedV4CellsUsed": [
+    2
+  ],
+  "unusedTransformedV4Cells": [
+    0,
+    1
+  ],
+  "sourceNote": "Script computes all three transformed cells, but only index2 contributes new pixels. First2paired frames are copied/byte-asserted from frames-v3."
+}

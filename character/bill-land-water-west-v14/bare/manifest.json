@@ -1,0 +1,47 @@
+{
+  "name": "Bill West shared-standing Ready/Crouch entry comparison",
+  "frameWidth": 352,
+  "frameHeight": 320,
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "mixed_scale_comparison_unselected",
+  "states": [
+    {
+      "id": "land-swim-west",
+      "frameFiles": [
+        "frames/land-swim-west/000.png",
+        "frames/land-swim-west/001.png",
+        "frames/land-swim-west/002.png",
+        "frames/land-swim-west/003.png",
+        "frames/land-swim-west/004.png",
+        "frames/land-swim-west/005.png",
+        "frames/land-swim-west/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        70,
+        80,
+        60,
+        80,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "provenance": "Ready/Crouch from single standing148/964 whole-source calibration and sole-midpoint/support registration; five other complete poses exact from V13 including configured idle and calibrated swim endpoint. Three older interior poses still need repair."
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "idleAuthority": "crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/000.png",
+  "idleSha256": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+  "idlePadding": [
+    36,
+    52
+  ],
+  "sources": {
+    "sources/sit-v1.png": "02e9198a0080c32a1d38cd3ec4f4756b34600c51544e0b79edc3c61dea2d7f15",
+    "sources/interiors-v2.png": "a48b4081544ce10804cc3b4123ed9c68d41797227800f9105ca686275470ba39"
+  },
+  "primaryGeneration": "exec-bda2c1e2-1b68-4de7-a56b-2bfb9766bc3f",
+  "interiorGeneration": "exec-6617bcb3-aa9c-483f-aaa6-363c47abcfc6",
+  "primaryRuler": [
+    0.27,
+    0.3058
+  ],
+  "interiorRuler": [
+    0.125,
+    0.1426
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 1,
+      "sourceBox": [
+        674,
+        72,
+        859,
+        533
+      ],
+      "scaleX": 0.27,
+      "scaleY": 0.3058,
+      "position": [
+        99,
+        84
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ],
+      "headAxis": [
+        137,
+        85
+      ],
+      "headTiltDegrees": 5
+    },
+    {
+      "frame": 2,
+      "source": "sources/interiors-v2.png",
+      "sourcePose": 0,
+      "sourceBox": [
+        207,
+        69,
+        693,
+        951
+      ],
+      "scaleX": 0.125,
+      "scaleY": 0.1426,
+      "position": [
+        89,
+        99
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ],
+      "headAxis": [
+        123,
+        99
+      ],
+      "headTiltDegrees": 8
+    },
+    {
+      "frame": 3,
+      "source": "sources/interiors-v2.png",
+      "sourcePose": 1,
+      "sourceBox": [
+        874,
+        141,
+        1398,
+        951
+      ],
+      "scaleX": 0.125,
+      "scaleY": 0.1426,
+      "position": [
+        86,
+        109
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ],
+      "headAxis": [
+        117,
+        109
+      ],
+      "headTiltDegrees": 5
+    },
+    {
+      "frame": 4,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 4,
+      "sourceBox": [
+        672,
+        597,
+        945,
+        990
+      ],
+      "scaleX": 0.27,
+      "scaleY": 0.3058,
+      "position": [
+        80,
+        105
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ],
+      "headAxis": [
+        107,
+        106
+      ],
+      "headTiltDegrees": 0
+    },
+    {
+      "frame": 5,
+      "source": "sources/sit-v1.png",
+      "sourcePose": 5,
+      "sourceBox": [
+        1158,
+        589,
+        1429,
+        990
+      ],
+      "scaleX": 0.27,
+      "scaleY": 0.3058,
+      "position": [
+        81,
+        102
+      ],
+      "targetFrontBoot": [
+        133.0,
+        223
+      ],
+      "headAxis": [
+        107,
+        103
+      ],
+      "headTiltDegrees": 0
+    }
+  ],
+  "excludedPrimaryPoses": [
+    0,
+    2,
+    3
+  ],
+  "scope": "authored lowering;exact selected standing;post-resize boot registration;real furniture/loop/selection pending"
+}

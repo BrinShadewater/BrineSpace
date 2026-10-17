@@ -1,0 +1,22 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+JAMES ISOLATION: C:/Users/Alex/AppData/Local/Temp/brine-james-native-3c8frhzv/Godot/app_userdata/BrineSpace
+ERROR: Error opening file 'res://character/james-cargo-west-v1/frames/bare/carry-west/000.png'.
+   at: load_image (core/io/image_loader.cpp:91)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-west-v1/station.gd:62)
+       [1] capture (res://tests/playtest_nursery_art.gd:42)
+       [2] settle (res://tests/playtest_nursery_art.gd:20)
+ERROR: Failed to load image. Error 7
+   at: load_from_file (core/io/image.cpp:2787)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-west-v1/station.gd:62)
+       [1] capture (res://tests/playtest_nursery_art.gd:42)
+       [2] settle (res://tests/playtest_nursery_art.gd:20)
+SCRIPT ERROR: Cannot call method 'get_data' on a null value.
+   at: run (res://character/james-cargo-west-v1/station.gd:63)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-cargo-west-v1/station.gd:63)
+       [1] capture (res://tests/playtest_nursery_art.gd:42)
+       [2] settle (res://tests/playtest_nursery_art.gd:20)

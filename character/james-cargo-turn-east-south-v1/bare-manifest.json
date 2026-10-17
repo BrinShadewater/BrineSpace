@@ -1,0 +1,153 @@
+{
+  "name": "James east-south carrying turn bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_owner_accepted_carry_turn_planted_v2",
+  "states": [
+    {
+      "id": "carry-turn-east-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/carry-turn-east-south/000.png",
+        "frames/bare/carry-turn-east-south/001.png",
+        "frames/bare/carry-turn-east-south/002.png",
+        "frames/bare/carry-turn-east-south/003.png",
+        "frames/bare/carry-turn-east-south/004.png",
+        "frames/bare/carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "helmetSource": "source-helmet.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent quarter turn with compact planted legs; reverse exact poses; upper-body endpoints match installed carry",
+        "fixedScale": 0.26666666666666666,
+        "headOnlyOverlay": "Generated matched intermediate helmet angles; all pixels at/below recorded headCutoff identical to bare",
+        "legSource": "source-planted-v2.png"
+      }
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/carry-turn-south-east/000.png",
+        "frames/bare/carry-turn-south-east/001.png",
+        "frames/bare/carry-turn-south-east/002.png",
+        "frames/bare/carry-turn-south-east/003.png",
+        "frames/bare/carry-turn-south-east/004.png",
+        "frames/bare/carry-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "helmetSource": "source-helmet.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent quarter turn with compact planted legs; reverse exact poses; upper-body endpoints match installed carry",
+        "fixedScale": 0.26666666666666666,
+        "headOnlyOverlay": "Generated matched intermediate helmet angles; all pixels at/below recorded headCutoff identical to bare",
+        "legSource": "source-planted-v2.png"
+      }
+    }
+  ]
+}

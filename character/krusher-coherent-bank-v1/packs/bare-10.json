@@ -1,0 +1,911 @@
+{
+  "name": "Krusher Dom rest bare",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "states": [
+    {
+      "id": "bunk-enter-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a7800f48f90def1de42968df80b142ed9322390aa26ca3c66611d3fa3985d446.png",
+        "res://character/krusher-coherent-bank-v1/frames/34e19d714eedd0edf30c120c82bc4e9c9babb20ca2be5cb55b7df504d128d2e7.png",
+        "res://character/krusher-coherent-bank-v1/frames/4ddb56a130c49ce5eb2eb5c2f9c45d84ab7fdb1e5f1a22968ca399acae0f0724.png",
+        "res://character/krusher-coherent-bank-v1/frames/bd60f668ae905c0933385cc25cfb6ae27821a71188346051c96143aaf4842ea4.png",
+        "res://character/krusher-coherent-bank-v1/frames/7c038e9e43b0fa5e1507c242c5ff13f1bbd508cf7bc3277d826b57f6a473d6ad.png",
+        "res://character/krusher-coherent-bank-v1/frames/b768501aea771cac76217f3a37469ee19b2ae7226c4eae26e8eb42a080849ece.png",
+        "res://character/krusher-coherent-bank-v1/frames/4db1b2bff79d4054f1de299f2c18fb52869af0286bbf89b186ce10808dc3ca06.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        240,
+        300,
+        300,
+        300,
+        300,
+        280
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "",
+        "",
+        "",
+        "",
+        "bunk",
+        "bunk",
+        "bunk"
+      ],
+      "depthOffsets": [
+        96,
+        96,
+        96,
+        96,
+        100,
+        100,
+        100
+      ],
+      "frameCount": 7,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "bunk-exit-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/4db1b2bff79d4054f1de299f2c18fb52869af0286bbf89b186ce10808dc3ca06.png",
+        "res://character/krusher-coherent-bank-v1/frames/b768501aea771cac76217f3a37469ee19b2ae7226c4eae26e8eb42a080849ece.png",
+        "res://character/krusher-coherent-bank-v1/frames/7c038e9e43b0fa5e1507c242c5ff13f1bbd508cf7bc3277d826b57f6a473d6ad.png",
+        "res://character/krusher-coherent-bank-v1/frames/bd60f668ae905c0933385cc25cfb6ae27821a71188346051c96143aaf4842ea4.png",
+        "res://character/krusher-coherent-bank-v1/frames/4ddb56a130c49ce5eb2eb5c2f9c45d84ab7fdb1e5f1a22968ca399acae0f0724.png",
+        "res://character/krusher-coherent-bank-v1/frames/34e19d714eedd0edf30c120c82bc4e9c9babb20ca2be5cb55b7df504d128d2e7.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7800f48f90def1de42968df80b142ed9322390aa26ca3c66611d3fa3985d446.png"
+      ],
+      "frameDurationsMs": [
+        280,
+        300,
+        300,
+        300,
+        300,
+        240,
+        120
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "bunk",
+        "bunk",
+        "bunk",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "depthOffsets": [
+        100,
+        100,
+        100,
+        96,
+        96,
+        96,
+        96
+      ],
+      "frameCount": 7,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "bunk-sleep-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/4db1b2bff79d4054f1de299f2c18fb52869af0286bbf89b186ce10808dc3ca06.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "furnitureFrames": [
+        "bunk"
+      ],
+      "depthOffsets": [
+        100
+      ],
+      "frameCount": 1,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "sleep"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/3d5faa36ca39cf2a57440560c1e9f230123270285734ba5afb0c80ffac19932b.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a688f0b4bb7e6761e9994cfbf92577e09141b381dbcf1db08e3cd8473fe1c8b.png",
+        "res://character/krusher-coherent-bank-v1/frames/e4053577889a491a1a22d56264e92511963f556eab56f878371313fb140c718d.png",
+        "res://character/krusher-coherent-bank-v1/frames/da18d8401907947fd88abf45de1b72a10f663eae31e72d37bd78fc65223bf017.png",
+        "res://character/krusher-coherent-bank-v1/frames/1e821a03290b4500c3cb72b382d979fe1ebeb3a7ff3a44e33d69b8e9d1c500af.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7800f48f90def1de42968df80b142ed9322390aa26ca3c66611d3fa3985d446.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "get-up-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/937e486ce56ae1713daa124f5290db41e08359e8d001fbc122b9cbcf8c5af088.png",
+        "res://character/krusher-coherent-bank-v1/frames/a925e12c1de4ad2ef2c7d62a729951ace23e72e6f1164f2bfb8606d9345f792b.png",
+        "res://character/krusher-coherent-bank-v1/frames/fc6ba165b2b8b6b72ac6e16e4ff1c661166e32e057ed7064fb6b25856ab15f96.png",
+        "res://character/krusher-coherent-bank-v1/frames/217816107c8c5072337561c854d66e509f753c4b5ab499d7cfcddb61d13f5cae.png",
+        "res://character/krusher-coherent-bank-v1/frames/ade69b9296a36bce4a08614e833085933ee03f7040a16348c1b84f489ea65896.png",
+        "res://character/krusher-coherent-bank-v1/frames/89b7be954fc9c0faa0f2bd49fe6a5ba55f97ccfc654f53e1c1418157bb6a9dad.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96,
+        77,
+        58,
+        58,
+        19,
+        0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/fee3a256c905d4047dc670b739361ed958c984fabc2303c2e6400f1983d813d5.png",
+        "res://character/krusher-coherent-bank-v1/frames/628917856899d583e5b898dd8a9cf6aea6969c04f044fe0246456506b2d72a17.png",
+        "res://character/krusher-coherent-bank-v1/frames/d822066e8e60f2ac9ceb7861310d191c6079f77f46c8496f63bbe46020e28edf.png",
+        "res://character/krusher-coherent-bank-v1/frames/339580c883ceb6d159900ff9b8f8d758ba2a396ec79d7cb58e683b41c88ff692.png",
+        "res://character/krusher-coherent-bank-v1/frames/c35bedd7cd6091c959fae5f6a0773b55bd0cf082b4f4109ed27eab027782bf72.png",
+        "res://character/krusher-coherent-bank-v1/frames/f54edeae004590761d419221f269bd2d465e190dd34060a3b3635fe6a3c75772.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "get-up-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/280b4e967e28e6307697feaf4f5b7fdd7ad3859f0a74c0cc0ff0a87f50bd44c7.png",
+        "res://character/krusher-coherent-bank-v1/frames/3fce238546e07d0e636a9d1994e419c7fc8cda470bfad849a479c6306fdc9ad3.png",
+        "res://character/krusher-coherent-bank-v1/frames/160160cc6b84fac120ecd5547e44cdb067d48237766cbbe431c59b2726039986.png",
+        "res://character/krusher-coherent-bank-v1/frames/4ec4ab932b43351accfdd966b187661bf326446a710146b7246078f6b0572a26.png",
+        "res://character/krusher-coherent-bank-v1/frames/263f69bd76b8c2072a3addd9ecf918b2367b463af927d26adb31f998d7f813a6.png",
+        "res://character/krusher-coherent-bank-v1/frames/2cd9a0613384248f366772708078143ff1c4d0cc70b1fcd628d5d106393e7f26.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a7800f48f90def1de42968df80b142ed9322390aa26ca3c66611d3fa3985d446.png",
+        "res://character/krusher-coherent-bank-v1/frames/1e821a03290b4500c3cb72b382d979fe1ebeb3a7ff3a44e33d69b8e9d1c500af.png",
+        "res://character/krusher-coherent-bank-v1/frames/da18d8401907947fd88abf45de1b72a10f663eae31e72d37bd78fc65223bf017.png",
+        "res://character/krusher-coherent-bank-v1/frames/e4053577889a491a1a22d56264e92511963f556eab56f878371313fb140c718d.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a688f0b4bb7e6761e9994cfbf92577e09141b381dbcf1db08e3cd8473fe1c8b.png",
+        "res://character/krusher-coherent-bank-v1/frames/3d5faa36ca39cf2a57440560c1e9f230123270285734ba5afb0c80ffac19932b.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "lie-down-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/89b7be954fc9c0faa0f2bd49fe6a5ba55f97ccfc654f53e1c1418157bb6a9dad.png",
+        "res://character/krusher-coherent-bank-v1/frames/ade69b9296a36bce4a08614e833085933ee03f7040a16348c1b84f489ea65896.png",
+        "res://character/krusher-coherent-bank-v1/frames/217816107c8c5072337561c854d66e509f753c4b5ab499d7cfcddb61d13f5cae.png",
+        "res://character/krusher-coherent-bank-v1/frames/fc6ba165b2b8b6b72ac6e16e4ff1c661166e32e057ed7064fb6b25856ab15f96.png",
+        "res://character/krusher-coherent-bank-v1/frames/a925e12c1de4ad2ef2c7d62a729951ace23e72e6f1164f2bfb8606d9345f792b.png",
+        "res://character/krusher-coherent-bank-v1/frames/937e486ce56ae1713daa124f5290db41e08359e8d001fbc122b9cbcf8c5af088.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        19,
+        58,
+        58,
+        77,
+        96
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/f54edeae004590761d419221f269bd2d465e190dd34060a3b3635fe6a3c75772.png",
+        "res://character/krusher-coherent-bank-v1/frames/c35bedd7cd6091c959fae5f6a0773b55bd0cf082b4f4109ed27eab027782bf72.png",
+        "res://character/krusher-coherent-bank-v1/frames/339580c883ceb6d159900ff9b8f8d758ba2a396ec79d7cb58e683b41c88ff692.png",
+        "res://character/krusher-coherent-bank-v1/frames/d822066e8e60f2ac9ceb7861310d191c6079f77f46c8496f63bbe46020e28edf.png",
+        "res://character/krusher-coherent-bank-v1/frames/628917856899d583e5b898dd8a9cf6aea6969c04f044fe0246456506b2d72a17.png",
+        "res://character/krusher-coherent-bank-v1/frames/fee3a256c905d4047dc670b739361ed958c984fabc2303c2e6400f1983d813d5.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "lie-down-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/2cd9a0613384248f366772708078143ff1c4d0cc70b1fcd628d5d106393e7f26.png",
+        "res://character/krusher-coherent-bank-v1/frames/263f69bd76b8c2072a3addd9ecf918b2367b463af927d26adb31f998d7f813a6.png",
+        "res://character/krusher-coherent-bank-v1/frames/4ec4ab932b43351accfdd966b187661bf326446a710146b7246078f6b0572a26.png",
+        "res://character/krusher-coherent-bank-v1/frames/160160cc6b84fac120ecd5547e44cdb067d48237766cbbe431c59b2726039986.png",
+        "res://character/krusher-coherent-bank-v1/frames/3fce238546e07d0e636a9d1994e419c7fc8cda470bfad849a479c6306fdc9ad3.png",
+        "res://character/krusher-coherent-bank-v1/frames/280b4e967e28e6307697feaf4f5b7fdd7ad3859f0a74c0cc0ff0a87f50bd44c7.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/3d5faa36ca39cf2a57440560c1e9f230123270285734ba5afb0c80ffac19932b.png",
+        "res://character/krusher-coherent-bank-v1/frames/8a6c3625a702f33e1e36c0a63fa13cf001ed4ef3762881514440661c90c7e486.png",
+        "res://character/krusher-coherent-bank-v1/frames/5d3a1e25596e8f0c19efbdc496066e509fc6b1b3ac79f9ab37423f69991ed889.png",
+        "res://character/krusher-coherent-bank-v1/frames/5d83f8ab8d56235f836cbe2c8d5545bd2f65cd54b6a4638f5f03fc2eaa6fdcf3.png",
+        "res://character/krusher-coherent-bank-v1/frames/c912b6ce578359c28f52b707b2c30836366e870c55712d6d88ac475d50aaf869.png",
+        "res://character/krusher-coherent-bank-v1/frames/3d5faa36ca39cf2a57440560c1e9f230123270285734ba5afb0c80ffac19932b.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -22.962833178005592,
+        -6.616216216216216
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/937e486ce56ae1713daa124f5290db41e08359e8d001fbc122b9cbcf8c5af088.png",
+        "res://character/krusher-coherent-bank-v1/frames/01dc787f78ab4d5b6ae30c35f11e010d51753107f144f61da9c5f0b2faa04a3b.png",
+        "res://character/krusher-coherent-bank-v1/frames/c84afb91acfb654c783c2ec78729b4bc77dbe46ce46e777255ddc036569c1f44.png",
+        "res://character/krusher-coherent-bank-v1/frames/8513917e9b7c0dc623a7150e1ef115b66f1be3e34be33212e8581a982477100e.png",
+        "res://character/krusher-coherent-bank-v1/frames/aa78fa3f7ecda8b2d8143feeef5d6164e2f7c235ec9666142018af25012882a1.png",
+        "res://character/krusher-coherent-bank-v1/frames/937e486ce56ae1713daa124f5290db41e08359e8d001fbc122b9cbcf8c5af088.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.0580369843527692,
+        -35.72756756756757
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/fee3a256c905d4047dc670b739361ed958c984fabc2303c2e6400f1983d813d5.png",
+        "res://character/krusher-coherent-bank-v1/frames/380ed5fe513d92d34133e20d91c5423d9273db3dfbaa533e2becc714530a4b4e.png",
+        "res://character/krusher-coherent-bank-v1/frames/a37e1832fdc518be9fa36973f7f1896177788cd95b3153245fa560f44ea13e76.png",
+        "res://character/krusher-coherent-bank-v1/frames/4414fefc5fe4c79493cf72da4bab60c3adccd50445280cdebe07e366a600d4b9.png",
+        "res://character/krusher-coherent-bank-v1/frames/4083f111c27a8b47f11853720910f96a5dfcf3cfe9e4a7165e5fe6b6329bde1b.png",
+        "res://character/krusher-coherent-bank-v1/frames/fee3a256c905d4047dc670b739361ed958c984fabc2303c2e6400f1983d813d5.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.6616216216216216,
+        -34.8454054054054
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/280b4e967e28e6307697feaf4f5b7fdd7ad3859f0a74c0cc0ff0a87f50bd44c7.png",
+        "res://character/krusher-coherent-bank-v1/frames/66e92b8da42c0f6fe9b531c4c33f80c491f8163377e00776f56601a7ca49f54e.png",
+        "res://character/krusher-coherent-bank-v1/frames/98c1b91600112912f89b94255a54348560fc756d18291f109a30257c52d05961.png",
+        "res://character/krusher-coherent-bank-v1/frames/85f0656facd5f467407459c05e00fb0526c108308752d1bf485d8dd4aa8fb6d5.png",
+        "res://character/krusher-coherent-bank-v1/frames/7dc93f2dcd4b32ba4516e6a3166bfbab358aae4348b4ba5cdc68777de092135a.png",
+        "res://character/krusher-coherent-bank-v1/frames/280b4e967e28e6307697feaf4f5b7fdd7ad3859f0a74c0cc0ff0a87f50bd44c7.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        22.048608608608603,
+        -10.585945945945946
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James rest body, furniture contact, clocks and state flags",
+        "identity": "Tracked Krusher cardinal, rotated transition and authored reclined/sleep heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    }
+  ],
+  "strideDistanceCells": {}
+}

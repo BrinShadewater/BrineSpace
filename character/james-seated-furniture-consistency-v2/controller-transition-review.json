@@ -1,0 +1,349 @@
+{
+  "checks": 2858,
+  "cases": [
+    {
+      "room": "crew_lounge",
+      "mode": 0,
+      "captures": 42,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode0-change005.png",
+            "index": 5,
+            "key": "sit-down-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.700000000000001,
+            "stage": "life_sit",
+            "timer": 0.0999999999999993
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode0-change006.png",
+            "index": 0,
+            "key": "sit-idle-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.800000000000001,
+            "stage": "life_seated",
+            "timer": 7.4
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode0-change035.png",
+            "index": 5,
+            "key": "sit-idle-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.06666666666665,
+            "stage": "life_seated",
+            "timer": 0.133333333333355
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode0-change036.png",
+            "index": 0,
+            "key": "sit-rise-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.21666666666665,
+            "stage": "life_rise",
+            "timer": 0.8
+          }
+        }
+      ],
+      "distinctKeys": [
+        "sit-down-north",
+        "sit-idle-north",
+        "sit-rise-north"
+      ],
+      "last": {
+        "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode0-change041.png",
+        "index": 5,
+        "key": "sit-rise-north",
+        "mode": 0,
+        "physicalFoot": [
+          7725.39990234375,
+          7777.0
+        ],
+        "room": "crew_lounge",
+        "simTime": 8.91666666666669,
+        "stage": "life_rise",
+        "timer": 0.0999999999999993
+      }
+    },
+    {
+      "room": "crew_lounge",
+      "mode": 1,
+      "captures": 42,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode1-change047.png",
+            "index": 5,
+            "key": "sit-down-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.700000000000001,
+            "stage": "life_sit",
+            "timer": 0.0999999999999993
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode1-change048.png",
+            "index": 0,
+            "key": "sit-idle-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.800000000000001,
+            "stage": "life_seated",
+            "timer": 7.4
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode1-change077.png",
+            "index": 5,
+            "key": "sit-idle-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.06666666666665,
+            "stage": "life_seated",
+            "timer": 0.133333333333355
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode1-change078.png",
+            "index": 0,
+            "key": "sit-rise-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.21666666666665,
+            "stage": "life_rise",
+            "timer": 0.8
+          }
+        }
+      ],
+      "distinctKeys": [
+        "sit-down-north",
+        "sit-idle-north",
+        "sit-rise-north"
+      ],
+      "last": {
+        "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/crew_lounge-mode1-change083.png",
+        "index": 5,
+        "key": "sit-rise-north",
+        "mode": 1,
+        "physicalFoot": [
+          7725.39990234375,
+          7777.0
+        ],
+        "room": "crew_lounge",
+        "simTime": 8.91666666666669,
+        "stage": "life_rise",
+        "timer": 0.0999999999999993
+      }
+    },
+    {
+      "room": "observation_room",
+      "mode": 0,
+      "captures": 40,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode0-change089.png",
+            "index": 5,
+            "key": "sit-down-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.583333333333333,
+            "stage": "observation_sit",
+            "timer": 0.0666666666666664
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode0-change090.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.65,
+            "stage": "observation_read",
+            "timer": 12.0
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode0-change117.png",
+            "index": 3,
+            "key": "read-seated-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.2666666666669,
+            "stage": "observation_read",
+            "timer": 0.383333333333159
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode0-change118.png",
+            "index": 0,
+            "key": "sit-rise-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6500000000002,
+            "stage": "observation_rise",
+            "timer": 0.65
+          }
+        }
+      ],
+      "distinctKeys": [
+        "read-seated-south",
+        "sit-down-south",
+        "sit-rise-south"
+      ],
+      "last": {
+        "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode0-change123.png",
+        "index": 5,
+        "key": "sit-rise-south",
+        "mode": 0,
+        "physicalFoot": [
+          7968.0,
+          7776.0
+        ],
+        "room": "observation_room",
+        "simTime": 13.2333333333336,
+        "stage": "observation_rise",
+        "timer": 0.0666666666666664
+      }
+    },
+    {
+      "room": "observation_room",
+      "mode": 1,
+      "captures": 40,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode1-change129.png",
+            "index": 5,
+            "key": "sit-down-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.583333333333333,
+            "stage": "observation_sit",
+            "timer": 0.0666666666666664
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode1-change130.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.65,
+            "stage": "observation_read",
+            "timer": 12.0
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode1-change157.png",
+            "index": 3,
+            "key": "read-seated-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.2666666666669,
+            "stage": "observation_read",
+            "timer": 0.383333333333159
+          },
+          "after": {
+            "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode1-change158.png",
+            "index": 0,
+            "key": "sit-rise-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6500000000002,
+            "stage": "observation_rise",
+            "timer": 0.65
+          }
+        }
+      ],
+      "distinctKeys": [
+        "read-seated-south",
+        "sit-down-south",
+        "sit-rise-south"
+      ],
+      "last": {
+        "capture": "res://character/james-seated-furniture-consistency-v2/controller-native/observation_room-mode1-change163.png",
+        "index": 5,
+        "key": "sit-rise-south",
+        "mode": 1,
+        "physicalFoot": [
+          7968.0,
+          7776.0
+        ],
+        "room": "observation_room",
+        "simTime": 13.2333333333336,
+        "stage": "observation_rise",
+        "timer": 0.0666666666666664
+      }
+    }
+  ]
+}

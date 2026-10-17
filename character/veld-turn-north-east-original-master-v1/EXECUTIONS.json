@@ -1,0 +1,16 @@
+{
+  "tool": "built-in image_gen",
+  "executions": {
+    "turn-v1": "69668881-22ea-4132-b603-e05aa5608b1d",
+    "gather-v1": "ec648665-3b30-4f6f-bde4-34d0f4349c0a",
+    "gather-v2": "202abdda-9c05-44e6-a245-031d20ea5379"
+  },
+  "selectedSourceFoundation": "raw-gather-v2.png",
+  "selectedAnimation": null,
+  "rejections": {
+    "turn-v1": "Rear upper-body53/head20 versus held61/22; old guide geometry still dominates",
+    "gather-v1": "Combined boot region31 too narrow; retained diagnostic"
+  },
+  "prompts": ["prompt-turn-v1.txt", "prompt-gather-v1.txt", "prompt-gather-v2.txt"],
+  "scope": "Reviewed staged gathered source pose only, no completed turn or normal adoption"
+}

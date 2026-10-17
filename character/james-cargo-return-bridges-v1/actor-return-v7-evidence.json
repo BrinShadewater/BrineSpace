@@ -1,0 +1,991 @@
+{
+  "checks": 991,
+  "failures": 0,
+  "results": [
+    {
+      "admitted": true,
+      "curiosityAfter": 92.1428000000019,
+      "curiosityBefore": 92.0724000000019,
+      "elapsed": 0.32,
+      "geometry": {
+        "envelopeClear": true,
+        "extent": "[P: (-13.23243, -66.16216), S: (49.84216, 67.4854)]",
+        "footClear": true,
+        "newDrawing": true
+      },
+      "mode": "bare",
+      "plan": {
+        "facing": "east",
+        "gaps": [
+          {
+            "from": {
+              "index": 0,
+              "key": "pickup-east",
+              "seconds": 0.07
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-east"
+          }
+        ],
+        "gear": "",
+        "rows": [
+          {
+            "index": 3,
+            "key": "pickup-east",
+            "seconds": 0.08
+          },
+          {
+            "index": 2,
+            "key": "pickup-east",
+            "seconds": 0.09
+          },
+          {
+            "index": 1,
+            "key": "pickup-east",
+            "seconds": 0.08
+          },
+          {
+            "index": 0,
+            "key": "pickup-east",
+            "seconds": 0.07
+          }
+        ],
+        "selected": false,
+        "source": "pickup-east",
+        "sourceIndex": 3,
+        "started": 109.399999999998,
+        "until": 109.719999999998
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_pickup",
+      "trace": [
+        {
+          "index": 3,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-01-000-source.png",
+          "time": 109.419999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-01-000.png"
+        },
+        {
+          "index": 2,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-02-000-source.png",
+          "time": 109.499999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-02-000.png"
+        },
+        {
+          "index": 1,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-03-000-source.png",
+          "time": 109.579999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-03-000.png"
+        },
+        {
+          "index": 0,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-04-000-source.png",
+          "time": 109.659999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-pose-04-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.119999999998,
+        "state": "interact"
+      },
+      "beforePose": "pickup",
+      "beforeStage": "workshop_pickup",
+      "beforeTimer": 0.26,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_pickup-source-after.png"
+      ],
+      "target": "workshop_pickup"
+    },
+    {
+      "admitted": true,
+      "curiosityAfter": 92.6796000000024,
+      "curiosityBefore": 92.213200000002,
+      "elapsed": 2.12,
+      "geometry": {
+        "envelopeClear": true,
+        "extent": "[P: (-24.70054, -66.60324), S: (44.54919, 68.36757)]",
+        "footClear": true,
+        "newDrawing": true
+      },
+      "mode": "bare",
+      "plan": {
+        "facing": "west",
+        "gaps": [
+          {
+            "from": {
+              "index": 5,
+              "key": "unload-west",
+              "seconds": 0.07
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-west"
+          }
+        ],
+        "gear": "",
+        "rows": [
+          {
+            "index": 2,
+            "key": "carry-turn-east-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 3,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 4,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 5,
+            "key": "carry-turn-east-west",
+            "seconds": 0.2
+          },
+          {
+            "index": 6,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 7,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 8,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 9,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 1,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 2,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 3,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 4,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 5,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 1,
+            "key": "unload-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 2,
+            "key": "unload-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 3,
+            "key": "unload-west",
+            "seconds": 0.09
+          },
+          {
+            "index": 4,
+            "key": "unload-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 5,
+            "key": "unload-west",
+            "seconds": 0.07
+          }
+        ],
+        "selected": false,
+        "source": "carry-turn-east-west",
+        "sourceIndex": 2,
+        "started": 110.039999999998,
+        "until": 112.159999999998
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_carry",
+      "trace": [
+        {
+          "index": 2,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-01-000-source.png",
+          "time": 110.059999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-01-000.png"
+        },
+        {
+          "index": 3,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-02-000-source.png",
+          "time": 110.139999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-02-000.png"
+        },
+        {
+          "index": 4,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-03-000-source.png",
+          "time": 110.299999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-03-000.png"
+        },
+        {
+          "index": 5,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-04-000-source.png",
+          "time": 110.439999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-04-000.png"
+        },
+        {
+          "index": 6,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-05-000-source.png",
+          "time": 110.639999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-05-000.png"
+        },
+        {
+          "index": 7,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-06-000-source.png",
+          "time": 110.779999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-06-000.png"
+        },
+        {
+          "index": 8,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-07-000-source.png",
+          "time": 110.939999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-07-000.png"
+        },
+        {
+          "index": 9,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-08-000-source.png",
+          "time": 111.099999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-08-000.png"
+        },
+        {
+          "index": 10,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-09-000-source.png",
+          "time": 111.239999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-09-000.png"
+        },
+        {
+          "index": 1,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-10-000-source.png",
+          "time": 111.339999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-10-000.png"
+        },
+        {
+          "index": 2,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-11-000-source.png",
+          "time": 111.419999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-11-000.png"
+        },
+        {
+          "index": 3,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-12-000-source.png",
+          "time": 111.499999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-12-000.png"
+        },
+        {
+          "index": 4,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-13-000-source.png",
+          "time": 111.579999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-13-000.png"
+        },
+        {
+          "index": 5,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-14-000-source.png",
+          "time": 111.659999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-14-000.png"
+        },
+        {
+          "index": 1,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-15-000-source.png",
+          "time": 111.739999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-15-000.png"
+        },
+        {
+          "index": 2,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-16-000-source.png",
+          "time": 111.839999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-16-000.png"
+        },
+        {
+          "index": 3,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-17-000-source.png",
+          "time": 111.939999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-17-000.png"
+        },
+        {
+          "index": 4,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-18-000-source.png",
+          "time": 112.019999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-18-000.png"
+        },
+        {
+          "index": 5,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-19-000-source.png",
+          "time": 112.099999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-pose-19-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "carry-turn-east-west",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "carry",
+      "beforeStage": "workshop_carry",
+      "beforeTimer": 0.0,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_carry-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_carry-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_carry-source-after.png"
+      ],
+      "target": "workshop_carry"
+    },
+    {
+      "admitted": true,
+      "curiosityAfter": 93.6652000000033,
+      "curiosityBefore": 93.6476000000033,
+      "elapsed": 0.08,
+      "geometry": {
+        "envelopeClear": false,
+        "extent": "[P: (-13.67351, -65.28), S: (27.78811, 65.28)]",
+        "footClear": true,
+        "newDrawing": false
+      },
+      "mode": "bare",
+      "plan": {
+        "facing": "north",
+        "gaps": [
+          {
+            "from": {
+              "index": 5,
+              "key": "unload-north",
+              "seconds": 0.08
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-north"
+          }
+        ],
+        "gear": "",
+        "rows": [
+          {
+            "index": 5,
+            "key": "unload-north",
+            "seconds": 0.08
+          }
+        ],
+        "selected": false,
+        "source": "unload-north",
+        "sourceIndex": 5,
+        "started": 116.559999999997,
+        "until": 116.639999999997
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_unload",
+      "trace": [
+        {
+          "index": 5,
+          "key": "unload-north",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_unload-pose-01-000-source.png",
+          "time": 116.579999999997,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_unload-pose-01-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "unload",
+      "beforeStage": "workshop_unload",
+      "beforeTimer": 1.02,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_unload-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-bare-workshop_unload-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_unload-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-bare-workshop_unload-source-after.png"
+      ],
+      "target": "workshop_unload"
+    },
+    {
+      "admitted": true,
+      "curiosityAfter": 92.1428000000019,
+      "curiosityBefore": 92.0724000000019,
+      "elapsed": 0.32,
+      "geometry": {
+        "envelopeClear": true,
+        "extent": "[P: (-13.23243, -68.80865), S: (49.84216, 70.13189)]",
+        "footClear": true,
+        "newDrawing": true
+      },
+      "mode": "helmet",
+      "plan": {
+        "facing": "east",
+        "gaps": [
+          {
+            "from": {
+              "index": 0,
+              "key": "pickup-east",
+              "seconds": 0.07
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-east"
+          }
+        ],
+        "gear": "diving-helmet",
+        "rows": [
+          {
+            "index": 3,
+            "key": "pickup-east",
+            "seconds": 0.08
+          },
+          {
+            "index": 2,
+            "key": "pickup-east",
+            "seconds": 0.09
+          },
+          {
+            "index": 1,
+            "key": "pickup-east",
+            "seconds": 0.08
+          },
+          {
+            "index": 0,
+            "key": "pickup-east",
+            "seconds": 0.07
+          }
+        ],
+        "selected": false,
+        "source": "pickup-east",
+        "sourceIndex": 3,
+        "started": 109.399999999998,
+        "until": 109.719999999998
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_pickup",
+      "trace": [
+        {
+          "index": 3,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-01-000-source.png",
+          "time": 109.419999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-01-000.png"
+        },
+        {
+          "index": 2,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-02-000-source.png",
+          "time": 109.499999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-02-000.png"
+        },
+        {
+          "index": 1,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-03-000-source.png",
+          "time": 109.579999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-03-000.png"
+        },
+        {
+          "index": 0,
+          "key": "pickup-east",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-04-000-source.png",
+          "time": 109.659999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-pose-04-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.119999999998,
+        "state": "interact"
+      },
+      "beforePose": "pickup",
+      "beforeStage": "workshop_pickup",
+      "beforeTimer": 0.26,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_pickup-source-after.png"
+      ],
+      "target": "workshop_pickup"
+    },
+    {
+      "admitted": true,
+      "curiosityAfter": 92.6796000000024,
+      "curiosityBefore": 92.213200000002,
+      "elapsed": 2.12,
+      "geometry": {
+        "envelopeClear": true,
+        "extent": "[P: (-24.70054, -70.13189), S: (44.54919, 71.89622)]",
+        "footClear": true,
+        "newDrawing": true
+      },
+      "mode": "helmet",
+      "plan": {
+        "facing": "west",
+        "gaps": [
+          {
+            "from": {
+              "index": 5,
+              "key": "unload-west",
+              "seconds": 0.07
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-west"
+          }
+        ],
+        "gear": "diving-helmet",
+        "rows": [
+          {
+            "index": 2,
+            "key": "carry-turn-east-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 3,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 4,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 5,
+            "key": "carry-turn-east-west",
+            "seconds": 0.2
+          },
+          {
+            "index": 6,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 7,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 8,
+            "key": "carry-turn-east-west",
+            "seconds": 0.16
+          },
+          {
+            "index": 9,
+            "key": "carry-turn-east-west",
+            "seconds": 0.14
+          },
+          {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 1,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 2,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 3,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 4,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 5,
+            "key": "carry-settle-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 1,
+            "key": "unload-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 2,
+            "key": "unload-west",
+            "seconds": 0.1
+          },
+          {
+            "index": 3,
+            "key": "unload-west",
+            "seconds": 0.09
+          },
+          {
+            "index": 4,
+            "key": "unload-west",
+            "seconds": 0.08
+          },
+          {
+            "index": 5,
+            "key": "unload-west",
+            "seconds": 0.07
+          }
+        ],
+        "selected": false,
+        "source": "carry-turn-east-west",
+        "sourceIndex": 2,
+        "started": 110.039999999998,
+        "until": 112.159999999998
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_carry",
+      "trace": [
+        {
+          "index": 2,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-01-000-source.png",
+          "time": 110.059999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-01-000.png"
+        },
+        {
+          "index": 3,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-02-000-source.png",
+          "time": 110.139999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-02-000.png"
+        },
+        {
+          "index": 4,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-03-000-source.png",
+          "time": 110.299999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-03-000.png"
+        },
+        {
+          "index": 5,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-04-000-source.png",
+          "time": 110.439999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-04-000.png"
+        },
+        {
+          "index": 6,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-05-000-source.png",
+          "time": 110.639999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-05-000.png"
+        },
+        {
+          "index": 7,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-06-000-source.png",
+          "time": 110.779999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-06-000.png"
+        },
+        {
+          "index": 8,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-07-000-source.png",
+          "time": 110.939999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-07-000.png"
+        },
+        {
+          "index": 9,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-08-000-source.png",
+          "time": 111.099999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-08-000.png"
+        },
+        {
+          "index": 10,
+          "key": "carry-turn-east-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-09-000-source.png",
+          "time": 111.239999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-09-000.png"
+        },
+        {
+          "index": 1,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-10-000-source.png",
+          "time": 111.339999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-10-000.png"
+        },
+        {
+          "index": 2,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-11-000-source.png",
+          "time": 111.419999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-11-000.png"
+        },
+        {
+          "index": 3,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-12-000-source.png",
+          "time": 111.499999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-12-000.png"
+        },
+        {
+          "index": 4,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-13-000-source.png",
+          "time": 111.579999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-13-000.png"
+        },
+        {
+          "index": 5,
+          "key": "carry-settle-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-14-000-source.png",
+          "time": 111.659999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-14-000.png"
+        },
+        {
+          "index": 1,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-15-000-source.png",
+          "time": 111.739999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-15-000.png"
+        },
+        {
+          "index": 2,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-16-000-source.png",
+          "time": 111.839999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-16-000.png"
+        },
+        {
+          "index": 3,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-17-000-source.png",
+          "time": 111.939999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-17-000.png"
+        },
+        {
+          "index": 4,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-18-000-source.png",
+          "time": 112.019999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-18-000.png"
+        },
+        {
+          "index": 5,
+          "key": "unload-west",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-19-000-source.png",
+          "time": 112.099999999998,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-pose-19-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "carry-turn-east-west",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "carry",
+      "beforeStage": "workshop_carry",
+      "beforeTimer": 0.0,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_carry-source-after.png"
+      ],
+      "target": "workshop_carry"
+    },
+    {
+      "admitted": true,
+      "curiosityAfter": 93.6652000000033,
+      "curiosityBefore": 93.6476000000033,
+      "elapsed": 0.08,
+      "geometry": {
+        "envelopeClear": false,
+        "extent": "[P: (-13.67351, -66.16216), S: (27.78811, 66.16216)]",
+        "footClear": true,
+        "newDrawing": false
+      },
+      "mode": "helmet",
+      "plan": {
+        "facing": "north",
+        "gaps": [
+          {
+            "from": {
+              "index": 5,
+              "key": "unload-north",
+              "seconds": 0.08
+            },
+            "reason": "Registered standing settlement and floor-crate handoff required",
+            "to": "idle-north"
+          }
+        ],
+        "gear": "diving-helmet",
+        "rows": [
+          {
+            "index": 5,
+            "key": "unload-north",
+            "seconds": 0.08
+          }
+        ],
+        "selected": false,
+        "source": "unload-north",
+        "sourceIndex": 5,
+        "started": 116.559999999997,
+        "until": 116.639999999997
+      },
+      "returnReason": "finite source segment complete; standing/floor join pending",
+      "sameFoot": true,
+      "target": "workshop_unload",
+      "trace": [
+        {
+          "index": 5,
+          "key": "unload-north",
+          "source": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-pose-01-000-source.png",
+          "time": 116.579999999997,
+          "world": "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-pose-01-000.png"
+        }
+      ]
+    },
+    {
+      "afterMotion": {},
+      "afterPose": "carry",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "unload",
+      "beforeStage": "workshop_unload",
+      "beforeTimer": 1.02,
+      "captures": [
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-before-000.png",
+        "res://character/james-cargo-return-bridges-v1/arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-after-000.png"
+      ],
+      "diagnostic": true,
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-source-before.png",
+        "arrival-captures/candidate-v7-return-v7-helmet-workshop_unload-source-after.png"
+      ],
+      "target": "workshop_unload"
+    }
+  ],
+  "scope": "Diagnostic actual default0 workshop journeys, both initial gears, pickup-mid/carry-mid/unload-mid real power removal +20ms actor update and source/world before/after captures. Staged source-bound controller return with footprint admission, live needs, all changing native source/room captures. Floor/idle and safety/ordinary Continue acceptance pending."
+}

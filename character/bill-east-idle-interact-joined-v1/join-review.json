@@ -1,0 +1,92 @@
+{
+  "status": "provisional_unselected",
+  "scope": "Full idle reference plus six-slot interaction. Whole-source endpoint aliases and lossless whole-canvas registration only. No new painted artwork, scaling or colour changes.",
+  "inputs": {
+    "character/bill-east-interact-master-consistency-v1/manifest.json": "9cddfed2245a33f2a826bd0d4c071e373e3dcad2052c3e1da118ab373f565ada",
+    "character/bill-east-idle-master-motion-v1/manifest.json": "30d2afe1f71e8765ac311daea8347a85d6714f07035afd6b295f3d801deffa15",
+    "output/bill-east-master-world-v2/report.json": "44b3644eee61a6730f4b6f44aac54a241bcc292bd3c97b6941de8ae09e4ae27b",
+    "output/bill-east-master-world-v2/validation.json": "35879b145267844cf0bfadbf741f2e39f19e74bdf2ba7c6c38eda9cd1de106b9",
+    "character/bill-east-idle-master-motion-v1/frames/idle-east/000.png": "c4daf91b6608a32ba3196b005d8c5532acda31177816ae6c67961fa2351d9186",
+    "character/bill-east-interact-master-consistency-v1/frames/interact-east/001.png": "2a0bfbec25ff785e722ccb09494fcfaaa17db56daa59ac5934a8d99d7e47e67f",
+    "character/bill-east-interact-master-consistency-v1/frames/interact-east/002.png": "cc0fde44e9e970041017a7fdab8b7d5a6c8b256d4880db2fdd897f4a1cb99da8",
+    "character/bill-east-interact-master-consistency-v1/frames/interact-east/003.png": "8569fcc2950ecac114560562a82eae88b75450d7b6871ca546643f5423d523c0",
+    "character/bill-east-interact-master-consistency-v1/frames/interact-east/004.png": "889c5838e520e55eae83becb375c84915a1c2a8fefc7d9ced01697bc02f893c3"
+  },
+  "frames": [
+    {
+      "slot": 0,
+      "source": "character/bill-east-idle-master-motion-v1/frames/idle-east/000.png",
+      "operation": "whole idle endpoint alias",
+      "sha256": "c4daf91b6608a32ba3196b005d8c5532acda31177816ae6c67961fa2351d9186",
+      "bounds": [
+        70,
+        24,
+        114,
+        172
+      ]
+    },
+    {
+      "slot": 1,
+      "source": "character/bill-east-interact-master-consistency-v1/frames/interact-east/001.png",
+      "operation": "exact unchanged interaction source",
+      "sha256": "2a0bfbec25ff785e722ccb09494fcfaaa17db56daa59ac5934a8d99d7e47e67f",
+      "bounds": [
+        69,
+        23,
+        132,
+        172
+      ]
+    },
+    {
+      "slot": 2,
+      "source": "character/bill-east-interact-master-consistency-v1/frames/interact-east/002.png",
+      "operation": "exact unchanged interaction source",
+      "sha256": "cc0fde44e9e970041017a7fdab8b7d5a6c8b256d4880db2fdd897f4a1cb99da8",
+      "bounds": [
+        68,
+        24,
+        150,
+        172
+      ]
+    },
+    {
+      "slot": 3,
+      "source": "character/bill-east-interact-master-consistency-v1/frames/interact-east/003.png",
+      "operation": "whole184canvas translation y=-1; surviving RGBA exact, zero opaque loss",
+      "sha256": "788ddd5f7618fde89a0bb9d223c810d754aff3268c615d6fed7d081ccaafba7b",
+      "bounds": [
+        68,
+        23,
+        156,
+        172
+      ]
+    },
+    {
+      "slot": 4,
+      "source": "character/bill-east-interact-master-consistency-v1/frames/interact-east/004.png",
+      "operation": "exact unchanged interaction source",
+      "sha256": "889c5838e520e55eae83becb375c84915a1c2a8fefc7d9ced01697bc02f893c3",
+      "bounds": [
+        69,
+        24,
+        133,
+        172
+      ]
+    },
+    {
+      "slot": 5,
+      "source": "character/bill-east-idle-master-motion-v1/frames/idle-east/000.png",
+      "operation": "whole idle endpoint alias",
+      "sha256": "c4daf91b6608a32ba3196b005d8c5532acda31177816ae6c67961fa2351d9186",
+      "bounds": [
+        70,
+        24,
+        114,
+        172
+      ]
+    }
+  ],
+  "worldVerification": "native/verification.json",
+  "visualReviewed": true,
+  "visualScope": "Full six-pose prior/joined source board and all three actual station crop pages reviewed; continuous cadence and other families remain open."
+}

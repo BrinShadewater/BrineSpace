@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "duration": 14.0,
+      "goal": "hull-repair",
+      "medium": "dry",
+      "state": "weld",
+      "trigger": "cancel"
+    },
+    {
+      "duration": 0.0,
+      "goal": "hull-repair",
+      "medium": "flooded",
+      "state": "repair",
+      "trigger": "flood"
+    },
+    {
+      "duration": 0.0,
+      "goal": "",
+      "medium": "dry",
+      "state": "death-ground",
+      "trigger": "death"
+    }
+  ],
+  "checks": 20,
+  "failures": 0,
+  "scope": "Four unsupported presentation contexts preserve old timer; actual paid North repair partial-entry cancellation, critical flood and death; cache/effects safety and immediate death renderer. No smooth cancellation return or all hazard/phase claim."
+}

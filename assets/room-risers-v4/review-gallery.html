@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>BrineSpace · Riser wall collection</title>
+
+<style>
+
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#111b20;color:#e1e6e4}body{margin:0}header{padding:30px 5vw 20px;border-bottom:1px solid #34434a}h1{font-size:28px;font-weight:550;margin:4px 0 12px}p{color:#aabbbf;max-width:840px;line-height:1.55}small{color:#829ba3;letter-spacing:.13em}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap;position:sticky;top:0;background:#111b20ef;padding:16px 5vw;z-index:2}input,select,button{font:inherit;color:inherit;background:#25343b;border:1px solid #52666d;border-radius:4px;padding:9px 12px}label{font-size:14px}main{padding:10px 5vw 50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr));gap:22px}article{background:#1a272d;border:1px solid #34434a;border-radius:6px;overflow:hidden}h2{font-size:17px;font-weight:550;text-transform:capitalize;margin:16px 18px 0}canvas{width:100%;display:block}.shape-preview{width:100%;display:block}article p{font-size:13px;margin:0 18px 16px}a{color:#85c7d4}dialog{background:#18242a;border:1px solid #586c74;color:#e1e6e4;width:min(1100px,90vw);padding:20px}dialog::backdrop{background:#000b}dialog img{max-width:100%;max-height:80vh;display:block;margin:auto}dialog button{float:right}.links{display:flex;gap:20px;margin:0 18px 18px;font-size:13px}
+
+</style>
+
+<header><small>BRINESPACE / ARCHITECTURE STUDIES</small><h1>Room riser collection</h1><p><a href="integrated-v1/cap-review/index.html">Four-wall cap polish review</a>. <a href="../door-polish-v2/review.html">Animated door review</a>. Painted wall caps now match the riser materials on all four room edges. Open an in-room preview to see the complete surround. Integrated studies paint the details directly into each riser’s own panels. Toggle Integrated artwork to compare against the separate fittings. North connections keep the centre clear for a door; exposed north hulls gain ocean windows. Compare the states below, then open an in-room preview. BRINE Core always reserves its north door and now has six recessed screens. Corridors, corners and tees use their actual narrow hulls with four rotation previews. All 47 room and corridor designs have integrated artwork, including built-in bookshelves for the observation room and data archive.</p></header>
+
+<nav><input id="search" type="search" placeholder="Find a room…" aria-label="Find a room"><label><input id="guides" type="checkbox"> Show door and window reserves</label><label><input id="light" type="checkbox"> Light background</label><select id="mode" aria-label="North wall state"><option value="ports">Room door layout</option><option value="decorated" selected>Closed interior</option><option value="ocean">Exposed ocean</option></select><label><input id="integrated" type="checkbox" checked> Integrated artwork</label><span id="count"></span></nav>
+
+<main id="rooms"></main><dialog id="preview"><button onclick="document.querySelector('dialog').close()">Close</button><img alt="Native room preview"></dialog>
+
+<script>
+
+let data={}, decorations={}, images={}, fittings={}, profiles={}, integrated={}, integratedImages={};
+
+const $=id=>document.getElementById(id);
+
+function redraw(){document.querySelectorAll('canvas').forEach(c=>draw(c,c.dataset.id));}
+
+function draw(canvas,id){
+
+ const r=data[id],im=images[id],d=decorations[id];if(!im||!im.complete||!im.naturalWidth)return;
+
+ const segment=['corridor','corner','tee_corridor'].includes(id),edge=segment?200:184,top=segment?-258:-255,height=segment?82:79;
+ const ctx=canvas.getContext('2d'),scale=940/(edge*2);
+ const mode=$('mode').value,ocean=mode==='ocean'&&id!=='brine_core',connected=id==='brine_core'||(mode==='ports'&&d.north_port),useIntegrated=$('integrated').checked&&integrated[id]&&!ocean;
+
+ ctx.fillStyle=$('light').checked?'#b7bbb6':'#152027';ctx.fillRect(0,0,1000,250);
+
+ const xy=(x,y)=>[30+(x+edge)*scale,42+(y-top)*scale];
+
+ for(const [a,w,x,ww] of [[0,.385,-edge,edge-46],[.385,.23,-46,92],[.615,.385,46,edge-46]]){const at=xy(x,top),use=useIntegrated&&!(x===-46&&connected),pic=use?integratedImages[id]:im,face=use?integrated[id].face:r.face;if(pic&&pic.complete&&pic.naturalWidth)ctx.drawImage(pic,face[0]+face[2]*a,face[1],face[2]*w,face[3],...at,ww*scale,height*scale);}
+
+
+
+ const cap=r.cap;ctx.drawImage(im,...cap,30,9,940,16*scale);
+ function fit(key,b,center=false){const path=d[key],f=fittings[path],p=profiles[path];if(!f||!f.complete||!f.naturalWidth||!p)return;const [sx,sy,sw,sh]=p.region,[ax,ay]=p.anchor,limits=center?p.center_size:p.side_size,k=Math.min(limits[0]/sw,limits[1]/sh,b[2]/(2*sw*Math.max(ax,1-ax)),b[3]/(2*sh*Math.max(ay,1-ay))),w=sw*k,h=sh*k,at=xy(b[0]+b[2]/2-w*ax,b[1]+b[3]/2-h*ay);ctx.drawImage(f,sx,sy,sw,sh,...at,w*scale,h*scale);}
+
+ if(!useIntegrated){fit(ocean?'ocean_left':'left',[-141,-246,72,31]);fit(ocean?'ocean_right':'right',[69,-246,72,31]);
+
+ if(!connected)fit(ocean?'ocean_center':'center',[-42,-251,84,71],true);}
+
+ if($('guides').checked){for(const [b,color] of [[[-46,-255,92,79],'#e7ba69'],[[-141,-246,72,31],'#5cb8d8'],[[69,-246,72,31],'#5cb8d8']]){ctx.strokeStyle=color;ctx.lineWidth=2;ctx.strokeRect(...xy(b[0],b[1]),b[2]*scale,b[3]*scale);}}
+
+}
+
+function filter(){let n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=!a.dataset.id.replaceAll('_',' ').includes($('search').value.toLowerCase());if(!a.hidden)n++;});$('count').textContent=n+' / '+Object.keys(data).length+' rooms';}
+
+function render(){
+ for(const [id,r] of Object.entries(integrated)){const im=new Image();integratedImages[id]=im;im.onload=redraw;im.src="/"+r.source.replace("res://","");}
+
+ for(const d of Object.values(decorations))for(const key of ['left','right','center','ocean_left','ocean_right','ocean_center']){const path=d[key];if(fittings[path])continue;const f=new Image();fittings[path]=f;f.onload=redraw;f.src='/'+path.replace('res://','');}
+
+ for(const [id,r] of Object.entries(data)){
+
+  const a=document.createElement('article');a.dataset.id=id;const h=document.createElement('h2');h.textContent=id.replaceAll('_',' ');a.append(h);
+
+  const shape=['corridor','corner','tee_corridor'].includes(id);
+  const canvas=document.createElement('canvas');canvas.width=1000;canvas.height=250;canvas.dataset.id=id;if(!shape)a.append(canvas);
+  if(shape){const img=document.createElement('img');img.className='shape-preview';img.alt=id.replaceAll('_',' ')+' actual hull and riser preview';let rotation=0;a.dataset.rotation='0';img.src='../../output/riser-room-preview/v4-'+id+'-shape-0.png?shape=4';a.append(img);const rotate=document.createElement('button');rotate.textContent='Rotate shape: 0°';rotate.addEventListener('click',()=>{rotation=(rotation+1)%4;a.dataset.rotation=String(rotation);img.src='../../output/riser-room-preview/v4-'+id+'-shape-'+rotation+'.png?shape=4';rotate.textContent='Rotate shape: '+rotation*90+'°';});a.append(rotate);}
+
+  const links=document.createElement('div');links.className='links';
+
+  const original=document.createElement('a');original.href=integrated[id]?'/'+integrated[id].source.replace('res://',''):'masters/'+id+'.png';original.target='_blank';original.textContent='Wall artwork';links.append(original);
+
+  const native=document.createElement('a');native.href='../../output/riser-room-preview/v4-'+id+'.png';native.textContent=['corridor','corner','tee_corridor'].includes(id)?'Shape preview':'In-room preview';
+
+  native.addEventListener('click',e=>{e.preventDefault();if(shape){$('preview').querySelector('img').src='../../output/riser-room-preview/v4-'+id+'-shape-'+a.dataset.rotation+'.png?shape=4';$('preview').showModal();return;}const mode=$('mode').value,suffix=mode==='ports'?'':'-'+mode;$('preview').querySelector('img').src=(integrated[id]&&!$('integrated').checked?'integrated-v1/before-native/'+id+suffix+'.png':'../../output/riser-room-preview/v4-'+id+suffix+'.png?panels=15');$('preview').showModal();});links.append(native);a.append(links);
+
+  const note=document.createElement('p');note.textContent=(shape?'Actual hull and dedicated riser sections; rotate to inspect all four facings. North-wall modes apply to full rooms. ':'')+(integrated[id]?'Integrated wall artwork · ':'')+(integrated[id]?.subjects||decorations[id].subjects).map(x=>x.replaceAll('_',' ')).join('  /  ');a.append(note);$('rooms').append(a);
+
+  const im=new Image();images[id]=im;im.onload=()=>draw(canvas,id);im.src='masters/'+id+'.png';
+
+ }filter();
+
+}
+
+$('search').addEventListener('input',filter);for(const id of ['guides','light','mode','integrated'])$(id).addEventListener('change',redraw);
+
+Promise.all([fetch('registrations.json').then(r=>r.json()),fetch('panel-decorations.json').then(r=>r.json()),fetch('fitting-profiles.json').then(r=>r.json()),fetch('integrated-v1/registrations.json').then(r=>r.json())]).then(([r,d,p,i])=>{data=r;decorations=d.rooms;profiles=p;integrated=i;render();}).catch(()=>{$('count').textContent='Open through the local preview server.';});
+
+</script></html>

@@ -1,0 +1,142 @@
+extends RefCounted
+## Selected cat artwork, saved powered thaw clock, and one fixed world scale.
+const FOOT := Vector2(75,125)
+const PIVOT := Vector2(256,320)
+const DENSITY := 148.0/65.28
+const GLASS := Rect2i(232,194,48,89)
+static var cache := {}
+
+static func blend_inside(canvas: Image, layer: Image, at: Vector2i) -> void:
+	# Keep the moving vapour behind the rim, including its antialiased edges.
+	var visible:=Rect2i(at,layer.get_size()).intersection(GLASS)
+	if visible.has_area():canvas.blend_rect(layer,Rect2i(visible.position-at,visible.size),visible.position)
+
+static func fit_inside(foot: Vector2, bounds: Rect2i) -> Vector2:
+	# Authored wake poses lean sideways. Keep the whole silhouette clear of either
+	# rim without resizing a pose or cutting off its fur and bonnet.
+	foot.x=clampf(foot.x,GLASS.position.x+2-bounds.position.x+92,GLASS.end.x-2-bounds.end.x+92)
+	return foot
+
+static func departure(boot: float) -> float:
+	return smoothstep(4.6,6.4,boot)
+
+static func hop_height(boot: float) -> float:
+	# Short low arc, with exact floor contact at both ends of the departure.
+	var progress:=clampf((boot-4.6)/1.8,0.0,1.0)
+	return 4.0*7.0*progress*(1.0-progress)
+
+static func cold_color(boot: float) -> Color:
+	return Color(0.54,0.76,1.0).lerp(Color.WHITE,smoothstep(6.4,7.8,boot))
+
+static func unfreezing(boot: float) -> float:
+	return smoothstep(0.6,4.0,boot)
+
+static func cover_rect(boot: float, started: bool) -> Rect2i:
+	var opening:=smoothstep(4.0,4.6,boot) if started else 0.0
+	return Rect2i(GLASS.position-Vector2i(0,roundi(GLASS.size.y*opening)),GLASS.size)
+
+static func lid_travel(boot: float, started: bool, recovered: bool) -> int:
+	return 28 if recovered else roundi(28.0*smoothstep(4.0,4.6,boot)) if started else 0
+
+static func texture(actor, housing: Texture2D, boot: float, started: bool, recovered: bool, exit_offset: Vector2, reduced_motion: bool) -> Texture2D:
+	var tick:=clampi(roundi(boot*12.5),0,100)
+	var key:=str([tick,started,recovered,exit_offset,reduced_motion])
+	if cache.has(key): return cache[key]
+	var time:=tick/12.5
+	var canvas:=Image.create(512,512,false,Image.FORMAT_RGBA8)
+	var pod: Image=housing.get_image().duplicate()
+	# Give the selected cat/bonnet clearance without changing her live body scale.
+	# Housing grows 20% around its fixed floor contact; all layers share that fit.
+	pod.resize(384,384,Image.INTERPOLATE_NEAREST)
+	var slide:=lid_travel(time,started,recovered)
+	# Separate the painted upper lid from the stationary chassis at its seam.
+	# The same registered artwork now moves, including the blue window and trim.
+	canvas.blend_rect(pod,Rect2i(0,221,384,163),Vector2i(64,195))
+	# Thin exposed guide rails connect the raised lid to the fixed chamber.
+	if slide>0:
+		# Expose the painted inner chassis beneath the raised lid, not a hole to
+		# the room background. Reuse the registered cavity immediately below seam.
+		canvas.blend_rect(pod,Rect2i(0,221,384,slide),Vector2i(64,195-slide))
+		var rail:=Image.create(3,slide+4,false,Image.FORMAT_RGBA8)
+		rail.fill(Color(0.35,0.43,0.47,0.9))
+		for x in [231,278]:canvas.blend_rect(rail,Rect2i(0,0,3,slide+4),Vector2i(x,193-slide))
+	canvas.blend_rect(pod,Rect2i(0,0,384,221),Vector2i(64,-26-slide))
+	if not recovered:
+		var thaw:=unfreezing(time) if started else 0.0
+		# The existing display and strip wake in stages before the seal releases.
+		var display:=Image.create(24,20,false,Image.FORMAT_RGBA8)
+		display.fill(Color(0.05,0.11,0.16,0.48*(1.0-thaw)))
+		canvas.blend_rect(display,Rect2i(0,0,24,20),Vector2i(244,166-slide))
+		for index in range(3):
+			var indicator:=Image.create(3,5,false,Image.FORMAT_RGBA8)
+			var lit:=smoothstep(0.25+index*0.55,0.65+index*0.55,time) if started else 0.0
+			indicator.fill(Color(0.55,0.83,0.91,0.38*lit))
+			canvas.blend_rect(indicator,Rect2i(0,0,3,5),Vector2i(247+index*4,174-slide))
+		var body: Texture2D
+		if time<2.0:
+			body=actor.poses.frame_at_elapsed("nap-south",0.0)
+		elif time<4.0:
+			body=actor.poses.frame_at_elapsed("nap-exit-south",(time-2.0)/2.0*actor.poses.cycle_seconds("nap-exit-south"))
+		elif time<4.6:
+			body=actor.player.frame_at_elapsed("idle-south",0.0)
+		elif time<6.4:
+			body=actor.player.frame_at_elapsed("walk-south",departure(time)*actor.player.cycle_seconds("walk-south"))
+		else:
+			body=actor.player.frame_at_elapsed("idle-south",0.0)
+		var image: Image=body.get_image().duplicate()
+		var grade:=cold_color(time)
+		for y in image.get_height():
+			for x in image.get_width():
+				var pixel:=image.get_pixel(x,y)
+				if pixel.a>0.0:image.set_pixel(x,y,pixel*grade)
+		# Centre the resting body in the glass instead of sitting on its lower sill.
+		# Selected front poses are slightly asymmetric: shift inside the right rim.
+		var resting_offset:=Vector2(-2.0,lerpf(-35.0,-23.0,smoothstep(2.0,4.0,time)))
+		var foot:=PIVOT+resting_offset.lerp(exit_offset,departure(time))*DENSITY
+		if time<4.6:foot=fit_inside(foot,image.get_used_rect())
+		foot.y-=hop_height(time)*DENSITY
+		canvas.blend_rect(image,Rect2i(Vector2i.ZERO,image.get_size()),Vector2i((foot-Vector2(92,172)).round()))
+		var opening:=smoothstep(4.0,4.6,time) if started else 0.0
+		var mist: Image=preload("res://scripts/environment_art.gd").texture("leak-puff").get_image()
+		# Frost over the glass dissolves into the translucent interior vapour.
+		var frost: Image=mist.duplicate()
+		frost.resize(48,89,Image.INTERPOLATE_LANCZOS)
+		for y in frost.get_height():
+			for x in frost.get_width():
+				frost.set_pixel(x,y,frost.get_pixel(x,y)*Color(0.78,0.87,0.94,0.32*(1.0-thaw)*(1.0-opening)))
+		blend_inside(canvas,frost,GLASS.position)
+		# Painted mist sits over the sleeping cat inside the original housing.
+		for index in range(3):
+			var cloud: Image=mist.duplicate()
+			cloud.resize(48,34,Image.INTERPOLATE_LANCZOS)
+			cloud.adjust_bcs(1.0,1.0,0.65)
+			for y in cloud.get_height():
+				for x in cloud.get_width():
+					cloud.set_pixel(x,y,cloud.get_pixel(x,y)*Color(0.74,0.86,1.0,0.23*(1.0-opening)))
+			var curl:=0.0 if reduced_motion else sin(time+index)*3.0
+			blend_inside(canvas,cloud,Vector2i(232+curl,198+index*25))
+		# The clear cover retracts upward behind the top housing, rather than fading.
+		var glass:=Image.create(48,89,false,Image.FORMAT_RGBA8)
+		glass.fill(Color(0.62,0.80,0.89,0.10+0.14*(1.0-smoothstep(0.0,4.0,time))))
+		# A restrained silver-blue lower edge makes the moving cover readable.
+		glass.fill_rect(Rect2i(0,86,48,2),Color(0.70,0.81,0.86,0.65))
+		glass.fill_rect(Rect2i(2,8,2,64),Color(0.79,0.88,0.94,0.23))
+		blend_inside(canvas,glass,cover_rect(time,started).position)
+		if time>4.0:
+			var fog: Image=mist.duplicate()
+			fog.resize(160,42,Image.INTERPOLATE_LANCZOS)
+			var alpha:=smoothstep(4.0,4.5,time)*(1.0-smoothstep(5.8,8.0,time))*0.10
+			for y in fog.get_height():
+				for x in fog.get_width():fog.set_pixel(x,y,fog.get_pixel(x,y)*Color(0.70,0.83,0.94,alpha))
+			canvas.blend_rect(fog,Rect2i(0,0,160,42),Vector2i(176,305))
+	var result:=ImageTexture.create_from_image(canvas)
+	result.set_meta("crew_frame_92",true)
+	result.set_meta("crew_pivot",PIVOT)
+	result.set_meta("crew_standing_height",148.0)
+	if cache.size()>=128:cache.clear()
+	var filtered:=CanvasTexture.new()
+	filtered.diffuse_texture=result
+	filtered.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
+	for meta in result.get_meta_list():filtered.set_meta(meta,result.get_meta(meta))
+	cache[key]=filtered
+	return filtered

@@ -1,0 +1,107 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 482,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "captures": 12,
+  "exactSources": 12,
+  "controlledSamples": 140,
+  "actorPlayerRestores": 5,
+  "allFiveTurnPhases": true,
+  "allFourDestinationPhases": true,
+  "exactDestinationFrame0Return": true,
+  "stableBoundedInputs": 90,
+  "unchangedOwnerNonLogFiles": 2931,
+  "sourceParity": [
+    {
+      "capture": 0,
+      "key": "idle-east",
+      "slot": -1,
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "capture": 1,
+      "key": "carry-east",
+      "slot": 0,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 2,
+      "key": "carry-turn-east-south",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-east-south/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 3,
+      "key": "carry-turn-east-south",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-east-south/001.png",
+      "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+    },
+    {
+      "capture": 4,
+      "key": "carry-turn-east-south",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-east-south/002.png",
+      "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+    },
+    {
+      "capture": 5,
+      "key": "carry-turn-east-south",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-east-south/003.png",
+      "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+    },
+    {
+      "capture": 6,
+      "key": "carry-turn-east-south",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-east-south/004.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 7,
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 8,
+      "key": "carry-south",
+      "slot": 1,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/001.png",
+      "sha256": "e9b4c3ee54b08d4f5e2be48629aac5aa4c7f8ec58698e2f96fffac72f8c6afd4"
+    },
+    {
+      "capture": 9,
+      "key": "carry-south",
+      "slot": 2,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/002.png",
+      "sha256": "01dfa0e8167b25c36105ee04a43ea7ae769c112fbcc4b7043a8aa49dc92e0f70"
+    },
+    {
+      "capture": 10,
+      "key": "carry-south",
+      "slot": 3,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/003.png",
+      "sha256": "0905bed566771d8c995f71572d29392038f6983e2e4f7dbcec28c4121889d88e"
+    },
+    {
+      "capture": 11,
+      "key": "carry-south",
+      "slot": 1,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/001.png",
+      "sha256": "e9b4c3ee54b08d4f5e2be48629aac5aa4c7f8ec58698e2f96fffac72f8c6afd4"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Actual normal Marsh.move workshop_carry on clear East64/South96 path corner,normal factory/main/grid/player with staged carries/quarter turn;140controlled20ms samples,five moving turn actor/player restores+pause holds,exact destination frame0 return,all4 destination phases. No full RunSave/visible TitleContinue,reverse path-turn,complete pickup/unload or continuous contact acceptance.",
+  "heldApng": "Five exact cropped held captures at60/90/100/90/60ms;not realtime continuous film/contact.",
+  "retainedFailure": "failed-parse stores initial type-inference failure before startup;corrected declaration only,no artwork change."
+}

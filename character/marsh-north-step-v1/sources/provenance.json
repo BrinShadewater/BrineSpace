@@ -1,0 +1,201 @@
+{
+  "normalAdmission": false,
+  "trials": [
+    {
+      "version": "01",
+      "provider": "built-in imagegen",
+      "generation": "exec-320d391a-aa15-4970-90d9-5d08e45cb432",
+      "raw": "character/marsh-north-step-v1/sources/north-step-01.png",
+      "rawSha256": "eb980304676bda699398c9f85d6c12dc09f37a987015d1e4e13708da01ec89d1",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-01.prompt.txt",
+      "promptSha256": "daba86c8d07fc01f3fde69a0d865a563b5dd61d2f03c9f07931c457c915bcbc2",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        },
+        {
+          "path": "character/marsh-north-walk-material-v1/candidate-01/001.png",
+          "sha256": "e13a5873608e5821642db482a0a68a430d4419adacd3c0ee4f935d92a7c4f840"
+        },
+        {
+          "path": "character/marsh-north-stop-v1/sources/north-stop-09.png",
+          "sha256": "685c6e7a4346a135387493f83f963b317600fc968bcb21898b72342d8492938c"
+        }
+      ],
+      "decision": "rejected: high knee/full sole, repeated left lift rather than right follow"
+    },
+    {
+      "version": "02",
+      "provider": "built-in imagegen",
+      "generation": "exec-9a52e7fc-e74a-4b3e-bd4b-1abed43a08e9",
+      "raw": "character/marsh-north-step-v1/sources/north-step-02.png",
+      "rawSha256": "bdb16e1a1ba63e2b349bef72b6951c5fea25fde496374cd0284a36fe5f35f11a",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-02.prompt.txt",
+      "promptSha256": "8562a6bc165d338da3ead3612267d7eda898cee61010ab01a0843f3a78f807a8",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "decision": "rejected choreography: opening right boot lifts and third pose repeats right lift; neutral-ruler widths54-55"
+    },
+    {
+      "version": "03",
+      "provider": "built-in imagegen",
+      "generation": "exec-72845e8f-2e85-4988-aee6-4fa1af749708",
+      "raw": "character/marsh-north-step-v1/sources/north-step-03.png",
+      "rawSha256": "6d1bac3b14aadd3e82a483f94fc94fe3c10fe9c82379dbdd1b714e75fe1840f5",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-03.prompt.txt",
+      "promptSha256": "614d6ff211b19c34eab6a959acd1462e2a5edf4dbdb8dcadadde3ee6f01a76b2",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-02.png",
+          "sha256": "bdb16e1a1ba63e2b349bef72b6951c5fea25fde496374cd0284a36fe5f35f11a"
+        },
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "decision": "rejected: third right boot still lifts, fourth cell expands to62px; intermediate edit target retained"
+    },
+    {
+      "version": "04",
+      "provider": "built-in imagegen",
+      "generation": "exec-fada2ac1-6b9d-46c6-aafe-66e0b36d69c1",
+      "raw": "character/marsh-north-step-v1/sources/north-step-04.png",
+      "rawSha256": "ad798954d4463ba847bd9cc3534a7e3e75de79c7bf270c1d87169a85f6dba120",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-04.prompt.txt",
+      "promptSha256": "fdbf5f7294f632d67dcb4289c9c172ccca3a6dc7b02108ccf0532bf946c29c76",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-03.png",
+          "sha256": "6d1bac3b14aadd3e82a483f94fc94fe3c10fe9c82379dbdd1b714e75fe1840f5"
+        }
+      ],
+      "decision": "rejected for moving step: zero forward landing depth; historical166check source-clock audition remains scoped to stationary presentation"
+    },
+    {
+      "version": "05",
+      "provider": "built-in imagegen",
+      "generation": "exec-138534ca-233e-4e56-a00f-a03dbb4859ab",
+      "raw": "character/marsh-north-step-v1/sources/north-step-05.png",
+      "rawSha256": "2662e70b08bf41c0d0c0fd4cda4bfdd028ae0f2deac04b2fe8cf52dec1f713f6",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-05.prompt.txt",
+      "promptSha256": "f67124681edf12a071d3e821dcb0f4e47539925a7f1541b570869711ca0237e8",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-04.png",
+          "sha256": "ad798954d4463ba847bd9cc3534a7e3e75de79c7bf270c1d87169a85f6dba120"
+        },
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "decision": "rejected: opposite-foot opening,28.94px right-forward landing beyond short-step depth; packaging support/bounds guard failed"
+    },
+    {
+      "version": "06",
+      "provider": "built-in imagegen",
+      "generation": "exec-8fb8c906-4f9c-4141-857b-baf6163cbf28",
+      "raw": "character/marsh-north-step-v1/sources/north-step-06.png",
+      "rawSha256": "f7199e80ead78b2af959a5159b5d3bbf3f02d6e41b3c3eddd932ab8e55598dfa",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-06.prompt.txt",
+      "promptSha256": "bab19dd5ecb08448ef1611a9277ebba5729f9c5fc515f332626b08ebc95c1b52",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-05.png",
+          "sha256": "2662e70b08bf41c0d0c0fd4cda4bfdd028ae0f2deac04b2fe8cf52dec1f713f6"
+        }
+      ],
+      "decision": "rejected: mixed opening feet/full presented sole;25.10px landing beyond short-step depth"
+    },
+    {
+      "version": "07",
+      "provider": "built-in imagegen",
+      "generation": "exec-7d10f66a-ecb1-4c00-8112-20cf5eda7e92",
+      "raw": "character/marsh-north-step-v1/sources/north-step-07.png",
+      "rawSha256": "3088490cfc5cd05fe2acb176238577ba5e581eb9475df7f4c2201c6f3d4b3f3e",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-07.prompt.txt",
+      "promptSha256": "fad368038f3d49cf600ab9ba96118ddc32aec0212496b98b8648496ee9a3b1e4",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        },
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-04.png",
+          "sha256": "ad798954d4463ba847bd9cc3534a7e3e75de79c7bf270c1d87169a85f6dba120"
+        }
+      ],
+      "decision": "rejected moving depth: third raw pose only2.96dense pixels ahead"
+    },
+    {
+      "version": "08",
+      "provider": "built-in imagegen",
+      "generation": "exec-db10b53a-58ef-44a6-906e-a7101ed0d184",
+      "raw": "character/marsh-north-step-v1/sources/north-step-08.png",
+      "rawSha256": "be8fbffe9a3e4bc99da073bdd7cade01142b7d224dc4426167590ddc34bf84fe",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-08.prompt.txt",
+      "promptSha256": "96c5a19830e93d739603b35605b4c48e0fd9e2d6aa88397c157617db72486f69",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "decision": "unselected isolated landing study;13dense pixel grounded-forward left contact/5.734world-unit implied depth;86native presentation checks"
+    },
+    {
+      "version": "09",
+      "provider": "built-in imagegen",
+      "generation": "exec-66fcea78-2375-4cc3-8899-69e693ad9ecb",
+      "raw": "character/marsh-north-step-v1/sources/north-step-09.png",
+      "rawSha256": "83edd9a11a02dd42dbfaf0e4211a9a112d5163f87b25daf12c7c14971ccf99c4",
+      "prompt": "character/marsh-north-step-v1/sources/north-step-09.prompt.txt",
+      "promptSha256": "42da4716ef2e9c33143ead714ed9c4fa73d2c6c911fbf69844d356957d866570",
+      "orderedReferences": [
+        {
+          "path": "character/marsh-north-step-v1/sources/north-step-08.png",
+          "sha256": "be8fbffe9a3e4bc99da073bdd7cade01142b7d224dc4426167590ddc34bf84fe"
+        },
+        {
+          "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+          "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ],
+      "decision": "unselected whole transfer/closing study; widths59/56/56, transfer arm spread and full moving joins pending visual/contact review"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "admissionBoxes": [
+    [
+      128,
+      112,
+      146,
+      128
+    ],
+    [
+      126,
+      128,
+      142,
+      138
+    ]
+  ],
+  "outsidePixelsExact": 65088,
+  "topHeadAndBelow138Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "visualReviewPending": false,
+  "reviewedSourceBoards": 2,
+  "reviewedNativeMidpoint": true,
+  "otherNativeEndpointsExactReviewedV62": true,
+  "nativeChecks": 47,
+  "nativeFailures": 0,
+  "disposition": "retain_local_sleeve_repair_for_full_motion_review",
+  "diagnosticLumaQuartilesAnd95": {
+    "before": [
+      57.42,
+      69.57,
+      88.03,
+      159.15
+    ],
+    "after": [
+      54.5,
+      64.39,
+      78.06,
+      150.77
+    ],
+    "previous": [
+      60.6,
+      73.67,
+      85.69,
+      147.87
+    ],
+    "next": [
+      57.05,
+      68.46,
+      84.44,
+      145.5
+    ]
+  },
+  "findings": [
+    "Subdued sleeve highlights closer to actual neighbouring frame materials; original quilting remains readable.",
+    "65088outside pixels exact to preceding V62candidate, tophead/helmet and pixels below138 exact; does not certify untouched original-master proportions.",
+    "Local brightness95th percentile159.15to150.77 versus neighbouring147.87/145.50; diagnostic only, not visual acceptance gate.",
+    "Native120ms three-frame source window47/0; not complete49source motion/controller/room/Continue acceptance."
+  ],
+  "artifactSha256": {
+    "bare-candidate.png": "10409e0ed7ea6fa04ff93bd1815ff66f8ed9537caf5532b223aa9b45f924f008",
+    "consecutive-sleeve-review.png": "6f457f6af5416a565068abbcacde1aa76b0e75f63f71689e79f001e66381d25c",
+    "edit-target.png": "4dd218f1994ac657ddfd66b2247bf5551582c900204ba012aecd31d0f1421dbe",
+    "helmet-candidate.png": "16edb372f6e874bc874cb0c98de9ba583265a7c244fd803516a83426176d5243",
+    "input-sleeve-review.png": "ff193261b7f1ccb7a92ba12586df93205b7bf2b7dd0068e2593cbffd04d0953f",
+    "native-generated-crop.png": "8241b2685331a54a40b37012daee447e7cc3e1525b6b243191a7c9ed65fc880b",
+    "next-frame-material.png": "ce81825cc8f28853969a4169e3679fd046fd68593bcd16b219c0ad72fd3ff26b",
+    "original-master.png": "13bcf0c1dc793da77b4a0e514125c408d946f87c1f94cc7001c4c91adbf85807",
+    "previous-frame-material.png": "f0734fb1dbe69a1c5059e58346abbc71fce9b985d680ea8fbb16ae3c51662099",
+    "raw.png": "033d541b912e505b9d52dfacf5daecdc3a5745bfe06ebbe21f6ded994954d018",
+    "sleeve-contact-review.png": "cd03ca229eb249dc836a28b24c354ceebabf8d431881ff2af5dc627a87eb5750"
+  }
+}

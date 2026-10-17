@@ -1,0 +1,174 @@
+extends SceneTree
+const Save = preload("res://scripts/run_save.gd")
+const Main = preload("res://scenes/main.tscn")
+const PATH := "user://brine_save_test.loop"
+var failures := 0
+func _init() -> void:
+	call_deferred("_run")
+func check(ok: bool, message: String) -> void:
+	if not ok:
+		failures += 1
+		push_error(message)
+func _run() -> void:
+	var game = Main.instantiate()
+	game.meta.save_path = "user://brine_save_test_meta.json"
+	game.run_save_path = PATH
+	root.add_child(game)
+	current_scene = game
+	check(game.running, "New Loop starts directly without selection")
+	var deck: Array = game.RunManagerScript.build_deck([], game.meta.unlocked_room_ids)
+	# The current deck offers one unlocked rare specialist, not all three.
+	var specialists := ["pressure_control","listening_post","isolation_vault"]
+	var eligible_specialists := 0
+	var dealt_specialists := 0
+	for id in game.meta.unlocked_room_ids:
+		if id in specialists:
+			eligible_specialists += 1
+			if deck.has(id): dealt_specialists += 1
+		elif id != "brine_core" and not game.RunManagerScript.LARGE_ROOMS.has(str(id)) and not game.RoomDatabaseScript.get_room(str(id)).is_empty():
+			check(deck.has(id), "Neutral draft includes unlocked blueprint " + str(id))
+	check(dealt_specialists == mini(1,eligible_specialists),"Neutral draft offers exactly one available rare specialist")
+	check(game.running and not game.summary_layer.visible, "Retired deadlines cannot end a loop")
+	game._set_paused(true, false)
+	game.selected_card_id = "solar_array"
+	game.selected_rotation = 2
+	game.hand.assign(["solar_array", "mining_drone_bay", "hydroponics_bay"])
+	game._on_grid_clicked(Vector2i(19, 20))
+	check(game.drone_fleet.reserved(Vector2i(19,20)), "Paid placement must reserve construction before completion")
+	game.paused = false
+	# Opening orders now require the architect's real approach and work updates.
+	for frame in range(1200):
+		game._process(.1)
+		if game.placed_rooms.size()==2: break
+	game.paused = true
+	check(game.placed_rooms.size() == 2, "Paid placement fixture should build a room")
+	if game.placed_rooms.size()!=2:
+		print("BUILD DIAGNOSTIC ",game.drone_fleet.orders," hardware=",game.hardware," crew=",game.recovered_crew)
+		for actor in [game.bill_npc,game.veld_npc,game.branforth_npc]: print(actor.activity," active=",actor.active," foot=",actor.foot," goal=",actor.goal)
+		quit(1)
+		return
+	# One anchored room must restore occupancy for all four cells, while old rooms
+	# without a size field still restore as single cells.
+	var large_anchor := Vector2i(-1,-1)
+	for y in range(8,36):
+		if large_anchor.x>=0: break
+		for x in range(8,36):
+			var candidate := Vector2i(x,y)
+			var clear := true
+			for covered in preload("res://scripts/room_footprint.gd").cells(candidate,Vector2i(2,2)):
+				if game.occupied.has(covered) or game.drone_fleet.Sites.blocks(game.drone_fleet.sites,covered) or game.WreckField.blocks(game.wrecks,covered): clear=false
+			if clear:
+				large_anchor=candidate
+				break
+	check(large_anchor.x>=0,"Save fixture finds a clear 2x2 site")
+	var large_room: Dictionary=game.RoomDatabaseScript.get_room("storage_bay")
+	large_room["pos"]=large_anchor
+	large_room["size"]=Vector2i(2,2)
+	large_room["rotation"]=0
+	large_room["ports"]=[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"east"},{"cell":Vector2i(1,1),"side":"south"},{"cell":Vector2i(0,1),"side":"west"}]
+	game.placed_rooms.append(large_room)
+	for covered in preload("res://scripts/room_footprint.gd").cells(large_anchor,Vector2i(2,2)): game.occupied[covered]=large_room
+	game.cycle = 7
+	game.reroll_recovery_progress = 2
+	game.synergy_stabilization_progress = {"test_pattern": 2}
+	game.placed_rooms[1]["suspended"] = true
+	check(Save.write(game, PATH) == OK, "Save should write successfully")
+	var data := Save.read(PATH)
+	check(not data.is_empty(), "Checkpoint must load")
+	var expected_resources: Dictionary = game.resources.duplicate(true)
+	check(not Save.restore(game, {}), "Empty checkpoint must fail without throwing")
+	check(not Save.restore(game, {"state": {}}), "Incomplete checkpoint must fail without throwing")
+	check(game.resources == expected_resources, "Rejected checkpoint must preserve current resources")
+	var expected_hand: Array = game.hand.duplicate()
+	var expected_large_id: String = game.large_room_selected_id
+	var expected_large_index: int = game.meta.large_room_run_index
+	var expected_rng: int = game.rng.state
+	game.resources.metal = 0
+	game.hand.clear()
+	game.placed_rooms.clear()
+	check(Save.restore(game, data), "Checkpoint should restore")
+	check(game.cycle == 7 and game.reroll_recovery_progress == 2, "Cycle and reroll recovery must survive")
+	check(game.resources == expected_resources and game.hand == expected_hand, "Resources and draft must survive")
+	check(game.large_room_selected_id == expected_large_id and game.meta.large_room_run_index == expected_large_index, "Large room selection and profile sequence survive restore")
+	var legacy_large_record := data.duplicate(true)
+	legacy_large_record.state.erase("large_room_selected_id")
+	check(Save.problem(legacy_large_record).is_empty(), "Earlier checkpoints load without a large room selection")
+	check(game.placed_rooms.size() == 3 and game.occupied.size() == 6, "Station and multi-cell occupancy must restore")
+	check(game.occupied[large_anchor+Vector2i.ONE].pos==large_anchor and game.occupied[large_anchor+Vector2i.ONE].size==Vector2i(2,2),"Large room restores all four cells as one room")
+	check(game.occupied[Vector2i(20,20)].get("size",Vector2i.ONE)==Vector2i.ONE,"Legacy single-cell room keeps its default size")
+	check(game.placed_rooms[1].suspended, "Room suspension must survive")
+	check(game.synergy_stabilization_progress.test_pattern == 2, "Pattern progress must survive")
+	check(game.rng.state == expected_rng, "64-bit RNG state must survive exactly")
+	check(game.paused, "Continue must resume the station paused")
+	check(game.tick_timer.time_left > 0 and game.tick_timer.time_left <= game._cycle_wait_seconds(), "Partial cycle timer must survive")
+	check(Save.write(game, PATH) == OK, "Second save should keep a backup")
+	var corrupt := FileAccess.open(PATH, FileAccess.WRITE)
+	corrupt.store_string("damaged")
+	corrupt.close()
+	check(not Save.read(PATH).is_empty(), "Damaged checkpoint should recover backup")
+	check(Save.read(PATH).get("_recovered_backup", false), "Backup recovery must be exposed to the title UI")
+	check(Save.read(PATH).get("saved_at", 0) > 0, "New checkpoints must retain their save time")
+	check(Save.write(game, "user://missing-save-directory/checkpoint") != OK, "Write failure must be reported")
+	game.testing_free_build = true
+	check(Save.write(game, PATH) == ERR_UNAVAILABLE, "Fixtures must not overwrite real checkpoints")
+	game.testing_free_build = false
+	# A fresh scene consumes the checkpoint, as the title's Continue action does. What comms
+	# already said must survive that path too, where comms is created after the restore.
+	game.crew_comms.seen["opening"] = true
+	game.crew_comms.seen["awake/bill"] = true
+	game.crew_comms.greeting_sent = true
+	check(Save.write(game, PATH) == OK, "Checkpoint should be ready for title Continue")
+	root.remove_child(game)
+	game.free()
+	var title = load("res://scenes/title_screen.tscn").instantiate()
+	title.run_save_path = PATH
+	# Neither the title nor the game it opens may touch the player's real progress file.
+	title.meta_state.save_path = "user://brine_save_test_meta.json"
+	node_added.connect(_isolate_game_meta)
+	root.add_child(title)
+	current_scene = title
+	check(title.continue_button.visible, "Title must offer Continue for a valid save")
+	if DisplayServer.get_name() != "headless":
+		root.size = Vector2i(1600, 900)
+		await create_timer(0.5).timeout
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://output/title-continue.png")
+	title.continue_button.pressed.emit()
+	await create_timer(0.5).timeout
+	# The swap plus checkpoint restore normally lands within a few frames, but on a
+	# loaded machine the half second above was not always enough and this flaked.
+	# Keep waiting only until the restored state is actually present; the checks
+	# below still report a genuine failure once the ten seconds run out.
+	var settle_until := Time.get_ticks_msec()+10000
+	while Time.get_ticks_msec()<settle_until:
+		var scene = current_scene
+		# startup_complete is set only after the staged restore finishes (and pauses the station);
+		# cycle and rooms land earlier, so waiting on them alone raced the restore under load.
+		if scene!=null and "cycle" in scene and scene.startup_complete and scene.cycle==7 and scene.placed_rooms.size()==3: break
+		await process_frame
+	game = current_scene
+	var probe_data:Dictionary=Save.read(PATH)
+	print("BILL SAVE PROBE startup=",game.startup_complete," cycle=",game.cycle," count=",game.placed_rooms.size()," error=",Save.last_error," problem=",Save.problem(probe_data)," admission=",game.grid_view.human_water_player.admits_loaded_snapshot(probe_data.crew.playback.bill.water)," playback=",probe_data.crew.playback.bill.water," tail=",game.event_history.slice(-3))
+	game.meta.save_path = "user://brine_save_test_meta.json"
+	check(Save.pending.is_empty(), "Continue request must be consumed only once")
+	check(game.cycle == 7 and game.placed_rooms.size() == 3 and game.paused and game.occupied.size()==6, "Fresh scene must resume checkpoint and multi-cell occupancy")
+	check(game.run_save_path == PATH, "Continue must retain its checkpoint destination")
+	check(game.large_room_selected_id == expected_large_id and game.meta.large_room_run_index == expected_large_index, "Continue preserves large room selection without advancing the sequence")
+	check(is_instance_valid(game.crew_comms) and game.crew_comms.greeting_sent and game.crew_comms.seen.has("awake/bill"), "Continue from the title keeps what comms already said")
+	game._open_menu()
+	if DisplayServer.get_name() != "headless":
+		await create_timer(0.2).timeout
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://output/save-menu.png")
+	Save.clear_run(game.run_save_id, PATH)
+	check(Save.read(PATH).is_empty(), "Completing a loop must clear checkpoint and backup")
+	for suffix in ["", ".bak", ".tmp"]:
+		if FileAccess.file_exists(PATH + suffix):
+			DirAccess.remove_absolute(PATH + suffix)
+	if FileAccess.file_exists(game.meta.save_path):
+		DirAccess.remove_absolute(game.meta.save_path)
+	print("SAVE GAME: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
+	quit(failures)
+
+func _isolate_game_meta(node: Node) -> void:
+	if node.scene_file_path == "res://scenes/main.tscn": node.meta.save_path = "user://brine_save_test_meta.json"

@@ -1,0 +1,206 @@
+{
+  "source": "../bill-swim-carry-turn-helmet-east-south-v1/sources/helmet-yaw-v1.png",
+  "sourceGeneration": "exec-17b32479-63cf-43ee-9470-123f82804e98",
+  "sourceSha256": "80efd79309c72f0e8aad98f6492b5b1c83c84f2ef8630bad26107423c7146e5f",
+  "scale": 0.1,
+  "componentNativeScale": 1,
+  "donorPack": "../bill-swim-carry-turn-helmet-east-south-v1/helmet-registration.json",
+  "components": [
+    {
+      "file": "components/000.png",
+      "sourceBox": [
+        121,
+        119,
+        444,
+        418
+      ],
+      "scale": 0.1,
+      "size": [
+        32,
+        30
+      ],
+      "sha256": "050762a3caf13a9cb44e3fde310d2cbbfa419ed660ea36c881a5fa6a17329070"
+    },
+    {
+      "file": "components/001.png",
+      "sourceBox": [
+        625,
+        116,
+        935,
+        422
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        31
+      ],
+      "sha256": "44b682499d0c525449e9bff463cd149d942b7042459a59b7d8b3a570bf18d628"
+    },
+    {
+      "file": "components/002.png",
+      "sourceBox": [
+        1108,
+        116,
+        1409,
+        427
+      ],
+      "scale": 0.1,
+      "size": [
+        30,
+        31
+      ],
+      "sha256": "91e9b61fd2ad640be86b74c1bdd0b8d5c54402d0ac41f2ae6b7519306f40b301"
+    },
+    {
+      "file": "components/003.png",
+      "sourceBox": [
+        127,
+        578,
+        435,
+        895
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        32
+      ],
+      "sha256": "9a0f8b7200d415bed23993d095cf1e8174e66c1d3a50b978421d901967327566"
+    },
+    {
+      "file": "components/004.png",
+      "sourceBox": [
+        621,
+        578,
+        924,
+        898
+      ],
+      "scale": 0.1,
+      "size": [
+        30,
+        32
+      ],
+      "sha256": "c0b6c26c46fbe0e257f6d763f39af97a483e8bd38c067074cd8b9bf54c2b5bcf"
+    },
+    {
+      "file": "components/005.png",
+      "sourceBox": [
+        1104,
+        578,
+        1416,
+        898
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        32
+      ],
+      "sha256": "1de58ea48055a12e1f504f2407e616f871ab704abdb2606f98577548d9c9177c"
+    }
+  ],
+  "endpointAuthorities": [
+    {
+      "path": "bill-swim-helmet-east-coherent-v1/frames/swim-east/000.png",
+      "padding": [
+        6,
+        40
+      ]
+    },
+    {
+      "path": "bill-swim-helmet-south-coherent-v1/frames/swim-south/000.png",
+      "padding": [
+        24,
+        -24
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "sourcePose": 1,
+      "file": "frames/swim-turn-east-south/001.png",
+      "component": "components/001.png",
+      "position": [
+        134,
+        100
+      ],
+      "crownAxis": [
+        149,
+        105
+      ],
+      "eraseBox": [
+        125,
+        103,
+        174,
+        136
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt preserved",
+      "protectedBodyFromY": 136,
+      "bareSha256": "6ac7024808350cdd61fb6237cd5d5eff2d702fd246d7f12ad209870e8fa9adf7"
+    },
+    {
+      "sourcePose": 2,
+      "file": "frames/swim-turn-east-south/002.png",
+      "component": "components/002.png",
+      "position": [
+        129,
+        101
+      ],
+      "crownAxis": [
+        144,
+        106
+      ],
+      "eraseBox": [
+        120,
+        104,
+        169,
+        137
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt preserved",
+      "protectedBodyFromY": 137,
+      "bareSha256": "5a5b71c7ae49a7052f42f20ea47c6bab3de487d2b91729d8762355f3b9ba6aa0"
+    },
+    {
+      "sourcePose": 3,
+      "file": "frames/swim-turn-east-south/003.png",
+      "component": "components/003.png",
+      "position": [
+        123,
+        103
+      ],
+      "crownAxis": [
+        138,
+        108
+      ],
+      "eraseBox": [
+        114,
+        106,
+        163,
+        139
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt preserved",
+      "protectedBodyFromY": 139,
+      "bareSha256": "17ee78a8f962cca345da15e63499b7f84a8e213bfc698d23e3be3fbc71d4731c"
+    },
+    {
+      "sourcePose": 4,
+      "file": "frames/swim-turn-east-south/004.png",
+      "component": "components/004.png",
+      "position": [
+        118,
+        104
+      ],
+      "crownAxis": [
+        133,
+        109
+      ],
+      "eraseBox": [
+        109,
+        107,
+        158,
+        140
+      ],
+      "eraseMethod": "bounded warm hair/skin support;neutral collar/quilt preserved",
+      "protectedBodyFromY": 140,
+      "bareSha256": "c034c3fe4559720697f1b50d9a56e73a00d4165fad5c0097a5f4ec770205410d"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "revision": "marsh-loaded-swim-opposite-ew01-staged",
+  "normalAdmission": false,
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "res://character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-1.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-2.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-3.png",
+        "res://character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-3.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-2.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-1.png",
+        "res://character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "res://character/marsh-loaded-swim-material-v1/west-loop-01-unselected/000.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-1.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-2.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/west-north-01-unselected/intermediate-3.png",
+        "res://character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-3.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-2.png",
+        "res://character/marsh-loaded-swim-turn-material-v1/east-north-02-unselected/intermediate-1.png",
+        "res://character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

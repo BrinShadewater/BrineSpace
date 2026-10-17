@@ -1,0 +1,15 @@
+{
+  "revision": "grade-v1",
+  "authority": "character/bill-shared-helmet-east-matte-v1/frames/idle-east/000.png",
+  "input": "sources/actions.png",
+  "application": "once, in source space before original scale/registration",
+  "skinRgbMultiplier": [0.77, 0.88, 0.96],
+  "burgundyRgbMultiplier": [0.88, 0.95, 1.12],
+  "clothRgbOffset": [-0.5, -2.5, -1.5],
+  "shellRgbOffset": [3.5, 3.5, 3.5],
+  "silverLuminanceMultiplier": 1.03,
+  "silverRgbOffset": [10, 7, 6],
+  "maskPolicy": "source head geometry separates skin and beard from body patches; soft chroma/luminance weights; lamp whitening stays above face",
+  "preserved": ["source", "poses", "alpha", "scale", "registration", "timing", "selected idle endpoints", "kneel/repair/stand joins"],
+  "ownerAcceptance": "pending"
+}

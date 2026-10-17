@@ -1,0 +1,42 @@
+{
+  "status": "installed_owner_accepted_east_cargo_matte_v2",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-east",
+    "carry-east",
+    "unload-east"
+  ],
+  "framesPerMode": 18,
+  "totalReferences": 36,
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "timingMs": {
+    "pickup-east": 520,
+    "carry-east": 840,
+    "unload-east": 520
+  },
+  "derivation": "Independent6-pose pickup and full6-pose alternating gait; unloading reverses pickup",
+  "palette": "Fixed matte material curve; cloth median 52 to 47; skin, hair, yellow and shared helmet preserved",
+  "helmet": "Selected35x41 east shared shell; face-tracked movement, restrained10degree bend",
+  "registration": "Fixed anatomical scalesX0.39759/Y0.43402; pickup foot anchoring, carry horizontal camera registration to pickup ready face",
+  "checks": "142 packaging / 169 installed native checks, 0 failures; 12 native and 36 production station captures; final scratch validations leave real profile unchanged",
+  "visualReview": "Owner accepted motion with brightness/matte correction requested; corrected contact and production station captures inspected",
+  "limits": [
+    "Phase joins are visually continuous rather than identical pixel endpoints.",
+    "Deposited case stays beside exact installed actor idle endpoint.",
+    "No release export or cargo route ownership claim."
+  ],
+  "matteAlphaPreservation": "All 36 alpha planes byte-identical to before-matte-v2"
+}

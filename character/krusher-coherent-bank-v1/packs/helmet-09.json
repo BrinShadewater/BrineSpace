@@ -1,0 +1,249 @@
+{
+  "name": "Krusher Dom recovery helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "recover-air-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/c0246353b0370bbef8c31ce26877ceef818fce906652d124e96e3c00e6a09156.png",
+        "res://character/krusher-coherent-bank-v1/frames/2b391ef40401ba17724a58738e381375b3cb90fb4d30d9c826ea43a27c7582bb.png",
+        "res://character/krusher-coherent-bank-v1/frames/e53adfb1d07e6d3594ecc86301043829e7e82b0e74b0c231c187ae3c1d563468.png",
+        "res://character/krusher-coherent-bank-v1/frames/7495961a1222483fa9081a95af03f52d40933a09ab39c6ad6553b046f12a0e72.png",
+        "res://character/krusher-coherent-bank-v1/frames/db845eb2c64cd5e2d58803663c8c3cb30d0ff6876029f61a3b9b6b24bc327b72.png",
+        "res://character/krusher-coherent-bank-v1/frames/db936f28243faf8f901d8d21b2d3590a0f6e3064c9eadc020c71f1fd5f3c79a2.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/542d36fedce46861f2c312ef2458abf047852aef251218ac00099fb40ba6d28c.png",
+        "res://character/krusher-coherent-bank-v1/frames/98c68fd7946dc063e2650172f2716021232785421993248b284cb746a9fd584c.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7a246303c70286dee346c77eb649f6a51235f46cf81d3b2d753006ad48d1cc8.png",
+        "res://character/krusher-coherent-bank-v1/frames/25ba11760a5c8772083f53b671413109f19805d0d79653acd47b7d32c576e9dc.png",
+        "res://character/krusher-coherent-bank-v1/frames/a8171a0648cdc4701670dccd18e03f40c6dce28ed196b2d7b420ebfb97e26fd0.png",
+        "res://character/krusher-coherent-bank-v1/frames/9c1d699afa805262537cb9806b415e102e261deb8035e311a3e6ecfa49276abd.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/834e7686ae4716dfa7b3db9186171b0a3268080b73ea244bfa23e28ac702836d.png",
+        "res://character/krusher-coherent-bank-v1/frames/d901dfb6de399ca1a70134449ed4f1511e975363cad3fc26e1108116f16cf0ff.png",
+        "res://character/krusher-coherent-bank-v1/frames/5ef52f1120dc03cd437dc9a1dfe256f57ebb8a018ca723fda5a2a7e09d273e57.png",
+        "res://character/krusher-coherent-bank-v1/frames/73e8851c924f90bd5f19ce210f67def87a5df390783c4d5c4670ae223a5148e7.png",
+        "res://character/krusher-coherent-bank-v1/frames/721d7c39472dc9b5c55f749baed6bd15018e102e161cc0ed84ed5088a0f7ff66.png",
+        "res://character/krusher-coherent-bank-v1/frames/8f06e7af41e6b08671c80037032004f44af15e063aad998165746338ac18aebb.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/e0082db0c15cb075d238af9ee301ff281ba1f228d6484a1ada653266519d4423.png",
+        "res://character/krusher-coherent-bank-v1/frames/25b3f66b767939c1e97b91d7ce0f367891c82de81b444bb407bf29b0dda99512.png",
+        "res://character/krusher-coherent-bank-v1/frames/011392602ea26b635ff20f6cfaaf235eb5dcc2732d22ce565aa371f204eaa431.png",
+        "res://character/krusher-coherent-bank-v1/frames/bdd95071c6c4c0027807ff0744343bf3697db4c6c9ea8b74b5c29cdd5289f4cd.png",
+        "res://character/krusher-coherent-bank-v1/frames/bef034873167ccd01ff293eeb4ef0368f2edf8b5a67e8de0e92b3baae8649e79.png",
+        "res://character/krusher-coherent-bank-v1/frames/d85fc2aa814a291724e13c594a7869d9f83a1eda8898dd37675d9dce6e3a9369.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-air-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James body/tool and state metadata; local Krusher head and matte cyan; exact recovery idle endpoint"
+      }
+    }
+  ]
+}

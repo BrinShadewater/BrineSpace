@@ -1,0 +1,44 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1026,
+  "outsideExactPixels": 64510,
+  "changedPixels": 1026,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    91,
+    76,
+    174,
+    225
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      43.59,
+      65.82,
+      95.5,
+      174.34
+    ],
+    "after": [
+      39.73,
+      62.27,
+      87.67,
+      160.38
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "disposition": "rejected_internal_boot_pose_drift",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "reason": "Generated boot/ankle scale and locations moved; alpha-protected interior no longer preserves original construction.",
+  "nativeIncluded": true
+}

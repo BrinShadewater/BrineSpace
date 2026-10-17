@@ -1,0 +1,10 @@
+{
+  "scope": "Rejected local expression calibration, corrected before candidate verification",
+  "rawSource": "closed-v1.png",
+  "sourceCrop": [204, 630, 308, 687],
+  "nativeRegion": [5, 17, 9, 19],
+  "gain": [1.3642857142857143, 1.4772727272727273, 1.5636363636363637],
+  "calibration": "Source skin estimate taken from the dark eyelid insert itself",
+  "rejection": "Amplified highlights and shifted the closed line to the wrong native row; expression appeared too bright/open",
+  "replacement": "Current build_helmet.py uses adjacent source cheek reference [310,710,400,820], crop [204,612,308,670] and preserves original native alpha"
+}

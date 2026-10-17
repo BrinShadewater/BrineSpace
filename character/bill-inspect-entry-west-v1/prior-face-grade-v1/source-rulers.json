@@ -1,0 +1,9 @@
+{
+  "sources":{
+    "primary":{"source":"sources/entry-v1.png","count":6,"heads":[[282,30],[761,30],[1241,30],[282,532],[761,532],[1241,532]],"fixedRuler":[0.27,0.3136],"density":1.0,"generation":"exec-ef68fc13-5496-4b4a-86d3-f184b23959db","sourceHeights":[472,472,472,471,471,471]},
+    "lower":{"source":"sources/lower-interiors-v2.png","count":2,"heads":[[378,111],[875,111]],"fixedRuler":[0.127,0.14785],"density":2.12,"generation":"exec-ce4095b6-00bd-4b75-b38d-23210ab8029e","sourceHeights":[1001,1001]}
+  },
+  "sequence":[["primary",1],["lower",0],["lower",1],["primary",2]],
+  "excludedPrimaryPoses":[0,3,4,5],
+  "excludedReason":"Exact selected idle/held endpoints replace source0/5; late source4 overshoots. Focused source supplies low reader contact; fixed ruler per source, no per-pose normalization."
+}

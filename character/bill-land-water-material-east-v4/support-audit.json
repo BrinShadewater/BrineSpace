@@ -1,0 +1,4464 @@
+{
+  "recordSHA256": "8087ac2cc25a8915805fb0a53e532a4f952e7480265751c73953fa9dd751d6ca",
+  "presentations": 190,
+  "activeSilhouettesCovered": 120,
+  "worldModel": "foot is a two-dimensional navigation/depth anchor, not an elevation or horizontal floor-contact plane. Renderer places texture by crew_pivot; swimming keeps actor root, uses source-specific pivot. Negative/positive sprite Y is screen/plan extent. Dry pivot guide cannot classify floor penetration.",
+  "authoritativeCode": [
+    "scripts/bill_npc.gd:swim_segment_clear/_swim_floor_clear",
+    "character/bill-land-water-runtime-east-v1/grid.gd:bridge_extent/_get_human_frame_source",
+    "character/bill-floor-case-north-v1/flood_readability_v2.gd:draw_actor"
+  ],
+  "proof": "Every active captured alpha envelope lies within actual admitted union. Prior native run rechecks union against registered room blockers/floor outlines each render update; finite entry/exit completed. This is planar clearance, not vertical buoyancy simulation or full visual contact acceptance.",
+  "records": [
+    {
+      "name": "bare-060-candidate",
+      "tick": 60,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.5,
+      "worldRoot": [
+        7782.45263671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -64.83891891891892,
+        23.818378378378377,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-061-candidate",
+      "tick": 61,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.508333333333333,
+      "worldRoot": [
+        7782.951171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -64.83891891891892,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-062-candidate",
+      "tick": 62,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.516666666666667,
+      "worldRoot": [
+        7783.44970703125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -64.83891891891892,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-063-candidate",
+      "tick": 63,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.525,
+      "worldRoot": [
+        7783.9482421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -64.83891891891892,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-064-candidate",
+      "tick": 64,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.533333333333333,
+      "worldRoot": [
+        7784.44677734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-065-candidate",
+      "tick": 65,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.541666666666667,
+      "worldRoot": [
+        7784.9453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-066-candidate",
+      "tick": 66,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.55,
+      "worldRoot": [
+        7785.3671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-067-candidate",
+      "tick": 67,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.558333333333333,
+      "worldRoot": [
+        7785.7890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-068-candidate",
+      "tick": 68,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.566666666666667,
+      "worldRoot": [
+        7786.2109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-069-candidate",
+      "tick": 69,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.575,
+      "worldRoot": [
+        7786.6328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -64.83891891891892,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-070-candidate",
+      "tick": 70,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.583333333333333,
+      "worldRoot": [
+        7787.0546875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-071-candidate",
+      "tick": 71,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.591666666666667,
+      "worldRoot": [
+        7787.4765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-072-candidate",
+      "tick": 72,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.6,
+      "worldRoot": [
+        7787.8984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-073-candidate",
+      "tick": 73,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.608333333333333,
+      "worldRoot": [
+        7788.3203125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-074-candidate",
+      "tick": 74,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.616666666666667,
+      "worldRoot": [
+        7788.7421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-075-candidate",
+      "tick": 75,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.625,
+      "worldRoot": [
+        7789.1640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -63.07459459459459,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-076-candidate",
+      "tick": 76,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.633333333333333,
+      "worldRoot": [
+        7789.5859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -59.545945945945945,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-077-candidate",
+      "tick": 77,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.641666666666667,
+      "worldRoot": [
+        7790.0078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -59.545945945945945,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-078-candidate",
+      "tick": 78,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.65,
+      "worldRoot": [
+        7790.4296875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -59.545945945945945,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-079-candidate",
+      "tick": 79,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.658333333333333,
+      "worldRoot": [
+        7790.8515625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -45.87243243243243,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-080-candidate",
+      "tick": 80,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.666666666666667,
+      "worldRoot": [
+        7791.2734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -45.87243243243243,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-081-candidate",
+      "tick": 81,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.675,
+      "worldRoot": [
+        7791.6953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -45.87243243243243,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-082-candidate",
+      "tick": 82,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.683333333333333,
+      "worldRoot": [
+        7792.1171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-083-candidate",
+      "tick": 83,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.691666666666667,
+      "worldRoot": [
+        7792.5390625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-084-candidate",
+      "tick": 84,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.7,
+      "worldRoot": [
+        7792.9609375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-085-candidate",
+      "tick": 85,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.708333333333333,
+      "worldRoot": [
+        7793.3828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-086-candidate",
+      "tick": 86,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.716666666666667,
+      "worldRoot": [
+        7793.8046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-087-candidate",
+      "tick": 87,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.725,
+      "worldRoot": [
+        7794.2265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -30.434594594594593,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-088-candidate",
+      "tick": 88,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.733333333333333,
+      "worldRoot": [
+        7794.6484375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -17.20216216216216,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-089-candidate",
+      "tick": 89,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.741666666666667,
+      "worldRoot": [
+        7795.0703125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -17.20216216216216,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-090-candidate",
+      "tick": 90,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.75,
+      "worldRoot": [
+        7795.4921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -17.20216216216216,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-091-candidate",
+      "tick": 91,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.758333333333333,
+      "worldRoot": [
+        7795.9140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -17.20216216216216,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-092-candidate",
+      "tick": 92,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.766666666666667,
+      "worldRoot": [
+        7796.3359375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -17.20216216216216,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-093-candidate",
+      "tick": 93,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.775,
+      "worldRoot": [
+        7796.7578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-094-candidate",
+      "tick": 94,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.783333333333333,
+      "worldRoot": [
+        7797.1796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-095-candidate",
+      "tick": 95,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.791666666666667,
+      "worldRoot": [
+        7797.6015625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -64.8389205932617,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "bare-096-candidate",
+      "tick": 96,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.8,
+      "worldRoot": [
+        7798.0234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-097-candidate",
+      "tick": 97,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.808333333333333,
+      "worldRoot": [
+        7798.4453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-098-candidate",
+      "tick": 98,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.816666666666667,
+      "worldRoot": [
+        7798.8671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-099-candidate",
+      "tick": 99,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.825,
+      "worldRoot": [
+        7799.2890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-100-candidate",
+      "tick": 100,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.833333333333333,
+      "worldRoot": [
+        7799.7109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-101-candidate",
+      "tick": 101,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.841666666666667,
+      "worldRoot": [
+        7800.1328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-102-candidate",
+      "tick": 102,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.85,
+      "worldRoot": [
+        7800.5546875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-103-candidate",
+      "tick": 103,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.858333333333333,
+      "worldRoot": [
+        7800.9765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-104-candidate",
+      "tick": 104,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.866666666666667,
+      "worldRoot": [
+        7801.3984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-410-candidate",
+      "tick": 410,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.583333333333333,
+      "worldRoot": [
+        7930.4921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-411-candidate",
+      "tick": 411,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.575,
+      "worldRoot": [
+        7930.9140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -11.027027027027026,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-412-candidate",
+      "tick": 412,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.566666666666667,
+      "worldRoot": [
+        7931.3359375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-413-candidate",
+      "tick": 413,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.558333333333333,
+      "worldRoot": [
+        7931.7578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-414-candidate",
+      "tick": 414,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.55,
+      "worldRoot": [
+        7932.25634765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-415-candidate",
+      "tick": 415,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.541666666666667,
+      "worldRoot": [
+        7932.7548828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-416-candidate",
+      "tick": 416,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.533333333333333,
+      "worldRoot": [
+        7933.25341796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-417-candidate",
+      "tick": 417,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.525,
+      "worldRoot": [
+        7933.751953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -11.027027027027026,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-418-candidate",
+      "tick": 418,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.516666666666667,
+      "worldRoot": [
+        7934.25048828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -18.966486486486485,
+        17.643243243243244,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-419-candidate",
+      "tick": 419,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.508333333333333,
+      "worldRoot": [
+        7934.7490234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -18.966486486486485,
+        17.643243243243244,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-420-candidate",
+      "tick": 420,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.5,
+      "worldRoot": [
+        7935.24755859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -18.966486486486485,
+        17.643243243243244,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-421-candidate",
+      "tick": 421,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.491666666666667,
+      "worldRoot": [
+        7935.74609375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -34.8454054054054,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-422-candidate",
+      "tick": 422,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.483333333333333,
+      "worldRoot": [
+        7936.24462890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -34.8454054054054,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-423-candidate",
+      "tick": 423,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.475,
+      "worldRoot": [
+        7936.7431640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -34.8454054054054,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-424-candidate",
+      "tick": 424,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.466666666666667,
+      "worldRoot": [
+        7937.24169921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-425-candidate",
+      "tick": 425,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.458333333333333,
+      "worldRoot": [
+        7937.740234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-426-candidate",
+      "tick": 426,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.45,
+      "worldRoot": [
+        7938.23876953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-427-candidate",
+      "tick": 427,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.441666666666667,
+      "worldRoot": [
+        7938.7373046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-428-candidate",
+      "tick": 428,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.433333333333333,
+      "worldRoot": [
+        7939.23583984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-429-candidate",
+      "tick": 429,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.425,
+      "worldRoot": [
+        7939.734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -51.1654054054054,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-430-candidate",
+      "tick": 430,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.416666666666667,
+      "worldRoot": [
+        7940.23291015625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-431-candidate",
+      "tick": 431,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.408333333333333,
+      "worldRoot": [
+        7940.7314453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-432-candidate",
+      "tick": 432,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.4,
+      "worldRoot": [
+        7941.22998046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-433-candidate",
+      "tick": 433,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.391666666666667,
+      "worldRoot": [
+        7941.728515625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-434-candidate",
+      "tick": 434,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.383333333333333,
+      "worldRoot": [
+        7942.22705078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-435-candidate",
+      "tick": 435,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.375,
+      "worldRoot": [
+        7942.7255859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -55.57621621621622,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-436-candidate",
+      "tick": 436,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.366666666666667,
+      "worldRoot": [
+        7943.22412109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -65.72108108108108,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-437-candidate",
+      "tick": 437,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.358333333333333,
+      "worldRoot": [
+        7943.72265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -65.72108108108108,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-438-candidate",
+      "tick": 438,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.35,
+      "worldRoot": [
+        7944.22119140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -65.72108108108108,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-439-candidate",
+      "tick": 439,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.341666666666667,
+      "worldRoot": [
+        7944.7197265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -65.72108108108108,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-440-candidate",
+      "tick": 440,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.333333333333333,
+      "worldRoot": [
+        7945.21826171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -65.72108108108108,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-441-candidate",
+      "tick": 441,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.325,
+      "worldRoot": [
+        7945.716796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -12.79135135135135,
+        -65.28,
+        16.32,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-442-candidate",
+      "tick": 442,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.316666666666667,
+      "worldRoot": [
+        7946.21533203125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -12.79135135135135,
+        -65.28,
+        16.32,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-443-candidate",
+      "tick": 443,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.308333333333333,
+      "worldRoot": [
+        7946.7138671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -12.79135135135135,
+        -65.28,
+        16.32,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -65.721076965332,
+        26.0237846374512,
+        19.4075698852539
+      ]
+    },
+    {
+      "name": "bare-444-candidate",
+      "tick": 444,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.3,
+      "worldRoot": [
+        7947.21240234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -12.79135135135135,
+        -65.28,
+        16.32,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-445-candidate",
+      "tick": 445,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.291666666666667,
+      "worldRoot": [
+        7947.7109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.468108108108108,
+        -66.16216216216216,
+        15.437837837837838,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-446-candidate",
+      "tick": 446,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.283333333333333,
+      "worldRoot": [
+        7948.20947265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.468108108108108,
+        -66.16216216216216,
+        15.437837837837838,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-447-candidate",
+      "tick": 447,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.275,
+      "worldRoot": [
+        7948.7080078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.555675675675676,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-448-candidate",
+      "tick": 448,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.266666666666667,
+      "worldRoot": [
+        7949.20654296875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.555675675675676,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-449-candidate",
+      "tick": 449,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.258333333333333,
+      "worldRoot": [
+        7949.705078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.555675675675676,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-450-candidate",
+      "tick": 450,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.25,
+      "worldRoot": [
+        7950.20361328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        13.673513513513512,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-451-candidate",
+      "tick": 451,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.241666666666667,
+      "worldRoot": [
+        7950.97021484375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        13.673513513513512,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-452-candidate",
+      "tick": 452,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.233333333333333,
+      "worldRoot": [
+        7951.73681640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -65.72108108108108,
+        13.673513513513512,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-453-candidate",
+      "tick": 453,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.225,
+      "worldRoot": [
+        7952.50341796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -65.72108108108108,
+        13.673513513513512,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-454-candidate",
+      "tick": 454,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.216666666666667,
+      "worldRoot": [
+        7953.27001953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.114594594594594,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-455-candidate",
+      "tick": 455,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.208333333333333,
+      "worldRoot": [
+        7954.03662109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.114594594594594,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-456-candidate",
+      "tick": 456,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.2,
+      "worldRoot": [
+        7954.80322265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.555675675675676,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-457-candidate",
+      "tick": 457,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.191666666666667,
+      "worldRoot": [
+        7955.56982421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.027027027027026,
+        -66.16216216216216,
+        14.555675675675676,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-458-candidate",
+      "tick": 458,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.183333333333333,
+      "worldRoot": [
+        7956.33642578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.909189189189188,
+        -66.16216216216216,
+        14.996756756756756,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "bare-459-candidate",
+      "tick": 459,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.175,
+      "worldRoot": [
+        7957.10302734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -11.909189189189188,
+        -66.16216216216216,
+        14.996756756756756,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-060-candidate",
+      "tick": 60,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.5,
+      "worldRoot": [
+        7782.45263671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -65.72108108108108,
+        23.818378378378377,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-061-candidate",
+      "tick": 61,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.508333333333333,
+      "worldRoot": [
+        7782.951171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -65.72108108108108,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-062-candidate",
+      "tick": 62,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.516666666666667,
+      "worldRoot": [
+        7783.44970703125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -65.72108108108108,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-063-candidate",
+      "tick": 63,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.525,
+      "worldRoot": [
+        7783.9482421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -65.72108108108108,
+        23.377297297297297,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-064-candidate",
+      "tick": 64,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.533333333333333,
+      "worldRoot": [
+        7784.44677734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-065-candidate",
+      "tick": 65,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.541666666666667,
+      "worldRoot": [
+        7784.9453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-066-candidate",
+      "tick": 66,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.55,
+      "worldRoot": [
+        7785.3671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-067-candidate",
+      "tick": 67,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.558333333333333,
+      "worldRoot": [
+        7785.7890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-068-candidate",
+      "tick": 68,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.566666666666667,
+      "worldRoot": [
+        7786.2109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-069-candidate",
+      "tick": 69,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.575,
+      "worldRoot": [
+        7786.6328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -65.72108108108108,
+        22.495135135135136,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-070-candidate",
+      "tick": 70,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.583333333333333,
+      "worldRoot": [
+        7787.0546875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-071-candidate",
+      "tick": 71,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.591666666666667,
+      "worldRoot": [
+        7787.4765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-072-candidate",
+      "tick": 72,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.6,
+      "worldRoot": [
+        7787.8984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-073-candidate",
+      "tick": 73,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.608333333333333,
+      "worldRoot": [
+        7788.3203125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-074-candidate",
+      "tick": 74,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.616666666666667,
+      "worldRoot": [
+        7788.7421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-075-candidate",
+      "tick": 75,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.625,
+      "worldRoot": [
+        7789.1640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -14.555675675675676,
+        -65.72108108108108,
+        21.171891891891892,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-076-candidate",
+      "tick": 76,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.633333333333333,
+      "worldRoot": [
+        7789.5859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -61.75135135135135,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-077-candidate",
+      "tick": 77,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.641666666666667,
+      "worldRoot": [
+        7790.0078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -61.75135135135135,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-078-candidate",
+      "tick": 78,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.65,
+      "worldRoot": [
+        7790.4296875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -26.464864864864865,
+        -61.75135135135135,
+        23.377297297297297,
+        1.7643243243243243
+      ],
+      "belowDryPivotWorldUnits": 1.7643243243243243,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-079-candidate",
+      "tick": 79,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.658333333333333,
+      "worldRoot": [
+        7790.8515625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -47.19567567567567,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-080-candidate",
+      "tick": 80,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.666666666666667,
+      "worldRoot": [
+        7791.2734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -47.19567567567567,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-081-candidate",
+      "tick": 81,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.675,
+      "worldRoot": [
+        7791.6953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -32.19891891891892,
+        -47.19567567567567,
+        28.67027027027027,
+        8.821621621621622
+      ],
+      "belowDryPivotWorldUnits": 8.821621621621622,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-082-candidate",
+      "tick": 82,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.683333333333333,
+      "worldRoot": [
+        7792.1171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-083-candidate",
+      "tick": 83,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.691666666666667,
+      "worldRoot": [
+        7792.5390625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-084-candidate",
+      "tick": 84,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.7,
+      "worldRoot": [
+        7792.9609375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-085-candidate",
+      "tick": 85,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.708333333333333,
+      "worldRoot": [
+        7793.3828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-086-candidate",
+      "tick": 86,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.716666666666667,
+      "worldRoot": [
+        7793.8046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-087-candidate",
+      "tick": 87,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.725,
+      "worldRoot": [
+        7794.2265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -44.108108108108105,
+        -32.64,
+        32.19891891891892,
+        7.498378378378378
+      ],
+      "belowDryPivotWorldUnits": 7.498378378378378,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-088-candidate",
+      "tick": 88,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.733333333333333,
+      "worldRoot": [
+        7794.6484375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -18.966486486486485,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-089-candidate",
+      "tick": 89,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.741666666666667,
+      "worldRoot": [
+        7795.0703125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -18.966486486486485,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-090-candidate",
+      "tick": 90,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.75,
+      "worldRoot": [
+        7795.4921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -18.966486486486485,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-091-candidate",
+      "tick": 91,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.758333333333333,
+      "worldRoot": [
+        7795.9140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -18.966486486486485,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-092-candidate",
+      "tick": 92,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.766666666666667,
+      "worldRoot": [
+        7796.3359375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -35.72756756756757,
+        -18.966486486486485,
+        31.757837837837837,
+        14.114594594594594
+      ],
+      "belowDryPivotWorldUnits": 14.114594594594594,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-093-candidate",
+      "tick": 93,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.775,
+      "worldRoot": [
+        7796.7578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-094-candidate",
+      "tick": 94,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.783333333333333,
+      "worldRoot": [
+        7797.1796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-095-candidate",
+      "tick": 95,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.791666666666667,
+      "worldRoot": [
+        7797.6015625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -44.1081085205078,
+        -65.721076965332,
+        32.1989212036133,
+        15.4378356933594
+      ]
+    },
+    {
+      "name": "helmet-096-candidate",
+      "tick": 96,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.8,
+      "worldRoot": [
+        7798.0234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-097-candidate",
+      "tick": 97,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.808333333333333,
+      "worldRoot": [
+        7798.4453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-098-candidate",
+      "tick": 98,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.816666666666667,
+      "worldRoot": [
+        7798.8671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-099-candidate",
+      "tick": 99,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.825,
+      "worldRoot": [
+        7799.2890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-100-candidate",
+      "tick": 100,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.833333333333333,
+      "worldRoot": [
+        7799.7109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-101-candidate",
+      "tick": 101,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.841666666666667,
+      "worldRoot": [
+        7800.1328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-102-candidate",
+      "tick": 102,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.85,
+      "worldRoot": [
+        7800.5546875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-103-candidate",
+      "tick": 103,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.858333333333333,
+      "worldRoot": [
+        7800.9765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-104-candidate",
+      "tick": 104,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.866666666666667,
+      "worldRoot": [
+        7801.3984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-410-candidate",
+      "tick": 410,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.583333333333333,
+      "worldRoot": [
+        7930.4921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-411-candidate",
+      "tick": 411,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.575,
+      "worldRoot": [
+        7930.9140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.08108108108108,
+        -14.114594594594594,
+        31.316756756756757,
+        15.437837837837838
+      ],
+      "belowDryPivotWorldUnits": 15.437837837837838,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-412-candidate",
+      "tick": 412,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.566666666666667,
+      "worldRoot": [
+        7931.3359375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-413-candidate",
+      "tick": 413,
+      "state": "swim",
+      "medium": "flooded",
+      "water": 0.558333333333333,
+      "worldRoot": [
+        7931.7578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-414-candidate",
+      "tick": 414,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.55,
+      "worldRoot": [
+        7932.25634765625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-415-candidate",
+      "tick": 415,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.541666666666667,
+      "worldRoot": [
+        7932.7548828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-416-candidate",
+      "tick": 416,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.533333333333333,
+      "worldRoot": [
+        7933.25341796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-417-candidate",
+      "tick": 417,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.525,
+      "worldRoot": [
+        7933.751953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -30.875675675675677,
+        -14.114594594594594,
+        26.023783783783784,
+        19.40756756756757
+      ],
+      "belowDryPivotWorldUnits": 19.40756756756757,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-418-candidate",
+      "tick": 418,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.516666666666667,
+      "worldRoot": [
+        7934.25048828125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -22.054054054054053,
+        19.84864864864865,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-419-candidate",
+      "tick": 419,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.508333333333333,
+      "worldRoot": [
+        7934.7490234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -22.054054054054053,
+        19.84864864864865,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-420-candidate",
+      "tick": 420,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.5,
+      "worldRoot": [
+        7935.24755859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -33.96324324324324,
+        -22.054054054054053,
+        19.84864864864865,
+        13.232432432432432
+      ],
+      "belowDryPivotWorldUnits": 13.232432432432432,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-421-candidate",
+      "tick": 421,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.491666666666667,
+      "worldRoot": [
+        7935.74609375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -37.93297297297297,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-422-candidate",
+      "tick": 422,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.483333333333333,
+      "worldRoot": [
+        7936.24462890625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -37.93297297297297,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-423-candidate",
+      "tick": 423,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.475,
+      "worldRoot": [
+        7936.7431640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -37.93297297297297,
+        18.084324324324324,
+        7.057297297297297
+      ],
+      "belowDryPivotWorldUnits": 7.057297297297297,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-424-candidate",
+      "tick": 424,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.466666666666667,
+      "worldRoot": [
+        7937.24169921875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-425-candidate",
+      "tick": 425,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.458333333333333,
+      "worldRoot": [
+        7937.740234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-426-candidate",
+      "tick": 426,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.45,
+      "worldRoot": [
+        7938.23876953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-427-candidate",
+      "tick": 427,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.441666666666667,
+      "worldRoot": [
+        7938.7373046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-428-candidate",
+      "tick": 428,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.433333333333333,
+      "worldRoot": [
+        7939.23583984375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-429-candidate",
+      "tick": 429,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.425,
+      "worldRoot": [
+        7939.734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -23.377297297297297,
+        -54.25297297297297,
+        16.32,
+        -0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-430-candidate",
+      "tick": 430,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.416666666666667,
+      "worldRoot": [
+        7940.23291015625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-431-candidate",
+      "tick": 431,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.408333333333333,
+      "worldRoot": [
+        7940.7314453125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-432-candidate",
+      "tick": 432,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.4,
+      "worldRoot": [
+        7941.22998046875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-433-candidate",
+      "tick": 433,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.391666666666667,
+      "worldRoot": [
+        7941.728515625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-434-candidate",
+      "tick": 434,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.383333333333333,
+      "worldRoot": [
+        7942.22705078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-435-candidate",
+      "tick": 435,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.375,
+      "worldRoot": [
+        7942.7255859375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -58.663783783783785,
+        11.468108108108108,
+        0.4410810810810811
+      ],
+      "belowDryPivotWorldUnits": 0.4410810810810811,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-436-candidate",
+      "tick": 436,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.366666666666667,
+      "worldRoot": [
+        7943.22412109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -68.36756756756756,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-437-candidate",
+      "tick": 437,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.358333333333333,
+      "worldRoot": [
+        7943.72265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -68.36756756756756,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-438-candidate",
+      "tick": 438,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.35,
+      "worldRoot": [
+        7944.22119140625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -68.36756756756756,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-439-candidate",
+      "tick": 439,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.341666666666667,
+      "worldRoot": [
+        7944.7197265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -68.36756756756756,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-440-candidate",
+      "tick": 440,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.333333333333333,
+      "worldRoot": [
+        7945.21826171875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -18.966486486486485,
+        -68.36756756756756,
+        16.76108108108108,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-441-candidate",
+      "tick": 441,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.325,
+      "worldRoot": [
+        7945.716796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-442-candidate",
+      "tick": 442,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.316666666666667,
+      "worldRoot": [
+        7946.21533203125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-443-candidate",
+      "tick": 443,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.308333333333333,
+      "worldRoot": [
+        7946.7138671875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": true,
+      "coveredByAdmittedUnion": true,
+      "union": [
+        -33.9632415771484,
+        -68.3675689697266,
+        26.0237846374512,
+        19.4075622558594
+      ]
+    },
+    {
+      "name": "helmet-444-candidate",
+      "tick": 444,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.3,
+      "worldRoot": [
+        7947.21240234375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-445-candidate",
+      "tick": 445,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.291666666666667,
+      "worldRoot": [
+        7947.7109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-446-candidate",
+      "tick": 446,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.283333333333333,
+      "worldRoot": [
+        7948.20947265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.171891891891892,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-447-candidate",
+      "tick": 447,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.275,
+      "worldRoot": [
+        7948.7080078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.612972972972972,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-448-candidate",
+      "tick": 448,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.266666666666667,
+      "worldRoot": [
+        7949.20654296875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.612972972972972,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-449-candidate",
+      "tick": 449,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.258333333333333,
+      "worldRoot": [
+        7949.705078125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.612972972972972,
+        -66.16216216216216,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-450-candidate",
+      "tick": 450,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.25,
+      "worldRoot": [
+        7950.20361328125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -65.72108108108108,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-451-candidate",
+      "tick": 451,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.241666666666667,
+      "worldRoot": [
+        7950.97021484375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -65.72108108108108,
+        26.023783783783784,
+        1.3232432432432433
+      ],
+      "belowDryPivotWorldUnits": 1.3232432432432433,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-452-candidate",
+      "tick": 452,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.233333333333333,
+      "worldRoot": [
+        7951.73681640625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -65.72108108108108,
+        25.5827027027027,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-453-candidate",
+      "tick": 453,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.225,
+      "worldRoot": [
+        7952.50341796875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -22.054054054054053,
+        -65.72108108108108,
+        25.5827027027027,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-454-candidate",
+      "tick": 454,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.216666666666667,
+      "worldRoot": [
+        7953.27001953125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.612972972972972,
+        -65.72108108108108,
+        24.70054054054054,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-455-candidate",
+      "tick": 455,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.208333333333333,
+      "worldRoot": [
+        7954.03662109375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -21.612972972972972,
+        -65.72108108108108,
+        24.70054054054054,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-456-candidate",
+      "tick": 456,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.2,
+      "worldRoot": [
+        7954.80322265625,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -66.16216216216216,
+        23.818378378378377,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-457-candidate",
+      "tick": 457,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.191666666666667,
+      "worldRoot": [
+        7955.56982421875,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -20.73081081081081,
+        -66.16216216216216,
+        23.818378378378377,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-458-candidate",
+      "tick": 458,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.183333333333333,
+      "worldRoot": [
+        7956.33642578125,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -66.16216216216216,
+        22.495135135135136,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    },
+    {
+      "name": "helmet-459-candidate",
+      "tick": 459,
+      "state": "walk",
+      "medium": "dry",
+      "water": 0.175,
+      "worldRoot": [
+        7957.10302734375,
+        8368.0
+      ],
+      "sourceExtentRelativeToRoot": [
+        -19.84864864864865,
+        -66.16216216216216,
+        22.495135135135136,
+        0.8821621621621621
+      ],
+      "belowDryPivotWorldUnits": 0.8821621621621621,
+      "activeBridge": false
+    }
+  ]
+}

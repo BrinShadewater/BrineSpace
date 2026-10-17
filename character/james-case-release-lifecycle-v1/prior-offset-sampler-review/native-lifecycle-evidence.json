@@ -1,0 +1,3939 @@
+{
+	"checks": 13740,
+	"failures": 4,
+	"journeys": [
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q0-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-release-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q0-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-recall-pickup-before",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 84.6500000000147,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.233333333333333,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-00",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 84.6500000000147,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.416666666681,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8051.52, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.4833333333477,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8049.12, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.516666666681,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8044.32, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.5833333333477,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8041.92, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.616666666681,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-07-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8037.121, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-09",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.6833333333477,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-09.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-09-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.333333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8032.321, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.7500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-11-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.433333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8025.121, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-14",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.8500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-14.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-14-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.5,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8020.321, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 90.916666666681,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-16-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8017.921, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-17",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8013.122, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-19",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-19.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-19-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8008.322, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-21",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8003.522, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-23",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-23.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-23-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7998.722, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-25",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7996.322, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-26",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7989.123, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-29",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7984.323, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-31",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-31.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-31-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-33",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-33-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7974.723, 7104.0)",
+					"label": "indexed-q0-recall-pickup-after-35",
+					"motion": {
+						"clip": "swim-turn-east-west",
+						"direction": "west",
+						"started": 90.9500000000143,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 0,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q1-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-release-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q1-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.233333333333333,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-recall-pickup-before",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 86.4166666666829,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.233333333333333,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-recall-pickup-after-00",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 86.4166666666829,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.1833333333493,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8051.52)",
+					"label": "indexed-q1-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.2500000000159,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8049.12)",
+					"label": "indexed-q1-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.2833333333493,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8044.32)",
+					"label": "indexed-q1-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.3500000000159,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8041.92)",
+					"label": "indexed-q1-recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.3833333333493,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-07-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8037.121)",
+					"label": "indexed-q1-recall-pickup-after-09",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.4500000000159,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-09.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-09-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.333333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8032.321)",
+					"label": "indexed-q1-recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.5166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-11-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.433333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8025.121)",
+					"label": "indexed-q1-recall-pickup-after-14",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.6166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-14.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-14-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.5,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8020.321)",
+					"label": "indexed-q1-recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 92.6833333333492,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-16-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8017.921)",
+					"label": "indexed-q1-recall-pickup-after-17",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8013.122)",
+					"label": "indexed-q1-recall-pickup-after-19",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-19.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-19-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8008.322)",
+					"label": "indexed-q1-recall-pickup-after-21",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8003.522)",
+					"label": "indexed-q1-recall-pickup-after-23",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-23.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-23-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7998.722)",
+					"label": "indexed-q1-recall-pickup-after-25",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7996.322)",
+					"label": "indexed-q1-recall-pickup-after-26",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7989.123)",
+					"label": "indexed-q1-recall-pickup-after-29",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7984.323)",
+					"label": "indexed-q1-recall-pickup-after-31",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-31.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-31-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7979.523)",
+					"label": "indexed-q1-recall-pickup-after-33",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-33-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7974.723)",
+					"label": "indexed-q1-recall-pickup-after-35",
+					"motion": {
+						"clip": "swim-turn-south-north",
+						"direction": "north",
+						"started": 92.7166666666826,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 1,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q2-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-release-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q2-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.233333333333333,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-recall-pickup-before",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 84.9500000000149,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.233333333333333,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-00",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 84.9500000000149,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.7166666666813,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7692.48, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.7833333333479,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7694.88, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.8166666666813,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7699.68, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.8833333333479,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7702.08, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.9166666666813,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-07-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7706.879, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-09",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 90.9833333333479,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-09.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-09-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.333333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7711.679, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 91.0500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-11-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.433333333333333,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7718.879, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-14",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 91.1500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-14.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-14-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.5,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7723.679, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 91.2166666666812,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-16-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7726.079, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-17",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7730.878, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-19",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-19.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-19-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7735.678, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-21",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7740.478, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-23",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-23.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-23-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7745.278, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-25",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7747.678, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-26",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7754.877, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-29",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7759.677, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-31",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-31.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-31-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7764.477, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-33",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-33-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7769.277, 8640.0)",
+					"label": "indexed-q2-recall-pickup-after-35",
+					"motion": {
+						"clip": "swim-turn-west-east",
+						"direction": "east",
+						"started": 91.2500000000146,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 2,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q3-recall-pickup-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-recall-pickup-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-recall-pickup-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-recall-pickup-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-recall-pickup-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-recall-pickup-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-recall-pickup-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-recall-pickup-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-cancel-release-pickup-2",
+					"tank": 41.4333333333344
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q3-recall-pickup-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim",
+					"tank": 38.8666666666679
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-recall-pickup-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim",
+					"tank": 32.2333333333349
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-recall-pickup-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-recall-pickup-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "idle",
+					"tank": 29.4000000000015
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.233333333333333,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-recall-pickup-before",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 82.6166666666795,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-before.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-before-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.233333333333333,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.233333333333333,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-recall-pickup-after-00",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 82.6166666666795,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-00.png",
+					"phase": "pickup",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-00-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-recall-pickup-after-01",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.3833333333458,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-01.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-01-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.0666666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7692.48)",
+					"label": "indexed-q3-recall-pickup-after-03",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.4500000000125,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-03.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-03-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7694.88)",
+					"label": "indexed-q3-recall-pickup-after-04",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.4833333333458,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-04.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-04-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7699.68)",
+					"label": "indexed-q3-recall-pickup-after-06",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.5500000000125,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-06.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-06-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7702.08)",
+					"label": "indexed-q3-recall-pickup-after-07",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.5833333333458,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-07.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-07-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7706.879)",
+					"label": "indexed-q3-recall-pickup-after-09",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.6500000000125,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-09.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-09-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.333333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7711.679)",
+					"label": "indexed-q3-recall-pickup-after-11",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.7166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-11.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-11-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.433333333333333,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7718.879)",
+					"label": "indexed-q3-recall-pickup-after-14",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.8166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-14.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-14-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": 0.5,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7723.679)",
+					"label": "indexed-q3-recall-pickup-after-16",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 88.8833333333458,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-16.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-16-source.png",
+					"state": "swim-cancel-release-pickup-2"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7726.079)",
+					"label": "indexed-q3-recall-pickup-after-17",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-17.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-17-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7730.878)",
+					"label": "indexed-q3-recall-pickup-after-19",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-19.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-19-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7735.678)",
+					"label": "indexed-q3-recall-pickup-after-21",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-21.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-21-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7740.478)",
+					"label": "indexed-q3-recall-pickup-after-23",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-23.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-23-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7745.278)",
+					"label": "indexed-q3-recall-pickup-after-25",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-25.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-25-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7747.678)",
+					"label": "indexed-q3-recall-pickup-after-26",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-26.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-26-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7754.877)",
+					"label": "indexed-q3-recall-pickup-after-29",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-29.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-29-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7759.677)",
+					"label": "indexed-q3-recall-pickup-after-31",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-31.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-31-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7764.477)",
+					"label": "indexed-q3-recall-pickup-after-33",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-33.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-33-source.png",
+					"state": "swim"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7769.277)",
+					"label": "indexed-q3-recall-pickup-after-35",
+					"motion": {
+						"clip": "swim-turn-north-south",
+						"direction": "south",
+						"started": 88.9166666666791,
+						"state": "swim"
+					},
+					"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-35.png",
+					"phase": "return",
+					"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-recall-pickup-after-35-source.png",
+					"state": "swim"
+				}
+			],
+			"expectedSlots": 8,
+			"joins": {
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "recall-pickup",
+			"movingStow": true,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2
+			],
+			"recalled": true,
+			"restored": true,
+			"rotation": 3,
+			"stowSlots": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"tank": 29.4000000000015,
+			"turnJoin": true,
+			"turns": [],
+			"unload": []
+		}
+	],
+	"matrix": [
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7984.308, 7104.0)",
+				"label": "indexed-q0-erased-before-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 32.1916666666667,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-erased-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 31.1916666666668,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "erased-before",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7984.308, 7104.0)",
+				"label": "indexed-q0-depleted-before-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 38.9166666666663,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-depleted-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 37.9166666666664,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "depleted-before",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7976.507, 7104.0)",
+				"label": "indexed-q0-erased-after-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 45.7499999999993,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-erased-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 44.641666666666,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-erased-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "erased-after",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7976.507, 7104.0)",
+				"label": "indexed-q0-depleted-after-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 52.5833333333322,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-depleted-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 51.474999999999,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-depleted-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "depleted-after",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7976.507, 7104.0)",
+				"label": "indexed-q0-inactive-after-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 59.4166666666652,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-inactive-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-inactive-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-inactive-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 58.3083333333319,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-inactive-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-inactive-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "inactive-after",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q0-death-before-hidden-control.png",
+				"label": "indexed-q0-death-before-after",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 65.1416666666658,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-before-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-before-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-death-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 65.1416666666658,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": false,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "death-before",
+			"renderBodyDifference": 3.60478936057891,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8048.519, 7104.0)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q0-death-after-hidden-control.png",
+				"label": "indexed-q0-death-after-after",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 70.9750000000038,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-after-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-after-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-death-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 70.8666666666704,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-death-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": false,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "death-after",
+			"renderBodyDifference": 3.79501925745508,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7975.907, 7104.0)",
+				"label": "indexed-q0-blocked-turn-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 77.8166666666759,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-blocked-turn-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-blocked-turn-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-blocked-turn-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 76.7000000000083,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-blocked-turn-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-blocked-turn-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": true,
+			"mode": "blocked-turn",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7976.507, 7104.0)",
+				"label": "indexed-q0-low-air-after",
+				"motion": {
+					"clip": "swim-turn-east-west",
+					"direction": "west",
+					"started": 84.6500000000147,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-low-air-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-low-air-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-low-air-before",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 83.5416666666805,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-low-air-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-low-air-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "east",
+			"heldPoseMoved": false,
+			"mode": "low-air",
+			"renderBodyDifference": null,
+			"rotation": 0
+		},
+		{
+			"actualFullSecondDispatchReturn": true,
+			"after": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(8056.32, 7104.0)",
+				"label": "indexed-q0-new-attempt-arrival",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 127.016666666679,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-new-attempt-arrival.png",
+				"phase": "salvage",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-new-attempt-arrival-source.png",
+				"state": "salvage"
+			},
+			"arrived": true,
+			"before": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7872.0, 7104.0)",
+				"label": "indexed-q0-new-attempt-outbound",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 127.016666666679,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-new-attempt-outbound.png",
+				"phase": "outbound",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q0-new-attempt-outbound-source.png",
+				"state": "swim"
+			},
+			"mode": "new-attempt",
+			"recalled": true,
+			"rotation": 0
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7984.308)",
+				"label": "indexed-q1-erased-before-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 33.9583333333335,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-erased-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 32.9583333333335,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "erased-before",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7984.308)",
+				"label": "indexed-q1-depleted-before-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 40.6833333333331,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-depleted-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 39.6833333333331,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "depleted-before",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7976.507)",
+				"label": "indexed-q1-erased-after-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 47.516666666666,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-erased-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 46.4083333333328,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-erased-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "erased-after",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7976.507)",
+				"label": "indexed-q1-depleted-after-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 54.349999999999,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-depleted-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 53.2416666666657,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-depleted-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "depleted-after",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7976.507)",
+				"label": "indexed-q1-inactive-after-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 61.1833333333319,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-inactive-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-inactive-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-inactive-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 60.0749999999986,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-inactive-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-inactive-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "inactive-after",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q1-death-before-hidden-control.png",
+				"label": "indexed-q1-death-before-after",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 66.9083333333341,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-before-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-before-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-death-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 66.9083333333341,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": false,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "death-before",
+			"renderBodyDifference": 25.3162912935161,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8048.519)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q1-death-after-hidden-control.png",
+				"label": "indexed-q1-death-after-after",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 72.741666666672,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-after-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-after-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-death-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 72.6333333333386,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-death-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": false,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "death-after",
+			"renderBodyDifference": 24.0783332875897,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7975.907)",
+				"label": "indexed-q1-blocked-turn-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 79.5833333333442,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-blocked-turn-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-blocked-turn-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-blocked-turn-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 78.4666666666766,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-blocked-turn-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-blocked-turn-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": true,
+			"mode": "blocked-turn",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7976.507)",
+				"label": "indexed-q1-low-air-after",
+				"motion": {
+					"clip": "swim-turn-south-north",
+					"direction": "north",
+					"started": 86.4166666666829,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-low-air-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-low-air-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-low-air-before",
+				"motion": {
+					"clip": "",
+					"direction": "south",
+					"started": 85.3083333333487,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-low-air-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-low-air-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "south",
+			"heldPoseMoved": false,
+			"mode": "low-air",
+			"renderBodyDifference": null,
+			"rotation": 1
+		},
+		{
+			"actualFullSecondDispatchReturn": true,
+			"after": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 8056.32)",
+				"label": "indexed-q1-new-attempt-arrival",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 128.783333333348,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-new-attempt-arrival.png",
+				"phase": "salvage",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-new-attempt-arrival-source.png",
+				"state": "salvage"
+			},
+			"arrived": true,
+			"before": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(8640.0, 7872.0)",
+				"label": "indexed-q1-new-attempt-outbound",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 128.783333333348,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-new-attempt-outbound.png",
+				"phase": "outbound",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q1-new-attempt-outbound-source.png",
+				"state": "swim"
+			},
+			"mode": "new-attempt",
+			"recalled": true,
+			"rotation": 1
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7759.692, 8640.0)",
+				"label": "indexed-q2-erased-before-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 32.4916666666667,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-erased-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 31.4916666666668,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "erased-before",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7759.692, 8640.0)",
+				"label": "indexed-q2-depleted-before-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 39.2166666666663,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-depleted-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 38.2166666666664,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "depleted-before",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7767.493, 8640.0)",
+				"label": "indexed-q2-erased-after-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 46.0499999999993,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-erased-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 44.941666666666,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-erased-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "erased-after",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7767.493, 8640.0)",
+				"label": "indexed-q2-depleted-after-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 52.8833333333322,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-depleted-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 51.774999999999,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-depleted-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "depleted-after",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7767.493, 8640.0)",
+				"label": "indexed-q2-inactive-after-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 59.7166666666652,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-inactive-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-inactive-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-inactive-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 58.6083333333319,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-inactive-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-inactive-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "inactive-after",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q2-death-before-hidden-control.png",
+				"label": "indexed-q2-death-before-after",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 65.4416666666661,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-before-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-before-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-death-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 65.4416666666661,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": false,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "death-before",
+			"renderBodyDifference": 2.3644002756385,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7695.481, 8640.0)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q2-death-after-hidden-control.png",
+				"label": "indexed-q2-death-after-after",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 71.2750000000041,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-after-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-after-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-death-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 71.1666666666706,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-death-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": false,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "death-after",
+			"renderBodyDifference": 2.24875628074035,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7768.093, 8640.0)",
+				"label": "indexed-q2-blocked-turn-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 78.1166666666762,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-blocked-turn-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-blocked-turn-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-blocked-turn-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 77.0000000000086,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-blocked-turn-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-blocked-turn-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": true,
+			"mode": "blocked-turn",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7767.493, 8640.0)",
+				"label": "indexed-q2-low-air-after",
+				"motion": {
+					"clip": "swim-turn-west-east",
+					"direction": "east",
+					"started": 84.9500000000149,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-low-air-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-low-air-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-low-air-before",
+				"motion": {
+					"clip": "",
+					"direction": "west",
+					"started": 83.8416666666807,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-low-air-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-low-air-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "west",
+			"heldPoseMoved": false,
+			"mode": "low-air",
+			"renderBodyDifference": null,
+			"rotation": 2
+		},
+		{
+			"actualFullSecondDispatchReturn": true,
+			"after": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "west",
+				"elapsed": 0.0,
+				"foot": "(7687.68, 8640.0)",
+				"label": "indexed-q2-new-attempt-arrival",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 127.316666666679,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-new-attempt-arrival.png",
+				"phase": "salvage",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-new-attempt-arrival-source.png",
+				"state": "salvage"
+			},
+			"arrived": true,
+			"before": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7872.0, 8640.0)",
+				"label": "indexed-q2-new-attempt-outbound",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 127.316666666679,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-new-attempt-outbound.png",
+				"phase": "outbound",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q2-new-attempt-outbound-source.png",
+				"state": "swim"
+			},
+			"mode": "new-attempt",
+			"recalled": true,
+			"rotation": 2
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7759.692)",
+				"label": "indexed-q3-erased-before-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 30.1583333333333,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-erased-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 29.1583333333333,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "erased-before",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7759.692)",
+				"label": "indexed-q3-depleted-before-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 36.8833333333329,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-before-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-before-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-depleted-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 35.8833333333329,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "depleted-before",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7767.493)",
+				"label": "indexed-q3-erased-after-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 43.7166666666658,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-erased-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 42.6083333333326,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-erased-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "erased-after",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7767.493)",
+				"label": "indexed-q3-depleted-after-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 50.5499999999988,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-depleted-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 49.4416666666655,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-depleted-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "depleted-after",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7767.493)",
+				"label": "indexed-q3-inactive-after-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 57.3833333333317,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-inactive-after-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-inactive-after-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-inactive-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 56.2749999999985,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-inactive-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-inactive-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "inactive-after",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q3-death-before-hidden-control.png",
+				"label": "indexed-q3-death-before-after",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 63.1083333333314,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-before-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-before-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-death-before-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 63.1083333333314,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-before-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-before-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": false,
+			"deathInputPixelsMatch": false,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "death-before",
+			"renderBodyDifference": 19.5513411774645,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7695.481)",
+				"hiddenControl": "res://character/james-case-release-lifecycle-v1/captures/q3-death-after-hidden-control.png",
+				"label": "indexed-q3-death-after-after",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 68.9416666666686,
+					"state": "death-water"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-after-after.png",
+				"phase": "death",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-after-after-source.png",
+				"state": "death-water"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-death-after-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 68.8333333333352,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-after-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-death-after-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": false,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "death-after",
+			"renderBodyDifference": 18.916714727796,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7768.093)",
+				"label": "indexed-q3-blocked-turn-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 75.7833333333407,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-blocked-turn-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-blocked-turn-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-blocked-turn-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 74.6666666666732,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-blocked-turn-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-blocked-turn-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": true,
+			"mode": "blocked-turn",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualSourceIndex": 2,
+			"after": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "south",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7767.493)",
+				"label": "indexed-q3-low-air-after",
+				"motion": {
+					"clip": "swim-turn-north-south",
+					"direction": "south",
+					"started": 82.6166666666795,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-low-air-after.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-low-air-after-source.png",
+				"state": "swim"
+			},
+			"before": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-low-air-before",
+				"motion": {
+					"clip": "",
+					"direction": "north",
+					"started": 81.5083333333453,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-low-air-before.png",
+				"phase": "return",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-low-air-before-source.png",
+				"state": "swim-cancel-release-pickup-2"
+			},
+			"caseInitiallyDeposited": true,
+			"deathInputPixelsMatch": null,
+			"facing": "north",
+			"heldPoseMoved": false,
+			"mode": "low-air",
+			"renderBodyDifference": null,
+			"rotation": 3
+		},
+		{
+			"actualFullSecondDispatchReturn": true,
+			"after": {
+				"actionElapsed": 0.0,
+				"cargo": {},
+				"direction": "north",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7687.68)",
+				"label": "indexed-q3-new-attempt-arrival",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 124.983333333344,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-new-attempt-arrival.png",
+				"phase": "salvage",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-new-attempt-arrival-source.png",
+				"state": "salvage"
+			},
+			"arrived": true,
+			"before": {
+				"actionElapsed": -1.0,
+				"cargo": {},
+				"direction": "east",
+				"elapsed": 0.0,
+				"foot": "(7104.0, 7872.0)",
+				"label": "indexed-q3-new-attempt-outbound",
+				"motion": {
+					"clip": "",
+					"direction": "east",
+					"started": 124.983333333344,
+					"state": "swim"
+				},
+				"native": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-new-attempt-outbound.png",
+				"phase": "outbound",
+				"source": "res://character/james-case-release-lifecycle-v1/captures/indexed-q3-new-attempt-outbound-source.png",
+				"state": "swim"
+			},
+			"mode": "new-attempt",
+			"recalled": true,
+			"rotation": 3
+		}
+	],
+	"resolvedUserDataDir": "C:/Users/Alex/AppData/Local/Temp/brine-james-native-hzjf3ha7/Godot/app_userdata/BrineSpace",
+	"scope": "Real dispatch/needs/airlock/exterior/controller/render/unload and loaded disk restore; dedicated station, normal runtime selected manifests/profile. Four actual cardinal parent recall returns with fresh-scene Continue and controlled site/death/low-air/obstructed-turn branches from each actual work arrival. Each branch naturally advances to pickup source2; site/world state reset and actor-only restore between branches. These are not complete interrupted journeys/Continues or actual bare exterior trips. Death contact discontinuity is measured separately and is not certified by selected-source checks. Peer traffic remains unproven.",
+	"scratchAppData": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-hzjf3ha7"
+}

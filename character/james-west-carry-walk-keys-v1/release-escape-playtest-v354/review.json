@@ -1,0 +1,156 @@
+{
+  "version": 354,
+  "validation": {
+    "exitCode": 0,
+    "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-release-bxfls98k",
+    "ownerUnchanged": true,
+    "profileDelta": [],
+    "packageHashes": {
+      "BrineSpace.exe": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+      "BrineSpace.pck": "13483c405aa1c6e0c070b216882e71138fc5b3f8c7131f306db32d77ca706510"
+    },
+    "qaOverrideRemoved": true,
+    "summary": [
+      "JAMES PACKAGED ESCAPE checks=826 failures=0 cases=8 captures=400"
+    ]
+  },
+  "checks": 826,
+  "cases": [
+    {
+      "arrived": true,
+      "case": "bare-north",
+      "dead": false,
+      "frames": 63,
+      "plannedSeconds": 3.79446640316206,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim",
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 95.875
+    },
+    {
+      "arrived": true,
+      "case": "helmet-north",
+      "dead": false,
+      "frames": 63,
+      "plannedSeconds": 3.79446640316206,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 95.875
+    },
+    {
+      "arrived": true,
+      "case": "bare-east",
+      "dead": false,
+      "frames": 37,
+      "plannedSeconds": 1.26482213438735,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 32.0
+    },
+    {
+      "arrived": true,
+      "case": "helmet-east",
+      "dead": false,
+      "frames": 37,
+      "plannedSeconds": 1.26482213438735,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 32.0
+    },
+    {
+      "arrived": true,
+      "case": "bare-south",
+      "dead": false,
+      "frames": 63,
+      "plannedSeconds": 3.79446640316206,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim",
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 95.875
+    },
+    {
+      "arrived": true,
+      "case": "helmet-south",
+      "dead": false,
+      "frames": 63,
+      "plannedSeconds": 3.79446640316206,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 95.875
+    },
+    {
+      "arrived": true,
+      "case": "bare-west",
+      "dead": false,
+      "frames": 37,
+      "plannedSeconds": 1.26482213438735,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 32.0
+    },
+    {
+      "arrived": true,
+      "case": "helmet-west",
+      "dead": false,
+      "frames": 37,
+      "plannedSeconds": 1.26482213438735,
+      "recovered": true,
+      "retreated": true,
+      "states": [
+        "swim-distress",
+        "walk",
+        "recover-air",
+        "idle"
+      ],
+      "travel": 32.0
+    }
+  ],
+  "nativeCaptures": 400,
+  "visualReview": "Four chronology boards viewed. No obvious missing-body or furniture clipping in sampled poses; animated native playbacks supplied, not continuously observed by agent.",
+  "scope": "Exact V351 release flood-safety controller chooses and traverses escape route between authored storage rooms; natural recovery at dry refuge. Scripted short-route starting contacts, low reserves and fixed room water levels; fixed60Hz survival/actor updates,10Hz native capture. No assigned path or goal, scheduled drain, autonomous room generation, full-game water propagation or exterior expedition.",
+  "productionChanged": false,
+  "packageRebuilt": false,
+  "remaining": "Exterior expedition and continuous game-scale selected-clip review; cargo material/North unload stance polish."
+}

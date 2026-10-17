@@ -1,0 +1,110 @@
+{
+  "status": "motion study; owner review pending; no game integration",
+  "cycle_seconds": 13,
+  "states": {
+    "loaded": [
+      0,
+      2
+    ],
+    "launch": [
+      2,
+      4.5
+    ],
+    "empty": [
+      4.5,
+      8
+    ],
+    "return": [
+      8,
+      11
+    ],
+    "loaded_hold": [
+      11,
+      13
+    ]
+  },
+  "source_sha256": "a001a12c8be45a8333ba28128ea9165cb580ca828878fb66e380cbef0c1ca0a5",
+  "mirrored": false,
+  "directions": {
+    "north": {
+      "launcher_crop": [
+        367,
+        23,
+        575,
+        357
+      ],
+      "probe_crop": [
+        830,
+        47,
+        967,
+        351
+      ],
+      "anchor": [
+        64,
+        212
+      ],
+      "launcher_scale": 0.65,
+      "probe_scale": 0.43
+    },
+    "east": {
+      "launcher_crop": [
+        160,
+        394,
+        627,
+        603
+      ],
+      "probe_crop": [
+        731,
+        405,
+        1115,
+        572
+      ],
+      "anchor": [
+        183,
+        90
+      ],
+      "launcher_scale": 0.65,
+      "probe_scale": 0.43
+    },
+    "south": {
+      "launcher_crop": [
+        365,
+        633,
+        584,
+        959
+      ],
+      "probe_crop": [
+        829,
+        630,
+        972,
+        936
+      ],
+      "anchor": [
+        70,
+        117
+      ],
+      "launcher_scale": 0.65,
+      "probe_scale": 0.43
+    },
+    "west": {
+      "launcher_crop": [
+        171,
+        991,
+        637,
+        1205
+      ],
+      "probe_crop": [
+        741,
+        1011,
+        1127,
+        1176
+      ],
+      "anchor": [
+        277,
+        88
+      ],
+      "launcher_scale": 0.65,
+      "probe_scale": 0.43
+    }
+  }
+}

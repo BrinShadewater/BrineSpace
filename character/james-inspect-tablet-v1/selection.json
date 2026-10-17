@@ -1,0 +1,61 @@
+{
+  "status": "installed_inspection_tablet_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "inspect-east",
+    "inspect-south",
+    "inspect-west",
+    "inspect-north"
+  ],
+  "source": "Exact owner-selected tablet interact and shared-helmet interact frames; four independently produced directional clips",
+  "sourceManifests": {
+    "east": {
+      "bare": "character/james-interact-east-matched-v1/manifest.json",
+      "helmet": "character/james-shared-helmet-interact-east-v1/manifest.json"
+    },
+    "south": {
+      "bare": "character/james-interact-south-matched-v3/manifest.json",
+      "helmet": "character/james-shared-helmet-interact-south-v3/manifest.json"
+    },
+    "west": {
+      "bare": "character/james-interact-west-matched-v2/manifest.json",
+      "helmet": "character/james-shared-helmet-interact-west-v2/manifest.json"
+    },
+    "north": {
+      "bare": "character/james-interact-north-matched-v2/manifest.json",
+      "helmet": "character/james-shared-helmet-interact-north-v2/manifest.json"
+    }
+  },
+  "derivation": "Complete lift/read/tap/stow cycle reused as inspection. Exact images and original movement timing; terminal idle hold500ms closes six-second activity. Loop exact at shared first/last idle. No mirroring, resizing, recolouring or new equipment compositing.",
+  "profile": {
+    "canvas": [
+      184,
+      192
+    ],
+    "pivot": [
+      92,
+      172
+    ],
+    "standingHeight": 148
+  },
+  "runtimeMsPerInspection": 6000,
+  "sourceReferences": 1130,
+  "checks": "4549 packaging /4588 actual-loader native checks,0 failures;16 native captures; actual activity clock and sealed-helmet pose substitution checked",
+  "profileAudit": {
+    "scratchDirectoryAsserted": true,
+    "realProfileUnchanged": false,
+    "profileDelta": [
+      "logs\\godot2026-09-30T04.48.04.log",
+      "logs\\godot2026-09-30T04.45.57.log",
+      "light_emergency_55372.meta"
+    ],
+    "interpretation": "Real log and light metadata changed concurrently; fingerprint delta preserved. No restoration/deletion performed. Scratch location confirmed; no primary save/layout/checkpoint path in delta."
+  },
+  "visualReview": "Selected source contact, decoded preview, directional master/held/stowed comparison and native north held pose reviewed; final owner review pending",
+  "review": "review-v1.gif",
+  "remaining": [
+    "Owner visual review",
+    "107 retained body states across everyday/furniture/water/salvage/distress/recovery/death",
+    "Full cross-family consistency/polish and interruption choreography"
+  ]
+}

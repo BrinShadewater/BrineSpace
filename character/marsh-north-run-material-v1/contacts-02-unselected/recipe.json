@@ -1,0 +1,107 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "commonNeutralScale": 0.21128798842257598,
+  "neutralOccupiedTargetHeight": 146,
+  "rawSha256": "1a11ec118276dfb64291707e06bfb81a8aff6c460bb3e32deb28d26a59d6b701",
+  "records": [
+    {
+      "file": "left-contact.png",
+      "sourceCell": [
+        0,
+        0,
+        438,
+        887
+      ],
+      "wholeTranslation": [
+        48,
+        3
+      ],
+      "bounds": [
+        63,
+        24,
+        121,
+        172
+      ],
+      "size": [
+        58,
+        148
+      ],
+      "sha256": "d39fd8c98f0c422bf13756c4bc1fb53c0bba9c8e285ff81cf294e1405d269569"
+    },
+    {
+      "file": "right-contact.png",
+      "sourceCell": [
+        438,
+        0,
+        892,
+        887
+      ],
+      "wholeTranslation": [
+        42,
+        6
+      ],
+      "bounds": [
+        62,
+        26,
+        121,
+        172
+      ],
+      "size": [
+        59,
+        146
+      ],
+      "sha256": "c11bdcbcdd5a69ab9219b3b7b5b98d6e5c6a94c1dbb0e1ad3937875c1cfc0fb2"
+    },
+    {
+      "file": "wrong-left-support-passing.png",
+      "sourceCell": [
+        892,
+        0,
+        1338,
+        887
+      ],
+      "wholeTranslation": [
+        46,
+        6
+      ],
+      "bounds": [
+        63,
+        26,
+        122,
+        172
+      ],
+      "size": [
+        59,
+        146
+      ],
+      "sha256": "5684ef1894a3c81fc90f68dfb06ca355e1b5b4b2439dcf38aac5915faf98d545"
+    },
+    {
+      "file": "ruler.png",
+      "sourceCell": [
+        1338,
+        0,
+        1774,
+        887
+      ],
+      "wholeTranslation": [
+        46,
+        6
+      ],
+      "bounds": [
+        64,
+        26,
+        121,
+        172
+      ],
+      "size": [
+        57,
+        146
+      ],
+      "sha256": "d950449b59560650194de2a4da717592b16e17231361a87dd39fa5ce17ae76a1"
+    }
+  ],
+  "operations": "Four complete alpha128 cells, one neutral BOX scale, whole translation to bbox bottom172, no clipping, mirroring, patches, recolour or pose-specific fitting.",
+  "visualReview": "Raw inspected: contact figures show opposite support arrangements. Figure3 is LEFT support / raised RIGHT sole, contradicting requested RIGHT passing. Figure1 raised sole extends below flat support boot; bbox alignment cannot certify contact. Packed comparison requires further review; no cycle admission."
+}

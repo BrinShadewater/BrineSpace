@@ -1,0 +1,31 @@
+{
+  "status": "Read-only broader support diagnosis complete; common stride still unproven",
+  "roles": [
+    {
+      "role": "far",
+      "weakOrBoundaryFrames": [
+        17,
+        18,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "role": "near",
+      "weakOrBoundaryFrames": [
+        7,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "repeatedWindowCount": 12,
+  "visualReview": "Both full11-frame role roll overlays and all60 repeated-window boot crops/overlays across3boards viewed. First two far windows are flat; near boots change pitch within corresponding windows. Later fixed21-frame-offset windows enter landing/swing as phase drifts, so declining translation rates cannot be called true gait deceleration. Rotation fits have5far/6near weak or search-boundary frames, including obvious misplaced landing anchors. No rigid contact certification.",
+  "conclusion": "Appearance recurrence is not exact repeat timing. Determine coherent local bilateral cycle boundaries and flat/roll roles before calibrating common movement. Do not average rates, phase-shift individual body parts, or patch sole geometry.",
+  "frozenNativeInputsUnchanged": 301,
+  "scope": "Source artwork/registration/manifest/native captures unchanged; no approved root speed, selected loop or normal integration."
+}

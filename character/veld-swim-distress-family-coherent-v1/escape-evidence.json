@@ -1,0 +1,61 @@
+{
+  "status": "cardinal_physical_escape_verified_candidate_art",
+  "checks": 713,
+  "physicalRoutes": 8,
+  "guardedDoorwayEdges": 16,
+  "doorLockFireAndWallGuardChecks": 64,
+  "nativeResult": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 48.78,
+    "realProfileFileCount": 2914,
+    "realProfileChanges": [],
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-distress-escape-v1\\scratch-appdata",
+    "candidateOnly": true
+  },
+  "regressions": {
+    "passed": true,
+    "results": [
+      {
+        "test": "test_flood_retreat.gd",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 32.28,
+        "logSha256": "8920ac6bdde3c4b901ef0c7bc0a518ecf2ea7c88a67635a16556c182bdabe96f"
+      },
+      {
+        "test": "test_wet_door_integration.gd",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 32.82,
+        "logSha256": "ce10f0b12ca3237c089fdd75deab8eac39365397ad7dc329a41d3a59cf13e5de"
+      }
+    ],
+    "realProfileFileCount": 2914,
+    "realProfileChanges": []
+  },
+  "boundFiles": {
+    "output/veld-distress-escape-v1/journey-checks.json": "441edf411900b43186a464e9484afda8749d58a2a1df06544a951e1eb1a36741",
+    "output/veld-distress-escape-v1/native-contact.png": "a72f8d34869bb07a094210139805c879aeda2de5d0e75cfa4987685bbf52a0e4",
+    "output/veld-distress-escape-v1/native.log": "df69eaffaced9c2a60bd19fc53b5a6170a89d85349a6bd45fa8176d5677f68a6",
+    "output/veld-distress-escape-v1/profile-after.json": "5f1ef46a353c5f2d98ec47b5890e0a333d360d0ed4f5825393be6e08cd0278e2",
+    "output/veld-distress-escape-v1/profile-before.json": "5f1ef46a353c5f2d98ec47b5890e0a333d360d0ed4f5825393be6e08cd0278e2",
+    "output/veld-distress-escape-v1/validation.json": "c660a86ae25d62560c9f5baaec42f1ccc0a50a8a408c78d592d2c794bb48efeb",
+    "output/veld-corridor-swim-regressions-v1/profile-after.json": "5f1ef46a353c5f2d98ec47b5890e0a333d360d0ed4f5825393be6e08cd0278e2",
+    "output/veld-corridor-swim-regressions-v1/profile-before.json": "5f1ef46a353c5f2d98ec47b5890e0a333d360d0ed4f5825393be6e08cd0278e2",
+    "output/veld-corridor-swim-regressions-v1/test_flood_retreat.gd.log": "8920ac6bdde3c4b901ef0c7bc0a518ecf2ea7c88a67635a16556c182bdabe96f",
+    "output/veld-corridor-swim-regressions-v1/test_wet_door_integration.gd.log": "ce10f0b12ca3237c089fdd75deab8eac39365397ad7dc329a41d3a59cf13e5de",
+    "output/veld-corridor-swim-regressions-v1/validation.json": "2d42b5a90cade959b226c5d6c9a7039958295f27d2bd755e397c354b29bbaf80",
+    "scripts/bill_npc.gd": "caa677719031491b0d68666c1e28dcc8de1e12582807f2f373f364d8ef636552",
+    "scripts/bill_npc.gd.uid": "113e04ae4579b561ee49acb229218f722cc4eb0c69d082dd73c4b4ff8889726e",
+    "tools/review_veld_distress_escape_v1.gd": "328fbd41d8317cf2af1ddf0fcfb2dbcbeff391bece0841409c47402a171e9032",
+    "tools/review_veld_distress_escape_v1.gd.uid": "0a67e263017c60b80a0ab7a5779749612f930004ae80b6b308f81261c54094a2",
+    "tools/run_veld_distress_escape_validation_v1.py": "829aca06cdf07111196b18d3d364c312d4851572f894bd35aad8dfcd6c0d321f",
+    "tools/run_veld_corridor_swim_regressions_v1.py": "8575f21cea0d1d7c6a84f0f840f0f509ab1b080c2cef748d4a3e5b60ca9bc872",
+    "character/dr-veld-v2/clearance.json": "4dba30dd73f089aa0b16a22f9f7052020f60091b91a1cd6407e24902eff84a41"
+  },
+  "rootCause": "_swim_floor_clear called can_stand for silhouette samples,adding10-unit walking floor margin and padded props again. Actual north/south57-unit body failed72-unit corridor mouth; first rejected sample radius10false/radius2true.",
+  "fix": "Corridor samples use2-unit floor margin after exact full-silhouette furniture sweep; closed sockets,locks,fire and legacy behavior retained. No artwork/profile/layout edits.",
+  "runtimeArtSelected": false,
+  "remaining": "normal-loader selection,continuous-motion/first-interior/arbitrary-exit polish; full-set death/rest/life/consistency"
+}

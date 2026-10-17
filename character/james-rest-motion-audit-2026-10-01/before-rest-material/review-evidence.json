@@ -1,0 +1,2946 @@
+{
+  "sourceReferences": 144,
+  "joins": [
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    }
+  ],
+  "clocks": [
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "visualCycleMs": 800.0
+    }
+  ],
+  "records": [
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/000.png",
+      "sha256": "1d88d2191df52024ece7461a6253581446f3b422b58bd090f7dadd1487822cbb",
+      "registeredBounds": [
+        97,
+        76,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/001.png",
+      "sha256": "6e9119c137177573a7dd9558540429888d75bd7148dd1b76fd69d6ee80c7fe51",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/002.png",
+      "sha256": "ba260365b6b1596ff9e01ba0f80489e83044e9ffe408eae482c0706740558ca0",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        52.5
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/003.png",
+      "sha256": "a9c7d9092c6cb634b19ff85da372c08768beec20f9019ec3eefee7deb5171cfc",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/004.png",
+      "sha256": "9985fc003bf4ed72352174662b375b2373788a54e31daa0dc771d9b8be705d65",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        61.0,
+        60.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/bare/lie-down/005.png",
+      "sha256": "994b7ef2bdb62ec81939b2df012c08bb5ddabb5808f9a3798b850f183142ea7c",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/000.png",
+      "sha256": "994b7ef2bdb62ec81939b2df012c08bb5ddabb5808f9a3798b850f183142ea7c",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/001.png",
+      "sha256": "c28207909fb3a787d53986d79aba07411ae1aee77895c6d69e28becd7031a823",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        61.0,
+        60.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/002.png",
+      "sha256": "76f07da5615bb7807faa7ed0c2696f82cd780efcc15242400a2a97a85ac0a119",
+      "registeredBounds": [
+        92,
+        129,
+        165,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        59.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/003.png",
+      "sha256": "1b2bc1c7a529b2f8e939444e401882337acdef0df5cc29fc25441cf719e4a7fb",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        60.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/004.png",
+      "sha256": "ed020e66dcaa0c3be3fb4f8500ae98ee187cf46c74f435d129ee423003fae228",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        60.0,
+        59.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/bare/sleep/005.png",
+      "sha256": "994b7ef2bdb62ec81939b2df012c08bb5ddabb5808f9a3798b850f183142ea7c",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/000.png",
+      "sha256": "994b7ef2bdb62ec81939b2df012c08bb5ddabb5808f9a3798b850f183142ea7c",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/001.png",
+      "sha256": "9985fc003bf4ed72352174662b375b2373788a54e31daa0dc771d9b8be705d65",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        61.0,
+        60.0,
+        60.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/002.png",
+      "sha256": "a9c7d9092c6cb634b19ff85da372c08768beec20f9019ec3eefee7deb5171cfc",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/003.png",
+      "sha256": "ba260365b6b1596ff9e01ba0f80489e83044e9ffe408eae482c0706740558ca0",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        52.5
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/004.png",
+      "sha256": "6e9119c137177573a7dd9558540429888d75bd7148dd1b76fd69d6ee80c7fe51",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/bare/get-up/005.png",
+      "sha256": "1d88d2191df52024ece7461a6253581446f3b422b58bd090f7dadd1487822cbb",
+      "registeredBounds": [
+        97,
+        76,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/000.png",
+      "sha256": "90a7ffc26dba5126bbf271413e662286231d0902bc2226ad156a125ebb621636",
+      "registeredBounds": [
+        97,
+        74,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/001.png",
+      "sha256": "d353a3db5c9814c072182669cc5af5b6369df9b98fab7c4431072fbcbcff9bda",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/002.png",
+      "sha256": "3fe9f963ec36c04f88507a72437a02e8d08278b132bbb62094991d14ea702a48",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/003.png",
+      "sha256": "5fe8e8d519c6d06544fa21e7813cd62d52190e37f131f4b557e8bfe63809c62d",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/004.png",
+      "sha256": "1a8851de3f58327e2f985202d3418cc5fc22df4b76a07aca4bfb841f790a5dac",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        59.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/lie-down/005.png",
+      "sha256": "84208c700ee5a86d32b72a6d6e14fff3a89159b8723d784b366d83ca49ff3a84",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/000.png",
+      "sha256": "84208c700ee5a86d32b72a6d6e14fff3a89159b8723d784b366d83ca49ff3a84",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/001.png",
+      "sha256": "54c96e755e5a513b2ddf7b071a169d2b234391c8b8270225967a1adb0305c71f",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        59.0,
+        59.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/002.png",
+      "sha256": "605d503040a737392f73d49b4b2c6b2f1220a9180d2ca97276aff34ec267cb7c",
+      "registeredBounds": [
+        92,
+        129,
+        165,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/003.png",
+      "sha256": "33651aa6b10e626fdf6930776848762e1c77c66435a8824eb8532947aa883759",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/004.png",
+      "sha256": "f2109fe10ba726ec8ccbb5b231642341583fab08bf97bfaf6fd68ac0b7c1bfff",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/sleep/005.png",
+      "sha256": "84208c700ee5a86d32b72a6d6e14fff3a89159b8723d784b366d83ca49ff3a84",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 0,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/000.png",
+      "sha256": "84208c700ee5a86d32b72a6d6e14fff3a89159b8723d784b366d83ca49ff3a84",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        58.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 1,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/001.png",
+      "sha256": "1a8851de3f58327e2f985202d3418cc5fc22df4b76a07aca4bfb841f790a5dac",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        60.0,
+        59.0,
+        59.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 2,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/002.png",
+      "sha256": "5fe8e8d519c6d06544fa21e7813cd62d52190e37f131f4b557e8bfe63809c62d",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        58.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 3,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/003.png",
+      "sha256": "3fe9f963ec36c04f88507a72437a02e8d08278b132bbb62094991d14ea702a48",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 4,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/004.png",
+      "sha256": "d353a3db5c9814c072182669cc5af5b6369df9b98fab7c4431072fbcbcff9bda",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 5,
+      "path": "character/james-north-rest-polish-v1/frames/helmet/get-up/005.png",
+      "sha256": "90a7ffc26dba5126bbf271413e662286231d0902bc2226ad156a125ebb621636",
+      "registeredBounds": [
+        97,
+        74,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/lie-down/000.png",
+      "sha256": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8",
+      "registeredBounds": [
+        95,
+        77,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/lie-down/001.png",
+      "sha256": "e9bfc4f482704def629e80ea29dcd0e5c95ab6565e693a004223df0e11adec63",
+      "registeredBounds": [
+        74,
+        119,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        48.0,
+        46.0,
+        43.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/lie-down/002.png",
+      "sha256": "c30eb02b12aad195b6a083901fb769f27f188e5f1e2ee3a676c5da97015a7e24",
+      "registeredBounds": [
+        77,
+        109,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/lie-down/003.png",
+      "sha256": "c001ff73d623a6acd27352c8c4a99b27b2e087bc52465788d329f1a03b992c46",
+      "registeredBounds": [
+        74,
+        117,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/lie-down/004.png",
+      "sha256": "400f856ab635f84de5a46e28d28bde92b374a7563d7d0e0b3638857498aed94f",
+      "registeredBounds": [
+        76,
+        129,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        49.0,
+        46.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/lie-down/005.png",
+      "sha256": "421549ed848e6c688db7938dbde991d64b9c0ad18a13bfb02feea0789cff1a9c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/sleep/000.png",
+      "sha256": "421549ed848e6c688db7938dbde991d64b9c0ad18a13bfb02feea0789cff1a9c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/sleep/001.png",
+      "sha256": "0fd8601cca542b9cf7d42a492daab2746f0199372773a6e692722e12bb4ff316",
+      "registeredBounds": [
+        76,
+        133,
+        182,
+        227
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/sleep/002.png",
+      "sha256": "aba509c292b625d03bb7bb51d3a8d121c3f09ae046c28df7b8bf2b2f04390374",
+      "registeredBounds": [
+        76,
+        133,
+        181,
+        229
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/sleep/003.png",
+      "sha256": "0fd480ccd125bf353a2d048f6ff8a61c82d6b4e2f2d190b2065641ed891b88b7",
+      "registeredBounds": [
+        75,
+        133,
+        182,
+        229
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/sleep/004.png",
+      "sha256": "9a7f2759bbc1228783b01378b526ba877bc31cf1ab229473924a1e0a222ac3c9",
+      "registeredBounds": [
+        75,
+        133,
+        182,
+        230
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/sleep/005.png",
+      "sha256": "421549ed848e6c688db7938dbde991d64b9c0ad18a13bfb02feea0789cff1a9c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/get-up/000.png",
+      "sha256": "421549ed848e6c688db7938dbde991d64b9c0ad18a13bfb02feea0789cff1a9c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/get-up/001.png",
+      "sha256": "400f856ab635f84de5a46e28d28bde92b374a7563d7d0e0b3638857498aed94f",
+      "registeredBounds": [
+        76,
+        129,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        49.0,
+        46.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/get-up/002.png",
+      "sha256": "c001ff73d623a6acd27352c8c4a99b27b2e087bc52465788d329f1a03b992c46",
+      "registeredBounds": [
+        74,
+        117,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/get-up/003.png",
+      "sha256": "c30eb02b12aad195b6a083901fb769f27f188e5f1e2ee3a676c5da97015a7e24",
+      "registeredBounds": [
+        77,
+        109,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/get-up/004.png",
+      "sha256": "e9bfc4f482704def629e80ea29dcd0e5c95ab6565e693a004223df0e11adec63",
+      "registeredBounds": [
+        74,
+        119,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        48.0,
+        46.0,
+        43.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/get-up/005.png",
+      "sha256": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8",
+      "registeredBounds": [
+        95,
+        77,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/000.png",
+      "sha256": "c42be19c26b3e735b2119f49441268b3681c40fdc36c0afd87e5dac4e751862d",
+      "registeredBounds": [
+        95,
+        69,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        57.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/001.png",
+      "sha256": "c6f811bc28c0dcaa86ffd81168cc10952899655eb5d4434a8290225f45aacd33",
+      "registeredBounds": [
+        74,
+        116,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        50.0,
+        47.0,
+        45.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/002.png",
+      "sha256": "f761c0f2c786b8f6adf53b49aee308c5b2a9eb4c9a91d781ae089370393ac903",
+      "registeredBounds": [
+        77,
+        105,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        51.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/003.png",
+      "sha256": "46ac8ff70ffe3fe52b58c0b8aadc4783c26301ae02b7c45d83c67df2d7eb4bfa",
+      "registeredBounds": [
+        74,
+        114,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        51.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/004.png",
+      "sha256": "bbc28fdf4fb761d35b12c45799d30c85eb1adec1bded8d7f7bd8bc8c0b3daa5e",
+      "registeredBounds": [
+        76,
+        128,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/helmet/lie-down/005.png",
+      "sha256": "5f7e338491f1769801d5dc3e5a696c00d2900c40b34bbccb175020a8e8a000f0",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/000.png",
+      "sha256": "5f7e338491f1769801d5dc3e5a696c00d2900c40b34bbccb175020a8e8a000f0",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/001.png",
+      "sha256": "c5d59c4af20233c503c0cd205e1d3f76b9a7a0e7479a2898fb1b08828ac70a7a",
+      "registeredBounds": [
+        76,
+        132,
+        182,
+        227
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/002.png",
+      "sha256": "8ed944d96e629062094bc7927d34791b76d0fa15813c8334845faa42132bbc04",
+      "registeredBounds": [
+        76,
+        132,
+        181,
+        229
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/003.png",
+      "sha256": "c0368ac6c75b4990f2dd0e204f6d2779e5b0ea23afb406fb334afe18d8076c5d",
+      "registeredBounds": [
+        75,
+        132,
+        182,
+        229
+      ],
+      "neutralMedian": [
+        52.0,
+        51.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/004.png",
+      "sha256": "0bbf24863891f6f790423a9064c852ca530c304a7fffcb78fa4d6e4538656221",
+      "registeredBounds": [
+        75,
+        132,
+        182,
+        230
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/helmet/sleep/005.png",
+      "sha256": "5f7e338491f1769801d5dc3e5a696c00d2900c40b34bbccb175020a8e8a000f0",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 0,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/000.png",
+      "sha256": "5f7e338491f1769801d5dc3e5a696c00d2900c40b34bbccb175020a8e8a000f0",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        50.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 1,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/001.png",
+      "sha256": "bbc28fdf4fb761d35b12c45799d30c85eb1adec1bded8d7f7bd8bc8c0b3daa5e",
+      "registeredBounds": [
+        76,
+        128,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        47.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 2,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/002.png",
+      "sha256": "46ac8ff70ffe3fe52b58c0b8aadc4783c26301ae02b7c45d83c67df2d7eb4bfa",
+      "registeredBounds": [
+        74,
+        114,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        51.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 3,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/003.png",
+      "sha256": "f761c0f2c786b8f6adf53b49aee308c5b2a9eb4c9a91d781ae089370393ac903",
+      "registeredBounds": [
+        77,
+        105,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        51.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 4,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/004.png",
+      "sha256": "c6f811bc28c0dcaa86ffd81168cc10952899655eb5d4434a8290225f45aacd33",
+      "registeredBounds": [
+        74,
+        116,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        50.0,
+        47.0,
+        45.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 5,
+      "path": "character/james-lying-south-v1/frames/helmet/get-up/005.png",
+      "sha256": "c42be19c26b3e735b2119f49441268b3681c40fdc36c0afd87e5dac4e751862d",
+      "registeredBounds": [
+        95,
+        69,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        57.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/lie-down/000.png",
+      "sha256": "82ea64662eed0d1af6b2637a76d9d420c54a7a532fd330c8b5ff6adb790569a0",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        46.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/lie-down/001.png",
+      "sha256": "a116c29e9da7dc2b4aa2f060bd25d650e780df7e1e37689e5f57aa16800eaf81",
+      "registeredBounds": [
+        98,
+        119,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/lie-down/002.png",
+      "sha256": "213d2084f666bd4f50a264587287cde10ecf9bbb2d23fb977ed66696774dd6ae",
+      "registeredBounds": [
+        68,
+        137,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/lie-down/003.png",
+      "sha256": "7b976452f5d2b38f19acae2a62a9456045150f0927444476b929dfd402c61681",
+      "registeredBounds": [
+        65,
+        152,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/lie-down/004.png",
+      "sha256": "2d4536bbb10a8ff9ea468c1079fbbd39a6a5bbc4533fd1d8b547a2f9e02e4200",
+      "registeredBounds": [
+        61,
+        168,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/lie-down/005.png",
+      "sha256": "c8bfd548921f97c93df491be587becc39916edd96a783c18690b9cc9361f0460",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/sleep/000.png",
+      "sha256": "c8bfd548921f97c93df491be587becc39916edd96a783c18690b9cc9361f0460",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/sleep/001.png",
+      "sha256": "73d6bbdb3fb10689905a55a3c86e050bb13ab2b3f0a2d66a81152f91c59a2aac",
+      "registeredBounds": [
+        60,
+        190,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/sleep/002.png",
+      "sha256": "232cb9ddcc6d5c8250703aef1b65c2260c909d97aa6dfcbc17633ffbda85be81",
+      "registeredBounds": [
+        60,
+        192,
+        203,
+        221
+      ],
+      "neutralMedian": [
+        56.0,
+        53.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/sleep/003.png",
+      "sha256": "8ddf9315a48cb1b240462b3d20066ef13a3e0d464506ba61d584495a414225f9",
+      "registeredBounds": [
+        59,
+        192,
+        201,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        53.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/sleep/004.png",
+      "sha256": "7920c74dc6be34c4eaeff160194c37737cd4d750a9c18a5820980500f27785f9",
+      "registeredBounds": [
+        60,
+        192,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        53.0,
+        52.5
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/sleep/005.png",
+      "sha256": "c8bfd548921f97c93df491be587becc39916edd96a783c18690b9cc9361f0460",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/get-up/000.png",
+      "sha256": "c8bfd548921f97c93df491be587becc39916edd96a783c18690b9cc9361f0460",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/get-up/001.png",
+      "sha256": "2d4536bbb10a8ff9ea468c1079fbbd39a6a5bbc4533fd1d8b547a2f9e02e4200",
+      "registeredBounds": [
+        61,
+        168,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/get-up/002.png",
+      "sha256": "7b976452f5d2b38f19acae2a62a9456045150f0927444476b929dfd402c61681",
+      "registeredBounds": [
+        65,
+        152,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/get-up/003.png",
+      "sha256": "213d2084f666bd4f50a264587287cde10ecf9bbb2d23fb977ed66696774dd6ae",
+      "registeredBounds": [
+        68,
+        137,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/get-up/004.png",
+      "sha256": "a116c29e9da7dc2b4aa2f060bd25d650e780df7e1e37689e5f57aa16800eaf81",
+      "registeredBounds": [
+        98,
+        119,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/get-up/005.png",
+      "sha256": "82ea64662eed0d1af6b2637a76d9d420c54a7a532fd330c8b5ff6adb790569a0",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        46.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/000.png",
+      "sha256": "4964a44e43c1b1b9ab4916f3da1ff29f187febc5e9b36f64b77f16caacb261f5",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/001.png",
+      "sha256": "0225e7269bf065ae70efe1c19c93cecf4287db33fd30416a2960254d9a04787b",
+      "registeredBounds": [
+        98,
+        113,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/002.png",
+      "sha256": "5f81bde40a2b5ae645175cfb037be98a2e69b076278833bd240627169d71c02e",
+      "registeredBounds": [
+        68,
+        131,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/003.png",
+      "sha256": "ddbbb6900a62ec07ddbf63705f68f0b89c866920efada0ff0de03f9ffd6f12a6",
+      "registeredBounds": [
+        63,
+        147,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/004.png",
+      "sha256": "83c37a30c6f2006916bde973b1c1cea54b6a36f35acfbc4a2b534a94b9b7fa41",
+      "registeredBounds": [
+        52,
+        164,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/helmet/lie-down/005.png",
+      "sha256": "f0af760ec50b164b83829c87783a7d5cd1e6006921517284639159738049d118",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/000.png",
+      "sha256": "f0af760ec50b164b83829c87783a7d5cd1e6006921517284639159738049d118",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/001.png",
+      "sha256": "dcbdd7570bb887cdc7c9554ecaf7233d8cba91eeedfd99429e34a455898aa499",
+      "registeredBounds": [
+        57,
+        188,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/002.png",
+      "sha256": "0e9e0006d296316fab9b2985ccbc5e2bcf2273dd1cf9f0aabf37bf41544bebc2",
+      "registeredBounds": [
+        56,
+        188,
+        203,
+        221
+      ],
+      "neutralMedian": [
+        56.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/003.png",
+      "sha256": "a2fdfe79235af9077b1623696d116cc3a67d0db06b21140629ea67c1b67cac26",
+      "registeredBounds": [
+        56,
+        187,
+        201,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/004.png",
+      "sha256": "a5101e6a1fef75f5c56d3bc6363915abf5bf1fc06cc8adb020e3772cc29a3afd",
+      "registeredBounds": [
+        56,
+        187,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        53.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/helmet/sleep/005.png",
+      "sha256": "f0af760ec50b164b83829c87783a7d5cd1e6006921517284639159738049d118",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 0,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/000.png",
+      "sha256": "f0af760ec50b164b83829c87783a7d5cd1e6006921517284639159738049d118",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 1,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/001.png",
+      "sha256": "83c37a30c6f2006916bde973b1c1cea54b6a36f35acfbc4a2b534a94b9b7fa41",
+      "registeredBounds": [
+        52,
+        164,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 2,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/002.png",
+      "sha256": "ddbbb6900a62ec07ddbf63705f68f0b89c866920efada0ff0de03f9ffd6f12a6",
+      "registeredBounds": [
+        63,
+        147,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 3,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/003.png",
+      "sha256": "5f81bde40a2b5ae645175cfb037be98a2e69b076278833bd240627169d71c02e",
+      "registeredBounds": [
+        68,
+        131,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 4,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/004.png",
+      "sha256": "0225e7269bf065ae70efe1c19c93cecf4287db33fd30416a2960254d9a04787b",
+      "registeredBounds": [
+        98,
+        113,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 5,
+      "path": "character/james-lying-east-v1/frames/helmet/get-up/005.png",
+      "sha256": "4964a44e43c1b1b9ab4916f3da1ff29f187febc5e9b36f64b77f16caacb261f5",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/lie-down/000.png",
+      "sha256": "4cc2340cd3f0e12dc8104c421465d787b100f7bf5846c581e87ad33603657b17",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/lie-down/001.png",
+      "sha256": "4ddb9253bfc42702e8170f39d82e6e77fe5b413a109c81c5b96e4fd436f64c22",
+      "registeredBounds": [
+        96,
+        120,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/lie-down/002.png",
+      "sha256": "516425dfb97f3ebab3f52f124c092cd43b2360b15689fee89d378a214a3d8341",
+      "registeredBounds": [
+        63,
+        144,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/lie-down/003.png",
+      "sha256": "e86f6021c507a00126e9cc007f4db2f547b40f585f85167eb32a956230af7aa5",
+      "registeredBounds": [
+        9,
+        159,
+        170,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/lie-down/004.png",
+      "sha256": "592f8e360358bffbd122c8d500f785e7dc55ba69335fc610a4545f3c0ed31ac4",
+      "registeredBounds": [
+        40,
+        185,
+        190,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/lie-down/005.png",
+      "sha256": "c3d3d46cdfaf5593207022474babf43f124a6aebfe1e50d45c3544b76a750bde",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/sleep/000.png",
+      "sha256": "c3d3d46cdfaf5593207022474babf43f124a6aebfe1e50d45c3544b76a750bde",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/sleep/001.png",
+      "sha256": "0bbf1b338cddaa26cc986b3d2b80da3da3fc9e2b79475682526cdab32f0c4f07",
+      "registeredBounds": [
+        42,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/sleep/002.png",
+      "sha256": "a63ac396c8b03956a04beb7156a6ce08de3a6897a32be8e10109d71801495c0f",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/sleep/003.png",
+      "sha256": "8ce060acf264ac681f2fee28884f227ce818508f7c0d472df043f8de32bfcc4e",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        221
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/sleep/004.png",
+      "sha256": "dc6b018de13a6f6249d5ec0b04b20c9ee26e0cc1f8bdfb37a60aa182a7e63f18",
+      "registeredBounds": [
+        38,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        49.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/sleep/005.png",
+      "sha256": "c3d3d46cdfaf5593207022474babf43f124a6aebfe1e50d45c3544b76a750bde",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/get-up/000.png",
+      "sha256": "c3d3d46cdfaf5593207022474babf43f124a6aebfe1e50d45c3544b76a750bde",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/get-up/001.png",
+      "sha256": "592f8e360358bffbd122c8d500f785e7dc55ba69335fc610a4545f3c0ed31ac4",
+      "registeredBounds": [
+        40,
+        185,
+        190,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/get-up/002.png",
+      "sha256": "e86f6021c507a00126e9cc007f4db2f547b40f585f85167eb32a956230af7aa5",
+      "registeredBounds": [
+        9,
+        159,
+        170,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/get-up/003.png",
+      "sha256": "516425dfb97f3ebab3f52f124c092cd43b2360b15689fee89d378a214a3d8341",
+      "registeredBounds": [
+        63,
+        144,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/get-up/004.png",
+      "sha256": "4ddb9253bfc42702e8170f39d82e6e77fe5b413a109c81c5b96e4fd436f64c22",
+      "registeredBounds": [
+        96,
+        120,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/get-up/005.png",
+      "sha256": "4cc2340cd3f0e12dc8104c421465d787b100f7bf5846c581e87ad33603657b17",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/000.png",
+      "sha256": "05ddb7f3dc13dda7dec6f151b3b8fc73220513e173ff1e0a20fd59fed2473358",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/001.png",
+      "sha256": "f67263532661f243de3f9339215541b038b8c51168f9f5de327173c3f5f1a1d4",
+      "registeredBounds": [
+        91,
+        114,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        49.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/002.png",
+      "sha256": "da500c7aae45d8e865f0dfa4611e1869493d66fda48096f7eed0666e3a94a217",
+      "registeredBounds": [
+        63,
+        139,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/003.png",
+      "sha256": "05218e44f5cc831fca5df5e53176e44178e8e0b0d0b69d1a99150702d4ec1ce4",
+      "registeredBounds": [
+        9,
+        154,
+        173,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/004.png",
+      "sha256": "27f82b25c8cf34d73f8eb08daf3614ada7f33ce559c710d6b2eb6683a0c4a3aa",
+      "registeredBounds": [
+        40,
+        176,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/helmet/lie-down/005.png",
+      "sha256": "e7701f04c8a1516c53d8efa6a0f6d9661da164c9a3170f681d84ff03461c4d89",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/000.png",
+      "sha256": "e7701f04c8a1516c53d8efa6a0f6d9661da164c9a3170f681d84ff03461c4d89",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/001.png",
+      "sha256": "526ba175da6318d332f4c04b3e5330d284a11dd65ee6a45f8cf4a439c41159c9",
+      "registeredBounds": [
+        42,
+        177,
+        191,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/002.png",
+      "sha256": "c17b428d43fe46bcf56ae4e99cf9dd1df9b2868e52a01f768914372ee6a0db98",
+      "registeredBounds": [
+        41,
+        178,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/003.png",
+      "sha256": "14b339edb14f1aa6be1c3167562f1c382782ad6c54f623330b62981d8fb6e53f",
+      "registeredBounds": [
+        41,
+        178,
+        191,
+        221
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/004.png",
+      "sha256": "356004af7eb32ff48bdbc95fb4387798629bcaf51cb34b979f9e2c9e0f7f38d8",
+      "registeredBounds": [
+        38,
+        178,
+        193,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/helmet/sleep/005.png",
+      "sha256": "e7701f04c8a1516c53d8efa6a0f6d9661da164c9a3170f681d84ff03461c4d89",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 0,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/000.png",
+      "sha256": "e7701f04c8a1516c53d8efa6a0f6d9661da164c9a3170f681d84ff03461c4d89",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 1,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/001.png",
+      "sha256": "27f82b25c8cf34d73f8eb08daf3614ada7f33ce559c710d6b2eb6683a0c4a3aa",
+      "registeredBounds": [
+        40,
+        176,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 2,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/002.png",
+      "sha256": "05218e44f5cc831fca5df5e53176e44178e8e0b0d0b69d1a99150702d4ec1ce4",
+      "registeredBounds": [
+        9,
+        154,
+        173,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 3,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/003.png",
+      "sha256": "da500c7aae45d8e865f0dfa4611e1869493d66fda48096f7eed0666e3a94a217",
+      "registeredBounds": [
+        63,
+        139,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 4,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/004.png",
+      "sha256": "f67263532661f243de3f9339215541b038b8c51168f9f5de327173c3f5f1a1d4",
+      "registeredBounds": [
+        91,
+        114,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        49.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 5,
+      "path": "character/james-lying-west-v1/frames/helmet/get-up/005.png",
+      "sha256": "05ddb7f3dc13dda7dec6f151b3b8fc73220513e173ff1e0a20fd59fed2473358",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        54.0
+      ]
+    }
+  ],
+  "scope": "All selected ordinary rest source poses in four facings/bare+helmet; fixed physical ruler/master/standing-walk comparison and full service-clock source replays. No new native furniture/gear/rotation claims."
+}

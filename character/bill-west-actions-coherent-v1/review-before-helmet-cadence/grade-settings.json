@@ -1,0 +1,111 @@
+{
+  "revision": "west-consistency-v3",
+  "interactInteriorRefinement": {
+    "sourceCells": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "clothRgbOffset": [
+      4,
+      2,
+      1
+    ],
+    "burgundyRgbOffset": [
+      4,
+      4,
+      3
+    ],
+    "skinRgbOffset": [
+      18,
+      8,
+      7
+    ],
+    "policy": "one fixed material refinement for all four interior frames; no per-frame exposure matching"
+  },
+  "authority": [
+    "character/bill-shared-helmet-runtime-v2/frames/idle-west/000.png",
+    "character/bill-equipped-east-selected-v1/frames/idle-east/000.png"
+  ],
+  "input": "sources/actions.png",
+  "application": "once from original source, before the same scale and registration",
+  "baseline": "80 percent east semantic material map plus 20 percent original source; only mask coordinates reflected",
+  "westRefinement": {
+    "clothRgbOffset": [
+      1,
+      4,
+      4
+    ],
+    "shellRgbOffset": [
+      -1,
+      0,
+      1
+    ],
+    "silverRgbMultiplier": 0.93,
+    "silverRgbOffset": [
+      2,
+      0,
+      -1
+    ],
+    "burgundyRgbOffset": [
+      7,
+      1,
+      -4
+    ],
+    "skinRgbMultiplier": [
+      0.94,
+      0.99,
+      1.03
+    ],
+    "lamp": "exclude bright top-of-head lamp pixels from west shell/silver refinement"
+  },
+  "preserved": [
+    "source",
+    "pose geometry",
+    "alpha",
+    "canvas and pivot",
+    "scale",
+    "timing",
+    "accepted idle endpoints",
+    "kneel/repair/stand joins"
+  ],
+  "ownerAcceptance": "pending",
+  "actionMaterialContinuity": {
+    "sourceCells": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "clothRgbOffset": [
+      4,
+      2,
+      1
+    ],
+    "burgundyRgbOffset": [
+      4,
+      4,
+      3
+    ],
+    "skinRgbOffset": [
+      18,
+      8,
+      7
+    ],
+    "policy": "extend the same idle-calibrated interaction correction to all authored action poses; fixed semantic weights, no per-frame exposure adjustment"
+  }
+}

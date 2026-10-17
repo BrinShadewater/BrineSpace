@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>James middle stride review</title>
+<style>body{background:#303b40;color:white;font:16px sans-serif;margin:24px}img{max-width:100%;height:auto}button{font:inherit;margin-right:12px}</style>
+<p>James · three consecutive middle-stride poses · bare and helmet · original 40ms holds</p>
+<button id="play">Play 120ms section</button><span id="state">Loading</span><pre id=log></pre><br><img id="pose" alt="Paired native four-size capture">
+<script>
+const frames=[0,1,2].map(i=>{const im=new Image();im.src=`native/middle-${String(i).padStart(3,'0')}.png`;return im});
+window.review={ready:false,runs:[]};
+Promise.all(frames.map(im=>im.decode())).then(()=>{review.ready=true;pose.src=frames[0].src;state.textContent='Ready';play.onclick=()=>{let start=null,previous=-1;const run={slots:[],complete:false};review.runs.push(run);play.disabled=true;function tick(now){if(start===null)start=now;const elapsed=now-start,slot=Math.min(2,Math.floor(elapsed/40));if(slot!==previous){pose.src=frames[slot].src;run.slots.push({slot,elapsed});previous=slot}state.textContent=`Pose ${slot+23} · ${Math.min(120,Math.round(elapsed))}ms`;if(elapsed<120)requestAnimationFrame(tick);else{run.complete=true;run.elapsed=elapsed;log.textContent=JSON.stringify(run);play.disabled=false}}requestAnimationFrame(tick)}});
+</script>

@@ -1,0 +1,87 @@
+{
+  "validation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 46.4,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 249,
+    "targetedInputsUnchanged": true,
+    "freshCapture": true,
+    "scope": "fresh engine actors restoring10 real-route binary checkpoints; exact display and60tick uninterrupted comparisons, malformed/source/timing rejection; no normal RunSave freshContinue or floor-case checkpoint ownership"
+  },
+  "scope": "Ten fresh restored native poses versus their uninterrupted real-route native/source observations; exact pixel/clock and60tick progress assertions in engine",
+  "boards": [
+    {
+      "file": "bare-checkpoint-review.png",
+      "observations": [
+        {
+          "key": "carry-held-east",
+          "original": "staged-bare-0032",
+          "restored": "staged-bare-carry-held-east-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-turn-east-west",
+          "original": "staged-bare-0044",
+          "restored": "staged-bare-carry-turn-east-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-start-west",
+          "original": "staged-bare-0080",
+          "restored": "staged-bare-carry-start-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-stop-phase2-west",
+          "original": "staged-bare-0417",
+          "restored": "staged-bare-carry-stop-phase2-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-turn-west-north",
+          "original": "staged-bare-0454",
+          "restored": "staged-bare-carry-turn-west-north-restored",
+          "comparisonTicks": 60
+        }
+      ]
+    },
+    {
+      "file": "helmet-checkpoint-review.png",
+      "observations": [
+        {
+          "key": "carry-held-east",
+          "original": "staged-helmet-0032",
+          "restored": "staged-helmet-carry-held-east-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-turn-east-west",
+          "original": "staged-helmet-0044",
+          "restored": "staged-helmet-carry-turn-east-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-start-west",
+          "original": "staged-helmet-0080",
+          "restored": "staged-helmet-carry-start-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-stop-phase2-west",
+          "original": "staged-helmet-0417",
+          "restored": "staged-helmet-carry-stop-phase2-west-restored",
+          "comparisonTicks": 60
+        },
+        {
+          "key": "carry-turn-west-north",
+          "original": "staged-helmet-0454",
+          "restored": "staged-helmet-carry-turn-west-north-restored",
+          "comparisonTicks": 60
+        }
+      ]
+    }
+  ],
+  "visualReview": "Ten restored native/source comparisons against uninterrupted original route reviewed on two5row boards; full restored helmet stop native viewed. Exact pixels/proportions/helmet/material unchanged. No full continuous cadence or normal freshContinue acceptance."
+}

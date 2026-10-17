@@ -1,0 +1,197 @@
+{
+  "normalAdmission": false,
+  "generation": {
+    "tool": "built-in imagegen",
+    "status": "raw generated; unselected review pending",
+    "promptFile": "start-01.prompt.txt",
+    "promptSha256": "defaf212ec190d50c7d53c5d686b9f669ce0382c0f91246905b5ee3569f6ca05",
+    "orderedReferences": [
+      {
+        "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+        "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/idle-south/000.png",
+        "sha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d"
+      },
+      {
+        "path": "character/marsh-v2/frames/bare/walk-south/000.png",
+        "sha256": "1e7a3c7fbf172053f722460c0b8fda8be0af638567cb41808821a68e8e672f64"
+      }
+    ],
+    "rawFile": "start-01.raw.png",
+    "rawSha256": "cb7feb21b05d4ab0c376bf18138615fe9d7591fe9d0172ab0c507256e5708fef",
+    "generationId": "exec-f6d227f8-bb87-4e60-b902-0b8e19166edf",
+    "cellBoundsAlpha128": [
+      [
+        71,
+        69,
+        381,
+        834
+      ],
+      [
+        510,
+        69,
+        821,
+        834
+      ],
+      [
+        952,
+        73,
+        1260,
+        847
+      ],
+      [
+        1389,
+        69,
+        1700,
+        834
+      ]
+    ]
+  },
+  "registration": {
+    "status": "unselected source study; native motion and runtime controller pending",
+    "rawSha256": "cb7feb21b05d4ab0c376bf18138615fe9d7591fe9d0172ab0c507256e5708fef",
+    "commonNeutralScale": 0.19321148825065274,
+    "cells": [
+      {
+        "cell": [
+          0,
+          0,
+          443,
+          887
+        ],
+        "commonScale": 0.19321148825065274,
+        "registration": [
+          48,
+          10
+        ],
+        "contact": [
+          43.5,
+          160
+        ],
+        "contactTarget": [
+          92.0,
+          170
+        ],
+        "bounds": [
+          62,
+          23,
+          121,
+          170
+        ],
+        "role": "interior",
+        "frameSha256": "cc4c46663462e325a158d9ac10f14dea2d8428c2e1f285ae473faa6218d3df14"
+      },
+      {
+        "cell": [
+          443,
+          0,
+          887,
+          887
+        ],
+        "commonScale": 0.19321148825065274,
+        "registration": [
+          49,
+          10
+        ],
+        "contact": [
+          43.0,
+          160
+        ],
+        "contactTarget": [
+          92.0,
+          170
+        ],
+        "bounds": [
+          62,
+          23,
+          121,
+          170
+        ],
+        "role": "interior",
+        "frameSha256": "5c38eb71bd690049b2a6ead7bc0445d8e6a86df8cfd1639dd3931bc9f068a20d"
+      },
+      {
+        "cell": [
+          887,
+          0,
+          1330,
+          887
+        ],
+        "commonScale": 0.19321148825065274,
+        "registration": [
+          48,
+          15
+        ],
+        "contact": [
+          31.0,
+          155
+        ],
+        "contactTarget": [
+          78.5,
+          170
+        ],
+        "bounds": [
+          61,
+          29,
+          120,
+          177
+        ],
+        "role": "interior",
+        "frameSha256": "2857a72975b120e21b9d20930238d10fe7373ac33d2adb13a65a7754a013babf"
+      },
+      {
+        "cell": [
+          1330,
+          0,
+          1774,
+          887
+        ],
+        "commonScale": 0.19321148825065274,
+        "registration": [
+          51,
+          10
+        ],
+        "contact": [
+          41.0,
+          160
+        ],
+        "contactTarget": [
+          92.0,
+          170
+        ],
+        "bounds": [
+          62,
+          23,
+          122,
+          170
+        ],
+        "role": "neutral ruler",
+        "frameSha256": "f0b4e71ad48e6a0f06683e30708830ddaafca756d2390a351efaef7f7c64a688"
+      }
+    ],
+    "idleReference": "character\\marsh-v2\\frames\\bare\\idle-south\\000.png",
+    "idleSha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d",
+    "gaitEndpoint": "character\\marsh-v2\\frames\\bare\\walk-south\\004.png",
+    "gaitSha256": "655067b49235987be98f4154dbed968b25e04e5ded6ee4497120a5339a4cfeeb",
+    "proposedGaitJoinSeconds": 0.48,
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80
+    ],
+    "grade": "none",
+    "gaitJoinSupportDepthDeltaDense": 6,
+    "gaitJoinRootAdvanceWorld": 2.6464864864864865,
+    "decision": "Generated cell3 reverses requested lead: anatomical LEFT/viewer RIGHT goes forward. Stage as left-leading start toward selected gait slot4, which has the same foot order. Do not claim requested right-leading source. Whole figures registered by separate actual left/right sole centroids; no anatomy patches, independent scale or body warp. Earlier candidate01 misregistered load pose by following only lowest sole row; preserved. Final gait support differs6dense pixels: a stationary-root start would pop the feet; actual source-aware advancing root/controller must bridge this join before admission."
+  },
+  "scope": "Static source comparison; four generated figures, one shared neutral scale, three interiors plus exact idle/gait4 endpoints. Native root/controller/grade/continuous motion/save/title not verified. Raw source reverses requested lead. Earlier load registration failure preserved.",
+  "inputs": {
+    "character\\marsh-south-start-v1\\candidate-02\\recipe.json": "5413c0a38014c9ae7bfdb48f570d5caf5eacf7d70c5f06573865ad172cbdfc51",
+    "character\\marsh-south-start-v1\\candidate-02\\manifest.json": "de770bd6b21ad51dee404669d23081e44c366633267763b2bc2e465b85ef5833",
+    "tools\\build_marsh_south_start.py": "0d1d0a05bbbd9bcd050d847ba4653a793324ef4e611a586907c8f050e415014d"
+  }
+}

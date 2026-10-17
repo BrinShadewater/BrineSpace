@@ -1,0 +1,47 @@
+{
+  "name": "James coherent carrying preparation study helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_motion_review_pending",
+  "states": [
+    {
+      "id": "carry-prepare-west",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/james-carry-authored-helmet-v1/frames/004.png",
+        "res://character/james-west-carry-walk-keys-v1/coherent-turn-v40/helmet-candidate.png",
+        "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/helmet-candidate.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        70,
+        70
+      ],
+      "loop": false
+    },
+    {
+      "id": "carry-unprepare-west",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/james-west-carry-walk-keys-v1/whole-belt-admission-v35/helmet-candidate.png",
+        "res://character/james-west-carry-walk-keys-v1/coherent-turn-v40/helmet-candidate.png",
+        "res://character/james-carry-authored-helmet-v1/frames/004.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        70,
+        70
+      ],
+      "loop": false,
+      "derivedFrom": "Explicit reverse of preparation study, not case unloading."
+    }
+  ],
+  "scope": "V40 coherent turn anatomy; three finite preparation sources then distance walk0. No normal adoption."
+}

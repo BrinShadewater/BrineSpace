@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-26",
+  "scope": "Latest September 26 room/companion/drone studies versus live source game; existing human crew packs unchanged. Packaged Windows build brinespace-073f851880d1bda9 verified.",
+  "items": [
+    {
+      "animation": "BRINE chamber",
+      "latest": "Final v10 tube and v7 figure; eight-second smooth float",
+      "status": "Installed this pass",
+      "evidence": "rooms/underwater/brine-core/brine_core_view.gd"
+    },
+    {
+      "animation": "Margot",
+      "latest": "Polished locomotion, actions and water; 71 states",
+      "status": "Installed",
+      "evidence": "scripts/companion_npc.gd"
+    },
+    {
+      "animation": "Aquarium life",
+      "latest": "Alien swimmers, swaying plants, coral; 48-second motion",
+      "status": "Installed",
+      "evidence": "scripts/aquarium_life.gd"
+    },
+    {
+      "animation": "Survey probe",
+      "latest": "Eight headings; four launch walls; scan, return and status effects",
+      "status": "Installed",
+      "evidence": "scripts/survey_probe_art.gd"
+    },
+    {
+      "animation": "Department doors",
+      "latest": "V3 families; fixed frames and eased rigid leaves",
+      "status": "Installed",
+      "evidence": "rooms/doors/painted_door.gd"
+    },
+    {
+      "animation": "Ocean airlock",
+      "latest": "Right hinge; outward swing and pressure-cycle states",
+      "status": "Installed",
+      "evidence": "rooms/doors/ocean_hatch.gd"
+    },
+    {
+      "animation": "Construction / ROV motion pack",
+      "latest": "Polished 48-clip motion and complete work sequences",
+      "status": "Installed for existing gameplay states",
+      "evidence": "scripts/drone_animation.gd"
+    },
+    {
+      "animation": "Mining rover",
+      "latest": "112 clips; shared wheel phase and polished diagonal views",
+      "status": "Installed for existing gameplay states",
+      "evidence": "scripts/drone_animation.gd"
+    },
+    {
+      "animation": "Salvage drone",
+      "latest": "92 clips; loaded travel, claw and turbine sequences",
+      "status": "Installed for existing gameplay states",
+      "evidence": "scripts/drone_animation.gd"
+    },
+    {
+      "animation": "Drone launch/recovery bases",
+      "latest": "Selected v10 separated lift, cable, water and beacon study",
+      "status": "Installed for existing gameplay states",
+      "evidence": "scripts/drone_dock.gd"
+    }
+  ],
+  "production_drone_consumer": "scripts/grid_canvas.gd -> scripts/drone_animation.gd; existing bay views and room_asset_library -> scripts/drone_dock.gd",
+  "windows_build": "brinespace-073f851880d1bda9",
+  "mac_build": "brinespace-073f851880d1bda9",
+  "mac_native_verified": false
+}

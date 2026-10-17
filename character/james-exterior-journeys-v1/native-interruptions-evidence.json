@@ -1,0 +1,965 @@
+{
+  "checks": 21909,
+  "failures": 0,
+  "journeys": [
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q0-delivery-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q0-delivery-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-delivery-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-delivery-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "south",
+          "file": "q0-delivery-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "east",
+          "file": "q0-delivery-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "east",
+          "file": "q0-delivery-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 41.700000000001
+        },
+        {
+          "direction": "east",
+          "file": "q0-delivery-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim-carry",
+          "tank": 41.1666666666677
+        },
+        {
+          "direction": "west",
+          "file": "q0-delivery-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim-carry",
+          "tank": 38.6000000000012
+        },
+        {
+          "direction": "south",
+          "file": "q0-delivery-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim-carry",
+          "tank": 31.9666666666683
+        },
+        {
+          "direction": "north",
+          "file": "q0-delivery-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "carry",
+          "tank": 29.1333333333348
+        },
+        {
+          "direction": "south",
+          "file": "q0-delivery-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "unload",
+          "tank": 29.1333333333348
+        }
+      ],
+      "joins": {
+        "pickupCarry": true,
+        "salvagePickup": true
+      },
+      "mode": "delivery",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "recalled": false,
+      "restored": true,
+      "rotation": 0,
+      "tank": 29.1333333333348,
+      "turns": [
+        "swim-carry-turn-east-west",
+        "swim-carry-turn-west-south"
+      ],
+      "unload": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q1-delivery-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "west",
+          "file": "q1-delivery-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "east",
+          "file": "q1-delivery-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "east",
+          "file": "q1-delivery-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "west",
+          "file": "q1-delivery-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "south",
+          "file": "q1-delivery-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "south",
+          "file": "q1-delivery-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 41.700000000001
+        },
+        {
+          "direction": "south",
+          "file": "q1-delivery-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim-carry",
+          "tank": 41.1666666666677
+        },
+        {
+          "direction": "north",
+          "file": "q1-delivery-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim-carry",
+          "tank": 38.6000000000012
+        },
+        {
+          "direction": "west",
+          "file": "q1-delivery-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim-carry",
+          "tank": 31.9666666666683
+        },
+        {
+          "direction": "east",
+          "file": "q1-delivery-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "carry",
+          "tank": 29.1333333333348
+        },
+        {
+          "direction": "west",
+          "file": "q1-delivery-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "unload",
+          "tank": 29.1333333333348
+        }
+      ],
+      "joins": {
+        "pickupCarry": true,
+        "salvagePickup": true
+      },
+      "mode": "delivery",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "recalled": false,
+      "restored": true,
+      "rotation": 1,
+      "tank": 29.1333333333348,
+      "turns": [
+        "swim-carry-turn-south-north",
+        "swim-carry-turn-north-west"
+      ],
+      "unload": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q2-delivery-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q2-delivery-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q2-delivery-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q2-delivery-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "north",
+          "file": "q2-delivery-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "west",
+          "file": "q2-delivery-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "west",
+          "file": "q2-delivery-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 41.700000000001
+        },
+        {
+          "direction": "west",
+          "file": "q2-delivery-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim-carry",
+          "tank": 41.1666666666677
+        },
+        {
+          "direction": "east",
+          "file": "q2-delivery-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim-carry",
+          "tank": 38.6000000000012
+        },
+        {
+          "direction": "north",
+          "file": "q2-delivery-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim-carry",
+          "tank": 31.9666666666683
+        },
+        {
+          "direction": "south",
+          "file": "q2-delivery-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "carry",
+          "tank": 29.1333333333348
+        },
+        {
+          "direction": "north",
+          "file": "q2-delivery-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "unload",
+          "tank": 29.1333333333348
+        }
+      ],
+      "joins": {
+        "pickupCarry": true,
+        "salvagePickup": true
+      },
+      "mode": "delivery",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "recalled": false,
+      "restored": true,
+      "rotation": 2,
+      "tank": 29.1333333333348,
+      "turns": [
+        "swim-carry-turn-west-east",
+        "swim-carry-turn-east-north"
+      ],
+      "unload": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q3-delivery-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "east",
+          "file": "q3-delivery-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "west",
+          "file": "q3-delivery-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "west",
+          "file": "q3-delivery-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "east",
+          "file": "q3-delivery-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "north",
+          "file": "q3-delivery-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "north",
+          "file": "q3-delivery-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 41.700000000001
+        },
+        {
+          "direction": "north",
+          "file": "q3-delivery-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim-carry",
+          "tank": 41.1666666666677
+        },
+        {
+          "direction": "south",
+          "file": "q3-delivery-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim-carry",
+          "tank": 38.6000000000012
+        },
+        {
+          "direction": "east",
+          "file": "q3-delivery-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim-carry",
+          "tank": 31.9666666666683
+        },
+        {
+          "direction": "west",
+          "file": "q3-delivery-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "carry",
+          "tank": 29.1333333333348
+        },
+        {
+          "direction": "east",
+          "file": "q3-delivery-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "unload",
+          "tank": 29.1333333333348
+        }
+      ],
+      "joins": {
+        "pickupCarry": true,
+        "salvagePickup": true
+      },
+      "mode": "delivery",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "recalled": false,
+      "restored": true,
+      "rotation": 3,
+      "tank": 29.1333333333348,
+      "turns": [
+        "swim-carry-turn-north-south",
+        "swim-carry-turn-south-east"
+      ],
+      "unload": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q0-recall-work-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-work-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-work-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-work-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-work-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-work-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-work-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 44.7666666666675
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-work-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim",
+          "tank": 44.7333333333342
+        },
+        {
+          "direction": "west",
+          "file": "q0-recall-work-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim",
+          "tank": 42.1666666666677
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-work-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim",
+          "tank": 35.5333333333347
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-work-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "idle",
+          "tank": 32.7000000000016
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-work-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "idle",
+          "tank": 32.7000000000016
+        }
+      ],
+      "joins": {
+        "pickupCarry": false,
+        "salvagePickup": false
+      },
+      "mode": "recall-work",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0
+      ],
+      "recalled": true,
+      "restored": false,
+      "rotation": 0,
+      "tank": 32.7000000000016,
+      "turns": [],
+      "unload": []
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q0-recall-pickup-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-pickup-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-pickup-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-pickup-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-pickup-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-pickup-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-pickup-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 41.700000000001
+        },
+        {
+          "direction": "east",
+          "file": "q0-recall-pickup-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim",
+          "tank": 41.4333333333344
+        },
+        {
+          "direction": "west",
+          "file": "q0-recall-pickup-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim",
+          "tank": 38.8666666666679
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-pickup-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim",
+          "tank": 32.2333333333349
+        },
+        {
+          "direction": "north",
+          "file": "q0-recall-pickup-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "idle",
+          "tank": 29.4000000000015
+        },
+        {
+          "direction": "south",
+          "file": "q0-recall-pickup-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "idle",
+          "tank": 29.4000000000015
+        }
+      ],
+      "joins": {
+        "pickupCarry": false,
+        "salvagePickup": true
+      },
+      "mode": "recall-pickup",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0,
+        1,
+        2
+      ],
+      "recalled": true,
+      "restored": false,
+      "rotation": 0,
+      "tank": 29.4000000000015,
+      "turns": [],
+      "unload": []
+    },
+    {
+      "captures": [
+        {
+          "direction": "south",
+          "file": "q0-low-air-approach.png",
+          "medium": "dry",
+          "phase": "approach",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "south",
+          "file": "q0-low-air-enter.png",
+          "medium": "dry",
+          "phase": "enter",
+          "pose": "walk",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-low-air-pressurize.png",
+          "medium": "dry",
+          "phase": "pressurize",
+          "pose": "idle",
+          "tank": 60.0
+        },
+        {
+          "direction": "north",
+          "file": "q0-low-air-leave.png",
+          "medium": "exterior",
+          "phase": "leave",
+          "pose": "swim",
+          "tank": 56.3666666666669
+        },
+        {
+          "direction": "south",
+          "file": "q0-low-air-outbound.png",
+          "medium": "exterior",
+          "phase": "outbound",
+          "pose": "swim",
+          "tank": 52.0000000000005
+        },
+        {
+          "direction": "east",
+          "file": "q0-low-air-salvage.png",
+          "medium": "exterior",
+          "phase": "salvage",
+          "pose": "salvage",
+          "tank": 47.2000000000007
+        },
+        {
+          "direction": "east",
+          "file": "q0-low-air-pickup.png",
+          "medium": "exterior",
+          "phase": "pickup",
+          "pose": "swim-pickup",
+          "tank": 24.9666666666667
+        },
+        {
+          "direction": "east",
+          "file": "q0-low-air-return.png",
+          "medium": "exterior",
+          "phase": "return",
+          "pose": "swim",
+          "tank": 24.9333333333333
+        },
+        {
+          "direction": "west",
+          "file": "q0-low-air-entry.png",
+          "medium": "exterior",
+          "phase": "entry",
+          "pose": "swim",
+          "tank": 22.3666666666665
+        },
+        {
+          "direction": "south",
+          "file": "q0-low-air-drain.png",
+          "medium": "exterior",
+          "phase": "drain",
+          "pose": "swim",
+          "tank": 15.7333333333329
+        },
+        {
+          "direction": "north",
+          "file": "q0-low-air-exit.png",
+          "medium": "dry",
+          "phase": "exit",
+          "pose": "idle",
+          "tank": 12.8999999999996
+        },
+        {
+          "direction": "south",
+          "file": "q0-low-air-unload.png",
+          "medium": "dry",
+          "phase": "unload",
+          "pose": "idle",
+          "tank": 12.8999999999996
+        }
+      ],
+      "joins": {
+        "pickupCarry": false,
+        "salvagePickup": false
+      },
+      "mode": "low-air",
+      "phases": [
+        "approach",
+        "enter",
+        "pressurize",
+        "leave",
+        "outbound",
+        "salvage",
+        "pickup",
+        "return",
+        "entry",
+        "drain",
+        "exit",
+        "unload"
+      ],
+      "pickup": [
+        0
+      ],
+      "recalled": true,
+      "restored": false,
+      "rotation": 0,
+      "tank": 12.8999999999996,
+      "turns": [],
+      "unload": []
+    }
+  ],
+  "scope": "Real dispatch/needs/airlock/exterior/controller/render/unload and loaded disk restore; dedicated station, normal runtime selected manifests/profile. Existing James selected source only. Four fresh-scene mid-work disk Continues and late work/pickup/low-air recalls. Cancelled-boundary pixel changes recorded, not certified smooth. No traffic certification."
+}

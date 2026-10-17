@@ -1,0 +1,82 @@
+{
+  "name": "James authored carrying turn provisional bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "unselected_rejected-wrong-early-yaw",
+  "states": [
+    {
+      "id": "carry-turn-south-west",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/james-carry-authored-turn-v1/frames-v2/000.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/001.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/002.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/003.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/004.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        200,
+        200,
+        200,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ]
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/james-carry-authored-turn-v1/frames-v2/004.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/003.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/002.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/001.png",
+        "res://character/james-carry-authored-turn-v1/frames-v2/000.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        200,
+        200,
+        200,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ]
+    }
+  ],
+  "review": "v2-review.json"
+}

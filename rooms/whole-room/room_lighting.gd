@@ -508,6 +508,7 @@ static func anchors_for(edits: Dictionary, raised: bool) -> Array:
 			settings.at=light.rect.get_center(); result.append(settings)
 	return result
 
+static var batch_floor_borders:=OS.get_name()=="Windows"
 static var combine_room_shadows:=not OS.get_cmdline_user_args().has("--reference-room-shadow-packet")
 static var room_shadow_packets:Dictionary={}
 static var room_shadow_packet_hits:=0
@@ -582,9 +583,11 @@ static func draw_equipment_shadows(canvas:CanvasItem,props:Array,level:float,vie
 			room_shadow_packets.clear();room_shadow_packet_bytes=0
 		packet.erase("colors")
 		room_shadow_packets[key]=packet;room_shadow_packet_bytes+=buffer_bytes
-	for band in range(4):
-		var inset:=float(band)*2.0
-		canvas.draw_rect(Rect2(-180+inset,-180+inset,360-inset*2,360-inset*2),Color(0.015,0.025,0.03,0.055),false,2.0)
+	if batch_floor_borders:preload("res://scripts/floor_border_packet.gd").draw(canvas)
+	else:
+		for band in range(4):
+			var inset:=float(band)*2.0
+			canvas.draw_rect(Rect2(-180+inset,-180+inset,360-inset*2,360-inset*2),Color(0.015,0.025,0.03,0.055),false,2.0)
 
 	# One current palette per geometry: fading never retessellates or retains
 	# a history of geometry buffers. Actual StyleBox colours preserve legacy rounding.

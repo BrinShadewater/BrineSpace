@@ -1,0 +1,27 @@
+{
+  "disposition": "normal_arrival_controller_integrated_visual_review_pending",
+  "checks": 122,
+  "failures": 0,
+  "actualRendererSamples": 40,
+  "gears": 2,
+  "incomingDirections": [
+    "west",
+    "east",
+    "south",
+    "north"
+  ],
+  "actualActorDiskRestoreCases": 8,
+  "normalArrivalControllerChanged": true,
+  "normalArtworkChanged": false,
+  "latestSourceCandidatesSelected": false,
+  "visualMotionAcceptance": false,
+  "fullGoalComplete": false,
+  "findings": [
+    "Actual arrive preserves workshop_unload instead of allowing generic curiosity diagnostics to overwrite idle state. Incoming dry west/east/south facing is optional actor checkpoint data. Existing2s budget is retained.",
+    "James-owned cargo player selects available gear-specific north turn before unloading, subtracting actual turn duration from unload clock. Normal west/east turn banks available; south missing clip and north facing safely retain direct unloading. No shared renderer or other crew source changed.",
+    "122focused checks pass:40actual renderer samples through normal banks,8full actor snapshot admissions/disk field roundtrips/actual actor restores, legacy missing-field validation, malformed origin rejection, actual main pause, death/flood bypass. Owner profile unchanged. No autonomous route/whole-run checkpoint/titleContinue/motion visual acceptance claim.",
+    "Earlier selector oracle used literal0.4 rather than actual2.0-timer clock at a floating-point phase boundary; diagnostic revealed this and oracle now uses observable simulation clock. Restore fixture originally used unsafe core center; corrected to actual collision-clear workshop contact. Pause uses main processing, not direct NPC update.",
+    "Broader existing test_branforth_crew stopped in fixture setup at line60 assigning seed to Nil decision_rng. Exact probe process terminated; profile unchanged. Retained failed log/report, not reported as a regression pass. Full crew regression remains unresolved."
+  ],
+  "availabilityCorrectionV325": "South half-turn is present.321 availability test combined key existence with2s budget;1600+520ms exceeded budget.325 distinguishes this and enables arrival-specific1480ms clock."
+}

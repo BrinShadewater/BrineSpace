@@ -1,0 +1,104 @@
+{
+  "scope": "Sparse breathing midpoint/peak study only, not complete 72-slot loop or native contact/cadence evidence. No selection or runtime changes. Original master authority; exact seed derived from identical selected idle0/interaction0 source.",
+  "metrics": [
+    {
+      "slot": 0,
+      "beforeBounds": [
+        138,
+        76,
+        182,
+        224
+      ],
+      "candidateBounds": [
+        137,
+        75,
+        182,
+        225
+      ],
+      "bodyBelow115IoU": 0.9647473560517039,
+      "opaqueOverflow": 0
+    },
+    {
+      "slot": 18,
+      "beforeBounds": [
+        138,
+        76,
+        182,
+        224
+      ],
+      "candidateBounds": [
+        137,
+        76,
+        182,
+        224
+      ],
+      "bodyBelow115IoU": 0.9783959751405741,
+      "opaqueOverflow": 0
+    },
+    {
+      "slot": 36,
+      "beforeBounds": [
+        138,
+        76,
+        182,
+        224
+      ],
+      "candidateBounds": [
+        137,
+        76,
+        182,
+        224
+      ],
+      "bodyBelow115IoU": 0.9832106038291605,
+      "opaqueOverflow": 0
+    }
+  ],
+  "newIndependentGenerationUnits": 2,
+  "derivedSeedCount": 1,
+  "authoredUniquePoses": 3,
+  "requiredUniquePoses": 37,
+  "sourceSlotCount": 72,
+  "sourceTimelineMs": 3000,
+  "frozenInputs": {
+    "character/crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/000.png": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+    "character\\bill-east-idle-master-consistency-v1\\seed-provenance.json": "b24e7d653048de7e4de72864f094bcd68005c7e3f9e139d9dc5ec022ed5fb0b0",
+    "character/crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/018.png": "dbf17101c3320dc6169af6884477ede498f9395b43eacdec9b060e58b715ec3c",
+    "character\\bill-east-idle-master-consistency-v1\\provenance-018.json": "31c4103b56ce71621c93adccc8e7ce13ac4d2551d7b6a15cc774559648550f5d",
+    "character\\bill-east-idle-master-consistency-v1\\sources\\raw-018.png": "3babd386e44ffee7b79a93a7167e73634009205e51adfe91861a10f74d8f98ee",
+    "character/crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/036.png": "ef93b727f5d1242bb0ef79f61bc7826ff3472f96860ed55a3d2cd69c287db5cf",
+    "character\\bill-east-idle-master-consistency-v1\\provenance-036.json": "c58af0a7699ee97dddf92df9bbfd8a34e0be621f8e96dbfa7d369ef8f5435d4b",
+    "character\\bill-east-idle-master-consistency-v1\\sources\\raw-036.png": "808315b743d1af482b52836205771af57ec48d4b1a4df9f1400f9e1c15e4ccdf"
+  },
+  "boardSha256": "b22a6c9c8809d4e50104a5c23694f9379455479dcdf14136accfbdea8750c491",
+  "visualReview": "Both raw complete figures and full 8-panel selected/new/master/extended-arm board actually inspected. Midpoint and peak retain warm readable angular face, matte quilt, dull hardware and circle badge. Closer master rendering and coherent with interaction study. Derived seed has one-pixel crown/sole difference relative to new18/36; three samples do not certify breathing registration, phase amplitude or smoothness.",
+  "normalAdmission": false,
+  "nativeRun": false,
+  "completeFamily": false,
+  "decision": "Retain all three provisional/unselected; preserve original full sequence, refine temporal registration and author missing phases before packaging full loop.",
+  "phaseDifferenceDiagnostics": [
+    {
+      "family": "selected",
+      "slot": 18,
+      "alphaMaskChangesAgainst0": 36,
+      "premultipliedMeanAbsoluteRGBChangeAgainst0": 0.27415694459888557
+    },
+    {
+      "family": "selected",
+      "slot": 36,
+      "alphaMaskChangesAgainst0": 69,
+      "premultipliedMeanAbsoluteRGBChangeAgainst0": 0.528850139614762
+    },
+    {
+      "family": "new",
+      "slot": 18,
+      "alphaMaskChangesAgainst0": 187,
+      "premultipliedMeanAbsoluteRGBChangeAgainst0": 1.6900536065087661
+    },
+    {
+      "family": "new",
+      "slot": 36,
+      "alphaMaskChangesAgainst0": 159,
+      "premultipliedMeanAbsoluteRGBChangeAgainst0": 1.5560477979786749
+    }
+  ]
+}

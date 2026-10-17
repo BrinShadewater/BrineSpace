@@ -1,0 +1,52 @@
+{
+  "gears": [
+    {
+      "gear": "bare",
+      "originalManifest": "character/james-cargo-material-joined-v1/bare-manifest.json",
+      "originalManifestSha256": "76bf74bbb7af94f45eae206a3f68da6ef51e2449265c69b9ef4530eb2032e692",
+      "candidateFiles": [
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png",
+        "character/james-cargo-material-joined-v1/frames/bare/unload-north/001.png",
+        "character/james-cargo-material-joined-v1/frames/bare/unload-north/002.png",
+        "character/james-cargo-material-joined-v1/frames/bare/unload-north/003.png",
+        "character/james-cargo-material-joined-v1/frames/bare/unload-north/004.png",
+        "character/james-cargo-material-joined-v1/frames/bare/unload-north/005.png"
+      ],
+      "frame0EqualsTurnEnd": true,
+      "timingMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ]
+    },
+    {
+      "gear": "helmet",
+      "originalManifest": "character/james-cargo-material-joined-v1/helmet-manifest.json",
+      "originalManifestSha256": "b0f37b53a44888926550ab93115d7ec7ac4a83c8366c46ad779e96819974c560",
+      "candidateFiles": [
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/005.png",
+        "character/james-cargo-material-joined-v1/frames/helmet/unload-north/001.png",
+        "character/james-cargo-material-joined-v1/frames/helmet/unload-north/002.png",
+        "character/james-cargo-material-joined-v1/frames/helmet/unload-north/003.png",
+        "character/james-cargo-material-joined-v1/frames/helmet/unload-north/004.png",
+        "character/james-cargo-material-joined-v1/frames/helmet/unload-north/005.png"
+      ],
+      "frame0EqualsTurnEnd": true,
+      "timingMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ]
+    }
+  ],
+  "method": "Exact existing full-source reuse for unloading frame0; all other five source images and durations unchanged.",
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false
+}

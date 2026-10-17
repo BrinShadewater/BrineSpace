@@ -1,0 +1,379 @@
+{
+  "scope": "Source-only South9pose500ms finite study. Seven authored intermediates, no reused widened crouch; no helmet, native proof, normal selection or owner-profile access.",
+  "generation": "exec-618c4264-bb20-4644-9063-27256558e2aa",
+  "earlyGeneration": "exec-2b872392-7295-4782-b0a7-f484176f43f2",
+  "middleGeneration": "exec-873cd810-05ea-463d-8dc1-02aa44a4beac",
+  "sourceCalibration": {
+    "originalStandingSpan": 1295,
+    "originalHairComponent": 135,
+    "earlyHairComponent": 149,
+    "middleHairComponent": 166,
+    "earlyDensity": 0.10354745925215723,
+    "middleDensity": 0.09294320137693632,
+    "scope": "Fixed density per complete independent source based on hair semantic component, not complete head or segment proof; no posed height fitting."
+  },
+  "refs": {
+    "bill-video-south-v1/master-source.png": "0043da08157ab00b61ec1bd1c53946004874a14cc9cf9031e9514b077b8942d7",
+    "bill-swim-south-coherent-v1/sources/swim-v1.png": "9b60e132ec82811af92e1dddab93e5d1fab49ee47f37922814b9edc552506992",
+    "crew-runtime-matte-v1/bill/frames/idle-south-breathing-v1/000.png": "ea016571c2f8ade7a2f388eb0fda0be4bb63d5023b20acc3d260d5eb83941806"
+  },
+  "sourceHashes": {
+    "early-crouch-prompt-v1.txt": "9b7adf5bf0199cbe94a093923aabef01ca8a4bf46036425a3180a1838b978922",
+    "early-crouch-v1.png": "fce9d13b283a204afc627808456837dac4c617d9781de52314655a3d5e7d7a3f",
+    "early-grade-prompt-v2.txt": "4698759fc4efd06057cd1f99fa5e1453cfd4dd16be27c80a38147808ffe4a2a0",
+    "early-grade-v2.png": "532082a869667949b59017d31e1b86a50cd7b0ea1e5663beae996da0f17c919e",
+    "entry-atlas-v1.png": "0aed2ba5bbbf2aa520541731b022f3d72b878163c9097665c27547a26594913b",
+    "entry-prompt-v1.txt": "819e6d1b243e6e45be27e44ba99acde8d78328488f650d681e5aee475e3e0da5",
+    "middle-crouch-prompt-v1.txt": "3f9e6413cd4d28069d5c2e549b7c0d0b64353b565de046dfd22210eb2ca18ef1",
+    "middle-crouch-v1.png": "5e9db569ce3d4381bf93d45880420ea1b93d007eed4ca6c526ab588073ba396b",
+    "middle-grade-prompt-v2.txt": "fd49f894b7a288a40a8e478938989aa34ef2971ed8ab39f08a559cdaacfc0bda",
+    "middle-grade-v2.png": "4dc8f8eca198c6c076d2accddeba305c59ed01b575fa4a4bd9c19827589a95b9"
+  },
+  "registrations": [
+    {
+      "scale": 0.10354745925215723,
+      "translation": [
+        106,
+        83
+      ],
+      "crown": [
+        160,
+        92
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        125,
+        89,
+        193,
+        227
+      ],
+      "source": "sources/early-grade-v2.png",
+      "role": "authored gentle first crouch",
+      "sourceDensityAuthority": "original hair component135px vsnew149px at original master148/1295; fixed whole source density, no posed-height fit"
+    },
+    {
+      "scale": 0.09294320137693632,
+      "translation": [
+        111,
+        94
+      ],
+      "crown": [
+        160,
+        110
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        124,
+        107,
+        195,
+        227
+      ],
+      "source": "sources/middle-grade-v2.png",
+      "role": "authored middle crouch replacing widened legacy context",
+      "sourceDensityAuthority": "original hair component135px vsnew166px at original master148/1295; fixed whole source density, no posed-height fit"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        93,
+        95
+      ],
+      "crown": [
+        160,
+        130
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        125,
+        121,
+        194,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 1,
+      "sourceCrown": [
+        256,
+        136
+      ],
+      "hairComponentWidth": 71,
+      "role": "crouch"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        92,
+        100
+      ],
+      "crown": [
+        160,
+        158
+      ],
+      "opaqueBottom": 224,
+      "alphaBounds": [
+        127,
+        139,
+        194,
+        227
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 2,
+      "sourceCrown": [
+        261,
+        223
+      ],
+      "hairComponentWidth": 71,
+      "role": "deep crouch"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        84,
+        125
+      ],
+      "crown": [
+        160,
+        180
+      ],
+      "opaqueBottom": 246,
+      "alphaBounds": [
+        126,
+        140,
+        194,
+        248
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 3,
+      "sourceCrown": [
+        291,
+        213
+      ],
+      "hairComponentWidth": 75,
+      "role": "push"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        94,
+        133
+      ],
+      "crown": [
+        160,
+        194
+      ],
+      "opaqueBottom": 254,
+      "alphaBounds": [
+        126,
+        140,
+        195,
+        257
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 4,
+      "sourceCrown": [
+        255,
+        236
+      ],
+      "hairComponentWidth": 75,
+      "role": "takeoff"
+    },
+    {
+      "scale": 0.26,
+      "translation": [
+        91,
+        144
+      ],
+      "crown": [
+        160,
+        206
+      ],
+      "opaqueBottom": 267,
+      "alphaBounds": [
+        130,
+        146,
+        190,
+        270
+      ],
+      "source": "sources/entry-atlas-v1.png",
+      "cell": 5,
+      "sourceCrown": [
+        264,
+        240
+      ],
+      "hairComponentWidth": 75,
+      "role": "near-prone"
+    }
+  ],
+  "hairDiagnostics": [
+    {
+      "cell": 0,
+      "roi": [
+        235,
+        5,
+        335,
+        85
+      ],
+      "axis": 284,
+      "crown": 20,
+      "componentWidth": 64,
+      "pixels": 1740
+    },
+    {
+      "cell": 1,
+      "roi": [
+        200,
+        120,
+        325,
+        215
+      ],
+      "axis": 256,
+      "crown": 136,
+      "componentWidth": 71,
+      "pixels": 3074
+    },
+    {
+      "cell": 2,
+      "roi": [
+        200,
+        190,
+        325,
+        305
+      ],
+      "axis": 261,
+      "crown": 223,
+      "componentWidth": 71,
+      "pixels": 4071
+    },
+    {
+      "cell": 3,
+      "roi": [
+        215,
+        185,
+        350,
+        300
+      ],
+      "axis": 291,
+      "crown": 213,
+      "componentWidth": 75,
+      "pixels": 3611
+    },
+    {
+      "cell": 4,
+      "roi": [
+        200,
+        200,
+        330,
+        320
+      ],
+      "axis": 255,
+      "crown": 236,
+      "componentWidth": 75,
+      "pixels": 3658
+    },
+    {
+      "cell": 5,
+      "roi": [
+        200,
+        200,
+        330,
+        325
+      ],
+      "axis": 264,
+      "crown": 240,
+      "componentWidth": 75,
+      "pixels": 4432
+    }
+  ],
+  "ruler": {
+    "scale": 0.26,
+    "translation": [
+      86,
+      94
+    ],
+    "crown": [
+      160,
+      99
+    ],
+    "opaqueBottom": 224,
+    "alphaBounds": [
+      125,
+      96,
+      194,
+      227
+    ]
+  },
+  "rulerDecision": "Rejected as anatomical height authority: source opaque span483 at shared .26 gives125.58native vsselected148. Do not solve by posed bbox scaling. Action atlas .26 follows existing South head/hardware density; full segment/proportion acceptance provisional.",
+  "endpointExact": true,
+  "rejectedReusedCrouch": "bill-bare-south-selected-v1/frames/kneel-south/002.png",
+  "decodedFramesExact": 9,
+  "finiteLoopCount": 1,
+  "timelineMs": 500,
+  "materialGrade": "Built-in material edits replace two complete sources; fixed V1 drawing densities retained. Pose drift separately measured; not colour-only pixel protection. Full shared grading acceptance pending.",
+  "visualReview": "Inspected all six common-canvas before/after/idle/next-pose columns, complete nine-pose sheet and sampled moving browser board. Early/middle graphite brightness reduced while skin stays readable and quilt detail remains visible. Early source reauthored crown42px higher and sole13px higher, giving roughly3native pixels taller pose at unchanged source density; evaluated as whole pose replacement, not protected colour edit. Seven unaffected source frames exact. Full anatomy/master/grade/contact and complete motion acceptance remain pending.",
+  "browserMotionReview": {
+    "samples": 39,
+    "quarterSamples": 33,
+    "normalSamples": 6,
+    "quarterLabels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "normalLabels": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "screenshotSHA256": {
+      "quarter-00.png": "6b9b5cfec8929e7a4876f22d44b28af2c789062e166330e22dfd2fdbcabfa93a",
+      "quarter-01.png": "6b9b5cfec8929e7a4876f22d44b28af2c789062e166330e22dfd2fdbcabfa93a",
+      "quarter-02.png": "6b9b5cfec8929e7a4876f22d44b28af2c789062e166330e22dfd2fdbcabfa93a",
+      "quarter-03.png": "5d7fe3b4c4535005712fb4d5443134f21226666bb921acc0d1c7d1f9fa5f8ab4",
+      "quarter-04.png": "5d7fe3b4c4535005712fb4d5443134f21226666bb921acc0d1c7d1f9fa5f8ab4",
+      "quarter-05.png": "5d7fe3b4c4535005712fb4d5443134f21226666bb921acc0d1c7d1f9fa5f8ab4",
+      "quarter-06.png": "5d7fe3b4c4535005712fb4d5443134f21226666bb921acc0d1c7d1f9fa5f8ab4",
+      "quarter-07.png": "2f7ccea812df8373ecaaeae134af4ea0d91d7f8d696d6a616b752eb078bb6996",
+      "quarter-08.png": "2f7ccea812df8373ecaaeae134af4ea0d91d7f8d696d6a616b752eb078bb6996",
+      "quarter-09.png": "2f7ccea812df8373ecaaeae134af4ea0d91d7f8d696d6a616b752eb078bb6996",
+      "quarter-10.png": "2f7ccea812df8373ecaaeae134af4ea0d91d7f8d696d6a616b752eb078bb6996",
+      "quarter-11.png": "2f7ccea812df8373ecaaeae134af4ea0d91d7f8d696d6a616b752eb078bb6996",
+      "quarter-12.png": "db6575c2bc5265ee8364eaf8c92929a75e01ec9f8cef98ccb745fd6cc7da5bd6",
+      "quarter-13.png": "db6575c2bc5265ee8364eaf8c92929a75e01ec9f8cef98ccb745fd6cc7da5bd6",
+      "quarter-14.png": "db6575c2bc5265ee8364eaf8c92929a75e01ec9f8cef98ccb745fd6cc7da5bd6",
+      "quarter-15.png": "db6575c2bc5265ee8364eaf8c92929a75e01ec9f8cef98ccb745fd6cc7da5bd6",
+      "quarter-16.png": "db6575c2bc5265ee8364eaf8c92929a75e01ec9f8cef98ccb745fd6cc7da5bd6",
+      "quarter-17.png": "4889105f6f3c8203e2c07adde28796f5446ad88b2f3794b98f642cb0ee39ab7e",
+      "quarter-18.png": "4889105f6f3c8203e2c07adde28796f5446ad88b2f3794b98f642cb0ee39ab7e",
+      "quarter-19.png": "4889105f6f3c8203e2c07adde28796f5446ad88b2f3794b98f642cb0ee39ab7e",
+      "quarter-20.png": "4889105f6f3c8203e2c07adde28796f5446ad88b2f3794b98f642cb0ee39ab7e",
+      "quarter-21.png": "4889105f6f3c8203e2c07adde28796f5446ad88b2f3794b98f642cb0ee39ab7e",
+      "quarter-22.png": "650eab80cea79804d1bb1fa8d4ae8c5f10a01cc5622728cb15cec5280d0ed17b",
+      "quarter-23.png": "650eab80cea79804d1bb1fa8d4ae8c5f10a01cc5622728cb15cec5280d0ed17b",
+      "quarter-24.png": "650eab80cea79804d1bb1fa8d4ae8c5f10a01cc5622728cb15cec5280d0ed17b",
+      "quarter-25.png": "650eab80cea79804d1bb1fa8d4ae8c5f10a01cc5622728cb15cec5280d0ed17b",
+      "quarter-26.png": "650eab80cea79804d1bb1fa8d4ae8c5f10a01cc5622728cb15cec5280d0ed17b",
+      "quarter-27.png": "bd7c040ea25a96fba87e4aabf21bff7cbd148668d51a9576b68135496f419879",
+      "quarter-28.png": "bd7c040ea25a96fba87e4aabf21bff7cbd148668d51a9576b68135496f419879",
+      "quarter-29.png": "bd7c040ea25a96fba87e4aabf21bff7cbd148668d51a9576b68135496f419879",
+      "quarter-30.png": "bd7c040ea25a96fba87e4aabf21bff7cbd148668d51a9576b68135496f419879",
+      "quarter-31.png": "bd7c040ea25a96fba87e4aabf21bff7cbd148668d51a9576b68135496f419879",
+      "quarter-32.png": "9f9a3745c9be6982b88ada86a8d357e8773cf607ea749c956db58b504b2cddac",
+      "normal-00.png": "c0f995df20971fad5e590f93f8537257ac962cd0731f6c7f3621434107f8183f",
+      "normal-01.png": "8fa9c99a6f42fa6976b90a0b2f492680f1d314bb79aee4048bd706874998334f",
+      "normal-02.png": "2195e689395d7cb48e08758f0c1b680043192b9a1ecb8291407f397f3caf8597",
+      "normal-03.png": "28b484c8dee24ef1fe1765d0a93bb328da9eab3ff3c7cd117edcf71f99b8a415",
+      "normal-04.png": "28b484c8dee24ef1fe1765d0a93bb328da9eab3ff3c7cd117edcf71f99b8a415",
+      "normal-05.png": "f236b87a8bb82c34a2a7d72bfbfc479ed94611ab5c49eb6a44d5d28a10256620"
+    },
+    "scope": "Actual source-browser Playonce controls;33quarter screenshots cover observed labels1..8,6normal screenshots cover4..8. Initial0 separately paused. AX sampled before screenshot may cross holds, no source-phase pixel binding or complete normal-speed chronology/duration/native acceptance. Same fixed screenshot crop for every sample.",
+    "visualReview": "Inspected sampled advancing fixed-crop board with separate initial0 and quarter observed labels1..8. Neck/shoulder connections remain readable through crouch and forward pitch; two early cloth materials closer to idle, middle stance modestly wider than early and overall master/detail/join fidelity remains provisional. Normal coverage only4..8; no exact AX-to-source-image binding, continuous native/contact acceptance or full chronology claim."
+  },
+  "materialRevision": "matte-review.json",
+  "normalSelected": false
+}

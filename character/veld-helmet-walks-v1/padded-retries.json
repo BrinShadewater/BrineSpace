@@ -1,0 +1,88 @@
+{
+  "reason": "Original east and south toe silhouettes reach source boundary; preserve rejected clips and retry with breathing room.",
+  "inputTransform": {
+    "originalSize": 1024,
+    "resizedSize": 870,
+    "placement": [
+      77,
+      36
+    ]
+  },
+  "east": {
+    "params": {
+      "model": "minimax_hailuo",
+      "variant": "minimax-2.3-fast",
+      "duration": 6,
+      "resolution": "768",
+      "count": 1,
+      "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "a2893217-82c4-43d8-9fb4-dfcddd5be11a"
+        }
+      ],
+      "prompt": "[Static shot] The helmeted character walks in place at a steady natural pace, facing RIGHT in strict side profile for the entire shot. Her legs alternate clear walking strides and her arms swing gently close to her hips. She stays centered at the same size, with her entire helmet and boots visible. The rigid diving helmet, single face inside its clear visor, white forehead light, suit, tools, colours, brightness and plain green background remain unchanged.",
+      "prompt_optimizer": false
+    },
+    "submission": {
+      "results": [
+        {
+          "id": "eaca0c6a-bb1d-43a4-8e98-a55db83f0290",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The helmeted character walks in place at a steady natural pace, facing RIGHT in strict side profile for the entire shot. Her legs alternate clear walking strides and her arms swing gently close to her hips. She stays centered at the same size, with her entire helmet and boots visible. The rigid diving helmet, single face inside its clear visor, white forehead light, suit, tools, colours, brightness and plain green background remain unchanged.",
+            "duration": 6,
+            "reference_images": [
+              "a2893217-82c4-43d8-9fb4-dfcddd5be11a"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    }
+  },
+  "south": {
+    "params": {
+      "model": "minimax_hailuo",
+      "variant": "minimax-2.3-fast",
+      "duration": 6,
+      "resolution": "768",
+      "count": 1,
+      "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+      "prompt_optimizer": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "5b6d8711-caec-4154-a7eb-1e17b856877a"
+        }
+      ],
+      "prompt": "[Static shot] The helmeted character walks in place at a steady, natural pace, viewed directly from the front throughout the entire shot. Her chest remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her rigid helmet, single face behind the clear visor, white lamp, suit design, colours, lighting and plain green background remain unchanged."
+    },
+    "submission": {
+      "results": [
+        {
+          "id": "3f064959-f25e-4130-b1be-2c19fe23ce11",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The helmeted character walks in place at a steady, natural pace, viewed directly from the front throughout the entire shot. Her chest remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her rigid helmet, single face behind the clear visor, white lamp, suit design, colours, lighting and plain green background remain unchanged.",
+            "duration": 6,
+            "reference_images": [
+              "5b6d8711-caec-4154-a7eb-1e17b856877a"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    }
+  },
+  "additionalEstimatedCredits": 8
+}

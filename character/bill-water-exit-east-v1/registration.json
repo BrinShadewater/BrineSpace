@@ -1,0 +1,225 @@
+{
+  "sourceSHA256": "82119d9aeb4fbfb1ccb84fb048e862035c4c9513eecc3ce57b946c2584e3907c",
+  "generation": "exec-02990fa7-5689-4d75-ac27-0f5cc2a7f04c",
+  "alphaCoreThresholdExclusive": 250,
+  "fringePixels": 3,
+  "frames": [
+    {
+      "sourceBox": [
+        28,
+        189,
+        517,
+        493
+      ],
+      "sourceCrown": [
+        470,
+        190
+      ],
+      "targetCrown": [
+        189,
+        181
+      ],
+      "position": [
+        83,
+        181
+      ],
+      "scale": 0.24
+    },
+    {
+      "sourceBox": [
+        585,
+        145,
+        958,
+        625
+      ],
+      "sourceCrown": [
+        886,
+        145
+      ],
+      "targetCrown": [
+        179,
+        108
+      ],
+      "position": [
+        107,
+        108
+      ],
+      "scale": 0.24
+    },
+    {
+      "sourceBox": [
+        138,
+        872,
+        427,
+        1403
+      ],
+      "sourceCrown": [
+        350,
+        874
+      ],
+      "targetCrown": [
+        168,
+        98
+      ],
+      "position": [
+        117,
+        98
+      ],
+      "scale": 0.24
+    },
+    {
+      "sourceBox": [
+        619,
+        795,
+        956,
+        1424
+      ],
+      "sourceCrown": [
+        820,
+        799
+      ],
+      "targetCrown": [
+        165,
+        76
+      ],
+      "position": [
+        117,
+        75
+      ],
+      "scale": 0.24
+    }
+  ],
+  "endpointAuthorities": [
+    {
+      "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-412-candidate-source.png",
+      "captureSHA256": "1f45fda59003bf73776cfe7ffa62e2ba845d077ceb57ac9344a8c7afe4945733",
+      "decodedSHA256": "1c65d3f8e0f8785c58a487f689607d43d994771cbf1ec0e37db3e7b0a3a1dc76",
+      "normalMatches": [
+        {
+          "gear": "",
+          "index": 2,
+          "key": "swim-east",
+          "pivot": [
+            122.0,
+            88.0
+          ],
+          "size": [
+            208,
+            184
+          ],
+          "standingHeight": 148.0
+        }
+      ],
+      "record": {
+        "anchor": [
+          0.0,
+          0.0
+        ],
+        "caseEnabled": false,
+        "caseOwned": false,
+        "cell": [
+          20,
+          21
+        ],
+        "clock": 6.88333333333331,
+        "direction": "east",
+        "embedded": false,
+        "finishActive": false,
+        "foot": [
+          7931.3359375,
+          8368.0
+        ],
+        "goal": "flood-retreat",
+        "medium": "flooded",
+        "name": "bare-412-candidate",
+        "pathPoints": 4,
+        "propRect": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sortY": 0.0,
+        "state": "swim",
+        "tick": 412,
+        "water": 0.566666666666667
+      },
+      "position": [
+        38,
+        136
+      ]
+    },
+    {
+      "capture": "character/bill-floor-case-north-v1/flood-navigation-captures/bare-414-candidate-source.png",
+      "captureSHA256": "b85da2b97ad738389a15469b6f54100071fbf4e064bb2a83fbc4d1c4a266d76f",
+      "decodedSHA256": "d965f55f27b320a8d7883207dfd5b6351edc7e80cc4d506a9ed5709d9c1932a2",
+      "normalMatches": [
+        {
+          "gear": "",
+          "index": 34,
+          "key": "walk-east",
+          "pivot": [
+            128.0,
+            224.0
+          ],
+          "size": [
+            256,
+            256
+          ],
+          "standingHeight": 148.0
+        }
+      ],
+      "record": {
+        "anchor": [
+          0.0,
+          0.0
+        ],
+        "caseEnabled": false,
+        "caseOwned": false,
+        "cell": [
+          20,
+          21
+        ],
+        "clock": 6.91666666666665,
+        "direction": "east",
+        "embedded": false,
+        "finishActive": false,
+        "foot": [
+          7932.25634765625,
+          8368.0
+        ],
+        "goal": "flood-retreat",
+        "medium": "dry",
+        "name": "bare-414-candidate",
+        "pathPoints": 4,
+        "propRect": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sortY": 0.0,
+        "state": "walk",
+        "tick": 414,
+        "water": 0.55
+      },
+      "position": [
+        32,
+        0
+      ]
+    }
+  ],
+  "endpointExact": true,
+  "APNGDecodeExact": true,
+  "timelineMs": 500,
+  "uniformBodyScale": 0.24,
+  "scaleBasis": "One approximate near-standing source ruler across all interiors; not per-pose bounding-height normalization. Actual-master proportions remain under visual review.",
+  "grade": "Frozen entry V2 neutral curve; warm materials not remapped.",
+  "rejectedCandidates": {
+    "interiors-v1.png": "Oversized heads, compact body proportions in short landscape cells.",
+    "head-attempt-v2.png": "Narrow head repair altered bodies; preservation failed."
+  },
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "visualReview": "Original master/full sequence inspected; first rise spacing remains visibly large. No motion/contact acceptance."
+}

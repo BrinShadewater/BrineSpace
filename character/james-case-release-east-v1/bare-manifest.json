@@ -1,0 +1,81 @@
+{
+  "name": "James East separated case release candidate bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_native_layer_review_not_installed",
+  "caseLayer": {
+    "frameFile": "case.png",
+    "position": [
+      178,
+      127
+    ],
+    "worldAnchorRequired": true
+  },
+  "states": [
+    {
+      "id": "swim-case-release-east",
+      "frameFiles": [
+        "frames/bare/000.png",
+        "frames/bare/001.png",
+        "../james-water-torch-stow-east-v1/frames/bare/001.png",
+        "../james-water-torch-stow-east-v1/frames/bare/002.png",
+        "../james-water-torch-stow-east-v1/frames/bare/003.png",
+        "../james-water-torch-stow-east-v1/frames/bare/004.png",
+        "../james-water-torch-stow-east-v1/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

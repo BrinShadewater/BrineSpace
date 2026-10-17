@@ -1,0 +1,18 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent;ROOT=P.parent.parent
+text=(P.parent/'bill-reading-entry-south-v1/build.py').read_text().replace('south','east')
+text=text.replace("L/'build.py'","B/'grade.py'")
+text=text.replace('[(281,9),(764,9),(1251,12),(280,525),(764,525),(1252,525)]','[(248,48),(762,47),(1293,48),(251,540),(763,540),(1291,540)]')
+text=text.replace('module.prepare(source,heads,1.3)','module.prepare(source,heads,6,1.1)').replace('sx,sy=.218,.251','sx,sy=.235,.263')
+text=text.replace('hy+35','hy+31').replace('hx-18,hy-8','hx-19,hy-4').replace("'density':1.3","'density':1.1").replace('exec-0704b3ba-df13-49a6-ab8c-7c079ad29f01','exec-70d56942-f3f2-4c43-8b18-243981209ed4')
+(P/'build.py').write_text(text)
+verifier=(P.parent/'bill-reading-entry-south-v1/verify.py').read_text().replace('south','east').replace('[.218,.251]','[.235,.263]').replace('y.max()==222','y.max()==223')
+(P/'verify.py').write_text(verifier)
+test=(ROOT/'tests/test_bill_reading_entry_south_candidates.gd').read_text().replace('south','east')
+(ROOT/'tests/test_bill_reading_entry_east_candidates.gd').write_text(test)
+(ROOT/'tests/test_bill_reading_entry_east_candidates.gd.uid').write_text('uid://v6b8w3m6p2r9v\n')
+runner=(ROOT/'tools/run_bill_reading_entry_south_candidate_validation.py').read_text().replace('south','east')
+(ROOT/'tools/run_bill_reading_entry_east_candidate_validation.py').write_text(runner)
+preview=(P.parent/'bill-reading-entry-south-v1/build_review.py').read_text().replace('south','east').replace('native selected helmet','native selected east helmet').replace('Native observation sofa review','East seated/reading loop review').replace('href="sofa-review.html"','href="../bill-seated-loops-east-v1/"')
+(P/'build_review.py').write_text(preview)
+print('Prepared east entry/exit source tools;no controller/selection changes')

@@ -1,0 +1,29 @@
+{
+  "prompt": "Edit THIRD image, five-figure West-facing Marsh source sheet. FIRST reference controls exact current West idle body silhouette/proportions/material. SECOND reference gives exact old gesture poses to preserve, not old identity/art quality. Return exactly FIVE whole connected figures in ONE horizontal row on transparent background, all with same whole-body scale, planted boots baseline and head size. All five face viewer LEFT in strict West profile, elevated camera. Fix first four poses to the four corresponding SECOND-reference broad-glove poses: BOTH forearms bent close to chest/waist, compact closed gloves in front of torso, slight relaxed differences. Absolutely no extended pointing index finger, raised single finger, pointing outward or palm-out conversational gesture; do not add a new action. Fifth neutral both arms down following FIRST. All FIVE faces must have the SAME small metal implant at the near RIGHT temple between eyebrow and ear, consistent shape/design visible on all five. This is RIGHT temple of West-facing profile; never alternate implant presence between poses. Match blond swept hair, jaw/collar/chest profile, muted sage shoulders, matte ivory ceramic shell, charcoal undersuit/gloves, waist pouches/straps/knee rings/boots to FIRST. Do not copy the broader old bodies or differing limb scale from SECOND. No new helmet/equipment, loose objects, detached wrists, extra figures, second row, background/shadow/labels/grid/checkerboard. All five WHOLE bodies fully visible with generous margin, no per-pose fitting, one shared body scale.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\west-own-idle-3x.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\west-gesture-target-single-row-01.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\sources\\west-gesture-01.png"
+  ],
+  "references": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/west-own-idle-3x.png",
+      "sha256": "02220fb5d15961a5aeeae3b9097720d5914cc77bee9c37172d9dee6f32b33346"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/west-gesture-target-single-row-01.png",
+      "sha256": "6a3ac0ba1b72ec33bfd3b34ed8051b376ffb87980d7d7725a2fd72103d580173"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/sources/west-gesture-01.png",
+      "sha256": "aa4d4669b18f313a2ce7d8e23575188731f6fb8b3b45130f3b8a4c8da2d68994"
+    }
+  ],
+  "result": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/west-gesture-02.png",
+    "sha256": "a2cdf96933aef21ae7183d4d5fe0d196243844d25516284d852d9da8440e4408",
+    "generationId": "exec-2ccafdf6-1f76-4f8a-b9d7-d02832508574",
+    "assessment": "Staged identity/gesture corrections, but rejected for width drift against own neutral. East ~37vs32, West ~34vs31; one common whole scale, no fitting."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "built-in image_gen edit",
+  "execution": "exec-a7ef68c8-eb3c-4676-9953-1778eb428916",
+  "source": "sources/gait-legs-v2.png",
+  "prompt": "sources/prompt-gait-legs-v2.txt",
+  "status": "rejected_full_cycle",
+  "reason": "Edit retains foreground broad-kneepad left chain in nearly every pose; requested support-chain correction not achieved. Boot proportions also too large relative to source leg length. No normal selection.",
+  "sha256": {
+    "sources\\gait-legs-v2.png": "58ca3275cc87642ad8a7f12420674ff9f8e998e8ec966dae45620e3d972bcfac",
+    "sources\\prompt-gait-legs-v2.txt": "2f3e1dffe9e2d64ec037d88b608b1216ab74d3ed9a700b0a6665463e2438182b"
+  }
+}

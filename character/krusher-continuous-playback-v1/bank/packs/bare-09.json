@@ -1,0 +1,257 @@
+{
+  "name": "Krusher Dom helmet fitting east",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/b85e8765b534c4c524d5d430111c364ae640e0f40d25637ac64f2c710318c9ab.png",
+        "res://character/krusher-animation-package-v10/frames/c862a4692a6b172641ed059bc3b6ee4b0cf5bef246da75a53a8642d1c923be37.png",
+        "res://character/krusher-animation-package-v10/frames/973f340bcd090ca2fbc185f784dc96ec4a02b8acd83ce81ea286af4b0f89d27d.png",
+        "res://character/krusher-animation-package-v10/frames/9133de47f2e44bf4ffdb48da730e9525103dec756cf1d7db048f61c0aebf4380.png",
+        "res://character/krusher-animation-package-v10/frames/a15c6cf44fb03472cb759abfc3caeb23179a3e56be859dfd6ad17a16c42c4c51.png",
+        "res://character/krusher-animation-package-v10/frames/5fba54a401394a3e301659e3b1d2ba67381fa79874636c704944a560fd4225cb.png",
+        "res://character/krusher-animation-package-v10/frames/802f569629fdc222742d1cdfd71f5456f466acd30bb8cd78a72f46d769646aaa.png",
+        "res://character/krusher-animation-package-v10/frames/9a8a230826bf359909bc785a8644456c5b13856014965ae7106bef17720e1c59.png",
+        "res://character/krusher-animation-package-v10/frames/1ddf8c428fbfa506d6b9da9183caabc8539edfde66c662f40922e49f88798333.png",
+        "res://character/krusher-animation-package-v10/frames/3bd4ed784aef594a04614a7a6b47890c9b880ae6ce793edc00bb6a2cc60ead6f.png",
+        "res://character/krusher-animation-package-v10/frames/9c7d4dc61df5bf8e24c1708745842cf92b3cd5a28206b2c9a6f30a4667e36e30.png",
+        "res://character/krusher-animation-package-v10/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-animation-package-v10/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png",
+        "res://character/krusher-animation-package-v10/frames/9c7d4dc61df5bf8e24c1708745842cf92b3cd5a28206b2c9a6f30a4667e36e30.png",
+        "res://character/krusher-animation-package-v10/frames/3bd4ed784aef594a04614a7a6b47890c9b880ae6ce793edc00bb6a2cc60ead6f.png",
+        "res://character/krusher-animation-package-v10/frames/1ddf8c428fbfa506d6b9da9183caabc8539edfde66c662f40922e49f88798333.png",
+        "res://character/krusher-animation-package-v10/frames/9a8a230826bf359909bc785a8644456c5b13856014965ae7106bef17720e1c59.png",
+        "res://character/krusher-animation-package-v10/frames/802f569629fdc222742d1cdfd71f5456f466acd30bb8cd78a72f46d769646aaa.png",
+        "res://character/krusher-animation-package-v10/frames/5fba54a401394a3e301659e3b1d2ba67381fa79874636c704944a560fd4225cb.png",
+        "res://character/krusher-animation-package-v10/frames/a15c6cf44fb03472cb759abfc3caeb23179a3e56be859dfd6ad17a16c42c4c51.png",
+        "res://character/krusher-animation-package-v10/frames/9133de47f2e44bf4ffdb48da730e9525103dec756cf1d7db048f61c0aebf4380.png",
+        "res://character/krusher-animation-package-v10/frames/973f340bcd090ca2fbc185f784dc96ec4a02b8acd83ce81ea286af4b0f89d27d.png",
+        "res://character/krusher-animation-package-v10/frames/c862a4692a6b172641ed059bc3b6ee4b0cf5bef246da75a53a8642d1c923be37.png",
+        "res://character/krusher-animation-package-v10/frames/b85e8765b534c4c524d5d430111c364ae640e0f40d25637ac64f2c710318c9ab.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "runtimeInstalled": false,
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  }
+}

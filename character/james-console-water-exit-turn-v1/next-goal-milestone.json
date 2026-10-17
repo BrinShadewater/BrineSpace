@@ -1,0 +1,80 @@
+{
+  "checks": 87210,
+  "journeys": 8,
+  "turns": 25,
+  "canceledStarts": 0,
+  "unfinishedTurns": 0,
+  "reports": {
+    "native-next-goal": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-_urvemu9",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES CONSOLE NEXT GOAL: 87210 checks; 0 failures; 8 normal journeys"
+      ]
+    },
+    "native-next-goal-restore": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-0hbtp_yk",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES CONSOLE RESTORE: 57746 checks; 0 failures; 8 normal journeys"
+      ]
+    },
+    "native-dry-equipment": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-1_bpm47i",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES DRY EQUIPMENT: 29629 checks; 0 failures; 192 actual goal/movement cases"
+      ]
+    },
+    "native-water-routes": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-9ytn7z8e",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES WATER INSTALLED ROUTES: 2036 checks; 0 failures; 8 installed real routes"
+      ]
+    },
+    "test_npc_movement_trace": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-pyms2atg",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": []
+    },
+    "test_npc_segment_clearance": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-m4vjw1fl",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": []
+    },
+    "test_owner_report_regressions": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-5xqxrcos",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": []
+    }
+  },
+  "scope": "Current normal next-goal chooser/update/player routes; seed17, four rotations, two water/gear cases. Native screenshots review initial turn slots only. Full goal remains active.",
+  "postCheckSourceHashes": {
+    "scripts/bill_npc.gd": "2ae049e70bfcb384f149d570529d781242f4f1575d0eb98406f013d107753682",
+    "scripts/branforth_npc.gd": "7783b3f708b7cc92c684e8e84e189feca3b02f8c02aad9c74ed7681866beec43",
+    "scripts/grid_canvas.gd": "6ffddb81a18323d45c1a2248f843acf10270f346226fcd86c6c45749a9f3791c",
+    "tests/test_npc_movement_trace.gd": "1f1e49d581c1e6d94227cab41939ebb9d8e64ade54c62dbc276064d7652e1c84"
+  }
+}

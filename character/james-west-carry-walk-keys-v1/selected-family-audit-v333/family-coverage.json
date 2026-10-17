@@ -1,0 +1,2871 @@
+{
+  "states": {
+    "bare": 338,
+    "diving-helmet": 248
+  },
+  "poses": {
+    "bare": 4287,
+    "diving-helmet": 3771
+  },
+  "sourceFilesHashed": 11453,
+  "manifestsInspected": 143,
+  "matchedSelectedSlots": 8058,
+  "unmatchedSelectedSlots": 0,
+  "missingManifests": [],
+  "coreCoverage": [
+    {
+      "family": "idle",
+      "direction": "east",
+      "key": "idle-east",
+      "gears": {
+        "bare": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "idle",
+      "direction": "south",
+      "key": "idle-south",
+      "gears": {
+        "bare": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "idle",
+      "direction": "west",
+      "key": "idle-west",
+      "gears": {
+        "bare": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "idle",
+      "direction": "north",
+      "key": "idle-north",
+      "gears": {
+        "bare": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 72,
+          "durationMs": 3000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "walk",
+      "direction": "east",
+      "key": "walk-east",
+      "gears": {
+        "bare": {
+          "frameCount": 39,
+          "durationMs": 1625.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 39,
+          "durationMs": 1625.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "walk",
+      "direction": "south",
+      "key": "walk-south",
+      "gears": {
+        "bare": {
+          "frameCount": 76,
+          "durationMs": 4500.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 76,
+          "durationMs": 4500.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "walk",
+      "direction": "west",
+      "key": "walk-west",
+      "gears": {
+        "bare": {
+          "frameCount": 49,
+          "durationMs": 1680.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 49,
+          "durationMs": 1680.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "walk",
+      "direction": "north",
+      "key": "walk-north",
+      "gears": {
+        "bare": {
+          "frameCount": 36,
+          "durationMs": 1500.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 36,
+          "durationMs": 1500.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "interact",
+      "direction": "east",
+      "key": "interact-east",
+      "gears": {
+        "bare": {
+          "frameCount": 141,
+          "durationMs": 5500.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 141,
+          "durationMs": 5500.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "interact",
+      "direction": "south",
+      "key": "interact-south",
+      "gears": {
+        "bare": {
+          "frameCount": 141,
+          "durationMs": 5500.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 141,
+          "durationMs": 5500.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "interact",
+      "direction": "west",
+      "key": "interact-west",
+      "gears": {
+        "bare": {
+          "frameCount": 154,
+          "durationMs": 5500.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 154,
+          "durationMs": 5500.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "interact",
+      "direction": "north",
+      "key": "interact-north",
+      "gears": {
+        "bare": {
+          "frameCount": 137,
+          "durationMs": 5500.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 137,
+          "durationMs": 5500.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "inspect",
+      "direction": "east",
+      "key": "inspect-east",
+      "gears": {
+        "bare": {
+          "frameCount": 141,
+          "durationMs": 6000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 141,
+          "durationMs": 6000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "inspect",
+      "direction": "south",
+      "key": "inspect-south",
+      "gears": {
+        "bare": {
+          "frameCount": 141,
+          "durationMs": 6000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 141,
+          "durationMs": 6000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "inspect",
+      "direction": "west",
+      "key": "inspect-west",
+      "gears": {
+        "bare": {
+          "frameCount": 154,
+          "durationMs": 6000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 154,
+          "durationMs": 6000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "inspect",
+      "direction": "north",
+      "key": "inspect-north",
+      "gears": {
+        "bare": {
+          "frameCount": 137,
+          "durationMs": 6000.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 137,
+          "durationMs": 6000.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "repair",
+      "direction": "east",
+      "key": "repair-east",
+      "gears": {
+        "bare": {
+          "frameCount": 29,
+          "durationMs": 1167.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 29,
+          "durationMs": 1167.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "repair",
+      "direction": "south",
+      "key": "repair-south",
+      "gears": {
+        "bare": {
+          "frameCount": 13,
+          "durationMs": 1167.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 13,
+          "durationMs": 1167.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "repair",
+      "direction": "west",
+      "key": "repair-west",
+      "gears": {
+        "bare": {
+          "frameCount": 25,
+          "durationMs": 1167.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 25,
+          "durationMs": 1167.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "repair",
+      "direction": "north",
+      "key": "repair-north",
+      "gears": {
+        "bare": {
+          "frameCount": 11,
+          "durationMs": 1167.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 11,
+          "durationMs": 1167.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "weld",
+      "direction": "east",
+      "key": "weld-east",
+      "gears": {
+        "bare": {
+          "frameCount": 113,
+          "durationMs": 4708.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 113,
+          "durationMs": 4708.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "weld",
+      "direction": "south",
+      "key": "weld-south",
+      "gears": {
+        "bare": {
+          "frameCount": 43,
+          "durationMs": 1200.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 43,
+          "durationMs": 1200.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "weld",
+      "direction": "west",
+      "key": "weld-west",
+      "gears": {
+        "bare": {
+          "frameCount": 41,
+          "durationMs": 1200.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 41,
+          "durationMs": 1200.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "weld",
+      "direction": "north",
+      "key": "weld-north",
+      "gears": {
+        "bare": {
+          "frameCount": 27,
+          "durationMs": 1200.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 27,
+          "durationMs": 1200.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "carry",
+      "direction": "east",
+      "key": "carry-east",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "carry",
+      "direction": "south",
+      "key": "carry-south",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "carry",
+      "direction": "west",
+      "key": "carry-west",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "carry",
+      "direction": "north",
+      "key": "carry-north",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 840.0,
+          "loop": true
+        }
+      }
+    },
+    {
+      "family": "unload",
+      "direction": "east",
+      "key": "unload-east",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "unload",
+      "direction": "south",
+      "key": "unload-south",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "unload",
+      "direction": "west",
+      "key": "unload-west",
+      "gears": {
+        "bare": {
+          "frameCount": 7,
+          "durationMs": 600.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 7,
+          "durationMs": 600.0,
+          "loop": false
+        }
+      }
+    },
+    {
+      "family": "unload",
+      "direction": "north",
+      "key": "unload-north",
+      "gears": {
+        "bare": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        },
+        "diving-helmet": {
+          "frameCount": 6,
+          "durationMs": 520.0,
+          "loop": false
+        }
+      }
+    }
+  ],
+  "coreMissing": [],
+  "representativeSlots": [
+    {
+      "gear": "bare",
+      "key": "idle-east",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-east-breathing-v1\\000.png",
+      "pixelHash": "01a317292f831d1dc135a7b68a412902b5e48ec96299d3f40a57987330d7de84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-east",
+      "slot": 36,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-east-breathing-v1\\036.png",
+      "pixelHash": "f8f41f75fd4c8ac75dc4dce8c40738aab1b7aa614f20ca437ba222d46bc97838",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-east",
+      "slot": 71,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-east-breathing-v1\\071.png",
+      "pixelHash": "9b206f286c55b85243062aace329714efa806cb2de5cd94534fafa5c237ed953",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-south",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-south-matte-v2\\000.png",
+      "pixelHash": "569a70075a97fbf071970dfbae2f3dbee6734bcc98e1a29ac12dc59bad55f22b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-south",
+      "slot": 36,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-south-matte-v2\\036.png",
+      "pixelHash": "4069033ce2fa4d560cba5d012922f0b8eec2e5e5681206e4db30e1dc35fb78bb",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-south",
+      "slot": 71,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-south-matte-v2\\071.png",
+      "pixelHash": "84c8c56d62f5d76da0ee838bbf26e70e8330b4765b55e87cba8ac30e43df5727",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-west",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-west-breathing-v1\\000.png",
+      "pixelHash": "fd6a2e82d311665f04701ee72283560d6f54d03995ed4fd8fd3a67ae8b004511",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-west",
+      "slot": 36,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-west-breathing-v1\\036.png",
+      "pixelHash": "f7bd931aeca1409855540d859cfc4badb29d061f087eb2ca96e7dd7d13eab26e",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-west",
+      "slot": 71,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-west-breathing-v1\\071.png",
+      "pixelHash": "9d4c8f782132bb97bd054e60424cc6597fa1552219c9aa5afc3c10c8b75b7160",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-north",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-north-breathing-v1\\000.png",
+      "pixelHash": "be2fe4e990fd702b7d66fd486d9e3e8ab30ed7f45d13996d91f0274b428e3ecc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-north",
+      "slot": 36,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-north-breathing-v1\\036.png",
+      "pixelHash": "8823d5fe3323ccf74ddc32fb98bbd4eeabc1bcf829689bef88238db042d23f84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "idle-north",
+      "slot": 71,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\idle-north-breathing-v1\\071.png",
+      "pixelHash": "b4ca189ad50c87f2d7ccbfcdc677c65bfdcc53cbd5d26b5573d0b48cffaf2754",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-east",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-east-tone-lock-v1\\000.png",
+      "pixelHash": "57ad095af52cccc7fdd7b66830be258d25e1dda3942caf25825f1a9cd0c38e5d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-east",
+      "slot": 19,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-east-tone-lock-v1\\019.png",
+      "pixelHash": "a53cffe50e295ce58ed7c7e3377d26b11c6fb458ac8393a2d800f4228b95b387",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-east",
+      "slot": 38,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-east-tone-lock-v1\\038.png",
+      "pixelHash": "bb20d60ad6ebf0dfefa6c05274239cb736d571cd7b95985dfb2b30270b57e8ec",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-south",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-south-tone-lock-v1\\000.png",
+      "pixelHash": "67b114be81dff0277bfd764cc91bc6b112a7bd89ab56963663de190d1969851f",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-south",
+      "slot": 38,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-south-tone-lock-v1\\038.png",
+      "pixelHash": "746e3e86e1930e6792b99cae4db71641067c21b062028f8d93e5346b0f1fbe6e",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-south",
+      "slot": 75,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-south-tone-lock-v1\\075.png",
+      "pixelHash": "a80391576d141e83435ee5c09b70edee491f53fbcb7555ade5a85ad7a3ba9148",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-west",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-west-tone-lock-v1\\000.png",
+      "pixelHash": "9e8b9bb8f2a3df433768cc6013f4fe5244826c400a4cd3008adaf008611003c7",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-west",
+      "slot": 24,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-west-tone-lock-v1\\024.png",
+      "pixelHash": "4144d678255dbd1779d9147de97fc01cd31c0c2e257a0f9e4d8bb39b48fb3f45",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-west",
+      "slot": 48,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-west-tone-lock-v1\\048.png",
+      "pixelHash": "89cfa925ddc31980a764220e24877f63f60bc65806a3a92e095fcdb232522afd",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-north",
+      "slot": 0,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-north\\000.png",
+      "pixelHash": "323f9f52810aa599e26f831352acae09051c7e8c5d40a809e087d6c7121abb57",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-north",
+      "slot": 18,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-north\\018.png",
+      "pixelHash": "5f966bfdbac8be276832975661770d0aa58fcd9194e9522f38784a468b51bc3c",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "walk-north",
+      "slot": 35,
+      "source": "character\\crew-runtime-matte-v1\\branforth\\frames\\walk-north\\035.png",
+      "pixelHash": "07d174478193b9d7e3c132d8c43893ea7ada73a2d8a38c0885e2984feef19de2",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-east",
+      "slot": 0,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\140.png",
+      "pixelHash": "01a317292f831d1dc135a7b68a412902b5e48ec96299d3f40a57987330d7de84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-east",
+      "slot": 70,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\070.png",
+      "pixelHash": "2766aa22fb8dea12ef40e790dad2dea9bc0ec6961a2d6573baa5e1469ab79106",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-east",
+      "slot": 140,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\140.png",
+      "pixelHash": "01a317292f831d1dc135a7b68a412902b5e48ec96299d3f40a57987330d7de84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-south",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-140.png",
+      "pixelHash": "569a70075a97fbf071970dfbae2f3dbee6734bcc98e1a29ac12dc59bad55f22b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-south",
+      "slot": 70,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-070.png",
+      "pixelHash": "2f740d10c05e7e32bad2eb00604632e00ca29c04619fdd84c8a73b8244389260",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-south",
+      "slot": 140,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-140.png",
+      "pixelHash": "569a70075a97fbf071970dfbae2f3dbee6734bcc98e1a29ac12dc59bad55f22b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-west",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-153.png",
+      "pixelHash": "fd6a2e82d311665f04701ee72283560d6f54d03995ed4fd8fd3a67ae8b004511",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-west",
+      "slot": 77,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-077.png",
+      "pixelHash": "f5f8b48d138fe7b52fc07247339b1ee69983f88bebc742ba31647ce6388d4b8d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-west",
+      "slot": 153,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-153.png",
+      "pixelHash": "fd6a2e82d311665f04701ee72283560d6f54d03995ed4fd8fd3a67ae8b004511",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-north",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-136.png",
+      "pixelHash": "be2fe4e990fd702b7d66fd486d9e3e8ab30ed7f45d13996d91f0274b428e3ecc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-north",
+      "slot": 68,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-068.png",
+      "pixelHash": "ee62c6860a8cd7f142fab1282ef37222e8114bac3645f68861239219634bbab6",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "interact-north",
+      "slot": 136,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-136.png",
+      "pixelHash": "be2fe4e990fd702b7d66fd486d9e3e8ab30ed7f45d13996d91f0274b428e3ecc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-east",
+      "slot": 0,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\140.png",
+      "pixelHash": "01a317292f831d1dc135a7b68a412902b5e48ec96299d3f40a57987330d7de84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-east",
+      "slot": 70,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\070.png",
+      "pixelHash": "2766aa22fb8dea12ef40e790dad2dea9bc0ec6961a2d6573baa5e1469ab79106",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-east",
+      "slot": 140,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\bare\\140.png",
+      "pixelHash": "01a317292f831d1dc135a7b68a412902b5e48ec96299d3f40a57987330d7de84",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-south",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-140.png",
+      "pixelHash": "569a70075a97fbf071970dfbae2f3dbee6734bcc98e1a29ac12dc59bad55f22b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-south",
+      "slot": 70,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-070.png",
+      "pixelHash": "2f740d10c05e7e32bad2eb00604632e00ca29c04619fdd84c8a73b8244389260",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-south",
+      "slot": 140,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-south-140.png",
+      "pixelHash": "569a70075a97fbf071970dfbae2f3dbee6734bcc98e1a29ac12dc59bad55f22b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-west",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-153.png",
+      "pixelHash": "fd6a2e82d311665f04701ee72283560d6f54d03995ed4fd8fd3a67ae8b004511",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-west",
+      "slot": 77,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-077.png",
+      "pixelHash": "f5f8b48d138fe7b52fc07247339b1ee69983f88bebc742ba31647ce6388d4b8d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-west",
+      "slot": 153,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-west-153.png",
+      "pixelHash": "fd6a2e82d311665f04701ee72283560d6f54d03995ed4fd8fd3a67ae8b004511",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-north",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-136.png",
+      "pixelHash": "be2fe4e990fd702b7d66fd486d9e3e8ab30ed7f45d13996d91f0274b428e3ecc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-north",
+      "slot": 68,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-068.png",
+      "pixelHash": "ee62c6860a8cd7f142fab1282ef37222e8114bac3645f68861239219634bbab6",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "inspect-north",
+      "slot": 136,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\bare-north-136.png",
+      "pixelHash": "be2fe4e990fd702b7d66fd486d9e3e8ab30ed7f45d13996d91f0274b428e3ecc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-east",
+      "slot": 0,
+      "source": "character\\james-action-east-matched-v1\\frames\\repair-east\\028.png",
+      "pixelHash": "de6016e6b7b3d817651c00cd0c5895cf9580047b34ed92a37b7aaa2fc5bbcf3d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-east",
+      "slot": 14,
+      "source": "character\\james-action-east-matched-v1\\frames\\repair-east\\014.png",
+      "pixelHash": "f831b0f5ca2b9a944eefa5a82a5ccb822b6781da533a548a3da6c312f77f4974",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-east",
+      "slot": 28,
+      "source": "character\\james-action-east-matched-v1\\frames\\repair-east\\028.png",
+      "pixelHash": "de6016e6b7b3d817651c00cd0c5895cf9580047b34ed92a37b7aaa2fc5bbcf3d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-south",
+      "slot": 0,
+      "source": "character\\james-action-south-matched-v1\\frames\\repair-south\\012.png",
+      "pixelHash": "bb8a969d34174a113c525796ccb61f0a8a5edecbddfc9d022e98703d4d56836d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-south",
+      "slot": 6,
+      "source": "character\\james-action-south-matched-v1\\frames\\repair-south\\006.png",
+      "pixelHash": "7d73c55c81947319021cef408daccb86fbeb9575a7315913f944760bd41625ba",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-south",
+      "slot": 12,
+      "source": "character\\james-action-south-matched-v1\\frames\\repair-south\\012.png",
+      "pixelHash": "bb8a969d34174a113c525796ccb61f0a8a5edecbddfc9d022e98703d4d56836d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-west",
+      "slot": 0,
+      "source": "character\\james-action-west-matched-v1\\frames\\repair-west\\024.png",
+      "pixelHash": "7cc3117c4cb17c72ba8f7d6222944156e2363a096c68537e2ff9d9efcf61c056",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-west",
+      "slot": 12,
+      "source": "character\\james-action-west-matched-v1\\frames\\repair-west\\012.png",
+      "pixelHash": "b6305e26ea5c70898538ebc8af3578e753d49c1dac9467c3011ec1a6364b18f6",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-west",
+      "slot": 24,
+      "source": "character\\james-action-west-matched-v1\\frames\\repair-west\\024.png",
+      "pixelHash": "7cc3117c4cb17c72ba8f7d6222944156e2363a096c68537e2ff9d9efcf61c056",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-north",
+      "slot": 0,
+      "source": "character\\james-action-north-matched-v5\\frames\\repair-north\\010.png",
+      "pixelHash": "e35b93cac9505ba71159acf2907f404e1f571c1981fa31f57f2e9e1c9afb0521",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-north",
+      "slot": 5,
+      "source": "character\\james-action-north-matched-v5\\frames\\repair-north\\005.png",
+      "pixelHash": "575a4fe11c1e2ded94c813bf10d84134fcdc8a8d71ec60b939c2bf4f25f093c9",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "repair-north",
+      "slot": 10,
+      "source": "character\\james-action-north-matched-v5\\frames\\repair-north\\010.png",
+      "pixelHash": "e35b93cac9505ba71159acf2907f404e1f571c1981fa31f57f2e9e1c9afb0521",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-east",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-east\\112.png",
+      "pixelHash": "c4bdb1fcc166ccfe895aad8d7186414dd2e9daa66aa757f524ab5abf0699dff5",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-east",
+      "slot": 56,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-east\\056.png",
+      "pixelHash": "8fc45149b9dc4a913bc1a01221b1e6622e74d940e14bc54319d23b615dc7416d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-east",
+      "slot": 112,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-east\\112.png",
+      "pixelHash": "c4bdb1fcc166ccfe895aad8d7186414dd2e9daa66aa757f524ab5abf0699dff5",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-south",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-south\\042.png",
+      "pixelHash": "4b3884cdc1fc8105c2d5dd498375f53b6aabd58e2b9d8c5ccf55df5dac25d0b0",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-south",
+      "slot": 21,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-south\\021.png",
+      "pixelHash": "d7102f6a431829dab6cefb82feeefe1e03b783172fd9e19c9f3a65dd35631236",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-south",
+      "slot": 42,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-south\\042.png",
+      "pixelHash": "4b3884cdc1fc8105c2d5dd498375f53b6aabd58e2b9d8c5ccf55df5dac25d0b0",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-west",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-west\\040.png",
+      "pixelHash": "3618bc9365daf0ae537e63b4fd8bb268161b96177a93789cf12e2e2cf884cf4f",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-west",
+      "slot": 20,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-west\\020.png",
+      "pixelHash": "1e90e3aeacdc71ee41c7f87012ccc42620b6ef92360b5fe45646fca9fefc049a",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-west",
+      "slot": 40,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-west\\040.png",
+      "pixelHash": "3618bc9365daf0ae537e63b4fd8bb268161b96177a93789cf12e2e2cf884cf4f",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-north",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-north\\026.png",
+      "pixelHash": "3974cf8c6a0668fceb8c48f789376103db256fed00e7a6a87759038527ff44ac",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-north",
+      "slot": 13,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-north\\013.png",
+      "pixelHash": "e4618cc228b3c357884ec97880934903ece27f28636b599793e0c0e7315d3aa5",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "weld-north",
+      "slot": 26,
+      "source": "character\\james-torch-material-residue-v2\\frames\\bare\\weld-north\\026.png",
+      "pixelHash": "3974cf8c6a0668fceb8c48f789376103db256fed00e7a6a87759038527ff44ac",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-east",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\carry-east\\000.png",
+      "pixelHash": "1adc47f65c8e4b886162360538ccee90a4efa16aae85ee427c454dd5e4695d7a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-east",
+      "slot": 3,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\carry-east\\003.png",
+      "pixelHash": "f4e94550f70f4348af3ba61fbc06cc92bfa1a4ffa00916f70758e501de9495ed",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-east",
+      "slot": 5,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\carry-east\\005.png",
+      "pixelHash": "737fd240a55788c690099f17d3224dfacee1cc54bc3aaa039f39a9ac868e54e8",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-south",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-south\\000.png",
+      "pixelHash": "ca005f133132137a978dfa88a3aeb6dac5589cef5a89ef8af95c34d460e16786",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-south",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-south\\003.png",
+      "pixelHash": "4641d6192b873aef7e0a9449f826c7cc40dfab410fe7793fcb84c3aedcab8a30",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-south",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-south\\005.png",
+      "pixelHash": "4dbdee5925fad075461bb042d487b798bd4a844a97d5f9d0ed8c22028036624a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-west",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-west\\000.png",
+      "pixelHash": "ef2542bf98fda90e917b5b9ccb88eecf6656928571981d61e327b9111a8e51ab",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-west",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-west\\003.png",
+      "pixelHash": "c890b0baafe6fc7fdf1610db8b5c71503edef0830c640049d480c5a9c552f8bd",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-west",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-west\\005.png",
+      "pixelHash": "1c8093bb3321935936c22f2572edb2e4b9c564f58e9f8bb76e84af810551e198",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-north",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-north\\000.png",
+      "pixelHash": "f58bf7be175e56bdcbfc3e3254c980da6075adb45bbfafee5fb872e242ed6325",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-north",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-north\\003.png",
+      "pixelHash": "a9f0e90d41136141991cdcd8d40d280d642cbb01aafbc88e404d97b89fde8632",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "carry-north",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\carry-north\\005.png",
+      "pixelHash": "f7f7b4742998a232cc6a37e0b86d060ab55dd05f657673d3b1a795d0ac590d46",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-east",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\unload-east\\000.png",
+      "pixelHash": "fe435f80962ccdd7e4191af26453036a98fe5c458fa5c06c15373984d3919a08",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-east",
+      "slot": 3,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\unload-east\\003.png",
+      "pixelHash": "8c159a858c5d89f06c7b007df2be8e98691cbb685cc82c960758d7a97fdcaeab",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-east",
+      "slot": 5,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\unload-east\\005.png",
+      "pixelHash": "823f3f79b0a36ae84257223509acad0c9c284800fe2fe39210eb9bb15869757f",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-south",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-south\\000.png",
+      "pixelHash": "ca005f133132137a978dfa88a3aeb6dac5589cef5a89ef8af95c34d460e16786",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-south",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-south\\003.png",
+      "pixelHash": "d01d78c321d363ce3b7722278923df0cf0ecad62270e788a35385256f5c530ec",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-south",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-south\\005.png",
+      "pixelHash": "ff092d56bfeb0e8017a92fc1299d2f43a1c18f1a5f4d0c6b1abe7d3473cdd75a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-west",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-west\\000.png",
+      "pixelHash": "ef2542bf98fda90e917b5b9ccb88eecf6656928571981d61e327b9111a8e51ab",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-west",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-west\\003.png",
+      "pixelHash": "bbf5e5a6b426b5499cd68046bc21075679a567a9b94d13ea0efef4ab439d6fab",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-west",
+      "slot": 6,
+      "source": "character\\james-floor-case-west-v1\\standing-body-v2\\bare\\000.png",
+      "pixelHash": "3aaabc7b91be3f33d6e46a04146a8b6359258a0df7565cc66390d95a89411f55",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-north",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\bare\\carry-turn-north-east\\000.png",
+      "pixelHash": "8c582937aae4ba6878bcc266b16fb4a2ff19e097a5fc5af869483e02d0299ed6",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-north",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-north\\003.png",
+      "pixelHash": "46219df1fc911778b20033cb5dec301a3a37f6d9ff58aca602252efe09560be0",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "bare",
+      "key": "unload-north",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\bare\\unload-north\\005.png",
+      "pixelHash": "ff010c196b920e1467fca4dd71871249b8bd27aa33f40b29cbb19d9f59bdfa48",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-east",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-east\\000.png",
+      "pixelHash": "b3bec4e836168357c647f8910129bb65260949143a6da8a7c7bd4d451882d2fe",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-east",
+      "slot": 36,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-east\\036.png",
+      "pixelHash": "4790c2fd6178a2c26fc7f633c7ac1e0d3d369ba6ea8d6dd909c402cd5b67b5ac",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-east",
+      "slot": 71,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-east\\071.png",
+      "pixelHash": "1f52ce986bdf2bb071eb1fd302ede7e96fa2ea4800dbd29cae3579606e1e2848",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-south",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-south\\000.png",
+      "pixelHash": "4538e43687a14b8b0f28e58c5a9c4fd731f60a6c094746e7f33089401d9b7b12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-south",
+      "slot": 36,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-south\\036.png",
+      "pixelHash": "31d47d1a4f576b86ed50bd017abd17727f469c090db609fc0a90149ba7a463a2",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-south",
+      "slot": 71,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-south\\071.png",
+      "pixelHash": "2459597c1147eb3963a70c32622d3a3cf62689c3091e09f75c4bc89f3b3a4f6d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-west",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-west\\000.png",
+      "pixelHash": "ebb9ddd56436cd9bb2f39d3d8477527cffdd506db44428ccc27712cbab9e1f1d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-west",
+      "slot": 36,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-west\\036.png",
+      "pixelHash": "94cf6b77e9e80c7bf8d99af6e17853d63ceef3b7821aa5455b50238b379d8733",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-west",
+      "slot": 71,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-west\\071.png",
+      "pixelHash": "c243a5662e07c197e4e2c77c44e056279127f82ebc629fee60fbb491a4fbeb09",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-north",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-north\\000.png",
+      "pixelHash": "1e500bb224404ced094774b78963680f5b2e5b0d4222eff3b0453e9e8cbd8e12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-north",
+      "slot": 36,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-north\\036.png",
+      "pixelHash": "bc574fe37dfdd346eab58eb934516932947699613a5b24531aa0efcd31207880",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "idle-north",
+      "slot": 71,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\idle-north\\071.png",
+      "pixelHash": "c065077a0c44764d35435384b592ac9db1db4b9b9e4bae28ef0c2d224c563891",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-east",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-east\\000.png",
+      "pixelHash": "72130f1d096377e09385a965b0d6b32e9e301c2980fe2c176c3196898271796c",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-east",
+      "slot": 19,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-east\\019.png",
+      "pixelHash": "097125f3f3f0aa45a9a7aa8b10d77519cd22aa6e2307b59fbec7f4dc44af423b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-east",
+      "slot": 38,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-east\\038.png",
+      "pixelHash": "400e13e96ef1643d30a40b9de2ea6780c657cf378d48adfac58d48e9aed87d2c",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-south",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-south\\000.png",
+      "pixelHash": "7d0aa35db3528bca94f4035b0e3e81d2e2d970f4c949276bc743f64e3fe1304b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-south",
+      "slot": 38,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-south\\038.png",
+      "pixelHash": "a8719403bde3d87dadbb0e456c781a7b514d4766c172e8b268459d56f393c521",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-south",
+      "slot": 75,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-south\\075.png",
+      "pixelHash": "8b640f629cd61628c66f89392254fb6d99061ef61a07493b1c5645c4726e8569",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-west",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-west\\000.png",
+      "pixelHash": "e3127d3b259f7b28efdd6202f954eb78bdc3992ec9ce8418b83c61404e0cb110",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-west",
+      "slot": 24,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-west\\024.png",
+      "pixelHash": "475b53d0cf215b0296d1de799b33a85e45ab4cc67c555993d4c5587791627cd4",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-west",
+      "slot": 48,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-west\\048.png",
+      "pixelHash": "a189fbb4e2b89083800a75e9542f69a24ad5c4b8cedb35b59038249275571c00",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-north",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-north\\000.png",
+      "pixelHash": "ed4f7fdd995c9f4b55bfca7cf7ff198dc33d82d7718e8ca1bde284ca3b8c5929",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-north",
+      "slot": 18,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-north\\018.png",
+      "pixelHash": "ea77ad2336b4b1e204b94ce623200b4877011092c58b8d74de49f7807b647060",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "walk-north",
+      "slot": 35,
+      "source": "character\\james-shared-helmet-runtime-v1\\frames\\walk-north\\035.png",
+      "pixelHash": "0caaee138c56d366e4a4fda9c671921dc0c8284b7f086b28ddebca22a593ff47",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-east",
+      "slot": 0,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\140.png",
+      "pixelHash": "b3bec4e836168357c647f8910129bb65260949143a6da8a7c7bd4d451882d2fe",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-east",
+      "slot": 70,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\070.png",
+      "pixelHash": "80f88de7046afd48109d4e8b8cae133d174aae3df0e893d74ff3dad2889ff8a9",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-east",
+      "slot": 140,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\140.png",
+      "pixelHash": "b3bec4e836168357c647f8910129bb65260949143a6da8a7c7bd4d451882d2fe",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-south",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-140.png",
+      "pixelHash": "4538e43687a14b8b0f28e58c5a9c4fd731f60a6c094746e7f33089401d9b7b12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-south",
+      "slot": 70,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-070.png",
+      "pixelHash": "8e04ba2e637a1e0bfdf3db7c3b8ece4810ba121d2e0373f21026c003e6734c7d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-south",
+      "slot": 140,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-140.png",
+      "pixelHash": "4538e43687a14b8b0f28e58c5a9c4fd731f60a6c094746e7f33089401d9b7b12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-west",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-153.png",
+      "pixelHash": "ebb9ddd56436cd9bb2f39d3d8477527cffdd506db44428ccc27712cbab9e1f1d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-west",
+      "slot": 77,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-077.png",
+      "pixelHash": "94315307305ee2defb23960f4c7f9b4f362be0064239b211e5dac33f88a9f070",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-west",
+      "slot": 153,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-153.png",
+      "pixelHash": "ebb9ddd56436cd9bb2f39d3d8477527cffdd506db44428ccc27712cbab9e1f1d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-north",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-136.png",
+      "pixelHash": "1e500bb224404ced094774b78963680f5b2e5b0d4222eff3b0453e9e8cbd8e12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-north",
+      "slot": 68,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-068.png",
+      "pixelHash": "3134b3561b3f22a2f7568ce800997afaa47be3b7c6bbecb51192869511b467e5",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "interact-north",
+      "slot": 136,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-136.png",
+      "pixelHash": "1e500bb224404ced094774b78963680f5b2e5b0d4222eff3b0453e9e8cbd8e12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-east",
+      "slot": 0,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\140.png",
+      "pixelHash": "b3bec4e836168357c647f8910129bb65260949143a6da8a7c7bd4d451882d2fe",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-east",
+      "slot": 70,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\070.png",
+      "pixelHash": "80f88de7046afd48109d4e8b8cae133d174aae3df0e893d74ff3dad2889ff8a9",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-east",
+      "slot": 140,
+      "source": "character\\james-east-inspect-body-grade-v26\\candidate-frames\\helmet\\140.png",
+      "pixelHash": "b3bec4e836168357c647f8910129bb65260949143a6da8a7c7bd4d451882d2fe",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-south",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-140.png",
+      "pixelHash": "4538e43687a14b8b0f28e58c5a9c4fd731f60a6c094746e7f33089401d9b7b12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-south",
+      "slot": 70,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-070.png",
+      "pixelHash": "8e04ba2e637a1e0bfdf3db7c3b8ece4810ba121d2e0373f21026c003e6734c7d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-south",
+      "slot": 140,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-south-140.png",
+      "pixelHash": "4538e43687a14b8b0f28e58c5a9c4fd731f60a6c094746e7f33089401d9b7b12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-west",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-153.png",
+      "pixelHash": "ebb9ddd56436cd9bb2f39d3d8477527cffdd506db44428ccc27712cbab9e1f1d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-west",
+      "slot": 77,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-077.png",
+      "pixelHash": "94315307305ee2defb23960f4c7f9b4f362be0064239b211e5dac33f88a9f070",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-west",
+      "slot": 153,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-west-153.png",
+      "pixelHash": "ebb9ddd56436cd9bb2f39d3d8477527cffdd506db44428ccc27712cbab9e1f1d",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-north",
+      "slot": 0,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-136.png",
+      "pixelHash": "1e500bb224404ced094774b78963680f5b2e5b0d4222eff3b0453e9e8cbd8e12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-north",
+      "slot": 68,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-068.png",
+      "pixelHash": "3134b3561b3f22a2f7568ce800997afaa47be3b7c6bbecb51192869511b467e5",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "inspect-north",
+      "slot": 136,
+      "source": "character\\james-diagnostics-edge-matte-v30\\frames\\helmet-north-136.png",
+      "pixelHash": "1e500bb224404ced094774b78963680f5b2e5b0d4222eff3b0453e9e8cbd8e12",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-east",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-actions-east-v1\\frames\\repair-east\\028.png",
+      "pixelHash": "794085b35c9d0d6d5ec4873c7bc9b31a99986031a0cab9f66c2376dda280b24b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-east",
+      "slot": 14,
+      "source": "character\\james-shared-helmet-actions-east-v1\\frames\\repair-east\\014.png",
+      "pixelHash": "79d3a473f69bd0e406c4946c1d51ebc4f1b0c42c526c496b69e03e0c8bef182e",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-east",
+      "slot": 28,
+      "source": "character\\james-shared-helmet-actions-east-v1\\frames\\repair-east\\028.png",
+      "pixelHash": "794085b35c9d0d6d5ec4873c7bc9b31a99986031a0cab9f66c2376dda280b24b",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-south",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-actions-south-v1\\frames\\repair-south\\012.png",
+      "pixelHash": "574b8f8bdfe4daaa31bbe76f612bcbec708a43c0103b6281ca20b141f68fc153",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-south",
+      "slot": 6,
+      "source": "character\\james-shared-helmet-actions-south-v1\\frames\\repair-south\\006.png",
+      "pixelHash": "c1c723ec379454c6230668997699607587e6c418e97403bb364e896f8cefe688",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-south",
+      "slot": 12,
+      "source": "character\\james-shared-helmet-actions-south-v1\\frames\\repair-south\\012.png",
+      "pixelHash": "574b8f8bdfe4daaa31bbe76f612bcbec708a43c0103b6281ca20b141f68fc153",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-west",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-actions-west-v1\\frames\\repair-west\\024.png",
+      "pixelHash": "a03dec55c57da4cf176053ab570024b85644c4c038ebe9596fb3247849d168b7",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-west",
+      "slot": 12,
+      "source": "character\\james-shared-helmet-actions-west-v1\\frames\\repair-west\\012.png",
+      "pixelHash": "4c111d30d01311ceba206e4c3c58601d95b58b74d322bfc4ad322e8e12f28f61",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-west",
+      "slot": 24,
+      "source": "character\\james-shared-helmet-actions-west-v1\\frames\\repair-west\\024.png",
+      "pixelHash": "a03dec55c57da4cf176053ab570024b85644c4c038ebe9596fb3247849d168b7",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-north",
+      "slot": 0,
+      "source": "character\\james-shared-helmet-actions-north-v5\\frames\\repair-north\\010.png",
+      "pixelHash": "b2abebd3a2527813ee59ce36d5bcdb29cc91a97b899338c19cedd0901fa9be16",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-north",
+      "slot": 5,
+      "source": "character\\james-shared-helmet-actions-north-v5\\frames\\repair-north\\005.png",
+      "pixelHash": "a14087b16f49c596cebf4d98e23916644acca947fd18d9ab70d4366d192dab79",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "repair-north",
+      "slot": 10,
+      "source": "character\\james-shared-helmet-actions-north-v5\\frames\\repair-north\\010.png",
+      "pixelHash": "b2abebd3a2527813ee59ce36d5bcdb29cc91a97b899338c19cedd0901fa9be16",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-east",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-east\\112.png",
+      "pixelHash": "aced1f614543e6cdd1e4a8060312aff73ef951041ec2cf05eff6ed0874d465c9",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-east",
+      "slot": 56,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-east\\056.png",
+      "pixelHash": "ed9065dc136fa6b6095a56c9d6329407cb73fde1847cc59354f938eb152269dc",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-east",
+      "slot": 112,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-east\\112.png",
+      "pixelHash": "aced1f614543e6cdd1e4a8060312aff73ef951041ec2cf05eff6ed0874d465c9",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-south",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-south\\042.png",
+      "pixelHash": "5b6318f65191d3b927eef98daf8ca8b7d701f460f2dbb9fec02de8f804c6bb17",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-south",
+      "slot": 21,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-south\\021.png",
+      "pixelHash": "5e628bb2f2728307485c012e5db6c4dc6b2b034bca4962034483ac892e8f7788",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-south",
+      "slot": 42,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-south\\042.png",
+      "pixelHash": "5b6318f65191d3b927eef98daf8ca8b7d701f460f2dbb9fec02de8f804c6bb17",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-west",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-west\\040.png",
+      "pixelHash": "c7b999fd31084ef0cd06a5907b018578500e5ef4905e26615c2d7ca39637338a",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-west",
+      "slot": 20,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-west\\020.png",
+      "pixelHash": "9fdeafacdcbbe2cf335f02240a1c8d1c64071446d9f51fdb83761039f30d4d03",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-west",
+      "slot": 40,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-west\\040.png",
+      "pixelHash": "c7b999fd31084ef0cd06a5907b018578500e5ef4905e26615c2d7ca39637338a",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-north",
+      "slot": 0,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-north\\026.png",
+      "pixelHash": "50505c6e72725947c60edf57a16d3ac550e69dd40dc52dbc64a7809ebc6ce65c",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-north",
+      "slot": 13,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-north\\013.png",
+      "pixelHash": "9d834e5a17fc0cf2aed81f2b588b503defcdce802bc94eb4820ccf4ef9c46099",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "weld-north",
+      "slot": 26,
+      "source": "character\\james-torch-material-residue-v2\\frames\\helmet\\weld-north\\026.png",
+      "pixelHash": "50505c6e72725947c60edf57a16d3ac550e69dd40dc52dbc64a7809ebc6ce65c",
+      "scale": 1.0,
+      "offset": [
+        36,
+        52
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-east",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\carry-east\\000.png",
+      "pixelHash": "056a4f2b90d849635347d7f7d1aba677a01d4d48896916f0c46a2fcfd193e31a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-east",
+      "slot": 3,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\carry-east\\003.png",
+      "pixelHash": "20d90a815878de695e5d2f4a9c393a3820e689d91e9fe166cf9ee5ed65c705eb",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-east",
+      "slot": 5,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\carry-east\\005.png",
+      "pixelHash": "e37135357ba0cf7d65e2f0035e4fe2978628659bd8a32bbbdb01b7db849d8281",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-south",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-south\\000.png",
+      "pixelHash": "265d391d270fe0d907fc7f7c9176313c35c320e6bf46c6b4cba05de3cc8cdb33",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-south",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-south\\003.png",
+      "pixelHash": "05cfed5df237ece25485822eb3adc1c56dd77526e0b8cdce66b6e3edd7f70349",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-south",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-south\\005.png",
+      "pixelHash": "64ff2dea9c92435bba94f26caa16d9d91abdf160df3b5bb0dd4abb6e308fd00a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-west",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-west\\000.png",
+      "pixelHash": "7e8f34c5c781c9dee58b80ab4da86475a2fa912b26661cb316efe330f1d4a13d",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-west",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-west\\003.png",
+      "pixelHash": "1e79ee3360e3d4de2e2596d54876c1c5e7f1bf1091be3860336ebcaeae7e7fac",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-west",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-west\\005.png",
+      "pixelHash": "693d3bebc46393d0bfe452f5bbd3b52766924c37e9b0f7d393f2cf53138db8b3",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-north",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-north\\000.png",
+      "pixelHash": "971af2d487271cf3a6e06c8b82151d5ddbb461d7d017350fa0938e35ab830e5a",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-north",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-north\\003.png",
+      "pixelHash": "0b0873a027ed0791a9a2e5b980cd9a71671758a635ab5eb8631e73ef88ac5227",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "carry-north",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\carry-north\\005.png",
+      "pixelHash": "00f02da8c411b41a436d34c9d15276e2ff80cac2e02fee32f125148e16ed4179",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-east",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\unload-east\\000.png",
+      "pixelHash": "213386dd61c4c5925ccdb2174d88d0ee9cfd8a855c24199a6d95d3ae228171d2",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-east",
+      "slot": 3,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\unload-east\\003.png",
+      "pixelHash": "e0ce67d901492b9e919aeb7c9918ee4cb12d78ed005ef19d71c9dd75da559cf2",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-east",
+      "slot": 5,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\unload-east\\005.png",
+      "pixelHash": "8640b55bba0a01b6f001ce968e32f34480b125dc5147a2611dec08831d95d545",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-south",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-south\\000.png",
+      "pixelHash": "265d391d270fe0d907fc7f7c9176313c35c320e6bf46c6b4cba05de3cc8cdb33",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-south",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-south\\003.png",
+      "pixelHash": "20cce903a7f0982922d94d6962dedbe65464cdc92a1b35fb6e1c8bdeffb0a267",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-south",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-south\\005.png",
+      "pixelHash": "3826305b186738c921cae48692bcb4d0f761c189fc2c2f7595d120e682bf7eab",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-west",
+      "slot": 0,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-west\\000.png",
+      "pixelHash": "7e8f34c5c781c9dee58b80ab4da86475a2fa912b26661cb316efe330f1d4a13d",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-west",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-west\\003.png",
+      "pixelHash": "782f0c77f0478b217af5cc74f0aadc9b38da8eda56c6366dd4cef61de102b7b7",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-west",
+      "slot": 6,
+      "source": "character\\james-floor-case-west-v1\\standing-body-v2\\helmet\\000.png",
+      "pixelHash": "47cdcbc1dc801e75b307b074cc0613592d2a773da13e50ef718268adb8f3e6f9",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-north",
+      "slot": 0,
+      "source": "character\\james-east-cargo-heads-v3\\frames\\helmet\\carry-turn-north-east\\000.png",
+      "pixelHash": "ba6d655e8fb73690970188f0dd338aa211a9ded530853db21524236485f4aac6",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-north",
+      "slot": 3,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-north\\003.png",
+      "pixelHash": "bdaf5ebd4d60d639813fc26583110dc5a0f0dcb4fe8b6c866501109e73c00222",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "gear": "diving-helmet",
+      "key": "unload-north",
+      "slot": 5,
+      "source": "character\\james-cargo-material-joined-v1\\frames\\helmet\\unload-north\\005.png",
+      "pixelHash": "05cb0abc78cda212b0387b1b82feb615b0c231bceec586360e241dfbdc22a571",
+      "scale": 1.0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "visualAcceptance": false
+}

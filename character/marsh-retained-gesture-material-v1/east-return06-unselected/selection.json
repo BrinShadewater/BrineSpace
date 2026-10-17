@@ -1,0 +1,51 @@
+{
+  "sources": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/verification.json",
+      "sha256": "6fe4d1283b049a7c74d517d18571c1bdf46052fd5a3a8d47d767e7dab13339f7"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east06-unselected/verification.json",
+      "sha256": "3ccefc1c6c462668cff41dcb1c823b1a1c7a03f400a26260a8db93379c20af0a"
+    }
+  ],
+  "policy": "East04 poses0..2 unchanged, East06 pose3 only. Each source strip uses its one own-neutral-derived density; no per-pose scale fit. East06 full bank not preferred: new whole-source neutral width needs review vs own32. Its return pose is reviewed as a slightly bent-arm action, not a neutral proportion authority.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "board": {
+    "path": "character/marsh-retained-gesture-material-v1/east-return06-unselected/return-comparison.png",
+    "sha256": "17ae97cba90a603ae0631abffd0e85be47d32eaff5f2efc2a694cd7d204db2d0",
+    "actuallyInspected": true
+  },
+  "slots": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-00.png",
+      "sha256": "266f47329ad33a0c78c059725df074904d5b9b35b8b4f7630a24b7879efac252"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-01.png",
+      "sha256": "fdb6c8b836ec4af8e28f4f7e273458bc72505c97cf8a24e9a730bc9cb624d11f"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east04-unselected/gesture-02.png",
+      "sha256": "3e04f474ad67f7f48f17b0af9c26a9be8275503fccae3b240baa5431c4f20a5f"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/east06-unselected/gesture-03.png",
+      "sha256": "a025d9ee6e574a25762576b230c7874aee7d8939dfb6301e1e00f0ed6b7cbe60"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    }
+  ],
+  "assessment": "Whole halfway return figure visually inspected with all6East sequence slots and own idle. Distinct lowering pose improves semantic progression, but cadence/silhouette transition still provisional; no normal admission.",
+  "apngDecodedExactFrames": 6,
+  "apngSha256": "30c9101ddbb9e163950cf15bfb2259ed9ed1fbe9b1a6e6757d52b3f49519721b",
+  "apngTotalDurationMs": 900,
+  "transitionMetricSha256": "92cbfcf5103dcb7759a9da3c3309e606da2aaea703e4294333cf5e83e719186a"
+}

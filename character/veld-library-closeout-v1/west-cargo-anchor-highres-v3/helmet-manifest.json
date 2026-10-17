@@ -1,0 +1,37 @@
+{
+  "name": "Veld high-resolution West standing cargo key helmet",
+  "status": "staged_single_key_not_gait_or_normal_admission",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "states": [
+    {
+      "id": "carry-west",
+      "frameFiles": [
+        "res://character/veld-library-closeout-v1/west-cargo-anchor-highres-v3/helmet.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": false,
+      "facings": [
+        "west"
+      ],
+      "waterKinds": [
+        "carry"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0.0
+      ]
+    }
+  ]
+}

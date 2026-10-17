@@ -1,0 +1,48 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1027,
+  "outsideExactPixels": 64509,
+  "changedPixels": 1026,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    98,
+    76,
+    155,
+    224
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      45.39,
+      65.84,
+      91.92,
+      171.04
+    ],
+    "after": [
+      49.53,
+      70.71,
+      104.73,
+      176.16
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "disposition": "rejected_highlights_brightened",
+  "nativeIncluded": false,
+  "findings": [
+    "Initial toe-metal master sample carried strong reflections; source became brighter despite matte-only request.",
+    "Local95th percentile171.04to176.16 corroborates visual review but is not an acceptance measure.",
+    "Superseded by V99; do not adopt V97or count it as another repaired phase."
+  ]
+}

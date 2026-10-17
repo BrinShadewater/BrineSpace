@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "title": "Upright grass-shaped kelp",
+  "generator": "built-in image_gen",
+  "processing": "Transparent margin trim and isotropic resize only",
+  "assets": [
+    {
+      "id": "emerald-reed-kelp",
+      "kind": "prop",
+      "selected_source": "runtime/emerald-reed-kelp.png",
+      "stage": "integrated; agent native visual review passed; owner acceptance separate",
+      "versions": [
+        {
+          "file": "emerald-reed-kelp-v1.png",
+          "sha256": "251dab6000a310b40d44048e0c6c78468acaa792c5bcb28bbfa2a05b2b056a91",
+          "native_size": [
+            809,
+            1942
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/emerald-reed-kelp.png",
+          "sha256": "36d7d67df9128095e450c17d7b40f63dad6c2a882bc1c909c0d7ab747282535a",
+          "native_size": [
+            411,
+            1024
+          ],
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "sea-white-reed-kelp",
+      "kind": "prop",
+      "selected_source": "runtime/sea-white-reed-kelp.png",
+      "stage": "integrated; agent native visual review passed; owner acceptance separate",
+      "versions": [
+        {
+          "file": "sea-white-reed-kelp-v1.png",
+          "sha256": "30ffb5514d9ac9f24b5e110f5d1374dbf9da4267b988b6633cd4b0f7ef1fd53e",
+          "native_size": [
+            809,
+            1942
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/sea-white-reed-kelp.png",
+          "sha256": "d389885868ac52e99fba7ddb4b7cbf62b206730f6f9f301733c981cd8e8597e9",
+          "native_size": [
+            403,
+            1024
+          ],
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "violet-reed-kelp",
+      "kind": "prop",
+      "selected_source": "runtime/violet-reed-kelp.png",
+      "stage": "integrated; agent native visual review passed; owner acceptance separate",
+      "versions": [
+        {
+          "file": "violet-reed-kelp-v1.png",
+          "sha256": "ace28ba417dc4f00525a90969b27a7236fa662939f860b72df42ea9a4d3ca96b",
+          "native_size": [
+            1024,
+            1536
+          ],
+          "rejection": "Broad exterior colour cloud; replaced by clean-cutout v2"
+        },
+        {
+          "file": "violet-reed-kelp-v2.png",
+          "sha256": "7f5b6a1c32bad148e76ec911d66b62641486b07e755b1c281a388df9289e2f56",
+          "native_size": [
+            809,
+            1944
+          ],
+          "rejection": null
+        },
+        {
+          "file": "runtime/violet-reed-kelp.png",
+          "sha256": "31c385908f1907c0daf96c890991e014f2578ebdb0c59067b3d8acef680ccdd5",
+          "native_size": [
+            352,
+            1024
+          ],
+          "rejection": null
+        }
+      ]
+    }
+  ]
+}

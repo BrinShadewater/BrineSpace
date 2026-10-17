@@ -1,0 +1,153 @@
+{
+  "name": "Veld South shared material study start helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry-south": 0.0827027027027027
+  },
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_material_study_not_installed",
+  "states": [
+    {
+      "id": "carry-start-south",
+      "frameFiles": [
+        "res://character/veld-south-material-study-v1/frames/helmet/013.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/014.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/015.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/016.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-stop-south",
+      "frameFiles": [
+        "res://character/veld-south-material-study-v1/frames/helmet/016.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/015.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/014.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/013.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-south",
+      "frameFiles": [
+        "res://character/veld-south-material-study-v1/frames/helmet/007.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/008.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/009.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/010.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/011.png",
+        "res://character/veld-south-material-study-v1/frames/helmet/012.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    }
+  ]
+}

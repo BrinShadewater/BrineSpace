@@ -1,0 +1,141 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; provisional packaging/review",
+  "promptSha256": "a97b0519d63c2965807f4571c06d91ceab1515b26cfb6d1d30eccc2b9fba54ce",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-south-01-body-primary.png",
+      "sha256": "a5640a7bc4d75b787a2a76e2e51473860c283aea78adcdb8f61a14f39071a58d"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-south-01-endpoints.png",
+      "sha256": "9b92e7080d1b1ec26e0fec960257ae410e7c715fffeb5fb45aebc2c030dbb578"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-south-01-old-motion-only.png",
+      "sha256": "e9ad63f19a102bc6f5e9d8721284b72dac406876a2beeb4f1fd50409c3aec39d"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/000.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    },
+    {
+      "path": "character/marsh-v2/supplemental/loaded-swim-south/swim-pickup-south-000.png",
+      "sha256": "c23dbbed98a3ab03abe004a75a32ee17756ab6e0258d28ab56e4d17cce1b5fd8"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-south/001.png",
+      "sha256": "4ac829bd67692e0a258ea2ccc109dcea758a4348084da0ffe87120ce9346b014"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-south/002.png",
+      "sha256": "eb18328285e543e3f008da66f90dc01a2d3961a336e26cc085cbff803f9f722e"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-south/003.png",
+      "sha256": "03cf549d407315c96e035e15f6d897d28b5138ed32483dc2047753aa80a6e560"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-south/004.png",
+      "sha256": "bd7d131e2bf18164273bc7276ec3b885daffaad842dafb288107e60994eb39a7"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-south/005.png",
+      "sha256": "d43b6193b62efddeb6660be81625c1fdb1f280885ed52a7eb69d5df85e8ca109"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/south-loop-01-unselected/000.png",
+      "sha256": "b717c5faa4bc5403ad533b4b2978794030e070cec11264c94b6d334d4116adfa"
+    }
+  ],
+  "selectedTransitionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTransitionState": {
+    "id": "swim-pickup-south",
+    "frameFiles": [
+      "../../character/marsh-v2/supplemental/loaded-swim-south/swim-pickup-south-000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-south/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-south/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-south/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-south/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-south/005.png"
+    ],
+    "frameDurationsMs": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "loop": false,
+    "facings": [
+      "south",
+      "south",
+      "south",
+      "south",
+      "south",
+      "south"
+    ],
+    "waterKinds": [
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "selectedIdleMaster": {
+    "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+    "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+  },
+  "neutralOccupiedTargetHeight": 147,
+  "intermediateFigures": 4,
+  "rules": "Whole independent own direction; one neutral ruler, exact endpoints/normal timing; no patches/mirror/per-pose fitting. Physical contact/root/proportions/camera/grade remain review requirements.",
+  "generationId": "exec-13143c46-7dd9-4616-91f5-f23d7d2478b3",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-13143c46-7dd9-4616-91f5-f23d7d2478b3.png",
+  "rawSha256": "5077e739be1efeb8d9c0f9e323fbdee0fbfcc25f87ed128907633b3a20c31045",
+  "supersededPrivateStudy": true,
+  "supersededBy": "pickup-south-02",
+  "reason": "Whole02 fixes launch yaw and improves late endpoint volume;01 retained with scoped prior evidence."
+}

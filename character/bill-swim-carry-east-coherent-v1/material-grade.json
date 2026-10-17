@@ -1,0 +1,72 @@
+{
+  "quantiles": [
+    0,
+    0.05,
+    0.15,
+    0.35,
+    0.5,
+    0.7,
+    0.85,
+    0.95,
+    0.98,
+    1
+  ],
+  "input": [
+    0.0,
+    1.6666666666666667,
+    14.333333333333334,
+    57.666666666666664,
+    78.66666666666667,
+    101.33333333333333,
+    119.0,
+    154.0,
+    239.33333333333334,
+    255.0
+  ],
+  "output": [
+    2.3333333333333335,
+    11.666666666666666,
+    20.666666666666668,
+    35.333333333333336,
+    44.333333333333336,
+    55.333333333333336,
+    67.11666666666663,
+    117.0,
+    141.66666666666666,
+    193.66666666666666
+  ],
+  "scope": "single atlas-wide neutral curve; warm face/hair and burgundy/cyan excluded",
+  "authority": "crew-runtime-matte-v1\\bill\\frames\\idle-east-breathing-v1\\000.png",
+  "burgundyGain": [
+    0.5348837209302325,
+    0.7457627118644068,
+    0.7719298245614035
+  ],
+  "burgundyTargetMedian": [
+    92.0,
+    44.0,
+    44.0
+  ],
+  "burgundySourceMedian": [
+    172.0,
+    59.0,
+    57.0
+  ],
+  "hairGain": [
+    0.9345794392523364,
+    1.0357142857142858,
+    1.2413793103448276
+  ],
+  "hairSourceMedian": [
+    107.0,
+    56.0,
+    29.0
+  ],
+  "hairTargetMedian": [
+    100.0,
+    58.0,
+    36.0
+  ],
+  "hairAuthority": "bill-swim-east-coherent-v1/frames/swim-east/000.png through005.png",
+  "hairScope": "one bounded crown gain for entire atlas;face excluded"
+}

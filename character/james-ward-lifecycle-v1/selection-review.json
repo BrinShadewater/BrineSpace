@@ -1,0 +1,119 @@
+{
+  "status": "installed_ward_lifecycle_native_reviewed_owner_review_pending",
+  "runtimeChanged": true,
+  "sourcesChanged": false,
+  "newDrawings": 0,
+  "newSourceStates": 0,
+  "fullSetComplete": false,
+  "productionFiles": [
+    "scripts/branforth_npc.gd",
+    "scripts/ward_repair.gd",
+    "scripts/james_hull_resume.gd",
+    "scripts/james_hull_return.gd",
+    "scripts/station_effects.gd",
+    "scripts/grid_canvas.gd"
+  ],
+  "native": {
+    "checkpoints": [
+      {
+        "duration": 18.0,
+        "phase": "torch-draw",
+        "progress": 0.216666666666667,
+        "sourceExact": true
+      },
+      {
+        "duration": 18.0,
+        "phase": "weld",
+        "progress": 3.01666666666666,
+        "sourceExact": true
+      },
+      {
+        "duration": 18.0,
+        "phase": "torch-stow",
+        "progress": 17.8000000000003,
+        "sourceExact": true
+      }
+    ],
+    "checks": 6568,
+    "failures": 0,
+    "scope": "One ordinary paid North cryo-ward job, genuine James release, dedicated free-placed storage-bay access rooms, normal navigation/game work/economy/reward. Whole-source draw/held/stow, three paused real disk fresh Continues, full eighteen-second completion. Not other facings, pause-work return/resume, power/door blockage, gear or all hazard proof.",
+    "sourceSlots": 45,
+    "workSteps": 1079
+  },
+  "pause": {
+    "checkpoints": [
+      {
+        "duration": 0.0,
+        "phase": "ward-return",
+        "progress": 3.01666666666666,
+        "sourceExact": true
+      },
+      {
+        "duration": 0.0,
+        "phase": "ward-resume",
+        "progress": 3.01666666666666,
+        "sourceExact": true
+      }
+    ],
+    "checks": 271,
+    "failures": 0,
+    "paidProgress": 3.01666666666666,
+    "scope": "Actual paid North held ward paused/resumed through normal UI toggle; exact current source return/neutral/paid re-entry, two paused real disk fresh Continues, fixed foot/paid progress/cost, wrong-family rejection and immediate death. No other-facing/critical flood/power/door interruption claim."
+  },
+  "hullCompatibility": {
+    "checks": 720,
+    "failures": 0,
+    "samples": 180,
+    "scope": "Prescribed source-clock/recipe/snapshot comparisons in native main scene: four bare facings x five duration budgets x nine entry/held/stow seam samples. No other-facing physical job/Continue/visual acceptance proof."
+  },
+  "billCompatibility": "Original tests/test_ward_repair.gd passes unchanged through isolated wrapper. No James hook required by Bill.",
+  "freshDiskContinues": 5,
+  "review": "review-evidence.json",
+  "runtimeInputsBefore": "runtime-input-before.json",
+  "runtimeInputsAfter": "runtime-input-after.json",
+  "guards": {
+    "validate": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-mu12kj6d",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES WARD LIFECYCLE: 6568 checks, 0 failures, 52 captures"
+      ]
+    },
+    "pause": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-9yreqccg",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES WARD PAUSE: 271 checks, 0 failures, 27 captures"
+      ]
+    },
+    "hull_regression": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-jdkgtffk",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES HULL REASSIGN ADMISSION: 720 checks, 0 failures, 180 samples"
+      ]
+    },
+    "bill_compat": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-2wrp5v6w",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": []
+    }
+  },
+  "archive": "before-release-guard-and-camera-fix",
+  "scope": "North dry bare James, normal paid18-second/8Metal cryo ward completion through genuine navigation and work in dedicated free-placed access fixture; normal toggle pause/resume and fresh scene disk restoration. No other gear/facing/companion ward/power/door/critical flood/incoming-worker or naturally selected owner-layout acceptance. Source-only paid-clock preview, not continuous gameplay footage.",
+  "wardCardinalReview": "character/james-ward-cardinal-v1/selection-review.json",
+  "wardToolClearanceReview": "character/james-ward-clearance-v1/selection-review.json",
+  "wardHelmetLifecycleReview": "character/james-ward-helmet-v1/selection-review.json"
+}

@@ -1,0 +1,115 @@
+{
+  "name": "Veld original East gait KEY SOURCE review helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_source_keys_only",
+  "states": [
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/000.png",
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/001.png",
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/002.png",
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/003.png",
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/004.png",
+        "res://character/veld-carry-east-original-master-v1/key-frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "carry-held-east",
+      "frameFiles": [
+        "res://character/veld-east-held-original-master-v1/frames/helmet/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "carry"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0.0
+      ],
+      "frameCount": 1
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "res://character/veld-cargo-east-original-master-v3/frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "idle"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0.0
+      ],
+      "frameCount": 1
+    }
+  ]
+}

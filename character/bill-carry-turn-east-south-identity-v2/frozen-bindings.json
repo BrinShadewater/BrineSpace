@@ -1,0 +1,55 @@
+{
+  "inventory": "character/bill-selected-source-audit-2026-10-01-locomotion-v13/source-inventory.json",
+  "turn": {
+    "bare": {
+      "manifest": "character/bill-carry-turn-identity-matrix-v2/bare-manifest.json",
+      "sourceFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-east-south-v1/frames/carry-turn-east-south/001.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-east-south-v1/frames/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-east-south-v1/frames/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-east-south-v1/frames/carry-turn-east-south/004.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+      ],
+      "frames": 6,
+      "standingHeight": 148,
+      "pivot": [
+        128,
+        224
+      ],
+      "loop": false,
+      "manifestStatus": "selected_runtime",
+      "fromOriginalCatalog": false
+    },
+    "helmet": {
+      "manifest": "character/bill-carry-turn-identity-matrix-v2/helmet-manifest.json",
+      "sourceFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-helmet-east-south-v1/frames/carry-turn-east-south/001.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-helmet-east-south-v1/frames/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-helmet-east-south-v1/frames/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-matrix-v1/../bill-carry-turn-helmet-east-south-v1/frames/carry-turn-east-south/004.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png"
+      ],
+      "frames": 6,
+      "standingHeight": 148,
+      "pivot": [
+        128,
+        224
+      ],
+      "loop": false,
+      "manifestStatus": "selected_runtime",
+      "fromOriginalCatalog": false
+    }
+  },
+  "endpoints": {
+    "bare": {
+      "east": "res://character/bill-cargo-east-master-head-v1/frames/bare/pickup-east/010.png",
+      "south": "res://character/bill-cargo-south-master-head-v1/frames/bare/pickup-south/011.png"
+    },
+    "helmet": {
+      "east": "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+      "south": "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png"
+    }
+  }
+}

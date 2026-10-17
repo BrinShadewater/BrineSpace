@@ -1,0 +1,1414 @@
+{
+  "name": "Krusher Dom helmet seated and reading",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "sit-down-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/ab5e3d8e876ce25510afa424a9f616302ab717d955d2e740429d37cd05f7442b.png",
+        "res://character/krusher-coherent-bank-v1/frames/c870a375a9e95dba3ca63660e22a5a775409a7609d50f336081847eb06015a19.png",
+        "res://character/krusher-coherent-bank-v1/frames/f9f6da7028358dbcb6491736b5ff1d3bda7a13384f58b9fc2192f3a5802fae3f.png",
+        "res://character/krusher-coherent-bank-v1/frames/bd2de74411a60d9a7b96bc7762b857196bd1fe9219fbec239b536ac8ebf22ff9.png",
+        "res://character/krusher-coherent-bank-v1/frames/94f40c959a4b4da85bbdf511772329fdb4c34f4ebf2aa3b8b9b800e4a0cc9d5e.png",
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png",
+        "res://character/krusher-coherent-bank-v1/frames/5d23ef0f9f495fe9f08e95044bdd01b741211e7b61bf15125b9b103f5904a107.png",
+        "res://character/krusher-coherent-bank-v1/frames/b9a674c6b0c118c7a890b83d612c5b983614347cb434b472cda4641b2cdd376f.png",
+        "res://character/krusher-coherent-bank-v1/frames/bfe4cb443487b05e97d85d7eca6151e7a1ea51740171b489867e913c721776f4.png",
+        "res://character/krusher-coherent-bank-v1/frames/95c8e5c5154d0a0b0beee2adc3c5ffe206e721040038daec82704688ec4ad78e.png",
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png",
+        "res://character/krusher-coherent-bank-v1/frames/94f40c959a4b4da85bbdf511772329fdb4c34f4ebf2aa3b8b9b800e4a0cc9d5e.png",
+        "res://character/krusher-coherent-bank-v1/frames/bd2de74411a60d9a7b96bc7762b857196bd1fe9219fbec239b536ac8ebf22ff9.png",
+        "res://character/krusher-coherent-bank-v1/frames/f9f6da7028358dbcb6491736b5ff1d3bda7a13384f58b9fc2192f3a5802fae3f.png",
+        "res://character/krusher-coherent-bank-v1/frames/c870a375a9e95dba3ca63660e22a5a775409a7609d50f336081847eb06015a19.png",
+        "res://character/krusher-coherent-bank-v1/frames/ab5e3d8e876ce25510afa424a9f616302ab717d955d2e740429d37cd05f7442b.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png",
+        "res://character/krusher-coherent-bank-v1/frames/665092e8c7bb3d2ef44ca7388db00e71291bb568971132896153af4f11697be7.png",
+        "res://character/krusher-coherent-bank-v1/frames/665092e8c7bb3d2ef44ca7388db00e71291bb568971132896153af4f11697be7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8c4ef7ab22dea9d9cdb2ae90140734d2b9298284b2e5f44ec711c61d8ea08b7a.png",
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8c4ef7ab22dea9d9cdb2ae90140734d2b9298284b2e5f44ec711c61d8ea08b7a.png",
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8c4ef7ab22dea9d9cdb2ae90140734d2b9298284b2e5f44ec711c61d8ea08b7a.png",
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8c4ef7ab22dea9d9cdb2ae90140734d2b9298284b2e5f44ec711c61d8ea08b7a.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/88fe7e685e333cafa2d1011ec0a340c73cd012ff4be086e4742f95b0d4bc0ba7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8c4ef7ab22dea9d9cdb2ae90140734d2b9298284b2e5f44ec711c61d8ea08b7a.png",
+        "res://character/krusher-coherent-bank-v1/frames/665092e8c7bb3d2ef44ca7388db00e71291bb568971132896153af4f11697be7.png",
+        "res://character/krusher-coherent-bank-v1/frames/665092e8c7bb3d2ef44ca7388db00e71291bb568971132896153af4f11697be7.png",
+        "res://character/krusher-coherent-bank-v1/frames/8b81e1de514e2e5aa638bc6a58fb450869024d7f61dbd214b101d9b435a6172b.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/530d674e8dd8c6c73f751ade1f8495a624d636cf66b9026afb5537e9c2a86734.png",
+        "res://character/krusher-coherent-bank-v1/frames/286d2e5f3f1fa2345178d4d0aec997e9519bb1d69efb301965149d408d8b1af2.png",
+        "res://character/krusher-coherent-bank-v1/frames/6306ba71721c1e178ef49f1f1de7b53eea6b599ab4a5d09cff318eee06d7de0c.png",
+        "res://character/krusher-coherent-bank-v1/frames/fd821ba282cec36f92843eb7ed4700b11d4bd8a59674f2c4a5dc7f4235a45e97.png",
+        "res://character/krusher-coherent-bank-v1/frames/6696c889de31a1f6ea3ee276b864717bfc8da6b3e97c841e15c07418710c2e20.png",
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png",
+        "res://character/krusher-coherent-bank-v1/frames/9d24ce40249d05b93a74009096094f6a30640c40dc584edafca0f878ab8624ae.png",
+        "res://character/krusher-coherent-bank-v1/frames/2ee1da4fb8d2a581dfcbf6498f58788c1a2a2701bb7f7592d1f17d8797951f66.png",
+        "res://character/krusher-coherent-bank-v1/frames/10b0ba56c4813bf44425541224dfb51eed68c67a26cd61e4f6f4606a8f8606ec.png",
+        "res://character/krusher-coherent-bank-v1/frames/69eb9ace7496a9124d218ed5fa1d29916474c6fbeb899730c0f1eab51e7ec67c.png",
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png",
+        "res://character/krusher-coherent-bank-v1/frames/6696c889de31a1f6ea3ee276b864717bfc8da6b3e97c841e15c07418710c2e20.png",
+        "res://character/krusher-coherent-bank-v1/frames/fd821ba282cec36f92843eb7ed4700b11d4bd8a59674f2c4a5dc7f4235a45e97.png",
+        "res://character/krusher-coherent-bank-v1/frames/6306ba71721c1e178ef49f1f1de7b53eea6b599ab4a5d09cff318eee06d7de0c.png",
+        "res://character/krusher-coherent-bank-v1/frames/286d2e5f3f1fa2345178d4d0aec997e9519bb1d69efb301965149d408d8b1af2.png",
+        "res://character/krusher-coherent-bank-v1/frames/530d674e8dd8c6c73f751ade1f8495a624d636cf66b9026afb5537e9c2a86734.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7a41d806d26a64146cfbadbb7d5e3e535e72008d21af00d1221477acac72e00.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7a41d806d26a64146cfbadbb7d5e3e535e72008d21af00d1221477acac72e00.png",
+        "res://character/krusher-coherent-bank-v1/frames/add6eac2e67046ccdfc455284d4352c07c0ed18668b1cde2c876b2b33b12b510.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/add6eac2e67046ccdfc455284d4352c07c0ed18668b1cde2c876b2b33b12b510.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/add6eac2e67046ccdfc455284d4352c07c0ed18668b1cde2c876b2b33b12b510.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/add6eac2e67046ccdfc455284d4352c07c0ed18668b1cde2c876b2b33b12b510.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/dd07cad016e2c3c750ce9ed0315fec9c9e525647093b0e3a267a055d8f49fd34.png",
+        "res://character/krusher-coherent-bank-v1/frames/add6eac2e67046ccdfc455284d4352c07c0ed18668b1cde2c876b2b33b12b510.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7a41d806d26a64146cfbadbb7d5e3e535e72008d21af00d1221477acac72e00.png",
+        "res://character/krusher-coherent-bank-v1/frames/a7a41d806d26a64146cfbadbb7d5e3e535e72008d21af00d1221477acac72e00.png",
+        "res://character/krusher-coherent-bank-v1/frames/68096daa498494cc1c740d2d1f8751eae6effdcfa9a8fb59228c810b83cd7593.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/fddafd3f24e1267189b52548fca877df33e2cfc151ab41199e7069b6a096e70b.png",
+        "res://character/krusher-coherent-bank-v1/frames/8b2f0a6bc6d301e566ef1171b3f0386596de6f51f66c6ea45de67ca868f9323a.png",
+        "res://character/krusher-coherent-bank-v1/frames/819ea0144c340711ded6d053e112681ad9241c06eb121eb9cb1822030f207c73.png",
+        "res://character/krusher-coherent-bank-v1/frames/a9cfdab2e07ba065ab80f8be46e697c23e33c1640bcbe36efeee7c517dcaeefc.png",
+        "res://character/krusher-coherent-bank-v1/frames/5efca99b2c30201195009d8aba827babd537dbe6ffa11ce78d0be9860dde1674.png",
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png",
+        "res://character/krusher-coherent-bank-v1/frames/80358852719bcd3621df6cb60b7aa5c46d9a4566076f056cbed40f5130ee05cb.png",
+        "res://character/krusher-coherent-bank-v1/frames/dbabd40bff1c00a80f3412803341a8ce5cd35eb69b7acc599bc7c6727f78803a.png",
+        "res://character/krusher-coherent-bank-v1/frames/edeac3712c293abc9252f81068646cfd6553d01620d6ebd011e19f3afda60a9b.png",
+        "res://character/krusher-coherent-bank-v1/frames/d5bfc6249c7ac9a0480beeb9039bd4a8d1adb62ea367b6437220e946a1152f4f.png",
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png",
+        "res://character/krusher-coherent-bank-v1/frames/5efca99b2c30201195009d8aba827babd537dbe6ffa11ce78d0be9860dde1674.png",
+        "res://character/krusher-coherent-bank-v1/frames/a9cfdab2e07ba065ab80f8be46e697c23e33c1640bcbe36efeee7c517dcaeefc.png",
+        "res://character/krusher-coherent-bank-v1/frames/819ea0144c340711ded6d053e112681ad9241c06eb121eb9cb1822030f207c73.png",
+        "res://character/krusher-coherent-bank-v1/frames/8b2f0a6bc6d301e566ef1171b3f0386596de6f51f66c6ea45de67ca868f9323a.png",
+        "res://character/krusher-coherent-bank-v1/frames/fddafd3f24e1267189b52548fca877df33e2cfc151ab41199e7069b6a096e70b.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png",
+        "res://character/krusher-coherent-bank-v1/frames/8f571a069d5dfc3e456d94bf15efb65417c2190ab50bf2f864a119473ffee238.png",
+        "res://character/krusher-coherent-bank-v1/frames/8f571a069d5dfc3e456d94bf15efb65417c2190ab50bf2f864a119473ffee238.png",
+        "res://character/krusher-coherent-bank-v1/frames/27b1c692db1c8a1092ac3a6701e4dea33cf909d292e9f3d2500d1db819107543.png",
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/27b1c692db1c8a1092ac3a6701e4dea33cf909d292e9f3d2500d1db819107543.png",
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/27b1c692db1c8a1092ac3a6701e4dea33cf909d292e9f3d2500d1db819107543.png",
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/27b1c692db1c8a1092ac3a6701e4dea33cf909d292e9f3d2500d1db819107543.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/31c63d3e8c5164f324d13d0930f31315a6ea3c6e5a88991e61a5d008cfa447ee.png",
+        "res://character/krusher-coherent-bank-v1/frames/27b1c692db1c8a1092ac3a6701e4dea33cf909d292e9f3d2500d1db819107543.png",
+        "res://character/krusher-coherent-bank-v1/frames/8f571a069d5dfc3e456d94bf15efb65417c2190ab50bf2f864a119473ffee238.png",
+        "res://character/krusher-coherent-bank-v1/frames/8f571a069d5dfc3e456d94bf15efb65417c2190ab50bf2f864a119473ffee238.png",
+        "res://character/krusher-coherent-bank-v1/frames/a44db9161362a889dd4f168a44fb97ce3f00be4018e85f7804548a4725388626.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/c158fb06a1625e02621123bcb902692958216ab6bc39777c37a6dcf66ab39b74.png",
+        "res://character/krusher-coherent-bank-v1/frames/d9df00ca6b3587604ca79d2b5f464d1ab6982c8950d95b92e8d5c923698acf89.png",
+        "res://character/krusher-coherent-bank-v1/frames/b506fdf25d0077f99b04c9790638a88e3bf2dc875e15550bdec4a9297ec5e08d.png",
+        "res://character/krusher-coherent-bank-v1/frames/a54142c984b6e901276ac25d3e2f8da7178936c939d5109e94eee0adc8be34a3.png",
+        "res://character/krusher-coherent-bank-v1/frames/6aae9b135fe7cc6097e7a82ffd986e94a21ad9353fbd7d32ad9a4c2dac37c644.png",
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png",
+        "res://character/krusher-coherent-bank-v1/frames/c66ac50d06179fb7b53cdd6afd02247e069072e3a8f3e5bcbf28096eac6082da.png",
+        "res://character/krusher-coherent-bank-v1/frames/b10d240e937cb5e95edd73fbfb86cd3351c8524ddf5d324b58bb55437908e72e.png",
+        "res://character/krusher-coherent-bank-v1/frames/bfe85ed93f182ed9b3e2568dc116f37f72cb8447561925e4e44313808762d592.png",
+        "res://character/krusher-coherent-bank-v1/frames/66fe04ff014aab9ca077249255a9919fcc427e8b7b0d5734b4dff4df8835609e.png",
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png",
+        "res://character/krusher-coherent-bank-v1/frames/6aae9b135fe7cc6097e7a82ffd986e94a21ad9353fbd7d32ad9a4c2dac37c644.png",
+        "res://character/krusher-coherent-bank-v1/frames/a54142c984b6e901276ac25d3e2f8da7178936c939d5109e94eee0adc8be34a3.png",
+        "res://character/krusher-coherent-bank-v1/frames/b506fdf25d0077f99b04c9790638a88e3bf2dc875e15550bdec4a9297ec5e08d.png",
+        "res://character/krusher-coherent-bank-v1/frames/d9df00ca6b3587604ca79d2b5f464d1ab6982c8950d95b92e8d5c923698acf89.png",
+        "res://character/krusher-coherent-bank-v1/frames/c158fb06a1625e02621123bcb902692958216ab6bc39777c37a6dcf66ab39b74.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png",
+        "res://character/krusher-coherent-bank-v1/frames/cb442c3be7230f0be995a9e3f74368f336318328ea75bb70af44897336509c62.png",
+        "res://character/krusher-coherent-bank-v1/frames/cb442c3be7230f0be995a9e3f74368f336318328ea75bb70af44897336509c62.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a3484ddf1839cf6b8eea8c7cb787b03641b75ba2c1970e488bdf01453520a39.png",
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a3484ddf1839cf6b8eea8c7cb787b03641b75ba2c1970e488bdf01453520a39.png",
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a3484ddf1839cf6b8eea8c7cb787b03641b75ba2c1970e488bdf01453520a39.png",
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a3484ddf1839cf6b8eea8c7cb787b03641b75ba2c1970e488bdf01453520a39.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/28af57f9764d022ee538d73a9f86f3e30bacc08179f9f66bd5842f909595474a.png",
+        "res://character/krusher-coherent-bank-v1/frames/1a3484ddf1839cf6b8eea8c7cb787b03641b75ba2c1970e488bdf01453520a39.png",
+        "res://character/krusher-coherent-bank-v1/frames/cb442c3be7230f0be995a9e3f74368f336318328ea75bb70af44897336509c62.png",
+        "res://character/krusher-coherent-bank-v1/frames/cb442c3be7230f0be995a9e3f74368f336318328ea75bb70af44897336509c62.png",
+        "res://character/krusher-coherent-bank-v1/frames/2cf3d106329a42b0052d7f47f3152e686c62e57ab3c2ea47240f795390f15f92.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    }
+  ]
+}

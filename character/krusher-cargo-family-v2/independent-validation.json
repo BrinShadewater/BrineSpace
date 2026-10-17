@@ -1,0 +1,457 @@
+{
+  "checks": 1245,
+  "errors": [],
+  "slots": 342,
+  "joins": [
+    {
+      "gear": "bare",
+      "from": "pickup-south",
+      "to": "carry-south",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "unload-south",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "unload-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-north",
+      "to": "carry-north",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "unload-north",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "pickup-west",
+      "to": "carry-west",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "unload-west",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-east",
+      "to": "carry-turn-east-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-east-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-north",
+      "to": "carry-turn-north-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-north-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-south",
+      "to": "carry-turn-south-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-south-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-west",
+      "to": "carry-turn-west-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "bare",
+      "from": "carry-turn-west-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-south",
+      "to": "carry-south",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "unload-south",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "unload-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-north",
+      "to": "carry-north",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "unload-north",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "pickup-west",
+      "to": "carry-west",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "unload-west",
+      "oldEqual": true,
+      "newEqual": true
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-east",
+      "to": "carry-turn-east-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-east-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-north",
+      "to": "carry-turn-north-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-north-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-south",
+      "to": "carry-turn-south-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-south-west",
+      "to": "carry-west",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-east",
+      "to": "carry-east",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-north",
+      "to": "carry-north",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-west",
+      "to": "carry-turn-west-south",
+      "oldEqual": false,
+      "newEqual": false
+    },
+    {
+      "gear": "helmet",
+      "from": "carry-turn-west-south",
+      "to": "carry-south",
+      "oldEqual": false,
+      "newEqual": false
+    }
+  ],
+  "exactSharedJoins": 12,
+  "scope": "Exact previous manifests/stride/timing/state flags, all PNGs/hash stability, head mask and cargo/lower body protection, helmet alpha,64join comparisons, original nearest West settle profile retargeted to revised whole paths. No release cue/save or world lifecycle acceptance."
+}

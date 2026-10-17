@@ -1,0 +1,50 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "cropNormalization": "Full square normalized once to96crop at original coordinates; no fit/warp/regrade.",
+  "admittedPixelCount": 1034,
+  "outsideExactPixels": 64502,
+  "changedPixels": 1030,
+  "alphaExact": true,
+  "outerOnePixelRingExact": true,
+  "allRowsAbove181Exact": true,
+  "pairedBodyBelow110Exact": true,
+  "alpha128Bounds": [
+    97,
+    76,
+    160,
+    224
+  ],
+  "localLumaQuartilesAnd95": {
+    "before": [
+      45.32,
+      66.48,
+      95.46,
+      172.15
+    ],
+    "after": [
+      45.53,
+      67.6,
+      99.82,
+      168.2
+    ]
+  },
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "protectedRectangles": [],
+  "protectedRectanglesExact": true,
+  "disposition": "retain_provisional_lower_finish_remake",
+  "reviewedSourceBoards": [
+    "lower-detail-review.png",
+    "paired-lower-review.png"
+  ],
+  "findings": [
+    "V212 remake uses original phase34 target and original-master material crop, omitting the different-pose provisional finish image from generation. Raw/protected and paired source boards reviewed before native launch: diagonal toe/heel/sole alignment substantially closer to source than rejectedV210; retained provisionally.",
+    "Local95th172.15to168.20, median66.48to67.60. Highlight reduction modest; median slightly brighter. Not final matte grade or full moving continuity acceptance.",
+    "Source window and all five paired native captures/four sizes reviewed. Original35/36 brighter toe highlights; master anatomy, contact, full49 motion/grade/seam and normal lifecycle remain open."
+  ],
+  "nativeIncluded": true
+}

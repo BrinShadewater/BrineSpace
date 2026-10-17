@@ -1,0 +1,80 @@
+{
+  "id": "49343055-3798-4ceb-8613-c44a51788457",
+  "folder": "prelift-source-v1",
+  "raw": "prelift-source-v1/raw-prelift-v1.png",
+  "prompt": "prelift-source-v1/prompt.txt",
+  "references": [
+    "../veld-east-held-original-master-v1/raw-held-v1.png",
+    "single-transition-source-v1/raw-transition-v1.png"
+  ],
+  "status": "Completed; rejected requested motion state",
+  "verdict": "Rejected requested prelift: far boot already clearly airborne; insufficiently distinct from retained lifted-foot key.",
+  "sourceAudit": {
+    "sourceSHA256": "525a4cab5649d498e2c8a748fb24e9e03e9c19834ee251d4cfad8c5faf957016",
+    "sourceSize": [
+      725,
+      2169
+    ],
+    "scale": 0.07607192254495158,
+    "offset": [
+      105,
+      72
+    ],
+    "rows": [
+      {
+        "height": 148,
+        "headWidth": 26,
+        "headTop": 76,
+        "upperBodyWidth": 42,
+        "floor": 223,
+        "clothRGBMedian": [
+          66.0,
+          64.0,
+          63.0
+        ],
+        "clipped": false
+      },
+      {
+        "height": 148,
+        "headWidth": 26,
+        "headTop": 76,
+        "upperBodyWidth": 44,
+        "floor": 223,
+        "clothRGBMedian": [
+          68.0,
+          66.0,
+          66.0
+        ],
+        "clipped": false
+      },
+      {
+        "height": 148,
+        "headWidth": 27,
+        "headTop": 76,
+        "upperBodyWidth": 37,
+        "floor": 223,
+        "clothRGBMedian": [
+          62.0,
+          62.0,
+          61.0
+        ],
+        "clipped": false
+      }
+    ],
+    "scope": "Independent whole figure, unchanged pose upper body guided only by original held source, one entire-source148 density ruler/shared foot floor and whole head-axis translation. No head/limb/body RGB patch or per-region resize. Head/material/proportion/contact/native fidelity independently pending."
+  },
+  "footExtentDiagnostic": {
+    "rightFootRegionXMin": 143,
+    "opaqueBottom": 214,
+    "wholeFigureFloor": 223,
+    "scope": "Screen-right boot opaque extent, not a calibrated physical heel landmark."
+  },
+  "visualReview": "Complete same-scale master/source comparison plus enlarged heads and legs inspected. No native packaging/adoption for rejected state.",
+  "bindings": {
+    "raw-prelift-v1.png": "525a4cab5649d498e2c8a748fb24e9e03e9c19834ee251d4cfad8c5faf957016",
+    "prompt.txt": "770879f0321ded5997ba3f8a9eabe5eff340362a065c7abf1d2ef67d9b642642",
+    "source-audit.json": "bca540d4aa56a8450b82f544e2dda222752ba3b4c053f8488fbb1f90fe7999ed",
+    "transition-candidate.png": "f3e01af5a63ee121c476e556800f66fc06b26e9619702b26e104dcdc51dd6bac",
+    "source-master-review.png": "4c85ff995fe1794750e46f93eb6ce30dd79e98ef760b9936cc629a27924db73a"
+  }
+}

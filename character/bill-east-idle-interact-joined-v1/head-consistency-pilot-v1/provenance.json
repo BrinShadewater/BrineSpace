@@ -1,0 +1,50 @@
+{
+  "status": "rejected_geometry",
+  "slot": 1,
+  "method": "built-in full-pose edit; master identity plus new idle rendering consistency, no local part replacement",
+  "references": [
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-interact-joined-v1\\head-consistency-pilot-v1\\target-001.png",
+      "sha256": "ac7e31046c46673c7db4e8946049bcd53ef364a8df255021d4b1803837449613",
+      "role": "only edit target; exact first reach pose and placement"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-interact-joined-v1\\head-consistency-pilot-v1\\original-master.png",
+      "sha256": "7aba6b687e4476bf0f83be0458c4de71fe8c28a46447c2a2fc8ff9543e016990",
+      "role": "original master identity/material authority"
+    },
+    {
+      "path": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-interact-joined-v1\\head-consistency-pilot-v1\\idle-rendering-reference.png",
+      "role": "current independently authored idle0 full raw rendering consistency; not reach pose authority",
+      "sha256": "8189a4b77f1ec3e354d24f10772091fdd83d76462b9e5cc46f703ca809316201"
+    }
+  ],
+  "originalInputs": {
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-interact-master-consistency-v1\\sources\\interact-001-target.png": "ac7e31046c46673c7db4e8946049bcd53ef364a8df255021d4b1803837449613",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-master-consistency-v1\\sources\\original-east-master-common.png": "7aba6b687e4476bf0f83be0458c4de71fe8c28a46447c2a2fc8ff9543e016990",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-master-motion-v1\\frames\\idle-east\\000.png": "c4daf91b6608a32ba3196b005d8c5532acda31177816ae6c67961fa2351d9186",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-master-consistency-v1\\sources\\raw-000.png": "377af4d83b0cd2abdfbab0d34d60756e6b29b3ca38e5c8e8779d926ebb4e25ae"
+  },
+  "returnCrop": [
+    68,
+    52,
+    252,
+    236
+  ],
+  "commonCanvas": [
+    352,
+    352
+  ],
+  "normalAdmission": false,
+  "promptFile": "prompt.txt",
+  "promptSha256": "acbf95817e578c7d9b52bd814b0ec1788dc9d9cd17b754ab6c1cda2e922397eb",
+  "generationHandle": "functions exec cell547",
+  "generationId": "exec-124cc2fd-742d-4220-b016-ac4de30901ca",
+  "originalPath": "C:\\Users\\Alex\\.codex\\generated_images\\01a0ef89-cf35-77f0-9b57-2a08e6ea987f\\exec-124cc2fd-742d-4220-b016-ac4de30901ca.png",
+  "savedPath": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\bill-east-idle-interact-joined-v1\\head-consistency-pilot-v1\\raw-001.png",
+  "rawSha256": "feadfcd12775fc6aac662c2fae5fde61385e59def41165745cfc928c2a7eb852",
+  "review": "review.json",
+  "terminal": true,
+  "visualReviewed": true,
+  "decision": "Rejected geometry; original/joined selected sources unchanged. Raw/comparison inspected; no native run or admission."
+}

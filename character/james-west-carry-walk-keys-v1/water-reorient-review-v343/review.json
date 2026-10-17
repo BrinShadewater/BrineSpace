@@ -1,0 +1,34 @@
+{
+  "checks": 19585,
+  "failures": 0,
+  "normalChanged": false,
+  "rows": 288,
+  "samples": 816,
+  "scope": "Staged changed-heading resume from all stop bridge poses; exact selected turn endpoints, finite rows, read-only prediction, fresh playback restore and completion. No native renderer, actual route, blocked-space or whole-run Continue acceptance.",
+  "version": 343,
+  "finitePoseSlots": 3096,
+  "regressions": {
+    "entry": 290,
+    "interrupt": 2289,
+    "clearance": 3697,
+    "failures": 0
+  },
+  "syntheticRendererCollisionRows": 288,
+  "authoredCombinedClockRangeMs": [
+    560.0,
+    1360.0
+  ],
+  "clockRangeSource": "Derived from V333 selected clocks and current deterministic bridge construction; technical range, not observed physical movement.",
+  "postRunCodeBindings": {
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\phase_player.gd": "29e0832b5e33480ce96556a8431e525131ab37ea08f6a91b8ae37c657c440f32",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\reorient_player.gd": "f040d5eab55c02fa77525ab54266a140667459a6533d43d3e9faf3d9c648429b",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\staged_grid.gd": "4c3dab3c91158d7b6e12755f689d8972e4617bf532b8bc35df0f336150374529",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\reorient_probe.gd": "e71c9452491aa10e74e46a029093c869c9aae63dee5c5cec0f26df4363fe0afb"
+  },
+  "prelaunchFreeze": false,
+  "ownerProfileUnchanged": true,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false,
+  "visualMotionAcceptance": false,
+  "remaining": "Full changed-heading temporal/source-motion review and responsiveness, repeated requests at completion, blocked-space fallback, actual main-scene/exterior route collision, normal selection and whole-run Continue; remaining full-family source fidelity and polish."
+}

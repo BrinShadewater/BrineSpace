@@ -1,0 +1,122 @@
+{
+  "name": "Veld original-guided North\u2013East pivot helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_not_installed",
+  "states": [
+    {
+      "id": "carry-turn-north-east",
+      "frameFiles": [
+        "res://character/veld-turn-north-east-original-master-v1/gather-frames/helmet/000.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/001.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/002.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/003.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/004.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "carry-turn-east-north",
+      "frameFiles": [
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/005.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/004.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/003.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/002.png",
+        "res://character/veld-turn-north-east-original-master-v2/frames/helmet/001.png",
+        "res://character/veld-turn-north-east-original-master-v1/gather-frames/helmet/000.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    }
+  ]
+}

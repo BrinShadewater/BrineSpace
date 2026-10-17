@@ -1,0 +1,57 @@
+[
+  {
+    "source": "sources/east-01.png",
+    "prompt": "sources/east-01.prompt.txt",
+    "provider": "built-in image_gen",
+    "references": {
+      "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d",
+      "character/marsh-swim-stroke-v1/sources/east-motion-reference.png": "bb8f3f193bfd121e07f34699a92a2dd96139ca34c0e8e61e9578bf277c300055"
+    },
+    "status": "selected_interiors",
+    "processing": "Generated complete bodies; no isolated anatomical edits. Source 0 retained only as reference; runtime slot 0 is unchanged prior art."
+  },
+  {
+    "source": "sources/west-01.png",
+    "prompt": "sources/west-01.prompt.txt",
+    "provider": "built-in image_gen",
+    "references": {
+      "character/marsh-motion-polish-v1/sources/west-standing-identity-01.png": "b966ca363b4e97d414ade9ccc392b24ad9737756d935e7ad64f9305dd2f01261",
+      "character/marsh-swim-stroke-v1/sources/west-motion-reference.png": "9ea344adc004527d103c8f3ea63381dc20c197b109ddcd2e9970c349c40404fc"
+    },
+    "status": "selected_interiors",
+    "processing": "Generated complete bodies; no isolated anatomical edits. Source 0 retained only as reference; runtime slot 0 is unchanged prior art."
+  },
+  {
+    "source": "sources/north-01.png",
+    "prompt": "sources/north-01.prompt.txt",
+    "provider": "built-in image_gen",
+    "references": {
+      "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801",
+      "character/marsh-swim-stroke-v1/sources/north-motion-reference.png": "5a27505d918eceb381542b22e4a3cac72b2a4ea3a13f58b055a1d3cecd62cc65"
+    },
+    "status": "rejected",
+    "processing": "Generated complete bodies; no isolated anatomical edits. Source 0 retained only as reference; runtime slot 0 is unchanged prior art."
+  },
+  {
+    "source": "sources/north-02.png",
+    "prompt": "sources/north-02.prompt.txt",
+    "provider": "built-in image_gen",
+    "references": {
+      "character/marsh-swim-stroke-v1/sources/north-anchor-reference.png": "ffe9945aca46fce8680948eab261720d2fcb3855d73ae65a42f904636e0a6053",
+      "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    },
+    "status": "selected_interiors",
+    "processing": "Generated complete bodies; no isolated anatomical edits. Source 0 retained only as reference; runtime slot 0 is unchanged prior art."
+  },
+  {
+    "source": "sources/south-01.png",
+    "prompt": "sources/south-01.prompt.txt",
+    "provider": "built-in image_gen",
+    "references": {
+      "character/marsh-swim-stroke-v1/sources/south-anchor-reference.png": "7d8da23ef4e574418ffa58b4ef47fb31a950043488087e85ed17c3cf38d206d7",
+      "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    },
+    "status": "selected_interiors",
+    "processing": "Generated complete bodies; no isolated anatomical edits. Source 0 retained only as reference; runtime slot 0 is unchanged prior art."
+  }
+]

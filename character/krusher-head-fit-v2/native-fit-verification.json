@@ -1,0 +1,158 @@
+{
+  "records": [
+    {
+      "gear": "bare",
+      "direction": "south",
+      "source": "character/krusher-james-canonical-v4/frames/bare/idle-south/000.png",
+      "sourceSHA256": "6297bf05da9b94fb882d90725f5dee3d44bf5c36977946e6664a7746b369d50e",
+      "output": "frames/bare-south.png",
+      "kind": "unchanged",
+      "details": {},
+      "changedPixels": 0,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "bare",
+      "direction": "east",
+      "source": "character/krusher-james-canonical-v4/frames/bare/idle-east/000.png",
+      "sourceSHA256": "4369cdd75b3c483d1fb293dd1b35571da1658e5f2bb2f564295dfac6471ab23f",
+      "output": "frames/bare-east.png",
+      "kind": "registered native head moved back2/down2 inside protected original collar",
+      "details": {
+        "headPaste": [
+          73,
+          20
+        ]
+      },
+      "changedPixels": 715,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "bare",
+      "direction": "north",
+      "source": "character/krusher-james-canonical-v4/frames/bare/idle-north/000.png",
+      "sourceSHA256": "2c915840921f63274e81fbb89235ffe61840de85ea4a61df0a0b578f54b4a4e8",
+      "output": "frames/bare-north.png",
+      "kind": "unchanged",
+      "details": {},
+      "changedPixels": 0,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "bare",
+      "direction": "west",
+      "source": "character/krusher-james-canonical-v4/frames/bare/idle-west/000.png",
+      "sourceSHA256": "02980738ce7de541bfbd7153ff56ff7e574eb304ca96bf406506bf880e964040",
+      "output": "frames/bare-west.png",
+      "kind": "registered native head moved back2/down2 inside protected original collar",
+      "details": {
+        "headPaste": [
+          86,
+          20
+        ]
+      },
+      "changedPixels": 658,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "helmet",
+      "direction": "south",
+      "source": "character/krusher-james-canonical-v4/frames/helmet/idle-south/000.png",
+      "sourceSHA256": "cb78e251d5d25444e32c5eb54b1faeb30951da609e0827bf32e8d9b701e78702",
+      "output": "frames/helmet-south.png",
+      "kind": "larger full-height visor face using existing identity source",
+      "details": {
+        "oldFaceSize": [
+          19,
+          19
+        ],
+        "newFaceSize": [
+          23,
+          22
+        ],
+        "faceBox": [
+          81,
+          27,
+          104,
+          49
+        ]
+      },
+      "changedPixels": 381,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "helmet",
+      "direction": "east",
+      "source": "character/krusher-james-canonical-v4/frames/helmet/idle-east/000.png",
+      "sourceSHA256": "1a78d30a5ed9ca0b443d16cd971a96557b74c06c7365cbae273d5e978df84e95",
+      "output": "frames/helmet-east.png",
+      "kind": "larger full-height visor face using existing identity source",
+      "details": {
+        "oldFaceSize": [
+          13,
+          17
+        ],
+        "newFaceSize": [
+          15,
+          20
+        ],
+        "faceBox": [
+          90,
+          26,
+          105,
+          46
+        ]
+      },
+      "changedPixels": 226,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "helmet",
+      "direction": "north",
+      "source": "character/krusher-james-canonical-v4/frames/helmet/idle-north/000.png",
+      "sourceSHA256": "acf38c1d34f5f838d34608925effcaa83ace194b7365a9e7aa78fafeca113736",
+      "output": "frames/helmet-north.png",
+      "kind": "unchanged",
+      "details": {},
+      "changedPixels": 0,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    },
+    {
+      "gear": "helmet",
+      "direction": "west",
+      "source": "character/krusher-james-canonical-v4/frames/helmet/idle-west/000.png",
+      "sourceSHA256": "69b680ac3cf57d156c363cac7721a99fc382512940f03c2962a37143d0f6303c",
+      "output": "frames/helmet-west.png",
+      "kind": "larger full-height visor face using existing identity source",
+      "details": {
+        "oldFaceSize": [
+          11,
+          17
+        ],
+        "newFaceSize": [
+          15,
+          20
+        ],
+        "faceBox": [
+          78,
+          26,
+          93,
+          46
+        ]
+      },
+      "changedPixels": 206,
+      "outsideMaskExact": true,
+      "bodyFromRow54Exact": true
+    }
+  ],
+  "checks": 16,
+  "failures": 0,
+  "scope": "Eight canonical reference pose candidates. Existing native head registration and visor fit corrected; original body pixels below row54 exact. Generated fit sheet guides fit direction only, generated body pixels are not used. Not animation propagation/native motion acceptance."
+}

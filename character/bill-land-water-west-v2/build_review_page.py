@@ -1,0 +1,43 @@
+from pathlib import Path
+import json
+from PIL import Image
+import numpy as np
+from scipy.ndimage import label
+P=Path(__file__).resolve().parent
+e=json.loads((P/'helmet-registration.json').read_text())
+parts=[]
+for i in range(7):
+    a=np.array(Image.open(P/f'helmet/frames/land-swim-west/{i:03}.png').convert('RGBA'))
+    lab,_=label(a[:,:,3]>160)
+    counts=np.bincount(lab.ravel())[1:]
+    substantial=sorted([int(n) for n in counts if n>20],reverse=True)
+    assert len(substantial)==1,(i,substantial)
+    parts.append({'pose':i,'substantialComponentsAlpha160':substantial})
+e['connectedSilhouetteChecks']=parts
+e['visualReview']='Full paired seven-pose body board and all fourteen head/collar crops reviewed. First mask restored old bare chin under helmet; corrected left arm cutoff33 and separate far glove region22px left of crown. Final fits use original West shell at scale1/rotation0; collar/body connection plausible in source stills. Standing helmet endpoint has darker/warmer suit than new intermediate bodies. Shoulder patch/detail and material shift remain open. Connected alpha does not prove motion/anatomical or owner acceptance.'
+e['visualAcceptance']='Improved source helmet identity/neck fit; material and continuous native motion acceptance pending.'
+(P/'helmet-registration.json').write_text(json.dumps(e,indent=2)+'\n')
+(P/'index.html').write_text('''<!doctype html>
+<html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Bill — West water entry</title>
+<style>body{margin:24px;background:#182932;color:#edf1f2;font:16px system-ui}main{max-width:1200px;margin:auto}h1{font-size:26px}.pair{display:flex;flex-wrap:wrap;gap:20px}.pose{text-align:center}canvas{background:#14242c;max-width:100%;width:480px;height:480px}button,input{accent-color:#83b5ba}button{padding:8px 15px;margin-right:8px}input{width:min(650px,95%)}img{max-width:100%}p{line-height:1.5}.muted{color:#b7c7cd}summary{cursor:pointer;margin:20px 0}</style>
+<main><h1>Bill — West water entry</h1><p>Compact crouch and push-off, paired with Bill’s established West helmet.</p>
+<p class="muted">Source preview. Helmet pairing is ready for further review; suit colour, detail, and movement in the station still need checking.</p>
+<div class="pair"><div class="pose"><h2>Bare</h2><canvas id="bare" width="640" height="640"></canvas></div><div class="pose"><h2>Helmet</h2><canvas id="helmet" width="640" height="640"></canvas></div></div>
+<p><button id="play">Pause</button><button id="prev">Previous pose</button><button id="next">Next pose</button><select id="speed"><option value="1">Normal speed</option><option value="0.25">Quarter speed</option></select></p>
+<input id="scrub" type="range" min="0" max="500" value="0"><p id="label">Loading poses…</p>
+<details><summary>Compare against the original master and earlier poses</summary><img src="master-comparison.png"><img src="paired-helmet-review.png"></details>
+<details><summary>Head, collar, and shoulder close-ups</summary><img src="helmet-neck-details.png"></details>
+</main><script>
+const times=[60,70,80,60,80,90,60],starts=[0];times.forEach(t=>starts.push(starts.at(-1)+t));
+const banks={},names=['Standing','Arm ready','Crouch','Push-off','Lift','Near-prone','Swimming'];let ready=false,playing=true,time=0,last=0;
+function frame(){let i=0;while(i<6&&time>=starts[i+1])i++;return i}
+function draw(){if(!ready)return;const i=frame();for(const gear of ['bare','helmet']){const c=document.getElementById(gear),ctx=c.getContext('2d');ctx.clearRect(0,0,640,640);ctx.imageSmoothingEnabled=false;ctx.drawImage(banks[gear][i],0,0,640,640)}document.getElementById('scrub').value=Math.round(time);document.getElementById('label').textContent=names[i]+' · pose '+(i+1)+' of 7 · '+Math.round(time)+' ms'}
+function pause(){playing=false;document.getElementById('play').textContent='Play'}
+document.getElementById('play').onclick=()=>{playing=!playing;document.getElementById('play').textContent=playing?'Pause':'Play'};
+document.getElementById('scrub').oninput=e=>{pause();time=Number(e.target.value);draw()};
+document.getElementById('prev').onclick=()=>{pause();time=starts[Math.max(0,frame()-1)];draw()};
+document.getElementById('next').onclick=()=>{pause();time=starts[Math.min(6,frame()+1)];draw()};
+async function load(){for(const gear of ['bare','helmet']){banks[gear]=await Promise.all(Array.from({length:7},(_,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=gear+'/frames/land-swim-west/'+String(i).padStart(3,'0')+'.png'})))}ready=true;draw()}
+function tick(now){if(last&&playing&&ready)time=(time+(now-last)*Number(document.getElementById('speed').value))%500;last=now;draw();requestAnimationFrame(tick)}load().catch(()=>document.getElementById('label').textContent='Could not load all poses.');requestAnimationFrame(tick);
+</script></html>''',encoding='utf-8')
+print(json.dumps({'connectedSilhouettes':7,'reviewPage':'index.html','scope':'source-only'}))

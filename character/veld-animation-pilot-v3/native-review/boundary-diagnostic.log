@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+PHASE t=0.45 runtime=0.44999999390548 actual=2 expected=3
+ERROR: Distance-driven phase matches timed frame
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/review_veld_pilot.gd:11)
+       [1] run (res://tools/review_veld_pilot.gd:68)
+PHASE t=0.75 runtime=0.74999999938127 actual=4 expected=5
+ERROR: Distance-driven phase matches timed frame
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/review_veld_pilot.gd:11)
+       [1] run (res://tools/review_veld_pilot.gd:68)
+VELD NATIVE checks=61 failures=2

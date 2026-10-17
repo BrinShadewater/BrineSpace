@@ -1,0 +1,124 @@
+{
+  "status": "rejected_head_motion_source_study",
+  "poses": [
+    {
+      "frame": 47,
+      "newSourceEdit": false,
+      "selectedBounds": [
+        72,
+        79,
+        169,
+        224
+      ],
+      "previousBounds": [
+        73,
+        79,
+        170,
+        224
+      ],
+      "candidateBounds": [
+        73,
+        79,
+        170,
+        224
+      ],
+      "candidateVsSelectedIoU": 0.9277501287111721,
+      "bodyBelow110VsPreviousIoU": 1.0,
+      "bodyBelow110ChangedRgbaPixels": 0,
+      "bodyBelow110MaxChannelDifference": 0,
+      "scope": "Body/crown diagnostic only; face, collar, contact and full-loop acceptance require visual and motion review."
+    },
+    {
+      "frame": 0,
+      "newSourceEdit": true,
+      "selectedBounds": [
+        72,
+        80,
+        170,
+        224
+      ],
+      "previousBounds": [
+        73,
+        81,
+        170,
+        224
+      ],
+      "candidateBounds": [
+        73,
+        79,
+        170,
+        224
+      ],
+      "candidateVsSelectedIoU": 0.9425348140313767,
+      "bodyBelow110VsPreviousIoU": 1.0,
+      "bodyBelow110ChangedRgbaPixels": 57,
+      "bodyBelow110MaxChannelDifference": 6,
+      "scope": "Body/crown diagnostic only; face, collar, contact and full-loop acceptance require visual and motion review."
+    },
+    {
+      "frame": 1,
+      "newSourceEdit": true,
+      "selectedBounds": [
+        74,
+        79,
+        172,
+        224
+      ],
+      "previousBounds": [
+        74,
+        78,
+        173,
+        224
+      ],
+      "candidateBounds": [
+        74,
+        81,
+        173,
+        224
+      ],
+      "candidateVsSelectedIoU": 0.9384642356241234,
+      "bodyBelow110VsPreviousIoU": 1.0,
+      "bodyBelow110ChangedRgbaPixels": 98,
+      "bodyBelow110MaxChannelDifference": 55,
+      "scope": "Body/crown diagnostic only; face, collar, contact and full-loop acceptance require visual and motion review."
+    }
+  ],
+  "frames": [
+    47,
+    0,
+    1
+  ],
+  "selectedCrownY": [
+    79,
+    80,
+    79
+  ],
+  "previousCrownY": [
+    79,
+    81,
+    78
+  ],
+  "candidateCrownY": [
+    79,
+    79,
+    81
+  ],
+  "candidateCrownMatchesSelected": false,
+  "fixedCropBox": [
+    520,
+    320,
+    740,
+    540
+  ],
+  "fullSourcePixelsOutsideCropProtected": true,
+  "normalizedRows114To255Protected": true,
+  "boundedInputsUnchanged": 110,
+  "newSourceEdits": 2,
+  "distinctBareStudiesIncludingV2": 6,
+  "remainingBare": 42,
+  "remainingHelmet": 48,
+  "normalAdmission": false,
+  "nativeAcceptance": false,
+  "scope": "Two localized source edits, fixed whole-crop normalization and exact rectangle return. No separate head fit or new complete gait/standing density proof.",
+  "rejection": "rejection.json"
+}

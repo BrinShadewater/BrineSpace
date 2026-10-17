@@ -1,0 +1,19 @@
+# Project handoff
+
+Updated: 2026-10-01 · Project: Brine Space · Task: James release lifecycle and death visibility
+
+## Objective and acceptance
+Full James animation coverage/master/style/perspective/height/proportions/grade work remains active. This milestone fixes shared runtime visual defects and exercises release interruptions; it does not finish life/rest/mortality coverage or cross-family polish. Owner visual acceptance pending.
+
+## Accepted decisions and constraints
+Independent four-facing art and source clocks retained. Case is cosmetic site-owned state; no cargo, economy or route rule change. Keep actual visible release heading when death clears the action. A deceased diver must remain drawable in open sea after expedition clears. Body renderer subtracts .038cell in get_chief_branforth_position then adds it in draw; the ground case must use the resulting real foot origin without another offset. Compare actual drawn pixels using the real pivot, not just loaded texture presence or raw bytes from incompatible planes.
+
+## Current state
+branforth_npc.gd die preserves saved release-facing before clearing it. main.gd has_chief_branforth permits active dead exterior bodies after expedition clears. james_case_deposit.gd rectangle removes extra .038cell vertical offset for all four facings. Other concurrent changes in these files are not this milestone. New lifecycle fixture/generator/body source/paired Godot UID, current evidence/validation/log, review board and four current world GIFs. Four source packs now link current shared lifecycle evidence and native-lifecycle-world-review.gif; older world reports/GIFs retain their original scope/revision.
+
+## Verification
+Final13,764checks/0fail, terminal engine0/no timeout/no warnings/errors, scratch APPDATA resolved. Four real cardinal parent pickup2 recalls/airlock returns with paused fresh-scene disk Continue including exact case anchor/heading, plus four real second dispatch/arrival/work0 recall/return trips proving ownership clears only at new work arrival.36controlled branches from actual parent arrivals naturally reach pickup2: erased/depleted before release, erased/depleted/inactive after, death before/after, registered site-obstructed turn and normal low-air safety. Actor-only restore/world reset between branches; these are not36 complete interrupted trips/Continues. Movement continues under held empty pose, turns release when obstruction clears; no metal/data credit/extraction. Eight actual death visible-pixel comparisons against actor-hidden controls average26.22..35.51RGB levels, threshold5; all visible headings retained. Actual body/case scene crops reviewed. Strict full owner-profile guard FAILED, last_session.json delta only; cause unproven, no owner rollback or clean-guard retry.
+Rejected evidence retained: prior-initial-review13,652green checks had8capture-helper script errors and wrong death heading; prior-heading-only-review13,712green checks still drew no dead open-sea body; prior-offset-sampler-review13,740checks/4fails had actual visible corpses but pixel sampler added a nonexistent .038cell offset. Offline corrected body score33.33confirmed coordinate fault before final native run. These earlier counts do not certify current fixes. Raw death texture byte comparisons cross256x276/p128,128 and256x360/p128,224 planes; false equality is not registered motion evidence.
+
+## Next action
+Return to missing James life/rest/meal/mortality context artwork. Actual registered release-to-death arm/body transitions still need contextual motion/polish; current checks prove heading/visibility, not smoothness. Peer traffic, other hazards and broader interrupted Continue contexts remain open. Then complete cross-family master/height/proportion/material/perspective/motion polish. No commit/export or owner layout/save change; goal active.

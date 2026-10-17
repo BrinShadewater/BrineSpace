@@ -1,0 +1,2974 @@
+{
+	"checks": 13103,
+	"failures": 0,
+	"journeys": [
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q0-delivery-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-delivery-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-delivery-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-delivery-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-delivery-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-delivery-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-delivery-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q0-delivery-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-carry",
+					"tank": 41.1666666666677
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q0-delivery-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim-carry",
+					"tank": 38.6000000000012
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-delivery-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim-carry",
+					"tank": 31.9666666666683
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q0-delivery-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "carry",
+					"tank": 29.1333333333348
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q0-delivery-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "unload",
+					"tank": 29.1333333333348
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0929",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0929.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0929-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.1,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0932",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0932.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0932-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.166666666666667,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0934",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0934.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0934-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.266666666666667,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0937",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0937.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0937-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.366666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.366666666666667,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0940",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0940.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0940-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "east",
+					"elapsed": 0.466666666666667,
+					"foot": "(8056.32, 7104.0)",
+					"label": "indexed-q0-delivery-0943",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 22.9333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0943.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0943-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8053.92, 7104.0)",
+					"label": "indexed-q0-delivery-0946",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0946.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0946-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8046.72, 7104.0)",
+					"label": "indexed-q0-delivery-0949",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0949.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0949-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8037.121, 7104.0)",
+					"label": "indexed-q0-delivery-0953",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0953.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0953-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8027.521, 7104.0)",
+					"label": "indexed-q0-delivery-0957",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0957.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0957-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8015.521, 7104.0)",
+					"label": "indexed-q0-delivery-0962",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0962.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0962-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8003.522, 7104.0)",
+					"label": "indexed-q0-delivery-0967",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0967.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0967-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7986.723, 7104.0)",
+					"label": "indexed-q0-delivery-0974",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0974.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0974-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7979.523, 7104.0)",
+					"label": "indexed-q0-delivery-0977",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0977.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0977-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7969.923, 7104.0)",
+					"label": "indexed-q0-delivery-0981",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0981.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0981-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7957.924, 7104.0)",
+					"label": "indexed-q0-delivery-0986",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0986.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0986-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7945.924, 7104.0)",
+					"label": "indexed-q0-delivery-0991",
+					"motion": {
+						"clip": "swim-carry-turn-east-west",
+						"direction": "west",
+						"started": 31.5333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0991.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-0991-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1023",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1023.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1023-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1027",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1027.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1027-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1032",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1032.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1032-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1037",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1037.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1037-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1041",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1041.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1041-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7104.0)",
+					"label": "indexed-q0-delivery-1045",
+					"motion": {
+						"clip": "swim-carry-turn-west-south",
+						"direction": "south",
+						"started": 34.1000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1045.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1045-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1557",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1557.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1557-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.1,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1560",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1560.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1560-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.2,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1563",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1563.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1563-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.3,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1566",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1566.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1566-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.4,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1569",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1569.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1569-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.466666666666667,
+					"foot": "(7872.0, 7556.0)",
+					"label": "indexed-q0-delivery-1571",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 49.9999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1571.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q0-delivery-1571-source.png",
+					"state": "unload"
+				}
+			],
+			"expectedSlots": 0,
+			"joins": {
+				"lastCapture": "unload-south:5",
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "delivery",
+			"movingStow": false,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"recalled": false,
+			"restored": true,
+			"rotation": 0,
+			"stowSlots": [],
+			"tank": 29.1333333333348,
+			"turnJoin": false,
+			"turns": [
+				"swim-carry-turn-east-west",
+				"swim-carry-turn-west-south"
+			],
+			"unload": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q1-delivery-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-delivery-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-delivery-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-delivery-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-delivery-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-delivery-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-delivery-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q1-delivery-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-carry",
+					"tank": 41.1666666666677
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q1-delivery-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim-carry",
+					"tank": 38.6000000000012
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-delivery-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim-carry",
+					"tank": 31.9666666666683
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q1-delivery-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "carry",
+					"tank": 29.1333333333348
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q1-delivery-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "unload",
+					"tank": 29.1333333333348
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0982",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0982.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0982-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.1,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0985",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0985.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0985-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.166666666666667,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0987",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0987.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0987-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.266666666666667,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0990",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0990.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0990-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.366666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.366666666666667,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0993",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0993.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0993-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "south",
+					"elapsed": 0.466666666666667,
+					"foot": "(8640.0, 8056.32)",
+					"label": "indexed-q1-delivery-0996",
+					"motion": {
+						"clip": "",
+						"direction": "south",
+						"started": 24.7000000000004,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0996.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0996-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8053.92)",
+					"label": "indexed-q1-delivery-0999",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0999.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-0999-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8044.32)",
+					"label": "indexed-q1-delivery-1003",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1003.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1003-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8032.321)",
+					"label": "indexed-q1-delivery-1008",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1008.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1008-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8020.321)",
+					"label": "indexed-q1-delivery-1013",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1013.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1013-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8010.722)",
+					"label": "indexed-q1-delivery-1017",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1017.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1017-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 8001.122)",
+					"label": "indexed-q1-delivery-1021",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1021.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1021-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7986.723)",
+					"label": "indexed-q1-delivery-1027",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1027.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1027-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7974.723)",
+					"label": "indexed-q1-delivery-1032",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1032.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1032-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7962.724)",
+					"label": "indexed-q1-delivery-1037",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1037.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1037-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7953.124)",
+					"label": "indexed-q1-delivery-1041",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1041.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1041-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7943.524)",
+					"label": "indexed-q1-delivery-1045",
+					"motion": {
+						"clip": "swim-carry-turn-south-north",
+						"direction": "north",
+						"started": 33.3000000000007,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1045.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1045-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1076",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1076.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1076-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1080",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1080.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1080-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1083",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1083.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1083-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1087",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1087.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1087-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1092",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1092.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1092-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8640.0, 7872.0)",
+					"label": "indexed-q1-delivery-1097",
+					"motion": {
+						"clip": "swim-carry-turn-north-west",
+						"direction": "west",
+						"started": 35.8666666666672,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1097.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1097-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1610",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1610.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1610-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.1,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1613",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1613.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1613-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.2,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1616",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1616.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1616-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.3,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1619",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1619.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1619-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.4,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1622",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1622.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1622-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "west",
+					"elapsed": 0.466666666666667,
+					"foot": "(8188.0, 7872.0)",
+					"label": "indexed-q1-delivery-1624",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 51.7666666666663,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1624.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q1-delivery-1624-source.png",
+					"state": "unload"
+				}
+			],
+			"expectedSlots": 0,
+			"joins": {
+				"lastCapture": "unload-west:5",
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "delivery",
+			"movingStow": false,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"recalled": false,
+			"restored": true,
+			"rotation": 1,
+			"stowSlots": [],
+			"tank": 29.1333333333348,
+			"turnJoin": false,
+			"turns": [
+				"swim-carry-turn-south-north",
+				"swim-carry-turn-north-west"
+			],
+			"unload": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q2-delivery-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-delivery-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-delivery-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-delivery-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-delivery-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-delivery-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-delivery-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q2-delivery-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-carry",
+					"tank": 41.1666666666677
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q2-delivery-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim-carry",
+					"tank": 38.6000000000012
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-delivery-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim-carry",
+					"tank": 31.9666666666683
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q2-delivery-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "carry",
+					"tank": 29.1333333333348
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q2-delivery-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "unload",
+					"tank": 29.1333333333348
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.0,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0938",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0938.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0938-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.1,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0941",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0941.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0941-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.166666666666667,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0943",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0943.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0943-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.266666666666667,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0946",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0946.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0946-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.366666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.366666666666667,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0949",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0949.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0949-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "west",
+					"elapsed": 0.466666666666667,
+					"foot": "(7687.68, 8640.0)",
+					"label": "indexed-q2-delivery-0952",
+					"motion": {
+						"clip": "",
+						"direction": "west",
+						"started": 23.2333333333336,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0952.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0952-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7690.08, 8640.0)",
+					"label": "indexed-q2-delivery-0955",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0955.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0955-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7699.68, 8640.0)",
+					"label": "indexed-q2-delivery-0959",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0959.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0959-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7711.679, 8640.0)",
+					"label": "indexed-q2-delivery-0964",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0964.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0964-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7723.679, 8640.0)",
+					"label": "indexed-q2-delivery-0969",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0969.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0969-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7733.278, 8640.0)",
+					"label": "indexed-q2-delivery-0973",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0973.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0973-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7742.878, 8640.0)",
+					"label": "indexed-q2-delivery-0977",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0977.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0977-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7757.277, 8640.0)",
+					"label": "indexed-q2-delivery-0983",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0983.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0983-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7769.277, 8640.0)",
+					"label": "indexed-q2-delivery-0988",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0988.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0988-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7781.276, 8640.0)",
+					"label": "indexed-q2-delivery-0993",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0993.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0993-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7790.876, 8640.0)",
+					"label": "indexed-q2-delivery-0997",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0997.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-0997-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7800.476, 8640.0)",
+					"label": "indexed-q2-delivery-1001",
+					"motion": {
+						"clip": "swim-carry-turn-west-east",
+						"direction": "east",
+						"started": 31.8333333333341,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1001.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1001-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1032",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1032.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1032-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1036",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1036.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1036-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1041",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1041.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1041-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1046",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1046.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1046-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1050",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1050.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1050-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8640.0)",
+					"label": "indexed-q2-delivery-1054",
+					"motion": {
+						"clip": "swim-carry-turn-east-north",
+						"direction": "north",
+						"started": 34.4000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1054.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1054-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1566",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1566.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1566-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.1,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1569",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1569.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1569-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.2,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1572",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1572.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1572-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.3,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1575",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1575.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1575-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.4,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1578",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1578.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1578-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "north",
+					"elapsed": 0.466666666666667,
+					"foot": "(7872.0, 8188.0)",
+					"label": "indexed-q2-delivery-1580",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 50.2999999999997,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1580.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q2-delivery-1580-source.png",
+					"state": "unload"
+				}
+			],
+			"expectedSlots": 0,
+			"joins": {
+				"lastCapture": "unload-north:5",
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "delivery",
+			"movingStow": false,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"recalled": false,
+			"restored": true,
+			"rotation": 2,
+			"stowSlots": [],
+			"tank": 29.1333333333348,
+			"turnJoin": false,
+			"turns": [
+				"swim-carry-turn-west-east",
+				"swim-carry-turn-east-north"
+			],
+			"unload": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"captures": [
+				{
+					"direction": "south",
+					"file": "indexed-q3-delivery-approach.png",
+					"medium": "dry",
+					"phase": "approach",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-delivery-enter.png",
+					"medium": "dry",
+					"phase": "enter",
+					"pose": "walk",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-delivery-pressurize.png",
+					"medium": "dry",
+					"phase": "pressurize",
+					"pose": "idle",
+					"tank": 60.0
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-delivery-leave.png",
+					"medium": "exterior",
+					"phase": "leave",
+					"pose": "swim",
+					"tank": 56.3666666666669
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-delivery-outbound.png",
+					"medium": "exterior",
+					"phase": "outbound",
+					"pose": "swim",
+					"tank": 52.0000000000005
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-delivery-salvage.png",
+					"medium": "exterior",
+					"phase": "salvage",
+					"pose": "salvage",
+					"tank": 47.2000000000007
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-delivery-pickup.png",
+					"medium": "exterior",
+					"phase": "pickup",
+					"pose": "swim-pickup",
+					"tank": 41.700000000001
+				},
+				{
+					"direction": "north",
+					"file": "indexed-q3-delivery-return.png",
+					"medium": "exterior",
+					"phase": "return",
+					"pose": "swim-carry",
+					"tank": 41.1666666666677
+				},
+				{
+					"direction": "south",
+					"file": "indexed-q3-delivery-entry.png",
+					"medium": "exterior",
+					"phase": "entry",
+					"pose": "swim-carry",
+					"tank": 38.6000000000012
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-delivery-drain.png",
+					"medium": "exterior",
+					"phase": "drain",
+					"pose": "swim-carry",
+					"tank": 31.9666666666683
+				},
+				{
+					"direction": "west",
+					"file": "indexed-q3-delivery-exit.png",
+					"medium": "dry",
+					"phase": "exit",
+					"pose": "carry",
+					"tank": 29.1333333333348
+				},
+				{
+					"direction": "east",
+					"file": "indexed-q3-delivery-unload.png",
+					"medium": "dry",
+					"phase": "unload",
+					"pose": "unload",
+					"tank": 29.1333333333348
+				}
+			],
+			"contactSamples": [
+				{
+					"actionElapsed": 0.0,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0868",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0868.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0868-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.1,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0871",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0871.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0871-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.166666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.166666666666667,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0873",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0873.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0873-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.266666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.266666666666667,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0876",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0876.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0876-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.366666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.366666666666667,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0879",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0879.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0879-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {},
+					"direction": "north",
+					"elapsed": 0.466666666666667,
+					"foot": "(7104.0, 7687.68)",
+					"label": "indexed-q3-delivery-0882",
+					"motion": {
+						"clip": "",
+						"direction": "north",
+						"started": 20.9000000000002,
+						"state": "swim"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0882.png",
+					"phase": "pickup",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0882-source.png",
+					"state": "swim-pickup"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7690.08)",
+					"label": "indexed-q3-delivery-0885",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0885.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0885-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7697.28)",
+					"label": "indexed-q3-delivery-0888",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0888.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0888-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7706.879)",
+					"label": "indexed-q3-delivery-0892",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0892.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0892-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7716.479)",
+					"label": "indexed-q3-delivery-0896",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0896.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0896-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7728.479)",
+					"label": "indexed-q3-delivery-0901",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0901.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0901-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7740.478)",
+					"label": "indexed-q3-delivery-0906",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0906.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0906-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7754.877)",
+					"label": "indexed-q3-delivery-0912",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0912.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0912-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7764.477)",
+					"label": "indexed-q3-delivery-0916",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0916.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0916-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7774.077)",
+					"label": "indexed-q3-delivery-0920",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0920.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0920-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7786.076)",
+					"label": "indexed-q3-delivery-0925",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0925.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0925-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "south",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7798.076)",
+					"label": "indexed-q3-delivery-0930",
+					"motion": {
+						"clip": "swim-carry-turn-north-south",
+						"direction": "south",
+						"started": 29.5000000000006,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0930.png",
+					"phase": "return",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0930-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0962",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0962.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0962-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0966",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0966.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0966-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0971",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0971.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0971-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0976",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0976.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0976-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0980",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0980.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0980-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": -1.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7104.0, 7872.0)",
+					"label": "indexed-q3-delivery-0984",
+					"motion": {
+						"clip": "swim-carry-turn-south-east",
+						"direction": "east",
+						"started": 32.0666666666674,
+						"state": "swim-carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0984.png",
+					"phase": "entry",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-0984-source.png",
+					"state": "swim-carry"
+				},
+				{
+					"actionElapsed": 0.0,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.0,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1496",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1496.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1496-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.1,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.1,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1499",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1499.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1499-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.2,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.2,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1502",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1502.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1502-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.3,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.3,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1505",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1505.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1505-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.4,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.4,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1508",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1508.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1508-source.png",
+					"state": "unload"
+				},
+				{
+					"actionElapsed": 0.466666666666667,
+					"cargo": {
+						"data": 1,
+						"metal": 1
+					},
+					"direction": "east",
+					"elapsed": 0.466666666666667,
+					"foot": "(7556.0, 7872.0)",
+					"label": "indexed-q3-delivery-1510",
+					"motion": {
+						"clip": "",
+						"direction": "east",
+						"started": 47.9666666666665,
+						"state": "carry"
+					},
+					"native": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1510.png",
+					"phase": "unload",
+					"source": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/review/delivery/captures/indexed-q3-delivery-1510-source.png",
+					"state": "unload"
+				}
+			],
+			"expectedSlots": 0,
+			"joins": {
+				"lastCapture": "unload-east:5",
+				"pickupCarry": true,
+				"salvagePickup": true
+			},
+			"mode": "delivery",
+			"movingStow": false,
+			"phases": [
+				"approach",
+				"enter",
+				"pressurize",
+				"leave",
+				"outbound",
+				"salvage",
+				"pickup",
+				"return",
+				"entry",
+				"drain",
+				"exit",
+				"unload"
+			],
+			"pickup": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"recalled": false,
+			"restored": true,
+			"rotation": 3,
+			"stowSlots": [],
+			"tank": 29.1333333333348,
+			"turnJoin": false,
+			"turns": [
+				"swim-carry-turn-north-south",
+				"swim-carry-turn-south-east"
+			],
+			"unload": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		}
+	],
+	"matrix": [],
+	"resolvedUserDataDir": "C:/Users/Alex/Documents/Brine Space/character/krusher-station-lifecycle-v2/native/scratch-appdata/Godot/app_userdata/BrineSpace",
+	"scope": "Four actual helmet salvage deliveries through production dispatch, airlock, pickup, water carry turns, return, unload and exact resource credit. Fresh-scene mid-return Continue. Complete current Krusher candidate bank. Bare flooded cargo/cancellation and West floor release remain separate.",
+	"scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata"
+}

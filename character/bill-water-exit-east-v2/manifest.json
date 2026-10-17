@@ -1,0 +1,47 @@
+{
+  "name": "Bill separate East water exit with authored lower midpoint",
+  "status": "source_study_unselected",
+  "frameWidth": 320,
+  "frameHeight": 320,
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "states": [
+    {
+      "id": "swim-land-east",
+      "frameFiles": [
+        "frames/swim-land-east/000.png",
+        "frames/swim-land-east/001.png",
+        "frames/swim-land-east/002.png",
+        "frames/swim-land-east/003.png",
+        "frames/swim-land-east/004.png",
+        "frames/swim-land-east/005.png",
+        "frames/swim-land-east/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        45,
+        45,
+        100,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "Six exact V1 poses; one inserted lower articulated midpoint at same .24body scale/frozen grade. Original500ms by splitting first interior90ms into45+45. Not reversed entry; runtime unselected."
+    }
+  ]
+}

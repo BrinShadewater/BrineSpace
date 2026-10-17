@@ -1,0 +1,45 @@
+{
+  "packageChecks": 130,
+  "directEntryChecks": 71,
+  "nativeChecks": 3716,
+  "nativeSeconds": 71.97,
+  "nativeRoomSourcePairs": 128,
+  "candidatePairs": 68,
+  "exactUniqueSourcePairsReviewed": 24,
+  "additionalRawAndSoleGuards": 31,
+  "normalSelectionChanged": false,
+  "activeTurn": [
+    {
+      "helmet": false,
+      "turnDisplayedSamples": 48,
+      "activeTurnRootStable": true,
+      "recordedTurnReleaseTravel": 0.7666015625,
+      "note": "Release travel includes first moving tick after turn; not motion during active clip."
+    },
+    {
+      "helmet": true,
+      "turnDisplayedSamples": 48,
+      "activeTurnRootStable": true,
+      "recordedTurnReleaseTravel": 0.7666015625,
+      "note": "Release travel includes first moving tick after turn; not motion during active clip."
+    }
+  ],
+  "review": [
+    "both complete first-step/gait station boards",
+    "bare and helmet master/cross-family boards",
+    "browser82 and148 source-clock replay"
+  ],
+  "rejected": [
+    "opposite source sample2 wrong leg",
+    "endpoint-biased early-start-v1",
+    "excessively high knee edit-v3",
+    "initial one-pixel floating sole register before uniform offset correction"
+  ],
+  "limits": [
+    "Prescribed collision-clear North lane after real workshop service progression, not natural path selection",
+    "Candidate source bank override only; normal Bill remains prior North bank",
+    "No new candidate interruptions/fresh-disk or bank migration coverage",
+    "Anatomical support/glide and all-cardinal cross-family motion still need further polish"
+  ],
+  "goalComplete": false
+}

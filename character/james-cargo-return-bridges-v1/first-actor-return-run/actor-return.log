@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+JAMES WORKSHOP BOOT
+JAMES WORKSHOP INTERRUPT: bare workshop_pickup / pickup -> idle / stage
+JAMES WORKSHOP INTERRUPT: bare workshop_carry / carry -> idle / stage
+ERROR: Return admitted for bare-workshop_unload: return source envelope blocked
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-cargo-return-bridges-v1/actor-return.gd:11)
+       [1] run (res://character/james-cargo-return-bridges-v1/actor-return.gd:128)
+       [2] capture (res://character/james-cargo-return-bridges-v1/actor-return.gd:52)
+JAMES WORKSHOP INTERRUPT: bare workshop_unload / unload -> idle / stage
+JAMES WORKSHOP INTERRUPT: helmet workshop_pickup / pickup -> idle / stage
+JAMES WORKSHOP INTERRUPT: helmet workshop_carry / carry -> idle / stage
+ERROR: Return admitted for helmet-workshop_unload: return source envelope blocked
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-cargo-return-bridges-v1/actor-return.gd:11)
+       [1] run (res://character/james-cargo-return-bridges-v1/actor-return.gd:128)
+       [2] capture (res://character/james-cargo-return-bridges-v1/actor-return.gd:52)
+JAMES WORKSHOP INTERRUPT: helmet workshop_unload / unload -> idle / stage
+JAMES ACTUAL RETURN CANDIDATE: 921checks; 2failures

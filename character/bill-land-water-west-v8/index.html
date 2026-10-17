@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>Bill West master repair</title>
+<style>body{margin:24px;background:#182932;color:#eef;font:17px system-ui}main{max-width:1200px;margin:auto}.pair{display:flex;gap:24px}canvas{width:440px;height:440px;background:#14242c;max-width:100%}img{max-width:100%}button,select{padding:10px;margin:8px}p{line-height:1.5}</style>
+<main><h1>Bill — West levelling study</h1><p>The first four poses remain unchanged. Bent elbows reduce excessive reach, but this candidate still needs a narrower master-matched head and clearer separation between the hands.</p><p>Provisional source study: anatomy, colour, game motion, contact and final acceptance remain pending.</p>
+<div class="pair"><div><h2>Bare</h2><canvas id="bare" width="640" height="640"></canvas></div><div><h2>Helmet</h2><canvas id="helmet" width="640" height="640"></canvas></div></div>
+<button id="play">Play</button><button id="prev">Previous pose</button><button id="next">Next pose</button><select id="speed"><option value="1">Normal speed</option><option value="0.25">Quarter speed</option></select><p id="label">Loading poses</p>
+<h2>Original master and preceding levelling pose</h2><img src="master-lift-comparison.png" alt="Master and preceding levelling comparison">
+<h2>Complete sequence</h2><img src="paired-helmet-review.png" alt="All bare and helmet entry poses">
+<h2>Head and collar</h2><img src="helmet-neck-details.png" alt="Registered head and collar details"></main>
+<script>
+const times=[60,70,80,60,80,90,60],starts=[0],banks={};times.forEach(t=>starts.push(starts.at(-1)+t));let ready=false,playing=false,time=0,last=0;
+function frame(){let i=0;while(i<6&&time>=starts[i+1])i++;return i}
+function draw(){if(!ready)return;const i=frame();for(const gear of ['bare','helmet']){const ctx=document.getElementById(gear).getContext('2d');ctx.clearRect(0,0,640,640);ctx.imageSmoothingEnabled=false;ctx.drawImage(banks[gear][i],0,0,640,640)}document.getElementById('label').textContent=['Standing','Arm ready','Crouch','Push-off','Lift','Near-prone','Swimming'][i]+' · pose '+(i+1)+' of 7 · '+Math.round(time)+' ms'}
+function pause(){playing=false;document.getElementById('play').textContent='Play'}
+document.getElementById('play').onclick=()=>{if(time>=500)time=0;playing=!playing;document.getElementById('play').textContent=playing?'Pause':'Play'};
+document.getElementById('prev').onclick=()=>{pause();time=starts[Math.max(0,frame()-1)];draw()};document.getElementById('next').onclick=()=>{pause();time=starts[Math.min(6,frame()+1)];draw()};
+async function load(){for(const gear of ['bare','helmet'])banks[gear]=await Promise.all(Array.from({length:7},(_,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=gear+'/frames/land-swim-west/'+String(i).padStart(3,'0')+'.png'})));ready=true;draw()}
+function tick(now){if(last&&playing&&ready){time=Math.min(500,time+(now-last)*Number(document.getElementById('speed').value));if(time>=500)pause()}last=now;draw();requestAnimationFrame(tick)}load().catch(()=>document.getElementById('label').textContent='Could not load all poses');requestAnimationFrame(tick);
+</script>

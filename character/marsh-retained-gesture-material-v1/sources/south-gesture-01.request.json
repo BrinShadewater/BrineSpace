@@ -1,0 +1,464 @@
+{
+  "prompt": "Edit the THIRD image, a transparent sprite sheet, using the FIRST image as the exact primary identity/proportion/material ruler and SECOND image as high-detail supporting Marsh identity master. Return one transparent1536x1280 sheet,3columns x2rows of512x640cells. There are exactly FIVE full figures: cells0,1,2 across top, cells3,4 across bottom, cell5 stays EMPTY. Preserve whole connected anatomy and the target hand gestures in cells0..3. Cell4 is the same neutral standing Marsh as FIRST reference, unchanged in design/proportions. All figures face exactly South toward viewer, the existing elevated station camera; same head angle, foot baseline and body scale. This is a whole-body material/identity correction, not a helmet action. Bare blond head in every cell; no helmet, new equipment or new gesture. Match FIRST image's slender58px-wide neutral body at147px occupied height, shown3x in references; each full figure about441pixels tall in output. Fixed planted boots on cell row560; do not widen torso, inflate head or shorten legs. Ivory ceramic/android shell, subdued sage shoulder pads, charcoal undersuit/collar, paired small chest fasteners, exact waist pouches/knee rings/boots and pale face/hair matching FIRST. Marsh has RIGHT temple implant, visible on viewer LEFT, with the other temple bare. Hands/gloves remain connected to wrists. Retain target gentle broad-glove movements at chest/waist, with no detached objects. Flat muted matte material and fine crisp pixel-like source detail matching FIRST; no shine, bloom, gradients/background, glow, labels, grid, shadows, checkerboard or sixth figure. Keep all five WHOLE bodies distinct, uncropped and in their cells at one consistent scale. Do not copy the obsolete broad torso/coarse head from target; FIRST reference controls identity and proportions.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\south-own-idle-3x.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-motion-polish-v1\\sources\\south-standing-identity-01.png",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\character\\marsh-retained-gesture-material-v1\\inputs\\south-gesture-target-01.png"
+  ],
+  "references": [
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/south-own-idle-3x.png",
+      "sha256": "69d9407c0ced0535a83249d2324501d72bb2b8ff0fdf98ff0c0997190695c55c"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/south-standing-identity-01.png",
+      "sha256": "6711f6cbad549877568755748b0ee2967fc21bbe1045c73575834a9a8a8ad92a"
+    },
+    {
+      "path": "character/marsh-retained-gesture-material-v1/inputs/south-gesture-target-01.png",
+      "sha256": "53c016af00b0ea23d0467410e1b98e99de3676088f3192edd8f16fa0f414d05b"
+    }
+  ],
+  "sourcePoses": [
+    {
+      "path": "character/marsh-v2/frames/bare/remove-helmet-south/001.png",
+      "sha256": "e8ed20d31706ed8daaa4c129e7296c6fd13e943060d7c6f7e339590f9854a4db",
+      "canvas": [
+        184,
+        184
+      ],
+      "bounds": [
+        58,
+        24,
+        127,
+        172
+      ],
+      "occupiedSize": [
+        69,
+        148
+      ],
+      "edgeContact": false,
+      "cell": 0,
+      "operation": "Whole source uniform3x; common pivot at cell(256,560)."
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/remove-helmet-south/002.png",
+      "sha256": "28da1093288d611e547cb4e24bed6c3351397cc43b0346458c08c539a199536a",
+      "canvas": [
+        184,
+        184
+      ],
+      "bounds": [
+        58,
+        24,
+        126,
+        172
+      ],
+      "occupiedSize": [
+        68,
+        148
+      ],
+      "edgeContact": false,
+      "cell": 1,
+      "operation": "Whole source uniform3x; common pivot at cell(256,560)."
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/remove-helmet-south/003.png",
+      "sha256": "a7dd046796e30c3ffd28d71c5032d344ae03be2baeb4183aee84f2197ee10437",
+      "canvas": [
+        184,
+        184
+      ],
+      "bounds": [
+        58,
+        24,
+        127,
+        172
+      ],
+      "occupiedSize": [
+        69,
+        148
+      ],
+      "edgeContact": false,
+      "cell": 2,
+      "operation": "Whole source uniform3x; common pivot at cell(256,560)."
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/remove-helmet-south/004.png",
+      "sha256": "1f2b521bb44f15e2ac9c7632e69ab5be12bf7b99b699e9b0b21766a57d608bce",
+      "canvas": [
+        184,
+        184
+      ],
+      "bounds": [
+        58,
+        24,
+        126,
+        172
+      ],
+      "occupiedSize": [
+        68,
+        148
+      ],
+      "edgeContact": false,
+      "cell": 3,
+      "operation": "Whole source uniform3x; common pivot at cell(256,560)."
+    },
+    {
+      "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+      "canvas": [
+        184,
+        184
+      ],
+      "bounds": [
+        63,
+        24,
+        121,
+        171
+      ],
+      "occupiedSize": [
+        58,
+        147
+      ],
+      "edgeContact": false,
+      "cell": 4,
+      "operation": "Whole source uniform3x; common pivot at cell(256,560)."
+    }
+  ],
+  "selectedStateMetadata": {
+    "idle-south": {
+      "manifest": "character/marsh-south-idle-material-v1/candidate-01/manifest.json",
+      "manifestSha256": "da4065b0650d5d81089ee56f3af1674110b9c08fe7072bb795580887d092ceef",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "durationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "frames": [
+        {
+          "path": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+          "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            63,
+            24,
+            121,
+            171
+          ],
+          "occupiedSize": [
+            58,
+            147
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-south-idle-material-v1/candidate-01/001.png",
+          "sha256": "a69b55ad1b698f952788d6ea9dbcd2a2d172fec431c1d87424761e7d537ecd23",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            62,
+            23,
+            122,
+            171
+          ],
+          "occupiedSize": [
+            60,
+            148
+          ],
+          "edgeContact": false
+        }
+      ],
+      "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+    },
+    "remove-helmet-south": {
+      "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+      "manifestSha256": "85688500f62df62f9c2cf9bf15f14d15546f6e240c6648dfa6795742121651d1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "durationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "frames": [
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/000.png",
+          "sha256": "e85cd2bc5979bc2de302f0557306d4d5adaf9a775e8185de0b34998fa31a8ab9",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            57,
+            24,
+            128,
+            172
+          ],
+          "occupiedSize": [
+            71,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/001.png",
+          "sha256": "e8ed20d31706ed8daaa4c129e7296c6fd13e943060d7c6f7e339590f9854a4db",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            127,
+            172
+          ],
+          "occupiedSize": [
+            69,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/002.png",
+          "sha256": "28da1093288d611e547cb4e24bed6c3351397cc43b0346458c08c539a199536a",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            126,
+            172
+          ],
+          "occupiedSize": [
+            68,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/003.png",
+          "sha256": "a7dd046796e30c3ffd28d71c5032d344ae03be2baeb4183aee84f2197ee10437",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            127,
+            172
+          ],
+          "occupiedSize": [
+            69,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/004.png",
+          "sha256": "1f2b521bb44f15e2ac9c7632e69ab5be12bf7b99b699e9b0b21766a57d608bce",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            126,
+            172
+          ],
+          "occupiedSize": [
+            68,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/remove-helmet-south/005.png",
+          "sha256": "954e5682eaa3d5dba106a92f2551cdb60f525fab27d8937dc8215062835c2d36",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            57,
+            24,
+            128,
+            172
+          ],
+          "occupiedSize": [
+            71,
+            148
+          ],
+          "edgeContact": false
+        }
+      ],
+      "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+    },
+    "equip-helmet-south": {
+      "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+      "manifestSha256": "85688500f62df62f9c2cf9bf15f14d15546f6e240c6648dfa6795742121651d1",
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "durationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "frames": [
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/000.png",
+          "sha256": "e85cd2bc5979bc2de302f0557306d4d5adaf9a775e8185de0b34998fa31a8ab9",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            57,
+            24,
+            128,
+            172
+          ],
+          "occupiedSize": [
+            71,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/001.png",
+          "sha256": "e8ed20d31706ed8daaa4c129e7296c6fd13e943060d7c6f7e339590f9854a4db",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            127,
+            172
+          ],
+          "occupiedSize": [
+            69,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/002.png",
+          "sha256": "28da1093288d611e547cb4e24bed6c3351397cc43b0346458c08c539a199536a",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            126,
+            172
+          ],
+          "occupiedSize": [
+            68,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/003.png",
+          "sha256": "a7dd046796e30c3ffd28d71c5032d344ae03be2baeb4183aee84f2197ee10437",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            127,
+            172
+          ],
+          "occupiedSize": [
+            69,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/004.png",
+          "sha256": "1f2b521bb44f15e2ac9c7632e69ab5be12bf7b99b699e9b0b21766a57d608bce",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            58,
+            24,
+            126,
+            172
+          ],
+          "occupiedSize": [
+            68,
+            148
+          ],
+          "edgeContact": false
+        },
+        {
+          "path": "character/marsh-v2/frames/bare/equip-helmet-south/005.png",
+          "sha256": "954e5682eaa3d5dba106a92f2551cdb60f525fab27d8937dc8215062835c2d36",
+          "canvas": [
+            184,
+            184
+          ],
+          "bounds": [
+            57,
+            24,
+            128,
+            172
+          ],
+          "occupiedSize": [
+            71,
+            148
+          ],
+          "edgeContact": false
+        }
+      ],
+      "artAcceptance": "Not established by inventory/metrics; consult scoped visual/moving evidence."
+    }
+  },
+  "scope": "Unselected retained generic-gesture material repair. Both helmet actions disabled in Marsh controller; no actual helmet/change capability claim.",
+  "result": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/south-gesture-01.png",
+    "sha256": "6bec02401449033b471685e280901dadc182211970e315b2f1b94846a958d1d1",
+    "generationId": "exec-de0ecf47-e0bd-41c7-bf31-8b92b48bd2c9",
+    "assessment": "Rejected common-scale candidate: top three occupied heights510, bottom two459. No per-pose fitting or installation."
+  }
+}

@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Two-crew checkpoint remains compatible
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_branforth_crew.gd:9)
+       [1] run (res://tests/test_branforth_crew.gd:151)
+ERROR: Old checkpoint initializes engineer fresh
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_branforth_crew.gd:9)
+       [1] run (res://tests/test_branforth_crew.gd:152)
+ERROR: Older checkpoint without crew remains compatible
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_branforth_crew.gd:9)
+       [1] run (res://tests/test_branforth_crew.gd:154)
+ERROR: Older checkpoint starts fresh NPC loops
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/test_branforth_crew.gd:9)
+       [1] run (res://tests/test_branforth_crew.gd:155)
+BRANFORTH THREE CREW: 4 failures; minimum separation 32.01

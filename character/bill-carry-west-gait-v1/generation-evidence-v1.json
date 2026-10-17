@@ -1,0 +1,16 @@
+{
+  "method": "built-in image_gen",
+  "execution": "exec-f8dbd1c8-4986-4afa-9f49-845bb4c6ab78",
+  "source": "sources/gait-legs-v1.png",
+  "prompt": "sources/prompt-gait-legs-v1.txt",
+  "status": "raw_source_rejected_for_full_cycle",
+  "reason": "Foreground broad-kneepad leg repeatedly leads left rather than tracing grounded left-to-right stance and exchanging support. Full alternate support not proved.",
+  "references": [
+    "character/bill-cargo-west-master-head-v1/frames/bare/pickup-west/011.png",
+    "character/crew-runtime-matte-v1/bill/frames/idle-west-breathing-v1/000.png"
+  ],
+  "sha256": {
+    "sources\\gait-legs-v1.png": "8a0789e730d12a23f4aa98665ec3d168eeb63527df4a08ea8c2ce620804d3ec1",
+    "sources\\prompt-gait-legs-v1.txt": "bf7bf1a6f7525792e5996195fb5404321d844af44fce1ab22bdcfc93fc6f1392"
+  }
+}

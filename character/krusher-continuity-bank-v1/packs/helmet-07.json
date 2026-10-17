@@ -1,0 +1,478 @@
+{
+  "name": "Krusher Dom sealed-helmet meal inspection substitutes",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "eat-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/3e12608436f87b7b6309685f9ac2d786361574c1a5cdd726878390260032d6df.png",
+        "res://character/krusher-animation-package-v9/frames/90dabab0b83c76c324d7c7e38ecccf78761830a1725b74bae77ea832dad1b97b.png",
+        "res://character/krusher-animation-package-v9/frames/079e9a10338ed18e6bbe9b8fd96725216b4d1945a0f6f6674510981bf6b43d6e.png",
+        "res://character/krusher-animation-package-v9/frames/f23e4b296797a60b1bff3c17169fab3c3c0edbf2ae6d1c7abd12dbb9289f763e.png",
+        "res://character/krusher-continuity-bank-v1/frames/af03de00028abab1dfeb1d0bf97524e4fd6d72b5aa71720dc2029853b6a8584b.png",
+        "res://character/krusher-animation-package-v9/frames/3e12608436f87b7b6309685f9ac2d786361574c1a5cdd726878390260032d6df.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        250.0,
+        200.0,
+        200.0,
+        350.0,
+        200.0,
+        300.0
+      ],
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png",
+        "res://character/krusher-animation-package-v9/frames/885838cf6ae890ef4e8750eff1063f87bc2603d2115c69342ae34e9f69adf205.png",
+        "res://character/krusher-animation-package-v9/frames/95e5bc2ab8f881125efd6d366ad9a9a3fa3332df46b78ca98a5d06573f147746.png",
+        "res://character/krusher-animation-package-v9/frames/aa5c19ce79b76afef4a28080bee652f3b6e38a4cdaa9e1ff3dea729e7befd2e6.png",
+        "res://character/krusher-animation-package-v9/frames/311a0303330dc7e774333ed3932df9cdc4df4deded24e72c6e823e6d225cffe1.png",
+        "res://character/krusher-animation-package-v9/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png"
+      ],
+      "id": "eat-east",
+      "loop": true,
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      },
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "eat-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/cb953d6b635b32ab515156d61367d50fb0c4b0517606c9fc0065773c9a95c08d.png",
+        "res://character/krusher-animation-package-v9/frames/a544dce35e4caeabfe12e4f7894191b5a55ce8c2e41c06a90358c6139be3f556.png",
+        "res://character/krusher-animation-package-v9/frames/f44709a13da4f11e10ca47257c9c502827e4caead80c1e5754b5560f66bc0ad4.png",
+        "res://character/krusher-animation-package-v9/frames/3f3d765bcda63caa0d3ac5da75220cdb39528f2797427e0918a7d4bbddd3294a.png",
+        "res://character/krusher-animation-package-v9/frames/a70b00b49d1ba29ca2d33944c17ade732aa10dd321f8823b414a42ff25ca386f.png",
+        "res://character/krusher-animation-package-v9/frames/cb953d6b635b32ab515156d61367d50fb0c4b0517606c9fc0065773c9a95c08d.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "eat-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/b285c75344ae72992f896fb6dbbb4adb3a476f10746a0dcba7699154045c41d5.png",
+        "res://character/krusher-animation-package-v9/frames/cd23b7afc71338155051009fa5d54dde248cc66e4d5675af36c0d46dfd8a0ba5.png",
+        "res://character/krusher-animation-package-v9/frames/4cd8a7f5b05d830facb0967d3055f53efd645faaa634c1010030f6a7a550937e.png",
+        "res://character/krusher-animation-package-v9/frames/9f5b2c1b8c840ae858de56821aabb8cf058aa14c3d010be21c0474d395b32c28.png",
+        "res://character/krusher-animation-package-v9/frames/a3d4d54b9ee4f619dae941e02c54bca87950f13b1e41ab12ebfb613680ec1b09.png",
+        "res://character/krusher-animation-package-v9/frames/b285c75344ae72992f896fb6dbbb4adb3a476f10746a0dcba7699154045c41d5.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        200,
+        200,
+        350,
+        200,
+        300
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/3e12608436f87b7b6309685f9ac2d786361574c1a5cdd726878390260032d6df.png",
+        "res://character/krusher-animation-package-v9/frames/90dabab0b83c76c324d7c7e38ecccf78761830a1725b74bae77ea832dad1b97b.png",
+        "res://character/krusher-animation-package-v9/frames/079e9a10338ed18e6bbe9b8fd96725216b4d1945a0f6f6674510981bf6b43d6e.png",
+        "res://character/krusher-animation-package-v9/frames/f23e4b296797a60b1bff3c17169fab3c3c0edbf2ae6d1c7abd12dbb9289f763e.png",
+        "res://character/krusher-continuity-bank-v1/frames/af03de00028abab1dfeb1d0bf97524e4fd6d72b5aa71720dc2029853b6a8584b.png",
+        "res://character/krusher-animation-package-v9/frames/3e12608436f87b7b6309685f9ac2d786361574c1a5cdd726878390260032d6df.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        350.0,
+        350.0,
+        450.0,
+        850.0,
+        400.0,
+        600.0
+      ],
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png",
+        "res://character/krusher-animation-package-v9/frames/885838cf6ae890ef4e8750eff1063f87bc2603d2115c69342ae34e9f69adf205.png",
+        "res://character/krusher-animation-package-v9/frames/95e5bc2ab8f881125efd6d366ad9a9a3fa3332df46b78ca98a5d06573f147746.png",
+        "res://character/krusher-animation-package-v9/frames/aa5c19ce79b76afef4a28080bee652f3b6e38a4cdaa9e1ff3dea729e7befd2e6.png",
+        "res://character/krusher-animation-package-v9/frames/311a0303330dc7e774333ed3932df9cdc4df4deded24e72c6e823e6d225cffe1.png",
+        "res://character/krusher-animation-package-v9/frames/3fb26c151ff04bf4fe0331187e0e7e550d9b132ceb9f0fafbe3ff7d14b49b578.png"
+      ],
+      "id": "drink-east",
+      "loop": true,
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      },
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/cb953d6b635b32ab515156d61367d50fb0c4b0517606c9fc0065773c9a95c08d.png",
+        "res://character/krusher-animation-package-v9/frames/a544dce35e4caeabfe12e4f7894191b5a55ce8c2e41c06a90358c6139be3f556.png",
+        "res://character/krusher-animation-package-v9/frames/f44709a13da4f11e10ca47257c9c502827e4caead80c1e5754b5560f66bc0ad4.png",
+        "res://character/krusher-animation-package-v9/frames/3f3d765bcda63caa0d3ac5da75220cdb39528f2797427e0918a7d4bbddd3294a.png",
+        "res://character/krusher-animation-package-v9/frames/a70b00b49d1ba29ca2d33944c17ade732aa10dd321f8823b414a42ff25ca386f.png",
+        "res://character/krusher-animation-package-v9/frames/cb953d6b635b32ab515156d61367d50fb0c4b0517606c9fc0065773c9a95c08d.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    },
+    {
+      "id": "drink-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-animation-package-v9/frames/b285c75344ae72992f896fb6dbbb4adb3a476f10746a0dcba7699154045c41d5.png",
+        "res://character/krusher-animation-package-v9/frames/cd23b7afc71338155051009fa5d54dde248cc66e4d5675af36c0d46dfd8a0ba5.png",
+        "res://character/krusher-animation-package-v9/frames/4cd8a7f5b05d830facb0967d3055f53efd645faaa634c1010030f6a7a550937e.png",
+        "res://character/krusher-animation-package-v9/frames/9f5b2c1b8c840ae858de56821aabb8cf058aa14c3d010be21c0474d395b32c28.png",
+        "res://character/krusher-animation-package-v9/frames/a3d4d54b9ee4f619dae941e02c54bca87950f13b1e41ab12ebfb613680ec1b09.png",
+        "res://character/krusher-animation-package-v9/frames/b285c75344ae72992f896fb6dbbb4adb3a476f10746a0dcba7699154045c41d5.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Existing canonical-v4 Krusher sealed tablet inspection poses; closed helmet never displays eating or drinking",
+        "scope": "Existing per-state timing/loop/events retained; bare foreground utensils and hands retained"
+      }
+    }
+  ]
+}

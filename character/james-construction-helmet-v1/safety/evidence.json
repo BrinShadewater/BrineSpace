@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "dead": false,
+      "event": "cancel",
+      "goal": "",
+      "medium": "dry"
+    },
+    {
+      "dead": true,
+      "event": "death",
+      "goal": "",
+      "medium": "dry"
+    },
+    {
+      "dead": false,
+      "event": "flood",
+      "goal": "",
+      "medium": "flooded"
+    }
+  ],
+  "checks": 24,
+  "failures": 0,
+  "records": [
+    {
+      "capture": "res://character/james-construction-helmet-v1/safety/native/cancel-before-0000.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "footViewport": [
+        566.373046875,
+        701.5595703125
+      ],
+      "helmet": true,
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "cancel-before",
+      "phase": "exit",
+      "sourceHash": "2e7eae61919dfbf42ff3cb77e34f6681dd8c9569d4b0fe04b81f4d3ccb4b114a",
+      "sparks": false,
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-helmet-v1/safety/native/death-before-0001.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "footViewport": [
+        566.373046875,
+        461.5595703125
+      ],
+      "helmet": true,
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "death-before",
+      "phase": "exit",
+      "sourceHash": "2e7eae61919dfbf42ff3cb77e34f6681dd8c9569d4b0fe04b81f4d3ccb4b114a",
+      "sparks": false,
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-helmet-v1/safety/native/flood-before-0002.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "footViewport": [
+        566.373046875,
+        461.5595703125
+      ],
+      "helmet": true,
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "flood-before",
+      "phase": "exit",
+      "sourceHash": "2e7eae61919dfbf42ff3cb77e34f6681dd8c9569d4b0fe04b81f4d3ccb4b114a",
+      "sparks": false,
+      "timer": 2.76666666666666
+    }
+  ],
+  "scope": "Three actual dry helmeted South paid-job retractions preempted by removed order, death and critical room flooding. Three native preemption-entry views; immediate helmeted death source membership checked before next update, normal controller clears tool/work/effects. No new visual acceptance of death/flood replacement families.",
+  "fixtureInheritedScope": "Three actual South paid-job retractions preempted by removed order, death and critical room flooding. Immediate death source before another update and normal safety/controller cleanup. No other safety context claim."
+}

@@ -1,0 +1,23 @@
+{
+  "status": "resolved-v2",
+  "state": "swim-carry-turn-east-south",
+  "gear": "bare",
+  "frame": 1,
+  "sourcePack": "character/krusher-water-cargo-turns-v1",
+  "evidence": [
+    "quarter-diagnostic-original.png",
+    "quarter-diagnostic-krusher.png",
+    "head-detail-6.png"
+  ],
+  "finding": "Neutral grey original hair/outline and isolated warm/red original head pixels remain around new head. complete_skull removal restricts pixels to warm hair or mean<40, so light neutral source skull pixels survive. Confirmed visually at10x original/output side by side. Quarter-head yaw/pitch views otherwise reviewed against source; complete silhouette cleanup required, preserving existing foreground/collar/body/hardware and source endpoint reuse.",
+  "nextAction": "Create v2 deterministic original-head mask correction; independently validate protected body, source joins and unchanged helmet; re-review all turn details before updating final candidate selection.",
+  "resolution": {
+    "pack": "character/krusher-water-cargo-turns-v2",
+    "revisionProof": "revision.json",
+    "independentChecks": 2026,
+    "nativeChecks": 7286,
+    "changedBareUnique": 24,
+    "allHelmetUnchanged": 80,
+    "note": "Four verified original fringe points cleared. The initially inspected fifth alpha1 red point belongs to authored Krusher head, retained. True alpha-composited diagnostic used for acceptance."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "status": "installed_runtime_clock_polish_owner_review_pending",
+  "newRaster": false,
+  "checks": 18538,
+  "actualJourneys": 6,
+  "airlockOrientations": 4,
+  "freshSceneLoadedTurnContinues": 4,
+  "exactExtractionPickupJoins": 5,
+  "exactPickupCarryJoins": 5,
+  "priorExtractionSnaps": 5,
+  "currentExtractionSnaps": 0,
+  "actualTurnKeys": [
+    "swim-carry-turn-east-north",
+    "swim-carry-turn-east-west",
+    "swim-carry-turn-north-south",
+    "swim-carry-turn-north-west",
+    "swim-carry-turn-south-east",
+    "swim-carry-turn-south-north",
+    "swim-carry-turn-west-east",
+    "swim-carry-turn-west-south"
+  ],
+  "pickupAndUnloadSlotsPerLoadedJourney": 6,
+  "realProfileUnchanged": true,
+  "evidence": "native-expedition-evidence.json",
+  "scope": "Normal dispatch, native needs and airlock cycle, exterior work/pickup/cargo turns/re-entry/drain/unload; four loaded-turn fresh-scene actual disk Continues; outbound and loaded recalls. Dedicated normally generated station, one chosen site arrangement per rotation; selected James manifests.",
+  "remaining": [
+    "Owner motion review",
+    "Interrupted work/pickup visual stow and empty-return joins",
+    "Different exterior paths/sites, crowded airlocks and power/death hazards",
+    "Full mortality and cross-family motion/master consistency"
+  ],
+  "midWorkAndRecall": {
+    "checks": 21909,
+    "actualJourneys": 7,
+    "freshSceneMidWorkContinues": 4,
+    "unfinishedRecalls": [
+      "work",
+      "pickup",
+      "low-air"
+    ],
+    "inventoryAndExtractionForRecalls": 0,
+    "evidence": "native-interruptions-evidence.json",
+    "visualLimit": "Cancelled work/pickup changes pixels immediately; stow/empty-return motion still needs visual polish."
+  }
+}

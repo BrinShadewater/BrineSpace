@@ -1,0 +1,199 @@
+{
+  "checks": 54,
+  "failures": 0,
+  "results": [
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.419999999998,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.119999999998,
+        "state": "interact"
+      },
+      "beforePose": "pickup",
+      "beforeStage": "workshop_pickup",
+      "beforeTimer": 0.26,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_pickup-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_pickup-after-000.png"
+      ],
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-bare-workshop_pickup-source-before.png",
+        "arrival-captures/interrupt-bare-workshop_pickup-source-after.png"
+      ],
+      "target": "workshop_pickup"
+    },
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 110.059999999998,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "carry-turn-east-west",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "carry",
+      "beforeStage": "workshop_carry",
+      "beforeTimer": 0.0,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_carry-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_carry-after-000.png"
+      ],
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-bare-workshop_carry-source-before.png",
+        "arrival-captures/interrupt-bare-workshop_carry-source-after.png"
+      ],
+      "target": "workshop_carry"
+    },
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "north",
+        "started": 116.579999999997,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "unload",
+      "beforeStage": "workshop_unload",
+      "beforeTimer": 1.02,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_unload-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-bare-workshop_unload-after-000.png"
+      ],
+      "mode": "bare",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-bare-workshop_unload-source-before.png",
+        "arrival-captures/interrupt-bare-workshop_unload-source-after.png"
+      ],
+      "target": "workshop_unload"
+    },
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.419999999998,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "east",
+        "started": 109.119999999998,
+        "state": "interact"
+      },
+      "beforePose": "pickup",
+      "beforeStage": "workshop_pickup",
+      "beforeTimer": 0.26,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_pickup-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_pickup-after-000.png"
+      ],
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-helmet-workshop_pickup-source-before.png",
+        "arrival-captures/interrupt-helmet-workshop_pickup-source-after.png"
+      ],
+      "target": "workshop_pickup"
+    },
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 110.059999999998,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "carry-turn-east-west",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "carry",
+      "beforeStage": "workshop_carry",
+      "beforeTimer": 0.0,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_carry-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_carry-after-000.png"
+      ],
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-helmet-workshop_carry-source-before.png",
+        "arrival-captures/interrupt-helmet-workshop_carry-source-after.png"
+      ],
+      "target": "workshop_carry"
+    },
+    {
+      "afterMotion": {
+        "clip": "",
+        "direction": "north",
+        "started": 116.579999999997,
+        "state": "idle"
+      },
+      "afterPose": "idle",
+      "afterStage": "",
+      "afterTimer": 0.0,
+      "beforeMotion": {
+        "clip": "",
+        "direction": "west",
+        "started": 109.679999999998,
+        "state": "carry"
+      },
+      "beforePose": "unload",
+      "beforeStage": "workshop_unload",
+      "beforeTimer": 1.02,
+      "captures": [
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_unload-before-000.png",
+        "res://character/james-east-cargo-heads-v3/arrival-captures/interrupt-helmet-workshop_unload-after-000.png"
+      ],
+      "mode": "helmet",
+      "nextGoal": "curiosity",
+      "sameFoot": true,
+      "sources": [
+        "arrival-captures/interrupt-helmet-workshop_unload-source-before.png",
+        "arrival-captures/interrupt-helmet-workshop_unload-source-after.png"
+      ],
+      "target": "workshop_unload"
+    }
+  ],
+  "scope": "Diagnostic actual default0 workshop journeys, both initial gears, pickup-mid/carry-mid/unload-mid real power removal +20ms actor update and source/world before/after captures. No corrective motion or Continue acceptance."
+}

@@ -1,0 +1,39 @@
+{
+  "axialMaster": "Create a matching two-view helmet-on character turnaround for Dr Maria Veld based on reference image 1's accepted helmet side master and reference image 2's locked character sheet. Exactly TWO full-body figures with clear margins, same scale and foot baseline: LEFT FIGURE strict straight-on FRONT facing camera, RIGHT FIGURE strict straight-on REAR facing away with back square to camera. Neutral relaxed standing stance, arms down, boots slightly separated. Match image 1's head/body proportion, fitted graphite domed helmet, silver riveted visor rim, circular ear couplings, clear visor with one recognizable warm tan Veld face in front, small pure neutral WHITE forehead light; rear helmet is opaque shell with rear fittings and no face. Hair fully contained. Preserve narrow feminine build, dark charcoal graphite quilted suit, subdued cobalt blue shoulder patches, neutral silver cuffs/knee/shin bands and boot armor, ivory chest modules, straps and worn detailing. Consistent neutral illumination, no brightness/hue drift. Anatomical RIGHT hip carries three silver blue-capped canisters (viewer left in front, viewer right in rear); anatomical LEFT hip has cyan scanner (viewer right in front, viewer left in rear). Front chest modules only on front; rear has rectangular backpack exactly as image 2. Same crisp detailed 2D painted game sprite style, not a 3D render. Entire helmets and boots visible. Truly transparent background, no scenery, no shadow, no glow, no text. Preserve design; only change viewing direction from side master.",
+  "east": {
+    "model": "minimax_hailuo",
+    "variant": "minimax-2.3-fast",
+    "duration": 6,
+    "resolution": "768",
+    "count": 1,
+    "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "8133a9af-42d4-4bc2-bea5-815ec3f8e386"
+      }
+    ],
+    "prompt": "[Static shot] The helmeted character walks in place at a steady natural pace, facing RIGHT in strict side profile for the entire shot. Her legs alternate clear walking strides and her arms swing gently close to her hips. She stays centered at the same size, with her entire helmet and boots visible. The rigid diving helmet, single face inside its clear visor, white forehead light, suit, tools, colours, brightness and plain green background remain unchanged.",
+    "prompt_optimizer": false
+  },
+  "eastJob": {
+    "results": [
+      {
+        "id": "16e893e7-515f-4fe1-bebb-cf3f61d79074",
+        "type": "video",
+        "status": "pending",
+        "model": "minimax_hailuo",
+        "params": {
+          "prompt": "[Static shot] The helmeted character walks in place at a steady natural pace, facing RIGHT in strict side profile for the entire shot. Her legs alternate clear walking strides and her arms swing gently close to her hips. She stays centered at the same size, with her entire helmet and boots visible. The rigid diving helmet, single face inside its clear visor, white forehead light, suit, tools, colours, brightness and plain green background remain unchanged.",
+          "duration": 6,
+          "reference_images": [
+            "8133a9af-42d4-4bc2-bea5-815ec3f8e386"
+          ],
+          "variant": "minimax-2.3-fast",
+          "resolution": "768",
+          "prompt_optimizer": false
+        }
+      }
+    ]
+  }
+}

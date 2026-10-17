@@ -1,0 +1,67 @@
+{
+  "method": "Built-in imagegen; deterministic extraction, shared material curves and reference-calibrated source rulers",
+  "records": [
+    {
+      "file": "bare-source-v1.png",
+      "sha256": "e6c36aa40eeb6f75421439b203efc0a3a0286ed3a4e99a38729bbc7f792e25cb",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "bare-source-prompt-v1.txt",
+      "promptSha256": "2543bf5c6110f8c30076cd40f4fcf67bb52a640f12c47015c2d3f5b63397edcb",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-dc8645c1-d400-4909-8233-dffb3e1afeac.png",
+      "status": "slots1-3 selected at .21;slot0 rejected too straight south"
+    },
+    {
+      "file": "near-south-source-v2.png",
+      "sha256": "bb9b8b6096da2edd4fbcd1df45c5c5a9c22691f1ee0e928c9b0e59fccf564eec",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "near-south-source-prompt-v2.txt",
+      "promptSha256": "50c6d16a3e226476e87d42ca6a1cd5308a184b918fadb99d910fa5c2558261cf",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-b3017c50-c57a-4355-8c35-40bfa0876b6c.png",
+      "status": "selected first interior at independent .12 ruler"
+    },
+    {
+      "file": "helmet-source-v1.png",
+      "sha256": "d158b95bbafc009eb9127bb205e1ffd8584bd235b6ba08e0fcbd6c4679c6131b",
+      "dimensions": [
+        1685,
+        934
+      ],
+      "mode": "RGBA",
+      "prompt": "helmet-source-prompt-v1.txt",
+      "promptSha256": "72b8063afb2f68e546ea7a52ba3ac180ab5e97ff4d142d204416175087c0ae1a",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-53261ad8-2f10-487a-b6ba-def1c38c9e08.png",
+      "status": "slots2-3 selected at .095;slots0-1 rejected front collar/prone camera mismatch"
+    },
+    {
+      "file": "helmet-source-v2.png",
+      "sha256": "353867ba4d32a0d0d8ca850d583a7c1a8ad71277c4a5e1dc928e7418e5e15491",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "helmet-source-prompt-v2.txt",
+      "promptSha256": "9d6b1cee508b2be671deb7d111741bcfa9f99d82a8e30ee486f958076e1cf2dd",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-2d20a862-c2e0-4e35-86dc-ff1f1670f395.png",
+      "status": "slots0-1 selected at .083;slots2-3 omitted because camera stays overhead near west"
+    }
+  ],
+  "referenceHashes": {
+    "selected-endpoint-reference.png": "9eb1a99b9564e4d610f4a5e10b5b1da997fa987b3fc121a468e2fab866bf8d08",
+    "yaw-orientation-guide-v1.png": "293947242868ba7a3a4cf612453893aa95691424512684ce958beaf0601cacc3",
+    "near-south-orientation-guide-v2.png": "d6dd3b3e60460c28fc3d561b2956f4924d48eaedb1a994bf91a7cdbbfbcc1dd2",
+    "helmet-endpoint-reference.png": "b733ccbde8efcf8b61a5ead134766fcd48f69841b7a810dc83019cee350aae3f",
+    "helmet-camera-guide-v2.png": "284a6f6e6e86b8b4ccd435c17f72e6c082729ca26c56c4efa8c9622b09d39d7e",
+    "bare-turn-contact-v1.png": "71727f44dd32f26a8ab123062ca67f73b00b477164e995d1523557f85e015261"
+  },
+  "guideCaveat": "Rotated native sprites are generation camera/yaw guides only, never candidate artwork",
+  "installed": false
+}

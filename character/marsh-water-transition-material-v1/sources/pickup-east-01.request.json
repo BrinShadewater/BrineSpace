@@ -1,0 +1,140 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "whole source retained; provisional packaging/review",
+  "promptSha256": "1142e39c282c7f35166e1695602706844a89810f5a9e7467cad987d6a09a527d",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-east-01-body-primary.png",
+      "sha256": "a1db23c5306f92adbee57060c73bf4cea8609f906fb90784a4536d1cffca53e8"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-east-01-endpoints.png",
+      "sha256": "48dfbffe1a37e3793ee9328d5994711a180752d0f2181c71060ff05e94e5a84b"
+    },
+    {
+      "path": "character/marsh-water-transition-material-v1/sources/pickup-east-01-old-motion-only.png",
+      "sha256": "6a9bf2da1a4770a92017fa96ba437b3278ddae8f9eaf74849a865f01d9a4d0ad"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png",
+      "sha256": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "path": "character/marsh-v2/supplemental/loaded-swim-east/swim-pickup-east-000.png",
+      "sha256": "1c00a775b54fdfe9a6e4e8200512bf34f0d6050792273623f91a26467030c31c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-east/001.png",
+      "sha256": "dfd9f9e73366800c0b83bf0d7ef0d4afa9e3aad4ac546d08eed2666c85e3fe46"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-east/002.png",
+      "sha256": "387a280a637b3b23d2df3687bb1c1912ac005d3fc01da073dffa9d1269d03166"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-east/003.png",
+      "sha256": "3fde3d70bf195a72cf0154dbeadc9c7c09bd70a6628b332558a9d87721cea953"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-east/004.png",
+      "sha256": "bc2136fc7eac62aa1c5060665fe05c80b638ccea4dbf168da439a9a3146a9d74"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-east/005.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    }
+  ],
+  "selectedTransitionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTransitionState": {
+    "id": "swim-pickup-east",
+    "frameFiles": [
+      "../../character/marsh-v2/supplemental/loaded-swim-east/swim-pickup-east-000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-east/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-east/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-east/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-east/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-pickup-east/005.png"
+    ],
+    "frameDurationsMs": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "loop": false,
+    "facings": [
+      "east",
+      "east",
+      "east",
+      "east",
+      "east",
+      "east"
+    ],
+    "waterKinds": [
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup",
+      "swim-pickup"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "selectedIdleMaster": {
+    "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+    "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+  },
+  "neutralOccupiedTargetHeight": 147,
+  "intermediateFigures": 4,
+  "rules": "Whole independent own direction; one neutral ruler, exact endpoints/normal timing; no patches/mirror/per-pose fitting. Physical contact/root/proportions/camera/grade remain review requirements.",
+  "generationId": "exec-808ddeef-c10b-4bcd-80b6-47b161c16ad3",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-808ddeef-c10b-4bcd-80b6-47b161c16ad3.png",
+  "rawSha256": "1f63b42592b9cf98fdf2cc797ad62ed0dd194299f53704a632243eb1e7fecfe2",
+  "rejectedStudy": true,
+  "rejection": "First crouch exposes two frontal latches versus own side one-edge latch; last swimmer162px long versus146 endpoint. Neutral came FIRST despite requested last; observed extraction order recorded, not assumed."
+}

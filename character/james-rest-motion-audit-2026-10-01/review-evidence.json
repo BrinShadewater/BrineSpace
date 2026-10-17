@@ -1,0 +1,2946 @@
+{
+  "sourceReferences": 144,
+  "joins": [
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "east",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "standing->lie",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "lie->sleep",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "sleep->rise",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "join": "rise->standing",
+      "wholeRegisteredPixelsExact": true,
+      "changedPixels": 0
+    }
+  ],
+  "clocks": [
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "visualCycleMs": 800.0
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "visualCycleMs": 3600
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "visualCycleMs": 800.0
+    }
+  ],
+  "records": [
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/000.png",
+      "sha256": "1d88d2191df52024ece7461a6253581446f3b422b58bd090f7dadd1487822cbb",
+      "registeredBounds": [
+        97,
+        76,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/001.png",
+      "sha256": "80a6e867e4f50076ccd9d8eca62c712e7b4fe17d53261270a753c8730fb07caf",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        52.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/002.png",
+      "sha256": "8d010fba379c4371e093dde2fd0ce49d6b75f55fbfd7e84c665bcad6d4543dc9",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/003.png",
+      "sha256": "b964d01e9bf29e9a8051014fa125477f6c6a0344fa5df36d33675d564b971873",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/004.png",
+      "sha256": "cadd9f53fb3d1e5a33e84e9480924619b339ae5b089733b9909892577624b054",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-north/005.png",
+      "sha256": "38802efedb646992d51c5cfbc253792af4c3f8036755c420b240d06ab25ffbce",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/000.png",
+      "sha256": "38802efedb646992d51c5cfbc253792af4c3f8036755c420b240d06ab25ffbce",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/001.png",
+      "sha256": "1370f802d980ce6c28246f052e7093fedbd9f032dc3e7ba1c181e0c76ea58b3a",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/002.png",
+      "sha256": "892e5bcb404b747b9a1aba41f071133d3da929ddacd794ba8de6b0968e6ee52f",
+      "registeredBounds": [
+        92,
+        129,
+        165,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/003.png",
+      "sha256": "4c43a9435b3c118e3d5e78c3ee3ecaa64abb06dbf68f910b327b9401e4bf533b",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/004.png",
+      "sha256": "33211676b33d6c0edc8491a2a5a1a5f2d55a123dd47f0dce44a6f71aeaf2023e",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-north/005.png",
+      "sha256": "38802efedb646992d51c5cfbc253792af4c3f8036755c420b240d06ab25ffbce",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/000.png",
+      "sha256": "38802efedb646992d51c5cfbc253792af4c3f8036755c420b240d06ab25ffbce",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/001.png",
+      "sha256": "cadd9f53fb3d1e5a33e84e9480924619b339ae5b089733b9909892577624b054",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/002.png",
+      "sha256": "b964d01e9bf29e9a8051014fa125477f6c6a0344fa5df36d33675d564b971873",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/003.png",
+      "sha256": "8d010fba379c4371e093dde2fd0ce49d6b75f55fbfd7e84c665bcad6d4543dc9",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        49.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/004.png",
+      "sha256": "80a6e867e4f50076ccd9d8eca62c712e7b4fe17d53261270a753c8730fb07caf",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        52.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-north/005.png",
+      "sha256": "1d88d2191df52024ece7461a6253581446f3b422b58bd090f7dadd1487822cbb",
+      "registeredBounds": [
+        97,
+        76,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/000.png",
+      "sha256": "90a7ffc26dba5126bbf271413e662286231d0902bc2226ad156a125ebb621636",
+      "registeredBounds": [
+        97,
+        74,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/001.png",
+      "sha256": "eb226c1b6e5e4a36f7dd9f2a7b829e0a11b4b0373816185a96562eb247ec1674",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        53.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/002.png",
+      "sha256": "d3deee70a70c22d5fd4748bf349563094c8f31629f36f17fa2e36f40ca85de88",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/003.png",
+      "sha256": "582627df853f2a53f9ede2b4946b5e1fa2d744a76268707831b2c7244625616e",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/004.png",
+      "sha256": "ea33ad425831a92517562d46db8786fdf652174b3828f1922f99664c02b1afdf",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-north/005.png",
+      "sha256": "1493e598fe099de6148db7742603958b4827380bbe071a9336a28fdfaa9109dd",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/000.png",
+      "sha256": "1493e598fe099de6148db7742603958b4827380bbe071a9336a28fdfaa9109dd",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/001.png",
+      "sha256": "e68a1c6bc9e3d5a631803963416f403cc65e9106cdccff0329b2e72896492582",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/002.png",
+      "sha256": "1fbfd507ee7755b0fdcf86eb519316964b760ebead373ce522735224eb463ea1",
+      "registeredBounds": [
+        92,
+        129,
+        165,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        53.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/003.png",
+      "sha256": "2b1ca9fc8b196227823434713350ac509dc9520f31dd979df944d9d5db7eec2c",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        53.0,
+        53.5
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/004.png",
+      "sha256": "4c28b7e72ea9a08f4d1397ad1345d628ec3e1d2e76478b4f4de08bb4d5068eb0",
+      "registeredBounds": [
+        91,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-north/005.png",
+      "sha256": "1493e598fe099de6148db7742603958b4827380bbe071a9336a28fdfaa9109dd",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/000.png",
+      "sha256": "1493e598fe099de6148db7742603958b4827380bbe071a9336a28fdfaa9109dd",
+      "registeredBounds": [
+        92,
+        129,
+        164,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        54.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/001.png",
+      "sha256": "ea33ad425831a92517562d46db8786fdf652174b3828f1922f99664c02b1afdf",
+      "registeredBounds": [
+        92,
+        132,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/002.png",
+      "sha256": "582627df853f2a53f9ede2b4946b5e1fa2d744a76268707831b2c7244625616e",
+      "registeredBounds": [
+        94,
+        121,
+        164,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        54.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/003.png",
+      "sha256": "d3deee70a70c22d5fd4748bf349563094c8f31629f36f17fa2e36f40ca85de88",
+      "registeredBounds": [
+        86,
+        121,
+        162,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        50.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/004.png",
+      "sha256": "eb226c1b6e5e4a36f7dd9f2a7b829e0a11b4b0373816185a96562eb247ec1674",
+      "registeredBounds": [
+        92,
+        96,
+        159,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        53.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-north",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-north/005.png",
+      "sha256": "90a7ffc26dba5126bbf271413e662286231d0902bc2226ad156a125ebb621636",
+      "registeredBounds": [
+        97,
+        74,
+        159,
+        223
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/000.png",
+      "sha256": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8",
+      "registeredBounds": [
+        95,
+        77,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/001.png",
+      "sha256": "b2ffafd39234c39d76f948d13bfcaf5e42a0e67410deebb42a317e4b6f3871bd",
+      "registeredBounds": [
+        74,
+        119,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/002.png",
+      "sha256": "a86ff37d5ab8df983b2f785c90b2d3ca5704823dc35bdfe9823f5a9f46ad7588",
+      "registeredBounds": [
+        77,
+        109,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/003.png",
+      "sha256": "79eaf407e6eb043308008bbb5c117361c2ee555186cc5884358ad207c4fa37fc",
+      "registeredBounds": [
+        74,
+        117,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/004.png",
+      "sha256": "e04b3ac2ee7fc17dbc531d812aaf97a6948d426e73059c1c1848b3b2f77e0239",
+      "registeredBounds": [
+        76,
+        129,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-south/005.png",
+      "sha256": "2eced5ede98a9d9454bf808d8b72d7aaf2bb0984e3ed716e779523a04e048f4c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/000.png",
+      "sha256": "2eced5ede98a9d9454bf808d8b72d7aaf2bb0984e3ed716e779523a04e048f4c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/001.png",
+      "sha256": "c7e7705f6306f348f0b71dfead47bc0a0da6e7a4d970b6ffdc5a39bcdb334c92",
+      "registeredBounds": [
+        76,
+        133,
+        182,
+        227
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/002.png",
+      "sha256": "f6280c97d707b466aabb01f8f8ebbc04be4a9afcc14ffe6e43e26c9ecda8b9d7",
+      "registeredBounds": [
+        76,
+        133,
+        181,
+        229
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/003.png",
+      "sha256": "470fd63a2f508a71627cc58a1632fb39d7a0ebec1401b6d81e2134b4537aef7f",
+      "registeredBounds": [
+        75,
+        133,
+        182,
+        229
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/004.png",
+      "sha256": "5f70db487c92a84f1cc3b85959f57c3fadc7b672bbcf949d27fc9a746c8e900e",
+      "registeredBounds": [
+        75,
+        133,
+        182,
+        230
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-south/005.png",
+      "sha256": "2eced5ede98a9d9454bf808d8b72d7aaf2bb0984e3ed716e779523a04e048f4c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/000.png",
+      "sha256": "2eced5ede98a9d9454bf808d8b72d7aaf2bb0984e3ed716e779523a04e048f4c",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/001.png",
+      "sha256": "e04b3ac2ee7fc17dbc531d812aaf97a6948d426e73059c1c1848b3b2f77e0239",
+      "registeredBounds": [
+        76,
+        129,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/002.png",
+      "sha256": "79eaf407e6eb043308008bbb5c117361c2ee555186cc5884358ad207c4fa37fc",
+      "registeredBounds": [
+        74,
+        117,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/003.png",
+      "sha256": "a86ff37d5ab8df983b2f785c90b2d3ca5704823dc35bdfe9823f5a9f46ad7588",
+      "registeredBounds": [
+        77,
+        109,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/004.png",
+      "sha256": "b2ffafd39234c39d76f948d13bfcaf5e42a0e67410deebb42a317e4b6f3871bd",
+      "registeredBounds": [
+        74,
+        119,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        51.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-south/005.png",
+      "sha256": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8",
+      "registeredBounds": [
+        95,
+        77,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/000.png",
+      "sha256": "c42be19c26b3e735b2119f49441268b3681c40fdc36c0afd87e5dac4e751862d",
+      "registeredBounds": [
+        95,
+        69,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        57.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/001.png",
+      "sha256": "19df22352b21e093262f0bb4ea32269252c9a0a0eca20e0f9fc392a7b6588637",
+      "registeredBounds": [
+        74,
+        116,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        52.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/002.png",
+      "sha256": "c24637718b61cda92492309bc035d30621a5c3bbd09c12fca350d09a3b0ebee8",
+      "registeredBounds": [
+        77,
+        105,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/003.png",
+      "sha256": "5fff6130a22137075aa1efc5d0e581b4f257a187dac81abeca5ae6316c8992ee",
+      "registeredBounds": [
+        74,
+        114,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        57.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/004.png",
+      "sha256": "cc80697ea2e16e0114997feac5e8ffb64170503c681dd82acb32aa09f36305ab",
+      "registeredBounds": [
+        76,
+        128,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-south/005.png",
+      "sha256": "de1ec4067f894166bb27f6acf54967d1458f7d039e1d248cd9f97a12510a28d8",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/000.png",
+      "sha256": "de1ec4067f894166bb27f6acf54967d1458f7d039e1d248cd9f97a12510a28d8",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/001.png",
+      "sha256": "cdbada9e07a1938f0b0b00dd54b9b70f6d4556c8811b92912526e5d6f7aa7a7f",
+      "registeredBounds": [
+        76,
+        132,
+        182,
+        227
+      ],
+      "neutralMedian": [
+        57.0,
+        56.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/002.png",
+      "sha256": "826c13e7fa52215daeec5bf1e13880cc1acdba1589572188d33683c89a3a1712",
+      "registeredBounds": [
+        76,
+        132,
+        181,
+        229
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/003.png",
+      "sha256": "29c1f8ef750cae055fb993a4cabaeae0e21cf124f4a10cf6e4cef1a10655e0cb",
+      "registeredBounds": [
+        75,
+        132,
+        182,
+        229
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/004.png",
+      "sha256": "a34588626cb56bf67b0aad61d7ab1e4ccdd49a08e0e996df7551c04695bf553a",
+      "registeredBounds": [
+        75,
+        132,
+        182,
+        230
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-south/005.png",
+      "sha256": "de1ec4067f894166bb27f6acf54967d1458f7d039e1d248cd9f97a12510a28d8",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/000.png",
+      "sha256": "de1ec4067f894166bb27f6acf54967d1458f7d039e1d248cd9f97a12510a28d8",
+      "registeredBounds": [
+        77,
+        133,
+        181,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        55.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/001.png",
+      "sha256": "cc80697ea2e16e0114997feac5e8ffb64170503c681dd82acb32aa09f36305ab",
+      "registeredBounds": [
+        76,
+        128,
+        181,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        55.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/002.png",
+      "sha256": "5fff6130a22137075aa1efc5d0e581b4f257a187dac81abeca5ae6316c8992ee",
+      "registeredBounds": [
+        74,
+        114,
+        183,
+        222
+      ],
+      "neutralMedian": [
+        59.0,
+        57.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/003.png",
+      "sha256": "c24637718b61cda92492309bc035d30621a5c3bbd09c12fca350d09a3b0ebee8",
+      "registeredBounds": [
+        77,
+        105,
+        178,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        56.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/004.png",
+      "sha256": "19df22352b21e093262f0bb4ea32269252c9a0a0eca20e0f9fc392a7b6588637",
+      "registeredBounds": [
+        74,
+        116,
+        150,
+        223
+      ],
+      "neutralMedian": [
+        54.0,
+        52.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-south",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-south/005.png",
+      "sha256": "c42be19c26b3e735b2119f49441268b3681c40fdc36c0afd87e5dac4e751862d",
+      "registeredBounds": [
+        95,
+        69,
+        161,
+        223
+      ],
+      "neutralMedian": [
+        58.0,
+        57.0,
+        57.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/000.png",
+      "sha256": "82ea64662eed0d1af6b2637a76d9d420c54a7a532fd330c8b5ff6adb790569a0",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        46.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/001.png",
+      "sha256": "eccd8b1fadc1bc62a2e1e35841662a486f8320951d19ef14d80f857bac6593fd",
+      "registeredBounds": [
+        98,
+        119,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        45.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/002.png",
+      "sha256": "2f52fc799fc78b5aa234882858a80c6f5012a607a117cd5c0f7bdc5ec5a9d222",
+      "registeredBounds": [
+        68,
+        137,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/003.png",
+      "sha256": "a1cb7c01d6bd08d28feb6b2f2529a4a28e8ae909c989172f55ed80bcafdadbc2",
+      "registeredBounds": [
+        65,
+        152,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/004.png",
+      "sha256": "557f17c9b86a42d50caf99c69c73e4c709eca53076c553fbcb680570eb66a5d8",
+      "registeredBounds": [
+        61,
+        168,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-east/005.png",
+      "sha256": "0028f8fa6169210eed7425b677c3e7cd0cd2940d44d4f3d4cafb304e24a68af8",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/000.png",
+      "sha256": "0028f8fa6169210eed7425b677c3e7cd0cd2940d44d4f3d4cafb304e24a68af8",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/001.png",
+      "sha256": "aeade0d5f8d80329591b01b1f5c818e6c0aa7c4e1f72ad0be6476441991c8766",
+      "registeredBounds": [
+        60,
+        190,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/002.png",
+      "sha256": "8b0eb1edd7ebba78e071600ba29df17cac86e1cc969f20bf084061c148084f6b",
+      "registeredBounds": [
+        60,
+        192,
+        203,
+        221
+      ],
+      "neutralMedian": [
+        52.0,
+        47.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/003.png",
+      "sha256": "1b469354494dcab317944a6c62e7f48666a7c71ddb5fecdf4d8a6875b898d74d",
+      "registeredBounds": [
+        59,
+        192,
+        201,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        47.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/004.png",
+      "sha256": "f36c500dccefa5c19803ede1536a34064508defa0083e5742082d08eae900c67",
+      "registeredBounds": [
+        60,
+        192,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        51.0,
+        46.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-east/005.png",
+      "sha256": "0028f8fa6169210eed7425b677c3e7cd0cd2940d44d4f3d4cafb304e24a68af8",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/000.png",
+      "sha256": "0028f8fa6169210eed7425b677c3e7cd0cd2940d44d4f3d4cafb304e24a68af8",
+      "registeredBounds": [
+        59,
+        191,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/001.png",
+      "sha256": "557f17c9b86a42d50caf99c69c73e4c709eca53076c553fbcb680570eb66a5d8",
+      "registeredBounds": [
+        61,
+        168,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/002.png",
+      "sha256": "a1cb7c01d6bd08d28feb6b2f2529a4a28e8ae909c989172f55ed80bcafdadbc2",
+      "registeredBounds": [
+        65,
+        152,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/003.png",
+      "sha256": "2f52fc799fc78b5aa234882858a80c6f5012a607a117cd5c0f7bdc5ec5a9d222",
+      "registeredBounds": [
+        68,
+        137,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/004.png",
+      "sha256": "eccd8b1fadc1bc62a2e1e35841662a486f8320951d19ef14d80f857bac6593fd",
+      "registeredBounds": [
+        98,
+        119,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        45.0,
+        48.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-east/005.png",
+      "sha256": "82ea64662eed0d1af6b2637a76d9d420c54a7a532fd330c8b5ff6adb790569a0",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        46.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/000.png",
+      "sha256": "4964a44e43c1b1b9ab4916f3da1ff29f187febc5e9b36f64b77f16caacb261f5",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/001.png",
+      "sha256": "46073279cd13aaad20d9adffc46f42b78c6244558aa1c5695421dfaca48bf07b",
+      "registeredBounds": [
+        98,
+        113,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        46.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/002.png",
+      "sha256": "3c14d8ee235930eb3e61422a005c984e6a3675d16449662ea655c387cc5b1b3d",
+      "registeredBounds": [
+        68,
+        131,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/003.png",
+      "sha256": "69512c782e2cd19cad69b764c9946bcd6a7d81f5ff4b0f459bc8fb691bd0f999",
+      "registeredBounds": [
+        63,
+        147,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/004.png",
+      "sha256": "99dc7313e7a27c21c4915f1fc7938cc2219e1a7a55a0caae94fd887546304fb3",
+      "registeredBounds": [
+        52,
+        164,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-east/005.png",
+      "sha256": "0d64cea670a2dec26583fc4b8e99f17c6675f5b1f46c1dbc33b97068d058128c",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/000.png",
+      "sha256": "0d64cea670a2dec26583fc4b8e99f17c6675f5b1f46c1dbc33b97068d058128c",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/001.png",
+      "sha256": "74f4ee90902490f03181a740ae4f16ffa64355cdfd2ad84c9a1ed707f52fea6e",
+      "registeredBounds": [
+        57,
+        188,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/002.png",
+      "sha256": "2201b2b3dc96869c08ea154d55e189f34df58a1b0a5083d65e7af1ef5a93ba31",
+      "registeredBounds": [
+        56,
+        188,
+        203,
+        221
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/003.png",
+      "sha256": "d736bcb5107404dd3f826cd87d55d98f0c8166972d5fb64d5482cd57c9e38739",
+      "registeredBounds": [
+        56,
+        187,
+        201,
+        223
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/004.png",
+      "sha256": "8717ddfac6af54c56d0609111e55adc398f6288313cd966f161aeadc07050884",
+      "registeredBounds": [
+        56,
+        187,
+        203,
+        222
+      ],
+      "neutralMedian": [
+        52.0,
+        48.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-east/005.png",
+      "sha256": "0d64cea670a2dec26583fc4b8e99f17c6675f5b1f46c1dbc33b97068d058128c",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/000.png",
+      "sha256": "0d64cea670a2dec26583fc4b8e99f17c6675f5b1f46c1dbc33b97068d058128c",
+      "registeredBounds": [
+        58,
+        188,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/001.png",
+      "sha256": "99dc7313e7a27c21c4915f1fc7938cc2219e1a7a55a0caae94fd887546304fb3",
+      "registeredBounds": [
+        52,
+        164,
+        210,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/002.png",
+      "sha256": "69512c782e2cd19cad69b764c9946bcd6a7d81f5ff4b0f459bc8fb691bd0f999",
+      "registeredBounds": [
+        63,
+        147,
+        208,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/003.png",
+      "sha256": "3c14d8ee235930eb3e61422a005c984e6a3675d16449662ea655c387cc5b1b3d",
+      "registeredBounds": [
+        68,
+        131,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        53.0,
+        48.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/004.png",
+      "sha256": "46073279cd13aaad20d9adffc46f42b78c6244558aa1c5695421dfaca48bf07b",
+      "registeredBounds": [
+        98,
+        113,
+        152,
+        222
+      ],
+      "neutralMedian": [
+        50.0,
+        46.0,
+        49.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-east",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-east/005.png",
+      "sha256": "4964a44e43c1b1b9ab4916f3da1ff29f187febc5e9b36f64b77f16caacb261f5",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        51.0,
+        47.0,
+        50.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/000.png",
+      "sha256": "4cc2340cd3f0e12dc8104c421465d787b100f7bf5846c581e87ad33603657b17",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/001.png",
+      "sha256": "58747234396eff65d09cb6f03445730056ff48340be11a6ec73f7fceea31f4ea",
+      "registeredBounds": [
+        96,
+        120,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/002.png",
+      "sha256": "f74461dbf0bc7ba5dd6b893df8827e62578580a33e63a469ddb220fa1f6075fb",
+      "registeredBounds": [
+        63,
+        144,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/003.png",
+      "sha256": "9db8cff1d11b3dcea0c08fc6ab2b6771ba7a699cae43257220973edfe6dcc909",
+      "registeredBounds": [
+        9,
+        159,
+        170,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/004.png",
+      "sha256": "28a7649d6874cf0c91effa03546ff7e3b146cd812f76278d80c11194071779f6",
+      "registeredBounds": [
+        40,
+        185,
+        190,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "lie-down-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/lie-down-west/005.png",
+      "sha256": "b5058e2108e15d2277bf90fec2d70c627c911c0ce7fbc7fdcd9505f407dc9edc",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/000.png",
+      "sha256": "b5058e2108e15d2277bf90fec2d70c627c911c0ce7fbc7fdcd9505f407dc9edc",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/001.png",
+      "sha256": "b7674bdccdcf7b74446a58cfb59a5554bbdafd651cf9f6edce028081cf2cf6f0",
+      "registeredBounds": [
+        42,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        51.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/002.png",
+      "sha256": "be1ad2096a42fde26b46daacab6d292e52f0a57ea0211ac8709d658fc60b242b",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/003.png",
+      "sha256": "5bf92eee606b1c6b9701a6bb88797166caefd1e872505d9efd553e4739cfebc7",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        221
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/004.png",
+      "sha256": "bfa9a071ad03a8277b4d7bd7360d4113fcc8adee8bdf2ddd9fe5549e68477d90",
+      "registeredBounds": [
+        38,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.5,
+        52.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "sleep-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/sleep-west/005.png",
+      "sha256": "b5058e2108e15d2277bf90fec2d70c627c911c0ce7fbc7fdcd9505f407dc9edc",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/000.png",
+      "sha256": "b5058e2108e15d2277bf90fec2d70c627c911c0ce7fbc7fdcd9505f407dc9edc",
+      "registeredBounds": [
+        41,
+        186,
+        189,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/001.png",
+      "sha256": "28a7649d6874cf0c91effa03546ff7e3b146cd812f76278d80c11194071779f6",
+      "registeredBounds": [
+        40,
+        185,
+        190,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/002.png",
+      "sha256": "9db8cff1d11b3dcea0c08fc6ab2b6771ba7a699cae43257220973edfe6dcc909",
+      "registeredBounds": [
+        9,
+        159,
+        170,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/003.png",
+      "sha256": "f74461dbf0bc7ba5dd6b893df8827e62578580a33e63a469ddb220fa1f6075fb",
+      "registeredBounds": [
+        63,
+        144,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/004.png",
+      "sha256": "58747234396eff65d09cb6f03445730056ff48340be11a6ec73f7fceea31f4ea",
+      "registeredBounds": [
+        96,
+        120,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        49.0,
+        51.0
+      ]
+    },
+    {
+      "mode": "bare",
+      "key": "get-up-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/bare/get-up-west/005.png",
+      "sha256": "4cc2340cd3f0e12dc8104c421465d787b100f7bf5846c581e87ad33603657b17",
+      "registeredBounds": [
+        101,
+        77,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/000.png",
+      "sha256": "05ddb7f3dc13dda7dec6f151b3b8fc73220513e173ff1e0a20fd59fed2473358",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/001.png",
+      "sha256": "98c8a7d4b34b26d23a6f8a7571a636b9f0a2f5dcca3265d1be91de401d344fd2",
+      "registeredBounds": [
+        91,
+        114,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/002.png",
+      "sha256": "0cd75cb0fccc7d359ef626548a0109ab1a9506cb376fe22dc7df72d4247803ab",
+      "registeredBounds": [
+        63,
+        139,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/003.png",
+      "sha256": "d1e66f7bfc53486256c4c5ca9f262453ab09fd04365a9354f43bc03d8c16255a",
+      "registeredBounds": [
+        9,
+        154,
+        173,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        53.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/004.png",
+      "sha256": "c999ebfae86d87a2d8157704f354363449c3be8670a9a4abd4bc312665f8bce4",
+      "registeredBounds": [
+        40,
+        176,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        53.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "lie-down-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/lie-down-west/005.png",
+      "sha256": "c270815ea04b614ddd2f65085477e7ace9c8b7804cef128e8d4015fdbb236df6",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/000.png",
+      "sha256": "c270815ea04b614ddd2f65085477e7ace9c8b7804cef128e8d4015fdbb236df6",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/001.png",
+      "sha256": "5ef44e34af324e0aa4d4aaef370ae6485f3fe1cf074373d9379bb21c8e376d11",
+      "registeredBounds": [
+        42,
+        177,
+        191,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        53.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/002.png",
+      "sha256": "ddae27abb27c0d1d70d727e4d958a5c18bf8d84182adfcc5bd9cd1088d43e650",
+      "registeredBounds": [
+        41,
+        178,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/003.png",
+      "sha256": "6389ba2145227886fbf0599e3884b44949cd010bc9f01e1d726e5db74bd8c238",
+      "registeredBounds": [
+        41,
+        178,
+        191,
+        221
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/004.png",
+      "sha256": "192231786c37d42a0e9590cfd26e9db89049e61ed2351b38f1d277defe4a68fd",
+      "registeredBounds": [
+        38,
+        178,
+        193,
+        222
+      ],
+      "neutralMedian": [
+        55.0,
+        51.0,
+        53.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "sleep-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/sleep-west/005.png",
+      "sha256": "c270815ea04b614ddd2f65085477e7ace9c8b7804cef128e8d4015fdbb236df6",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 0,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/000.png",
+      "sha256": "c270815ea04b614ddd2f65085477e7ace9c8b7804cef128e8d4015fdbb236df6",
+      "registeredBounds": [
+        41,
+        179,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        56.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 1,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/001.png",
+      "sha256": "c999ebfae86d87a2d8157704f354363449c3be8670a9a4abd4bc312665f8bce4",
+      "registeredBounds": [
+        40,
+        176,
+        192,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        53.0,
+        55.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 2,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/002.png",
+      "sha256": "d1e66f7bfc53486256c4c5ca9f262453ab09fd04365a9354f43bc03d8c16255a",
+      "registeredBounds": [
+        9,
+        154,
+        173,
+        222
+      ],
+      "neutralMedian": [
+        57.0,
+        53.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 3,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/003.png",
+      "sha256": "0cd75cb0fccc7d359ef626548a0109ab1a9506cb376fe22dc7df72d4247803ab",
+      "registeredBounds": [
+        63,
+        139,
+        198,
+        223
+      ],
+      "neutralMedian": [
+        57.0,
+        52.0,
+        54.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 4,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/004.png",
+      "sha256": "98c8a7d4b34b26d23a6f8a7571a636b9f0a2f5dcca3265d1be91de401d344fd2",
+      "registeredBounds": [
+        91,
+        114,
+        155,
+        222
+      ],
+      "neutralMedian": [
+        54.0,
+        50.0,
+        52.0
+      ]
+    },
+    {
+      "mode": "helmet",
+      "key": "get-up-west",
+      "index": 5,
+      "path": "character/james-rest-material-continuity-v1/frames/helmet/get-up-west/005.png",
+      "sha256": "05ddb7f3dc13dda7dec6f151b3b8fc73220513e173ff1e0a20fd59fed2473358",
+      "registeredBounds": [
+        101,
+        68,
+        154,
+        223
+      ],
+      "neutralMedian": [
+        55.0,
+        52.0,
+        54.0
+      ]
+    }
+  ],
+  "scope": "All selected ordinary rest source poses in four facings/bare+helmet; fixed physical ruler/master/standing-walk comparison and full service-clock source replays. No new native furniture/gear/rotation claims."
+}

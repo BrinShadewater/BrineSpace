@@ -1,0 +1,23 @@
+{
+  "status": "native_service_removal_and_interrupted_handoffs_reviewed_owner_pending",
+  "productionChanges": false,
+  "newSourceStates": 0,
+  "fullSetComplete": false,
+  "checks": 10899,
+  "failures": 0,
+  "cases": 14,
+  "captures": 206,
+  "scope": "Two normal service fitting/removal sequences plus twelve actual service interruptions at selected source slots2/6/10 caused by power or room suspension. Prescribed connected powered East airlock; each case reset bare, removal prerequisite acquired through actual service. Unique selected-source records per forward/return leg, not continuous native cadence. No disk Continue, other locker orientations, safety evacuation, natural owner-layout or full-set acceptance.",
+  "review": "review-evidence.json",
+  "guard": {
+    "exitCode": 0,
+    "timedOut": false,
+    "realProfileUnchanged": true,
+    "profileDelta": []
+  },
+  "removalEndpoints": {
+    "helmetEntryExact": true,
+    "bareExitExact": true
+  },
+  "diskContinue": "character/james-locker-continue-v1/selection-review.json"
+}

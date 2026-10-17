@@ -1,0 +1,131 @@
+{
+  "name": "Bill east bare cup pickup/return candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "drink-enter-east",
+      "frameFiles": [
+        "frames/bare/000.png",
+        "frames/bare/001.png",
+        "frames/bare/002.png",
+        "frames/bare/003.png",
+        "frames/bare/004.png",
+        "frames/bare/005.png",
+        "frames/bare/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter",
+        "drink-enter"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "drink-exit-east",
+      "frameFiles": [
+        "frames/bare/006.png",
+        "frames/bare/005.png",
+        "frames/bare/004.png",
+        "frames/bare/003.png",
+        "frames/bare/002.png",
+        "frames/bare/001.png",
+        "frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit",
+        "drink-exit"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

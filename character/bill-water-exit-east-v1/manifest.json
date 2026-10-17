@@ -1,0 +1,44 @@
+{
+  "name": "Bill authored tucked-arm East water exit study",
+  "status": "source_study_unselected",
+  "frameWidth": 320,
+  "frameHeight": 320,
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "states": [
+    {
+      "id": "swim-land-east",
+      "frameFiles": [
+        "frames/swim-land-east/000.png",
+        "frames/swim-land-east/001.png",
+        "frames/swim-land-east/002.png",
+        "frames/swim-land-east/003.png",
+        "frames/swim-land-east/004.png",
+        "frames/swim-land-east/005.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "New distinct four-pose exit, not reversed entrance. Exact captured normal swim2/walk34 endpoints. Runtime medium/contact classification intentionally unassigned."
+    }
+  ]
+}

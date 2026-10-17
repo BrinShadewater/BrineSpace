@@ -1,0 +1,249 @@
+{
+  "name": "Krusher Dom ground helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "death-ground-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/db936f28243faf8f901d8d21b2d3590a0f6e3064c9eadc020c71f1fd5f3c79a2.png",
+        "res://character/krusher-coherent-bank-v1/frames/188f25122fbd4dbb4f78cc75196318513b211502c038b3d47fa403aff1827d5b.png",
+        "res://character/krusher-coherent-bank-v1/frames/f52257b9c798f0aaf8e6cae62719d0a539baefee5dc841f4e3e33f6af0e071e0.png",
+        "res://character/krusher-coherent-bank-v1/frames/74b7811a291a4d37ad9efc391c448df4ce36679747fa8b907b76c08b05aab9ab.png",
+        "res://character/krusher-coherent-bank-v1/frames/99261a2f5158852d5cafcfbbb618827e3a4add3c283bac079f35d858948f3ae3.png",
+        "res://character/krusher-coherent-bank-v1/frames/3382f8467cfd867b9255ca919682e705fdd2615548fdc827d5554852b585cbc1.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        220.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-ground-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/9c1d699afa805262537cb9806b415e102e261deb8035e311a3e6ecfa49276abd.png",
+        "res://character/krusher-coherent-bank-v1/frames/b77f7fe1d7d781321e7f3ba6a4794bf56c9268b0ee0f3b4e17a441a9aee71619.png",
+        "res://character/krusher-coherent-bank-v1/frames/2b1e4fc0e3b71967a800add68b458197c08ac1002cbe66c430abd635b2f92394.png",
+        "res://character/krusher-coherent-bank-v1/frames/c4dbe85101ca43831fe1245140d7d68586e4c9285f4364a18c672d0212ae9cdf.png",
+        "res://character/krusher-coherent-bank-v1/frames/7e1adb30624678a470ed8eb4d2576af22aa6c6242d885ce646ed8f37fccf0443.png",
+        "res://character/krusher-coherent-bank-v1/frames/58f06a4c15f50c571c792b65e7956fd5092bd7490c4f2664142bcd25d5d5d21a.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-ground-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/8f06e7af41e6b08671c80037032004f44af15e063aad998165746338ac18aebb.png",
+        "res://character/krusher-coherent-bank-v1/frames/2145b87bc0595a8cdf1e58bbedde25b5f1f649972fddc238d71b97a1ebec1875.png",
+        "res://character/krusher-coherent-bank-v1/frames/d07d75f083b30f572e6e6436cbb8fdda29a2727563b4cabbd44cc67ae144855c.png",
+        "res://character/krusher-coherent-bank-v1/frames/451fe0c581ce79e75e27d11fc195887802a90268d72a76329ba10e5b9385b979.png",
+        "res://character/krusher-coherent-bank-v1/frames/3a9a25130eea32fa0891970c3fc51d3f106815f6b4aedc90576b27b4018386b0.png",
+        "res://character/krusher-coherent-bank-v1/frames/6a4f4e0a054aad6afc389b4c0cea0deb3a1f71006e2fe2f4c27051385f17631a.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-ground-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v1/frames/d85fc2aa814a291724e13c594a7869d9f83a1eda8898dd37675d9dce6e3a9369.png",
+        "res://character/krusher-coherent-bank-v1/frames/ca8d0ca8c43b0787042f4912092ac67b309c7f1c2f3178f91ec83c557c7f78a0.png",
+        "res://character/krusher-coherent-bank-v1/frames/ccb0018c9127d2019fbab45e5acb6d3c9068bfc321dc019a5236a0e0bb24abd0.png",
+        "res://character/krusher-coherent-bank-v1/frames/03691112fdb7acaaf58ff24d02024cb6cab02e8f340425581ae0da9184823e54.png",
+        "res://character/krusher-coherent-bank-v1/frames/269943d1fdded35564b0ddb2242a450a4de057d8dbbbed142817049dd2a44aa3.png",
+        "res://character/krusher-coherent-bank-v1/frames/bd3b6fc8faed6f79520e781d45fc2069f47d41dc908fdef2a85e40256d355cad.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    }
+  ]
+}

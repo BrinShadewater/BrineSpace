@@ -1,5 +1,12 @@
 # Animation contract and packaging
 
+Current human bare locomotion uses the three explicit manifests under
+`character/crew-runtime-matte-v1/` recorded in `character/ACTIVE_ASSETS.json`:
+184x184, pivot (92,172), standing reference 148px, matte with linear sampling.
+Read [direct video workflow](direct-video.md) for the current generation and
+review procedure. Older pack counts and six-frame conventions below describe
+their own sources; they do not override these selected locomotion revisions.
+
 Inspect `character/dr-veld-v1/final/manifest.json`, the pack README, and the actual
 consumer before writing a new contract. Bill and Veld are examples with different
 coverage, not mandatory frame-count targets.

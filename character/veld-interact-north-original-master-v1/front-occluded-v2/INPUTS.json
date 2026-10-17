@@ -1,0 +1,32 @@
+{
+  "reference": "character/veld-idle-north-original-master-v1/original-idle-master.png",
+  "videoAppearanceInput": "prepared-idle-master.png",
+  "preparation": "Existing built-in whole-source North background/edge cleanup. Not pixel-identical to the original; retain untouched original comparison. No new body artwork, RGB, geometry or local edits during preparation.",
+  "inputScale": 3,
+  "offset": [
+    0,
+    0
+  ],
+  "background": [
+    12,
+    18,
+    24
+  ],
+  "standingRuler": 148,
+  "originalFloor": 224,
+  "firstAndLastImage": "master-input.png",
+  "bindings": {
+    "character/veld-idle-north-original-master-v1/original-idle-master.png": "c6879d19f8c583ddf1ad6adba065e86bad387763d857d995b04be56526dc0472",
+    "character/veld-idle-north-original-master-v1/clean-idle-master.png": "c50afa2955f62c2f7cfbc4caf3eb811b4eecd4248514ea4f13a56ea882a8a412",
+    "character/veld-idle-north-original-master-v1/master-reference.json": "7cb5bc0025ba2bb516fa460eeceb41d4959acf08df158027311a9aece9f0e6af",
+    "character/veld-idle-north-original-master-v1/clean-master-reference.json": "82939a58f127e9ad9afbacce7cc882bdab2f9c52819d6799bd7674d33099777e",
+    "character/veld-idle-north-original-master-v1/raw-clean-master-v1.png": "5888c3dafb4ee7fe2a17367860d0f1c9fa272ed7473ebbf004de07493c203440",
+    "character/veld-interact-north-original-master-v1/original-idle-master.png": "c6879d19f8c583ddf1ad6adba065e86bad387763d857d995b04be56526dc0472",
+    "character/veld-interact-north-original-master-v1/prepared-idle-master.png": "c50afa2955f62c2f7cfbc4caf3eb811b4eecd4248514ea4f13a56ea882a8a412",
+    "character/veld-interact-north-original-master-v1/master-input.png": "c063e7824fd52bfc788658355e5f7e8d85a300b55a4b99f054ecc8a9f3b2fec1",
+    "character/veld-interact-north-original-master-v1/prompt.txt": "b18978e7d94713487d4ab21671444ff37b85765ab405abbb8ba76be8eb986597",
+    "character/veld-interact-north-original-master-v1/prepare.py": "c4fffe7bd6aa9b7c17553525043843819e9bca966fd33c4eccd1bca4e1835423"
+  },
+  "scope": "Focused rear-view spatial-occlusion retake after V1 incorrectly drew hands/scanner across back. Same prepared original input/model/endpoints; prompt alone changed. Untouched original retained for comparison.",
+  "promptSHA256": "3a94560c6a47ea89bd3d2e24c03f99540d931fe93e1dffaa6fa5cffa9a185dfc"
+}

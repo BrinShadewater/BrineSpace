@@ -1,0 +1,122 @@
+{
+  "cupSharedScale": 0.22236842105263158,
+  "cupPoses": [
+    {
+      "pose": 0,
+      "anchor": [
+        390.730615942029,
+        515
+      ],
+      "translation": [
+        41,
+        109
+      ],
+      "soleSeparation": 44.337765541571315
+    },
+    {
+      "pose": 1,
+      "anchor": [
+        249.8169230769231,
+        515
+      ],
+      "translation": [
+        72,
+        109
+      ],
+      "soleSeparation": 42.47077192982455
+    },
+    {
+      "pose": 2,
+      "anchor": [
+        400.3523436023436,
+        562
+      ],
+      "translation": [
+        39,
+        99
+      ],
+      "soleSeparation": 37.84425998965472
+    },
+    {
+      "pose": 3,
+      "anchor": [
+        245.60189655172417,
+        563
+      ],
+      "translation": [
+        73,
+        99
+      ],
+      "soleSeparation": 31.57102495462795
+    }
+  ],
+  "retractScale": 0.1273449367667783,
+  "retractBodyHeightAuthority": 134.09421841541754,
+  "retractTranslation": [
+    48,
+    80
+  ],
+  "unusedCupSourcePoses": [
+    0,
+    3
+  ],
+  "reasonUnusedUpright": "Lower-leg projection too compressed versus master; use independent bowl-retract-body-matched cup instead",
+  "materialGroups": [
+    {
+      "source": "cup-source-v2",
+      "frames": [
+        4,
+        5
+      ],
+      "neutralSourceQ": [
+        35.0,
+        51.666666666666664,
+        72.66666666666667,
+        86.66666666666667,
+        129.33333333333334,
+        151.74000000000007
+      ],
+      "neutralMasterQ": [
+        34.0,
+        45.333333333333336,
+        60.666666666666664,
+        75.33333333333333,
+        110.66666666666667,
+        155.1300000000001
+      ],
+      "goldGain": [
+        0.728125,
+        0.7730769230769231,
+        2.04
+      ]
+    },
+    {
+      "source": "cup-retract-source",
+      "frames": [
+        6
+      ],
+      "neutralSourceQ": [
+        38.0,
+        55.666666666666664,
+        71.66666666666667,
+        83.0,
+        125.33333333333333,
+        153.66666666666666
+      ],
+      "neutralMasterQ": [
+        34.0,
+        45.333333333333336,
+        60.666666666666664,
+        75.33333333333333,
+        110.66666666666667,
+        155.1300000000001
+      ],
+      "goldGain": [
+        0.8006872852233677,
+        0.8271604938271605,
+        0.9807692307692307
+      ]
+    }
+  ],
+  "productionInstalled": false
+}

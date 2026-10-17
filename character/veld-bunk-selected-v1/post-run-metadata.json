@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "manifestChanges": [
+    {
+      "path": "character/veld-bunk-body-master-v1/bare-manifest.json",
+      "beforeSha256": "73f83a8d529d57b49b64e04b33953b987b8aaec79d2c2bdb84c61aefb0cab381",
+      "afterSha256": "52c5c440183d27438c7f8eec5b436d172d538838c79567a5e046d88e8455c8c4",
+      "changedFields": [
+        "status"
+      ]
+    },
+    {
+      "path": "character/veld-bunk-body-master-v1/helmet-manifest.json",
+      "beforeSha256": "3039e24a3ab1bf84f08981ee06d9fa01497c5adbcf5cceffa2940078a42651c1",
+      "afterSha256": "0b0558a1ec430ae6e37fe5ac7db1482d5a926ba67041ac2533e902c0cc64dfee",
+      "changedFields": [
+        "status"
+      ]
+    },
+    {
+      "path": "character/veld-bunk-early-fall-v1/bare-manifest.json",
+      "beforeSha256": "c2388bb0e25d3a022651331ccad98171b16f5bd3320a6ea08a6baed5e221c91b",
+      "afterSha256": "e63b2a52fcdedfda7ace24d869cce095cc53958c4c9ef27e2663d3dfc32a4fd7",
+      "changedFields": [
+        "status"
+      ]
+    },
+    {
+      "path": "character/veld-bunk-early-fall-v1/helmet-manifest.json",
+      "beforeSha256": "cab00497def5ae926c651f9c632b825b6f99ba906d88c53233d29c7c3ec016aa",
+      "afterSha256": "51546958ad660296758004d31ce5c0cde90d7d823816324ef8363b1970570399",
+      "changedFields": [
+        "status"
+      ]
+    }
+  ],
+  "registryAdditions": [
+    {
+      "section": "actionOverrides",
+      "key": "veld-east-bunk-whole-body-family",
+      "value": "character/veld-bunk-body-master-v1/bare-manifest.json"
+    },
+    {
+      "section": "equipmentActionOverrides",
+      "key": "veld-east-bunk-whole-body-family",
+      "value": "character/veld-bunk-body-master-v1/helmet-manifest.json"
+    },
+    {
+      "section": "actionOverrides",
+      "key": "veld-east-bunk-early-fall-family",
+      "value": "character/veld-bunk-early-fall-v1/bare-manifest.json"
+    },
+    {
+      "section": "equipmentActionOverrides",
+      "key": "veld-east-bunk-early-fall-family",
+      "value": "character/veld-bunk-early-fall-v1/helmet-manifest.json"
+    }
+  ],
+  "allOtherFrozenInputsUnchanged": true,
+  "sourcePNGsUnchanged": true,
+  "otherRegistrySelectionsPreserved": true
+}

@@ -1,0 +1,36 @@
+from pathlib import Path
+import json,hashlib,shutil
+import numpy as np
+from PIL import Image,ImageDraw
+from scipy.ndimage import label,binary_dilation
+P=Path(__file__).resolve().parent;R=P.parent.parent;raw=np.array(Image.open(P/'sources/rise-legs-v1.png').convert('RGBA'))
+ls,_=label(raw[:,:,3]>180);counts=np.bincount(ls.ravel());counts[0]=0;ids=sorted(np.argsort(counts)[-4:],key=lambda k:np.where(ls==k)[1].mean());parts=[]
+for k in ids:
+ y,x=np.where(ls==k);box=[int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)];assert 0<box[0]<box[2]<raw.shape[1] and 0<box[1]<box[3]<raw.shape[0]
+ a=raw.copy();a[~(binary_dilation(ls==k,iterations=1)&(raw[:,:,3]>80))]=0;parts.append((a,box))
+cal=parts[3][1];scale=61/(cal[3]-cal[1]);ground=cal[3]-1;Y,X=np.indices((256,256));protect=(Y<164)|(((X<112)|(X>=146))&(Y<181));fitted=[];records=[]
+for a,box in parts[:3]:
+ y,x=np.where((a[:,:,3]>180)&(np.indices(a.shape[:2])[0]<box[1]+8));axis=float((x.min()+x.max())/2);im=Image.fromarray(a).crop(tuple(box));im=im.resize((round(im.width*scale),round(im.height*scale)),Image.Resampling.LANCZOS);pos=[round(128-(axis-box[0])*scale),round(224-(ground-box[1])*scale)];canvas=Image.new('RGBA',(256,256));canvas.alpha_composite(im,tuple(pos));fitted.append(np.array(canvas));dy=round((box[1]-cal[1])*scale);records.append({'box':box,'scale':scale,'position':pos,'upperTranslation':[0,dy],'sourceHipDrop':box[1]-cal[1]})
+def neutral(a):return (a[:,:,3]>180)&(Y>=164)&(Y<220)&(np.ptp(a[:,:,:3],axis=2)<25)&(a[:,:,:3].mean(2)>15)
+bare=np.array(Image.open(R/'character/bill-cargo-north-master-head-v1/frames/bare/unload-north/011.png').convert('RGBA'));pool=np.concatenate([a[:,:,:3][neutral(a)] for a in fitted]);gain=np.median(bare[:,:,:3][neutral(bare)],axis=0)/np.median(pool,axis=0)
+inputs={};files={g:[] for g in ['bare','helmet']}
+for gear in files:
+ source_manifest=R/'character/bill-cargo-north-master-head-v1'/('manifest.json' if gear=='bare' else 'helmet-manifest.json');old=next(s for s in json.loads(source_manifest.read_text())['states'] if s['id']=='unload-north');masterfile=R/old['frameFiles'][-1].removeprefix('res://');master=Image.open(masterfile).convert('RGBA');m=np.array(master)
+ for i in range(15):
+  f=P/f'frames/{gear}/unload-north/{i:03}.png';f.parent.mkdir(parents=True,exist_ok=True)
+  if i<=10 or i==14:
+   src=R/old['frameFiles'][i if i<=10 else 11].removeprefix('res://');shutil.copy2(src,f);inputs[src.relative_to(R).as_posix()]=hashlib.sha256(src.read_bytes()).hexdigest()
+  else:
+   n=i-11;dy=records[n]['upperTranslation'][1];legs=fitted[n].copy();mask=neutral(legs);rgb=legs[mask,:3].astype(float)*gain;legs[mask,:3]=np.clip(rgb,0,255).astype('uint8')
+   # Keep the original visible floor-case crop fixed behind the authored legs.
+   base=Image.new('RGBA',(256,256));base.alpha_composite(master.crop((117,194,140,220)),(117,194));base.alpha_composite(Image.fromarray(legs))
+   upper=m.copy();upper[~protect]=0;base.alpha_composite(Image.fromarray(upper),(0,dy));base.save(f)
+  files[gear].append('res://'+f.relative_to(R).as_posix())
+ durations=old['frameDurationsMs'][:11]+[45,45,45,old['frameDurationsMs'][11]]
+ manifest={'name':'Bill North gradual unloading rise candidate','status':'staged_visual_review','frameWidth':256,'frameHeight':256,'standingHeight':148,'pivot':[128,224],'precomposed':True,'textureFilter':'linear','states':[{'id':'unload-north','frameFiles':files[gear],'frameDurationsMs':durations,'loop':False,'facings':['north']*15,'waterPoses':[False]*15}]};(P/f'{gear}-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+inputs['character/bill-unload-north-rise-v1/sources/rise-legs-v1.png']=hashlib.sha256((P/'sources/rise-legs-v1.png').read_bytes()).hexdigest()
+reg={'scale':scale,'calibrationBox':cal,'calibrationSample':3,'nativeThighToSole':61,'sourceGround':ground,'frames':records,'neutralGainPooled':gain.tolist(),'sourceSha256':inputs,'floorCaseCrop':[117,194,140,220],'upperMask':'Y<164 or outer hands/arms X<112/X>=146,Y<181; translated by measured shared-ruler hip drop only','scope':'Original0..10 and final11 byte copies, three authored posterior leg inserts under native master upper. One ruler/pooled grade; no per-pose resizing, new torso/face or floor prop.'};(P/'registration.json').write_text(json.dumps(reg,indent=2)+'\n')
+board=Image.new('RGBA',(1536,600),(34,52,62,255));draw=ImageDraw.Draw(board)
+for row,gear in enumerate(files):
+ for col,i in enumerate([9,10,11,12,13,14]):board.alpha_composite(Image.open(R/files[gear][i].removeprefix('res://')),(col*256,row*300));draw.text((col*256+8,row*300+265),gear+' '+str(i),fill='white')
+board.convert('RGB').save(P/'rise-review.png');print('Shared ruler',scale,'measured upper drops',[r['upperTranslation'][1] for r in records],'pooled grade',gain.tolist(),'clip',sum(durations))

@@ -1,0 +1,109 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "normalization": "Full square canvas resampled once to256; no bbox fitting or color grading.",
+  "sourceMetrics": [
+    {
+      "file": "character/james-west-master-carry-v1/registered-original-master.png",
+      "sha256": "f10067e18e85f94c2a47db6e9478da5c69d0289c546cd98dd3a00c690a769833",
+      "alpha128Bounds": [
+        106,
+        76,
+        150,
+        224
+      ],
+      "headRegion62to104Bounds": [
+        115,
+        76,
+        149,
+        104
+      ]
+    },
+    {
+      "file": "character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-048.png",
+      "sha256": "40ff6b20b50cb4d6d094c337141cdb4b58e14b534381354d7a972fb19dd23207",
+      "alpha128Bounds": [
+        98,
+        76,
+        155,
+        223
+      ],
+      "headRegion62to104Bounds": [
+        118,
+        76,
+        153,
+        104
+      ]
+    },
+    {
+      "file": "character/james-west-carry-walk-keys-v1/master-material-phase48-v55/bare-candidate.png",
+      "sha256": "075daf57ec72fc86444c1c703b8eca2bf2eb2aed297b040e26dbe33e679b489d",
+      "alpha128Bounds": [
+        98,
+        74,
+        156,
+        223
+      ],
+      "headRegion62to104Bounds": [
+        116,
+        74,
+        154,
+        104
+      ]
+    },
+    {
+      "file": "character/james-west-master-carry-v1/local-v3-carry-pose.png",
+      "sha256": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994",
+      "alpha128Bounds": [
+        97,
+        76,
+        155,
+        224
+      ],
+      "headRegion62to104Bounds": [
+        118,
+        76,
+        153,
+        104
+      ]
+    }
+  ],
+  "headPixelsExact": false,
+  "visualReviewPending": false,
+  "sourceAcceptance": false,
+  "normalChanged": false,
+  "fullGoalComplete": false,
+  "reviewedBoards": 3,
+  "disposition": "material_direction_retained_geometry_polish_required",
+  "protectedHeadRows": 104,
+  "pairedBodyBelow110Exact": true,
+  "findings": [
+    "Muted matte suit/hardware closer to original and repaired entry; no full visual acceptance.",
+    "Whole source edit changes internal case/body details and small silhouette regions. Restored head/cap alone does not prove anatomy/gear/grip fidelity.",
+    "Phase24 sole exclusive225 versus input226; phase36/48 sole223 retained. No per-pose fitting used.",
+    "Sparse source study, not completed49-frame motion or normal runtime admission."
+  ],
+  "artifactSha256": {
+    "bare-candidate.png": "075daf57ec72fc86444c1c703b8eca2bf2eb2aed297b040e26dbe33e679b489d",
+    "bare-head-protected.png": "398c4f9f7ce023c8683959c5681e332cc8ffa9b2673129b0ca7cbb2bd96b32e4",
+    "carry-case-reference.png": "991c1d4925c4080e48d674128362e377480ccb3a701312ea372a138d44b173f7",
+    "edit-target.png": "94089b2586639597b2d6c2fecbddf124f0c0a30b75949c19f299bf34b0f59d11",
+    "enlarged-material-comparison.png": "b1687c0c505ffc8f416b857579432fc226834619bbcc084645913b7f3fe662a8",
+    "helmet-head-protected.png": "52e2fd91c38b4ffb3d070d4097b2b0000646aa51fd3d9151d15aee9f25870cfd",
+    "native-material-comparison.png": "8dd605bde267571c2d0881a6031715e86fd1687065f9e3f33f9e119fcef60234",
+    "original-master.png": "3bd0ab9f9c0e2ba469b6b4916188358cad430c0905336c2e6221c9be229e4477",
+    "paired-protected-review.png": "3280139502e85996b1e6426b2605ed36143afe8703133fd46543ba97dcb0c384",
+    "raw.png": "529e4c42c786b2c3961a100f29baa2f503e9d31f5e4ba1e7d3d4619dee61f3b0"
+  },
+  "historicalPairedBeforeColumnPhase": 0,
+  "intendedPairedBeforeColumnPhase": 48,
+  "historicalComparisonCorrectionPending": false,
+  "historicalReviewScopeCorrection": "Before column was original phase0, not this stride; candidate/reference columns and separate phase-specific metrics remain valid. Corrected stride comparison remains pending.",
+  "correctedPairedBoard": "character/james-west-carry-walk-keys-v1/master-material-phase48-v55/paired-protected-review-index-corrected.png",
+  "correctedPairedBothBaselinesPixelVerified": true,
+  "correctedBareMasterComparisonReviewed": true,
+  "correctedPairedHelmetVisualReviewPending": true,
+  "historicalComparisonCorrectionEvidence": "character/james-west-carry-walk-keys-v1/comparison-corrections-v74/review.json"
+}

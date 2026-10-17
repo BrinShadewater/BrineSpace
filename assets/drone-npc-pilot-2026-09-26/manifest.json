@@ -1,0 +1,207 @@
+{
+  "id": "construction-drone-pilot-v1",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "registrationLandmark": {
+    "frontLens": [
+      128,
+      137
+    ]
+  },
+  "worldUnitsPerPixel": 0.34,
+  "nominalHullWidthWorld": 69.12,
+  "camera": "approved steep overhead south-facing",
+  "mirroringAllowed": false,
+  "scope": "Review pilot; south only; not installed; four authored tool keys, coarse timing",
+  "sourceAnchors": [
+    [
+      348.99342105263156,
+      327.0855263157895
+    ],
+    [
+      339.90441176470586,
+      327.6102941176471
+    ],
+    [
+      347.9851851851852,
+      303.8222222222222
+    ],
+    [
+      340.2754491017964,
+      303.20958083832335
+    ]
+  ],
+  "states": [
+    {
+      "id": "idle-south",
+      "frameCount": 24,
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png",
+        "frames/idle-south/002.png",
+        "frames/idle-south/003.png",
+        "frames/idle-south/004.png",
+        "frames/idle-south/005.png",
+        "frames/idle-south/006.png",
+        "frames/idle-south/007.png",
+        "frames/idle-south/008.png",
+        "frames/idle-south/009.png",
+        "frames/idle-south/010.png",
+        "frames/idle-south/011.png",
+        "frames/idle-south/012.png",
+        "frames/idle-south/013.png",
+        "frames/idle-south/014.png",
+        "frames/idle-south/015.png",
+        "frames/idle-south/016.png",
+        "frames/idle-south/017.png",
+        "frames/idle-south/018.png",
+        "frames/idle-south/019.png",
+        "frames/idle-south/020.png",
+        "frames/idle-south/021.png",
+        "frames/idle-south/022.png",
+        "frames/idle-south/023.png"
+      ],
+      "frameDurationsMs": [
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83,
+        83
+      ],
+      "loop": true,
+      "method": "registered neutral source; projected raster rotor rotation and status pulse"
+    },
+    {
+      "id": "swim-south",
+      "frameCount": 24,
+      "frameFiles": [
+        "frames/swim-south/000.png",
+        "frames/swim-south/001.png",
+        "frames/swim-south/002.png",
+        "frames/swim-south/003.png",
+        "frames/swim-south/004.png",
+        "frames/swim-south/005.png",
+        "frames/swim-south/006.png",
+        "frames/swim-south/007.png",
+        "frames/swim-south/008.png",
+        "frames/swim-south/009.png",
+        "frames/swim-south/010.png",
+        "frames/swim-south/011.png",
+        "frames/swim-south/012.png",
+        "frames/swim-south/013.png",
+        "frames/swim-south/014.png",
+        "frames/swim-south/015.png",
+        "frames/swim-south/016.png",
+        "frames/swim-south/017.png",
+        "frames/swim-south/018.png",
+        "frames/swim-south/019.png",
+        "frames/swim-south/020.png",
+        "frames/swim-south/021.png",
+        "frames/swim-south/022.png",
+        "frames/swim-south/023.png"
+      ],
+      "frameDurationsMs": [
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42,
+        42
+      ],
+      "loop": true,
+      "method": "registered neutral source; projected raster rotor rotation and status pulse"
+    },
+    {
+      "id": "tool-cycle-south",
+      "frameCount": 5,
+      "frameFiles": [
+        "frames/tool-cycle-south/000.png",
+        "frames/tool-cycle-south/001.png",
+        "frames/tool-cycle-south/002.png",
+        "frames/tool-cycle-south/003.png",
+        "frames/tool-cycle-south/004.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        240,
+        500,
+        240,
+        320
+      ],
+      "loop": true,
+      "method": "four generated pose keys with timed neutral/reach/contact/release holds"
+    }
+  ],
+  "statusSemantics": {
+    "blue": "operational",
+    "red": "stopped",
+    "yellow": "charging or out of power"
+  },
+  "statusCoverage": "blue only in this operational pilot",
+  "omitted": [
+    "north/east/west",
+    "separate build/repair actions",
+    "contact targets",
+    "launch/recovery integration",
+    "pathfinding"
+  ],
+  "sources": [
+    {
+      "file": "sources/construction-approved-v10.png",
+      "sha256": "934c97aaef9066b5dcd3fd4db6fbb33a1be45d80f5ee6eb4cf6a8cbb0261b36a"
+    },
+    {
+      "file": "sources/construction-tool-poses-v1.png",
+      "sha256": "d6b0be815899fe6fcf2a9d33e90d6a9b4e63427525f6463a983a8381014fd5f0"
+    },
+    {
+      "file": "sources/construction-tool-poses-v2.png",
+      "sha256": "ab67b46cb6c9f20fcf745e390e0a6a0817edb6626390bc9cb36a06cf7f88a635"
+    },
+    {
+      "file": "sources/drone-status-light.png",
+      "sha256": "933f65873a7917d4cb864602ffdb217e1d53fb430be5d66d0d0da894c2ea2870"
+    }
+  ]
+}

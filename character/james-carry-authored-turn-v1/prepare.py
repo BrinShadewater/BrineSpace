@@ -1,0 +1,16 @@
+from pathlib import Path
+from PIL import Image
+import json,hashlib
+p=Path(__file__).resolve().parent;r=p.parents[1]
+sources=[r/'character/james-south-master-carry-v1/carry-pose.png',r/'character/james-carry-authored-midpoint-v1/midpoint-lower-v2.png',r/'character/james-west-master-carry-v1/local-v3-carry-pose.png']
+for name,s in zip(['south','middle','west'],sources):
+    im=Image.open(s).convert('RGBA');assert im.size==(256,256)
+    im.resize((1024,1024),Image.Resampling.NEAREST).save(p/(name+'-reference.png'))
+common='''One single full-body transparent2D painted game sprite of James holding the SAME compact grey case in BOTH hands at waist height. Exact reference-family identity: compact head, stocky adult, grey hair, forehead goggles, moustache, neutral matte graphite quilted suit, muted engineering yellow patches, worn silver fittings. Belt wrench stays anatomical RIGHT, meter anatomical LEFT; naturally partly occluded, no duplication or tool in hands. Four restrained silver case fittings. Same hands/grip, intact arms and knees; no self-clipping. Preserve fine hand-painted sprite finish without gloss, purple/magenta or large black underarm/backpack shadows.
+
+Both feet stay flat on ground directly under hips, locally rotated with body, no lifted foot, forward step, crossing legs, leaning or kneeling. Head/chest/case/hips/knees/boots rotate coherently. Exact same square canvas, standing size and ground pivot as references: crown29.7percent, sole87.5percent, visible height148/256, pivot50percent/87.5percent. Full original empty margins, no zoom, crop, whole-character scale or camera change. Same compact head and master shoulder/leg proportions. Genuine transparent alpha, no scene/text/shadow or additional frames. Return ONE single intermediate pose, not multiple characters or a sheet.'''
+for name,angle,direction in [('early',22.5,'Halfway from the supplied SOUTH front reference to the supplied MIDDLE diagonal reference. James faces MOSTLY FRONT with a slight22.5degree turn toward VIEWER LEFT. Both eyes/shoulders remain visible, chest nearly frontal; only slight left-facing nose/boot/case angle. This is LESS rotated than the middle reference, never copy the45degree middle or90degree West endpoint.'),('late',67.5,'Halfway from the supplied MIDDLE diagonal reference to the supplied WEST left-facing reference. James faces MOSTLY LEFT with a slight remaining frontal22.5degree component. A little far eye/chest remains visible; larger left-facing nose/boot/case angle than middle, but LESS rotated than West profile. Never copy the45degree middle or90degree West endpoint.')]:
+    (p/(name+'-prompt.txt')).write_text(direction+'\n\n'+common+'\n',encoding='utf-8')
+    files=sources+[p/(n+'-reference.png') for n in ['south','middle','west']]+[p/(name+'-prompt.txt'),Path(__file__)]
+    (p/(name+'-inputs.json')).write_text(json.dumps({'preCallSha256':{f.relative_to(r).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in files},'targetAngleDegrees':angle,'sourceCanvas':[256,256],'standingRuler':148,'pivot':[128,224],'uniformReferenceEnlargement':4,'selected':False,'scope':'Single bare authored intermediate whole-body carrying pose; full family/motion review pending.'},indent=2)+'\n',encoding='utf-8')
+print('Early22.5/late67.5degree prompts and three exact source-family references frozen.')

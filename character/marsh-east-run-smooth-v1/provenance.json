@@ -1,0 +1,12 @@
+{
+  "source": "character/marsh-east-run-material-v1/candidate-03/002.png",
+  "sourceSha256": "07df2c8368b437800a8e19e51323305447bf18dd7f849536a5d9944ee9bad553",
+  "operation": "Translate the complete airborne pose10pixels left on its unchanged184canvas; no resize, alpha threshold, recolour, anatomical edit or interpolated art.",
+  "reason": "Airborne head centers112.5/103px differ9.5px across half-cycles; first becomes102.5px. Largest adjacent excursion13->6.5px.",
+  "preserved": "All source foreground RGBA pixels, vertical placement, five other holds including all planted poses,6x100ms timing, stride, pivot and controller.",
+  "rejected": {
+    "sources/inbetweens-01.png": "Repeated stance and arm phases; not sufficiently intermediate.",
+    "sources/full-cycle-02.png": "Does not reliably alternate limbs; no replacement-cycle admission.",
+    "sources/midpoint3-03.png": "Standalone study unnecessary after identifying the specific airborne registration outlier."
+  }
+}

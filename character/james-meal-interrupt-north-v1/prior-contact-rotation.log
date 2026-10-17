@@ -1,0 +1,35 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+HAZARD SETUP eat/rotated-counter prior running=true paused=false crew=1
+CONTACT eat/rotated-counter clear=true geometry=true
+ERROR: Actual changed contact cancels obsolete return
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-contact.gd:9)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:81)
+ERROR: Snapshot restore rejects obsolete counter contact
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-contact.gd:9)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:85)
+       [2] capture (res://character/james-meal-interrupt-north-v1/native-contact.gd:27)
+HAZARD SETUP eat/removed-counter prior running=true paused=false crew=1
+CONTACT eat/removed-counter clear=false geometry=false
+HAZARD SETUP drink/rotated-counter prior running=false paused=true crew=0
+CONTACT drink/rotated-counter clear=true geometry=true
+ERROR: Actual changed contact cancels obsolete return
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-contact.gd:9)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:81)
+       [2] capture (res://character/james-meal-interrupt-north-v1/native-contact.gd:27)
+ERROR: Snapshot restore rejects obsolete counter contact
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-contact.gd:9)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:85)
+       [2] capture (res://character/james-meal-interrupt-north-v1/native-contact.gd:27)
+HAZARD SETUP drink/removed-counter prior running=true paused=false crew=1
+CONTACT drink/removed-counter clear=false geometry=false
+JAMES MEAL RETURN CHANGED CONTACTS: 39 checks; 4 failures

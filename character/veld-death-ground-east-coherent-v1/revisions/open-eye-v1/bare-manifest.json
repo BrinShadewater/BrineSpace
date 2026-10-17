@@ -1,0 +1,68 @@
+{
+  "name": "Veld east dry collapse bare candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "staged_candidate",
+  "states": [
+    {
+      "id": "death-ground-east",
+      "frameFiles": [
+        "frames/bare/death-ground-east/000.png",
+        "frames/bare/death-ground-east/001.png",
+        "frames/bare/death-ground-east/002.png",
+        "frames/bare/death-ground-east/003.png",
+        "frames/bare/death-ground-east/004.png",
+        "frames/bare/death-ground-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        180,
+        180,
+        220,
+        500
+      ],
+      "loop": false,
+      "terminalFrame": 5,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground",
+        "death-ground"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

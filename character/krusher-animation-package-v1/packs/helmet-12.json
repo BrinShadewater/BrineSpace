@@ -1,0 +1,249 @@
+{
+  "name": "Krusher Dom water helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "../frames/8be51e0e92c9a4a2bd460c374928e16a1c5fe8cbd28b509ca695ee9bb49e6067.png",
+        "../frames/7bc464cd3e7f1cfb56fc42bc585fcdd9c4e4d6db54da7564b0e6dd93fbd8c31f.png",
+        "../frames/42bee6635b614e4adb4b9933b3c868879bac058e578c3a20ef52c0f57f1c0a30.png",
+        "../frames/ee0ace2f928a9831939811453b62a1d27d1b86dbdfdaf0294a93d45d6ffb0961.png",
+        "../frames/e27015339b5c7302bdb26bb2d8189194a0dcaa9c3ce0bc039d09abfbe320398d.png",
+        "../frames/f91b94477a421ff752075cd2473477e048048971d43b65b7e41521846568d45e.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "../frames/7625d2bbd9255ed29e9fbe6598ad222729c4976a7907072ac8b58f0f305b703d.png",
+        "../frames/b3281d3985f649e05dced980abb22d110f47662383936c8d07b657c5fe729922.png",
+        "../frames/cf4d7b0e6493207b41bcc7053659ffb07e666dff55b3e78e0d281c210c0a76e1.png",
+        "../frames/15f822d6db225482021c003ddc8f7d79068d378af5cf7a35c89895f4320fa988.png",
+        "../frames/fbfe4992a7f439427dbf4fe480df90e81905b1cdfbc94618df6b6f7f316935fa.png",
+        "../frames/4aa69202ec727901979cb9d50bdd4dda2beb477447f129b7aac59f9c2fe869c1.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-south",
+      "frameFiles": [
+        "../frames/d250bf02df91a625c21471a55119417b1b3cb54bc4df66f7fa60ecabca799395.png",
+        "../frames/71486902d1472e40b3c850cd08f27b96aff4f396a444574081c67c36075d4fae.png",
+        "../frames/0bafc98be9c54b5dd3a7f75363b3f9cffdcb33768432ac098de02d38b819aaf3.png",
+        "../frames/603adf1bd89c004c6f919d28994214459450030d4009188fe91e33a3ac3adc08.png",
+        "../frames/36a090fbdb519ed73b5508f9b5db301497a0bbb01af4bb1288819a33f84de08c.png",
+        "../frames/f18b825d2b4a8bbb508ccbe93f835c60442b4879da8b1e217e35271b1e10d61d.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "../frames/f54aa6fff4f0ed5cd0bbed0637a95943c6ccfcc61e65e01be66b6a364ff2129c.png",
+        "../frames/a48c90ac7884911dbfcb6177c2351522a9029ff7ec8d95d32bcfd1ccf3dd1f54.png",
+        "../frames/6c942adc6430af514bcf102a54d9d62793fb41dda00b02d84752a2a62ae7d053.png",
+        "../frames/e0d3df88eae8fa373090bdd7976fe08f5d0367c8a0c159292348750f37292501.png",
+        "../frames/b9cfe584179ba0685bcb36d7889ff11de8b901703684dc8e5d506958c73435c6.png",
+        "../frames/c737d54c9943e37de2170eda313ad6ea765c1d79afae4344c41ded720f5f1a81.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-west-water-death-material-v2/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    }
+  ]
+}

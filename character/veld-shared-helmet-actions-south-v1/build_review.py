@@ -1,0 +1,32 @@
+"""Show retained and shared-shell south actions on one synchronized clock."""
+
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+HERE = Path(__file__).resolve().parent
+OLD = ROOT / "dr-veld-v2/packs/helmet-256x256-p128.0-224.0"
+STATES = ("interact-south", "kneel-south", "repair-south", "stand-south")
+
+
+def main() -> None:
+    old = {s["id"]: s for s in json.loads((OLD / "manifest.json").read_text(encoding="utf-8"))["states"]}
+    new = {s["id"]: s for s in json.loads((HERE / "manifest.json").read_text(encoding="utf-8"))["states"]}
+    checks = json.loads((HERE / "checks.json").read_text(encoding="utf-8"))
+    tracks = []
+    for key in STATES:
+        for label, source, state, pivot in (("Retained", OLD, old[key], [128, 224]), ("Shared shell", HERE, new[key], [92, 172])):
+            files = ["../" + str((source / f).relative_to(ROOT)).replace("\\", "/") for f in state["frameFiles"]]
+            if not all((HERE / f).is_file() for f in files):
+                raise FileNotFoundError(key)
+            anchors = [p["template"] if label == "Retained" else p["helmet"] for p in checks[key]]
+            tracks.append({"label": f"{key} · {label}", "files": files, "durations": state["frameDurationsMs"], "pivot": pivot, "anchors": anchors})
+    data = json.dumps(tracks, separators=(",", ":"))
+    html = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Veld south action helmet fit</title><style>body{margin:0;padding:18px;background:#152027;color:#e5eff1;font:16px system-ui}h1{font-size:24px}p{max-width:80ch;color:#bed0d3}.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(188px,1fr));gap:10px;max-width:1500px}.card{background:#22333c;border:1px solid #4b646a;border-radius:8px;padding:8px;text-align:center}canvas{display:block;margin:auto;max-width:100%}select,button{font:inherit;background:#253f47;color:white;padding:6px;border:1px solid #65838a;border-radius:5px}.head{background:#273841;border-radius:5px}small{color:#afc1c6}</style></head><body><h1>Veld — south action helmet fit</h1><p>Retained south actions beside the selected shared helmet. Interact, kneel, sample inspection and stand keep their authored motion and timing. Standing endpoints use the installed south idle frame. The shared helmet and face sit two pixels farther right across south idle, walk, and actions. <a href="head-right-comparison.png">View close-up before/after</a>. Compare the collar and face at full height and at gameplay scale.</p><label>Character height <select id=size><option>155</option><option>82</option><option>54</option><option>27</option></select></label> <button id=play>Pause</button> <span id=status>Loading</span><div class=row id=row></div><script>const tracks=TRACKS;let playing=true,time=0,last=performance.now();for(const t of tracks){const c=document.createElement('div');c.className='card';c.innerHTML='<strong>'+t.label+'</strong><canvas width=184 height=184></canvas><small>Pose-tracked head close-up</small><canvas class=head width=184 height=170></canvas>';document.querySelector('#row').append(c);t.full=c.querySelectorAll('canvas')[0];t.head=c.querySelectorAll('canvas')[1]}document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play'};Promise.all(tracks.map(async t=>{t.images=await Promise.all(t.files.map(f=>new Promise((yes,no)=>{const im=new Image;im.onload=()=>yes(im);im.onerror=()=>no(new Error(f));im.src=f+'?v=south-head-right-v2'})));t.total=t.durations.reduce((a,b)=>a+b,0)})).then(()=>{document.querySelector('#status').textContent='All eight animations loaded';function draw(now){if(playing)time+=now-last;last=now;const scale=Number(document.querySelector('#size').value)/155;for(const t of tracks){let v=time%t.total,i=0;while(i<t.images.length-1&&v>=t.durations[i])v-=t.durations[i++];const a=t.full.getContext('2d'),b=t.head.getContext('2d');a.clearRect(0,0,184,184);b.clearRect(0,0,184,170);const im=t.images[i];a.drawImage(im,92-t.pivot[0]*scale,180-t.pivot[1]*scale,im.width*scale,im.height*scale);b.imageSmoothingEnabled=false;const [x,y]=t.anchors[i];b.drawImage(im,x-12,y-8,52,48,14,0,156,144)}requestAnimationFrame(draw)}requestAnimationFrame(draw)}).catch(e=>document.querySelector('#status').textContent='Missing: '+e.message)</script></body></html>""".replace("TRACKS", data)
+    (HERE / "index.html").write_text(html, encoding="utf-8")
+    print(f"{len(tracks)} tracks, {sum(len(t['files']) for t in tracks)} frame references")
+
+
+if __name__ == "__main__":
+    main()

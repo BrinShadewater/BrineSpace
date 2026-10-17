@@ -1,0 +1,802 @@
+{
+  "scope": "Source model reference catalog, not new derivatives or proof of cross-family head/action compatibility.",
+  "humanSelection": "ACTIVE_ASSETS locomotionOverrides (declared base locomotion; later action overrides remain separate)",
+  "marshSelection": "Last matching state in selected marsh-v2 catalog.body order",
+  "records": [
+    {
+      "family": "bill",
+      "displayName": "Bill",
+      "direction": "south",
+      "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "source": "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 73,
+      "idleCycleMs": 3042,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 59,
+        "cycleMs": 2458
+      },
+      "opaqueBounds": [
+        59,
+        25,
+        125,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        59,
+        60,
+        125,
+        172
+      ],
+      "tileXY": [
+        24,
+        150
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "bill",
+      "displayName": "Bill",
+      "direction": "east",
+      "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "source": "character/crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 48,
+        "cycleMs": 2000
+      },
+      "opaqueBounds": [
+        70,
+        24,
+        114,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        70,
+        60,
+        114,
+        172
+      ],
+      "tileXY": [
+        424,
+        150
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "bill",
+      "displayName": "Bill",
+      "direction": "north",
+      "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "source": "character/crew-runtime-matte-v1/bill/frames/idle-north-transition-matte-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 30,
+        "cycleMs": 1500
+      },
+      "opaqueBounds": [
+        58,
+        24,
+        126,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        58,
+        60,
+        126,
+        172
+      ],
+      "tileXY": [
+        824,
+        150
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "bill",
+      "displayName": "Bill",
+      "direction": "west",
+      "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "source": "character/crew-runtime-matte-v1/bill/frames/idle-west-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/bill/manifest.json",
+        "frames": 48,
+        "cycleMs": 2000
+      },
+      "opaqueBounds": [
+        70,
+        24,
+        114,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        70,
+        60,
+        114,
+        172
+      ],
+      "tileXY": [
+        1224,
+        150
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "veld",
+      "displayName": "Veld",
+      "direction": "south",
+      "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+      "source": "character/crew-runtime-matte-v1/veld/frames/idle-south-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+        "frames": 26,
+        "cycleMs": 1500.0
+      },
+      "opaqueBounds": [
+        63,
+        24,
+        124,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        63,
+        60,
+        124,
+        172
+      ],
+      "tileXY": [
+        24,
+        540
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "veld",
+      "displayName": "Veld",
+      "direction": "east",
+      "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+      "source": "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+        "frames": 40,
+        "cycleMs": 1500.0
+      },
+      "opaqueBounds": [
+        81,
+        24,
+        126,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        81,
+        60,
+        126,
+        172
+      ],
+      "tileXY": [
+        424,
+        540
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "veld",
+      "displayName": "Veld",
+      "direction": "north",
+      "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+      "source": "character/crew-runtime-matte-v1/veld/frames/idle-north-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+        "frames": 28,
+        "cycleMs": 1500.0
+      },
+      "opaqueBounds": [
+        60,
+        24,
+        123,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        60,
+        60,
+        123,
+        172
+      ],
+      "tileXY": [
+        824,
+        540
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "veld",
+      "displayName": "Veld",
+      "direction": "west",
+      "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+      "source": "character/crew-runtime-matte-v1/veld/frames/idle-west-transition-matte-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/veld/manifest.json",
+        "frames": 41,
+        "cycleMs": 1500.0
+      },
+      "opaqueBounds": [
+        60,
+        24,
+        102,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        60,
+        60,
+        102,
+        172
+      ],
+      "tileXY": [
+        1224,
+        540
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "branforth",
+      "displayName": "James (Branforth)",
+      "direction": "south",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-south-matte-v2/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+        "frames": 76,
+        "cycleMs": 4500.0
+      },
+      "opaqueBounds": [
+        59,
+        25,
+        126,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        59,
+        60,
+        126,
+        172
+      ],
+      "tileXY": [
+        24,
+        930
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "branforth",
+      "displayName": "James (Branforth)",
+      "direction": "east",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-east-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+        "frames": 39,
+        "cycleMs": 1625
+      },
+      "opaqueBounds": [
+        65,
+        24,
+        119,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        65,
+        60,
+        119,
+        172
+      ],
+      "tileXY": [
+        424,
+        930
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "branforth",
+      "displayName": "James (Branforth)",
+      "direction": "north",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+        "frames": 36,
+        "cycleMs": 1500.0
+      },
+      "opaqueBounds": [
+        61,
+        24,
+        124,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        61,
+        60,
+        124,
+        172
+      ],
+      "tileXY": [
+        824,
+        930
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "branforth",
+      "displayName": "James (Branforth)",
+      "direction": "west",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-west-breathing-v1/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "idleFrames": 72,
+      "idleCycleMs": 3000,
+      "walk": {
+        "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+        "frames": 49,
+        "cycleMs": 1680
+      },
+      "opaqueBounds": [
+        65,
+        24,
+        119,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        65,
+        60,
+        119,
+        172
+      ],
+      "tileXY": [
+        1224,
+        930
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "marsh",
+      "displayName": "Marsh",
+      "direction": "south",
+      "manifest": "character/marsh-south-idle-material-v1/candidate-01/manifest.json",
+      "source": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "idleFrames": 2,
+      "idleCycleMs": 1300.0,
+      "walk": {
+        "manifest": "character/marsh-south-walk-material-v1/candidate-02/manifest.json",
+        "frames": 6,
+        "cycleMs": 900.0
+      },
+      "opaqueBounds": [
+        63,
+        24,
+        121,
+        171
+      ],
+      "bodyBoundsBelowRow60": [
+        63,
+        60,
+        121,
+        171
+      ],
+      "tileXY": [
+        24,
+        1320
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "marsh",
+      "displayName": "Marsh",
+      "direction": "east",
+      "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+      "source": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "idleFrames": 2,
+      "idleCycleMs": 1300.0,
+      "walk": {
+        "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+        "frames": 6,
+        "cycleMs": 900.0
+      },
+      "opaqueBounds": [
+        75,
+        25,
+        107,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        75,
+        60,
+        107,
+        172
+      ],
+      "tileXY": [
+        424,
+        1320
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "marsh",
+      "displayName": "Marsh",
+      "direction": "north",
+      "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+      "source": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "idleFrames": 2,
+      "idleCycleMs": 1300.0,
+      "walk": {
+        "manifest": "character/marsh-north-walk-material-v1/candidate-01/manifest.json",
+        "frames": 6,
+        "cycleMs": 900.0
+      },
+      "opaqueBounds": [
+        65,
+        25,
+        120,
+        171
+      ],
+      "bodyBoundsBelowRow60": [
+        65,
+        60,
+        120,
+        171
+      ],
+      "tileXY": [
+        824,
+        1320
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    },
+    {
+      "family": "marsh",
+      "displayName": "Marsh",
+      "direction": "west",
+      "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+      "source": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "canvas": [
+        184,
+        184
+      ],
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "idleFrames": 2,
+      "idleCycleMs": 1300.0,
+      "walk": {
+        "manifest": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json",
+        "frames": 6,
+        "cycleMs": 900.0
+      },
+      "opaqueBounds": [
+        76,
+        25,
+        107,
+        172
+      ],
+      "bodyBoundsBelowRow60": [
+        76,
+        60,
+        107,
+        172
+      ],
+      "tileXY": [
+        1224,
+        1320
+      ],
+      "tileSize": [
+        368,
+        368
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "character/ACTIVE_ASSETS.json": "3df1e33b53d905330fe8e7d24205b2a3d4bc0bad19733cc1b1b7cd446b08bc29",
+    "character/crew-runtime-matte-v1/bill/manifest.json": "8648cb23745ba55130822110f66758cc378c530ef8d2c3c458ecf577979d5d49",
+    "character/crew-runtime-matte-v1/bill/frames/idle-south-matte-v2/000.png": "7f71e062079c729989e6ec15c8180f5923fe787addd81dd655fba039ecd9a119",
+    "character/crew-runtime-matte-v1/bill/frames/idle-east-breathing-v1/000.png": "081f81647ec27be698a3932386d218cd0f5392bc80a645fe6d099d999f342fec",
+    "character/crew-runtime-matte-v1/bill/frames/idle-north-transition-matte-v1/000.png": "ed305a2094b04d9ebc313f7ca601067573740148fbc8b13389f6b6bb8403ace7",
+    "character/crew-runtime-matte-v1/bill/frames/idle-west-breathing-v1/000.png": "be1d7b540af3378aff13d0df856b3a9d3cd2b411827cd9983623601ac9a05315",
+    "character/crew-runtime-matte-v1/veld/manifest.json": "20ab91f6d15cc9e9796f01d88d5485990661a755e151a3fa720716c75b3f523a",
+    "character/crew-runtime-matte-v1/veld/frames/idle-south-breathing-v1/000.png": "f7b0a72a928544b5634441a5a4566f93ca1ab32d9ad9ee3c51020660aa01dd18",
+    "character/crew-runtime-matte-v1/veld/frames/idle-east-breathing-v1/000.png": "d010facbf575cf52bbd0293dbed9fef11b94b80830f4270fdd98757c7e6d4dfa",
+    "character/crew-runtime-matte-v1/veld/frames/idle-north-breathing-v1/000.png": "f8f666456d6cfbd83cb49ae33388114cbcacee0fad9a373217ae6e2669255b60",
+    "character/crew-runtime-matte-v1/veld/frames/idle-west-transition-matte-v1/000.png": "025f5a80b040e39fa16db2c192d36588c096d02c0867b3d28258bdd9afd5fdce",
+    "character/crew-runtime-matte-v1/branforth/manifest.json": "770ac815ba88e5f6b48378db0b26268e2d45f037bc252ea97b53c70dee11964a",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-south-matte-v2/000.png": "52da4bfd934271dd35b34f8a362344bafe28ae59e4e6c5110515fdd6f117b082",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-east-breathing-v1/000.png": "43ed6440ea46b380fdda9916d6fb3e01cc76147ec941636c1b639159880d8135",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png": "d6a4cea288e0bfbdeea7bfa1f825d7a24eb6e2a7d577dda72660a17301d188bb",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-west-breathing-v1/000.png": "87d07ba644bb5b85179769377c4003479c2a8c71a098841780bd11d155181a29",
+    "character/marsh-v2/catalog.json": "a7a94c16b558c63129b74bb210adf1e7a8beb730fa658861c886efb3496fe39a",
+    "character/marsh-v2/packs/bare-184x184-p92.0-172.0/manifest.json": "85688500f62df62f9c2cf9bf15f14d15546f6e240c6648dfa6795742121651d1",
+    "character/marsh-v2/packs/bare-184x237-p92.0-172.0/manifest.json": "fccffebd19f72669fdfbde062d937ab2d47e4eb57b17c694585ea698238368d5",
+    "character/marsh-v2/supplemental/ground-east/manifest.json": "c2ba459c855fa87f349b3250320b0f4cbdf90313c61753b1374a624f0d014ed5",
+    "character/marsh-v2/supplemental/ground-west/manifest.json": "847a380246e7f61e63856bae3e999eda4d4ef6001dec61713ee39f3c3c4f867d",
+    "character/marsh-v2/supplemental/berth-east/manifest.json": "7aaa098e5fe408c30ec6f2bd708cfac972c8a6682e0469ec71d29180dfed9907",
+    "character/marsh-v2/supplemental/bunk-east/bare/manifest.json": "ffc4acca8f8023174352624cadd2c0adaccf4264cd7846a37d3b7a6db8ba20ee",
+    "character/marsh-v2/supplemental/swim-east/manifest.json": "e526b77e664246428db194f0595d3c8a9b14d8827ca3cec622b0eb6006156fc9",
+    "character/marsh-v2/supplemental/swim-west/manifest.json": "008fd63f6d744641573bbca9464163c2fb1db6d91423ff8e10f55b2c6399e005",
+    "character/marsh-v2/supplemental/swim-north/manifest.json": "9c4164a1a01f166c650d026fe84530ce1059cae9ee96bd7c37b8d90f50604824",
+    "character/marsh-v2/supplemental/swim-south/manifest.json": "f12fc79d7a86dc73d22e7ae4c3f543e146873223782897d3e28168de90cc4b68",
+    "character/marsh-v2/supplemental/swim-turn-east-north/manifest.json": "a23186b1da33ab89472957889d603e70215546f26608d4e6682f8b4ffcc8b67b",
+    "character/marsh-v2/supplemental/swim-turn-west-north/manifest.json": "9aec550d022193c4e0a6f7fd1488d8da25e1d29c86e1d38ec9d1341c88941f8b",
+    "character/marsh-v2/supplemental/swim-turn-east-south/manifest.json": "00245c1019db5dfe8adb6ee3f7dcb11a2208fb9cc41c35d55ebd57246a54d4ca",
+    "character/marsh-v2/supplemental/swim-turn-west-south/manifest.json": "36348e7b92c26451b3c7eef2988a5302e689644c0c81f39a49545a40e8c59bee",
+    "character/marsh-v2/supplemental/swim-turn-east-west/manifest.json": "eda91756758b9d2129ae7af228e97c0c4cfbd447dc85785bb13022ea7809938e",
+    "character/marsh-v2/supplemental/swim-turn-north-south/manifest.json": "0c9973cd00be16725b30e12488cfcff85a002d45bc05a01a13dfa518b9cf239e",
+    "character/marsh-v2/supplemental/carry-turn-east-north/manifest.json": "c088c3539c0f4042efda57ac96bdc561f9c06a912bac17d20ca1e249208676e1",
+    "character/marsh-v2/supplemental/carry-turn-west-north/manifest.json": "821dd059a83f5df2af844b45477dce1f836bba6066ceb9ae0ddb869d40076946",
+    "character/marsh-v2/supplemental/carry-turn-east-south/manifest.json": "77d52163a81ea96aeee3d65fd9806d82c74ef78b21e2d222b1c9d172bc06021c",
+    "character/marsh-v2/supplemental/carry-turn-west-south/manifest.json": "1edf882be66760d7669dd49fe63029e9ae9e65bd45c133b42323aa353670e79e",
+    "character/marsh-v2/supplemental/carry-turn-east-west/manifest.json": "6691357c327e569e4e41bf0500c824d4cd081eaab0513103e9062e2954b17912",
+    "character/marsh-v2/supplemental/carry-turn-north-south/manifest.json": "856947de3a2400b5a26c72206eab31a8405042ded6ccb5d8c6868233d697a0ac",
+    "character/marsh-v2/supplemental/loaded-swim-east/manifest.json": "cc7d6eaea2421e3532dca904b10d53ef3945938b7eae8611ca115a7290cbe2cd",
+    "character/marsh-v2/supplemental/loaded-swim-west/manifest.json": "cfeb4f6a5e15a85d7fd9e71ac627c653859eae5b5018870b2472b0054d3c2548",
+    "character/marsh-v2/supplemental/loaded-swim-north/manifest.json": "4c616623dcc12e96677aa94278c91483fc12d13584def6e725c7c1b8694a4c55",
+    "character/marsh-v2/supplemental/loaded-swim-south/manifest.json": "a55da7fdd72843b052fde97d718137fa14da6429aa004f3332f6a69c8c1e76b9",
+    "character/marsh-v2/supplemental/swim-carry-turn-east-north/manifest.json": "4bce6806f25369c20b958dab95abcb5ba58bd2637dd541967c502a99ce4b421b",
+    "character/marsh-v2/supplemental/swim-carry-turn-west-north/manifest.json": "083341177b75e2e1d20aeadb0efeb2af63179dcb1a1b0fcd73aff65814896545",
+    "character/marsh-v2/supplemental/swim-carry-turn-east-south/manifest.json": "2d02e9651805a9fde0bdd301cf6c3492077eb8c2e864db92360b8cc0e776528e",
+    "character/marsh-v2/supplemental/swim-carry-turn-west-south/manifest.json": "41804807f2e77711cf465e4b8a6072d1ac564c4746891aa2de9dd310e1647f33",
+    "character/marsh-v2/supplemental/swim-carry-turn-east-west/manifest.json": "00e3d29294e23ce592323ab9c72afd04727402888e4e1d73500b2f81614cb1b0",
+    "character/marsh-v2/supplemental/swim-carry-turn-north-south/manifest.json": "db591c481e01f44756d1b8bc1662371dbd44f7a0238f096c3ab6414556cdd605",
+    "character/marsh-v2/supplemental/cargo-drain-east/manifest.json": "68d4406cf0dad4a05abf14a2c231921ccf41b603f01180014018cfbf3ce95619",
+    "character/marsh-v2/supplemental/cargo-drain-west/manifest.json": "20652bf3c538f43bf06302dd68a277c10c2f7b7a442287aa6c83080db166c512",
+    "character/marsh-v2/supplemental/cargo-drain-north/manifest.json": "6e42592a25cc24296d885f1638b8da0614408b0cc2c4b1f5d341caaf6600f3bb",
+    "character/marsh-v2/supplemental/cargo-drain-south/manifest.json": "271684211cc9cea010a24e83b0c3eb48f7a22d15f901c307113a4cce701a6cd3",
+    "character/marsh-injury-runtime-v1/manifest.json": "ba8f600d4045fe9162bf8ad6e7ebdc7ae394ebce87be590906c2cb9c843dc3f5",
+    "character/marsh-quality-pass-v2/manifest.json": "323078b4339c1f10101b4d087c5250b5ef01fff7debd58cc39bd3029d21a625a",
+    "character/marsh-crew-chat-v1/manifest.json": "0b62ce39050df6770cf79422cf1a285288f36c61078d6ca02873e0bc9fac3499",
+    "character/marsh-crew-chat-v2/manifest.json": "37f3d57c701a9048a781cb0355e3d0237176702bef14942511d25ce043b560ee",
+    "character/marsh-quality-pass-v3/manifest.json": "e50c22cf6f25197828f060542653a0a3d7e71727c43943f378125f1da5a56852",
+    "character/marsh-diagnostics-v4/manifest.json": "b1149a078eb0f4c650a7483d2d8ad954e1fa02b2c785474da1924ca4502184f0",
+    "character/marsh-diagnostics-v5/manifest.json": "2366d98a1f4ed3a8bc1cccd8276ab952c97e968b5fcf81ab8229e91b71fd7a85",
+    "character/marsh-diagnostics-v6/manifest.json": "54cd2387bd69c354839f9eb90ffb6ac9abd2bc84052e9defab4c2863aaceb4f6",
+    "character/marsh-diagnostics-v7/manifest.json": "c37640cd0898ffe54463f927070df259f4756c9fd6c3a76f2641dd32b676de3d",
+    "character/marsh-quality-pass-v4/manifest-p92_0-172_0.json": "9cd0770c25be079cfa7868583b2e9b9fb7019a1decaf0918eee661b08794da00",
+    "character/marsh-quality-pass-v4/manifest-p128-224.json": "e4e93bbb5ab343f56cfc2b6e94dc4bf0709c078549004a7b74332f6e9e91a70a",
+    "character/marsh-quality-pass-v4/manifest-p112-172.json": "2393e81e138bd13c660cc96576fd7d82edd12f5a6322ef70e5044a19e17abb4f",
+    "character/marsh-master-repair-v1/manifest-p92_0-172_0.json": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+    "character/marsh-master-repair-v1/manifest-p128-224.json": "bbddced7f65d88f583bc9da0cd2f9f21e5f12be935b3374771ffec873da00e11",
+    "character/marsh-master-repair-v1/manifest-p112-172.json": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d",
+    "character/marsh-north-walk-material-v1/candidate-01/manifest.json": "052292128cee5db8ed93829bbf77382898ddf24da13796418237ea1d8781c7bd",
+    "character/marsh-north-walk-material-v1/candidate-01/north-start/manifest.json": "ac7e7fa4b3dfcd6cc1f526b6b297e3195ced09c6162aed156866c2ebc6010df0",
+    "character/marsh-north-stop-v1/phase-bank-v3/manifest.json": "dfb71be7568c57ef2428c2b6868248bb2a19adeba02d9182877c17724db8f2d2",
+    "character/marsh-north-step-v1/sequence-v2/manifest.json": "3fc786ee490fba4e6b2de2e6e758a2345e1d0def1b0e0500a834cc4a7190cae3",
+    "character/marsh-south-walk-material-v1/candidate-02/manifest.json": "7c9c150308d08947237c204936628ad423d3aa47a17988e393d7ca162a5fb2c5",
+    "character/marsh-south-idle-material-v1/candidate-01/manifest.json": "da4065b0650d5d81089ee56f3af1674110b9c08fe7072bb795580887d092ceef",
+    "character/marsh-south-idle-material-v1/candidate-01/south-start/manifest.json": "de770bd6b21ad51dee404669d23081e44c366633267763b2bc2e465b85ef5833",
+    "character/marsh-south-stop-v1/candidate-06/phase-0/manifest.json": "eaf5d1e5e1d24bd8159283e7eb0992f4762049c77f90625a76b80feb63f305c0",
+    "character/marsh-south-stop-v1/candidate-06/phase-1/manifest.json": "96e74936eff3dbd3e975dca1d60c3f5e55a4b96165ea5548c9d44f6c3afce92a",
+    "character/marsh-south-stop-v1/candidate-06/phase-2/manifest.json": "aae91d6bf3621db1b8b7288931ad5aeb422d0c8dad52b79619440079cfe0d21b",
+    "character/marsh-south-stop-v1/candidate-01/phase-3/manifest.json": "f7964dbdb3254da4773666f1fff0bb928fcce01679e4b997f61a65bb8832db26",
+    "character/marsh-south-stop-v1/candidate-07/phase-4/manifest.json": "f6a6222423624ba7ca3b9077f8ed1d21228128be399de4d8ae73f24f865a1009",
+    "character/marsh-south-stop-v1/candidate-01/phase-5/manifest.json": "bcdba6811d344cdda24a11b0a63dc58460c2ad009e04a0d695cdc39856148b55",
+    "character/marsh-south-step-v1/candidate-05/manifest.json": "782611dd989e19a6ffbcbf80ae4659400d3abb83776f797bf9d44c12229ff56b",
+    "character/marsh-south-collapse-material-v1/candidate-01/manifest.json": "6ce0311c5a659e10e9ac9c4689ce07df40c03f31e5687aa4eed51ebd42682b76",
+    "character/marsh-south-injury-material-v1/candidate-01/manifest.json": "ed4bb0ccbfa8e626ab98f4fa20ebaed60382c1b6edbebf75699f7cada9848c1f",
+    "character/marsh-north-collapse-material-v1/candidate-02/manifest.json": "76b70116cf0c4e3dbd345f18ae988a8a92929d3d191c38c70bca09156da788ec",
+    "character/marsh-north-injury-material-v1/candidate-01/manifest.json": "536f5b0cd9df2cdb1dc44b76469b346529ad239e12e124223fa599ca2e9f8ad9",
+    "character/marsh-east-collapse-material-v1/candidate-01/manifest.json": "9c2b67d41a7408433b5aaf9ea3e57e90bc25831877d17f3c6036c920054f90af",
+    "character/marsh-east-injury-material-v1/candidate-01/manifest.json": "785a0749a47125582839ef135b7fd3fea5f997faffff5f943f56edc4204a7ebb",
+    "character/marsh-west-collapse-material-v1/candidate-02/manifest.json": "79f7247c5066e1e54488a252eb87d66785d54ec759e8792521bda3a9d6d43a7a",
+    "character/marsh-west-injury-material-v1/candidate-01/manifest.json": "407ad7d32e30f4f0974a5ed25f1d0743526526aeb855068ec4b6815e26f48cdd",
+    "character/marsh-south-run-material-v1/candidate-05/manifest.json": "d8fbd7f18dbd156825732b68ffb8b51f55d006d07a1edc255a3cc07c76317483",
+    "character/marsh-east-run-material-v1/candidate-03/manifest.json": "f5e5736d3cb14680f1c40185644d4593b0059ab6a446a94dd9ff72a78afbdcc1",
+    "character/marsh-west-run-material-v1/candidate-02/manifest.json": "215558d4ca9ca4ac5f3965d8954d7dd44f17f6cd7b895386af5f68b9f7f8b969",
+    "character/marsh-north-run-material-v1/candidate-03/manifest.json": "ab652416499908b76d0a1c2f9d40f536e167c28f1c0ecb6d7a0fe3ed918b9cfc",
+    "character/marsh-south-idle-material-v1/candidate-01/000.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+    "character/marsh-v2/frames/bare/idle-east/000.png": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a",
+    "character/marsh-v2/frames/bare/idle-north/000.png": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d",
+    "character/marsh-v2/frames/bare/idle-west/000.png": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+  },
+  "reusePolicy": [
+    "Bill reuse demonstrated by Krusher candidate",
+    "Veld is owner-suggested default for female characters, with actual likeness/build governing selection",
+    "James and Marsh remain independent proposed families requiring their own head/tint/equipment checks",
+    "Preserve each selected source clock and state count; do not force uniform animation counts",
+    "Keep original heads and department colours in the reference sheet; no runtime selections changed"
+  ]
+}

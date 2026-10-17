@@ -1,0 +1,72 @@
+{
+  "name": "James underwater West torch stow candidate",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_source_native_review_not_installed",
+  "states": [
+    {
+      "id": "swim-torch-stow-west",
+      "frameFiles": [
+        "frames/000.png",
+        "frames/001.png",
+        "frames/002.png",
+        "frames/003.png",
+        "frames/004.png",
+        "frames/005.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "bodySource": "source-bare.png",
+        "headSource": "../james-water-west-v1/source-helmet.png",
+        "derivation": "Shared whole authored bare body with accepted native prone helmet shell, exact selected helmet endpoints. Fixed body and helmet scales; no limb splice, mirror or body warp."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sourceFiles": [
+    "character/james-south-master-carry-v1/carry-pose.png",
+    "character/james-carry-authored-turn-v1/early-v3-pose.png",
+    "character/james-carry-authored-midpoint-v1/midpoint-lower-v2.png",
+    "character/james-carry-authored-turn-v1/late-v2-pose.png",
+    "character/james-west-master-carry-v1/local-v3-carry-pose.png"
+  ],
+  "sourceSha256": {
+    "character/james-south-master-carry-v1/carry-pose.png": "9fc2ee0dd2b15962f9aeed6bb84cbadeaaf84d837190118df2f956347837bdc0",
+    "character/james-carry-authored-turn-v1/early-v3-pose.png": "0df439635efa4d1a654adbb9b6c486b1a5b14da904d498f2b79ddec39dd600b5",
+    "character/james-carry-authored-midpoint-v1/midpoint-lower-v2.png": "25adbc3744930e2e66fa960ddf3d67dd632e964151c6eb9493885891d36d4592",
+    "character/james-carry-authored-turn-v1/late-v2-pose.png": "7e7fd3fc8f6fd89ddce92cb8cbb25991eaef7ba7e13f7bafcbc13ffebff05e19",
+    "character/james-west-master-carry-v1/local-v3-carry-pose.png": "779289d31dc0a6062274b7bc526723f096d3dc70cc87201cc286112379393994"
+  },
+  "nativeAlpha128Bounds": [
+    [
+      95,
+      76,
+      161,
+      224
+    ],
+    [
+      96,
+      74,
+      160,
+      224
+    ],
+    [
+      96,
+      76,
+      157,
+      224
+    ],
+    [
+      97,
+      75,
+      155,
+      224
+    ],
+    [
+      97,
+      76,
+      155,
+      224
+    ]
+  ],
+  "standingRuler": 148,
+  "pivot": [
+    128,
+    224
+  ],
+  "perPoseFit": false,
+  "runtimeDurationsMs": [
+    100,
+    200,
+    200,
+    200,
+    100
+  ],
+  "previewDurationsMs": [
+    100,
+    200,
+    200,
+    200,
+    600
+  ],
+  "previewDecodeChecks": 10,
+  "visualReviewPending": false,
+  "selected": false,
+  "sourceAcceptance": false,
+  "scope": "Five bare whole-body poses, reused cardinal endpoints/midpoint and two new source poses. Chronology evidence only until reviewed; reversed state is same poses reversed, not new art. Preview endpoint hold/replay is viewer only, no native or actual lifecycle proof.",
+  "packagingBaseSha256": "1cf8d51a0f647adaae001b5870ca52bdc7f2e4934abb2e119120a88ecf21e95e",
+  "packagingVariantSha256": "2ec61f5cced432e6010430e10230618ec0ad874f176b93d998d96c8096060b04",
+  "disposition": "staged-repair-needed",
+  "findings": [
+    "All raw sources/whole/upper/legs/station chronology reviewed. Explicit nose-left/ear-right screen landmarks correct early yaw. Five whole-body poses now provide distinct front-to-left progression and retained two-hand case with planted boots.",
+    "Crowns76/74/76/75/76, common soles224. Early head protrudes two native pixels above endpoint crown; late one. Head proportion/position and belt-meter design/material transitions still need source correction before motion acceptance.",
+    "Candidate source pose progression only. Intended20/45/70degrees are not measured projections; five images do not prove smooth cadence, paired gear, native lifecycle or master/owner acceptance."
+  ],
+  "wholeChronologyReviewed": true,
+  "upperChronologyReviewed": true,
+  "legsChronologyReviewed": true,
+  "stationChronologyReviewed": true,
+  "reusedEndpointAndMidpointRGBAExact": true,
+  "continuouslyWatchedPlayback": false,
+  "generationExecutions": {
+    "early": "exec-f5c8d786-cccb-4ead-817f-79aa3b646301",
+    "late": "exec-0ad0afc3-10e8-4bf5-b294-b49aea5cad2d",
+    "early-v2": "exec-c2f40688-bbac-40a7-b83d-2f1bf36e60b1",
+    "late-v2": "exec-29bfff71-5362-4489-8f45-7c22e7de6f6c",
+    "early-v3": "exec-a5331a89-5d62-49f6-b3ac-23f3220cc90e"
+  }
+}

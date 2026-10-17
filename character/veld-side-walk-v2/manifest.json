@@ -1,0 +1,65 @@
+{
+  "name": "Veld approved-foundation side walk",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "west_motion_review_candidate_east_owner_accepted",
+  "states": [
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "loop": true,
+      "mirrored": false
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png",
+        "frames/walk-west/004.png",
+        "frames/walk-west/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "mirrored": false,
+      "derivations": {
+        "0": "v1/west/2",
+        "1": "v1/west/0",
+        "2": "v1/west/1",
+        "3": "opposite/0",
+        "4": "opposite/1",
+        "5": "opposite/2"
+      }
+    }
+  ]
+}

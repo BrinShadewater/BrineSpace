@@ -1,259 +1,7989 @@
-# Crew life: pipeline and workflow lessons
+## Veld original West complete sample cycle staged — October 4, 2026
 
-For everyday actions, cargo and distress, track source production, registered
-packaging, runtime selection and visual acceptance separately.
+West one-knee lower/examine-stow/rise now staged as a coherent1s/4s/1s family
+at character/veld-library-closeout-v1/west-sample-family-v3/. Bare/helmet share
+57lower poses from kneel-motion-v2 source14..70,142new examination poses, and
+same57whole poses reversed for rise. No body/foot patches or grading. Same256
+canvas/pivot128224/standingHeight148. Existing original rigid West shell;
+bodyoutsidehelmet exact142/142 in new examination. Viewer loop is replay only.
 
-## Asset pipeline
+Corrected contact diagnosis: original front/far toe ends219, near/rear boot223.
+Old x<133ground band included the rear boot's toe then lost it as rear leg lifted;
+its apparent3pxfrontsole lift was mixed-foot measurement. Separate fronttoe ROI
+105..121,y210..230 gives source220..221 and x107..108:1px downwardsettling/0up,
+not3pxlift. Registered authoredkey toe221. Original alpha-edge difference1..2px
+is below1px at47pxcharacterheight; no pressure/worlddepth proof. Old reports kept;
+corrected evidence kneel-motion-v2/CORRECTED_FRONT_TOE_REVIEW.json and ankle board.
+Do not paint originalboot over movingleg on this false lift diagnosis.
 
-- Inspect actual row facing before expanding coverage. Labels do not prove facing.
-  Generate focused corrections; preserve rejected originals and exact prompts.
-  Never mirror asymmetric body equipment to fill missing views.
-- Preserve detached cargo during extraction. Equal-width cells can cut a boot or
-  include neighboring pixels. Inspect transparent gutters and every resulting crop;
-  correct frame counts alone do not validate a sheet.
-- Share anatomical scale through a sequence. Calibrate reading to seated idle;
-  never stretch crouched or prone poses to standing height.
-- Check per-frame head anchors and equipment tilt through turns and prone poses.
-  Nominal clip direction is insufficient. Review bare and fitted endpoints.
-- Record reverse-action and composed-turn derivations. Join transitions to actual
-  base cycles rather than inventing replacement poses in packaging code.
+One scoped kneeling examination Hailuo02 job448697760727515 succeeded;
+6s768P24fps, estimatedUSD0.28/billingunverified. Same first/last input is existing
+lower endpoint70, no regenerated identity. Exact prompt/input/task/full142source
+retained at west-examine-kneeling-v1. All142raw/bare poses reviewed: headtop118,
+headwidth27/axis148 throughout, floor222..223. Small vial drawn/examined/stowed;
+empty hand before rise. Slight vial silhouette variation during return remains
+for motion review; fixed colour ROI is a diagnostic, not rigidprop/grip proof.
+Whole source5917ms uniformlyretimed4000ms(~1.47925x), every pose retained;
+lower remains2.375x. Full unretimed sources visible.1028joined build/APNG checks
+pass; saved builder reproduces7outputartifacts byte-exact.
 
-## Runtime workflow
+3122final nativeplayer checks/512presentations at47/93/148px pass.5846actual
+controlled-scene NPC checks pass:2ordinary maintenance cycles, arrival dispatch,
+57/142/57slot coverage each gear at120Hzcontrolled sampling, fixed worldfoot,
+valid actorsnapshots, stowedvial/finitephase/returnidle and maintenance reward.
+Actual repair starts1.0083s/stand5.0167s due discrete timerstep; no timercodechanged.
+20native room/sourcecaptures, representative bareexamination and helmetrise
+visually reviewed. This is actual controlled NPC/render submission evidence,
+not free-runningstation/controllerinterruption/worldpressure/diskContinue proof.
+1030targetedinputs and2931ownerprofilefiles unchanged in each passing interval.
+Selected West274PNGs/4manifests unchanged; no normal admission/controller changes.
 
-- Resolve retained furniture in every rotation. A baseline sofa may be replaced
-  by a wall installation. Provide safe approaches and prove navigation access.
-- Keep navigation feet on accessible floor; use explicit visual offsets onto
-  furniture. Review depth against chair backs, pillows and footboards. Fixed pivots
-  alone do not prevent disappearing behind furniture.
-- Use simulation clocks for transitions. Test pause, intermediate saves, restore
-  and service interruption. Seated readers and sleepers should rise before leaving;
-  interruption must not emit successful completion.
-- Place pickup before extraction/credit. Test recall and duplicate-credit negative
-  controls. Maintain the held case through carrying turns.
-- Separate distress cues from oxygen rules. Check fitted bounds in tight spaces.
-  A sealed helmet cannot be treated as an open mouth for meals.
+First intervals preserved: playerfixture sampled4s after4.00001s causing clock
+reset, corrected to monotonic sample; controllerfixture incorrectly expected
+emptygoal aftercompletion. Probe showed idle with nextmaintenance route planned
+and reward applied; expectation corrected without gameplayedit. Evidence under
+output/veld-west-sample-family-v3-first-clock-check and controllerfirst-next-goal/
+probe; finalpassing outputs veld-west-sample-family-v3/veld-west-sample-controller-v3.
 
-## Evidence and closeout
+Next: review complete motion and adjoining Westcargo/stance/material joins before
+coherent normal admission; maintenance interruption and fresh-processContinue
+remain open, along with other directional closeout. Full Veldlibrary incomplete.
+Preview index.html and HANDOFF.md here. No live job or approval gate.
 
-Keep the entire target prop visible when reviewing work contact. Actor-follow crops
-can omit equipment below the feet and make correct facing appear wrong. Resolve
-the recorded foot against live prop geometry before changing directional art.
-A generic proximity band establishes a destination, not hand/tool contact or a
-suitable action; verify approach, service side and action together at native scale.
-If an authored service point lies outside a generic destination band, grant its
-reviewed station a bounded exception while retaining navigation and final-segment
-clearance. Do not loosen collisions to force contact. Test blocked and unreviewed
-orientations, and distinguish functional service completion from optional comms.
-When adding a room service, check every need that can select it. Curiosity can
-share maintenance furniture while bypassing generic service-availability guards;
-cover both selection and interruption, including no benefit after power loss.
-For save compatibility, safe floor is necessary but does not prove retained
-furniture contact. Compare an active equipment action's saved contact/facing with
-current geometry; cancel obsolete work without teleportation or service credit.
-Keep matching-contact positive controls alongside stale-contact regressions.
+## Veld original West one-second kneel/rise staged — October 4, 2026
 
-For bed transitions, inspect the intermediate seated hip contact as well as the
-sleep endpoint. Measure approach-to-rest travel relative to body height: a source
-can fit the final mattress while floating across the floor during interpolation.
-Resolve reachable entry and contact choreography together before expanding frames
-or directions. A four-quarter capture count alone is not visual acceptance.
-Use the real activity station in staged previews after validating its route. Keep
-temporary draw-depth adjustments explicit: a compound bed/cabinet can cover a valid
-floor entry because it sorts at the bed foot. Do not silently bake a furniture-only
-depth workaround into a general standing pose or count a reversed preview as runtime
-get-up coverage.
-Before accepting a pose-hold GIF, sample the production animation player at the
-actor's real transition duration. Calculate travel over the actual moving interval,
-not the whole clip: a hold followed by one lowering frame can compress a large
-displacement into a visible slide. Exact idle/sleep endpoints do not establish a
-connected movement. Duration changes require matching actor timers and interruption
-and restore checks, not just longer manifest frame durations.
-Trace presentation coordinates through both the position getter and renderer.
-Marsh's getter subtracts the same vertical lift GridCanvas adds back, so native
-fixtures must place the external actor at the NPC foot without an additional lift.
-Otherwise apparently precise contact and displacement measurements describe the
-fixture rather than production behavior.
-For a longer furniture-specific animation, persist its contact anchors and validate
-its own duration without relaxing other characters' timer limits. Reverse an
-interrupted entry from its current elapsed position; restarting a full rise causes
-a pose jump. Battery/other emergency controllers must also leave furniture before
-starting floor movement. Keep furniture-only extents out of shared locomotion or
-swimming clearance when the runtime presents them with a separate contact offset.
-Review the normal chooser's final walking segment: an activity's acceptance radius
-can let a nearby graph node start a carefully authored contact animation too far
-away. Opt furniture into exact approach only with stand/peer/segment clearance.
-Review walking before and after the pose, since compound-prop depth can hide a
-torso that the furniture animation's own depth offset correctly reveals.
+One scoped direct Hailuo02 boot-contact retry448693621641789 succeeded;
+6s768P24fps, estimated USD0.28/billing unverified. Same frozen standing and
+registered kneel plates. All142raw/native slots, exact prompt/input/task preserved
+at character/veld-library-closeout-v1/west-kneel-motion-v2/. Whole fixed3:1
+extraction; no per-frame placement, visibleRGB/anatomy or scale rescue.
+All142bare whole poses and142helmet head/collar views visually inspected.
 
-Run affected tests and inspect native furniture and fitted motion at station scale.
-On Windows, wait for Godot and read exit status/logs rather than assuming shell
-return means completion. Respect browser security rejection; use native evidence
-and local artifact links without claiming browser validation.
+Correction to October3 summary: v1 floor229occurs during lowering, not held
+kneeling (middle hold floor222..223). New explicit diagnostic in v1 keeps original
+reports intact: rear toe dips6px below original223line; front sole lifts2px.
+V2 removes below-line rear toe (whole floor220..223); front loweralpha220..223
+still rises3px. Fixed foreground bands are not named-foot pressure/world-depth
+proof. Body preserves original smallhead26..28vs27, warm skin/brown bun/matte
+charcoal quilt. No vial/rise in raw source.
 
-Record coverage, derivations, consumers, evidence and pending owner review at
-closeout. Update maintained skill sources and their changed installed mirrors.
-Preserve concurrent sessions' notes/code and leave other tasks alone.
+Staged lower selects every consecutive source14..70 (57poses/2375ms), uniformly
+retimed1000ms at2.375x; derived rise reverses the same57whole poses/1000ms.
+Complete142slot5917ms source remains visible and preserved; no movement pose
+omitted, pixel interpolation or hidden bad-frame cut. Source's later settling hold
+is not the selected endpoint. Original rigid West shell tracks head; body outside
+region exact142/142. Common256canvas/pivot128224/H148. Preview includes600ms
+review holds, not a sample action, controller or authored repeating game loop.
 
-Examples: `character/crew-life-v1/README.md`,
-`docs/CREW_LIFE_EXPANSION_2026-09-08.md`, `tests/preview_crew_life.gd`,
-`tests/test_crew_life_rooms.gd` and `tests/test_station_systems.gd`.
+1480APNG groupedpixel/hold checks and3120nativeplayer checks pass;512native
+presentations at47/93/148px. Advancing sampled player clock covers every source/
+phase slot, exact source pixels and1s clocks; entry/finiteendpoint/idle-return/
+freshplayer snapshot continuation pass. Not real-time60Hz coverage, NPCcontroller,
+physical contact or disk Continue.914targetedinputs and2931owner profile files
+unchanged. Selected West274PNGs/4manifests unchanged. No normal admission.
 
-Furniture pose review must include draw sorting. Marsh's south reading frame was
-valid but disappeared behind a sofa because its depth offset stayed zero. Native
-shared-cast review exposed it; the canonical writer now supplies seated depth and
-transition ramps. Keep depth separate from foot/pivot placement and sprite pixels.
-A successful Bill pose does not establish other cast metadata compatibility.
+Review preview index.html here; handoff HANDOFF.md. Native representative lower
+32and rise56visually reviewed; full native frames retained. Remaining: frontsole
+contact and retimed motion quality, sample/examination and adjoining West cargo
+joins before coherent admission. Do not issue uncontrolled repeated generations.
+Full Veld library remains unfinished; no live job or approval gate.
 
-Authored carry turns end on destination carry frame zero. At completed-turn exit,
-reset the ordinary carry clock/position before resuming; otherwise old gait phase
-and travel during the turn skip to a different pose. Verify actual catalog endpoint
-pixels and following distance phase, honoring per-direction strides. Not all crew
-have matching turn/equipment coverage (Marsh currently does not). Printed test
-counters cannot override SCRIPT ERROR lines from invalid fixture assumptions.
+## Veld original West lowering source staged — October 3, 2026
 
-Swimming turns have the same destination-frame-zero contract, verified across 144
-registered selected turn endpoints. Compare clips after aligning texture pivots;
-different transparent canvases are not pose differences. The playback guard covers
-carry, swim and swim-carry separately: the latter already resets through its state
-branch. Extend a fix only where actual phase/endpoint evidence shows the defect.
+Registered one authored West kneel key at west-kneel-anchor-v3 using one fixed
+integer translation18right5down; retained-window RGBA exact, no visible clipping,
+colour/anatomy/rescale edits. Master-repair guidance permits registering authored
+cells by the same planted boot. This corrects earlier overly broad prohibition:
+fixed whole-key authoring registration is distinct from per-frame generated clip
+recentring/reflooring, which remains disallowed. Key head27/floor223 matches the
+original ruler. Guided keyv2 remains rejected for head24/shrunken upper body.
+Key3buildchecks and28native checks pass;2native presentations per three scales.
 
-Bought bunk integration requires per-cast anatomical pillow anchors. Equal world
-positions do not align sprites with different pivots, and head alignment alone
-does not prove the feet fit inside the bed frame. Inspect source bounds and native
-ladder/post occlusion together. Do not shrink a character or resize an owner layout
-to conceal a too-long prone pose; author a furniture-specific compact pose and
-verify continuous entry/rise. Keep fixture-only depth overrides out of general
-sleep metadata until the furniture renderer owns that occlusion.
+One direct Hailuo02 lowering-only job448684324352355 succeeded;6s/768/24fps,
+estimated USD0.28, billing unverified. Exact two input plates/prompt/task/full142
+source retained under character/veld-library-closeout-v1/west-kneel-motion-v1.
+Fixed whole768-to256 extraction, no pose/RGB correction. All142 raw/bare and helmet
+poses inspected in chronology. Front visible ground silhouette x106..108 versus
+initial107 improves substantially on prior samplev1 x75..108. This foreground-band
+diagnostic is not separated-foot pressure/root/contact proof. Rear boot settles
+below original223floor during hold (source floor222..229); head26..28 vs master27.
+Whole pose preserves connected limbs, small face/brown hair/warm skin/charcoal
+quilt more closely than selected old cool/soft sample interiors. No vial/rise.
 
-For stacked bunks, verify upper-mattress underside clearance through the entire
-lowering pose. A lying endpoint can fit while an elbow-supported lean intersects
-the bunk above. Review mattress-edge entry and short inward movement as a contact
-sequence; fixed hip registration in source art need not imply fixed world position
-through entry. Preserve separate key-pose, complete motion and controller evidence.
-Prefer a single source sequence's sleeping endpoint when a separately generated
-endpoint would pop; keep both sources and record the selected derivation.
+Paired full142-slot lowering-source manifests preserve5917ms rounded24fps holds,
+finite endpoint; no controller retiming/admission. Original rigid West helmet shell
+tracks moving head; body outside region exact142/142.570APNG groupedpixel/hold
+checks,1720final native checks/0failures;284native presentations at47/93/148px.
+Native midlower/middlehold/terminal captures visually compared against original
+standing and currentselectedkneel. State entry/finite endpoint/idle return/fresh
+player snapshot continuation tested, not physical contact/fullcontroller/disk
+Continue.914targetedinputs and2931ownerprofilefiles unchanged. First native interval
+preserved in output/veld-west-kneel-motion-v1-first-timing: inherited40ms holds
+corrected to unretimedsource before final validation. Selected West274PNGs and4
+manifests match installed inventory; normal selection/controller unchanged.
 
-When boarding furniture, switch depth by contact phase, not by the overall action
-name. A boot still hanging off a mattress must draw in front of the front rail;
-putting it inside the furniture layer can slice the shin into disconnected pieces.
-Only fully boarded poses should enter the interior layer. Reverse the same contact
-schedule for exit and preserve per-frame registration when anchoring poses. Verify
-canonical idle pixels and native first/last equality separately from motion quality.
+Preview: character/veld-library-closeout-v1/west-kneel-motion-v1/index.html.
+Next: resolve rearboot contact and derive an explicit1s lowering phase with truthful
+endpoint/timing before matching sample/examination/rise and adjoining West cargo.
+Whole Veld library remains incomplete; no new normal admission this interval.
+Handoff: character/veld-library-closeout-v1/west-kneel-motion-v1/HANDOFF.md.
 
-For partial reversal, test both interior times and every exact source frame boundary.
-Half-open forward and reverse intervals can select adjacent poses at the boundary
-although all interior samples match. Human lie-down interruption uses completed
-entry time, with a 1e-7s bias toward the current pose and full-duration cap. Check
-contact offsets and the actual service-loss update as well as isolated clip pixels;
-a full rise from partial entry visibly jumps even if both individual clips are valid.
+## Veld West sample refinement rejected — October 3, 2026
 
+User continuation focused on sample v1 foot shifts and vial enlargement. One
+revised original-master Hailuo02 task448679751106893 succeeded (6s768square,
+24fps; estimated USD0.28,billing unverified). Exact prompt/input and all142 source
+slots preserved at character/veld-library-closeout-v1/west-sample-family-v2/.
+All142 raw frames inspected and278 full APNG grouped pixel/hold checks pass.
+Motion fix fails: both legs fold underneath instead of front sole remaining
+planted, and vial remains visible into rising with cyan prop/hand variation.
+Appearance/standing-endpoint success is not planted contact or stable props.
 
-For furniture-specific runtime profiles, test the normal goal chooser and exact
-arrival before restoring intermediate poses. Persist contact anchors and validate
-finite coordinates, supported direction/medium, transition duration and entry-foot
-agreement. Keep longer furniture timing typed to that actor/profile; do not relax
-all human save limits. Verify both equipped and bare disk restores, service-loss
-reversal, and rejection of incompatible furniture transforms. Rebuild supplements
-through the canonical pipeline and prove they do not enlarge movement clearance.
+Changed approach before more video expansion: two whole empty-handed one-knee
+key drawings preserved under west-kneel-anchor-v1/v2. V1 head27 matches master;
+original visual comment about enlarged head corrected after measurement. V1
+floor218 instead of223, front boot too far left. V2 used explicit technical
+pose guide, improves floor222 but head24 versus27 and upper body density shrinks;
+front ground bandleft101 versus107. All raw/generated alpha preserved with fixed
+whole-canvas downsample only. Both rejected; neither becomes a video endpoint.
+Exact prompts/references/raws and reproducible measurement review retained.
 
-### Marsh first carry turns - September 22, 2026
+274 selected West source files and4 manifests match frozen installed
+inventory. New folders absent from loader/ACTIVE. No normal/controller changes,
+helmet expansion, native test, owner profile access, local anatomy/prop patch,
+per-pose refloor/recenter or rejection-hiding source omission. Ground-band
+measurements compare visible pixels only: knee pixels enter band in v2, so the
+37px change is not a proved37px boot slide. Do not equate silhouette metric with
+contact biomechanics. Handoff: west-sample-family-v2/HANDOFF.md.
+Next prove a whole one-knee key that matches density and registration together,
+then guide source motion from fixed endpoints; do not repeat freeform full-action
+prompts or propagate these rejected poses. Existing v1 remains staged and still
+needs contact/vial cleanup. Full Veld set remains incomplete.
 
-East/north carry poses keep the case in front of the actor as the torso
-occludes it; never move cargo onto the back to keep it visible. The local
-builder uses .25 scale, measured centers and a common boot baseline,
-with exact existing carry endpoints. Both turns are required by the
-native handoff test. Dry metadata is distinct from swimming turns.
+## Veld original West sample family staged — October 3, 2026
 
-West/north carry uses independent source landmarks and .265 scale; the
-east sheet remains .25. Same sheet dimensions do not imply equal body
-density. Compare registered head/boot height before installing. Both
-carry pairs now reproduce twenty frames and are required by handoff tests.
+Original-master standing-to-kneel/sample/rise source preserved at
+character/veld-library-closeout-v1/west-sample-family-v1/. One direct Hailuo02
+job448673608622559 succeeded,6s/768square/24fps, estimated USD0.28 (billing
+unverified). Exact input/prompt/task, all142 raw frames and uneroded fixed3:1
+alpha extraction retained. All142 raw poses and142 native helmet chronology
+poses inspected. Native standing height returns148px; head width27..29 versus
+master27. Face/brown bun/warm skin/charcoal suit substantially closer to master.
 
-East/south carrying exposes the front of the case while retaining both
-hand contacts at waist height. Its larger source uses .23 scale and
-measured centers. Three pairs now reproduce thirty carry frames with
-exact current endpoints; native handoff checks require all six clips.
+Complete142-slot source per gear plus kneel29..53, repair54..90, stand91..115.
+Lower/rise each25 slots uniformly40ms/1000ms instead of1042ms; every pose retained,
+explicit approximately4percent acceleration to match existing1s timers. Whole
+source original5917ms holds unchanged. Repair is finite and holds terminal pose
+through4s; no false repeating vial draw. Same original33x39 West helmet shell
+tracks head geometry without resizing body; outside fitting142/142 pixel exact.
 
-West/south completes all eight adjacent carrying turns. Independent source
-uses .24 scale and measured centers, retaining both hand contacts and
-exact existing endpoints. All forty carry-turn frames reproduce exactly.
-Half-turn composition and normal station transport review remain separate.
+Final2808 native checks/0failures,458 presentations at47/93/148px; nonloop endpoint
+hold, repair4s hold, state return and fresh-player snapshot continuation pass.
+900 APNG grouped pixel/hold checks pass. Real profile2931 files and921 targeted
+inputs unchanged. Selected18 old source files unchanged. Earlier source-holds
+native interval preserved at output/veld-west-sample-family-v1-source-holds/;
+final bound interval output/veld-west-sample-family-v1/.
 
-Carrying half-turns compose adjacent poses through an identical cardinal
-frame, stored once with combined120ms duration. Four800ms clips complete
-Marsh dry-carry coverage. All76 carry frames reproduce; all twelve turns
-are required in handoff tests. Catalog audits distinguish coverage from
-visual acceptance: other humans have all three turn families, including
-helmet versions; Marsh still lacks twelve swimming-with-cargo turns.
+Still staged: lowering/rising foot shifts and ground contact need review; vial
+visibly grows during stowing around105..112. No patching, per-pose refloor/recenter,
+colour rescue, pose omission or normal admission. Source material/endpoint success
+does not certify planted contact or stable props. Next refine these demonstrated
+motion defects before controller/cargo-family admission; remaining directions,
+furniture/water/death and full new-process Continue remain open. Full Veld set
+incomplete. Handoff: this candidate's HANDOFF.md.
 
-### Loaded-swim foundation audit - September 22, 2026
+## Veld original West standing family staged — October 3, 2026
 
-Do not infer visible cargo from a swim-carry state name. Marsh east
-currently uses empty-handed art; the direct texture renderer adds no case.
-Audit base frames and pickup/unload joins before generating missing turns.
-An east loaded-swim candidate is review-only under marsh-swim-cargo-v1.
-Keep coverage counts separate from base-art correctness and acceptance.
+Original-master West idle/walk/scanner reviewed together, staged at
+character/veld-library-closeout-v1/west-standing-family-v1/. One direct MiniMax
+Hailuo02 job448662724624752 succeeded (6s/768square/24fps; estimated USD0.28,
+billing unverified). Exact input, prompt, task record and full142-frame source
+retained. Requested final standing stop was not achieved: source keeps walking.
+No retry; no stop/start transition acceptance claimed.
 
-East loaded swimming is now selected by a replacement manifest. Remove
-old state entries to avoid duplicate catalogs, retain original PNGs and
-reapply selection after canonical rebuild. Coverage is a union when
-supplemental contracts replace existing keys. Detached pickup cargo must
-survive component extraction; use measured cell edges for crossing boots.
-Pickup maps six150ms slots to existing0.52s controller time and joins
-exact loaded frame zero. All24 previous loaded frames were empty-handed;
-other three directions still need repair. Native route passed93 samples.
+Fixed whole-canvas3:1 downsample and alpha separation only; no colour/anatomy,
+nonuniform scaling, per-pose recenter/refloor or erosion repairs. All142 raw slots
+inspected in chronology. Source height144..149 versus master148; head27..29
+versus master27. Brown bun/small face/charcoal quilted suit are substantially closer
+than rejected sheets, with minor cloth/detail variation still needing motion review.
+Paired family reuses complete142-slot original idle and scanner plus raw26..49,
+a consecutive24-slot/1000ms full alternating walk cycle. Entire source preserved.
+Existing original West helmet shell registered once; body outside its region
+pixel exact. Common256canvas/pivot128224/standingHeight148. Walk timing uses
+original rounded source holds, including phase26 offset.
 
-West loaded swimming now uses independent loop/pickup sheets and measured
-shoulder anchors. Preserve the detached case in first reach; inspect its
-bounds as well as body bounds before installation. East/west replacements
-reproduce24 frames with exact salvage/loaded endpoints. Both directions
-are included in the canonical rebuild; north/south remain unresolved.
+592 build checks,1232 APNG grouped pixel/hold checks and3738 native checks passed;
+616 native presentations at47/93/148px. All48 new walk poses and bare/helmet joins
+visually reviewed. Player state-entry/loop/return and fresh-player snapshot restore
+pass. First interval preserved: two incorrect idle-to-idle reset expectations
+fixed in fixture; existing idle playback correctly continues. Later passing
+interval before quoted resource-path cleanup also preserved. Final native
+interval: output/veld-west-standing-family-v1/.752 targeted inputs and2931 real
+owner profile files unchanged. Selected West250 source files and4 manifests
+still match installed inventory. No normal selection or controller changes.
 
-North loaded-swim source01 was too upright/elongated. Selected source02
-foreshortens torso and legs without reducing head/shoulder scale. Rear
-cargo is ahead of the torso, partly occluded, with hands forward; do not
-move the case onto the back to improve visibility. North loop .25 and
-pickup .28 scales are measured independently. All36 selected frames
-across east/west/north reproduce with exact endpoints; south remains.
+This is staged appearance/motion review, not gameplay/contact/disk Continue
+acceptance. Remaining West kneel/repair/cargo joins use older stance; installing
+only these3 states would reintroduce the11px family jump. West scanner source does
+not change curiosity's East/1.02s dispatch. Next: bring adjoining West actions into
+same original stance, then verify physical stride/contact and actual controller
+timing before coherent admission. Full Veld completion remains open.
+Handoff: character/veld-library-closeout-v1/west-standing-family-v1/HANDOFF.md.
 
-South completes all four loaded-swim/pickup replacements:48 frames reproduce.
-Independent south sources use loop .25 and pickup .24 scales, measured
-shoulders and exact salvage/loaded endpoints. Check lifted-case boot
-bounds before installing; adjust registration, not anatomy, for clipping.
-All four loaded endpoints are now ready for twelve cargo-swimming turns.
-Native playback and93 route samples pass; full expedition review remains.
+## Veld West interaction repair rejected at source review — October 3, 2026
 
-Loaded-swimming turns now complete Marsh's three turn families. Freeze the
-selected supplemental loaded endpoints, never old empty-handed base PNGs.
-Preserve actual source dimensions: new sheets include2170x725 as well as
-2172x724; measured cells and shoulder registration must reflect those sizes.
-East/north and east/south source02 correct a premature cardinal third
-pose; only that corrected cell is selected. Half-turns share exact
-cardinal pixels once with combined120ms timing. All76 new frames reproduce,
-and native handoff requires all twelve loaded directions. Full expedition
-and owner motion review remain separate from turn-matrix completion.
+Continued the existing-library closeout using the original West master, selected
+idle and old action poses as separate appearance, registration and motion inputs.
+Existing master-based142-frame idle/scanner sources improve identity and helmet
+joins but use a stance11native pixels to the right of selected idle/walk; no
+normal admission of that pair without a coherent adjoining standing-family review.
+Normal Veld curiosity arrival currently selects East scanner for1.02seconds;
+West source-clock availability is not proof of normal West action dispatch.
 
-Real expedition review corrected two integration gaps missed by direct-player
-fixtures: pickup0.52s-to-clip mapping was only in the preview, and Marsh
-exterior clearance tested missing station floor, suppressing turns. Verify
-through grid_canvas and a real dispatched route, not a fixture that supplies
-the intended mapping or allow-transition flag itself. Pickup has6 poses;
-existing unload has4. Pause tests must use the production gated entry,
-not directly call an internal stepping helper. Three controller journeys
-now pass. Loaded water-to-dry silhouette change remains abrupt.
+Three built-in whole four-pose redraws preserved as raw images with exact prompts,
+reference hashes and fixed equal2x2 extraction. V1 restores warmer skin/brown hair
+and neutral suit detail but grows to160–162px/floor177–178 versus idle148/floor171.
+V2, authored from repeated registered whole idle, remains153–154px/top16–17/floor169
+with head/panel drift. V3 shrinks to139px and reflows the grid: top rowfloor164,
+bottom rowfloor156. All rejected. No local anatomy, colour, pose-bound scaling,
+recenter/refloor or rescue-crop corrections; no candidate runtime manifest.
 
-Loaded airlock drainage now uses four-facing rise art tied to saved interlock
-progress, not cosmetic time. Hold the authored planted pose while pressure
-equalizes; an exact carry frame0 reference can be a stride with one boot raised
-and should only resume when exit movement starts. Rear carry lowers hands
-toward waist and permits torso occlusion. Read measured source cell edges when
-a prone figure crosses equal cell boundaries. Preserve per-frame water metadata
-and test pause, power loss, disk restore and death precedence through renderer.
-Four-facing texture checks do not prove four rotated-airlock journeys.
+All12 extracted candidates and complete comparison board inspected. Current
+Veld loader order, relevant manifests and250 selected West source presentations
+verified unchanged. No native tests warranted for rejected, unselected artwork;
+no owner profile or controller changes. Installed turn body consistency fix remains.
 
-Rotated expedition fixtures must preserve cryo/charging wards: deleting a ward
-breaks the saved architect roster and can make Save.read silently recover an older
-backup. Require the just-written primary checkpoint and expected expedition home
-before restore. The maintained fixture now covers all four airlock rotations plus
-empty/loaded recall; six cases also pass through the actual release executable.
-Keep manual stepping evidence separate from real-time motion and pacing acceptance.
+Lesson: colour/detail improvements are insufficient when a sheet changes density,
+head proportions or cell registration. Even explicit numerical placement and an
+idle grid can reflow. Preserve failed sources and do not expand a failed key into
+helmet variants or motion. Review idle/walk/action as one standing family before
+admitting an otherwise improved source with a different stance axis.
+West repair remains open; full Veld completion remains unverified and incomplete.
+Handoff: character/veld-library-closeout-v1/west-interact-fix/HANDOFF.md.
+
+## Veld existing-library closeout and installed turn body consistency — October 3, 2026
+
+Owner accepted switching focus to finishing the existing selected library, rather
+than accumulating scanner studies. Fresh normal-loader inventory: 198 bare/192
+helmet states, 118 manifests, 4804 unique selected sources, zero missing files.
+Coverage is not original-master visual acceptance.
+
+Confirmed all96 selected helmet turn slots differed from their bare bodies outside
+the registered equipment region. Installed12 quarter/half turn states using whole
+selected bare poses and complete existing helmet/collar plate (96,65)-(169,109).
+Body outside region is exact bare art; equipment region exact previous helmet art.
+No local grade/anatomy/scale/pivot/pose/timing changes. Carry-north unchanged.
+Only two loader paths and their registry entries changed. 216 buildchecks0;
+all12 before/after boards and2 native sheets inspected. Normal installed Godot
+loader567checks0: all96 slots, metadata/timing,24 bare/helmet dispatches/exits.
+Scratch APPDATA,2931 owner nonlog files and393 targetedinputs unchanged.
+
+Lesson: validate bare/equipment body consistency using the actual final override,
+not just master helmet registration. Do not force planted turn endpoints to match
+walking carry framezero: their feet-together stance is an accepted owner choice.
+This fix preserves existing helmet design; it does not solve remaining bare-body
+master drift or establish full continuous native/play/save acceptance.
+
+Next: selected directional interaction/repair master matching, cargo joins/materials,
+furniture contacts/dispatch, idle/walk/water/death and final native lifecycle.
+Scanner studies remain staged/unfinished. Full goal active/incomplete.
+Handoff: character/veld-library-closeout-v1/HANDOFF.md.
+
+## Veld South explicit press endpoint and native authored-key study — October 3, 2026
+
+Original-only square768 conditioning replaces inherited held-key edit. Built-in
+scanner-press-key-v2-original raw1254square preserved immediately with exactprompt/
+input hashes/provenance; SHA b55e676a505339535ff9295fb236a6c1c5b727d90cf98d1f0beccc9811fe291f.
+Fixed256/1254offset0 only. Raw and original/held/control/press/return board reviewed.
+Clear compactscanner top-leftbutton finger contact, coherent sleeves, original
+brown/grey streak warm face charcoal quilt/blue maintained visually; key149/top76/
+head25axis128 versus original/held/control148/top77/head24axis127.5. Stagedcontact
+key, not final master fidelity. Spatial head/leg meanRGB near original but fixed
+region RGBMAE combines detail/geometry/grade, never certifies pure colour match.
+
+Explicit held-to-pressed source task448644075336001 Success142slots5917ms, estimated
+USD0.28/billingunverified. All raw six chronologyboards/controlboard reviewed; source
+710checks0, floor224/H148..149/head22..25/axis124..138.5. REJECT before native: head
+bows/tilts and shifts laterally, hand releases toward collar/shoulder, display turns
+brightcyan. Complete source kept; no bad-middle cuts or local repairs. Prepared
+source native fixture/runner UNRUN. Stop video retries for this tiny finger gesture.
+
+authored-operation-study-v1 compares two real whole keys, explicit held450/press200/
+return-held450ms, finite3semantic slots1100ms, no invented intermediateposes. Actual
+native player21checks0/six midpointpresentations5.5s at47/93/148bothgears,23inputs/
+2931ownerfiles unchanged withscratchAPPDATA. All6whole native views reviewed; stable
+original helmet and visiblefinger contact at148, subtle at47/93, residual head/lower
+suit detail changes remain. Paired source/nativeAPNG24pixel/durationchecks0, repeated
+bound-inputverification23stable. Technical pass not smooth complete-action acceptance.
+Output scope-correction.json fixes inherited runner wording: original/held/press
+comparison, no selected-idle column. Existing frozen nativeinputs not edited.
+Browser DOM/replay click/one time-sampled screenshot only; no continuous native
+scene/controller/contact claim. No runtime selection/controller/save changes.
+
+Lessons: explicit distinct contact endpoint still cannot enforce middle motion,
+lighting or supported hands in the video source. Review entire source despite correct
+endpoints. Separate two-key appearance/clock evidence from natural full-action motion;
+explicit return reuse is semantic, not frame-count padding. Correct inherited report
+scope separately while preserving frozen interval inputs. Next whole operation strip
+constraining every real pose against original identity; fullphase/idle joins, original
+directional actions, Northquietidle, consistency/polish and native lifecycle remain.
+Handoff: character/veld-interact-south-original-master-v1/scanner-held-key-v3-square/scanner-press-key-v2-original/authored-operation-study-v1/HANDOFF.md.
+
+## Veld South operation semantics and press-key audit — October 3, 2026
+
+Continued full-set original-master goal; prior status-only turn supplied no new
+artifact evidence, so revalidated current source and proceeded. Held-to-held
+operate-video-v1 task448641262993922 and focused V2 task448641765736900 both Success,
+142 real source slots/5917ms each, estimatedUSD0.28 each/billing unverified. Exact
+inputs/prompts/raw clips, all frames, both-gear APNGs/manifests and bound source
+reports retained. Technical checks710/706, zero failures; all six raw chronology
+boards and master/held/input-control/source board reviewed for each full clip.
+Both REJECTED before native: V1 repeats alternate arm-release gestures and turns
+face frontal; V2 replaces finger press with glove raised toward chin/collar and
+turns head further sideways. V1 sourceH148..149/floor224/head23..25; V2H149/floor224/
+head24..27 versus held/control148/149 andhead24/25. No final semantic acceptance.
+
+Explicit built-in scanner-press-key-v1 authored on exact square768 held reference;
+raw1254square copied into project immediately, exactprompt/input hashes preserved.
+Fixed256/1254 offset0 mapping only, no local anatomical/palette/registration rescue.
+Raw and five-way original/held/control/press/held-return board reviewed. Correct
+small image-left glove finger reaches scanner upper edge, but keyH149/top76/head25/
+axis128 differs from original/held/controlH148/top77/head24/axis127.5 and face changes.
+Retain as pose reference, REJECT final registered key; no video generated from it.
+
+New three-phase builder and dynamic native fixture/UID/runner were prepared UNRUN;
+no complete-action-study-v2 bank created. Builder now rejects rejected input status.
+Do not imply native coverage from prepared fixtures or source-clock checks. Browser
+master-audit page verified by accessibility tree and static screenshot only.
+Selected art, controller, owner saves unchanged; no Godot/native probe this interval.
+
+Lessons: orientation words must describe the actual master head angle, not assume
+front-facing body means front-facing gaze. Removing that contradiction reduced
+repeated gestures but did not prove finger semantics. Identical first/last images
+do not enforce supported hands, gaze or single-action middle frames. An explicit
+pressed key establishes contact geometry but square registration alone does not
+preserve head dimensions, face or material detail. Do not install or trim these
+failures into a passing full action. Next faithful whole press key from original
+identity, then full draw/operate/stow and ordinary idle joins; directional originals,
+North quiet idle, full-library polish and ordinary native lifecycle remain open.
+Handoff: character/veld-interact-south-original-master-v1/scanner-held-key-v3-square/scanner-press-key-v1/HANDOFF.md.
+
+## Veld South square-canvas held key and complete scanner phases — October 3, 2026
+
+Changed authoring method after portrait keys drifted: exact original256native South
+master enlarged uniformly3xnearest on square transparent768canvas. Built-in held key
+raw1254square preserved with exactprompt/input hashes/provenance. Uniform256/1254
+canvas mapping offset0 yields original/control/key all H148/top77/floor224/head24/
+axis127.5/left99/right158. No body-bound rescale/recenter/refloor or local prop/grade
+repair. Whole raw and rest/control/held/rest detailboard inspected; useful registered
+scanner-held key, not final animated/native lifecycle acceptance.
+
+Two explicit finite motion phases, original rest-to-held then held-to-original:
+draw task448635129098621,stow448636886159831, bothSuccess142/5917ms, estimatedUSD0.28
+each/billing unverified. All284 raw source slots preserved; full12raw chronologyboards
+andbothmaster/input-control comparisons inspected. Draw708sourcechecks0 after correcting
+APNG-count assumption;stow710checks0. Firstfailed drawreplayassertion preserved separately.
+PNG encoder merged1pair of exact real poses: verify grouped exactpixels/summed source
+holds, retain all original manifest slots, never perturb pixels to force frame counts.
+Fixed1/3offset0/darkalpha8/components20/noerosion/noRGBchanges, whole front35x39shell
+11069/clear11177143102/bodyoutsidefitexact. Source drawH145..149/head23..28/axis128..132;
+stowH146..149/head23..25/axis127.5..129.5;bothfloor224. Head bends/turns remain.
+
+complete-action-study-v1 joins all142draw+142stow, paired284/11834ms, no interior
+omissions/interpolation/inventedposes.1134exactsource timedreplaychecks0; actualplayer
+native1145checks0/568presentations17.23s/engine0/noerrors at47/93/148.611inputs andall2931
+owner nonlogfiles unchanged withscratchAPPDATA.1136native replaypixel/durationchecks0.
+All12paired nativechronologyboards, both6slot sourceboundaryboards andtwo whole native
+views inspected. Browser preview pending; no fullcontinuousnative scene/controller claim.
+
+Stagednotinstalled: explicit heldscanner removes absent-prop endpoint, dim display avoids
+prior heldscreenflashing; stowreturns towardrightpouch. Drawusescrossbodyreach rather
+thaninstructedsame-sidehand, devicebroadens/turnsduringstow, barehead bows/turns while
+fixedhelmetdoesnot; head/hand/prop/fabric continuity andactualoldidlejoins remain open.
+Fixedspatial commonopaqueRGBMAE atdraw-to-stow boundary3.505bare/2.831helmet; original
+rest-to-draw7.585/6.211,stow-to-original7.928/6.497. Thesecombinegeometry/detail/grade,
+not purecolour. Normal selectedidle looks cooler/darker; do notdeclarefinalgradefrom
+sameheight, matchingheldkeyor passing clocks. Full original set not complete.
+
+Lessons: encode registration in the original animation canvas, not just portrait
+placement words; explicit object-bearing endpoints improve prop evidence but do not
+constrain all middle motion. Preserve exact real source repetition and timing separately
+from APNGencodedframecount. Separate source-clock technical pass from motion/grade/
+hand/gear semantics. Next scanner-operation held phase, fullactionjoin/material review,
+completeoriginal directional actions, North quiet idle and full-librarypolish, then
+native contacts/controller/Continue. Goalactive/incomplete.
+Handoff: character/veld-interact-south-original-master-v1/scanner-held-key-v3-square/HANDOFF.md.
+
+## Veld South scanner prop semantics and authored-key registration — October 3, 2026
+
+South correct-pouch-v2 keeps byte-identical V1 original input/endpoints and model,
+changes only observed pouch/display/head motion instructions. Task448632496013834
+Success; full142/5917ms retained, estimatedUSD0.28/billing unverified.710source/replay
+checks0; all six raw chronology boards and original/control/source detailboard inspected.
+Registered bootfloor224, height147..149, head23..27/axis127.5..128.5; original148/head24,
+control149/head23. Correct image-right hand reaches pouch, but no distinct scanner
+is drawn/held; head still turns/bows. REJECT final scanner action before native run.
+Separate native fixture/UID/runner prepared but UNRUN; no native pass claimed.
+
+Built-in whole-source authored scanner-held-key-v1 andv2 use original397x660 South
+reference;v2 additionally usesv1 only as arm/prop reference. Exact prompts, input
+hashes, raw972x1618 images and provenance saved immediately. Both raw images and
+fixed original-canvas master/rest-held-rest detail comparisons visually inspected.
+Distinct dim matte scanner/coherent arms present;v2 adds open right holster, avoiding
+duplicate belt device. Both retained same fixed-ruler placement defect:147body/top76/
+floor222/head23/axis126 versus original148/top77/floor224/head24/axis127.5.
+Uniform reference-canvas mapping scale0.09813077868633424/offset70,72, aspect relative
+error0.001286; no body-bound rescale/refloor/recenter/local prop/anatomy/grade rescue.
+REJECT final registered keys, retain pose/prop evidence, no animation from these keys.
+V1 scanner source remains staged motion only; V2/new keys not installed.
+
+Lessons: stricter motion text can suppress the requested prop instead of repairing it.
+A whole-source pose reference must explicitly show the prop, but a second reference
+can carry its composition drift even when asked to transfer only arms. Verify original
+floor/head placement before using a new key as animation authority. Original South
+hair includes a grey streak; preserve the original brown mass AND that designed streak,
+rather than treating all grey hair pixels as grading drift. Verify original asymmetrical
+pouch/cylinders and scanner return holster semantics; counts/clocks do not establish them.
+
+Next whole-source pose/registration method change or correctly constrained original
+South action; avoid another identical prompt-only retry of demonstrated defects.
+Complete action/idle joins, gear-motion semantics, original action/direction coverage,
+native contacts/controller/Continue and full-library consistency/polish remain.
+North quiet idle remains rejected for texture step. Full goal active/incomplete.
+Handoff: character/veld-interact-south-original-master-v1/correct-pouch-v2/HANDOFF.md.
+
+## Veld South original-master scanner source and native review — October 3, 2026
+
+Rebuilt South scanner from byte-identical original native South master, uniformly
+3x nearest on dark12/18/24; identical first/last endpoints. MiniMax task
+448629913780717 Success, complete142poses/5917ms retained. EstimatedUSD0.28,
+billing unverified. Raw source, exact prompt, provenance and immutable inputs saved.
+Fixed1/3registration offset0; alpha tolerance8/components20/no erosion or RGB edits.
+Original master H148/floor224/head24; input alpha control H149/head23.
+Source H146..149/floor224/head22..24/axis128..130, consistent with downward glance.
+Whole original front35x39helmet at11069/clear11177143102, outside fit body exact.
+710 source/replay checks0. Actual player midpoint native577checks0/284presentations
+at47/93/148,11.03s/engine0;311inputs and2931owner non-logfiles unchanged under
+scratchAPPDATA. Native replay568pixel/durationchecks0. All six raw chronology boards,
+master/control comparison, six native paired chronology boards and two whole native
+three-scale comparisons visually inspected. No complete continuous scene acceptance.
+
+One complete draw/inspect/stow action retained without omitted interior poses.
+STAGED NOT FINAL: scanner screen flashes cyan/green/yellow; draw originates viewer-left
+belt while original tool pouch is viewer-right; subtle face/fabric/detail variation
+remains. Fixed original helmet face does not follow bare downward head motion, so
+paired helmet is appearance evidence only. Current selected bare idle looks darker/
+cooler beside original/candidate; actual full idle/action joins still required.
+No normal runtime selection/controller/save edits. Preview index.html preserves full
+source video and paired APNGs. Native checks certify loading/clocks/protection,
+not prop identity, anatomical gear motion, finished grade or owner acceptance.
+
+Lesson: unchanged endpoint/ruler and stable helmet construction cannot certify prop
+side, display brightness or helmet head motion. Compare asymmetric belt equipment
+and paired action semantics across the whole source before expansion/adoption.
+Next whole-source South refinement for correct pouch and subdued constant display,
+helmet-motion validation and complete joins; North quiet idle remains rejected for
+texture step. Full directional actions, contacts/controller/Continue and library
+consistency/polish remain. Full goal active/incomplete.
+Handoff: character/veld-interact-south-original-master-v1/HANDOFF.md.
+
+## Veld North complete two-key idle and scanner texture-step review — October 3, 2026
+
+single-breath-key-v1/scanner-joins-v1 retains unchanged2realidlekeys/78completefirst
+scanneraction/2idlekeys, paired82/6250ms. No skippedinterior/interpolation orartchanges.
+328source exactreplaychecks0. Nativeactualplayer authoredmidpoint comparison337checks0,
+164presentations/8.15s,engine0/no errors/scratchAPPDATA/335inputs unchanged,
+2931owner nonlogfiles unchanged.328native exactpixel/durationreplaychecks0.
+Paired8slot source detailboards andfourboundary whole nativeboards47/93/148 inspected.
+Samewhole originalrearhelmet staysfixed; boots/ruler retained. Hair/backpanel shading
+andscannerreturnarmcontour stillswitch. Two timedbrowserrest/inhalesnapshots andjoined
+finalsample reviewed; not fullcontinuousnative scene/controller/contact acceptance.
+
+Fixedspatial commonopaque pixels betweenidlekeys:head495/meanRGBMAE5.55/174pixels
+maxRGBdelta>8;torso2667/MAE9.18/1224above8;legs2367/MAE6.03/695above8. Thesecombine
+geometry/detail/grade, notpurecolour orphysicalbreathingmeasurements. Changes extend
+outsideuppercloth; observedtexturestep isnotacceptable quietbreath. REJECT final
+2keyquietidle, retain usefulsource/registration study. No normal selection/player/
+controller/save edits andno newgeneration thisturn. Initialpreviewencodingerror
+correctedUTF8; source/native evidence unaffected.
+
+Lesson: a registered original-like key andvalidloop clocks can stillflicker when
+wholegenerated appearance changes betweenkeys. Inspectunchangingregions andcomplete
+idle/actionjoins separately fromheight/pivot/bodybounds. Do notdeclarefinalidlefrom
+staticnativepass orduplicate/interpolateframes tohide sourceidentityvariation.
+North head/material/quietloop defects remain open; proceed acrossremainingoriginal-
+source directionalactionrepairs(South next) andreturntofull-librarypolish, thenactual
+contacts/controller/Continue acceptance. Fullgoalactive/incomplete, notblocked.
+Handoff: character/veld-idle-north-original-master-v1/HANDOFF.md.
+
+## Veld North high-density reference and whole single-breath key — October 3, 2026
+
+Built-in authored-strip-v6-high-density changes only V4 reference toactual raw-clean
+master, exactsameprompt. Allfourraw andfixedgrid mastercomparison inspected. Uniform
+sourcepitch516.67residues0/.33/.67/0; frozenintegergridorigin6/pitch517, calibrated
+onefirst-pose148ruler scale164/756offset72,69. ALLnativeH148/top77/floor224/head24/
+axis127.5. Detailedquilting/grid improved; headratio stillfailsoriginal22/128.5.
+REJECTED finalidle; original/generatedraw/prompt/provenance preserved.
+
+Changed layoutstrategy toONE whole source inhale edit ofactual raw-cleanmaster:
+single-breath-key-v1. Exactoldscale148/1109offset44,66, unchangedwhole generatedRGBA
+apartfromresampling. NativeH148/top77/floor224/left97/right159matchrest; head23/129
+vsoriginal22/128.5.641head/6453wholeRGBApixels differ; commonRGBMAE7.51includes
+pose/detail/grade, notpurecolour.2actualrealkeys(preparedmasterrest+inhale),750mseach;
+no interpolation, inventedduplicatesorlocalanatomy/grade corrections. Fixedwhole
+rear34x36helmetat112,68/clear115,77,143,103; outsidefitbodyexact.
+
+Failednative17checks2 preserved: fixture mistakenlyexpectsframe_at_elapsedto loop;
+thatmethod intentionallyclampssimulation-driven elapsed. Newv2tests clampedmethod
+andactualcosmeticframepath across5times/bothgears:27checks0/4presentations/5.62s,
+engine0/no errors/scratchAPPDATA/28inputs unchanged/2931owner nonlogfiles unchanged.
+8native replaychecks0. Allfour native47/93/148 original/prepared/currentidlecomparison
+views inspected. No productionplayer/art/normal selection/controller/save edits.
+Prepared two-key candidate isSTUDYONLY; head/detailchanges andsteppedflicker/complete
+continuousmotion/scannerjoins remain unresolved. Native replay != sceneacceptance.
+
+Lesson: highdensitysource helpsdetail/grid butdidnotfixheadratio. Singlewholepose
+edit retainscommonruler betterthanrepeatedstriplayout butstillchangesprotected
+appearance. Separateclampedelapsed sampler from cosmeticloop API in native tests.
+Next continuous two-key flicker and completeNorthscannerjoins atactualscale, refine
+source ifneeded; othercardinalactions/ordinarycontacts/controller/Continue/full-library
+fidelity/polish remain. Fullgoalactive/incomplete.
+Handoff: character/veld-idle-north-original-master-v1/HANDOFF.md.
+
+## Veld North authored breathing strips retain head/grid drift — October 3, 2026
+
+Changed authoring route after two head-turn video rejections: built-in imagegen
+whole four-pose transparent breathing stripsauthored-strip-v4/v5, both referenced
+same exact768 nearest-enlarged preparedNorth native master. Raw output, exactprompt,
+inputhashes/metadata, fixedgrid diagnostic builders/frames/replays/boards and rejection
+verdicts saved immediately inworkspace. No API fallback or additional MiniMax job.
+Allfour rawposes and same-ruler original comparison viewed for each; generated alpha
+preserved, no local RGB/anatomy edit. Input/raw/prompt hashes reverified.
+
+V4heads rear-facing butnativewidth24vsoriginal22. One sourcegridorigin20/pitch533,
+scale148/602/offset63,58; allH147/floor223, headaxis128.5then127.5. Global sampling
+calibration could change height/floor, not fix head/bodyratio. V5whole-strip focused
+22/148headwidth instruction stillhead23..24, andnonuniform placement:sourcecentres
+308.5/760.5/1263/1724.5; uniform472pitch residues0/-20/+10.5/0(~-4.70/+2.47native).
+One fixed sourcegridorigin73,scale148/630,offset73,57 yields148H/floor223butaxis
+128/123.5/130.5/128.5. Both REJECTED; no per-cell recenter/rescale/refloor rescue.
+No native tests or normal selection/controller/save changes for failedsource art.
+
+Lesson: a strip can fix directional head turns yetfail source registration or
+head/body proportion. Numeric proportion wording is not a guarantee. Evaluate
+uniform grid and original detail atone ruler before packaging/native validation.
+Next reference the actual high-density raw master ratherthannearest-upscaled native
+for a controlled whole-pose fidelity trial; testthishypothesis, do not claimitfixes
+results. Then fullquietidle/scanner motion/joins, cardinal actions andordinary
+controller/contact/Continue/full-library polish remain. Fullgoalactive/incomplete.
+Handoff: character/veld-idle-north-original-master-v1/HANDOFF.md.
+
+## Veld North quiet idle video trials rejected for head rotation — October 3, 2026
+
+Two exactsame preparedNorth scanner master first/last6s768P Hailuo02 trials:
+448622361043423 and448623780483544 terminalSuccess/downloaded. EstimatedUSD0.56total,
+billingunverified. Exactinputs/prompts/INPUTS/generation/raw sources retained in
+character/veld-idle-north-original-master-v1/quiet-video-v1 andquiet-video-v2.
+V1 quietbreath body planted butheadturns right~20..115; V2 explicitfixedheadangle
+prompt alone changes, yetheadturns left~29..62 andagain~75..127. ALL142rawposes of
+each andboth original/prepared/control/source boards inspected. BOTH REJECTED idle.
+HeadwidthV123..28/V222..28 vscontrol22; boot224allposes, fixed1/3offset0. V2height147..149,
+axis127..131. Uniformalpha tolerance8/components>=20/noerosion; no RGB or anatomy edits.
+Each710source/protectedwholehelmet/replaychecks0, actualrawmotion stillfails. All
+sourcebindings reverified. Native fixtures prepared but UNRUN: rejected raw motion
+is sufficient; no normal selection/controller/save change or owner profile access.
+
+Lesson: exactfirstlastpose, plantedboots and quietcloth wording do not constrain
+head rotation. Explicitpositive fixedrearhead wording failed the same condition;
+do not spend additional prompt-only trials or remove failed middle poses to report
+an accepted loop. Stable suit grade and technical replay passes cannot compensate
+for wrong directional motion. Preserve bothcomplete sources andtheir verdicts.
+Next changewhole-source authoring route for quietNorthidle, with original/prepared
+side-by-side and one fixed source ruler; then fullcontinuous scannerjoins, cardinal
+matrix, ordinary contacts/controller/Continue and full-library fidelity/polish.
+Existing four-pose masteridle remains separately staged withhistorical per-cell
+registration/clear-box limitations; not installed merely becausevideo failed.
+Fullgoalactive/incomplete. Handoff: character/veld-idle-north-original-master-v1/HANDOFF.md.
+
+## Veld North complete selected idle and master-based scanner joins — October 3, 2026
+
+Fresh actual loader ordering/all118manifest bindings and selectedNorth72idle sources
+pergear verified. All144idle sources on paired full boards and both endpoint/detail
+boards inspected. Current72idle/78singleaction/72idle chain222/9250ms: suit darkens,
+magenta edges reappear at idle; helmet changes slightly. Bareidlefloor223/action224,
+helmetidletop69/action68. SpatialRGB difference30.2..31.3 combines pose/detail/grade,
+not isolated colour.302sourcebindingschecked,313prior native inputs unchanged.
+
+Comparison reuses unchanged existing original-guided four-pose idle and same complete
+78action, bothgears86/6250ms.344source replaychecks0; native353checks0/172presentations,
+8.51s/engine0/no errors/scratchAPPDATA/182inputs unchanged/2931owner nonlogfiles unchanged;
+344native replaychecks0. Both source eight-slot detail boards and paired native
+four-boundary boards at47/93/148 visually reviewed. Colour/helmet jump much reduced,
+but hair texture/headwidth/backplate shading/return arm contour still differ.
+Historical idle per-cell offsets and phase2 clear-box difference explicitly retained:
+this diagnostic does not newly certify those packaging choices or final artwork.
+No source painting/normal selection/controller/save change or paid generation.
+
+Lesson: test complete CURRENT selected idle around new action and compare a separate
+master-based family. Common nominal148height is insufficient when floor/helmet/material
+switch at state boundaries. Preserve originals and grade evidence rather than forcing
+improved action to inherit stale idle appearance. Next full fixed-ruler original quiet
+North idle/scanner finish, continuous paired joins, cardinal actions and ordinary
+controller/contact/Continue plus full-library polish. Fullgoalactive/incomplete.
+Handoff: character/veld-interact-north-original-master-v1/HANDOFF.md.
+
+## Veld North scanner occlusion and corrected native validation — October 3, 2026
+
+Two original-master input source trials retained. First142 source rejected because
+hands/scanner cross rear panels. Focused retake142/5917ms keeps hands in front and
+back panels unobstructed, but performs two actions. Full source retained; contiguous
+first0..77/78poses/3250ms includes complete raise/operate/lower/rest, no interior
+omission or local anatomy/RGB repair. Original North has magenta edge contamination;
+prepared cleanup input remains separately identified, not pixel-identical original.
+Frozen scale1/3/offset0, darkalpha tolerance8/components>=20/noerosion. Each source
+710checks0; fixed whole rear34x36 shell000 at112,68/clear115,77,143,103, body outside
+fit exact. SourceH148..149/top76..77/floor224; controlH149/top76/floor224; head23..24
+versuscontrol22 remains a proportion difference. Two trials estimatedUSD0.56,
+billingunverified; no new paid generation in corrected validation turn.
+
+Preserved failed native v1:739checks/158failures, distinct ImageTexture objects
+loaded independently for identical files compared by object identity. New v2 checks
+clock against own state bank and source pixel data across states:895checks0,
+284presentations/11.41s,engine0/no logged errors/scratchAPPDATA/313inputs unchanged,
+2931owner non-log files unchanged. No production player or art change. Complete
+native142 paired replay568pixel/durationchecks0. All six native chronology boards
+and whole bare0/bare35/helmet77 at47/93/148 beside untouched original/prepared/current
+idle visually reviewed. Back panels clear, helmet fixed; raised elbows spread wide.
+Fabric/detail/finish, modest head width difference, continuous motion and complete
+idle joins remain open. Source/native midpoint evidence is not ordinary integration.
+
+Lesson: separately loaded texture instances are not source identity. Validate clock
+selection within the loaded state and compare actual image data across states.
+A repeated source cannot satisfy a single-action timeline merely because endpoints
+match; retain full evidence and explicitly author a complete contiguous cycle.
+Staged only, no normal selection/controller/save changes. Next full continuous
+motion/material and selected idle join review, cardinal actions and full-library
+controller/contact/save/polish. Full objective active/incomplete.
+Handoff: character/veld-interact-north-original-master-v1/HANDOFF.md.
+
+## Veld original West idle and complete paired scanner joins — October 3, 2026
+
+Two whole-source originalWest idle trials: unchanged184master padded36,52to256,
+3xnearest dark768square, identicalfirst/lastHailuo02/6s768P. Jobs448613728981501 and
+448616169628171 terminalSuccess/downloaded;estimatedUSD0.56total,billingunverified.
+V1 asksbreath/blink yetinventsgesture/headshift;all142raw/control comparison viewed,
+REJECTidle. V2shorter blink-onlyprompt,sameinput/model/endpoints;all142raw reviewed.
+ALLV2posesH148/top76/floor223/headband28/axis132.5;original27/133 difference also
+inputalphacontrol. Left107matchesoriginal/action ratherthanoldidle96;right148..149,
+upperWidth34..42. Minor arm/cloth motion remains: not literally eyelid-only proof.
+Uniform darkalpha tolerance8/components>=20/noerosion; noRGB/anatomy corrections.
+Each142source pair710extraction/body-fit/replaychecks0; no source frames skipped.
+
+V2 fullidle142/scanner142/fullidle142 finite426/17751ms unchangedsource clocks,
+paired same wholeoriginal33x39West shell005 at116,65/clear117,76,150,103. Bodyoutside
+fittingexact.1704source replaychecks0. tests/test_veld_west_idle_scanner_joins_v1.gd
+pairedUID andtools/run_veld_west_idle_scanner_joins_v1.py native1713checks0,
+852presentations21.6s,engine0/nologgederrors/scratchAPPDATA/742inputsunchanged,
+2931ownerfilesunchanged.1704native replaychecks0. Sixfullnewidle native chronology
+boards/bothgear, bothsource/nativejoin detailboards andwholebare142/helmet284
+at47/93/148 inspected. Browsermatchedsourcepreview inspected; sampled APNG view,
+not fullcontinuousnative scene/controller acceptance. Reviewed boundaries now
+preserve stanceaxis/helmetconstruction; fabricdetail/finish andidle motion/loop
+acceptance stillopen. No normal selection/controller/save changes.
+
+Lesson: identical supplied endpoints and planted boots do not constrain interior
+head/arm behavior. A short positive quiet-idle prompt materially improved this
+controlledsource comparison, but statistics do not prove blink-only semantics.
+Retain the entire source and review actual motion; never omit wrong-action middle
+poses or replace full idle with static master holds to declare consistency.
+Complete source-clock chains expose joins before ordinary integration. Next full
+continuous joined motion/material/idleloop review and ordinary integration, then
+other cardinal actions/full matrix/cross-library polish. Fullgoalactive/incomplete.
+
+Handoff:character/veld-idle-west-original-master-v1/HANDOFF.md.
+
+## Veld West idle/action join registration diagnosis — October 3, 2026
+
+Current loader order/all118manifest hashes and144selectedWestidle source hashes
+match current inventory. Complete72idle+142original-source scanner+72idle chains
+for both gears, plus original master holds, all poses/source durations retained.
+430image source bindings checked;445prior native inputs unchanged. Both complete
+idle boards and both endpoint/detail boards viewed. Browser bare Idle71/Scanner0
+and helmet Scanner141/Idle0 inspected at47/93/148; original helmet endpoint seen.
+Source-clock replay page with step controls available; no continuous native scene
+or ordinary-controller acceptance from these source/browser presentations.
+
+Current idle visible left/right96/137 vsaction/original107/148:11native-pixel shift
+at both boundaries despite matching bareH148/top76/floor223. Idle helmettop69/H155
+vsoriginal-shell actiontop65/H159 with samefloor223; construction visibly changes.
+Face/head/suit detail differs too. Pixel MAE41currentidle vs5.6–7.4master endpoint
+combines spatial/pose/detail/colour difference, not pure grading evidence.
+Original endpoints closer but residual fabric/detail mismatch remains.
+
+Lesson: matching declared height/pivot/floor does not prove the same stance axis
+or helmet construction. Compare complete currently selected idle plus action
+entry/exit beside the original at one ruler before adopting an improved action.
+Do not move/recolour new master-matched work to inherit stale idle registration.
+Next whole-source original West idle motion/same whole original shell, complete
+joined appearance/motion/contact review, then other directions/full matrix and
+normal integration/polish. No artwork/normal selections/controller/save changes,
+new Godot tests or paid generation. Full goal remains active/incomplete.
+
+Handoff:character/veld-interact-west-original-master-v1/original-action-video-v1/idle-join-review-v1/HANDOFF.md.
+
+## Veld paired West scanner native source and alpha-control correction — October 3, 2026
+
+Common-pixel diagnostic qualifies earlier large cloth-median claim: differing
+opaque coverage exaggerated pure grade comparison. Fixed141pixels common to all
+eroded frames/control:original68/68/67,first66/66/65,middle70/69/69,last65/65/63.
+Uniform alpha-only removal of one-raw-pixel erosion restores originalH148/top76/
+floor223 in control and ALL142source poses; constant headband28/axis132.5 vsoriginal
+27/133. Uneroded222commonpixels:original65/64/63,first64/63/62,middle68/67/67,
+last62/61.5/60. Residual finish/folds/panels differ; spatialpixels are not guaranteed
+anatomical correspondence. Retain prior eroded evidence, no retrospective rewrite.
+
+New full142 paired source package/finite manifests/994buildchecks0. Whole original
+West mixed-v5shell00533x39 atconstant116,65; clear117,76,150,103; body outsidefitting
+exact, no per-frame helmfit. Both142source replays, original references and actual
+selectedidle comparison exports. All six alpha/noerosion source boards/control/
+paired fitting board viewed. tests/test_veld_west_interact_source_v1.gd+.uid,
+tools/run_veld_west_interact_source_v1.py:577nativechecks0/284presentations10.35s,
+engine0/no errors/445inputs and2931ownerfilesunchanged in scratchAPPDATA.
+568nativeAPNGpixel/durationchecks0; six complete gear chronology boards and both
+whole native035 at47/93/148 inspected. New source is materially closer than old
+cool oversized selectedinteriors, but full material/continuous motion/idle joins/
+normal controller/save integration acceptance remains open. No normal selector
+change or new paid generation. Source record/445native bindings now frozen.
+
+Lesson: test exact unchanged input through alpha extraction before interpreting
+output bounds. Uniform erosion can consume original head/sole details; where the
+background permits, retain meaningful component edges and compare at one ruler.
+Use identical common-opaque reference pixels to distinguish grade changes from
+sample coverage; still inspect geometry/texture directly. Do not claim a shape
+or material fix from a narrower statistical mask. Next source finish/idle joins,
+other directions/full source matrix/integration/cross-library polish. Goal active.
+
+Handoff:character/veld-interact-west-original-master-v1/HANDOFF.md.
+
+## Veld original West complete scanner action source review — October 3, 2026
+
+prepare_high_source.py reconstructs original West native master byte-exact before
+using unchanged high-source crop RGB on a1576square appearance guide. Both original
+and high-source-control have top76/floor223. Builtin exec-73bafe46-04cb-4573-bcbf-c068633b6eb4
+returns V3H150/top77/floor226/head27/axis133, clothpatch66/64/64. Original head
+width/axis and detail improved, floor/cloth mismatches remain; no corrective scaling.
+Raw/comparison/control boards viewed. Previous V1/V2 sources preserved.
+
+original-action-video-v1: MiniMax448608910385602 terminalSuccess,6s768Psquare24fps,
+142source frames/5917ms; estimatedUSD.28,billingunverified. Unchanged originalnative
+standing3x on RGB12,18,24 is BOTH first/last image, no generated key supplied.
+Frozen1/3offset0, darktolerance8/allforegroundcomponents>=20raw/onepixel erosion;
+whole opaque RGB unchanged. All142retained;284APNG exactpixel/duration checks0.
+Six raw and six registered chronologies plus master/control and cloth detail viewed.
+SourceH146/head26..27/top77/floor222 is temporally stable; inputextractioncontrol
+alsoH146/top77/floor222 vsoriginal148/76/223. No temporal shrink claim from erosion.
+
+Full scanner draw/operate/stow retained as useful motion. Grade remains FAILED:
+fixed original cloth-only mask below arms: master62/61/60;source0 63/62/62,
+source71 71/71/70,source141 62/62/60. Different coverage does not itself prove colour
+change, but direct detail confirms brighter interior trousers. Head/floor stability
+and endpoint match do not accept entire sequence. No helmet/native/controller/normal
+adoption. Next whole-source material preservation then paired original helmet,
+all-source native action/idle joins, other directions/actions and full integration.
+
+Lesson: high-density original source and native appearance input are distinct
+controlled trials. Rebuild the original export to prove extraction provenance.
+A stationary finite action can preserve head/boot registration while interior
+cloth brightens. Inspect below-arm fixed original material regions and direct
+details, not only overall pose medians or matching endpoints. Record extraction
+control separately so deterministic erosion is not mislabeled model shrink.
+Whole-source generation still governs visual repair; no local palette/anatomy rescue.
+Full Veld objective active/incomplete; no live job. Evidence/HANDOFF:
+character/veld-interact-west-original-master-v1.
+
+## Veld original West interaction key registration trial — October 3, 2026
+
+character/veld-interact-west-original-master-v1 retains builtin whole-source trials
+exec-eb1189d4-a65c-4488-806a-fc25a42aec1f and exec-cbb5d846-a447-4353-921e-444489fceabb,
+raw PNGs, exact prompts, unchanged original/motion inputs, fixed whole256 exports,
+audits/direct comparison boards and executions. Both raws and comparisons viewed.
+Original independent West foundation is appearance authority; old interact002 is
+motion-only. Native184 sources padded36,52 then whole3x768; outputs reduced by whole
+square->256 atoffset0, no recenter/per-key height/local RGB/head/limb repair.
+
+V1 H148/top76/floor223 matches original; top20 head/bun width28 vs27, axis132.5 vs133.
+Old selected action H156/top68/head31/axis121. V1 restores much original brown hair,
+warm skin, neutral suit texture/equipment and connected scanner sleeves. Trouser
+patch remains lighter:69.5/69/69 versus original59/58/57; old cool63/69/73. Fixed
+patch coverage differs; diagnostic is not full material or anatomical correspondence
+proof. V2 cloth67/65/65 improves value slightly but H150/top74/head31 regresses
+framing/head. V2 rejected; no blanket success from better median. No exact protected
+pose/pixel preservation claim. No sequence/helmet/native/normal adoption yet.
+
+Lesson: separate appearance authority from old action semantics; source motion
+reference can contain oversized shifted identity despite shared manifestH148.
+Whole-source key can restore registration while cloth value remains wrong; a
+material-targeted generative refinement can enlarge the head and alter framing.
+Check each original invariant independently before expanding sequence or gear.
+Next resolve V1 whole cloth/detail fidelity, complete West action and native joins,
+then North/South actions and full cargo/furniture/water/death/controller/save/Continue
+integration and cross-library polish. Full goal active/incomplete; no live job.
+Handoff:character/veld-interact-west-original-master-v1/HANDOFF.md.
+
+## Veld current selected full-library master comparison — October 3, 2026
+
+Fresh actual-loader inventory in character/veld-master-consistency-current-v2:198bare/
+192helmet states,118manifests,4804unique sources,0missing. Thirteen unchanged-colour/
+native-scale boards viewed:112dry/master,80dry/water,48furniture and36complete bare
+West/North/South interact/repair source presentations. Hash-bound source review;
+static samples do not establish native motion/contact or full acceptance.
+
+Confirmed priority: interact poses1–4 in those three directions switch to softer/
+cooler art between detailed selected standing endpoints; all6repair poses use the
+softer family. This is whole-source identity/detail drift, not merely RGB grading.
+West/South cargo and North rear construction differ from idle/master. Side furniture
+finish/helmets and North reading differ; verify dormant dispatch before admission.
+Water samples internally more coherent but full perspective/master/motion review
+remains. Original North magenta edge contamination is not a target global grade;
+prepared cleanup is authored, not pixel-identical original. Kneeling/prone bounds
+must not be normalized to standing height. Bare masters do not prove helmet shape.
+
+Next whole-source West interact interior repair against original directional master,
+then North/South actions, cargo, furniture, water/death and ordinary controller/
+save/Continue integration. Keep East motion studies and current normal selections.
+No art/controller/normal selection/owner save changes or new paid generation.
+Full objective active/incomplete; source coverage is not acceptance.
+Handoff and scoped priorities:character/veld-master-consistency-current-v2/HANDOFF.md
+and VERDICT.md.
+
+## Veld single supported recovery key appearance trial - October 3, 2026
+
+supported-recovery-key-source-v1 retains builtins exec-e1c6a49b-f681-4429-b786-ec4c0e2e417b
+and targeted refinement exec-164e33b0-e563-4f08-ae86-51b775cad44d, raw/exactprompts/inputs/
+AUDIT/REFINED_AUDIT/VERDICT and ledger. Whole original held and valid walking23 are
+unchanged native3x reference plates. Both returned1254square frames reduced uniformly
+onto256native atfixedoffset0; no key-height, recenter, refloor, local RGB/anatomy repair.
+Both raw/direct original comparisons viewed. Intermediate raised boot now low beside
+ankle/under hips rather than repeated lifted-back/standing row; forward boot remains
+near original far220plane. One key does not prove motion or support trajectory.
+
+First H145/head28/upper46/cloth69,67,66; refinementH146/head28/upper45/cloth67,65,64.
+Original148/head26/upper42/cloth66,64,63; axis123.5/top76 retained in both candidates.
+Refinement improves suit median but fails head/upper fidelity; floor220->221 changes
+requested lower pose slightly. No helmet/native/normal adoption.307flat-probe and87
+recovery-probe bound inputs unchanged. Heights vary naturally with bent posture and
+far/near220/223 perspective; not automatically scale drift or airborne defect.
+Lesson: individual whole key can solve pose semantics without solving identity;
+upper-targeted generative edit can improve colour while leaving proportion drift
+and modifying requested protected lower geometry. Validate each invariant separately.
+Next whole-source upper identity preservation while retaining supported recovery;
+no local coded head/body/palette rescue or blind repeated similar full-video prompts.
+Complete contact/walk-stop/standing joins, full original action/direction/furniture/
+save/Continue and cross-library polish remain. Goal active/incomplete; no live job.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld supported recovery row rejected against originals - October 3, 2026
+
+Builtin output exec-79a0e635-bafa-464c-9a6a-b7eb2126f321 retained as supported-stop-row-source-v1.
+Guide only duplicates unchanged complete walking23 in cells0..4 and actual original
+standing in5; no procedural anatomy. Requested6-supported-stop key poses3x2grid.
+Returned1536x1024 RGBA, all6cells retained with original alpha; one uniform standing
+ruler337raw->148native, scale.439169/cell225/fixedoffset16,36. Full sheet, all6whole/
+detail crops and direct original/entry/generated endpoint comparison reviewed.
+REJECTED: generated head30..31 versus26original/upper48 versus42; top-row floor246..247
+versus223bottom/headtop97 versus76. Cells0/1 repeat raised boot; cell2 alreadystanding;
+intermediate recovery/weight transfer absent. No per-row alignment, per-pose density,
+head/body/sole/colour repair, helmet/native/normal adoption.307prior inputs unchanged.
+
+Initial diffuse-glow impression from tool preview is not established exported alpha
+halo: actual RGBA alpha0..254;1397351zero/175513nonzero partial-alpha pixels. Proper
+alpha-aware registered composites have0alpha>5 outside3px dilated strong body mask
+percell. Reject on measured proportions/layout/motion, not a provisional visual halo
+claim. VERDICT/AUDIT/exactprompt/raw and artifact ledger retain evidence.
+Lesson: fewer grid cells and duplicated exact guide figures still do not guarantee
+master density, common registration or invented intermediate poses. Evaluate all
+whole anchors at one global ruler; never repair source failures by resizing heads
+or independently aligning rows. Next individual whole supported recovery pose from
+original/valid gait references with direct scale comparison before a new sequence.
+Existing14-pose native ending remains staged with entry/foot/contact joins open;
+full original action/direction/furniture/save/Continue and library polish remain.
+Goal active/incomplete; no live generation or blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld consecutive final recovery native review - October 3, 2026
+
+Focused stop retains all142raw/fixed source poses; useful consecutive suffix109..122
+packaged without skipping intermediate recovery. Paired14-pose583ms finite manifests,
+original whole helmet/body outside fitting exact;70source checks0. Original exact
+held/idle references and existing contract-correct21-pose loop retained for comparison.
+Actual player native65checks0/28presentations/5.59s/engine0/no logged errors,87inputs
+and2931owner non-log files unchanged with scratch APPDATA. Paired native replay56
+pixel/duration checks0. Complete enlarged14source board, both complete native148px
+chronologies and representative whole47/93/148 master/walk comparisons viewed.
+
+Recovery smoother than old grounded140->141, but not finally accepted. Whole-pose
+best loop23/stop117 error34.56 shows entry mismatch. Source109..122 head25..26,
+upper43 versus42master; endingH147 versus148. Clothing ROI varies66..71/63..67.5/
+63..68, only diagnostic; direct native appearance remains provisional. Whole lower
+component bottom-envelope becomes ambiguous when boots merge119..122. Fixed original
+far-plane218..220 rightmost contour135->147 at119->120 changes12nativepx; all14
+annotated overlays viewed. Could be role/contour switch or actual endpoint placement
+jump; do NOT certify anatomical toe correspondence or correct root/body per frame.
+No moving-world support/controller/save acceptance. RECOVERY_VERDICT records limits.
+
+Lesson: preserve a useful complete ending despite failed whole clip, but separately
+verify exact loop entry, physical leg identity and last-foot placement. Near/far
+perspective planes and component merger can turn a stable numeric outline into the
+wrong physical foot. Dense rear recovery alone cannot certify the standing join.
+recovery-review-v1 and both native replay resources HTTP200; browser acceptance not
+claimed. Next resolve final support/foot role and phase-compatible walk/stop/master
+joins before normal adoption. Full original action/direction/furniture/save/Continue
+and library polish remain; full goal active/incomplete, no live job/blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld focused stop ending requires separate review - October 3, 2026
+
+Supplement to focused-stop verdict: enlarged source115..120 raw/alpha boundary was
+viewed after initial whole-clip rejection. It shows successive rear-foot recovery
+poses; do NOT equate this new ending with the older grounded140->141 snap or finally
+reject its suffix. Repeated walking makes the requested whole single-stop timeline
+unsuitable, but final approximately111..122 may contain a usable continuous recovery.
+VERDICT and ledger corrected to distinguish timeline failure from suffix acceptance.
+Next inspect every final recovery pose and original endpoint/contact/loop-phase join,
+then package all consecutive useful poses if supported. No blind retry/new artwork
+needed before resolving this evidence. Full goal active/incomplete, no live job.
+
+## Veld standing transition source defect and focused trial - October 3, 2026
+
+Grounded gait136.5 trial remains provisional short-flat-support evidence. Complete
+standing transition inspection finds source140 raised rear boot ->141 closed stance
+without continuous recovery. Original/control/start0..8/tail134..141 board and
+corrected raw/alpha final-five board viewed. ffmpeg decoder output defaults1-based:
+source n binds raw-(n+1).png. Initial diagnostic indexed incorrectly, corrected;
+complete sorted chronology boards already enumerate correctly. Keep decoder ordinal
+and zero-based animation index explicit in future diagnostics.
+
+Focused whole-stop MiniMax-Hailuo02 task448598058795475 terminalSuccess,estimateUSD0.28,
+billing unverified. First exact whole grounded source25 native3x dark plate; last
+byte-identical actual original standing input. Source/prompt/input record retained.
+All142poses frozen1/3/offset0,-32,284exact replay checks0/5917ms. All6raw boards and
+original/control/quarter/end head/body comparison reviewed. H141..148/head24..26/
+axis122.5..123.5/top75..79/floor219..223; broad upper41..51 includes knee pose.
+Motion REJECTED: repeated walking cycles instead of one controlled recovery, then
+abrupt standing near120. No helmet/native/normal adoption. VERDICT and ledger retained.
+Avoid repeated similar prompt retries; next explicit complete supported recovery
+key-pose row matching actual original endpoints before dense motion packaging.
+
+Also found diagnostic21-frame manifests retained uniform auxiliary arrays142long.
+New sibling bare/helmet-contract-phase manifests reduce facings/waterKinds/waterPoses/
+depthOffsets to21;12contract checks0. Same whole frame/timing/held references; no
+art/normal selection change. Prior native-bound manifests preserved,307inputs unchanged.
+Full goal active/incomplete; full bilateral contact/standing/ordinary integration,
+action/direction/furniture/save/Continue and library polish remain. No live job/blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld grounded refined flat support - October 3, 2026
+
+Source sole review identifies19/9 as landing-to-flat transitions. Four-frame flat
+far20..23/near10..13 front opaque-envelope rates146.4/153.6nativepx/s are much closer
+than earlier broad material134.4/160.8; previous20percent mismatch is not established
+flat-sole mismatch. Ten source outline overlays reviewed; no source geometry edited.
+Two refined hypotheses131.25/136.5nativepx percomplete21pose875ms loop: actual
+player1145checks0/176presentations/7.93s/engine0/no logged errors,307inputs and2931
+owner files unchanged with scratch APPDATA. Native replay528checks0. Preferred136.5
+complete native paired cycle boards and whole47/93/148 captures viewed. Independent
+actual screenshot16outline overlays: front envelope1pxspan in BOTH four-frame
+bare148px first-cycle windows; rear4/3px varies with rounded silhouette/pitch.
+This is promising short-support evidence, not full physical sole/landing/toe-off
+or ordinary integration acceptance. FLAT_SUPPORT_VERDICT.json retains limitations.
+Earlier review boards restored and new hypothesis boards uniquely named.
+Lesson: classify landing versus flat using outline evidence before interpreting
+material correspondence; refinement can resolve an apparent bilateral speed mismatch
+without distorting limbs or phase. Preserve raw and earlier evidence with scoped
+superseding interpretation. Preferred136.5 is diagnostic only, no normal selector.
+flat-review-v1 and all4paired replay resources HTTP200; no browser acceptance claim.
+Next whole bilateral contact/roll and exact dense standing joins, ordinary controller/
+furniture/save/Continue and full original action/direction/library polish remain.
+Full goal active/incomplete; no live generation/blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld grounded complete local traveling cycle - October 3, 2026
+
+Full goal active/incomplete. Local complete21consecutive source poses8..28 retained
+unchanged in paired diagnostic manifests,875ms uniform source timing;84exact local
+replay checks0. Boundary8 versus natural29 repeat error9.17; wrap difference1.0224x
+natural adjacent, full boundary board viewed. All142 original source remains retained.
+Two separately inferred stride hypotheses117.6/140.7native pixels exercised through
+actual distance-driven player, two cycles/both gears/47,93,148. Native1145checks0,
+176presentations/8.65s/engine0/no logged errors,306inputs and2931owner non-log files
+unchanged under scratch APPDATA. Complete native replay528pixel/duration/source
+checks0. All4native full21-cycle boards and8wrap captures viewed.
+
+Rendered material windows reproduce opposing residuals at93px: shorter stride
+far1px/near3px spans; longer far3px/near1px. At148 short far2/near3..4; longfar5/near1.
+Near NCC.66..73 and pitch/roll prevent literal rigid-sole/sliding claims. Neither
+uniform stride accepted; no averaged final root/normal controller selection.
+STRIDE_VERDICT.json and two-stride paired native replay review retained. Preview
+stride-review-v1 HTTP200; browser visual acceptance not claimed.
+Lesson: local whole-cycle continuity can improve despite longer source phase drift;
+actual traveling captures can expose opposing bilateral residuals hidden in static
+appearance. Keep every consecutive bilateral pose and test hypotheses separately.
+Next role-aware sole/toe/heel support and authored whole-cycle phase timing, then
+dense standing joins and ordinary integration. Full original action/direction,
+furniture/save/Continue and cross-library polish remain. No live job or blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld grounded bilateral support diagnosis - October 3, 2026
+
+Grounded source remains promising appearance evidence, not accepted traveling gait.
+Read-only audit_boot_roll.py examines far17..27/near7..17 using separate diagnostic
+flat-window rates;5far/6near of11each are weak/boundary fits. Both full roll overlay
+boards viewed; misplaced landing anchors explicitly invalidate rigid contact claims.
+Initial single-bottom-row width assertion failed; two-row opaque envelope permits
+diagnosis, not anatomical sole proof. No source pixels changed.
+audit_repeated_support.py retains12 five-frame windows/60crops with local templates,
+all3review boards viewed. First two far134.4/139.2 versus near160.8nativepx/s windows
+reproduce difference, but near boot pitch changes. Later fixed21-offset windows
+cross landing/swing as phase drifts; declining measured rates are NOT verified gait
+deceleration.21-frame appearance recurrence is not exact temporal phase repetition.
+All301 native bound inputs unchanged. ROLL_VERDICT.json records limitations.
+Lesson: use role-specific phase and flat-versus-roll classification before deriving
+travel speed; fixed recurrence-offset sampling can mix different contact stages.
+Next coherent local bilateral loop boundaries/continuity, then contact-aware timing
+and calibrated movement/standing joins. Full original action/direction/furniture/
+save/Continue acceptance and cross-library polish remain. Goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld grounded source complete native review - October 3, 2026
+
+Full original-master animation goal active/incomplete. MiniMax-Hailuo02 task448592326328837
+terminalSuccess; estimateUSD0.28/billing unverified. Same byte-identical actual original
+native3x dark input as prior trial; ONLY grounded motion prompt changed. Whole142source
+poses retained, fixed1/3/offset0,-32, all meaningful foreground components20rawpx+,
+fixed tolerance8/erosion1rawpx. No procedural anatomy/grade or per-frame registration.
+All6raw/all6alpha and master/control detail comparisons reviewed. Source H142..148,
+head25..26 versus original26, upper42..43 versus42, reduced pale halo visually.
+All142 paired original-whole-helmet exports710checks0; body outside fitting exact.
+Actual source-clock player at47/93/148:577checks0/284presentations/10.11s/engine0,
+no logged errors;301inputs and2931owner non-log files unchanged with scratch APPDATA.
+Paired complete native replay568pixel/duration checks0,5917ms. All6native chronology
+boards and paired whole raw21 three-scale master comparisons viewed.
+
+Motion still repeats steps; larger/smaller kneepads alternate. Recurrence21frames is
+only diagnostic. Far19..23 and near9..13 material support windows suggest134.4 versus
+160.8nativepx/s, approximately20percent disagreement. No final stride selected.
+Raw whole foreground219..224.33; original far220/near223 depth respected. Raw109
+confirms largest-component extraction could omit a meaningful disconnected boot.
+Lesson: inspect both support phases independently; do not average disagreement into
+validated speed. Native appearance/source-clock checks cannot prove full rigid sole,
+heel-toe roll, world travel, standing joins or ordinary controller/save acceptance.
+Next complete bilateral support/roll and loop continuity, calibrated travel and
+standing joins. Full action/direction/furniture/save/Continue and library polish
+remain; no live generation or blocker. Goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld dark-background native source reviewed — October 3, 2026
+
+Single MiniMax-Hailuo02 task448589965386249 terminalSuccess,6s768P estimateUSD0.28,
+billing unverified. standing-step-video-v3-dark retains source/prompt/input/whole
+142pose replay/VERDICT. Only backdrop changed white->RGB12,18,24; same actual
+native original whole3x nearest,768x960plate,identical endpoints and motion wording.
+Exact inverse RGBA still byte-equal to original. Fixed1/3/offset0,-32 retained.
+Input alpha control H147/floor222 vs original148/223,head26/torso42 preserved;
+IoU.958/RGBintersectionMAE3.32. This extraction loss is separate from source gait.
+
+All6raw/all6initial/all6corrected alpha boards142poses and original/control/whole
+endpoint/detail comparison viewed. Source head25..26 vs original26 (white source27),
+axis123..123.5/top76..77, pale halo much reduced visually. Background maxRGBdelta4,
+none outside frozen tolerance8. Broad upper band43..51 includes raised knee, so its
+maximum does NOT by itself prove torso growth. Cloth ROI63..72/62..69/61..70 only
+diagnostic. Motion REJECTED: repeated rapid jogging-like phases and visibly both
+boots suspended in raw source instead of grounded small carrying steps.
+
+Independent whole foreground exposes V0 extraction loss: largest component drops
+disconnected boot116, giving misleading H130/floor206. V2 retains ALL foreground
+components20rawpx or larger at same8tolerance/1rawpxerosion; no source RGB/body/pose
+repair, V0 preserved. Full raw foreground extent projects213.7..225; lowest12 raw
+boot crops viewed independently of alpha, original far220/near223 depth respected.
+Corrected all142 H136..149/floor212..224, exact284 replay pixel/duration checks0,
+5917ms.308prior native inputs unchanged. No unnecessary native/helmet/normal adoption.
+
+Lessons: dark flat conditioning can reduce pale matte contamination without
+guaranteeing walking mechanics. Compare raw boot/contact separately from alpha:
+largest-component extraction can silently drop a disconnected boot and exaggerate
+clearance. Retain disconnected meaningful foreground parts with a fixed global
+rule when backdrop stability supports it; do not fill anatomical holes or repair
+geometry. Source head/grade improvement does not make a jogging gait suitable.
+Next grounded complete bilateral original-master source and dense standing joins,
+physical contact/roll and full ordinary integration; full original action/direction/
+furniture/save/Continue acceptance and whole-library polish remain. No live video
+or blocker; full goal active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld complete-cycle appearance edit rejected — October 3, 2026
+
+Builtin output exec-3792cae9-de82-4c2e-a153-4824acb96071 is retained in
+character/veld-carry-east-original-master-v1/native-cycle-art-repair-v1 with exact
+prompt/raw/39-cell comparisons/AUDIT/VERDICT. Input contains ALL38 bilateral poses
+raw16..53 plus actual original native standing master,7x6 grid,last3 blank.
+Returned1355x1161 redraw preserves broad alternating-leg chronology but violates
+identity/layout. ONE common205-square plate/offset26,34 calibrated from standing
+main component148: head33..35 vs original26, torso50..52 vs42; returned standing
+itself head33/torso52,cloth62,61,61 vs66,64,63. Motion head axis123..131/floor223..238.
+Blank cells carry223/192/189 alpha>20 pixels; previous-row boot fragments spill
+into later cells. Complete atlas/detail and all39 three-way comparisons reviewed.
+
+V0 ruler was contaminated by neighbour fragments and is retained INVALID for its
+size/head claims. Corrected largest-component mask is for MEASUREMENT ONLY;
+all raw pixels retained in extraction, no anatomy/region RGB/per-frame registration
+rescue. Early coloured edge flecks in tool view are not a proven opaque material
+defect; alpha-aware comparisons supersede that preliminary concern. Pale contour
+is visually reduced but head/case/body growth and layout failure outweigh it.
+308 previous native inputs and39 guide inputs hash unchanged. Source rejection
+requires no native replay; no candidate helmet/normal selector adoption/new video.
+
+Lessons: embedding the actual master as a calibration tile does not make a dense
+atlas edit preserve its proportions or source layout. Verify the returned MASTER
+as well as every motion pose; a shared height can hide broader head/torso growth.
+Grid gutters and blank cells are part of the source contract. Exclude neighbour
+fragments from measurements without deleting or repositioning returned artwork.
+Next original faithful source contour/proportions and dense standing handoffs,
+complete physical near/far contact/roll and ordinary runtime integration; full
+direction/action/furniture/save/Continue acceptance and library polish remain.
+Existing selected-library inventory includes swimming/death families, but inventory
+alone does not establish original-master consistency or full runtime acceptance.
+Full goal active/incomplete; generation terminal, no genuine blocker.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld full boot-roll evidence and uniform standing ruler — October 3, 2026
+
+Native-input source448578329612795 now has independent broader heel/flat/toe
+diagnostics: far14..32 and near32..50. Rigid warm-boot rotation/translation fits
+preserve role identity more reliably than nearest boot, but10far/8near of38frames
+fall belowNCC.8, minima.481/.511. Both complete annotated19pose boards viewed:
+heel/toe roll changes appearance enough that weak matches cannot prove rigid
+support or its absence. No source/art/root edits, no new native replay needed.
+
+Independent alpha ground outline initially failed as a diagnostic: rectangular
+near32 window included other boot and a single bottom row made the flat sole
+reference too narrow, overstating11.6px excess. V0 retained INVALID for that claim.
+V2 uses connected opaque boot component nearest inspected role and two-row sole
+envelope, all38overlays viewed. At presumed2.8sourcepx/frame root, far projected
+floor221 constant/max footprint excess2.8px; near221..222/max3.4px. Quantized alpha
+extent, component merger/occlusion and changing shape still limit physical claims.
+Stable short-window material translation alone cannot certify whole sole/roll.
+
+Alternative global-standing-ruler-v1 corrects common encoded standing density:
+ONE plate317px high (254wide),scale.3302083333/offset2,-30 applied identically to
+ALL142whole raw frames. Same white alpha extraction1rawpx erosion, no hole fill,
+no per-frame rescale/translation/RGB/body patches, original1/3 source preserved.
+Both standing ends148/floor223 vs former150/224; head still27vsoriginal26,
+upperbody43..48vs42, pale outline remains. Master/prior/new beginning/mid/wrap/end
+board reviewed.284exact full142replay checks0/5917ms;308prior native inputs intact.
+Alternate source retained as height registration evidence, NOT final head/body/
+contour repair or ordinary selector adoption. Native/stride recalibration would
+need a separate interval if later selected; prior106.4stride belongs to prior ruler.
+
+Lessons: avoid interpreting weak rigid appearance fit as a contact result. Ground
+windows must isolate the actual boot, and curved soles need more than a single
+lowest-alpha row; corrected metrics do not make pixels literal physics. One whole
+source density correction can restore shared height but cannot repair internal
+proportions/material/contours. Next whole-source contour/head/body fidelity and
+standing handoffs, full contact/roll validation; original North and complete
+action/direction/furniture/controller/save/Continue, final cross-library polish
+remain. Full goal active/incomplete, no live generation or normal selectors changed.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld original-native full-cycle stride trial — October 3, 2026
+
+Read-only whole lower-body recurrence favors38frames (error19.97vs37/39
+39.25/48.72); enlarged24phase board reviewed. Larger near versus smaller far knee
+pad continuity distinguishes alternating legs; similarity alone never proves that.
+Separate front-support windows far16..20/near34..38 use warm boot materials,
+not closest foot across overlap. Both rates67.2nativepx/sec imply provisional
+106.4nativepx stride per38sourceframes. Far minNCC.945/dy0; near raw34 heel-landing
+minNCC.698/dy-1: flat-support correspondence is weaker during heel roll, not final
+rigid contact. Complete source142poses unchanged; selected full two-leg cycle16..53
+retains ALL38sourceposes byte-exact, original uniform41/42ms durations1583ms,
+original whole helmet.228source/reference replay checks0. No pacing or art repair.
+
+Actual distance-driven crew_sprite_player trial uses full38poses/two cycles/both
+gears/three scales, provisional stride106.4 and normal diagnostic world speed46.
+1015checks0/156presentations/7.80s/engine0,308inputs stable/2931owner files unchanged
+under scratch APPDATA.468exact native replay/selected-source checks0. Independent
+RENDERED warm boot matching at93/148 across both support windows/both cycles/gears:
+integer dxSpan0 in all16runs, dySpan0 except near148heel frame1px, NCC far.929..973
+and near.728..761. These are material appearance proxies, not literal soles or
+complete heel/toe support. All38native148poses both gears, traveling wrap53->16,
+and representative complete47/93/148 pair reviewed.308inputs still intact.
+312exact caption-crop/duration checks0 for nontechnical paired review replay.
+
+Promising root/pose coordination, still PROVISIONAL. Pale contours, original
+head/body/case fidelity and native pixel grade remain; dense standing start/stop,
+full near/far occlusion/contact/roll and wrap validation still required. No normal
+selectors/controller/save or final stride adoption. Lessons: fixed-view independent
+rendered material matching is stronger than adding presumed root to source landmarks,
+but stable translations can coexist with shape-changing heel contact. Keep those
+claims separate and preserve the full bilateral cycle and entire original clip.
+Next complete roll/sole contact plus source contour/proportion/start-stop repair;
+original North and full action/direction/furniture/controller/save/Continue,
+then whole-library polish. Full goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld native-input continuous motion study — October 3, 2026
+
+Direct Hailuo02 task448578329612795 terminalSuccess,142frames24FPS/5917ms
+in standing-step-video-v2-native. EstimatedUSD0.28/billing unverified, no live job
+or blind retry. Exact actual original native source3x nearest input has a byte-exact
+inverse reference; identical first/last endpoints. ONE frozen scale1/3,offset0,-32,
+returned768x960 verified before alpha mapping. Whole RGB untouched before resample;
+white alpha extraction1rawpx erosion, no hole fill/per-frame recenter/density repair.
+All6raw/all6alpha chronology boards and full master/endpoint head/body board viewed.
+
+Important progress: headAxis123 remains fixed across ALL142 vs earlier high-resolution
+input trial41.5px excursion. Head27 throughout vs original26. Actual continuous
+alternating repeated steps exceed requested2. Body143..150/floor221..224; standing
+endpoints150vs original148, upperbody43..48vs42. Cloth diagnostic64..70.5/60..68/60..68
+vs original66/64/63; much closer than prior severe middle darkening, still not final
+grade. Pale source contour, case/torso widths, initial standing-to-stride jump and
+near/far support identity/contact remain. Do not confuse shared head position or
+valid source clock with physical planted soles, correct start/stop or final artwork.
+
+Complete142-pose source paired with original whole profile shell,142bodies protected
+byte-exact;710sourcechecks0. Actual native source-clock577checks0/284three-scale
+presentations,10.32s/engine0;301inputs unchanged/2931owner files unchanged under
+scratch APPDATA.568exact native replay pixel/duration checks0; all6native chronology
+boards and paired full47/93/148 raw36 views inspected. Static local paired complete
+replay/master page clearly marks study only. No normal selectors or controller
+adoption, accepted gait loop/stride/support/start-stop/Save/Continue claim.
+
+Lesson: pixel-dense native master conditioning can constrain identity/path more
+effectively than high-resolution source while introducing pale edges and changing
+dimensions. Preserve a whole input-frozen ruler and inspect EVERY phase, both
+endpoint silhouettes, materials and actual supports. Next independent bilateral
+contact/physical root calibration and dense start/stop, source contour/proportion
+repair without anatomy/RGB patches; original North gait and full action-direction,
+furniture/controller/save/Continue and whole-library polish remain. Full goal active.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld heel-peel rejection and native-source continuous trial — October 3, 2026
+
+Guided heel-peel builtin80491d7e-c5e0-436c-99d7-e719b33230c2 retained
+complete in guided-heel-peel-source-v1 with exact prompt and original/annotation
+reference provenance. Whole148/head27/upper44 vs original148/26/42, cloth68,66,65
+vs66,64,63. Source/master head/leg board inspected. Requested toe-fixed heel-peel
+not established: far boot advances, heel articulation insufficiently distinct.
+REJECTED requested transition; no helmet/native or normal adoption. No procedural
+anatomy/body RGB edits. New original guide does not itself certify contact.
+
+Changed dense-motion conditioning submitted as direct Hailuo02 task448578329612795
+in standing-step-video-v2-native, last poll Processing. EstimatedUSD0.28, actual
+billing unverified; exclusive generation ledger, no blind paid retry. Input is
+ACTUAL ORIGINAL NATIVE master3x nearest, not earlier high-resolution raw or a
+regenerated key: source SHA6e120106..., white768x960 plate,96px vertical margin.
+Whole inverse3x crops only empty margin and is byte-exact original RGBA. Both
+endpoints identical inputSHAbabc0cb0...; input comparison viewed. Source-fixed
+scale1/3, native256x320,offset0,-32; extraction guards exact returned video dimensions
+before mapping. Requested full two small alternating in-place steps, authored
+heel/toe progression and standing start/end. Full clip must establish actual path,
+near/far support, master proportions/materials before any admission. No ordinary
+selectors changed. Goal active/incomplete; all full action/direction/contact,
+furniture/controller/save/Continue and final library polish requirements retained.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld guided forward lift closer to original master — October 3, 2026
+
+Builtin5c6d42d3-112c-4216-b914-d4c0ef62b780 uses clean whole original
+native master4x as appearance/edit target and separate foot annotations ONLY
+as motion-role guide. Complete transparent single source, exact prompt saved in
+guided-forward-lift-source-v1. Actual smaller screen-right far boot now moves
+forward/right instead of backward. One whole source148 ruler .2033492823 and
+whole head/floor registration; no anatomy/RGB patches. Head27/upperbody43 vs
+original26/42, neutral cloth65,64,63 vs66,64,63: substantially closer palette and
+proportions than drifting six-pose rows. Forward boot distal floor213 vs master220
+shows seven native pixels clearance: larger than the requested tiny first lift.
+Near planted boot material correspondence dx-1/dy0/NCC.716 reveals imperfect
+shape continuity; not rigid sole contact. Far ROI corrected from x134 to138 because
+x134 included the near toe; invalid overlapping-floor result preserved separately.
+
+Original whole profile shell107,66 protects body exactly;3sourcechecks0.
+Native paired one-key13checks0/2presentations/4.99s/engine0,20inputs unchanged,
+2931owner files unchanged under scratch APPDATA. Both complete47/93/148 boards
+viewed,20inputs still intact after read-only review. Static paired review page
+clearly labels work in progress. No fake inbetweens, full stride/start-stop,
+normal selectors, moving-root support or ordinary integration acceptance.
+
+Lesson: original pixel-dense appearance target plus a separate foot-role guide
+can resolve directional ambiguity while retaining grade better than a drifting
+atlas guide. Still judge actual lift magnitude, planted shape and head/body sizes
+independently. Diagnostic windows must exclude overlapping feet before interpreting
+their floors. Next dense heel-peel/first-clearance joins and continuous bilateral
+gait/root support, original North contacts, full action/direction/furniture,
+controller/save/Continue and final library polish. Full goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld trailing recovery key and explicit foot guide — October 3, 2026
+
+Original-only single source a92ca06b-d33b-48db-81af-c3af120fbed6
+in small-clearance-source-v1 holds original height148/head26/upperbody42.
+One whole-source resample .0737667128, no anatomy/RGB patches. Cloth68,67,66
+vs original66,64,63 remains slightly lighter. Requested tiny FAR forward lift
+FAILED: actual boot lifts behind the advanced support foot. Alternative trailing
+recovery source retained provisionally under its actual motion, not relabelled
+as the missing forward first lift. Near/far identity and physical support pending.
+Original whole profile helmet protects body; paired native13checks0/2presentations,
+4.77s/engine0,20inputs unchanged and2931owner files unchanged under scratch APPDATA.
+Both complete47/93/148 master comparison boards reviewed. One320ms diagnostic
+key is not a stride, transition/contact acceptance or normal controller adoption.
+
+Next conditioning changes to an explicit original-foot guide. Clean original native
+master enlarged whole4x nearest, with a separate annotation copy identifying the
+larger near foreground boot as planted and smaller far screen-right boot moving
+UP/RIGHT. Both inspected. Annotations are instructions only, no new artwork or
+contact proof. Appearance authority remains the original; never let labels or
+arrows enter generated art. Judge actual output foot identity/direction rather
+than trusting a prompt. Missing first lift, continuous gait/start-stop, North
+contacts, full action/direction matrix, furniture/controller/save/Continue and
+final library polish remain. Full goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld first-lift row repair rejection — October 3, 2026
+
+Builtin whole-row edit9d5765c3-b6eb-4bdd-b5ee-72419fcda89c targets six-pose V1
+with actual original raw-held-v1 as sole appearance reference. Complete source,
+exact prompt, one global148ruler/sharedY/gutter extraction and before/after/master
+board saved in first-lift-row-source-v2; all six poses reviewed. Head now27 inall6
+vs previous27-28, allheight148/floor223/no clipping. Requested torso/case repair
+FAILS:46..47vs original42 (before45..47). Cloth68..70/67..69/67..68 vs original
+66/64/63 brightens. Nearsolecentroid125..128span3 vs prior2.5. Independent broad
+near-boot material registration dxSpan3 vs prior2, minNCC.856vs.794. Stronger match
+does not remove wobble or certify rigid physical support. Row repair REJECTED;
+no native/helmet packaging or normal adoption. Prior36native inputs unchanged.
+
+Lesson: requested fixes and stable shared floors cannot certify a repaired source.
+Compare actual before/after master silhouette/material AND support movement.
+Whole-atlas edits can stabilize one metric while worsening another; do not keep
+repeating the same row repair. Earlier original-only single near-standing source
+matches originalhead26/upperbody42 more closely, so next adjacent tiny first-lift
+pose is independently authored from original only, without drifting row guide.
+Whole-source generation remains required; no procedural limb/body/head/RGB patches.
+Full East gait/start-stop/near-far/contact, North gait, original action-direction,
+furniture/controller/save/Continue and final library polish remain. Goal active.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East six-pose initial-lift source study — October 3, 2026
+
+Original-only builtinsource65b02932-42fe-41b6-9591-69237fbeb2e5 saved in
+first-lift-row-source-v1: complete six-pose preparation row, exact prompt/raw.
+ONE global atlas resample .2140883978 using first standing148; complete-component
+gutters, sharedY and whole head-axisX, no per-cell density/anatomy/RGB repair.
+All6H148/floor223/no clipping. Neutral cloth66..67/65..66/64..65vs original66/64/63
+is much closer than prior brighter single keys. Source/master full row and
+enlarged body/legs reviewed. Head27,28,27,27,27,27vs original26 and torso45..47vs42
+remain final identity/proportion issues. Nearsolecentroid126.5..129vs original125.5
+moves2.5px across row: no rigid planted contact claim. First3poses are minor standing
+variations, heel-peel/toe-contact not established; distal far floors220,220,220,214,
+210,208 show coarse later lift and greater advance/clearance than prompt intended.
+Six distinct image hashes are not proof of six distinct requested motion phases.
+
+Complete row retained as PROVISIONAL motion study, not final animation admission.
+Original whole profile helmet on all6 protects bodies;18sourcechecks0. Native
+actual source-clock player33checks0/12three-scale presentations,4.90s/engine0,
+36inputs stable/2931owner files unchanged/scratch APPDATA. Both complete native
+all-pose47/93/148 master boards viewed.30exact native replay/lowerbody pair checks0,
+all36runtime inputs still intact after read-only review. Finite420ms diagnostic
+holds, not final timing/contact proof; native paths and complete sources frozen.
+Local paired review/index.html has replay and master comparisons, clearly marks
+torso/case/planted-boot/heel-peel defects. No normal selectors changed/live job.
+
+Lessons: smaller initial-motion scope can hold palette/body height while still
+changing head/case dimensions and planted-foot shape. Review chronological joint
+motion and support separately from file uniqueness and shared floors. Do not
+replace source endpoints, duplicate poses, clip a failing half or use anatomy edits
+to advertise completion. Next refine original whole-source torso/head/near support
+and author missing dense heel-peel/clearance/contact/recovery joins; full East
+gait/start-stop, North contacts, original action-direction/furniture/ordinary
+controller/save/Continue and final library polish remain. Goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld original-source authority and dense endpoint trial — October 3, 2026
+
+Caught stale whole-held-pose-reference before paid submission: same148ruler head30
+vs selected original held26. Rejected input-v0 review retained; new REFERENCE_STATUS
+in original held folder names actual raw-held-v1 as appearance authority, stale
+supporting source retained for historical frozen bindings. Rebuilt complete raw
+figure on white768x1024plate, whole source resample only; fixed reference148/head26,
+upperbody43vs42, cloth65,64,63vs66,64,63. Same exact inputSHAea9553dc... both ends.
+No frozen old source/package/native bindings or ordinary selections changed.
+
+Scoped MiniMax-Hailuo-02 first/last task448569058312574 terminalSuccess;6s768P,
+published estimatedUSD0.28 rechecked official pricing Oct3, billing unverified.
+Exact prompt/input/source/ledger preserved, no blind paid retry or live job.
+142frames at24FPS/5917ms. All6raw and6fixed-alpha chronology boards plus whole
+master/endpoints/enlarged head/body reviewed. ONE plate ruler .2080078125/offset63,47
+for entire clip, no per-frame position/density or body RGB edits.284exact finite
+source replay pixel/duration checks0; source review only, no native test/adoption.
+
+Endpoints close (silhouetteIoU.9937/.9943, RGBMAE4.40/4.79) do NOT preserve path.
+Middle head axis123.5..165 =41.5nativepx excursion despite in-place prompt;
+body141..148/head25..27/floor219..223, excess steps, body/case angle and materials
+drift, late return left to original. REJECTED final in-place/master motion. Do not
+hide with frame re-centering, head/body edits, shortened loops or endpoint swaps.
+Initial fixed viewport clothROI became empty when figure moved; reportv0 retained
+INVALID for materials. Diagnostic-only ROI now follows head axis/top at constant
+master offsets, no pixels altered. Cloth samples67,65,65 atstart,46,45,45 at110,
+67,65,65 at end vs input65,64,63; correspondence/occlusion affect material proxy,
+visual middle comparison independently shows source drift. Not full palette proof.
+
+Lessons: validate source ROLE/provenance and native proportions before generation;
+plausible filenames can bind rejected older artwork. First/last conditioning can
+recover endpoints while intermediate motion still fails registration/identity.
+Measure whole path and all-frame materials. A fixed screen ROI cannot follow a
+moving material, and empty samples are invalid evidence. Existing neutral V3 gait
+and original-source keys remain provisional; next controlled small transition
+source and original-faithful dense joins/contact validation, not another blind
+six-second walking retake. East full gait/start-stop, North contact repair/full
+original action-direction/furniture/controller/save/Continue/library polish remain.
+Goal active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East near-standing initial-step source — October 3, 2026
+
+Original-only source4cedbbc8-4090-4fc5-bad3-9ce05271f0ae saved exact prompt/raw/
+audit in prelift-source-v2 after sparse-chain moving-root diagnosis. Full source
+and master/enlarged head/legs viewed. ONE global148ruler, head26/upperbody42 match
+original held26/42, no clipping. Near opaque floor band122..130 vs held120..131,
+centroid126vs125.5; far distal219 vs master220. Legs remain close and source is
+visibly earlier than retained lifted-foot key. Actual pose is tiny whole-foot
+clearance, not confirmed requested toe-contact heel peel; record actual semantics.
+Cloth median71,69,68 vs66,64,63 remains lighter, final material/identity acceptance
+pending. Preserve raw source; no procedural RGB/anatomy/source-region repairs.
+
+Original profile helmet108,66, protected body byte-exact;3sourcechecks0. Native
+13checks0/2three-scale paired presentations reviewed,20inputs stable/2931owner files
+unchanged/engine0/4.93s/scratch APPDATA. One finite320ms appearance review only;
+does not verify this new key in the moving chain or fix earlier4px planted-boot
+jump. Earlier three-key diagnostic/manifests/native/source inputs remain frozen.
+
+Lesson: original-only minimal-pose conditioning better retains standing master
+head/torso proportions than an advanced lift guide, but material grade and exact
+toe-contact semantics still require separate review. Near-standing resemblance
+does not establish gait continuity. Next four-key chain with dense faithful
+intermediates, full upper-body/material matching, actual root/contact/start-stop
+proof; East full cycle/near-far identity, North gait, full original action-direction,
+furniture/ordinary controller/save/Continue and cross-library polish remain.
+Full goal active/incomplete. No live generation; normal selectors untouched.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East sparse key-chain contact diagnosis — October 3, 2026
+
+key-chain-study-v1 references exact original held/lift/contact whole sprites,
+both gears,3distinct poses with prescribed180ms diagnostic holds. No source edits,
+reconstructed limbs, invented tween artwork or final motion admission. Native
+actual crew_sprite_player source clock plus prescribed8nativepx/sec root exercises
+37times per gear,including before/after .18/.36s joins at47/93/148.155checks0,
+74presentations/6.09s/engine0/16inputs stable/2931owner files unchanged/scratch
+APPDATA.148exact native replay pixel/duration checks0. Both whole chronological
+boards and native three-scale contact key viewed. Initial helmet chronology crop
+clipped its top3px; corrected review crop395..570 and full helmet board inspected.
+
+Technical success is NOT moving-contact success. Independent warm near-boot
+material registration on native captures finds held->lift jump -4px at148 and
+-3px at93 in both gears. Whole trial spans4/3px; minimum NCC .687/.662, contact
+boot shape changed and correspondence weakens. Material-translation proxy, not
+rigid sole proof. Visual chronology also shows case/sleeve contour and brightness
+change, especially contact pose. Source-key count is not continuous motion.
+Do not select this sparse chain as finished animation or hide joins through root
+teleports/per-frame artwork moves. Root velocity is diagnostic, not final stride.
+
+Next original-only tiny heel-peel/prelift source, dense faithful intermediates,
+full upper-body/material consistency and actual contact/root start-stop proof.
+East full cycle/near-far identity, North gait, full original action-direction,
+furniture/ordinary controller/save/Continue and final library polish remain.
+Goal active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East projected heel-contact key — October 3, 2026
+
+Original-only whole source19601e31-7374-4d66-9319-672beace3802 saved with exact
+prompt/raw/audit under touchdown-source-v2. Body148/head27/no clipping; whole
+original shell107,66 protects body byte-exact,3sourcechecks0. Native13checks0,
+2paired presentations at47/93/148 reviewed,20inputs stable/2931owner files unchanged,
+engine0/4.84s/scratch APPDATA. First runner invocation lacked engine argument and
+exited before game launch; corrected sole native interval passed.
+
+Master-perspective correction: original near boot projects to223 and far boot220.
+Therefore identical horizontal screen floors are NOT the canonical contact rule.
+Same-scale boot board and alpha extent confirm V1far217 versus original220;
+new V2far220, near223, heel low/toe raised. Retain as PROVISIONAL projected heel-
+contact key, not proof of physical support or actual moving root. Distal opaque
+extent is not a calibrated heel landmark. No anatomical/grade patches applied.
+Whole source head27 fits original26-27, but upperbody47vs42 and cloth71,70,69vs
+66,64,63 remain final fidelity deviations. Native appearance pass cannot erase them.
+
+Lesson: use master camera/depth to judge ground projection, not one screen-height
+line for both feet. Separate near/far boot identity, projected contact, physical
+root travel and appearance acceptance. Removing lifted-pose guide improved phase
+distinctness; prompt still requests same-floor geometry, which future authoring
+must replace with perspective-consistent far-floor constraint. Earlier two source
+rejects remain; no frozen source/native records or normal selections changed.
+Next chain representative original held/lift/contact poses, refine full master
+proportions/materials, author missing prelift/recovery and prove moving contacts/
+complete start-stop. North gait, full original action-direction/furniture/ordinary
+controller/save/Continue and final cross-library polish remain. Goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East contact-source semantic gate — October 3, 2026
+
+Two independent whole-pose sources saved with exact prompts/raw/audits:
+prelift49343055-3798-4ceb-8613-c44a51788457 and touchdowncbac3b06-8895-4638-9331-de0377e99f8e.
+Both use original held appearance plus retained lifted-foot motion guide. Full
+same-scale comparisons and enlarged heads/legs inspected. Prelift148/head26/
+upperbody44/cloth68,66,66; touchdown148/head28/upperbody45/cloth66,65,64 versus
+held148/head26/upperbody42/cloth66,64,63 and original empty head27.
+No clipping. Appearance measures do not certify requested movement: prelift far
+boot is already airborne; touchdown far heel still floats. Both REJECTED as
+requested states, preserved with hashes/verdicts; no native/package/adoption.
+
+Lesson: explicitly verify motion semantics separately from master-height/colour
+checks. A lifted-foot reference can anchor a new source to the wrong phase even
+when wording asks for earlier prelift or heel contact. Next conditioning removes
+that guide and uses only original master, specifying same-floor double support.
+Never lower or reconstruct a boot procedurally to manufacture contact evidence.
+Current successful one-key source and fixed video/native records untouched.
+Next actual heel-contact source, complete start/stop and moving foot/root joins;
+East full support/near-far identity, North gait, full original action/direction,
+furniture, ordinary controllers/save/Continue and final library polish remain.
+Full goal active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East independent whole transition key — October 3, 2026
+
+Builtin75bc5398-31b6-427d-a1b5-3c7c2067de8c creates ONE complete source directly
+from unchanged original held raw, no atlas/gait/video appearance guide. Saved exact
+prompt/raw RGBA/source audit under single-transition-source-v1. One global source
+ruler: body148/head27 vs original held148/26 and original empty148/27; floor223,
+no clipping. Upper body44px vs held42; sampled neutral cloth69/68/67 vs66/64/63,
+no RGB correction. Whole master/source and enlarged head/legs reviewed. Retained
+PROVISIONAL source key, not final grade/identity or complete transition admission.
+
+Actual output lifts the FAR/smaller-pad boot, near/larger-pad boot down; prompt
+requested near lift. Record actual foot identity, do not call it the requested one.
+Planted sole band108..130 vs original113..133 under common head-axis registration;
+physical root movement/contact calibration required. Do not silently align each
+video frame or pretend zero-travel contact is proven. New whole-pose registration
+is separate from the fixed-plate video, whose scale/offset stay untouched.
+
+Original whole profile helmet fitted107,66, protected body outside fitting EXACT.
+3source protection/clipping checks0. Paired one-key native appearance13checks0,
+2presentations at47/93/148,20inputs and2931owner files unchanged,4.59s under scratch
+APPDATA. Both complete native master comparisons visually reviewed. Finite320ms
+single-key review manifests, no duplicated invented intermediates/full start-stop,
+stride/contact/controller/save acceptance. No normal selectors changed.
+
+Lesson: prove one complete independently authored pose from the original before
+expanding a drifting atlas. A complete sprite remains subject to head/body/material
+and native review; source-frame count is not motion coverage. Track actual foot
+identity and planted contact/root travel separately from image head-axis alignment.
+No head/anatomy/RGB patches to conceal failed sources. Earlier atlas rejects retained.
+
+Next author remaining original-derived prelift/heel-touchdown/recovery whole poses,
+exact held/gait joins and dense timing; complete actual root/contact/start-stop
+playback. Gait near/far overlap/heel-toe/temporal wrap, final master consistency,
+North contact failure/full original action-direction/furniture/controller/save/menu
+Continue and cross-library polish remain. Full goal active/incomplete; no live job.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East rotation ambiguity and transition-source rejects — October 3, 2026
+
+Added independent native148 rigid boot rotation+translation, uniform/paced,27
+observed phases each.74 native paired lower-body comparisons prove identical gear
+pixels for the complete first cycle. Rotation improves matching beyond flat stance,
+but first support24->25 abruptly jumps0 to-40deg and fitted toe shifts about23px
+despite NCC0.87. Overlay suggests a different overlapping boot, INVALID physical
+identity/contact inference. Two corrected sole-marker overlays reviewed; initial
+second-boot marker extended beyond actual toe, retained invalid first diagnostic.
+Corrected markers remain material reference points, not measured floor contacts.
+High correlation does not establish foot identity. Full contacts still unaccepted.
+
+New builtin whole-source start/stop atlasd6b09dfb-3571-48a7-b3eb-bd432af7cd7a
+saved with exact prompt/references: twelve poses/2x6. One first standing ruler:
+heights145-148, head27-29, stop final standing146 vs original148. Equal-cell slicing
+included neighbouring boot fragment; whole-component gutters remove it. Full
+same-scale original comparisons reviewed; pair rejected for final head/body fidelity.
+Separate single-row stop0709e962-2866-471f-b130-f55b5ed87aa1 uses only original
+high-resolution held/gait refs, no low-density video guide. ONE global atlas
+resample matched final standing148: body147-148/head28-29/floor222-223/no clipping.
+Closer height consistency but still enlarged head vs original26-27; rejected final
+identity. Both complete sources/prompts/registrations retained; no native tests,
+helmet packaging, endpoint substitutions or normal selector adoption for rejects.
+
+Lessons: two-row source consistency must be checked independently per row against
+original proportions. Component gutters preserve complete figures; equal-grid
+crop is not proof of unclipped geometry. Resample entire atlas ONCE at the common
+ruler, then slice, avoiding per-cell width rounding. A standing148 ruler does not
+prove head/body ratio. Do not normalize head/anatomy to rescue drifting sources.
+Latent brown RGB under alpha0 is not visible background; inspect actual alpha
+before declaring glow. Raw RGBA preserved and only exported alpha0 RGB cleared.
+
+Next prove a representative independent WHOLE-POSE transition from the unchanged
+original held master before another multi-pose atlas, then dense start/stop/exact
+joins. Gait full near/far contact/rotation/overlap/temporal wrap, final master grade,
+North contact repair, full original action/direction/furniture, ordinary controller/
+save/menu Continue and cross-library polish remain. No live generation remains,
+no runtime selectors changed. Full goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East independently rendered boot review — October 3, 2026
+
+Full37-phase native ground chronology inspected from existing actual traveling
+captures; no source, manifest, player or new Godot run changed. Added independent
+native-pixel boot registration at93/148, uniform/paced, both gears. Raw source
+coordinates INITIALIZE templates only; all subsequent matching uses rendered RGB.
+Tiny4-6px material patches at93 jump between details (apparent6.86px span), INVALID
+as physical sliding measurement. Retained original failed diagnostic and overlays.
+Broader masked boot comparison excludes grid/background, both inspected planted
+windows:93px spans1.210/0.960 uniform ->0.220/0.443 paced;148px spans2.329/2.093
+->0.332/0.673. This supports timing improvement independently of computed source
+landmark positions, still a whole-boot translation PROXY rather than rigid sole proof.
+
+Full-ground37-phase board and bare paced93/148/uniform93 +helmet paced93 overlays
+reviewed. Template clearly loses intended boot in first push-off raw26..29 at both
+sizes (NCC~0.42-0.49); matching rotation/occlusion with a flat boot is invalid.
+Later boot touchdown/push-off raw34..48 also rotates; translation cannot certify
+heel/toe anchoring. Warm boot-material floor sample stays0-2px above148px grid floor
+through all37 poses, not full alpha/sole contact proof. Full contact NOT accepted.
+
+Lesson: native tiny-patch aliasing can look like real sliding. Use readable material
+coverage and inspect overlays/confidence; retain failures. Do not treat rotational
+point motion or template switches as physical drift. Both flat supports now have
+independent rendered evidence; heel/toe rolls and near/far occlusion need a different
+rigid-contact measurement. Never patch anatomy or suppress full phases to pass.
+
+Next rotation-aware heel/toe landmarks through touchdown/push-off and overlapping
+legs, temporal wrap, exact master held start/stop. Head/skin/hair/suit final fidelity,
+North walking contact failure, remaining original action/direction/furniture,
+normal controller/save/menu Continue and full library consistency/polish remain.
+No ordinary selectors changed, no live paid job. Full goal active/incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East full-cycle phase timing comparison — October 3, 2026
+
+Corrected interior ankle-strap landmarks retained separately in trackingv2; original
+misplaced heel diagnostic preserved. Three seven-frame raw support windows show
+toe/ankle rates agree broadly, while alternate supports differ. Full37 consecutive
+poses18..54 retained in uniform/paced diagnostic manifests, both original helmet
+variants. Periodic rate interpolation changes timing only:36-47ms holds/1542ms,
+provisional102.763 source-pixel stride. NO pose/colour/anatomy/registration changes.
+446 source/reference/APNG checks0; no final gait/stride/contact admission.
+
+Native actual distance-driven comparison at47/93/148, two full cycles per timing/
+gear:1977 checks0/304 presentations,309 inputs and2931 owner files unchanged,
+10.39s under scratch APPDATA. Timestamped complete native samples replayed608
+pixel/duration checks0; not continuous screen recording. All four37-pose first-cycle
+boards, bare uniform/paced93px support boards and both-gear loop boundary inspected.
+Measured two short support windows combine ACTUAL player root with raw-source
+material points: maximum93px span1.538 uniform ->0.554 paced. This is encouraging
+timing evidence, NOT independent rendered contact tracking or full heel/toe proof.
+Helmet shares exact body and pacing; no obvious source colour or attachment snap
+on inspected loop boundary. Temporal owner acceptance/full-body identity pending.
+
+Lesson: measure interior boot details rather than silhouette/air; inspect overlays
+before trusting high correlation. Both supports can require different distance per
+raw pose. Preserve complete two-step sequence and change authored phase pacing,
+not anatomy or a shortened easy loop. Short-window fits cannot certify all contacts.
+
+Next full near/far touchdown/heel-toe roll review across37 phases, rendered landmark
+and floor contact verification, loop temporal review, exact master held start/stop.
+North walking contact failure, remaining original action/direction/furniture,
+controller/save/menu Continue and full cross-library consistency/polish remain.
+Goal active/incomplete; no normal selectors changed and no paid job remains.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East neutral source and support-phase diagnosis — October 3, 2026
+
+White-background conditioning trial448383437771222 Success:141 raw frames,
+same complete source/placement and fixed ruler/offset, no RGB body grading.
+All raw/alpha chronology and six paired native chronology boards reviewed.
+Strong purple cloth cast largely absent; fixed input-cloth median R-G1 vs video2
+at frame zero, compared green trial input-1 vs video7. This diagnostic and visual
+improvement do not prove all-material identity or isolate causality from generation.
+Head27-28 vs original26-27/body148-150/floor223-225: final shape/grade still pending.
+Original whole profile helmet reused, protected body exact.705 source checks0;
+native573 checks0/282 presentations at47/93/148,299 inputs and2931 owner files
+unchanged under scratch APPDATA. Complete native141-pose replay564 checks0,
+5875ms each gear. Finite full-source appearance review, NOT distance-driven gait.
+
+Appearance recurrence favors37 frames; all37 phases retained for next gait study.
+Three seven-frame flat-support windows inspect actual raw toe-cap/heel-strap patches.
+Toe fits imply91.31/118.78/89.82 native-pixel travel per37 frames with local residual
+spans0.41/0.51/0.58. Heel tracking in first/third windows loses the intended material
+and is INVALID for calibration; good toe correlation does not prove rigid contact.
+Different support-phase velocities need full near/far contact review and authored
+phase timing, not a selected easy half-step or one uniform stride guessed from
+one window. No gait loop/stride/start-stop/controller/save admission.
+
+Other approaches retained: whole32-pose grade edit8cad1051-1782-4150-b651-82081eef6489
+rejected for enlarged head29-32/body156-160 vs source26/147-150, silhouette IoU0.720.
+Standard BT601/709/2020 decoding does not restore green-trial neutral cloth.
+Blanket alpha hole filling produced an opaque white gap between bent legs; removed,
+all141 alpha frames reviewed again. Preserve genuine negative space; no body patches.
+Whole-source colour improvement must independently pass geometry and native review.
+
+Next: track correct material landmarks through both complete supports/heel-toe rolls,
+derive variable phase pacing and world stride, native traveling loop, exact held
+start/stop. North contact failure, full original action/direction set, furniture,
+controller/save integration and cross-library polish remain. Full goal incomplete.
+Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld East video grade trial rejected — October 3, 2026
+
+Grade-preservation task448379855364450 completed,141 raw frames/all six raw
+chronology boards inspected, same fixed-reference extraction and five-figure
+original-master comparison. Added explicit neutral/olive-grey/no-purple wording
+still yields plum cloth absent from unchanged starting key/held/true empty masters.
+V2 rejected for final art:147-152body/26-27head/223-225floor; no selected loop or
+native admission. Both source videos/prompts/ledgers retained, no live job remains.
+Earlier native V1 motion sweep2299checks0 remains valid diagnostic playback evidence,
+not final colour or complete rigid-foot acceptance. No normal selector changes.
+
+Lesson: explicit colour-preservation prose alone did not solve two demonstrated
+video grade failures. Keep the matched whole source and reject the video drift;
+do not spend on uncontrolled prompt-only retries or conceal it with body-region
+patches. Next investigate a different whole-source authoring/colour-preservation
+approach, retaining both complete footsteps/physical contact rather than accepting
+a smaller easy loop. Source/temporal/native/master fidelity are separate evidence.
+Full scope remains active/incomplete: original-faithful gait/start/stop, North foot
+contact repair, full original action/direction set, controller/save integration and
+cross-library polish. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld original East traveling gait diagnosis — October 3, 2026
+
+character/veld-carry-east-original-master-v1/continuous-video-v1 has a paired32-frame
+source study exercised by actual distance-driven crew_sprite_player at47/93/148,
+three diagnostic strides96.53/100.13/103.73 source pixels, two cycles each gear.
+Corrected midpoint fixture:2299checks0/396presentations/11.89s;75inputs and all2931
+owner non-log files unchanged under scratch APPDATA. Boundary-sampled first fixture
+missed frame slots:2275checks64failures retained separately; no art/player changes.
+All six native gear/stride boards inspected. Sparse native travel replay and browser
+master comparison delivered; no complete rigid contact or normal integration proof.
+
+Early flat-support toe-outline proxy drift0.48-1.23px at93px across the tested distances
+is encouraging but covers only two five-frame windows, not heel/toe roll or every
+near/far support. No final stride selected.32-frame similarity alone is insufficient.
+Direct five-figure same-scale comparison catches video-induced PURPLE cloth drift:
+starting V2 key/original-held/true original empty are neutral/olive-grey, video is plum.
+Stability within a clip does not establish colour fidelity to its reference.
+V1 retained as motion evidence, not final artwork. Scoped grade-preservation trial
+448379855364450 submitted to continuous-video-v2 using byte-identical original input,
+same motion wording plus explicit neutral/olive-grey cloth/no-purple instructions.
+EstimatedUSD0.19; billing unverified; exclusive ledger and no automatic paid retry.
+
+Lessons: sample authored duration midpoints to exercise every pose; equal clock bins
+can land on unequal-duration boundaries. Verify physical contact independently of
+player phase. Compare the video directly with its unchanged source AND original
+masters; a stable purple grade can pass all temporal/pixel checks and still be wrong.
+Next review entire grade trial, both-foot material landmarks/loop, final stride,
+authored start/stop and held handoffs; North contact repair, full original action/
+direction matrix, ordinary controller/save integration and library polish remain.
+Full objective active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld original East gait source study — October 3, 2026
+
+character/veld-carry-east-original-master-v1 retains rejected oversized V1 atlas,
+selected original-only six-key V2 foundation, and completed MiniMax task448373312799191.
+141 raw video frames extracted with ONE original-guided scale0.2073976222 and fixed
+plate offset53,46; no per-frame resizing, floor correction or body RGB grading.
+All raw and extracted chronological boards inspected: head26 throughout, body147-150,
+floor222-224. Upper body/equipment visibly stable; final master-grade fidelity pending.
+
+Provisional consecutive raw32..63 paired study uses original whole profile shell,
+32 frames/1333ms per gear.160 source protection/clipping/exact APNG replay checks0.
+This is SOURCE evidence, not native playback or a completed traveling gait.
+Lower-body recurrence favors32 over16 frames, but cannot establish near/far identity.
+Two inspected support-band centroid fits imply different travel96.53/103.73 pixels
+per32 frames, with residual spans6.03/5.74px. Rolling boot silhouette centroid is
+not a rigid sole landmark; no stride calibrated or world-contact acceptance claimed.
+
+Lessons: old motion references can contaminate identity despite guide-only wording;
+use original-only full-character references for new gait sources. Similarity and
+bottom-alpha centroids cannot prove a complete two-step cycle or stationary soles.
+Keep full raw chronology, fixed registration and explicit contact windows; track
+physical landmarks and verify actual distance-driven playback before gait admission.
+
+Next: identify near/far boots and stable sole landmarks across both supports, inspect
+loop temporally, calibrate measured stride, then native/world walking at47/93/148,
+authored start/stop and exact held/idle handoffs. North contact failure, other directions,
+full action coverage, normal controller/save integration and cross-library polish remain.
+Full objective active/incomplete. Handoff: character/veld-carry-east-original-master-v1/HANDOFF.md.
+
+## Veld original East cargo separate visual prop — October 3, 2026
+
+character/veld-cargo-east-original-master-v3 separates complete floor equipment
+from authored contact/release/original-empty body. All12 paired recompositions
+exactly equal earlier v2;24build checks0. Same520ms unload/reverse pickup, exact
+held entry, now case-free true original East standing idle. Original suit/head/
+boot/source density untouched. floor-case.png25x21, offset22,-20 relative128,224;
+cargo-contract.json uses full literal texture path and260ms contact/take events.
+Staged cargo_prop.gd/.uid owns fixed visual deposit anchor, one event per action,
+pickup/delivery retirement and JSON visual snapshot/restore/rejected-state guard.
+No ordinary selector, resource credit, world collectible or production integration.
+
+Native1000checks0/142presentations/7.82s in bothgear47/93/148: all14 body slots,
+source count/timing/finite tails/root/ruler, stationary case during prescribed70px
+body displacement, visual state restore/reject and delivery retirement.65inputs
+unchanged and all2931 real owner non-log files unchanged under scratch APPDATA.
+142exact native APNG timeline/pixel checks0 (2367ms/gear); earlier42 v2 frozen
+inputs still match original hashes. Whole body-only and paired native lifecycle
+boards inspected; browser fixed-case/contact/gear/play controls reviewed.
+
+Lessons: a deposited object embedded into idle follows actor root and cannot
+represent world placement. Preserve complete authored body and complete equipment
+as separate sources, verify recomposition byte-exact before changing lifetime, and
+store placement once independently of actor position. Keep visual ownership apart
+from gameplay resource credit; caller can retire on existing delivery. A prescribed
+standing root-position probe proves anchor independence, never walking/nav/foot
+planting. Visual-helper JSON checkpoint is not RunSave/menu Continue acceptance.
+
+Remaining original-master grip/held-to-floor case size, head/boot/contour/material/
+helmet pitch and full motion polish; original-faithful East gait/start/stop next,
+then turn polish, failed North world walking contact, other directions/full action
+matrix, ordinary visual retirement/controller/save integration and library polish.
+Full objective active/incomplete. Handoff: character/veld-cargo-east-original-master-v3/HANDOFF.md.
+
+## Veld original East cargo shared-case draft — October 3, 2026
+
+character/veld-cargo-east-original-master-v2 packages paired six-pose520ms unload/
+reverse pickup with exact original held entry and whole original empty East body
+exit. Whole atlasV4 and independent no-case deep body retained with exact prompts;
+intermediate deep/contact edit rejected for changing case size. Same complete
+deposited equipment25x21 (opaque23x19) at150,204/ground223 reused behind whole
+character in contact/release/standing. No RGB/limb/body-region corrections or
+per-pose atlas scaling. One atlas ruler0.2361878453/Y66; independent complete deep
+source density follows actual matching crouch81, not standing148. Head26/27/27/28/
+27/27; small silhouette/material differences remain. Whole original helmet fits
+follow head; body outside fitting protected. Staged idle includes floorcase only
+for chronology; normal selectors unchanged, ordinary prop ownership not solved.
+
+18 build/13 source checks0. Native605checks0/108presentations/6.78s at47/93/148,
+counts/timing/finite tail/exact joins/root/ruler,42inputs unchanged and2931 real
+owner non-log files unchanged under scratch APPDATA.108 exact APNG native replay
+pixel checks0; raw/source/native action boards inspected, browser bare cycle3,
+contact500ms and helmet cycle33/released600ms observed. Initial native board crop
+showed master row; corrected to actual action row before review. No ordinary
+controller/world case lifetime/save/final smoothness or owner acceptance claimed.
+
+Lessons: isolate each anatomical boot from props before registering complete
+source. Atlas near residual0.458px/Ydrift0/far toeXspan0 does not survive unchanged
+after new deep source and exact original endpoints: final nearXspan2.333px and
+allfloors223. Source coordinates/resampling and occlusion affect contact proxies;
+fixed root or standing ruler cannot prove anatomical/world planting. Reuse complete
+equipment with a complete empty-hand character to remove object identity drift,
+without painting over anatomy; inspect grip/occlusion and physical held-to-floor
+size separately. Metric/pixel checks cannot certify identity, matte grade or motion.
+
+Next full unload/pickup grip/contour/material/helmet-pitch polish and case ownership;
+then remaining original-faithful East actions, turn polish, failed North walking
+contacts, other directions/full action matrix, ordinary integration and cross-library
+polish. Full objective active/incomplete. Handoff: character/veld-cargo-east-original-master-v2/HANDOFF.md.
+
+## Veld original-master East cargo source foundation — October 3, 2026
+
+character/veld-cargo-east-original-master-v1 retains3whole builtin unload atlases:
+7d4e029b V1 oversized heads30-32/broad boots;44d2c87d V2 heads27-28 and case still
+inconsistent;5e8920a4 V3 source foundation selected for continued development.
+Common actual standing ruler148 (probe alpha after resampling), sharedscale0.2389503
+and Y66, heights148/130/106/81/123/148, head26firstfive/27empty matches originals26/27.
+Whole original front knee/chest/equipment detail retained. Case silhouette reduced;
+physical size/design/stationary placement still unproven under hand/boot occlusion.
+No per-pose atlas scaling, anatomy/limb patches or RGB edits. Old unload motionguide
+only; true original East held/standing identity authoritative.
+
+6source clipping checks0, whole raw/6diagnostic poses and same-angle held/empty
+master comparisons inspected. Newheld clothmedian68 vs originalheld65.67; newempty65
+vs trueoriginal57.5 uses different fold/shading masks, not material equality proof.
+Earlier57/66/46/40/32/60 frozen catalogues unchanged. No native launched: source-only,
+no paired pack/chronology/exact joins/controller/case ownership/save acceptance.
+
+Lessons: floor case contaminates connected-component bottom/sole bounds. Exclude
+complete props for diagnostics, then audit EACH boot contact rather than equating
+full span to foot lock; occlusion/cutoff still confounds span42/41/42/40/29/35 here.
+Whole pose/case component gutters must cover complete bounds, not body centers;
+initial extraction clipped case/left stray neighboring pixels, preserved explicitly
+superseded and corrected in versioned diagnostics. Standing scale and whole body
+height do not prove planted stance. Head targeted correction must inspect all poses;
+V3 first andlast148/26-27 only after actual opaque first-pose shared-ruler probe.
+A grip hides case edges, so visible width alone cannot certify physical case size.
+No case patch/boot-strip/RGB repair to hide authoring differences.
+
+Next actual individual boot/case contact audit and coherent whole-source correction,
+paired unload/pickup with original held entry/whole original empty endpoint, helmet
+pitch/collar fit and case lifetime, then native fullmotion47/93/148/exactjoins.
+Turn polish, failed North walking contacts, remaining directions/full action matrix,
+normal integration and cross-library polish remain. Full goal active/incomplete.
+Handoff: character/veld-cargo-east-original-master-v1/HANDOFF.md.
+
+## Veld coherent near-angle stance — October 3, 2026
+
+character/veld-turn-north-east-original-rig-v3 replaces only near-angle whole pose.
+Builtin32c46aca V1 advances chest but leaves pelvis/knees rear-facing; rejected.
+Builtin7df7a05c V2 rotates pelvis/thigh/knee/calf/boots together and exposes both
+partially foreshortened original front knee faces before broader late fronts.
+Selected149height/head27/upper45/sole44/floor224; clothmedian70.33 vs previous70.67,
+measurements diagnostic only. Head+1 and projected contours still need polish.
+Exact rear/mid/East sources and other whole angles, complete helmet/body protection,
+finite800ms turn/reverse and600ms gather/spread retained; no RGB/anatomy patches.
+
+31 assembly checks0;925 native checks0/176 samples/8.2s, paired47/93/148, all22slots,
+actual chronology/count/timing arrays/dry/root/ruler/exact state and East held joins.
+57 inputs frozen unchanged/2931 owner non-log files stable scratch APPDATA.
+80 APNG pixel/timing checks0. Full native turn boards and previous/new/late/East
+reveal comparisons reviewed. Browser barecycle3/helmet10 and gear/pause verified;
+Review revised pose holds actual1000ms phase3. Initial browser negative sourceindex
+reproduced; clamp time/index to valid bounds, reload and verify held source visibly.
+Earlier66/46/40/32/60 catalogues unchanged. Staged improvement, not final continuous
+artistic motion/world controller/save acceptance or full-set completion.
+
+Lesson: describing knee armor alone can leave pelvis/legs facing a different angle
+from chest/head. Specify coherent whole pelvis/thigh/knee/calf/boot rotation, and
+verify armor occlusion/reveal across neighboring full sources. Keep original plate
+architecture and material; don't paste knee faces onto rear anatomy. Local whole
+edit still affects head/grade/contours, so audit them too. Expose deterministic
+pose-hold UI for review instead of racing Pause; record what was actually rendered.
+
+Next 2-to3 angular advance/late-to-East contour/material polish, East action/carry
+master rebase, failed North world foot contacts, other directions/full matrix,
+normal integration and cross-library polish. Full goal active/incomplete.
+Handoff: character/veld-turn-north-east-original-rig-v3/HANDOFF.md.
+
+## Veld original-rig full turn draft — October 3, 2026
+
+character/veld-turn-north-east-original-rig-v2 packages three independent whole
+original-rig early/near/late sources with exact reviewed rear/mid/East held aliases.
+Retains rejected fourth-cylinder earlyV1 and wrong rear-torso lateV1; builtin whole
+edits correct equipment and view. Selected core heights148/149, head25/26, sole224;
+these are diagnostics, not identity acceptance. Complete angular helmets reused,
+body outside head/collar protected. Original knee fronts/chest/equipment restored.
+
+31 assembly checks0;925 native checks0/176 chronological samples/7.98s, paired
+47/93/148,22 source slots each gear, count/timing arrays, exact3chain boundaries
+and true East held join.66 inputs frozen unchanged/2931 owner non-log files stable
+scratch APPDATA.80 APNG exact native pixel/timing checks0. Both full native boards
+viewed; browser bare cycle2/helmet10, gear/pause/play verified, pausedhelmet762ms.
+Earlier46/40/32/60 catalogues unchanged. Staged only; continuous artistic motion,
+world gait/controller/save and full-set completion remain unproven.
+
+Lessons: independent whole poses can preserve source size yet still change armor
+visibility abruptly. Original equipment must progressively reveal with viewpoint,
+not switch designs. Here phase3 hides knee fronts and phase4 reveals both sharply;
+whole-source angular polish remains. Focused equipment edits can alter grade and
+contours, so re-audit the complete result. Declared frameCount must match actual
+frameFiles AND duration array; player source chronology alone missed inherited
+5-pose gather metadata6. New consolidation fixes counts; old frozen packs preserved.
+Exact endpoint aliases do not establish interior smoothness. Never use palette
+scalars, knee/body strips or per-pose atlas scaling to conceal source inconsistency.
+
+Next phase3-to4 whole angular reveal/body/boot/helmet polish, East action rebase,
+failed North world foot contacts, other directions/full matrix, normal integration,
+and cross-library consistency. Full goal active/incomplete.
+Handoff: character/veld-turn-north-east-original-rig-v2/HANDOFF.md.
+
+## Veld original-rig turn midpoint — October3,2026
+
+character/veld-turn-north-east-original-rig-v1 retains2rejectedwholeturnatlases:
+latebody151-153/head30-31/floor227-229growth and repeatednearprofile despite rig
+reveal improvement. SinglemidV1 invents fourthcanister/hook; wholeV2 edit removes.
+Selected SOURCE POSE only H149matchesoldmid149/head26vs27/upper54vs58/sole224;
+clothmedian73.33vsold70.67. Originalknee sideedge/3canisters/wholecasegrip retained.
+Whole29x36shell004at10868/bodyprotected.3buildchecks0;35nativechecks0/6captures5.8s,
+paired47/93/148boards viewed.46inputs frozenstable/2931ownerfiles unchangedscratch.
+Earlier40/32/32/60cataloguesunchanged. No fullturn/motion/world/save acceptance.
+
+Lessons: original equipment visibility must evolve with viewpoint, not switch rig
+between poses. Fullatlas authoring can preservefirstsize while growinglaterhead/body;
+one source ruler/sharedY reveals it. Do not hide growth with per-pose scale/floorfit.
+Singlewholepose can improve geometry but invent accessories; recount sourceequipment,
+repair throughbuiltin wholeimage edit, re-audit contours/material because localedit
+is not pixelpreserving. Same-angle source density precedes package, not scalargrade.
+
+Next remainingearlyrear/nearprofilewholeinteriors, thenfulltimedturn/reverse and
+exactendpointjoins. Eastactions rebase, failedNorthworldcontacts, fullmatrix/normal
+integration/libraryconsistency remain. Normalselectorsunchanged; fullgoalactive.
+Handoff: character/veld-turn-north-east-original-rig-v1/HANDOFF.md.
+
+## Veld true-original East held foundation — October3,2026
+
+character/veld-east-held-original-master-v1 whole builtin67e64228 originalEast
+master+caseposeguide restores distinct large knee plates, irregular quilt detail,
+weathered hardware.148height/head26vs27original/upper42caseheldvs34armsdown;
+sole223/newspan36vs40differentstance. Originalprofile31x38shell10866/bodyprotected.
+Onecarry-east source/frameCount1.3buildchecks0;35nativechecks0/6captures5.05s;
+40inputs frozenstable/2931owner non-logfiles unchanged scratchAPPDATA.
+Bothpairedfullnativeboards47/93/148viewed; sourcePNGunchanged after countfix.
+Previousnative33checkinterval supersededmetadataonly; original sourceevidencekept.
+Earlier32/32/60/32cataloguesunchanged. No motion/world/controller/save acceptance.
+
+Lesson/correction: matching-angle original East cloth is itself darker than prior
+held in many lowerbodyregions. Blanket side-too-dark diagnosis fromrearcomparison
+was unsupported. Newclothmedian65.67vsoriginal57.5/oldheld70 usesdifferentmasks,
+posture and shading; neither certifies material equality. Restore original hardware
+and quilting before scalargrade tweaks. Same-angle master authoritative, oldheld
+pose guide only. Tiny swatch alone unreliable. No outputRGB/bodypatches.
+
+Next original-rig profile turn/join authoring; individualboot/headcontourpolish,
+Eastactionfamilyrebase; failedNorthgroundcontacts, remainingfullset/integration,
+cross-libraryconsistency remain. Normalselectorsunchanged/fullgoalactive.
+Handoff: character/veld-east-held-original-master-v1/HANDOFF.md.
+
+## Veld turn material trials — October 2, 2026
+
+character/veld-turn-north-east-material-v1 preserves4whole builtin candidates,
+all rejected for promotion. AtlasV1rear88/nearrear84 vs master77-78; side80closer.
+V2early-only request darkenedallside66-68; V3swatchref retains early88/84/83,
+side80and contour/floorchanges. Singlenearrear slightlift produced117 vs same-angle
+original74.33/canonicalrear77.33. Existing nearrear already close; preserve it.
+Whole boards and same-angle native-density contact review inspected; raw/prompts/
+IDs/SHAs retained. Prior32/32/60/32catalogues unchanged. No native rerun/adoption.
+
+Lessons: inspect unrequested poses after a focused atlas edit; generation is not
+pixel-preserving. Tiny material swatch alone cannot guarantee grade across angles.
+Use true matching-angle original body/material reference for darker profile repairs,
+not scalar median matching as an artistic pass. Derive density from actual packaged
+same-angle master:148 here, historical source diagnostic149 does not override it.
+No output RGB/anatomy patches/per-pose atlas fitting. No normal selector changes.
+
+Next original East/profile inspection and darker whole side-pose repair, fulltimed
+chain/material polish; failed North world contacts, remaining fullset/integration
+and cross-library consistency remain. Goal active/incomplete; no external blocker.
+Handoff: character/veld-turn-north-east-material-v1/HANDOFF.md.
+
+## Veld corrected North stance/turn chain — October 2, 2026
+
+character/veld-north-gather-turn-chain-v1 consolidates whole gather600/turn800/
+reverse800/spread600ms. Corrected original-breadth gathered endpoint replaces
+old narrow turn entry/exit; other latest helmet-aligned whole turn poses unchanged.
+All3state boundaries exact per gear.10buildchecks0;577turnnativechecks0/108captures;
+895full2.8schainnativechecks0/176captures;40previewpixel/timingchecks0.
+Both32inputs frozen stable/2931owner non-log files unchanged scratchAPPDATA.
+All12distinct turn poses viewed93/148;47views captured. Technical clocks/source
+chronology pass; continuous artistic smoothness/world/controller/save unproven.
+
+Lesson: exact joins prevent endpoint substitution but cannot certify intervening
+silhouette/material quality. Near-rear sole span42 vs correctedrear45 requires
+orientation-aware original-source inspection; projected span alone cannot prove
+boots shrink. Compare identical alpha thresholds:128edgeheight150 vs200core148
+is antialias threshold difference, not source-scale drift. No RGB/body patches.
+
+Next timed weight/material polish and original-guided near-rear pose inspection;
+failed North ground gait, East family joins, remaining full-set states/integration
+and broad consistency remain. Normal selectors unchanged; full goal active.
+Handoff: character/veld-north-gather-turn-chain-v1/HANDOFF.md.
+
+## Veld whole North gather/spread transition — October 2, 2026
+
+character/veld-gather-north-original-master-v2 selects V2 whole interiors1/2 and
+V3 whole interior3: corrected lifted LEFT path inward117.5/sole220, RIGHT support139/224.
+Five whole poses include exact original held and boot-corrected gathered endpoints.
+Finite600ms gather and reverse spread, paired bare/helmet; original34x36rear shell,
+protected body.47package checks0;569native checks0/84presentations6.46s;
+60inputs frozen stable/2931owner non-log files unchanged with scratchAPPDATA.
+All10distinct native poses reviewed47/93/148. Continuous artistic motion review
+pending; small contour/material joins remain. Normal runtime selections unchanged.
+
+Lesson: retain common source ruler and vertical floor to preserve boot lift; whole
+horizontal registration may anchor the stationary support when atlas placement varies.
+Independently inspect opposite foot/internal body trajectory: translation cannot cure
+an incorrectly outward leg path. Raised boot sole narrows by projection; compare
+standing footwear at matching contact phase rather than demand identical liftedwidth.
+Preserve complete source/provenance, no limb patches/RGB grading/per-pose scale/Yfit.
+
+Next timed weight-transfer review, corrected North turn entrance rebase and chain;
+failed North world ground contacts, East family joins, remaining full-set actions,
+normal integration and library consistency/polish. Full goal active/incomplete.
+Handoff: character/veld-gather-north-original-master-v2/HANDOFF.md.
+
+## Veld original boot-breadth gathered foundation — October 2, 2026
+
+character/veld-gather-north-original-master-v1 reaudits held-to-gather endpoints:
+original held toe/sole widths22/23px; earlier gathered19/19at same148 body ruler.
+Closing the combined stance had hidden smaller individual boots. New whole builtin
+v5 gathered source restores22/23, torso61/head23/H148/sole224. Neutral upper-leg
+quartiles63/77.33/87 vs original61/78/92.67; matte original cloth closely retained.
+Original head22 vs new23 remains1px contour/detail polish, not blanket identity pass.
+No output RGB/body strips/per-pose scale edits. Paired original rear34x36shell with
+protected body, raw/prompts/provenance/rejections/audits and native boards preserved.
+
+4package checks0;33native checks0/6captures5.05s;59inputs frozen stable;2931owner
+non-log files unchanged scratchAPPDATA. Both full native boards47/93/148 reviewed.
+Prior32/30/41/71/53/193/193catalogues unchanged. Corrected SOURCE FOUNDATION only:
+four new interior poses remain rejected diagnostic because first planted LEFT foot
+moves113.5to118before its lift, torso58-59vs61, boots shrink and cloth brightens.
+Current staged turns still reference the previous narrower gathered entry; rebase
+after genuine transition/join review. No natural gait/controller/world/save proof.
+
+Lessons: audit individual footwear breadth separately from total stance span and
+head/torso dimensions. Common full-cell registration retains true authored shifts;
+separate per-frame centering would conceal misplaced support feet. Generation
+can follow small-foot endpoint guide and carry anatomy drift through intermediates.
+Fix canonical endpoints before authoring motion. Requested percentage colour edits
+are not predictable: inspected v2cloth88→v3dark65→v4bright92, not proportional to
+prompt. Unchanged original cloth-detail reference recovered v5median77.33 vs78.
+Material crop is reference only, never output anatomy; preserve full-source review.
+
+Next genuine RIGHT inward/LEFT inward whole gather interiors at fixed original
+support contacts/boot breadth/body/material, finite reverse and actual motion/join
+review. Then corrected North turn entrance/new East family, failed North ground
+contacts, remaining full-set actions/integration and broad consistency/polish.
+Full goal active/incomplete. Latest HANDOFF.md/EXECUTIONS.md retain evidence.
+
+## Veld actual-head helmet mapping and partial-face finish — October 2, 2026
+
+character/veld-turn-north-east-helmet-aligned-v2 corrects actual-head mapping:
+phase2 original rear-side shell4; phase3 later whole partial view; phase4 original
+profile shell5, consistent with almost-profile bare head4; exact equipped endpoints
+and all bare body sources unchanged. Latest v3 whole builtin skin/hair edit modestly
+warms partial face and restores brown hair. Same30x37/source height1241 ruler.
+Original whole hardware/camera preserved closely, but raw metal highlights also
+change slightly: focused generation is not exact pixel protection. No body RGB edits.
+
+Each variant56source/alias/protection/timing/APNGchecks0; v2 native565checks0/
+108captures6.67s/30frozen inputs; v3 565checks0/1086.98s/32inputs. Both2931owner
+non-log files unchanged scratchAPPDATA. Catalogues32/30/41/71/53/193/193stable.
+All12latest paired distinct native poses47/93/148 and actual-head/master-finish
+boards reviewed.108native samples exactly decode from APNG holds. Interactive page
+replays actual native capture groups with pause/pose controls; live helmet forward/
+reverse and bare forward v2 verified, latest starts/advances. Browser interval kept
+in latest browser-review.json. No natural world/controller or full acceptance.
+
+Lesson: rigid helmet may already be profile while torso completes its last pivot;
+actual head chronology governs, not equal progression through separate atlases.
+Don't force a rear-side equipment view onto an almost-profile authored head merely
+to keep each slot's shell distinct. Exact profile reuse retains master hardware/
+colour better than repeatedly inventing a late intermediate. A colour-only reference
+must be declared separately from the target angle; review full generated source,
+then native silhouette/finish, because even focused edits can change other pixels.
+
+Latest v3 remains STAGED: coarse angular/finish and full-family joins still require
+polish. Wider-held-to-gather movement/new East family, failed North ground contacts,
+remaining full-set actions, normal integration and broad consistency/polish remain.
+Goal active/incomplete. Latest HANDOFF and EXECUTIONS retain exact scope/provenance.
+
+## Veld whole helmet intermediate yaw study — October 2, 2026
+
+character/veld-turn-north-east-helmet-aligned-v1 adds whole partial-face v4/v5
+equipment sources to phases3/4, advances original shell4 to phase2, preserves
+all bare body sources and equipped North/East endpoints EXACTLY. Finite NE/EN
+800ms clocks unchanged. Whole new head/gasket physical ruler37px, sizes30x37;
+no body/RGB/anatomical-strip edits. Raw/prompts/registrations/rejected candidates
+and builtin execution IDs retained. Native comparison is previous fit versus study.
+
+56source/protection/alias/timing/APNG checks0;565native checks0/108presentations
+6.80s,41frozen inputs stable,2931owner non-log files unchanged scratchAPPDATA.
+Prior71/53/193/193catalogues stable. All12paired distinct poses visually reviewed
+47/93/148 plus bare/old/new actual-head correspondence;108native samples decode
+exactly from APNG holds. VISUAL STILL STAGED: face opens more gradually, but final
+exact original profile shifts ear/visor and has brighter face than intermediates.
+No live browser/natural motion, normal adoption or full visual acceptance claimed.
+
+Lesson: full-profile supporting references can dominate a requested intermediate
+view; two nominal angle labels do not establish two actual angles. Rear-only
+master editing recovers rear-side geometry; sequential whole rigid-object edits
+can expose the face gradually. Check rear panel, ear, visor and collar together,
+not face exposure alone. Preserve exact endpoints, but don't mistake their alias
+for a smooth interior join. Native technical success does not settle finish/yaw.
+
+Next late shell/hardware and skin/hair/material master join; actual timed review,
+held-to-gather movement/new East family, failed North gait contact, remaining full
+set, normal integration and broad consistency/polish. Full goal active/incomplete.
+HANDOFF.md and EXECUTIONS.md retain evidence and scope.
+
+## Veld original-guided North–East pivot and helmet yaw defect — October 2, 2026
+
+character/veld-turn-north-east-original-master-v2 builds whole body quarter from
+reviewed gathered North source plus original East authored reference, without old
+narrow body guide. V1 improves rear breadth/progressive turn but invents ornate
+case; focusedV2 restores plain case/single latch. Rechecked anatomy/material after
+generation. First slot exact gathered source alias both gears; other five new whole
+poses at common ruler .20994475. Feet-together pivot registered to lower sole center,
+not changing hair/nose bounding center; global first actual-resample floor retained.
+Standing extent148–149, angular head bounds23–29; original profile/family polish open.
+
+Paired finite NE/EN800ms original clocks/reverse metadata. Whole original angular
+helmet shells/body protection reused. REVIEW FAILURE: helmet later yaw lags bare
+face and face opening pops near final slot. Staged body study, not admitted helmet
+or whole turn; align actual head yaw before adoption. Exact North gathered alias
+does not close wider-held gather movement or new East cargo/action endpoint.
+
+49source/protection/timing/APNGchecks0;565native checks0/108presentations6.91s.
+Actual finite sprite player slots/dry metadata/physical128224pivot/standing148,
+all slots forward/reversebothgears. All12distinct source poses viewed in two native
+boards47/93/148;108actual native samples reconstruct exactly from four APNG holds.
+Repeated identical capture holds legitimately merge, not108encoded unique frames.
+71inputs stable;2931owner non-log files unchanged under scratchAPPDATA. Previous
+53/193/193catalogues stable. No gather motion, gait contact, normal controller/
+world, independent case or save acceptance; full goal remains active/incomplete.
+
+Lessons: original material/spec reuse does not prove yaw correspondence to new
+body/head chronology. Match equipment to actual pose, not presumed equal angular
+steps in two separately authored atlases. Direct source request can invent props;
+cross-reference case design and remeasure entire figure after focused prop edit.
+Keep frame size/ruler/root and actual-angle view separate from bounding head width.
+When native duplicate holds merge during APNG writing, verify expanded duration/
+sample equivalence rather than inserting fake unique frames or assuming framecount.
+
+Next whole helmet yaw correspondence/source correction and native chronology,
+held-to-gather motion/new East family join/original profile/material check. North
+gait contact stillFAILED separately; other cardinal fidelity, remaining actions,
+normal integration and full-library consistency/polish remain. HANDOFF.md.
+
+## Veld North original-master gathered source — October 2, 2026
+
+character/veld-turn-north-east-original-master-v1 now retains a reviewed paired
+gathered North SOURCE FOUNDATION for feet-together pivots. RawturnV1 rejected:
+old guide dominated anatomy, rear body53/head20 versus held61/22. Direct whole
+master edit gatherV1 preserves torso but boots31combined too narrow; focusedV2
+restores boots37, head22/body62/H148/boot224, cloth median81versus originalheld78.
+Same camera/connected anatomy/matte detail close at actual size; quilt/pattern
+polish remains. Raw/prompts/rejections/provenance preserved. No RGB grading or
+limb strips. Whole original34x36North shell at112,68, protected body outside head.
+
+4package checks0;33native checks0/6presentations/5.21s. Actual sprite player held/
+gathered comparison both gears47/93/148; both full native boards visually reviewed.
+53frozen inputs stable;2931owner non-log files unchanged under scratch APPDATA.
+Earlier193/193North family/motion catalogues also stable. SOURCE POSE ONLY, no
+gather animation, turn chronology/angles, natural gait/contact, controller/world,
+case lifetime/save acceptance or normal selectors. Full goal active/incomplete.
+
+Lesson: an old pose guide can override canonical anatomy even with explicit master
+instructions. Use direct whole-master stance edit, check physical head/torso AND
+individual boot breadth; feet-together must not mean smaller boots. Register global
+floor from actual isolated/resampled source ruler, not rounded raw bounding point;
+the latter was2px off. One common turn ruler retained, never per-pose floor fitting.
+Current held stance is wider than requested pivot stance: author gather movement
+before the pivot, do not snap endpoints or distort the whole library to one stance.
+Keep frozen source audits unchanged after native review; dated verdict is separate.
+
+Next original-faithful gather interiors and angular turn source from new gathered
+foundation; original East face/hair/material, shared helmet yaw, native chronology.
+North gait contact stillFAILED separately. Other cardinal master fidelity, remaining
+actions, normal integration and cross-library polish remain. HANDOFF.md records scope.
+
+## Veld North contact refinements and continuous source rejection — October 2, 2026
+
+Whole-source contactV3 improves upper-body width62–63 but support span regresses
+24→13px and neutral upper-leg median65.7–67.7 is darker than original-held77.
+V4 widens too far65–66/hips46–48, support span19, median86.7–88.3 too light.
+Both rejected; exact builtin prompts/raw/registered whole figures retained in
+character/veld-carry-north-contact-v1. PreviousV2median75–76 was already close;
+compare corresponding held action landmarks (upper width61/hips42), not total
+resting silhouette63 that includes straight arms/gloves. No candidate installed.
+
+One authorized direct HailuoFast2.3/768P6s whole-motion study from unchanged first
+original-guided held source completed task448304417616434; estimatedUS$0.19, actual
+billing unknown. character/veld-carry-north-contact-video-v1 retains frozen input,
+prompt, source, receipt and all141frames/six chronology boards. All141frames viewed;
+REJECTED before loop/extraction/native: feet cross/merge, support contacts unclear,
+colour flash81–82. Head width84–88 mostly stable versus initial86; moving height
+584–639alone does not establish scale drift. No normal selectors/controller changes.
+Two earlier193/193frozen source catalogues still byte-identical; owner preservation
+2931belongs to prior scratch-native interval, no new Godot/profile run this turn.
+
+Lessons: colour diagnostics can show an apparently light reference already matches
+the master; avoid speculative darkening. Compare homologous regions under the
+same action/physical ruler. A successful request does not preserve stated geometry
+or material; measure every refinement again. After equivalent source failures,
+change authoring strategy, retain all-frame verdict, and avoid uncontrolled retries.
+Continuous source can preserve identity yet fail contact/grade. Never hide a colour
+flash or half-stride by cherry-picking a convenient loop. FFmpeg fps_mode passthrough
+replaces removed-vsync option; decode actual frames without padding/interpolation.
+
+Next faithful whole-source support extrema and full alternating gait/contact review;
+original North turn endpoints, other cardinal fidelity, remaining actions, normal
+integration and cross-library polish remain. Full goal active/incomplete. Handoffs
+in both contact study folders; previous technical clock pass never footplant pass.
+
+## Veld North contact repair studies — October 2, 2026
+
+The original-guided North carry family passes prescribed continuous start/carry/
+stop clock and travel checks, but FOOT CONTACT FAILS.180native presentations over
+three distance-driven cycles per gear;1093checks0,8.0s.193frozen inputs unchanged;
+2931owner non-log files unchanged under scratch APPDATA. Native trace uses actual
+sprite distance phase and prescribed speed/position, not VeldNpc/station physics.
+Sole-bottom proxy finds12support runs, max9.2world-unit drift (~13.1px at93view).
+Existing source puts supporting feet on one relative floor; body travel carries
+the grounded boot along. Source joins and clock checks never establish footplant.
+
+character/veld-carry-north-contact-v1 retains builtin twelve-pose candidateV1,
+exact prompt/raw/source audit and twelve diagnostic whole-source registrations.
+V1 rejected: support LEFT toe218–219 and RIGHT219–221 hardly move through halves;
+head ruler22–23 but silhouette142–145 versus original standing148, smaller body.
+Do not promote this or change stride to hide slip. BuiltinV2 two-pose support pair
+does change LEFT contact198→222 (24native pixels) with registered skull, but falls
+short of36target and narrows body58 versus original63; heads22. Moving silhouettes
+134/146 are measured, not forced148. V2 is a diagnostic concept, not accepted gait.
+Original proportion/material fidelity and coherent swing boot still need correction.
+No normal selectors changed, no anatomy strips/RGB edits. Existing source packages
+remain frozen. Complete goal active/incomplete; staged gait is not contact accepted.
+
+Lesson: register a moving source to head/body physical ruler, then measure support
+contact relative pelvis and world travel. Never force all moving bounding heights
+or toe positions to equal standing height/floor. More generated frames alone do
+not solve a repeated pose. Establish a convincing planted-foot forward/backward
+pair before expanding a loop; dense sampling still needs actual continuous review.
+Next whole-source contact pair/cycle, original North turn endpoints, other cardinal
+master fidelity, remaining action matrix, normal integration and library polish.
+
+## Veld North continuous movement contact failure — October 2, 2026
+
+The original-guided North carry family passes prescribed continuous start/carry/
+stop clock and travel checks, but FOOT CONTACT FAILS.180native presentations over
+three distance-driven cycles per gear;1093checks0,8.0s.193frozen inputs unchanged;
+2931owner non-log files unchanged under scratch APPDATA. Native trace uses actual
+sprite distance phase and prescribed speed/position, not VeldNpc/station physics.
+Sole-bottom proxy finds12support runs, max9.2world-unit drift (~13.1px at93view).
+Existing source puts supporting feet on one relative floor; body travel carries
+the grounded boot along. Source joins and clock checks never establish footplant.
+
+character/veld-carry-north-contact-v1 retains builtin twelve-pose candidateV1,
+exact prompt/raw/source audit and twelve diagnostic whole-source registrations.
+V1 rejected: support LEFT toe218–219 and RIGHT219–221 hardly move through halves;
+head ruler22–23 but silhouette142–145 versus original standing148, smaller body.
+Do not promote this or change stride to hide slip. Two-pose contact study follows.
+No normal selectors changed, no anatomy strips/RGB edits. Existing source packages
+remain frozen. Complete goal active/incomplete; staged gait is not contact accepted.
+
+Lesson: register a moving source to head/body physical ruler, then measure support
+contact relative pelvis and world travel. Never force all moving bounding heights
+or toe positions to equal standing height/floor. More generated frames alone do
+not solve a repeated pose. Establish a convincing planted-foot forward/backward
+pair before expanding a loop; dense sampling still needs actual continuous review.
+Next whole-source contact pair/cycle, original North turn endpoints, other cardinal
+master fidelity, remaining action matrix, normal integration and library polish.
+
+## Veld North original carry/action family — October 2, 2026
+
+character/veld-carry-north-original-master-v1 rebases six whole gait poses on the
+latest original-guided North held/material family. BuiltinV1 rejected narrow
+56–57body/head24 and wrong fifth foot; V2 fixed proportions but repeated wrong
+support; focused whole-source V3 fixes fifth screenLEFT lifted/screenRIGHT grounded.
+All six registered148px tall, body61–62/head22–23, global floor and one actual-cell
+source ruler. Gear remains LEFT tool/RIGHT cylinders; no anatomical strips/RGB edits.
+Whole34x36 helmet stays physically fixed relative to head, body protected outside
+bounded head fit. Raw/prompts/rejections retained, no mirroring.
+
+Latest North unload/pickup/idle reused unchanged.320ms start derives held→gait0→1→2;
+stop reverses whole frames.840ms carry starts authored2,3,4,5,0,1 preserving cyclic
+support order. Exact pickup/start, start/gait0, stop/held and unload/idle joins both
+gears. Derived ramps are source previews, not authored acceleration/travel evidence.
+Older North turn endpoint remains different and must be rebased before integration.
+
+104build checks0;1729native checks0/282presentations10.51s,193inputs unchanged;
+all2931owner non-log files unchanged with scratchAPPDATA. All60distinct state-source
+poses reviewed in two overviews47/93 plus full helmetcarry009148 and paired held/
+gait source board.282lossless APNG samples exact;12browser source completions.
+Chronological boards retained, not individually visually reviewed. Quilt/colour
+polish remains; no normal selectors/controller/travel/case/save acceptance.
+
+Lesson: anatomy/material edits can regress the support sequence. Audit every slot
+against the correct screen-side support foot after each generation; explicitly
+label screenLEFT/RIGHT without mirroring asymmetric gear. Phase-rotate the entire
+walk cycle to an exact start endpoint, preserving order/durations/stride; this
+proves source joins, not natural start/stop speed. Reconcile the complete held/gait/
+turn family against original masters before runtime adoption. Next North turns,
+East/West original idle/action fidelity, South turn grade, furniture/swimming,
+normal integration and full-library polish. Full goal active/incomplete; HANDOFF.md.
+
+## Veld North original charcoal cargo material — October 2, 2026
+
+character/veld-cargo-north-original-master-v3 uses builtin whole-source V5/V6
+material edits, preserving previous frozen v2. V5 improved charcoal fabric but
+heads broadened23–24; rejected. V6 selected, head region21–22 against master22,
+standing poses0/4/5 exactly148, boot224. One common ruler measured on the ACTUAL
+isolated/resampled first cell, not on a resampled full atlas with different pixel
+phases. Whole figures retained; no per-pose scaling or packaging RGB grading.
+Fixed whole34x36 helmet, protected body and exact prepared idle terminal remain.
+
+Neutral upper-leg diagnostic (not acceptance gate): previous V4 luma quartiles
+72.25/98/120.75; selected V6 59/77/94.33; original-guided master55.75/76.67/93.25.
+Visual source/master and all32distinct action poses confirm closer matte charcoal
+material; quilt density/shape still differ and require later polish. Older held/
+gait/start/turn endpoints still differ: rebase before normal selection.
+
+68build checks0;1051native checks0/172presentations7.66s,179inputs unchanged;
+previous183frozen inputs also verified unchanged.2931owner non-log files unchanged
+under scratchAPPDATA. Two32pose overviews47/93 plus full helmet squat008148 and
+material comparison reviewed.172APNG samples exact;6browser source completions.
+Chronological boards retained, not individually reviewed. No natural cadence,
+normal controller/world/case ownership/save acceptance. Cases remain embedded.
+
+Lessons: material-only generation can change proportions; rerun ruler/head checks
+before admission. Quantized crop/atlas resizing can differ1px: establish the common
+ruler using the same isolated-cell processing used for every export. Numeric
+material samples support visual comparison, never replace original/art review.
+Native helper generation must version both hyphenated package and underscored test
+names. Accidental old test overwrite restored; both intervals' input hashes pass.
+Next rebase whole North held/gait/start/stop/turns with this original material,
+then East/West idle, South turn body grade, furniture/swimming, normal gameplay
+integration and full-library polish. Full goal active/incomplete; HANDOFF.md.
+
+## Veld North cargo original-source repair candidate — October 2, 2026
+
+character/veld-cargo-north-original-master-v2 preserves four built-in whole-source
+edits and exact prompts. V1 retained narrow/smooth dark legs; V2 restored quilt
+and stance but heads24–25/standing overshoot; V3 overcorrected heads19 and debris;
+V4 selected diagnostic heads22–23, standing poses0/4/5 exactly148 under one ruler.
+Squats physically lower, whole anatomy retained. No per-pose scaling or RGB edits.
+Final rest exactly aliases original-guided North idle; shared34x36 whole helmet
+moves with each head, protected body outside equipment bounds unchanged.
+
+68build checks0;1051native checks0/172presentations8.03s,183inputs unchanged,
+2931owner non-log files unchanged with scratchAPPDATA. All32distinct state-source
+poses reviewed in two overviews47/93 plus helmet squat008 at148.172lossless native
+samples decoded exactly; six chronological boards retained, not individually
+reviewed. Six browser source completions. Source/material/physical fidelity still
+requires visual judgment: cargo fabric is lighter than resting master. Staged
+candidate is NOT full colour consistency acceptance. Older held/gait/start/turn
+endpoint differs and must be rebased before integration; cases remain embedded
+in source poses3–5, independent ownership unproved. No normal selectors changed.
+
+Lesson: requested percentage edits can overshoot and alter untargeted anatomy;
+measure the actual native head region and opaque standing height again. Preserve
+rejected complete sources, use one common ruler, and compare original rest against
+all interiors: exact terminal equality can conceal material drift in the action.
+Next refine whole-source cargo material against original, rebase held/gait/turns,
+then East/West idle, South turn grade, furniture/swimming, normal gameplay and
+full-library polish. Full goal active/incomplete. Candidate HANDOFF.md/PROMPTS.md.
+
+## Veld North original-guided breathing idle — October 2, 2026
+
+character/veld-idle-north-original-master-v1 adds four whole-source rear idle poses
+from the original master, paired with the shared North helmet. All opaque bodies
+148px high, head region22px; body widths63–65 versus prepared master63. One common
+standing ruler, boot224. Phase0 exactly aliases prepared resting master; pickup
+first/unload last exactly alias it. Whole34x36 helmet at112,68, body outside head
+equipment bounds protected. No post-generation colour edits or per-pose scaling.
+
+Legacy magenta key rejected for fringe. Built-in master edge cleanup is original-
+guided, not pixel-exact original. IdleV1 rejected for wider body, V2 for24–25px head;
+whole-source V3 selected with22px head. Raw sources, exact prompts and rejections
+retained. Never substitute generated-master pixel equality for original fidelity.
+
+36build checks0;1784native checks0/282presentations10.14s,173inputs unchanged,
+2931owner non-log files unchanged under scratchAPPDATA. All60distinct state-source
+poses visually reviewed in two overviews47/93 plus bare/helmet idle024 and helmet
+unload016 at148.282APNG samples decoded exactly; chronological boards retained,
+not individually reviewed. Twelve browser source cycles completed.
+
+Visual finding: fixed equipment and resting endpoint are coherent, but older cargo
+poses retain narrower stance/different suit shading. Exact endpoints do not certify
+the whole transition or colour grade. Original-master body/grade reconciliation
+remains required. New idle staged; no normal selector/controller/world/prop/save
+acceptance. Next whole-source North cargo reconciliation, East/West authored idle,
+South turn grade, furniture/swimming, normal integration and full-library polish.
+Full Veld goal active/incomplete. HANDOFF.md and PROMPTS.md in candidate package.
+
+## Veld North/East/West shared helmet action joins — October 2, 2026
+
+character/veld-cardinal-actions-shared-original-helmet-v1 combines15cargo/pickup/
+unload/start/stop/gait states from reviewed cardinal master families.42unique
+equipped exports use whole shared North000/East005/West005 helmet sources at fixed
+physical sizes and original collar registration. No mirroring, new art, body grade
+edits or new idle source.174protected-body/metadata/lifecycle/cardinal-turn checks0.
+All three held/turn endpoints are exact whole-frame matches in both gears; pickup/
+start, start/gait0, stop/held and unload/pickup standing joins remain exact.
+
+Actual elapsed-player renderer:3722checks0,558presentations15.06s,231inputs unchanged
+through review; scratchAPPDATA/all2931owner non-log files unchanged. Explicit loop
+modulo supplied to clamped elapsed API.30chronological native boards/APNGs retained;
+558lossless decoded samples exact. Visual review covered all156distinct state-source
+slots in six overviews at47/93 and three full lowered frames at148; not every repeated
+chronological sample individually. Thirty one-cycle browser completions, screenshot
+and review evidence saved. No normal selectors/controller/travel/prop/save acceptance.
+
+Lesson: combine each cardinal's latest gait with its exact held/start endpoints,
+normalizing existing relative source references into full res:// paths. Cache whole
+equipment by source identity, and prove held/turn equality through the actual player.
+Review every distinct source pose separately from repeated timing samples; record
+both scopes honestly. Exact equipment joins do not prove original-master body grade.
+
+Staged only. South turn body grade remains older than corrected South action family.
+Full idle/cardinal rest transitions, master grade/proportion matching, furniture/
+swimming, normal controller/case/route/save/Continue and full-library polish remain.
+Full Veld goal active/incomplete. Handoff:character/veld-cardinal-actions-shared-original-helmet-v1/HANDOFF.md.
+
+## Veld South original shared helmet action family — October 2, 2026
+
+character/veld-south-shared-original-helmet-v1 fits complete shared South shell
+from reviewed turntable source011 at unchanged33x39physical scale to original-
+master corrected idle/cargo/gait/start/stop bodies. Existing collar anchors from
+bare/old-equipment difference bounds determine rigid placement. No new artwork,
+colour transform or anatomical slices.18unique equipped exports; six states,
+paired manifests with unchanged bare sources/clocks.70protected-body/metadata/
+exact lifecycle join checks0. Pickup-start-held, start-gait0, stop-held and
+unload/pickup-idle source endpoints remain exact in both gears.
+
+First native interval preserved FAILED:1870checks12failures/282samples because
+test expected loop modulo while frame_at_elapsed clamps to final source. Repaired
+test supplies explicit modulo for looping states, matching the elapsed API contract;
+no production player/art change. V2:1870checks0/282native presentations9.72s,
+67frozen inputs unchanged through review; scratchAPPDATA/all2931owner non-log
+files unchanged. All12chronological boards/fullhelmetunload006 inspected47/93/148;
+282lossless APNG decode checks pass. Twelve browser source cycles complete, proof
+saved. Native evidence is prescribed elapsed-source playback, not travel cadence.
+
+Lesson: retain one complete reviewed equipment source and collar registration
+across action poses; cache exact source aliases to preserve joins. Equipment reuse
+must not silently regrade body pixels. Respect frame_at_elapsed's finite clamp;
+looping callers explicitly supply cycle phase. Tests should exercise that contract
+without changing production clocks merely to satisfy a new harness.
+
+Staged only. South shared-turn bodies retain older grade, so equipment consistency
+does not close body/face matching. Next extend shared whole shell to N/E/W action
+families and reconcile original-master grade/proportion across turns/rest/actions.
+Full idle/furniture/swimming, normal controller/case/route/save/Continue and full
+library polish remain active. Handoff:character/veld-south-shared-original-helmet-v1/HANDOFF.md.
+
+## Veld cardinal equipment and grade joins isolated — October 2, 2026
+
+character/veld-cardinal-shared-helmet-join-audit-v1 compares standing/unload-final,
+held/pickup-final, start0, gait-contact0 and shared-quarter start for all four
+directions/both gears. South uses corrected original-master idle/cargo/start/gait
+family; others use staged master cargo/start/gait packages.40source size checks,
+four paired boards inspected with enlarged fixed head/collar region. All input
+bindings unchanged. Source-only evidence; no art edits or native acceptance.
+
+All eight start0/held pairs exact. Bare turn/held exact North/East/West; South
+differs by1945pixels due older turn grade vs corrected cargo grade. Helmet turn/
+held differs in every cardinal; North1074/East1192/West1391pixels, all within
+fixed head/collar region; South2743 includes body-grade difference. These are
+comparison flags, not a shell-only measurement. Gait contact intentionally differs
+in support pose; never infer failure from raw pixel difference across poses.
+Visual review confirms remaining shared-equipment substitution at action/turn joins
+and South face/body grade mismatch. Next extend whole shared helmet across cardinal
+idle/cargo/start/gait families and reconcile original-master South turn grade.
+Then complete remaining full-set states, normal lifecycle integration and polish.
+Full Veld goal remains active/incomplete. No normal selectors or owner saves changed.
+Handoff: character/veld-cardinal-shared-helmet-join-audit-v1/HANDOFF.md.
+
+## Veld shared original helmet half-turn review — October 2, 2026
+
+character/veld-carry-half-turns-shared-original-helmet-v1 now reuses the shared
+quarter source frames for East-West, West-East, North-South and South-North,
+both gears. No duplicated raster exports or new artwork. Original 12 slots,
+680ms finite clocks, facings, depth and water metadata retained. Exact quarter
+start/end and duplicate midpoint poses; all 48 bare slots unchanged.
+72 assembly checks, zero failures. Native player: 1337 checks, zero failures,
+208 presentations in 10.97s; 168 frozen inputs unchanged after review, all 2931
+owner non-log files unchanged with scratch APPDATA. Eight chronological boards
+and full helmet North-South sample013 inspected at 47/93/148; 208 APNG frames
+decode exactly. Eight browser previews reach pose12/12 complete; screenshot and
+browser-review.json retained. Shared helmet reads coherently across this family.
+
+Lesson: equipment continuity can be made exact by referencing reviewed quarter
+frames and preserving finite metadata; no regeneration is needed for half-turns.
+Exact joins do not certify the remaining master grade, body proportions or world
+cadence. Body palettes retain prior grading. Staged only; cardinal idle/cargo/
+gait/start joins and original-master colour/proportion matching remain open.
+Then finish full idle/furniture/swimming, normal controller/case/route/save/
+Continue integration and full-library polish. Full Veld goal active/incomplete.
+Handoff: character/veld-carry-half-turns-shared-original-helmet-v1/HANDOFF.md.
+
+## Veld West original helmet joins complete staged quarter family — October2,2026
+
+character/veld-helmet-original-turntable-west-v1 extends shared equipment to North-West,
+South-West/reverse. Combined manifests now contain four paired quarters/eight actions.
+Original West master controls left-facing identity, no mirroring East face. Five
+builtin raws/prompts/refSHA/executions retained:V1c90f6796wrongdirection rejected;
+V260ae1ef3left but nearprofile repeats;V30986a27dfront-angle correction selected clean
+12components;V49b30d995rear bridge fixed but2joined alpha rows;V50796322d11components.
+Only isolated V5topslot3 whole head [768199993498] replaces V3slot3. Other11source
+cells stay V3. No cutting facial/anatomical parts or accepting joined bottom cells.
+
+One39front equipment ruler and old collar anchors. Exact whole North/South aliases
+from previous shared East package, shared West5 in NW/SW. Original whole body and
+800ms finite metadata preserved.14build checks0 (12protected-body/2original whole
+body alias checks);22package timing/source/cardinal checks0. New paired UID test/
+isolated runner:1306native checks0/208presentations9.87s/70inputs unchanged;
+scratchAPPDATA/all2931owner non-log files unchanged. All8newWest boards208pairs plus
+fullhelmetNW013 viewed at47/93/148;208APNGdecode exact. Four cardinal whole turn joins
+verified in player. Previous East evidence retained. Browser16finite completions
+across combined eightactions/bothgear, screenshot/tab37. No unrelated native retest.
+
+Lesson: directional reference inference can be overridden by a conflicting atlas;
+remove that reference and state visor/ear/nose direction concretely. Local angle
+edits may destroy alpha cell separation. Count actual opaque components and inspect
+all affected motion; retain clean atlas and reuse only a complete isolated corrected
+whole shell when source scale/layout agree. Successful generation alone is not export
+quality. Do not fix merged outlines by cropping away equipment or painting anatomy.
+
+Staged only. Quarter-turn equipment/cardinal aliases now coherent within family,
+but half-turn packages and idle/cargo/gait/start endpoints still use older helmets.
+Body palettes retain previous grade. Next update half-turn references then all
+cardinal head/rest/action joins and original-master palette/proportions; finish
+idle/furniture/swimming and guarded normal controller/case/route/save/Continue
+integration, then full library polish. Full Veld goal active/incomplete.
+Handoff: character/veld-helmet-original-turntable-west-v1/HANDOFF.md.
+
+## Veld shared original helmet paired quarters pass native review — October2,2026
+
+character/veld-helmet-original-turntable-v1 now packages North-East/East-North and
+East-South/South-East, both gears, using reviewed V3shared equipment source.
+Underlying whole bare body sources unchanged. Equipped twelve whole fits keep
+body pixels outside bounded old/new fitting union exact. One39pxfront shell ruler,
+old collar anchors, original800ms finite clocks/facings/depth/water metadata.
+Shared East whole pose byte-identical across two quarters and verified in player.
+Baseline manifests preserve earlier candidate quarters for comparison. Four paired
+candidate states are staged, not installed. No new authored raster this turn.
+
+18package checks0; prior12protected-body fitting checks0. New paired UID test and
+isolated runner:1300nativechecks0/208presentations9.54s/45inputs unchanged;
+scratchAPPDATA/all2931owner non-log files unchanged. All8chronological boards/
+208native-source pairs plus fullhelmetES013 at47/93/148 inspected;208native APNG
+frames decode exact. Eight browser finite completions, screenshot/tab36 saved.
+package_turns.py reproduces manifests; postpackage45bindings still match run.
+
+This proves two quarter families/shared East join, not whole-library matching.
+New South/North equipment endpoints differ from other staged idle/cargo/gait and
+remaining quarters; do not promote isolated quarters and introduce join flashes.
+Bodies retain earlier grade. Next complete West equipment source and cardinal
+rest/action head joins, verify all turns/cardinals against original masters, then
+remaining idle/furniture/swimming, guarded normal controller/route/case/save/Continue
+integration and cross-library polish. Full Veld goal active/incomplete.
+Handoff: character/veld-helmet-original-turntable-v1/HANDOFF.md.
+
+## Veld shared original helmet turntable source study — October 2, 2026
+
+Original-master audit character/veld-turn-original-master-audit-v2 binds48half-turn
+helmet slots and five original/density shell references; all five detail boards
+viewed. Existing quarters preserve much equipment architecture, but cardinal and
+angular proportions/grade differ. Cardinal fitted recipes darken original face and
+metal. Head-crop metrics include collar/body, not pure shell dimensions. Smooth
+rear shell has no new bun compartment; full directional body colours still open.
+
+New source-only character/veld-helmet-original-turntable-v1: builtinV1 execution
+039c9a37 rejected cramped/touching11heads (only3largealpha components)/repeatedangles.
+V2 execution8805ac4c has12separate heads/two6cell rows, original side/front/rear designs,
+but side-to-front angles lag body. V3 edit5a99f401 corrects bottom columns2-4 into
+clearer frontal progression. Raw/prompts/referenceSHA/executions retained. Edit did
+NOT preserve other source pixels:730614top-half pixels differ, so reinspection
+covers entire source/fitting, never assume requested local scope equals exact edit.
+
+One front39px equipment ruler, whole-shell extraction and old collar anchors fit
+12existing whole body poses (NEv5 and ESv3).12protected-body checks0, both pilot
+boards/12whole poses visually inspected. Shared East source5 used in both quarters;
+no body colour/anatomy transforms. Source-only stage: no manifests/native test or
+normal selector change yet. Native renderer, exact cardinal family joins and full
+angular cadence still pending. Older underlying bodies retain their own grade.
+Next package paired quarter candidates, compare original side/front/rest joins,
+check native finite motions, then other directions/idle/furniture/swimming/runtime
+lifecycle and complete library polish. Full Veld goal active/incomplete.
+Handoff: character/veld-helmet-original-turntable-v1/HANDOFF.md.
+
+## Veld original-master South breathing idle and opaque height correction — October 2, 2026
+
+New staged character/veld-idle-south-original-master-v1 has four whole authored
+breathing poses, builtin execution275622bd-31c8-4394-b7a8-d2d2bdcb5cea with saved
+prompt-idle-v1.txt/raw/reference bindings. Phase0 aliases the original authored
+South standing bitmap with unchanged colour. Three generated breathing bodies
+use one standing ruler, whole-image skull/boot registration, no colour transform.
+Four375ms holds form1500ms idle loop. Original35x39helmet remains fixed11069;
+boots224/headtop77. Pickup first and unload last source alias idlephase0 exactly.
+Other staged South action/gait/start sources and finite timings are preserved.
+
+Correction: previous master-v2 standing endpoint measured opaque145 although its
+metadata said148. Full-alpha bbox included faint edge pixels. Original source
+opaque height616 at alpha>200 supplies the corrected148 ruler; new native original
+width60/head24. Generated bodies148,width61/head24-25 retain small proportion
+polish differences. Preserve frozen prior studies; do not overwrite their evidence.
+Lesson: distinguish alpha fringe bounds from visible-body height, measure after
+resize and whole-image placement, and inspect the native original alongside poses.
+
+Build31checks0. Final native1139checks0/196presentations8.73s/91inputs unchanged;
+scratchAPPDATA/all2931owner non-log files unchanged. Six chronological boards/all196
+native-source pairs plus fullhelmetidle046 at47/93/148 viewed;196lossless native
+decode checks pass. Browser six completions, idle onecycle/cargo finite, screenshot
+saved/tab35. Initial parser failure retained in output/veld-idle-south-original-master-v1;
+final evidence output/veld-idle-south-original-master-v2. Case hidden in standalone
+idle view does not prove independent gameplay case persistence or lifecycle.
+
+Staged only: normal selectors/controller/save/Continue/room cadence unchanged.
+Small head/body width, face/hair/suit details and cardinal/turn palette joins remain
+for cross-library review. Continue original-master cardinal/turn comparison and
+remaining idle/furniture/swimming, guarded integration and full-library polish.
+Full Veld goal active. Handoff: character/veld-idle-south-original-master-v1/HANDOFF.md.
+
+## Veld South colour authority corrected to original authored master — October 2, 2026
+
+New staged character/veld-south-material-master-v2 supersedes the previous shared
+material study for original-master fidelity. A direct148ruler comparison exposed
+that selected crew-runtime-matte idle was already darker than the original authored
+identity: diagnostic skin median156/105/76 versus218/125/84. V1's darker study moved
+actions toward a processed derivative. Retained identity-versus-selected-grade-audit
+in character/veld-south-material-study-v1 documents the correction. Accepted normal
+runtime remains preserved; this is a staged candidate, not a reset of owner data.
+
+Candidate standing endpoint is exact original-south-identity-reference.png at one
+148standing ruler, whole-image placement and unchanged colour. master-reference.json
+binds original723fb333 source, scale/offset/export. Other16South bodies retain source
+geometry/alpha, poses/pivots/timings; shared fixed RGB head curves restore original
+skin warmth without per-frame normalization. Existing cloth.93/offset0,1,2 and
+neutral metal.82 treatment retained with pose-aware case/grip protection. Equipped
+head/shell fitting boxes on16poses remain exact; original35x39South shell refitted
+onto original authored idle. One static idle endpoint is not a complete idle clip.
+
+Build68checks0. Native987checks0/176presentations9.01s/89inputs unchanged; scratch
+APPDATA/all2931owner non-log files unchanged. Five actions/both gears retain520cargo,
+320starts/stops and840gait; exact shared held and start/gait joins and exact original
+authored idle endpoint verified. All10boards/176native-source pairs plus fullbare
+terminal015 inspected at47/93/148;176native previews decodeexact. Browser10finite
+completions and original bare terminal screenshot reviewed; tab34 retained. Walking
+source page shows one cycle; native gait uses supplied-distance actual player.
+
+Lesson: original authored master and accepted processed runtime are different
+authorities. Inspect both before selecting a grade target; matching a dark derivative
+can make numeric consistency improve while moving away from the requested master.
+Retain prior studies/accepted runtime; record the target and its source explicitly.
+Diagnostic skin medians do not establish complete face/hair/detail matching.
+
+South turn matching not completed this turn: the authority audit changed the next
+action. Hair/contrast/grip/clasp and all angular/cardinal joins still need visual
+polish. Normal selectors/controller, actual route/contact/case lifecycle, checkpoint
+and Continue unchanged/unverified. Next compare original cardinal masters/turns
+against corrected candidate, finish full idle and phase/cardinal/furniture/swimming
+coverage, guarded integration and whole-library consistency. Full Veld goal active.
+Handoff: character/veld-south-material-master-v2/HANDOFF.md.
+
+## Veld shared South material study covers cargo, starts/stops and gait — October 2, 2026
+
+character/veld-south-material-study-v1 applies one fixed material transform to17
+existing whole South bodies across held/pickup/unload/start/stop/gait. Original
+bare idle remains exact and unchanged. Existing equipped head/shell fitting boxes
+stay pixel-exact; body alpha, anatomy, pivot/ruler, poses and timings unchanged.
+Source audit found held/gait also brighter/warmer than original idle, so grading
+only cargo would preserve the other boundary mismatch. No new authored artwork.
+
+Shared study: warm head RGB gain.80/.89/.95; neutral cloth.93 plus0/1/2; neutral
+metal.82. Protect carried case/grip by actual source pose, never by head height.
+Fixed original skin-mask median held207.5/120/77 becomes166/106/73, nearer idle
+156/105/76; lower192/116.5/86 becomes153/103/81. Diagnostic masks are approximate,
+not proof of complete material/identity matching. Hair, original-idle contrast and
+detail still need perceptual polish; original equipped face unchanged as authority.
+
+Build68checks0. Final standalone native987checks0/176presentations8.19s/86inputs
+unchanged; scratchAPPDATA/all2931owner non-log files unchanged. Five actions/both
+gears preserve520cargo/320startstop/840gait timings; exact shared held joins and
+start/gait contact, original idle endpoint and geometry verified. All10boards/
+176native-source pairs plus fullbareterminal015/helmetrelease008 inspected at
+47/93/148;176native APNG samples decodeexact. Browser10finite source completions,
+bare recoverypose6 screenshot saved; tab33 retained. Walking source preview shows
+one cycle only, actual gait test uses supplied travel; not natural room cadence.
+
+Earlier failed intervals preserved: inconsistent held-case protection corrected;
+gait initially used finite elapsed API instead of travel loop; one float32 .7s
+boundary discrepancy corrected by sampling1ms inside holds and verifying supplied
+travel phase. Lessons: share recipe and pose-aware hardware protection across all
+joined states; compare the loaded player method appropriate to the state. Do not
+derive anatomy/material authority or visual acceptance from diagnostic medians.
+
+Study remains unselected: original source packages, normal selectors/controller,
+turn interiors, real South route/contact, case ownership/lifetime/departure and
+Continue unchanged/unverified. Next extend the reviewed treatment into South turn
+joins, examine hair/idle contrast/detail across masters, then guarded integration
+and remaining phase/cardinal/full idle/furniture/swimming coverage. Full Veld goal
+active/incomplete; whole-library consistency/polish still required.
+Handoff: character/veld-south-material-study-v1/HANDOFF.md.
+
+## Veld South master pickup/unload: smoother descent and visible case — October 2, 2026
+
+Staged character/veld-cargo-south-master-family-v1 now contains seven whole-body
+pickup/unload poses, exact canonical held entry and exact original bare idle end.
+Selected builtin whole-source edit v4 04456277-79b9-4259-8335-49ae8f2f4e91 lowers
+the second coherent pose to119 native pixels: descent147/119/94 replaces147/137/93.
+Recovery93/111/130/148 remains naturally proportioned. All four raw sheets, exact
+prompts/executions/reference hashes and rejected/study packages retained. Sourcev1
+heads25-27 rejected; v2 corrected22-23; v3 corrected recovery spacing; v4 descent.
+
+One first-standing148 ruler .26287744227353466, whole-body boot-floor registration,
+no per-pose scaling or anatomy strips. Head widths22-23; original35x39South helmet
+unchanged scale/grade, bounded fit preserves body outside head region. Shared West
+material recipe and protected case/grip areas; alpha and protected pixels exact.
+Seven holds70/90/100/60/65/65/70 total520ms; pickup exactly reverses bodies/holds.
+Existing840ms carry and exact held aliases remain. Original idle is selected South
+breathing frame0 translated36/52 whole-body into256canvas, no endpoint retone.
+
+Independent33x24floor case at112199, bottom223 versus bootfloor224, draws in front
+after release. North's behind-body layer rule obscured the case in South nativev1
+despite passing tests; depth study corrected placement/order before nativev2.
+Final nativev3 after lowering repair:463checks0/72presentations6.48s/63inputs
+unchanged; scratchAPPDATA/all2931owner non-log files unchanged. Build95checks0.
+All72native/source pairs in4boards plus fullhelmetrelease008 reviewed at47/93/148;
+72native APNG frames decodeexact. Browser all4gear/action finite completions and
+pausedhelmetrelease pose4 reviewed/saved; tab32 retained. Earlier intervals retained.
+
+Visual acceptance is scoped: source motion improved and foreground case visible.
+Original idle remains visibly darker than authored intermediates; pooled material
+matching, case/clasp/grip shape, actual room contact/depth and continuous cadence
+remain polish. Static idle alias is not a complete idle animation. No normal runtime
+selection/controller, real South route, prop ownership/lifetime/departure, checkpoint
+or menu Continue adoption. Full master-matched Veld goal remains active/incomplete.
+
+Lessons: compare pose-to-pose height spacing before timed playback, repair a coherent
+whole source pose rather than forcing pose heights. Prop depth rules depend on view;
+a passing texture/player check can hide a floor case. Review native foreground and
+master endpoint material joins explicitly. Next: South idle material join and actual
+room case handoff, remaining phase/cardinal transitions, guarded normal integration,
+Continue/ownership, full idle/furniture/swimming, then whole-library consistency.
+Handoff: character/veld-cargo-south-master-family-v1/HANDOFF.md.
+
+## Veld South first carrying step and stop match the master endpoints — October 2, 2026
+
+New staged character/veld-carry-south-start-master-v1 adds two whole-body small
+first-step intermediates between exact South held/candidate-v7/000 and new South
+carry-master/000 endpoints. Original identity, small adult head, front orientation,
+case and correct hip sides guide artwork; no mirroring or procedural anatomy.
+Builtin sourcev1 be2df7a1-0577-4c93-80b9-42610a0deb5e was head26 vs canonical23;
+whole-source editv2 3a0bb4fa-cee3-44dc-a691-498fc7d04e9b is the selected source.
+Further editv3 e9170676-02b2-47c4-ad1f-2368b3cb0fdf rejected undersized actual
+head19. Raw3/prompts/executions/refhashes and rejected/study packages preserved.
+
+One first-standing148ruler .23492063492063492/global bootfloor; whole skull-axis128
+registration uses16pxsource skull band. Generated nativeheights147/headtop77 and
+warmtop16headwidth23 acrossall4 match canonical held147/head23. Legacy20pxalpha
+width24-25 picks up collar and is not actual head width. Original35x39South shell
+unchanged scale/grade, all11169, bounded head fit and exact body outside fitting
+box. Shared West material recipe, protected case/grip95,110,162,166/alpha unchanged.
+Four80ms320finite start and exact reversed phase0-stop source; original six140ms
+840South carry frames/timing/stride unchanged. Exact endpoint aliases dominate
+retained generated endpoint diagnostics. All artwork paths full res:// strings.
+
+Build60checks0. Standalone actual-player native317checks0/48presentations6.0s/
+41inputs unchanged; scratchAPPDATA/all2931owner non-log files unchanged. All48
+native/source pairs in4boards and fullhelmetstop0 reviewed at47/93/148sizes;
+48native preview frames decodeexact. Browser all4gear/action finite completions
+verified, pausedhelmetstartpose3 screenshot saved. Review tab31 retained. Source
+face/body proportions and support leg remain coherent; case/sleeve/material joins
+and wholecontinuous cadence remain polish. No real South route/phase-general
+braking, normal selector/controller/save/prop ownership or full-set acceptance.
+
+Lesson: a fixed20pxsilhouette band can include the collar after a smaller correctly
+fitted head. Here v2 measured25 by that band but actual warm/head top16 was23, same
+as held/gait. Close-up audit revealed this; another unnecessary head edit produced
+19 and was rejected. Inspect anatomy/region before chasing a numeric discrepancy;
+record isolated measurement plus original metric, do not blindly shrink sources.
+Next South pickup/unload/original-idle joins, remaining gait phases/cardinals and
+guarded normal controller/selectors/Continue/case lifecycle. North fullidle,
+furniture/swimming and full-library consistency/polish remain. Full goal active.
+Handoff: character/veld-carry-south-start-master-v1/HANDOFF.md.
+
+## Veld South carrying gait rebuilt against the original master — October 2, 2026
+
+Staged character/veld-carry-south-master-proportions-v1 pairs six whole front-facing
+carry poses with original35x39South helmet. Original South identity reference and
+canonical South held body (cargo turn candidate-v7/000) are authorities. Correct
+hip sides, graphite case and continuous hands/arms retained; no body strips/mirror.
+Builtin rawv1 1139a653-272c-456f-85e5-bf83e66376b5 had coherent alternating support
+but bare heads26-27pixels vs canonicalheld23. Rejected packaged study retained.
+Whole-source editv2 9faddf27-3db1-4bf6-bc1a-7fd06f24755a corrects head/collar
+proportions; final headwidth23-24. Both raw/prompts/execution/reference hashes saved.
+
+One firstcontact148ruler .23717948717948717/global bootfloor, whole skull-axis128
+registration. Six generated heights148 vs canonicalheld147, no per-pose scaling.
+Original South shell unchanged size/grade, all11168; fixed front gasket column
+avoids half-pixel rounding jitter. Bounded fitting preserves body outside head
+region. Shared West material recipe, protected case/grip box95,110,162,166 and
+unchanged alpha. Original six140ms840cycle, stride .0827027027027027 and dry/depth0
+metadata retained. Whole explicit res:// frame paths. No normal selection changes.
+
+Build56checks0; native633checks0/104presentations6.84s/35inputs unchanged.
+ScratchAPPDATA/all2931owner non-log files unchanged. Raw and paired master board,
+all four native/source boards104pairs and fullhelmet0native reviewed at47/93/148
+sizes;104lossless native frames decodeexact. Balanced right-lift/right-landing then
+left-lift/left-landing order remains coherent. Slight body/case/head offsets, matte
+material/grip/contact and continuous in-room cadence remain polish. Review page
+ready; app open queued, no browser playback claim. No starts/stops, real South
+route/controller/save/normal-adoption or whole-set visual acceptance yet.
+
+Lesson: match head/body ratio numerically against canonical held art before native
+playback; a good-looking whole-source row can still enlarge the head17percent.
+Repair the authored source rather than shrinking a pasted head region. Use one
+whole-row ruler and original unchanged helmet; fixed front-facing gasket placement
+avoids rounding chatter while body poses retain natural proportions. Pixel checks
+alone never establish original identity or full continuous motion acceptance.
+Next South starts/stops and pickup/unload/master-idle joins, remaining phase/cardinal
+coverage, then guarded normal controller/selectors/Continue and case lifetime.
+North fullidle, furniture/swimming and full-library consistency/polish remain.
+Full goal active/incomplete. Handoff: character/veld-carry-south-master-proportions-v1/HANDOFF.md.
+
+## Veld North master first carrying step and stop — October 2, 2026
+
+Staged character/veld-carry-north-start-master-v1 adds two whole-body first-step
+intermediates between exact North master-held and accepted North gait0 endpoints,
+both bare and helmet. Builtin cd6af029-8957-435d-9560-e7bcf66800a1 raw four-pose
+source, prompt and reference hashes retained. No equipment mirroring or body strips.
+One first-standing148 ruler .2483221476510067/global boot floor and skull-axis128;
+generated poses retain natural shape. Original33x35North shell unchanged in grade
+and size at11269; bounded fitting preserves body outside head region. Shared West
+material recipe with protected hip hardware. Four80ms320finite start and exact
+reversed stop; existing six140ms840North carry sources/timing remain unchanged.
+
+Build60checks0. Standalone native317checks0/48presentations6.01s/41inputs unchanged;
+scratchAPPDATA/all2931owner non-log files unchanged. Four native/source boards48
+pairs plus paired registered exports and full helmet-stop0 native reviewed; all48
+native preview frames decodeexact. Supporting leg remains planted while other heel
+lifts; shell stable. Subtle backpack/suit shade and full continuous cadence remain
+polish. Finite review page ready; no browser completion or real North route claim.
+No normal selector/controller adoption, phase-general stop or whole-set acceptance.
+
+Lesson: nonuniform whole-pose source spacing needs gutters in connected-component
+gaps. Nominal-width gutters cut10opaque edge pixels in the initial build; corrected
+before native testing, final all0. Exact canonical standing/gait aliases govern
+endpoints; generated endpoint diagnostics do not replace accepted art. Standalone
+finite playback cannot establish world travel, traffic or checkpoint continuity.
+Next South master gait/actions/start-stop, remaining movement phases and guarded
+normal integration/Continue/case lifecycle. North idle, furniture/swimming and
+cross-library master/material/cadence polish remain. Full goal active/incomplete.
+Handoff: character/veld-carry-north-start-master-v1/HANDOFF.md.
+
+## Veld whole North carrying gait follows the original master — October 2, 2026
+
+New staged character/veld-carry-north-master-proportions-v1 pairs six whole
+rear-facing carry poses with unchanged original33x35North helmet. Original North
+identity reference and exact held body are authorities; cargo naturally hidden
+in front, teal device screenleft/triplecanisters screenright, no mirroring.
+Builtin rawv1 4f41aba5 rejected imbalanced support sequence despite633passing
+playback checks; v2 4e1ef872 also repeated support late. Whole-source edit v3
+ d527dcb3 corrects fifth/sixth poses: two3pose support/lift/passing/landing halves.
+Raw3candidates/prompts/reference hashes retained; v1 packaged rejection preserved.
+
+One firstcontact148ruler .23604465709728867 and global source bootfloor; whole
+skull-axis128 translations, not warm collar/bolt pixels, remove2pxfitting drift.
+All six original33x35shell positions11268; fixed scale/grade, bounded head fit,
+body outside fitting bounds exact. Shared West material recipe, protected hip
+hardware, no procedural body bands/per-pose scale. Registered nativeH149/head24-25
+vs canonical heldH147/head23; this small residual and material/contact remain polish.
+Original six140ms840cycle/stride .0827027027027027/dry/depth0 metadata retained.
+
+Build56checks0. Final nativev3 633checks0/104presentations6.91s/30inputs unchanged;
+all2931owner non-log files unchanged with scratchAPPDATA. Four chronological
+source/native boards104pairs and fullhelmet0native seen at47/93/148display sizes;
+104lossless native APNG frames decodeexact. Raw and master comparisons reviewed.
+No normal adoption, authored firststep/stop, real North route or wholecontinuous
+cadence acceptance. Next North master-held-to-gait start/stop, South equivalent,
+then guarded normal cargo/Continue/traffic/fire/flood/case lifecycle; North idle,
+furniture/swimming/full-library consistency/polish remain. Full goal active.
+Lesson: a six-slot technically valid row may still repeat the wrong support leg.
+Specify two explicit halfcycles, inspect support/landings and loop order, repair
+whole source through imagegen; use skull silhouette for registration instead of
+warm collar fasteners. Passing source selection tests does not establish gait.
+Handoff: character/veld-carry-north-master-proportions-v1/HANDOFF.md.
+
+## Veld staged cargo checkpoint continuity — October 2, 2026
+
+New character/veld-carry-west-start-master-v1/checkpoint-v1 extends the staged
+simulation-clock controller. Actor snapshots retain held/start/phase2stop/turn
+elapsed clocks, finite duration, gear, goal/cell, route endpoint and arrival flag.
+Loaded artwork admission binds the full following master family: heldEast/West,
+EWturn, Weststart/stop/carry, WNturn, Northunload/idle, including pixels, dimensions,
+pivot/148height/depth/water metadata, timing and carry stride. No raster changes.
+Structural/source admission precedes mutation; normal base restore rebuilds current
+geometry, clearing private motion when its route/floor no longer survives. Legacy
+base checkpoint clears private motion. Normal RunSave and selection remain unchanged.
+
+Actual route captures ten binary checkpoints, five contexts per gear. Capturev2
+5775checks0/102.88s/238inputs unchanged; earlier active-clip-only binding
+v1 passed but was strengthened because following clips could otherwise change.
+Fresh second engine process restores10actors and compares exact first saved pixels,
+foot/clocks plus600subsequent60Hz ticks against uninterrupted captured observations.
+Restorev2 2711checks0/46.4s/249inputs unchanged.
+Malformed clock/endpoint/gear/binding/duration/missing-key and changed loaded frame,
+timing/missing clip/following action reject; rebuilt invalid floor clears motion,
+valid reload succeeds, legacy fields do not retain stale private pose. Both runs
+scratchAPPDATA/all2931owner non-log files unchanged. Two5row original/restored/source
+boards and full restored helmet stop native reviewed. Whole existing master identity,
+registration, shell and grade retained; not new source or continuous cadence proof.
+
+No normal freshContinue/menu/RunSave acceptance, floor-case ownership/lifetime,
+real traffic/fire/flood coverage or normal adoption. Next integrate the validated
+contract with guarded production selectors/RunSave and real interruption fixtures;
+finish other gait phases/cardinalstarts, North fullidle/South masters/furniture/
+swimming and whole-library master consistency/polish. Full goal active/incomplete.
+Lesson: bind upcoming transitions as well as the displayed clip; checkpoint style
+consistency includes timing, registration and stride, not only current image bytes.
+Handoff: character/veld-carry-west-start-master-v1/checkpoint-v1/HANDOFF.md.
+
+## Veld cargo transitions use simulation clocks without skipping normal updates — October 2, 2026
+
+Staged character/veld-carry-west-start-master-v1/motion-clock-v1 extends VeldNpc
+ directly, replacing the older authoring arrival early-return. East-West and
+West-North planted turns, West firststep and phase2 stopping use simulation delta.
+Grid action_elapsed selects the exact whole master clip; no frame() side-effect
+sampling, new raster, proportion/helmet/grade or normal selection changes.
+A consumed real endpoint remains through final stop/arrival hold so inherited
+update continues needs, service and safety priority. Start/stop clocks freeze
+on blocked attempted travel; full traffic behavior remains to be proven.
+
+Actual main/default workshop fixture5763checks0/104.22s,237targeted inputs unchanged;
+all2931owner non-log files unchanged under scratchAPPDATA. Both gears complete
+master route, source joins and independent-case departure. Display clock6x,
+turn duration follows60Hz simulation; zero delta preserves turn/foot; hunger
+advances throughout arrival. Reconstructed actual endpoint service-loss cancels
+stale turn through normal controller; gear/medium/death invalidate private pose.
+Two26pair native/source boards reviewed,52pairs. These guards are scoped tests,
+not full fire/flood/traffic/naturalchooser/checkpoint/freshContinue acceptance.
+
+No normal adoption; new private motion has no checkpoint serialization yet.
+Next: guarded checkpoint restoration and real interruption/traffic fixtures,
+generic phases/cardinalstarts, North fullidle/case lifetime/South masters,
+furniture/swimming and full cross-library consistency/polish. Full goal active.
+Lesson: retain normal update priorities during finite visual holds; bind clocks
+ to simulation progress and use action_elapsed for authored turns. A passing
+paused/needs/service probe does not certify every priority or lifecycle path.
+Handoff: character/veld-carry-west-start-master-v1/motion-clock-v1/HANDOFF.md.
+
+## Veld West phase-aware stop on actual workshop route — October 2, 2026
+
+Staged character/veld-carry-west-start-master-v1/stop-route-v1 reuses whole
+accepted carry2, start2, start1 and canonical held sources in both gears.
+No raster/anatomy/helmet/grade changes. Four80ms finite source poses; simulation
+remaps first240ms to remaining real waypoint distance and holds final80ms.
+Read existing player.phase through frame_at_elapsed: sampling frame() here
+mutated gait with a different coordinate input and broke admission. Failed
+v1 harness parse and v2 no-stop intervals retained with their exact sources.
+Arrival retains consumed real waypoint through planted hold; no invented route.
+
+Build20checks0. Actual main/default workshop normal vs staged 103.16s,
+236 targeted inputs unchanged; all 2931 owner non-log files unchanged
+with scratch APPDATA. v3 native fixture passed; both gears four stop poses,
+nonincreasing travel speed, real endpoint, final hold and exact stop/turn body
+join checked. Two6pair native/source boards and paired source board reviewed.
+No normal controller/selection changes. Phase2 default-route scope only; full
+continuous cadence, other phases, traffic/interruption/needs/service/medium/gear/
+death/Continue still pending. Parent arrival hold skips normal update and uses
+visual clock; this authoring preview is not production adoption.
+
+Next: generic phase-aware stops and cardinal starts, guarded integrated clocks,
+North idle/case lifecycle/South matching/furniture/swimming and full-library
+master consistency/polish. Full goal active/incomplete. Handoff in stop-route-v1.
+
+## Veld West first carrying step on the actual workshop route — October 2, 2026
+
+Actual default workshop carries WEST immediately after East pickup/half-turn;
+East start source is valid coverage but does not fix this route. New staged
+veld-carry-west-start-master-v1 has whole authored West intermediates, correct
+near hip teal device, exact master turn-held and West carry0 endpoints. Builtin
+44cfbd36-4ed4-4024-8209-e5732727ebdf raw/prompt/refhashes retained, no mirror.
+One148standing ruler .22255639097744362, whole body head-axis134/boot floor224
+translation, natural leg swing and unchanged original44x46West shell. Shared
+material recipe and protected case/grip; bounded head fitting/body outside exact.
+Four80ms poses320msfinite start and reversed stop; original6pose840carry unchanged.
+52buildchecks0; standalone317checks0/48native samples5.87s/41inputs stable, all48
+pairs seen/decoded exact. Initial harness stale East key failed, process stopped
+after confirmed script error, exact sources/failed interval retained; v2 passes.
+Fourfinite browser completions and paused helmet firststep seen/saved.
+
+Authoring-only subclass adds simulation-delta-clocked West firststep after planted
+turn, holds initial80ms physically stationary then ramps speed over240ms. Exact
+terminal source joins distance gait0 with fresh phase. Actual main-scene/default
+workshop normal vs staged5289checks0/100.9s/233inputs stable; both gears4poses seen,
+20firststep records and5.3718maximum world-unit travel. Both native/source boards
+18pairs reviewed, not wholecontinuous cadence. ScratchAPPDATA/all2931owner files
+unchanged. No normal selections/controller/room edits; stop source not coordinated.
+
+Remaining: phase-aware actual stopping, East/cardinal starts and new North/South
+coverage, material/grip/foot-contact/full cadence polish, full North idle, case
+ownership/checkpoint and guarded needs/safety/service/medium/gear/death/Continue.
+Authoring arrival hold still skips ordinary update; start clock alone does not
+certify traffic/interruption handling. Furniture/swimming/full-library consistency
+remain; full goal active. Lesson: inspect the actual route before choosing direction;
+do not invent an East waypoint to exercise an East-only repair. New start is clocked
+by simulation delta; planted older turns still use authoring visual clock.
+Handoff: character/veld-carry-west-start-master-v1/HANDOFF.md.
+
+## Veld East whole-body carry start/stop sources — October 2, 2026
+
+Staged veld-carry-east-start-master-v1 adds finite320ms fourpose carry-start-east
+and exact reversed carry-stop-east, both gears. First held and final carry0 are
+exact whole accepted East master family aliases; existing sixpose840ms carry row
+unchanged. Builtin raw v1 exec86df3a3e rejected larger heads/case; raw v2 exec
+ebe5994d-90f0-4711-8eb0-674aa4d3a7e1 corrects entire body source, prompt/refhashes
+retained. One first-standing148ruler .2375601926163724; no body strips/per-pose
+height forcing. Intermediate head width28 vs canonical26/27 (v1 30/31).
+Wholebody translations align canonical head axis125 and opaque boot floor224;
+centering moving planted-boot span had shifted torso and was corrected. Natural
+leg swing retained. Same West material recipe/protected case-glove box; original
+East34x38 shell at unchanged scale/grade, body outside head region exact.
+52buildchecks0. Actual standalone player317checks0/48native samples5.81s;41frozen
+inputs stable, scratchAPPDATA/2931owner files unchanged. All48pairs in4boards and
+raw/8exports seen;48native APNG decode checks exact. Fourfinite browser completions
+and paused helmet firststep seen/saved. Nativeviewer400ms repeats are resets, not
+320ms authored loop. First passing test interval retained before correcting the
+comparison label and explicit whole resource paths; v2 is current evidence.
+
+No normal sources/controllers changed. New clips not automatically used by
+production carry transition selector. Next real-route start/stop clock, travel
+acceleration/deceleration and phase-aware gait0 joins; West/other directions also
+need starts/stops. Head/material/grip/foot contact and continuous cadence remain
+polish. Full North idle, case ownership/checkpoint, coordinated safety/Continue,
+South/cardinal/furniture/swimming and full-library consistency remain. Goal active.
+Lesson: shrinking equipment by whole source edit is preferable to body masking;
+wholeframe pivot registration must not shift torso with alternating planted feet.
+Exact endpoints and standalone clock checks do not prove locomotion in a room.
+Handoff: character/veld-carry-east-start-master-v1/HANDOFF.md.
+
+## Veld North whole-body rise-to-master transition — October 2, 2026
+
+Staged cargo-north-master-family-v1/rise-join-v3 uses three whole authored recovery
+poses between reused descent and exact original master standing/static idle. Raw
+builtin imagegen9b5c77a1-34ea-4d15-8077-5affaeb11c54, prompt/refhashes retained;
+original master authoritative, older action motion context only. Generated fourth
+standing diagnostic retained, not used as endpoint. One final standing148ruler
+.23604465709728867; new native body heights102/128/143, no body strips or per-pose
+scale. Shared West recipe, fixed original33x35 helmet, protected body/alpha.
+Seven poses70/90/100/60/65/65/70ms=520finite; pickup exact reversed frames AND holds.
+Separate same33x24floor case appears behind body at release source3/.26s onward;
+pickup source preview inverse; actual pickup ownership still unimplemented.
+76buildchecks0; standalone457checks0/72samples6.24s/47inputs stable. All72source/
+native pairs in4boards reviewed and72decode checks exact. Browser4finite completions,
+helmet intermediate rise seen/saved, quarter-speed control verified.
+Actual workshop5203checks0/102.35s/224inputs stable; scratchAPPDATA/2931owner files
+unchanged. Both native boards22views seen:7poses+idle+3departures per gear. Exact
+master terminal idle retained, prop fixed through8/24/48world-unit departure.
+No normal source/controller/room change; authoring-only coordinated subclass.
+
+Remaining: release dip/contact and suit-detail/material polish, first-step/stop,
+full North idle breathing, independent case pickup/ownership/lifetime/checkpoint,
+guarded needs/safety/medium/gear/death/Continue adoption. South/master cardinal,
+furniture/swimming and full-library consistency remain; full goal active/incomplete.
+Lesson: a correct master endpoint still needs whole authored recovery poses; retain
+one standing ruler and reverse holds with pickup. Sampled pose/departure checks
+do not prove uninterrupted motion or production prop lifecycle.
+Handoff: character/veld-cargo-north-master-family-v1/rise-join-v3/HANDOFF.md.
+
+## Veld North original-master idle and independent floor-case study — October 2, 2026
+
+Staged cargo-north-master-family-v1/idle-join-v2 replaces final North standing
+with whole original rear master at one148 ruler and shared material recipe;
+unchanged original33x35 shell. First5 action frames exact parent reuse, pickup
+reverse, finite520ms. Body-only005 is exact static idle alias; not full breathing.
+Builtin authored graphite case33x24, fixed112193, independently behind boots.
+65build checks0. Standalone457checks0/72native samples6.29s;45inputs stable,
+all72pairs in4boards reviewed. Browser4finite completions and helmet endpoint seen.
+Actual workshop current renderer fixture: 5199checks0 failures,
+98.93s;222inputs unchanged, scratchAPPDATA/
+2931owner files unchanged. Case fixed through actual8/24/48world-unit departure
+both gears, prop/actual crew slots retained. Fourterminal/contact plus3departure
+views per gear reviewed from retained v3 interval; same artwork/renderer as v4.
+Failed v2 missing current bind_room interface and v3 six actor-kind oracle errors
+retained with exact fixture/wrapper/runner sources. Fixture now extends current
+James workshop renderer, own Veld prop fields, no normal renderer/controller edits.
+
+Remaining: rise-to-master stance/material contact, full idle motion, first-step/
+stop, independent case pickup/ownership/lifetime/checkpoint and guarded controller
+needs/safety/medium/gear/death/Continue. South/master cardinal/furniture/swimming
+and cross-library polish remain. Static endpoint/fixture prop does not complete
+the full animation goal, which stays active. Lesson: inspect current room renderer
+interface and actual crew slot kind; a fixed source prop cannot prove lifecycle.
+Handoff: character/veld-cargo-north-master-family-v1/idle-join-v2/HANDOFF.md.
+
+## Veld North master pickup/unload source and workshop review — October 2, 2026
+
+New staged cargo-north-master-family-v1: six whole authored rear unloading poses
+from original North identity and exact canonical held density reference. Built-in
+imagegen c839a886-c68a-47aa-ad7d-2e494d651c50 raw2149x732/prompt/reference hashes
+retained. Single standing148ruler .25517241379310346, boots floor662all6, head
+proxies23/23/24/24/23/23 and0gutter edge pixels. Source/body/leg anatomy untouched
+after extraction; no strips or per-pose scale. Fourteen old/new whole source/paired
+contexts reviewed. New12exports alias exact canonical North held0, whole authored
+interiors/final5; same West shared recipe/protected low prop region/alpha. Original
+North shell33x35 at fixed scale/grade, no bun bulge. Pickup exact reverse; original
+520msfinite metadata/whole res paths/H148/p128224.84build+87packagechecks0fail.
+
+Standalone actual player453checks0/72native samples6.27s;44frozen inputs unchanged,
+scratchAPPDATA/all2931owner files unchanged. Fourboards/72source-native pairs seen;
+72decoded native viewer samples exact. Paused browser helmet contact reviewed,
+4finite520ms completions recorded. Preview600ms repeats are separate from game
+finite clocks. Actual default workshop/authoring coordinated subclass compared
+normal vs staged North/East/West/masterturns:5055checks0,2102ticks316captures101.27s,
+203targeted inputs stable/profile unchanged. Changed arrival/North contexts in
+4boards40pairs plus full helmet squat scene seen. Both planted turn intervals
+still0travel; North unload0 now exact whole turn endpoint.
+
+Remaining: prop retained in whole source, no independent floor lock/ownership;
+new terminal stand still mismatches older normal idle body/grade. First-step/stop,
+continuous moving/contact/material polish, interruption/needs/safety/medium/gear/
+death/fresh Continue and guarded runtime adoption remain. South/master cardinal
+and furniture/full-library polish still in full goal, active/incomplete. No normal
+selections/controller/room changes. Lesson: correct action interiors and master
+turn aliases do not prove terminal idle identity or floor-prop lifecycle. Preserve
+whole authored foreground/behind depth until independent prop evidence exists.
+Handoff: character/veld-cargo-north-master-family-v1/HANDOFF.md.
+
+## Veld coordinated workshop cargo review — October 2, 2026
+
+Fixture-only Veld subclass holds travel through master East-West680ms and
+West-North800ms turns. Exact canonical held East precedes first turn; real route
+and original waypoint/speed/room contact retained. Staged East action/carry,
+West master carry and original-master turn families override preview sources;
+North unload/idle remain older selected sources. No normal controller/admission.
+
+Actual main-scene/default powered workshop four comparisons both gears:5053checks,
+0failures,2102ticks/316source-native captures/102.67s.189targeted frozen inputs
+include main/shared CrewLife/actor/grid/player/manifests/frames; allunchanged.
+Scratch APPDATA/all2931owner non-log files unchanged. Candidate displayed turns
+41/48ticks travel0 vs baseline half-turn41ticks/30.659world-unit travel. Source-row
+membership exact. Sixboards/76first-unique candidate source/native pairs plus2full
+native helmet scenes inspected. Two89frame native snapshot comparison APNGs,
+9983ms previewloops,178decoded RGBframes exact; these hold recorded pose clocks,
+not uninterrupted native cadence. First failing interval2assertions retained:
+arrival's last translation was incorrectly counted before the turn was displayed.
+Corrected assertion checks consecutive actual displayed turn records; older
+playback motion dictionary can remain stale during frame_at_elapsed actions.
+
+Visual limits remain: North unload interiors/idle widen body/change grade and
+detail; turn-to-open-gait first-step and arrival stop need authored whole motion.
+Prototype arrival hold skips normal update: no interruption/needs/safety/Continue
+or cargo ownership acceptance. Next whole master North action repair and genuine
+first-step/stop, then guarded coordinated-controller lifecycle and remaining
+South/cardinal/furniture/full-library consistency. Full goal active/incomplete.
+Lesson: source identity alone cannot fix travel/turn coordination. Attribute
+travel to displayed source intervals, not a controller flag first set at arrival
+or stale playback metadata during independently clocked actions.
+Handoff: character/veld-cargo-east-master-family-v1/WORKSHOP_JOIN_HANDOFF.md.
+
+## Veld actual workshop cargo joins — October 2, 2026
+
+Production Veld actor/default powered workshop prescribed service entry, actual
+route and grid source compared normal vs staged East manifests, both gears.
+2453 checks/0 failures;1924 simulation records/248 native-source captures,87.79s.
+60 targeted inputs unchanged; scratch APPDATA/all2931 owner non-log files unchanged.
+Four boundary boards/28pairs reviewed, not all248/full continuous cadence. Failed
+initial void-return harness interval retained with exact fixture hash and owner
+profile unchanged; corrected interval separate.
+
+Actual sequence pickup-east(.52s), carry-east then carry-turn-east-west/carry-west,
+unload-north(2s stage), idle-north. CrewLife already maps/clocks pickup; inherited
+idle state alone does not describe displayed pose. East candidate improves held
+identity but enters open stride; West/North remain older sources. Displayed planted
+half-turn lasts41 ticks while foot travels30.659world units; arrival snaps West to
+North. Technical pass certifies recording/progression, not visual acceptance.
+No normal source/controller/room changes, natural chooser, floor-case ownership,
+interruptions or Continue proof. Next fixture-only coherent movement and master
+family across actual route: first-step/stop/arrival turn, then North/South master
+actions, wider contexts and full-library polish. Full goal active/incomplete.
+Lesson: inspect CrewLife pose/elapsed before declaring inherited state a bug.
+Source overrides alone cannot coordinate planted turn pixels with moving feet.
+Handoff: character/veld-cargo-east-master-family-v1/WORKSHOP_JOIN_HANDOFF.md.
+
+## Veld East matched pickup/unload master family — October 2, 2026
+
+Actual selected source join audit16whole/16detail views: bare action heads32 and
+crouch36 vs stagedheld26/carry26-27, obsolete atom marking/suit/case drift. Current
+loader paths checked. Six authored East unloading source poses2144x733 now use
+original identity and corrected held master, square-ring patch/graphite suit/plain
+case. Raw/prompt/reference hashes/execution retained. One first-standing148 ruler
+(.2474916388), physical boot registration; no body strips/per-pose height fitting.
+All12old/new source whole views+6details inspected; head proxies28/28/30/30/29/28.
+Isolated release-cell case extracted33x25 without boots, fixed149,200 in4/5.
+
+New unselected cargo-east-master-family-v1 aliases canonical whole held0, selected
+idle whole body under floor prop5. Four whole authored interiors get unchanged
+West master grade recipe; case/grip contexts/alpha protected. Original East shell
+34x38 at fixed scale, rigid6/12/16degree tilt with transformed gasket anchoring.
+Carry paired sources exact reused; pickup exact unload reverse. Original520ms
+finite holds/metadata, H148/p128224 and explicit whole res paths.80build+91package
+checks0fail; all12paired whole/6helmet details inspected. Bare grade/head/case
+variation and broader selected terminal idle remain final polish concerns.
+
+Actual standaloneCrewSpritePlayer453checks0fail/72native samples/6.06s, two actions/
+two gears at30Hz prescribed time,47/93/148rulers.56frozen targeted inputs stable,
+scratchAPPDATA/all2931owner non-log files unchanged.4chronological boards/72source-
+native pairs and helmet unload010 full scene inspected;72decoded native snapshots
+exact. Recorded600ms repeating viewer is separate from finite520msgame action.
+Actual browser paused helmet contact and4finite source completions at520ms reviewed
+(bare normal,helmetquarter speed); six HTTPfiles200/exact. Normal runtime selections
+unchanged. No actual cargo ownership/room/controller/interruption/Continue or full
+continuous native cadence acceptance. All5maintained refs carry this milestone.
+
+Lesson: matching helmet silhouette can hide body/marking/head drift. Audit whole
+idle/held/action/gait sources together at their physical pivot. A clean authored
+prop can be separated after release, but hand contact cannot be erased with a
+wide case crop. Rigid helmet rotation must transform its gasket anchor; constant
+head size and source-clock tests do not prove floor contact or natural handoffs.
+Next full moving/contact/material review and actual East cargo/start/stop/turn/
+ownership/interruption/Continue joins. South/North actions and other contexts plus
+full cross-library polish remain; full Veld goal active/incomplete.
+
+## Veld East paired master carry and native player review — October 2, 2026
+
+paired-package-v1 stages12exact body/shared-helmet frames. Original East component
+crop82,17,116,55 stays34x38, unchanged pixels/grade, translated by warm-head axis
+and gasket anchor. Body outside bounded head fit exact, below110exact, all6bare
+frames exact to reviewedcase-v2. Original256canvas/pivot128,224/H148/6x140msloop/
+840ms/stride.0872972973 retained; explicit whole res paths.62build+54independent
+package checks0fail. All12whole/6helmet details inspected; connected collar in
+inspected presentations, shell architecture fixed. No production binding change.
+
+First native interval633checks/4failures retained in native-v1: ideal wall-clock
+oracle expects next slot at.7/1.4s, actual distance phase.6999999699/1.3999999398
+precedes boundary from Vector2rounding. Corrected test identifies exactly one frozen
+displayed source, checks phase within1microsecond of prescribed movement, permits
+only preceding slot at exact ideal boundary with that tolerance. No runtime fix.
+Fresh native-v2:841checks0fail/104samples/7.91s, actualCrewSpritePlayer both gears,
+30Hz prescribed distance/time over2cycles,47/93/148rulers.30targeted inputs stable;
+all2931owner non-log files unchanged, scratchAPPDATA. Four chronological boards/
+104source-native pairs and2full engine captures inspected;104APNGdecoded frames
+exact. Browser paired source sheet/native presentation snapshots inspected;
+4HTTPfiles200/exact. This is sampled player/source proof, not full continuous
+cadence, actual cargo controller/world/ownership/interruption/Continue acceptance.
+
+Lesson: derive review records from the actual frozen displayed texture. At true
+hold boundaries, physical Vector2distance rounding can land just before ideal
+wall time; preserve phase evidence and bound any adjacent-slot allowance tightly.
+Never alter runtime pacing to hide a fixture oracle error. Shared fixed-scale
+equipment and protected bodies still need actual transition/contact review.
+Next East held/carry/pickup/unload joins and full-cycle weight/contact/material
+review, then matched action sources/real world lifecycle. South/North matching,
+remaining sit/read/context, guarded adoption and full-set polish remain open.
+Review: character/veld-carry-east-master-proportions-v1/paired-package-v1/.
+
+## Veld East authored case-surface binding — October 2, 2026
+
+Full-body case edits21/22 retain unwanted pattern and change outside-case pixels;
+rejected, raw/prompt/reference hashes retained. Exact original case close-ups23/24
+produce smooth graphite hard shells. bind_authored_case_surfaces.py extracts only
+generated RGB in native lid/right-panel masks for phases2/4, using original pose
+registration and unchanged shared case curve. No generated anatomy or alpha used.
+41checks0fail: exact alpha/outside masks/clasp, glove exclusion, other4poses exact
+to prior candidate,6exact140ms APNGframes/840ms. Phase2/4masked mean61.10/61.34
+becomes55.65/56.74 (other poses53.04-54.41). All7whole/case comparisons and6masks
+inspected; both authored close-ups inspected. Smooth panels closer to master;
+original clasp/grip variation and final whole-case/cadence acceptance remain.
+Actual browser two changed paused poses plus playing snapshot inspected/saved;
+page advances,3HTTPfiles200/exact. No native/normal-selection/owner-save changes.
+
+Lesson: isolate a rigid equipment-material edit in an exact source crop when a
+whole-character edit changes unrelated pixels. Consume only exposed equipment
+surfaces, explicitly protect hands/clasp/alpha, retain original whole-pose ruler
+and clock. Generated smooth material does not prove case geometry or motion.
+Next inspect remaining case/clasp detail, pair original shared East helmet,
+package and native30Hz two-cycle review; full cargo/world/Continue/polish open.
+Review: character/veld-carry-east-master-proportions-v1/whole-pose-join-v4/material-review/case-review-v2/.
+
+## Veld East case-surface grade and actual browser review — October 2, 2026
+
+review_case_material.py adds explicit native case lid/right-panel polygons,
+protected clasp and glove/cuff envelope, one pooled luminance curve against
+repairedNEheld005. No geometry changes or per-frame histogram normalization.
+First glove guard catches a mask overlap; explicit y136:160/x125:157 exclusion
+fixes it.37checks0fail: alpha/outside-mask/clasp exact, glove excluded,6exact
+140ms APNGframes/840ms. Source case-surface knots38.67/57.33/61.67/67/76.67/96.33
+map to master38.35/52.73/56.67/58.33/61.67/69.88. All7whole/case comparisons and
+6mask plates inspected. Tone closer; phase2/4case surface texture still differs.
+
+Actual IABtab25 local case-review-v1 page visibly opened, six paused source poses
+inspected/savedJPEGs. Browser controls exposed a real first-rAF-clock error: initial
+timestamp can precede performance.now seed, negative pose index stops callback.
+Nonnegative delta clamp fixes preview only. Reload/observable next-pose wait,
+3playing JPEGs +DOM elapsed317.0/383.7/433.7 and phase2→3 verify actual playback
+advances. Initial frozen samples retained as failure evidence. These snapshots
+do NOT certify uninterrupted visual cadence/native/world movement. Browser tab
+marked deliverable; local index/APNG/board HTTP200/exactbytes. Source frame clocks
+unchanged; no Godot/owner profile access or normal-selection mutation this interval.
+
+Lesson: APNG decode and a Play button do not prove live motion. Verify advancing
+rendered source/observable clock after controls change, wait on actual next-pose
+text before screenshots, and distinguish sampled browser proof from native full
+cadence acceptance. Palette masks must explicitly exclude clasp/glove; a broad
+case bounding box is insufficient. Shared tone cannot erase authored case-pattern
+drift: keep remaining texture work visible rather than declaring final consistency.
+Next finish case surface detail consistency, then paired original shared East
+helmet/package/native 30Hz two-cycle review and actual cargo transitions. East
+actions/South/North/worldownership/interruptions/Continue and full-library polish open.
+
+## Veld East carry reduced rise and shared master grade — October 2, 2026
+
+Whole far-swingV19 knee-flex edit lowers too much (registered crown84.386 vsprior
+V18 76.275); preserved/rejected. V20 intermediate complete posture source preserves
+near supporting/far advancing overlap; sourcecrown42/cylinderbottom678 sets scale
+.1025299097/crown79.638. JoinV4 replaces only entirephase2 in priorV3, no anatomical
+fragments/stretch/per-pose height forcing. Common65.209anatomical span/physical
+opaque floor224 retained; crownspread drops6.091 to2.729px. Six whole/upper/leg
+columns viewed18presentations. Raw/prompt/ref hashes/execution retained.
+
+review_shared_material.py reuses unchanged West-original-derived pooled cloth
+curve/fixed skin-hair offsets across all6frames, explicit head band and protected
+whole110:160case/grip band.31checks0fail: alpha unchanged, protected band/outside
+masks exact, six APNG frames exact decoded140ms/840ms. Comparison includes original
+East plus repaired NEheld005; all8whole/head-case/leg columns viewed24presentations.
+Head proxies27/27/26/28/26/27 remain compact. Shared cloth/head grade/detail nearer
+masters; protected case/grip retains source material/detail differences and needs
+own bounded master comparison. These are source checks, not native/motion proof.
+
+Preview index/cycle/mastercomparison HTTP200/exactbytes. Continuous browser/native
+cadence not claimed. Body/case/boot joins, matte highlights, source edge margins,
+paired helmet and original loader/native/controller remain provisional/unselected.
+Lesson: requested source-coordinate changes are not certified edit invariants;
+compare actual anatomy/physical-foot landmarks after generation. Preserve segment
+lengths by whole knee/hip posture changes, not height normalization, and verify
+shared grading alpha/equipment protection separately from final visual acceptance.
+Next bounded case/material alignment and continuous6phase review, then original
+shared East helmet/paired package/native. Full Eastactions/South/North, cargo world/
+ownership/interruptions/Continue and final library polish remain incomplete.
+
+## Veld East carry corrected passing/swing joins — October 2, 2026
+
+PassingV15 repeats wrong foreground planted knee; targeted V16 joint/occlusion
+edit attaches large near plate to rear bent foreground shin/airborne boot, far
+supporting knee behind. Far-swingV17 generates floating spread stance; explicit
+V18 support-position edit restores near boot under hip, far shin/boot advancing
+behind near supporting knee. Four raws/prompts/ref hashes/executions retained.
+V16/V18 reviewed as geometry/source studies only, not finished motion.
+
+assemble_whole_pose_study.py now versions1/2/3. V2 substitutes completeV16 phase4;
+V3 also substitutes completeV18 phase2, retains completeV14 phase3. Shared65.209px
+crown-to-cylinder anatomy and physical opaque floor224, no fragments/stretch or
+per-pose total-height normalization. Both six-column whole/upper/lower boards
+inspected (36presentations). Six140ms APNG frames each exact decoded/840ms. V3
+HTTP200/exactindex,cycle,comparison; continuous browser or native not claimed.
+
+V3 native-sized coarse top20alpha head proxies27/27/26/28/26/27 and visible heights
+143/144/148/142/145/144. Registered crown81.767/81.313/76.275/82.366/79.918/81.540,
+range6.091px. Support-side progression clearer, but far swing rises too much versus
+contact; torso/case/body cadence and shared neutral matte grade still provisional.
+V16 source crown102/cylinderbottom689; V18crown43/cylinderbottom676. Raw V14 outline
+margin concern and V11 last-cell tightness remain. No helmet/native/normal selection.
+
+Lesson: specify the knee/shin/boot chain and anatomical occlusion, not only raised
+boot silhouette. For failed floating poses, identify one supporting knee/shin/boot
+under hip and advancing boot position explicitly. After geometry succeeds, common
+anatomical registration may still expose vertical body/material discontinuity;
+do not convert successful local corrections into full gait acceptance.
+Next reduce phase2 body-rise at unchanged anatomy, check all6support/foot/hip/case
+joins and unified master grade, then paired helmet/native/controller. Full East
+actions/South/North/cargo ownership/interruptions/Continue and library polish open.
+
+## Veld East carry repaired opposing-contact whole-pose join — October 2, 2026
+
+Targeted six-figureV12 edit fails: fourth boot changes but foreground plated knee
+stays forward. Isolating one complete pose with explicit old geometry-only guide
+and unifiedV11 identity crop yieldsV13 correct near plated trailing thigh/far
+forward boot. V13 leaks an old hip pouch; V14 narrow equipment edit removes it,
+retains correct overlap. All raw/prompts/ref hashes/execution/crop lineage saved.
+V14 source globally changes scale despite narrow instruction; do not assume edit
+invariants. Rigid anatomy registration uses crown111/cylinderbottom768 and scale
+.09925269795, crown82.366 vsV1contact80.628 and previousV5contact85.307.
+
+assemble_whole_pose_study.py registers five completeV11 figures with ONE atlas
+crown48/cylinderbottom335 ruler (.2272091378), replaces only full phase3 withV14
+at same65.209px anatomical span/opaque boot floor224. No torso/leg fragments,
+stretching or per-pose height normalization. Six whole/upper/lower columns viewed
+(18presentations); crown/case fit closer, opposing overlap clearer. Nine-column
+anatomical review also seen (27whole/detail+9raw landmark plates). Other support
+phases still repeat/unclear: full walk not accepted, no helmet/native/selection.
+
+Six-frame840ms diagnostic APNG decodes exactly to six source-composite frames
+with140ms holds. Local preview/index and cycle HTTP200/exactbytes; app open queued,
+continuous browser motion not claimed. RawV14 right edge has40nonzero alpha pixels
+max116, no opaque contact at edge; outline/margin review remains provisional.
+Lesson: isolate one complete pose when atlas-wide edit ignores limb occlusion;
+then check identity leakage and actual source scaling before whole-pose joining.
+Next repair far-forward swing and far-support passing against their successful
+geometry guides at unified anatomy, review complete cadence/shared grade/helmet,
+then native/controller/cargo actions/South/North/Continue and cross-library polish.
+Full objective incomplete; normal selections unchanged.
+
+## Veld East carry common-anatomy review — October 2, 2026
+
+East source study adds review_anatomical_ruler.py: manual raw crown/cylinder-bottom
+landmarks define a common65.209px upper-body span; each whole source rigidly scales
+to this span and registers its opaque physical boot floor224. No per-pose height
+normalization, torso/leg stretching or anatomy pasting. Seven columns/21whole,
+upper-body and leg views plus seven raw landmark plates inspected. Independent
+sources produce11.685px crown spread, exposing disproportion/bounce hidden by
+earlier equal-height comparisons. This diagnostic is not accepted motion.
+
+New far-swingV10 source correctly advances far shin/boot behind near plated support
+leg, but lower-body proportions differ at common ruler; geometry guide only.
+Raw/prompt/ref hashes/execution retained. Five-phase geometry-only collage retains
+source lineage/fit recipe. Unified six-figureV11 uses canonical identity plus guide;
+one first148scale .2360446571 gives head proxies28/28/28/27/28/28, raw crown48-49
+and foot bounds674-677. All18 original/selected/study presentations inspected.
+Body/case consistency improves, but opposite-contact/support pattern still repeats
+or is unclear; rightmost source margin too tight. V11 rejects full gait.
+
+Lesson: stable crown/torso/case cannot certify alternating support-side geometry;
+geometry and shared anatomical scale are separate visual requirements. Use the
+successful individual opposing-contact reference for targeted complete-pose repair
+of unified atlas, preserving shared anatomy rather than mixing differently sized
+independent bodies. Built-in image editing supports at most five local references;
+use a documented geometry-only collage when needed, not unrecorded source merges.
+extract_study.py now has version-specific output directories; V2 was regenerated
+from retained raw after initial V11 call wrote its diagnostic folder, then V11
+rebuilt in its own folder. Source raw/provenance unchanged. No native run or normal
+adoption. Next repair exact opposing-contact and passing/swing support assignments,
+review six-phase gait/shared grade/helmet/native, then cargo actions/South/North,
+actual world/controller/ownership/Continue and full-library consistency polish.
+
+## Veld East carry passing and swing source studies — October 2, 2026
+
+East master-proportions source study adds passingV7/V8 and forward-swingV9,
+with preserved raw/prompt/reference hashes/execution. V7 has a lifted rear boot
+but wrong supporting side: foreground big knee plate stays on planted leg.
+Targeted complete-body V8 edit corrects overlapping bent near shin/trailing boot
+in front of straight far support; V9 advances near plated knee/boot forward while
+far boot supports beneath hip. V8/V9 accepted as authoring studies only.
+
+review_independent_phases.py extracts largest opaque alpha component with bounded
+2px dilation, preserves original RGBA, and builds five whole/head-case/leg columns.
+All15 presentations inspected against canonical held/original East/contactV5.
+Top20 head-width proxies25/29/27/26/27 at independent148px comparison height;
+these diagnostic resizes are NOT gait exports or proof of common body scale.
+Clean alpha compositing verified; remaining material/case and proportion variation
+requires common anatomical scale/root registration before any loop assembly.
+
+Lesson: lifted-boot silhouette alone does not establish alternating gait. Track
+the near-side cylinders through thigh, foreground knee plate, shin and boot;
+verify occlusion and weight-bearing side at contact, passing and swing separately.
+Preserve independent source density and anatomy; do not force every pose to148px.
+Next reconcile common anatomical ruler/grounded foot, review both halves of full
+stride and rigid head/case stability, then shared grade/helmet/native/controller.
+Full set, East actions/South/North matching, actual world cargo/save and final
+cross-library polish remain incomplete. No production selection or native run.
+
+## Veld East carry opposite-contact authoring — October 2, 2026
+
+East study character/veld-carry-east-master-proportions-v1 adds opposing3poseV3,
+singlecontactV4 and explicitposeguideV5 raws/prompts/refhashes/execution records.
+V3/V4 do not clearly reverse near-leg overlap. V5 uses a crop of old authored
+motion-source-v9 pose2 as lower-body geometry guide ONLY plus revised East-held
+identity/detail/case master. Complete new body restores foreground plated thigh
+sloping backward/near knee behind hips, far planted boot forward. No mirroring or
+procedural leg replacement. Four registered whole/detail presentations reviewed:
+newopposite28pxhead, originalEast27/repairedheld26/previouscontact27 proxies.
+V5 accepted as independent contact authoring guide, not a complete gait package.
+
+Preview appearance initially suggested backdrop contamination; actual alpha
+inspection supersedes that claim. V5 backgroundsample alpha0, mainopaque component
+315212pixels, retained original alpha inside2px bounded component extraction.
+Rendered inspection board has clean background. Background-removalV6 edit retained
+but rejects identity/scale/detail changes; never assume the tool's displayed image
+certifies sprite alpha or preserves requested invariants. Raw/provenance unchanged.
+
+Lesson: an explicit authored opposing-leg overlap reference can resolve a gait
+failure that repeated textual prompts leave unchanged. Separate geometry-only
+pose references from identity/material references; keep whole-body authoring.
+Inspect actual alpha and composite against a known background before requesting
+another edit. Singlecontact148comparison ruler is study-only: reconcile common
+anatomical source registration before combining independent poses into a loop.
+Next author missing opposing passing/swing poses, inspect alternating full6cycle,
+material/commonruler/helmet and native tests; East actions, South/North matching,
+actual cargo world/controller/ownership/Continue and full-library polish remain.
+Full Veld objective active/incomplete; no production selection or native run here.
+
+## Veld cargo action boundary audit and East carry source — October 2, 2026
+
+Eight source-bound direction/gear boards/40whole/head/case comparisons inspected
+in character/veld-cargo-turns-master-family-v1/cargo-boundary-audit-v1. Honors later
+North helmet carry override in grid loader. East selected carry head proxy35 vs
+repaired held26, unload/pickup32; West selected35/33vsrepaired28 (corrected West
+candidates already reviewed). South24vs22 and North25vs22 also show body/detail
+and prop changes. Helmet consistency alone cannot repair mismatched body families.
+Source comparisons do not prove actual native/controller handoffs.
+
+Current Veld inherits Bill controller: workshop pickup0.52s to walking carry,
+workshop arrival forces North and unload2s; expedition dry unload uses0.52s and
+credits cargo only after safe return. Preserve those economy/ownership rules.
+No controller changes made; different workshop/expedition contexts need distinct
+future tests, rather than assuming standalone0.52s choreography proves both.
+
+New East carry study character/veld-carry-east-master-proportions-v1 preserves two
+raws/prompts/reference hashes/execution records and six-pose comparisons. Direct
+original East and repaired held references restore27–28px head/detail, one148ruler.
+V1 repeats second-half leg pattern; V2 edit still fails opposite-support contact
+and crowds neighboring cells. Both visually rejected before package/native work.
+No production selection, anatomy strip replacement, room or save changes.
+
+Lesson: source scale/head agreement is a separate gate from alternating gait.
+Track physical plated near leg through contacts/passing and inspect cell alpha
+isolation; pose names and frame count cannot prove opposite leg support. Retain
+failed raw/evidence, author independent complete opposing poses and review the
+full cycle before fitting helmets or claiming native acceptance. Next East gait,
+East actions, South/North matching, actual cargo lifecycle/Continue, full-library
+and older furniture/style/material polish. Full Veld goal remains incomplete.
+
+## Veld paired master half-turn candidates — October 2, 2026
+
+Staged character/veld-cargo-turns-master-family-v1/half-turn-candidate-v1
+assembles four half-turn routes in both gears from the four repaired quarter
+packages.96source-bound exports/eight states, no new anatomy or mirror shortcut.
+Every midpoint slot5/6 is an exact whole-frame match; original680ms finite timing,
+facing/water/depth metadata retained.120route/export/timing checks pass,107package
+files rebuild identically. All eight source contact boards/96poses inspected.
+
+Actual standalone CrewSpritePlayer1297checks0fail/12.45s,208prescribed30Hz samples
+cover all12slots/terminal across four routes and two gears at47/93/148rulers.
+247targeted inputs and2931owner non-log files unchanged under scratch APPDATA;
+clean engine exit. All eight chronological native boards/208source-native pairs
+inspected,208nativeRGB samples exactly bound to previews.866ms repeating preview
+includes terminal hold/reset; runtime remains680ms. No full continuous/cadence,
+actual cargo controller/world/case ownership/Continue/normal adoption acceptance.
+
+Lesson: join complete reviewed quarter poses rather than fitting heads onto an old
+half-turn body family. Preserve duplicate midpoint holds and original metadata;
+exact component, quarter, midpoint and native slot evidence each has a distinct
+scope. Half-turn source/playback consistency does not establish carry gait handoffs,
+physical cargo contacts, scene depth or interruption/save ownership.
+Next inspect actual cargo lifecycle/controller boundaries against repaired family,
+resolve East/North/South carry-held scale/detail differences, then continuous motion,
+room/case ownership/fresh Continue before guarded adoption. Other old seated/reading
+sources and full Veld library master/style/material polish remain incomplete.
+
+## Veld paired East–South master turn candidate — October 2, 2026
+
+Staged character/veld-cargo-turns-master-family-v1/east-south-candidate-v3
+preserves authored bodyV2 and fits a new angular helmetV3. Editing the old repeated
+helmet strip (V2) still repeats early side views, rejected and preserved. Direct
+isolated original East/South cardinal design references produce distinct advancing
+views in V3; all six high-density heads, twelve paired figures/six enlarged shell
+views and four native chronological boards inspected. Existing East-weighted
+shell/skin recipe retained, one shared component scale, whole exact East/South
+held aliases. No normal selection or production helmet-source replacement.
+
+32body source/22pair checks. Actual standalone CrewSpritePlayer649checks0fail,
+9.26s/104prescribed30Hz samples both directions/gears/all six slots and terminal
+at47/93/148 rulers.107targeted inputs and2931owner non-log files unchanged under
+scratch APPDATA, clean engine exit.104nativeRGB preview bindings exact;866ms
+preview includes hold/reset, original800ms finite runtime retained.16packagefiles
+rebuild identically and64prior packagefiles unchanged. Eight shared whole cardinal
+joins exact across all four revised quarters and both gears. This is quarter-end
+consistency, not proof of normal gait boundaries or half-turn route integration.
+
+Lesson: failed repeated-angle strips can bias a narrow edit toward the same visual
+failure. Retain failed evidence, author new intermediate views from isolated
+cardinal masters, then compare complete fitted head/body/prop rotations. Matching
+endpoints and green timing checks cannot certify intermediate angular motion.
+Next rebuild/review half-turn routes from all four repaired quarters, inspect
+full-motion cadence and actual controller/room/cargo ownership/fresh Continue
+before guarded adoption. Full-set/style/material/library polish remains incomplete.
+
+## Veld East–South source and cardinal joins — October 2, 2026
+
+Two independently authored bare East-to-front cargo turn drafts/provenance saved
+in character/veld-cargo-turns-master-family-v1. Exact original East detail master,
+revised NEv5 East-held high-density crop and corrected South-held source supplied.
+V1 retains compact proportions and case identity but duplicates intermediate
+angles; V2 narrow complete-figure edits improve pose progression. All six source
+and detail views inspected. One148ruler, compact head proxies28/28/28/28/28/22,
+shared material recipe and protected case/grip band;32source checks each.
+
+Staged east-south-candidate-v2 adds twelve paired exports/four original800msfinite
+states/reverse. Whole East endpoint exactly aliases NEv5 endpoint, and whole South
+exactly aliases SWv7 start in both gears.22pair checks pass;16package files rebuild
+identically, prior three quarter packages48files unchanged. All twelve paired
+poses/six enlarged helmet views inspected. Existing East–South helmet source
+repeats early angles despite advancing body orientation: angular helmet repair
+required before native motion review. No native playback acceptance, normal
+selection, controller/room/prop/save or full-set acceptance for this new quarter.
+
+Lesson: exact cardinal endpoints and correct equipment design do not establish
+intermediate angular coherence. Inspect body, face, helmet hardware and carried
+prop orientation together; a repeated source view can pass pixel and timing
+checks while producing a held-then-snapping turn. Keep failed visual evidence and
+repair the authored source instead of treating technical passes as acceptance.
+Next repair early East–South helmet angles, paired/native review, all half-turn
+routes and actual cargo lifecycle; full Veld goal remains active/incomplete.
+
+## Veld paired North–East master turn candidate — October 2, 2026
+
+Staged `character/veld-cargo-turns-master-family-v1/north-east-candidate-v5`
+contains twelve bare/helmet exports and four finite forward/reverse states.
+Direct original East and corrected North references restore compact proportions;
+five raw drafts, prompts, reference hashes and execution records are retained.
+Earlier drafts had oversized heads, a different case design, or a case too small
+in profile. V5 reduces the head while retaining the corrected case and arm pose.
+All six source/details and twelve paired poses/six enlarged helmet views reviewed.
+One first-pose148 ruler; head-width proxies20/22/24/25/25/26. Shared West material
+recipe, original800ms timing, immutable angular helmet source and exact cardinal
+helmet masters. Whole North endpoint is byte-identical to revised North–West,
+both gears. No per-frame anatomy scaling or pasted bare head/body strips.
+
+32source and22pair checks pass. Actual standalone CrewSpritePlayer:649checks,
+0failures/8.52s,104prescribed30Hz captures across both directions/gears at47/93/148
+rulers. All four chronological boards/104source-native pairs reviewed;104native
+RGB samples bound to lossless previews.866ms preview includes terminal hold/reset;
+runtime remains800ms finite.107targeted inputs and2931owner non-log files unchanged
+under scratch APPDATA; clean engine exit. Sixteen package files rebuild identically;
+previous South–West/North–West32package files also unchanged.
+
+Lesson: after a narrow prop edit, recheck head proportions at the original master
+scale: the case repair grew the profile head from28 to30pixels. Preserve successful
+case/supporting-arm work while authoring the head repair, then inspect every pose
+again. Source and playback checks do not prove continuous cadence, cargo room
+contact, ownership, fresh Continue, normal adoption or full-set consistency.
+Remaining East–South starts from an old walking pose; author its planted whole
+East endpoint from this revised held pose, then reconcile all half-turn/cardinal
+joins and actual cargo lifecycle before adoption. Full goal remains incomplete.
+
+## Veld paired North–West master turn candidate — October 2, 2026
+
+Unselected character/veld-cargo-turns-master-family-v1/north-west-candidate-v4
+adds independent authored rear-to-left turn matching original North master and
+corrected West family. V1/2 edits retain oversized31pxWest head/tuckedcase,
+rejected. V3 direct master authoring improves projections but rear boots spread,
+rejected; V4 narrow wholefigure foot repair restores adjacent planted stance.
+All6source/detail views inspected; projections23/24/26/28/29/29 through rear/side.
+SinglefirstNorth148ruler, shared West material recipe; no perpose anatomy scale.
+
+Existing shared North/West angular helmet source/recipe and exactNorthshell,
+whole corrected Westheld bare/equipped aliases.12exports/4quarterstates retain
+800msfinite/reverse metadata.32source/22pairchecks,16deterministicfiles stable;
+previousSouthWest16packagefiles also unchanged after generalized localbuilder.
+Bothfamilies/gearWestendpoints byte-identical to correctedheld wholeframes.
+
+Standalone actualCrewSpritePlayer649nativechecks0fail8.36s/104prescribedsamples,
+bothdirections/gears/all6slots/terminal/sourcebinding/47/93/148rulers.107targeted
+inputs/2931owner non-logfiles unchanged/scratchAPPDATA;engine0/cleanlog. All4
+chronologicalboards/104source-nativepairs and12pairedwhole/6helmetdetailviews
+inspected;104exactRGBdecodebindings/866mspreview includes terminalhold/reset.
+No full continuous/nativecadence/world/controller/ownership/Continue/normal
+adoption or full-set acceptance. No production controller/room/selection change.
+
+Lesson: direct masters can restore the master's wider standing stance while
+violating accepted turn feet-together stance. Keep identity/proportion and action
+stance constraints separate; author a narrow wholefigure repair and review all
+angles again. One shared canonical endpoint is a wholepose, not a pastedhead or
+case strip. Remaining East/South/Northheld/cardinalseams and halfturns need full
+master review before actual cargo lifecycle/normal installation; full Veld set
+and cross-library polish remain active/incomplete. Evidence/HANDOFF in turnstudy.
+
+## Veld paired South–West master turn candidate — October 2, 2026
+
+Unselected character/veld-cargo-turns-master-family-v1/candidate-v7 repairs
+complete bare turn proportions/case reach/equipment continuity. V5 fixes3but
+stillwrong2; V6 narrow thirdfigure repair keeps cyan scanner on near hip;
+V7 authored whole-source case/head repair retains correct leftward order,
+single148ruler and planted adjacent feet. Westhead proxy28 (originalmaster27,
+correctedheld28), other projections23/24/28/29/29. No per-pose anatomy scaling.
+
+Paired12exports/4finite quarterstates reuse existing shared angular helmet
+sources/recipe and exact South shell; whole corrected Westheld bare/equipped
+frames reused at endpoint. Original800ms/reverse metadata exact. Source32checks,
+paired22checks and16deterministic package files unchanged on local rebuild.
+Standalone actualCrewSpritePlayer649native checks0fail/8.4s/104samples, both
+directions/gears, terminal holds/sourcepixels/47/93/148rulers.107targetedinputs
+and2931owner non-logfiles unchanged/scratchAPPDATA;engine0/cleanlog.
+
+All4chronologicalboards/104source-native pairs and12pairedsource/6enlargedhelmet
+views inspected.104native RGB samples/866ms previews losslessly checked; viewer
+resets/terminal hold do not change800msfinite runtime. No full continuous-motion,
+natural cadence/controller/world/ownership/Continue/normal acceptance claim.
+First8.13s/second8.35s baseline-fixture4fail intervals preserved: equipment
+library needs allbarequarters plus append=true; source/metadata unchanged.
+
+Lesson: repair a stubborn atlas semantic mistake narrowly by explicit ordinal
+figure/visible edge; inspect every angle again. Shared helmet library validation
+requires corresponding appended bare coverage; baseline failures are separate
+from candidate fidelity. Keep whole canonical endpoints rather than anatomy
+strips, and review incoming full pose before adoption. Next independent
+North–West, shared halfturn joins and actual cargo controller/room handoffs;
+remaining family/library master polish still required. Full Veld goal active.
+Review/HANDOFF: character/veld-cargo-turns-master-family-v1.
+
+## Veld South–West source gate — October 2, 2026
+
+Unselected turn study character/veld-cargo-turns-master-family-v1 retains four
+authored South–West sources. V2 preserves tucked/small case and broad West head;
+V3 compact endpoint improves but interiors face right before left endpoint,
+rejected. V4 corrects leftward order; all6whole figures/enlarged grip/equipment
+views inspected beside corrected held. Equipment still swaps in poses2/3;
+Westhead proxy30 versus held28 and whole held join remain open. Not admitted.
+
+One first-front148ruler, physicalboot registration, bounded source-alpha
+extraction; no per-pose rescale or mirrored anatomy. Shared West colour recipe
+with entire case/grip band protected across all projections.32source checks pass,
+6lossless decoded APNG presentations/original800ms; technical pass does not
+override visual failure. Source preview only, no native/continuous/world proof.
+No normal selection/controller/owner room changes or Godot run this interval.
+
+Lesson: a better isolated endpoint can still reverse angular order or swap
+asymmetric equipment. Inspect nose direction, scanner/cylinder occlusion, case
+reach/grip and head projection in EVERY angle before copying a canonical
+endpoint or fitting helmets. A fixed colour recipe cannot repair geometry.
+Next whole-source repair then immutable shared helmet fit, quarter/half joins,
+independent North–West and actual cargo controller/room handoffs. Full Veld
+objective remains active/incomplete. Source evidence/HANDOFF in study folder.
+
+## Veld West unload/pickup master family candidate — October 2, 2026
+
+New independently edited six-pose whole unload source/prompt/refs/raw/execution
+retained at character/veld-cargo-west-master-family-v1. Shared148ruler, physical
+boot registration, corrected compact head28px held (carry27–28/master27proxy),
+natural30–31pxbending head/collar envelopes. Same fixed carry material recipe,
+unchanged native44x46West helmet with rigid0/12/18/16/8degree bending tilt.12new
+exports; pickup exact reverse source aliases; carry references reviewedcandidate
+unchanged. Paired3states/36slots retain original840mscarry and520msfinite actions.
+74packagechecks0fail;16packagefiles stable on local rebuild/no provider calls.
+
+Native standalone actual CrewSpritePlayer finite-clock passes453checks0fail/7.78s,
+72presentations (18/action/gear),all6slots/terminal holds at47/93/148standingrulers.
+56targeted inputs/2931owner non-log files unchanged under scratchAPPDATA. All four
+chronological boards/all72source-native presentations reviewed. LosslessAPNG
+coalesces identical holds: all72original nativeRGBsamples and600mshold durations
+verified against decoded groups. Preview repeats are viewer resets; runtime finite.
+No normal loader/controller/world/prop ownership/Continue/natural cadence proof.
+
+Contact lesson: hand/case may connect to body alpha at floor contact, so a connected
+component is not a boot landmark. Boot-side contact exclusion fixes false20pxshift.
+Old selected final-case crop includes occluding boot pixels; now isolate the clean
+unobstructed authored case from raw release pose, one global source scale. Prop
+fixed at75/196afterrelease3/4/5, rendered foreground over exact selected idle body;
+visible idle pixels outside prop remain exact. Preserve occlusion when checking
+source equality; do not claim transparent crop background is prop artwork.
+
+First fixture copied carry-kind expectation and failed72checks; originals correctly
+declare unload metadata even for derived pickup. Fixed fixture only, preserved
+first-kind-check interval, same art/timing and owner/inputs unchanged in both runs.
+Initial APNG18-frame expectation failed because identical holds coalesce; retained
+firstpreview and corrected decoded duration/group mapping without pixel changes.
+
+Source/player review accepted as staged evidence. Turn endpoint/intermediate bare
+heads remain larger; actual cargo controller/room/foot/case handoffs still open.
+Keep full-family sources unselected until those pass; broader directional source,
+natural gameplay and library polish objective remains active/incomplete. No export/
+commit. Handoff/index.html/native-review-evidence.json in candidate folder.
+
+## Veld West corrected carry paired source/player review — October 2, 2026
+
+West master-proportions candidate now has12paired256RGBAframes,H148/p128224,
+original840msloop/stride/facing/dry/depth metadata. One pooled cloth curve against
+original West master; fixedskinRGB+.5/+4/+7,hair+3/+1/+2, no contrast flattening or
+per-frame exposure. Case/near hands and alpha protected. Exact shared44x46West
+helmet component retains scale/grade, tracked with accepted+2pxrecipe adjustment.
+64package checks0fail;16files byte-identical on local rebuild, no provider call.
+
+Standalone actual CrewSpritePlayer distance-clock/native rendering passes633checks
+0fail/7.94s/engine0,104samples (52/gear,30Hzsimulated time/1.7s,all six slots/loop
+wraps) at47/93/148standing rulers.30targeted inputs/2931owner non-log files unchanged
+under scratch APPDATA. All four chronological boards/104source-native pairs viewed;
+104decoded lossless APNG frames exactly retain nativeRGB. Connected body/material/
+shared shell in sampled playback accepted for staged review. No normal loader or
+world/actor/controller/save acceptance; capture cadence is not real gameplay FPS.
+
+All12cargo-join source presentations inspected: revised carry is closer to original
+idle/master, but selected pickup/unload/turn endpoints still have larger bare heads.
+Whole-family source continuity FAILS adoption; do not install correctedcarry alone.
+Next repair the neighboring authored sources/shared held joins, review all frames,
+case/foot/neck continuity and actual controller handoffs, then paired normal binding.
+Candidate remains unselected. Source/body proportions and material are distinct
+from checking metadata and exact pixel playback. Full set/natural gameplay/master
+cross-library polish remain incomplete; no commit/export.
+
+Review:character/veld-carry-west-master-proportions-v1/index.html (HTTP200/exactbytes;
+app open queued, no visible-browser/continuous-watching claim). Handoff in samefolder.
+Status/pipeline/bible/maintained+installed skill capture this source-join lesson.
+
+## Veld West carry master proportions source repair — October 2, 2026
+
+Direct approved side-foundation comparison/all12East/West source presentations
+confirms broader carry head/face/bun at sharedH148:top20pxsilhouette27master,
+29–30idle,35–36currentcarry (includes bun/collar, not skull measurement). Current
+West v7 was owner-approved but still drifts under direct original-master review.
+Do not use its historical v6 audit measurements as current source evidence.
+
+Two built-in imagegen edits/exact prompts/reference hashes/raw/execution metadata
+retained at character/veld-carry-west-master-proportions-v1. V1ungraded32–33pxhead
+breadth rejected as final repair; V2exactWest high-density master crop reference
+and targeted correction yields27–28px. All six V2whole-source comparisons viewed:
+compact original proportions, connected body/case grip and phase order retained
+in static samples. Singlefirst-pose148ruler/floor, no per-pose height normalization.
+No grading, helmet manifests, native/motion test or selected source replacement yet.
+Next fixed source-family material calibration, sharedWest helmet fit, original
+840msmetadata/joins and advancing native review before paired adoption. East and
+South carry/other directional source polish remain in the full objective.
+
+Normal South partial fall status now selected; exact tested manifests retained in
+verified-manifests and normal-admission.json proves status-only change.166selection
+checks0fail, source/profile/timing unchanged; no runtime rerun for descriptive field.
+Normal85500check interval retains its original hashes rather than being rewritten.
+Pre-status inventory snapshot retains prior80source comparison binding; refresh
+current inventory separately. Full natural gameplay and cross-library polish open.
+
+Lesson: original high-density masters plus measured body-relative comparison are
+needed even after an approved detail pass. Repeated vague smaller-head prompts
+can under-correct; view registration and actual source proportions before grading.
+Silhouette proxies support visual review without certifying anatomy or motion.
+Full goal active/incomplete. No commit/export.
+
+## Veld normal South partial-fall continuation verified — October 2, 2026
+
+Normal selected loader, without candidate injection, passes85500checks/0failures:
+24actual world mortality cases,24ordinary RunSave disk/fresh-main restores and
+7200reference/resumed future actor ticks. All six partial sit/rise entrances in
+both gear variants; each fresh scene checks all72normal source slots/markers.
+903.17seconds/engine0/cleanlog;86targeted inputs and2931owner non-log files unchanged
+under scratch APPDATA. All four new normal Continue boards/72source-native pairs
+reviewed: before/after retain pose, colour, shared shell and seat/floor contact.
+
+Earlier staged native30fps evidence remains independently scoped:1176chronological
+presentations reviewed,2400lossless decode checks pass. The normal Continue run
+adds normal-loader evidence; it does not retroactively relabel the staged capture.
+No art/controller/grade/scale change for this verification. Normal package status
+may now be marked selected using descriptive-only metadata, retaining tested bytes.
+
+Lesson: explicitly verify actual normal source selection across every fresh scene
+and inspect native before/after contact. Living256x256 sources are review-padded
+to256x272; padding is not a source resize or new registration. Same-clock pixel
+checks and future state checks answer distinct resume failures. Do not equate this
+controlled sofa fixture with natural chooser/traffic/hazards, Title/new-process
+Continue or full-library visual acceptance. Those and directional/master polish
+remain open; full goal active/incomplete. No commit/export.
+Handoff:character/veld-sofa-partial-fall-south-selected-v1/HANDOFF.md.
+
+## Veld current selected-library comparison — October 2, 2026
+
+Refreshed actual catalog/ordered normal-loader inventory after partial South fall
+admission:198 bare/192 helmet IDs,118 manifests,4804 unique source files, no missing
+references. Original pre-admission snapshot retained. Six bare-only IDs are helmet
+equip/remove and four weld aliases; equipment-changing semantics/controller validity
+must govern parity, not automatic creation of six helmet counterparts. Inventory
+now binds exact source hashes and declared timing as well as manifest/profile paths.
+
+All four new cross-family boards/80 source presentations inspected: first/middle
+idle/carry/swim/swim-carry/water-fall in all cardinals/both gears, fixed H148/pivot
+translation only. Newer sampled water helmets retain graphite shared construction;
+historical orange-helmet defects cannot be assigned to superseding selected art.
+West/South carry face size and South prone warmer rear hardware are comparison
+flags for original directional-master/detail review, not confirmed defects or a
+global recolouring instruction. Prone perspective is not standing-height drift.
+
+Lesson: preserve inventory baselines, resolve current overrides before applying
+historical findings, and bind the sampled art. Compare equipment parity against
+valid behavior and rear-view material against the correct original master. Source
+samples can find drift but do not certify all frames, motion or native rendering.
+Earlier side sit/read source issues and full-library consistency work remain open.
+Normal partial South Continue remains running; its separate handoff owns progress.
+Evidence:character/veld-animation-coverage-audit-v1/cross-family-review-evidence.json.
+Full goal active/incomplete. No source mutation, commit or export in this audit.
+
+## Veld partial South sofa falls in normal verification — October 2, 2026
+
+Normal grid loader/ACTIVE_ASSETS now selects paired six-state manifests at
+character/veld-sofa-partial-fall-south-selected-v1. Same72staged authored source
+slots/runtime metadata; name/descriptive status only differs.166selection checks
+pass. All24motion contact sheets/all1176chronological native presentations reviewed:
+body/material/shared-shell/contact accepted for guarded integration.24lossless
+APNGs/2400decoded checks retain exact room colours. Browser review page visibly
+loaded; not a claim all24clips continuously watched or owner final acceptance.
+
+Previous candidate-world evidence retains scope:79775checks/24ordinary disk/fresh
+restores/7200futureticks and5111checks/1176native30fpsframes, zero failures;
+84inputs/2931owner non-log files unchanged during each scratch interval. Those
+intervals used explicit candidate injection before this loader admission. New
+normal-only24case world/Continue fixture is running; every fresh scene checks
+all72normal source slots/metadata without any manifest injection. Normal gameplay
+integration remains under verification. No source redraw/grade/scale change.
+
+Lesson: normal selection is a separate evidence boundary from an injected source
+audition. Preserve original source/native/movie/checkpoint evidence and test actual
+normal bindings independently after adoption; never relabel old interval hashes
+as tests of the new loader. Current default sit is North/readSouth; keep dormant
+side candidates separate from reachable service contexts. Full directional source
+polish, natural traffic/priority hazards/title/new-process and cross-family master
+review remain open. Full goal active/incomplete. Next poll normal Continue, inspect
+fresh native before/after and complete relevant normal regressions/remaining set.
+Handoff:character/veld-sofa-partial-fall-south-selected-v1/HANDOFF.md. No commit/export.
+
+## Veld partial South native motion capture — October 2, 2026
+
+Paired staged actual world mortality30fpsrun passes5111checks0fail/289.05s/
+engine0/cleanlog. All24partial sit/rise cases49presentations each:1176source-native
+pairs.84targeted inputs/2931owner non-log files unchanged with scratch APPDATA.
+24lossless APNG/contact sheets preserve every source/native PNG.2400decoded
+checks0fail:1176room crops exact RGB,48intervals1600ms perpreview,800msviewer
+terminalhold. Repeating preview resets viewer, not authored finite death.
+
+All12sit boards/both gears/all6entrances/588native presentations inspected:
+body/material/shared-shell/contact retained through sampled finite sequence.
+Remaining12rise boards/588presentations and continuous playback assessment pending;
+no normal partial admission or final motion acceptance. Source/ordinary Continue
+evidence remains separate; normal reader/bunk/North paths unchanged.
+
+Current furniture scope clarified from code and prior side-context evidence:
+lounge sit is North; observation read is South. Earlier staged East/West sitting/
+breathing exists; default side eligibility is absent. Generic South life_sit is a
+future compatibility branch; actual South dispatch uses observation stages.
+Do not add furniture or fabricate stages merely to admit source art. This does
+not waive full directional source/master polish. Static inventory is not dispatch.
+
+Next finish remaining reverse-context motion review, guarded paired normal
+selection and relevant normal-world continuation; continue current eligible
+family/context gaps and complete cross-library master/perspective/material polish.
+Full goal active/incomplete. Review:character/veld-sofa-partial-fall-south-v1/
+motion-review.html. Scope:character/veld-animation-coverage-audit-v1/CONTEXT_SCOPE.md.
+No commit/export.
+
+## Veld South partial sofa ordinary Continue — October 2, 2026
+
+Staged paired six-pose fall family passes79775checks0fail/895.7s/engine0:
+24actual world mortality cases/all6partial poses/both sit and rise/both gears,
+ordinary RunSave disk writes/reads/fresh-main restores and7200reference/resumed
+future20msactor ticks. Independent source clock, fractional seat release/floor
+depth, source/foot/gear/needs/recipe and paused-source checks retain exact future.
+All4boards/72source-native pairs reviewed; displayed before/after source/contact
+retained.84targeted inputs and2931owner non-log files unchanged with scratch APPDATA.
+Fresh scene explicitly injects candidate; not normal partial selection or Title/
+new-process/natural chooser/traffic/hazard proof. Normal reader/bunk/North retained.
+
+All24native30fpsmotion captures now running after corrected fixture-only duplicate
+variable declaration. Initial3.05sparse failure/unchanged owner profile retained;
+not an artwork/controller regression. Full1176frame playback review and guarded
+paired normal admission pending. Full goal active/incomplete. Source master gaps
+in older East/West sit and East/West/North read remain. Earlier staged East pair
+found; compare current candidates before authoring more. New unselected built-in
+East raw study/refs/prompt/one148/494ruler extracted and reviewed beside both old
+selected and earlier staged poses; face/proportion/grade/gear/motion not admitted.
+
+Lesson: prove partial contact through ordinary world checkpoint/future, not merely
+actor-file snapshots. Original catalog, selected overrides and staged candidates
+are separate evidence inventories; missing override does not mean missing source.
+Next inspect30fpsnative motion/joins, normal paired admission and remaining full
+cardinal/context/master polish. Evidence:character/veld-sofa-partial-fall-south-v1/
+continue-review-evidence.json; HANDOFF.md. No commit/export.
+
+## Veld selected furniture master gaps — October 2, 2026
+
+Actual normal loader/catalog resolution records192bare/186helmet final selected
+state IDs from116manifest files, zero absent referenced source files. This is
+static inventory, not completeness/dispatch/master acceptance. Exact override
+order, slot paths and hashes saved in character/veld-animation-coverage-audit-v1.
+Including original catalog matters: East/West sitting and East/West/North reading
+are still selected from older dr-veld-v2 packs, despite newer North/South sitting.
+
+All48registered source presentations/both gears/four directions reviewed at shared
+H148/p128224 padding. Visual master continuity FAILED for East/West sit and
+East/West/North read: narrower/darker older body, cooler hair/changed face details;
+reader torso/backpack and helmet front/visor/neck differ across the join. Selected
+South and North sitting retain coherent sampled bodies; South reader reviewed here
+is current selected family. No artwork/controller/normal selection changed.
+
+Lesson: selected overrides are not the whole selected library. Resolve original
+catalog plus actual loader order before declaring coverage or polish complete.
+Manifest presence and identical declared height do not prove authored proportions,
+material identity or shared helmet continuity. Next finish staged South partial
+save/motion gates, then source-author master-continuous East/West sit/read and North
+reader joins, full native contact/interruptions/Continue and cross-family polish.
+Full goal active/incomplete; not a new restricted definition of the requested set.
+Evidence:character/veld-animation-coverage-audit-v1/SELECTED_COVERAGE.md and
+furniture-review-evidence.json; HANDOFF.md. No commit/export.
+
+## Veld South partial sit/rise fall audition — October 2, 2026
+
+Unselected paired six-pose fall candidate retains exact current South sit/rise
+entrances, whole authored ground-collapse or neutral sofa interiors and canonical
+floor endpoints. Fixed H148/256x272/p128224, unchanged matte material/shared shell;
+no per-pose grade, scale or anatomy reconstruction.270package checks0fail and
+byte-identical rebuild. Dormant metadata/controller guard binds actual incoming
+source, gear, source slot and fractional seat contact from the real service timer.
+Early0/1 release support180–340ms; later2–5 release360–780ms. Exact entrance180ms.
+
+Staged native3071checks0fail/132.74s/engine0:24actual world deaths across six
+poses/both sit and rise/both gears;96same-clock actor-file restores and168malformed
+guards. All24boards/408source-native pairs visually inspected: sampled body,
+materials, shell and contact retained. Static boards do not prove continuous motion;
+pose2 hand-to-lap join/cadence still needs playback.84targeted inputs unchanged;
+scratch APPDATA/all2931owner non-log files unchanged. Candidate injection explicit;
+normal paired reader/bunk/North selections retained. Not normal partial admission.
+
+Lesson: the same partial source can have different fractional seat support in
+sit and rise. Bind saved contact to the actual service timer and source band;
+preserve its offset/depth until the authored fall releases support. Source-slot
+identity alone cannot reconstruct contact. Exact source aliases preserve detail
+but still require motion review at the join. Next ordinary world disk/fresh-main
+future verification, continuous native motion and guarded normal admission, then
+remaining directions/life contexts and cross-family master polish. Full goal active.
+Evidence:character/veld-sofa-partial-fall-south-v1/review.html; HANDOFF.md.
+
+# Crew life: pipeline and workflow lessons
+
+
+
+For everyday actions, cargo and distress, track source production, registered
+
+packaging, runtime selection and visual acceptance separately.
+
+
+
+## Asset pipeline
+
+
+
+- Inspect actual row facing before expanding coverage. Labels do not prove facing.
+
+  Generate focused corrections; preserve rejected originals and exact prompts.
+
+  Never mirror asymmetric body equipment to fill missing views.
+
+- Preserve detached cargo during extraction. Equal-width cells can cut a boot or
+
+  include neighboring pixels. Inspect transparent gutters and every resulting crop;
+
+  correct frame counts alone do not validate a sheet.
+
+- Share anatomical scale through a sequence. Calibrate reading to seated idle;
+
+  never stretch crouched or prone poses to standing height.
+
+- Check per-frame head anchors and equipment tilt through turns and prone poses.
+
+  Nominal clip direction is insufficient. Review bare and fitted endpoints.
+
+- Record reverse-action and composed-turn derivations. Join transitions to actual
+
+  base cycles rather than inventing replacement poses in packaging code.
+
+
+
+## Runtime workflow
+
+
+
+- Resolve retained furniture in every rotation. A baseline sofa may be replaced
+
+  by a wall installation. Provide safe approaches and prove navigation access.
+
+- Keep navigation feet on accessible floor; use explicit visual offsets onto
+
+  furniture. Review depth against chair backs, pillows and footboards. Fixed pivots
+
+  alone do not prevent disappearing behind furniture.
+
+- Use simulation clocks for transitions. Test pause, intermediate saves, restore
+
+  and service interruption. Seated readers and sleepers should rise before leaving;
+
+  interruption must not emit successful completion.
+
+- Place pickup before extraction/credit. Test recall and duplicate-credit negative
+
+  controls. Maintain the held case through carrying turns.
+
+- Separate distress cues from oxygen rules. Check fitted bounds in tight spaces.
+
+  A sealed helmet cannot be treated as an open mouth for meals.
+
+
+
+## Evidence and closeout
+
+
+
+Keep the entire target prop visible when reviewing work contact. Actor-follow crops
+
+can omit equipment below the feet and make correct facing appear wrong. Resolve
+
+the recorded foot against live prop geometry before changing directional art.
+
+A generic proximity band establishes a destination, not hand/tool contact or a
+
+suitable action; verify approach, service side and action together at native scale.
+
+If an authored service point lies outside a generic destination band, grant its
+
+reviewed station a bounded exception while retaining navigation and final-segment
+
+clearance. Do not loosen collisions to force contact. Test blocked and unreviewed
+
+orientations, and distinguish functional service completion from optional comms.
+
+When adding a room service, check every need that can select it. Curiosity can
+
+share maintenance furniture while bypassing generic service-availability guards;
+
+cover both selection and interruption, including no benefit after power loss.
+
+For save compatibility, safe floor is necessary but does not prove retained
+
+furniture contact. Compare an active equipment action's saved contact/facing with
+
+current geometry; cancel obsolete work without teleportation or service credit.
+
+Keep matching-contact positive controls alongside stale-contact regressions.
+
+
+
+For bed transitions, inspect the intermediate seated hip contact as well as the
+
+sleep endpoint. Measure approach-to-rest travel relative to body height: a source
+
+can fit the final mattress while floating across the floor during interpolation.
+
+Resolve reachable entry and contact choreography together before expanding frames
+
+or directions. A four-quarter capture count alone is not visual acceptance.
+
+Use the real activity station in staged previews after validating its route. Keep
+
+temporary draw-depth adjustments explicit: a compound bed/cabinet can cover a valid
+
+floor entry because it sorts at the bed foot. Do not silently bake a furniture-only
+
+depth workaround into a general standing pose or count a reversed preview as runtime
+
+get-up coverage.
+
+Before accepting a pose-hold GIF, sample the production animation player at the
+
+actor's real transition duration. Calculate travel over the actual moving interval,
+
+not the whole clip: a hold followed by one lowering frame can compress a large
+
+displacement into a visible slide. Exact idle/sleep endpoints do not establish a
+
+connected movement. Duration changes require matching actor timers and interruption
+
+and restore checks, not just longer manifest frame durations.
+
+Trace presentation coordinates through both the position getter and renderer.
+
+Marsh's getter subtracts the same vertical lift GridCanvas adds back, so native
+
+fixtures must place the external actor at the NPC foot without an additional lift.
+
+Otherwise apparently precise contact and displacement measurements describe the
+
+fixture rather than production behavior.
+
+For a longer furniture-specific animation, persist its contact anchors and validate
+
+its own duration without relaxing other characters' timer limits. Reverse an
+
+interrupted entry from its current elapsed position; restarting a full rise causes
+
+a pose jump. Battery/other emergency controllers must also leave furniture before
+
+starting floor movement. Keep furniture-only extents out of shared locomotion or
+
+swimming clearance when the runtime presents them with a separate contact offset.
+
+Review the normal chooser's final walking segment: an activity's acceptance radius
+
+can let a nearby graph node start a carefully authored contact animation too far
+
+away. Opt furniture into exact approach only with stand/peer/segment clearance.
+
+Review walking before and after the pose, since compound-prop depth can hide a
+
+torso that the furniture animation's own depth offset correctly reveals.
+
+
+
+Run affected tests and inspect native furniture and fitted motion at station scale.
+
+On Windows, wait for Godot and read exit status/logs rather than assuming shell
+
+return means completion. Respect browser security rejection; use native evidence
+
+and local artifact links without claiming browser validation.
+
+
+
+Record coverage, derivations, consumers, evidence and pending owner review at
+
+closeout. Update maintained skill sources and their changed installed mirrors.
+
+Preserve concurrent sessions' notes/code and leave other tasks alone.
+
+
+
+Examples: `character/crew-life-v1/README.md`,
+
+`docs/CREW_LIFE_EXPANSION_2026-09-08.md`, `tests/preview_crew_life.gd`,
+
+`tests/test_crew_life_rooms.gd` and `tests/test_station_systems.gd`.
+
+
+
+Furniture pose review must include draw sorting. Marsh's south reading frame was
+
+valid but disappeared behind a sofa because its depth offset stayed zero. Native
+
+shared-cast review exposed it; the canonical writer now supplies seated depth and
+
+transition ramps. Keep depth separate from foot/pivot placement and sprite pixels.
+
+A successful Bill pose does not establish other cast metadata compatibility.
+
+
+
+Authored carry turns end on destination carry frame zero. At completed-turn exit,
+
+reset the ordinary carry clock/position before resuming; otherwise old gait phase
+
+and travel during the turn skip to a different pose. Verify actual catalog endpoint
+
+pixels and following distance phase, honoring per-direction strides. Not all crew
+
+have matching turn/equipment coverage (Marsh currently does not). Printed test
+
+counters cannot override SCRIPT ERROR lines from invalid fixture assumptions.
+
+
+
+Swimming turns have the same destination-frame-zero contract, verified across 144
+
+registered selected turn endpoints. Compare clips after aligning texture pivots;
+
+different transparent canvases are not pose differences. The playback guard covers
+
+carry, swim and swim-carry separately: the latter already resets through its state
+
+branch. Extend a fix only where actual phase/endpoint evidence shows the defect.
+
+
+
+Bought bunk integration requires per-cast anatomical pillow anchors. Equal world
+
+positions do not align sprites with different pivots, and head alignment alone
+
+does not prove the feet fit inside the bed frame. Inspect source bounds and native
+
+ladder/post occlusion together. Do not shrink a character or resize an owner layout
+
+to conceal a too-long prone pose; author a furniture-specific compact pose and
+
+verify continuous entry/rise. Keep fixture-only depth overrides out of general
+
+sleep metadata until the furniture renderer owns that occlusion.
+
+
+
+For stacked bunks, verify upper-mattress underside clearance through the entire
+
+lowering pose. A lying endpoint can fit while an elbow-supported lean intersects
+
+the bunk above. Review mattress-edge entry and short inward movement as a contact
+
+sequence; fixed hip registration in source art need not imply fixed world position
+
+through entry. Preserve separate key-pose, complete motion and controller evidence.
+
+Prefer a single source sequence's sleeping endpoint when a separately generated
+
+endpoint would pop; keep both sources and record the selected derivation.
+
+
+
+When boarding furniture, switch depth by contact phase, not by the overall action
+
+name. A boot still hanging off a mattress must draw in front of the front rail;
+
+putting it inside the furniture layer can slice the shin into disconnected pieces.
+
+Only fully boarded poses should enter the interior layer. Reverse the same contact
+
+schedule for exit and preserve per-frame registration when anchoring poses. Verify
+
+canonical idle pixels and native first/last equality separately from motion quality.
+
+
+
+For partial reversal, test both interior times and every exact source frame boundary.
+
+Half-open forward and reverse intervals can select adjacent poses at the boundary
+
+although all interior samples match. Human lie-down interruption uses completed
+
+entry time, with a 1e-7s bias toward the current pose and full-duration cap. Check
+
+contact offsets and the actual service-loss update as well as isolated clip pixels;
+
+a full rise from partial entry visibly jumps even if both individual clips are valid.
+
+
+
+
+
+For furniture-specific runtime profiles, test the normal goal chooser and exact
+
+arrival before restoring intermediate poses. Persist contact anchors and validate
+
+finite coordinates, supported direction/medium, transition duration and entry-foot
+
+agreement. Keep longer furniture timing typed to that actor/profile; do not relax
+
+all human save limits. Verify both equipped and bare disk restores, service-loss
+
+reversal, and rejection of incompatible furniture transforms. Rebuild supplements
+
+through the canonical pipeline and prove they do not enlarge movement clearance.
+
+
+
+### Marsh first carry turns - September 22, 2026
+
+
+
+East/north carry poses keep the case in front of the actor as the torso
+
+occludes it; never move cargo onto the back to keep it visible. The local
+
+builder uses .25 scale, measured centers and a common boot baseline,
+
+with exact existing carry endpoints. Both turns are required by the
+
+native handoff test. Dry metadata is distinct from swimming turns.
+
+
+
+West/north carry uses independent source landmarks and .265 scale; the
+
+east sheet remains .25. Same sheet dimensions do not imply equal body
+
+density. Compare registered head/boot height before installing. Both
+
+carry pairs now reproduce twenty frames and are required by handoff tests.
+
+
+
+East/south carrying exposes the front of the case while retaining both
+
+hand contacts at waist height. Its larger source uses .23 scale and
+
+measured centers. Three pairs now reproduce thirty carry frames with
+
+exact current endpoints; native handoff checks require all six clips.
+
+
+
+West/south completes all eight adjacent carrying turns. Independent source
+
+uses .24 scale and measured centers, retaining both hand contacts and
+
+exact existing endpoints. All forty carry-turn frames reproduce exactly.
+
+Half-turn composition and normal station transport review remain separate.
+
+
+
+Carrying half-turns compose adjacent poses through an identical cardinal
+
+frame, stored once with combined120ms duration. Four800ms clips complete
+
+Marsh dry-carry coverage. All76 carry frames reproduce; all twelve turns
+
+are required in handoff tests. Catalog audits distinguish coverage from
+
+visual acceptance: other humans have all three turn families, including
+
+helmet versions; Marsh still lacks twelve swimming-with-cargo turns.
+
+
+
+### Loaded-swim foundation audit - September 22, 2026
+
+
+
+Do not infer visible cargo from a swim-carry state name. Marsh east
+
+currently uses empty-handed art; the direct texture renderer adds no case.
+
+Audit base frames and pickup/unload joins before generating missing turns.
+
+An east loaded-swim candidate is review-only under marsh-swim-cargo-v1.
+
+Keep coverage counts separate from base-art correctness and acceptance.
+
+
+
+East loaded swimming is now selected by a replacement manifest. Remove
+
+old state entries to avoid duplicate catalogs, retain original PNGs and
+
+reapply selection after canonical rebuild. Coverage is a union when
+
+supplemental contracts replace existing keys. Detached pickup cargo must
+
+survive component extraction; use measured cell edges for crossing boots.
+
+Pickup maps six150ms slots to existing0.52s controller time and joins
+
+exact loaded frame zero. All24 previous loaded frames were empty-handed;
+
+other three directions still need repair. Native route passed93 samples.
+
+
+
+West loaded swimming now uses independent loop/pickup sheets and measured
+
+shoulder anchors. Preserve the detached case in first reach; inspect its
+
+bounds as well as body bounds before installation. East/west replacements
+
+reproduce24 frames with exact salvage/loaded endpoints. Both directions
+
+are included in the canonical rebuild; north/south remain unresolved.
+
+
+
+North loaded-swim source01 was too upright/elongated. Selected source02
+
+foreshortens torso and legs without reducing head/shoulder scale. Rear
+
+cargo is ahead of the torso, partly occluded, with hands forward; do not
+
+move the case onto the back to improve visibility. North loop .25 and
+
+pickup .28 scales are measured independently. All36 selected frames
+
+across east/west/north reproduce with exact endpoints; south remains.
+
+
+
+South completes all four loaded-swim/pickup replacements:48 frames reproduce.
+
+Independent south sources use loop .25 and pickup .24 scales, measured
+
+shoulders and exact salvage/loaded endpoints. Check lifted-case boot
+
+bounds before installing; adjust registration, not anatomy, for clipping.
+
+All four loaded endpoints are now ready for twelve cargo-swimming turns.
+
+Native playback and93 route samples pass; full expedition review remains.
+
+
+
+Loaded-swimming turns now complete Marsh's three turn families. Freeze the
+
+selected supplemental loaded endpoints, never old empty-handed base PNGs.
+
+Preserve actual source dimensions: new sheets include2170x725 as well as
+
+2172x724; measured cells and shoulder registration must reflect those sizes.
+
+East/north and east/south source02 correct a premature cardinal third
+
+pose; only that corrected cell is selected. Half-turns share exact
+
+cardinal pixels once with combined120ms timing. All76 new frames reproduce,
+
+and native handoff requires all twelve loaded directions. Full expedition
+
+and owner motion review remain separate from turn-matrix completion.
+
+
+
+Real expedition review corrected two integration gaps missed by direct-player
+
+fixtures: pickup0.52s-to-clip mapping was only in the preview, and Marsh
+
+exterior clearance tested missing station floor, suppressing turns. Verify
+
+through grid_canvas and a real dispatched route, not a fixture that supplies
+
+the intended mapping or allow-transition flag itself. Pickup has6 poses;
+
+existing unload has4. Pause tests must use the production gated entry,
+
+not directly call an internal stepping helper. Three controller journeys
+
+now pass. Loaded water-to-dry silhouette change remains abrupt.
+
+
+
+Loaded airlock drainage now uses four-facing rise art tied to saved interlock
+
+progress, not cosmetic time. Hold the authored planted pose while pressure
+
+equalizes; an exact carry frame0 reference can be a stride with one boot raised
+
+and should only resume when exit movement starts. Rear carry lowers hands
+
+toward waist and permits torso occlusion. Read measured source cell edges when
+
+a prone figure crosses equal cell boundaries. Preserve per-frame water metadata
+
+and test pause, power loss, disk restore and death precedence through renderer.
+
+Four-facing texture checks do not prove four rotated-airlock journeys.
+
+
+
+Rotated expedition fixtures must preserve cryo/charging wards: deleting a ward
+
+breaks the saved architect roster and can make Save.read silently recover an older
+
+backup. Require the just-written primary checkpoint and expected expedition home
+
+before restore. The maintained fixture now covers all four airlock rotations plus
+
+empty/loaded recall; six cases also pass through the actual release executable.
+
+Keep manual stepping evidence separate from real-time motion and pacing acceptance.
+
+
+
+
+
+### Planted Veld cargo turns - September 30, 2026
+
+Later owner acceptance permits neutral feet-together cargo endpoints. Earlier
+
+exact destination walking-pose guidance does not override this. Completion still
+
+resets to destination carry frame zero; visually inspect the first step without
+
+replacing planted endpoints solely for pixel equality. Swimming is separate.
+
+
+
+
+
+## Veld north seated breathing source review — October 1, 2026
+
+
+
+Two built-in imagegen six-pose sources saved with prompts and execution IDs in
+
+character/veld-seated-north-breathing-source-v1. v1 whole-source adoption rejected
+
+for brighter materials and inadequate readable breath. v2 locked neutral template
+
+retains inherited .2930693069 source ruler across all six poses; native diagnostic
+
+torso opaque area1504/1523/1523/1503/1504/1502 supports small expansion but does not
+
+prove natural breathing. Both regenerate protected head/lower pixels and have
+
+nonidentical endpoints. Viewed raw sheets and registered native/enlarged boards;
+
+ungraded sources remain unselected. Existing north seated source/manifests/runtime
+
+unchanged; no new native or owner-acceptance claim.
+
+
+
+Lesson: a locked repeated template improves scale but does not guarantee fixed
+
+head/support anatomy or exact loop seam. Distinguish physiological shape change
+
+from texture/lighting fluctuation; unique hashes and area counts cannot certify
+
+motion. Preserve source and inherited ruler, review source-size and native motion,
+
+then fit upper torso over exact stable seated anatomy only when coherent breath
+
+is demonstrated. Do not normalize every frame or adopt regenerated highlights.
+
+
+
+Independent paused shade probe:82checks/0failures,24samples,38.35s,engine0;
+
+all2931non-log owner files and watched dependencies unchanged. Source/clock/light
+
+values fixed, camera ready from sample1; crops1–4 differ up to39/255 from final,
+
+5–23 byte equal. Renderer settling beyond camera readiness demonstrated; exact
+
+cause unproven. Keep renderer evidence separate from source grade and prior
+
+Continue max5/255 observation. No renderer fix or complete shade continuity claim.
+
+
+
+Next v2 breathing fit/full-motion/joins/native review, shade cause investigation,
+
+natural approach/exit/hazards, remaining cardinal life sources and full-set polish.
+
+Full Veld goal active/incomplete. Handoff:
+
+character/veld-seated-north-breathing-source-v1/HANDOFF.md.
+
+
+
+
+
+## Veld north seated fitted breathing — October 1, 2026
+
+
+
+Staged paired held-only candidate in character/veld-seated-north-breathing-source-v1
+
+uses exact original graded neutral pixels. Generated v2 contour supplies measured
+
+.363636px maximum side expansion; locally authored six-slot phase curve
+
+[0,.5,1,.75,.25,0] avoids source's two-width step. Premultiplied rib/sleeve fit
+
+y147:177 outside fixed panel; head/helmet/collar/panel/belt/hips/boots protected.
+
+Six600ms slots/3.6s, exact neutral endpoints, no generated RGB or new grade adopted.
+
+12PNG/2manifests;47fit checks and16deterministic files pass. Native418checks,
+
+0failures,56prescribed captured slots across both gears/four configured actual
+
+lounge rotations,48.71s engine0/no errors. Actual selected architect/retained
+
+source, clock, physical contact, chair depth, pause and camera verified. Scratch
+
+APPDATA; all2931non-log owner files unchanged. Paired fit/browser peak/neutral,
+
+all four native room boards reviewed. Very subtle gameplay motion; staged only,
+
+no normal selection/owner/continuous route acceptance. Original down/rise pack
+
+unchanged. Earlier static held Continue/native checks retain earlier scope.
+
+
+
+Lesson: generated contour can guide a locally authored breath without adopting
+
+regenerated materials or unstable supports; label that derivation honestly, never
+
+call it six authored full-body source poses. Preserve rigid panel and planted
+
+contact, inspect collar/belt junctions, and premultiply alpha while resampling.
+
+Initial418checks/24failures captured exact .6s boundaries; retained48.45s failed
+
+interval. Interior samples pass; selected-slot/phase diagnostics added. Do not
+
+change production clocks to conceal floating-point fixture boundary ambiguity.
+
+Pixel protection and distinct hashes are not full motion or transition proof.
+
+
+
+Independent paused shade probe:82checks/0failures,24samples,38.35s,engine0;
+
+all2931non-log owner files and watched dependencies unchanged. Source/clock/light
+
+values fixed, camera ready from sample1; crops1–4 differ up to39/255 from final,
+
+5–23 byte equal. Renderer settling beyond camera readiness demonstrated; exact
+
+cause unproven. Keep renderer evidence separate from source grade and prior
+
+Continue max5/255 observation. No renderer fix or complete shade continuity claim.
+
+
+
+Next new held breathing transitions/service-loss/interior Continue, shade cause
+
+investigation, natural approach/exit/hazards, remaining cardinal life sources and full-set polish.
+
+Full Veld goal active/incomplete. Handoff:
+
+character/veld-seated-north-breathing-source-v1/HANDOFF.md.
+
+
+
+
+
+## Veld breathing world guards and fresh Continue — October 1, 2026
+
+
+
+New staged north held loop tested at .8/1.4/2.2/4.6seconds in both gears:
+
+eight actual disk checkpoint writes/reads and fresh main-scene staged restores.
+
+Exact displayed source/gear/action timer/playback/contact/depth/paused persistence
+
+retained, including second cycle. Existing saved crew playback clock works;
+
+no runtime clock correction needed.16actual power/suspend NPC guards at same
+
+phases dispatch rise, preserve contact/depth/rigid anatomy/hardware and relax
+
+only local subpixel rib/sleeve breathing region to neutral. Full held7.4s timed
+
+NPC entry/exit joins exact neutral in both gears. Prescribed station entry,
+
+not natural chooser/approach/exit navigation or every hazard/owner acceptance.
+
+
+
+277checks,0failures,261.64s engine0/no errors. All2931non-log owner files and
+
+all24watched script/manifest/frame dependencies unchanged with scratch APPDATA.
+
+Earlier one-restore22check/66.95s pass retained. All8native before/after room
+
+pairs reviewed:7byte equal, first bare .8s crop max5/255 with exact source pixels;
+
+prior first-render room-shade uncertainty remains. No whole-room shade equality
+
+or source-grade correction claim. Earlier47fit/418native evidence retains scope;
+
+newContinue26file binder/board/review preserved. Normal selection unchanged.
+
+
+
+Lesson: inspect real saved playback state before changing a cosmetic clock.
+
+Testing only neutral held art can hide phase loss; save actual nonneutral pixels
+
+in each gear and a later cycle, restore into independent scenes with explicit
+
+candidate bindings, and verify exact source/contact/pause. Breath-to-rise local
+
+relaxation is distinct from exact interrupted lowering reversal. Do not describe
+
+small authored respiration reset as whole-body pixel equality.
+
+
+
+Independent south seated source created using built-in imagegen, selected front
+
+native master plus rear detail reference. Execution8c1af625-5f07-46ec-9b9d-d3f850b26f95
+
+saved with exact prompt in character/veld-seated-south-coherent-v1. Six raw poses,
+
+one148/509=.2907662083standing ruler, heights509/471/443/434/434/434;
+
+registered source/master native/enlarged board viewed. Ungraded and unselected;
+
+front thigh projection/head/build review, semantic grade, exact joins, current
+
+south helmet, full motion/native/contact/Continue still pending.
+
+
+
+Next natural north approach/exit/hazard routes and south fitting, remaining east/
+
+west independent life sources, rest/death joins and full-set polish. Full goal
+
+active/incomplete. Handoffs: character/veld-seated-north-breathing-source-v1/HANDOFF.md
+
+and character/veld-seated-south-coherent-v1/HANDOFF.md.
+
+
+
+
+
+## Veld south seated paired source and player — October 1, 2026
+
+
+
+Independent south source now fits paired sit-down/sit-rise/static sit-idle in
+
+character/veld-seated-south-coherent-v1. Six states/26references/12PNGs, exact
+
+selected standing masters,800ms finite lowering/exact reverse rise/neutral held
+
+joins. One148/509=.2907662083source ruler retained; pooled skin/hair/cloth/metal/
+
+science/cyan grade once before extraction. Native35x39front helmet, tracked
+
+source collar,anchor17/35,scale1/no rotation/no regrade; opaque component and
+
+body outside head fitting exact. Paired source/native148/82, masks and browser
+
+first interior beside master reviewed. Staged/unselected; no normal loader/room/
+
+gameplay changes.
+
+
+
+70package checks/21deterministic files; latest233native player/controller checks,
+
+0failures,24.64s engine0/no errors. All2931non-log owner files unchanged with
+
+scratch APPDATA. Controlled Veld actor clocks/interrupted lowering reversal/
+
+snapshot/source admission, fixture-only override in selected player. No actual
+
+furniture/service-loss/fresh Continue/natural-route/owner acceptance claim.
+
+Earlier233/28.86s pass retains original pre-face-mask source scope.
+
+
+
+Lesson: correct semantic master sampling before altering overall exposure.
+
+A centered face ellipse on a slightly turned frontal master sampled dark jaw
+
+and excluded bright outer cheek into hair. Browser caught darker new face despite
+
+technical pass. Corrected reference face box x124:143/y83:101 on padded master,
+
+rebuilt raw source once; previous curve report/board retained, no full rollback
+
+claim. Fixed paired board clipping of closeups, distinct from sprite clipping.
+
+Use cache-versioned image URLs as well as review-page URLs after a palette edit.
+
+Generic default lounge sit resolver currently requests North; a forced South
+
+actor there cannot prove natural South seat selection/contact. Preserve furniture
+
+inputs and distinguish source/player review from real directional room use.
+
+
+
+Next South held breathing/contact/motion, North natural approach/exit/hazards,
+
+independent East/West seated sources, rest/death joins/full-set polish. Full goal
+
+active/incomplete. Handoff: character/veld-seated-south-coherent-v1/HANDOFF.md.
+
+
+
+
+
+## Veld south seated local breathing — October 1, 2026
+
+
+
+Paired held-only candidate in character/veld-seated-south-breathing-v1 uses exact
+
+fitted South neutral with locally authored rib/sleeve expansion. North maximum
+
+.363636px/side, phases0/.5/1/.75/.25/0, six600ms slots/3.6sec. All materials from
+
+locked neutral; no generated RGB/new full-body motion/no additional grade.
+
+Face/hair/helmet/collar/central chest fittings/belt/hands/knees/boots protected;
+
+neutral seam/down/rise exact. Original South finite/static pack unchanged.
+
+Existing paired head fit difference ends y129; breathing starts y131 to retain
+
+hardware. One148/509 ruler/p128224, staged/unselected held manifests.
+
+
+
+65package checks/16deterministic files;182native checks/0failures,24.36sec
+
+engine0/no errors. Controlled Veld source hook, normal player plus fixture-only
+
+overrides, two visual-clock cycles/third seam, exact sources/joins, snapshot
+
+admission/pause, paired148/82 native board and source board reviewed. All2931
+
+non-log owner files unchanged under scratch APPDATA. No actual South furnishing,
+
+service loss/fresh Continue/natural route/owner acceptance proof.
+
+
+
+Lesson: held actions use visual-clock looping; finite frame_at_elapsed does not
+
+wrap and life_seated actor timer does not select breathing phase. Initial fixture
+
+180checks/52failures retained; corrected fixture, no runtime change. Bound source
+
+deformation below actual shared helmet/collar pixels, not an assumed head boundary.
+
+Tiny local respiration is distinct from newly generated coherent body poses.
+
+Default lounge sit resolver requests North; preserve furniture rather than force
+
+South and claim natural room coverage. Next South motion/contact, natural North
+
+approach/exit/hazards, independent East/West seated sources, rest/death joins and
+
+full-set polish. Full goal active/incomplete. Handoff: this candidate/HANDOFF.md.
+
+
+
+
+
+## Veld natural lounge journey and side-approach finding — October 1, 2026
+
+
+
+Actual released Veld now tested through normal fatigue chooser/path/movement/
+
+arrival/down/local breath/rise in both gears, with fixture-only existing North
+
+packs. No prescribed destination/path/foot/stage. Authored adjacent powered
+
+lounge rotation2 has reciprocal core South/lounge North doorway; rotation0 has
+
+no North port. Two7277check/4failure intervals and39.08sec early port failure
+
+retained. Corrected fixture connection, no production navigation/furniture change.
+
+Latest4985checks0failures/81.04sec engine0/no errors;70native+70source captures,
+
+9visible final approach samples/25seated source changes/final idle per gear.
+
+All2931non-log owner files unchanged under scratch APPDATA. Prior4991/82.09sec
+
+72capture pass sampled early walk outside lounge camera; latest improves scope.
+
+
+
+Visual entry/exit remains FAILED: actual side approach foot64/96 versus registered
+
+chair rest127.5/133 produces63.5px lateral/37px vertical interpolation over800ms
+
+while source lowers vertically. Held contact and master helmet/body remain stable,
+
+but arrival glides sideways into chair and rise reverses it. Source/controller/
+
+fixed-foot checks do not prove coherent furniture motion. Do not move owner
+
+furniture, weaken collision rules, distort anatomy or teleport physical foot to
+
+hide this. Next inspect reachable front/side approach and author coherent entry/
+
+exit, then native review. Ordinary South-walk-to-North-standing arrival also
+
+switches facing immediately; inherited behavior, not a smooth-turn certificate.
+
+
+
+Lesson: prove reciprocal ports before a natural route fixture, then review full
+
+movement in context. Align source canvases by actual pivots before comparison;
+
+184pivot92/172 rebases36/52 onto256pivot128/224 without resizing. Map Godot1920
+
+design coordinates into native1280screenshot before cropping; artifact clipping
+
+is distinct from actor clipping. Source-change GIFs reproduce sampled controller
+
+intervals, not continuous native video or all walking angles. Candidate remains
+
+unselected. Other directional seated sources, South contexts, hazards/rest/death
+
+joins and full-set polish still open. Full goal active/incomplete.
+
+Handoff: character/veld-seated-north-breathing-source-v1/JOURNEY_HANDOFF.md.
+
+
+
+
+
+## Veld clear chair front and retained checkpoint contact — October 1, 2026
+
+
+
+Fixed observed sideways entry/rise glide through room contact registration,
+
+not source distortion. Actual lounge rotation2 front153..165 is collision-clear
+
+and joins node128/160; old169gap is wall-blocked. Shared fallback sofa/lounge_seat
+
+resolver tries existing28gap then4px insets up to16, prefers clear front with
+
+station-local service_limit/exact_approach. Existing normal clear-path checks
+
+remain; no furniture/wall/collision-mask/teleport changes. Old63.5px lateral
+
+shift becomes <.1px (~.0693actual existing contact tolerance), vertical32px.
+
+Games-table contacts unchanged; fully blocked fronts retain side fallback and
+
+still need coherent motion. crew_life seated_contact retains old checkpoint
+
+side offset/depth without advertising old contacts to new goal selection.
+
+Save schema/player clocks unchanged. Shared registration affects all crew;
+
+current motion/native proof covers Veld. New North seated artwork stays staged,
+
+16bound breathing files byte-exact; no art/master grade/scale/normal selection edit.
+
+
+
+Latest6375natural chooser/path/move/timed seated checks,0failures,80.69sec
+
+engine0/no errors,72native+72source captures. Paired room/source boards reviewed:
+
+large sideways glide removed, stable held matte body and master helmet. Four
+
+actual disk/fresh-scene restores front/retained side x2gears:81checks0failures,
+
+154.51sec. Exact source/contact/depth/action/gear/visual-clock/pause retained.
+
+Prescribed checkpoint cases, distinct from natural route. Native4pair board:
+
+3byte-exact crops, first bare-front max5/255 room-shade difference with exact
+
+source; prior first-render shade uncertainty remains.11static assertions4.68sec
+
+and4-quarter approach probe4checks37.62sec pass. All2931non-log owner files
+
+unchanged in isolated runs. Initial75.38sec fixture rejected .0693px against .01
+
+threshold; kept evidence, adopted existing .1contact tolerance, no runtime move
+
+change. Earlier6375/81.72sec pass precedes compatibility helper.
+
+
+
+Lesson: a fixed foot cannot prove natural contact; prefer an actually reachable
+
+front before inventing sideways pose deformation. Expand only the station search
+
+band, keep collision/path checks authoritative. Preserve old checkpoint lookup
+
+separately from future goal admission when changing contact registration. Bind
+
+unchanged source revisions and verify actual fresh-scene restores, not snapshot
+
+admission alone. Before-review artifacts/resolver retained in front-contact-v1.
+
+Next fully blocked-front side contexts, independent East/West seated sources,
+
+South room contexts, further hazards/rest/death joins/full-set polish. Full goal
+
+active/incomplete. Handoff: this candidate/FRONT_CONTACT_HANDOFF.md.
+
+
+
+
+
+## Veld independent east seated pair — October 1, 2026
+
+
+
+Independent right-facing6pose source exec3bfbb1ae-74a3-4bed-8eb6-178698517547;
+
+selected east idle palette/anatomy, side foundation detail, South source articulation
+
+only. One148/542 standing ruler; occupied heights542/510/464/419/416/418.
+
+Pooled6material curves before extraction; exact selected standing joins,800ms down,
+
+exact reverse rise/static held.6states/26refs/12exports,256canvas/p128224/H148.
+
+Selected native34x38 east helmet unchanged scale/grade, source collar-tracked.
+
+Source/native closeups caught rear low-bun fragment beyond initial face-centered
+
+head mask; final bounds include full rear silhouette for grade/removal, preserving
+
+body outside fit. Lesson: profile face landmarks do not bound the bun; inspect rear
+
+extent separately in every pose at native scale, not just frontal crops.
+
+72package checks0failures/22deterministic files; final233native candidate checks,
+
+0failures/25.00s engine0/no errors,2931real non-log files unchanged scratchAPPDATA.
+
+Native148/82 source board and browser seated helmet/master reviewed. Earlier two
+
+native intervals retained; final evidence supersedes their pixel scope.
+
+New art staged/unselected; controlled player/actor interrupted-rise hook and
+
+snapshot admission, not furniture/natural routing/service-loss/fresh Continue or
+
+smoothness/owner acceptance. Next complete motion/east chair contexts, held breath,
+
+independent West source and cross-family polish. Full goal active/incomplete.
+
+Handoff:character/veld-seated-east-coherent-v1/HANDOFF.md.
+
+
+
+
+
+
+
+## Veld independent west seated and cardinal comparison — October 1, 2026
+
+
+
+West6pose built-in source exec7d32d8a4-c76b-4d5e-903c-5879d1e72386 saved with
+
+prompt/reference roles. Independent left-facing side master; selected West idle
+
+is idle-west-transition-matte-v1 (do not infer filename from East); East atlas
+
+articulation only. Scanner near hip/canisters far hip, no mirrored body.
+
+One148/544 ruler, pooled6materials, exact selected standing,800ms down/exact
+
+reverse/static held; native34x38 West helmet unchanged scale/grade/collar-tracked.
+
+6states/26refs/12exports,256canvas/p128224/H148, staged/unselected.
+
+72package checks0failures/22deterministic files;233controlled native player/actor
+
+checks0failures,25.20s engine0/no errors,2931non-log owner files unchanged scratch
+
+APPDATA. Paired source/native148/82 boards reviewed. Interrupted-rise hook and
+
+snapshot admission, not real service loss/chair route/fresh Continue/smoothness.
+
+
+
+Cardinal board24samples/48bound fitted sources and full lower/held/rise GIF at
+
+shared scale/clock,10800ms slowed preview. Bare held opaque heightsN107/E114/S126/
+
+W115. Visual South pose is taller/more upright and North shorter; investigate
+
+pelvis/seat/thigh/shin anchors against masters and actual furniture before changing
+
+art. Different views need not share occupied bounds. One standing ruler proves
+
+calibration, not seated anatomy/contact; never normalize each pose's height to
+
+hide drift. Resolver lounge sitsNorth/observation sofa readsSouth; no actual side
+
+seated chair contact identified, keep that integration gap explicit.
+
+Next South/North source anatomy/chair audit, complete motion/joins, side held
+
+breath/interruptions/Continue and selection, inherited rest/death/water polish.
+
+Full goal active/incomplete. Handoff:character/veld-seated-west-coherent-v1/HANDOFF.md.
+
+
+
+
+
+
+
+## Veld South sofa and same-body tablet reading - October 1, 2026
+
+
+
+Actual default observation sofa South contact reviewed before changing anatomy.
+
+Staged seated height126 versus legacy reader100 exposed a consumer join drift;
+
+not evidence to normalize cardinal occupied heights. Added actual prop front
+
+sort edge+.01 and opt-in dry observation sit/read/enter/exit/rise depth; exact
+
+standing endpoints and unmarked/wet/dead retain natural ordering. Furniture,
+
+contact, service clock, navigation and normal artwork selection unchanged.
+
+90 observation-sofa unit checks pass,4.81s; actual full route/service/render audit
+
+11746checks0failures,86.06s,230source/native pairs,2931non-log owner files unchanged
+
+under scratch APPDATA. Before-depth and depth-only runs10667checks passed but
+
+visual review failed visibility, then reader identity/size. Preserve those scopes.
+
+
+
+New staged character/veld-read-seated-south-coherent-v1 uses built-in edit
+
+62bbed37-780e-44c9-a0e8-d6ad9baad405, saved raw/prompt/reference roles. Adopt only
+
+lower forearm/glove/tablet band[105,148,151,185] over exact current South seated
+
+body; head/hair/face/helmet/chest/boots outside band byte-exact. One148/509 ruler,
+
+frozen South material curves; no regenerated wholebody adoption. Twelve-second
+
+finite draw480/hold11040/stow480 keeps existing Veld service duration. Eightstates,
+
+56references/12uniqueRGBA exports,73package checks/16deterministic files. Actual
+
+last-down/first-read and last-read/first-rise source joins exact; candidate held
+
+height126 throughout. Paired source/actual sofa boards visually reviewed.
+
+
+
+Lesson: review complete selected consumer joins and actual prop ordering, not
+
+only green source-pack checks. Preserve common body/helmet when authoring bounded
+
+hand actions; do not repair depth with distorted anatomy or per-pose sizing.
+
+Interrupted tablet exit, fresh Continue and normal selection remain separate
+
+milestones; full-set goal active/incomplete. Handoff/evidence in new reading pack.
+
+
+
+
+
+
+
+## Veld South tablet fresh Continue - October 1, 2026
+
+
+
+Actual twelve-second reading advances through normal observation service timer;
+
+staged bare/helmet paired loader in prescribed real sofa contact. Actual disk
+
+write/read and fresh main-scene staged Continue at draw.2s/hold3s/stow11.8s:
+
+128checks0failures,6restores,219.49s engine0/no errors, scratch APPDATA,2931non-log
+
+owner files unchanged. Exact whole displayed source, gear/action clock, physical
+
+foot/contact and paused pose retained. No reading-clock patch needed: existing
+
+player checkpoint preserves the finite clip. Continue source/native paired board
+
+review required independently of checks. Not natural chooser or early service exit
+
+proof. Full goal active/incomplete, sources remain unselected.
+
+
+
+
+
+## Veld South interrupted tablet stow - October 1, 2026
+
+
+
+Actual power/suspend guard previously changed the staged reader directly to rise:
+
+134checks/16failures,40.02sec, owner files unchanged. Source switch confirmed in
+
+all16draw/hold/tap/stow cases across both gears/triggers. Superseded, retained.
+
+Added Veld-only finite-reader capability detection, exact current unique pose
+
+index in existing tablet_exit_pose, corresponding partial reverse stow clock;
+
+held variants retain current whole pose for first60ms before authored stow. Shared
+
+NPC guard invokes opt-in hook; legacy Veld loops and Bill controller unchanged.
+
+Renderer resolves saved unique pose from selected finite12s/6pose South reader.
+
+Existing snapshot field/range and timer schema retained; no new save schema.
+
+
+
+Final183checks0failures,16actual power/suspend exits,16exact stow-to-rise joins,
+
+2actual disk/fresh-scene interrupted exits,97.42sec, engine0/no errors, scratch
+
+APPDATA,2931non-log owner files unchanged. Actual current hand/face/body source,
+
+physical sofa contact and paused interrupted Continue remain exact. Source and
+
+native save/restore boards require separate visual review. Earlier134pass/39.17s
+
+verified exit dispatch only, before expanded joins/fresh Continue coverage.
+
+Ordinary finite reader Continue earlier128checks/6restores/219.49s remains its
+
+original pre-hook interval. No normal artwork selection, natural chooser,
+
+all-stage hazards, owner acceptance or full-set completion claim. Next adopt
+
+coherent South family with real selected-loader contact/service proof, then
+
+North reading and remaining seated/rest/death/water cross-family polish.
+
+
+
+
+
+## Veld selected South seat/read family and staged North reader - October 1, 2026
+
+
+
+Normal grid loader/ACTIVE_ASSETS now selects veld-seated-south-selected-v1 paired
+
+composition. Immutable tested South sit/down/rise, breathing hold and finite
+
+reader sources retained; whole literal res paths avoid duplicated/regraded art.
+
+7states/46refs per gear,14states/92refs/36source paths, installed locally owner
+
+visual review open.45composition checks0failures,3files deterministic,42frozen
+
+source bindings. No room geometry, gameplay clocks, actor decisions or save-schema
+
+change. This supersedes source-only unselected status for this South family.
+
+
+
+Normal actual loader proof1608checks0failures,218.01s,engine0/no errors,6actual
+
+whole-checkpoint disk reads/fresh-scene staged Continue at draw.2/hold3/stow11.8s
+
+in both gears; exact source clock/pixels/calibration/depth marker, sofa contact and
+
+paused action retained. Both stow-to-rise joins exact and actual service exits
+
+complete.24source/native before-after samples reviewed; current selected desk/
+
+sofa service dispatch at prescribed sofa contact, no fixture artwork injected.
+
+No natural chooser, actual selected interruption interval, all hazards or full-set
+
+acceptance claim. Previous staged16interruptions/2fresh exits183checks remain
+
+separate interval. Input hashes after run; dependency interval stability unmeasured.
+
+
+
+North reader staged: built-in arm-only edit27204356-f2aa-4d76-956b-181d14f996a7,
+
+raw/prompt/reference roles saved. Fixed148/505 ruler and frozen North neutral
+
+curve; insert lower sleeves in two bounded strips, exact head/helmet/backpanel/
+
+central straps/belt/scanner/vials/pelvis/legs protected. Raw slot4 rejected because
+
+it moved shoulder badge; slot2 supplies small occluded gesture.12PNGexports,
+
+8states/56references,5unique whole poses per gear;75package checks/17deterministic
+
+files. Paired source board reviewed, finite12s cycle preview at one-third speed.
+
+Tablet/hands remain in front of rear-facing body, mostly occluded; never draw a
+
+rear tablet to make motion conspicuous. Raw soft background not adopted outside
+
+connected figure/arm mask. Existing North reader uses old helmet/body and legacy
+
+40depth offset; North desk fallback has different contact from lounge seating.
+
+No North adoption/native service/interruptions/Continue claim. Next actual North
+
+desk contact/lifecycle audit before fitting/adoption; remaining independent side
+
+seated breathing/rest/death joins/full-set polish. Goal active/incomplete.
+
+
+
+
+
+## Veld side seated breathing and current North reader context - October 1, 2026
+
+
+
+Staged/unselected veld-seated-side-breathing-v1: independent fitted East/West
+
+neutral005 bodies, both gears, 24RGBA exports/four states, six600ms phases per
+
+3.6s loop. Bounded rear rib/lower sleeve deformation uses measured North maximum
+
+0.363636px. Premultiplied interpolation prevents transparent-edge colour bleed;
+
+no mirrored body, new anatomy, per-pose scale, translation or grade. Head/hair/
+
+helmet/collar/chest fittings/science badges/cuffs/hands/belt/hips/knees/boots
+
+retain exact neutral RGBA. Actual blue patch fringe excluded from moving mask.
+
+Source head/helmet already fitted to directional master; no new head replacement.
+
+162package checks0failures,32deterministic bound outputs; protected regions,
+
+neutral loop seam and actual down/rise source joins exact. Side helmet source
+
+collar differs from bare through y144; paired body equality starts at y145,
+
+while each complete protected head/collar retains its own original source.
+
+
+
+313controlled native checks0failures/24.77s/engine0: actual Veld held getter
+
+over two visual-clock cycles in four gear/facing cases, exact neutral joins,
+
+calibration/contact marker, player snapshot admission and same-clock restore.
+
+Native148/82 drawing and24paired source poses/detail, full four-clip browser
+
+page reviewed. No actual furniture/service-loss/disk Continue/normal selection
+
+or owner motion acceptance claim. All2931owner non-log files unchanged using
+
+scratch APPDATA. Initial native313check trial had6fixture failures: original
+
+helmet profiles were loaded after bare held override changed one slot to six.
+
+Fixed paired load order; source artwork/runtime unchanged. Repeated rows in
+
+first native review corrected to show all four cases; failed interval archived.
+
+Lesson: validate each original paired profile before overriding paired held
+
+slots; controller held loops use production visual-clock getter, not finite
+
+frame_at_elapsed terminal clamping. Source protection is not furniture evidence.
+
+
+
+North observation context completed:241checks0failures/40.36s/engine0, actual
+
+main/default geometry and stations in all four rotations, no artwork injection.
+
+Old wooden-desk/chair-rear hidden by current default layouts; modern South
+
+sofa/read station exists in all four, North reader station absent. Pure old
+
+empty-furniture fallback still returns North point(0,112) without rest_point.
+
+Four current room captures reviewed;2931owner non-log files unchanged/scratch
+
+APPDATA. This supersedes the proposed default North desk-contact integration:
+
+keep North reader staged as dormant fallback, do not invent furniture or change
+
+accepted layouts merely to make that source eligible. No North character-contact
+
+or lifecycle proof. Evidence: output/veld-read-north-context-v1.
+
+
+
+Remaining: valid side furniture/service contact and interruption/Continue before
+
+adoption, North lounge selection lifecycle, inherited rest/death and broader
+
+master/cross-family motion polish. Full animation goal active/incomplete.
+
+Handoff/evidence: character/veld-seated-side-breathing-v1.
+
+
+
+
+
+## Veld selected North seated/breathing family - October 1, 2026
+
+
+
+Normal grid loader and ACTIVE_ASSETS now select veld-seated-north-selected-v1
+
+paired composition: exact tested North down/rise and six-phase held breathing,
+
+three states/18refs per gear, six states/36refs/24source PNGs total. Whole literal
+
+res paths, fixed256/p128224/H148 and original directional matte head/helmet/body
+
+pixels; no duplicated/regraded/resized source.77composition checks0failures,
+
+three deterministic files,28immutable source bindings. Existing candidate source
+
+status retained; wrapper installed locally, owner motion acceptance open.
+
+
+
+Actual normal-loader main/loungeseat lifecycle:970checks0failures,
+
+274.28s engine0/no errors. Eight real disk writes/reads/fresh-scene
+
+staged Continue at interior/second-cycle held elapsed.8/1.4/2.2/4.6s,both gears;
+
+no fixture artwork injected. Each fresh normal loader independently compared
+
+all six states/36source slots with composed authority and calibration/depth marker.
+
+Exact displayed source/action/gear/timer/physical foot/furniture contact/depth
+
+and paused clock restored.16actual power/suspend service guards dispatch rise,
+
+only bounded local breath relaxes to exact neutral; head/helmet/body supports
+
+protected. Actual lowering->held->rise timers have exact neutral joins.
+
+All2931owner non-log files unchanged/scratch APPDATA.
+
+Watched dependencies/source hashes stable across this interval.
+
+
+
+Eight unmodified before/after room-crop pairs reviewed;7/8byte equal,
+
+maximum channel delta5/255. Exact source/contact/depth assertions are
+
+separate from whole-room shade; no blanket equality claim beyond measured crops.
+
+Native real lounge occupant remains visibly seated with fixed scale/contact;
+
+browser source loop/contact board reviewed separately. First2.41sec fixture
+
+parse failed on mixed indentation; fixed new test only, retained archive.
+
+Prior four-rotation/natural-approach candidate proofs remain dated; this normal
+
+selected interval prescribes one actual clear chair and tests two power/suspend
+
+guards, not natural chooser/all rotations/hazards or full-set owner acceptance.
+
+
+
+Lesson: installing a previously tested source is a new consumer milestone;
+
+prove actual normal loader after removing every candidate injection, compare
+
+all selected slots, and repeat fresh-scene lifecycle at nonneutral/second-cycle
+
+phases. Preserve source and room-shading evidence separately. No furniture,
+
+economy, actor decision, gameplay timer or save-schema change for selection.
+
+Remaining: independent side furniture/lifecycle/adoption, inherited rest/death
+
+and full-set perspective/proportion/grade/detail/motion polish. Full goal active.
+
+Handoff/evidence: character/veld-seated-north-selected-v1.
+
+
+
+
+
+## Veld side seated interruption and current room eligibility - October 1, 2026
+
+
+
+Staged East/West held breathing follow-up:361controlled native checks0failures,
+
+25.12s engine0. Four interior phases per direction/gear give16controlled
+
+interrupted_sit_rise_seconds cases: exact neutral rise entry, changed pixels only
+
+inside bounded rear rib/sleeve, unchanged master head/helmet/collar/hardware/
+
+hands/belt/hips/knees/boots and valid actor snapshots. Previous two-cycle player
+
+clock/snapshot/native148-82 checks retained. No actual side service/furniture
+
+or whole-scene Continue proof. No new source/grade/scale/runtime selection change.
+
+162package/source checks from prior source interval remain scoped unchanged art.
+
+
+
+Actual room eligibility:469checks0failures/71.27s engine0, fresh normal main
+
+scenes, actual lounge/observation fixtures all four rotations, no artwork
+
+injection or furnishing edits. Current lounge seated stations all North;
+
+observation seated reading all South. No East/West sit/read eligibility in eight
+
+current contexts. Eight native room crops reviewed, including moving lounge
+
+furnishings across rotations. Both new native intervals preserve all2931owner
+
+non-log files with scratch APPDATA. Evidence/context board:
+
+output/veld-seated-side-context-v1. Paired UID scripts and isolated runners saved.
+
+
+
+Lesson: a side approach to a chair is not a side-facing seated service. Verify
+
+RoomActivity facing and current applied layout independently of authored pose
+
+coverage; keep dormant side sources staged rather than inventing furniture or
+
+changing accepted room/service behavior merely to install art. Controlled
+
+breath relaxation proves protected pixels and source joins, not room contact.
+
+
+
+Next actual gap: authored dry-collapse family remains unselected; its existing
+
+role/world/Continue candidates omit bunk/seated/life entrances and have recorded
+
+owner-profile guard deltas. Inspect actual selected seated/rest mortality source,
+
+world offset and furniture depth before adoption, then clean normal-loader and
+
+isolated disk lifecycle proof. Preserve those prior failed guard intervals;
+
+do not label them clean because current unrelated seating guards pass.
+
+Full Veld set and master/cross-family motion polish remain active/incomplete.
+
+
+
+
+
+## Veld life-pose death entrance contact repair - October 1, 2026
+
+
+
+Actual selected life-pose death audit found18/18presentation offset jumps when
+
+die() clears furniture stage/progress, despite byte-exact source retention.
+
+Staged dry collapse also chose standing interior1 in all18cases. Completed
+
+before-repair360check interval/18case captures retained under
+
+output/veld-life-death-audit-v1/before-entry-contact-repair.
+
+
+
+scripts/veld_death_motion.gd now captures optional typed entry_position_offset
+
+and entry_sort_depth for dry sit/read/lie/sleep/bunk sources in existing saved
+
+recipe. grid_canvas.gd consumes them only during exact live entrance <180ms;
+
+ordinary live/water/legacy poses and authored interior anchors retain existing
+
+behavior. Finite vectors/384length and finite512depth bound, paired fields,
+
+dry/furniture-source admission enforced; old recipes lacking fields accepted.
+
+No new artwork, source regrade/rescale, physics foot/furniture/nav change,
+
+mortality/survival rule or normal dry-family selection. Patch is opt-in through
+
+staged lowered-entry dry pack until that family is adopted.
+
+
+
+Final756native checks0failures/60.51s engine0:18actual mortality cases in current
+
+default lounge North sitting, observation South reading and specialised East
+
+bunk, at lowering/held/rise,both gears. Exact incoming source, physical foot and
+
+actual retained-render member position/sort depth now stable:0/18render jumps.
+
+18typed actor disk writes/reads and fresh dead actor restores preserve exact
+
+entrance at same retained world clock, without navigation graph. Legacy recipe
+
+admission and144invalid-contact rejections;180ms hold/release boundaries verified.
+
+Actor disk proof is not full RunSave/fresh-scene Continue or saved world-clock
+
+restoration. Earlier repaired558check interval remains scoped no actor disk.
+
+Both six-case held source/native boards reviewed, including restored entrances.
+
+This certifies entrance preservation, not original furniture contact/visibility,
+
+later collapse continuity or complete owner acceptance. Every current source
+
+sprite remains unchanged; hashes after interval, dependency stability unmeasured.
+
+
+
+Normal selected water regression1954checks0failures/37.85s,64actual oxygen deaths,
+
+incoming source/clocks/actor-player memory restore retained. No water fresh disk
+
+or new furnished-water claim. Both final intervals preserve all2931owner non-log
+
+files under scratch APPDATA. Failed fixture42.37s occupied-cell check and144.52s
+
+post-death room placement/script error preserved; errored test Godot process
+
+119584 explicitly stopped. Corrected only fixture: pre-place all real rooms on
+
+verified vacant cells before deaths, hide report UI for art captures. Normal
+
+failure/end-run state remains untouched; no survivor/failure bypass.
+
+
+
+Lesson: an exact source texture is not an exact displayed pose. Save entrance
+
+position and furniture depth before mortality clears stage, and validate them
+
+independently of reconstructed navigation. Inspect source/native complete motion;
+
+standing-derived collapse makes held bunk42/45px sources jump to135/147px upright
+
+interiors. Never normalize frame height or substitute kneeling slots to hide it.
+
+Next author/adopt appropriate seated and lying life-collapse interiors/contact,
+
+then full RunSave/fresh-scene Continue, broader rotations/clearance and normal
+
+dry-family selection. Inherited source grade/detail/helmet and cross-family motion
+
+polish remain; full goal active/incomplete.
+
+Handoff/review: character/veld-life-death-entry-v1.
+
+
+
+## Veld supported held-bunk death candidate - October 1, 2026
+
+
+
+character/veld-bunk-death-east-v1 stages paired finite880ms supported relaxation
+
+from exact selected specialised East sleeper256/p128,224/H148. Built-in raw
+
+exec-b32d13ce-f1c9-437f-8f17-6d45bddbd0d2/prompt saved. One130/586 source ruler;
+
+near forearm/glove inserts only, original head/hair/helmet/shoulder badge/torso
+
+hardware/waist panel/legs/contact exact. Raw whole-body/knee drift rejected.
+
+18package checks pass. No new normal loader or ACTIVE_ASSETS selection.
+
+
+
+veld_death_motion.gd opts into death-bunk-east only from held bunk-sleep-east,
+
+same gear, entrance0/first1 and mandatory typed bed offset/depth. Contact persists
+
+through finite interiors and corpse instead of releasing at180ms. Existing
+
+live/water/legacy/other dry routes retained. Partial enter/exit not substituted.
+
+
+
+Eight actual mortality cases/default habitation4rotations/both gears:630native
+
+checks0failures,55.05s engine0;32source/native samples and32typed actor-file fresh
+
+dead restores at retained world clocks, exact source/bed position/depth without
+
+navigation graph.56invalid payload and16partial route guards. All2931owner non-log
+
+files unchanged under scratch APPDATA. First70.52s fixture failed on void loader
+
+return asserted as bool; errored process128912 precisely stopped, logs/guards
+
+archived, no owner changes. Water regression1954checks0fail/64oxygen deaths,
+
+39.06s engine0,2931owner files unchanged. No full RunSave/fresh-scene Continue.
+
+Source/GIF/native32room crops/all8cases and same-ruler helmet audit reviewed;
+
+browser candidate shown. Evidence hashes after run; interval stability unmeasured.
+
+
+
+Remaining: inherited bunk helmet shell/visor/hardware drift is visible against
+
+current master-fitted generic rest/upright references. Fit all7bunk poses with
+
+proper pitch/contact; complete partial enter/exit and seated deaths, full-scene
+
+Continue/lifecycle/furniture loss, then normal selection. Full set/polish goal open.
+
+
+
+Lesson: lying death must retain furniture contact through the entire motion and
+
+corpse, not just exact live entrance. Save presentation selectors/contact so dead
+
+restore does not depend on cleared navigation geometry. Exact reuse of a selected
+
+source prevents new drift but does not certify inherited master fidelity; audit
+
+construction at one native ruler and keep identity repair visible as remaining.
+
+
+
+
+
+## Veld seven-pose bunk helmet and whole-body drift audit - October 1, 2026
+
+
+
+character/veld-bunk-master-helmet-v1 stages native master East helmet0..3 and
+
+built-in authored reclining shell/gasket4..6. Raw/prompt/result
+
+exec-3ceb331e-e2e1-4f5e-9268-fdacc3feffcb saved. One35/157 reclining ruler and
+
+pooled semantic native-master grade; generated bodies excluded, original body
+
+outside bounded head/collar fit exact.10helmet exports, paired4states/18refs
+
+per gear:entry7/exit7/sleep1/death3, original1840ms live/880ms death clocks.
+
+No normal loader/ACTIVE_ASSETS or production script changes this turn.
+
+
+
+22package checks and1302native checks0failures/89.11s engine0. Actual main/default
+
+habitation4rotations/both gears, candidate wrappers injected:112prescribed live
+
+lowering/rising samples/all7poses, fixed physical approach foot and valid live
+
+snapshots;8actual held deaths/32typed actor-file fresh-dead restores at retained
+
+clocks, exact source/bed offset/depth/corpse. All2931owner non-log files unchanged
+
+under scratch APPDATA. Full112unmodified room crops/4boards,7head/source and
+
+standing-master boards reviewed; browser candidate shown. No fresh-scene full
+
+RunSave Continue/natural approach/partial-transition death/owner acceptance.
+
+Evidence hashes after interval, not frozen source/dependency stability.
+
+
+
+Source review exposed crop-induced neck gap: extend authored gasket (initial
+
+source crops ended668/721), exclude neighboring chest badge and erase rear bun
+
+separately instead of rectangular clearing through original front neck. Upright
+
+master includes collar; rigid whole-component roll into lying pose can penetrate
+
+mattress. Author reclining shell/gasket perspective while retaining supported
+
+body, then prove actual native bed contact; do not squeeze hardware to fit.
+
+
+
+Same148ruler/p128,224 cross-animation standing audit finds older bunk body still
+
+drifted: bare140opaque-height vs selected idle148, candidate helmet146 vs selected
+
+helmet155. Body narrower/offset, blue-gray suit and amber insignia/scanner/hardware
+
+differ from current master. Helmet source/contact repair is useful staged work,
+
+not whole-bunk consistency. Next rebuild entire bunk body from dense current
+
+master with exact idle joins, one source ruler and registered bed/seat anatomy;
+
+refit these helmets, then partial/seated deaths/full-scene Continue/lifecycle/
+
+normal selection. Full Veld set/master/style/perspective/size/grade polish open.
+
+
+
+Lesson: run same-ruler whole-figure comparison even when repairing only a helmet.
+
+Nominal standingHeight metadata and exact reuse can conceal inherited stature,
+
+uniform and lateral-anchor drift. Passing native clocks/contact cannot certify
+
+master identity; let contrary visual evidence change the next authoring task.
+
+
+
+
+
+## Veld complete master-body bunk candidate — October 1, 2026
+
+
+
+character/veld-bunk-body-master-v1 replaces the obsolete specialised East bunk
+
+body with complete authored poses referenced to the selected contemporary idle.
+
+One148/408 source ruler and pooled master material grade; exact native standing
+
+entry for both gears. Blue boxed science patch, cream instruments, specimen rack,
+
+brown bun, warm skin and matte charcoal suit retained. Canvas256x272 adds hanging
+
+leg padding while original pivot128,224 and standing148 remain. Original seven
+
+pose entry/reverse exit/held clocks and furniture/depth metadata retained. Upright
+
+canonical helmet plus existing authored reclining components fitted to new head
+
+landmarks; calibrated bare-to-equipped master face offset preserves neck attachment.
+
+20RGBA exports, paired four states/36 references; no normal selection changes.
+
+
+
+12source,16helmet and94package checks0failures. Native1306checks0failures/78.02s,
+
+engine0:112 prescribed lowering/rising samples in actual four habitation rotations
+
+and both gears;8actual held-sleep deaths,32actor-file fresh dead restores at same
+
+world clock and56invalid recipe guards. Scratch APPDATA,2931real non-log owner
+
+files unchanged. Initial51.34s failed interval retained: relaxed authored glove
+
+sat1native pixel below support plane. Bounded complete arm insert translated up1,
+
+preserving head/body/legs; strict exact bounds guard retained and passes. No
+
+production script changes this milestone. Five native boards and paired source
+
+board visually reviewed;6source-clock GIFs at one-third speed are not continuous
+
+native gameplay footage. No full RunSave/fresh-scene Continue, natural approach,
+
+partial-transition death or full lifecycle proof. Owner acceptance remains open.
+
+
+
+Lesson: compare whole body with selected master using common anatomical ruler,
+
+not equal image boxes. Additional transparent padding preserves complete hanging
+
+limbs without shrinking stature. Helmet fidelity does not cure obsolete body art.
+
+Register authored arm relaxation to actual support rather than weakening a failed
+
+contact guard. Same-source actor restores are narrower than complete Continue.
+
+Next full-scene Continue/approach/interruptions and partial/seated death sources,
+
+then normal selection and cross-family/full-set polish. Full goal remains active.
+
+Handoff/review/evidence: character/veld-bunk-body-master-v1.
+
+
+
+## Veld master bunk fresh-scene Continue — October 1, 2026
+
+
+
+character/veld-bunk-body-master-v1 now has actual RunSave disk write/read and
+
+eight fresh main-scene staged Continues: lowering, held, rising and supported
+
+death, both gears. Prescribed interior poses/default habitation rotation0 and
+
+candidate manifests injected in fresh fixture only. Exact whole RGBA source,
+
+physical foot, stage/timer/gear, saved bunk/death recipe, native room position/depth
+
+and paused visual clock preserved. Native169checks0failures/286.64s,
+
+engine0,16native before/after room captures plus16exact sources. All2931real
+
+non-log owner files unchanged with scratch APPDATA. No artwork or production
+
+script changes; normal selection remains unchanged. Native/source board reviewed.
+
+
+
+Initial127.22s interval retained: all3bare live phases passed; held death ended
+
+sole-named-survivor run and RunSave correctly rejected a new checkpoint. Revised
+
+fixture supplies existing Bill ward as paid/restored (8Metal spent; repair work
+
+is prescribed), then actual CryoRecovery wake, navigation landing and roster
+
+logic creates survivor. No failure flags, run revival or invented roster. Real
+
+baseline restores reset each gear/death case. This proves surviving-loop corpse
+
+Continue, not saving after last-character expedition loss. Paused pose/source
+
+verification does not establish future resumed motion, natural chooser/approach,
+
+all-rotation Continue or owner acceptance. Earlier1306native all4rotation source
+
+proof retains its original prescribed-clock/actor-file scope. After-run hashes
+
+recorded; dependencies were not frozen across launch.
+
+
+
+Lesson: keep checkpoint eligibility and mortality rules real. A last-character
+
+death ends the loop; use actual recovered survivor and valid complete roster for
+
+corpse checkpoint coverage. Do not force running=true or weaken save validation.
+
+Next actual resumed activity, service interruptions, natural approach and partial
+
+life death sources, then normal-loader integration/full-family/master polish.
+
+Full Veld objective active/incomplete. Evidence: native-fresh-continue.png,
+
+continue-evidence.json and HANDOFF.md in character/veld-bunk-body-master-v1.
+
+
+
+## Veld master bunk controller cycles and service interruptions — October 1, 2026
+
+
+
+character/veld-bunk-body-master-v1 actual controller audit completes two14.12s
+
+lower/rest/rise cycles from prescribed clear station, both gears, through ordinary
+
+actor.update(.04).32actual service losses cover power removal/suspension at seven
+
+entry interiors and held sleep. Interrupted rise starts from exact displayed
+
+whole source and bed offset, keeps physical foot, remains snapshot-admissible
+
+through updates and completes. No phase timer writes during resumed cycles or
+
+returns. Native3395checks0failures/64.26s engine0;48actual room captures and48exact
+
+source captures (32complete-cycle pose changes,16interruption before/after views).
+
+All2931owner non-log files unchanged in scratch APPDATA. No production/artwork
+
+or normal selection edits. Two native cycle boards and interruption board viewed.
+
+Independent exact master entry/terminal RGBA joins confirmed in both gears.
+
+
+
+Earlier61.85s passing interval retained. Small board crop initially misread as
+
+bare-headed terminal; full archived/current native captures and independent
+
+pixel comparison both prove exact equipped master, no helmet removal. Diagnostic
+
+rerun adds actor state/equipment/action and whole RGBA hashes to all708ordinary
+
+cycle samples. Initial2.99s diagnostic parse failure fixed by instance hashing;
+
+logs/profile results retained. No invented production bug or artwork repair.
+
+After-run dependency bindings only, not frozen-interval evidence. Original test
+
+resource_path entries were empty for ImageTextures; diagnostic uses content hashes.
+
+
+
+Scope: actual controller activity/service-return update, prescribed station in
+
+default rotation0, fixture-only candidate library. Separate prior eight fresh
+
+Continues verify saved paused poses; this audit is not future motion after Continue,
+
+natural chooser/approach, room removal/fire/gear interruption or all-rotation
+
+lifecycle proof. Owner acceptance and normal installation remain open.
+
+Lesson: inspect full native captures and actual loaded RGBA before diagnosing
+
+design drift from small crops. ImageTexture resource_path is not frame provenance;
+
+record pixel content hashes and actual actor gear/state. Source-clock, controller
+
+progress, room contact and checkpoint continuation remain separate requirements.
+
+Next natural approach/resumed Continue and remaining interruptions/partial life
+
+death sources, then normal-loader integration and full-set/master polish.
+
+Full Veld objective active. Handoff/evidence/review in this candidate folder.
+
+
+
+## Veld natural bunk approach and East facing handoff — October 1, 2026
+
+
+
+scripts/veld_npc.gd now overrides station_arrival_facing only for marked Veld
+
+specialised bunk: East final clear approach matches exact East standing entry.
+
+Other station types delegate inherited behavior. Shared chooser already checks
+
+final segment facing, clearance, exact station contact and preserves route nodes.
+
+No room geometry, source artwork, clocks, grade, physical contact or normal
+
+manifest selection changes. New staged actual approach test uses normal selected
+
+architect release position, high90fatigue and default room on vacant door-connected
+
+side. Actual need chooser plans path; actor.update walks, dispatches activity,
+
+completes full lower/rest/rise and reduces fatigue. No prescribed destination,
+
+route, stage, station contact or activity timer during either case. Initial actor
+
+snapshot resets released start for second equipment variant; gear/need fixture
+
+is prescribed. Other crew/owner layouts and whole station simulation not certified.
+
+
+
+Final9668checks0failures/49.56s engine0, both gears;38actual native
+
+room captures/38exact sources include final walking step and complete rest
+
+sequence. Original ports/floor/service rules, valid snapshots and held activity
+
+foot pass. Four paired native/source boards viewed using original184/p92,172
+
+and256x272/p128,224 common ruler. Palette/hardware/stature retained at handoff.
+
+All2931real non-log owner files unchanged with scratch APPDATA. After-run
+
+bindings, not interval-frozen proof. No fresh Continue/future resumed proof in
+
+this audit; previous169/3395checks retain separate scopes. Runner's historical
+
+freshScreenshot field here measures fresh records.json; visual review is separate.
+
+
+
+Initial42.63s failed interval retained: old rotation0 fixture below core has no
+
+North door (crew_hab blueprint West/East/South); Veld correctly remains in core.
+
+Move fixture to vacant original port-compatible side, never loosen navigation.
+
+Next49.55s/9718pass showed actual final North walk then East bunk facing snap.
+
+Seven-line actor hook fixes final-facing requirement;50.8s/9660pass retained.
+
+Final49.56s adds actual pre-entry walking capture/guard and passes9668. Source
+
+pixels unchanged. This is normal actor navigation behavior with staged bunk art,
+
+not normal-loader installation/full-set acceptance or universal room clearance.
+
+
+
+Lesson: source/contact and saved-pose checks do not prove accessible approach.
+
+Check blueprint doors before testing a chooser. Match final travel facing to
+
+the master entry using collision-checked route requirements; do not teleport,
+
+rotate furniture or replace authored head designs to conceal a facing snap.
+
+Next resumed fresh Continue, broader interrupts/partial life death sources and
+
+normal-loader installation, then full-family/master polish. Full goal active.
+
+Handoff/evidence: character/veld-bunk-body-master-v1.
+
+
+
+## Veld bunk future motion after fresh Continue — October 1, 2026
+
+
+
+Staged complete master-body pair now compares 64 ordinary actor.update(.02)
+
+steps before saving against the same 1.28s after actual disk read and fresh main
+
+scene RunSave.restore_staged. Eight prescribed phases: lower/held/rise/supported
+
+death, both gears. Exact original actor/player/visual clock restored and checked
+
+before writing; reference progress never becomes the checkpoint starting state.
+
+Whole source RGBA hashes, physical foot, stage/state/gear, needs, timer, offset,
+
+depth and clock match at every step. Native room position/depth matches at every
+
+captured source change and terminal tick. Includes lower-to-rest and rise-to-idle
+
+joins; supported death starts inside exact live entrance before finite release.
+
+Rising fixture also re-enters sleep through the ordinary chooser; both traces
+
+match, but this prescribed-needs station does not certify natural rest cadence.
+
+This is deterministic actor-only advancement with scene processing paused,
+
+not full station unpause or fresh-process/title Continue. Rotation0 prescribed
+
+clear station remains separate from prior actual door-connected approach proof.
+
+
+
+7121checks/0failures, engine0/288.0s, 84actual room and
+
+84exact source captures. Eight paired future native/source boards visually
+
+reviewed at original canvas/pivot; body, matte head/helmet, support and terminal
+
+standing match.184standing source padded at36,52 into256x272 preserves the same
+
+128,224pivot without resizing. 2931owner non-log files unchanged with
+
+scratch APPDATA. 27targeted source/manifest/controller/test
+
+file hashes identical before/after interval; other engine dependencies not frozen.
+
+No production/art/normal manifest selection changes. New paired UID test and
+
+runner: tests/test_veld_bunk_body_resume.gd/tools/run_veld_bunk_body_resume.py.
+
+Evidence/review: character/veld-bunk-body-master-v1/resume-evidence.json.
+
+
+
+Lesson: saved-pose equality cannot establish future motion. Rewind reference actor,
+
+playback and visual clocks exactly before real disk write, then compare the same
+
+ordinary updates across fresh restoration and actual rendered contact joins.
+
+Keep whole-world cadence and source/timing/contact evidence distinct. Remaining
+
+room-removal/fire/gear interruption contexts, partial/seated death sources,
+
+broader rotations, normal paired body installation and full-family/master polish.
+
+Full Veld goal active/incomplete; owner visual acceptance remains open.
+
+
+
+## Veld supported bunk fire rise and refuge — October 1, 2026
+
+
+
+Actual fire audit exposed immediate supported-to-walk snap. scripts/veld_npc.gd
+
+now provides advance_fire_rise for its marked specialised dry bunk only;
+
+scripts/fire_safety.gd invokes the optional actor hook before clearing stage.
+
+Exact current lowering/held/rising pose starts a finite reverse rise, preserving
+
+navigation foot/contact and standing master endpoint before ordinary refuge
+
+routing. Remaining rise clock survives an extinguished fire; alarm clears only
+
+after standing. Ordinary advance_needs still runs before fire dispatch. Actors
+
+without the hook and unmarked Veld states retain existing fire behavior.
+
+No new pose/grade/art/room/navigation data or normal manifest selection changes.
+
+
+
+Staged paired body test:22actual fire cases (seven lower interiors,held,three
+
+rise interiors x two gears),all22route and physically reach non-burning core
+
+through original connected habitat door. Six fire-field clears mid-rise retain
+
+source/contact/remaining clock and finish with needs advancing.22public direct
+
+gear swaps select corresponding same supported pose/clock/position/depth;
+
+actual locker-fitting action rejects during bunk stage. Direct setter evidence
+
+does not certify an animated fitting action. Two actual crew-hab scrap attempts
+
+are correctly blocked by resident-hab policy, preserving actor/room/Metal;
+
+do not bypass removal policy to invent an animation emergency.
+
+
+
+Final8037checks0failures/57.76s engine0;45shared Room fire checks
+
+0failures/headless engine0. 78actual native room captures and exact sources;
+
+six fire-rise/refuge boards and six gear/extinguished boards inspected, same
+
+source ruler/pivots/master entry and finish. Existing fire overlay obscures lying
+
+body within flame; source board separately shows retained anatomy/materials.
+
+Native evidence is not unobscured continuous whole-world simulation. Prescribed
+
+phase/site/fire values with ordinary actor updates; not naturally ignited fire,
+
+sprinkler-driven extinguishing, fresh emergency Continue or every room rotation.
+
+Staged paired body remains unselected; normal actor fire hook is installed.
+
+
+
+All2931owner non-log files unchanged in scratch APPDATA.
+
+28targeted actor/fire/scrap/life/test/paired source and
+
+manifest inputs identical before/after final interval; broader dependencies not
+
+frozen. Initial45.06s/493checks110failures retained (actual snap); fixed51.24s/
+
+2679pass retained before fuller evacuation/cleared-alarm proof. Latest evidence:
+
+character/veld-bunk-body-master-v1/emergency-evidence.json. Paired UID test and
+
+isolated runner: test_veld_bunk_body_emergency.gd/run_veld_bunk_body_emergency.py.
+
+
+
+Lesson: emergency routing must account for supported anatomy, not just clear
+
+activity flags. Advance the actor's authored finite rise while ordinary needs
+
+continue, then use actual refuge routing; prove physical arrival, not merely a
+
+nonempty path. Preserve remaining clock if hazard clears during the rise.
+
+Separate direct appearance setters, fitting actions and real removal policy.
+
+Remaining fresh emergency Continue/whole-world hazard cadence, partial/seated
+
+death source families, broader rotation/silhouette review, normal paired body
+
+selection and full-family/master polish. Full Veld goal active/incomplete.
+
+
+
+## Veld partial supported bunk settling death — October 1, 2026
+
+
+
+Staged paired body now adds death-bunk-settle-east: five exact authored descent
+
+poses (seated through lying) plus two existing relaxed arm terminal poses. Seven
+
+finite slots/2180ms from full seated start; initial exact180ms incoming hold
+
+and remaining clip begin at actual live progress. Lowering and rising partial
+
+sources both settle toward supported lying contact. Existing20PNGs exactly equal
+
+previous emergency milestone; no repaint, rescale, palette/detail change or new
+
+generated source.14new frame references raise paired manifests to five states/
+
+50references.130source/package checks0failures; exact masters and original first
+
+three state contracts retained. Rebuild build_bare.py,build_helmet.py then
+
+build_settle.py; derived rows explicitly record source reuse.
+
+
+
+Loader opt-in supportedBunkDeathMode=settle-v1 tags only this finite state.
+
+Veld death selector requires matching gear, active supported bunk, appropriate
+
+seated/reclining source and matching partial clock. Snapshots retain bounded
+
+entry/rest/local-foot anchors and pose-compatible progress; malformed/foreign
+
+recipes reject. CrewLife.bunk_contact_offset shares original bed formula with
+
+live and dead displays. Exact entrance position/depth retained180ms; subsequent
+
+source/contact/depth advance together until terminal lying support. Existing
+
+held bunk/ground/water recipes remain distinct. Standing/crouching bunk starts
+
+remain incomplete fall coverage; seated lounge sources are another family.
+
+Normal paired art selection remains unchanged/unselected.
+
+
+
+Native14813checks0failures/72.41s:80prescribed partial actor
+
+death source API cases (five interiors x lower/rise x two gears x four room
+
+rotations),320actor-file fresh dead restores at same saved world clocks.76source/
+
+offset samples per case,18native sequences/136actual room+exact source captures.
+
+Eight full boards/two paired entrance boards visually reviewed; stationary
+
+navigation foot, actual mattress contact, matte body/head grade and hardware
+
+retain master family. Two source-clock previews include recorded continuous
+
+offsets; browser tab20 observed changing0.00->1.24s beside same pixel-scale masters.
+
+Source preview is separate from actual captured room poses, not continuous native
+
+whole-world playback. Natural death acting/owner acceptance remain open.
+
+
+
+Held-bunk regression1306checks0failures/76.11s native engine0,
+
+8actual held deaths/32actor-file restores and all4rotation live poses. Water
+
+regression1953checks0failures/36.67s headless engine0/64actual
+
+oxygen deaths. Allthree engines terminal0/clean logs. Owner2931
+
+non-log files unchanged with scratch APPDATA.29targeted production/test/source/
+
+manifest inputs match before/after186.91s interval; broader dependencies
+
+not frozen. New paired UID tests test_veld_bunk_body_settle.gd and held regression,
+
+isolated runner run_veld_bunk_body_settle.py; evidence in settle-evidence.json.
+
+This proves source/actor-only mortality/restoration, not new partial-recipe full
+
+RunSave/fresh-scene Continue or naturally triggered room mortality. Current
+
+normal selection cannot produce new staged recipe without explicit overrides.
+
+
+
+Lesson: an exact incoming death texture alone does not preserve supported anatomy
+
+through the rest of the fall. Reuse authored poses with explicit finite clock,
+
+gear/source binding and the same continuous furniture contact formula as live
+
+motion; preserve source provenance and validate recipe bounds/pose correspondence.
+
+Separate supported settling from early standing falls and other seat families.
+
+Remaining fresh emergency/partial death Continue, whole-world hazard cadence,
+
+early bunk falls/lounge death sources, normal paired body installation and full
+
+Veld family/master polish. Full goal active/incomplete; no commit/export.
+
+
+
+## Veld partial bunk death full Continue motion — October 1, 2026
+
+
+
+New native full checkpoint test covers actual RoomFlooding.kill from two prescribed
+
+supported partial poses (lowering progress .51 and rising progress .81), both
+
+bare and sealed gear. Existing Bill pod is paid/restored by the fixture and wakes
+
+through actual CryoRecovery/roster logic so ordinary run save eligibility remains
+
+valid after Veld mortality. No forced run resurrection/free-build/failure bypass.
+
+Candidate manifests injected in every fresh scene; normal art selection unchanged.
+
+
+
+8125 checks, zero failures/170.44s, engine terminal zero/clean log.
+
+Four actual disk writes/reads and fresh main-scene restore_staged operations;
+
+150 uninterrupted plus 150 restored ordinary actor updates per case (20ms each,
+
+three seconds), 1200 total future steps. Exact source pixel hashes, physical foot,
+
+visual clock, furniture offset/depth, needs, stage/state/dead/gear compared every
+
+step; actual room submission position/depth at each source change and terminal.
+
+Paused initial source and exact incoming hold preserved; terminal corpse remains
+
+at rest-local-foot on the mattress, living navigation cleared. 60 native
+
+room captures plus 60 exact source images; four paired boards reviewed.
+
+Twenty authored PNGs unchanged; no art/grade/scale/production edits this interval.
+
+
+
+Owner 2931 non-log files unchanged with scratch APPDATA.
+
+29 targeted source/test/manifest/production inputs match
+
+before/after; broader engine dependencies not frozen. Paired UID retained for
+
+new test_veld_bunk_body_settle_resume.gd; runner, board builder and evidence saved.
+
+Initial test-only endpoint check wrongly included the transient 16px lift; that
+
+failed interval retained. Corrected to independent authored terminal rest anchor,
+
+without altering production contact or pixels.
+
+
+
+Lesson: same-clock actor restore does not establish future full Continue. Check
+
+an actual eligible world checkpoint, fresh scene and future exact sources/contact
+
+against uninterrupted playback, including the finite resting endpoint. Keep
+
+prescribed pose/API mortality distinct from naturally triggered whole-world
+
+hazards. Actor-only update with frozen main loop does not prove world hazard cadence,
+
+new process/title Continue, all room rotations, early falls or owner acceptance.
+
+Fire-rise fresh Continue, early bunk/lounged fall artwork, whole-world hazard cadence,
+
+normal paired body installation and full-set master/polish remain open. Goal active.
+
+
+
+## Veld bunk evacuation full Continue motion - October 1, 2026
+
+
+
+Six actual disk saves/reads and fresh main-scene Continue restores now cover
+
+fire interruption while lowering (progress .81), held and rising (remaining .9),
+
+both bare/helmet. Fixture prescribes room fire and supported phase; ordinary
+
+actor.update dispatches FireSafety and Veld finite rise. Existing paid/restored
+
+Bill ward wakes through CryoRecovery/roster logic; normal run eligibility remains.
+
+No free-build/failure bypass, forced resurrection or owner layout change.
+
+
+
+23389 native checks, zero failures/239.67s; engine terminal zero,
+
+clean log. 3400 uninterrupted/restored 20ms future actor steps, through actual
+
+clear-floor refuge movement out of burning hab. Every step compares exact source
+
+RGBA hash, physical foot, stage/state/timer, needs, equipment, visual clock and
+
+contact/depth. Foot stays planted during finite rise; exact standing master
+
+returned at its original padded pixel pivot before movement. Saved fire predicate,
+
+evacuation goal, supported anchors and paused exact entrance restored. 108
+
+actual native room captures plus 108 exact source frames; six paired boards
+
+reviewed beside same-ruler standing masters. Native flame effect partly obscures
+
+body; separate adjacent source is exact, not an unobscured native motion movie.
+
+Twenty authored PNGs match prior partial Continue milestone; no art/grade/scale
+
+or production change in this interval. Candidate explicitly injected every scene;
+
+normal paired body selection remains unchanged/unselected.
+
+
+
+Owner 2931 non-log files unchanged in scratch APPDATA;
+
+30 targeted source/test/production/manifest inputs match
+
+before/after. Broader engine dependencies not frozen. New paired UID test, isolated
+
+runner, board builder and evidence fire-resume-evidence.json retained. This proves
+
+fresh scene disk Continue and future actor motion for prescribed rotation-zero
+
+alarm cases, not naturally ignited fires, whole-world hazard/suppression cadence,
+
+new process/title Continue, every rotation or universal owner acceptance.
+
+
+
+Lesson: an interruption checkpoint must preserve the incoming pose, finish its
+
+supported action, and then reach a real safe destination. Checking a saved pose
+
+or finite rise alone misses later route continuity. Compare exact source, anatomy
+
+and furniture registration with uninterrupted motion, while separately asserting
+
+the original standing master before foot movement. Keep flame-obscured native
+
+views separate from exact-source material review. Early bunk/lounged falls,
+
+whole-world hazards, normal paired body installation, remaining Veld families
+
+and cross-family master polish remain open. Full goal active; no commit/export.
+
+
+
+## Veld early bunk floor-fall artwork - October 1, 2026
+
+
+
+Staged character/veld-bunk-early-fall-v1 adds paired crouching-to-floor and
+
+standing-to-floor sources before mattress support. Built-in image generation
+
+exec-3624f6c9-d877-422c-b155-4cc96460e212 authored six whole poses; raw PNG,
+
+exact prompt and reference roles retained. Selected East idle sets identity,
+
+master physique/materials; existing bunk source supplies rear-reaching crouch;
+
+existing ground fall supplies landing choreography. Only three new interior
+
+poses2/3/4 used. Exact current bunk pose1 is initial crouching frame; exact
+
+existing ground terminal5 is resting endpoint. Existing six-frame standing
+
+fall reused, with transparent bottom16 padding only. No old PNG overwrite.
+
+
+
+One148/495 generated standing anatomical ruler for every new interior, no
+
+per-pose box fitting. One pooled semantic skin/hair/science/neutral grade to
+
+current master applied before resampling. Original body canvas256x272 and
+
+pivot128,224/H148; explicit authored floor-contact anchors, no bunk furniture
+
+depth metadata. Helmet inserts use original native35x39 master/closed-eye
+
+variant, rigid rotations at native scale; body pixels outside bounded head
+
+insert exactly equal paired bare. Original equipment, warm skin, brown bun,
+
+blue boxed science patch, silver specimen tubes, knee rivets and connected
+
+hips/arms retained. Raw low-opacity background halo excluded by body component
+
+isolation; exported transparent margins and source views checked.
+
+
+
+35 source-builder checks and105 independent package/alpha/endpoint/body checks
+
+pass,22RGBA exports/two finite states per gear. Four three-times-slower source
+
+previews use pooled GIF palette; paired whole source board reviewed against
+
+same-pixel-scale standing master. These are source-only previews, not native
+
+room/furniture contact or world mortality evidence. Manifests explicitly staged,
+
+normal library unchanged, no production/owner room/save changes or Godot run.
+
+
+
+Lesson: before supported contact, a partial crouch needs its own authored fall
+
+trajectory, rather than borrowed seated or lying silhouettes. Bind the exact
+
+incoming pose and existing terminal to new complete-body interiors; keep one
+
+anatomical ruler/material mapping and the canonical helmet, rather than fitting
+
+each pose/head to a convenient box. Retain generated source and extraction
+
+provenance, and distinguish source package acceptance from physical floor/bed
+
+registration and finite temporal/native/save validation.
+
+
+
+Next integrate strict opt-in early standing/crouching selectors, source clocks,
+
+floor registration and native mortality/Continue; lounge falls still open.
+
+Whole-world hazard cadence and normal paired body selection need their own
+
+evidence. Remaining full Veld set/master cross-family polish remains active;
+
+no commit/export and owner visual acceptance open.
+
+
+
+## Veld early bunk floor-fall native integration - October 1, 2026
+
+
+
+Explicit earlyBunkFloorDeathMode=floor-v1 marks only standing/crouching floor
+
+families in CrewSpritePlayer. Veld selector requires matching gear, active dry
+
+bunk entry/exit, source pose0/1, matching canonical first pixels and opt-in tag.
+
+Seated/reclining pose2+ still uses supported settling. Strict saved recipe
+
+requires exact early source index/gear, first1 and zero lifted position; foreign
+
+bed anchors, later poses, shifted roots and mismatched equipment reject.
+
+Exact180ms incoming whole pose/depth retained, then original floor-root clip
+
+timing/depth and canonical resting terminal. No source repaint/rescale this
+
+interval.105package checks now107 with two explicit opt-in assertions;35builder
+
+checks retain their source scope. All22PNGs match earlier artwork milestone.
+
+
+
+Native21094checks0fail/305.59s, engine terminal0/clean log. Eight
+
+actual RoomFlooding.kill cases: early standing/crouch lowering and rising,
+
+both gears. Eight ordinary eligible full disk checkpoint writes/reads and fresh
+
+main-scene restore_staged operations,2400future20ms actor steps total. Independently
+
+assert authored frame clock, floor offsetzero, stationary physical foot and exact
+
+canonical floor terminal; compare every uninterrupted/restored source hash,
+
+clock/timer, needs, pose/state/gear/dead, position/depth.32malformed recipe guards.
+
+Existing Bill ward paid/restored in fixture and wakes through actual recovery/
+
+roster to preserve normal run eligibility; no run resurrection/freebuild bypass.
+
+120actual room captures plus120exact source PNGs; eight paired boards
+
+reviewed against original-scale standing masters. Visible floor contact in front
+
+of bunk, attached anatomy, matte palette and helmet preserved after Continue.
+
+
+
+Scoped regressions native14813partial source/API checks/80cases/320same-clock
+
+actor-file restores across four room rotations; native1306held/live checks and
+
+headless1953water checks/64oxygen deaths all pass. Three engines terminal0/clean
+
+logs,185.11s. Both intervals use scratch APPDATA; owner
+
+2931non-log files unchanged.53targeted early interval
+
+inputs and29targeted regression inputs before/after match; broader dependencies
+
+not frozen. New test/UID and runner, original source and detailed native evidence
+
+retained. Normal paired library remains staged/unselected; no commit/export.
+
+
+
+Lesson: early floor falls need pose/gear-bound opt-in selectors and zero furniture
+
+lift, while supported deaths need saved dynamic bed anchors. Validate both source
+
+clock and actual room contact, then eligible full checkpoint/fresh scene future
+
+motion. Exact source continuity does not prove floor placement on its own. Keep
+
+prescribed rotation-zero early phase/world mortality API and actor-only future
+
+updates distinct from natural whole-world hazards, title/new process Continue
+
+and every-room visual acceptance. Lounge fall sources, whole-world cadence,
+
+normal paired body installation and full Veld/master cross-family polish remain
+
+open. Full goal active/incomplete; owner visual acceptance open.
+
+
+
+## Veld East lounge fall source - October 1, 2026
+
+
+
+Staged character/veld-lounge-fall-east-v1 adds six finite seated-to-floor poses
+
+in both gears,12RGBA exports. Two newly authored whole-body interiors provide
+
+forward seated slump and slide toward knee/hand support. Initial source is exact
+
+master-aligned staged East seated frame5, with only16transparent bottom rows
+
+added. Last three sources exactly reuse established early floor-fall brace,
+
+roll and resting endpoints. That East seated foundation remains staged too;
+
+normal selected library is unchanged. No production/gameplay/room/save changes.
+
+
+
+Built-in imagegen exec-01e860c7-d9b9-4e46-afbd-e79c90e5c088 retained raw fall-v1.png
+
+and exact prompt. Reference1 selected East idle is identity/physique/matte material
+
+authority; reference2 staged coherent East seated is entry gesture; reference3
+
+early fall source supplies floor choreography/uniform detail. Actual raw1280square
+
+has upright opaque height649, so one148/649 anatomical ruler applies to both new
+
+interiors. No per-pose box fitting. Pooled skin/hair/science/neutral master grade
+
+before resampling, body component isolation/transparent edges.256x272/p128,224/H148.
+
+Unscaled canonical35x39 East helmet uses rigid rotations/collar registration;
+
+body outside bounded head insert exactly equal bare. First seated equipped head
+
+and last three equipped floor frames remain their exact established sources.
+
+
+
+22builder and56independent package/alpha/finite timing/exact entry-floor joins/
+
+paired helmet-body checks0fail. Six slots1440ms finite, two source GIFs at3xslower
+
+with pooled palettes. Paired complete-body board reviewed beside original-scale
+
+standing master: attached hips/limbs, warm skin/brown bun, charcoal matte suit,
+
+blue insignia and scientific hardware retained. Source/artwork evidence only;
+
+no native furniture contact, mortality selector, source-clock API, full Continue
+
+or new gameplay cadence proof. No Godot test this source-only interval, so no
+
+owner profile reads/writes. Source/raw/prompt/builders/evidence retained.
+
+
+
+Lesson: a chair fall needs an authored slump and slide before the established
+
+knee/hand floor brace; a generic standing fall skips those anatomical contacts.
+
+Keep exact seated entrance and canonical resting endpoint, one anatomical ruler
+
+and semantic grade, and reuse proven whole-body landing sources. Mark the entry
+
+foundation's staged status explicitly; artwork extraction/PNG checks do not prove
+
+live chair root/depth or natural world mortality. Next native seat-root registration,
+
+strict seated/partial source selection and full save/future continuation; remaining
+
+cardinal lounge coverage, whole-world hazards, normal paired installation and
+
+full-set Veld master/cross-family polish remain open. Full goal active/incomplete.
+
+
+
+## Veld North lounge fall source and chair audition - October 1, 2026
+
+
+
+New staged character/veld-lounge-fall-north-v1 provides six finite seated fall
+
+poses in both gears,12RGBA exports. Current lounge resolver chooses North in all
+
+default rotations; East/West seating remains staged with no live service station.
+
+Continue from actual North seat coverage rather than altering owner furniture
+
+or inventing an East service. Exact entry matches selected North breathing0 and
+
+coherent seated5; generated rear slump/knee brace then exact North roll/rest3..5.
+
+
+
+Built-in imagegen exec-3a19c207-2db4-4a62-8f84-942fc81eefa7 retained raw and exact
+
+prompt. Selected rear standing master is identity/material authority, selected
+
+North seat is gesture, North floor source is landing choreography only. One
+
+148/693 anatomical ruler; pooled skin/hair/science/neutral curves before resampling.
+
+Rear skin uses explicit ear strips rather than brown scalp/face guesses. New
+
+equipped poses reuse existing32x29 native40degree depth-pitch component, unchanged
+
+body outside bounded head region. Rear rectangular vent, side ports, silver trim
+
+and gasket remain consistent; no planar rotation used to invent depth pitch.
+
+256x272/p128224/H148,finite1440ms,pooled source GIF palette and exact PNG alpha.
+
+
+
+20builder/60independent package checks0fail; original-scale master board reviewed.
+
+Native prescribed source/contact audition68checks0fail/42.9s,engine0/cleanlog.
+
+Actual default lounge rotation0, clear resolver station, all12paired source poses
+
+submitted to retained room renderer. Fixed physical foot; provisional root seats
+
+entry/slump at rest, knee brace halfway to approach, roll/rest at clear floor.
+
+Registered chair depth only for first2poses. Both full paired native/source boards
+
+reviewed: figure visible in front of chair, landing clear of chair/plant. Captures
+
+are discrete prescribed poses, not a natural continuous fall. First camera was
+
+still settling; per-capture crop boxes retained rather than pretending same camera.
+
+Scratch APPDATA/all2931owner non-log files unchanged; full dependency set not frozen.
+
+First66s interval stopped on test-only void-loader return misuse, retained with
+
+clean profile; corrected to check admitted frames and reran. No production script,
+
+normal loader, mortality selector or furniture changes, no disk Continue proof.
+
+
+
+Lesson: use current furniture-facing eligibility to prioritize source coverage.
+
+Separate source design, provisional chair-root audition, actual mortality and
+
+fresh-save continuation. Seated source calibration cannot certify a floor path;
+
+actual submitted textures/contact/depth must be reviewed. Keep exact incoming
+
+and existing landed bodies; match rear skin from anatomical ear pixels and reuse
+
+real depth-pitch helmet components. Next opt-in North mortality registration and
+
+strict saved selector/root validation, then paired full disk/future Continue.
+
+Other cardinal lounge falls/partial seating, whole-world hazards, normal paired
+
+bunk adoption and full cross-family master consistency/polish remain incomplete.
+
+Full goal active; no commit/export or owner acceptance claim.
+
+
+
+## Veld North lounge fall actual mortality and fresh Continue - October 1, 2026
+
+
+
+Staged character/veld-lounge-fall-north-v1 now opts into real North seated death
+
+through loungeFallDeathMode=seated-north-v1; CrewSpritePlayer tags those sources.
+
+VeldDeathMotion captures only matching dry gear and registered North seat source:
+
+selected held breathing, final lowering5 or initial rising0 with seat amount>=.8.
+
+Exact displayed whole source/position/depth retained180ms. Authored interiors then
+
+play finite1440ms. Saved local foot, seat, depth and entry amount survive die()
+
+clearing live furniture state. Offset holds through360ms, fades linearly to zero
+
+by720ms; max(natural depth, saved chair front) prevents re-occlusion during fall.
+
+Strict saved selectors/gear/first/pose/range/finite vectors/foot-root/offset/depth
+
+binding; foreign lounge fields rejected on other clips. No normal loader admission
+
+yet. Earlier partial seating poses retain existing behavior pending authored coverage.
+
+
+
+Changed scripts/crew_sprite_player.gd and scripts/veld_death_motion.gd; new paired
+
+fall root opt-in in builder/manifests. All12PNG sources unchanged by integration;
+
+one148/693ruler, matte pooled grade, original North seat/floor and native depth-pitch
+
+helmets retained. Package now62checks0fail (two opt-in guards added), builder20.
+
+Fixture loads only new fall; ordinary selected North sitting/breathing remains
+
+normal loader output. No furniture/owner layout/economy/free-build changes.
+
+
+
+Native23581checks0fail/312.08s,engine0/cleanlog. Eight actual RoomFlooding.kill
+
+cases: two distinct held breathing sources, final lowering and initial rising,
+
+both gears. Eight eligible actual RunSave disk writes/reads and fresh main-scene
+
+restore_staged.150reference+150resumed20ms actor steps per case=2400future updates;
+
+independent source clock/root/depth oracle plus exact uninterrupted/resumed pixels,
+
+foot/timer/gear/needs/offset/depth/corpse state.64malformed source/root/gear guards;
+
+unmarked candidate rejects opt-in. Exact incoming source and chair root/depth,
+
+paused Continue, clear dead navigation and original finite floor terminal checked.
+
+Paid existing Bill ward wake/roster provides real surviving crew/save eligibility;
+
+that fixture does not certify ward repair/approach or natural hazard triggers.
+
+
+
+Eight complete paired native/source/master boards reviewed;112future room/source
+
+presentations,128room and128source captures including entrances/restores. Clear
+
+chair-to-floor contact, body/helmet identity and matte grade retained. Replay uses
+
+actual recorded source/root traces; not a continuous native world recording.
+
+Prescribed current default lounge rotation0 only, actor-only future updates while
+
+main paused; not new-process/title Continue, natural chooser/hazard/world cadence
+
+or all room rotations.35targeted inputs before/after unchanged; broader dependencies
+
+not frozen. Scratch APPDATA/all2931owner non-log files unchanged.
+
+
+
+Scoped changed-selector regressions also pass:14813partial-bunk native71.71s,
+
+1306held-bunk native78.54s,1953water headless37.21s; total189.22s,allengine0/cleanlogs,
+
+29targeted inputs unchanged/all2931owner files unchanged. Earlier early-floor/full
+
+world evidence retains its dated scope; no unrelated full asset test batch.
+
+
+
+Lesson: saving the source selector alone loses chair position and sort contact
+
+when death clears live stages. Capture registration with the displayed pose,
+
+validate it against physical foot and incoming source family, then advance a
+
+finite root/depth path on the saved visual clock. Exercise different breathing
+
+interiors and lowering/rising joins; compare future frames after real eligible
+
+disk/fresh-scene restore, not just snapshots at one time. Tests do not replace
+
+master/native review or owner motion acceptance. Full Veld goal active/incomplete.
+
+Next earlier partial-seat floor entrances and other cardinal lounge sources,
+
+then real natural hazard cadence/normal admission and complete cross-family polish.
+
+No commit/export requested.
+
+
+
+## Veld partial North lounge fall source and chair contact - October 2, 2026
+
+
+
+New staged character/veld-lounge-partial-fall-north-v1 supplies a partial lowering
+
+pose2 entrance, two authored buckle/floor-brace interiors and exact established
+
+North floor roll/rest3..5, both gears. Built-in source generation
+
+exec-774892bf-42da-4a9b-adeb-1f1ced7eaeda and exact prompt retained. One148/592
+
+anatomical ruler for both interiors; pooled master material grade uses explicit
+
+rear ear windows, excluding brown hair from the skin authority. Original native
+
+rear helmet depth views15/40degrees inserted; body outside head region unchanged.
+
+12RGBA exports256x272/p128224/H148; finite1420ms, no mortality opt-in or loader edit.
+
+
+
+18builder and70package checks pass. Native source/contact audition68checks0fail,
+
+51.58s/engine0/cleanlog; actual default North lounge rotation0, all12 exact sources
+
+submitted. Provisional partial chair root amounts .3125,.3125,.15625,0,0,0;
+
+physical navigation foot fixed, first2 sources retain chair contact depth.
+
+Paired full source/master and all12room/source presentations reviewed: attached
+
+body, same matte materials/rear helmet, visible entry/buckle, clear floor landing.
+
+Per-capture camera crops retained; discrete poses are not continuous native motion.
+
+Scratch APPDATA and all2931owner non-log files unchanged. Bound original entry,
+
+landing and helmet sources validated; broader production dependencies not frozen.
+
+
+
+Lesson: exact partial entrance registration differs from fully seated contact.
+
+Author buckle at a shared adult ruler; audition fractional chair-to-floor offsets
+
+in actual room contact before connecting saved mortality. Keep depth-pitch helmet
+
+construction rather than rotating a flat rear head; classify rear skin spatially
+
+so pooled material matching cannot turn brown scalp into skin or gray hair.
+
+Coverage currently source pose2 only; earlier/later partial entrances and rising
+
+need actual selector/contact validation. No production death/save/Continue proof,
+
+normal admission, natural hazards, all rotations or owner acceptance for this new
+
+partial family. Next opt-in partial selector/root law, strict snapshot binding and
+
+paired actual mortality/fresh disk future Continue; then remaining partial poses,
+
+other actual furniture contexts and full cross-family consistency/polish.
+
+Full goal active/incomplete. No commit/export requested.
+
+
+
+## Veld partial North lounge fall actual mortality and fresh Continue - October 2, 2026
+
+
+
+Staged character/veld-lounge-partial-fall-north-v1 opts into actual mortality via
+
+loungeFallDeathMode=partial-north-v1. CrewSpritePlayer marks partial floor sources;
+
+VeldDeathMotion requires dry matching gear/current North chair depth, lowering2 or
+
+rising3, exact current source pixels against the candidate padded entry, registered
+
+seat and fractional contact amount0.225..0.4. Source2 covers this partial interval;
+
+other partial poses retain prior behavior. Exact displayed source/root/depth holds
+
+180ms, chair offset holds to340ms then fades to zero520ms before original roll.
+
+Saved four-field lounge registration binds finite vectors/contact amount/foot/root/
+
+sort depth and specific source indices; foreign lounge fields rejected on other clips.
+
+Normal loader admission unchanged; fixture loads only the new fall.
+
+
+
+23589native checks0fail/330.03s,engine0/cleanlog. Eight actual RoomFlooding.kill
+
+cases: lower/rise, two differing partial contact offsets, both gears. Eight ordinary
+
+eligible RunSave disk writes/reads/fresh main-scene restore_staged;150reference+
+
+150resumed20ms actor updates each=2400future steps. Independent source clock/root/
+
+depth oracle,64malformed guards, unmarked and different marked entry rejection,
+
+paused Continue, source/gear/foot/needs/timer/root/depth/corpse terminal equivalence.
+
+Paired future native/source/master boards reviewed.12decoded source frames remain
+
+exactly equal to preceding pre-integration contact captures: no new artwork change.
+
+35targeted inputs unchanged; broader dependencies not frozen.
+
+Scratch APPDATA/all2931owner non-log files unchanged.
+
+
+
+Existing fully seated North regression: 23581checks0fail/331.41s,engine0,
+
+eight actual mortality/fresh disk Continue cases and2400future actor steps, targeted
+
+inputs and owner profile unchanged. Test scope is default lounge rotation0,
+
+prescribed death API/stage/timer with actor-only future while main paused; not
+
+natural hazard/chooser cadence, all rotations, title/new-process Continue or
+
+continuous whole-world movie. Paid existing Bill ward wake/roster provides real
+
+survivor/save eligibility; ward repair route itself not certified.
+
+
+
+Lesson: preserve a partial furniture pose's actual fractional contact root instead
+
+of promoting it to full sitting or zero floor offset. Bind the selected source
+
+pixels as well as index/gear and retain registration after die() clears live state.
+
+Reach floor root before rolling; exercise different offsets on the same source
+
+through actual disk restoration and compare full future traces. Pixel/root tests
+
+remain separate from master/native review and final owner acceptance.
+
+Next remaining partial entrances, actual furniture contexts, normal paired bunk/
+
+fall admission and natural world cadence; full cross-family polish remains open.
+
+Full Veld goal active/incomplete. No commit/export requested.
+
+
+
+## Veld late North lounge poses3and4 mortality and fresh Continue - October 2, 2026
+
+
+
+New staged character/veld-lounge-late-fall-north-v1 covers exact selected late
+
+lowering poses3and4 and matching rising indices2and1. Four padded entry PNGs,
+
+24manifest references: the established authored North seated slump/brace/roll/rest
+
+are reused directly, with no new anatomy, rescaling, grading or helmet change.
+
+Source joins reviewed beside the prior selected North seated/standing materials.
+
+28builder/124package/source binding/alpha checks0fail.
+
+
+
+CrewSpritePlayer late-north-v1 opt-in marker; VeldDeathMotion requires current dry
+
+matching gear/North chair-contact metadata, exact selected entry pixels and actual
+
+registered station. Contact ranges0.4..0.6 for pose3 and0.6..0.8 for pose4.
+
+Exact whole source/root/depth holds180ms; seat root holds360ms then fades to zero
+
+720ms, preserving existing authored seated-fall law. Four-field saved lounge root
+
+binds finite local foot/seat/depth/amount, entrance index/gear/first/offset/sort depth
+
+and physical foot. Foreign lounge fields rejected for other clips. No normal
+
+loader admission. Existing source2/fully seated selectors remain unchanged.
+
+
+
+Native23625checks0fail/318.77s,engine0/cleanlog:8actual RoomFlooding.kill
+
+cases (pose3/pose4 lowering/rising, both gears),8ordinary eligible RunSave disk
+
+writes/reads/fresh main-scene restore_staged;150reference+150resumed20ms steps
+
+each=2400future actor updates. Independent source clock/root/depth oracle,
+
+64malformed guards and unmarked/different-marked-source rejection, exact paused
+
+Continue/source/root/gear/foot/timer/needs/corpse terminal match. Six existing
+
+partial/held/final-seat capture-selection regression checks with all candidates
+
+loaded together. These selector guards are not a new full old-family disk replay.
+
+All8paired future native/source/master boards reviewed;112future room/source
+
+presentations plus entry/restore captures. Native chair contact remains visible,
+
+landing clear; original body/material/rear helmet retained. Replay derives from
+
+captured source/root traces, not continuous world video.
+
+
+
+55targeted inputs unchanged; broader dependencies not frozen.
+
+Scratch APPDATA/all2931owner non-log files unchanged. Scope
+
+default lounge rotation0/prescribed death API/stage/timer, actor-only future while
+
+main paused; not natural chooser/hazard cadence, all rotations or title/new-process
+
+Continue. Paid existing Bill ward wake supplies ordinary survivor/save eligibility;
+
+ward repair route itself not certified.
+
+
+
+Lesson: a new entrance does not require new collapsed anatomy when the selected
+
+partial posture already joins an established master-matching slump. Keep exact
+
+entry pixels and fractional chair registration, bind candidate to source pose,
+
+then test forward and reverse choreography through actual save/future playback.
+
+Direct references preserve accepted material and hardware without another grade
+
+or rescale pass. Shared-folder presence alone does not prove a selector is active.
+
+North poses2..5/held now have staged specific falls; earliest poses0and1, normal
+
+paired admission, other actual furniture contexts, natural world cadence and
+
+full cross-family polish remain open. Full goal active/incomplete; no commit/export.
+
+
+
+## Veld earliest North chair poses0and1 actual fall and fresh Continue - October 2, 2026
+
+
+
+New staged character/veld-lounge-early-fall-north-v1 completes specific floor-fall
+
+coverage for selected North lowering poses0and1 and rising indices5and4. Exact
+
+entrances plus established North standing-collapse interiors/terminal, transparent
+
+bottom padding only:14PNG/24references. No new anatomy/ruler/grade/helmet design.
+
+48builder/124package and original-source binding/alpha checks0fail.
+
+
+
+CrewSpritePlayer early-north-v1 opt-in and VeldDeathMotion bind actual dry matching
+
+gear/North chair depth, exact current source pixels, registered station, selected
+
+source pose and contact interval0..0.1 (pose0) or0.1..0.225 (pose1).
+
+Exact displayed whole source/root/depth held180ms. Small fractional chair root
+
+then blends to zero340ms before floor brace; saved root/depth survives die() clearing
+
+live furniture state. Strict saved source/gear/first/finite-vector/range/physical
+
+foot/root/sort bindings and rejection of foreign lounge fields retained.
+
+Normal loader admission unchanged; all North fall candidates remain staged.
+
+
+
+Native23664checks0fail/329.77s,engine0/cleanlog.8actual RoomFlooding.kill
+
+cases (early poses0and1 lower/rise, both gears),8ordinary eligible RunSave disk
+
+writes/reads/fresh main-scene restore_staged;150reference+150resumed20ms steps each
+
+=2400future actor updates, independent source clock/root/depth oracle.64malformed
+
+guards, unmarked/different marked entry rejection; exact paused Continue/source/
+
+position/depth/foot/timer/gear/needs/corpse terminal equivalence.16existing/boundary
+
+selector checks with all North candidates loaded: partial/held/final/late falls,
+
+plus lowering/rising zero-contact endpoints. These are capture-selection guards,
+
+not another full previous-family disk replay. All8paired future native/source/
+
+master boards reviewed: visible chair contact, attached body, consistent matte
+
+materials/native rear helmet, clear landing.112future room/source presentations;
+
+entry/restore captures retained. Replay uses actual source/root traces, not a
+
+continuous native world movie.
+
+
+
+71targeted inputs unchanged; broader dependencies not frozen.
+
+Scratch APPDATA/all2931owner non-log files unchanged. Scope
+
+rotation0 prescribed death API/stage/timer, actor-only future while main paused;
+
+not natural chooser/hazard cadence, all layouts/rotations or title/new-process
+
+Continue. Existing paid Bill ward wake supplies real survivor/save eligibility;
+
+repair worker/route itself not certified.
+
+
+
+Lesson: standing/first knee-bend entrances can reuse an established standing fall,
+
+preserving exact incoming source and fractional furniture registration. Blend even
+
+a small root to floor instead of snapping it away when the first interior begins.
+
+Guard zero-contact endpoints and existing selectors with all candidate families
+
+present; then compare actual saved future motion against masters/room contact.
+
+All6North lowering/rising sources and held North breathing now have staged specific
+
+falls with dated native evidence. Next normal paired North fall admission and
+
+broader real-world furniture/hazard cadence, paired bunk admission/remaining actual
+
+contexts, full-library master/material/perspective/size/proportion polish.
+
+Full Veld goal active/incomplete; no commit/export or owner final acceptance claim.
+
+
+
+## Veld North chair falls normally selected - October 2, 2026
+
+
+
+Normal grid_canvas loader now admits bare/helmet North full-seated, partial,
+
+late3/late4 and early0/early1 fall families through eight whole manifest paths.
+
+All six selected lowering/rising entrances and two distinct held-breathing sources
+
+exercise actual mortality with no fixture animation-manifest injection.
+
+No new raster art, ruler, palette, furniture geometry or death-controller change.
+
+
+
+Native 82890 checks, 0 failures / 1026.64s, engine0/clean log:
+
+28 actual RoomFlooding.kill cases, 28 ordinary eligible RunSave disk saves/reads
+
+and fresh main-scene restores. 150 reference + 150 resumed 20ms actor steps per
+
+case = 8400 future actor updates. Exact source/root/depth/physical foot/gear/needs/
+
+timer/corpse equivalence and finite terminal clock oracle; 224 malformed saved
+
+bindings rejected, unmarked sources rejected, wrong marked entry rejected for
+
+partial poses. Sixteen existing/boundary selector guards and distinct held
+
+breathing entrance checks for both gears. Root fade remains pose-specific:
+
+early zero340ms, partial zero520ms, late/full zero720ms.
+
+
+
+All six compact paired source/native/master boards reviewed, covering all28cases
+
+and 196 paired future source/native captures plus actual entrance/chair crops.
+
+At the captured source clocks, the full body stays connected through chair contact, knee brace, roll and floor rest. Bare hair remains brown and the charcoal/science suit retains its matte material beside the North master. The native rear helmet remains attached as its depth pitch changes, with no extra bun compartment or apparent shell-design switch. Actual room captures keep Veld visible through chair contact and show a clear floor landing.
+
+The interactive replay uses exact captured source/root traces, not a continuous
+
+native world movie. Review: character/veld-north-chair-falls-selected-v1/
+
+resume-review.html; visual findings and input bindings retained alongside it.
+
+
+
+All 74 targeted inputs unchanged during the native run;
+
+broader scene/library dependencies not frozen. Scratch APPDATA preserved all
+
+2931 owner non-log files. Scope default lounge rotation0,
+
+prescribed death API/stage/timer and actor-only future while main paused;
+
+not natural chooser/hazard cadence, all layouts/rotations or title/new-process
+
+Continue. Existing paid Bill ward wake supplies ordinary survivor/save eligibility;
+
+its repair route is not certified by this fixture. Post-run manifest status
+
+labels are separately checked as metadata-only changes.
+
+Post-admission 380 package/source/alpha checks pass across four families.
+
+
+
+Lesson: previously staged fall families need a combined normal-loader matrix,
+
+including held breathing and reverse source clocks. Candidate-only tests cannot
+
+prove production admission or precedence. Freeze the loader with the source
+
+bindings, then compare saved future motion and actual room contact against the
+
+same master ruler. Keep motion evidence and natural-world coverage distinct.
+
+
+
+Next paired bunk normal admission/remaining real furniture contexts, broader
+
+natural task/hazard checks and full-library master/material/perspective/size/
+
+proportion/motion polish. Full Veld goal active/incomplete; no final owner
+
+acceptance, commit or export claim.
+
+
+
+## Veld paired bunk body and falls normally selected - October 2, 2026
+
+
+
+grid_canvas now admits paired master-body bunk and early floor-fall manifests
+
+through four whole literal paths. ACTIVE_ASSETS records both bare/helmet families;
+
+other selections preserved. Existing42PNG/72references in seven states retained:
+
+entry7/exit7/sleep1/held death3/supported settle7, early standing fall6/crouch5
+
+per gear. Fixed256x272/p128,224/H148, exact master endpoints and pooled materials;
+
+no source redraw, grade/rescale, room geometry, controller or save-rule change.
+
+
+
+Six normal-loader native suites: 86921 checks/0failures, all engine0/clean logs.
+
+No test-only manifest injection; every fresh scene binds all72 production frame
+
+references exactly to the paired source files. Actual need choice/route/arrival/
+
+complete rest in both gears:2cases/38source-native captures, including final walk
+
+and exact standing exit. World main is paused and actor updates are stepped;
+
+this is real actor choice/navigation, not natural whole-world scheduler cadence.
+
+
+
+Four rotations/two gears/lower and reverse rise/five supported poses:80actual
+
+actor mortality APIs,320same-clock actor-file restores,640malformed guards and
+
+early unsupported exclusions.18native sequences sampled through support and
+
+relaxed terminal; all80source clocks checked by an independent authored oracle.
+
+This is actor-level mortality, distinct from world roster/death bookkeeping.
+
+
+
+26ordinary eligible RunSave disk reads/writes and fresh-main-scene continuations:
+
+4supported world deaths,8early floor world deaths,6fire-rise/refuge phases,
+
+6living lower/held/rise saves and2held world deaths. 8024reference+resumed future
+
+actor updates total, exact source/contact/depth/gear/foot/timer/needs/corpse and
+
+pause equivalence.14actual RoomFlooding.kill cases;32early malformed guards.
+
+Fire restores actual fire predicate/escape goal, holds foot through finite rise,
+
+reaches exact standing master before the actual clear-floor refuge route.
+
+Normal save eligibility uses existing paid Bill ward wake; repair route not
+
+certified. Fresh scene is not title/new-process Continue.
+
+
+
+All18normal native/source/master boards visually reviewed, including four room
+
+rotations and future fall/fire/Continue sources. Submitted body poses keep attached shoulders/hips and the East master ruler through descent, rest, rising and falls. Brown hair, skin and science/charcoal suit retain their matte master palette; the shared shell remains attached through head pitch. Room captures show visible mattress support for supported settling and clear floor contact for early falls. Flame-obscured interior fire captures were reviewed beside exact submitted sources and the clear refuge capture. Living rise reaches standing before the prescribed fixture can choose another rest cycle; future equivalence is not a promise of idle-only behavior afterward.
+
+316native room presentations retained beside exact source captures;
+
+interactive replay reconstructs26saved source/foot/offset traces, not continuous
+
+native world video. Fire route may leave its fixed replay canvas; native room
+
+boards preserve the submitted captures. Owner final/world motion review open.
+
+Fire captures omit intermediate walk images but retain per-step pixel hashes:
+
+80selected locomotion PNGs bind exactly to those native hashes, padding only.
+
+Their post-run pixel bindings complete replay references; those walk PNG files
+
+were not frozen in the prior native interval. Keep this separate from admission
+
+of new artwork or another native gameplay run.
+
+
+
+Both frozen intervals pass: 61targeted inputs across five suites and
+
+54in living/held Continue unchanged. Broader scene dependencies
+
+not frozen. Scratch APPDATA preserved all2931owner non-log files
+
+in both intervals. Post-run four manifest status fields metadata-only; registry
+
+additions preserve other actors. 237package/source/alpha checks0fail after
+
+admission; all42PNGs unchanged. Historical staged reports keep original scope.
+
+
+
+Lesson: adopt paired furniture motion with a normally loaded need-driven route,
+
+not only parked candidate poses. Keep whole body and shared shell on one ruler,
+
+then distinguish mattress-supported settling from early unsupported floor falls.
+
+Check forward/reverse partial clocks, living and dead Continue, actual room depth,
+
+and finite emergency standing before navigation. Freeze loader and registry with
+
+source inputs; normal-family admission is separate from natural hazard cadence.
+
+
+
+Next remaining real seated/tablet interruption/fall contexts (South sofa differs
+
+from North lounge), broader whole-world task/hazard cadence and full-library
+
+master/style/perspective/height/proportion/material/motion polish. Full Veld goal
+
+active/incomplete; no final owner acceptance, commit or export claim.
+
+
+
+## Veld normally selected South reader interruptions and fall diagnosis - October 2, 2026
+
+
+
+Normal South sofa reader now verified at all14 timed draw/hold/stow slots,
+
+both gears and actual power/suspension service guards:56interruptions.
+
+22683native checks/0failures, engine0/clean log, 469.21s.
+
+All6distinct incoming pixel poses per gear have ordinary RunSave disk/fresh-main
+
+restores plus finite future stow/rise equivalence:12cases/2868actor updates,
+
+source/contact/depth/clock/gear/needs/goal and paused source retained. Separate
+
+expected player checks normal selection, not test-only artwork injection.
+
+48targeted inputs unchanged; all2931owner non-log files preserved under scratch
+
+APPDATA. Broader dependencies not frozen. Prescribed default sofa contact,
+
+paused world/stepped actor; not natural chooser/hazard cadence/title Continue.
+
+
+
+All12native/source/master boards reviewed,124submitted source/native pairs.
+
+Attached shoulders/hips and arms, brown hair/skin/science-charcoal suit and shared
+
+shell remain coherent through tablet stow/rise. Bare standing endpoint matches
+
+current master exactly. Review pads184standing captures36,52 onto256/p128,224
+
+before half-size H74 display; stretching both canvases to the same square would
+
+invent a scale jump. Interactive replay is exact submitted source playback.
+
+No artwork, production loader/controller, save rule or furniture geometry changed.
+
+
+
+Separate normally loaded South sofa fall diagnostic exposes a genuine gap:
+
+no specialised recipe; current dry floor collapse remains legacy fallback.
+
+Both gear cases snap from seated/tablet to an older upright body, lose sofa
+
+offset, and the helmet is absent in initial death frames. Diagnostic technical
+
+pass is NOT visual acceptance. Corrected probe handles absent recipe and waits
+
+for centered camera/source submission; earlier failure/uncentered interval kept.
+
+Latest two actor-level mortality cases/16source-native pairs,63targeted inputs
+
+and owner2931unchanged. No world roster mortality or death Continue claim.
+
+
+
+Lesson: audit timed slots and distinct sources separately. Compare future motion
+
+after actual service loss, then audit mortality through the normal loader; staged
+
+fall artwork does not prove it is selected. Preserve full seated entrance,
+
+equipment and registered root/depth before an authored supported-to-floor fall.
+
+Next master-matched South sofa/tablet fall sources and actual world mortality/
+
+Continue, then remaining contexts, broader world cadence and full-library polish.
+
+Full Veld objective remains active/incomplete; owner final acceptance open.
+
+Review: character/veld-south-read-interrupt-selected-v1/review.html.
+
+
+
+## Veld South sofa reader fall authored and staged - October 2, 2026
+
+
+
+New character/veld-sofa-fall-south-v1 retains built-in raw/prompt/execution and
+
+paired6pose manifests/12PNG. Exact current seated tablet entrance, three authored
+
+slump/lean/low-brace interiors, two retained coherent South floor endpoints.
+
+One H148/474ruler,256x272/p128,224,1.52s finite clock; pooled master skin/brown
+
+hair/science-charcoal grade. Connected opaque components exclude generated
+
+backdrop haze. Existing native25degree pitched shared shell fits new necks with
+
+0/25/50degree screen tilts; no new shell design or per-pose body normalization.
+
+61package/source/endpoint/binding checks and byte-identical rebuild pass.
+
+
+
+CrewSpritePlayer and VeldDeathMotion add opt-in South reading-fall metadata,
+
+strict current reader/gear/contact binding and saved sofa recipe validation.
+
+Keep exact whole incoming source180ms, then supported slump. Sofa offset holds
+
+through360ms and releases gradually by780ms; authored floor poses use natural
+
+depth. Navigation foot fixed. Other families retain their selector paths.
+
+No normal fall loader/ACTIVE_ASSETS admission, owner geometry/save-rule change.
+
+
+
+Staged actual actor API: 1356checks0fail/99.62s/engine0/cleanlog,
+
+6distinct reading entrances×2gears=12mortality contexts;48same-clock actor-file
+
+restores,48malformed guards. Independent six-source clock and support/floor checks.
+
+78targeted inputs/all2931owner non-log files unchanged under scratch APPDATA.
+
+All12native boards/108source-native pairs and master sheet visually reviewed:
+
+attached body/arms, matte canonical palette and shell through seat-to-floor fall.
+
+Fixed extended crop shows complete floor body. This is prescribed default sofa,
+
+paused world and actor-level mortality, not world roster/hazard/ordinary RunSave
+
+future Continue. Earlier exact-boundary floating-point fixture failure retained;
+
+samples1msinside phases fix the oracle, no production timing change.
+
+
+
+Focused shared-controller regressions: water entrance and North partial lounge
+
+pass; current normally selected held bunk also passes separately. Original
+
+regression aggregate remains FAILED because historical bunk probe injects an
+
+older death pack against current master sleeper and compares unequal silhouettes.
+
+Retained original probe/report; new paired-UID current bunk probe removes that
+
+old artwork injection. No weakening of stature/contact assertion. Initial8targeted
+
+regression inputs/owner2931 unchanged; current bunk run records profile protection
+
+separately and has no dependency-freeze claim.
+
+
+
+Lesson: author supported collapse from the exact current seated body and reuse
+
+native equipment, keeping body ruler/palette fixed across pitched interiors.
+
+Separate source geometry, registered support and actor/world save evidence.
+
+Historical staged probes must not mix former death bodies with current masters.
+
+Next actual world mortality and ordinary disk/future Continue across reader poses,
+
+then normal paired admission. Earlier/later South sit/rise falls need their own
+
+source/context coverage; remaining families/world cadence/full-library polish
+
+and owner acceptance remain open. Full Veld goal active/incomplete.
+
+Review: character/veld-sofa-fall-south-v1/review.html.
+
+
+
+## Veld South sofa empty-handed fall branch - October 2, 2026
+
+
+
+Neutral reader entrances no longer join tablet-held slump interiors. Paired staged
+
+death-sofa-neutral-south keeps exact current reader000 entrance, two authored
+
+forearm/waist patches and exact shared brace/floor source aliases. Built-in two
+
+raw edits/prompts/execution retained; first retained tablet and was rejected.
+
+Second whole sheet changed shading: only recorded bounded patches admitted.
+
+All remaining head/hair/helmet/body pixels outside native windows byte-exact to
+
+reviewed tablet fall; one pooled edit-source grade uses original master targets.
+
+Same H148 ruler,256x272/p128224,1.52s clock; no new equipment or pose rescale.
+
+61neutral package checks pass, byte-identical rebuild including original frames.
+
+
+
+Opt-in selector binds actual neutral incoming pixels to full reader000, including
+
+retained exits, and exact candidate entrance to current loaded source. Saved
+
+branch must match allowed reader neutral slots0/13, enter0 or exit3; wrong branch
+
+rejected. Both families remain staged, absent normal loader/ACTIVE_ASSETS.
+
+Native staged actual actor API:1526checks0fail,14entrances/56actor-file restores,
+
+70malformed guards; source clock, fixed foot/support/floor depth independently
+
+checked. All14boards/126native-source pairs reviewed. Both neutral endpoints in
+
+both gears remain empty-handed through attached glove/waist/helmet fall.
+
+Whole owner2931non-log files and87targeted inputs unchanged in final interval.
+
+Initial technical pass had concurrent grid_canvas mutation: dependency-frozen
+
+aggregate FAILED, retained. Repeated against current renderer; no test weakening.
+
+
+
+Lesson: join prop state as well as silhouette. A neutral live entrance cannot
+
+transition into a tablet-held interior. Classify actual loaded source pixels,
+
+preserve reviewed identity/equipment outside bounded authored repairs, and reject
+
+full-sheet incidental drift. A source/native actor restore does not certify world
+
+mortality, ordinary RunSave/future Continue, or final visual acceptance.
+
+Next actual world death and disk/fresh-main future checks, interrupted reader
+
+exits, then normal paired admission; remaining South sit/rise entrances and
+
+full-library master/motion polish still open. Full Veld goal active/incomplete.
+
+Review: character/veld-sofa-fall-south-v1/neutral-review.html.
+
+## Veld South sofa falls normally selected - October 2, 2026
+
+Normal grid loader/ACTIVE_ASSETS now select paired tablet and empty-handed sofa
+falls in character/veld-sofa-fall-south-selected-v1. Two finite states/six slots
+each per gear,18unique retained source PNG; reviewed H148/256x272/p128224/matte
+grade/shared shell unchanged.50source/registry/literal-loader checks pass.
+Final metadata promotion changes descriptive status only; parser ignores it,
+all runtime states/profile/paths/durations unchanged. Before/after JSON retained.
+
+Normal-only world mortality and ordinary disk/fresh-main Continue:
+67173checks0fail/20world deaths/20fresh disk restores/6000future actor updates,
+engine0/770.71s/clean log. Fourteen live reader entrances include both
+neutral endpoints; six actual power/suspension read-exit contexts. Real mortality
+roster accounting and paid Bill survivor preserve ordinary save eligibility.
+Independent six-source clock, sofa support/floor depth, fixed navigation foot,
+exact paused source/contact, reference/resumed future and canonical terminal
+checked. All20boards/228source-native pairs visually reviewed.
+Final66targeted inputs/all2931owner non-log files unchanged under scratch APPDATA.
+Prescribed default South sofa, paused world/actor stepping; not natural hazards,
+chooser/traffic, title/new-process Continue or final owner motion acceptance.
+
+Native30fps finite review:942checks0fail/196source-native pairs, engine0/
+89.8s;66inputs/whole owner profile unchanged in separate scratch.
+All4contact sheets/all196native presentations inspected. Four lossless APNG
+previews retain exact decoded native room colours:200checks0fail.1.6s sampled
+motion,800ms viewer terminal hold, repeat resets preview only; authored fall finite.
+No GIF palette reduction; original source/native PNG and hashes retained.
+
+Initial world interval remains FAILED after7live contexts: interrupted exit
+submitted an equal-pixel different texture object. Separate real-state probe
+proved samePixels=true/sameTexture=false,centerDistance0.19764. Resample actual
+post-transition texture for strict capture; no production animation/assertion
+weakening. Original interval/probe retained, final complete run passes.
+
+Lesson: preserve prop state and exact whole entrance, then validate normal world
+roster, ordinary disk/future playback and native furniture contact separately.
+Pixel-identical aliases are distinct loaded textures: refresh the source after
+real stage changes before checking submitted identity. Use lossless native motion
+previews when judging matte skin/hair/suit instead of introducing palette drift.
+Next partial South sit/rise falls, remaining readers/directional furniture
+contexts and full-library master/transition polish. Full Veld goal active/incomplete.
+Reviews: character/veld-sofa-fall-south-selected-v1/review.html and motion-review.html.

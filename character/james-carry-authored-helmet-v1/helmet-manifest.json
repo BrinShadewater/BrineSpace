@@ -1,0 +1,81 @@
+{
+  "name": "James authored carrying helmet provisional",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate_unselected_paired_source_review_pending",
+  "states": [
+    {
+      "id": "carry-turn-south-west",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/james-carry-authored-helmet-v1/frames/000.png",
+        "res://character/james-carry-authored-helmet-v1/frames/001.png",
+        "res://character/james-carry-authored-helmet-v1/frames/002.png",
+        "res://character/james-carry-authored-helmet-v1/frames/003.png",
+        "res://character/james-carry-authored-helmet-v1/frames/004.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        200,
+        200,
+        200,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ]
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/james-carry-authored-helmet-v1/frames/004.png",
+        "res://character/james-carry-authored-helmet-v1/frames/003.png",
+        "res://character/james-carry-authored-helmet-v1/frames/002.png",
+        "res://character/james-carry-authored-helmet-v1/frames/001.png",
+        "res://character/james-carry-authored-helmet-v1/frames/000.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        200,
+        200,
+        200,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ]
+    }
+  ]
+}

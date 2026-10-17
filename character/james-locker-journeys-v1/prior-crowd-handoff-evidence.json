@@ -1,0 +1,141 @@
+{
+  "checks": 285985,
+  "failures": 12,
+  "results": [
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q0-equip-helmet-occupied.png"
+      ],
+      "firstAction": "equip-helmet",
+      "firstTicks": 1634,
+      "minimumSeparation": 31.9923248291016,
+      "peakWait": 2.99999999999999,
+      "rotation": 0,
+      "secondTicks": 10000
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q0-remove-helmet-occupied.png"
+      ],
+      "firstAction": "remove-helmet",
+      "firstTicks": 1646,
+      "minimumSeparation": 31.9916496276855,
+      "peakWait": 2.99999999999999,
+      "rotation": 0,
+      "secondTicks": 10000
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q0-refill-occupied.png"
+      ],
+      "firstAction": "refill",
+      "firstTicks": 1977,
+      "minimumSeparation": 31.9960174560547,
+      "peakWait": 2.99999999999999,
+      "rotation": 0,
+      "secondTicks": 10000
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-equip-helmet-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-equip-helmet-next-crew.png"
+      ],
+      "firstAction": "equip-helmet",
+      "firstTicks": 1107,
+      "minimumSeparation": 31.994026184082,
+      "peakWait": 0.075,
+      "rotation": 1,
+      "secondTicks": 523
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-remove-helmet-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-remove-helmet-next-crew.png"
+      ],
+      "firstAction": "remove-helmet",
+      "firstTicks": 1119,
+      "minimumSeparation": 32.001953125,
+      "peakWait": 0.0583333333333333,
+      "rotation": 1,
+      "secondTicks": 522
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-refill-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q1-refill-next-crew.png"
+      ],
+      "firstAction": "refill",
+      "firstTicks": 1450,
+      "minimumSeparation": 31.994026184082,
+      "peakWait": 0.075,
+      "rotation": 1,
+      "secondTicks": 522
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-equip-helmet-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-equip-helmet-next-crew.png"
+      ],
+      "firstAction": "equip-helmet",
+      "firstTicks": 1052,
+      "minimumSeparation": 32.0306129455566,
+      "peakWait": 0.375,
+      "rotation": 2,
+      "secondTicks": 526
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-remove-helmet-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-remove-helmet-next-crew.png"
+      ],
+      "firstAction": "remove-helmet",
+      "firstTicks": 1064,
+      "minimumSeparation": 32.0306129455566,
+      "peakWait": 0.375,
+      "rotation": 2,
+      "secondTicks": 526
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-refill-occupied.png",
+        "res://character/james-locker-journeys-v1/crowd-captures/q2-refill-next-crew.png"
+      ],
+      "firstAction": "refill",
+      "firstTicks": 1395,
+      "minimumSeparation": 32.0125198364258,
+      "peakWait": 0.391666666666667,
+      "rotation": 2,
+      "secondTicks": 526
+    },
+    {
+      "captures": [
+        "res://character/james-locker-journeys-v1/crowd-captures/q3-equip-helmet-next-crew.png"
+      ],
+      "firstAction": "equip-helmet",
+      "firstTicks": 8000,
+      "minimumSeparation": 32.134765625,
+      "peakWait": 2.99999999999999,
+      "rotation": 3,
+      "secondTicks": 1710
+    },
+    {
+      "captures": [],
+      "firstAction": "remove-helmet",
+      "firstTicks": 8000,
+      "minimumSeparation": 31.9923362731934,
+      "peakWait": 2.99999999999999,
+      "rotation": 3,
+      "secondTicks": 10000
+    },
+    {
+      "captures": [],
+      "firstAction": "refill",
+      "firstTicks": 8000,
+      "minimumSeparation": 31.9908046722412,
+      "peakWait": 2.99999999999999,
+      "rotation": 3,
+      "secondTicks": 10000
+    }
+  ],
+  "scope": "Twelve actual two-crew locker journeys: four rotations times James fitting, removal and equipped refill. Fixture recovered Bill idles at a clear nearby point; real service requests refused while James approaches/acts, accepted after release. Native main crew update/passages, normal James next-task choice and Bill locker route/fitting; selected James pixels, gear, contact, walk join and foot separation asserted. No disk Continue in this crowd fixture, no custom furniture or exterior journey; foot separation is not an all-frame alpha-overlap audit."
+}

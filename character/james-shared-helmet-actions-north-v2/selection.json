@@ -1,0 +1,26 @@
+{
+  "status": "rejected_torch_aimed_to_side",
+  "runtimeInstalled": false,
+  "ownerRequest": "Remove body self-clipping; repair/construction usually show deployed blowtorch.",
+  "source": "character/james-repair-north-direct-v2",
+  "framesPerMode": 113,
+  "coverage": [
+    "kneel-north",
+    "repair-north",
+    "stand-north"
+  ],
+  "changes": "New upright torso, separated outside arms, visible right-hand blowtorch and blue flame. Existing selected rear helmet retained with smooth restrained path.",
+  "derivation": "Descent includes tool deployment; rise reverses descent/tool draw. Repair loop returns through source frames 73-75, selecting small flame onset.",
+  "sourceLimit": "Later generated flare crosses source canvas; those frames are omitted. All selected frames are unclipped.",
+  "technicalChecks": "939 checks/0 failures, 12 native board captures, exact idle and action joins; cyan flame present in all repair frames.",
+  "visualReview": "Temporal contact sheet and native repair pose inspected at 148/82/54/27px. Owner full-motion review pending.",
+  "profileNote": "APPDATA scratch path asserted before load. Concurrent live game changed last_session.json and layout recovery sidecar; no claim of globally unchanged profile.",
+  "estimatedGenerationUSD": 0.19,
+  "verifiedBilling": null,
+  "pending": [
+    "Owner review",
+    "If accepted install and verify station",
+    "Directional repair tool continuity pass; construction tool-state review separately"
+  ],
+  "ownerFeedback": "He should be repairing / blowtorching infront of him"
+}

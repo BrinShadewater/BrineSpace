@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "lamp-glow-warm-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c965a6d134e8d7b1d2b46d0dcca9b4361aa59b6940ab0039ffa597acc085239e",
+      "tintable": true
+    },
+    {
+      "path": "lamp-glow-cool-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c965a6d134e8d7b1d2b46d0dcca9b4361aa59b6940ab0039ffa597acc085239e",
+      "tintable": true
+    },
+    {
+      "path": "lamp-glow-wide-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "306a40da9c65a838c5958c69dbc6d990437fd8bf7caf3899910b54f03ddcc164",
+      "tintable": true,
+      "usage": "review-only floor-pool variant"
+    },
+    {
+      "path": "light-shaft-256x1024.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "b099801ad2fce4466be89195573798b1dc734ca5679912e2df3189f89724daf8",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "light-shaft-256x1024-v2.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c8cfe615de409982c1090764adc072b497bbe8b71978897addf4c2474892f697",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "light-shaft-256x1024-v3.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "3ab9173e0b6d6a1776f4a527e7749874c96e1c751b12481078c88bcfbcc7323e",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "caustics-tile-512.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "pivot": [
+        0,
+        0
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "229412e48fd042966e45b0a9554f134b5e9e5e2520124f526bdd39eb9cea0e1d",
+      "tintable": true,
+      "seamless": true,
+      "world_period_cells": 6
+    },
+    {
+      "path": "hull-bubbles-atlas.png",
+      "dimensions": [
+        128,
+        32
+      ],
+      "pivot": [
+        16,
+        16
+      ],
+      "fps": 0,
+      "frames": 4,
+      "sha256": "9fb4aa9a6e16d439cadc31f39624e656289e89fbb872e9b3b63c65f0632a6c36",
+      "cell": [
+        32,
+        32
+      ],
+      "grid": [
+        4,
+        1
+      ],
+      "rim_radius": 12,
+      "tintable": true
+    },
+    {
+      "path": "beacon-glow-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "4b6bb8c0a95bacc4d995bf86110f7da7ccab071c96992e03883a93e820569b89",
+      "tintable": true,
+      "direction": "+x"
+    }
+  ],
+  "source": {
+    "path": "sources/caustics-generated.png",
+    "sha256": "5d36fd5e279b4653f6d69951a82fae2332ee21ef9c692fa150b08ae16db28aff"
+  },
+  "density": "Lamp halo retains existing 2 world-unit Bayer pixels; bubble rims use 32px registered cells. Shader maps scale in world cells."
+}

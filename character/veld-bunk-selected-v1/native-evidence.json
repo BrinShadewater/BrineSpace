@@ -1,0 +1,227 @@
+{
+  "normalLoaderOnly": true,
+  "native": {
+    "passed": true,
+    "suites": [
+      {
+        "label": "approach",
+        "test": "test_veld_bunk_selected_approach",
+        "output": "veld-bunk-selected-approach-v1",
+        "success": "0 failures;2 natural chooser/route/activity cases",
+        "timeout": 600,
+        "derivedFrom": "test_veld_bunk_body_approach",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 51.67,
+        "checks": 9753,
+        "failures": 0
+      },
+      {
+        "label": "partial",
+        "test": "test_veld_bunk_selected_partial",
+        "output": "veld-bunk-selected-partial-v1",
+        "success": "0 failures;80 partial actor deaths,320 actor-file restores",
+        "timeout": 600,
+        "derivedFrom": "test_veld_bunk_body_settle",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 72.26,
+        "checks": 14898,
+        "failures": 0
+      },
+      {
+        "label": "settle",
+        "test": "test_veld_bunk_selected_settle",
+        "output": "veld-bunk-selected-settle-v1",
+        "success": "0 failures;4 fresh disk restores",
+        "timeout": 750,
+        "derivedFrom": "test_veld_bunk_body_settle_resume",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 181.95,
+        "checks": 8550,
+        "failures": 0
+      },
+      {
+        "label": "early",
+        "test": "test_veld_bunk_selected_early",
+        "output": "veld-bunk-selected-early-v1",
+        "success": "0 failures;8 fresh disk restores",
+        "timeout": 750,
+        "derivedFrom": "test_veld_bunk_early_fall_native",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 321.84,
+        "checks": 21850,
+        "failures": 0
+      },
+      {
+        "label": "fire",
+        "test": "test_veld_bunk_selected_fire",
+        "output": "veld-bunk-selected-fire-v1",
+        "success": "0 failures;6 fresh disk restores",
+        "timeout": 750,
+        "derivedFrom": "test_veld_bunk_body_fire_resume",
+        "passed": true,
+        "returnCode": 0,
+        "seconds": 254.93,
+        "checks": 23984,
+        "failures": 0
+      }
+    ],
+    "targetedInputsUnchanged": true,
+    "targetedInputCount": 61,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-bunk-selected-native-v1\\scratch-appdata",
+    "seconds": 886.68,
+    "normalLoaderOnly": true
+  },
+  "livingHeldContinue": {
+    "passed": true,
+    "targetedInputsUnchanged": true,
+    "targetedInputCount": 54,
+    "runtimePassed": true,
+    "returnCode": 0,
+    "seconds": 308.45,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\veld-bunk-selected-continue-v1\\scratch-appdata",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "freshScreenshot": true
+  },
+  "nativeChecks": 86921,
+  "packageChecks": 237,
+  "naturalActorRestCases": 2,
+  "partialActorDeaths": 80,
+  "sameClockActorFileRestores": 320,
+  "freshMainSceneDiskCases": 26,
+  "futureActorUpdates": 8024,
+  "actualWorldMortalityCases": 14,
+  "firePhases": 6,
+  "malformedGuards": 672,
+  "visual": {
+    "reviewedBoards": [
+      "approach-bare-normal-review.png",
+      "approach-helmet-normal-review.png",
+      "partial-r0-bare-normal-review.png",
+      "partial-r0-helmet-normal-review.png",
+      "partial-r1-bare-normal-review.png",
+      "partial-r1-helmet-normal-review.png",
+      "partial-r2-bare-normal-review.png",
+      "partial-r2-helmet-normal-review.png",
+      "partial-r3-bare-normal-review.png",
+      "partial-r3-helmet-normal-review.png",
+      "settle-bare-normal-review.png",
+      "settle-helmet-normal-review.png",
+      "early-bare-normal-review.png",
+      "early-helmet-normal-review.png",
+      "fire-bare-normal-review.png",
+      "fire-helmet-normal-review.png",
+      "continue-bare-normal-review.png",
+      "continue-helmet-normal-review.png"
+    ],
+    "nativePresentations": 316,
+    "futureReplayCases": 26,
+    "finding": "Submitted body poses keep attached shoulders/hips and the East master ruler through descent, rest, rising and falls. Brown hair, skin and science/charcoal suit retain their matte master palette; the shared shell remains attached through head pitch. Room captures show visible mattress support for supported settling and clear floor contact for early falls. Flame-obscured interior fire captures were reviewed beside exact submitted sources and the clear refuge capture. Living rise reaches standing before the prescribed fixture can choose another rest cycle; future equivalence is not a promise of idle-only behavior afterward.",
+    "scope": "All18chronological master/source/native boards inspected, including natural actor approach, all sampled partial fall rotations and26disk-future cases. Main paused with stepped actor updates and prescribed hazards; not uninterrupted world video, natural hazard cadence or final owner/full-library acceptance.",
+    "ownerFinalAcceptance": false
+  },
+  "review": {
+    "completedSuites": [
+      "approach",
+      "partial",
+      "settle",
+      "early",
+      "fire",
+      "continue"
+    ],
+    "boards": [
+      "approach-bare-normal-review.png",
+      "approach-helmet-normal-review.png",
+      "partial-r0-bare-normal-review.png",
+      "partial-r0-helmet-normal-review.png",
+      "partial-r1-bare-normal-review.png",
+      "partial-r1-helmet-normal-review.png",
+      "partial-r2-bare-normal-review.png",
+      "partial-r2-helmet-normal-review.png",
+      "partial-r3-bare-normal-review.png",
+      "partial-r3-helmet-normal-review.png",
+      "settle-bare-normal-review.png",
+      "settle-helmet-normal-review.png",
+      "early-bare-normal-review.png",
+      "early-helmet-normal-review.png",
+      "fire-bare-normal-review.png",
+      "fire-helmet-normal-review.png",
+      "continue-bare-normal-review.png",
+      "continue-helmet-normal-review.png"
+    ],
+    "futureReplayCases": 26,
+    "nativePresentations": 316,
+    "missingReplaySources": 0,
+    "supplementalWalkingPixelBindings": 80,
+    "scope": "Actual normal need-choice route/rest and prescribed partial mortality/fire phases; paired source/native captured clocks beside fixed master ruler, not continuous world video"
+  },
+  "metadata": {
+    "passed": true,
+    "manifestChanges": [
+      {
+        "path": "character/veld-bunk-body-master-v1/bare-manifest.json",
+        "beforeSha256": "73f83a8d529d57b49b64e04b33953b987b8aaec79d2c2bdb84c61aefb0cab381",
+        "afterSha256": "52c5c440183d27438c7f8eec5b436d172d538838c79567a5e046d88e8455c8c4",
+        "changedFields": [
+          "status"
+        ]
+      },
+      {
+        "path": "character/veld-bunk-body-master-v1/helmet-manifest.json",
+        "beforeSha256": "3039e24a3ab1bf84f08981ee06d9fa01497c5adbcf5cceffa2940078a42651c1",
+        "afterSha256": "0b0558a1ec430ae6e37fe5ac7db1482d5a926ba67041ac2533e902c0cc64dfee",
+        "changedFields": [
+          "status"
+        ]
+      },
+      {
+        "path": "character/veld-bunk-early-fall-v1/bare-manifest.json",
+        "beforeSha256": "c2388bb0e25d3a022651331ccad98171b16f5bd3320a6ea08a6baed5e221c91b",
+        "afterSha256": "e63b2a52fcdedfda7ace24d869cce095cc53958c4c9ef27e2663d3dfc32a4fd7",
+        "changedFields": [
+          "status"
+        ]
+      },
+      {
+        "path": "character/veld-bunk-early-fall-v1/helmet-manifest.json",
+        "beforeSha256": "cab00497def5ae926c651f9c632b825b6f99ba906d88c53233d29c7c3ec016aa",
+        "afterSha256": "51546958ad660296758004d31ce5c0cde90d7d823816324ef8363b1970570399",
+        "changedFields": [
+          "status"
+        ]
+      }
+    ],
+    "registryAdditions": [
+      {
+        "section": "actionOverrides",
+        "key": "veld-east-bunk-whole-body-family",
+        "value": "character/veld-bunk-body-master-v1/bare-manifest.json"
+      },
+      {
+        "section": "equipmentActionOverrides",
+        "key": "veld-east-bunk-whole-body-family",
+        "value": "character/veld-bunk-body-master-v1/helmet-manifest.json"
+      },
+      {
+        "section": "actionOverrides",
+        "key": "veld-east-bunk-early-fall-family",
+        "value": "character/veld-bunk-early-fall-v1/bare-manifest.json"
+      },
+      {
+        "section": "equipmentActionOverrides",
+        "key": "veld-east-bunk-early-fall-family",
+        "value": "character/veld-bunk-early-fall-v1/helmet-manifest.json"
+      }
+    ],
+    "allOtherFrozenInputsUnchanged": true,
+    "sourcePNGsUnchanged": true,
+    "otherRegistrySelectionsPreserved": true
+  },
+  "fullGoalComplete": false
+}

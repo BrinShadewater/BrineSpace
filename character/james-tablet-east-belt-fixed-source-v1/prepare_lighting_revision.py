@@ -1,0 +1,17 @@
+from pathlib import Path
+import json,shutil
+P=Path(__file__).resolve().parent;Q=P.parent/'james-tablet-east-belt-fixed-source-v2'
+Q.mkdir(exist_ok=True)
+assert not (Q/'generation.json').exists(), 'Existing submission: poll it instead.'
+for name in ['master-input.png','reference.json','build_source_review.py','analyze_source.py','check_decoded_flash.py']:
+    shutil.copy2(P/name,Q/name)
+prompt=(P/'prompt.txt').read_text(encoding='utf-8').strip()
+prompt+=' Constant neutral diffuse lighting and white balance throughout every frame. Preserve the reference colors continuously, with no yellow, green or purple color flashes, changing illumination or animated screen light.'
+assert len(prompt)<2000
+(Q/'prompt.txt').write_text(prompt+'\n',encoding='utf-8')
+review=json.loads((P/'source-selection.json').read_text(encoding='utf-8'))
+review.update(status='rejected_color_flash_before_extraction',productionInstalled=False,fullMotionReviewed=True,visualFindings=['All141 body/head/bounded tool poses reviewed. Separate tablet lift/read/stow and belt wrench continuity are improved.','Brief whole-character yellow and green shifts at82/83, with background RGB shifts before extraction. Separate FFmpeg invocation matches imageio exactly. Same decoder implementation; no independent decoder claim.','One fixed material treatment cannot remove time-varying illumination without changing frames individually. Reject this source; do not drop poses or normalize each frame.','Tablet rear pale versus graphite request; retained as secondary review concern.'],nextCandidate=Q.name,revisionScope='Exact reference and action prompt retained; append constant neutral diffuse lighting/white balance only.')
+(P/'source-selection.json').write_text(json.dumps(review,indent=2)+'\n',encoding='utf-8')
+with (P/'HANDOFF.md').open('a',encoding='utf-8') as f:f.write('\n\n## Full source rejection\nAll141 body/head/tool poses reviewed. Wrench stays on belt, separate tablet motion\nimproved. Raw decoded82/83 briefly shift whole skin/suit yellow then green. Raw\nbackground shifts too, before key/resample/grade; separate FFmpeg invocation and\nimageio RGB exact (same implementation). No decoder color-tag change. Reject\nsource rather than per-frame grade or removed poses. Preserve all raw evidence.\nOne controlled v2 retains exact master/action and adds constant neutral lighting.\nOld selected East wrench defect remains until a replacement passes review.\n')
+(Q/'HANDOFF.md').write_text('# James East tablet constant-light revision\n\n## Objective and accepted decisions\nContinue full James animation/master consistency goal. Exact East master and\nseparate-tablet action retained. Wrench stays attached to belt throughout.\n\n## Changed files\nExact copied master-input/reference; prompt adds constant neutral diffuse lighting\nand fixed white balance only. Copied deterministic extraction/review scripts.\n\n## Checks and remaining work\nSingle new submission only; save ledger and poll same task. No runtime selection.\nReview full raw motion, prop continuity, material, height/proportions and master\nregistration. Fit common helmet and exact endpoints only after source review;\nnormal loading/approaches/Continue afterward. Prior v1 rejected for raw color\npulses; no frame deletion or per-pose grade. Estimated billing only.\n',encoding='utf-8')
+print('v1 rejected with raw/full-motion evidence; exact master and controlled lighting-only v2 prepared.')

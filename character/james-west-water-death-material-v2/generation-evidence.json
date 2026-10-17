@@ -1,0 +1,44 @@
+{
+  "method": "Two built-in image_gen edits, exact prompt files retained; neither selected for runtime.",
+  "attempts": [
+    {
+      "output": "rejected-frame-edit.png",
+      "prompt": "frame-edit-prompt.txt",
+      "sha256": "4e0948731a19c70e37c71c384cedcd7c58e2834f431f25917b61340d9702389f",
+      "originalSize": [
+        256,
+        360
+      ],
+      "outputSize": [
+        1058,
+        1487
+      ],
+      "originalOpaqueBounds": [
+        81,
+        197,
+        200,
+        252
+      ],
+      "outputOpaqueBounds": [
+        346,
+        857,
+        814,
+        1070
+      ],
+      "decision": "Rejected: resized/repositioned silhouette, unsuitable for a colour-only replacement."
+    },
+    {
+      "output": "unselected-atlas-edit.png",
+      "prompt": "atlas-edit-prompt.txt",
+      "sha256": "9e31b3eed0e868754ece09a0a5e9cc03330f3d50a4da69f9b4646a3956eb427f",
+      "size": [
+        2172,
+        724
+      ],
+      "changedAlphaPixels": 77857,
+      "decision": "Unselected: original alpha not retained; native source-builder curve preserves geometry exactly."
+    }
+  ],
+  "runtimePixelSource": "Existing installed12PNGs; one fixed native material curve only.",
+  "billing": null
+}

@@ -1,0 +1,55 @@
+{
+  "canvas": [
+    418,
+    627
+  ],
+  "pivot": [
+    210,
+    560
+  ],
+  "resampling": "none",
+  "material": "neutral padded upholstery only",
+  "rgbMultiplier": [
+    0.78,
+    0.85,
+    0.91
+  ],
+  "mask": {
+    "roundedBounds": [
+      137,
+      151,
+      285,
+      449
+    ],
+    "radius": 16,
+    "feather": 3
+  },
+  "sources": [
+    {
+      "actor": "bill",
+      "source": "assets\\material-polish-cryo-open-v1\\bill.png",
+      "source_sha256": "97efd429c6d438d600f65e628578dd40c776f783f55471208010210fb17a6cc5",
+      "output_sha256": "626ec2692a6b397754a63353342ca7b0a4af912f0cc7e1d5c6cb4a05c160f14f"
+    },
+    {
+      "actor": "veld",
+      "source": "assets\\material-polish-cryo-open-v1\\veld.png",
+      "source_sha256": "681418ff9cba6333b609595193c3d6f55036ae65dcc63e8cd31906851fbbb5d6",
+      "output_sha256": "317be497a5069022323c35e6539af7bb871bc692bd72fc35091ddf5f4011f478"
+    },
+    {
+      "actor": "branforth",
+      "source": "assets\\material-polish-cryo-open-v1\\branforth.png",
+      "source_sha256": "937274e338f5860ff3fdf6ca5b36e7363d9064a2c523aeb484d659f488999e37",
+      "output_sha256": "b5ce6bb909e84fa469459377f0d76fb5575a1e1add19112dd316c4408a394ee2"
+    }
+  ],
+  "unchanged": [
+    "alpha",
+    "shell",
+    "glass",
+    "hardware",
+    "lamp",
+    "geometry"
+  ]
+}

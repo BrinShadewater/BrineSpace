@@ -1,0 +1,2868 @@
+{
+  "objective": "Complete Krusher Dom character animations using the selected James utility body",
+  "status": "owner rejected head; v4repair active",
+  "requiredCoverageSource": "res://character/krusher-complete-animation-v1/source-coverage.json",
+  "candidatePacks": {
+    "bare": [
+      "res://character/krusher-animation-package-v3/packs/bare-00.json",
+      "res://character/krusher-animation-package-v3/packs/bare-01.json",
+      "res://character/krusher-animation-package-v3/packs/bare-02.json",
+      "res://character/krusher-animation-package-v3/packs/bare-03.json",
+      "res://character/krusher-animation-package-v3/packs/bare-04.json",
+      "res://character/krusher-animation-package-v3/packs/bare-05.json",
+      "res://character/krusher-animation-package-v3/packs/bare-06.json",
+      "res://character/krusher-animation-package-v3/packs/bare-07.json",
+      "res://character/krusher-animation-package-v3/packs/bare-08.json",
+      "res://character/krusher-animation-package-v3/packs/bare-09.json",
+      "res://character/krusher-animation-package-v3/packs/bare-10.json",
+      "res://character/krusher-animation-package-v3/packs/bare-11.json",
+      "res://character/krusher-animation-package-v3/packs/bare-12.json",
+      "res://character/krusher-animation-package-v3/packs/bare-13.json",
+      "res://character/krusher-animation-package-v3/packs/bare-14.json",
+      "res://character/krusher-animation-package-v3/packs/bare-15.json",
+      "res://character/krusher-animation-package-v3/packs/bare-16.json",
+      "res://character/krusher-animation-package-v3/packs/bare-17.json",
+      "res://character/krusher-animation-package-v3/packs/bare-18.json",
+      "res://character/krusher-animation-package-v3/packs/bare-19.json",
+      "res://character/krusher-animation-package-v3/packs/bare-20.json"
+    ],
+    "helmet": [
+      "res://character/krusher-animation-package-v3/packs/helmet-00.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-01.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-02.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-03.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-04.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-05.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-06.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-07.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-08.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-09.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-10.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-11.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-12.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-13.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-14.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-15.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-16.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-17.json",
+      "res://character/krusher-animation-package-v3/packs/helmet-18.json"
+    ]
+  },
+  "coverage": {
+    "bare": {
+      "requiredStates": 338,
+      "stagedStates": 338,
+      "remainingStates": [],
+      "remainingFamilies": {},
+      "available": {
+        "walk-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 76
+        },
+        "idle-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 72
+        },
+        "walk-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 39
+        },
+        "idle-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 72
+        },
+        "walk-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 36
+        },
+        "idle-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 72
+        },
+        "walk-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 49
+        },
+        "idle-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 72
+        },
+        "interact-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 141
+        },
+        "interact-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 141
+        },
+        "interact-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 154
+        },
+        "interact-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/bare-manifest.json",
+          "frames": 137
+        },
+        "equip-helmet-east": {
+          "manifest": "res://character/krusher-helmet-transition-v1/manifest.json",
+          "frames": 12
+        },
+        "remove-helmet-east": {
+          "manifest": "res://character/krusher-helmet-transition-v1/manifest.json",
+          "frames": 12
+        },
+        "eat-south": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "eat-east": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "eat-north": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "eat-west": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "drink-south": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "drink-east": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "drink-north": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "drink-west": {
+          "manifest": "res://character/krusher-meal-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-acquire-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "cup-acquire-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-deposit-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "cup-deposit-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-meal-acquire-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-meal-acquire-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-meal-acquire-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-meal-acquire-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-meal-acquire-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-meal-acquire-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-eat-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-eat-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-eat-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-eat-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "meal-return-eat-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 10
+        },
+        "meal-return-eat-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-meal-deposit-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-meal-deposit-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-meal-deposit-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-meal-deposit-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-meal-deposit-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-meal-deposit-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-cup-acquire-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-cup-acquire-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-cup-acquire-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-cup-acquire-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-cup-acquire-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-cup-acquire-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-drink-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-drink-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-drink-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-drink-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "meal-return-drink-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 10
+        },
+        "meal-return-drink-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-cup-deposit-0-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-cup-deposit-1-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-cup-deposit-2-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-cup-deposit-3-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-cup-deposit-4-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-cup-deposit-5-north": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-acquire-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "cup-acquire-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-deposit-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "cup-deposit-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-meal-acquire-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-meal-acquire-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-meal-acquire-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-meal-acquire-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-meal-acquire-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-meal-acquire-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-meal-acquire-6-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-meal-acquire-7-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-cup-acquire-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-cup-acquire-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-cup-acquire-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-cup-acquire-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-cup-acquire-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-cup-acquire-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-cup-acquire-6-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-cup-acquire-7-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-meal-deposit-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-meal-deposit-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-meal-deposit-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-meal-deposit-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-meal-deposit-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-meal-deposit-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-meal-deposit-6-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-meal-deposit-7-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-cup-deposit-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-cup-deposit-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "meal-return-cup-deposit-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "meal-return-cup-deposit-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 5
+        },
+        "meal-return-cup-deposit-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 4
+        },
+        "meal-return-cup-deposit-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 3
+        },
+        "meal-return-cup-deposit-6-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 2
+        },
+        "meal-return-cup-deposit-7-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 1
+        },
+        "meal-return-eat-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-eat-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "meal-return-eat-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 10
+        },
+        "meal-return-eat-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "meal-return-eat-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 12
+        },
+        "meal-return-eat-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-drink-0-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "meal-return-drink-1-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "meal-return-drink-2-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 10
+        },
+        "meal-return-drink-3-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "meal-return-drink-4-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 12
+        },
+        "meal-return-drink-5-south": {
+          "manifest": "res://character/krusher-meal-service-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "inspect-south": {
+          "manifest": "res://character/krusher-inspection-family-v1/bare-manifest.json",
+          "frames": 141
+        },
+        "inspect-east": {
+          "manifest": "res://character/krusher-inspection-family-v1/bare-manifest.json",
+          "frames": 141
+        },
+        "inspect-north": {
+          "manifest": "res://character/krusher-inspection-family-v1/bare-manifest.json",
+          "frames": 137
+        },
+        "inspect-west": {
+          "manifest": "res://character/krusher-inspection-family-v1/bare-manifest.json",
+          "frames": 154
+        },
+        "kneel-south": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 42
+        },
+        "repair-south": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 13
+        },
+        "stand-south": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 42
+        },
+        "kneel-east": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 35
+        },
+        "repair-east": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 29
+        },
+        "stand-east": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 35
+        },
+        "kneel-north": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 33
+        },
+        "repair-north": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "stand-north": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 40
+        },
+        "kneel-west": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 29
+        },
+        "repair-west": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 25
+        },
+        "stand-west": {
+          "manifest": "res://character/krusher-repair-family-v1/bare-manifest.json",
+          "frames": 29
+        },
+        "torch-draw-south": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 8
+        },
+        "weld-south": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 43
+        },
+        "torch-stow-south": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 12
+        },
+        "torch-draw-east": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 19
+        },
+        "weld-east": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 113
+        },
+        "torch-stow-east": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 26
+        },
+        "torch-draw-north": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "weld-north": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 27
+        },
+        "torch-stow-north": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "torch-draw-west": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 9
+        },
+        "weld-west": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 41
+        },
+        "torch-stow-west": {
+          "manifest": "res://character/krusher-torch-family-v1/bare-manifest.json",
+          "frames": 32
+        },
+        "sit-down-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-south": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-down-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-east": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-down-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-north": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-down-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-west": {
+          "manifest": "res://character/krusher-seated-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-settle-west": {
+          "manifest": "res://character/krusher-cargo-settle-profile-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-north-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-north-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-north-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-south-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-south-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-south-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-west-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-west-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-west-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "carry-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "pickup-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "pickup-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "pickup-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "pickup-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "unload-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "unload-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "unload-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 6
+        },
+        "unload-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/bare-manifest.json",
+          "frames": 7
+        },
+        "bunk-enter-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 7
+        },
+        "bunk-exit-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 7
+        },
+        "bunk-sleep-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 1
+        },
+        "get-up-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "get-up-north": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "get-up-south": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "get-up-west": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "lie-down-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "lie-down-north": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "lie-down-south": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "lie-down-west": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "sleep-east": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "sleep-north": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "sleep-south": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "sleep-west": {
+          "manifest": "res://character/krusher-rest-family-v2/bare-manifest.json",
+          "frames": 6
+        },
+        "recover-air-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-bare-manifest.json",
+          "frames": 6
+        },
+        "recover-air-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-bare-manifest.json",
+          "frames": 6
+        },
+        "recover-air-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-bare-manifest.json",
+          "frames": 6
+        },
+        "recover-air-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-bare-manifest.json",
+          "frames": 6
+        },
+        "salvage-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-bare-manifest.json",
+          "frames": 6
+        },
+        "salvage-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-bare-manifest.json",
+          "frames": 6
+        },
+        "salvage-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-bare-manifest.json",
+          "frames": 6
+        },
+        "salvage-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-bare-manifest.json",
+          "frames": 6
+        },
+        "death-ground-east": {
+          "manifest": "res://character/krusher-death-family-v1/ground-bare-manifest.json",
+          "frames": 6
+        },
+        "death-ground-north": {
+          "manifest": "res://character/krusher-death-family-v1/ground-bare-manifest.json",
+          "frames": 6
+        },
+        "death-ground-south": {
+          "manifest": "res://character/krusher-death-family-v1/ground-bare-manifest.json",
+          "frames": 6
+        },
+        "death-ground-west": {
+          "manifest": "res://character/krusher-death-family-v1/ground-bare-manifest.json",
+          "frames": 6
+        },
+        "death-water-east": {
+          "manifest": "res://character/krusher-death-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "death-water-north": {
+          "manifest": "res://character/krusher-death-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "death-water-south": {
+          "manifest": "res://character/krusher-death-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "death-water-west": {
+          "manifest": "res://character/krusher-death-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "tread-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "tread-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "tread-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "tread-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-start-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-start-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-start-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-start-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-south-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-south-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-west-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-north-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-north-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-west-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-west-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-north-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-south-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-east-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-south-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-north-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-east-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-north-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-west-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-south-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-west-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-east-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-west-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-north-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-south-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-bare-manifest.json",
+          "frames": 11
+        },
+        "swim-distress-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-bare-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-bare-manifest.json",
+          "frames": 6
+        }
+      }
+    },
+    "helmet": {
+      "requiredStates": 248,
+      "stagedStates": 248,
+      "remainingStates": [],
+      "remainingFamilies": {},
+      "available": {
+        "walk-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 76
+        },
+        "idle-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 72
+        },
+        "walk-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 39
+        },
+        "idle-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 72
+        },
+        "walk-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 36
+        },
+        "idle-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 72
+        },
+        "walk-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 49
+        },
+        "idle-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 72
+        },
+        "interact-east": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 141
+        },
+        "interact-south": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 141
+        },
+        "interact-west": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 154
+        },
+        "interact-north": {
+          "manifest": "res://character/krusher-james-canonical-v4/helmet-manifest.json",
+          "frames": 137
+        },
+        "eat-south": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "eat-east": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "eat-north": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "eat-west": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "drink-south": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "drink-east": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "drink-north": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "drink-west": {
+          "manifest": "res://character/krusher-meal-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "inspect-south": {
+          "manifest": "res://character/krusher-inspection-family-v1/helmet-manifest.json",
+          "frames": 141
+        },
+        "inspect-east": {
+          "manifest": "res://character/krusher-inspection-family-v1/helmet-manifest.json",
+          "frames": 141
+        },
+        "inspect-north": {
+          "manifest": "res://character/krusher-inspection-family-v1/helmet-manifest.json",
+          "frames": 137
+        },
+        "inspect-west": {
+          "manifest": "res://character/krusher-inspection-family-v1/helmet-manifest.json",
+          "frames": 154
+        },
+        "kneel-south": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 42
+        },
+        "repair-south": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 13
+        },
+        "stand-south": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 42
+        },
+        "kneel-east": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 35
+        },
+        "repair-east": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 29
+        },
+        "stand-east": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 35
+        },
+        "kneel-north": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 33
+        },
+        "repair-north": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 11
+        },
+        "stand-north": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 40
+        },
+        "kneel-west": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 29
+        },
+        "repair-west": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 25
+        },
+        "stand-west": {
+          "manifest": "res://character/krusher-repair-family-v1/helmet-manifest.json",
+          "frames": 29
+        },
+        "torch-draw-south": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 8
+        },
+        "weld-south": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 43
+        },
+        "torch-stow-south": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 12
+        },
+        "torch-draw-east": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 19
+        },
+        "weld-east": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 113
+        },
+        "torch-stow-east": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 26
+        },
+        "torch-draw-north": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 9
+        },
+        "weld-north": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 27
+        },
+        "torch-stow-north": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 9
+        },
+        "torch-draw-west": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 9
+        },
+        "weld-west": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 41
+        },
+        "torch-stow-west": {
+          "manifest": "res://character/krusher-torch-family-v1/helmet-manifest.json",
+          "frames": 32
+        },
+        "sit-down-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-south": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-down-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-east": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-down-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-north": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-down-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-idle-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "sit-rise-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-enter-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "read-seated-exit-west": {
+          "manifest": "res://character/krusher-seated-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-settle-west": {
+          "manifest": "res://character/krusher-cargo-settle-profile-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-east-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-north-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-north-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-north-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-south-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-south-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-south-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-west-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 11
+        },
+        "carry-turn-west-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-turn-west-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "carry-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "pickup-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "pickup-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "pickup-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "pickup-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "unload-east": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "unload-north": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "unload-south": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 6
+        },
+        "unload-west": {
+          "manifest": "res://character/krusher-cargo-family-v1/helmet-manifest.json",
+          "frames": 7
+        },
+        "bunk-enter-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 7
+        },
+        "bunk-exit-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 7
+        },
+        "bunk-sleep-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 1
+        },
+        "get-up-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "get-up-north": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "get-up-south": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "get-up-west": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "lie-down-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "lie-down-north": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "lie-down-south": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "lie-down-west": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "sleep-east": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "sleep-north": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "sleep-south": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "sleep-west": {
+          "manifest": "res://character/krusher-rest-family-v2/helmet-manifest.json",
+          "frames": 6
+        },
+        "recover-air-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-helmet-manifest.json",
+          "frames": 6
+        },
+        "recover-air-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-helmet-manifest.json",
+          "frames": 6
+        },
+        "recover-air-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-helmet-manifest.json",
+          "frames": 6
+        },
+        "recover-air-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/recovery-helmet-manifest.json",
+          "frames": 6
+        },
+        "salvage-east": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-helmet-manifest.json",
+          "frames": 6
+        },
+        "salvage-north": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-helmet-manifest.json",
+          "frames": 6
+        },
+        "salvage-south": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-helmet-manifest.json",
+          "frames": 6
+        },
+        "salvage-west": {
+          "manifest": "res://character/krusher-recovery-salvage-v1/salvage-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-ground-east": {
+          "manifest": "res://character/krusher-death-family-v1/ground-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-ground-north": {
+          "manifest": "res://character/krusher-death-family-v1/ground-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-ground-south": {
+          "manifest": "res://character/krusher-death-family-v1/ground-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-ground-west": {
+          "manifest": "res://character/krusher-death-family-v1/ground-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-water-east": {
+          "manifest": "res://character/krusher-death-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-water-north": {
+          "manifest": "res://character/krusher-death-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-water-south": {
+          "manifest": "res://character/krusher-death-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "death-water-west": {
+          "manifest": "res://character/krusher-death-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "tread-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "tread-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "tread-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "tread-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-start-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-start-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-start-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-start-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-east": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-north": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-south": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-stop-west": {
+          "manifest": "res://character/krusher-water-family-v1/water-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-pickup-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-south-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-south-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-west-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-north-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-north-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-west-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-turn-east-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-west-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-north-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-turn-south-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-east-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-south-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-north-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-east-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-north-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-west-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-south-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-west-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-carry-turn-east-west": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-west-east": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-north-south": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-carry-turn-south-north": {
+          "manifest": "res://character/krusher-water-cargo-turns-v2/cargo-turn-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-0-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-work-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-cancel-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-release-pickup-1-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 7
+        },
+        "swim-cancel-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-release-pickup-2-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 8
+        },
+        "swim-cancel-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-release-pickup-3-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 9
+        },
+        "swim-cancel-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-release-pickup-4-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 10
+        },
+        "swim-cancel-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-cancel-release-pickup-5-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/cancel-helmet-manifest.json",
+          "frames": 11
+        },
+        "swim-distress-east": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-north": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-south": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-helmet-manifest.json",
+          "frames": 6
+        },
+        "swim-distress-west": {
+          "manifest": "res://character/krusher-water-interruptions-v1/distress-helmet-manifest.json",
+          "frames": 6
+        }
+      }
+    }
+  },
+  "remainingVerification": "All frozen states staged; full-library action/contact joins, native station lifecycle/world-scale review and final character consistency audit remain. Technical admission and reviewed subsets do not establish complete animation acceptance.",
+  "visualReview": {
+    "status": "head-construction-v3-all-families-palette-bank-station-pending",
+    "reference": "res://character/krusher-james-canonical-v6/character-sheet.png",
+    "remaining": "Coherent full-bank coverage/join audit; rear/quarter identity and cyan/yellow trim audit; package refresh; strict West cues/service-loss and actual station/bare-water/full-library review.",
+    "correctedCandidates": [
+      "res://character/krusher-james-canonical-v5/bare-manifest.json",
+      "res://character/krusher-james-canonical-v5/helmet-manifest.json",
+      "res://character/krusher-inspection-family-v2/bare-manifest.json",
+      "res://character/krusher-inspection-family-v2/helmet-manifest.json",
+      "res://character/krusher-repair-family-v2/bare-manifest.json",
+      "res://character/krusher-repair-family-v2/helmet-manifest.json",
+      "res://character/krusher-torch-family-v2/bare-manifest.json",
+      "res://character/krusher-torch-family-v2/helmet-manifest.json",
+      "res://character/krusher-seated-family-v2/bare-manifest.json",
+      "res://character/krusher-seated-family-v2/helmet-manifest.json",
+      "res://character/krusher-meal-family-v2/bare-manifest.json",
+      "res://character/krusher-meal-family-v2/helmet-manifest.json",
+      "res://character/krusher-helmet-transition-v2/manifest.json",
+      "res://character/krusher-meal-service-v2/bare-manifest.json",
+      "res://character/krusher-cargo-family-v2/bare-manifest.json",
+      "res://character/krusher-cargo-family-v2/helmet-manifest.json",
+      "res://character/krusher-cargo-settle-profile-v2/bare-manifest.json",
+      "res://character/krusher-cargo-settle-profile-v2/helmet-manifest.json",
+      "res://character/krusher-rest-family-v3/bare-manifest.json",
+      "res://character/krusher-rest-family-v3/helmet-manifest.json",
+      "res://character/krusher-water-family-v2/water-bare-manifest.json",
+      "res://character/krusher-water-family-v2/water-helmet-manifest.json"
+    ],
+    "latestOwnerFeedback": "Head not properly attached; helmet head weird and small; grey piece in bare hair.",
+    "referenceStatus": "Equal-native-scale original-body E/S/W before/after candidate; previous owner rejection not superseded by technical checks",
+    "correctedCandidatesStatus": "Earlier v2 fit candidates retained as history, owner rejected their construction",
+    "headConstructionV3": {
+      "manifests": [
+        "res://character/krusher-water-family-v3/water-bare-manifest.json",
+        "res://character/krusher-water-family-v3/water-helmet-manifest.json"
+      ],
+      "source": "res://character/krusher-head-fit-v3/extraction.json",
+      "frontSource": "res://character/krusher-head-fit-v3/front-extraction.json",
+      "changedUnique": 84,
+      "unchangedRearUnique": 28,
+      "independentChecks": 940,
+      "bareContactChecks": 42,
+      "nativeChecks": 6066,
+      "scope": "Partial staged water candidate. Original bodies only; not full selected bank or owner acceptance.",
+      "canonical": {
+        "manifests": [
+          "res://character/krusher-james-canonical-v6/bare-manifest.json",
+          "res://character/krusher-james-canonical-v6/helmet-manifest.json"
+        ],
+        "changedUnique": 1314,
+        "unchangedRearUnique": 361,
+        "independentChecks": 12941,
+        "bareContacts": 657,
+        "nativeAdmissionChecks": 4256,
+        "motionAudit": "res://character/krusher-james-canonical-v6/review/motion/validation.json",
+        "sourcePagesReviewed": 21,
+        "scope": "Partial staged candidate; all head contexts reviewed, representative native large/small views. Original holds replay supplemented by3 controlled captures; not station/world proof or owner acceptance."
+      },
+      "inspection": {
+        "manifests": [
+          "res://character/krusher-inspection-family-v3/bare-manifest.json",
+          "res://character/krusher-inspection-family-v3/helmet-manifest.json"
+        ],
+        "independentChecks": 2328,
+        "nativeChecks": 8033,
+        "slots": 1146
+      },
+      "actions": {
+        "repair": {
+          "manifests": [
+            "res://character/krusher-repair-family-v3/bare-manifest.json",
+            "res://character/krusher-repair-family-v3/helmet-manifest.json"
+          ],
+          "independentChecks": 3071,
+          "bareContactPoses": 135,
+          "nativePrescribedChecks": 4478,
+          "captures": 72,
+          "scope": "Staged original-body head correction; prescribed native holds/source replay. Shoulder palette pending, not world/furniture/owner acceptance."
+        },
+        "torch": {
+          "manifests": [
+            "res://character/krusher-torch-family-v3/bare-manifest.json",
+            "res://character/krusher-torch-family-v3/helmet-manifest.json"
+          ],
+          "independentChecks": 3432,
+          "bareContactPoses": 194,
+          "nativePrescribedChecks": 4306,
+          "captures": 72,
+          "scope": "Staged original-body head correction; prescribed native holds/source replay. Shoulder palette pending, not world/furniture/owner acceptance."
+        },
+        "seated": {
+          "manifests": [
+            "res://character/krusher-seated-family-v3/bare-manifest.json",
+            "res://character/krusher-seated-family-v3/helmet-manifest.json"
+          ],
+          "independentChecks": 818,
+          "bareContactPoses": 36,
+          "nativePrescribedChecks": 1986,
+          "captures": 144,
+          "scope": "Staged original-body head correction; prescribed native holds/source replay. Shoulder palette pending, not world/furniture/owner acceptance."
+        }
+      },
+      "mealsEquipment": {
+        "manifests": [
+          "res://character/krusher-meal-family-v3/bare-manifest.json",
+          "res://character/krusher-meal-family-v3/helmet-manifest.json",
+          "res://character/krusher-helmet-transition-v3/manifest.json",
+          "res://character/krusher-meal-service-v3/bare-manifest.json"
+        ],
+        "states": 106,
+        "frameReferences": 612,
+        "uniqueRecords": 147,
+        "changedUnique": 104,
+        "independentChecks": 1621,
+        "nativeChecks": 3980,
+        "bareSourceContactChecks": 49,
+        "exactIdleJoins": 100,
+        "sourceBoardsReviewed": 6,
+        "ownerFilesUnchangedEachRun": 2930,
+        "scope": "Partial revised candidates; original manifests/body motion and utensils protected. Prescribed native captures/source-hold replays only. Selected bank unchanged; full goal incomplete.",
+        "handoff": "res://character/krusher-head-fit-v3/MEALS_HANDOFF.md"
+      },
+      "cargo": {
+        "manifests": [
+          "res://character/krusher-cargo-family-v3/bare-manifest.json",
+          "res://character/krusher-cargo-family-v3/helmet-manifest.json",
+          "res://character/krusher-cargo-settle-profile-v3/bare-manifest.json",
+          "res://character/krusher-cargo-settle-profile-v3/helmet-manifest.json"
+        ],
+        "states": 50,
+        "refs": 342,
+        "unique": 148,
+        "revised": 120,
+        "independentChecks": 1549,
+        "bareHeadContactChecks": 63,
+        "nativeChecks": 4482,
+        "nativeCaptures": 154,
+        "ownerFilesUnchanged": 2930,
+        "scope": "Partial H3 complete-head migration. Original bodies/clocks/case/pivots retained; all120source contexts reviewed. Existing full-bank selection unchanged; no station acceptance.",
+        "handoff": "res://character/krusher-head-fit-v3/CARGO_HANDOFF.md"
+      },
+      "rest": {
+        "pack": "krusher-rest-family-v4",
+        "states": 30,
+        "refs": 174,
+        "unique": 92,
+        "revised": 72,
+        "independentChecks": 698,
+        "bareHeadContactChecks": 36,
+        "nativeChecks": 1290,
+        "nativeCaptures": 174,
+        "ownerFilesUnchanged": 2930,
+        "encodedSeconds": 25.483333,
+        "scope": "Partial full-library H3 candidate. Original bodies, clocks, root profiles, tools and helmet geometry retained. Existing selected full bank unchanged.",
+        "handoff": "res://character/krusher-head-fit-v3/REST_RECOVERY_HANDOFF.md"
+      },
+      "recovery": {
+        "pack": "krusher-recovery-salvage-v2",
+        "states": 16,
+        "refs": 96,
+        "unique": 86,
+        "revised": 65,
+        "independentChecks": 692,
+        "bareHeadContactChecks": 29,
+        "nativeChecks": 764,
+        "nativeCaptures": 96,
+        "ownerFilesUnchanged": 2930,
+        "encodedSeconds": 15.366667,
+        "scope": "Partial full-library H3 candidate. Original bodies, clocks, root profiles, tools and helmet geometry retained. Existing selected full bank unchanged.",
+        "handoff": "res://character/krusher-head-fit-v3/REST_RECOVERY_HANDOFF.md"
+      },
+      "waterCargo": {
+        "pack": "krusher-water-cargo-turns-v3",
+        "states": 64,
+        "refs": 464,
+        "unique": 160,
+        "revised": 138,
+        "sourceChecks": 2026,
+        "independentChecks": 783,
+        "bareContacts": 63,
+        "nativeChecks": 7272,
+        "nativeCaptures": 464,
+        "scope": "Partial H3 family migration; full selected bank unchanged; station acceptance pending.",
+        "handoff": "res://character/krusher-head-fit-v3/WATER_CARGO_HANDOFF.md"
+      },
+      "interruptions": {
+        "pack": "krusher-water-interruptions-v2",
+        "states": 144,
+        "refs": 1104,
+        "unique": 198,
+        "revised": 148,
+        "sharedCompletePoses": 94,
+        "sourceChecks": 3317,
+        "independentChecks": 986,
+        "bareHeadContacts": 39,
+        "nativeChecks": 13439,
+        "nativeCaptures": 1104,
+        "ownerFilesUnchanged": 2930,
+        "scope": "Partial full-library H3 migration. Selected full bank unchanged; continuous station contact and owner acceptance pending.",
+        "handoff": "res://character/krusher-head-fit-v3/INTERRUPTIONS_HANDOFF.md"
+      },
+      "death": {
+        "pack": "krusher-death-family-v2",
+        "states": 16,
+        "refs": 96,
+        "unique": 96,
+        "revised": 73,
+        "sourceChecks": 772,
+        "independentChecks": 478,
+        "bareContacts": 33,
+        "nativeChecks": 1012,
+        "nativeCaptures": 96,
+        "scope": "Partial full-library candidate; selected bank unchanged; station/owner acceptance pending.",
+        "handoff": "res://character/krusher-head-fit-v3/DEATH_HANDOFF.md"
+      },
+      "candidateBankAudit": {
+        "index": "res://character/krusher-head-fit-v3/candidate-bank-index.json",
+        "report": "res://character/krusher-head-fit-v3/candidate-bank-audit.json",
+        "bareStates": 338,
+        "helmetStates": 248,
+        "frameReferences": 8058,
+        "uniqueFiles": 3698,
+        "missing": 0,
+        "scope": "All H3 families staged; only coverage/readable file/hash audit. Selected full bank unchanged; joins/palette/native/station acceptance pending."
+      }
+    }
+  },
+  "headConstructionV3": {
+    "combinedPackage": {
+      "path": "res://character/krusher-animation-package-v2/package.json",
+      "states": 586,
+      "frameReferences": 8058,
+      "uniquePNG": 3502,
+      "packageChecks": 18462,
+      "nativeChecks": 57025,
+      "errors": 0,
+      "ownerFilesChanged": 0,
+      "status": "candidate; palette and actual station review pending"
+    },
+    "combinedJoins": {
+      "report": "res://character/krusher-head-fit-v3/candidate-bank-joins.json",
+      "comparisons": 930,
+      "baselineExact": 796,
+      "newExact": 796,
+      "regressions": 0
+    },
+    "stationWest": {
+      "fixture": "res://character/krusher-station-lifecycle-v2/native/west.gd",
+      "report": "res://character/krusher-station-lifecycle-v2/review/west/report.json",
+      "checks": 383,
+      "failures": 0,
+      "cases": 14,
+      "roomCaptures": 84,
+      "diagnosticRecords": 14,
+      "ownerFilesChanged": 0,
+      "scope": "Actual workshop rendering and service-loss returns at all seven unload indices / both gears; representative room captures reviewed. No autonomous chooser or Continue claim."
+    },
+    "shoulderPalette": {
+      "package": "res://character/krusher-animation-package-v3/package.json",
+      "recolouredFrames": 457,
+      "recolouredPixels": 12310,
+      "reviewedGroups": 626,
+      "selectedGroups": 529,
+      "validationChecks": 35749,
+      "nativeChecks": 57025,
+      "joinComparisons": 930,
+      "exactJoins": 796,
+      "errors": 0,
+      "status": "final bounded patch edges reviewed; current package water/delivery/West verified; remaining lifecycle closeout pending"
+    },
+    "stationPaletteV3": {
+      "package": "res://character/krusher-animation-package-v3/package.json",
+      "deliveryChecks": 13103,
+      "deliveryJourneys": 4,
+      "deliveryContinue": true,
+      "waterChecks": 6399,
+      "waterJourneys": 8,
+      "westChecks": 383,
+      "westCases": 14,
+      "previewChecks": 637,
+      "previewCases": 88,
+      "errors": 0,
+      "ownerFilesChanged": [],
+      "scope": "Current full bank; staged station fixtures, not normal roster integration or owner acceptance",
+      "recallChecks": 14643,
+      "recallJourneys": 4,
+      "recallContinue": true,
+      "lifeRefresh": {
+        "repair": {
+          "checks": 8951,
+          "failures": 0
+        },
+        "galley": {
+          "checks": 13323,
+          "failures": 0
+        },
+        "bunk": {
+          "checks": 240,
+          "failures": 0
+        },
+        "construction": {
+          "checks": 2565,
+          "failures": 0
+        },
+        "workshop": {
+          "checks": 19391,
+          "failures": 0
+        },
+        "mortality": {
+          "checks": 779,
+          "failures": 0
+        },
+        "chairs/crew_lounge": {
+          "checks": 932,
+          "failures": 0
+        },
+        "chairs/observation_room": {
+          "checks": 1532,
+          "failures": 0
+        },
+        "bare-cargo": {
+          "checks": 11243,
+          "failures": 0
+        },
+        "water": {
+          "checks": 6399,
+          "failures": 0
+        },
+        "west": {
+          "checks": 383,
+          "failures": 0
+        },
+        "delivery": {
+          "checks": 13103,
+          "failures": 0
+        },
+        "cancel": {
+          "checks": 14643,
+          "failures": 0
+        }
+      }
+    }
+  },
+  "completion": {
+    "package": "res://character/krusher-animation-package-v3/package.json",
+    "audit": "res://character/krusher-animation-package-v3/COMPLETION_AUDIT.json",
+    "bareStates": 338,
+    "helmetStates": 248,
+    "frameReferences": 8058,
+    "uniqueFrames": 3502,
+    "stationFirst": true,
+    "normalRosterInstalled": false
+  },
+  "headVisualRevision": {
+    "status": "reference staged; native animation repair pending",
+    "reference": "res://character/krusher-head-fit-v4/generated-standing-reference.png",
+    "review": "res://character/krusher-head-fit-v4/head-review-mobile.png",
+    "priorHeadRejected": true,
+    "canonicalCandidate": {
+      "bare": "res://character/krusher-james-canonical-v7/bare-manifest.json",
+      "helmet": "res://character/krusher-james-canonical-v7/helmet-manifest.json",
+      "states": 24,
+      "frameReferences": 2122,
+      "status": "native canonical candidate, unselected; complete propagation and selected fresh station contexts verified",
+      "review": "res://character/krusher-head-fit-v4/standing-review-mobile.png"
+    },
+    "scopedCandidates": {
+      "scopeProgress": "res://character/krusher-head-fit-v4/scope-progress.json",
+      "states": 586,
+      "requiredStates": 586,
+      "remainingStates": 0,
+      "packs": {
+        "bare": [
+          "res://character/krusher-james-canonical-v7/bare-manifest.json",
+          "res://character/krusher-inspection-family-v4/bare-manifest.json",
+          "res://character/krusher-repair-family-v4/bare-manifest.json",
+          "res://character/krusher-torch-family-v4/bare-manifest.json",
+          "res://character/krusher-seated-family-v4/bare-manifest.json",
+          "res://character/krusher-cargo-family-v4/bare-manifest.json",
+          "res://character/krusher-cargo-settle-profile-v4/bare-manifest.json",
+          "res://character/krusher-meal-family-v4/bare-manifest.json",
+          "res://character/krusher-meal-service-v4/bare-manifest.json",
+          "res://character/krusher-helmet-transition-v4/manifest.json",
+          "res://character/krusher-rest-family-v5/bare-manifest.json",
+          "res://character/krusher-recovery-salvage-v3/recovery-bare-manifest.json",
+          "res://character/krusher-recovery-salvage-v3/salvage-bare-manifest.json",
+          "res://character/krusher-death-family-v3/ground-bare-manifest.json",
+          "res://character/krusher-death-family-v3/water-bare-manifest.json",
+          "res://character/krusher-water-family-v4/water-bare-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/cargo-bare-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/turn-bare-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/cargo-turn-bare-manifest.json",
+          "res://character/krusher-water-interruptions-v3/cancel-bare-manifest.json",
+          "res://character/krusher-water-interruptions-v3/distress-bare-manifest.json"
+        ],
+        "helmet": [
+          "res://character/krusher-james-canonical-v7/helmet-manifest.json",
+          "res://character/krusher-inspection-family-v4/helmet-manifest.json",
+          "res://character/krusher-repair-family-v4/helmet-manifest.json",
+          "res://character/krusher-torch-family-v4/helmet-manifest.json",
+          "res://character/krusher-seated-family-v4/helmet-manifest.json",
+          "res://character/krusher-cargo-family-v4/helmet-manifest.json",
+          "res://character/krusher-cargo-settle-profile-v4/helmet-manifest.json",
+          "res://character/krusher-meal-family-v4/helmet-manifest.json",
+          "res://character/krusher-rest-family-v5/helmet-manifest.json",
+          "res://character/krusher-recovery-salvage-v3/recovery-helmet-manifest.json",
+          "res://character/krusher-recovery-salvage-v3/salvage-helmet-manifest.json",
+          "res://character/krusher-death-family-v3/ground-helmet-manifest.json",
+          "res://character/krusher-death-family-v3/water-helmet-manifest.json",
+          "res://character/krusher-water-family-v4/water-helmet-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/cargo-helmet-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/turn-helmet-manifest.json",
+          "res://character/krusher-water-cargo-turns-v4/cargo-turn-helmet-manifest.json",
+          "res://character/krusher-water-interruptions-v3/cancel-helmet-manifest.json",
+          "res://character/krusher-water-interruptions-v3/distress-helmet-manifest.json"
+        ]
+      },
+      "status": "unselected repaired head candidates; all 586 states propagated, native loader and selected fresh station contexts verified",
+      "review": "res://character/krusher-head-fit-v4/mobile-head-review.png"
+    },
+    "v5CanonicalCandidate": {
+      "packs": {
+        "bare": [
+          "res://character/krusher-james-canonical-v8/bare-manifest.json"
+        ],
+        "helmet": [
+          "res://character/krusher-james-canonical-v8/helmet-manifest.json"
+        ]
+      },
+      "states": 24,
+      "frameReferences": 2122,
+      "remainingStates": 562,
+      "status": "owner-directed V5 appearance revision, native canonical verified; remaining families pending; unselected for normal roster",
+      "standingReview": "res://character/krusher-head-fit-v5/standing-review-mobile.png",
+      "motionReview": "res://character/krusher-head-fit-v5/walk-review-mobile.gif",
+      "handoff": "res://character/krusher-head-fit-v5/HANDOFF.md"
+    },
+    "v6CanonicalCandidate": {
+      "packs": {
+        "bare": [
+          "res://character/krusher-james-canonical-v9/bare-manifest.json"
+        ],
+        "helmet": [
+          "res://character/krusher-james-canonical-v9/helmet-manifest.json"
+        ]
+      },
+      "states": 24,
+      "frameReferences": 2122,
+      "remainingStates": 562,
+      "status": "bare collar registration repaired; native verified, owner motion appearance review open; unselected",
+      "review": "res://character/krusher-head-fit-v6/bare-connection-review.gif",
+      "handoff": "res://character/krusher-head-fit-v6/HANDOFF.md"
+    }
+  }
+}

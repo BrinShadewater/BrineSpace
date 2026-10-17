@@ -1,0 +1,237 @@
+{
+  "status": "rejected wrong lead/support and oversized whole figure",
+  "normalAdmission": false,
+  "rawPath": "character/marsh-south-step-v1/sources/step-01.raw.png",
+  "rawSha256": "05344f445ac340b4ac189891a2a577b194ad4206998d09a3c9dd499a89275634",
+  "requestSha256": "f5cefca1776df745605b7cf9fa5cf58b8a348b9b97452efd952930496802d25f",
+  "idlePath": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+  "idleSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+  "commonNeutralScale": 0.3288888888888889,
+  "records": [
+    {
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        2,
+        11
+      ],
+      "support": "image-right",
+      "bounds": [
+        59,
+        23,
+        123,
+        171
+      ],
+      "width": 64,
+      "height": 148,
+      "contacts": [
+        [
+          78.5,
+          170
+        ],
+        [
+          105.0,
+          170
+        ]
+      ],
+      "frameFile": "001.png",
+      "sha256": "bfacce792eb712b8328cb41c7857557c4fe1261584bd3c824d7c09267a6b78c8"
+    },
+    {
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        13,
+        16
+      ],
+      "support": "image-right",
+      "bounds": [
+        65,
+        28,
+        128,
+        171
+      ],
+      "width": 63,
+      "height": 143,
+      "contacts": [
+        [
+          86.5,
+          168
+        ],
+        [
+          105.5,
+          170
+        ]
+      ],
+      "frameFile": "002.png",
+      "sha256": "ebfe526ed6a2b13ab15a1d6515659d4f6976f8dedc81ff86a4ad5bcf401166d7"
+    },
+    {
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        20,
+        19
+      ],
+      "support": "image-right",
+      "bounds": [
+        66,
+        31,
+        130,
+        180
+      ],
+      "width": 64,
+      "height": 149,
+      "contacts": [
+        [
+          88.0,
+          179
+        ],
+        [
+          105.5,
+          170
+        ]
+      ],
+      "frameFile": "003.png",
+      "sha256": "1b709feb1910e7c0889dcd5c217bbd9a4e2973c573607eb9b0bd2754235ba99d"
+    },
+    {
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        0,
+        22
+      ],
+      "support": "image-left",
+      "bounds": [
+        56,
+        30,
+        121,
+        180
+      ],
+      "width": 65,
+      "height": 150,
+      "contacts": [
+        [
+          79.0,
+          170
+        ],
+        [
+          97.5,
+          179
+        ]
+      ],
+      "frameFile": "004.png",
+      "sha256": "93647d74fad0d5c6a67ca2926a279d9d69753f3fe5c9d1afe0c0dc2e5ed5bb10"
+    },
+    {
+      "sourceCell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        4,
+        15
+      ],
+      "support": "image-left",
+      "bounds": [
+        55,
+        23,
+        119,
+        171
+      ],
+      "width": 64,
+      "height": 148,
+      "contacts": [
+        [
+          78.0,
+          170
+        ],
+        [
+          96.0,
+          154
+        ]
+      ],
+      "frameFile": "005.png",
+      "sha256": "e63f40dc1891c5d26cf767e49dab0e2183b3cacfab87391a62e6c664e4436485"
+    },
+    {
+      "sourceCell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "commonScale": 0.3288888888888889,
+      "wholeTranslation": [
+        15,
+        16
+      ],
+      "support": "midpoint",
+      "bounds": [
+        61,
+        24,
+        124,
+        171
+      ],
+      "width": 63,
+      "height": 147,
+      "contacts": [
+        [
+          80.5,
+          170
+        ],
+        [
+          103.0,
+          170
+        ]
+      ],
+      "frameFile": "ruler.png",
+      "sha256": "40e868e035311a4e64e0d4a3e1c2054b8c95fc9853852ecf2abddf76835fb01d"
+    }
+  ],
+  "rootDenseAtHoldStart": [
+    0,
+    0,
+    0,
+    0,
+    13,
+    13,
+    13
+  ],
+  "nominalWorldTravel": 5.734054054054054,
+  "durationsMs": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "grade": "none; whole generated RGB, alpha>=128 packaging, one BOX scale; no per-pose fitting, limb edits, mirror or palette transform",
+  "limits": "Five generated interior poses, exact selected idle endpoints. Source-only; provisional13dense root/contact plan is not implemented or validated as actor movement. Native motion/controller/short-route safety/snapshot/Continue/full master match pending."
+}

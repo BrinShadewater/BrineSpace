@@ -1,0 +1,861 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 3615,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "actualPaths": 7,
+  "captures": 96,
+  "exactSources": 96,
+  "controlledSamples": 1040,
+  "actorPlayerRestores": 47,
+  "decodedHeldApngFrames": 47,
+  "stableBoundedInputs": 234,
+  "unchangedOwnerNonLogFiles": 2931,
+  "sourceParity": [
+    {
+      "capture": 0,
+      "case": "carry-turn-south-east",
+      "key": "idle-south",
+      "slot": -1,
+      "path": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "capture": 1,
+      "case": "carry-turn-south-east",
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 2,
+      "case": "carry-turn-south-east",
+      "key": "carry-turn-south-east",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-south-east/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 3,
+      "case": "carry-turn-south-east",
+      "key": "carry-turn-south-east",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-south-east/001.png",
+      "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+    },
+    {
+      "capture": 4,
+      "case": "carry-turn-south-east",
+      "key": "carry-turn-south-east",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-south-east/002.png",
+      "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+    },
+    {
+      "capture": 5,
+      "case": "carry-turn-south-east",
+      "key": "carry-turn-south-east",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-south-east/003.png",
+      "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+    },
+    {
+      "capture": 6,
+      "case": "carry-turn-south-east",
+      "key": "carry-turn-south-east",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/east-south-01-unselected/carry-turn-south-east/004.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 7,
+      "case": "carry-turn-south-east",
+      "key": "carry-east",
+      "slot": 0,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 8,
+      "case": "carry-turn-south-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 9,
+      "case": "carry-turn-south-east",
+      "key": "carry-east",
+      "slot": 2,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/002.png",
+      "sha256": "f69fe5b73175bd5e9d0880840170f2eb522422940978c4545900ab7b536f6986"
+    },
+    {
+      "capture": 10,
+      "case": "carry-turn-south-east",
+      "key": "carry-east",
+      "slot": 3,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/003.png",
+      "sha256": "ae13a7931e9d4e9cacc8fb60dc4d9347bdc3166f9707402485e9b1791c67fad7"
+    },
+    {
+      "capture": 11,
+      "case": "carry-turn-south-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 12,
+      "case": "carry-turn-south-west",
+      "key": "idle-south",
+      "slot": -1,
+      "path": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "capture": 13,
+      "case": "carry-turn-south-west",
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 14,
+      "case": "carry-turn-south-west",
+      "key": "carry-turn-south-west",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/west-south-02-unselected/carry-turn-south-west/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 15,
+      "case": "carry-turn-south-west",
+      "key": "carry-turn-south-west",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/west-south-02-unselected/carry-turn-south-west/001.png",
+      "sha256": "7a476beb1b6719ab10a79c8f1bcf256118424df53b078e16251d5ec4a38a792c"
+    },
+    {
+      "capture": 16,
+      "case": "carry-turn-south-west",
+      "key": "carry-turn-south-west",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/west-south-02-unselected/carry-turn-south-west/002.png",
+      "sha256": "b5838c724209ab2204e3ab33fdde7a3889f6449ae4e0c62525f10ad975f50e6b"
+    },
+    {
+      "capture": 17,
+      "case": "carry-turn-south-west",
+      "key": "carry-turn-south-west",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/west-south-02-unselected/carry-turn-south-west/003.png",
+      "sha256": "efd218a728224f39767a975a66867e1a8e926902802b55138850059b7fea6f69"
+    },
+    {
+      "capture": 18,
+      "case": "carry-turn-south-west",
+      "key": "carry-turn-south-west",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/west-south-02-unselected/carry-turn-south-west/004.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 19,
+      "case": "carry-turn-south-west",
+      "key": "carry-west",
+      "slot": 0,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 20,
+      "case": "carry-turn-south-west",
+      "key": "carry-west",
+      "slot": 1,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/001.png",
+      "sha256": "9c8ffbeb9ad785b12103d4fef7c4f8339251fe4aae9f0e19c096290b8c125bd7"
+    },
+    {
+      "capture": 21,
+      "case": "carry-turn-south-west",
+      "key": "carry-west",
+      "slot": 2,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/002.png",
+      "sha256": "6f5969dbb15b940b74d4feba6ae210b6dee62950341cca220f6185f997fc50a9"
+    },
+    {
+      "capture": 22,
+      "case": "carry-turn-south-west",
+      "key": "carry-west",
+      "slot": 3,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/003.png",
+      "sha256": "8a24b227b42dac9f0deb859e578078c70a682ef062b850b79136e5dc3a2a6ff2"
+    },
+    {
+      "capture": 23,
+      "case": "carry-turn-south-west",
+      "key": "carry-west",
+      "slot": 1,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/001.png",
+      "sha256": "9c8ffbeb9ad785b12103d4fef7c4f8339251fe4aae9f0e19c096290b8c125bd7"
+    },
+    {
+      "capture": 24,
+      "case": "carry-turn-north-east",
+      "key": "idle-north",
+      "slot": -1,
+      "path": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/../../frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "capture": 25,
+      "case": "carry-turn-north-east",
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 26,
+      "case": "carry-turn-north-east",
+      "key": "carry-turn-north-east",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/east-north-02-unselected/carry-turn-north-east/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 27,
+      "case": "carry-turn-north-east",
+      "key": "carry-turn-north-east",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/east-north-02-unselected/carry-turn-north-east/001.png",
+      "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+    },
+    {
+      "capture": 28,
+      "case": "carry-turn-north-east",
+      "key": "carry-turn-north-east",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/east-north-02-unselected/carry-turn-north-east/002.png",
+      "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+    },
+    {
+      "capture": 29,
+      "case": "carry-turn-north-east",
+      "key": "carry-turn-north-east",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/east-north-02-unselected/carry-turn-north-east/003.png",
+      "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+    },
+    {
+      "capture": 30,
+      "case": "carry-turn-north-east",
+      "key": "carry-turn-north-east",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/east-north-02-unselected/carry-turn-north-east/004.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 31,
+      "case": "carry-turn-north-east",
+      "key": "carry-east",
+      "slot": 0,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 32,
+      "case": "carry-turn-north-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 33,
+      "case": "carry-turn-north-east",
+      "key": "carry-east",
+      "slot": 2,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/002.png",
+      "sha256": "f69fe5b73175bd5e9d0880840170f2eb522422940978c4545900ab7b536f6986"
+    },
+    {
+      "capture": 34,
+      "case": "carry-turn-north-east",
+      "key": "carry-east",
+      "slot": 3,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/003.png",
+      "sha256": "ae13a7931e9d4e9cacc8fb60dc4d9347bdc3166f9707402485e9b1791c67fad7"
+    },
+    {
+      "capture": 35,
+      "case": "carry-turn-north-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 36,
+      "case": "carry-turn-north-west",
+      "key": "idle-north",
+      "slot": -1,
+      "path": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/../../frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "capture": 37,
+      "case": "carry-turn-north-west",
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 38,
+      "case": "carry-turn-north-west",
+      "key": "carry-turn-north-west",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-north-west/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 39,
+      "case": "carry-turn-north-west",
+      "key": "carry-turn-north-west",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-north-west/001.png",
+      "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+    },
+    {
+      "capture": 40,
+      "case": "carry-turn-north-west",
+      "key": "carry-turn-north-west",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-north-west/002.png",
+      "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+    },
+    {
+      "capture": 41,
+      "case": "carry-turn-north-west",
+      "key": "carry-turn-north-west",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-north-west/003.png",
+      "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+    },
+    {
+      "capture": 42,
+      "case": "carry-turn-north-west",
+      "key": "carry-turn-north-west",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-north-west/004.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 43,
+      "case": "carry-turn-north-west",
+      "key": "carry-west",
+      "slot": 0,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 44,
+      "case": "carry-turn-north-west",
+      "key": "carry-west",
+      "slot": 1,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/001.png",
+      "sha256": "9c8ffbeb9ad785b12103d4fef7c4f8339251fe4aae9f0e19c096290b8c125bd7"
+    },
+    {
+      "capture": 45,
+      "case": "carry-turn-north-west",
+      "key": "carry-west",
+      "slot": 2,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/002.png",
+      "sha256": "6f5969dbb15b940b74d4feba6ae210b6dee62950341cca220f6185f997fc50a9"
+    },
+    {
+      "capture": 46,
+      "case": "carry-turn-north-west",
+      "key": "carry-west",
+      "slot": 3,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/003.png",
+      "sha256": "8a24b227b42dac9f0deb859e578078c70a682ef062b850b79136e5dc3a2a6ff2"
+    },
+    {
+      "capture": 47,
+      "case": "carry-turn-north-west",
+      "key": "carry-west",
+      "slot": 1,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/001.png",
+      "sha256": "9c8ffbeb9ad785b12103d4fef7c4f8339251fe4aae9f0e19c096290b8c125bd7"
+    },
+    {
+      "capture": 48,
+      "case": "carry-turn-west-east",
+      "key": "idle-west",
+      "slot": -1,
+      "path": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/../../frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "capture": 49,
+      "case": "carry-turn-west-east",
+      "key": "carry-west",
+      "slot": 0,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 50,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 51,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/001.png",
+      "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+    },
+    {
+      "capture": 52,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/002.png",
+      "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+    },
+    {
+      "capture": 53,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/003.png",
+      "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+    },
+    {
+      "capture": 54,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/004.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 55,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 5,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/005.png",
+      "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+    },
+    {
+      "capture": 56,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 6,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/006.png",
+      "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+    },
+    {
+      "capture": 57,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 7,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/007.png",
+      "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+    },
+    {
+      "capture": 58,
+      "case": "carry-turn-west-east",
+      "key": "carry-turn-west-east",
+      "slot": 8,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-west-east/008.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 59,
+      "case": "carry-turn-west-east",
+      "key": "carry-east",
+      "slot": 0,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 60,
+      "case": "carry-turn-west-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 61,
+      "case": "carry-turn-west-east",
+      "key": "carry-east",
+      "slot": 2,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/002.png",
+      "sha256": "f69fe5b73175bd5e9d0880840170f2eb522422940978c4545900ab7b536f6986"
+    },
+    {
+      "capture": 62,
+      "case": "carry-turn-west-east",
+      "key": "carry-east",
+      "slot": 3,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/003.png",
+      "sha256": "ae13a7931e9d4e9cacc8fb60dc4d9347bdc3166f9707402485e9b1791c67fad7"
+    },
+    {
+      "capture": 63,
+      "case": "carry-turn-west-east",
+      "key": "carry-east",
+      "slot": 1,
+      "path": "character/marsh-east-carry-material-v1/candidate-03/001.png",
+      "sha256": "2e253d8ef4855a0b57b40ae3be52739f1c8fc6ae2281a4763e314e63c31fc996"
+    },
+    {
+      "capture": 64,
+      "case": "carry-turn-north-south",
+      "key": "idle-north",
+      "slot": -1,
+      "path": "character/marsh-v2/packs/bare-184x184-p92.0-172.0/../../frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "capture": 65,
+      "case": "carry-turn-north-south",
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 66,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 67,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/001.png",
+      "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+    },
+    {
+      "capture": 68,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/002.png",
+      "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+    },
+    {
+      "capture": 69,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/003.png",
+      "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+    },
+    {
+      "capture": 70,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/004.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 71,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 5,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/005.png",
+      "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+    },
+    {
+      "capture": 72,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 6,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/006.png",
+      "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+    },
+    {
+      "capture": 73,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 7,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/007.png",
+      "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+    },
+    {
+      "capture": 74,
+      "case": "carry-turn-north-south",
+      "key": "carry-turn-north-south",
+      "slot": 8,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-north-south/008.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 75,
+      "case": "carry-turn-north-south",
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 76,
+      "case": "carry-turn-north-south",
+      "key": "carry-south",
+      "slot": 1,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/001.png",
+      "sha256": "e9b4c3ee54b08d4f5e2be48629aac5aa4c7f8ec58698e2f96fffac72f8c6afd4"
+    },
+    {
+      "capture": 77,
+      "case": "carry-turn-north-south",
+      "key": "carry-south",
+      "slot": 2,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/002.png",
+      "sha256": "01dfa0e8167b25c36105ee04a43ea7ae769c112fbcc4b7043a8aa49dc92e0f70"
+    },
+    {
+      "capture": 78,
+      "case": "carry-turn-north-south",
+      "key": "carry-south",
+      "slot": 3,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/003.png",
+      "sha256": "0905bed566771d8c995f71572d29392038f6983e2e4f7dbcec28c4121889d88e"
+    },
+    {
+      "capture": 79,
+      "case": "carry-turn-north-south",
+      "key": "carry-south",
+      "slot": 1,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/001.png",
+      "sha256": "e9b4c3ee54b08d4f5e2be48629aac5aa4c7f8ec58698e2f96fffac72f8c6afd4"
+    },
+    {
+      "capture": 80,
+      "case": "carry-turn-south-north",
+      "key": "idle-south",
+      "slot": -1,
+      "path": "character/marsh-v2/../marsh-south-idle-material-v1/candidate-01/000.png",
+      "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+    },
+    {
+      "capture": 81,
+      "case": "carry-turn-south-north",
+      "key": "carry-south",
+      "slot": 0,
+      "path": "character/marsh-south-carry-material-v1/candidate-01/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 82,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/000.png",
+      "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+    },
+    {
+      "capture": 83,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/001.png",
+      "sha256": "5514628527b62de1226dc34e9cec4f40874a96c8718b7a5f5cbf09113ab2b1c1"
+    },
+    {
+      "capture": 84,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/002.png",
+      "sha256": "2b56184f41ccf811ce3d3c548bed407a9651480df88297dd5e476efc488fa79a"
+    },
+    {
+      "capture": 85,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/003.png",
+      "sha256": "3d4232ffda2c63428a2b6fd0920f760f41afec038d9635048947c766f8751e70"
+    },
+    {
+      "capture": 86,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/004.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "capture": 87,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 5,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/005.png",
+      "sha256": "4c2312bef315b73795df82b094ba6b8da5e58a6e3199e263c1a455c73840eb7e"
+    },
+    {
+      "capture": 88,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 6,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/006.png",
+      "sha256": "5124a910c6478b751e56f28ea45ee42172f9337c9b5daaeec0baeb4e2bbb687e"
+    },
+    {
+      "capture": 89,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 7,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/007.png",
+      "sha256": "8fa9cbda6ce3ea2688862889acfb46536cdef7774d539cbca96e71506f38db83"
+    },
+    {
+      "capture": 90,
+      "case": "carry-turn-south-north",
+      "key": "carry-turn-south-north",
+      "slot": 8,
+      "path": "character/marsh-carry-turn-material-v1/opposite-01-unselected/carry-turn-south-north/008.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 91,
+      "case": "carry-turn-south-north",
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 92,
+      "case": "carry-turn-south-north",
+      "key": "carry-north",
+      "slot": 1,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/001.png",
+      "sha256": "ecbf95d1d500e58419d0b52e325582e2b2f7bade03035f09a08e59da7f82026f"
+    },
+    {
+      "capture": 93,
+      "case": "carry-turn-south-north",
+      "key": "carry-north",
+      "slot": 2,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/002.png",
+      "sha256": "933ddedfc3de7aea36546b51802edd490ca16c6a51c7811fb50a3639ba02a1df"
+    },
+    {
+      "capture": 94,
+      "case": "carry-turn-south-north",
+      "key": "carry-north",
+      "slot": 3,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/003.png",
+      "sha256": "d106f817d4b0aaf10a623c991d2664033c053d988ede5443b7aa320c962aeec6"
+    },
+    {
+      "capture": 95,
+      "case": "carry-turn-south-north",
+      "key": "carry-north",
+      "slot": 1,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/001.png",
+      "sha256": "ecbf95d1d500e58419d0b52e325582e2b2f7bade03035f09a08e59da7f82026f"
+    }
+  ],
+  "cases": [
+    {
+      "key": "carry-turn-south-east",
+      "phases": 5,
+      "captures": 12,
+      "samples": 140,
+      "actorPlayerRestores": 5,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "south-east-pairs.png"
+    },
+    {
+      "key": "carry-turn-south-west",
+      "phases": 5,
+      "captures": 12,
+      "samples": 140,
+      "actorPlayerRestores": 5,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "south-west-pairs.png"
+    },
+    {
+      "key": "carry-turn-north-east",
+      "phases": 5,
+      "captures": 12,
+      "samples": 140,
+      "actorPlayerRestores": 5,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "north-east-pairs.png"
+    },
+    {
+      "key": "carry-turn-north-west",
+      "phases": 5,
+      "captures": 12,
+      "samples": 140,
+      "actorPlayerRestores": 5,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "north-west-pairs.png"
+    },
+    {
+      "key": "carry-turn-west-east",
+      "phases": 9,
+      "captures": 16,
+      "samples": 160,
+      "actorPlayerRestores": 9,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "west-east-pairs.png"
+    },
+    {
+      "key": "carry-turn-north-south",
+      "phases": 9,
+      "captures": 16,
+      "samples": 160,
+      "actorPlayerRestores": 9,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "north-south-pairs.png"
+    },
+    {
+      "key": "carry-turn-south-north",
+      "phases": 9,
+      "captures": 16,
+      "samples": 160,
+      "actorPlayerRestores": 9,
+      "exactDestination0Return": true,
+      "allDestinationPhases": true,
+      "board": "south-north-pairs.png"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Seven actual normal Marsh.move workshop_carry paths:four reverse quarters400ms andthree opposites800ms,normalfactory/main/grid/player with stagedcardinals+family. Exact orderedturn phases,actor-player restores/pause,destination0return,all4destinationphases andfinalpause. Dedicatedfree furnished fixture,normalflagsfalse. NotfullRunSave/visibleTitleContinue/completepickup-unload/continuouscontact/fullsetacceptance.",
+  "limits": "Seven actual staged paths only;held crops/APNG not realtime film/contact,notfullRunSave/visibleTitleContinue/complete delivery orfullsetacceptance."
+}

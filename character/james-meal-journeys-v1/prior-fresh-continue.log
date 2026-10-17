@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+MEAL DEPARTURE DIAGNOSTIC {"actor":{"active":true,"activity":"taking a hot meal break","air_recovery":0.0,"air_was_low":false,"branforth_bunk":{},"branforth_console":{},"branforth_helmet_return":false,"breath_oxygen":15.0,"dead":false,"decision_rng":7626009594601917327,"direction":"south","expedition":{},"foot":"(7984.0, 7904.0)","goal":"hunger","goal_cell":"(20, 20)","helmet_equipped":false,"locker_request":{},"moonbay_assignment":{},"movement_heading":{},"movement_medium":"dry","needs":{"curiosity":95.0018333333333,"fatigue":1.89333333333325,"hunger":52.2720000000108,"maintenance":4.16533333333334},"path":"[]","primary_room":"(-1, -1)","social_cooldown":0.0,"social_partner":"","stage":"life_eat","starvation":0.0,"state":"idle","tablet_exit_pose":-1,"tank_oxygen":60.0,"timer":6.0,"traffic_activity":"","traffic_retry":0.0,"traffic_wait":0.0,"visits":{"(20, 20)":2}},"delta":"(0.04541, 0.04541)","mode":"bare","playerEquipment":"","playerKey":"eat-south","rotation":2}
+ERROR: Meal departure joins selected walk and unchanged gear
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-journeys-v1/native-meal.gd:9)
+       [1] run (res://character/james-meal-journeys-v1/native-meal.gd:119)
+       [2] capture (res://character/james-meal-journeys-v1/native-meal.gd:27)
+JAMES GALLEY JOURNEYS: 60459 checks; 1 failures; 8 actual meal/inspection journeys

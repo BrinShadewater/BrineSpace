@@ -1,0 +1,393 @@
+{
+  "checks": 2868,
+  "cases": [
+    {
+      "room": "crew_lounge",
+      "mode": 0,
+      "captures": 42,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode0-change005.png",
+            "index": 5,
+            "key": "sit-down-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.700000000000001,
+            "stage": "life_sit",
+            "timer": 0.0999999999999993
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode0-change006.png",
+            "index": 0,
+            "key": "sit-idle-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.800000000000001,
+            "stage": "life_seated",
+            "timer": 7.4
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode0-change035.png",
+            "index": 5,
+            "key": "sit-idle-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.06666666666665,
+            "stage": "life_seated",
+            "timer": 0.133333333333355
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode0-change036.png",
+            "index": 0,
+            "key": "sit-rise-north",
+            "mode": 0,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.21666666666665,
+            "stage": "life_rise",
+            "timer": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "room": "crew_lounge",
+      "mode": 1,
+      "captures": 42,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode1-change047.png",
+            "index": 5,
+            "key": "sit-down-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.700000000000001,
+            "stage": "life_sit",
+            "timer": 0.0999999999999993
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode1-change048.png",
+            "index": 0,
+            "key": "sit-idle-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 0.800000000000001,
+            "stage": "life_seated",
+            "timer": 7.4
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode1-change077.png",
+            "index": 5,
+            "key": "sit-idle-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.06666666666665,
+            "stage": "life_seated",
+            "timer": 0.133333333333355
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/crew_lounge-mode1-change078.png",
+            "index": 0,
+            "key": "sit-rise-north",
+            "mode": 1,
+            "physicalFoot": [
+              7725.39990234375,
+              7777.0
+            ],
+            "room": "crew_lounge",
+            "simTime": 8.21666666666665,
+            "stage": "life_rise",
+            "timer": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "room": "observation_room",
+      "mode": 0,
+      "captures": 44,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change089.png",
+            "index": 5,
+            "key": "sit-down-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.583333333333333,
+            "stage": "observation_sit",
+            "timer": 0.0666666666666664
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change090.png",
+            "index": 0,
+            "key": "read-seated-enter-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.65,
+            "stage": "observation_read_enter",
+            "timer": 0.48
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change095.png",
+            "index": 5,
+            "key": "read-seated-enter-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 1.06666666666667,
+            "stage": "observation_read_enter",
+            "timer": 0.0633333333333334
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change096.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 1.13333333333333,
+            "stage": "observation_read",
+            "timer": 11.04
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change114.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 11.9500000000002,
+            "stage": "observation_read",
+            "timer": 0.223333333333205
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change115.png",
+            "index": -1,
+            "key": "read-seated-exit-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.1833333333335,
+            "stage": "observation_read_exit",
+            "timer": 0.48
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change121.png",
+            "index": 5,
+            "key": "read-seated-exit-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6000000000002,
+            "stage": "observation_read_exit",
+            "timer": 0.0633333333333334
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode0-change122.png",
+            "index": 0,
+            "key": "sit-rise-south",
+            "mode": 0,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6666666666669,
+            "stage": "observation_rise",
+            "timer": 0.65
+          }
+        }
+      ]
+    },
+    {
+      "room": "observation_room",
+      "mode": 1,
+      "captures": 44,
+      "transitions": [
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change133.png",
+            "index": 5,
+            "key": "sit-down-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.583333333333333,
+            "stage": "observation_sit",
+            "timer": 0.0666666666666664
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change134.png",
+            "index": 0,
+            "key": "read-seated-enter-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 0.65,
+            "stage": "observation_read_enter",
+            "timer": 0.48
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change139.png",
+            "index": 5,
+            "key": "read-seated-enter-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 1.06666666666667,
+            "stage": "observation_read_enter",
+            "timer": 0.0633333333333334
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change140.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 1.13333333333333,
+            "stage": "observation_read",
+            "timer": 11.04
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change158.png",
+            "index": 0,
+            "key": "read-seated-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 11.9500000000002,
+            "stage": "observation_read",
+            "timer": 0.223333333333205
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change159.png",
+            "index": -1,
+            "key": "read-seated-exit-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.1833333333335,
+            "stage": "observation_read_exit",
+            "timer": 0.48
+          }
+        },
+        {
+          "before": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change165.png",
+            "index": 5,
+            "key": "read-seated-exit-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6000000000002,
+            "stage": "observation_read_exit",
+            "timer": 0.0633333333333334
+          },
+          "after": {
+            "capture": "res://character/james-seated-read-phases-v1/controller-native/observation_room-mode1-change166.png",
+            "index": 0,
+            "key": "sit-rise-south",
+            "mode": 1,
+            "physicalFoot": [
+              7968.0,
+              7776.0
+            ],
+            "room": "observation_room",
+            "simTime": 12.6666666666669,
+            "stage": "observation_rise",
+            "timer": 0.65
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "scope": "Full six-phase source candidate, not native/visual acceptance.",
+  "inputSHA256": {
+    "crew-side-masters-v1/bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "bill-cargo-helmet-west-v1/sources/canonical-head.png": "226417bf28083f77bd4d0eae1de504bf5885a8b3d0b3cf54b15419bd8eb3653d",
+    "bill-swim-west-master-v5/build.py": "a973e68f03f5f566363c303c19d07e9aca3d05236b87095cf7b7def8f9d70c6f",
+    "bill-swim-west-master-v4/generation-jobs.json": "611552fa2c03040a03651590a60afedab577280fb443b75eba06924f3d33f70e",
+    "bill-land-water-west-v9/sources/master-head-reference.png": "5603f3fd6b9fd3b18804719203685b5a545be0baea37db4b16c2518a5428ada1",
+    "bill-swim-west-master-v2/sources/stroke-extend-v1.png": "ab334b8ef71bfea955575dcdd801f9dc343a0ebb54ab629d2b20100666e3a427",
+    "bill-swim-west-master-v2/sources/stroke-sweep-identity-v2.png": "2f765702fd49396e2a9604b4e056161fc8950f21fbcdf03dbf88c34af0bcf9b1",
+    "bill-swim-west-master-v2/sources/stroke-sweep-identity-prompt-v2.txt": "29bb3e958b626b607b0e9c2310b7260280edacab3d9e232079109b25dac56acf",
+    "bill-swim-west-master-v4/review.json": "f40b641d44447c9e60c5bfd09e18ee53e80de0d73296b9246aad1dd312b8f746",
+    "bill-land-water-west-v11/bare/frames/land-swim-west/005.png": "78bcf4cadf7646e6d2d782ffedc2dc4acb3171a87b5e1dccf36cc2c8773977c5",
+    "bill-land-water-west-v11/helmet/frames/land-swim-west/005.png": "85a143283da7744ce9cb2de89442a93ba2fe0b142e4196afc313a01c1064ff21",
+    "bill-swim-west-master-v4/sources/pull-from-extend-prompt-v1.txt": "c41c1f717e09840cc8a3f9211e16f45edd07b38e13d233fc1b68d9af9179d90e",
+    "bill-swim-west-master-v4/sources/pull-from-extend-v1.png": "23c7f989d7458ad66175543e3134b707cf59b8ed4d7254d4b6931663af4783f5",
+    "bill-swim-west-master-v4/sources/pull-head-prompt-v2.txt": "0f1ba133c3b73a5f3388dbff0d7cf9954e937879bad40ef4ed6ca0d46414b663",
+    "bill-swim-west-master-v4/sources/pull-head-v2.png": "c7f93e8ddcf3ae210626ef9d6241b37723fc75d85cc0c34ce59eb63a41bf9895",
+    "bill-swim-west-master-v3/sources/extend-controls-v3.png": "0c84f351ac07c6b4d90d1ce4157d86c9038ec7f07f5963c973e25f186d75cc79",
+    "bill-swim-west-master-v3/sources/recover-v1.png": "218ded5a1f421ffdbe4a04f809412d80971b5328075e3285e7e5d2d04693e829",
+    "bill-swim-west-master-v3/sources/reach-v1.png": "2daf99ef02694b9d46dccfa1ad83908cf04befd00c8883b33f6a5a02ce1bbb12",
+    "bill-swim-west-master-v3/sources/glide-v1.png": "4cdae7df2683e460cbf0473334c68d5906d75a853a0725ea0091ad10b27da42e",
+    "bill-swim-west-master-v4/bare/frames/swim-west/000.png": "337172bde17fc24c8fa83cc1b342a7a9d52f473354523d7de5f7a742c810691c",
+    "bill-swim-west-master-v4/bare/frames/swim-west/001.png": "9ffa00481dca694d3030cdb7649ce75b8b52a60ffc8ea9d93982e5ad392bb340",
+    "bill-swim-west-master-v4/bare/frames/swim-west/002.png": "3a81b305fabc8bf1d39b549dda459d44d19d57f60917fe8c4464b16fb28262da",
+    "bill-swim-west-master-v4/bare/frames/swim-west/003.png": "6c49256a7a9a8fa397ad64d6f5ca781031130b640c2ce16c57c60e596b0df0d3",
+    "bill-swim-west-master-v4/bare/frames/swim-west/004.png": "4ce8516814d8ce8558977fd7497e8b6970135f93b0be5f80fd016becb7d72b30",
+    "bill-swim-west-master-v4/bare/frames/swim-west/005.png": "88d95862ed22db7be0aae716c4e76c629670d8ad7de92c957c156152113301af",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/000.png": "46f710954f11486b01fe318adaad65274524615ff30dac067abdf53a41e65489",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/001.png": "6db6324a2522f32e10659a662422fd185e64f5eaf0d955eca93c1d89c48da016",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/002.png": "905041e79df70d82b7c220302030b2c6867dc225b3b0d38d1210affd640baff6",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/003.png": "ad399a5714430b8487b1a373c581876d3fec859428b31f1e44e13d3fca63da50",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/004.png": "3e73ae18cd72e27f38fe74ca868ad787f98e96c8b474c917be0aeaa4c4260857",
+    "bill-swim-west-master-v4/helmet/frames/swim-west/005.png": "7d5c781965f682ee036c14dcf66bba61235e368c256c93edc70e02b9809e3c38"
+  },
+  "frozenInputsStable": 31,
+  "density": 0.15481171548117154,
+  "physicalStandingHeight": 148,
+  "canvas": [
+    352,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "frames": [
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 45,
+            "center": [
+              775.7555555555556,
+              472.68888888888887
+            ]
+          },
+          {
+            "pixels": 45,
+            "center": [
+              796.6666666666666,
+              477.4666666666667
+            ]
+          }
+        ],
+        "sourceCenter": [
+          786.2111111111111,
+          475.0777777777778
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 0,
+      "name": "Extend",
+      "source": "bill-swim-west-master-v3/sources/extend-controls-v3.png",
+      "headProxy": {
+        "roi": [
+          280,
+          170,
+          490,
+          420
+        ],
+        "bounds": [
+          52,
+          66,
+          190,
+          207
+        ],
+        "width": 138,
+        "height": 141,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          413,
+          236
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        70,
+        163
+      ],
+      "registeredCrown": [
+        134,
+        200
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        119,
+        196
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    },
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 57,
+            "center": [
+              757.421052631579,
+              484.10526315789474
+            ]
+          },
+          {
+            "pixels": 63,
+            "center": [
+              780.3492063492064,
+              489.42857142857144
+            ]
+          }
+        ],
+        "sourceCenter": [
+          768.8851294903927,
+          486.76691729323306
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 1,
+      "name": "Sweep",
+      "source": "bill-swim-west-master-v2/sources/stroke-sweep-identity-v2.png",
+      "headProxy": {
+        "roi": [
+          250,
+          170,
+          480,
+          420
+        ],
+        "bounds": [
+          27,
+          65,
+          162,
+          216
+        ],
+        "width": 135,
+        "height": 151,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          348,
+          235
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        73,
+        162
+      ],
+      "registeredCrown": [
+        127,
+        198
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        112,
+        194
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    },
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 78,
+            "center": [
+              739.8076923076923,
+              511.0
+            ]
+          },
+          {
+            "pixels": 70,
+            "center": [
+              765.5571428571428,
+              517.0571428571428
+            ]
+          }
+        ],
+        "sourceCenter": [
+          752.6824175824175,
+          514.0285714285715
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 2,
+      "name": "Pull",
+      "source": "bill-swim-west-master-v4/sources/pull-head-v2.png",
+      "headProxy": {
+        "roi": [
+          130,
+          170,
+          430,
+          460
+        ],
+        "bounds": [
+          63,
+          86,
+          229,
+          239
+        ],
+        "width": 166,
+        "height": 153,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          288,
+          256
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        75,
+        157
+      ],
+      "registeredCrown": [
+        120,
+        197
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        105,
+        193
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    },
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 45,
+            "center": [
+              703.5111111111111,
+              488.02222222222224
+            ]
+          },
+          {
+            "pixels": 48,
+            "center": [
+              725.8125,
+              493.5
+            ]
+          }
+        ],
+        "sourceCenter": [
+          714.6618055555555,
+          490.7611111111111
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 3,
+      "name": "Recover",
+      "source": "bill-swim-west-master-v3/sources/recover-v1.png",
+      "headProxy": {
+        "roi": [
+          210,
+          170,
+          420,
+          410
+        ],
+        "bounds": [
+          32,
+          56,
+          174,
+          207
+        ],
+        "width": 142,
+        "height": 151,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          325,
+          226
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        81,
+        161
+      ],
+      "registeredCrown": [
+        131,
+        196
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        116,
+        192
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    },
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 55,
+            "center": [
+              768.0,
+              480.6545454545454
+            ]
+          },
+          {
+            "pixels": 44,
+            "center": [
+              789.4318181818182,
+              485.5909090909091
+            ]
+          }
+        ],
+        "sourceCenter": [
+          778.7159090909091,
+          483.1227272727273
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 4,
+      "name": "Reach",
+      "source": "bill-swim-west-master-v3/sources/reach-v1.png",
+      "headProxy": {
+        "roi": [
+          280,
+          170,
+          490,
+          410
+        ],
+        "bounds": [
+          28,
+          60,
+          169,
+          207
+        ],
+        "width": 141,
+        "height": 147,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          388,
+          230
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        71,
+        162
+      ],
+      "registeredCrown": [
+        131,
+        198
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        116,
+        194
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    },
+    {
+      "hipMarker": {
+        "roi": [
+          680,
+          440,
+          840,
+          550
+        ],
+        "components": [
+          {
+            "pixels": 50,
+            "center": [
+              773.34,
+              481.1
+            ]
+          },
+          {
+            "pixels": 46,
+            "center": [
+              794.5217391304348,
+              486.5869565217391
+            ]
+          }
+        ],
+        "sourceCenter": [
+          783.9308695652173,
+          483.8434782608696
+        ],
+        "componentTouchesROIEdge": false,
+        "scope": "Authored hip equipment registration proxy, not anatomical-length or contact proof."
+      },
+      "registeredHipMarker": [
+        192,
+        237
+      ],
+      "index": 5,
+      "name": "Glide",
+      "source": "bill-swim-west-master-v3/sources/glide-v1.png",
+      "headProxy": {
+        "roi": [
+          280,
+          170,
+          490,
+          420
+        ],
+        "bounds": [
+          51,
+          71,
+          189,
+          216
+        ],
+        "width": 138,
+        "height": 145,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          409,
+          241
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        71,
+        162
+      ],
+      "registeredCrown": [
+        134,
+        199
+      ],
+      "anchorScope": "Whole-source translation from hip equipment; bounded head observed independently",
+      "canonicalHelmetPosition": [
+        119,
+        195
+      ],
+      "helmetSize": [
+        40,
+        40
+      ],
+      "helmetScale": 1,
+      "helmetRotationDegrees": 0,
+      "bodyOutsideFittingMaskExact": true,
+      "foregroundExact": true,
+      "allPaintedSupportPreserved": true
+    }
+  ],
+  "decodedAPNGFramesExact": 12,
+  "loopMs": 960,
+  "APNGLoop": 0,
+  "wholeFramesExactAfterTranslation": 12,
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "visualAcceptance": "Pending complete master/body/head/grade/neck/wrap review"
+}

@@ -1,0 +1,68 @@
+{
+  "revision": "marsh-water-pickup-north-01-staged",
+  "normalAdmission": false,
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/pickup-north-01-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "rejectedStudy": true,
+  "rejection": "Diagonal rear-right launch violates fixed North heading; retained original/raw/measurements. No native01 gate. Reauthored whole as02, never raster-rotated/patched."
+}

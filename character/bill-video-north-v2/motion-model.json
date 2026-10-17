@@ -1,0 +1,46 @@
+{
+  "display_name": "Genjutsu",
+  "job_type": "hf_mult_motion_control",
+  "params": [
+    {
+      "name": "image_references",
+      "type": "array",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "prompt",
+      "type": "string|null",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "resolution",
+      "type": "string",
+      "default": "720p",
+      "required": false,
+      "enum": [
+        "480p",
+        "720p",
+        "1080p"
+      ]
+    },
+    {
+      "name": "video_references",
+      "type": "array",
+      "default": null,
+      "required": false
+    }
+  ],
+  "rules": [
+    {
+      "cel": "size(params.image_references) >= 1",
+      "message": "at least one image_references entry is required"
+    },
+    {
+      "cel": "size(params.video_references) == 1",
+      "message": "exactly one video_references entry is required"
+    }
+  ],
+  "type": "video"
+}

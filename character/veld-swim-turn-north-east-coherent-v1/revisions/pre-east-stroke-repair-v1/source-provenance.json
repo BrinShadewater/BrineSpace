@@ -1,0 +1,70 @@
+{
+  "method": "Built-in imagegen; immutable raw sources/exact prompts; deterministic extraction/family grade/reference-calibrated rulers",
+  "records": [
+    {
+      "file": "bare-source-v1.png",
+      "sha256": "46c0784b8644f03571106c97d797d690fc8751ab4d0bda2305cd582aa65f2181",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "bare-source-prompt-v1.txt",
+      "promptSha256": "8ab72b52de317175e8b1c84e5e1cd02c3b62c945db41d5c4636c78e2878f9ed7",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-71b62f10-5225-48e7-81b1-e8e482c39689.png",
+      "status": "slots1/3 selected;slot0 starts too diagonal andslot2 clusters withslot1"
+    },
+    {
+      "file": "bare-source-v2.png",
+      "sha256": "75e0e618ca8b4bfd61efcd571de08588a2200f292ffd5e2e7275e4f8f14cf8e8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "bare-source-prompt-v2.txt",
+      "promptSha256": "e734eb89c150eba6895ee2575f09371ee345983abc748ab611a3211b478a81be",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-d360c244-6dcb-49b6-b633-bc018b130f21.png",
+      "status": "slot0 selected near north;middle slots omitted andslot3 too horizontal"
+    },
+    {
+      "file": "bare-yaw54-source-v3.png",
+      "sha256": "576ff9f741841f913d42f26ce8ce91dae974bbd7f68a151280729dc3ecfdb501",
+      "dimensions": [
+        1520,
+        1035
+      ],
+      "mode": "RGBA",
+      "prompt": "bare-yaw54-prompt-v3.txt",
+      "promptSha256": "0c9eb4ed1ba8e3b770c1989eb87dc1611daf9a0eefa184b0f0d6a4ad0f680147",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-fef6441f-4d3d-44a1-baa8-319050afe4df.png",
+      "status": "selected independent later diagonal at .115 ruler"
+    },
+    {
+      "file": "helmet-source-v1.png",
+      "sha256": "39b6fdf5f22893c885259cc9486f05dfb9c78cbc0b6ad0814f40fb36944c7e70",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "prompt": "helmet-source-prompt-v1.txt",
+      "promptSha256": "f83fcb16edf3ba154c7f00f256196631fbb66e9dd88d12e22404ef8ff27e50e2",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-7ddf82e2-e158-45df-8b63-2c100a96db4a.png",
+      "status": "four prone component cells selected .083; non-component alpha halo excluded in extraction"
+    }
+  ],
+  "referenceHashes": {
+    "selected-endpoint-reference.png": "576f8a02fa8f7feed11a6f324013db97b31a75f7c101de31499b55d96aab4cd8",
+    "yaw-orientation-guide-v1.png": "8634d1b2c663f6a99812e70dc81d891a6adb28d4a01c6f8784d99446913128d0",
+    "yaw-axis-guide-v2.png": "2e0fad108877d2a099946ca888cbc2440751341ccd40ffc4ace1fd536406276c",
+    "yaw54-guide-v3.png": "47d008ed5eeaa008897703bd02639f41f4256a865825531eb168a4f56e6ee06f",
+    "helmet-endpoint-reference.png": "4882f9f05656c69645636c545765a2a8088842056f735363e403fb25f51ca65b",
+    "helmet-camera-guide-v1.png": "eb1a56c8618c0a426b5e41535a6efbe64b6a54fe0c6b01fef6d63a457779096d",
+    "body-head-camera-reference-v1.png": "68a01a22ae07cb74a9ac321fbdeeab01acc7b92f1f581ed937e9fe66c356f295",
+    "bare-turn-contact-v1.png": "3e15bb54a413368cb2444261437857d5a99f54cde09475c733f8a870608b4ed7"
+  },
+  "guideCaveat": "Rotated sprites and cyan axes are generation reference guides only, never final candidate artwork",
+  "historicalEastHelmetReference": "External bun in original high-density east reference is superseded; prompt excludes it and selected masters govern enclosed shell",
+  "installed": false
+}

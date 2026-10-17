@@ -1,0 +1,884 @@
+{
+  "requirement": "Complete Krusher animations matching the full frozen James utility-suit library; corrected connected head, proportional helmet face, clean hair, matte muted cyan, station test first. Roster/perks outside animation scope.",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "bodyFamily": "James utility suit",
+    "accent": "#527C80"
+  },
+  "coverage": {
+    "bare": 338,
+    "helmet": 248,
+    "references": 8058,
+    "uniquePNG": 3502,
+    "metadataFieldsChecked": 5186,
+    "missingStates": 0
+  },
+  "checks": {
+    "repair": {
+      "checks": 8951,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Krusher bank in production James actor/player; eight actual default storage-equipment contacts, staged actual arrival then full kneel/repair/stand/idle via ordinary maintenance controller, exact source every60Hz tick and native visible captures. Not autonomous chooser/approach, all full source-loop cycles, arbitrary interruptions or ordinary roster.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-repair"
+    },
+    "galley": {
+      "checks": 13323,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Four default galley rotations/both gears, actual registered reachable service counter, production arrive/update through complete bare meal/cup handoffs and normal hunger relief; sealed helmet inspection fallback. Exact source/contact/camera snapshots. Staged approach, not autonomous chooser/natural economic cycles/arbitrary interrupted returns or roster.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-galley"
+    },
+    "bunk": {
+      "checks": 240,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "All paired bunk poses in real main scene and production renderer; normal fatigue chooser/route/arrival/update lifecycle; actual registered mattress offsets. Default authored bunk, no roster/save integration; not all furniture or water lifecycle proof.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-bunk"
+    },
+    "construction": {
+      "checks": 2565,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Two ordinary paid life-support builds at real core connection through production chooser/route/work controller, full draw/weld/stow progression, power-off stow/hold/resume and pause, registered work contact/native snapshots. Krusher manifests in existing James cargo player/actor; no roster/save or continuous station recording claim.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-construction"
+    },
+    "workshop": {
+      "checks": 19391,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Krusher manifests in production James cargo player/actor and actual workshop renderer; eight default room rotation/gear service journeys through inspection/work/pickup/generated carry route/unload; every simulation frame/source, floor clearance, visible camera snapshots. Staged reachable service approach, no autonomous chooser/save/roster or full continuous recording claim.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-workshop"
+    },
+    "mortality": {
+      "checks": 779,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Krusher final bank in actual station James renderer.16production die selections at clear settled projections/all finite source slots/holds/native visibility controls;8real survival low-air flag/drained-room recovery timers/all source slots/idle. Staged contacts and hazard/drain, no full autonomous lethal event/economy or roster claim.",
+      "ownerFilesChangedDuringInterval": [
+        "startup_images.txt",
+        "shader_cache\\CanvasShaderGLES3\\fa028cfdc2fc1d840bfc5c0ec75d14374b4f1330cf6df43db4c950c94a17ef0d\\f144b53157b4313dd955e82aa8af01beb3524a48.cache",
+        "last_session.json",
+        "bug_reports\\brinespace-report-20261004-015409-169528-44076529.zip"
+      ],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-mortality"
+    },
+    "chairs/crew_lounge": {
+      "checks": 932,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Merged Krusher candidates, reachable actual default furniture in four room rotations; production arrival and update sit/read/rise handoffs; all source slots, contact offsets and visible camera checks. Staged reachable approach, no autonomous path/normal Krusher roster/save integration; no continuous station playback claim.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-chairs"
+    },
+    "chairs/observation_room": {
+      "checks": 1532,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Merged Krusher candidates, reachable actual default furniture in four room rotations; production arrival and update sit/read/rise handoffs; all source slots, contact offsets and visible camera checks. Staged reachable approach, no autonomous path/normal Krusher roster/save integration; no continuous station playback claim.",
+      "ownerFilesChangedDuringInterval": [
+        "shader_cache\\CanvasShaderGLES3\\fa028cfdc2fc1d840bfc5c0ec75d14374b4f1330cf6df43db4c950c94a17ef0d\\f144b53157b4313dd955e82aa8af01beb3524a48.cache",
+        "startup_images.txt",
+        "last_session.json",
+        "bug_reports\\brinespace-report-20261004-015409-169528-44076529.zip"
+      ],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-chairs"
+    },
+    "bare-cargo": {
+      "checks": 11243,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Four bare flooded furnished-room cargo routes and48indexed work/pickup cancellations through production move, recall, cancellation, clearance and renderer. Staged in-room cargo/extraction state; not helmetless exterior dispatch, automatic job selection or fresh-scene Continue.",
+      "ownerFilesChangedDuringInterval": [
+        "bug_reports\\brinespace-report-20261004-015813-169528-288340337.zip",
+        "brine_loop.save",
+        "bug_reports\\brinespace-report-20261004-015752-169528-267025433.zip",
+        "last_session.json",
+        "brine_loop.save.bak"
+      ],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata-bare-cargo"
+    },
+    "water": {
+      "checks": 6399,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Eight staged furnished flooded-room routes with production movement/renderer, both gears, original source pixels/clearance, low-air pose selector and restoration; not natural survival/air economy, exterior cargo cancellation, continuous recording or roster integration.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata"
+    },
+    "west": {
+      "checks": 383,
+      "failures": 0,
+      "engineExit": 0,
+      "scope": "Actual workshop clear floor, staged West unload source at seven indices/both gears, ordinary release and actual service-loss return controller/source rows/fixed foot/persistent case. Original James cue and altered cue guard. No autonomous chooser or fresh-scene Continue claim.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata"
+    },
+    "delivery": {
+      "checks": 13103,
+      "failures": 0,
+      "engineExit": 0,
+      "journeys": 4,
+      "everyJourneyRestored": true,
+      "scope": "Four actual helmet salvage deliveries through production dispatch, airlock, pickup, water carry turns, return, unload and exact resource credit. Fresh-scene mid-return Continue. Complete current Krusher candidate bank. Bare flooded cargo/cancellation and West floor release remain separate.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata"
+    },
+    "cancel": {
+      "checks": 14643,
+      "failures": 0,
+      "engineExit": 0,
+      "journeys": 4,
+      "everyJourneyRestored": true,
+      "scope": "Krusher final merged bank in production James actor/player. Four actual helmet dispatch/airlock/exterior/recall/return trips with fresh-scene mid-action disk Continue. Twelve indexed work/pickup branches from each actual work arrival, six naturally advanced indices each; exact source entrances/empty joins, case anchors and actor-only restores. Not48full journeys; bare flooded cancellation, traffic/invalidation or ordinary roster remain unproven.",
+      "ownerFilesChangedDuringInterval": [],
+      "scratchAppData": "C:\\Users\\Alex\\Documents\\Brine Space\\character\\krusher-station-lifecycle-v2\\native\\scratch-appdata"
+    },
+    "palette": {
+      "checks": 35749,
+      "errors": [],
+      "states": 586,
+      "slots": 8058,
+      "scope": "Entire prior corrected library preserved except explicit reviewed shoulder masks; all profiles/clocks/metadata and every non-mask RGBA pixel exact. Native admission and station visual review separate."
+    },
+    "native": {
+      "checks": 57025,
+      "errors": [],
+      "scope": "Complete merged candidate delivery: every8058source slot, native geometry/clock boundaries,338bare/248helmet final state maps, original West settle nearest filter. No additional station/world lifecycle claim.",
+      "slots": 8058,
+      "states": {
+        "bare": 338,
+        "helmet": 248
+      }
+    },
+    "preview": {
+      "checks": 637,
+      "errors": [],
+      "scope": "All loaded straight starts/stops and dry/water cargo/swim turns in both gears; pure clearance prediction versus actual transition selection and finite endpoints sampled with a one-microsecond epsilon.",
+      "slots": 0,
+      "states": 88
+    },
+    "joins": {
+      "comparisons": 930,
+      "baselineExact": 796,
+      "newExact": 796,
+      "errors": [],
+      "scope": "Whole visible RGBA rendered at common physical foot pivot. Named entries/returns/action handoffs/turns/indexed cancellations/loops preserve previously exact joins. Baseline-distinct motion poses recorded, not forced equal. No station or palette acceptance."
+    }
+  },
+  "visualReview": "All revised source families previously reviewed; final529palette contexts and current station detail boards for all fixtures reviewed; mobile source preview bounds verified. Owner acceptance is separate.",
+  "profileIsolationNote": "All runners set independent scratch APPDATA. Mortality/observation/bare-cargo fingerprints observed real-profile changes while independent normal game PID169528 was open (--path without -s); diagnostic ZIP names carry that PID. Real save files were not restored or altered by this task. Do not claim all owner files unchanged for these intervals; functional engine checks pass but runner preservation gate reports nonzero because of concurrent real-game writes.",
+  "errors": [
+    {
+      "requirement": "Head likeness/anatomy and helmet fit",
+      "status": "Owner rejected; v4visual reference staged; native registration/animation propagation pending"
+    }
+  ],
+  "rawProfileDifferences": [
+    {
+      "state": "bare:carry-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:unload-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-east-south",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-south-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-north-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-east-north",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:drink-east",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:drink-east",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:drink-east",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:drink-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:drink-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:drink-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:drink-west",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:drink-west",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:drink-west",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:eat-east",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:eat-east",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:eat-east",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:eat-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:eat-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:eat-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:eat-west",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:eat-west",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:eat-west",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:pickup-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-east-west",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:carry-turn-west-east",
+      "field": "strideDistanceCells"
+    },
+    {
+      "state": "bare:meal-acquire-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-acquire-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-acquire-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:cup-acquire-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:cup-acquire-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:cup-acquire-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-deposit-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-deposit-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-deposit-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:cup-deposit-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:cup-deposit-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:cup-deposit-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-acquire-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-eat-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-eat-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-eat-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-meal-deposit-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-acquire-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-drink-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-drink-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-drink-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-0-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-0-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-0-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-1-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-1-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-1-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-2-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-2-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-2-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-3-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-3-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-3-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-4-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-4-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-4-north",
+      "field": "pivot"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-5-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-5-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "bare:meal-return-cup-deposit-5-north",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:drink-east",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:drink-east",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:drink-east",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:drink-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:drink-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:drink-north",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:drink-south",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:drink-south",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:drink-south",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:drink-west",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:drink-west",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:drink-west",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:eat-east",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:eat-east",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:eat-east",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:eat-north",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:eat-north",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:eat-north",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:eat-south",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:eat-south",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:eat-south",
+      "field": "pivot"
+    },
+    {
+      "state": "helmet:eat-west",
+      "field": "frameWidth"
+    },
+    {
+      "state": "helmet:eat-west",
+      "field": "frameHeight"
+    },
+    {
+      "state": "helmet:eat-west",
+      "field": "pivot"
+    }
+  ],
+  "registeredPadding": {
+    "states": 54,
+    "offset": [
+      36,
+      52
+    ],
+    "visiblePixelsOutsideOriginalRegisteredCanvas": 0,
+    "reason": "Explicit paired union canvases; original physical foot and148pixel density unchanged. No rescale."
+  },
+  "serializationRounding": {
+    "observations": 9,
+    "absoluteTolerance": 1e-14
+  },
+  "scopeDecision": "Complete animation asset package and requested station testing, including all state/frame/profile/clock/stride contracts, revised likeness, joins, source reviews and current station lifecycles. Normal roster/gameplay/perks explicitly outside scope in frozen source coverage.",
+  "currentAcceptance": "Owner rejected head design on October4,2026. Prior technical results retain their original scope; visual repair required."
+}

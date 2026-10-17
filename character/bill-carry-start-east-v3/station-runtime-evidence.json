@@ -1,0 +1,96 @@
+{
+  "scope": "Actual main-scene workshop service progression, collision geometry, production actor movement, normal grid source/native draw. Prescribed South-facing held start and long clear East floor route replace short generated carry route, original generated path recorded. Candidate authoring movement plants during South/East turn, then bridge-v3 joins gait-v2 at exact contact0 late-phase0.104, both gears. Actual source/render/service progression; not natural chooser/path eligibility, interruptions or Continue.",
+  "nativeChecks": 2337,
+  "validation": {
+    "artPassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 54.69,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-east-start-station-v3\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "bridgePackageChecks": 51,
+  "nativeCaptureCount": 78,
+  "journeys": [
+    {
+      "candidate": false,
+      "helmet": false,
+      "gaitCycles": 1,
+      "firstStepSlots": []
+    },
+    {
+      "candidate": false,
+      "helmet": true,
+      "gaitCycles": 1,
+      "firstStepSlots": []
+    },
+    {
+      "candidate": true,
+      "helmet": false,
+      "gaitCycles": 2,
+      "firstStepSlots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "candidate": true,
+      "helmet": true,
+      "gaitCycles": 2,
+      "firstStepSlots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "normalSelectionChanged": false,
+  "goalComplete": false,
+  "visualReview": "Current48staged native/source pairs and earlier30baseline pairs reviewed; source12paired bridge poses and82/148/27 browser recorded60Hz source/position replay reviewed, native mode at1.15s. Upper body remains master matched; contact and anatomical alternate weight not certified.",
+  "hashTiming": "After native interval; dependency stability during run unmeasured.",
+  "inputHashes": {
+    "tests/test_bill_carry_east_start_station_v3.gd": "853d8b0377e077d1232abbb22b4c5da46c39e028af40f0d35003318bd374b7c6",
+    "character/bill-carry-start-east-v3/bindings.json": "7f65cb38e271302a9b6b23b39de8b3979c7005d8396f436f6914d9bdcf264634",
+    "character/bill-carry-start-east-v3/carry_start_preview_player.gd": "d30804b97031c405a32431160236f2de1e0b771dde8b888a6f18be1bb0e1b8e6",
+    "character/bill-carry-east-gait-v2/registration.json": "4b5735930928fddc2cb7a46f30eefbd5f529ebc5b3dbeaa18d6b69f003883015",
+    "output/bill-carry-east-start-station-v3/journeys.json": "e5dfd541fea7fae4e92f0ad78f0c9ed153fe8cbf52b021927d5214f5590c7f2a"
+  },
+  "joinDiagnostic": {
+    "scope": "Actual60Hz recorded source bytes and next-frame gait progression at prescribed workshop join. Does not prove anatomical foot lock or snapshot lifecycle.",
+    "passed": true,
+    "joins": [
+      {
+        "exactLastTurnToFirstBridgeBytes": true,
+        "helmet": false,
+        "exactLastBridgeToFirstGaitBytes": true,
+        "resumePhase": 0.104,
+        "nextFrameSlot": 1,
+        "nextFrameSeconds": 0.016666666666669272,
+        "gaitCycles": 2,
+        "sourceStancePixelsUnchanged": true
+      },
+      {
+        "exactLastTurnToFirstBridgeBytes": true,
+        "helmet": true,
+        "exactLastBridgeToFirstGaitBytes": true,
+        "resumePhase": 0.104,
+        "nextFrameSlot": 1,
+        "nextFrameSeconds": 0.016666666666669272,
+        "gaitCycles": 2,
+        "sourceStancePixelsUnchanged": true
+      }
+    ],
+    "journeysSha256": "e5dfd541fea7fae4e92f0ad78f0c9ed153fe8cbf52b021927d5214f5590c7f2a"
+  },
+  "earlierRuns": "2331/2failed inherited sample-count assumption;2337/4failed incorrectly treating unbounded phase as wrapped;2337/0failed phase0 trial53.06s. Current late-contact phase0.104 interval2337/0failed54.69s. Archives retain failed diagnostics."
+}

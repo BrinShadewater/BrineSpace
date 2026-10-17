@@ -1,5 +1,17 @@
 # Character continuation and handoff
 
+## September 29 human crew closeout and separate sessions
+
+Read `docs/CREW_ANIMATION_SESSION_CLOSEOUT_2026-09-29.md` and the named actor's
+continuation handoff. The owner closes this session and will reopen Bill, Veld and
+James separately. Preserve staged versus installed decisions, especially Bill east
+idle-led-v3 which is not owner-accepted or installed. Own actor directories and
+coordinate shared loader/registry/standard edits; no full crew rebuild in one actor
+session. Use [crew consistency](crew-consistency.md) for reusable identity, material,
+loop and shared-helmet lessons. The September 13 generation pause below is historical;
+later direct-MiniMax authorization governs reopened human crew work. No task or
+spending is scheduled from the closed session.
+
 Begin from the current selected manifests and source hashes. Parent READMEs and
 old captures may lag actor-specific revisions. Reconcile the concise current
 summary rather than presenting every historical TODO as still missing.
@@ -102,3 +114,7 @@ Record tail stalls separately from average CPU gains.
 Sync only changed maintained files after checking installed copies for divergence.
 Structural validation and mirror equality are not fresh behavior/visual acceptance.
 The September 24 continuation map is `docs/CLAUDE_HANDOFF_2026-09-24.md`.
+
+
+## Marsh owner session closeout — October 4, 2026
+Read docs/MARSH_SESSION_CLOSEOUT_2026-10-04.md in the active checkout. The owner closed this animation session; no mandatory work remains in its bounded scope. Current selection is the ordered character/marsh-v2/catalog.json, not a dated README or candidate gallery. Frozen post-repair-joins inventory records 228 states / 1190 holds / 95 body manifests / 1018 unique source paths; 200 original held states exact / 28 updates use later scoped evidence. Final review: character/marsh-final-review-2026-10-04/REVIEW.md. Preserve later South work/repair-join overrides and rejected pilot evidence. Do not treat coverage limits as automatic new tasks; extra art polish, continuous motion/all-route review or a release are new objectives. No generation, tests or automation resumes solely from historical TODOs. Source installation and owner session closure do not establish a packaged build or universal visual acceptance.

@@ -1,0 +1,18 @@
+from pathlib import Path
+import json,hashlib
+import numpy as np
+from PIL import Image,ImageDraw
+from scipy import ndimage
+P=Path(__file__).resolve().parent;A=P.parent;R=A.parents[1];reg=json.loads((P/'input-record.json').read_text(encoding='utf-8'));scale=reg['sourceScale'];native_size=tuple(reg['nativeSize']);offset=tuple(reg['fixedOffset']);ref_out=Image.open(P/'registered-reference.png').convert('RGBA')
+files=sorted((P/'raw-review').glob('raw-*.png'));rows=[];exports=[];boards=[]
+for start in range(0,len(files),24):
+ board=Image.new('RGB',(1792,1200),'#202a30');d=ImageDraw.Draw(board)
+ for j,file in enumerate(files[start:start+24]):
+  image=Image.open(file).convert('RGB');assert list(image.size)==reg['plateSize'], 'Output dimensions differ from frozen input plate; inspect mapping before extraction';rgb=np.array(image);values=rgb.astype(int);green=(values.min(axis=2)>=238)&((values.max(axis=2)-values.min(axis=2))<12);labels,n=ndimage.label(~green);counts=np.bincount(labels.ravel());counts[0]=0;mask=ndimage.binary_erosion(labels==int(counts.argmax()),iterations=1);rgba=np.dstack((rgb,mask.astype(np.uint8)*255));rgba[~mask]=0
+  im=Image.fromarray(rgba).resize(native_size,Image.Resampling.LANCZOS);out=Image.new('RGBA',(256,256));out.alpha_composite(im,offset);dest=P/'full-clip-frames'/f'{start+j:03}.png';dest.parent.mkdir(exist_ok=True);out.save(dest);exports.append(dest);a=np.array(out);y,x=np.where(a[:,:,3]>200);top=int(y.min());hx=np.where(a[top:top+16,:,3]>128)[1];sole=int(y.max());sy,sx=np.where(a[sole-1:sole+1,:,3]>200);rows.append({'frame':start+j,'height':int(y.max()-y.min()+1),'headWidth':int(hx.max()-hx.min()+1),'headAxis':float((hx.min()+hx.max())/2),'top':top,'floor':sole,'soleBottomMeanX':float(sx.mean()),'soleBottomBoundsX':[int(sx.min()),int(sx.max()+1)]});board.paste(out,((j%6)*256,(j//6)*290+20),out);d.text(((j%6)*256+3,(j//6)*290+3),f'{start+j} H{rows[-1]["height"]} head{rows[-1]["headWidth"]} floor{sole}',fill='white')
+ board.paste(ref_out,(1536,20),ref_out);d.text((1540,3),'fixed source reference',fill='white');path=P/f'alpha-chronology-{start//24:02}.png';board.save(path);boards.append(path.name)
+lower=Image.new('RGB',(1792,540),'#202a30');d=ImageDraw.Draw(lower)
+for i,n in enumerate([32,36,40,44,48,52,56,60,64,68,72,76]):
+ im=Image.open(exports[n]).crop((75,155,180,230)).resize((315,225),Image.Resampling.NEAREST);lower.paste(im,((i%6)*290,(i//6)*260+22),im);d.text(((i%6)*290+3,(i//6)*260+3),f'raw{n} / leg diagnostic',fill='white')
+lower.save(P/'candidate-cycle-leg-review.png')
+report={'frameCount':len(exports),'videoTaskId':json.loads((P/'generation.json').read_text(encoding='utf-8'))['task_id'],'sourceScale':scale,'fixedPlateSize':reg['plateSize'],'nativeResampledSize':list(native_size),'fixedOffset':list(offset),'referenceOpaqueHeight':int(np.where(np.array(ref_out)[:,:,3]>200)[0].max()-np.where(np.array(ref_out)[:,:,3]>200)[0].min()+1),'rows':rows,'headWidthRange':[min(r['headWidth'] for r in rows),max(r['headWidth'] for r in rows)],'heightRange':[min(r['height'] for r in rows),max(r['height'] for r in rows)],'floorRange':[min(r['floor'] for r in rows),max(r['floor'] for r in rows)],'boards':boards,'candidateCycle':[],'scope':'All raw frames alpha-extracted with ONE fixed original-guided reference scale/offset. Opaque RGB preserved before whole resize; only white/background alpha plus1rawpx global edge erosion; enclosed background gaps preserved, no blanket hole fill. No per-frame/body-region RGB grading or density/registration changes. Finite start/stop/endpoint/contact/native/controller acceptance pending.'};(P/'source-registration.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');print(json.dumps({k:v for k,v in report.items() if k!='rows'}))

@@ -1,0 +1,63 @@
+{
+  "method": "one frozen neutral midtone lift from pooled turn cloth to both exact loaded endpoint cloth bands",
+  "quantiles": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "input": [
+    21.0,
+    35.0,
+    47.0,
+    55.333333333333336,
+    63.333333333333336
+  ],
+  "target": [
+    22.333333333333332,
+    36.66666666666667,
+    50.0,
+    62.66666666666667,
+    92.56666666666669
+  ],
+  "deltas": [
+    1.3333333333333321,
+    1.6666666666666714,
+    3.0,
+    7.333333333333336,
+    29.233333333333356
+  ],
+  "sampleBand": [
+    155,
+    195
+  ],
+  "endpointsUnchanged": true,
+  "audit": [
+    {
+      "pose": 1,
+      "beforeMedian": 47.333333333333336,
+      "afterMedian": 50.333333333333336,
+      "alphaUnchanged": true
+    },
+    {
+      "pose": 2,
+      "beforeMedian": 46.333333333333336,
+      "afterMedian": 49.333333333333336,
+      "alphaUnchanged": true
+    },
+    {
+      "pose": 3,
+      "beforeMedian": 47.333333333333336,
+      "afterMedian": 50.333333333333336,
+      "alphaUnchanged": true
+    },
+    {
+      "pose": 4,
+      "beforeMedian": 47.333333333333336,
+      "afterMedian": 50.333333333333336,
+      "alphaUnchanged": true
+    }
+  ],
+  "correctionStrength": 0.9
+}

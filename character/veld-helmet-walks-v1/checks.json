@@ -1,0 +1,87 @@
+{
+  "directions": {
+    "west": {
+      "frames": 45,
+      "sourceRangeInclusive": [
+        52,
+        96
+      ],
+      "durationMs": 1500,
+      "sourceDurationMs": 1875,
+      "sourceClippedFrames": 0,
+      "exportClippedFrames": 0,
+      "opaqueHeightRange": [
+        151,
+        155
+      ],
+      "seamDifference": 0.014197095426072129,
+      "internalMedianDifference": 0.01570440203491605,
+      "internalMaxDifference": 0.020646237582934875
+    },
+    "east": {
+      "frames": 43,
+      "sourceRangeInclusive": [
+        84,
+        126
+      ],
+      "durationMs": 1500,
+      "sourceDurationMs": 1792,
+      "sourceClippedFrames": 0,
+      "exportClippedFrames": 0,
+      "opaqueHeightRange": [
+        149,
+        154
+      ],
+      "seamDifference": 0.01689682252863338,
+      "internalMedianDifference": 0.019012762241002262,
+      "internalMaxDifference": 0.022162289419548536
+    },
+    "south": {
+      "frames": 34,
+      "sourceRangeInclusive": [
+        27,
+        60
+      ],
+      "durationMs": 1500,
+      "sourceDurationMs": 1417,
+      "sourceClippedFrames": 0,
+      "exportClippedFrames": 0,
+      "opaqueHeightRange": [
+        154,
+        162
+      ],
+      "seamDifference": 0.018482141202416695,
+      "internalMedianDifference": 0.014860690259090403,
+      "internalMaxDifference": 0.01993202467660032
+    },
+    "north": {
+      "frames": 42,
+      "sourceRangeInclusive": [
+        55,
+        96
+      ],
+      "durationMs": 1500,
+      "sourceDurationMs": 1750,
+      "sourceClippedFrames": 0,
+      "exportClippedFrames": 0,
+      "opaqueHeightRange": [
+        147,
+        154
+      ],
+      "seamDifference": 0.00929756708921754,
+      "internalMedianDifference": 0.011712755754475702,
+      "internalMaxDifference": 0.014456585446087696
+    }
+  },
+  "processing": "Original video RGB; green key; fixed body scale per input framing and fixed offset. West frame bytes preserved. No per-frame normalization.",
+  "status": "candidate_not_installed",
+  "totalFrames": 164,
+  "westHashesMatch": 45,
+  "westSourceClippedFramesVerified": 0,
+  "estimatedCreditsThisPass": 20,
+  "limitations": [
+    "Agent contact-sheet review is not owner motion acceptance.",
+    "Helmet idle/transition integration remains pending.",
+    "Front silhouette extends farther during forward foot reach; do not normalize each pose to bbox height."
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "checks": 15137,
+  "failures": 0,
+  "actualCompletedExpeditions": 1,
+  "phases": [
+    "approach",
+    "enter",
+    "pressurize",
+    "leave",
+    "outbound",
+    "salvage",
+    "pickup",
+    "return",
+    "entry",
+    "drain",
+    "exit",
+    "unload"
+  ],
+  "sourceNativePairs": 48,
+  "samples": 3710,
+  "actorPlayerRestores": 48,
+  "stableBoundedInputs": 647,
+  "unchangedOwnerNonLogFiles": 2931,
+  "boards": [
+    {
+      "file": "route-00-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-01-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-02-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-03-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-04-pairs.png",
+      "pairs": 8
+    },
+    {
+      "file": "route-05-pairs.png",
+      "pairs": 8
+    }
+  ],
+  "sourceParity": [
+    {
+      "key": "swim-pickup-west",
+      "slot": 0,
+      "path": "character/marsh-v2/supplemental/loaded-swim-west/swim-pickup-west-000.png",
+      "sha256": "8ed1543986eb9e7040d922272fbd5c266e3cfce99e5bd02aa7300d1cf02ca438"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/001.png",
+      "sha256": "e54d0419a301ef6d247c9a381b699c011781b4bbf9acf7ec46305b0fdcf57de1"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/002.png",
+      "sha256": "d877c89cc2b0317307570d8c70dc4016a3e7bf9a5c3761a93091db499461bbbd"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/003.png",
+      "sha256": "e936f8a0f5a99bdfd6326ef71f48adc95931f47740fe405b93c7537878a330ee"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/004.png",
+      "sha256": "a676bac3303aa4ed6962e51b3cef8b5f8754f264a86c93c74ee6fa0681bbec4a"
+    },
+    {
+      "key": "swim-pickup-west",
+      "slot": 5,
+      "path": "character/marsh-master-repair-v1/frames/swim-pickup-west/005.png",
+      "sha256": "2eb94fea41b75957d82fd7ce0be7422177b9e78ac405814ac34dfb4a0e8c8abf"
+    },
+    {
+      "key": "swim-carry-west",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-west/000.png",
+      "sha256": "2eb94fea41b75957d82fd7ce0be7422177b9e78ac405814ac34dfb4a0e8c8abf"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/000.png",
+      "sha256": "2eb94fea41b75957d82fd7ce0be7422177b9e78ac405814ac34dfb4a0e8c8abf"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/001.png",
+      "sha256": "1eb6eb6b3cad8fed8afd07961c4581a5970191bd75d6646c763c6f99b4153105"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/002.png",
+      "sha256": "ace1dddf37fab80c799ffeb8a196e0ebf342e2ae725c4d98ceede4184a429841"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/003.png",
+      "sha256": "6716d0239d7e7c3f4c86294aad40e86bc6be86f23fd38a2102892e1ee71efc1f"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/004.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 5,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/005.png",
+      "sha256": "d91cdabb65105c8584e49ea17c4dac8532267d8ff9c77e02fe39748d0e3c8134"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 6,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/006.png",
+      "sha256": "5291d65cde349a871c02143571d9b4b7a0fedf85de29f7b8690169ce78b8d2f8"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 7,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/007.png",
+      "sha256": "1a2eba2d6ce20a6c729730d381cc349309cfef58ff8351a2681b1f14553135dd"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": 8,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/008.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 0,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 1,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/001.png",
+      "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 2,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/002.png",
+      "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 3,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/003.png",
+      "sha256": "80a5c2fa703c45983a4c98bb2384aa9db933f46f3553f1cb5f38c2edb1f185f9"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 4,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/002.png",
+      "sha256": "16387269f92a927e8f9c9293777a67226da010b505ea37be10bd31a91d01a889"
+    },
+    {
+      "key": "swim-carry-east",
+      "slot": 5,
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/001.png",
+      "sha256": "ea37fbe3e13155ae5b41ecf6d3b5cbe59fa0e8e0b23decabd0a0e4f4aa8fd422"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/000.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/001.png",
+      "sha256": "1a2eba2d6ce20a6c729730d381cc349309cfef58ff8351a2681b1f14553135dd"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/002.png",
+      "sha256": "5291d65cde349a871c02143571d9b4b7a0fedf85de29f7b8690169ce78b8d2f8"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/003.png",
+      "sha256": "d91cdabb65105c8584e49ea17c4dac8532267d8ff9c77e02fe39748d0e3c8134"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/004.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/000.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/001.png",
+      "sha256": "c83467afcc1f179d50d19f9c8ef49de1e13e741ff451a82e174f2b79ed6ad0fe"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/002.png",
+      "sha256": "a93a3affb61d74c5b850bb4a78309a9c2beb218377591d7e9cee38ad37a1f81c"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/003.png",
+      "sha256": "98aaf1b44ff65338878f9ccae73c78095f6bed694bd4116c75c0ecaff0048b47"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/004.png",
+      "sha256": "a93a3affb61d74c5b850bb4a78309a9c2beb218377591d7e9cee38ad37a1f81c"
+    },
+    {
+      "key": "swim-carry-north",
+      "slot": 5,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/005.png",
+      "sha256": "c83467afcc1f179d50d19f9c8ef49de1e13e741ff451a82e174f2b79ed6ad0fe"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/000.png",
+      "sha256": "d43b6193b62efddeb6660be81625c1fdb1f280885ed52a7eb69d5df85e8ca109"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/001.png",
+      "sha256": "55818e8d26ef850e701fd91cfcf00855ddbc4853d1e59880cefc0c2cb1f031eb"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/002.png",
+      "sha256": "adeb12710bebfd595b7e0a1c6f5cda28853bfff94b65a1998e3b43e2372fdb22"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/003.png",
+      "sha256": "23a6e442bbae92e0a8c44b1ac36f2b745ecd28fe01db74bc655ed7fb96face18"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/004.png",
+      "sha256": "adeb12710bebfd595b7e0a1c6f5cda28853bfff94b65a1998e3b43e2372fdb22"
+    },
+    {
+      "key": "swim-carry-south",
+      "slot": 5,
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-south/005.png",
+      "sha256": "55818e8d26ef850e701fd91cfcf00855ddbc4853d1e59880cefc0c2cb1f031eb"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-south/000.png",
+      "sha256": "d43b6193b62efddeb6660be81625c1fdb1f280885ed52a7eb69d5df85e8ca109"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-south/001.png",
+      "sha256": "d4d9a3952c165f941a2ae5331d5d7f85c9e7eb81c6ce497f9be433a1c583d265"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-south/002.png",
+      "sha256": "238db452f2b2982534978a0488effe945a2a550e2bd04747c479d1136d532b4c"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 3,
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-south/003.png",
+      "sha256": "34fb494503c1fe060dc5c08e40188338ef9157eb8497de3d653abd9d54b7842e"
+    },
+    {
+      "key": "cargo-drain-south",
+      "slot": 4,
+      "path": "character/marsh-master-repair-v1/frames/cargo-drain-south/004.png",
+      "sha256": "591c764325b051652f9f4c640724802446d8916fbb3d430ad5dc6cb49f45728b"
+    },
+    {
+      "key": "unload-north",
+      "slot": 0,
+      "path": "character/marsh-master-repair-v1/frames/unload-north/000.png",
+      "sha256": "620502b986f405b3ba1251b975f6d157ef0459ea481fa1d2ae97d8ade8d9f11b"
+    },
+    {
+      "key": "unload-north",
+      "slot": 1,
+      "path": "character/marsh-master-repair-v1/frames/unload-north/001.png",
+      "sha256": "4ea56b021ccba265a5e1f89573d77ef88cd9a5519a72d62f72974a48dc6c6118"
+    },
+    {
+      "key": "unload-north",
+      "slot": 2,
+      "path": "character/marsh-master-repair-v1/frames/unload-north/002.png",
+      "sha256": "56870e6c7395bb0ef2ce9db624ba1f032db35550275bbbaa748874ac724e14d6"
+    },
+    {
+      "key": "unload-north",
+      "slot": 3,
+      "path": "character/marsh-v2/frames/bare/unload-north/003.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    }
+  ],
+  "endpointChecks": [
+    {
+      "key": "swim-pickup-east",
+      "slot": -1,
+      "sameAsNewEastLoop0": false,
+      "oldPath": "character/marsh-master-repair-v1/frames/swim-pickup-east/005.png",
+      "oldSha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0",
+      "newPath": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "newSha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "slot": -1,
+      "sameAsNewEastLoop0": false,
+      "oldPath": "character/marsh-master-repair-v1/frames/swim-carry-turn-west-east/008.png",
+      "oldSha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0",
+      "newPath": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "newSha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "slot": 0,
+      "sameAsNewEastLoop0": false,
+      "oldPath": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/000.png",
+      "oldSha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0",
+      "newPath": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "newSha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "key": "cargo-drain-east",
+      "slot": 0,
+      "sameAsNewEastLoop0": false,
+      "oldPath": "character/marsh-master-repair-v1/frames/cargo-drain-east/000.png",
+      "oldSha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0",
+      "newPath": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "newSha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    }
+  ],
+  "scope": "One actual normal dispatched q2 expedition with free authored airlock/site fixture and normal cost/failure flags. Actual normal actor/update/Cycle/grid/player pickup/return/East staged loop/turns/drain/exit/unload/credit. Only private East loaded-swim02 source override, old other clips. Actor/player restore/pause. Not all route rotations/fullRunSave/visibleTitleContinue/helmet/continuousmotion/physicalcontact/coherent-family admission/fullset acceptance.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "visualReviewed": true
+}

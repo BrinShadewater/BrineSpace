@@ -1,0 +1,221 @@
+{
+  "checks": 47,
+  "failures": 0,
+  "fits": [
+    {
+      "phase": 0,
+      "exactEndpointAliases": {
+        "bare": "res://character/veld-cargo-north-original-master-v3/frames/bare/000.png",
+        "helmet": "res://character/veld-cargo-north-original-master-v3/frames/helmet/000.png"
+      }
+    },
+    {
+      "phase": 1,
+      "source": "character/veld-gather-north-original-master-v2/diagnostic-interiors-v2/000.png",
+      "wholeFrameHorizontalTranslation": -2,
+      "supportSide": "left",
+      "targetSupportCenter": 113.5,
+      "before": {
+        "centerX": 115.0,
+        "bottom": 224,
+        "width": 23
+      },
+      "after": {
+        "centerX": 113.0,
+        "bottom": 224,
+        "width": 23
+      },
+      "helmetPosition": [
+        108,
+        68
+      ],
+      "headClearBox": [
+        111,
+        77,
+        138,
+        103
+      ],
+      "wholeShellSize": [
+        34,
+        36
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 2,
+      "source": "character/veld-gather-north-original-master-v2/diagnostic-interiors-v2/001.png",
+      "wholeFrameHorizontalTranslation": -3,
+      "supportSide": "left",
+      "targetSupportCenter": 113.5,
+      "before": {
+        "centerX": 116.5,
+        "bottom": 224,
+        "width": 22
+      },
+      "after": {
+        "centerX": 113.5,
+        "bottom": 224,
+        "width": 22
+      },
+      "helmetPosition": [
+        108,
+        68
+      ],
+      "headClearBox": [
+        110,
+        77,
+        138,
+        103
+      ],
+      "wholeShellSize": [
+        34,
+        36
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 3,
+      "source": "character/veld-gather-north-original-master-v2/diagnostic-interiors-v3/002.png",
+      "wholeFrameHorizontalTranslation": -1,
+      "supportSide": "right",
+      "targetSupportCenter": 139.0,
+      "before": {
+        "centerX": 140.0,
+        "bottom": 224,
+        "width": 23
+      },
+      "after": {
+        "centerX": 139.0,
+        "bottom": 224,
+        "width": 23
+      },
+      "helmetPosition": [
+        112,
+        68
+      ],
+      "headClearBox": [
+        114,
+        77,
+        143,
+        103
+      ],
+      "wholeShellSize": [
+        34,
+        36
+      ],
+      "protectedBodyExact": true
+    },
+    {
+      "phase": 4,
+      "exactEndpointAliases": {
+        "bare": "res://character/veld-gather-north-original-master-v1/gather-frames/bare/000.png",
+        "helmet": "res://character/veld-gather-north-original-master-v1/gather-frames/helmet/000.png"
+      }
+    }
+  ],
+  "contacts": [
+    {
+      "phase": 0,
+      "left": {
+        "centerX": 113.5,
+        "bottom": 224,
+        "width": 22
+      },
+      "right": {
+        "centerX": 144.0,
+        "bottom": 224,
+        "width": 23
+      }
+    },
+    {
+      "phase": 1,
+      "left": {
+        "centerX": 113.0,
+        "bottom": 224,
+        "width": 23
+      },
+      "right": {
+        "centerX": 142.5,
+        "bottom": 221,
+        "width": 16
+      }
+    },
+    {
+      "phase": 2,
+      "left": {
+        "centerX": 113.5,
+        "bottom": 224,
+        "width": 22
+      },
+      "right": {
+        "centerX": 138.5,
+        "bottom": 224,
+        "width": 22
+      }
+    },
+    {
+      "phase": 3,
+      "left": {
+        "centerX": 117.5,
+        "bottom": 220,
+        "width": 14
+      },
+      "right": {
+        "centerX": 139.0,
+        "bottom": 224,
+        "width": 23
+      }
+    },
+    {
+      "phase": 4,
+      "left": {
+        "centerX": 116.5,
+        "bottom": 224,
+        "width": 22
+      },
+      "right": {
+        "centerX": 139.0,
+        "bottom": 224,
+        "width": 23
+      }
+    }
+  ],
+  "bindings": {
+    "character/veld-helmet-original-turntable-v1/v3-study/shells/000.png": "fbf9ff542c20d99828361096df74edad1c18627eecaf02c0b4370622857a566a",
+    "character/veld-cargo-north-original-master-v3/frames/bare/000.png": "c35f85ab78608831f1803ecbe0d1019b173ffd6ac15b54a142d5dbb92e36246b",
+    "character/veld-cargo-north-original-master-v3/frames/helmet/000.png": "21159bb733c95f1416014ddd2337c375350739668d0969568427fe09d905c129",
+    "character/veld-gather-north-original-master-v2/diagnostic-interiors-v2/000.png": "ff4837737b02f12089b7d1771a12f6612957b5f1316de4e372e64cd5107907b6",
+    "character/veld-gather-north-original-master-v2/frames/bare/001.png": "a6ae4143a45480190b90e013ddfb015c62e3c805b6c2092b0b4c4b5d2826226e",
+    "character/veld-gather-north-original-master-v2/frames/helmet/001.png": "01f15f6dd5b980923fdb3f81f7034e30e066ac9049fc5bf5fd2ca584d02cc23c",
+    "character/veld-gather-north-original-master-v2/diagnostic-interiors-v2/001.png": "9dea314b571ae14017406982504dfac838942aa0320ae196c1505dcc946b7948",
+    "character/veld-gather-north-original-master-v2/frames/bare/002.png": "9d9cdec95204cdd57dde3baee1c1934308e8dfe437a07ea7de4373bf395603a9",
+    "character/veld-gather-north-original-master-v2/frames/helmet/002.png": "eadf2d0f0437890832c75be00c89b489d2c91e5babee1536fc517286724f9956",
+    "character/veld-gather-north-original-master-v2/diagnostic-interiors-v3/002.png": "dcbac7ca3e7169ff9c0620f0070bcea61541128e2d47eaddd8ef5cfe6e788795",
+    "character/veld-gather-north-original-master-v2/frames/bare/003.png": "289f7dbf3ce8c2608cfc725da08bd180d5de8953162afa9f3dff0657d508dc35",
+    "character/veld-gather-north-original-master-v2/frames/helmet/003.png": "ff487067c2279527380f00d48ddad2956c4c1cd27c4c2609511f8a3b7b2c7dcc",
+    "character/veld-gather-north-original-master-v1/gather-frames/bare/000.png": "08879a60e6b9d1c2a3eee45a2f13b2f9d485bbde54f5a871d8e1b4011ccbe4af",
+    "character/veld-gather-north-original-master-v1/gather-frames/helmet/000.png": "d38705cf213be917cfd69d39b8bfff29ab5c6a6e9c4fad1a79819fbdf7554199",
+    "character/veld-gather-north-original-master-v2/raw-interiors-v2.png": "e3d41e4b94192c905501019eea17f3a6d898f8775e6128c4a7eaebde78856349",
+    "character/veld-gather-north-original-master-v2/interiors-audit-v2.json": "7344f380d2048dda942149b4fcc23a1f0289d9639492a0c01ebbe102fcd098a1",
+    "character/veld-gather-north-original-master-v2/raw-interiors-v3.png": "229b1367069746cf2233377f57bee1fca7e90921bb727dd07bcf2603a3c83cc1",
+    "character/veld-gather-north-original-master-v2/interiors-audit-v3.json": "f3de1c25d75e7eb6baac9206bed8f6c3f2c61b5c0f495b0c6f3631284243bbcd",
+    "character/veld-gather-north-original-master-v1/gather-registration.json": "d8451ee1c179123cb11c5221564774ca2af296c7bbdde8f3a18a0c1b276af4a4"
+  },
+  "durationMs": 600,
+  "sourceOrder": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reverseOrder": [
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "unusedSource": "interior4 not selected: exact reviewed corrected gathered endpoint replaces its less certain shoe placement",
+  "scope": "Whole-figure horizontal support-sole registration only, common source scale and vertical floor retained. Both exact master endpoints. No anatomy strips or RGB changes. Right second-contact and body balance need independent native motion review; no natural gameplay/gait acceptance."
+}

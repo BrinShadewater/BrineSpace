@@ -1,0 +1,123 @@
+{
+  "rows": [
+    {
+      "file": "character/bill-video-south-v1/master-source.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "hair": {
+        "width": 120,
+        "bounds": [
+          456,
+          130,
+          576,
+          200
+        ],
+        "roi": [
+          350,
+          50,
+          680,
+          200
+        ],
+        "touchesROIEdge": true
+      },
+      "redUnit": {
+        "width": 74,
+        "bounds": [
+          401,
+          394,
+          475,
+          469
+        ],
+        "roi": [
+          375,
+          375,
+          490,
+          490
+        ],
+        "touchesROIEdge": false
+      }
+    },
+    {
+      "file": "character/bill-water-exit-south-v3/sources/rising-squat-master-v3.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "hair": {
+        "width": 152,
+        "bounds": [
+          435,
+          202,
+          587,
+          340
+        ],
+        "roi": [
+          350,
+          170,
+          680,
+          340
+        ],
+        "touchesROIEdge": true
+      },
+      "redUnit": {
+        "width": 76,
+        "bounds": [
+          396,
+          539,
+          472,
+          611
+        ],
+        "roi": [
+          375,
+          520,
+          490,
+          650
+        ],
+        "touchesROIEdge": false
+      }
+    },
+    {
+      "file": "character/bill-water-exit-south-v4/sources/rising-squat-master-v4.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "hair": {
+        "width": 166,
+        "bounds": [
+          433,
+          206,
+          599,
+          380
+        ],
+        "roi": [
+          350,
+          170,
+          680,
+          380
+        ],
+        "touchesROIEdge": true
+      },
+      "redUnit": {
+        "width": 82,
+        "bounds": [
+          392,
+          558,
+          474,
+          638
+        ],
+        "roi": [
+          360,
+          535,
+          500,
+          675
+        ],
+        "touchesROIEdge": false
+      }
+    }
+  ],
+  "decision": "Reject first v4 raw: enlarged head/body and brighter highlights; no source bank selected. Semantic proxies not whole anatomical certification.",
+  "scope": "Bounded semantic diagnostics only. Enlarged ROI lets the largest connected component switch between hair and face; these widths are not comparable to earlier hair-only135/152 figures. ROI-edge flags retained; visual full-figure rejection and larger red-unit82vs74 remain evidence."
+}

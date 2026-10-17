@@ -1,0 +1,66 @@
+{
+  "revision": "marsh-water-drain-west-01-staged",
+  "normalAdmission": false,
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "cargo-drain-west",
+      "frameFiles": [
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-origin.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-1.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-2.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-3.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/intermediate-4.png",
+        "res://character/marsh-water-transition-material-v1/drain-west-01-unselected/endpoint-destination.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

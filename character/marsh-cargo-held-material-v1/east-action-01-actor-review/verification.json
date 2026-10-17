@@ -1,0 +1,102 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 512,
+  "failures": 0,
+  "captures": 8,
+  "exactSources": 8,
+  "samples": 126,
+  "actorPlayerRestores": 8,
+  "decodedHeldFrames": 8,
+  "stableBoundedInputs": 489,
+  "unchangedOwnerNonLogFiles": 2931,
+  "cases": [
+    {
+      "action": "pickup",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 0,
+      "exitDirection": "east",
+      "exitStage": "workshop_carry",
+      "exitState": "walk",
+      "sampleStart": 0,
+      "samples": 26,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "action": "unload",
+      "actorRestores": 4,
+      "captureCount": 4,
+      "captureStart": 4,
+      "exitDirection": "east",
+      "exitStage": "",
+      "exitState": "idle",
+      "sampleStart": 26,
+      "samples": 100,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "sourceParity": [
+    {
+      "key": "pickup-east",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/pickup-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/pickup-east/001.png",
+      "sha256": "f54e4749ba44c2c98041e872ad356ddf222423c49bf3dcb9abc833367b8e01b3"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/pickup-east/002.png",
+      "sha256": "ac92bccecf944aa3ee82f751c365fb8d571b19d33234528eb0c462cc747a84a8"
+    },
+    {
+      "key": "pickup-east",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/pickup-east/003.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "key": "unload-east",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/unload-east/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    },
+    {
+      "key": "unload-east",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/unload-east/001.png",
+      "sha256": "ac92bccecf944aa3ee82f751c365fb8d571b19d33234528eb0c462cc747a84a8"
+    },
+    {
+      "key": "unload-east",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/unload-east/002.png",
+      "sha256": "f54e4749ba44c2c98041e872ad356ddf222423c49bf3dcb9abc833367b8e01b3"
+    },
+    {
+      "key": "unload-east",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/east-unload-01-unselected/unload-east/003.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Normal Marsh.update/main/grid/player staged East workshop pickup entered from work timer; East unload seeded valid action. Four130ms frames,normal .52pickup and2secondunload finalidle hold,actor/player restores andpause. NOT actual workshop arrival (it forcesNorth),expedition/fullsave/TitleContinue/contactfilm/normal admission/fullsetacceptance.",
+  "limits": "East unload seeded valid timed action, not actual workshop arrival which forces North. No expedition delivery/fullsave/TitleContinue/continuous contact/normal admission/fullset acceptance."
+}

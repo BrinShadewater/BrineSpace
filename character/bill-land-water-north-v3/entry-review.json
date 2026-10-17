@@ -1,0 +1,434 @@
+{
+  "scope": "Nine-frame500ms paired bare/helmet source candidate. Static selected endpoint pixels preserved; no native integration, actual phase handoffs, continuous-motion or full master acceptance.",
+  "sharedAtlasDrawingScale": 0.25,
+  "scaleReason": "One fixed anatomical density for all six atlas cells against native rear-head/equipment ruler; not per-pose height/width fitting. Source canvas dimensions alone do not establish character drawing density.",
+  "registrations": [
+    {
+      "scale": 0.15163934426229508,
+      "wholeFigureTranslation": [
+        65,
+        53
+      ],
+      "headAnchor": [
+        160,
+        103
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        125,
+        101,
+        195,
+        227
+      ],
+      "source": "res://character/bill-land-water-north-v1/sources/crouch-canvas-v2.png",
+      "phase": "early crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        92,
+        103
+      ],
+      "headAnchor": [
+        160,
+        118
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        128,
+        115,
+        191,
+        227
+      ],
+      "source": "res://character/bill-land-water-north-v1/sources/entry-atlas-v1.png",
+      "cell": 0,
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "phase": "crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        96,
+        103
+      ],
+      "headAnchor": [
+        160,
+        131
+      ],
+      "opaqueSole": 224,
+      "alphaBounds": [
+        125,
+        127,
+        194,
+        227
+      ],
+      "source": "res://character/bill-land-water-north-v1/sources/entry-atlas-v1.png",
+      "cell": 1,
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "phase": "deep crouch"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        104,
+        125
+      ],
+      "headAnchor": [
+        160,
+        145
+      ],
+      "opaqueSole": 248,
+      "alphaBounds": [
+        126,
+        138,
+        192,
+        251
+      ],
+      "source": "res://character/bill-land-water-north-v3/sources/reach-atlas-v3.png",
+      "cell": 2,
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "phase": "push",
+      "sourceHairCrown": [
+        1247,
+        79
+      ]
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        91,
+        149
+      ],
+      "headAnchor": [
+        160,
+        169
+      ],
+      "opaqueSole": 265,
+      "alphaBounds": [
+        132,
+        154,
+        187,
+        268
+      ],
+      "source": "res://character/bill-land-water-north-v2/sources/lift-atlas-v2.png",
+      "cell": 3,
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "phase": "lift",
+      "sourceHairCrown": [
+        275,
+        590
+      ]
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        94,
+        158
+      ],
+      "headAnchor": [
+        160,
+        184
+      ],
+      "opaqueSole": 261,
+      "alphaBounds": [
+        118,
+        173,
+        202,
+        264
+      ],
+      "source": "res://character/bill-land-water-north-v1/sources/entry-atlas-v1.png",
+      "cell": 4,
+      "sourceCell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "phase": "near-prone"
+    },
+    {
+      "scale": 0.25,
+      "wholeFigureTranslation": [
+        97,
+        179
+      ],
+      "headAnchor": [
+        160,
+        198
+      ],
+      "opaqueSole": 299,
+      "alphaBounds": [
+        135,
+        182,
+        183,
+        302
+      ],
+      "source": "res://character/bill-land-water-north-v1/sources/entry-atlas-v1.png",
+      "cell": 5,
+      "sourceCell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "phase": "extend"
+    }
+  ],
+  "endpointExactToSelectedSources": true,
+  "decodedAPNGFramesExact": 9,
+  "timelineMs": 500,
+  "generation": "exec-cc306187-9f78-4e39-ad55-67b08baf571e",
+  "poseReferenceGeneration": "exec-03f2b8d7-7eb4-4ce6-a2c3-12927d641de4",
+  "visualReview": "Before/after reach plus deep-crouch/corrected-lift/master ruler inspected; new bent elbows bring glove tips nearer rear crown. Seven close neck fittings inspected. Four real browser playback cases reach8,82screen captures retained; sampled progressing board shows reduced hand-position overshoot through3\u21924. Colour/master/native-contact/full-speed temporal acceptance remains open.",
+  "helmetFittings": [
+    {
+      "pose": 1,
+      "headAnchor": [
+        160,
+        103
+      ],
+      "shellPosition": [
+        140,
+        94
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 128
+    },
+    {
+      "pose": 2,
+      "headAnchor": [
+        160,
+        118
+      ],
+      "shellPosition": [
+        140,
+        109
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 143
+    },
+    {
+      "pose": 3,
+      "headAnchor": [
+        160,
+        131
+      ],
+      "shellPosition": [
+        140,
+        122
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 156
+    },
+    {
+      "pose": 4,
+      "headAnchor": [
+        160,
+        145
+      ],
+      "shellPosition": [
+        140,
+        136
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 170
+    },
+    {
+      "pose": 5,
+      "headAnchor": [
+        160,
+        169
+      ],
+      "shellPosition": [
+        140,
+        160
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 194
+    },
+    {
+      "pose": 6,
+      "headAnchor": [
+        160,
+        184
+      ],
+      "shellPosition": [
+        140,
+        175
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 209
+    },
+    {
+      "pose": 7,
+      "headAnchor": [
+        160,
+        198
+      ],
+      "shellPosition": [
+        140,
+        189
+      ],
+      "scale": 1,
+      "rotation": 0,
+      "bodyOutsideHeadExact": true,
+      "foregroundExact": true,
+      "protectedBodyFromY": 223
+    }
+  ],
+  "decodedPairedAPNGFramesExact": 18,
+  "pairedFrames": 18,
+  "canonicalShellSHA256": "80b446aa582da9916c8be4449559981ea466cab53c4181ae6f38b54fb2b3f413",
+  "helmetVisualReview": "Seven native-scale canonical rear-shell fittings inspected in neck board. No visible collar gap; protected source-body/foreground pixels exact. Not full motion/occlusion acceptance.",
+  "browserMotionReview": {
+    "review": "browser-review/index.html",
+    "cases": [
+      {
+        "gear": "bare",
+        "speed": 4,
+        "screenshots": 30,
+        "observedAXPoses": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "terminalPose": 8
+      },
+      {
+        "gear": "bare",
+        "speed": 1,
+        "screenshots": 10,
+        "observedAXPoses": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "terminalPose": 8
+      },
+      {
+        "gear": "helmet",
+        "speed": 4,
+        "screenshots": 30,
+        "observedAXPoses": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "terminalPose": 8
+      },
+      {
+        "gear": "helmet",
+        "speed": 1,
+        "screenshots": 10,
+        "observedAXPoses": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "terminalPose": 8
+      }
+    ],
+    "screenshots": 82,
+    "scope": "80 advancing browser screenshots plus two paused idle views. Accessibility pose sampled immediately before screenshot; hold boundary can occur between samples. Counts are UI playback evidence, not exact capture-to-source-phase binding or Godot/native motion acceptance. Elapsed time measured after click returned, not playback dispatch; no duration claim.",
+    "acceptance": "Sampled chronological hand reach improvement; not native contact, exact phase screenshot binding or complete temporal/master acceptance."
+  },
+  "repair": {
+    "pose": 4,
+    "generation": "exec-19342959-9ddd-4f29-9e5c-d05e0d355ed0",
+    "fixedSourceScale": 0.25,
+    "sourceHairCrown": [
+      1247,
+      79
+    ],
+    "wholeFigureTranslation": [
+      104,
+      125
+    ],
+    "otherEightBareFramesExact": true,
+    "sourceSHA256": "0c940930dc7724e0e3c3dd48b2a1624a5493ec43a1c03aed1d09637c46ca6a72",
+    "promptSHA256": "e5dcae96a0f58943cf77912122a5d56b57bcfc660f99c5d6baefe042d1681546"
+  },
+  "otherEightFramesPerGearExact": [
+    "bare/0",
+    "bare/1",
+    "bare/2",
+    "bare/3",
+    "bare/5",
+    "bare/6",
+    "bare/7",
+    "bare/8",
+    "helmet/0",
+    "helmet/1",
+    "helmet/2",
+    "helmet/3",
+    "helmet/5",
+    "helmet/6",
+    "helmet/7",
+    "helmet/8"
+  ],
+  "crownCorrection": "Initial loose warm-color region selected cuff hardware309/558 rather than rear hair. Rebuilt using observed semantic hair bounds; actual source crown275/590. Earlier wrong fitting was not accepted despite protected-body assertions. Full physical source scale remains .25.",
+  "inheritedSourceHashes": {
+    "entry-atlas-v1.png": "a895626b311481532e94d55dc60a87646816da83fd82870c094057e1aeae33b8",
+    "entry-atlas-prompt-v1.txt": "98ea6474694d6cc7271692c039470eb406c8ac4ff1b91e4f4991c86093262d50",
+    "near-prone-canvas-v2.png": "319a68b642d90540042bf78c000a62b99ad7f6e16e252e71e034cd34a1e0f3e3",
+    "near-prone-prompt-v2.txt": "796ab4968dbf926494b6b4ea84c6797352b9b2727370f81072b9f184569857b9"
+  },
+  "sourceHashes": {
+    "res://character/bill-land-water-north-v1/sources/crouch-canvas-v2.png": "449ed2ecc563d456faec688ba5e61f1f068faba45b841ab87d1cb8beadd8ea82",
+    "res://character/bill-land-water-north-v1/sources/entry-atlas-v1.png": "a895626b311481532e94d55dc60a87646816da83fd82870c094057e1aeae33b8",
+    "res://character/bill-land-water-north-v2/sources/lift-atlas-v2.png": "f1b5bb258ed30d51cbe7ad5a6a841304d914a268949e602577edb21483fe58a1",
+    "res://character/bill-land-water-north-v3/sources/reach-atlas-v3.png": "0c940930dc7724e0e3c3dd48b2a1624a5493ec43a1c03aed1d09637c46ca6a72"
+  },
+  "protectedPose4BodyFromY": 180
+}

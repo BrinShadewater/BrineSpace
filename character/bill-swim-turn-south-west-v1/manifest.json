@@ -1,0 +1,121 @@
+{
+  "name": "Bill south/west basic water turn candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_runtime_reviewed",
+  "states": [
+    {
+      "id": "swim-turn-south-west",
+      "frameFiles": [
+        "frames/swim-turn-south-west/000.png",
+        "frames/swim-turn-south-west/001.png",
+        "frames/swim-turn-south-west/002.png",
+        "frames/swim-turn-south-west/003.png",
+        "frames/swim-turn-south-west/004.png",
+        "frames/swim-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "four authored interior yaw poses;exact padded candidate loop endpoints;reverse derived without mirroring"
+    },
+    {
+      "id": "swim-turn-west-south",
+      "frameFiles": [
+        "frames/swim-turn-west-south/000.png",
+        "frames/swim-turn-west-south/001.png",
+        "frames/swim-turn-west-south/002.png",
+        "frames/swim-turn-west-south/003.png",
+        "frames/swim-turn-west-south/004.png",
+        "frames/swim-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "four authored interior yaw poses;exact padded candidate loop endpoints;reverse derived without mirroring"
+    }
+  ]
+}

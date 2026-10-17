@@ -1,0 +1,273 @@
+{
+  "status": "south_supported_meal_skin_grade_corrected_production_verified",
+  "ownerVisualAcceptance": false,
+  "productionArtInstalled": true,
+  "counter": "library/sp-generated-counter-galley-prep",
+  "fixturePosition": [
+    0,
+    126
+  ],
+  "actualSouthLocalFoot": [
+    48,
+    128
+  ],
+  "serviceContactFractions": {
+    "north": [
+      0.5,
+      1
+    ],
+    "south": [
+      0.5,
+      0.45
+    ]
+  },
+  "counterFloorRect": [
+    0,
+    126,
+    91.12,
+    50.32
+  ],
+  "checks": {
+    "southChooserContact": 235,
+    "currentNorthRegression": 51
+  },
+  "rejectedSource": {
+    "path": "rejected-reach-source.png",
+    "original": "C:/Users/Alex/.codex/generated_images/01a0ef89-fc47-7e22-953f-3c02a051b0f6/exec-a998860c-0a05-4cbc-a91d-eff5eb391118.png",
+    "prompt": "rejected-reach-prompt.txt",
+    "sha256": "49fc5357838ea88201243d5a40f5fa51866540514bcb36702d2260d129be8e6d",
+    "reason": "Maximum pose still keeps bowl/hands near waist, does not perform requested worktop reach; never extracted/selected/installed."
+  },
+  "limitations": [
+    "235 checks prove supported chooser/route, source clocks and hull-bounded counter; visual hand/worktop contact FAILS.",
+    "South bowl uses temporary CandidateJames subclass/current older v3 sources; production art selection unchanged.",
+    "North51 geometry/idle/copy-side checks include four expected raw-UI-icon export warnings; not export or full journeys.",
+    "Both strict real-profile guards fail with last_session.json delta; attribution unproven, no owner restore.",
+    "Bowl/cup/returns/interrupts/Continue/current full-set polish remain."
+  ],
+  "deepReachDiagnostic": {
+    "source": "deep-contact-source-v4.png",
+    "prompt": "deep-contact-prompt-v4.txt",
+    "sourceSha256": "9c098674d3500a148e47c0c5ab7f8cf89594ad232c4980e42008c59d22b2675f",
+    "fixedWholeFigureScale": 0.13,
+    "bootAnchor": [
+      614,
+      995
+    ],
+    "deepCandidateChecks": 235,
+    "freshCandidateChecks": 237,
+    "nativeContactReview": "fresh-counter-contact-review.png",
+    "normalDepthHidesBowl": true,
+    "diagnosticDepthOffset": 64,
+    "actualDepthChangedPixelsBounds": [
+      200,
+      216,
+      233,
+      227
+    ],
+    "productionDepthSelected": false,
+    "motionSelected": false,
+    "rejectedRevision3": "deep-contact-source-v3-rejected.png",
+    "reasonRevision3Rejected": "Hands/bowl still above boot baseline despite requested forward correction",
+    "strictProfileGuards": [
+      false,
+      false
+    ],
+    "profileDeltas": [
+      [
+        "last_session.json"
+      ],
+      [
+        "last_session.json"
+      ]
+    ]
+  },
+  "reachCandidate": {
+    "manifest": "reach-manifest.json",
+    "sourceSheet": "reach-sheet-source-v2.png",
+    "prompt": "reach-sheet-prompt-v2.txt",
+    "sourceSheetSha256": "c3d88b9ddbf8b598f62add6753352198d2af557416de0e8965892c439ddc08b3",
+    "wholeIndependentEmptyContactSource": "empty-contact-source.png",
+    "sourcePrompts": [
+      "empty-contact-prompt.txt"
+    ],
+    "frameCount": 8,
+    "durationMs": 900,
+    "checks": 239,
+    "failures": 0,
+    "nativeReview": "reach-native-review.gif",
+    "footAudit": "reach-foot-audit.json",
+    "sheetFixedScale": 0.3147751605995717,
+    "sourceVisualAcceptance": false,
+    "productionInstalled": false,
+    "remainingSourceDefects": [
+      "Other supported placements/rotations and adjacent props need context review before generic depth selection",
+      "Cup/returns/interruption/normal loader and Continue proofs remain"
+    ],
+    "strictProfileUnchanged": false,
+    "profileDelta": [
+      "last_session.json"
+    ],
+    "middleSource": "middle-pair-source.png",
+    "middlePrompt": "middle-pair-prompt.txt",
+    "middleFixedScale": 0.20609756097560974,
+    "maxSoleBandShift": 2.092,
+    "materialCalibration": "reach-material-calibration.json",
+    "depth": 49,
+    "depthCoarseChecks": 266,
+    "depthFineChecks": 293,
+    "nativeDepthEvidence": "depth-fine-comparison.json",
+    "ownerVisualAcceptance": false,
+    "exports": {
+      "reach-staged/000.png": "a43af9e58e29ad04c61f9cbde11ed371586af188912fcb7f44f5192ad94d3ab8",
+      "reach-staged/001.png": "b0029d8ba115fd67f132a12060ac0bdc6b5c3a72f4ca88f8d3a00a9bda00f40c",
+      "reach-staged/002.png": "0d76b5c08d152415f9d950291661e72c56ae8600f3b9ad7add6b3a34ff11e939",
+      "reach-staged/003.png": "e05d77f556493f1aefbe529fbed4f580117769b76dc1b23fe5a1ca0e83000f3d",
+      "reach-staged/004.png": "dae1b0a0c429910a690d5f865a481c9f5d355f5c2556b705dc86d4a27df29ccb",
+      "reach-staged/005.png": "b6c47a65ea127e35f0e86e24c05220b1d2a3c3a6ef8ca690136318fbd52e1560",
+      "reach-staged/006.png": "46f7975b16b81254ee863d06f4f59d841821248bed993f93e0a645a651de76d6",
+      "reach-staged/007.png": "9179835331d6ea42b9bce06fdf927879ad15d898b48107fad13797289bd2bdfc"
+    }
+  },
+  "handoffsCandidate": {
+    "manifest": "handoffs-manifest.json",
+    "normalStates": 6,
+    "derivedReturnStates": 44,
+    "totalStates": 50,
+    "newCupWholeSourcePoses": 3,
+    "uniquePoseCoverageWarning": "Deposit reversals and44return variants reuse whole sources; these are not50 newly authored animations.",
+    "cupSource": "cup-source-v2.png",
+    "cupPrompt": "cup-source-prompt-v2.txt",
+    "cupOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-fc47-7e22-953f-3c02a051b0f6/exec-fd2ca656-ef8e-45da-93c8-3fde1c81d95d.png",
+    "retractSource": "cup-retract-source.png",
+    "retractPrompt": "cup-retract-prompt.txt",
+    "retractOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-fc47-7e22-953f-3c02a051b0f6/exec-f7f34dcb-db41-4fc1-a36f-ef7ae1598a27.png",
+    "registration": "cup-registration.json",
+    "nativeChecks": 1410,
+    "nativeFailures": 0,
+    "normalCourseSeconds": 9,
+    "normalTextureCoverage": 44,
+    "controlledDrawerReturns": 44,
+    "currentLiveIdleCanvas": "184x184",
+    "registeredHandoffCanvas": "256x256",
+    "completionJoin": "Full image at metadata pivot, not fixed184x192 crop",
+    "review": "native-course-review.gif",
+    "reviewMethod": "Actual source-event captures assembled at declared handoff/3mouthful/1sip clocks; not a frame-rate video recording.",
+    "ownerVisualAcceptance": false,
+    "productionInstalled": false,
+    "strictOwnerProfileUnchanged": false,
+    "profileDelta": [
+      "last_session.json"
+    ],
+    "remaining": [
+      "Production South state/loader binding",
+      "Real hazard/gear/movement interruption eligibility and clearance",
+      "Eight-index snapshots and pause/Continue",
+      "Other open-counter placements/rotations/adjacent-prop context",
+      "Full master/face/proportion review and full-set cross-family polish"
+    ]
+  },
+  "productionEvidence": {
+    "nativeChecks": 5446,
+    "normalTextures": 44,
+    "actualPowerLossCuts": 44,
+    "snapshots": 44,
+    "freshSceneDiskContinue": "cup-acquire index7",
+    "northRegressionChecks": 1041,
+    "ownerVisualAcceptance": false,
+    "strictOwnerProfileUnchanged": false,
+    "profileDelta": [
+      "last_session.json"
+    ],
+    "remaining": [
+      "Other hazards/gear/movement interruptions",
+      "Other open-counter placements/rotations/neighbors",
+      "Full master/face/anatomy review",
+      "Remaining James physical contexts and full-set polish"
+    ]
+  },
+  "contextEvidence": {
+    "runs": {
+      "native-placements": {
+        "checks": 18308,
+        "failures": 0,
+        "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-rxt2im1o",
+        "strictOwnerProfileUnchanged": false,
+        "profileDelta": [
+          "last_session.json"
+        ]
+      },
+      "native-hazards-south": {
+        "checks": 7857,
+        "failures": 0,
+        "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-wusfy4yd",
+        "strictOwnerProfileUnchanged": false,
+        "profileDelta": [
+          "last_session.json"
+        ]
+      },
+      "native-context-changes": {
+        "checks": 297,
+        "failures": 0,
+        "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-1hjzpwo_",
+        "strictOwnerProfileUnchanged": false,
+        "profileDelta": [
+          "last_session.json"
+        ]
+      }
+    },
+    "southCourses": 8,
+    "northCourses": 8,
+    "depthROIEqual": 32,
+    "actualHazards": 18,
+    "controlledContextChanges": 30,
+    "safeHazardFixturePosition": [
+      64,
+      126
+    ],
+    "visualReview": [
+      "placement-contact-review.png",
+      "contact-head-diagnostic.png"
+    ],
+    "materialDefect": "Localized purple deep-face cast corrected in build material selection; current source/native review confirms warm skin. Full head identity/anatomy and cross-family polish remain.",
+    "remaining": [
+      "Full head identity/anatomy/perspective consistency review",
+      "North open-prep physical hand/worktop contact review",
+      "Arbitrary counter scaling/flips/off-grid placements and neighboring furnishings",
+      "Actual locker/crowd trips and additional disk context-change Continue",
+      "Remaining James full-set contexts and consistency/polish"
+    ]
+  },
+  "skinMaterialCorrection": {
+    "cause": "Legacy trim-height classifier included lowered facial skin and applied1.359 blue gain. Raw sources already warm. Ochre chroma selection now excludes red-dominant skin.",
+    "changedExportFrames": 12,
+    "uniqueExportFrames": 28,
+    "alphaAllExact": true,
+    "standingHeldExact": true,
+    "all50StatesMetadataExact": true,
+    "sourceRulersExact": true,
+    "faceReview": "skin-before-after-review.png",
+    "normalProductionReview": "production-course-review.gif",
+    "nativeRuns": {
+      "native-handoffs-production": {
+        "checks": 5446,
+        "failures": 0,
+        "strictOwnerProfileUnchanged": false,
+        "profileDelta": [
+          "last_session.json"
+        ],
+        "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-n5y3f8xc"
+      },
+      "native-placements": {
+        "checks": 18308,
+        "failures": 0,
+        "strictOwnerProfileUnchanged": false,
+        "profileDelta": [
+          "last_session.json"
+        ],
+        "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-80m2pgye"
+      }
+    },
+    "ownerVisualAcceptance": false
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "scope": "Two authored stroke study poses, not complete loop/native acceptance.",
+  "inputSHA256": {
+    "crew-side-masters-v1/bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "bill-cargo-helmet-west-v1/sources/canonical-head.png": "226417bf28083f77bd4d0eae1de504bf5885a8b3d0b3cf54b15419bd8eb3653d",
+    "bill-swim-west-master-v2/sources/stroke-extend-v1.png": "ab334b8ef71bfea955575dcdd801f9dc343a0ebb54ab629d2b20100666e3a427",
+    "bill-swim-west-master-v2/sources/stroke-extend-prompt-v1.txt": "de3f5dc85121469ddd6b02c8a94dd51461b993089077db31dae6ce41cc4bed42",
+    "bill-land-water-west-v11/sources/prone-legs-v4.png": "67af6e3bb4f754f759e3ceef70e5ed9360d201a483b973ed782d3e9f85361ea4",
+    "bill-land-water-west-v11/bare/frames/land-swim-west/005.png": "78bcf4cadf7646e6d2d782ffedc2dc4acb3171a87b5e1dccf36cc2c8773977c5",
+    "bill-land-water-west-v11/helmet/frames/land-swim-west/005.png": "85a143283da7744ce9cb2de89442a93ba2fe0b142e4196afc313a01c1064ff21",
+    "bill-swim-west-coherent-v1/frames/swim-west/000.png": "d54958ee7b3350dfad288e28798901be0db4f917297f3d23854e7e7c21a64542",
+    "bill-swim-west-coherent-v1/manifest.json": "e7530b0cc21570c669483e5056f3c8ca5a47c7373ce438a6f2ee79a215c61545",
+    "bill-swim-west-master-v2/sources/stroke-sweep-v1.png": "b340f9f33d125226e65cdc4f6820e109aa27a9e4425cc71340d9e12a4033001f",
+    "bill-swim-west-master-v2/sources/stroke-sweep-prompt-v1.txt": "7fbe9b43bfb36db74ea955ecc2a3e1dfa4cb55020aac3b9271b7703d89d5cbee",
+    "bill-swim-west-master-v2/sources/stroke-sweep-identity-v2.png": "2f765702fd49396e2a9604b4e056161fc8950f21fbcdf03dbf88c34af0bcf9b1",
+    "bill-swim-west-master-v2/sources/stroke-sweep-identity-prompt-v2.txt": "29bb3e958b626b607b0e9c2310b7260280edacab3d9e232079109b25dac56acf",
+    "bill-land-water-west-v9/sources/master-head-reference.png": "5603f3fd6b9fd3b18804719203685b5a545be0baea37db4b16c2518a5428ada1",
+    "bill-swim-west-coherent-v1/frames/swim-west/001.png": "f01ccd7de0bc472039cd96a987c002ebe3d229a7b17a7f56e37518c277109e0d"
+  },
+  "frozenInputsStable": 15,
+  "wholeSourceDensity": 0.15481171548117154,
+  "translation": [
+    72,
+    163
+  ],
+  "crown": [
+    134,
+    200
+  ],
+  "canvas": [
+    320,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "sourceGeneration": "exec-79355fb1-095a-4315-afd4-f3073442dde0",
+  "canonicalHelmetSize": [
+    40,
+    40
+  ],
+  "canonicalHelmetScale": 1,
+  "bodyOutsideHeadExact": true,
+  "foregroundExact": true,
+  "allPaintedSupportPreserved": true,
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "visualAcceptance": "Original master, V11 near-prone, extended raw and both sweep raws, fixed-density master/entry/old/new stroke and paired partial-stroke boards, both head/collar detail pairs reviewed. Original knee/cuff/boot quilting detail restored relative to old compact bank; head and rectangular chest buttons improve. New strokes and V11 entry closer in body projection, but extension length/material variation and full original anatomy/control layout/perspective remain pending. Canonical helmet/collar fits reviewed, not full moving acceptance.",
+  "sweep": {
+    "raw": "sources/stroke-sweep-identity-v2.png",
+    "generation": "exec-e8956a81-ab18-41df-8d7b-db5b07223361",
+    "initialGeneration": "exec-495d162f-dec3-45cf-bcf2-4fb672ce9c10",
+    "headROI": [
+      250,
+      170,
+      480,
+      420
+    ],
+    "headComponentBounds": [
+      32,
+      65,
+      162,
+      216
+    ],
+    "headWidth": 130,
+    "headHeight": 151,
+    "componentTouchesROIEdge": false,
+    "sourceCrown": [
+      348,
+      235
+    ],
+    "translation": [
+      80,
+      164
+    ],
+    "canonicalHelmetScale": 1,
+    "bodyOutsideHeadExact": true,
+    "foregroundExact": true
+  },
+  "decodedPartialAPNGFramesExact": 4,
+  "partialMs": 320,
+  "partialLoop": 1,
+  "candidateStatus": "partial_stroke_master_revision_pending_full_fidelity",
+  "generations": [
+    {
+      "id": "exec-79355fb1-095a-4315-afd4-f3073442dde0",
+      "raw": "sources/stroke-extend-v1.png",
+      "prompt": "sources/stroke-extend-prompt-v1.txt",
+      "references": [
+        "../bill-land-water-west-v11/sources/prone-legs-v4.png",
+        "../crew-side-masters-v1/bill-side-master-01.png"
+      ]
+    },
+    {
+      "id": "exec-495d162f-dec3-45cf-bcf2-4fb672ce9c10",
+      "raw": "sources/stroke-sweep-v1.png",
+      "prompt": "sources/stroke-sweep-prompt-v1.txt",
+      "references": [
+        "sources/stroke-extend-v1.png",
+        "../crew-side-masters-v1/bill-side-master-01.png"
+      ],
+      "status": "head grew and chest button design drifted"
+    },
+    {
+      "id": "exec-e8956a81-ab18-41df-8d7b-db5b07223361",
+      "raw": "sources/stroke-sweep-identity-v2.png",
+      "prompt": "sources/stroke-sweep-identity-prompt-v2.txt",
+      "references": [
+        "sources/stroke-sweep-v1.png",
+        "../bill-land-water-west-v9/sources/master-head-reference.png",
+        "../crew-side-masters-v1/bill-side-master-01.png"
+      ],
+      "status": "selected provisional sweep; complete design still pending"
+    }
+  ],
+  "identityEditDiagnostic": {
+    "alphaExact": false,
+    "changedRGBAPixels": 1051422,
+    "scope": "Whole-source replacement, no generated pixel-protection promise."
+  },
+  "sourcePromptSHA256": {
+    "stroke-extend-prompt-v1.txt": "de3f5dc85121469ddd6b02c8a94dd51461b993089077db31dae6ce41cc4bed42",
+    "stroke-extend-v1.png": "ab334b8ef71bfea955575dcdd801f9dc343a0ebb54ab629d2b20100666e3a427",
+    "stroke-sweep-identity-prompt-v2.txt": "29bb3e958b626b607b0e9c2310b7260280edacab3d9e232079109b25dac56acf",
+    "stroke-sweep-identity-v2.png": "2f765702fd49396e2a9604b4e056161fc8950f21fbcdf03dbf88c34af0bcf9b1",
+    "stroke-sweep-prompt-v1.txt": "7fbe9b43bfb36db74ea955ecc2a3e1dfa4cb55020aac3b9271b7703d89d5cbee",
+    "stroke-sweep-v1.png": "b340f9f33d125226e65cdc4f6820e109aa27a9e4425cc71340d9e12a4033001f"
+  },
+  "browserEvidence": {
+    "file": "browser-review.png",
+    "scope": "Static source comparison page inspected; no playback or native acceptance."
+  }
+}

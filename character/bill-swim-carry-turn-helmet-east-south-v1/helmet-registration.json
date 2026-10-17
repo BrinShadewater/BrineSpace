@@ -1,0 +1,250 @@
+{
+  "source": "sources/helmet-yaw-v1.png",
+  "sourceGeneration": "exec-17b32479-63cf-43ee-9470-123f82804e98",
+  "sourceSha256": "80efd79309c72f0e8aad98f6492b5b1c83c84f2ef8630bad26107423c7146e5f",
+  "scale": 0.1,
+  "neutralInput": [
+    0.0,
+    3.6666666666666665,
+    21.333333333333332,
+    38.333333333333336,
+    47.0,
+    62.666666666666664,
+    77.0,
+    96.66666666666667,
+    255.0
+  ],
+  "neutralOutput": [
+    7.0,
+    28.333333333333332,
+    45.0,
+    59.333333333333336,
+    64.66666666666667,
+    79.0,
+    97.33333333333333,
+    119.23333333333328,
+    224.0
+  ],
+  "unusedSourcePoses": [
+    0,
+    5
+  ],
+  "components": [
+    {
+      "file": "components/000.png",
+      "sourceBox": [
+        121,
+        119,
+        444,
+        418
+      ],
+      "scale": 0.1,
+      "size": [
+        32,
+        30
+      ],
+      "sha256": "050762a3caf13a9cb44e3fde310d2cbbfa419ed660ea36c881a5fa6a17329070"
+    },
+    {
+      "file": "components/001.png",
+      "sourceBox": [
+        625,
+        116,
+        935,
+        422
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        31
+      ],
+      "sha256": "44b682499d0c525449e9bff463cd149d942b7042459a59b7d8b3a570bf18d628"
+    },
+    {
+      "file": "components/002.png",
+      "sourceBox": [
+        1108,
+        116,
+        1409,
+        427
+      ],
+      "scale": 0.1,
+      "size": [
+        30,
+        31
+      ],
+      "sha256": "91e9b61fd2ad640be86b74c1bdd0b8d5c54402d0ac41f2ae6b7519306f40b301"
+    },
+    {
+      "file": "components/003.png",
+      "sourceBox": [
+        127,
+        578,
+        435,
+        895
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        32
+      ],
+      "sha256": "9a0f8b7200d415bed23993d095cf1e8174e66c1d3a50b978421d901967327566"
+    },
+    {
+      "file": "components/004.png",
+      "sourceBox": [
+        621,
+        578,
+        924,
+        898
+      ],
+      "scale": 0.1,
+      "size": [
+        30,
+        32
+      ],
+      "sha256": "c0b6c26c46fbe0e257f6d763f39af97a483e8bd38c067074cd8b9bf54c2b5bcf"
+    },
+    {
+      "file": "components/005.png",
+      "sourceBox": [
+        1104,
+        578,
+        1416,
+        898
+      ],
+      "scale": 0.1,
+      "size": [
+        31,
+        32
+      ],
+      "sha256": "1de58ea48055a12e1f504f2407e616f871ab704abdb2606f98577548d9c9177c"
+    }
+  ],
+  "endpointAuthorities": [
+    {
+      "path": "bill-swim-carry-helmet-east-coherent-v1/frames/swim-carry-east/000.png",
+      "padding": [
+        6,
+        40
+      ]
+    },
+    {
+      "path": "bill-swim-carry-helmet-south-coherent-v1/frames/swim-carry-south/000.png",
+      "padding": [
+        24,
+        -24
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "sourcePose": 1,
+      "file": "frames/swim-carry-turn-east-south/001.png",
+      "component": "components/001.png",
+      "position": [
+        134,
+        99
+      ],
+      "crownAxis": [
+        149,
+        105
+      ],
+      "eraseBox": [
+        137,
+        103,
+        162,
+        130
+      ],
+      "protectedCaseBox": [
+        158,
+        125,
+        181,
+        153
+      ],
+      "protectedBodyFromY": 130,
+      "bareSha256": "87115cc45da0c5954f4564841078a699557fed69162c51b88bd51d8632cf6129"
+    },
+    {
+      "sourcePose": 2,
+      "file": "frames/swim-carry-turn-east-south/002.png",
+      "component": "components/002.png",
+      "position": [
+        129,
+        100
+      ],
+      "crownAxis": [
+        144,
+        106
+      ],
+      "eraseBox": [
+        132,
+        104,
+        157,
+        131
+      ],
+      "protectedCaseBox": [
+        152,
+        125,
+        179,
+        155
+      ],
+      "protectedBodyFromY": 131,
+      "bareSha256": "ddd1664801ffa160fd4d069a168e0dca1c484e748a6f591d2542e54a3333b8ac"
+    },
+    {
+      "sourcePose": 3,
+      "file": "frames/swim-carry-turn-east-south/003.png",
+      "component": "components/003.png",
+      "position": [
+        123,
+        102
+      ],
+      "crownAxis": [
+        138,
+        108
+      ],
+      "eraseBox": [
+        126,
+        106,
+        151,
+        133
+      ],
+      "protectedCaseBox": [
+        141,
+        128,
+        172,
+        158
+      ],
+      "protectedBodyFromY": 134,
+      "bareSha256": "1b4311ec257bcb4e6aab4dd5b299a66c61c34862c7c43761fc8d00ab66f5cce7"
+    },
+    {
+      "sourcePose": 4,
+      "file": "frames/swim-carry-turn-east-south/004.png",
+      "component": "components/004.png",
+      "position": [
+        118,
+        103
+      ],
+      "crownAxis": [
+        133,
+        109
+      ],
+      "eraseBox": [
+        121,
+        107,
+        146,
+        134
+      ],
+      "protectedCaseBox": [
+        122,
+        132,
+        163,
+        160
+      ],
+      "protectedBodyFromY": 135,
+      "bareSha256": "9910b3290f1b6e9cd167b0cd17ea50038626411c3edd30767f5a77a99397961b"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "Rejected camera study: all four projected swimmers112-113 high exceed old anchor canvas; neutral55x147. No native execution or selection.",
+  "promptSha256": "7e7a4f4f1584aebdf67008be7e920a34be0e0302c6d0533c208ada8fa2694dbd",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/north-body-primary.png",
+      "sha256": "d3add71a008357bfcf861db379bcf75f293d359563801e92f2b3d726979c749c"
+    },
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/north-cargo-endpoint.png",
+      "sha256": "fabbf7c418abaf7016c79f16e66f119890fc41ead658d127531208acac5d0f3e"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/sources/north-selected-motion-only.png",
+      "sha256": "463213180af569b153b5d4d5583535ecddf163195d2b9a756be0d47dd4411f83"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+      "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/sources/north-loop-01.raw.png",
+      "sha256": "8290be13637f124822fd9c1ac8431e014d6b57762bd963028257a0cdeacbf918"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/000.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/001.png",
+      "sha256": "c83467afcc1f179d50d19f9c8ef49de1e13e741ff451a82e174f2b79ed6ad0fe"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/002.png",
+      "sha256": "a93a3affb61d74c5b850bb4a78309a9c2beb218377591d7e9cee38ad37a1f81c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/003.png",
+      "sha256": "98aaf1b44ff65338878f9ccae73c78095f6bed694bd4116c75c0ecaff0048b47"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/004.png",
+      "sha256": "a93a3affb61d74c5b850bb4a78309a9c2beb218377591d7e9cee38ad37a1f81c"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-north/005.png",
+      "sha256": "c83467afcc1f179d50d19f9c8ef49de1e13e741ff451a82e174f2b79ed6ad0fe"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    }
+  ],
+  "selectedMotionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedMotionState": {
+    "id": "swim-carry-north",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-north/005.png"
+    ],
+    "frameDurationsMs": [
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "loop": true,
+    "facings": [
+      "north",
+      "north",
+      "north",
+      "north",
+      "north",
+      "north"
+    ],
+    "waterKinds": [
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "catalogue": {
+    "path": "character/marsh-v2/catalog.json",
+    "sha256": "a7a94c16b558c63129b74bb210adf1e7a8beb730fa658861c886efb3496fe39a"
+  },
+  "rules": "Whole figures, own-North neutral146 scale, no mirrors/patches/recolour/per-pose fit; forward-held case must not become backpack. All joins and world root provisional.",
+  "generationId": "exec-178d1e02-465f-43bb-a1b1-83f4cfb30dce",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-178d1e02-465f-43bb-a1b1-83f4cfb30dce.png",
+  "rawSha256": "d308c8dd3ee4f5acae8d5df659876f016544bfaa0e9223bb5fa8678562261d78"
+}

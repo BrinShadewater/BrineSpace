@@ -1,0 +1,235 @@
+{
+  "name": "Bill coherent bare west action candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "run": 0.168,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.10567567567567569,
+    "walk-west": 0.10567567567567569
+  },
+  "precomposed": true,
+  "status": "owner_review_pending",
+  "states": [
+    {
+      "id": "interact-west",
+      "frameFiles": [
+        "frames/interact-west/000.png",
+        "frames/interact-west/001.png",
+        "frames/interact-west/002.png",
+        "frames/interact-west/003.png",
+        "frames/interact-west/004.png",
+        "frames/interact-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        140,
+        180,
+        160,
+        140,
+        70
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent west whole figures; fixed source scale; planted forward boot; reverse descent for stand"
+    },
+    {
+      "id": "kneel-west",
+      "frameFiles": [
+        "frames/kneel-west/000.png",
+        "frames/kneel-west/001.png",
+        "frames/kneel-west/002.png",
+        "frames/kneel-west/003.png",
+        "frames/kneel-west/004.png",
+        "frames/kneel-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        120,
+        150,
+        150,
+        120,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent west whole figures; fixed source scale; planted forward boot; reverse descent for stand"
+    },
+    {
+      "id": "repair-west",
+      "frameFiles": [
+        "frames/repair-west/000.png",
+        "frames/repair-west/001.png",
+        "frames/repair-west/002.png",
+        "frames/repair-west/003.png",
+        "frames/repair-west/004.png",
+        "frames/repair-west/005.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        150,
+        180,
+        160,
+        180,
+        50
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent west whole figures; fixed source scale; planted forward boot; reverse descent for stand"
+    },
+    {
+      "id": "stand-west",
+      "frameFiles": [
+        "frames/stand-west/000.png",
+        "frames/stand-west/001.png",
+        "frames/stand-west/002.png",
+        "frames/stand-west/003.png",
+        "frames/stand-west/004.png",
+        "frames/stand-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        120,
+        150,
+        150,
+        120,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent west whole figures; fixed source scale; planted forward boot; reverse descent for stand"
+    }
+  ]
+}

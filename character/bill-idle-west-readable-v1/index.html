@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bill west breathing idle</title><style>body{background:#253137;color:#eee;font:17px system-ui;max-width:1150px;margin:24px auto;padding:12px}canvas{max-width:100%;background:#303b40}video,img{max-width:100%}button{padding:10px}</style>
+<h1>Bill — west breathing idle</h1><p>Left: locked west pose. Right: matching breathing motion; face and feet remain fixed. Preview only; installed animations remain locked. Sizes: 148 / 82 / 54 / 27 px.</p>
+<button id="pause">Pause</button> <span id="status">Loading frames…</span><br><canvas width="1080" height="235"></canvas>
+<p>Three-second procedural breathing trial, with one gentle chest expansion per cycle. Check breathing, face, matte suit and planted feet.</p>
+<script>const count=72,fps=24.0;const frames=[],ref=new Image();ref.src='locked-reference.png';
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');let paused=false,elapsed=0,last=performance.now();
+document.querySelector('button').onclick=()=>{paused=!paused;document.querySelector('button').textContent=paused?'Play':'Pause'};
+Promise.all([new Promise(r=>ref.onload=r),...Array.from({length:count},(_,i)=>new Promise((resolve,reject)=>{let im=new Image();frames.push(im);im.onload=resolve;im.onerror=reject;im.src=`frames/${String(i).padStart(3,'0')}.png`}))]).then(()=>{function tick(now){if(!paused)elapsed+=now-last;last=now;const index=Math.floor(elapsed*fps/1000)%count;ctx.clearRect(0,0,1080,235);let x=10;for(const h of [148,82,54,27]){const s=184*h/148;ctx.fillStyle='#eee';ctx.fillText(`${h}px — locked / pilot`,x,20);ctx.drawImage(ref,x,35,s,s);ctx.drawImage(frames[index],x+s+8,35,s,s);x+=s*2+35;}document.querySelector('#status').textContent=`Frame ${index+1}/${count}`;requestAnimationFrame(tick)}requestAnimationFrame(tick)}).catch(()=>document.querySelector('#status').textContent='Frame load failed');</script>

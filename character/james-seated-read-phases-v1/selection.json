@@ -1,0 +1,131 @@
+{
+  "status": "installed_native_controller_verified_owner_review_pending",
+  "runtimeInstalled": true,
+  "fullSetComplete": false,
+  "statesPerMode": 12,
+  "references": 144,
+  "newlyAuthoredDrawings": 0,
+  "sourceBindings": "source-bindings.json",
+  "packageChecks": 234,
+  "nativeChecks": 2868,
+  "nativeCaptures": 172,
+  "controllerCases": [
+    {
+      "mode": 0,
+      "stages": [
+        "observation_sit",
+        "observation_read_enter",
+        "observation_read",
+        "observation_read_exit",
+        "observation_rise"
+      ],
+      "readingSeconds": 12.0166666666669
+    },
+    {
+      "mode": 1,
+      "stages": [
+        "observation_sit",
+        "observation_read_enter",
+        "observation_read",
+        "observation_read_exit",
+        "observation_rise"
+      ],
+      "readingSeconds": 12.0166666666669
+    }
+  ],
+  "profileGuard": {
+    "realProfileUnchanged": true,
+    "profileDelta": []
+  },
+  "visualReview": "All172 final native chronological source-change captures on12page boards reviewed, actual q0 North lounge/South observation sofa in both gears. Exact existing authored art, fixed supports and scale; lowering now includes lap-tablet source4 before neutral. Frame-change reconstruction is not continuously watched60Hz gameplay.",
+  "nativeScope": "Actual normal NPC update timers after reachable q0 furniture station arrival, held activity/rise and source-change native captures, both gears. Fixed60Hz fixture steps and controlled topology; no autonomous incoming/outgoing travel, interruption, fresh Continue or all-rotation claim.",
+  "remaining": [
+    "Other cardinal/furniture/rotation/gear/travel controller contexts",
+    "Chronological master/perspective/material and cross-family polish",
+    "Full library owner acceptance and requested export checks"
+  ],
+  "powerLossInterruptions": {
+    "cases": 12,
+    "checks": 1866,
+    "evidence": "interrupt-evidence.json",
+    "visualReview": "All12 native interruption pose boards reviewed; current source RGBA preserved."
+  },
+  "freshSceneContinue": {
+    "cases": [
+      {
+        "case": 0,
+        "mode": 0,
+        "restoredStage": "observation_read_enter",
+        "tabletExitPose": -1,
+        "completedRise": true
+      },
+      {
+        "case": 1,
+        "mode": 0,
+        "restoredStage": "observation_read",
+        "tabletExitPose": -1,
+        "completedRise": true
+      },
+      {
+        "case": 2,
+        "mode": 0,
+        "restoredStage": "observation_read_exit",
+        "tabletExitPose": 1,
+        "completedRise": true
+      },
+      {
+        "case": 3,
+        "mode": 1,
+        "restoredStage": "observation_read_enter",
+        "tabletExitPose": -1,
+        "completedRise": true
+      },
+      {
+        "case": 4,
+        "mode": 1,
+        "restoredStage": "observation_read",
+        "tabletExitPose": -1,
+        "completedRise": true
+      },
+      {
+        "case": 5,
+        "mode": 1,
+        "restoredStage": "observation_read_exit",
+        "tabletExitPose": 1,
+        "completedRise": true
+      }
+    ],
+    "checks": 3874,
+    "captures": 234,
+    "evidence": "continue-evidence.json",
+    "profileGuard": {
+      "exitCode": 0,
+      "timedOut": false,
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "laneGuards": [
+        {
+          "exitCode": 0,
+          "timedOut": false,
+          "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-dc43igo9",
+          "realProfileUnchanged": true,
+          "profileDelta": [],
+          "summary": [
+            "JAMES SEATED FRESH CONTINUE: 117 captures, facings [\"south\"], 0 failures"
+          ]
+        },
+        {
+          "exitCode": 0,
+          "timedOut": false,
+          "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-t244wwl5",
+          "realProfileUnchanged": true,
+          "profileDelta": [],
+          "summary": [
+            "JAMES SEATED FRESH CONTINUE: 117 captures, facings [\"south\"], 0 failures"
+          ]
+        }
+      ]
+    },
+    "visualReview": "Six before/after/first-five restored source-change/final-six rise pose boards reviewed. Owner pending."
+  }
+}

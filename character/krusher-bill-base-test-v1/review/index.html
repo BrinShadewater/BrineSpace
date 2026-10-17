@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Krusher Dom — Bill base trial</title>
+<style>body{background:#272b2e;color:#e3e9ec;font:18px system-ui;margin:24px}img{max-width:100%;image-rendering:pixelated}button,select{font:inherit;padding:8px;margin-right:8px}canvas{image-rendering:pixelated;max-width:100%;background:#272b2e}p{color:#b6c0c6}section{margin-top:24px}</style>
+<h1>Krusher Dom — Bill base reuse test</h1><p>Original Bill body/motion, muted cyan markings, Krusher concept head. South-facing trial; no gameplay integration.</p>
+<img src="standing-comparison.png" width="920" alt="Bill and derived Krusher standing comparison">
+<section><select id="clip"><option>idle-south</option><option selected>walk-south</option></select><button id="pause">Pause</button><button id="step">Next frame</button><span id="status"></span><br><canvas id="view" width="736" height="368"></canvas><p>Left: source Bill. Right: derived Krusher. Original frame durations and fixed foot pivot retained.</p></section>
+<script>
+let manifest,verify,images={},state,index=0,elapsed=0,playing=true,last=0;
+const c=document.querySelector('canvas'),ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;
+async function load(){manifest=await(await fetch('../manifest.json')).json();verify=await(await fetch('../verification.json')).json();for(const s of manifest.states){images[s.id]=await Promise.all(s.frameFiles.map(async(path,i)=>{const row=verify.records.find(r=>r.state===s.id&&r.frame===i);return Promise.all(['../../..'+ '/' +row.source,'../'+path].map(url=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=url}))) }));}choose();requestAnimationFrame(tick)}
+function choose(){state=manifest.states.find(s=>s.id===document.querySelector('select').value);index=0;elapsed=0;draw()}
+function draw(){ctx.clearRect(0,0,c.width,c.height);images[state.id][index].forEach((im,i)=>ctx.drawImage(im,i*368,0,368,368));document.querySelector('#status').textContent=`${state.id}: ${index+1}/${state.frameFiles.length}`;window.reviewState={clip:state.id,index,playing,frames:state.frameFiles.length}}
+function tick(now){let delta=last?now-last:0;last=now;if(playing){elapsed+=Math.min(delta,100);while(elapsed>=state.frameDurationsMs[index]){elapsed-=state.frameDurationsMs[index];index=(index+1)%state.frameFiles.length}draw()}requestAnimationFrame(tick)}
+document.querySelector('select').onchange=choose;document.querySelector('#pause').onclick=()=>{playing=!playing;document.querySelector('#pause').textContent=playing?'Pause':'Play'};document.querySelector('#step').onclick=()=>{playing=false;document.querySelector('#pause').textContent='Play';index=(index+1)%state.frameFiles.length;elapsed=0;draw()};load().catch(e=>document.body.append('LOAD ERROR: '+e));
+</script>

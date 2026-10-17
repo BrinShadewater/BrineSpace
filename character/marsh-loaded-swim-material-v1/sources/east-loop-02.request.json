@@ -1,0 +1,122 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "Whole raw/packed/master comparisons inspected; 02 preferred staged study, no normal admission",
+  "promptSha256": "40aafcd7f828edf84edbdc0cc111e6b3d1f3da87acdee3696108462bf7945d0e",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-loaded-swim-material-v1/sources/east-loop-01.raw.png",
+      "sha256": "cb4e8b14ea448833383c8657da98075477df5c717d71c7d1016bd69f8ceecb27"
+    },
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/east-body-primary.png",
+      "sha256": "63e17eeb354ca4688d0877b19331c2eda5810719d5c661ccb9add54e47de8ee2"
+    },
+    {
+      "path": "character/marsh-cargo-held-material-v1/sources/east-cargo-endpoint.png",
+      "sha256": "2b532859db7fd415e9148903535b97b1b8f2c96343e0856552f353a993b04f68"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/east-standing-identity-01.png",
+      "sha256": "febf70ec47709c0e22efd21ec3870b54d5e32e9d899e812c34763929c7cbab9d"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/000.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/001.png",
+      "sha256": "88a5d291c56af034b6bda6893c9c91ada19e49e12048ee0622ccbbab59e94ec1"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/002.png",
+      "sha256": "1278911fa92fe75fbe79c77b285f9eec0ffbc2bcfed480ef04820b70884ab1e4"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/003.png",
+      "sha256": "8b5a23084ea5f24d10fe0e6ebb482de982c5ccac2b8e05bbafcedc115649040e"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/004.png",
+      "sha256": "1278911fa92fe75fbe79c77b285f9eec0ffbc2bcfed480ef04820b70884ab1e4"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-east/005.png",
+      "sha256": "88a5d291c56af034b6bda6893c9c91ada19e49e12048ee0622ccbbab59e94ec1"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-east-carry-material-v1/candidate-03/000.png",
+      "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+    }
+  ],
+  "selectedMotionManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedMotionState": {
+    "id": "swim-carry-east",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/004.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-east/005.png"
+    ],
+    "frameDurationsMs": [
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "loop": true,
+    "facings": [
+      "east",
+      "east",
+      "east",
+      "east",
+      "east",
+      "east"
+    ],
+    "waterKinds": [
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry",
+      "swim-carry"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "catalogue": {
+    "path": "character/marsh-v2/catalog.json",
+    "sha256": "a7a94c16b558c63129b74bb210adf1e7a8beb730fa658861c886efb3496fe39a"
+  },
+  "reason": "01 whole-scale study swimmer heads enlarged and neutral37x147 versus master32x147; muted grade/body need whole redraw, not per-part fitting.",
+  "generationId": "exec-9d6d5d0a-2edb-4161-9562-df9febce8555",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-9d6d5d0a-2edb-4161-9562-df9febce8555.png",
+  "rawSha256": "88bd3cf4012b3310cc604bf46be6a040d8a4a1bea148071d081f7ce31a45b0cd"
+}

@@ -1,0 +1,663 @@
+{
+  "source": "Style-v2 fittings, 12 wide fittings and six square centre decorations; per-slot sizing and optical anchors in fitting-profiles.json",
+  "rooms": {
+    "cold_store": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/pressure_console.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "pressure_console",
+        "digital_clock",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "galley": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_memory.png",
+      "subjects": [
+        "analog_clock",
+        "notice_board",
+        "square_memory"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "salvage_workshop": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/drone_service_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "drone_service_panel",
+        "pressure_gauge",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "observation_room": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_memory.png",
+      "subjects": [
+        "picture_ocean",
+        "sample_display",
+        "square_memory"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "current_turbine": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/thermal_manifold.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "thermal_manifold",
+        "monitor_dual",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "biomass_digester": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/botany_care_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_botany.png",
+      "subjects": [
+        "botany_care_board",
+        "vent_fan",
+        "square_botany"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "heat_recovery": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/thermal_manifold.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "thermal_manifold",
+        "vent_fan",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "airlock": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/pressure_console.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "pressure_console",
+        "oxygen_masks",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "construction_drone_bay": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/drone_service_panel.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "drone_service_panel",
+        "monitor_dual",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "brine_core": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/brine_sensor_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "brine_sensor_panel",
+        "digital_clock",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "solar_array": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/charge_controller.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "monitor_dual",
+        "charge_controller",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "reactor": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/pressure_console.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "pressure_console",
+        "monitor_dual",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "battery_array": {
+      "left": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/charge_controller.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "status_display_wide",
+        "charge_controller",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "mining_drone_bay": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/drone_service_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "drone_service_panel",
+        "pressure_gauge",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "salvage_drone_bay": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/drone_service_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "drone_service_panel",
+        "com_handset",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "gravity_loom": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/anomaly_instrument_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "anomaly_instrument_panel",
+        "sample_display",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "tidal_condenser": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/thermal_manifold.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "thermal_manifold",
+        "monitor_single",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "mycelium_nursery": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/botany_care_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_botany.png",
+      "subjects": [
+        "botany_care_board",
+        "pressure_gauge",
+        "square_botany"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "hydroponics_bay": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/botany_care_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/wall_calendar.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_botany.png",
+      "subjects": [
+        "botany_care_board",
+        "wall_calendar",
+        "square_botany"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "life_support": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/pressure_console.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "pressure_console",
+        "oxygen_masks",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "crew_hab": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_memory.png",
+      "subjects": [
+        "picture_ocean",
+        "analog_clock",
+        "square_memory"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "research_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/specimen_cabinet.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "specimen_cabinet",
+        "monitor_dual",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "cryo_chamber": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/medical_supply_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "digital_clock",
+        "medical_supply_panel",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "clone_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/specimen_cabinet.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "specimen_cabinet",
+        "pressure_gauge",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "quarantine_cell": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/medical_supply_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "com_panel",
+        "medical_supply_panel",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "data_archive": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/brine_sensor_panel.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "brine_sensor_panel",
+        "monitor_dual",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "ore_refinery": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/thermal_manifold.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "thermal_manifold",
+        "tool_rack",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "storage_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/key_rack.png",
+      "center": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "subjects": [
+        "notice_board",
+        "key_rack",
+        "reinforced_access_panel"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "med_bay": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/medical_supply_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "com_panel",
+        "medical_supply_panel",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "biodome": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/botany_care_board.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_botany.png",
+      "subjects": [
+        "botany_care_board",
+        "sample_display",
+        "square_botany"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "xeno_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/specimen_cabinet.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "specimen_cabinet",
+        "monitor_single",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "anomaly_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/anomaly_instrument_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "anomaly_instrument_panel",
+        "sample_display",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "bio_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/specimen_cabinet.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "specimen_cabinet",
+        "pressure_gauge",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "command_center": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/brine_sensor_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "brine_sensor_panel",
+        "digital_clock",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "corridor": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "station_map",
+        "com_handset",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "corner": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/alarm_beacon.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/poster_diver.png",
+      "subjects": [
+        "station_map",
+        "alarm_beacon",
+        "poster_diver"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "pressure_control": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/pressure_console.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "pressure_console",
+        "monitor_dual",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "listening_post": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/acoustic_console.png",
+      "right": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "acoustic_console",
+        "monitor_dual",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "isolation_vault": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/anomaly_instrument_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/alarm_beacon.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_specimens.png",
+      "subjects": [
+        "anomaly_instrument_panel",
+        "alarm_beacon",
+        "square_specimens"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "tee_corridor": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "subjects": [
+        "station_map",
+        "digital_clock",
+        "notice_board"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "crew_lounge": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_memory.png",
+      "subjects": [
+        "picture_ocean",
+        "analog_clock",
+        "square_memory"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "holographic_core": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/brine_sensor_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "brine_sensor_panel",
+        "com_panel",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "maintenance_bay": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/drone_service_panel.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_pressure.png",
+      "subjects": [
+        "drone_service_panel",
+        "pressure_gauge",
+        "square_pressure"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "med_center": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/medical_supply_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "digital_clock",
+        "medical_supply_panel",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "med_office": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/wall_calendar.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/medical_supply_panel.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_medical.png",
+      "subjects": [
+        "wall_calendar",
+        "medical_supply_panel",
+        "square_medical"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    },
+    "radio_lab": {
+      "left": "res://assets/room-risers-v4/panel-expansion/masters/acoustic_console.png",
+      "right": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "acoustic_console",
+        "digital_clock",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": false
+    },
+    "shield_generator": {
+      "left": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "right": "res://assets/room-risers-v4/panel-expansion/masters/charge_controller.png",
+      "center": "res://assets/room-risers-v4/square-fittings/masters/square_telemetry.png",
+      "subjects": [
+        "pressure_gauge",
+        "charge_controller",
+        "square_telemetry"
+      ],
+      "ocean_left": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "ocean_right": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "ocean_center": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "north_port": true
+    }
+  }
+}

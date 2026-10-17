@@ -1,0 +1,191 @@
+{
+  "sourceSha256": "6f99423c3f06167353dfdf84935fc92a47bcdb0f93383cda7f1d6415eb34f223",
+  "source": "sources/inspect-posture-v3.png",
+  "heads": [
+    [
+      385,
+      16
+    ],
+    [
+      769,
+      20
+    ],
+    [
+      1152,
+      16
+    ],
+    [
+      385,
+      528
+    ],
+    [
+      769,
+      528
+    ],
+    [
+      1152,
+      528
+    ]
+  ],
+  "fixedRuler": [
+    0.29,
+    0.3142
+  ],
+  "density": 1.02,
+  "tilts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sourcePoses": [
+    0,
+    1,
+    2,
+    1,
+    0
+  ],
+  "generation": "exec-06394022-3cd9-40de-b9d6-1d0f62b705ad",
+  "baseGeneration": "exec-bd3d64e3-b1a9-45e5-81cc-5be805f24df1",
+  "sourceHeights": [
+    471,
+    467,
+    471,
+    455,
+    455,
+    455
+  ],
+  "excludedReason": "Bottom poses remain compressed; top three selected at one fixed ruler and reversed for a subtle occluded rear inspection loop.",
+  "frames": [
+    {
+      "frame": 0,
+      "sourcePose": 0,
+      "sourceBox": [
+        266,
+        13,
+        505,
+        490
+      ],
+      "position": [
+        93,
+        75
+      ],
+      "headAxis": [
+        128,
+        76
+      ],
+      "tiltDegrees": 0,
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 1,
+      "sourcePose": 1,
+      "sourceBox": [
+        651,
+        17,
+        887,
+        490
+      ],
+      "position": [
+        94,
+        76
+      ],
+      "headAxis": [
+        128,
+        77
+      ],
+      "tiltDegrees": 0,
+      "protectedBodyFromY": 108,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "sourcePose": 2,
+      "sourceBox": [
+        1032,
+        13,
+        1273,
+        490
+      ],
+      "position": [
+        92,
+        75
+      ],
+      "headAxis": [
+        127,
+        76
+      ],
+      "tiltDegrees": 0,
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "sourcePose": 1,
+      "sourceBox": [
+        651,
+        17,
+        887,
+        490
+      ],
+      "position": [
+        94,
+        76
+      ],
+      "headAxis": [
+        128,
+        77
+      ],
+      "tiltDegrees": 0,
+      "protectedBodyFromY": 108,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "sourcePose": 0,
+      "sourceBox": [
+        266,
+        13,
+        505,
+        490
+      ],
+      "position": [
+        93,
+        75
+      ],
+      "headAxis": [
+        128,
+        76
+      ],
+      "tiltDegrees": 0,
+      "protectedBodyFromY": 107,
+      "targetFrontBoot": [
+        138.0,
+        223
+      ]
+    }
+  ],
+  "excludedSourcePoses": [
+    3,
+    4,
+    5
+  ],
+  "closure": "three independent upright poses ping-pong;slot5 copies exact slot0;no per-pose scaling",
+  "idleAuthority": "crew-runtime-matte-v1/bill/frames/idle-north-transition-matte-v1/000.png",
+  "idleSha256": "ed305a2094b04d9ebc313f7ca601067573740148fbc8b13389f6b6bb8403ace7"
+}

@@ -1,0 +1,23 @@
+{
+  "status": "provisional_source_improvement",
+  "candidateBounds": [
+    138,
+    81,
+    229,
+    230
+  ],
+  "targetBounds": [
+    138,
+    75,
+    228,
+    225
+  ],
+  "opaqueOverflow": 0,
+  "heightDelta": -1,
+  "soleDelta": 5,
+  "lowerBodyIoU": 0.83669854764435,
+  "normalAdmission": false,
+  "nativeTested": false,
+  "visualReviewed": true,
+  "visualFindings": "Full raw and whole/head comparison inspected. Occupied height149 versus prior150, whole figure moved down5-6common pixels. New full bank registers entire canvas y-6 losslessly. Face/shoulder/material require temporal judgement; not normal accepted."
+}

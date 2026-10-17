@@ -1,0 +1,193 @@
+{
+  "direction": "west",
+  "source": "character/marsh-rest-match-v1/sources/west-sheet-01.png",
+  "sourceSha256": "8cc49e54f09f98f6e3a3cddde6d9c1b60f3382d2bacdc25237c635effadc5f4c",
+  "fixedScale": 0.4049586776859504,
+  "poses": [
+    {
+      "pose": 0,
+      "sourceBox": [
+        144,
+        61,
+        238,
+        424
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        73,
+        25
+      ],
+      "bounds": [
+        73,
+        25,
+        111,
+        172
+      ]
+    },
+    {
+      "pose": 1,
+      "sourceBox": [
+        522,
+        202,
+        782,
+        427
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        40,
+        81
+      ],
+      "bounds": [
+        40,
+        81,
+        145,
+        172
+      ]
+    },
+    {
+      "pose": 2,
+      "sourceBox": [
+        922,
+        202,
+        1223,
+        421
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        31,
+        83
+      ],
+      "bounds": [
+        31,
+        83,
+        153,
+        172
+      ]
+    },
+    {
+      "pose": 3,
+      "sourceBox": [
+        1357,
+        309,
+        1715,
+        417
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        20,
+        128
+      ],
+      "bounds": [
+        20,
+        128,
+        165,
+        172
+      ]
+    },
+    {
+      "pose": 4,
+      "sourceBox": [
+        61,
+        731,
+        408,
+        838
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        22,
+        129
+      ],
+      "bounds": [
+        22,
+        129,
+        163,
+        172
+      ]
+    },
+    {
+      "pose": 5,
+      "sourceBox": [
+        531,
+        654,
+        863,
+        840
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        25,
+        97
+      ],
+      "bounds": [
+        25,
+        97,
+        159,
+        172
+      ]
+    },
+    {
+      "pose": 6,
+      "sourceBox": [
+        1061,
+        609,
+        1236,
+        840
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        57,
+        78
+      ],
+      "bounds": [
+        57,
+        78,
+        128,
+        172
+      ]
+    },
+    {
+      "pose": 7,
+      "sourceBox": [
+        1529,
+        489,
+        1615,
+        840
+      ],
+      "scale": 0.4049586776859504,
+      "position": [
+        75,
+        30
+      ],
+      "bounds": [
+        75,
+        30,
+        110,
+        172
+      ]
+    }
+  ],
+  "registration": "Bounding center at x92, implied supporting surface at y172, one fixed anatomical scale",
+  "derivation": {
+    "lie-down": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sleep": [
+      3,
+      4
+    ],
+    "get-up": [
+      3,
+      2,
+      1,
+      0
+    ]
+  },
+  "omittedSourcePoses": [
+    5,
+    6,
+    7
+  ],
+  "omissionReason": "Rise reverses selected descent to preserve resting orientation; exact runtime idle replaces generated standing poses"
+}

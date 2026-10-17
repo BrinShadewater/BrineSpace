@@ -1,0 +1,45 @@
+{
+  "method": "built-in image generation",
+  "sources": {
+    "sources/sit-v1.png": {
+      "generation": "exec-ff85cf21-95d4-4fb2-85a2-e547b447618f",
+      "prompt": "sources/prompt-sit-v1.txt",
+      "usedPoses": [
+        1,
+        4,
+        5
+      ],
+      "excludedPoses": [
+        0,
+        2,
+        3
+      ],
+      "sourceSha256": "aa733937e22a5d03b7b0323c58c1cacb70a746afd0a9f24e7de3aa0f3d323b78",
+      "promptSha256": "7c04e002aaa009bd84e8b24080f1fe5ddfd26f8855b072e60b397c2044b8d823"
+    },
+    "sources/sit-motion-v2.png": {
+      "generation": "exec-5d20ab90-a320-4caa-a46e-42f069036043",
+      "prompt": "sources/prompt-sit-motion-v2.txt",
+      "status": "rejected;middle lowering still early",
+      "sourceSha256": "b590b1b4de590d680ca5b3934bb05fb358f9bb79bc2ccbc6d0220d598f263bc8",
+      "promptSha256": "7b46f7c28266d1a38131de4b2688195bc88b9a63637fb0e9947c3d8595a2864b"
+    },
+    "sources/interiors-v3.png": {
+      "generation": "exec-802e844e-4847-4f2e-a9bc-b794fd66210a",
+      "prompt": "sources/prompt-interiors-v3.txt",
+      "status": "predecessor to boot-targeted revision",
+      "sourceSha256": "e302ec903775f8099cd47b57f9950a3086f118291c200c7c1f116f62130e1bf8",
+      "promptSha256": "8e1a36421f52c9d4749d6df5f8f0a33975d57a6c5152684b76dcf68ae7866a28"
+    },
+    "sources/interiors-boots-v4.png": {
+      "generation": "exec-47401c77-43be-4f71-a9c4-018b5c575c99",
+      "prompt": "sources/prompt-interiors-boots-v4.txt",
+      "usedPoses": [
+        0,
+        1
+      ],
+      "sourceSha256": "6e250df6bfde9f334c1ce7c43c10b4d8c4345b8ee3b540494a1808a0ceaf76e6",
+      "promptSha256": "725ac42f5219fec0fd6061d57b4000df2633f07f6df9dbe4d66d3ee86e1338a3"
+    }
+  }
+}

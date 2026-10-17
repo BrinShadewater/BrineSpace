@@ -1,0 +1,46 @@
+{
+  "version": 360,
+  "method": "Two controlled Hailuo02 first/last source clips, shared crouch control",
+  "selected": false,
+  "normalChanged": false,
+  "estimatedUSD": 0.56,
+  "billingVerified": false,
+  "sources": {
+    "carry": {
+      "path": "character\\james-cargo-half-turns-v1\\frames\\bare\\carry-turn-north-south\\000.png",
+      "sha256": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9"
+    },
+    "crouch": {
+      "path": "character\\james-west-carry-walk-keys-v1\\north-unload-pose-v359\\source.png",
+      "sha256": "e3fe09f6ea7cf330161c0557094a0b35b7b864db3c277b257b86cccc3be08ce3"
+    },
+    "standing": {
+      "path": "character\\james-cargo-north-v1\\frames\\bare\\pickup-north\\000.png",
+      "sha256": "f7c6e09f03f024367779a7786a64f482d7854c740d3bf89ff0712fcc7640876f"
+    }
+  },
+  "controls": {
+    "carry": "d3d79ad3b7f2905429b6bd960264eec5a92ddb4e60aa4623db1f7cdf63e0a193",
+    "crouch": "f5367fff7d364f616e3f94942952ec8ca78c9f89778a0cfbe04a0ed24d8e3ee4",
+    "standing": "7749773cafe7d6cf5b7b06b70bd0b0c340706923eaf298145f77697f66b1162f"
+  },
+  "registration": {
+    "canvas": [
+      768,
+      768
+    ],
+    "sourceCanvas": [
+      256,
+      256
+    ],
+    "ruler": 3,
+    "crouchSourceRuler": 0.6124401913875598,
+    "crouchTranslationY": 73,
+    "background": [
+      48,
+      59,
+      64
+    ]
+  },
+  "limits": "Crouch is unselected and changes some identity/material detail. These controls do not establish coherent accepted animation."
+}

@@ -1,0 +1,260 @@
+{
+  "sources": {
+    "primary": {
+      "source": "sources/entry-v1.png",
+      "count": 6,
+      "heads": [
+        [
+          315,
+          22
+        ],
+        [
+          768,
+          22
+        ],
+        [
+          1219,
+          22
+        ],
+        [
+          315,
+          525
+        ],
+        [
+          768,
+          525
+        ],
+        [
+          1219,
+          523
+        ]
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3052
+      ],
+      "density": 1.12,
+      "generation": "exec-7286c111-8863-40cc-b491-de0a20c0e8b4",
+      "sourceHeights": [
+        485,
+        485,
+        485,
+        478,
+        478,
+        480
+      ]
+    }
+  },
+  "sequence": [
+    [
+      "primary",
+      1
+    ],
+    [
+      "primary",
+      2
+    ],
+    [
+      "primary",
+      3
+    ],
+    [
+      "primary",
+      4
+    ]
+  ],
+  "excludedPrimaryPoses": [
+    0,
+    5
+  ],
+  "excludedReason": "Exact selected idle and held inspection donors replace generated endpoints. Four authored reach/pouch release/lift/near-grip interiors at one source ruler, no per-pose normalization.",
+  "sourcesSha256": {
+    "primary": "b4120df647bb827b5fc60dad253f4768dd37b39be5d501ca980648280e996010"
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "source": "primary",
+      "sourcePose": 1,
+      "sourceBox": [
+        624,
+        19,
+        897,
+        510
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3052
+      ],
+      "position": [
+        89,
+        75
+      ],
+      "headAxis": [
+        128,
+        76
+      ],
+      "protectedBodyFromY": 111,
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 2,
+      "source": "primary",
+      "sourcePose": 2,
+      "sourceBox": [
+        1094,
+        19,
+        1343,
+        510
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3052
+      ],
+      "position": [
+        94,
+        75
+      ],
+      "headAxis": [
+        128,
+        76
+      ],
+      "protectedBodyFromY": 111,
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 3,
+      "source": "primary",
+      "sourcePose": 3,
+      "sourceBox": [
+        188,
+        522,
+        445,
+        1006
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3052
+      ],
+      "position": [
+        94,
+        77
+      ],
+      "headAxis": [
+        128,
+        78
+      ],
+      "protectedBodyFromY": 113,
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    },
+    {
+      "frame": 4,
+      "source": "primary",
+      "sourcePose": 4,
+      "sourceBox": [
+        640,
+        522,
+        897,
+        1006
+      ],
+      "fixedRuler": [
+        0.27,
+        0.3052
+      ],
+      "position": [
+        94,
+        77
+      ],
+      "headAxis": [
+        129,
+        78
+      ],
+      "protectedBodyFromY": 113,
+      "targetFrontBoot": [
+        146.5,
+        223
+      ]
+    }
+  ],
+  "grades": {
+    "primary": {
+      "neutralInput": [
+        0.0,
+        4.333333333333333,
+        20.666666666666668,
+        46.333333333333336,
+        60.333333333333336,
+        78.66666666666667,
+        95.0,
+        169.0,
+        215.33333333333334,
+        255.0
+      ],
+      "neutralOutput": [
+        2.3333333333333335,
+        13.333333333333334,
+        26.333333333333332,
+        42.0,
+        50.333333333333336,
+        61.333333333333336,
+        79.66666666666667,
+        130.33333333333334,
+        153.0,
+        196.33333333333334
+      ],
+      "gains": {
+        "hair": [
+          0.828125,
+          0.9444444444444444,
+          1.0833333333333333
+        ],
+        "face": [
+          0.9719101123595506,
+          1.0101010101010102,
+          1.0
+        ],
+        "burgundy": [
+          0.9173553719008265,
+          0.9583333333333334,
+          0.9787234042553191
+        ]
+      }
+    }
+  },
+  "donors": {
+    "bare": [
+      {
+        "path": "bill-seated-south-coherent-v1/frames/sit-down-south/000.png",
+        "sha256": "d7c6c0851a936755bdab52a614f56da149322a7c456692e65fc7a3dcfe33fdac"
+      },
+      {
+        "path": "bill-inspect-south-coherent-v1/frames/bare/000.png",
+        "sha256": "28cbd09e77be4b279f6fd99022e960fd8a2f4f0d84dff09a100dd6e11f2fe048"
+      }
+    ],
+    "helmet": [
+      {
+        "path": "bill-seated-helmet-south-coherent-v1/frames/sit-down-south/000.png",
+        "sha256": "98ef1f6357a97ab630486bf01f28edff7abff05c9a5230e21bccc26cb8a90fce"
+      },
+      {
+        "path": "bill-inspect-south-coherent-v1/frames/helmet/000.png",
+        "sha256": "c18bdc24c1ed428bc76e6b9f6858899bc726cdbbd38db3d9559a571bc03d51e3"
+      }
+    ]
+  },
+  "helmetComponent": {
+    "path": "bill-seated-helmet-south-coherent-v1/sources/canonical-head.png",
+    "sha256": "51dc1fbe43e733c0853841e774dcefbe8b50bb90cfe2bb1a65a9798e4f0ca219"
+  },
+  "scope": "authored standing reader draw/reversed stow; exact idle/held joins; actor selection/wiring pending"
+}

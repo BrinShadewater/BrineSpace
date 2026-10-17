@@ -1,0 +1,128 @@
+{
+  "selected": [
+    {
+      "id": "hairline",
+      "source": "sources/hairline-v1.png",
+      "sha256": "52468893a1f2948cdfde7fada1bc3d2ba6955afab19396bb1b55dd23aed25b3b",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        409,
+        214,
+        654,
+        1343
+      ],
+      "runtime_size": [
+        37,
+        171
+      ],
+      "offset": [
+        110,
+        64
+      ],
+      "height_world": 32
+    },
+    {
+      "id": "split",
+      "source": "sources/split-v1.png",
+      "sha256": "da4f290738245280f5217f2586e87c96ff46e72f0519f8cd4c6214f129056539",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alpha_bounds": [
+        438,
+        84,
+        844,
+        1181
+      ],
+      "runtime_size": [
+        67,
+        181
+      ],
+      "offset": [
+        95,
+        58
+      ],
+      "height_world": 34
+    },
+    {
+      "id": "rupture",
+      "source": "sources/rupture-v1.png",
+      "sha256": "66712a19ed250eef5d2ed54c82c39cf732589479482d644da431d13f8f27f0ef",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        260,
+        51,
+        779,
+        1451
+      ],
+      "runtime_size": [
+        73,
+        197
+      ],
+      "offset": [
+        92,
+        50
+      ],
+      "height_world": 37
+    },
+    {
+      "id": "patch",
+      "source": "sources/patch-v1.png",
+      "sha256": "766cf6568d8deb26661e34f3dc0743f9bd6608b95a6dde2677159361315c570b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alpha_bounds": [
+        385,
+        201,
+        869,
+        1045
+      ],
+      "runtime_size": [
+        89,
+        155
+      ],
+      "offset": [
+        84,
+        58
+      ],
+      "height_world": 29
+    },
+    {
+      "id": "weld",
+      "source": "sources/weld-v1.png",
+      "sha256": "ea8fdf18900c5d8aaaf5f402502532bc9b2db40198a7ca58a412195541f7f473",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_bounds": [
+        409,
+        146,
+        625,
+        1411
+      ],
+      "runtime_size": [
+        29,
+        171
+      ],
+      "offset": [
+        114,
+        64
+      ],
+      "height_world": 32
+    }
+  ],
+  "tile_size": 256,
+  "world_tile_size": 48,
+  "unused_slot": 5,
+  "processing": "alpha>=8 bounds; isotropic Lanczos; preserved RGB/alpha; registered margins only"
+}

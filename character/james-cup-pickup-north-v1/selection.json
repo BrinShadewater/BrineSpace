@@ -1,0 +1,137 @@
+{
+  "status": "installed_north_meal_handoffs_owner_review_pending",
+  "source": "source.png",
+  "prompt": "prompt-v2.txt",
+  "generationTool": "built-in imagegen",
+  "generatedOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-fc47-7e22-953f-3c02a051b0f6/exec-094a48dd-76e6-425b-9a77-47074b096849.png",
+  "sourceSha256": "c8f09606ac09187dd32e81945f0759c46a97bb12be0db635b2cf279a33702072",
+  "fixedScale": 0.27007299270072993,
+  "masterHeight": 148,
+  "poses": [
+    {
+      "sourcePose": 0,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        28,
+        -9
+      ]
+    },
+    {
+      "sourcePose": 1,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        48,
+        -9
+      ]
+    },
+    {
+      "sourcePose": 2,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        49,
+        -9
+      ]
+    },
+    {
+      "sourcePose": 3,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        53,
+        -9
+      ]
+    },
+    {
+      "sourcePose": 4,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        45,
+        -9
+      ]
+    },
+    {
+      "sourcePose": 5,
+      "sourceExtent": {
+        "crown": 118,
+        "sole": 665,
+        "height": 548
+      },
+      "packagedExtent": {
+        "crown": 23,
+        "sole": 170,
+        "height": 148
+      },
+      "translation": [
+        46,
+        -9
+      ]
+    }
+  ],
+  "derivation": "Whole independent cup poses at one scale/grade, exact idle and held-cup endpoints. Whole bowl/cup acquisition poses reversed for physical counter returns; no mirroring/body edits.",
+  "remaining": [
+    "Owner visual/pacing review",
+    "Meal interruption and credit audit",
+    "Other facing/custom counter handoffs",
+    "Full exterior and cross-family consistency/polish"
+  ],
+  "exactToolPrompt": "prompt-v2.txt",
+  "visualReview": "Agent reviewed cup/master board, native counter reach and all36 actual journey source poses. Cup uses image-left hand opposite fixed belt wrench; cup body extent148px, matte material/camera and fixed head/feet maintained. Owner review pending.",
+  "manifest": "handoffs-manifest.json",
+  "runtimeInstalledVia": "scripts/grid_canvas.gd",
+  "rejectedSource": {
+    "file": "rejected-right-hand-source.png",
+    "reason": "Wrong cup hand and raised drinking endpoint; never installed."
+  },
+  "nativeJourney": {
+    "checks": 7306,
+    "actualJourneys": 1,
+    "freshSceneDiskRestores": 4,
+    "actualFacing": "north",
+    "evidence": "native-journey-evidence.json",
+    "actualTimerBoundaryJoins": 5
+  }
+}

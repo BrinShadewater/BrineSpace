@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Bill north ground collapse candidate</title>
+<style>body{font:16px system-ui;background:#152027;color:#e6eff1;margin:24px}button,select{font:inherit;padding:6px}p{max-width:85ch}input{width:350px}</style>
+<h1>Bill — north ground collapse</h1>
+<p>Authored bareheaded candidate beside selected idle. A finite two-second collapse holds its terminal pose. No normal selection, equipped version or actual mortality/restore proof yet.</p>
+<select id="size"><option>148</option><option>82</option><option>54</option></select><button id="replay">Replay</button><input id="scrub" type="range" min="0" max="2000" value="0"><span id="stamp"></span><br><canvas id="view" width="720" height="420"></canvas>
+<script>
+const load=f=>new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>resolve(im);im.onerror=reject;im.src=f});let t=0,last=performance.now(),playing=true;
+replay.onclick=()=>{t=0;playing=true};scrub.oninput=()=>{t=Number(scrub.value);playing=false};
+fetch('manifest.json').then(r=>r.json()).then(async m=>{const s=m.states[0],images=await Promise.all(s.frameFiles.map(load)),idle=images[0];function draw(now){if(playing)t=Math.min(2000,t+now-last);last=now;scrub.value=t;stamp.textContent=(t/1000).toFixed(2)+' s';let elapsed=t,index=images.length-1;for(let i=0;i<images.length;i++){if(elapsed<s.frameDurationsMs[i]){index=i;break}elapsed-=s.frameDurationsMs[i]}const c=view.getContext('2d'),scale=Number(size.value)/148;c.fillStyle='#22343e';c.fillRect(0,0,720,420);c.fillStyle='#e6eff1';c.fillText('Collapse candidate',130,35);c.fillText('Selected idle',460,35);c.drawImage(images[index],200-128*scale,330-224*scale,256*scale,256*scale);c.drawImage(idle,520-128*scale,330-224*scale,256*scale,256*scale);requestAnimationFrame(draw)}requestAnimationFrame(draw)});
+</script>

@@ -1,0 +1,3450 @@
+{
+  "selectedRuntimeLoadOrder": [
+    {
+      "gear": "bare",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "states": [
+        "idle-south",
+        "idle-east",
+        "idle-north",
+        "idle-west"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-turn-east-south-height-v3/bare-manifest.json",
+      "states": [
+        "carry-turn-east-south",
+        "carry-turn-south-east"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-turn-east-south-height-v3/helmet-manifest.json",
+      "states": [
+        "carry-turn-east-south",
+        "carry-turn-south-east"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-turn-south-west-v1/bare-manifest.json",
+      "states": [
+        "carry-turn-south-west",
+        "carry-turn-west-south"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-turn-south-west-v1/helmet-manifest.json",
+      "states": [
+        "carry-turn-south-west",
+        "carry-turn-west-south"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-half-turns-v1/bare-manifest.json",
+      "states": [
+        "carry-turn-east-west",
+        "carry-turn-north-south",
+        "carry-turn-west-east",
+        "carry-turn-south-north"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-half-turns-v1/helmet-manifest.json",
+      "states": [
+        "carry-turn-east-west",
+        "carry-turn-north-south",
+        "carry-turn-west-east",
+        "carry-turn-south-north"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-turn-north-west-v1/bare-manifest.json",
+      "states": [
+        "carry-turn-north-west",
+        "carry-turn-west-north"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-turn-north-west-v1/helmet-manifest.json",
+      "states": [
+        "carry-turn-north-west",
+        "carry-turn-west-north"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-turn-east-north-v1/bare-manifest.json",
+      "states": [
+        "carry-turn-east-north",
+        "carry-turn-north-east"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-turn-east-north-v1/helmet-manifest.json",
+      "states": [
+        "carry-turn-east-north",
+        "carry-turn-north-east"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-north-v1/bare-manifest.json",
+      "states": [
+        "carry-north"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-north-v1/helmet-manifest.json",
+      "states": [
+        "carry-north"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-south-v1/bare-manifest.json",
+      "states": [
+        "carry-south"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-south-v1/helmet-manifest.json",
+      "states": [
+        "carry-south"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-west-v1/bare-manifest.json",
+      "states": [
+        "carry-west"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-west-v1/helmet-manifest.json",
+      "states": [
+        "carry-west"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-east-height-v3/bare-manifest.json",
+      "states": [
+        "carry-east"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-east-height-v3/helmet-manifest.json",
+      "states": [
+        "carry-east"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-cargo-material-joined-v1/bare-manifest.json",
+      "states": [
+        "carry-east",
+        "carry-south",
+        "carry-west",
+        "carry-north"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-cargo-material-joined-v1/helmet-manifest.json",
+      "states": [
+        "carry-east",
+        "carry-south",
+        "carry-west",
+        "carry-north"
+      ]
+    },
+    {
+      "gear": "bare",
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "states": [
+        "carry-east",
+        "carry-turn-east-north",
+        "carry-turn-east-south",
+        "carry-turn-east-west",
+        "carry-turn-north-east",
+        "carry-turn-south-east",
+        "carry-turn-west-east"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "states": [
+        "carry-east",
+        "carry-turn-east-north",
+        "carry-turn-east-south",
+        "carry-turn-east-west",
+        "carry-turn-north-east",
+        "carry-turn-south-east",
+        "carry-turn-west-east"
+      ]
+    },
+    {
+      "gear": "helmet",
+      "manifest": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "states": [
+        "idle-south",
+        "idle-east",
+        "idle-north",
+        "idle-west"
+      ]
+    }
+  ],
+  "states": {
+    "bare/carry-turn-east-north": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-east",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-east-south": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-east",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-east-west": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/005.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/006.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/007.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/008.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/009.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-east",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-north-east": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-north",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-north-south": {
+      "manifest": "character/james-cargo-half-turns-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/000.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/001.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/002.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/003.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/004.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/005.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/006.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/007.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/008.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/009.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 31,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-north",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-north-west": {
+      "manifest": "character/james-cargo-turn-north-west-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/000.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/001.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/002.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/003.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/004.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 31,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            158,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            98,
+            204,
+            154,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            145,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            148,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-north",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-south-east": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-south",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-south-north": {
+      "manifest": "character/james-cargo-half-turns-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/000.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/001.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/002.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/003.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/004.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/005.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/006.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/007.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/008.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/009.png",
+        "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 31,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-south",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-south-west": {
+      "manifest": "character/james-cargo-turn-south-west-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/000.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/001.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/002.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/003.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/004.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-south",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-west-east": {
+      "manifest": "character/james-east-cargo-heads-v3/bare-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/005.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/006.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/007.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/008.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/009.png",
+        "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 23,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 25,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-west",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-west-north": {
+      "manifest": "character/james-cargo-turn-north-west-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/000.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/001.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/002.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/003.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/004.png",
+        "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            148,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            145,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            98,
+            204,
+            154,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 31,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            158,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 149,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 28,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-west",
+      "reverseSourcePixelsExact": true
+    },
+    "bare/carry-turn-west-south": {
+      "manifest": "character/james-cargo-turn-south-west-v1/bare-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/000.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/001.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/002.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/003.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/004.png",
+        "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 32,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 148,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 29,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-west",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-east-north": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-east",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-east-south": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-east",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-east-west": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/005.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/006.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/007.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/008.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/009.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 157,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-east",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-north-east": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-north",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-north-south": {
+      "manifest": "character/james-cargo-half-turns-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/000.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/001.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/002.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/003.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/004.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/005.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/006.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/007.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/008.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/009.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-north",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-north-west": {
+      "manifest": "character/james-cargo-turn-north-west-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/000.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/001.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/002.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/003.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/004.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 151,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            158,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            98,
+            204,
+            154,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            145,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            148,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-north",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-south-east": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-south",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-south-north": {
+      "manifest": "character/james-cargo-half-turns-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/000.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/001.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/002.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/003.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/004.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/005.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/006.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/007.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/008.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/009.png",
+        "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            154,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            111,
+            204,
+            152,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            108,
+            204,
+            150,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            149,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-south",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-south-west": {
+      "manifest": "character/james-cargo-turn-south-west-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/000.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/001.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/002.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/003.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/004.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 157,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-west-south",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-west-east": {
+      "manifest": "character/james-east-cargo-heads-v3/helmet-manifest.json",
+      "frames": [
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/000.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/001.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/002.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/003.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/004.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/005.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/006.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/007.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/008.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/009.png",
+        "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/010.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 157,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            157,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 38,
+          "footWindowUnionBounds": [
+            110,
+            204,
+            160,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            109,
+            204,
+            159,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 155,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            115,
+            204,
+            163,
+            224
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            117,
+            204,
+            159,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-east-west",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-west-north": {
+      "manifest": "character/james-cargo-turn-north-west-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/000.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/001.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/002.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/003.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/004.png",
+        "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            148,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 153,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            145,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 152,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            98,
+            204,
+            154,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 151,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 36,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            158,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 150,
+          "lowestAlpha32Row": 223,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            106,
+            204,
+            149,
+            224
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-north-west",
+      "reverseSourcePixelsExact": true
+    },
+    "helmet/carry-turn-west-south": {
+      "manifest": "character/james-cargo-turn-south-west-v1/helmet-manifest.json",
+      "frames": [
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/000.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/001.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/002.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/003.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/004.png",
+        "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/005.png"
+      ],
+      "durationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "diagnostics": [
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 35,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            139,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 157,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 33,
+          "footWindowUnionBounds": [
+            103,
+            204,
+            143,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 34,
+          "footWindowUnionBounds": [
+            100,
+            204,
+            144,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 154,
+          "lowestAlpha32Row": 225,
+          "top24UnionWidthProxy": 37,
+          "footWindowUnionBounds": [
+            101,
+            204,
+            148,
+            226
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            102,
+            204,
+            155,
+            225
+          ]
+        },
+        {
+          "alpha32CrownAboveRoot": 156,
+          "lowestAlpha32Row": 224,
+          "top24UnionWidthProxy": 39,
+          "footWindowUnionBounds": [
+            104,
+            204,
+            156,
+            225
+          ]
+        }
+      ],
+      "reverseId": "carry-turn-south-west",
+      "reverseSourcePixelsExact": true
+    }
+  },
+  "masters": {
+    "bare/north": {
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 148,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 31,
+        "footWindowUnionBounds": [
+          101,
+          204,
+          156,
+          224
+        ]
+      }
+    },
+    "bare/south": {
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-south-matte-v2/000.png",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 148,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 27,
+        "footWindowUnionBounds": [
+          99,
+          204,
+          158,
+          224
+        ]
+      }
+    },
+    "bare/east": {
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-east-breathing-v1/000.png",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 148,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 32,
+        "footWindowUnionBounds": [
+          105,
+          204,
+          155,
+          224
+        ]
+      }
+    },
+    "bare/west": {
+      "source": "character/crew-runtime-matte-v1/branforth/frames/idle-west-breathing-v1/000.png",
+      "manifest": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 148,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 32,
+        "footWindowUnionBounds": [
+          101,
+          204,
+          151,
+          224
+        ]
+      }
+    },
+    "helmet/north": {
+      "source": "character/james-shared-helmet-runtime-v1/frames/idle-north/000.png",
+      "manifest": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 150,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 33,
+        "footWindowUnionBounds": [
+          101,
+          204,
+          156,
+          224
+        ]
+      }
+    },
+    "helmet/south": {
+      "source": "character/james-shared-helmet-runtime-v1/frames/idle-south/000.png",
+      "manifest": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 155,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 39,
+        "footWindowUnionBounds": [
+          99,
+          204,
+          158,
+          224
+        ]
+      }
+    },
+    "helmet/east": {
+      "source": "character/james-shared-helmet-runtime-v1/frames/idle-east/000.png",
+      "manifest": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 156,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 35,
+        "footWindowUnionBounds": [
+          105,
+          204,
+          155,
+          224
+        ]
+      }
+    },
+    "helmet/west": {
+      "source": "character/james-shared-helmet-runtime-v1/frames/idle-west/000.png",
+      "manifest": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "diagnostic": {
+        "alpha32CrownAboveRoot": 156,
+        "lowestAlpha32Row": 223,
+        "top24UnionWidthProxy": 35,
+        "footWindowUnionBounds": [
+          101,
+          204,
+          151,
+          224
+        ]
+      }
+    }
+  },
+  "boards": [
+    "bare-carry-turn-east-north.png",
+    "bare-carry-turn-east-south.png",
+    "bare-carry-turn-east-west.png",
+    "bare-carry-turn-north-south.png",
+    "bare-carry-turn-north-west.png",
+    "bare-carry-turn-south-west.png",
+    "helmet-carry-turn-east-north.png",
+    "helmet-carry-turn-east-south.png",
+    "helmet-carry-turn-east-west.png",
+    "helmet-carry-turn-north-south.png",
+    "helmet-carry-turn-north-west.png",
+    "helmet-carry-turn-south-west.png"
+  ],
+  "visualReviewPending": false,
+  "scope": "Read-only selected dry carry turns, both gears, actual grid literal load override order; no native execution or natural scheduling. Alpha crown/head-band/foot union diagnostics are not anatomical segmentation or visual acceptance. Registered at actual pivots/H148 without any resize or per-pose fitting.",
+  "inputSha256": {
+    "scripts/grid_canvas.gd": "fa0aff92ea3e164ce7a1d5d89aff1345a45ae10cc0cba74eb261605075b3b6c3",
+    "character/crew-runtime-matte-v1/branforth/manifest.json": "770ac815ba88e5f6b48378db0b26268e2d45f037bc252ea97b53c70dee11964a",
+    "character/james-cargo-turn-east-south-height-v3/bare-manifest.json": "cdc5633def0150d1c3fea32ca53052412915a9d22b0f1d8483c16921b378f6bd",
+    "character/james-cargo-turn-east-south-height-v3/helmet-manifest.json": "fede81a7cffb94f6769e823f45c5783c94a888b49a7dda83039cbbd0d396d2fe",
+    "character/james-cargo-turn-south-west-v1/bare-manifest.json": "6408fe1620a79f29974e300c94a04e87593e6341c783ae992fb9514f0fca98d9",
+    "character/james-cargo-turn-south-west-v1/helmet-manifest.json": "e095c891fc326ee69a94c4efba164ef2149687babd17ba3e2db99b9d623f3ba9",
+    "character/james-cargo-half-turns-v1/bare-manifest.json": "15f9ff047fb684a0ed00506fa69af1f04457d8683be5ff4ac158fd26ddea9b91",
+    "character/james-cargo-half-turns-v1/helmet-manifest.json": "b82f2404cab5df1014c987115ba663b223a5f24960e53710487ad2bb4c9a86a5",
+    "character/james-cargo-turn-north-west-v1/bare-manifest.json": "bc4ce16f1af7ef084c9b132e246d5197c186fea86746a0e8defe6d84e35d95e5",
+    "character/james-cargo-turn-north-west-v1/helmet-manifest.json": "6b6f8c2e0e8e6975ccf66b25e3715b6a0b4f6742ea27ae352d2b22259cd74251",
+    "character/james-cargo-turn-east-north-v1/bare-manifest.json": "4e25cf05d0eeea2dbb63b8182b56e12f85102af32052dd875c5fcff9e3d9fee4",
+    "character/james-cargo-turn-east-north-v1/helmet-manifest.json": "ea9df12a65be9d8a2f3109dc33e0250ad6e17d684d930da4fd933e9b1d126edf",
+    "character/james-cargo-north-v1/bare-manifest.json": "eaa1645ee9ff6a17c2aaada6e418a2ae382d1ce5a9c237ec72fb1c4751854af1",
+    "character/james-cargo-north-v1/helmet-manifest.json": "07ed0951bba7f316fa2886dc07fe54a7445b3a5f833cf67f91f64af6d573a5ab",
+    "character/james-cargo-south-v1/bare-manifest.json": "e1ba69c5ac5188fdec96c7c846cb3c325e4e88b975e7a24c65419fb64cf56403",
+    "character/james-cargo-south-v1/helmet-manifest.json": "1c8e80bd9968a6eda35a89dfdfad6d981641f53e4323ce130c9d52ad6bdd23c0",
+    "character/james-cargo-west-v1/bare-manifest.json": "5dc5909fb55f31aefd86b56500595cc7e97cec992045e2f1df91543cc62f8cd6",
+    "character/james-cargo-west-v1/helmet-manifest.json": "b57cd8feaf42809b4d09d0a9e170cd7a2c56118930dde94433e9c39a7e31e234",
+    "character/james-cargo-east-height-v3/bare-manifest.json": "90f9564dd9b577f38868634c6500a79bb6db7d562a33c58bc3ba7054fa41b0b3",
+    "character/james-cargo-east-height-v3/helmet-manifest.json": "666778b4c91c06247b1f8ca7f7bf6017b663b3470dc1d51617072c3e6c9f70eb",
+    "character/james-cargo-material-joined-v1/bare-manifest.json": "76bf74bbb7af94f45eae206a3f68da6ef51e2449265c69b9ef4530eb2032e692",
+    "character/james-cargo-material-joined-v1/helmet-manifest.json": "b0f37b53a44888926550ab93115d7ec7ac4a83c8366c46ad779e96819974c560",
+    "character/james-east-cargo-heads-v3/bare-manifest.json": "8500e42309cffb0ce3e27ea7cf5924924a2484ac616077fb86cb02c08e47cd98",
+    "character/james-east-cargo-heads-v3/helmet-manifest.json": "3bceb5656e812c264acfae35edb62871cda5a05250142041b6194646c6b4bfac",
+    "character/james-shared-helmet-runtime-v1/manifest.json": "f06ecda249e4f8d1d10e884a41e2518441a26ae92a5351d57c7f1b2045d6f714",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png": "d6a4cea288e0bfbdeea7bfa1f825d7a24eb6e2a7d577dda72660a17301d188bb",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-south-matte-v2/000.png": "52da4bfd934271dd35b34f8a362344bafe28ae59e4e6c5110515fdd6f117b082",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-east-breathing-v1/000.png": "43ed6440ea46b380fdda9916d6fb3e01cc76147ec941636c1b639159880d8135",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-west-breathing-v1/000.png": "87d07ba644bb5b85179769377c4003479c2a8c71a098841780bd11d155181a29",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/000.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/001.png": "1054ce2a8f703d679c724e1333f192fff70fe4b6b0080c6805d5d2ec575d5b58",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/002.png": "df286d1622e6331be9c80708dbb88b1bbbe98c50d96383f8af5b910d8557b8e0",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/003.png": "c7c99803a8bad240cca46ed82fc38a7ba3a75d16eaed2f675ca5fec467b3d450",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/004.png": "e72367c06eae1f5d852e0d30d24a030fe7e15ffb14f6e43c95eaba17c1b151c4",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/005.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/000.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/001.png": "e5285c6a8b9073fa82fcc0a369367aecd3954b93887b898653d159cb9d6399aa",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/002.png": "325d4c7ee22e500630748ed18e3b006c3b66bf71047405d88cae3aeeecaffee2",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/003.png": "317a42d470fd5f78239eae663a7f2833f2c6c09573216633221dc280cf1b1f15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/004.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/005.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/000.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/001.png": "e5285c6a8b9073fa82fcc0a369367aecd3954b93887b898653d159cb9d6399aa",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/002.png": "325d4c7ee22e500630748ed18e3b006c3b66bf71047405d88cae3aeeecaffee2",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/003.png": "317a42d470fd5f78239eae663a7f2833f2c6c09573216633221dc280cf1b1f15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/004.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/005.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/006.png": "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/007.png": "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/008.png": "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/009.png": "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/010.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/000.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/001.png": "e72367c06eae1f5d852e0d30d24a030fe7e15ffb14f6e43c95eaba17c1b151c4",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/002.png": "c7c99803a8bad240cca46ed82fc38a7ba3a75d16eaed2f675ca5fec467b3d450",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/003.png": "df286d1622e6331be9c80708dbb88b1bbbe98c50d96383f8af5b910d8557b8e0",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/004.png": "1054ce2a8f703d679c724e1333f192fff70fe4b6b0080c6805d5d2ec575d5b58",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-north-east/005.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/000.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/001.png": "e72367c06eae1f5d852e0d30d24a030fe7e15ffb14f6e43c95eaba17c1b151c4",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/002.png": "c7c99803a8bad240cca46ed82fc38a7ba3a75d16eaed2f675ca5fec467b3d450",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/003.png": "949909be72b2c933db13d0962e18d240a0f47711d9c3e82eb4f28206164532e1",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/004.png": "0de69eea04681124e86f37e00a1d21cada444d6151b4acdd9ccf5ea36be88b50",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/005.png": "e6dfc598b6a2df8c959ca226bbb2bec796fa756af8c02eece4d4f46fe81869ea",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/006.png": "6f5d422bf7d8cf8687f4d76ebb8cc74692a6b66387ff87232991c6348ec0a33e",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/007.png": "cf1614e6114eefc71c77c92694b1a41c183f6af88e5a1f3cffe6051d83de39b3",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/008.png": "5b15cb1cb77b8fe05005da529d711d9b01ef7f52d0f6a735e8844db961e4fdfd",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/009.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/010.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/000.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/001.png": "8e225f55bdcc303c8ea87ce0235440b6fc7ee05932c9330026e3ac178d87946d",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/002.png": "40622b8a28f53df0032c0783db0d4025d58132f855f21850d991f4b285973f18",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/003.png": "173a61f4b4fb9ddf52961c6bddd8c5cdeb1df4e853020b43ca724aa0052f0466",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/004.png": "0841b0d2120ad232ccb388087d2d6033c1d43f7781608a4e1fe12b28ab88e7bb",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-north-west/005.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/000.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/001.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/002.png": "317a42d470fd5f78239eae663a7f2833f2c6c09573216633221dc280cf1b1f15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/003.png": "325d4c7ee22e500630748ed18e3b006c3b66bf71047405d88cae3aeeecaffee2",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/004.png": "e5285c6a8b9073fa82fcc0a369367aecd3954b93887b898653d159cb9d6399aa",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-south-east/005.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/000.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/001.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/002.png": "5b15cb1cb77b8fe05005da529d711d9b01ef7f52d0f6a735e8844db961e4fdfd",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/003.png": "cf1614e6114eefc71c77c92694b1a41c183f6af88e5a1f3cffe6051d83de39b3",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/004.png": "6f5d422bf7d8cf8687f4d76ebb8cc74692a6b66387ff87232991c6348ec0a33e",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/005.png": "e6dfc598b6a2df8c959ca226bbb2bec796fa756af8c02eece4d4f46fe81869ea",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/006.png": "0de69eea04681124e86f37e00a1d21cada444d6151b4acdd9ccf5ea36be88b50",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/007.png": "949909be72b2c933db13d0962e18d240a0f47711d9c3e82eb4f28206164532e1",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/008.png": "c7c99803a8bad240cca46ed82fc38a7ba3a75d16eaed2f675ca5fec467b3d450",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/009.png": "e72367c06eae1f5d852e0d30d24a030fe7e15ffb14f6e43c95eaba17c1b151c4",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-south-north/010.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/000.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/001.png": "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/002.png": "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/003.png": "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/004.png": "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-south-west/005.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/000.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/001.png": "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/002.png": "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/003.png": "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/004.png": "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/005.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/006.png": "bf7e3e13ce390bcec0c3c6b28da268ac80abcc86efbac919d720bf2ee0b15a57",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/007.png": "317a42d470fd5f78239eae663a7f2833f2c6c09573216633221dc280cf1b1f15",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/008.png": "325d4c7ee22e500630748ed18e3b006c3b66bf71047405d88cae3aeeecaffee2",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/009.png": "e5285c6a8b9073fa82fcc0a369367aecd3954b93887b898653d159cb9d6399aa",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-turn-west-east/010.png": "034e42a3011615fa0b3e64ea2dd252ed81537afaed7b4fae89a9d948da0c9dba",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/000.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/001.png": "0841b0d2120ad232ccb388087d2d6033c1d43f7781608a4e1fe12b28ab88e7bb",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/002.png": "173a61f4b4fb9ddf52961c6bddd8c5cdeb1df4e853020b43ca724aa0052f0466",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/003.png": "40622b8a28f53df0032c0783db0d4025d58132f855f21850d991f4b285973f18",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/004.png": "8e225f55bdcc303c8ea87ce0235440b6fc7ee05932c9330026e3ac178d87946d",
+    "character/james-cargo-turn-north-west-v1/frames/bare/carry-turn-west-north/005.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/000.png": "c29e76df26d68c5945a888b22ca52155d6a1af25f934a4ba834de8d422820461",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/001.png": "98d2453e3e3368bb8b702afe1b7d846472167a000b7218b8ff758a8e5ea41a15",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/002.png": "a99f9054c0dad1ee3a5aedaff1b8d401a0916cfdd6a6c76482e0967d212e0d87",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/003.png": "6625148b59401d5cf532ee436165af39c9b3e7239417412bf34d74e67f16021d",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/004.png": "36a60eea1b9033a283bf2b695d44cafdb2c4202e08c65d1de56732b945b89e9a",
+    "character/james-cargo-turn-south-west-v1/frames/bare/carry-turn-west-south/005.png": "bf8a958ea1c2757c7a081ed8f6776542a790a273919023b6967a6aa98759f490",
+    "character/james-shared-helmet-runtime-v1/frames/idle-north/000.png": "3fe641cbbc14ac4b854603efcbf007bc7784553f947807dac519e806916905c0",
+    "character/james-shared-helmet-runtime-v1/frames/idle-south/000.png": "26a1f382c97f19c00c69e35b1fa2d573ba3d84cf90ec1f390504941c06030dd6",
+    "character/james-shared-helmet-runtime-v1/frames/idle-east/000.png": "f450a3577154da92933be0b3db3b8f0b65a93df651aa3930373f9b278e7a4b17",
+    "character/james-shared-helmet-runtime-v1/frames/idle-west/000.png": "6578fe30a4413834c5bd5d3954bf5d9ebefa17ae35019ae345174cae6a7e0655",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/000.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/001.png": "9ecaaff0b5416af715c7c45ebebef94efe93877628952cd9da79c2f26539f613",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/002.png": "fff2a5a1a5848631d7968f922d754970358ba9e2ba3f8c35fad40200637a644f",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/003.png": "80d220691a1b56b3bb38dbacbb5f66d4b05b6fe2aa7293feaf0eaf97a3a3a3f2",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/004.png": "d174918dbebf7037d17edb15c9eb9736566d98c32322ac3f171123933bb6c796",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/005.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/000.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/001.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/002.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/003.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/004.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/005.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/000.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/001.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/002.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/003.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/004.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/005.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/006.png": "2fb1cdd7d2f4cd034541853fb53942ac03e2866da807fa6328ec247cdb61082a",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/007.png": "d266b8302425c1039a3095df71aaa72c0ba95cda15bd9a10ceb8e84ae26b0a92",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/008.png": "237634f8a96335b7352bd31f4de83675349ab96549237a24794fe83555f016ee",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/009.png": "6bf40783cececf6778b52588c43f0c1c4dda393cb11b3ed12186c23dc259c8d1",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/010.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/000.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/001.png": "d174918dbebf7037d17edb15c9eb9736566d98c32322ac3f171123933bb6c796",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/002.png": "80d220691a1b56b3bb38dbacbb5f66d4b05b6fe2aa7293feaf0eaf97a3a3a3f2",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/003.png": "fff2a5a1a5848631d7968f922d754970358ba9e2ba3f8c35fad40200637a644f",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/004.png": "9ecaaff0b5416af715c7c45ebebef94efe93877628952cd9da79c2f26539f613",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-north-east/005.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/000.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/001.png": "d174918dbebf7037d17edb15c9eb9736566d98c32322ac3f171123933bb6c796",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/002.png": "80d220691a1b56b3bb38dbacbb5f66d4b05b6fe2aa7293feaf0eaf97a3a3a3f2",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/003.png": "fff2a5a1a5848631d7968f922d754970358ba9e2ba3f8c35fad40200637a644f",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/004.png": "9ecaaff0b5416af715c7c45ebebef94efe93877628952cd9da79c2f26539f613",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/005.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/006.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/007.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/008.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/009.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-north-south/010.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/000.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/001.png": "941f16532f49d75198e5dc252897bd8efc8e1c87e0b60ae9e29ec2217957ab36",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/002.png": "9b756b8f69b6ae9d3339b7274dea965d48cce9346355a6a339a3b44dc4675386",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/003.png": "410c5072a2ac4e070bf085d35d2e11f4598124263bc580b12cab54428b844d28",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/004.png": "d6585e154323eacebaf721326350dab0a24909a349ba0f76cec87023439a8479",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-north-west/005.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/000.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/001.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/002.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/003.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/004.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-south-east/005.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/000.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/001.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/002.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/003.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/004.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/005.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/006.png": "9ecaaff0b5416af715c7c45ebebef94efe93877628952cd9da79c2f26539f613",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/007.png": "fff2a5a1a5848631d7968f922d754970358ba9e2ba3f8c35fad40200637a644f",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/008.png": "80d220691a1b56b3bb38dbacbb5f66d4b05b6fe2aa7293feaf0eaf97a3a3a3f2",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/009.png": "d174918dbebf7037d17edb15c9eb9736566d98c32322ac3f171123933bb6c796",
+    "character/james-cargo-half-turns-v1/frames/helmet/carry-turn-south-north/010.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/000.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/001.png": "2fb1cdd7d2f4cd034541853fb53942ac03e2866da807fa6328ec247cdb61082a",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/002.png": "d266b8302425c1039a3095df71aaa72c0ba95cda15bd9a10ceb8e84ae26b0a92",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/003.png": "237634f8a96335b7352bd31f4de83675349ab96549237a24794fe83555f016ee",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/004.png": "6bf40783cececf6778b52588c43f0c1c4dda393cb11b3ed12186c23dc259c8d1",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-south-west/005.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/000.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/001.png": "6bf40783cececf6778b52588c43f0c1c4dda393cb11b3ed12186c23dc259c8d1",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/002.png": "237634f8a96335b7352bd31f4de83675349ab96549237a24794fe83555f016ee",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/003.png": "d266b8302425c1039a3095df71aaa72c0ba95cda15bd9a10ceb8e84ae26b0a92",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/004.png": "2fb1cdd7d2f4cd034541853fb53942ac03e2866da807fa6328ec247cdb61082a",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/005.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/006.png": "e4e569769aa2fc2ff7d8c1352152a6ee18858374caafc279959446bdcd3d7de8",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/007.png": "5e6f31372313a999b124e0d27f1a63c0394233be2bfe3060b120d4c95610fe61",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/008.png": "ef2ccd1306def0f18c78ab2747743a687977564320bf3f1f2ea8e90439212dc7",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/009.png": "059ddb8dcff46125a03a8a8f98e38663d69c69b64bbfde0175eec8b5147d4b89",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-west-east/010.png": "102d700e4d4a6ea1949d94986219a17e5852facd25b5b6664c16393a7bf33ae0",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/000.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/001.png": "d6585e154323eacebaf721326350dab0a24909a349ba0f76cec87023439a8479",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/002.png": "410c5072a2ac4e070bf085d35d2e11f4598124263bc580b12cab54428b844d28",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/003.png": "9b756b8f69b6ae9d3339b7274dea965d48cce9346355a6a339a3b44dc4675386",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/004.png": "941f16532f49d75198e5dc252897bd8efc8e1c87e0b60ae9e29ec2217957ab36",
+    "character/james-cargo-turn-north-west-v1/frames/helmet/carry-turn-west-north/005.png": "8e988204a0984312d6c43e0d2505dc3720d1affc8709f22156e3d9db22854282",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/000.png": "565ca318a0c7bdab4361bac01c6b1a4c803fff54cfa780cceb2faba73333c123",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/001.png": "6bf40783cececf6778b52588c43f0c1c4dda393cb11b3ed12186c23dc259c8d1",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/002.png": "237634f8a96335b7352bd31f4de83675349ab96549237a24794fe83555f016ee",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/003.png": "d266b8302425c1039a3095df71aaa72c0ba95cda15bd9a10ceb8e84ae26b0a92",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/004.png": "2fb1cdd7d2f4cd034541853fb53942ac03e2866da807fa6328ec247cdb61082a",
+    "character/james-cargo-turn-south-west-v1/frames/helmet/carry-turn-west-south/005.png": "e0aebd147c6d7c422f9564d3fbb8133ced5df31bbd5e5faf579d44397c36e3b8",
+    "character/james-cargo-material-joined-v1/frames/bare/carry-north/000.png": "6837e76fb1bbfe39fc7b3e9862a0a7adfe8bc0a7328db7af91e3c4abc9070026",
+    "character/james-cargo-material-joined-v1/frames/bare/carry-south/000.png": "bdc257e8cfaab843ec9f40777212432b850029bb797f1c195826eb61e3946404",
+    "character/james-east-cargo-heads-v3/frames/bare/carry-east/000.png": "f08c6fc409ad8b06e5f41c1d3aab151a053582116e9a1c593de9cebeb55c3367",
+    "character/james-cargo-material-joined-v1/frames/bare/carry-west/000.png": "7508ba92f5bf2340b2d7df5d5d9f22523952fb7b6e936aebafe40733a3c3b433",
+    "character/james-cargo-material-joined-v1/frames/helmet/carry-north/000.png": "38170b50a6b4b48f068bde2cda5fdf1f509d1862fc662aaa48ed7d35a4ffdbab",
+    "character/james-cargo-material-joined-v1/frames/helmet/carry-south/000.png": "2c5308704ccfcf6e359271937e0557a8c52374206dd1796079f2a41517e1838c",
+    "character/james-east-cargo-heads-v3/frames/helmet/carry-east/000.png": "a4d8f5d85a1d4aad38ec032a729859e8d5d2a00deb85c30d8a6520305d944b11",
+    "character/james-cargo-material-joined-v1/frames/helmet/carry-west/000.png": "fbb20a3cd7f621ee74d957ed9917cce37474bc07440dcd526c1bfb8b1ef37ded"
+  },
+  "endpointFamilies": {
+    "bare/north": {
+      "board": "endpoints-bare-north.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-north",
+          "source": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/005.png",
+          "registeredRGBAsha256": "8c582937aae4ba6878bcc266b16fb4a2ff19e097a5fc5af869483e02d0299ed6",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 149,
+            "lowestAlpha32Row": 223,
+            "top24UnionWidthProxy": 28,
+            "footWindowUnionBounds": [
+              106,
+              204,
+              149,
+              224
+            ]
+          }
+        }
+      ]
+    },
+    "bare/south": {
+      "board": "endpoints-bare-south.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-south",
+          "source": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-south/005.png",
+          "registeredRGBAsha256": "99e7368ea07c60ffc9b099f18bda9c6535507d7a17b26b27fa72c01aa843f51e",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 148,
+            "lowestAlpha32Row": 224,
+            "top24UnionWidthProxy": 29,
+            "footWindowUnionBounds": [
+              104,
+              204,
+              156,
+              225
+            ]
+          }
+        }
+      ]
+    },
+    "bare/east": {
+      "board": "endpoints-bare-east.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-north",
+          "source": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-north/000.png",
+          "registeredRGBAsha256": "9ddd124523a77c42b980efd623cf95e11f777ba1e981d23df75cab4bd3936f0b",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 150,
+            "lowestAlpha32Row": 223,
+            "top24UnionWidthProxy": 25,
+            "footWindowUnionBounds": [
+              117,
+              204,
+              159,
+              224
+            ]
+          }
+        }
+      ]
+    },
+    "bare/west": {
+      "board": "endpoints-bare-west.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-west",
+          "source": "character/james-east-cargo-heads-v3/frames/bare/carry-turn-east-west/010.png",
+          "registeredRGBAsha256": "8248ed86acdf4b520ea786e9debaa1ce209f716748a54900215fae56cfda0a2f",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 148,
+            "lowestAlpha32Row": 225,
+            "top24UnionWidthProxy": 37,
+            "footWindowUnionBounds": [
+              104,
+              204,
+              139,
+              226
+            ]
+          }
+        }
+      ]
+    },
+    "helmet/north": {
+      "board": "endpoints-helmet-north.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-north",
+          "source": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/005.png",
+          "registeredRGBAsha256": "ba6d655e8fb73690970188f0dd338aa211a9ded530853db21524236485f4aac6",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 150,
+            "lowestAlpha32Row": 223,
+            "top24UnionWidthProxy": 33,
+            "footWindowUnionBounds": [
+              106,
+              204,
+              149,
+              224
+            ]
+          }
+        }
+      ]
+    },
+    "helmet/south": {
+      "board": "endpoints-helmet-south.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-south",
+          "source": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-south/005.png",
+          "registeredRGBAsha256": "4670091eb3bbfafc9c72d9053cad1d83a5d04cee90242d65bc2e0a4d9fc27cea",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 156,
+            "lowestAlpha32Row": 224,
+            "top24UnionWidthProxy": 39,
+            "footWindowUnionBounds": [
+              104,
+              204,
+              156,
+              225
+            ]
+          }
+        }
+      ]
+    },
+    "helmet/east": {
+      "board": "endpoints-helmet-east.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-north",
+          "source": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-north/000.png",
+          "registeredRGBAsha256": "ddd2d3add26d0b408682e09f1988c65c3349c0ede860919142b60c25dc61c06a",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 156,
+            "lowestAlpha32Row": 223,
+            "top24UnionWidthProxy": 35,
+            "footWindowUnionBounds": [
+              117,
+              204,
+              159,
+              224
+            ]
+          }
+        }
+      ]
+    },
+    "helmet/west": {
+      "board": "endpoints-helmet-west.png",
+      "distinctRegisteredTurnEndpointImages": 1,
+      "sources": [
+        {
+          "state": "carry-turn-east-west",
+          "source": "character/james-east-cargo-heads-v3/frames/helmet/carry-turn-east-west/010.png",
+          "registeredRGBAsha256": "d74104a7ddf05742ed3d9f29e1f797957c0836f2d0764f842d1f593a907acbf0",
+          "diagnostic": {
+            "alpha32CrownAboveRoot": 156,
+            "lowestAlpha32Row": 225,
+            "top24UnionWidthProxy": 35,
+            "footWindowUnionBounds": [
+              104,
+              204,
+              139,
+              226
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "checks": {
+    "turnStatesPerGear": 12,
+    "frameReferences": 184,
+    "allInputHashesUnchanged": true
+  },
+  "normalSelectionChanged": false,
+  "reviewedBoards": [
+    "bare-carry-turn-east-north.png",
+    "bare-carry-turn-east-south.png",
+    "bare-carry-turn-east-west.png",
+    "bare-carry-turn-north-south.png",
+    "bare-carry-turn-north-west.png",
+    "bare-carry-turn-south-west.png",
+    "helmet-carry-turn-east-north.png",
+    "helmet-carry-turn-east-south.png",
+    "helmet-carry-turn-east-west.png",
+    "helmet-carry-turn-north-south.png",
+    "helmet-carry-turn-north-west.png",
+    "helmet-carry-turn-south-west.png",
+    "endpoints-bare-north.png",
+    "endpoints-bare-south.png",
+    "endpoints-bare-east.png",
+    "endpoints-bare-west.png",
+    "endpoints-helmet-north.png",
+    "endpoints-helmet-south.png",
+    "endpoints-helmet-east.png",
+    "endpoints-helmet-west.png"
+  ],
+  "reviewedForwardPosePresentations": 92,
+  "reverseReferenceCoverage": 92,
+  "findings": [
+    "All twelve chronological boards/92forward pose presentations inspected with four selected standing idle references, plus eight same-direction endpoint comparison boards/full upper crops. Twelve reverse banks byte-identical in reverse order cover the other92references; not independently watched reverse cadence.",
+    "All selected dry turn endpoint variants share one identical registered whole pose per direction/gear. No cross-turn endpoint artwork repair needed from this source audit. Selected carry frame0 is a moving carry phase, not a stationary endpoint; stance differences are deliberate action differences.",
+    "Bare crown-to-root diagnostics148..150; helmet150..157. Camera-dependent shell projection contributes to height range, particularly rear vs side/front. No basis for whole-body height normalization. Alpha-crown/head-band/foot union measurements do not certify anatomical proportions.",
+    "Helmet SouthWest crowns156,156,154,156,157,156 and EastWest156,155,155,156,156,156,156,154,156,157,156 expose local dips/rebounds requiring enlarged collar/shell/source cadence comparison. NorthSouth150..156 rotation trend must be distinguished from vertical bob.",
+    "Matte dark fabric/yellow material broadly consistent on these full-size source boards; no blanket regrade selected. South legs retain planted turn stance; exact skeletal contact/continuous native motion remains unproven.",
+    "Original master source lineage beyond selected canonical idles, unrelated actions, natural game cadence, actual native renderer/room contexts and full-set acceptance remain outside this audit."
+  ],
+  "next": "Build enlarged registered shell/collar comparisons of SouthWest rows1-4 and EastWest rows5-9 beside shared angular helmet sources and canonical shells. Decide whether variation is camera projection, shell placement or shape drift before authoring coherent source repair. Retain normal V9 return bridge as separate unresolved join."
+}

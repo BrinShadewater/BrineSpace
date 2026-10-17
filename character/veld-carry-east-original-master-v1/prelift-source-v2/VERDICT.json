@@ -1,0 +1,30 @@
+{
+  "id": "4cedbbc8-4090-4fc5-bad3-9ce05271f0ae",
+  "folder": "prelift-source-v2",
+  "raw": "prelift-source-v2/raw-prelift-v2.png",
+  "prompt": "prelift-source-v2/prompt.txt",
+  "references": [
+    "../veld-east-held-original-master-v1/raw-held-v1.png"
+  ],
+  "status": "Completed; provisional near-standing initial clearance key",
+  "verdict": "Original-only minimal whole-pose source148/head26/upperbody42 matches original held148/26/42. Near opaque floor band122..130 vs held120..131, centroid126vs125.5; far distal floor219 vs original220. Output reads tiny whole-foot clearance, not confirmed requested toe-contact heel peel. Cloth71,69,68 vs66,64,63 lighter. Master/source and native both gear47/93/148 visually reviewed. Retain provisional source; no complete transition/physical-contact/final-grade acceptance.",
+  "nativeValidation": {
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 4.93,
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "targetedInputCount": 20,
+    "targetedInputsUnchanged": true,
+    "scope": "One paired whole-source transition key appearance at47/93/148 only; no full start/stop/physical contact or normal integration."
+  },
+  "bindings": {
+    "character/veld-carry-east-original-master-v1/prelift-source-v2/raw-prelift-v2.png": "153bd20e87c8d58f82de38fd78379bd19febe8d1f246c0f758189b2d9fc87ca8",
+    "character/veld-carry-east-original-master-v1/prelift-source-v2/prompt.txt": "be6a90b9dbd9e741ebf102aef0e78c16a5a35989ade6f9fc1cef5e4ab3cc6051",
+    "character/veld-carry-east-original-master-v1/prelift-source-v2/source-audit.json": "6ab31020cab1fc37ad4e4736429c22006f6e6352432d6872a734f8c5e32e05ba",
+    "character/veld-carry-east-original-master-v1/prelift-source-v2/key-record.json": "707375a904e953670bd31a3cd4b68c3a13070518486d3532df1798a390745a5e",
+    "output/veld-east-initial-step-v2/records.json": "7463ae918753877a9a2d861b385c3c72f77cc89e78f3b320a2304a9f4aceaadf",
+    "output/veld-east-initial-step-v2/bare-000-native.png": "4c764a98d64dab1c0d1d53ece2fdaf59759b51d9726ac09f52f90ec393fb6b2d",
+    "output/veld-east-initial-step-v2/helmet-000-native.png": "ffb818bc3f7163e5a988a94b77e5323737068865a3dfec634c33652f092e590e"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "status": "Retained whole study/native player reviewed; head/case drift; superseded by provisional source02",
+  "promptSha256": "77157a39bd3a1ddc807bca2df6a429e6b28abe9ddaa34433a9a3d522eb5e6dd9",
+  "orderedReferences": [
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-north-body-primary.png",
+      "sha256": "1a4b88d0a8d6adc6483f667ae1bdd22b51717457973134924554db082751c78e"
+    },
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-north-swim-endpoints.png",
+      "sha256": "522828a0d7f39725973f7fb6635ec8d9475fe49b9aefe272f4b4bf2148d35532"
+    },
+    {
+      "path": "character/marsh-loaded-swim-turn-material-v1/sources/east-north-old-motion-only.png",
+      "sha256": "4657922096a070104f5e7ec51bd06e18b37ef3e4e3fd5937fb2d716018bf6ee2"
+    },
+    {
+      "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+      "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    }
+  ],
+  "sourceFrames": [
+    {
+      "path": "character/marsh-v2/frames/bare/idle-east/000.png",
+      "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/000.png",
+      "sha256": "556895cbdfecee296d66223162f083964dcb4989d29ea9188f6756f1937e6fa0"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/001.png",
+      "sha256": "1a2eba2d6ce20a6c729730d381cc349309cfef58ff8351a2681b1f14553135dd"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/002.png",
+      "sha256": "5291d65cde349a871c02143571d9b4b7a0fedf85de29f7b8690169ce78b8d2f8"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/003.png",
+      "sha256": "d91cdabb65105c8584e49ea17c4dac8532267d8ff9c77e02fe39748d0e3c8134"
+    },
+    {
+      "path": "character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/004.png",
+      "sha256": "4f83f7dbf74fd265be53109046e8c7569c23a23f293d77efb0fb42a08d735502"
+    }
+  ],
+  "stagedEndpoints": [
+    {
+      "path": "character/marsh-loaded-swim-material-v1/east-loop-02-unselected/000.png",
+      "sha256": "769d9ddc7398cf034cc9e291b530ecdd8c209b5242c24897750ccd51b5d62878"
+    },
+    {
+      "path": "character/marsh-loaded-swim-material-v1/north-loop-04-unselected/000.png",
+      "sha256": "d8547536de099eb3b7508ddd56934555493f8c2f0c40f44b31419baaf92829c0"
+    }
+  ],
+  "selectedTurnManifest": {
+    "path": "character/marsh-master-repair-v1/manifest-p112-172.json",
+    "sha256": "eea915fbf893ea52b008ba4cf63e83c7dcc46e134b6bc451731899cbc028dc4d"
+  },
+  "selectedTurnState": {
+    "id": "swim-carry-turn-east-north",
+    "frameFiles": [
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/000.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/001.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/002.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/003.png",
+      "../../character/marsh-master-repair-v1/frames/swim-carry-turn-east-north/004.png"
+    ],
+    "frameDurationsMs": [
+      60,
+      90,
+      100,
+      90,
+      60
+    ],
+    "loop": false,
+    "facings": [
+      "east",
+      "east",
+      "north",
+      "north",
+      "north"
+    ],
+    "waterKinds": [
+      "transition",
+      "transition",
+      "transition",
+      "transition",
+      "transition"
+    ],
+    "waterPoses": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "depthOffsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "neutralOccupiedTargetHeight": 146,
+  "anglesFromEast": [
+    22.5,
+    45,
+    67.5
+  ],
+  "rules": "Whole prone yaw figures, one own-North neutral146 scale; progressive forward-case occlusion, no mirroring/patches/per-pose fit. Whole turn assembly requires visual/native checks.",
+  "generationId": "exec-e2328df4-1aeb-4006-9e84-add2b1680951",
+  "originalGeneratedPath": "C:/Users/Alex/.codex/generated_images/01a0fbf5-ac74-7c72-98e7-34736a220c96/exec-e2328df4-1aeb-4006-9e84-add2b1680951.png",
+  "rawSha256": "f0b4f7701d3f9c866a7ca8e0b614d8254872655ee4d341001eeac2fe0cda38ef"
+}

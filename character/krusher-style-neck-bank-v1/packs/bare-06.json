@@ -1,0 +1,56 @@
+{
+  "frameHeight": 256.0,
+  "frameWidth": 256.0,
+  "name": "Krusher Dom West cargo settle bare",
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "precomposed": true,
+  "standingHeight": 148.0,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "frameCount": 6.0,
+      "frameDurationsMs": [
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0,
+        80.0
+      ],
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/1d8ede0391339513455b1d16bd39ccafdd70f949842f95957d304c593e98c166.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a3fed51bf46922266e2d8936aba28c8dd6e36cb81b969cf3bb502d527437d6f7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b145a970c79a5b529e5e17dc1ad6d1370b0e059fa15ad8f98da9d67bf1260d1b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ea1436afbf5d3d35e1bfd5611170f823ab0cba15b825f11bde99ce267aedbe47.png",
+        "res://character/krusher-style-neck-bank-v1/frames/535d30d71301d7afd9f343e671254bd8dc5b14da9b24e052270c3a0930075d34.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7f631c87da064fb7c5b80637f414af53103b5cab6ddf5fa6e7dbe5f55188d5ba.png"
+      ],
+      "id": "carry-settle-west",
+      "loop": false,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling",
+        "sourceManifest": "res://character/james-cargo-return-bridges-v1/bare-joined-manifest-v9.json",
+        "profileRepair": "Exact frozen original root filter profile, no raster or clock change"
+      }
+    }
+  ]
+}

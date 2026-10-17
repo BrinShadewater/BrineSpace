@@ -1,0 +1,1235 @@
+{
+  "references": {
+    "south": 172.32451499118167,
+    "north": 165.75161588180978,
+    "east": 155.6657381615599,
+    "west": 159.91048177083331
+  },
+  "states": [
+    {
+      "key": "idle-south",
+      "ivoryMean": 171.74016626032687,
+      "reference": 172.32451499118167,
+      "gap": -0.5843487308547992
+    },
+    {
+      "key": "idle-north",
+      "ivoryMean": 165.8991983994505,
+      "reference": 165.75161588180978,
+      "gap": 0.14758251764072838
+    },
+    {
+      "key": "idle-east",
+      "ivoryMean": 157.10878065126516,
+      "reference": 155.6657381615599,
+      "gap": 1.4430424897052774
+    },
+    {
+      "key": "idle-west",
+      "ivoryMean": 160.46459874279,
+      "reference": 159.91048177083331,
+      "gap": 0.5541169719566881
+    },
+    {
+      "key": "walk-south",
+      "ivoryMean": 163.95114867737158,
+      "reference": 172.32451499118167,
+      "gap": -8.373366313810095
+    },
+    {
+      "key": "walk-north",
+      "ivoryMean": 158.52500707537627,
+      "reference": 165.75161588180978,
+      "gap": -7.226608806433518
+    },
+    {
+      "key": "walk-east",
+      "ivoryMean": 150.9056147467611,
+      "reference": 155.6657381615599,
+      "gap": -4.760123414798784
+    },
+    {
+      "key": "walk-west",
+      "ivoryMean": 155.91532426627458,
+      "reference": 159.91048177083331,
+      "gap": -3.9951575045587333
+    },
+    {
+      "key": "run-south",
+      "ivoryMean": 168.5194732611201,
+      "reference": 172.32451499118167,
+      "gap": -3.8050417300615607
+    },
+    {
+      "key": "run-north",
+      "ivoryMean": 166.4876809062505,
+      "reference": 165.75161588180978,
+      "gap": 0.7360650244407054
+    },
+    {
+      "key": "run-east",
+      "ivoryMean": 149.7728779725794,
+      "reference": 155.6657381615599,
+      "gap": -5.892860188980478
+    },
+    {
+      "key": "run-west",
+      "ivoryMean": 155.24535444535445,
+      "reference": 159.91048177083331,
+      "gap": -4.665127325478863
+    },
+    {
+      "key": "weld-north",
+      "ivoryMean": 172.33966578715916,
+      "reference": 165.75161588180978,
+      "gap": 6.588049905349379
+    },
+    {
+      "key": "weld-east",
+      "ivoryMean": 160.13435636189377,
+      "reference": 155.6657381615599,
+      "gap": 4.468618200333879
+    },
+    {
+      "key": "weld-west",
+      "ivoryMean": 162.33078664402942,
+      "reference": 159.91048177083331,
+      "gap": 2.420304873196102
+    },
+    {
+      "key": "repair-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "repair-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "repair-east",
+      "ivoryMean": 173.69021065675338,
+      "reference": 155.6657381615599,
+      "gap": 18.024472495193493
+    },
+    {
+      "key": "repair-west",
+      "ivoryMean": 174.09913169319827,
+      "reference": 159.91048177083331,
+      "gap": 14.18864992236496
+    },
+    {
+      "key": "interact-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "interact-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "interact-east",
+      "ivoryMean": 173.14069102659707,
+      "reference": 155.6657381615599,
+      "gap": 17.47495286503718
+    },
+    {
+      "key": "interact-west",
+      "ivoryMean": 172.6190811064229,
+      "reference": 159.91048177083331,
+      "gap": 12.708599335589582
+    },
+    {
+      "key": "inspect-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "inspect-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "inspect-east",
+      "ivoryMean": 173.14069102659707,
+      "reference": 155.6657381615599,
+      "gap": 17.47495286503718
+    },
+    {
+      "key": "inspect-west",
+      "ivoryMean": 172.6190811064229,
+      "reference": 159.91048177083331,
+      "gap": 12.708599335589582
+    },
+    {
+      "key": "salvage-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "salvage-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "salvage-east",
+      "ivoryMean": 173.14069102659707,
+      "reference": 155.6657381615599,
+      "gap": 17.47495286503718
+    },
+    {
+      "key": "salvage-west",
+      "ivoryMean": 172.6190811064229,
+      "reference": 159.91048177083331,
+      "gap": 12.708599335589582
+    },
+    {
+      "key": "unload-south",
+      "ivoryMean": 159.87530826905694,
+      "reference": 172.32451499118167,
+      "gap": -12.449206722124728
+    },
+    {
+      "key": "unload-north",
+      "ivoryMean": 160.4634878434671,
+      "reference": 165.75161588180978,
+      "gap": -5.288128038342677
+    },
+    {
+      "key": "unload-east",
+      "ivoryMean": 164.1409791459501,
+      "reference": 155.6657381615599,
+      "gap": 8.475240984390211
+    },
+    {
+      "key": "unload-west",
+      "ivoryMean": 164.5167873038289,
+      "reference": 159.91048177083331,
+      "gap": 4.606305532995577
+    },
+    {
+      "key": "swim-south",
+      "ivoryMean": 169.92252937448197,
+      "reference": 172.32451499118167,
+      "gap": -2.4019856166997045
+    },
+    {
+      "key": "swim-north",
+      "ivoryMean": 168.13525396053916,
+      "reference": 165.75161588180978,
+      "gap": 2.3836380787293763
+    },
+    {
+      "key": "swim-east",
+      "ivoryMean": 160.70724993229177,
+      "reference": 155.6657381615599,
+      "gap": 5.041511770731887
+    },
+    {
+      "key": "swim-west",
+      "ivoryMean": 163.2301886239763,
+      "reference": 159.91048177083331,
+      "gap": 3.319706853142975
+    },
+    {
+      "key": "tread-south",
+      "ivoryMean": 172.72812543026296,
+      "reference": 172.32451499118167,
+      "gap": 0.4036104390812909
+    },
+    {
+      "key": "tread-north",
+      "ivoryMean": 168.6923260784763,
+      "reference": 165.75161588180978,
+      "gap": 2.9407101966665152
+    },
+    {
+      "key": "tread-east",
+      "ivoryMean": 152.78717968453958,
+      "reference": 155.6657381615599,
+      "gap": -2.878558477020306
+    },
+    {
+      "key": "tread-west",
+      "ivoryMean": 155.0990405567661,
+      "reference": 159.91048177083331,
+      "gap": -4.811441214067202
+    },
+    {
+      "key": "swim-distress-south",
+      "ivoryMean": 171.00191069574248,
+      "reference": 172.32451499118167,
+      "gap": -1.3226042954391914
+    },
+    {
+      "key": "swim-distress-north",
+      "ivoryMean": 157.61868475479724,
+      "reference": 165.75161588180978,
+      "gap": -8.13293112701254
+    },
+    {
+      "key": "swim-distress-east",
+      "ivoryMean": 156.10311096911175,
+      "reference": 155.6657381615599,
+      "gap": 0.437372807551867
+    },
+    {
+      "key": "swim-distress-west",
+      "ivoryMean": 160.5246613777462,
+      "reference": 159.91048177083331,
+      "gap": 0.6141796069128986
+    },
+    {
+      "key": "death-ground-south",
+      "ivoryMean": 172.5981276392843,
+      "reference": 172.32451499118167,
+      "gap": 0.2736126481026133
+    },
+    {
+      "key": "death-ground-north",
+      "ivoryMean": 167.99075474537693,
+      "reference": 165.75161588180978,
+      "gap": 2.239138863567149
+    },
+    {
+      "key": "death-ground-east",
+      "ivoryMean": 156.887604649903,
+      "reference": 155.6657381615599,
+      "gap": 1.2218664883431245
+    },
+    {
+      "key": "death-ground-west",
+      "ivoryMean": 161.25083288200221,
+      "reference": 159.91048177083331,
+      "gap": 1.3403511111689
+    },
+    {
+      "key": "death-water-south",
+      "ivoryMean": 169.59892162653642,
+      "reference": 172.32451499118167,
+      "gap": -2.725593364645249
+    },
+    {
+      "key": "death-water-north",
+      "ivoryMean": 160.8007102054567,
+      "reference": 165.75161588180978,
+      "gap": -4.950905676353074
+    },
+    {
+      "key": "death-water-east",
+      "ivoryMean": 155.03197691502993,
+      "reference": 155.6657381615599,
+      "gap": -0.6337612465299571
+    },
+    {
+      "key": "death-water-west",
+      "ivoryMean": 161.21622687291477,
+      "reference": 159.91048177083331,
+      "gap": 1.3057451020814597
+    },
+    {
+      "key": "kneel-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "kneel-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "kneel-east",
+      "ivoryMean": 173.14069102659707,
+      "reference": 155.6657381615599,
+      "gap": 17.47495286503718
+    },
+    {
+      "key": "kneel-west",
+      "ivoryMean": 172.6190811064229,
+      "reference": 159.91048177083331,
+      "gap": 12.708599335589582
+    },
+    {
+      "key": "stand-south",
+      "ivoryMean": 177.64925643815744,
+      "reference": 172.32451499118167,
+      "gap": 5.324741446975764
+    },
+    {
+      "key": "stand-north",
+      "ivoryMean": 171.05406613047364,
+      "reference": 165.75161588180978,
+      "gap": 5.30245024866386
+    },
+    {
+      "key": "stand-east",
+      "ivoryMean": 173.14069102659707,
+      "reference": 155.6657381615599,
+      "gap": 17.47495286503718
+    },
+    {
+      "key": "stand-west",
+      "ivoryMean": 172.6190811064229,
+      "reference": 159.91048177083331,
+      "gap": 12.708599335589582
+    },
+    {
+      "key": "sit-down-south",
+      "ivoryMean": 171.85107924785672,
+      "reference": 172.32451499118167,
+      "gap": -0.47343574332495564
+    },
+    {
+      "key": "sit-down-north",
+      "ivoryMean": 173.2048418661699,
+      "reference": 165.75161588180978,
+      "gap": 7.4532259843601025
+    },
+    {
+      "key": "sit-down-east",
+      "ivoryMean": 156.23811419680447,
+      "reference": 155.6657381615599,
+      "gap": 0.5723760352445879
+    },
+    {
+      "key": "sit-down-west",
+      "ivoryMean": 162.21354675676895,
+      "reference": 159.91048177083331,
+      "gap": 2.3030649859356345
+    },
+    {
+      "key": "lie-down-south",
+      "ivoryMean": 174.6901311249137,
+      "reference": 172.32451499118167,
+      "gap": 2.3656161337320327
+    },
+    {
+      "key": "lie-down-north",
+      "ivoryMean": 168.38666005529512,
+      "reference": 165.75161588180978,
+      "gap": 2.6350441734853405
+    },
+    {
+      "key": "lie-down-east",
+      "ivoryMean": 169.3876842371572,
+      "reference": 155.6657381615599,
+      "gap": 13.721946075597316
+    },
+    {
+      "key": "lie-down-west",
+      "ivoryMean": 164.294281768298,
+      "reference": 159.91048177083331,
+      "gap": 4.383799997464678
+    },
+    {
+      "key": "sit-rise-south",
+      "ivoryMean": 171.85107924785672,
+      "reference": 172.32451499118167,
+      "gap": -0.47343574332495564
+    },
+    {
+      "key": "sit-rise-north",
+      "ivoryMean": 173.2048418661699,
+      "reference": 165.75161588180978,
+      "gap": 7.4532259843601025
+    },
+    {
+      "key": "sit-rise-east",
+      "ivoryMean": 156.23811419680447,
+      "reference": 155.6657381615599,
+      "gap": 0.5723760352445879
+    },
+    {
+      "key": "sit-rise-west",
+      "ivoryMean": 162.21354675676895,
+      "reference": 159.91048177083331,
+      "gap": 2.3030649859356345
+    },
+    {
+      "key": "get-up-south",
+      "ivoryMean": 174.6901311249137,
+      "reference": 172.32451499118167,
+      "gap": 2.3656161337320327
+    },
+    {
+      "key": "get-up-north",
+      "ivoryMean": 168.38666005529512,
+      "reference": 165.75161588180978,
+      "gap": 2.6350441734853405
+    },
+    {
+      "key": "get-up-east",
+      "ivoryMean": 169.3876842371572,
+      "reference": 155.6657381615599,
+      "gap": 13.721946075597316
+    },
+    {
+      "key": "get-up-west",
+      "ivoryMean": 164.294281768298,
+      "reference": 159.91048177083331,
+      "gap": 4.383799997464678
+    },
+    {
+      "key": "sit-idle-south",
+      "ivoryMean": 171.37716971715014,
+      "reference": 172.32451499118167,
+      "gap": -0.9473452740315338
+    },
+    {
+      "key": "sit-idle-north",
+      "ivoryMean": 173.36231629909295,
+      "reference": 165.75161588180978,
+      "gap": 7.610700417283169
+    },
+    {
+      "key": "sit-idle-east",
+      "ivoryMean": 156.54009468898852,
+      "reference": 155.6657381615599,
+      "gap": 0.8743565274286311
+    },
+    {
+      "key": "sit-idle-west",
+      "ivoryMean": 162.24926365688765,
+      "reference": 159.91048177083331,
+      "gap": 2.338781886054335
+    },
+    {
+      "key": "read-seated-south",
+      "ivoryMean": 169.7231182795699,
+      "reference": 172.32451499118167,
+      "gap": -2.601396711611784
+    },
+    {
+      "key": "read-seated-north",
+      "ivoryMean": 173.46748757831068,
+      "reference": 165.75161588180978,
+      "gap": 7.715871696500898
+    },
+    {
+      "key": "read-seated-east",
+      "ivoryMean": 156.85008953696598,
+      "reference": 155.6657381615599,
+      "gap": 1.184351375406095
+    },
+    {
+      "key": "read-seated-west",
+      "ivoryMean": 163.2501540357363,
+      "reference": 159.91048177083331,
+      "gap": 3.339672264902987
+    },
+    {
+      "key": "sleep-south",
+      "ivoryMean": 179.31331569664903,
+      "reference": 172.32451499118167,
+      "gap": 6.988800705467355
+    },
+    {
+      "key": "sleep-north",
+      "ivoryMean": 167.197494633298,
+      "reference": 165.75161588180978,
+      "gap": 1.445878751488209
+    },
+    {
+      "key": "sleep-east",
+      "ivoryMean": 172.47760244188382,
+      "reference": 155.6657381615599,
+      "gap": 16.81186428032393
+    },
+    {
+      "key": "sleep-west",
+      "ivoryMean": 167.82415161313355,
+      "reference": 159.91048177083331,
+      "gap": 7.913669842300237
+    },
+    {
+      "key": "eat-south",
+      "ivoryMean": 173.78286169325438,
+      "reference": 172.32451499118167,
+      "gap": 1.4583467020727028
+    },
+    {
+      "key": "eat-north",
+      "ivoryMean": 165.99023580160141,
+      "reference": 165.75161588180978,
+      "gap": 0.23861991979163122
+    },
+    {
+      "key": "eat-east",
+      "ivoryMean": 162.08044720519234,
+      "reference": 155.6657381615599,
+      "gap": 6.414709043632456
+    },
+    {
+      "key": "eat-west",
+      "ivoryMean": 159.91048177083331,
+      "reference": 159.91048177083331,
+      "gap": 0.0
+    },
+    {
+      "key": "drink-south",
+      "ivoryMean": 177.02109879245444,
+      "reference": 172.32451499118167,
+      "gap": 4.696583801272766
+    },
+    {
+      "key": "drink-north",
+      "ivoryMean": 168.133927561846,
+      "reference": 165.75161588180978,
+      "gap": 2.3823116800362243
+    },
+    {
+      "key": "drink-east",
+      "ivoryMean": 162.67895815861252,
+      "reference": 155.6657381615599,
+      "gap": 7.01321999705263
+    },
+    {
+      "key": "drink-west",
+      "ivoryMean": 158.7021240926283,
+      "reference": 159.91048177083331,
+      "gap": -1.2083576782050045
+    },
+    {
+      "key": "pickup-south",
+      "ivoryMean": 159.87530826905694,
+      "reference": 172.32451499118167,
+      "gap": -12.449206722124728
+    },
+    {
+      "key": "pickup-north",
+      "ivoryMean": 160.4634878434671,
+      "reference": 165.75161588180978,
+      "gap": -5.288128038342677
+    },
+    {
+      "key": "pickup-east",
+      "ivoryMean": 164.1409791459501,
+      "reference": 155.6657381615599,
+      "gap": 8.475240984390211
+    },
+    {
+      "key": "pickup-west",
+      "ivoryMean": 164.5167873038289,
+      "reference": 159.91048177083331,
+      "gap": 4.606305532995577
+    },
+    {
+      "key": "recover-air-south",
+      "ivoryMean": 171.88122053828909,
+      "reference": 172.32451499118167,
+      "gap": -0.4432944528925873
+    },
+    {
+      "key": "recover-air-north",
+      "ivoryMean": 170.05176876987633,
+      "reference": 165.75161588180978,
+      "gap": 4.300152888066549
+    },
+    {
+      "key": "recover-air-east",
+      "ivoryMean": 156.5985545958845,
+      "reference": 155.6657381615599,
+      "gap": 0.9328164343246215
+    },
+    {
+      "key": "recover-air-west",
+      "ivoryMean": 160.75986161191236,
+      "reference": 159.91048177083331,
+      "gap": 0.8493798410790419
+    },
+    {
+      "key": "carry-south",
+      "ivoryMean": 161.20237031835745,
+      "reference": 172.32451499118167,
+      "gap": -11.12214467282422
+    },
+    {
+      "key": "carry-north",
+      "ivoryMean": 154.4577131581822,
+      "reference": 165.75161588180978,
+      "gap": -11.293902723627582
+    },
+    {
+      "key": "carry-east",
+      "ivoryMean": 156.4054100222782,
+      "reference": 155.6657381615599,
+      "gap": 0.7396718607183175
+    },
+    {
+      "key": "carry-west",
+      "ivoryMean": 160.91786282160905,
+      "reference": 159.91048177083331,
+      "gap": 1.0073810507757344
+    },
+    {
+      "key": "cargo-unload-south",
+      "ivoryMean": 159.87530826905694,
+      "reference": 172.32451499118167,
+      "gap": -12.449206722124728
+    },
+    {
+      "key": "cargo-unload-north",
+      "ivoryMean": 160.4634878434671,
+      "reference": 165.75161588180978,
+      "gap": -5.288128038342677
+    },
+    {
+      "key": "cargo-unload-east",
+      "ivoryMean": 164.1409791459501,
+      "reference": 155.6657381615599,
+      "gap": 8.475240984390211
+    },
+    {
+      "key": "cargo-unload-west",
+      "ivoryMean": 164.5167873038289,
+      "reference": 159.91048177083331,
+      "gap": 4.606305532995577
+    },
+    {
+      "key": "torch-draw-north",
+      "ivoryMean": 170.9034572733203,
+      "reference": 165.75161588180978,
+      "gap": 5.151841391510516
+    },
+    {
+      "key": "torch-draw-east",
+      "ivoryMean": 159.89906291834004,
+      "reference": 155.6657381615599,
+      "gap": 4.233324756780149
+    },
+    {
+      "key": "torch-draw-west",
+      "ivoryMean": 162.33078664402942,
+      "reference": 159.91048177083331,
+      "gap": 2.420304873196102
+    },
+    {
+      "key": "torch-stow-north",
+      "ivoryMean": 170.9034572733203,
+      "reference": 165.75161588180978,
+      "gap": 5.151841391510516
+    },
+    {
+      "key": "torch-stow-east",
+      "ivoryMean": 159.89906291834004,
+      "reference": 155.6657381615599,
+      "gap": 4.233324756780149
+    },
+    {
+      "key": "torch-stow-west",
+      "ivoryMean": 162.33078664402942,
+      "reference": 159.91048177083331,
+      "gap": 2.420304873196102
+    },
+    {
+      "key": "weld-south",
+      "ivoryMean": 171.20514828738513,
+      "reference": 172.32451499118167,
+      "gap": -1.119366703796544
+    },
+    {
+      "key": "torch-draw-south",
+      "ivoryMean": 174.69944354630866,
+      "reference": 172.32451499118167,
+      "gap": 2.374928555126985
+    },
+    {
+      "key": "torch-stow-south",
+      "ivoryMean": 174.69944354630866,
+      "reference": 172.32451499118167,
+      "gap": 2.374928555126985
+    },
+    {
+      "key": "walk-start-east",
+      "ivoryMean": 155.5027628700749,
+      "reference": 155.6657381615599,
+      "gap": -0.16297529148499734
+    },
+    {
+      "key": "walk-stop-east",
+      "ivoryMean": 155.2042200385548,
+      "reference": 155.6657381615599,
+      "gap": -0.461518123005078
+    },
+    {
+      "key": "walk-step-east",
+      "ivoryMean": 154.99677797305213,
+      "reference": 155.6657381615599,
+      "gap": -0.6689601885077536
+    },
+    {
+      "key": "walk-start-west",
+      "ivoryMean": 158.35551109688433,
+      "reference": 159.91048177083331,
+      "gap": -1.5549706739489864
+    },
+    {
+      "key": "walk-stop-west",
+      "ivoryMean": 158.20115381464643,
+      "reference": 159.91048177083331,
+      "gap": -1.7093279561868826
+    },
+    {
+      "key": "walk-step-west",
+      "ivoryMean": 160.22403480152258,
+      "reference": 159.91048177083331,
+      "gap": 0.3135530306892633
+    },
+    {
+      "key": "berth-lie-east",
+      "ivoryMean": 175.42178417825136,
+      "reference": 155.6657381615599,
+      "gap": 19.75604601669147
+    },
+    {
+      "key": "berth-sleep-east",
+      "ivoryMean": 178.3113466823714,
+      "reference": 155.6657381615599,
+      "gap": 22.64560852081152
+    },
+    {
+      "key": "berth-rise-east",
+      "ivoryMean": 175.42178417825136,
+      "reference": 155.6657381615599,
+      "gap": 19.75604601669147
+    },
+    {
+      "key": "bunk-enter-east",
+      "ivoryMean": 175.10877684407097,
+      "reference": 155.6657381615599,
+      "gap": 19.443038682511087
+    },
+    {
+      "key": "bunk-exit-east",
+      "ivoryMean": 175.10877684407097,
+      "reference": 155.6657381615599,
+      "gap": 19.443038682511087
+    },
+    {
+      "key": "bunk-sleep-east",
+      "ivoryMean": 175.10877684407097,
+      "reference": 155.6657381615599,
+      "gap": 19.443038682511087
+    },
+    {
+      "key": "swim-start-east",
+      "ivoryMean": 159.50710594315242,
+      "reference": 155.6657381615599,
+      "gap": 3.841367781592538
+    },
+    {
+      "key": "swim-stop-east",
+      "ivoryMean": 159.50710594315242,
+      "reference": 155.6657381615599,
+      "gap": 3.841367781592538
+    },
+    {
+      "key": "swim-start-west",
+      "ivoryMean": 163.77652582159624,
+      "reference": 159.91048177083331,
+      "gap": 3.8660440507629232
+    },
+    {
+      "key": "swim-stop-west",
+      "ivoryMean": 163.77652582159624,
+      "reference": 159.91048177083331,
+      "gap": 3.8660440507629232
+    },
+    {
+      "key": "swim-start-north",
+      "ivoryMean": 169.375,
+      "reference": 165.75161588180978,
+      "gap": 3.6233841181902164
+    },
+    {
+      "key": "swim-stop-north",
+      "ivoryMean": 169.375,
+      "reference": 165.75161588180978,
+      "gap": 3.6233841181902164
+    },
+    {
+      "key": "swim-start-south",
+      "ivoryMean": 168.68992248062014,
+      "reference": 172.32451499118167,
+      "gap": -3.634592510561532
+    },
+    {
+      "key": "swim-stop-south",
+      "ivoryMean": 168.68992248062014,
+      "reference": 172.32451499118167,
+      "gap": -3.634592510561532
+    },
+    {
+      "key": "swim-turn-east-north",
+      "ivoryMean": 170.50903614457832,
+      "reference": 165.75161588180978,
+      "gap": 4.757420262768534
+    },
+    {
+      "key": "swim-turn-north-east",
+      "ivoryMean": 170.50903614457832,
+      "reference": 155.6657381615599,
+      "gap": 14.84329798301843
+    },
+    {
+      "key": "swim-turn-west-north",
+      "ivoryMean": 170.4475550578574,
+      "reference": 165.75161588180978,
+      "gap": 4.695939176047602
+    },
+    {
+      "key": "swim-turn-north-west",
+      "ivoryMean": 170.4475550578574,
+      "reference": 159.91048177083331,
+      "gap": 10.537073287024072
+    },
+    {
+      "key": "swim-turn-east-south",
+      "ivoryMean": 174.22507122507122,
+      "reference": 172.32451499118167,
+      "gap": 1.9005562338895459
+    },
+    {
+      "key": "swim-turn-south-east",
+      "ivoryMean": 174.22507122507122,
+      "reference": 155.6657381615599,
+      "gap": 18.559333063511332
+    },
+    {
+      "key": "swim-turn-west-south",
+      "ivoryMean": 173.88843258042436,
+      "reference": 172.32451499118167,
+      "gap": 1.563917589242692
+    },
+    {
+      "key": "swim-turn-south-west",
+      "ivoryMean": 173.88843258042436,
+      "reference": 159.91048177083331,
+      "gap": 13.97795080959105
+    },
+    {
+      "key": "swim-turn-east-west",
+      "ivoryMean": 170.50903614457832,
+      "reference": 159.91048177083331,
+      "gap": 10.598554373745003
+    },
+    {
+      "key": "swim-turn-west-east",
+      "ivoryMean": 170.50903614457832,
+      "reference": 155.6657381615599,
+      "gap": 14.84329798301843
+    },
+    {
+      "key": "swim-turn-north-south",
+      "ivoryMean": 174.22507122507122,
+      "reference": 172.32451499118167,
+      "gap": 1.9005562338895459
+    },
+    {
+      "key": "swim-turn-south-north",
+      "ivoryMean": 174.22507122507122,
+      "reference": 165.75161588180978,
+      "gap": 8.473455343261435
+    },
+    {
+      "key": "carry-turn-east-north",
+      "ivoryMean": 164.40690281562215,
+      "reference": 165.75161588180978,
+      "gap": -1.3447130661876372
+    },
+    {
+      "key": "carry-turn-north-east",
+      "ivoryMean": 164.40690281562215,
+      "reference": 155.6657381615599,
+      "gap": 8.74116465406226
+    },
+    {
+      "key": "carry-turn-west-north",
+      "ivoryMean": 157.7122829043733,
+      "reference": 165.75161588180978,
+      "gap": -8.039332977436487
+    },
+    {
+      "key": "carry-turn-north-west",
+      "ivoryMean": 157.7122829043733,
+      "reference": 159.91048177083331,
+      "gap": -2.198198866460018
+    },
+    {
+      "key": "carry-turn-east-south",
+      "ivoryMean": 164.79549006474656,
+      "reference": 172.32451499118167,
+      "gap": -7.529024926435113
+    },
+    {
+      "key": "carry-turn-south-east",
+      "ivoryMean": 164.79549006474656,
+      "reference": 155.6657381615599,
+      "gap": 9.129751903186673
+    },
+    {
+      "key": "carry-turn-west-south",
+      "ivoryMean": 166.15549657155498,
+      "reference": 172.32451499118167,
+      "gap": -6.1690184196266955
+    },
+    {
+      "key": "carry-turn-south-west",
+      "ivoryMean": 166.15549657155498,
+      "reference": 159.91048177083331,
+      "gap": 6.245014800721663
+    },
+    {
+      "key": "carry-turn-east-west",
+      "ivoryMean": 159.88659591194966,
+      "reference": 159.91048177083331,
+      "gap": -0.02388585888365924
+    },
+    {
+      "key": "carry-turn-west-east",
+      "ivoryMean": 159.88659591194966,
+      "reference": 155.6657381615599,
+      "gap": 4.220857750389769
+    },
+    {
+      "key": "carry-turn-north-south",
+      "ivoryMean": 164.79549006474656,
+      "reference": 172.32451499118167,
+      "gap": -7.529024926435113
+    },
+    {
+      "key": "carry-turn-south-north",
+      "ivoryMean": 164.79549006474656,
+      "reference": 165.75161588180978,
+      "gap": -0.9561258170632243
+    },
+    {
+      "key": "swim-pickup-east",
+      "ivoryMean": 159.3624452821549,
+      "reference": 155.6657381615599,
+      "gap": 3.696707120595022
+    },
+    {
+      "key": "swim-carry-east",
+      "ivoryMean": 159.67754777070064,
+      "reference": 155.6657381615599,
+      "gap": 4.011809609140755
+    },
+    {
+      "key": "swim-pickup-west",
+      "ivoryMean": 160.23960514658506,
+      "reference": 159.91048177083331,
+      "gap": 0.3291233757517489
+    },
+    {
+      "key": "swim-carry-west",
+      "ivoryMean": 166.12227074235807,
+      "reference": 159.91048177083331,
+      "gap": 6.211788971524754
+    },
+    {
+      "key": "swim-pickup-north",
+      "ivoryMean": 165.38948436661298,
+      "reference": 165.75161588180978,
+      "gap": -0.36213151519680764
+    },
+    {
+      "key": "swim-carry-north",
+      "ivoryMean": 173.8318031486636,
+      "reference": 165.75161588180978,
+      "gap": 8.080187266853812
+    },
+    {
+      "key": "swim-pickup-south",
+      "ivoryMean": 163.9639974476266,
+      "reference": 172.32451499118167,
+      "gap": -8.360517543555062
+    },
+    {
+      "key": "swim-carry-south",
+      "ivoryMean": 156.70071589446593,
+      "reference": 172.32451499118167,
+      "gap": -15.623799096715743
+    },
+    {
+      "key": "swim-carry-turn-east-north",
+      "ivoryMean": 172.70243362831857,
+      "reference": 165.75161588180978,
+      "gap": 6.95081774650879
+    },
+    {
+      "key": "swim-carry-turn-north-east",
+      "ivoryMean": 172.70243362831857,
+      "reference": 155.6657381615599,
+      "gap": 17.036695466758687
+    },
+    {
+      "key": "swim-carry-turn-west-north",
+      "ivoryMean": 174.140350877193,
+      "reference": 165.75161588180978,
+      "gap": 8.388734995383203
+    },
+    {
+      "key": "swim-carry-turn-north-west",
+      "ivoryMean": 174.140350877193,
+      "reference": 159.91048177083331,
+      "gap": 14.229869106359672
+    },
+    {
+      "key": "swim-carry-turn-east-south",
+      "ivoryMean": 166.90324384787473,
+      "reference": 172.32451499118167,
+      "gap": -5.421271143306939
+    },
+    {
+      "key": "swim-carry-turn-south-east",
+      "ivoryMean": 166.90324384787473,
+      "reference": 155.6657381615599,
+      "gap": 11.237505686314847
+    },
+    {
+      "key": "swim-carry-turn-west-south",
+      "ivoryMean": 176.59679266895762,
+      "reference": 172.32451499118167,
+      "gap": 4.272277677775946
+    },
+    {
+      "key": "swim-carry-turn-south-west",
+      "ivoryMean": 176.59679266895762,
+      "reference": 159.91048177083331,
+      "gap": 16.686310898124304
+    },
+    {
+      "key": "swim-carry-turn-east-west",
+      "ivoryMean": 173.6573183760684,
+      "reference": 159.91048177083331,
+      "gap": 13.746836605235075
+    },
+    {
+      "key": "swim-carry-turn-west-east",
+      "ivoryMean": 173.6573183760684,
+      "reference": 155.6657381615599,
+      "gap": 17.991580214508502
+    },
+    {
+      "key": "swim-carry-turn-north-south",
+      "ivoryMean": 172.53957528957528,
+      "reference": 172.32451499118167,
+      "gap": 0.21506029839360963
+    },
+    {
+      "key": "swim-carry-turn-south-north",
+      "ivoryMean": 172.53957528957528,
+      "reference": 165.75161588180978,
+      "gap": 6.7879594077654986
+    },
+    {
+      "key": "cargo-drain-east",
+      "ivoryMean": 146.70970855322588,
+      "reference": 155.6657381615599,
+      "gap": -8.956029608334006
+    },
+    {
+      "key": "cargo-drain-west",
+      "ivoryMean": 154.9309932774711,
+      "reference": 159.91048177083331,
+      "gap": -4.979488493362226
+    },
+    {
+      "key": "cargo-drain-north",
+      "ivoryMean": 162.3019400646887,
+      "reference": 165.75161588180978,
+      "gap": -3.44967581712109
+    },
+    {
+      "key": "cargo-drain-south",
+      "ivoryMean": 171.75770683212295,
+      "reference": 172.32451499118167,
+      "gap": -0.5668081590587235
+    },
+    {
+      "key": "injury-ground-south",
+      "ivoryMean": 172.51537692518085,
+      "reference": 172.32451499118167,
+      "gap": 0.19086193399917306
+    },
+    {
+      "key": "injury-rise-south",
+      "ivoryMean": 172.5981276392843,
+      "reference": 172.32451499118167,
+      "gap": 0.2736126481026133
+    },
+    {
+      "key": "injury-ground-north",
+      "ivoryMean": 167.57009827276295,
+      "reference": 165.75161588180978,
+      "gap": 1.8184823909531644
+    },
+    {
+      "key": "injury-rise-north",
+      "ivoryMean": 167.99075474537693,
+      "reference": 165.75161588180978,
+      "gap": 2.239138863567149
+    },
+    {
+      "key": "injury-ground-east",
+      "ivoryMean": 157.77777905579836,
+      "reference": 155.6657381615599,
+      "gap": 2.1120408942384756
+    },
+    {
+      "key": "injury-rise-east",
+      "ivoryMean": 156.887604649903,
+      "reference": 155.6657381615599,
+      "gap": 1.2218664883431245
+    },
+    {
+      "key": "injury-ground-west",
+      "ivoryMean": 160.52968422207334,
+      "reference": 159.91048177083331,
+      "gap": 0.619202451240028
+    },
+    {
+      "key": "injury-rise-west",
+      "ivoryMean": 161.25083288200221,
+      "reference": 159.91048177083331,
+      "gap": 1.3403511111689
+    },
+    {
+      "key": "crew-chat-south",
+      "ivoryMean": 172.15926460370906,
+      "reference": 172.32451499118167,
+      "gap": -0.16525038747261078
+    },
+    {
+      "key": "crew-chat-north",
+      "ivoryMean": 165.8473449428024,
+      "reference": 165.75161588180978,
+      "gap": 0.09572906099262468
+    },
+    {
+      "key": "crew-chat-east",
+      "ivoryMean": 157.13901287162963,
+      "reference": 155.6657381615599,
+      "gap": 1.4732747100697452
+    },
+    {
+      "key": "crew-chat-west",
+      "ivoryMean": 159.91048177083331,
+      "reference": 159.91048177083331,
+      "gap": 0.0
+    }
+  ],
+  "policy": "Ivory mask means flag review; posture, illumination and skin can affect statistics."
+}

@@ -1,0 +1,55 @@
+{
+  "status": "installed_owner_accepted_north_cargo_v1",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-north",
+    "carry-north",
+    "unload-north"
+  ],
+  "source": "source.png",
+  "prompt": "prompt.txt",
+  "generationTool": "built-in imagegen",
+  "walkingGuide": "walking-pose-guide.png",
+  "sourceGuideIndices": [
+    0,
+    6,
+    12,
+    18,
+    24,
+    30
+  ],
+  "sourceSha256": "b5f3cfeb67bb06097324d93dcfcd1f1a8a160c4c9158a1319e8fcef02be9480e",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "fixedScale": 0.30515463917525776,
+  "durationMs": 840,
+  "strideDistanceCells": 0.0827027027027027,
+  "helmet": "Selected north repair shared shell, (33, 35)",
+  "palette": "Accepted material highlight compression and muted engineering gold; head region protected",
+  "case": "Held forward, mostly occluded by torso in rear view; backpack remains visible",
+  "checks": "150 packaging / 169 actual installed loader checks, 0 failures;12 native and36 production station captures",
+  "profileAudit": "Scratch APPDATA asserted; installed native saw concurrent power_demand_ui.meta plus Godot logs; station only2 rotated Godot logs changed, attribution unresolved; no owner files restored",
+  "visualReview": "Owner accepted complete north cargo; installed native and station captures inspected",
+  "review": "review-chain-v1.gif",
+  "remaining": [
+    "Carry direction transitions"
+  ],
+  "pickupSource": "source-pickup-v1.png",
+  "pickupPrompt": "prompt-pickup-v1.txt",
+  "pickupFixedScale": 0.2781954887218045,
+  "timingMs": {
+    "pickup-north": 520,
+    "carry-north": 840,
+    "unload-north": 520
+  },
+  "derivation": "Independent rear-view pickup; unload exact reverse; selected idle body with occluded forward floor case fragment behind legs and accepted carry frame0 endpoints; all12 carry PNGs byte-identical"
+}

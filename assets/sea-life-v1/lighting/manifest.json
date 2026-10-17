@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "lamp-glow-warm-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c965a6d134e8d7b1d2b46d0dcca9b4361aa59b6940ab0039ffa597acc085239e",
+      "tintable": true
+    },
+    {
+      "path": "lamp-glow-cool-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c965a6d134e8d7b1d2b46d0dcca9b4361aa59b6940ab0039ffa597acc085239e",
+      "tintable": true
+    },
+    {
+      "path": "lamp-glow-wide-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "306a40da9c65a838c5958c69dbc6d990437fd8bf7caf3899910b54f03ddcc164",
+      "tintable": true,
+      "usage": "review-only floor-pool variant"
+    },
+    {
+      "path": "light-shaft-256x1024.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "2928d387022dfbccda5d66d93014c5df4950da382213cd751fc5897af1178a07",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "light-shaft-256x1024-v2.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "2a7999624a77666aefa74766474dfb386f521f6bd8f4444d5050bfa874e85c38",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "light-shaft-256x1024-v3.png",
+      "dimensions": [
+        256,
+        1024
+      ],
+      "pivot": [
+        128,
+        512
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "d887716ad3b7910c2d694baa3f041bedf75c89b0ceb95ae9f00932421d0a1971",
+      "tintable": true,
+      "usage": "review-only; procedural shafts remain active"
+    },
+    {
+      "path": "caustics-tile-512.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "pivot": [
+        0,
+        0
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "c09dfd5041865f1ab71f298ade10c008b6ac3ed48a5d84922d8234fc621d6064",
+      "tintable": true,
+      "seamless": true,
+      "world_period_cells": 6
+    },
+    {
+      "path": "hull-bubbles-atlas.png",
+      "dimensions": [
+        128,
+        32
+      ],
+      "pivot": [
+        16,
+        16
+      ],
+      "fps": 0,
+      "frames": 4,
+      "sha256": "83bf2048083039a5ada250d8f0745ab094294ccf9955f47c974d93501a445e7d",
+      "cell": [
+        32,
+        32
+      ],
+      "grid": [
+        4,
+        1
+      ],
+      "rim_radius": 12,
+      "tintable": true
+    },
+    {
+      "path": "beacon-glow-128.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "fps": 0,
+      "frames": 1,
+      "sha256": "025e6ef9aee1a7a75bcfc8db3ec396fc2df33a3d1b4704a04069fb0fb4d0d52b",
+      "tintable": true,
+      "direction": "+x"
+    }
+  ],
+  "source": {
+    "path": "sources/caustics-painted-v2.png",
+    "sha256": "c6253a2e67c025d3e6a2e1b126dfa3ee8ed9140dac107d4b7dfa7bb7f32bd558"
+  },
+  "density": {
+    "lamp_world_units_per_art_pixel": 1.09375,
+    "lamp_Bayer_cluster_world_units": 2.1875,
+    "beacon_world_units_per_art_pixel": 0.8400000000000001,
+    "bubble_world_diameter_range": [
+      5.12,
+      11.2
+    ],
+    "bubble_art_rim_diameter": 24,
+    "caustic_world_units_per_texel": 4.5,
+    "caustic_note": "Optical field sampled linearly; texel density is not a physical object-detail standard.",
+    "shaft_note": "Review-only; 256x1024 authored size, no installed world scale."
+  },
+  "style_revision": "painted-v2: quiet broad caustics; finely uneven shafts/rims; dithered beacon"
+}

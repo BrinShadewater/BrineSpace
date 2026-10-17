@@ -1,0 +1,122 @@
+{
+  "name": "Veld master North\u2013West turn candidate bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_not_installed",
+  "states": [
+    {
+      "id": "carry-turn-north-west",
+      "frameFiles": [
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/000.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/001.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/002.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/003.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/004.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    },
+    {
+      "id": "carry-turn-west-north",
+      "frameFiles": [
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/005.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/004.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/003.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/002.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/001.png",
+        "res://character/veld-cargo-turns-master-family-v1/north-west-candidate-v4/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    }
+  ]
+}

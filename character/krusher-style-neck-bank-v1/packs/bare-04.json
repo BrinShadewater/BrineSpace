@@ -1,0 +1,1414 @@
+{
+  "name": "Krusher Dom bare seated and reading",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "sit-down-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c1783af54ca867c0dfc2fd8ce30463efa653a4a5d4f42dc4f178aecf4451582c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ca4e52f0b17bbd2ef49bd5e4b462920ef8e0e9b129490dcbb71d608b60db679d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7ac0cc732daa0ea4c09da4fc517bcf2d4ca2cfdf84abee4339efa4725629a9e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7daa371fa95f92b51cf004ddbceb17b0cf045ad396a1b8f3eeb91727109157c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4882ac8a0aeba52f1f91b2c97df61ad1d272c5a592e2ee4935ce32996e6bc394.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cd40dac52bcdeaf366f49a259ad466d0196b18221f3a268300903aed77d5a142.png",
+        "res://character/krusher-style-neck-bank-v1/frames/718842ecaab5e871ea666a4f98146a92f69121c7968c43b7c93a3ff1ea37e4f0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d86cc3e1b6b715057eea6c61f32ced2cef96775c8b0aae9991e3c6c86c15e3c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/735521535b0ef850d1cdb41d1b2aad055d904002e942ef20515b72837900bd1d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4882ac8a0aeba52f1f91b2c97df61ad1d272c5a592e2ee4935ce32996e6bc394.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7daa371fa95f92b51cf004ddbceb17b0cf045ad396a1b8f3eeb91727109157c5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7ac0cc732daa0ea4c09da4fc517bcf2d4ca2cfdf84abee4339efa4725629a9e2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ca4e52f0b17bbd2ef49bd5e4b462920ef8e0e9b129490dcbb71d608b60db679d.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c1783af54ca867c0dfc2fd8ce30463efa653a4a5d4f42dc4f178aecf4451582c.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6eb9aa14619cbff6552008c8ce404a764d0a6cae00882ef75b5d90592c8b656.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6eb9aa14619cbff6552008c8ce404a764d0a6cae00882ef75b5d90592c8b656.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c10185e8ace7d7a4da51cbc2cb00435e69949be0e00e285f792d68d55b40347c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c10185e8ace7d7a4da51cbc2cb00435e69949be0e00e285f792d68d55b40347c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c10185e8ace7d7a4da51cbc2cb00435e69949be0e00e285f792d68d55b40347c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c10185e8ace7d7a4da51cbc2cb00435e69949be0e00e285f792d68d55b40347c.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/230e52d4d221fae7a38e36b1b88bf8270c8ad56f9b355ab5a8ff77391a389d60.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c10185e8ace7d7a4da51cbc2cb00435e69949be0e00e285f792d68d55b40347c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6eb9aa14619cbff6552008c8ce404a764d0a6cae00882ef75b5d90592c8b656.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6eb9aa14619cbff6552008c8ce404a764d0a6cae00882ef75b5d90592c8b656.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b87444ca0b3f40368dd2f6be8ccc28deddd8dada9ac984daeaab2b71ebd18846.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/882bfb2fe2764c399502b32e4932c183c412814048ea8b62bf718d73438e5e89.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2c71ac41d0c2cb8d58e8c033a8ad1ad9c74e7a6cc0272dee6cd1e294e0614bb0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2a07e896123f95fa1b261e92fe4ffe44b179a033b2240a19844c9a8bda5426ea.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c0a4565819c1f32fa4a4eb670a94cb612261513b14367ecb455ec26abf799263.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0966bee272de150192c78b71f1b31965e4dd2ed0518fede31f7bc3066e57c357.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ea2b78b4598b363f2e0e10876b4f0f788a19b4f52476aa3e03ea8a7068f3ec32.png",
+        "res://character/krusher-style-neck-bank-v1/frames/be135d4c39aff598e08b1b172ee335c9af8ee0352bccd25a00bee4d0543b093c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f8f9a79321cc9010e08439d6aa9673e7ef394fdd2a835ddf7d7056be7a35a012.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7c1c1a09445b7f6e646ce5994e8de45b55d30e2d4411f54eae94e06dbaf6c5f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/0966bee272de150192c78b71f1b31965e4dd2ed0518fede31f7bc3066e57c357.png",
+        "res://character/krusher-style-neck-bank-v1/frames/c0a4565819c1f32fa4a4eb670a94cb612261513b14367ecb455ec26abf799263.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2a07e896123f95fa1b261e92fe4ffe44b179a033b2240a19844c9a8bda5426ea.png",
+        "res://character/krusher-style-neck-bank-v1/frames/2c71ac41d0c2cb8d58e8c033a8ad1ad9c74e7a6cc0272dee6cd1e294e0614bb0.png",
+        "res://character/krusher-style-neck-bank-v1/frames/882bfb2fe2764c399502b32e4932c183c412814048ea8b62bf718d73438e5e89.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1983bbd1626d5416e8790f715e0585fe6b61845673d761ff6d182733a0340a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1983bbd1626d5416e8790f715e0585fe6b61845673d761ff6d182733a0340a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1466b6355eb6eb3cf7853b57acb3f5a03544e2cd6d2b112d6ed7230b9557c30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1466b6355eb6eb3cf7853b57acb3f5a03544e2cd6d2b112d6ed7230b9557c30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1466b6355eb6eb3cf7853b57acb3f5a03544e2cd6d2b112d6ed7230b9557c30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1466b6355eb6eb3cf7853b57acb3f5a03544e2cd6d2b112d6ed7230b9557c30.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b1358341fd2705b06d546fd39d3b900a13b62ca2ceede6dfd47a098434c93a67.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1466b6355eb6eb3cf7853b57acb3f5a03544e2cd6d2b112d6ed7230b9557c30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1983bbd1626d5416e8790f715e0585fe6b61845673d761ff6d182733a0340a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/a1983bbd1626d5416e8790f715e0585fe6b61845673d761ff6d182733a0340a9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef31c7f828e30835ac5f39bec549beebfebc079acbe249f150de67915b7584d2.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/68502739ce8df93c749f2f3e8e478baeccd35991e8d4da54ae65082b8f4a09f9.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6bff2715c108e04975a26cf1a0788fcf3860f387301892e83ea292a55977d93.png",
+        "res://character/krusher-style-neck-bank-v1/frames/561534dce892927fa385e373a5025a9c8c1d582d6617ec6a1dbe0136489d0168.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ae8b6f30b11c4f8d949b31e3f208780fb17e376a9e4238f2adb89f2890f4ac04.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6e7c962814af5cc3f1385afc78f40fd87e3257d682645582bc248d05c5b85951.png",
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/7027390ced493b76e6ceb75a2aba4737dbdd91500d83971d6e56675746e0b4ab.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d947d8688449dddb79fa790c66871fc50e298ffa3a7406b1257483d91d01696e.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6308096b6f37e3283c1f3cc1a7aea201a02624f310e0359b6190408f2ce64f50.png",
+        "res://character/krusher-style-neck-bank-v1/frames/18e3a34574d8342699f4e84f0c23aa289c603d12aaf5495af4cd87358d0e3b7c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6e7c962814af5cc3f1385afc78f40fd87e3257d682645582bc248d05c5b85951.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ae8b6f30b11c4f8d949b31e3f208780fb17e376a9e4238f2adb89f2890f4ac04.png",
+        "res://character/krusher-style-neck-bank-v1/frames/561534dce892927fa385e373a5025a9c8c1d582d6617ec6a1dbe0136489d0168.png",
+        "res://character/krusher-style-neck-bank-v1/frames/f6bff2715c108e04975a26cf1a0788fcf3860f387301892e83ea292a55977d93.png",
+        "res://character/krusher-style-neck-bank-v1/frames/68502739ce8df93c749f2f3e8e478baeccd35991e8d4da54ae65082b8f4a09f9.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png",
+        "res://character/krusher-style-neck-bank-v1/frames/82c60d2afb0ff6117ec1995e7cf42fd1f80b66a1f7b535d6c45092083cdf519f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/82c60d2afb0ff6117ec1995e7cf42fd1f80b66a1f7b535d6c45092083cdf519f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b40062ae7684971b5ef76f25d9e4adb326d954b77f04e21dfc1035f69572dd30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b40062ae7684971b5ef76f25d9e4adb326d954b77f04e21dfc1035f69572dd30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b40062ae7684971b5ef76f25d9e4adb326d954b77f04e21dfc1035f69572dd30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b40062ae7684971b5ef76f25d9e4adb326d954b77f04e21dfc1035f69572dd30.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/71921987b0c738e0f61f97d60539328a2ce0603336289392e73d583058e9a9f3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/b40062ae7684971b5ef76f25d9e4adb326d954b77f04e21dfc1035f69572dd30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/82c60d2afb0ff6117ec1995e7cf42fd1f80b66a1f7b535d6c45092083cdf519f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/82c60d2afb0ff6117ec1995e7cf42fd1f80b66a1f7b535d6c45092083cdf519f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/503f4a6b1b4532280770cad4d69c5f3b96cdd6e58aaecc5200e40b1c93de02d5.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-down-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/fd6f0e8ed79f7de8b0897d803ec06fdd184998c2657b46860393a3cd13f8b633.png",
+        "res://character/krusher-style-neck-bank-v1/frames/95c36878592bca831327c8546eb03fc1af33b9cd71a55631dcc840593c68f4b3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4fc0443a461d3cd4b6c87e074f454e2c35a09947751f05e4833299674bbd5f02.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1c779c6bdfaea3c8c9c5f26a9b86719693ec3fdc1297b8546e56d71b44d8f75a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b17ce8963942634e487919f50d4d2a4723a7bdf95cec39f26f8214c3397e2cd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-idle-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8663be1aae7445760735caead27fbed61be8afd8bd3b1fa0e50ef242454ecda7.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3c08ad16afb84e2fe325aeb25a637aed77bb61295cc941defaca859edef6be41.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d3788e27cf148296803cf2ebe2c0b79275f2a8e1f3b98c64d6a815be0a9cc531.png",
+        "res://character/krusher-style-neck-bank-v1/frames/6d5799cffa0e3303ad4ab04c103ad5a2b0ecf1762c615b2f897be32a630d26fe.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "sit-rise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8b17ce8963942634e487919f50d4d2a4723a7bdf95cec39f26f8214c3397e2cd.png",
+        "res://character/krusher-style-neck-bank-v1/frames/1c779c6bdfaea3c8c9c5f26a9b86719693ec3fdc1297b8546e56d71b44d8f75a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4fc0443a461d3cd4b6c87e074f454e2c35a09947751f05e4833299674bbd5f02.png",
+        "res://character/krusher-style-neck-bank-v1/frames/95c36878592bca831327c8546eb03fc1af33b9cd71a55631dcc840593c68f4b3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fd6f0e8ed79f7de8b0897d803ec06fdd184998c2657b46860393a3cd13f8b633.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-enter-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3f1ce1679299ddf868b181d18b20ddcaa754ed92f56cbd66775c69e14814dde1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3f1ce1679299ddf868b181d18b20ddcaa754ed92f56cbd66775c69e14814dde1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7ed843d7abc5a873d64b6a973d89bb78a818d290d5e47565588655c550e579.png",
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7ed843d7abc5a873d64b6a973d89bb78a818d290d5e47565588655c550e579.png",
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7ed843d7abc5a873d64b6a973d89bb78a818d290d5e47565588655c550e579.png",
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7ed843d7abc5a873d64b6a973d89bb78a818d290d5e47565588655c550e579.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "read-seated-exit-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/df7d98c2ca11395f9757a7672b1a46d32f9813694db68d481811d21c73f1aa65.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8d7ed843d7abc5a873d64b6a973d89bb78a818d290d5e47565588655c550e579.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3f1ce1679299ddf868b181d18b20ddcaa754ed92f56cbd66775c69e14814dde1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3f1ce1679299ddf868b181d18b20ddcaa754ed92f56cbd66775c69e14814dde1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8256df0ca88df14a9cce079ebd496afe557e1f5879691067ef3e956472327181.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "reuse": "Selected James whole repair body/tool motion and per-state source timing",
+        "identity": "Tracked Krusher head/face, original helmet shell and muted cyan department patches",
+        "registration": "Original184canvas/foot92,172/standing148; no body rescaling"
+      }
+    }
+  ]
+}

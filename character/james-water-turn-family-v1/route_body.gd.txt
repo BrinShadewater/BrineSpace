@@ -1,0 +1,53 @@
+	var manifest:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(OUT+"bare-manifest.json"))
+	var deltas:Dictionary={"east":Vector2.RIGHT,"south":Vector2.DOWN,"west":Vector2.LEFT,"north":Vector2.UP}
+	for mode in ["bare","helmet"]:
+		npc.helmet_equipped=mode=="helmet";npc.movement_medium="flooded"
+		for entry in manifest.states:
+			var key:String=entry.id
+			var first:String=key.get_slice("-",2);var last:String=key.get_slice("-",3)
+			var gear:String="" if mode=="bare" else "diving-helmet"
+			var frames:Dictionary=player.frames if mode=="bare" else player.equipment_frames[gear]
+			var row:Array=frames[key]
+			var corner:=Vector2.INF;var start:=Vector2.INF;var finish:=Vector2.INF
+			for node in npc.graph.get_point_ids():
+				var at:Vector2=npc.graph.get_point_position(node)
+				var a:Vector2=at-deltas[first]*80;var b:Vector2=at+deltas[last]*80
+				if not npc.swim_segment_clear(a,at,first,first,true):continue
+				if not npc.swim_segment_clear(at,b,last,last,true):continue
+				if not npc.swim_segment_clear(at,b,last,last,false,npc.action_clearance[mode]["transition-"+last]):continue
+				if not npc.swim_segment_clear(a,at,first,first,false,npc.action_clearance[mode]["transition-"+first]):continue
+				corner=at;start=a;finish=b;break
+			check(corner.is_finite(),"Clear authored two-leg water path "+mode+key)
+			if not corner.is_finite():results.append({"mode":mode,"clip":key,"routeUnavailable":true});continue
+			npc.foot=start;npc.path=PackedVector2Array([corner,finish]);npc.stage="";npc.goal="curiosity";npc.goal_cell=ORIGIN;npc.state="walk";npc.direction=first;npc.timer=100;npc.expedition.clear()
+			player.current_key="";player.current_equipment=gear;player.motion.clear();player.last_time=-1;player.phase=0
+			game.visual_time_seconds=100.0
+			game.grid_view._get_branforth_frame(game)
+			var captured:Dictionary={};var seen:Dictionary={};var captures:Array=[];var sampled:=0;var completed:=false;var entered:=false
+			for tick in range(400):
+				if not npc.path.is_empty():npc.move(.04)
+				game.visual_time_seconds+=.04
+				var tex:Texture2D=game.grid_view._get_branforth_frame(game)
+				check(tex!=null,"Normal grid selected water texture "+key)
+				if tex==null:break
+				var active:String=player.motion.get("clip","")
+				if active==key:
+					entered=true
+					var slot:int=row.find(tex)
+					check(slot>=0,"Actual route turn selected staged pose "+key)
+					seen[slot]=true
+					var used:Rect2i=tex.get_image().get_used_rect();var sc:float=65.28/148.0
+					var body:=Rect2(npc.foot+(Vector2(used.position)-Vector2(128,128))*sc,Vector2(used.size)*sc)
+					var extent:Array=[body.position.x-npc.foot.x,body.position.y-npc.foot.y,body.end.x-npc.foot.x,body.end.y-npc.foot.y]
+					check(npc.swim_segment_clear(npc.foot,npc.foot,npc.direction,npc.direction,false,extent),"Actual turn alpha bounds clear navigation "+mode+key+str(tick));sampled+=1
+					if not captured.has(slot):
+						captured[slot]=true;captures.append(await capture(mode+"-"+key+"-"+str(slot).pad_zeros(3),npc))
+				elif entered:
+					completed=true;break
+			check(entered,"Requested turn exercised by actual NPC move "+mode+key)
+			check(seen.size()==row.size(),"All authored route turn poses observed "+mode+key)
+			check(completed,"Actual moving turn completes "+mode+key)
+			results.append({"mode":mode,"clip":key,"entered":entered,"completed":completed,"seenSlots":seen.keys(),"captures":captures,"envelopeSamples":sampled,"start":str(start),"corner":str(corner),"finish":str(finish)})
+	var file:=FileAccess.open(OUT+"route-evidence.json",FileAccess.WRITE);file.store_string(JSON.stringify({"checks":checks,"failures":failures,"scope":"24 explicitly authored collision-checked two-leg in-room paths through real NPC move and normal grid, staged manifest override; all quarter/reverse/half poses; not pathfinder-generated cross-room, exterior or traffic proof","results":results},"\t"));file.close()
+	print("JAMES WATER TURN ROUTES: ",checks," checks; ",failures," failures; ",results.size()," staged two-leg paths")
+	quit(1 if failures else 0)

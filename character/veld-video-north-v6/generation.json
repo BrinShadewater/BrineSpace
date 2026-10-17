@@ -1,0 +1,41 @@
+{
+  "job_id": "2256ee9e-dee6-4546-8f2c-276f142cff58",
+  "estimated_credits": 4,
+  "optimizer_verification": "Requested false; check returned job metadata. Cost preflight alone does not establish forwarding.",
+  "params": {
+    "model": "minimax_hailuo",
+    "variant": "minimax-2.3-fast",
+    "duration": 6,
+    "resolution": "768",
+    "count": 1,
+    "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "6a96e7b8-b0b8-4049-a38d-6de9c441a871"
+      }
+    ],
+    "prompt": "[Static shot] The character walks in place at a steady, natural pace, viewed directly from behind throughout the entire shot. Her back remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her design, colours, lighting and plain green background remain unchanged.",
+    "prompt_optimizer": false
+  },
+  "submission": {
+    "results": [
+      {
+        "id": "2256ee9e-dee6-4546-8f2c-276f142cff58",
+        "type": "video",
+        "status": "pending",
+        "model": "minimax_hailuo",
+        "params": {
+          "prompt": "[Static shot] The character walks in place at a steady, natural pace, viewed directly from behind throughout the entire shot. Her back remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her design, colours, lighting and plain green background remain unchanged.",
+          "duration": 6,
+          "reference_images": [
+            "6a96e7b8-b0b8-4049-a38d-6de9c441a871"
+          ],
+          "variant": "minimax-2.3-fast",
+          "resolution": "768",
+          "prompt_optimizer": false
+        }
+      }
+    ]
+  }
+}

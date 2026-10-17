@@ -1,0 +1,21 @@
+{
+  "version": 359,
+  "method": "Built-in image_gen edit",
+  "scope": "One unselected rear unloading crouch key; natural supported hip-width stance.",
+  "references": [
+    "character/james-cargo-north-v1/frames/bare/pickup-north/002.png",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/000.png",
+    "character/branforth-west-direct-v2/master-input.png",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png"
+  ],
+  "prompt": "Edit a BrineSpace game sprite. INPUT ROLES: first image is the edit target: James viewed directly from behind, midway through setting a cargo case down in front of him. Second image is the matching standing rear-view cargo pose for identity/equipment/proportions. Third image is the original high-resolution WEST master, STYLE/MATERIAL reference only; do NOT turn this into a side view. Fourth image is the canonical rear-view idle, rear anatomy and backpack reference. Output ONE isolated rear-view unloading crouch key pose on genuine transparent background, using the first image's square canvas composition, centered horizontal axis and ground line (both soles on same ground line). Make a focused anatomical correction: bring knees and boots into a natural hip-width supported crouch, approximately 20 percent narrower than first target's very wide legs; avoid bow-legged shape. Keep both boots fully planted, intact thighs/shins/connected hips, shallow stable bend, backpack and head above hips. Retain the exact character identity: short grey hair seen from behind, graphite matte padded suit, muted yellow shoulder plates, compact square dark backpack with yellow gear emblem, worn warm-metal cuffs and leg hardware, yellow utility belt pieces, wrench hanging visibly from the RIGHT side of belt. Both arms reach forward to the cargo case in FRONT of the body and are mostly foreshortened/occluded in this rear view; do not put a wrench or torch in either hand. Do not add visible cargo behind his knees or wrap a case around his calves. Keep the head, backpack, belt, hand/arm construction and boots recognizably consistent with reference 2/4. Use original-master curved fine quilt stitching and restrained matte graphite material without glossy highlights, purple/magenta colour cast, heavy black outlines or flat black patches. Preserve all equipment sides and count. This is one still animation key, not a sprite sheet: no text, no extra poses, no borders, no contact shadow, no scenery, no ground plane. Retain generous transparent padding as in input 1, not an enlarged character filling the square. Anatomical scale remains the same as input 1.",
+  "selected": false,
+  "normalChanged": false,
+  "referenceHashes": {
+    "character/james-cargo-north-v1/frames/bare/pickup-north/002.png": "de20d36104ed9a11a57c37cb69e0531761b4432e8472953124412316a0135016",
+    "character/james-cargo-half-turns-v1/frames/bare/carry-turn-north-south/000.png": "fc2d6b2f2516dbbcac80dbcb3e8b4a16d68e68998923f91e840bb0014db833a9",
+    "character/branforth-west-direct-v2/master-input.png": "6b78b2cbe6ae87a463b638296b4cf6f488f59ef1ae1a156c892902f7bcd8fe50",
+    "character/crew-runtime-matte-v1/branforth/frames/idle-north-breathing-v1/000.png": "d6a4cea288e0bfbdeea7bfa1f825d7a24eb6e2a7d577dda72660a17301d188bb"
+  },
+  "outputSha256": "e3fe09f6ea7cf330161c0557094a0b35b7b864db3c277b257b86cccc3be08ce3"
+}

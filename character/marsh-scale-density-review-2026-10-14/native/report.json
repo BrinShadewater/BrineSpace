@@ -1,0 +1,66 @@
+{
+	"captures": [
+		{
+			"actualGridZoom": 0.32,
+			"cases": [
+				[
+					"idle-south",
+					0
+				],
+				[
+					"eat-south",
+					3
+				],
+				[
+					"carry-south",
+					2
+				]
+			],
+			"nominalStandingScreenPixels": 32.6399992218018,
+			"zoom": "fit"
+		},
+		{
+			"actualGridZoom": 0.4446,
+			"cases": [
+				[
+					"idle-south",
+					0
+				],
+				[
+					"eat-south",
+					3
+				],
+				[
+					"carry-south",
+					2
+				]
+			],
+			"nominalStandingScreenPixels": 45.3491989187908,
+			"zoom": "normal"
+		},
+		{
+			"actualGridZoom": 0.8015625,
+			"cases": [
+				[
+					"idle-south",
+					0
+				],
+				[
+					"eat-south",
+					3
+				],
+				[
+					"carry-south",
+					2
+				]
+			],
+			"nominalStandingScreenPixels": 81.7593730507046,
+			"zoom": "close"
+		}
+	],
+	"checks": 4071,
+	"failures": 0,
+	"holds": 1198,
+	"scope": "All runtime source pixels/clocks/pivots/rulers; three prescribed idle/eat/carry texture overlays against real galley at fit/normal/close zoom. Not actor placement, live motion, furniture acceptance or release validation.",
+	"states": 228
+}

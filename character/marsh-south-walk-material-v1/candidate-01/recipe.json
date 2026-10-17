@@ -1,0 +1,187 @@
+{
+  "status": "rejected: internal calf/boot bands reveal geometry/detail mismatch",
+  "rawSha256": "2bfe4ece89647003dcb36502110de23785ec50ca1e1b7468d18650ee0302f6a1",
+  "frames": [
+    {
+      "slot": 0,
+      "cell": [
+        0,
+        0,
+        362,
+        724
+      ],
+      "generatedBounds": [
+        71,
+        73,
+        313,
+        666
+      ],
+      "originalBounds": [
+        63,
+        25,
+        122,
+        172
+      ],
+      "originalSha256": "1e7a3c7fbf172053f722460c0b8fda8be0af638567cb41808821a68e8e672f64",
+      "visiblePixels": 4918,
+      "mappedPixels": 4730,
+      "mappingCoverage": 0.96177307848719,
+      "sha256": "25949a50b45669980b799b212204e74f25b58211daf94b837de1007cd461a802",
+      "ivoryMeanBefore": 170.43381592554292,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 170.43381592554292
+    },
+    {
+      "slot": 1,
+      "cell": [
+        362,
+        0,
+        724,
+        724
+      ],
+      "generatedBounds": [
+        61,
+        73,
+        304,
+        670
+      ],
+      "originalBounds": [
+        61,
+        24,
+        121,
+        172
+      ],
+      "originalSha256": "8b1afcdac3017c6cd671d205240de31f72d7506aeebd577338dc6adacbdd9b3a",
+      "visiblePixels": 4942,
+      "mappedPixels": 4653,
+      "mappingCoverage": 0.9415216511533792,
+      "sha256": "4792418a0edacb862fc3def796c585edd64f659c40575f44fda575c24a16d52e",
+      "ivoryMeanBefore": 171.29660429660427,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 171.29660429660427
+    },
+    {
+      "slot": 2,
+      "cell": [
+        724,
+        0,
+        1086,
+        724
+      ],
+      "generatedBounds": [
+        59,
+        74,
+        305,
+        672
+      ],
+      "originalBounds": [
+        61,
+        24,
+        121,
+        170
+      ],
+      "originalSha256": "adf188ff43efba06b9601f92d903c956f7f97d54dd0c2c8b4607d90aefb43978",
+      "visiblePixels": 4919,
+      "mappedPixels": 4680,
+      "mappingCoverage": 0.9514128887985362,
+      "sha256": "c5c6058f5236a9fe5b9b26621dc82b0cc2254c107196fb4e670731107f6c5515",
+      "ivoryMeanBefore": 172.53687907676868,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 172.53687907676868
+    },
+    {
+      "slot": 3,
+      "cell": [
+        1086,
+        0,
+        1448,
+        724
+      ],
+      "generatedBounds": [
+        59,
+        77,
+        304,
+        669
+      ],
+      "originalBounds": [
+        63,
+        25,
+        122,
+        172
+      ],
+      "originalSha256": "234bc794826deb5c6b07626b3d4e6fb544681d9463cd529521c51a946071443d",
+      "visiblePixels": 4953,
+      "mappedPixels": 4708,
+      "mappingCoverage": 0.9505350292751867,
+      "sha256": "be30ce58cbf94d868a1b96331b061c46528a3596fc00ab5770e0db872163bc81",
+      "ivoryMeanBefore": 172.0549195287871,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 172.0549195287871
+    },
+    {
+      "slot": 4,
+      "cell": [
+        1448,
+        0,
+        1810,
+        724
+      ],
+      "generatedBounds": [
+        58,
+        81,
+        302,
+        673
+      ],
+      "originalBounds": [
+        64,
+        24,
+        123,
+        172
+      ],
+      "originalSha256": "655067b49235987be98f4154dbed968b25e04e5ded6ee4497120a5339a4cfeeb",
+      "visiblePixels": 4966,
+      "mappedPixels": 4655,
+      "mappingCoverage": 0.9373741441804269,
+      "sha256": "d81f057ee5817d3e7e24c25a8d3868f8a4fdfc0a8535ee6555a18ea9ed11b1d1",
+      "ivoryMeanBefore": 168.82164821648215,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 168.82164821648215
+    },
+    {
+      "slot": 5,
+      "cell": [
+        1810,
+        0,
+        2172,
+        724
+      ],
+      "generatedBounds": [
+        54,
+        73,
+        295,
+        669
+      ],
+      "originalBounds": [
+        64,
+        24,
+        124,
+        170
+      ],
+      "originalSha256": "5ca314a699a01032f5e04d569d920d6c7d450d47a61c31875dfc45d6b29dd70d",
+      "visiblePixels": 4926,
+      "mappedPixels": 4635,
+      "mappingCoverage": 0.940925700365408,
+      "sha256": "38110d85d893b4811229e2be3e10479c4fcd6d7e28ea5c3f29d7818e4be63bf9",
+      "ivoryMeanBefore": 171.80776992936427,
+      "sharedGain": 1.0,
+      "ivoryMeanAfter": 171.80776992936427
+    }
+  ],
+  "ivoryTarget": 172.32451499118167,
+  "pooledCandidateMedian": 171.55218711298426,
+  "sharedIvoryGain": 1.0,
+  "method": "Whole generated pose RGB mapped to corresponding original full-body bounds; original alpha geometry exactly retained; transparent mapped holes retain original pixels. Standard palette; one pooled ivory gain, never per-frame normalization. No limb/head patches or motion edits. This is internal material/detail mapping, not independently rescaled actor geometry. Inspect generated head/panel placement against preserved outline before accepting.",
+  "startEndpoint": "candidate01 gait4 byte-identical to staged south-start004; first4 start frames unchanged from candidate04",
+  "limits": "Not normal catalog selection, new motion authorship, native acceptance, service/safety/save/title Continue or cross-family completion.",
+  "rejection": "Alpha100% preserved but93.7\u201396.2%generated coverage and body-bound material mapping leave retained original leg/shin fragments, banded panel alignment. Static board reviewed: improved master head/material, insufficient limb/panel continuity. No normal selection/native acceptance."
+}

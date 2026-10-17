@@ -1,0 +1,3230 @@
+{
+  "status": "actor_distance_navigation_pass_concurrent_panel_changes",
+  "scope": "Actual Bill.update/move/arrive and distance-driven retained bare renderer in default furnished ColdStore. Candidate/selected same legal route. Explicit route and source binding, simulation stepped .02s with main/tick timer disabled; not autonomous goal choice, normal admission, gear/water or save/TitleContinue.",
+  "checks": 4064,
+  "failures": 0,
+  "traversals": [
+    {
+      "arrived": true,
+      "distance": 320.0,
+      "duration": 6.95999999999994,
+      "steps": 348,
+      "variant": "candidate",
+      "visitedSlots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    {
+      "arrived": true,
+      "distance": 320.0,
+      "duration": 6.95999999999994,
+      "steps": 348,
+      "variant": "selected",
+      "visitedSlots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    }
+  ],
+  "route": {
+    "left": [
+      7712.0,
+      8160.0
+    ],
+    "length": 320.0,
+    "right": [
+      8032.0,
+      8160.0
+    ]
+  },
+  "records": [
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 0,
+      "sourceFile": "source-000.png",
+      "variant": "candidate",
+      "worldFile": "world-000.png",
+      "simulationTimeMs": 20,
+      "durationMs": 80,
+      "worldSha256": "038df36811add5faa4845a9a0fdd061fdff5ef5d64502e58d4333aa478772e24",
+      "sourceSha256": "7e67f0116f0009dd52b174070e7d1b3f7a32abe9f80144b3e0dbddc57c9a1145"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 4,
+      "sourceFile": "source-001.png",
+      "variant": "candidate",
+      "worldFile": "world-001.png",
+      "simulationTimeMs": 100,
+      "durationMs": 80,
+      "worldSha256": "61ca0f729daec3513972621ee2850ab59634fdfa4906966432495985407e1f8b",
+      "sourceSha256": "8f308aecf88844d155a90c568aa36f17f73279a5b4b26e8909c6b554edad8f3f"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 8,
+      "sourceFile": "source-002.png",
+      "variant": "candidate",
+      "worldFile": "world-002.png",
+      "simulationTimeMs": 180,
+      "durationMs": 80,
+      "worldSha256": "720d4f0ea20e18fc71d0cf9058f81be29385e9f20680314760702f93efdc0f75",
+      "sourceSha256": "6a8ce9a6f153916da63ff957b8a9b4f15bb6a77e7d83f23a3edae2a2f2dc5789"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 12,
+      "sourceFile": "source-003.png",
+      "variant": "candidate",
+      "worldFile": "world-003.png",
+      "simulationTimeMs": 260,
+      "durationMs": 140,
+      "worldSha256": "4723c846d171d407d77f7db4d6f2dbc00543c6e21778c3866e64658deade19f5",
+      "sourceSha256": "825a70c0639f86b4aefac004f777a8c97947a4c4d646c58e944bad8253ea890f"
+    },
+    {
+      "foot": [
+        7715.6796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 2,
+      "sourceFile": "source-004.png",
+      "variant": "candidate",
+      "worldFile": "world-004.png",
+      "simulationTimeMs": 400,
+      "durationMs": 80,
+      "worldSha256": "4847c2e53eaa7939906391eadca424f2aede265a250cd7b7665825f48228c2cf",
+      "sourceSha256": "d898a6e1d15b15ae57d23b513d6986ec1f9529896737470b3162e4deb183c9b9"
+    },
+    {
+      "foot": [
+        7719.359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-005.png",
+      "variant": "candidate",
+      "worldFile": "world-005.png",
+      "simulationTimeMs": 480,
+      "durationMs": 80,
+      "worldSha256": "98726d727e2adbc2faeeb7a2273cffdec83fab13b0cb731f77c5ca2dbc218029",
+      "sourceSha256": "ea00823f4110e4703b2653504b2aea42db52e6b51f7119b4047155140df74c95"
+    },
+    {
+      "foot": [
+        7723.0390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-006.png",
+      "variant": "candidate",
+      "worldFile": "world-006.png",
+      "simulationTimeMs": 560,
+      "durationMs": 80,
+      "worldSha256": "244c0792e72c8e0fbbb34c419c9dc9977f7fd3c1e8279bdd8c4675437dd7fa7a",
+      "sourceSha256": "12cf3edcf88a6fc5f2ef31ba9444c20920715d19e21af7637eb05a0eb2d7f5aa"
+    },
+    {
+      "foot": [
+        7726.71875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-007.png",
+      "variant": "candidate",
+      "worldFile": "world-007.png",
+      "simulationTimeMs": 640,
+      "durationMs": 80,
+      "worldSha256": "10872a4aedc645c372b9043f33871fac4f767bb9c1a71b091aa212a6af10a6f0",
+      "sourceSha256": "0c71cfe5dc901eac43c0e470aa0b00d022b50e6b456b713173095a0071e64a2d"
+    },
+    {
+      "foot": [
+        7730.3984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-008.png",
+      "variant": "candidate",
+      "worldFile": "world-008.png",
+      "simulationTimeMs": 720,
+      "durationMs": 80,
+      "worldSha256": "36015e833d989107672c6df31700925931022ec871782aedc81900b4a2f9d5d5",
+      "sourceSha256": "5c109ec4f40b2a17b6cc569da0881620646e59352a0be2e24e21727d1d2a7f21"
+    },
+    {
+      "foot": [
+        7734.078125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-009.png",
+      "variant": "candidate",
+      "worldFile": "world-009.png",
+      "simulationTimeMs": 800,
+      "durationMs": 80,
+      "worldSha256": "8d8ae834fec0c6844431c56c683cddf7a493e87f13652cf7360d5c974d639f55",
+      "sourceSha256": "586e5f6353b3d4016644ca32b452925005de202175b9b4e5fdd97ebac6cde63b"
+    },
+    {
+      "foot": [
+        7737.7578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-010.png",
+      "variant": "candidate",
+      "worldFile": "world-010.png",
+      "simulationTimeMs": 880,
+      "durationMs": 80,
+      "worldSha256": "06603db2bd05a234ccf6a7bb4799fbd6d893132dcd8f3ba5278756b97679e258",
+      "sourceSha256": "5bfb0fa3db3a47e41833bb78f23f6dc50b87f7c7800794ea62e08332c7c9c0d5"
+    },
+    {
+      "foot": [
+        7741.4375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 20,
+      "sourceFile": "source-011.png",
+      "variant": "candidate",
+      "worldFile": "world-011.png",
+      "simulationTimeMs": 960,
+      "durationMs": 80,
+      "worldSha256": "de4fdb1b3fdd768d7c8081613d79bcc16e800bd81631d913ce0212ee74fde9a2",
+      "sourceSha256": "ffbcabc7a1f50eb85b172afc18749801cab009974280ed9f3ccfeacc43d291af"
+    },
+    {
+      "foot": [
+        7745.1171875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-012.png",
+      "variant": "candidate",
+      "worldFile": "world-012.png",
+      "simulationTimeMs": 1040,
+      "durationMs": 80,
+      "worldSha256": "335757efb2f10b8e8a666de216e0672914465705d4bd8ef28297206d0638444b",
+      "sourceSha256": "7d9155bc47bc6ea55d0f9f3daed3fc058f8d16e7253604cd8e9c421cecf0a557"
+    },
+    {
+      "foot": [
+        7748.796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 25,
+      "sourceFile": "source-013.png",
+      "variant": "candidate",
+      "worldFile": "world-013.png",
+      "simulationTimeMs": 1120,
+      "durationMs": 80,
+      "worldSha256": "ca0dc32187035be74d76654f00e605d0ae5f96ef16c28c58121688dd9b596a82",
+      "sourceSha256": "098faa687c1b404cb6c03eab0286e2983e517498b8ae3b4fe654f5c481a078f3"
+    },
+    {
+      "foot": [
+        7752.4765625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-014.png",
+      "variant": "candidate",
+      "worldFile": "world-014.png",
+      "simulationTimeMs": 1200,
+      "durationMs": 80,
+      "worldSha256": "ca40f8accbe6df2495510663ef1de5c95d4c87c4804b6546e68e78b8440749a7",
+      "sourceSha256": "1b141721d644f1045b2626a4c26c5c56b6049da5e435235f788282ff89ab7536"
+    },
+    {
+      "foot": [
+        7756.15625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 30,
+      "sourceFile": "source-015.png",
+      "variant": "candidate",
+      "worldFile": "world-015.png",
+      "simulationTimeMs": 1280,
+      "durationMs": 80,
+      "worldSha256": "43bfd803201e0227c10650146bc76e7e0b98d7a9858e5aa348a6c7507dd25d6e",
+      "sourceSha256": "be5fb10b586069edfadbee1f93a17cabc0d474ae42a47ec1c9ab96d29c635a96"
+    },
+    {
+      "foot": [
+        7759.8359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 33,
+      "sourceFile": "source-016.png",
+      "variant": "candidate",
+      "worldFile": "world-016.png",
+      "simulationTimeMs": 1360,
+      "durationMs": 80,
+      "worldSha256": "685a7426c9769e1dbfb9781cd19bca34b0c9fc3cd6850867334597fc1aecba99",
+      "sourceSha256": "c2d656eb680f8dcc7c236804fc01f480e45acdd483b9d098b1343ca721bafa00"
+    },
+    {
+      "foot": [
+        7763.515625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 35,
+      "sourceFile": "source-017.png",
+      "variant": "candidate",
+      "worldFile": "world-017.png",
+      "simulationTimeMs": 1440,
+      "durationMs": 80,
+      "worldSha256": "e46ed928034ce5899d23900ce50c2fceaae4754b303e398010e05f6750d21753",
+      "sourceSha256": "43373b8ba41b92ec81b00e87ceee88280290799246a7306b3393aed0bd74be88"
+    },
+    {
+      "foot": [
+        7767.1953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 38,
+      "sourceFile": "source-018.png",
+      "variant": "candidate",
+      "worldFile": "world-018.png",
+      "simulationTimeMs": 1520,
+      "durationMs": 80,
+      "worldSha256": "f5ce5a1ea63dac0c2e698dc6206258df3ba02191727bf40da032ed9b8d3cb2f2",
+      "sourceSha256": "1e26f89890a8401f822713a49b6a3edee127477d546832d521acdb7d972f6b0c"
+    },
+    {
+      "foot": [
+        7770.875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 40,
+      "sourceFile": "source-019.png",
+      "variant": "candidate",
+      "worldFile": "world-019.png",
+      "simulationTimeMs": 1600,
+      "durationMs": 80,
+      "worldSha256": "f184709606ec2a190d119922f205cd325f019b48b40110ec14bfe7b478faa97a",
+      "sourceSha256": "a5bfceac0647b729c8ec8d4ac8c77182a1eb7f54d78342fc5b10209231b2f78e"
+    },
+    {
+      "foot": [
+        7774.5546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 43,
+      "sourceFile": "source-020.png",
+      "variant": "candidate",
+      "worldFile": "world-020.png",
+      "simulationTimeMs": 1680,
+      "durationMs": 80,
+      "worldSha256": "1abc2c7836f17c2c09610d503e52c8885a2304db323b0883c346a7732b2f7dd6",
+      "sourceSha256": "8f0192568870c3024a02c43e8795f84aef5273c039d171a4309ca3bd24df3e0b"
+    },
+    {
+      "foot": [
+        7778.234375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 46,
+      "sourceFile": "source-021.png",
+      "variant": "candidate",
+      "worldFile": "world-021.png",
+      "simulationTimeMs": 1760,
+      "durationMs": 80,
+      "worldSha256": "9e542be3123356d3e8d8ba57deb95fc74b3d6ccdd47be4013d0a15be5154bf51",
+      "sourceSha256": "77a1e6341bc5dccebe350ce2a8895e2972779721ad13c2d1f853c284d007289e"
+    },
+    {
+      "foot": [
+        7781.9140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 0,
+      "sourceFile": "source-022.png",
+      "variant": "candidate",
+      "worldFile": "world-022.png",
+      "simulationTimeMs": 1840,
+      "durationMs": 80,
+      "worldSha256": "9d8808c3b7933fcb884a41dc8796f5d82142a92b2fe54f0be13cedd37ea33c26",
+      "sourceSha256": "77058edda24c68ee562f2aeead5f414d3d2495e7539efe2e02ab6701cea1bb05"
+    },
+    {
+      "foot": [
+        7785.59375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 3,
+      "sourceFile": "source-023.png",
+      "variant": "candidate",
+      "worldFile": "world-023.png",
+      "simulationTimeMs": 1920,
+      "durationMs": 80,
+      "worldSha256": "72df16967186a625ca45954e8b50e710895e499fc05a96b002d12e5799657288",
+      "sourceSha256": "2a884cbf890f3f423f13edef93cc39bb2d23567c44ec446dce965d3e7c466b86"
+    },
+    {
+      "foot": [
+        7789.2734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-024.png",
+      "variant": "candidate",
+      "worldFile": "world-024.png",
+      "simulationTimeMs": 2000,
+      "durationMs": 80,
+      "worldSha256": "bff29621a04e0632c0e65bbb500f50360fccc51a842410bd327ff0bb8e2345e8",
+      "sourceSha256": "ea00823f4110e4703b2653504b2aea42db52e6b51f7119b4047155140df74c95"
+    },
+    {
+      "foot": [
+        7792.953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 8,
+      "sourceFile": "source-025.png",
+      "variant": "candidate",
+      "worldFile": "world-025.png",
+      "simulationTimeMs": 2080,
+      "durationMs": 80,
+      "worldSha256": "59f93b1755df84f79c4b9e15f4397d950d3b846f0c76a66c6f62df019d3b7d5e",
+      "sourceSha256": "db324bbb77b6eefc81c2e5f86bb0fe01ce34b8c058bd86229a40a4d0c997f4af"
+    },
+    {
+      "foot": [
+        7796.6328125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-026.png",
+      "variant": "candidate",
+      "worldFile": "world-026.png",
+      "simulationTimeMs": 2160,
+      "durationMs": 80,
+      "worldSha256": "c1613b41d21e86808a182aab079f765d9b98f85212c47cfe919ce742ae1db63c",
+      "sourceSha256": "0c71cfe5dc901eac43c0e470aa0b00d022b50e6b456b713173095a0071e64a2d"
+    },
+    {
+      "foot": [
+        7800.3125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 13,
+      "sourceFile": "source-027.png",
+      "variant": "candidate",
+      "worldFile": "world-027.png",
+      "simulationTimeMs": 2240,
+      "durationMs": 80,
+      "worldSha256": "688d8fcd99cab9358fb97d88053e5674bb7211029b98a0428130264ab4d9e110",
+      "sourceSha256": "5bf4fdc479e856a4319ed72ca88c1ccf98744416b1633eba0bb10416e279595f"
+    },
+    {
+      "foot": [
+        7803.9921875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-028.png",
+      "variant": "candidate",
+      "worldFile": "world-028.png",
+      "simulationTimeMs": 2320,
+      "durationMs": 80,
+      "worldSha256": "46a272be4c07f02907d15f742146ec3d79519374def0d5e492c0ba38371a5178",
+      "sourceSha256": "586e5f6353b3d4016644ca32b452925005de202175b9b4e5fdd97ebac6cde63b"
+    },
+    {
+      "foot": [
+        7807.671875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 18,
+      "sourceFile": "source-029.png",
+      "variant": "candidate",
+      "worldFile": "world-029.png",
+      "simulationTimeMs": 2400,
+      "durationMs": 80,
+      "worldSha256": "351fee48830e28470a4466a12474fbecea6b23be9340ec8e2d6164c38d247ec3",
+      "sourceSha256": "f3173cdfdcc2bf092adc2c373967a1d7c785619e1a4f795670fda5a94976065c"
+    },
+    {
+      "foot": [
+        7811.3515625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 21,
+      "sourceFile": "source-030.png",
+      "variant": "candidate",
+      "worldFile": "world-030.png",
+      "simulationTimeMs": 2480,
+      "durationMs": 80,
+      "worldSha256": "32aa15a1b12d43ac1ef041b942d674f3ecb5670a446abb950ae76f08923e2aa9",
+      "sourceSha256": "aa114b3a6e05fbea313b13a6d944caa7f8f920ec23d11fab71a316286eb718f1"
+    },
+    {
+      "foot": [
+        7815.03125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-031.png",
+      "variant": "candidate",
+      "worldFile": "world-031.png",
+      "simulationTimeMs": 2560,
+      "durationMs": 80,
+      "worldSha256": "df3a51bb3d9f5f3eb6f15df277c8ebbb31357b8dcdadc8635ad7e0adcd9668ae",
+      "sourceSha256": "7d9155bc47bc6ea55d0f9f3daed3fc058f8d16e7253604cd8e9c421cecf0a557"
+    },
+    {
+      "foot": [
+        7818.7109375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 26,
+      "sourceFile": "source-032.png",
+      "variant": "candidate",
+      "worldFile": "world-032.png",
+      "simulationTimeMs": 2640,
+      "durationMs": 80,
+      "worldSha256": "d8f62d1c4c08cddf3dad95385864142b09e380573066617b52b9198696722b4b",
+      "sourceSha256": "bb015e0b93f13ac9939ddd59bacb2d2b748544c7f93bcf3dad082e1ab979734d"
+    },
+    {
+      "foot": [
+        7822.390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-033.png",
+      "variant": "candidate",
+      "worldFile": "world-033.png",
+      "simulationTimeMs": 2720,
+      "durationMs": 80,
+      "worldSha256": "32b077bbc99531cb43d450c5ea49f6994a8accb5d4c9b048ee378658e709704a",
+      "sourceSha256": "1b141721d644f1045b2626a4c26c5c56b6049da5e435235f788282ff89ab7536"
+    },
+    {
+      "foot": [
+        7826.0703125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 31,
+      "sourceFile": "source-034.png",
+      "variant": "candidate",
+      "worldFile": "world-034.png",
+      "simulationTimeMs": 2800,
+      "durationMs": 80,
+      "worldSha256": "51db2acb4fa8cbfdc702b1a47cc67cfc9c0cb755796696d9994f266d3cc72538",
+      "sourceSha256": "4e822f07acc501609351a2bb5b10c582cae814cd86896a8969217f0238b97ec5"
+    },
+    {
+      "foot": [
+        7829.75,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 33,
+      "sourceFile": "source-035.png",
+      "variant": "candidate",
+      "worldFile": "world-035.png",
+      "simulationTimeMs": 2880,
+      "durationMs": 80,
+      "worldSha256": "4ca8a9132d6aa7e087df22ac1fb6f255e9237aa25b1b11334a32c2d538f7c073",
+      "sourceSha256": "c2d656eb680f8dcc7c236804fc01f480e45acdd483b9d098b1343ca721bafa00"
+    },
+    {
+      "foot": [
+        7833.4296875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 36,
+      "sourceFile": "source-036.png",
+      "variant": "candidate",
+      "worldFile": "world-036.png",
+      "simulationTimeMs": 2960,
+      "durationMs": 80,
+      "worldSha256": "9e0adf8168dd81f2b7c8280bd8f960ef87b25d34cf182bd079261eca181e619a",
+      "sourceSha256": "116a2e1182093e50a5662618128ec251ec06a4a27ae4949a9c8ce64d93c3df37"
+    },
+    {
+      "foot": [
+        7837.109375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 39,
+      "sourceFile": "source-037.png",
+      "variant": "candidate",
+      "worldFile": "world-037.png",
+      "simulationTimeMs": 3040,
+      "durationMs": 80,
+      "worldSha256": "659bb825816d210614778a0edd3c06bcc213ec4934b8bc48acf01a82ca062eaa",
+      "sourceSha256": "8109bffbc0bf1de162d5316920ef26c1b39140f80dc8ebf9677a47c3d9efe5e6"
+    },
+    {
+      "foot": [
+        7840.7890625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 41,
+      "sourceFile": "source-038.png",
+      "variant": "candidate",
+      "worldFile": "world-038.png",
+      "simulationTimeMs": 3120,
+      "durationMs": 80,
+      "worldSha256": "44a0bf4abab03ebb7fcaac71d23d0e230ba84e17fa2af3fb37d1dbdb7952dafe",
+      "sourceSha256": "4dc0a949b7d2f65368311dff095069fbf02a48a31f872e78deb9ac0b256f2a9f"
+    },
+    {
+      "foot": [
+        7844.46875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 44,
+      "sourceFile": "source-039.png",
+      "variant": "candidate",
+      "worldFile": "world-039.png",
+      "simulationTimeMs": 3200,
+      "durationMs": 80,
+      "worldSha256": "7a50869def6cd4094083b53655b12da114c56811138c77fb3bd2d583a6138031",
+      "sourceSha256": "4fe744437076f70db47c93be156ed5166fccff57980e090b7b38de8c6fea3595"
+    },
+    {
+      "foot": [
+        7848.1484375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 46,
+      "sourceFile": "source-040.png",
+      "variant": "candidate",
+      "worldFile": "world-040.png",
+      "simulationTimeMs": 3280,
+      "durationMs": 80,
+      "worldSha256": "aa71a1c553f5d42b93d87ecb03c777a065d5e6520301409343c94948f5441d1e",
+      "sourceSha256": "77a1e6341bc5dccebe350ce2a8895e2972779721ad13c2d1f853c284d007289e"
+    },
+    {
+      "foot": [
+        7851.828125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 1,
+      "sourceFile": "source-041.png",
+      "variant": "candidate",
+      "worldFile": "world-041.png",
+      "simulationTimeMs": 3360,
+      "durationMs": 80,
+      "worldSha256": "4a64f1e39e09d1f1f140ef3fa92ae87887c8e4a21119342fe16e1966370446c2",
+      "sourceSha256": "6d6549193942d75a8c82cadccd93fb4a63958ea0e1a9929433f06f3d84ccd301"
+    },
+    {
+      "foot": [
+        7855.5078125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 3,
+      "sourceFile": "source-042.png",
+      "variant": "candidate",
+      "worldFile": "world-042.png",
+      "simulationTimeMs": 3440,
+      "durationMs": 80,
+      "worldSha256": "2f59219a11fc2b2b1f9fd396c5a9beca3e0d7c21c3bcf7ccf58f7574a7c19a15",
+      "sourceSha256": "2a884cbf890f3f423f13edef93cc39bb2d23567c44ec446dce965d3e7c466b86"
+    },
+    {
+      "foot": [
+        7859.1875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 6,
+      "sourceFile": "source-043.png",
+      "variant": "candidate",
+      "worldFile": "world-043.png",
+      "simulationTimeMs": 3520,
+      "durationMs": 80,
+      "worldSha256": "3f8a380304f7b851b49e236b1efe6ead1ba4de4f9ee2f031653050d1169264eb",
+      "sourceSha256": "0c14e267350fd23234ced48499aa7ce817776a2bbd1e6501d25bf7fb49e3f70a"
+    },
+    {
+      "foot": [
+        7862.8671875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 8,
+      "sourceFile": "source-044.png",
+      "variant": "candidate",
+      "worldFile": "world-044.png",
+      "simulationTimeMs": 3600,
+      "durationMs": 80,
+      "worldSha256": "a9731f65f27fc8f715768551399bd1ea92827c543a6b5ac69aa833428803e451",
+      "sourceSha256": "db324bbb77b6eefc81c2e5f86bb0fe01ce34b8c058bd86229a40a4d0c997f4af"
+    },
+    {
+      "foot": [
+        7866.546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 11,
+      "sourceFile": "source-045.png",
+      "variant": "candidate",
+      "worldFile": "world-045.png",
+      "simulationTimeMs": 3680,
+      "durationMs": 80,
+      "worldSha256": "a44daf51d74a6b03e5bba5426e3d91005c35f11c4c718da2bc9a977d31e5bff9",
+      "sourceSha256": "67ce4edbac05ded97ea0fb8a01abc305a9509bad90f7011a0a8ca7bdb14e2a18"
+    },
+    {
+      "foot": [
+        7870.2265625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 14,
+      "sourceFile": "source-046.png",
+      "variant": "candidate",
+      "worldFile": "world-046.png",
+      "simulationTimeMs": 3760,
+      "durationMs": 80,
+      "worldSha256": "0495287cd011da5bd9c8ae0b79bab0d5e8e02bafcba26d8e21e8b036fab63e37",
+      "sourceSha256": "3c74e7301394d280735a65a15bf4d6be7548d6bd1f0ec2c3b7d13ff228c68a57"
+    },
+    {
+      "foot": [
+        7873.90625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 16,
+      "sourceFile": "source-047.png",
+      "variant": "candidate",
+      "worldFile": "world-047.png",
+      "simulationTimeMs": 3840,
+      "durationMs": 80,
+      "worldSha256": "9e25c5171d720a86b31224b2ccea2a91f57eb27c7c2ce548d580c0fbb0665b63",
+      "sourceSha256": "d6cd09f10b1e62a0331a795c832d77abf1f2a46aa4d6875010af52ffb5dc93b0"
+    },
+    {
+      "foot": [
+        7877.5859375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 19,
+      "sourceFile": "source-048.png",
+      "variant": "candidate",
+      "worldFile": "world-048.png",
+      "simulationTimeMs": 3920,
+      "durationMs": 80,
+      "worldSha256": "f95b348295149b725aa1daf9950193d04b196e761f5c414a570ea2c78251d77d",
+      "sourceSha256": "c9a26c63dbdc5b7d0fb26cc308162eb3c2f580e638a1858a10e11f80483f8a36"
+    },
+    {
+      "foot": [
+        7881.265625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 21,
+      "sourceFile": "source-049.png",
+      "variant": "candidate",
+      "worldFile": "world-049.png",
+      "simulationTimeMs": 4000,
+      "durationMs": 80,
+      "worldSha256": "a38d687c04335b19d115f34e5b3563c76178c8d3e71919d958132e43f3eb9599",
+      "sourceSha256": "aa114b3a6e05fbea313b13a6d944caa7f8f920ec23d11fab71a316286eb718f1"
+    },
+    {
+      "foot": [
+        7884.9453125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 24,
+      "sourceFile": "source-050.png",
+      "variant": "candidate",
+      "worldFile": "world-050.png",
+      "simulationTimeMs": 4080,
+      "durationMs": 80,
+      "worldSha256": "f57042874692c4a786b03c0c4aed5fee92c4a446ea720e7e577e26ebbbd94e9a",
+      "sourceSha256": "36933c68867c0f99444d465957f3a9cf899a9552226aa3fb7ddc5ad2de736baf"
+    },
+    {
+      "foot": [
+        7888.625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 26,
+      "sourceFile": "source-051.png",
+      "variant": "candidate",
+      "worldFile": "world-051.png",
+      "simulationTimeMs": 4160,
+      "durationMs": 80,
+      "worldSha256": "63c23333dea2c0eb64fb89b6b548358ee43431963b876f3e8255686d76aa4087",
+      "sourceSha256": "bb015e0b93f13ac9939ddd59bacb2d2b748544c7f93bcf3dad082e1ab979734d"
+    },
+    {
+      "foot": [
+        7892.3046875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 29,
+      "sourceFile": "source-052.png",
+      "variant": "candidate",
+      "worldFile": "world-052.png",
+      "simulationTimeMs": 4240,
+      "durationMs": 80,
+      "worldSha256": "167ced604423cce9daa2b81c9e83f48cb0d6df50dbf2bae7c02e6a9df0aa1c1c",
+      "sourceSha256": "1c3f35b16a1abbcb326ee61617503e0c7c2ca8ca634e779aa4075b13c7f8a063"
+    },
+    {
+      "foot": [
+        7895.984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 31,
+      "sourceFile": "source-053.png",
+      "variant": "candidate",
+      "worldFile": "world-053.png",
+      "simulationTimeMs": 4320,
+      "durationMs": 80,
+      "worldSha256": "70ccf1fc3583e40276e27ef9f87b44bccc513829068592bae9c89369795c9da0",
+      "sourceSha256": "4e822f07acc501609351a2bb5b10c582cae814cd86896a8969217f0238b97ec5"
+    },
+    {
+      "foot": [
+        7899.6640625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 34,
+      "sourceFile": "source-054.png",
+      "variant": "candidate",
+      "worldFile": "world-054.png",
+      "simulationTimeMs": 4400,
+      "durationMs": 80,
+      "worldSha256": "a2f21301b9dee844f35eeff53cf66c10bb6065b39c198423295c77f53aa75d44",
+      "sourceSha256": "06e489ade34718b8e7412169c9f09bb6f00f69437b8e1a98808d5212f30d1a38"
+    },
+    {
+      "foot": [
+        7903.34375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 37,
+      "sourceFile": "source-055.png",
+      "variant": "candidate",
+      "worldFile": "world-055.png",
+      "simulationTimeMs": 4480,
+      "durationMs": 80,
+      "worldSha256": "cb6b430be7bdd5493d84dc894ae6bb404818b2c8a7b2cc2bd98c085d089db7d9",
+      "sourceSha256": "e75beed345b487efb3aaaafa5dcbea509e885cab566ca35715e7833d646fc7c1"
+    },
+    {
+      "foot": [
+        7907.0234375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 39,
+      "sourceFile": "source-056.png",
+      "variant": "candidate",
+      "worldFile": "world-056.png",
+      "simulationTimeMs": 4560,
+      "durationMs": 80,
+      "worldSha256": "7c3ccc7a550f969a2973562562bfcc0cd3a6c0c2d2cf04028e4f3d096dab0ec0",
+      "sourceSha256": "8109bffbc0bf1de162d5316920ef26c1b39140f80dc8ebf9677a47c3d9efe5e6"
+    },
+    {
+      "foot": [
+        7910.703125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 42,
+      "sourceFile": "source-057.png",
+      "variant": "candidate",
+      "worldFile": "world-057.png",
+      "simulationTimeMs": 4640,
+      "durationMs": 80,
+      "worldSha256": "3bc56560f8ef1e6c6b65e4f2a3f6853522a7a77c47ae2839fb32648555c57f73",
+      "sourceSha256": "be61b83bfc5f4fc435326c0cef4173cfb8d05cac6afbd62926f35a396cf1115c"
+    },
+    {
+      "foot": [
+        7914.3828125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 44,
+      "sourceFile": "source-058.png",
+      "variant": "candidate",
+      "worldFile": "world-058.png",
+      "simulationTimeMs": 4720,
+      "durationMs": 80,
+      "worldSha256": "605a03c1076f5c450289d37dc57db407fe4969b3a94c6c865d5de4bee2252c91",
+      "sourceSha256": "4fe744437076f70db47c93be156ed5166fccff57980e090b7b38de8c6fea3595"
+    },
+    {
+      "foot": [
+        7918.0625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 47,
+      "sourceFile": "source-059.png",
+      "variant": "candidate",
+      "worldFile": "world-059.png",
+      "simulationTimeMs": 4800,
+      "durationMs": 80,
+      "worldSha256": "a922e1ce3375215b046d2d39ad802aaaf1f2d9ec642b0ae2f1e21ff78a1602c4",
+      "sourceSha256": "6726d686b3c865f119d4da91db59e9ecdbf829cd4c99f0436c5c5c378fc23da0"
+    },
+    {
+      "foot": [
+        7921.7421875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 1,
+      "sourceFile": "source-060.png",
+      "variant": "candidate",
+      "worldFile": "world-060.png",
+      "simulationTimeMs": 4880,
+      "durationMs": 80,
+      "worldSha256": "914392f227130704c3d8bdd2f2fca76893b81ff2b81935bbe3ffd45e479ef492",
+      "sourceSha256": "6d6549193942d75a8c82cadccd93fb4a63958ea0e1a9929433f06f3d84ccd301"
+    },
+    {
+      "foot": [
+        7925.421875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 4,
+      "sourceFile": "source-061.png",
+      "variant": "candidate",
+      "worldFile": "world-061.png",
+      "simulationTimeMs": 4960,
+      "durationMs": 80,
+      "worldSha256": "ac97693125a2d7ac093a0877bcde83eee93f5c86c5c0b7a039a852a9481d51d3",
+      "sourceSha256": "b656480593a4cf2657bc93d4db95b9fc10314ec630f7500ad8ae3198ccc9a5b1"
+    },
+    {
+      "foot": [
+        7929.1015625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-062.png",
+      "variant": "candidate",
+      "worldFile": "world-062.png",
+      "simulationTimeMs": 5040,
+      "durationMs": 80,
+      "worldSha256": "49120e8f668d7cc43d7f06158da973c151df458c4db017fb3edcda1842f51641",
+      "sourceSha256": "12cf3edcf88a6fc5f2ef31ba9444c20920715d19e21af7637eb05a0eb2d7f5aa"
+    },
+    {
+      "foot": [
+        7932.78125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 9,
+      "sourceFile": "source-063.png",
+      "variant": "candidate",
+      "worldFile": "world-063.png",
+      "simulationTimeMs": 5120,
+      "durationMs": 80,
+      "worldSha256": "45753ce59fb98c5f76ed61f34fe9b5bb02d576827a8036c331b508d5a839a568",
+      "sourceSha256": "d42b17ffc7f88002f562bfcdefcd6c208c27cf6d645243b940312147309f4bac"
+    },
+    {
+      "foot": [
+        7936.4609375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-064.png",
+      "variant": "candidate",
+      "worldFile": "world-064.png",
+      "simulationTimeMs": 5200,
+      "durationMs": 80,
+      "worldSha256": "21477bcdb608e9b3424c4d3a521f88dc8740eba06386b12ae7eecddaffa156f0",
+      "sourceSha256": "5c109ec4f40b2a17b6cc569da0881620646e59352a0be2e24e21727d1d2a7f21"
+    },
+    {
+      "foot": [
+        7940.140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 14,
+      "sourceFile": "source-065.png",
+      "variant": "candidate",
+      "worldFile": "world-065.png",
+      "simulationTimeMs": 5280,
+      "durationMs": 80,
+      "worldSha256": "423a0265d011bc26a373cb3f4f6f2d26aa08608bc6dba379f2d82cb170c98eac",
+      "sourceSha256": "3c74e7301394d280735a65a15bf4d6be7548d6bd1f0ec2c3b7d13ff228c68a57"
+    },
+    {
+      "foot": [
+        7943.8203125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-066.png",
+      "variant": "candidate",
+      "worldFile": "world-066.png",
+      "simulationTimeMs": 5360,
+      "durationMs": 80,
+      "worldSha256": "64e6c1bfa43ec249cfdbf9395c70c7a0db4daaeaacf1442dde02b7b04a33c744",
+      "sourceSha256": "5bfb0fa3db3a47e41833bb78f23f6dc50b87f7c7800794ea62e08332c7c9c0d5"
+    },
+    {
+      "foot": [
+        7947.5,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 19,
+      "sourceFile": "source-067.png",
+      "variant": "candidate",
+      "worldFile": "world-067.png",
+      "simulationTimeMs": 5440,
+      "durationMs": 80,
+      "worldSha256": "18db378a4497ef461713d1ce9fc5d3d30866c15f2ca95b353f7beeae87daf3ba",
+      "sourceSha256": "c9a26c63dbdc5b7d0fb26cc308162eb3c2f580e638a1858a10e11f80483f8a36"
+    },
+    {
+      "foot": [
+        7951.1796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 22,
+      "sourceFile": "source-068.png",
+      "variant": "candidate",
+      "worldFile": "world-068.png",
+      "simulationTimeMs": 5520,
+      "durationMs": 80,
+      "worldSha256": "7374d15cbd139a69e3f345ac2ebd539526420e296fd837d6ec44c710b0116e9e",
+      "sourceSha256": "478b33731d27808d6ac9b045716fd02773e28988844bc734ffce697e6010917a"
+    },
+    {
+      "foot": [
+        7954.859375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 24,
+      "sourceFile": "source-069.png",
+      "variant": "candidate",
+      "worldFile": "world-069.png",
+      "simulationTimeMs": 5600,
+      "durationMs": 80,
+      "worldSha256": "d143a6e827c6b11bb609b2b808a52b8c0d2fa418403434a39b37873196ca4c6e",
+      "sourceSha256": "36933c68867c0f99444d465957f3a9cf899a9552226aa3fb7ddc5ad2de736baf"
+    },
+    {
+      "foot": [
+        7958.5390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 27,
+      "sourceFile": "source-070.png",
+      "variant": "candidate",
+      "worldFile": "world-070.png",
+      "simulationTimeMs": 5680,
+      "durationMs": 80,
+      "worldSha256": "9d9c149b4dc0fc08f17f705a19d27c43e4c72c4b3d04400a414e7887102d497c",
+      "sourceSha256": "dc36064405aff853cb8b07b48b9ce0e5182ffcaef8a7d7c75ee4656fad260d39"
+    },
+    {
+      "foot": [
+        7962.21875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 30,
+      "sourceFile": "source-071.png",
+      "variant": "candidate",
+      "worldFile": "world-071.png",
+      "simulationTimeMs": 5760,
+      "durationMs": 80,
+      "worldSha256": "de10d6c82902bbf2b8b8ae2dc7fe79f7665ed67d351a13e085a753d6723fd713",
+      "sourceSha256": "be5fb10b586069edfadbee1f93a17cabc0d474ae42a47ec1c9ab96d29c635a96"
+    },
+    {
+      "foot": [
+        7965.8984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 32,
+      "sourceFile": "source-072.png",
+      "variant": "candidate",
+      "worldFile": "world-072.png",
+      "simulationTimeMs": 5840,
+      "durationMs": 80,
+      "worldSha256": "67af56c2c16d47b6122a6e72b2f23438c21d90f3f6712385940c7a3a1cffed8c",
+      "sourceSha256": "2e9bffcc551280bd3fb01c9856021699f713d0c1dbb89bad2a53f4bfec6ef770"
+    },
+    {
+      "foot": [
+        7969.578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 35,
+      "sourceFile": "source-073.png",
+      "variant": "candidate",
+      "worldFile": "world-073.png",
+      "simulationTimeMs": 5920,
+      "durationMs": 80,
+      "worldSha256": "c5d3a183c9463f86d36c40bc544a74de0bf5e9627654ac9c6c505c55f74bbe9c",
+      "sourceSha256": "43373b8ba41b92ec81b00e87ceee88280290799246a7306b3393aed0bd74be88"
+    },
+    {
+      "foot": [
+        7973.2578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 37,
+      "sourceFile": "source-074.png",
+      "variant": "candidate",
+      "worldFile": "world-074.png",
+      "simulationTimeMs": 6000,
+      "durationMs": 80,
+      "worldSha256": "277de7e81791cda19473d7e61f8cf520c4a526d7c5818c47237e57ba3a4932a8",
+      "sourceSha256": "e75beed345b487efb3aaaafa5dcbea509e885cab566ca35715e7833d646fc7c1"
+    },
+    {
+      "foot": [
+        7976.9375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 40,
+      "sourceFile": "source-075.png",
+      "variant": "candidate",
+      "worldFile": "world-075.png",
+      "simulationTimeMs": 6080,
+      "durationMs": 80,
+      "worldSha256": "381b5b398662dd3b418f5af4bac9e9c378f0d7322bbaf971c3b90d8b2d69c401",
+      "sourceSha256": "a5bfceac0647b729c8ec8d4ac8c77182a1eb7f54d78342fc5b10209231b2f78e"
+    },
+    {
+      "foot": [
+        7980.6171875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 42,
+      "sourceFile": "source-076.png",
+      "variant": "candidate",
+      "worldFile": "world-076.png",
+      "simulationTimeMs": 6160,
+      "durationMs": 80,
+      "worldSha256": "adf4ac2b4254544382d2e068503bd99b4caf052f6dfe2fb88f23d50e9fb399e1",
+      "sourceSha256": "be61b83bfc5f4fc435326c0cef4173cfb8d05cac6afbd62926f35a396cf1115c"
+    },
+    {
+      "foot": [
+        7984.296875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 45,
+      "sourceFile": "source-077.png",
+      "variant": "candidate",
+      "worldFile": "world-077.png",
+      "simulationTimeMs": 6240,
+      "durationMs": 80,
+      "worldSha256": "acc25d1fb5979699931ab9b9f795a6c2f3771879cb94da46ec0e86e16d98a17b",
+      "sourceSha256": "48c8d4476fb8ee67af6667f1b97be1794d2fca281506541dcbd6663d0d7d8ee6"
+    },
+    {
+      "foot": [
+        7987.9765625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 47,
+      "sourceFile": "source-078.png",
+      "variant": "candidate",
+      "worldFile": "world-078.png",
+      "simulationTimeMs": 6320,
+      "durationMs": 80,
+      "worldSha256": "209945721c2f3ff1c0b17c3dd89f91d83d7626a1de4ff7621bab9fd9efaabac4",
+      "sourceSha256": "6726d686b3c865f119d4da91db59e9ecdbf829cd4c99f0436c5c5c378fc23da0"
+    },
+    {
+      "foot": [
+        7991.65625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 2,
+      "sourceFile": "source-079.png",
+      "variant": "candidate",
+      "worldFile": "world-079.png",
+      "simulationTimeMs": 6400,
+      "durationMs": 80,
+      "worldSha256": "02356a10ab005d72281756df9e2bcfde3ea1ac932a2d3073b76036082c1c18f4",
+      "sourceSha256": "d898a6e1d15b15ae57d23b513d6986ec1f9529896737470b3162e4deb183c9b9"
+    },
+    {
+      "foot": [
+        7995.3359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-080.png",
+      "variant": "candidate",
+      "worldFile": "world-080.png",
+      "simulationTimeMs": 6480,
+      "durationMs": 80,
+      "worldSha256": "cc087df1debf792ddcee251c69ae03197c0101fb39fd86d20f99db565b433216",
+      "sourceSha256": "ea00823f4110e4703b2653504b2aea42db52e6b51f7119b4047155140df74c95"
+    },
+    {
+      "foot": [
+        7999.015625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-081.png",
+      "variant": "candidate",
+      "worldFile": "world-081.png",
+      "simulationTimeMs": 6560,
+      "durationMs": 80,
+      "worldSha256": "80473976e9757da8664833d57160819b5c712e5c4cb300e77781a4bb85b1f332",
+      "sourceSha256": "12cf3edcf88a6fc5f2ef31ba9444c20920715d19e21af7637eb05a0eb2d7f5aa"
+    },
+    {
+      "foot": [
+        8002.6953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-082.png",
+      "variant": "candidate",
+      "worldFile": "world-082.png",
+      "simulationTimeMs": 6640,
+      "durationMs": 80,
+      "worldSha256": "58ac6185376581af5580613f1027f8867492b41460ff1b640c7624a96ae6d756",
+      "sourceSha256": "0c71cfe5dc901eac43c0e470aa0b00d022b50e6b456b713173095a0071e64a2d"
+    },
+    {
+      "foot": [
+        8006.375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-083.png",
+      "variant": "candidate",
+      "worldFile": "world-083.png",
+      "simulationTimeMs": 6720,
+      "durationMs": 80,
+      "worldSha256": "0c5400062f98b953749f33ae5d46de50adfab02c45e0c6f1b485b72a8ce2fd67",
+      "sourceSha256": "5c109ec4f40b2a17b6cc569da0881620646e59352a0be2e24e21727d1d2a7f21"
+    },
+    {
+      "foot": [
+        8010.0546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-084.png",
+      "variant": "candidate",
+      "worldFile": "world-084.png",
+      "simulationTimeMs": 6800,
+      "durationMs": 80,
+      "worldSha256": "17b076eb2125a0573b9656e65e7d7594f54f61384623c7ce261a8974ef3318dd",
+      "sourceSha256": "586e5f6353b3d4016644ca32b452925005de202175b9b4e5fdd97ebac6cde63b"
+    },
+    {
+      "foot": [
+        8013.734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-085.png",
+      "variant": "candidate",
+      "worldFile": "world-085.png",
+      "simulationTimeMs": 6880,
+      "durationMs": 80,
+      "worldSha256": "cb13f03eb479ac702e6f7bbe1dfd2b5c36ab229f106d58a563d832f76f17b276",
+      "sourceSha256": "5bfb0fa3db3a47e41833bb78f23f6dc50b87f7c7800794ea62e08332c7c9c0d5"
+    },
+    {
+      "foot": [
+        8017.4140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 20,
+      "sourceFile": "source-086.png",
+      "variant": "candidate",
+      "worldFile": "world-086.png",
+      "simulationTimeMs": 6960,
+      "durationMs": 80,
+      "worldSha256": "89be094826ed7c0af6f326c9f1d250df83b250fa35e46e8dc012071802c04727",
+      "sourceSha256": "ffbcabc7a1f50eb85b172afc18749801cab009974280ed9f3ccfeacc43d291af"
+    },
+    {
+      "foot": [
+        8021.09375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-087.png",
+      "variant": "candidate",
+      "worldFile": "world-087.png",
+      "simulationTimeMs": 7040,
+      "durationMs": 80,
+      "worldSha256": "3c8b7b3f94427cf9e6f4322e33ccde0b56c4cffe432dabbfc063806934ac8e9c",
+      "sourceSha256": "7d9155bc47bc6ea55d0f9f3daed3fc058f8d16e7253604cd8e9c421cecf0a557"
+    },
+    {
+      "foot": [
+        8024.7734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 25,
+      "sourceFile": "source-088.png",
+      "variant": "candidate",
+      "worldFile": "world-088.png",
+      "simulationTimeMs": 7120,
+      "durationMs": 80,
+      "worldSha256": "9174a8b97ec011d9d6aab598378adf14f1f9a6be2058f714022b21ecc9485eee",
+      "sourceSha256": "098faa687c1b404cb6c03eab0286e2983e517498b8ae3b4fe654f5c481a078f3"
+    },
+    {
+      "foot": [
+        8028.453125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-089.png",
+      "variant": "candidate",
+      "worldFile": "world-089.png",
+      "simulationTimeMs": 7200,
+      "durationMs": 80,
+      "worldSha256": "38bca2c01b68bf05822dd2c9bd58f0184a7d04fdc684a2eb80b09cc33e1503d6",
+      "sourceSha256": "1b141721d644f1045b2626a4c26c5c56b6049da5e435235f788282ff89ab7536"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "walking route",
+      "slot": 0,
+      "sourceFile": "source-090.png",
+      "variant": "candidate",
+      "worldFile": "world-090.png",
+      "simulationTimeMs": 7280,
+      "durationMs": 20,
+      "worldSha256": "a826a970cbcb704082e8d3758490909d5a073c9ed668b46570d2afb7ca730f53",
+      "sourceSha256": "7e67f0116f0009dd52b174070e7d1b3f7a32abe9f80144b3e0dbddc57c9a1145"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 0,
+      "sourceFile": "source-091.png",
+      "variant": "candidate",
+      "worldFile": "world-091.png",
+      "simulationTimeMs": 7300,
+      "durationMs": 80,
+      "worldSha256": "d9cfb5d71b84819eb0108f279abb172cc01cb0517c36a8e7ccd90e600d82067f",
+      "sourceSha256": "7e67f0116f0009dd52b174070e7d1b3f7a32abe9f80144b3e0dbddc57c9a1145"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 4,
+      "sourceFile": "source-092.png",
+      "variant": "candidate",
+      "worldFile": "world-092.png",
+      "simulationTimeMs": 7380,
+      "durationMs": 80,
+      "worldSha256": "05ca91f0b9fb32e1dbdaee468e08dd0908fa31785bd3319b708d70132519aeb3",
+      "sourceSha256": "25a4a3e69942ec847f640bc64e996ca762237475c40540d1b5557ab53438d57e"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 8,
+      "sourceFile": "source-093.png",
+      "variant": "candidate",
+      "worldFile": "world-093.png",
+      "simulationTimeMs": 7460,
+      "durationMs": 80,
+      "worldSha256": "b70dc2757a8557f6ae7e319ce08d7e6c389fe9bd4d32d947a56b92e9f1f73ec3",
+      "sourceSha256": "b4ce8742372e3e51284b6ccd59d9946c37c1699053bf5246eb476478bf41bdce"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 12,
+      "sourceFile": "source-094.png",
+      "variant": "candidate",
+      "worldFile": "world-094.png",
+      "simulationTimeMs": 7540,
+      "durationMs": 80,
+      "worldSha256": "a9325574981dadb069c4642b0a84a0723e522e92792720e70ae5bb67cd5676c8",
+      "sourceSha256": "8bbcbccb30f92162799ea6544a0485b2b329c842a98c87d2028e648118bd3e03"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 0,
+      "sourceFile": "source-095.png",
+      "variant": "selected",
+      "worldFile": "world-095.png",
+      "simulationTimeMs": 20,
+      "durationMs": 80,
+      "worldSha256": "ffbf7d895d47f134d29143b5edad77c961bea51f637f19ae1b0a299fe0ec7606",
+      "sourceSha256": "e0ba55378751cd2756cba0ba719a87a606eac122044b94ed3f7e441d59a15692"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 4,
+      "sourceFile": "source-096.png",
+      "variant": "selected",
+      "worldFile": "world-096.png",
+      "simulationTimeMs": 100,
+      "durationMs": 80,
+      "worldSha256": "8412ec92b287d7ccdb49215f81d801c26c0049646c374fde77eb5f0f79f3e3ad",
+      "sourceSha256": "b2bec8e20aa54737017850ea2865aeb5f9b794632960752bbf48b35959cff691"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 8,
+      "sourceFile": "source-097.png",
+      "variant": "selected",
+      "worldFile": "world-097.png",
+      "simulationTimeMs": 180,
+      "durationMs": 80,
+      "worldSha256": "9b30f8f36483eff1ab7673a2dd65a999c7cae6f3fe7a533b079a8f75eea82ccc",
+      "sourceSha256": "2ffe7632bbf086ffc24c3cc897ccfdbbd6f0f6f6e7e480404077009457d9276a"
+    },
+    {
+      "foot": [
+        7712.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle before",
+      "slot": 12,
+      "sourceFile": "source-098.png",
+      "variant": "selected",
+      "worldFile": "world-098.png",
+      "simulationTimeMs": 260,
+      "durationMs": 140,
+      "worldSha256": "6e8f884f0512dfd719e2dde73e76aea1b5b1b92ff436a6d55cddeb9f1911875c",
+      "sourceSha256": "376f23dbb63103dfa22442c9aa4378efbe166388c5277575edb84c6bd243f336"
+    },
+    {
+      "foot": [
+        7715.6796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 2,
+      "sourceFile": "source-099.png",
+      "variant": "selected",
+      "worldFile": "world-099.png",
+      "simulationTimeMs": 400,
+      "durationMs": 80,
+      "worldSha256": "f9caec0b78a3adce17b5f24b6a26d12ba25e4af0e43d3a3f359a4494535491b3",
+      "sourceSha256": "2d4761ca4e419b87e7716ea6d16ceeff58aff07d4326295dc34bb692aca18388"
+    },
+    {
+      "foot": [
+        7719.359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-100.png",
+      "variant": "selected",
+      "worldFile": "world-100.png",
+      "simulationTimeMs": 480,
+      "durationMs": 80,
+      "worldSha256": "8f2b65e627b267445c11d9ffcf420710b30bc2d2d01777523042141fe3d62507",
+      "sourceSha256": "ef0ba9f7df14cb0c1856d1c4fbc3868410911395b42575ca6cacbddae6143e91"
+    },
+    {
+      "foot": [
+        7723.0390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-101.png",
+      "variant": "selected",
+      "worldFile": "world-101.png",
+      "simulationTimeMs": 560,
+      "durationMs": 80,
+      "worldSha256": "07624b4f9c1a2eb35b06d11dd3becea5698f3d2b690db6e8119a0f8e94b4f810",
+      "sourceSha256": "69ca1af3aaf216ef1aa9887896c4f059afb264b48533fb3784fb3cb96f0548fe"
+    },
+    {
+      "foot": [
+        7726.71875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-102.png",
+      "variant": "selected",
+      "worldFile": "world-102.png",
+      "simulationTimeMs": 640,
+      "durationMs": 80,
+      "worldSha256": "a31904209885dcbe2cca0c6e87f9db4dc69aaa362c0a1f1402c3980aa9a1fac8",
+      "sourceSha256": "2f10339d60b2ec7e7420e43c4777d4503da97e5258542bdcf9abf362f0cda4d2"
+    },
+    {
+      "foot": [
+        7730.3984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-103.png",
+      "variant": "selected",
+      "worldFile": "world-103.png",
+      "simulationTimeMs": 720,
+      "durationMs": 80,
+      "worldSha256": "2d2760f1c82c44e04695b5f29b7f650bda349266e1ae574ea88751ef778c6cd1",
+      "sourceSha256": "b1cf64e9556558cdcabb1186b8db006f66817a15028cb73d7045f710d3ffbfe3"
+    },
+    {
+      "foot": [
+        7734.078125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-104.png",
+      "variant": "selected",
+      "worldFile": "world-104.png",
+      "simulationTimeMs": 800,
+      "durationMs": 80,
+      "worldSha256": "86479489c63ade390c744a5c474918f92cce4c99c6998969bb326720b6cc7b67",
+      "sourceSha256": "c2a6f8c7c56fc8cb0e6fb976b513e3f097015c4b07c4d2220c21638d9bcfff0d"
+    },
+    {
+      "foot": [
+        7737.7578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-105.png",
+      "variant": "selected",
+      "worldFile": "world-105.png",
+      "simulationTimeMs": 880,
+      "durationMs": 80,
+      "worldSha256": "b7f5001e7a08945b467d08c7a884c984b672ab458ad1579e964c211beebe6e10",
+      "sourceSha256": "e49d066a5eb94b0d7b631e8939b2033a88f0f5b827e282571143531779ab0dbf"
+    },
+    {
+      "foot": [
+        7741.4375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 20,
+      "sourceFile": "source-106.png",
+      "variant": "selected",
+      "worldFile": "world-106.png",
+      "simulationTimeMs": 960,
+      "durationMs": 80,
+      "worldSha256": "be52c629a7a9517e08791f43e8cb3e168bff4e42acfd62edb50d8c68d7362eff",
+      "sourceSha256": "5ac2e95f627c59b1ffd3cc15a5f72a74cc31923df7c682db61bed09f502b87c3"
+    },
+    {
+      "foot": [
+        7745.1171875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-107.png",
+      "variant": "selected",
+      "worldFile": "world-107.png",
+      "simulationTimeMs": 1040,
+      "durationMs": 80,
+      "worldSha256": "a2b95ae47f571e5edf519dd93e3055c5079d867623384136e52d13d673cdba61",
+      "sourceSha256": "1502d0c9fa5900346658948bbf70a7912158fb87ed8a91e65fe788a4b5e1f49c"
+    },
+    {
+      "foot": [
+        7748.796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 25,
+      "sourceFile": "source-108.png",
+      "variant": "selected",
+      "worldFile": "world-108.png",
+      "simulationTimeMs": 1120,
+      "durationMs": 80,
+      "worldSha256": "1a7fc4dff721624ced3393d7248ca00019bfcebb862b39658488889af8e15293",
+      "sourceSha256": "c0450c2a169cbf736665d3b653b163dcb1b1d9173e10ef692d1f2df0c15f6e08"
+    },
+    {
+      "foot": [
+        7752.4765625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-109.png",
+      "variant": "selected",
+      "worldFile": "world-109.png",
+      "simulationTimeMs": 1200,
+      "durationMs": 80,
+      "worldSha256": "8fc741bba0900358140d55ffd0af071b264090977d05dda7d1a2fb737278650e",
+      "sourceSha256": "79954691eebac7da87413fd08b427706d91d2cdc78d36773473be55e98e6977b"
+    },
+    {
+      "foot": [
+        7756.15625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 30,
+      "sourceFile": "source-110.png",
+      "variant": "selected",
+      "worldFile": "world-110.png",
+      "simulationTimeMs": 1280,
+      "durationMs": 80,
+      "worldSha256": "0c41793ecd560668e894f93526f60775fb031f33494ab09e58718005e0cadf7a",
+      "sourceSha256": "4acdfec5370d845a4d4fb980299da6534321ae80f25740940fb7b4f3a8f08dae"
+    },
+    {
+      "foot": [
+        7759.8359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 33,
+      "sourceFile": "source-111.png",
+      "variant": "selected",
+      "worldFile": "world-111.png",
+      "simulationTimeMs": 1360,
+      "durationMs": 80,
+      "worldSha256": "ebf275beb921d6d46232ce4a9908240308ea416bd2fefbea545d9ccbc885df0a",
+      "sourceSha256": "f6c77284e8a4fcff358167123313105256d68ab0867352795cb3cd751135e80f"
+    },
+    {
+      "foot": [
+        7763.515625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 35,
+      "sourceFile": "source-112.png",
+      "variant": "selected",
+      "worldFile": "world-112.png",
+      "simulationTimeMs": 1440,
+      "durationMs": 80,
+      "worldSha256": "f3cb041084974abc99dc7b86a3ff33515db3087bf9824dc6e29c6fd0b3f82dd5",
+      "sourceSha256": "173e45c289e83927df39cef63dd5d0a3fa5dfd88d2cd3cb4db06b836d6452c17"
+    },
+    {
+      "foot": [
+        7767.1953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 38,
+      "sourceFile": "source-113.png",
+      "variant": "selected",
+      "worldFile": "world-113.png",
+      "simulationTimeMs": 1520,
+      "durationMs": 80,
+      "worldSha256": "219fcc3719a722625e651c5a8c54042a3b728760eaaa455d264001e0a6d4fb57",
+      "sourceSha256": "82a66ebbe757a2d25770edb2ab685e8387974c6b7c835b1b6e73856a02cf6c39"
+    },
+    {
+      "foot": [
+        7770.875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 40,
+      "sourceFile": "source-114.png",
+      "variant": "selected",
+      "worldFile": "world-114.png",
+      "simulationTimeMs": 1600,
+      "durationMs": 80,
+      "worldSha256": "cca1a33b419b7fbecd3000819889a68b6b826bf22642f9be428a82aea248cff3",
+      "sourceSha256": "942ab841b2773558178535e8fcb6b0164c608a0c3f05a7109699857332e7982c"
+    },
+    {
+      "foot": [
+        7774.5546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 43,
+      "sourceFile": "source-115.png",
+      "variant": "selected",
+      "worldFile": "world-115.png",
+      "simulationTimeMs": 1680,
+      "durationMs": 80,
+      "worldSha256": "ec53f347557910c9dc3c4e624ab6a5ff3e4e7b69a5b6a9c8ec87ae7d4de0ad3e",
+      "sourceSha256": "e653bc447c157e33eb6f206fb28e5d2edd1d7f55ea895a0ab4573c400e27adb5"
+    },
+    {
+      "foot": [
+        7778.234375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 46,
+      "sourceFile": "source-116.png",
+      "variant": "selected",
+      "worldFile": "world-116.png",
+      "simulationTimeMs": 1760,
+      "durationMs": 80,
+      "worldSha256": "226085c73deade3ecb92998fc534a69dd24c3b1638f469c1089e790b8bfaeb7c",
+      "sourceSha256": "f3686f57bc2f5e696b1344c486bfc68f05e38bea4ce1b5c38392505e8ecb6c07"
+    },
+    {
+      "foot": [
+        7781.9140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 0,
+      "sourceFile": "source-117.png",
+      "variant": "selected",
+      "worldFile": "world-117.png",
+      "simulationTimeMs": 1840,
+      "durationMs": 80,
+      "worldSha256": "1ce8da4aa5bd0cc51269a735e58d4dd1b7df8511f67fa7e2646a0ac77d6a4546",
+      "sourceSha256": "eb2bb784afc43cf874d403ff62bf9bfab51bd6ee3a6f28e91dc5d3095381df35"
+    },
+    {
+      "foot": [
+        7785.59375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 3,
+      "sourceFile": "source-118.png",
+      "variant": "selected",
+      "worldFile": "world-118.png",
+      "simulationTimeMs": 1920,
+      "durationMs": 80,
+      "worldSha256": "ebaa9b23297d7e1b153b4cbf9dd29d9f44282ed538b39e90040e3d51eb453097",
+      "sourceSha256": "5fabba5df649b568288c6b77200b55f69363361c1911e4b003e2d1eff18f72a9"
+    },
+    {
+      "foot": [
+        7789.2734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-119.png",
+      "variant": "selected",
+      "worldFile": "world-119.png",
+      "simulationTimeMs": 2000,
+      "durationMs": 80,
+      "worldSha256": "85b42ea6511633972b505eaff84b030e654448e73cb8d7a93b82a28d22cfeaa2",
+      "sourceSha256": "ef0ba9f7df14cb0c1856d1c4fbc3868410911395b42575ca6cacbddae6143e91"
+    },
+    {
+      "foot": [
+        7792.953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 8,
+      "sourceFile": "source-120.png",
+      "variant": "selected",
+      "worldFile": "world-120.png",
+      "simulationTimeMs": 2080,
+      "durationMs": 80,
+      "worldSha256": "0a4d0f712788c93dd6a96088afacaea86ce0aee53b4a8b771e434d1b5edd410b",
+      "sourceSha256": "bc667f8a23f23e36ff1b724cf249a8c62f87a29215de8bf764d7d532cb3416a7"
+    },
+    {
+      "foot": [
+        7796.6328125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-121.png",
+      "variant": "selected",
+      "worldFile": "world-121.png",
+      "simulationTimeMs": 2160,
+      "durationMs": 80,
+      "worldSha256": "7ae1bfb2d54e74388ae8551154cdb25098a8cf4f115f228402fc62acf9a92df0",
+      "sourceSha256": "2f10339d60b2ec7e7420e43c4777d4503da97e5258542bdcf9abf362f0cda4d2"
+    },
+    {
+      "foot": [
+        7800.3125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 13,
+      "sourceFile": "source-122.png",
+      "variant": "selected",
+      "worldFile": "world-122.png",
+      "simulationTimeMs": 2240,
+      "durationMs": 80,
+      "worldSha256": "f360f5ba53ae4ca94b459a893b67178b94a6db404c8c7591ba824942d3e0279d",
+      "sourceSha256": "ed87bee118e920e5b4b99f825da5a75bd005c6d1947be64622ea5ea348fff8fa"
+    },
+    {
+      "foot": [
+        7803.9921875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-123.png",
+      "variant": "selected",
+      "worldFile": "world-123.png",
+      "simulationTimeMs": 2320,
+      "durationMs": 80,
+      "worldSha256": "11f3429204dd519bb785a45828de9ed2ea9545d0daecdd7da33b5e5126050654",
+      "sourceSha256": "c2a6f8c7c56fc8cb0e6fb976b513e3f097015c4b07c4d2220c21638d9bcfff0d"
+    },
+    {
+      "foot": [
+        7807.671875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 18,
+      "sourceFile": "source-124.png",
+      "variant": "selected",
+      "worldFile": "world-124.png",
+      "simulationTimeMs": 2400,
+      "durationMs": 80,
+      "worldSha256": "3f43b205b49339c280c7bf335c167c5154691143630ea8893f70bb2d1883a829",
+      "sourceSha256": "7780d69c8cdfb2d1cdf868b209907bfd5abb2257533502cec396ffa33403c138"
+    },
+    {
+      "foot": [
+        7811.3515625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 21,
+      "sourceFile": "source-125.png",
+      "variant": "selected",
+      "worldFile": "world-125.png",
+      "simulationTimeMs": 2480,
+      "durationMs": 80,
+      "worldSha256": "44975b976ae516da3bdc46ea79adfeeb4d6d2a84d94862a2daabaad0d04d738c",
+      "sourceSha256": "393009fa4f96981ea5ba13fcd0df8fe72fa802a59030b84befdac43d97ea29af"
+    },
+    {
+      "foot": [
+        7815.03125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-126.png",
+      "variant": "selected",
+      "worldFile": "world-126.png",
+      "simulationTimeMs": 2560,
+      "durationMs": 80,
+      "worldSha256": "aa2ab3a4c13f2838a239a89ee308f5300b9745e3bee414d26524645a182ac51f",
+      "sourceSha256": "1502d0c9fa5900346658948bbf70a7912158fb87ed8a91e65fe788a4b5e1f49c"
+    },
+    {
+      "foot": [
+        7818.7109375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 26,
+      "sourceFile": "source-127.png",
+      "variant": "selected",
+      "worldFile": "world-127.png",
+      "simulationTimeMs": 2640,
+      "durationMs": 80,
+      "worldSha256": "1bbb978945b445f36540198ce783d90456fe6ee8166d49d6028af5714dcc289f",
+      "sourceSha256": "a09b745b9b89eb56f73e5ad7c34942a7902e501e7dc1574b6c3232c88e269068"
+    },
+    {
+      "foot": [
+        7822.390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-128.png",
+      "variant": "selected",
+      "worldFile": "world-128.png",
+      "simulationTimeMs": 2720,
+      "durationMs": 80,
+      "worldSha256": "6439c78c92652ac095c168acfa5eb32f8a4e4db236b41029079e2ed4518681fb",
+      "sourceSha256": "79954691eebac7da87413fd08b427706d91d2cdc78d36773473be55e98e6977b"
+    },
+    {
+      "foot": [
+        7826.0703125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 31,
+      "sourceFile": "source-129.png",
+      "variant": "selected",
+      "worldFile": "world-129.png",
+      "simulationTimeMs": 2800,
+      "durationMs": 80,
+      "worldSha256": "fa636f01621c85c57199646420de906a6fe2930b24198fb42c70a3854e1f4eca",
+      "sourceSha256": "fb5deccefcf2e0c3f6816e4d48b985696f8382fa32a75d0fe6f72056c39ed74d"
+    },
+    {
+      "foot": [
+        7829.75,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 33,
+      "sourceFile": "source-130.png",
+      "variant": "selected",
+      "worldFile": "world-130.png",
+      "simulationTimeMs": 2880,
+      "durationMs": 80,
+      "worldSha256": "cdb91ed4e7b2739f1ccb8f333579be5b40498785c5e621e714b5ee79eb9ef00e",
+      "sourceSha256": "f6c77284e8a4fcff358167123313105256d68ab0867352795cb3cd751135e80f"
+    },
+    {
+      "foot": [
+        7833.4296875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 36,
+      "sourceFile": "source-131.png",
+      "variant": "selected",
+      "worldFile": "world-131.png",
+      "simulationTimeMs": 2960,
+      "durationMs": 80,
+      "worldSha256": "b8240a78a0e36e73496df3ce220ba866a3e43bc62d6970032426dd6267224150",
+      "sourceSha256": "f6b8f9de430817679884566b2e0df76781c55956829b017d29031c4476d8166e"
+    },
+    {
+      "foot": [
+        7837.109375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 39,
+      "sourceFile": "source-132.png",
+      "variant": "selected",
+      "worldFile": "world-132.png",
+      "simulationTimeMs": 3040,
+      "durationMs": 80,
+      "worldSha256": "ee2aae7801f6053dc96a9afc5a9089235149a29fd925f9852031f446edc3caf2",
+      "sourceSha256": "28bc8b3f5aab42ca87eae613dec0f3aa028fe5b9b198576183bf171de4dc3ee3"
+    },
+    {
+      "foot": [
+        7840.7890625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 41,
+      "sourceFile": "source-133.png",
+      "variant": "selected",
+      "worldFile": "world-133.png",
+      "simulationTimeMs": 3120,
+      "durationMs": 80,
+      "worldSha256": "2a2fe91fe2ed212a2e9223f4882f5475a8298d126a22297bfc1f3b5ca9a5ce34",
+      "sourceSha256": "67a0679b2dbc3e260032699954671500fbfc530f9139963df61856ce09252825"
+    },
+    {
+      "foot": [
+        7844.46875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 44,
+      "sourceFile": "source-134.png",
+      "variant": "selected",
+      "worldFile": "world-134.png",
+      "simulationTimeMs": 3200,
+      "durationMs": 80,
+      "worldSha256": "1ab17389c688953eac0d486d868a5607816b290dd7c012050a876a6d5265a63c",
+      "sourceSha256": "46b851709ab76549b81da7ff1056fca122246fcdbeb10b0fc0bae7208b7e30a9"
+    },
+    {
+      "foot": [
+        7848.1484375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 46,
+      "sourceFile": "source-135.png",
+      "variant": "selected",
+      "worldFile": "world-135.png",
+      "simulationTimeMs": 3280,
+      "durationMs": 80,
+      "worldSha256": "b57f039dcd0cb3dd72958f1599aa6deee12b24b3833236817fb360b855b7ac87",
+      "sourceSha256": "f3686f57bc2f5e696b1344c486bfc68f05e38bea4ce1b5c38392505e8ecb6c07"
+    },
+    {
+      "foot": [
+        7851.828125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 1,
+      "sourceFile": "source-136.png",
+      "variant": "selected",
+      "worldFile": "world-136.png",
+      "simulationTimeMs": 3360,
+      "durationMs": 80,
+      "worldSha256": "2b6277f7c70a37c8c60963addf9b3e3717a86d3e3dd9a12904635783a2a5cec1",
+      "sourceSha256": "1f13f7ec68dffbade910a7e060e171ed56aae4bfb3e19891313f653108723ef3"
+    },
+    {
+      "foot": [
+        7855.5078125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 3,
+      "sourceFile": "source-137.png",
+      "variant": "selected",
+      "worldFile": "world-137.png",
+      "simulationTimeMs": 3440,
+      "durationMs": 80,
+      "worldSha256": "1900b55b13463c0a80d2e21a4ab7e8b17e15fe7d0340dd689d5152bcd549b0bf",
+      "sourceSha256": "5fabba5df649b568288c6b77200b55f69363361c1911e4b003e2d1eff18f72a9"
+    },
+    {
+      "foot": [
+        7859.1875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 6,
+      "sourceFile": "source-138.png",
+      "variant": "selected",
+      "worldFile": "world-138.png",
+      "simulationTimeMs": 3520,
+      "durationMs": 80,
+      "worldSha256": "8cab5c6e3a669ec4ee0e6051396a00d5add63fafcf3581e8c2b275303bd285bd",
+      "sourceSha256": "c46745216ca4322291449987fd592c453268bf7400aca32a889625f343a61f2d"
+    },
+    {
+      "foot": [
+        7862.8671875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 8,
+      "sourceFile": "source-139.png",
+      "variant": "selected",
+      "worldFile": "world-139.png",
+      "simulationTimeMs": 3600,
+      "durationMs": 80,
+      "worldSha256": "10666b37419897762909124048719bd8b283475336e31b565f8856b88aab2dd0",
+      "sourceSha256": "bc667f8a23f23e36ff1b724cf249a8c62f87a29215de8bf764d7d532cb3416a7"
+    },
+    {
+      "foot": [
+        7866.546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 11,
+      "sourceFile": "source-140.png",
+      "variant": "selected",
+      "worldFile": "world-140.png",
+      "simulationTimeMs": 3680,
+      "durationMs": 80,
+      "worldSha256": "38983cabbdecf64c2e8c7706c7d428e64d6a0510b23f0e4fccc6178d2a2e05f8",
+      "sourceSha256": "963aea4c94bbe238b0cab196cd2095e54cbd6c1112dd7c212635c05622b4f77a"
+    },
+    {
+      "foot": [
+        7870.2265625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 14,
+      "sourceFile": "source-141.png",
+      "variant": "selected",
+      "worldFile": "world-141.png",
+      "simulationTimeMs": 3760,
+      "durationMs": 80,
+      "worldSha256": "1d0bd64019e4fcce4b3a126b1c34748eda4d1923f1591a915cf9cc9544317e41",
+      "sourceSha256": "2298b3952de377805f592af2b9775867821f49cf68a311a057469f9d7b88e96c"
+    },
+    {
+      "foot": [
+        7873.90625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 16,
+      "sourceFile": "source-142.png",
+      "variant": "selected",
+      "worldFile": "world-142.png",
+      "simulationTimeMs": 3840,
+      "durationMs": 80,
+      "worldSha256": "9f9089ac1ca82e368206f86bc6629390080cb7f2a36f83c8e3e5a1dcdf05d739",
+      "sourceSha256": "8dcd4edc81fff5d55c3275a9e3a370fd2da51e5ce2dd38c2b83fdb8f4ee75e60"
+    },
+    {
+      "foot": [
+        7877.5859375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 19,
+      "sourceFile": "source-143.png",
+      "variant": "selected",
+      "worldFile": "world-143.png",
+      "simulationTimeMs": 3920,
+      "durationMs": 80,
+      "worldSha256": "7352d6e52327b194871047dc7764bb04589cfa7278cb6cb5060c2581823757f9",
+      "sourceSha256": "f28afd87db8592a4f765fb2b19c93e8c34cc242b1120585e532039aea12daf54"
+    },
+    {
+      "foot": [
+        7881.265625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 21,
+      "sourceFile": "source-144.png",
+      "variant": "selected",
+      "worldFile": "world-144.png",
+      "simulationTimeMs": 4000,
+      "durationMs": 80,
+      "worldSha256": "1711f68415f944df8fd2f931b88727e8737ab7b60aae678a4da99498f47f6f55",
+      "sourceSha256": "393009fa4f96981ea5ba13fcd0df8fe72fa802a59030b84befdac43d97ea29af"
+    },
+    {
+      "foot": [
+        7884.9453125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 24,
+      "sourceFile": "source-145.png",
+      "variant": "selected",
+      "worldFile": "world-145.png",
+      "simulationTimeMs": 4080,
+      "durationMs": 80,
+      "worldSha256": "740b40be57eb19260c6efc642f8eb6125aa11b6c794eff610834e3332bf11a1c",
+      "sourceSha256": "59a29e5d5b774820e078a63448c92094ffd79bbbb42355c15659086f3747c7de"
+    },
+    {
+      "foot": [
+        7888.625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 26,
+      "sourceFile": "source-146.png",
+      "variant": "selected",
+      "worldFile": "world-146.png",
+      "simulationTimeMs": 4160,
+      "durationMs": 80,
+      "worldSha256": "20f3ef80c96900f11e001303db693cb39c44ab9991fd25f1748adfbc8c2ce580",
+      "sourceSha256": "a09b745b9b89eb56f73e5ad7c34942a7902e501e7dc1574b6c3232c88e269068"
+    },
+    {
+      "foot": [
+        7892.3046875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 29,
+      "sourceFile": "source-147.png",
+      "variant": "selected",
+      "worldFile": "world-147.png",
+      "simulationTimeMs": 4240,
+      "durationMs": 80,
+      "worldSha256": "d41687920d6c63aa868b4e945f0e6fc4ef1b6c74638c12096ab87fa055d04afc",
+      "sourceSha256": "7b2043c2e23e7b9a2400851e66eb4a8a6da11ad6976871921c1f8d7c0219d10c"
+    },
+    {
+      "foot": [
+        7895.984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 31,
+      "sourceFile": "source-148.png",
+      "variant": "selected",
+      "worldFile": "world-148.png",
+      "simulationTimeMs": 4320,
+      "durationMs": 80,
+      "worldSha256": "1e86ca9528873b5da063ba35c87b3cf7323e5ec4944dd9847d3fbc26f1e73f56",
+      "sourceSha256": "fb5deccefcf2e0c3f6816e4d48b985696f8382fa32a75d0fe6f72056c39ed74d"
+    },
+    {
+      "foot": [
+        7899.6640625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 34,
+      "sourceFile": "source-149.png",
+      "variant": "selected",
+      "worldFile": "world-149.png",
+      "simulationTimeMs": 4400,
+      "durationMs": 80,
+      "worldSha256": "4ac59f3bc92edd916f4ac0660676bbf691e185e371b8ef4b0e652386d5d6d19d",
+      "sourceSha256": "b85da2b97ad738389a15469b6f54100071fbf4e064bb2a83fbc4d1c4a266d76f"
+    },
+    {
+      "foot": [
+        7903.34375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 37,
+      "sourceFile": "source-150.png",
+      "variant": "selected",
+      "worldFile": "world-150.png",
+      "simulationTimeMs": 4480,
+      "durationMs": 80,
+      "worldSha256": "6db86a95db97421caa59acdaa6aef8822a22c6072909076af46a5ec6d1877633",
+      "sourceSha256": "a1f6626498416911a800db98cc1296c077317129ba67bbe3fa24a6a5bdef4f9d"
+    },
+    {
+      "foot": [
+        7907.0234375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 39,
+      "sourceFile": "source-151.png",
+      "variant": "selected",
+      "worldFile": "world-151.png",
+      "simulationTimeMs": 4560,
+      "durationMs": 80,
+      "worldSha256": "163f20a0e727ede48468cbc98d8d711d141f4019a5cc161650e5fd9a9dfc0625",
+      "sourceSha256": "28bc8b3f5aab42ca87eae613dec0f3aa028fe5b9b198576183bf171de4dc3ee3"
+    },
+    {
+      "foot": [
+        7910.703125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 42,
+      "sourceFile": "source-152.png",
+      "variant": "selected",
+      "worldFile": "world-152.png",
+      "simulationTimeMs": 4640,
+      "durationMs": 80,
+      "worldSha256": "a1f9dd4a4cc17a0139410d741ee2a344d9adf2312fa5867f705217b840473682",
+      "sourceSha256": "879d54fc6e92ba76b81a0f7389b2850d916751da5179e7e1c5e9e08b0e41a40d"
+    },
+    {
+      "foot": [
+        7914.3828125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 44,
+      "sourceFile": "source-153.png",
+      "variant": "selected",
+      "worldFile": "world-153.png",
+      "simulationTimeMs": 4720,
+      "durationMs": 80,
+      "worldSha256": "6ff4633cd2ce4eb174fae3fd8993ee684f2ac33b841a66b826999d93fafa5cb8",
+      "sourceSha256": "46b851709ab76549b81da7ff1056fca122246fcdbeb10b0fc0bae7208b7e30a9"
+    },
+    {
+      "foot": [
+        7918.0625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 47,
+      "sourceFile": "source-154.png",
+      "variant": "selected",
+      "worldFile": "world-154.png",
+      "simulationTimeMs": 4800,
+      "durationMs": 80,
+      "worldSha256": "aea263c04a31e37d939b3340c8a1b423bd4e23f10896a37a5f63d327434ba369",
+      "sourceSha256": "df79688f57c4a66bff3212364ccb155d96b3ec595e96581f7500adc9c9644a25"
+    },
+    {
+      "foot": [
+        7921.7421875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 1,
+      "sourceFile": "source-155.png",
+      "variant": "selected",
+      "worldFile": "world-155.png",
+      "simulationTimeMs": 4880,
+      "durationMs": 80,
+      "worldSha256": "d32dde2733332e55035c00c205fcd1658d12b3ee882c2285a3b01651fbfc18a9",
+      "sourceSha256": "1f13f7ec68dffbade910a7e060e171ed56aae4bfb3e19891313f653108723ef3"
+    },
+    {
+      "foot": [
+        7925.421875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 4,
+      "sourceFile": "source-156.png",
+      "variant": "selected",
+      "worldFile": "world-156.png",
+      "simulationTimeMs": 4960,
+      "durationMs": 80,
+      "worldSha256": "b99a24039997e16b8b2777a50c728326c8bb3f77e2768f950f5c52b2b8ab4862",
+      "sourceSha256": "db6faf3625f1218075e589dfeac07a6d850694d200f7344dea4ee5650e7b1297"
+    },
+    {
+      "foot": [
+        7929.1015625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-157.png",
+      "variant": "selected",
+      "worldFile": "world-157.png",
+      "simulationTimeMs": 5040,
+      "durationMs": 80,
+      "worldSha256": "c508516c33738fc00206264a91f3d1b01b4105ef2e614febf033538c0749c8dc",
+      "sourceSha256": "69ca1af3aaf216ef1aa9887896c4f059afb264b48533fb3784fb3cb96f0548fe"
+    },
+    {
+      "foot": [
+        7932.78125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 9,
+      "sourceFile": "source-158.png",
+      "variant": "selected",
+      "worldFile": "world-158.png",
+      "simulationTimeMs": 5120,
+      "durationMs": 80,
+      "worldSha256": "2519726d1520d2a4592dc8fe3976137d6ab83a7c050703b182ff97d96c786832",
+      "sourceSha256": "96957eba1b8d378057c57437ef142eee9281b72c4675dd2cad6acd1e41d1b061"
+    },
+    {
+      "foot": [
+        7936.4609375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-159.png",
+      "variant": "selected",
+      "worldFile": "world-159.png",
+      "simulationTimeMs": 5200,
+      "durationMs": 80,
+      "worldSha256": "667928d4442e7d140704e59b8c1aa102a11277831cb398d7fe00df0074e0177c",
+      "sourceSha256": "b1cf64e9556558cdcabb1186b8db006f66817a15028cb73d7045f710d3ffbfe3"
+    },
+    {
+      "foot": [
+        7940.140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 14,
+      "sourceFile": "source-160.png",
+      "variant": "selected",
+      "worldFile": "world-160.png",
+      "simulationTimeMs": 5280,
+      "durationMs": 80,
+      "worldSha256": "1b82f10bad1607f89d5fdc6f25c2fc12a8cb95e1aab4e6bc2dffa2c219a5bc10",
+      "sourceSha256": "2298b3952de377805f592af2b9775867821f49cf68a311a057469f9d7b88e96c"
+    },
+    {
+      "foot": [
+        7943.8203125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-161.png",
+      "variant": "selected",
+      "worldFile": "world-161.png",
+      "simulationTimeMs": 5360,
+      "durationMs": 80,
+      "worldSha256": "34c2aed9226b6a724c396cf891e5216666eecfd900b6b057e4fe6835ed1c64cf",
+      "sourceSha256": "e49d066a5eb94b0d7b631e8939b2033a88f0f5b827e282571143531779ab0dbf"
+    },
+    {
+      "foot": [
+        7947.5,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 19,
+      "sourceFile": "source-162.png",
+      "variant": "selected",
+      "worldFile": "world-162.png",
+      "simulationTimeMs": 5440,
+      "durationMs": 80,
+      "worldSha256": "3f764c3ab1955b2302f45d8d977cdd076388d3bbff20c46ff9f9e1f4e283493b",
+      "sourceSha256": "f28afd87db8592a4f765fb2b19c93e8c34cc242b1120585e532039aea12daf54"
+    },
+    {
+      "foot": [
+        7951.1796875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 22,
+      "sourceFile": "source-163.png",
+      "variant": "selected",
+      "worldFile": "world-163.png",
+      "simulationTimeMs": 5520,
+      "durationMs": 80,
+      "worldSha256": "f1ea528c60322689c72e02afa74b8b8f91874cc7be7f0fd3560cb76499e87366",
+      "sourceSha256": "29ca23a36774b65c411971a42117c36f73ce817c017470172cac988ef9dab2ac"
+    },
+    {
+      "foot": [
+        7954.859375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 24,
+      "sourceFile": "source-164.png",
+      "variant": "selected",
+      "worldFile": "world-164.png",
+      "simulationTimeMs": 5600,
+      "durationMs": 80,
+      "worldSha256": "8f6bc81a45bb898e6b9bb7c8d9f998bcfa7b2b918d4cc34050e91c9a2f491099",
+      "sourceSha256": "59a29e5d5b774820e078a63448c92094ffd79bbbb42355c15659086f3747c7de"
+    },
+    {
+      "foot": [
+        7958.5390625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 27,
+      "sourceFile": "source-165.png",
+      "variant": "selected",
+      "worldFile": "world-165.png",
+      "simulationTimeMs": 5680,
+      "durationMs": 80,
+      "worldSha256": "a454611565f8d545fa8311e2881f689d6cbce14aa952f4efc2a744355583d1ac",
+      "sourceSha256": "dedf4b4fda1326611349c2772fb81ca0a5cf401a6dd3bef2760b713d84ed0123"
+    },
+    {
+      "foot": [
+        7962.21875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 30,
+      "sourceFile": "source-166.png",
+      "variant": "selected",
+      "worldFile": "world-166.png",
+      "simulationTimeMs": 5760,
+      "durationMs": 80,
+      "worldSha256": "936623d035e15528b9fc28da81a3f5fc4754cee9ab8cd7e331fe8c0b7ab0421d",
+      "sourceSha256": "4acdfec5370d845a4d4fb980299da6534321ae80f25740940fb7b4f3a8f08dae"
+    },
+    {
+      "foot": [
+        7965.8984375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 32,
+      "sourceFile": "source-167.png",
+      "variant": "selected",
+      "worldFile": "world-167.png",
+      "simulationTimeMs": 5840,
+      "durationMs": 80,
+      "worldSha256": "af77583e7a2d259d6f269eea2cdae4b68abe908f100fc00792a47ad542cfee06",
+      "sourceSha256": "ac97261f9c990a2b690e866ac3c9e474280953c0cf5b8ef305bb0d41fa1f0779"
+    },
+    {
+      "foot": [
+        7969.578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 35,
+      "sourceFile": "source-168.png",
+      "variant": "selected",
+      "worldFile": "world-168.png",
+      "simulationTimeMs": 5920,
+      "durationMs": 80,
+      "worldSha256": "3e5f759ef3baac76409b4cb7cab9ccdc27f6c3035b050f0a543c5185e3753a24",
+      "sourceSha256": "173e45c289e83927df39cef63dd5d0a3fa5dfd88d2cd3cb4db06b836d6452c17"
+    },
+    {
+      "foot": [
+        7973.2578125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 37,
+      "sourceFile": "source-169.png",
+      "variant": "selected",
+      "worldFile": "world-169.png",
+      "simulationTimeMs": 6000,
+      "durationMs": 80,
+      "worldSha256": "d8387cf38cbb8068a2e5e2bd3fd0d86f86839fd45a4111697a16640475e3a719",
+      "sourceSha256": "a1f6626498416911a800db98cc1296c077317129ba67bbe3fa24a6a5bdef4f9d"
+    },
+    {
+      "foot": [
+        7976.9375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 40,
+      "sourceFile": "source-170.png",
+      "variant": "selected",
+      "worldFile": "world-170.png",
+      "simulationTimeMs": 6080,
+      "durationMs": 80,
+      "worldSha256": "4687d2e1e1c265e557a9f7c7204f75fd50484d15544482b90d9e39b5a0a65a25",
+      "sourceSha256": "942ab841b2773558178535e8fcb6b0164c608a0c3f05a7109699857332e7982c"
+    },
+    {
+      "foot": [
+        7980.6171875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 42,
+      "sourceFile": "source-171.png",
+      "variant": "selected",
+      "worldFile": "world-171.png",
+      "simulationTimeMs": 6160,
+      "durationMs": 80,
+      "worldSha256": "73fb721f3709a6e1b300b514e71c40f1ec05ecce53d8dec7bb422e157ceb2288",
+      "sourceSha256": "879d54fc6e92ba76b81a0f7389b2850d916751da5179e7e1c5e9e08b0e41a40d"
+    },
+    {
+      "foot": [
+        7984.296875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 45,
+      "sourceFile": "source-172.png",
+      "variant": "selected",
+      "worldFile": "world-172.png",
+      "simulationTimeMs": 6240,
+      "durationMs": 80,
+      "worldSha256": "eabb87cd86c540a73720e10f367839fea359f6089aed6c279074a1265e3b8a7f",
+      "sourceSha256": "a1dea452f7a6bff9924a7658e92712d829e576fe67b969a19916ef6eebddb703"
+    },
+    {
+      "foot": [
+        7987.9765625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 47,
+      "sourceFile": "source-173.png",
+      "variant": "selected",
+      "worldFile": "world-173.png",
+      "simulationTimeMs": 6320,
+      "durationMs": 80,
+      "worldSha256": "b77039d6c0e901ec24c203707e560a95605f6e914af9ace023646afbbc553fa2",
+      "sourceSha256": "df79688f57c4a66bff3212364ccb155d96b3ec595e96581f7500adc9c9644a25"
+    },
+    {
+      "foot": [
+        7991.65625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 2,
+      "sourceFile": "source-174.png",
+      "variant": "selected",
+      "worldFile": "world-174.png",
+      "simulationTimeMs": 6400,
+      "durationMs": 80,
+      "worldSha256": "7e78f53dbe8fe9d210e9d2d082c5f41b372a0c1a567594b7c57b1764f41396e8",
+      "sourceSha256": "2d4761ca4e419b87e7716ea6d16ceeff58aff07d4326295dc34bb692aca18388"
+    },
+    {
+      "foot": [
+        7995.3359375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 5,
+      "sourceFile": "source-175.png",
+      "variant": "selected",
+      "worldFile": "world-175.png",
+      "simulationTimeMs": 6480,
+      "durationMs": 80,
+      "worldSha256": "f2f20ba06f3fb43e786b0480ff319cfdded1cf2d8a5002b0ee8162e6f6c740ee",
+      "sourceSha256": "ef0ba9f7df14cb0c1856d1c4fbc3868410911395b42575ca6cacbddae6143e91"
+    },
+    {
+      "foot": [
+        7999.015625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 7,
+      "sourceFile": "source-176.png",
+      "variant": "selected",
+      "worldFile": "world-176.png",
+      "simulationTimeMs": 6560,
+      "durationMs": 80,
+      "worldSha256": "3b2483bab70d51f594da927c53315c0648173e9ec28c19b6b6c09500766002ab",
+      "sourceSha256": "69ca1af3aaf216ef1aa9887896c4f059afb264b48533fb3784fb3cb96f0548fe"
+    },
+    {
+      "foot": [
+        8002.6953125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 10,
+      "sourceFile": "source-177.png",
+      "variant": "selected",
+      "worldFile": "world-177.png",
+      "simulationTimeMs": 6640,
+      "durationMs": 80,
+      "worldSha256": "fa9a3facff8ddb7a1c383ae1ad95f5122cf374b298695f589d58894eabd4fcf5",
+      "sourceSha256": "2f10339d60b2ec7e7420e43c4777d4503da97e5258542bdcf9abf362f0cda4d2"
+    },
+    {
+      "foot": [
+        8006.375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 12,
+      "sourceFile": "source-178.png",
+      "variant": "selected",
+      "worldFile": "world-178.png",
+      "simulationTimeMs": 6720,
+      "durationMs": 80,
+      "worldSha256": "b978679ba5bb45dfb741c021a67048192dd5a872c55a8feafae5bd19cb3470cb",
+      "sourceSha256": "b1cf64e9556558cdcabb1186b8db006f66817a15028cb73d7045f710d3ffbfe3"
+    },
+    {
+      "foot": [
+        8010.0546875,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 15,
+      "sourceFile": "source-179.png",
+      "variant": "selected",
+      "worldFile": "world-179.png",
+      "simulationTimeMs": 6800,
+      "durationMs": 80,
+      "worldSha256": "8c1869de356d248cf60eae043782e94d9ec851169c64c03d20c5a352dd4a34c1",
+      "sourceSha256": "c2a6f8c7c56fc8cb0e6fb976b513e3f097015c4b07c4d2220c21638d9bcfff0d"
+    },
+    {
+      "foot": [
+        8013.734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 17,
+      "sourceFile": "source-180.png",
+      "variant": "selected",
+      "worldFile": "world-180.png",
+      "simulationTimeMs": 6880,
+      "durationMs": 80,
+      "worldSha256": "1f7409fbbbb2fadb7c0030194f20e3a40020e79a52b4721123df70f295736d95",
+      "sourceSha256": "e49d066a5eb94b0d7b631e8939b2033a88f0f5b827e282571143531779ab0dbf"
+    },
+    {
+      "foot": [
+        8017.4140625,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 20,
+      "sourceFile": "source-181.png",
+      "variant": "selected",
+      "worldFile": "world-181.png",
+      "simulationTimeMs": 6960,
+      "durationMs": 80,
+      "worldSha256": "c69b51b4971075e8e778d6236765342184ad95e95cc9386bf97ac79fbee0f663",
+      "sourceSha256": "5ac2e95f627c59b1ffd3cc15a5f72a74cc31923df7c682db61bed09f502b87c3"
+    },
+    {
+      "foot": [
+        8021.09375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 23,
+      "sourceFile": "source-182.png",
+      "variant": "selected",
+      "worldFile": "world-182.png",
+      "simulationTimeMs": 7040,
+      "durationMs": 80,
+      "worldSha256": "6cfacdbbdc24a279c1cb272ff9752f1aaaf05428694a0903a8e7813294018e40",
+      "sourceSha256": "1502d0c9fa5900346658948bbf70a7912158fb87ed8a91e65fe788a4b5e1f49c"
+    },
+    {
+      "foot": [
+        8024.7734375,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 25,
+      "sourceFile": "source-183.png",
+      "variant": "selected",
+      "worldFile": "world-183.png",
+      "simulationTimeMs": 7120,
+      "durationMs": 80,
+      "worldSha256": "cafc6c71860b8811d2ee598ebfe7541a7d0b67cad34a5007dd90cc04beb207d6",
+      "sourceSha256": "c0450c2a169cbf736665d3b653b163dcb1b1d9173e10ef692d1f2df0c15f6e08"
+    },
+    {
+      "foot": [
+        8028.453125,
+        8160.0
+      ],
+      "key": "walk-east",
+      "label": "walking route",
+      "slot": 28,
+      "sourceFile": "source-184.png",
+      "variant": "selected",
+      "worldFile": "world-184.png",
+      "simulationTimeMs": 7200,
+      "durationMs": 80,
+      "worldSha256": "73c86404fb04b91ee0e8b5c69e619de578286ed764eb52eb228bcc48f361b66a",
+      "sourceSha256": "79954691eebac7da87413fd08b427706d91d2cdc78d36773473be55e98e6977b"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "walking route",
+      "slot": 0,
+      "sourceFile": "source-185.png",
+      "variant": "selected",
+      "worldFile": "world-185.png",
+      "simulationTimeMs": 7280,
+      "durationMs": 20,
+      "worldSha256": "ebe64fa3bcfd22ac4b228802e98a7c06b73531f48142d167f86c4f6f5b18a8b5",
+      "sourceSha256": "e0ba55378751cd2756cba0ba719a87a606eac122044b94ed3f7e441d59a15692"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 0,
+      "sourceFile": "source-186.png",
+      "variant": "selected",
+      "worldFile": "world-186.png",
+      "simulationTimeMs": 7300,
+      "durationMs": 80,
+      "worldSha256": "70618d95b728827d6093876a6f8578a382f73506bd1d5a26b60ad04c3cc9f166",
+      "sourceSha256": "e0ba55378751cd2756cba0ba719a87a606eac122044b94ed3f7e441d59a15692"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 4,
+      "sourceFile": "source-187.png",
+      "variant": "selected",
+      "worldFile": "world-187.png",
+      "simulationTimeMs": 7380,
+      "durationMs": 80,
+      "worldSha256": "e1f56c4bd439d9789866d437a94e8555a76791f4c4c799bb134c62f2e5340dc7",
+      "sourceSha256": "69a8ae817fbd46fedc3b44845cbb30e35e7414193565d35cf314b75bcfb4f2f8"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 8,
+      "sourceFile": "source-188.png",
+      "variant": "selected",
+      "worldFile": "world-188.png",
+      "simulationTimeMs": 7460,
+      "durationMs": 80,
+      "worldSha256": "7f451d6c440b0eb2f851b1b2e674643e1ad369a4bd1a3e26665db95194513d6b",
+      "sourceSha256": "418e1e3483adfa0cd5206b81be0e6ec833966cc47cadf6f1acc3303e9e4d2273"
+    },
+    {
+      "foot": [
+        8032.0,
+        8160.0
+      ],
+      "key": "idle-east",
+      "label": "idle after",
+      "slot": 12,
+      "sourceFile": "source-189.png",
+      "variant": "selected",
+      "worldFile": "world-189.png",
+      "simulationTimeMs": 7540,
+      "durationMs": 80,
+      "worldSha256": "e22d5ca2025fb4cd5f19c9cb466d5b490850425d20a5406f6709721e7ea0f7ba",
+      "sourceSha256": "1dc40f82b4ff78581c7195cb3f5c854fb01f6908118d346dfc27931fed7f7665"
+    }
+  ],
+  "pages": [
+    "comparison-0.png",
+    "comparison-1.png",
+    "comparison-2.png",
+    "comparison-3.png"
+  ],
+  "normalAdmission": false,
+  "fullVisualAcceptance": false,
+  "visualReviewed": true,
+  "inputChanges": [
+    "C:\\Users\\Alex\\Documents\\Brine Space\\scripts\\airlock_panel.gd",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\scripts\\crew_work_panel.gd",
+    "C:\\Users\\Alex\\Documents\\Brine Space\\scripts\\moonbay_panel.gd"
+  ],
+  "ownerChanges": [],
+  "crop": [
+    315,
+    270,
+    820,
+    425
+  ],
+  "pageHashes": {
+    "comparison-0.png": "b05d2f52ba9aa0509743d918195efd5e4e8ae068f56988e937aabd035d6e6606",
+    "comparison-1.png": "dd086359a59fe5238369a98ecc64bba1a86901d814b89d41e259648dc675bd62",
+    "comparison-2.png": "ed266a04968223471ce9e0128a4888ce97025c1000c4a7834efd92c9119a8f17",
+    "comparison-3.png": "72559e771a719b184b1d0df19ce1cbff4a3491eb6facbd2eb107474033a3362c"
+  },
+  "decodedAPNG": [
+    {
+      "path": "candidate-1.png",
+      "frames": 95,
+      "durationMs": 7600.0
+    },
+    {
+      "path": "candidate-4.png",
+      "frames": 95,
+      "durationMs": 30400.0
+    },
+    {
+      "path": "selected-1.png",
+      "frames": 95,
+      "durationMs": 7600.0
+    },
+    {
+      "path": "selected-4.png",
+      "frames": 95,
+      "durationMs": 30400.0
+    }
+  ],
+  "visualFindings": "All four full route comparison boards and normal/quarter browser snapshots inspected. Candidate remains matte, with warmer face and finer quilt detail through real movement. First step begins in extended stride and arrival returns directly to idle; a brief pose jump remains in both candidate and selected baseline. Native distance/phase checks and source review do not establish continuously watched cadence or fully smooth joins.",
+  "openIssues": [
+    "Inherited extended-stride first step and abrupt return to idle need authored join treatment.",
+    "Three unrelated UI panel files changed during native run; all tested Bill/renderer/current-bank inputs stable, but full input-freeze assertion failed.",
+    "No autonomous goal selection, equipment/water, normal admission or fullsave/TitleContinue."
+  ]
+}

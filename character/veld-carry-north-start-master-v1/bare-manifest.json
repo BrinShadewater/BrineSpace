@@ -1,0 +1,153 @@
+{
+  "name": "Veld North master carry start/stop bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry-north": 0.0827027027027027
+  },
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_no_controller_adoption",
+  "states": [
+    {
+      "id": "carry-start-north",
+      "frameFiles": [
+        "res://character/veld-carry-north-start-master-v1/frames/bare/000.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/001.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/002.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/003.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-stop-north",
+      "frameFiles": [
+        "res://character/veld-carry-north-start-master-v1/frames/bare/003.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/002.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/001.png",
+        "res://character/veld-carry-north-start-master-v1/frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frameCount": 4,
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-north",
+      "frameFiles": [
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/000.png",
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/001.png",
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/002.png",
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/003.png",
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/004.png",
+        "res://character/veld-carry-north-master-proportions-v1/frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6
+    }
+  ]
+}

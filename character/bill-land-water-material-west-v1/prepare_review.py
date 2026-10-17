@@ -1,0 +1,15 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent
+s=(P.parent/'bill-land-water-runtime-east-v1/build_review.py').read_text(encoding='utf-8')
+s=s.replace('bill-land-water-runtime-east-v1','bill-land-water-material-west-v1')
+s=s.replace("rows=[x for x in data['records'] if x['name'].endswith('-candidate')]","rows=[x for x in data['records'] if x['name'].endswith('-candidate') and 'tick' in x]")
+s=s.replace("'bill-land-water-east-v3','bill-land-water-helmet-east-v1','bill-water-exit-east-v2','bill-water-exit-helmet-east-v1'","'bill-land-water-west-v2/bare','bill-land-water-west-v2/helmet'")
+s=s.replace("[('enter',60,105),('exit',410,460)]","[('enter',60,105)]")
+s=s.replace('Bill East','Bill West').replace('190 advancing60Hz boundary presentations/380original source-room files;8APNGs verify380decoded capture intervals','90 advancing60Hz entry boundary presentations/180original source-room files;4APNGs verify180decoded capture intervals')
+s=s.replace('No priority/Continue coverage yet; water classification/contact and motion need review.','Synthetic interruption guards reviewed separately. West exit remains normal source; checkpoints/Continue and continuous motion/master material acceptance pending.')
+(P/'build_review.py').write_text(s,encoding='utf-8')
+s=(P.parent/'bill-land-water-material-east-v4/finalize_review.py').read_text(encoding='utf-8')
+s=s.replace('bill-land-water-material-east-v4','bill-land-water-material-west-v1').replace(" and e['checks']==3487",'')
+s=s.replace('Four complete advancing boards inspected:190 paired presentations. New entry lift reduces crouch-to-prone pose gap; matte grade and paired helmet remain coherent at captured station scale. Physical floor support, continuous unpaused motion and full master acceptance remain open. No inherited checkpoint/title proof for new source bank.','Visual review pending West two complete advancing boards and fourteen guard pairs. Actual planar navigation/source bridge and finite material are technical evidence. Full master grade and continuous motion pending; exit bridge and checkpoints/Continue missing for West.')
+(P/'finalize_review.py').write_text(s,encoding='utf-8')
+print('Prepared focused West entry review publisher; original East evidence unchanged.')

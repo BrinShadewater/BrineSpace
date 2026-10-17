@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": {
+    "exactIdle": true,
+    "entryExitReverse": true,
+    "lieSeconds": true,
+    "riseSeconds": true,
+    "sleepJoin": true,
+    "wakeJoin": true,
+    "literalPaths": true,
+    "unclipped": true,
+    "fixedRuler": true
+  },
+  "scope": "package endpoints/timing/bounds only; visual/native/runtime acceptance separate"
+}

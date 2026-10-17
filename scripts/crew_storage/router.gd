@@ -17,12 +17,14 @@ func diagnostics_snapshot()->Dictionary:
 		"source_compressed_bytes":bank.compressed_bytes if bank!=null else 0,
 		"generated_readbacks":bank.generated_readbacks if bank!=null else 0,
 		"resolved":resolved,"missing":missing,"shown_pose_count":shown_frames.size(),
+		"registered_canvases":canvas.size(),"tracked_owners":tracked_owners.size(),"draw_epochs":epochs.size(),
 		"presenter":presenter.diagnostics_snapshot()}
 static func start(target_tree:SceneTree,root:Node,source_bank):
 	assert(active==null)
 	active=new();active.bank=source_bank;active.presenter.bank=source_bank;active.tree=target_tree
 	active.register_tree(target_tree.root)
 	target_tree.node_added.connect(active.register)
+	target_tree.node_removed.connect(active.unregister)
 	RenderingServer.frame_post_draw.connect(active.presenter.finish_frame)
 	root.tree_exited.connect(active.close,CONNECT_ONE_SHOT)
 func register_tree(node:Node):
@@ -30,6 +32,18 @@ func register_tree(node:Node):
 	for child in node.get_children():register_tree(child)
 func register(node:Node):
 	if node is CanvasItem:canvas[node.get_canvas_item().get_id()]=weakref(node)
+func unregister(node:Node):
+	var owner:=node as CanvasItem
+	if owner==null:return
+	# WeakRef is itself an Object. Retired UI/audio canvases must not leave one
+	# behind for the rest of the expedition; re-entry registers the canvas again.
+	canvas.erase(owner.get_canvas_item().get_id())
+	var id:int=owner.get_instance_id()
+	epochs.erase(id)
+	if tracked_owners.has(id):
+		var callback:Callable=tracked_owners[id].callback
+		if owner.draw.is_connected(callback):owner.draw.disconnect(callback)
+		tracked_owners.erase(id)
 func track_script_draw(owner:CanvasItem):
 	var id:int=owner.get_instance_id()
 	if tracked_owners.has(id):return
@@ -46,6 +60,7 @@ func track_script_draw(owner:CanvasItem):
 	tracked_owners[id]={"owner":weakref(owner),"callback":callback}
 	owner.draw.connect(callback)
 func before_script_draw(id:int):
+	if not tracked_owners.has(id):return
 	var owner:CanvasItem=tracked_owners[id].owner.get_ref()
 	if owner==null:return
 	presenter.begin_draw(owner)
@@ -69,6 +84,7 @@ func close():
 	tracked_owners.clear()
 	if RenderingServer.frame_post_draw.is_connected(presenter.finish_frame):RenderingServer.frame_post_draw.disconnect(presenter.finish_frame)
 	if tree.node_added.is_connected(register):tree.node_added.disconnect(register)
+	if tree.node_removed.is_connected(unregister):tree.node_removed.disconnect(unregister)
 	for id in presenter.owners.keys():presenter.release_owner(id)
 	canvas.clear();epochs.clear();shown_frames.clear();bank=null;presenter.bank=null
 	if active==self:active=null

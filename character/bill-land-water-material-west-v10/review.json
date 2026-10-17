@@ -1,0 +1,108 @@
+{
+  "status": "source_bound_head_footprint_candidate_unselected",
+  "validation": {
+    "capturePassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 122.94,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-land-water-material-west-v10\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true,
+    "targetedInputCount": 562,
+    "targetedChanges": []
+  },
+  "checks": 4207,
+  "failures": 0,
+  "currentFrozenInputsExact": 562,
+  "nativePNGCount": 500,
+  "normalSelected": false,
+  "fullVisualAcceptance": false,
+  "sourceArtworkChanged": false,
+  "comparison": {
+    "progressingPresentationsMatched": 190,
+    "sourcePixelsExact": 190,
+    "physicalRootClockWaterStateMaterialExact": 190,
+    "selectedBridgeComparisonPoses": 22,
+    "controlledOrdinarySwimPairs": [
+      [
+        "bare",
+        0
+      ],
+      [
+        "bare",
+        1
+      ],
+      [
+        "bare",
+        2
+      ],
+      [
+        "bare",
+        3
+      ],
+      [
+        "bare",
+        4
+      ],
+      [
+        "bare",
+        5
+      ],
+      [
+        "bare",
+        6
+      ],
+      [
+        "helmet",
+        0
+      ],
+      [
+        "helmet",
+        1
+      ],
+      [
+        "helmet",
+        2
+      ],
+      [
+        "helmet",
+        3
+      ],
+      [
+        "helmet",
+        4
+      ],
+      [
+        "helmet",
+        5
+      ],
+      [
+        "helmet",
+        6
+      ]
+    ],
+    "artworkChanged": false,
+    "scope": "22selected bridge comparisons against V9;14same-clock controlled normal-swim pairs at water.8 with source probe override. Not natural7phase dispatch or gait endpoint fit."
+  },
+  "headEffectWorldRadii": {
+    "bare": [
+      4.631351351351352,
+      5.072432432432433
+    ],
+    "helmet": [
+      8.82162162162162,
+      8.82162162162162
+    ]
+  },
+  "visualReview": {
+    "boardsSeen": [
+      "all four paired bridge footprint boards",
+      "both seven-pose ordinary-swim boards",
+      "full bare normal-swim probe0 fitted native screenshot"
+    ],
+    "finding": "Smaller source-size-based ellipse keeps head readability closer to face/helmet in reviewed poses and avoids broad shoulder brightening seen with historical radius. Rectangular donor footprint is a proxy, not exact opaque mask/face anatomy acceptance. Source-bound ordinary-swim renderer preserves established tint/light weights and follows current heads for wake/bubbles.14probe pairs are controlled static at water.8, not natural full-cycle motion.",
+    "remaining": "Dynamic walk endpoints use historical fallback. Actual active-gait joins, root/support, idle/master grade, stroke articulation, hazards/checkpoint/visibleContinue/normal admission and North/South/full-library polish remain."
+  }
+}

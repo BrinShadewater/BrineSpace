@@ -1,0 +1,4242 @@
+{
+  "name": "Krusher Dom meal service and returns",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  },
+  "states": [
+    {
+      "id": "meal-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-0-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-1-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-2-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-3-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-4-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-1-north",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/91c2beebf8ef53769025df1a58874e35c2fb668a4757b26e9c8dc2512ece1418.png",
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-2-north",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/0ae8ab56c747676e9806cb4454453ba89a699e7e7087895ddc87474e0afb906a.png",
+        "res://character/krusher-coherent-bank-v2/frames/91c2beebf8ef53769025df1a58874e35c2fb668a4757b26e9c8dc2512ece1418.png",
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-3-north",
+      "frameCount": 9,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/54e9f4f09f3a8473f17de7914f0e744d29f9169490c190df92084fc96a6adfaa.png",
+        "res://character/krusher-coherent-bank-v2/frames/0ae8ab56c747676e9806cb4454453ba89a699e7e7087895ddc87474e0afb906a.png",
+        "res://character/krusher-coherent-bank-v2/frames/91c2beebf8ef53769025df1a58874e35c2fb668a4757b26e9c8dc2512ece1418.png",
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-4-north",
+      "frameCount": 10,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/55cc4d9c4174398fef56d8e911c92db68f8e2e46eeffe31a4b36a040e0acd31d.png",
+        "res://character/krusher-coherent-bank-v2/frames/54e9f4f09f3a8473f17de7914f0e744d29f9169490c190df92084fc96a6adfaa.png",
+        "res://character/krusher-coherent-bank-v2/frames/0ae8ab56c747676e9806cb4454453ba89a699e7e7087895ddc87474e0afb906a.png",
+        "res://character/krusher-coherent-bank-v2/frames/91c2beebf8ef53769025df1a58874e35c2fb668a4757b26e9c8dc2512ece1418.png",
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f584a0071bc1ae7ccef7b2ec3cab154b7f6cfad33d4655449e385bb140cc45e6.png",
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-1-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/4647b5498860f1b87c03bde26ddf133131667a5ac770472f44f386725814fbda.png",
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-2-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/8f0e13b3737c72c3fedd2ecfadc99910bc89e3abbf99823c60c435893a326f61.png",
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-3-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/5adef0337b2d6ecea072ae8b3d7e40c4e7e4f3987c9b6526a053f6f3524f0724.png",
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-4-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f1160501becfe38090853cb414b56c7af8c4124026a344f10ab03960b99506b6.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-5-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-0-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-1-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-2-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-3-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-4-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-1-north",
+      "frameCount": 7,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7a74668abfe1127936f07a72f45be011bb66468a2b0d638b27b8c657167bc844.png",
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-2-north",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/2f41e1f5728519bda586d57836b0d9cfdfef25a9c7d8ed05746efc95cd84cf34.png",
+        "res://character/krusher-coherent-bank-v2/frames/7a74668abfe1127936f07a72f45be011bb66468a2b0d638b27b8c657167bc844.png",
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-3-north",
+      "frameCount": 9,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/0dd859ee70befdf325ad6d1491583dd5dbe22cd542c9c79f0bfff30577a34cc1.png",
+        "res://character/krusher-coherent-bank-v2/frames/2f41e1f5728519bda586d57836b0d9cfdfef25a9c7d8ed05746efc95cd84cf34.png",
+        "res://character/krusher-coherent-bank-v2/frames/7a74668abfe1127936f07a72f45be011bb66468a2b0d638b27b8c657167bc844.png",
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-4-north",
+      "frameCount": 10,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/80aa9f063f5b13c6aa7bb206fcd3bce4898052432a668ffaa1f00bf02c780e5d.png",
+        "res://character/krusher-coherent-bank-v2/frames/0dd859ee70befdf325ad6d1491583dd5dbe22cd542c9c79f0bfff30577a34cc1.png",
+        "res://character/krusher-coherent-bank-v2/frames/2f41e1f5728519bda586d57836b0d9cfdfef25a9c7d8ed05746efc95cd84cf34.png",
+        "res://character/krusher-coherent-bank-v2/frames/7a74668abfe1127936f07a72f45be011bb66468a2b0d638b27b8c657167bc844.png",
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6b575f914db80cf635be70b50aba9ee565fc39860bcfa72b2304e6e414a46ed3.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-1-north",
+      "frameCount": 5,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b8cbc88e1ef737306cc319a897b2a50951c536426f2e87d3289f1a5830cb796e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-2-north",
+      "frameCount": 4,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9d07377ce5cf5b01a8deb63a2a70eb83caa93779bad7dd5758dcbfd50751a04f.png",
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-3-north",
+      "frameCount": 3,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/eaf4b564876fd37ffecc242a7b6ad195e496555512834e245bf39c14b26f3e6d.png",
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-4-north",
+      "frameCount": 2,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/654807b88da79e22ca9814ee50ba2c02c21775db8c1989cbfacf962198509cac.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-5-north",
+      "frameCount": 1,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fba89a0e61cd150981a75d876f60cf9bc1422f1a092c566e6d59bc9e9a944031.png"
+      ],
+      "frameDurationsMs": [
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-acquire-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        100,
+        130,
+        90,
+        160,
+        110,
+        130,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "cup-deposit-south",
+      "frameCount": 8,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-0-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-1-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-2-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-3-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-4-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-5-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-6-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-acquire-7-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-meal-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-1-south",
+      "frameCount": 7,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-2-south",
+      "frameCount": 6,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-3-south",
+      "frameCount": 5,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-4-south",
+      "frameCount": 4,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-5-south",
+      "frameCount": 3,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-6-south",
+      "frameCount": 2,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-cup-deposit-7-south",
+      "frameCount": 1,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        60
+      ],
+      "depthOffsets": [
+        0
+      ],
+      "facings": [
+        "south"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/1b5c67185a43bc4250d0638aeb24aabd2ab347b3d0e3af8f70c368f151de2ec1.png",
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3941b647c8a2d75f94ba27b4c5b45c6fc32db2fcbdaeb2b69623fd2fc31c57db.png",
+        "res://character/krusher-coherent-bank-v2/frames/1b5c67185a43bc4250d0638aeb24aabd2ab347b3d0e3af8f70c368f151de2ec1.png",
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/236ef31bb2df004161bd41cded0b8672189c0c218b9d46ffb9a9b4afc6ec4249.png",
+        "res://character/krusher-coherent-bank-v2/frames/3941b647c8a2d75f94ba27b4c5b45c6fc32db2fcbdaeb2b69623fd2fc31c57db.png",
+        "res://character/krusher-coherent-bank-v2/frames/1b5c67185a43bc4250d0638aeb24aabd2ab347b3d0e3af8f70c368f151de2ec1.png",
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/0d8c9ed2d1e151c1850d00c09ccaf2e7b281fb2519843c32aa528accabad7f93.png",
+        "res://character/krusher-coherent-bank-v2/frames/236ef31bb2df004161bd41cded0b8672189c0c218b9d46ffb9a9b4afc6ec4249.png",
+        "res://character/krusher-coherent-bank-v2/frames/3941b647c8a2d75f94ba27b4c5b45c6fc32db2fcbdaeb2b69623fd2fc31c57db.png",
+        "res://character/krusher-coherent-bank-v2/frames/1b5c67185a43bc4250d0638aeb24aabd2ab347b3d0e3af8f70c368f151de2ec1.png",
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        200,
+        200,
+        250,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-eat-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/b07d50245ed6768e62cfeb81f08fd3b2dcebee65e91d5a48d3de0dd4be28eac5.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ab17df7afb043f5964aef95441ece631e89205a0536e25a4a7f4aa056197f34.png",
+        "res://character/krusher-coherent-bank-v2/frames/387925653b9fd485acf8d9f20789c06f30161653e306cf55fc168c93e022c74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/631b27a3a37a8be524b64d6e4d5d2bc0bec048aef290b2432119874b85241337.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-0-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-1-south",
+      "frameCount": 9,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/4665e8a7c0561e240bb91f1375871d953d9d680a124d4af092ca90fe2f6de34c.png",
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-2-south",
+      "frameCount": 10,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/fb09f3ec93ad7d061add7f496734a0c4114108d330c30ececd7e8396d3cae916.png",
+        "res://character/krusher-coherent-bank-v2/frames/4665e8a7c0561e240bb91f1375871d953d9d680a124d4af092ca90fe2f6de34c.png",
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-3-south",
+      "frameCount": 11,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3fe988e50364f1e60b6f02083b4526e9c83b294a8d107aa60298d0e089fa0c67.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb09f3ec93ad7d061add7f496734a0c4114108d330c30ececd7e8396d3cae916.png",
+        "res://character/krusher-coherent-bank-v2/frames/4665e8a7c0561e240bb91f1375871d953d9d680a124d4af092ca90fe2f6de34c.png",
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-4-south",
+      "frameCount": 12,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6d0929efacb64eca087d797184490f555c857badfdc0eabc681113af72203e3d.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fe988e50364f1e60b6f02083b4526e9c83b294a8d107aa60298d0e089fa0c67.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb09f3ec93ad7d061add7f496734a0c4114108d330c30ececd7e8396d3cae916.png",
+        "res://character/krusher-coherent-bank-v2/frames/4665e8a7c0561e240bb91f1375871d953d9d680a124d4af092ca90fe2f6de34c.png",
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        850,
+        450,
+        350,
+        350,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    },
+    {
+      "id": "meal-return-drink-5-south",
+      "frameCount": 8,
+      "loop": false,
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a97e09f587b50eb96db051c9903ab11291ea8e100c851989975258c256816eb3.png",
+        "res://character/krusher-coherent-bank-v2/frames/3665b2709d542895908a79cc5a7a7df119b54ec1f0a03a378ab2497deb444c71.png",
+        "res://character/krusher-coherent-bank-v2/frames/d21443d6b1617f60dc0765c8507ed492ebb26236b40e738530ed032fb9fd6eee.png",
+        "res://character/krusher-coherent-bank-v2/frames/c9c9ccd1633c1107543d82430fb5b2b5fe7b7eb213ff369b185d8c310fdf90df.png",
+        "res://character/krusher-coherent-bank-v2/frames/6f678870a0153ac3ee874d2e7586839ef06d58517efadc19ca54f2ae83604143.png",
+        "res://character/krusher-coherent-bank-v2/frames/91f6d913c1839871aac126e4469c2e80c2429b64e9d6ca2d2b9faa6b46240fca.png",
+        "res://character/krusher-coherent-bank-v2/frames/bf7f8d2f14d421d21af95cfa1639e41ff62087693cc2b9ab244ba82dad3bd810.png",
+        "res://character/krusher-coherent-bank-v2/frames/ddf2bb9685a8db460784990be7efb7ef4c80c894b5d42e9e6c0d80e29d3a88c8.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        130,
+        110,
+        160,
+        90,
+        130,
+        100,
+        60
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        49,
+        49,
+        0,
+        0,
+        0
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "bodyReuse": "Selected James whole meal service poses, original clocks/events and indexed-return chronology",
+        "identity": "Krusher cardinal/rear heads and authored pitched South heads",
+        "deduplication": "Each identical source SHA256 transforms once; all action/return occurrences share its exact output"
+      }
+    }
+  ]
+}

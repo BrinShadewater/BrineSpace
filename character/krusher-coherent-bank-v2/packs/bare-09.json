@@ -1,0 +1,257 @@
+{
+  "name": "Krusher Dom helmet fitting east",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9448190e443bf6853b86821f338baaf639bb837de868ed5c0aa6102aabf0d4d9.png",
+        "res://character/krusher-coherent-bank-v2/frames/64ce34ea5f0b70fce672cbdf7133bf6a3bfaaa1fc7e14364103e618d87beba04.png",
+        "res://character/krusher-coherent-bank-v2/frames/efddc178c4b0ba60c3fc10332331a72cdf938a41cbc97e11fe96c4d5eeef9fce.png",
+        "res://character/krusher-coherent-bank-v2/frames/21b14c2eb23719905bfcee41e6bd877fe286bc1205477518dbbacc30a7fdd7a5.png",
+        "res://character/krusher-coherent-bank-v2/frames/5136d1ca5b85b5b67d96d19302ce777e54b9f3d7f26cbba196cb8899ec15d93b.png",
+        "res://character/krusher-coherent-bank-v2/frames/fba0601642e08ce5ec2eccd2eebc262cca83785603435f48797787007bc52189.png",
+        "res://character/krusher-coherent-bank-v2/frames/44e8d4d0b166e44f209de5395b3351b5c2eee747f5a311da41d01b4e089e381d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4e15c56893a58601f5dbf1421ccb64989d1ca87418a85df66914f95b605facc3.png",
+        "res://character/krusher-coherent-bank-v2/frames/df99ab90fd4185571119b432f41e2b2c26cc9e320dd320b0e79d8f3554847a5d.png",
+        "res://character/krusher-coherent-bank-v2/frames/7895b029ec6fac486d50192920a4c56e5d6c1c0a188dba5fd3b8dc20fecfd739.png",
+        "res://character/krusher-coherent-bank-v2/frames/774e0497481438d599667601e15a122b70648ae50edddb8a665779806b84a89d.png",
+        "res://character/krusher-coherent-bank-v2/frames/c34f46e73f02e3d1e184dbe0335de575e53ad0473a3c6e74d5b3cab48763a950.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/92aeee5d03a975d3fbf5fd5fd4a52d80a960de5227e70892c67b6289f18d4b99.png",
+        "res://character/krusher-coherent-bank-v2/frames/ccf7d54571d8c5f58752d6b97b725198e5dc7f03b6d74e0abc0e9ad4d4211d58.png",
+        "res://character/krusher-coherent-bank-v2/frames/e9fe8ddea5b930122add1dff0609bcb03b704a68a81dd8443b0c9db41d33a74a.png",
+        "res://character/krusher-coherent-bank-v2/frames/21f7c8ea50525386267c94c385ae68801a61f8dd92c3d9b606c9c0e4507bd715.png",
+        "res://character/krusher-coherent-bank-v2/frames/3f499c170cc4619598892b401516ef26f02155a07aa75f932f42f118442ce9f0.png",
+        "res://character/krusher-coherent-bank-v2/frames/b785f796bc5db16ad321262672afb2d73623141ca59e25fb7bbeb09737fa26e0.png",
+        "res://character/krusher-coherent-bank-v2/frames/a31742be70a177f8645a5dc1f07998c4b87a4c94a3a971db5651d362cc737e74.png",
+        "res://character/krusher-coherent-bank-v2/frames/b8dc029a956aab16df499ec2a2a33391f0e3d8b491559a73a5c2ceec81081022.png",
+        "res://character/krusher-coherent-bank-v2/frames/45f18445bcd1b1e8dbbed31a591eb6bf1fdf803c7d86a4ab17486d9eb033b927.png",
+        "res://character/krusher-coherent-bank-v2/frames/802f74f295b2caf67c2817ff91fc6beeba86a209c2576d28c492424320dbfef5.png",
+        "res://character/krusher-coherent-bank-v2/frames/18812fcea97cf7448e7eed4dab4ea68868d238a79ccff1e32584bda1dd8e906e.png",
+        "res://character/krusher-coherent-bank-v2/frames/320c292e9aec6f1567dea1665859d7b85a9e14101c58d096b90b0c438c332c87.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "runtimeInstalled": false,
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  }
+}

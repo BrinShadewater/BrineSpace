@@ -1,0 +1,5103 @@
+{
+  "name": "Krusher Dom cancel bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "swim-cancel-pickup-0-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-0-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-0-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 0,
+          "sourceSequence": [
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7011bd8c27ff597d41b73427583de065d046926cbf175e18bec9df88e4a5aa94.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d6bd0e2a9af27182d0ccb8d74ffd2ba966154521c25fb5f45367dd9fe444cbbc.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/e35f3428dc086170d0396cdd1278c4881781318958b389027dd004e6a0c0f388.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-1-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7b078b6c5b55f0810caa6b58987054aebec35c001ba63a445c2fcbcc326a1d6e.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3ead813c0fd905bb7c789d985064d104d01ba61042dc4ced537fc2928b3483c1.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7cd5c2767aee08f5a0d445520163eddb48c7bce48a67d997415fe935ecf1109a.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/a00fbb33759a1b6e115fdacf31c5a0b66155a3cfecc565cbe2e2009e0c77eab8.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-2-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3afa053044cc037f367adc24e75b4f81674142d798e7d580b1e76a5da2b8870c.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9050fd5443f6a9478b0360980dc6db3621be236f75781dfde84282126e84175f.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/0a380f90aae2a4cb3c9071a38f4a2cf53adc221746d3fecfd85b460bbc709263.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ee3c106b694423fad8d160109698af3fb5d911cb6a8a4ca1339c861cbf312d7b.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-3-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7b078b6c5b55f0810caa6b58987054aebec35c001ba63a445c2fcbcc326a1d6e.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3570607122ffc4d75b5fc1ee2782fcc031e9e9cea60c481fe0f12760f95a3f9f.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ceecb42bd84d5529fa2c3663238a7b9df63abfad3e829f2e32286aaf9d346abf.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/0b5b9f2f772cee10d1c8171930bf6a7682ca5a788d79f2deead00532fd02e821.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-4-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d4a2f078a7106ab07c240f6b14a5c1ef1a5197a623d76960a83db1bc5fb29c38.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-east",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-north",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-south",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-work-5-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "salvage-west",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-1-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 1,
+          "sourceSequence": [
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/89102e71b5d74dbde1a4de1face6d6f84c336c5cb7150a898f47e97f7dbad297.png",
+        "res://character/krusher-coherent-bank-v2/frames/f327e7037f42c2a272ff154cd68489e2b4eb9bee3160d9e31eb0923a57a0b545.png",
+        "res://character/krusher-coherent-bank-v2/frames/6179152fa05fb226e6090041ed7a6195a4eb9093f073d6000fe7792d845145e3.png",
+        "res://character/krusher-coherent-bank-v2/frames/49cd561470b20fd5336e8ffd48feddb0403613d78e13b0fb90b10a306cda2c75.png",
+        "res://character/krusher-coherent-bank-v2/frames/5b3fd5a808fab56b3f5388726564f704c3335eb7dcc1abd73a14b0783eb15030.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 1",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1a8379a4d05dec2759ad41e10b82c286fcb28b9aea50637ac81d13fa1b0715a.png",
+        "res://character/krusher-coherent-bank-v2/frames/e64a07bc5ef9ae9eb7377f0d2548e0e69f2180baf295db632edf6c2120669047.png",
+        "res://character/krusher-coherent-bank-v2/frames/9a2dad1cf292fe44f6b9064836bb617dc74cf1f24a3033a2a2b647a8b8ba6c51.png",
+        "res://character/krusher-coherent-bank-v2/frames/d62a115c1d02e5e2f1dea42b92b750f2ce43f0a3b5705efceb6b684dd2a70f03.png",
+        "res://character/krusher-coherent-bank-v2/frames/d77e5c1ef4f7eefa9f4a3f21add609560b3bbff0e00af7420d2a46f300e0ba8c.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup1",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ef64cfa77a0f470290d3b07ffdbe39b8d05c621da3c1f5385c2bfd2dd4a3f8a.png",
+        "res://character/krusher-coherent-bank-v2/frames/06ce00ab70cc8388a0361f9f9ae11468ecdd9dfd26d504f96a61026f2235dfad.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ad9956b87b18f066d2ebab0610eb68b6390b71463d6817172521f93dbeb1b84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bdd9139292c464808683a2a189a5a6ea6acf4c8d9af1a203ccf8b4f7cd4f58d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/3e31032ec912a577ac19bdf95eb3c1fd6dbb4500253f2ccf6293c56022cd2048.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-1-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/aed5e932734d57e95b012169dfa6a6aa8320e01c8463285b3220dfeacbf96bdb.png",
+        "res://character/krusher-coherent-bank-v2/frames/0d007429366f944c95a7733a6ff7097250c25a3e1c08132d88df934ba1700f49.png",
+        "res://character/krusher-coherent-bank-v2/frames/b56311dddc7bf0e5c5794fccbc4f7cf6d2d4beb182ba6e73bd36daec604b74a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/744db0d1a6941f1adb1d05535075d7eb94530c4e810e4a6614961fbc95ab11b1.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb3b8f93cf8eb669556f07126f1b0ae494518a0fdab610856e642eb8df044743.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 50,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-2-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 2,
+          "sourceSequence": [
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/89102e71b5d74dbde1a4de1face6d6f84c336c5cb7150a898f47e97f7dbad297.png",
+        "res://character/krusher-coherent-bank-v2/frames/f327e7037f42c2a272ff154cd68489e2b4eb9bee3160d9e31eb0923a57a0b545.png",
+        "res://character/krusher-coherent-bank-v2/frames/6179152fa05fb226e6090041ed7a6195a4eb9093f073d6000fe7792d845145e3.png",
+        "res://character/krusher-coherent-bank-v2/frames/49cd561470b20fd5336e8ffd48feddb0403613d78e13b0fb90b10a306cda2c75.png",
+        "res://character/krusher-coherent-bank-v2/frames/5b3fd5a808fab56b3f5388726564f704c3335eb7dcc1abd73a14b0783eb15030.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 2",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1a8379a4d05dec2759ad41e10b82c286fcb28b9aea50637ac81d13fa1b0715a.png",
+        "res://character/krusher-coherent-bank-v2/frames/e64a07bc5ef9ae9eb7377f0d2548e0e69f2180baf295db632edf6c2120669047.png",
+        "res://character/krusher-coherent-bank-v2/frames/9a2dad1cf292fe44f6b9064836bb617dc74cf1f24a3033a2a2b647a8b8ba6c51.png",
+        "res://character/krusher-coherent-bank-v2/frames/d62a115c1d02e5e2f1dea42b92b750f2ce43f0a3b5705efceb6b684dd2a70f03.png",
+        "res://character/krusher-coherent-bank-v2/frames/d77e5c1ef4f7eefa9f4a3f21add609560b3bbff0e00af7420d2a46f300e0ba8c.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup2",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ef64cfa77a0f470290d3b07ffdbe39b8d05c621da3c1f5385c2bfd2dd4a3f8a.png",
+        "res://character/krusher-coherent-bank-v2/frames/06ce00ab70cc8388a0361f9f9ae11468ecdd9dfd26d504f96a61026f2235dfad.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ad9956b87b18f066d2ebab0610eb68b6390b71463d6817172521f93dbeb1b84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bdd9139292c464808683a2a189a5a6ea6acf4c8d9af1a203ccf8b4f7cd4f58d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/3e31032ec912a577ac19bdf95eb3c1fd6dbb4500253f2ccf6293c56022cd2048.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-2-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/aed5e932734d57e95b012169dfa6a6aa8320e01c8463285b3220dfeacbf96bdb.png",
+        "res://character/krusher-coherent-bank-v2/frames/0d007429366f944c95a7733a6ff7097250c25a3e1c08132d88df934ba1700f49.png",
+        "res://character/krusher-coherent-bank-v2/frames/b56311dddc7bf0e5c5794fccbc4f7cf6d2d4beb182ba6e73bd36daec604b74a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/744db0d1a6941f1adb1d05535075d7eb94530c4e810e4a6614961fbc95ab11b1.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb3b8f93cf8eb669556f07126f1b0ae494518a0fdab610856e642eb8df044743.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 100,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-3-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 3,
+          "sourceSequence": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/89102e71b5d74dbde1a4de1face6d6f84c336c5cb7150a898f47e97f7dbad297.png",
+        "res://character/krusher-coherent-bank-v2/frames/f327e7037f42c2a272ff154cd68489e2b4eb9bee3160d9e31eb0923a57a0b545.png",
+        "res://character/krusher-coherent-bank-v2/frames/6179152fa05fb226e6090041ed7a6195a4eb9093f073d6000fe7792d845145e3.png",
+        "res://character/krusher-coherent-bank-v2/frames/49cd561470b20fd5336e8ffd48feddb0403613d78e13b0fb90b10a306cda2c75.png",
+        "res://character/krusher-coherent-bank-v2/frames/5b3fd5a808fab56b3f5388726564f704c3335eb7dcc1abd73a14b0783eb15030.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 3",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1a8379a4d05dec2759ad41e10b82c286fcb28b9aea50637ac81d13fa1b0715a.png",
+        "res://character/krusher-coherent-bank-v2/frames/e64a07bc5ef9ae9eb7377f0d2548e0e69f2180baf295db632edf6c2120669047.png",
+        "res://character/krusher-coherent-bank-v2/frames/9a2dad1cf292fe44f6b9064836bb617dc74cf1f24a3033a2a2b647a8b8ba6c51.png",
+        "res://character/krusher-coherent-bank-v2/frames/d62a115c1d02e5e2f1dea42b92b750f2ce43f0a3b5705efceb6b684dd2a70f03.png",
+        "res://character/krusher-coherent-bank-v2/frames/d77e5c1ef4f7eefa9f4a3f21add609560b3bbff0e00af7420d2a46f300e0ba8c.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup3",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ef64cfa77a0f470290d3b07ffdbe39b8d05c621da3c1f5385c2bfd2dd4a3f8a.png",
+        "res://character/krusher-coherent-bank-v2/frames/06ce00ab70cc8388a0361f9f9ae11468ecdd9dfd26d504f96a61026f2235dfad.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ad9956b87b18f066d2ebab0610eb68b6390b71463d6817172521f93dbeb1b84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bdd9139292c464808683a2a189a5a6ea6acf4c8d9af1a203ccf8b4f7cd4f58d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/3e31032ec912a577ac19bdf95eb3c1fd6dbb4500253f2ccf6293c56022cd2048.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-3-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/aed5e932734d57e95b012169dfa6a6aa8320e01c8463285b3220dfeacbf96bdb.png",
+        "res://character/krusher-coherent-bank-v2/frames/0d007429366f944c95a7733a6ff7097250c25a3e1c08132d88df934ba1700f49.png",
+        "res://character/krusher-coherent-bank-v2/frames/b56311dddc7bf0e5c5794fccbc4f7cf6d2d4beb182ba6e73bd36daec604b74a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/744db0d1a6941f1adb1d05535075d7eb94530c4e810e4a6614961fbc95ab11b1.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb3b8f93cf8eb669556f07126f1b0ae494518a0fdab610856e642eb8df044743.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 150,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/eeef223adb4717f9e41a4c47822abc609d3501158b0400026a4498b494147c4b.png",
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9c6334aabf28c986724bb28527b2956109b46e116181ffa4b73308198d1252ef.png",
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d108aeab5c676a049c136c413d24e37a9bd30729fb4913d1485430948e5a2c72.png",
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-4-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/85787527adf870ad1a1422cb2b4504d3e40c0aa89a8d7dc920c928278e68cd6f.png",
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 4,
+          "sourceSequence": [
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/eeef223adb4717f9e41a4c47822abc609d3501158b0400026a4498b494147c4b.png",
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/89102e71b5d74dbde1a4de1face6d6f84c336c5cb7150a898f47e97f7dbad297.png",
+        "res://character/krusher-coherent-bank-v2/frames/f327e7037f42c2a272ff154cd68489e2b4eb9bee3160d9e31eb0923a57a0b545.png",
+        "res://character/krusher-coherent-bank-v2/frames/6179152fa05fb226e6090041ed7a6195a4eb9093f073d6000fe7792d845145e3.png",
+        "res://character/krusher-coherent-bank-v2/frames/49cd561470b20fd5336e8ffd48feddb0403613d78e13b0fb90b10a306cda2c75.png",
+        "res://character/krusher-coherent-bank-v2/frames/5b3fd5a808fab56b3f5388726564f704c3335eb7dcc1abd73a14b0783eb15030.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 4",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9c6334aabf28c986724bb28527b2956109b46e116181ffa4b73308198d1252ef.png",
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1a8379a4d05dec2759ad41e10b82c286fcb28b9aea50637ac81d13fa1b0715a.png",
+        "res://character/krusher-coherent-bank-v2/frames/e64a07bc5ef9ae9eb7377f0d2548e0e69f2180baf295db632edf6c2120669047.png",
+        "res://character/krusher-coherent-bank-v2/frames/9a2dad1cf292fe44f6b9064836bb617dc74cf1f24a3033a2a2b647a8b8ba6c51.png",
+        "res://character/krusher-coherent-bank-v2/frames/d62a115c1d02e5e2f1dea42b92b750f2ce43f0a3b5705efceb6b684dd2a70f03.png",
+        "res://character/krusher-coherent-bank-v2/frames/d77e5c1ef4f7eefa9f4a3f21add609560b3bbff0e00af7420d2a46f300e0ba8c.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup4",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d108aeab5c676a049c136c413d24e37a9bd30729fb4913d1485430948e5a2c72.png",
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ef64cfa77a0f470290d3b07ffdbe39b8d05c621da3c1f5385c2bfd2dd4a3f8a.png",
+        "res://character/krusher-coherent-bank-v2/frames/06ce00ab70cc8388a0361f9f9ae11468ecdd9dfd26d504f96a61026f2235dfad.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ad9956b87b18f066d2ebab0610eb68b6390b71463d6817172521f93dbeb1b84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bdd9139292c464808683a2a189a5a6ea6acf4c8d9af1a203ccf8b4f7cd4f58d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/3e31032ec912a577ac19bdf95eb3c1fd6dbb4500253f2ccf6293c56022cd2048.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-4-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/85787527adf870ad1a1422cb2b4504d3e40c0aa89a8d7dc920c928278e68cd6f.png",
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/aed5e932734d57e95b012169dfa6a6aa8320e01c8463285b3220dfeacbf96bdb.png",
+        "res://character/krusher-coherent-bank-v2/frames/0d007429366f944c95a7733a6ff7097250c25a3e1c08132d88df934ba1700f49.png",
+        "res://character/krusher-coherent-bank-v2/frames/b56311dddc7bf0e5c5794fccbc4f7cf6d2d4beb182ba6e73bd36daec604b74a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/744db0d1a6941f1adb1d05535075d7eb94530c4e810e4a6614961fbc95ab11b1.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb3b8f93cf8eb669556f07126f1b0ae494518a0fdab610856e642eb8df044743.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 200,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9ba70c7056ba26e34d96ab008c49060f3fd1fc981cd9af75868b0a4b6668976a.png",
+        "res://character/krusher-coherent-bank-v2/frames/eeef223adb4717f9e41a4c47822abc609d3501158b0400026a4498b494147c4b.png",
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/27be50849531efa4a5d6e34cb90eb1340d53f7526ed20f7d04654a1ffac8c121.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fb077fa24657bc386423d730778530bd415bcc1ddcd4ef53a664ca7c27653a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/5a575f8f9838b98b78c8c0699ed07206cfce560198475d9132cb34ca997df857.png",
+        "res://character/krusher-coherent-bank-v2/frames/f066b0d6959dbc704481f925b0d0e74ca8eb499febe3f51d240cd68ae2d2e837.png",
+        "res://character/krusher-coherent-bank-v2/frames/744918b2297368a4a0cdf436902b651e44499699291c48dc6a88f4cfb5ffd6da.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-east",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/01100643f6c722a59f29a2b3eb2d5ff2c6a129513ec9a7f69767d4ef83e4320e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9c6334aabf28c986724bb28527b2956109b46e116181ffa4b73308198d1252ef.png",
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/c0c236213406998b030b927bca44459a5885a3adf1a175ad724b6b0d380f2951.png",
+        "res://character/krusher-coherent-bank-v2/frames/848c5d780d358be9ae0a4de7a790a415886fbdfc5d845851ebad0efc5d969fb7.png",
+        "res://character/krusher-coherent-bank-v2/frames/fe2ac14e180877904c8ee40c1dee1b9a3e198b4a07e96658116f11120ba46533.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d26b8f914a280fe264d37431ce90f487a7a527dc176dc7eac3cf9ff4f74f84d.png",
+        "res://character/krusher-coherent-bank-v2/frames/4b5f676c92b21c70fddf68258f5f8ab0d41c3f93fe220882073050b76b6af855.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-north",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d35f024d58767eda0ec42ea2d265011d333cba55fd40eaa3e66858eba57d7a9e.png",
+        "res://character/krusher-coherent-bank-v2/frames/d108aeab5c676a049c136c413d24e37a9bd30729fb4913d1485430948e5a2c72.png",
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/63a9e92e977890eeb515f421ce1f6fe9f21c8d481f6074b706d237248d1095e2.png",
+        "res://character/krusher-coherent-bank-v2/frames/7fdbdb7270fadcd1f7b8c92eadfc4725261e50d6296e81905b37b508ec8fd81a.png",
+        "res://character/krusher-coherent-bank-v2/frames/50d2538426143491c0ef4e28a3909314799e45a571d6719b70fc038e99cf0c4c.png",
+        "res://character/krusher-coherent-bank-v2/frames/21d4b5d20378b07ab1ee7511bbb35ba45a1f91ce38059bea14c259bfd542c722.png",
+        "res://character/krusher-coherent-bank-v2/frames/9534f120b30926b8219fbc8b7477441be05f49312aa3f69c9a71e243861bfe0b.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-south",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-pickup-5-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3077ccf21ca7fba5c846ed8b0a07f44cd97c2ebee36abd73eaf9c0023a3012eb.png",
+        "res://character/krusher-coherent-bank-v2/frames/85787527adf870ad1a1422cb2b4504d3e40c0aa89a8d7dc920c928278e68cd6f.png",
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/17cc86fc6ba48c582e13a21b9d7da0a5e28858661be24b532e7a8db8c20cb9ff.png",
+        "res://character/krusher-coherent-bank-v2/frames/3fbf4e283280c76cd273e551e04b904be8576371c06a05f01c8b20bcdc968ca7.png",
+        "res://character/krusher-coherent-bank-v2/frames/b2e12fdb63380b8e3973918dd4fd2540be51675fe0bbbf1958ab21c2b07f297a.png",
+        "res://character/krusher-coherent-bank-v2/frames/71f0fed52feec03ab7b17c0228a4d85beffa6346d511bfe0fd87fe3d2e2119b0.png",
+        "res://character/krusher-coherent-bank-v2/frames/c82465d8a6f9e471a5e3e440c81325bb3541b72305b0a950fdf890790fd34ef3.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": {
+        "sourceManifest": "res://character/james-water-cancel-profiles-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "swim-pickup-west",
+          "entranceIndex": 5,
+          "sourceSequence": [
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "derivation": "Exact visible source entrance; pickup reverses whole selected authored poses to return case before lit-tool pose, then authored extinguish/stow interiors and exact empty swim. No new raster, limb splice or body warp."
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-east",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/9ba70c7056ba26e34d96ab008c49060f3fd1fc981cd9af75868b0a4b6668976a.png",
+        "res://character/krusher-coherent-bank-v2/frames/eeef223adb4717f9e41a4c47822abc609d3501158b0400026a4498b494147c4b.png",
+        "res://character/krusher-coherent-bank-v2/frames/9ac6a607921847d3d11381cacea88677b0682471809c9593fbe43ffcc5c323af.png",
+        "res://character/krusher-coherent-bank-v2/frames/7f764f4a25fce5bf31d0738f45f2e747ba37dff81533404e5c03974e22d835e8.png",
+        "res://character/krusher-coherent-bank-v2/frames/ebc527e7509fd574ab66e2b36e77c30d4109d2a926c4b2a80e8d0a6e5d1926a2.png",
+        "res://character/krusher-coherent-bank-v2/frames/89102e71b5d74dbde1a4de1face6d6f84c336c5cb7150a898f47e97f7dbad297.png",
+        "res://character/krusher-coherent-bank-v2/frames/f327e7037f42c2a272ff154cd68489e2b4eb9bee3160d9e31eb0923a57a0b545.png",
+        "res://character/krusher-coherent-bank-v2/frames/6179152fa05fb226e6090041ed7a6195a4eb9093f073d6000fe7792d845145e3.png",
+        "res://character/krusher-coherent-bank-v2/frames/49cd561470b20fd5336e8ffd48feddb0403613d78e13b0fb90b10a306cda2c75.png",
+        "res://character/krusher-coherent-bank-v2/frames/5b3fd5a808fab56b3f5388726564f704c3335eb7dcc1abd73a14b0783eb15030.png",
+        "res://character/krusher-coherent-bank-v2/frames/8d76e7db2252aa79e30a43a8807acac2e8b2da29474496d0a9578108afea918e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-east-v1/runtime-bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body East poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint.",
+          "entrance": "exact selected pickup 5",
+          "sequence": "whole selected reverse to1, authored empty release, four authored empty-handed interiors, exact selected swim0",
+          "case": "saved site-owned original selected case from release boundary; no cargo/reward change"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-north",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/01100643f6c722a59f29a2b3eb2d5ff2c6a129513ec9a7f69767d4ef83e4320e.png",
+        "res://character/krusher-coherent-bank-v2/frames/9c6334aabf28c986724bb28527b2956109b46e116181ffa4b73308198d1252ef.png",
+        "res://character/krusher-coherent-bank-v2/frames/f9cc57cf8ad3e1f5d7c5c46c676ed984f0891f11b23c24eef6c10a593743cee7.png",
+        "res://character/krusher-coherent-bank-v2/frames/f4eecb5eeb09ad3cac2642c7beca43ceb52f4c95a2483c330ad9b6f2a51370d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/95892cb52aae39a0c0097f6ddf7518b17f174a5b38c9e6247ca94e028c98e272.png",
+        "res://character/krusher-coherent-bank-v2/frames/b1a8379a4d05dec2759ad41e10b82c286fcb28b9aea50637ac81d13fa1b0715a.png",
+        "res://character/krusher-coherent-bank-v2/frames/e64a07bc5ef9ae9eb7377f0d2548e0e69f2180baf295db632edf6c2120669047.png",
+        "res://character/krusher-coherent-bank-v2/frames/9a2dad1cf292fe44f6b9064836bb617dc74cf1f24a3033a2a2b647a8b8ba6c51.png",
+        "res://character/krusher-coherent-bank-v2/frames/d62a115c1d02e5e2f1dea42b92b750f2ce43f0a3b5705efceb6b684dd2a70f03.png",
+        "res://character/krusher-coherent-bank-v2/frames/d77e5c1ef4f7eefa9f4a3f21add609560b3bbff0e00af7420d2a46f300e0ba8c.png",
+        "res://character/krusher-coherent-bank-v2/frames/de9226bcbb57a4fa0d99f15fff28ec4ede46f58915bc0f84ddacb163c397bc08.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-north-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "entrance": "exact selected pickup5",
+          "interiors": "complete newly authored empty-handed North bodies1,0,2,3,4; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-south",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/d35f024d58767eda0ec42ea2d265011d333cba55fd40eaa3e66858eba57d7a9e.png",
+        "res://character/krusher-coherent-bank-v2/frames/d108aeab5c676a049c136c413d24e37a9bd30729fb4913d1485430948e5a2c72.png",
+        "res://character/krusher-coherent-bank-v2/frames/cab9358835ef58bb952fb50589fa2de188aa2728961ac5c34beb17db291d3493.png",
+        "res://character/krusher-coherent-bank-v2/frames/6c681f8694d55298a0317a5743239b96c0c25e5be9bd5580cb9036360e4addc0.png",
+        "res://character/krusher-coherent-bank-v2/frames/86ba5b6b2472b2967ba8e9bea8d5d0a179dbc149e4a5728a73cecc1759db9e1b.png",
+        "res://character/krusher-coherent-bank-v2/frames/4ef64cfa77a0f470290d3b07ffdbe39b8d05c621da3c1f5385c2bfd2dd4a3f8a.png",
+        "res://character/krusher-coherent-bank-v2/frames/06ce00ab70cc8388a0361f9f9ae11468ecdd9dfd26d504f96a61026f2235dfad.png",
+        "res://character/krusher-coherent-bank-v2/frames/2ad9956b87b18f066d2ebab0610eb68b6390b71463d6817172521f93dbeb1b84.png",
+        "res://character/krusher-coherent-bank-v2/frames/bdd9139292c464808683a2a189a5a6ea6acf4c8d9af1a203ccf8b4f7cd4f58d2.png",
+        "res://character/krusher-coherent-bank-v2/frames/3e31032ec912a577ac19bdf95eb3c1fd6dbb4500253f2ccf6293c56022cd2048.png",
+        "res://character/krusher-coherent-bank-v2/frames/44d47aeeca535e363ebd1b202aec7e759ede16252f8ac312708c81fffa18e06e.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-south-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "interiors": "Five independently authored South empty-handed full bodies; no work torch stow",
+          "endpoint": "exact selected empty swim0"
+        }
+      }
+    },
+    {
+      "id": "swim-cancel-release-pickup-5-west",
+      "frameFiles": [
+        "res://character/krusher-coherent-bank-v2/frames/3077ccf21ca7fba5c846ed8b0a07f44cd97c2ebee36abd73eaf9c0023a3012eb.png",
+        "res://character/krusher-coherent-bank-v2/frames/85787527adf870ad1a1422cb2b4504d3e40c0aa89a8d7dc920c928278e68cd6f.png",
+        "res://character/krusher-coherent-bank-v2/frames/f387dcd85270d73ab7ae01a7f568e28c821d14a863f76899fa95c8a0780e677f.png",
+        "res://character/krusher-coherent-bank-v2/frames/70e4da60a1f6ff21af65b6d26d86efeabb88af163a67b0f6f3ef08a879b84b1a.png",
+        "res://character/krusher-coherent-bank-v2/frames/5bd1a089c2128b433ff3241654d9edb57e48daf4ac6e805937db707a6f9a4d28.png",
+        "res://character/krusher-coherent-bank-v2/frames/aed5e932734d57e95b012169dfa6a6aa8320e01c8463285b3220dfeacbf96bdb.png",
+        "res://character/krusher-coherent-bank-v2/frames/0d007429366f944c95a7733a6ff7097250c25a3e1c08132d88df934ba1700f49.png",
+        "res://character/krusher-coherent-bank-v2/frames/b56311dddc7bf0e5c5794fccbc4f7cf6d2d4beb182ba6e73bd36daec604b74a7.png",
+        "res://character/krusher-coherent-bank-v2/frames/744db0d1a6941f1adb1d05535075d7eb94530c4e810e4a6614961fbc95ab11b1.png",
+        "res://character/krusher-coherent-bank-v2/frames/fb3b8f93cf8eb669556f07126f1b0ae494518a0fdab610856e642eb8df044743.png",
+        "res://character/krusher-coherent-bank-v2/frames/ba350cc73f5209579771385636ef6b8ab68c7c5d035f9cff03cff8b8adb13335.png"
+      ],
+      "frameDurationsMs": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        80,
+        60,
+        80,
+        80,
+        70,
+        60
+      ],
+      "loop": false,
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "caseReleaseMs": 250,
+      "provenance": {
+        "sourceManifest": "res://character/james-case-release-west-v1/bare-manifest.json",
+        "reuse": "Complete original James underwater interruption/release/distress body and metadata; recorded Krusher quarter/cardinal heads and matte cyan; shared whole-source-RGBA endpoints",
+        "sourceProvenance": {
+          "followthrough": "Four newly authored empty-handed whole-body West poses, torch holstered and wrench fixed. No reused work tool-stow interiors. Exact selected empty swim endpoint."
+        }
+      }
+    }
+  ]
+}

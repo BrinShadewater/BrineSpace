@@ -1,0 +1,34 @@
+{
+  "gears": {
+    "bare": {
+      "requiredStates": 338,
+      "stagedStates": 338,
+      "missing": [],
+      "extra": [],
+      "overrides": [
+        {
+          "state": "carry-settle-west",
+          "previous": "res://character/krusher-cargo-family-v3/bare-manifest.json",
+          "override": "res://character/krusher-cargo-settle-profile-v3/bare-manifest.json"
+        }
+      ]
+    },
+    "helmet": {
+      "requiredStates": 248,
+      "stagedStates": 248,
+      "missing": [],
+      "extra": [],
+      "overrides": [
+        {
+          "state": "carry-settle-west",
+          "previous": "res://character/krusher-cargo-family-v3/helmet-manifest.json",
+          "override": "res://character/krusher-cargo-settle-profile-v3/helmet-manifest.json"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "frameReferences": 8058,
+  "uniqueFiles": 3698,
+  "scope": "All corrected candidate manifests resolve required source states and readable PNGs. Coverage is not anatomical/palette, coherent shared joins, native full-bank admission, station lifecycle or owner acceptance. Selected bank/package unchanged."
+}

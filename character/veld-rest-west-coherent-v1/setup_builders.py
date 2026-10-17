@@ -1,0 +1,13 @@
+from pathlib import Path
+P=Path(__file__).resolve().parent; E=P.with_name('veld-rest-east-coherent-v1')
+def write(name,s): (P/name).write_text(s,encoding='utf-8')
+s=(E/'review_scale.py').read_text(encoding="utf-8").replace('idle-east-breathing-v1','idle-west-transition-matte-v1').replace('contact_x=[229,699,1160,221,769,1280]','contact_x=[258,774,1370,407,762,1272]');write('review_scale.py',s)
+s=(E/'build_bare.py').read_text(encoding="utf-8").replace('east','west').replace('idle-west-breathing-v1','idle-west-transition-matte-v1')
+s=s.replace('HEADS=[[215,113],[765,311],[1135,346],[99,778],[577,871],[1089,872]]','HEADS=[[258,141],[718,313],[1407,353],[430,755],[964,864],[1470,865]]')
+s=s.replace('rh=(rx>=117)&(rx<155)&(ry>=74)&(ry<106)','rh=(rx>=109)&(rx<147)&(ry>=74)&(ry<106)').replace('rface=(rx>=138)&(ry>=84)&(ry<=104)','rface=(rx<=127)&(ry>=84)&(ry<=104)')
+start=s.index('    polygons=');end=s.index('\n    face_image=',start)
+s=s[:start]+'''    polygons=[[(230,123),(250,132),(267,147),(260,169),(237,171),(225,157)],[(680,296),(704,302),(724,320),(715,341),(690,346),(677,327)],[(1368,335),(1390,339),(1416,356),(1404,379),(1378,380),(1362,361)],[(395,738),(419,740),(440,756),(429,782),(405,784),(391,765)],[(927,854),(943,831),(962,831),(974,855),(968,877),(944,875)],[(1433,855),(1449,833),(1467,833),(1480,856),(1475,879),(1450,876)]]'''+s[end:];write('build_bare.py',s)
+s=(E/'build_helmet.py').read_text(encoding="utf-8").replace('east','west').replace("HELM=R/'character/veld-helmet-fitting-west-v2/frames/equipped-idle-west/000.png'","HELM=R/'character/veld-shared-helmet-v1/frames/idle-west/000.png'")
+s=s.replace('NECKS=[[215,180],[746,381],[1110,413],[117,844],[635,881],[1143,881]]','NECKS=[[265,177],[724,349],[1400,390],[422,789],[918,867],[1428,867]]').replace('ANGLES=[0,0,0,12,70,70]','ANGLES=[0,0,0,-12,-70,-70]').replace('anchor=[19,36]','anchor=[17,35]').replace("'nativeAnchor':[19,36]","'nativeAnchor':[17,35]");write('build_helmet.py',s)
+s=(E/'index.html').read_text(encoding="utf-8").replace('east','west').replace('East','West').replace('79 packaging and 102 player checks pass.','Packaging and native player review are pending.').replace('Overall native runner retains a profile-guard failure.','').replace('veld-helmet-fitting-west-v2/frames/equipped-idle-west','veld-shared-helmet-v1/frames/idle-west').replace('idle-west-breathing-v1','idle-west-transition-matte-v1');write('index.html',s)
+print('Prepared independent west processing tools; source geometry and material windows are explicit.')

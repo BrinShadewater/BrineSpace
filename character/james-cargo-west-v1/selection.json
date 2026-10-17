@@ -1,0 +1,43 @@
+{
+  "status": "installed_owner_accepted_west_cargo_v1",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-west",
+    "carry-west",
+    "unload-west"
+  ],
+  "source": "source-pose-guide-v2.png",
+  "prompt": "prompt-pose-guide-v2.txt",
+  "rejectedSource": "rejected-repeated-half-stride.png",
+  "rejectionReason": "Repeated half-stride; replaced using accepted west walking poses 0,8,16,24,32,40 as guide.",
+  "generationTool": "built-in imagegen",
+  "profile": {
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148
+  },
+  "timingMs": {
+    "pickup-west": 520,
+    "carry-west": 840,
+    "unload-west": 520
+  },
+  "fixedScale": 0.3425925925925926,
+  "palette": "Same fixed matte curve as corrected east cargo",
+  "helmet": "Selected shared west helmet",
+  "checks": "150 packaging / 169 actual-loader native checks, 0 failures; 12 native and 36 production station captures, no test errors after fixture cleanup",
+  "visualReview": "Owner accepted carry and full pickup/carry/unload sequence",
+  "remaining": [
+    "Other cargo directions"
+  ],
+  "pickupSource": "source-pickup-v1.png",
+  "pickupPrompt": "prompt-pickup-v1.txt",
+  "pickupScale": 0.30390143737166325,
+  "derivation": "Pickup is independent west source; unloading is exact reverse; selected idle body and accepted carry frame0 at endpoints; all accepted carry pixels preserved",
+  "profileAudit": "Scratch APPDATA assertions passed; concurrent real-profile deltas recorded in validate-validation.json and station-validation.json; attribution unresolved, no owner files restored"
+}

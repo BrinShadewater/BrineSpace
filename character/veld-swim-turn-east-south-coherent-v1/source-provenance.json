@@ -1,0 +1,65 @@
+{
+  "method": "built-in imagegen,deterministic extraction/material/fit from raw; no local invented replacement art",
+  "records": [
+    {
+      "file": "bare-source-v1.png",
+      "sha256": "befc0141062fd093b571b5c0ef8de0373d461234138e6dc59f11c43429951ddc",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "bare-source-prompt-v1.txt",
+      "promptSha256": "437035f6e5da5ddba3ff584b9531d4eea25b4c83cab2efa10b0cb71f4baf34e9",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-0f6ecf26-6d64-4eca-880c-f00233e550a7.png",
+      "status": "slots0-2 selected source candidates;slot3 rejected early south"
+    },
+    {
+      "file": "bare-yaw72-source-v2.png",
+      "sha256": "86123a3157e6ef3cfcda0cf08e4ce31c39b77bd11d7049d22b4b4be27b48da76",
+      "dimensions": [
+        1275,
+        1234
+      ],
+      "mode": "RGBA",
+      "prompt": "prompt-yaw72-v2.txt",
+      "promptSha256": "019ff7049a00c047003c546180edebad045379976eb8f8c91e18c14ae632c8f3",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-d1ef71a7-21b6-4677-8232-d9c41d0e1219.png",
+      "status": "rejected wrong diagonal yaw"
+    },
+    {
+      "file": "bare-yaw72-source-v3.png",
+      "sha256": "6116ed3a541956a70f8e7e47ffbde43b5015bcdc140f0b52249624f7006a2301",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "prompt-yaw72-v3.txt",
+      "promptSha256": "3ee5a216e2c0762cf7c70a3a1fd4c0ed079e31b6f8e354736d4d30cbd5fa3fec",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-89bec3f9-f953-43a1-9248-372880345537.png",
+      "status": "selected corrected late-yaw source candidate"
+    },
+    {
+      "file": "helmet-source-v1.png",
+      "sha256": "ec7987e0174d056107dbced623a08fec3ba21dfb828995ddcbcdfbb8700401da",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "helmet-source-prompt-v1.txt",
+      "promptSha256": "af936464f56121793406033ab300539c65dcac673cf2eef164c8f4fbbdd168db",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-e4d0081b-1ce2-4ac9-8a4d-4e2619b4e17f.png",
+      "status": "four prone yaw fitted component candidates"
+    }
+  ],
+  "referenceHashes": {
+    "selected-endpoint-reference.png": "795eafb36968b9779c5c317150e04c8b2f65b6fe0484a2a44b7de0a40cf8fafd",
+    "yaw72-orientation-guide-v3.png": "8674a202fdb7c72917a46ee9c130d20fc2425aeefa9950258e8d5d01e26367ed",
+    "helmet-endpoint-reference.png": "b4ac7adee36998c7789ca2534a4d6a79a36a0a1200cbd94c7531bc8a00ec80ab",
+    "bare-turn-contact-v1.png": "9b541e63b0322eb7cdcbf45e18e5b91b67a7e61e06b58dcb5ff5483946b140dd"
+  },
+  "guideCaveat": "Rotated selected native sprite used only as generation orientation guide, never as candidate pose",
+  "installed": false
+}

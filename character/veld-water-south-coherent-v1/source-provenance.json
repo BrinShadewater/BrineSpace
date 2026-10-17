@@ -1,0 +1,74 @@
+[
+  {
+    "name": "swim",
+    "source": "character/veld-water-south-coherent-v1/swim-source-v1.png",
+    "sha256": "17b48d097b34c67ec771c745258b1692a6ce26265466d9fc573681c798b238d3",
+    "prompt": "swim-source-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/veld-video-south-v1/master-input.png",
+        "sha256": "5dbf0bf08199ebecef25e916fcfdcdd9554e5f4ebda18a48dba63e781e0c7cf0"
+      },
+      {
+        "path": "character/veld-water-south-coherent-v1/swim-body-construction-reference.png",
+        "sha256": "71413f3b3a06d54defc83ef8261ab657825fa29a3b0de40e2d7df8bd8ab46b8d"
+      }
+    ],
+    "generation": "built-in imagegen",
+    "status": "saved_pending_scale_material_and_motion_fitting"
+  },
+  {
+    "name": "tread",
+    "source": "character/veld-water-south-coherent-v1/tread-source-v1.png",
+    "sha256": "90d764d3aa91859cc5eff92057efb84c4f948f70dfe4e64c84b990477cc1bf39",
+    "prompt": "tread-source-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/veld-video-south-v1/master-input.png",
+        "sha256": "5dbf0bf08199ebecef25e916fcfdcdd9554e5f4ebda18a48dba63e781e0c7cf0"
+      },
+      {
+        "path": "character/shared-helmet-standard-v1/veld-south-reference.png",
+        "sha256": "91815aa802b62b5f5907f4a8d242d575b40fa3c553a560429afa96da576914a3"
+      }
+    ],
+    "generation": "built-in imagegen",
+    "status": "saved_pending_scale_material_and_motion_fitting"
+  },
+  {
+    "name": "helmet-pitch",
+    "source": "character/veld-water-south-coherent-v1/helmet-pitch-source-v1.png",
+    "sha256": "057df1084712fb702eba2bacd72558058f7af358534f1c7a52ce77a6f5fb6db6",
+    "prompt": "helmet-pitch-source-prompt-v1.txt",
+    "references": [
+      {
+        "path": "character/shared-helmet-standard-v1/veld-south-reference.png",
+        "sha256": "91815aa802b62b5f5907f4a8d242d575b40fa3c553a560429afa96da576914a3"
+      },
+      {
+        "path": "character/veld-water-south-coherent-v1/helmet-endpoint-reference.png",
+        "sha256": "0ec86e5acc9e426ae78e493398523463b1223c0baf5a262778ee13a02c540557"
+      }
+    ],
+    "generation": "built-in imagegen",
+    "status": "saved_pending_scale_material_and_motion_fitting"
+  },
+  {
+    "name": "helmet-pitch-v2",
+    "source": "character/veld-water-south-coherent-v1/helmet-pitch-source-v2.png",
+    "sha256": "8b13050c32a5d3bba14f08aff5fb21d68e1c696c86f75607f53f07b3148d2859",
+    "prompt": "helmet-pitch-source-prompt-v2.txt",
+    "references": [
+      {
+        "path": "character/veld-water-south-coherent-v1/helmet-pitch-source-v1.png",
+        "sha256": "057df1084712fb702eba2bacd72558058f7af358534f1c7a52ce77a6f5fb6db6"
+      },
+      {
+        "path": "character/veld-water-south-coherent-v1/helmet-endpoint-reference.png",
+        "sha256": "0ec86e5acc9e426ae78e493398523463b1223c0baf5a262778ee13a02c540557"
+      }
+    ],
+    "generation": "built-in imagegen",
+    "status": "first_three_width_fits_pending_body_composition;fourth_near_prone_superseded_by_exact_master"
+  }
+]

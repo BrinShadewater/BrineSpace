@@ -1,0 +1,107 @@
+{
+  "fixtureCleanup": "existing stop_audio helper plus audio-thread drain; first3 route results reused with unchanged route assertions",
+  "fixtureSha256": "880f825ccd49ecc1a1c536838645ad2df029c8de41d9a016cdce4e1eb3dadc68",
+  "scope": "Veld only,4 facings2equipment modes on actual five-room furnished station; helmet native captures,bare headless routes; no exterior/concurrent traffic proof",
+  "passed": false,
+  "results": [
+    {
+      "direction": "east",
+      "variant": "helmet",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/east-helmet-evidence-v1.json",
+      "reused_verified_run": true
+    },
+    {
+      "direction": "east",
+      "variant": "bare",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/east-bare-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 6,
+          "routePoints": 29,
+          "searchMs": 8.699
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": false,
+      "reused_verified_run": true
+    },
+    {
+      "direction": "north",
+      "variant": "helmet",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/north-helmet-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 0,
+          "routePoints": 19,
+          "searchMs": 2.348
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": true,
+      "reused_verified_run": true
+    },
+    {
+      "direction": "north",
+      "variant": "bare",
+      "exit_code": 0,
+      "engine_errors": [],
+      "evidence": "station-review/north-bare-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 0,
+          "routePoints": 19,
+          "searchMs": 2.339
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": false
+    },
+    {
+      "direction": "south",
+      "variant": "helmet",
+      "exit_code": 0,
+      "engine_errors": [
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value.",
+        "SCRIPT ERROR: Cannot call method 'get_length' on a null value."
+      ],
+      "evidence": "station-review/south-helmet-evidence-v1.json",
+      "results": [
+        {
+          "actor": "res://scripts/veld_npc.gd",
+          "arrived": true,
+          "graphNodes": 1625,
+          "horizontalHoldSamples": 0,
+          "routePoints": 19,
+          "searchMs": 2.443
+        }
+      ],
+      "failures": 0,
+      "nativeCapture": true
+    }
+  ],
+  "real_profile_changed_files": []
+}

@@ -1,0 +1,140 @@
+{
+  "presentations": [
+    {
+      "mode": "bare",
+      "stage": "workshop_pickup",
+      "source": "pickup-east",
+      "sourceIndex": 3,
+      "board": "return-plan-bare-workshop_pickup.png",
+      "rows": 4,
+      "gaps": [
+        {
+          "from": {
+            "index": 0,
+            "key": "pickup-east",
+            "seconds": 0.07
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-east"
+        }
+      ]
+    },
+    {
+      "mode": "bare",
+      "stage": "workshop_carry",
+      "source": "carry-turn-east-west",
+      "sourceIndex": 2,
+      "board": "return-plan-bare-workshop_carry.png",
+      "rows": 9,
+      "gaps": [
+        {
+          "from": {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          "reason": "Missing exact held-cargo join; authored bridge required",
+          "to": "unload-west"
+        },
+        {
+          "from": {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-west"
+        }
+      ]
+    },
+    {
+      "mode": "bare",
+      "stage": "workshop_unload",
+      "source": "unload-north",
+      "sourceIndex": 5,
+      "board": "return-plan-bare-workshop_unload.png",
+      "rows": 1,
+      "gaps": [
+        {
+          "from": {
+            "index": 5,
+            "key": "unload-north",
+            "seconds": 0.08
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-north"
+        }
+      ]
+    },
+    {
+      "mode": "helmet",
+      "stage": "workshop_pickup",
+      "source": "pickup-east",
+      "sourceIndex": 3,
+      "board": "return-plan-helmet-workshop_pickup.png",
+      "rows": 4,
+      "gaps": [
+        {
+          "from": {
+            "index": 0,
+            "key": "pickup-east",
+            "seconds": 0.07
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-east"
+        }
+      ]
+    },
+    {
+      "mode": "helmet",
+      "stage": "workshop_carry",
+      "source": "carry-turn-east-west",
+      "sourceIndex": 2,
+      "board": "return-plan-helmet-workshop_carry.png",
+      "rows": 9,
+      "gaps": [
+        {
+          "from": {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          "reason": "Missing exact held-cargo join; authored bridge required",
+          "to": "unload-west"
+        },
+        {
+          "from": {
+            "index": 10,
+            "key": "carry-turn-east-west",
+            "seconds": 0.1
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-west"
+        }
+      ]
+    },
+    {
+      "mode": "helmet",
+      "stage": "workshop_unload",
+      "source": "unload-north",
+      "sourceIndex": 5,
+      "board": "return-plan-helmet-workshop_unload.png",
+      "rows": 1,
+      "gaps": [
+        {
+          "from": {
+            "index": 5,
+            "key": "unload-north",
+            "seconds": 0.08
+          },
+          "reason": "Registered standing settlement and floor-crate handoff required",
+          "to": "idle-north"
+        }
+      ]
+    }
+  ],
+  "visualReviewPending": false,
+  "selected": false,
+  "scope": "Six retained native interruption sources mapped to staged registered source-clock plans. Static full-source order only; no native controller, continuous motion, crate-floor or idle-join acceptance.",
+  "sourceOrderReview": "All six registered boards reviewed: pickup lowers the case through existing reversed drawings; carry retains and completes the visible East/West turn; late North unload is already its final authored source. Existing grade/identity/feet retained. Final standing/case and turn-to-unload bridges remain incomplete. Static source order is not continuous native motion acceptance."
+}

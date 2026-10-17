@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "dead": false,
+      "event": "cancel",
+      "goal": "",
+      "medium": "dry"
+    },
+    {
+      "dead": true,
+      "event": "death",
+      "goal": "",
+      "medium": "dry"
+    },
+    {
+      "dead": false,
+      "event": "flood",
+      "goal": "",
+      "medium": "flooded"
+    }
+  ],
+  "checks": 21,
+  "failures": 0,
+  "records": [
+    {
+      "capture": "res://character/james-construction-motion-v1/safety/native/cancel-before-0000.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "cancel-before",
+      "phase": "exit",
+      "sourceHash": "b2f01c85d69e15ca8e9f32c30aa1f6f04da014d40055d33593c8010e6e1ca473",
+      "sparks": false,
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-motion-v1/safety/native/death-before-0001.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "death-before",
+      "phase": "exit",
+      "sourceHash": "b2f01c85d69e15ca8e9f32c30aa1f6f04da014d40055d33593c8010e6e1ca473",
+      "sparks": false,
+      "timer": 2.76666666666666
+    },
+    {
+      "capture": "res://character/james-construction-motion-v1/safety/native/flood-before-0002.png",
+      "elapsed": 0.15,
+      "foot": [
+        7871.7236328125,
+        8031.56201171875
+      ],
+      "index": 2,
+      "key": "torch-stow-south",
+      "label": "flood-before",
+      "phase": "exit",
+      "sourceHash": "b2f01c85d69e15ca8e9f32c30aa1f6f04da014d40055d33593c8010e6e1ca473",
+      "sparks": false,
+      "timer": 2.76666666666666
+    }
+  ],
+  "scope": "Three actual South paid-job retractions preempted by removed order, death and critical room flooding. Immediate death source before another update and normal safety/controller cleanup. No other safety context claim."
+}

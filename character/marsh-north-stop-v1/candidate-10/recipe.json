@@ -1,0 +1,124 @@
+{
+  "status": "rejected: opposite branch remains59px wide at shared neutral ruler",
+  "generation": "built-in imagegen exec-851ed8b9-ea93-4de7-b950-1f85ca68273e",
+  "raw": "character/marsh-north-stop-v1/sources/north-stop-10.png",
+  "rawSha256": "60f7a56eeadbdedc982323672348788be9d9629a1293b0fc8b0937772e69a861",
+  "prompt": "character/marsh-north-stop-v1/sources/north-stop-10.prompt.txt",
+  "promptSha256": "019d8bc682112ea5c15a1889f5a003b69833409bc9afdb7fd2c7a08bdb0bea97",
+  "references": [
+    {
+      "path": "character/marsh-motion-polish-v1/sources/north-standing-identity-01.png",
+      "sha256": "984a60ef5a71b82c4f92197998ae6e6ac6ede156f9eec2eb06cdce969ea4b801"
+    },
+    {
+      "path": "character/marsh-north-walk-material-v1/candidate-01/004.png",
+      "sha256": "dd3d865b427e0d2f6719a43243764009629a1024fac094fb2bcb80079d0f2094"
+    },
+    {
+      "path": "character/marsh-north-stop-v1/sources/north-stop-09.png",
+      "sha256": "685c6e7a4346a135387493f83f963b317600fc968bcb21898b72342d8492938c"
+    },
+    {
+      "path": "character/marsh-v2/frames/bare/idle-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    }
+  ],
+  "neutralSourceCell": 3,
+  "standingScale": 0.1959731543624161,
+  "visibleIdleHeight": 146,
+  "declaredDensity": 148,
+  "supportContactTarget": [
+    81.0,
+    170.0
+  ],
+  "extraction": [
+    {
+      "cell": 0,
+      "sourceBounds": [
+        79,
+        84,
+        377,
+        831
+      ],
+      "supportContact": [
+        179.0,
+        830.0
+      ],
+      "offset": [
+        46,
+        7
+      ],
+      "bounds": [
+        61,
+        23,
+        120,
+        170
+      ]
+    },
+    {
+      "cell": 1,
+      "sourceBounds": [
+        72,
+        84,
+        370,
+        829
+      ],
+      "supportContact": [
+        169.0,
+        825.0
+      ],
+      "offset": [
+        48,
+        8
+      ],
+      "bounds": [
+        62,
+        24,
+        121,
+        171
+      ]
+    },
+    {
+      "cell": 2,
+      "sourceBounds": [
+        50,
+        84,
+        351,
+        829
+      ],
+      "supportContact": [
+        151.0,
+        828.0
+      ],
+      "offset": [
+        51,
+        8
+      ],
+      "bounds": [
+        61,
+        24,
+        120,
+        171
+      ]
+    }
+  ],
+  "grade": "none",
+  "alpha": "128 then BOX then128; invisible RGB zero",
+  "endpointSourceSlot": 4,
+  "frameHashes": {
+    "000.png": "dd3d865b427e0d2f6719a43243764009629a1024fac094fb2bcb80079d0f2094",
+    "001.png": "31035ab9dd3b9501e6e9547b8c3347bc431e57ab5fa41a24e1423b5f933e4b4a",
+    "002.png": "f8289a06d18ef41cbeb7b9e719e1fcd774805290f0410de2b58c4be2b77eb8a0",
+    "003.png": "1540312cfc1c191662c8edae33df2a9a75db40e5ffc003ab228efeeda3655a39",
+    "004.png": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+  },
+  "limits": "One support-leg branch from gait4; stationary source support. No production selection/root stopping curve/arbitrary gait-phase/Continue acceptance.",
+  "supportSide": "screen-left",
+  "sourceCellBoundaries": [
+    0,
+    444,
+    887,
+    1330,
+    1774
+  ]
+}

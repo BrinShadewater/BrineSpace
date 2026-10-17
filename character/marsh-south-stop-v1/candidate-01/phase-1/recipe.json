@@ -1,0 +1,166 @@
+{
+  "status": "rejected motion/contact draft",
+  "rawSha256": "140b4150940048ab37570b2f901a3ee886c533a9e25e3d46cdc3b80102c9e050",
+  "sharedNeutralScale": 0.22492401215805471,
+  "neutralCell": 3,
+  "gaitPath": "character/marsh-south-walk-material-v1/candidate-02/001.png",
+  "gaitSha256": "fa836f2fee5dc2c66893a8a0eadbc33411b4bcc3c3fdc4f9c653997a2c0a8716",
+  "idlePath": "character/marsh-south-idle-material-v1/candidate-01/000.png",
+  "idleSha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+  "grade": "none",
+  "cells": [
+    {
+      "cell": [
+        0,
+        0,
+        590,
+        756
+      ],
+      "wholeFigureOffset": [
+        7,
+        14
+      ],
+      "supportSide": "viewer-left",
+      "supportTarget": [
+        83.5,
+        171
+      ],
+      "bounds": [
+        63,
+        24,
+        125,
+        172
+      ],
+      "leftSole": [
+        83.5,
+        171
+      ],
+      "rightSole": [
+        105.5,
+        171
+      ],
+      "headAlphaCentroid": [
+        93.62350597609561,
+        37.2609561752988
+      ],
+      "sha256": "73a19c9daaf15e25b783af1e9cec24bed05c6608c361690650cb75d672bda674"
+    },
+    {
+      "cell": [
+        590,
+        0,
+        1020,
+        756
+      ],
+      "wholeFigureOffset": [
+        42,
+        14
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        63,
+        24,
+        125,
+        173
+      ],
+      "leftSole": [
+        80.0,
+        172
+      ],
+      "rightSole": [
+        105.5,
+        170
+      ],
+      "headAlphaCentroid": [
+        93.9324055666004,
+        37.17892644135189
+      ],
+      "sha256": "cf5a5b84343009dfa6f40fd6e07bcb755ba6c0f8625340d1b05df2e5027a2573"
+    },
+    {
+      "cell": [
+        1020,
+        0,
+        1450,
+        756
+      ],
+      "wholeFigureOffset": [
+        37,
+        13
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        59,
+        23,
+        122,
+        171
+      ],
+      "leftSole": [
+        75.0,
+        170
+      ],
+      "rightSole": [
+        105.5,
+        170
+      ],
+      "headAlphaCentroid": [
+        90.53435114503817,
+        36.841603053435115
+      ],
+      "sha256": "8b9d7a5b25492461d2f4dc2414ebb0676a8144d69db4850f13f3e581cddc50dd"
+    },
+    {
+      "cell": [
+        1450,
+        0,
+        2079,
+        756
+      ],
+      "wholeFigureOffset": [
+        36,
+        13
+      ],
+      "supportSide": "viewer-right",
+      "supportTarget": [
+        105.5,
+        170
+      ],
+      "bounds": [
+        60,
+        23,
+        121,
+        171
+      ],
+      "leftSole": [
+        75.0,
+        170
+      ],
+      "rightSole": [
+        105.0,
+        170
+      ],
+      "headAlphaCentroid": [
+        90.01346153846154,
+        36.70961538461538
+      ],
+      "sha256": "592f7fbac4b1edcaa8142fbf97de93e82f58f75391734a3bdd18c88fdca5c63b"
+    }
+  ],
+  "frameHashes": {
+    "000.png": "fa836f2fee5dc2c66893a8a0eadbc33411b4bcc3c3fdc4f9c653997a2c0a8716",
+    "001.png": "73a19c9daaf15e25b783af1e9cec24bed05c6608c361690650cb75d672bda674",
+    "002.png": "cf5a5b84343009dfa6f40fd6e07bcb755ba6c0f8625340d1b05df2e5027a2573",
+    "003.png": "8b9d7a5b25492461d2f4dc2414ebb0676a8144d69db4850f13f3e581cddc50dd",
+    "004.png": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+  },
+  "limits": "Whole figures only; no independent anatomy/scale edits. Source support targets are a study, not a validated root/controller. No native, arbitrary phase, safety, save, title Continue or normal admission.",
+  "visualReview": "Rejected motion/contact: first recovering right lands immediately163\u2192171 rather than staged4pixel gap; second left172 below final support170; terminal left75 vsidle78.5 over-widens3.5dense. Full figure strip reflowed; explicit inspected gutters0/590/1020/1450/2048 preserve figures. Width62-63 vsidle58 remains broad. Raw/packaged/master reviewed; material family coherent but motion refinement required; no native/controller."
+}

@@ -1,0 +1,249 @@
+{
+  "name": "Krusher Dom water bare",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "../frames/cc2d9522ffc95f1cae1b5d1286ac93bc6b8682401ba2cf6e1379975583c95662.png",
+        "../frames/cf5245f78449f912d7d7da97415a9410c5e7e5fb87b61ba93779570fdc5703e2.png",
+        "../frames/7ba08f3c4c30c38d083cec2cb511595f9110413a674b474647221e01e8878532.png",
+        "../frames/16a991e3fb301505ac6602852919fd019540bc83f382685a87b0a9a919d53960.png",
+        "../frames/ed490b0b6ce5cfee88ea8b7b043fb82d07e86f043b796f4f5e6e3f84ee015e92.png",
+        "../frames/e0ca3bedfea6e5128a038e28a118863e753dcf72028081fdc32e93e2d3cbcb94.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/bare-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "../frames/9851a39a39c6dde1fd29b30573ee562ee955cb77ef6d88c36bfb6d0f7b150375.png",
+        "../frames/18a2ced386d5cb26866902e5c0fc98b80e189adf5780aabf0e23e7fab5db52c1.png",
+        "../frames/772dcd0ba5e44c731ca8295e95c1c91fa65ee3344fbf81a72d05a8948e7779ca.png",
+        "../frames/b6047fdf7e66b2f97dd3096c48797e32ad73f054565ea4ae1e71eff45dafff76.png",
+        "../frames/581a5abb77fce4edbdb51733b3cc44d3ea8518a0b7cdaae006545b78bd4bcb0d.png",
+        "../frames/e61f5a856d9776bcde798ccef2ec848de7836cc170ed6fcc54fe9a537df77e7a.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/bare-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-south",
+      "frameFiles": [
+        "../frames/713cd81dadc6e58eb8cd00d134799b258eed565b353f612f0b488f50ab618983.png",
+        "../frames/e24ec102695d4a4dcfa70f809a351cf47b0f077555701d72d89f607f44ab786f.png",
+        "../frames/ff3b00abd8f10ab965665563dca465407b98617cb7c29b3b7c856bdaf9119ea1.png",
+        "../frames/a036f1c97001f40e87ca9de0ccdfd3a7d1f52850743eb44eb77772be35fb94dc.png",
+        "../frames/8ef35db8f781c3877e2597c3525244e6b1e2cb3db97866ee38ae9426d0134b90.png",
+        "../frames/47990ce1d678b29976ba8b6647a2805cb73878572469394c6076c46539ea5844.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/bare-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "../frames/ff4fb462238f1da9d97b251e4b127f8e87bf4f42236187817f44b4f798a5865b.png",
+        "../frames/2e42fff73f63da1081a4a49c60746cb13d0e08ddb92820846d3397d37852abf2.png",
+        "../frames/d9725ec9433ff25ad37fd024fad97a9e61e44ce40d1211041ad779dbf8d11fe3.png",
+        "../frames/d1aa229c0c7ff89bb6aa4fad0fb4f1063352738c889d8f41fbcee77ccddd8322.png",
+        "../frames/6a5a0f77db0a282eebd62058179f3d184fc31fb6b6a005f6dac39cbdfd991dbf.png",
+        "../frames/71be44e69d4635ca34812e9e88219b25e57953973d5e45331058a2726c657873.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-west-water-death-material-v2/bare-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    }
+  ]
+}

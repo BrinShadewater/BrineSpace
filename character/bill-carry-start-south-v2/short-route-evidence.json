@@ -1,0 +1,1251 @@
+{
+  "validation": {
+    "capturePassed": true,
+    "passed": true,
+    "returnCode": 0,
+    "seconds": 186.29,
+    "scratchAPPDATA": "C:\\Users\\Alex\\Documents\\Brine Space\\output\\bill-carry-short-route-audit-v1\\scratch-appdata",
+    "realProfileScope": "all non-log files",
+    "realProfileFileCount": 2931,
+    "realProfileChanges": [],
+    "nativeScreenshot": true
+  },
+  "records": {
+    "checks": 12351,
+    "failures": 0,
+    "records": [
+      {
+        "actualTravel": 271.989277482033,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7792.0,
+            8416.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": false,
+        "name": "rot0-bare",
+        "pathDistance": 272.0,
+        "rotation": 0,
+        "samples": [
+          {
+            "direction": "east",
+            "entry": {
+              "direction": "east",
+              "gear": "",
+              "started": 7.523
+            },
+            "foot": [
+              7984.0,
+              8272.0
+            ],
+            "key": "carry-east",
+            "name": "rot0-bare-entry-east",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666666
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7984.0,
+              8272.0
+            ],
+            "key": "carry-east",
+            "name": "rot0-bare-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999998
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "",
+              "started": 9.17300000000006
+            },
+            "foot": [
+              7983.38671875,
+              8272.4599609375
+            ],
+            "key": "carry-west",
+            "name": "rot0-bare-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.65000000000006
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7972.34765625,
+              8280.7392578125
+            ],
+            "key": "carry-west",
+            "name": "rot0-bare-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.98333333333341
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot0-bare-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 7.58333333333368
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot0-bare-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 8.86666666666704
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot0-bare-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 10.8666666666669
+          }
+        ]
+      },
+      {
+        "actualTravel": 271.989277482033,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7792.0,
+            8416.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": true,
+        "name": "rot0-helmet",
+        "pathDistance": 272.0,
+        "rotation": 0,
+        "samples": [
+          {
+            "direction": "east",
+            "entry": {
+              "direction": "east",
+              "gear": "diving-helmet",
+              "started": 25.9126666666669
+            },
+            "foot": [
+              7984.0,
+              8272.0
+            ],
+            "key": "carry-east",
+            "name": "rot0-helmet-entry-east",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666657
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7984.0,
+              8272.0
+            ],
+            "key": "carry-east",
+            "name": "rot0-helmet-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999972
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "diving-helmet",
+              "started": 27.5793333333335
+            },
+            "foot": [
+              7983.38671875,
+              8272.4599609375
+            ],
+            "key": "carry-west",
+            "name": "rot0-helmet-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.66666666666657
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7972.34765625,
+              8280.7392578125
+            ],
+            "key": "carry-west",
+            "name": "rot0-helmet-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.99999999999989
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot0-helmet-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 7.59999999999957
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot0-helmet-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 8.88333333333283
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "idle-north",
+            "name": "rot0-helmet-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 10.8833333333327
+          }
+        ]
+      },
+      {
+        "actualTravel": 109.295230925083,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7776.0,
+            8416.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": false,
+        "name": "rot1-bare",
+        "pathDistance": 109.295227050781,
+        "rotation": 1,
+        "samples": [
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "",
+              "started": 7.523
+            },
+            "foot": [
+              7856.0,
+              8368.0
+            ],
+            "key": "carry-south",
+            "name": "rot1-bare-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666666
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7856.0,
+              8368.0
+            ],
+            "key": "carry-south",
+            "name": "rot1-bare-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999998
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "",
+              "started": 8.37300000000002
+            },
+            "foot": [
+              7855.3427734375,
+              8368.39453125
+            ],
+            "key": "carry-west",
+            "name": "rot1-bare-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.850000000000017
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7843.5126953125,
+              8375.49609375
+            ],
+            "key": "carry-west",
+            "name": "rot1-bare-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.18333333333337
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot1-bare-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 3.25000000000014
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot1-bare-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 4.95000000000022
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot1-bare-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 6.95000000000032
+          }
+        ]
+      },
+      {
+        "actualTravel": 109.295230925083,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7776.0,
+            8416.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": true,
+        "name": "rot1-helmet",
+        "pathDistance": 109.295227050781,
+        "rotation": 1,
+        "samples": [
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "diving-helmet",
+              "started": 21.9960000000003
+            },
+            "foot": [
+              7856.0,
+              8368.0
+            ],
+            "key": "carry-south",
+            "name": "rot1-helmet-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666657
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7856.0,
+              8368.0
+            ],
+            "key": "carry-south",
+            "name": "rot1-helmet-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999972
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "diving-helmet",
+              "started": 22.8626666666669
+            },
+            "foot": [
+              7855.3427734375,
+              8368.39453125
+            ],
+            "key": "carry-west",
+            "name": "rot1-helmet-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.866666666666617
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7843.5126953125,
+              8375.49609375
+            ],
+            "key": "carry-west",
+            "name": "rot1-helmet-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.19999999999993
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot1-helmet-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 3.26666666666648
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "carry-west",
+            "name": "rot1-helmet-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 4.96666666666638
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8416.0
+            ],
+            "key": "idle-north",
+            "name": "rot1-helmet-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 6.96666666666627
+          }
+        ]
+      },
+      {
+        "actualTravel": 221.917848706245,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7808.0,
+            8336.0
+          ],
+          [
+            7808.0,
+            8400.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": false,
+        "name": "rot2-bare",
+        "pathDistance": 221.927703857422,
+        "rotation": 2,
+        "samples": [
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "",
+              "started": 7.523
+            },
+            "foot": [
+              7760.0,
+              8240.0
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666666
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8240.0
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-pivot-south",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999998
+          },
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "",
+              "started": 8.37300000000002
+            },
+            "foot": [
+              7760.3427734375,
+              8240.685546875
+            ],
+            "key": "carry-south",
+            "name": "rot2-bare-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.850000000000017
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7766.5126953125,
+              8253.025390625
+            ],
+            "key": "carry-south",
+            "name": "rot2-bare-gait-south",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.18333333333337
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7808.0,
+              8400.0
+            ],
+            "key": "carry-south",
+            "name": "rot2-bare-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 4.61666666666687
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7794.17822265625,
+              8404.6015625
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 5.75000000000026
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 6.53333333333363
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 7.66666666666702
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot2-bare-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 9.66666666666699
+          }
+        ]
+      },
+      {
+        "actualTravel": 221.917848706245,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7808.0,
+            8336.0
+          ],
+          [
+            7808.0,
+            8400.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": true,
+        "name": "rot2-helmet",
+        "pathDistance": 221.927703857422,
+        "rotation": 2,
+        "samples": [
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "diving-helmet",
+              "started": 24.712666666667
+            },
+            "foot": [
+              7760.0,
+              8240.0
+            ],
+            "key": "carry-west",
+            "name": "rot2-helmet-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666657
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7760.0,
+              8240.0
+            ],
+            "key": "carry-west",
+            "name": "rot2-helmet-pivot-south",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999972
+          },
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "diving-helmet",
+              "started": 25.5793333333336
+            },
+            "foot": [
+              7760.3427734375,
+              8240.685546875
+            ],
+            "key": "carry-south",
+            "name": "rot2-helmet-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.866666666666617
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7766.5126953125,
+              8253.025390625
+            ],
+            "key": "carry-south",
+            "name": "rot2-helmet-gait-south",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.19999999999993
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7808.0,
+              8400.0
+            ],
+            "key": "carry-south",
+            "name": "rot2-helmet-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 4.63333333333307
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7794.17822265625,
+              8404.6015625
+            ],
+            "key": "carry-west",
+            "name": "rot2-helmet-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 5.783333333333
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot2-helmet-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 6.56666666666629
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot2-helmet-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 7.69999999999956
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "idle-north",
+            "name": "rot2-helmet-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 9.69999999999945
+          }
+        ]
+      },
+      {
+        "actualTravel": 318.798227727413,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7808.0,
+            8400.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": false,
+        "name": "rot3-bare",
+        "pathDistance": 318.805305480957,
+        "rotation": 3,
+        "samples": [
+          {
+            "direction": "north",
+            "entry": {
+              "direction": "north",
+              "gear": "",
+              "started": 7.523
+            },
+            "foot": [
+              7888.0,
+              8144.0
+            ],
+            "key": "carry-north",
+            "name": "rot3-bare-entry-north",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666666
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7888.0,
+              8144.0
+            ],
+            "key": "carry-north",
+            "name": "rot3-bare-pivot-south",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999998
+          },
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "",
+              "started": 9.17300000000006
+            },
+            "foot": [
+              7887.771484375,
+              8144.73193359375
+            ],
+            "key": "carry-south",
+            "name": "rot3-bare-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.65000000000006
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7883.658203125,
+              8157.90673828125
+            ],
+            "key": "carry-south",
+            "name": "rot3-bare-gait-south",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.98333333333341
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7808.0,
+              8400.0
+            ],
+            "key": "carry-south",
+            "name": "rot3-bare-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 7.51666666666701
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "",
+              "started": 15.8396666666671
+            },
+            "foot": [
+              7807.2724609375,
+              8400.2421875
+            ],
+            "key": "carry-west",
+            "name": "rot3-bare-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 8.31666666666705
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7794.17822265625,
+              8404.6015625
+            ],
+            "key": "carry-west",
+            "name": "rot3-bare-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 8.65000000000039
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot3-bare-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 9.43333333333367
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot3-bare-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 10.5666666666669
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot3-bare-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 12.5666666666668
+          }
+        ]
+      },
+      {
+        "actualTravel": 318.798227727413,
+        "binding": "bill-cardinal-arrival3-eastg3s4-southg3s2-westg2s2-northg2s2-rise1",
+        "completed": true,
+        "generatedPath": [
+          [
+            7808.0,
+            8400.0
+          ],
+          [
+            7760.0,
+            8416.0
+          ]
+        ],
+        "helmet": true,
+        "name": "rot3-helmet",
+        "pathDistance": 318.805305480957,
+        "rotation": 3,
+        "samples": [
+          {
+            "direction": "north",
+            "entry": {
+              "direction": "north",
+              "gear": "diving-helmet",
+              "started": 27.6126666666668
+            },
+            "foot": [
+              7888.0,
+              8144.0
+            ],
+            "key": "carry-north",
+            "name": "rot3-helmet-entry-north",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0166666666666657
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7888.0,
+              8144.0
+            ],
+            "key": "carry-north",
+            "name": "rot3-helmet-pivot-south",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 0.0499999999999972
+          },
+          {
+            "direction": "south",
+            "entry": {
+              "direction": "south",
+              "gear": "diving-helmet",
+              "started": 29.2793333333334
+            },
+            "foot": [
+              7887.771484375,
+              8144.73193359375
+            ],
+            "key": "carry-south",
+            "name": "rot3-helmet-entry-south",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.66666666666657
+          },
+          {
+            "direction": "south",
+            "entry": {},
+            "foot": [
+              7883.658203125,
+              8157.90673828125
+            ],
+            "key": "carry-south",
+            "name": "rot3-helmet-gait-south",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 1.99999999999989
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7808.0,
+              8400.0
+            ],
+            "key": "carry-south",
+            "name": "rot3-helmet-pivot-west",
+            "phase": "pivot",
+            "state": "carry",
+            "stowActive": false,
+            "time": 7.53333333333291
+          },
+          {
+            "direction": "west",
+            "entry": {
+              "direction": "west",
+              "gear": "diving-helmet",
+              "started": 35.9626666666664
+            },
+            "foot": [
+              7807.2724609375,
+              8400.2421875
+            ],
+            "key": "carry-west",
+            "name": "rot3-helmet-entry-west",
+            "phase": "entry",
+            "state": "carry",
+            "stowActive": false,
+            "time": 8.34999999999953
+          },
+          {
+            "direction": "west",
+            "entry": {},
+            "foot": [
+              7794.17822265625,
+              8404.6015625
+            ],
+            "key": "carry-west",
+            "name": "rot3-helmet-gait-west",
+            "phase": "gait",
+            "state": "carry",
+            "stowActive": false,
+            "time": 8.68333333333284
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot3-helmet-settle-north",
+            "phase": "settle",
+            "state": "carry",
+            "stowActive": true,
+            "time": 9.46666666666613
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "carry-west",
+            "name": "rot3-helmet-unload-north",
+            "phase": "unload",
+            "state": "carry",
+            "stowActive": true,
+            "time": 10.5999999999994
+          },
+          {
+            "direction": "north",
+            "entry": {},
+            "foot": [
+              7760.0068359375,
+              8415.998046875
+            ],
+            "key": "idle-north",
+            "name": "rot3-helmet-completed-north",
+            "phase": "completed",
+            "state": "idle",
+            "stowActive": false,
+            "time": 12.5999999999993
+          }
+        ]
+      }
+    ],
+    "scope": "Actual workshop-generated cargo paths across four room rotations and both gears, from prescribed service-station dispatch. Normal selected actor/player and unchanged room geometry. Paused world with actor60Hz stepping. Not natural chooser/approach, continuous native film, traffic or full contact certification."
+  },
+  "reviewer": "Codex agent",
+  "visualReview": "All eight route boards reviewed against registered source thumbnails. Captured head/helmet, matte suit detail, stature and carried case remain coherent. Completed idle loses the floor case: known unresolved disposition, not full lifecycle acceptance. Static samples do not establish continuous foot support or loop smoothness.",
+  "directionsObserved": [
+    "east",
+    "north",
+    "south",
+    "west"
+  ],
+  "phasesObserved": [
+    "completed",
+    "entry",
+    "gait",
+    "pivot",
+    "settle",
+    "unload"
+  ],
+  "sourceSelectionChanged": false,
+  "scope": "Actual workshop-generated cargo paths across four room rotations and both gears, from prescribed service-station dispatch. Normal selected actor/player and unchanged room geometry. Paused world with actor60Hz stepping. Not natural chooser/approach, continuous native film, traffic or full contact certification.",
+  "inputSnapshot": "Post-run only; broader dependency freeze not claimed.",
+  "captureProvenance": {
+    "retainedEarlierRotationZeroCaptures": [
+      {
+        "name": "rot0-bare-entry-east",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-pivot-west",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-entry-west",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-gait-west",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-settle-north",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-unload-north",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      },
+      {
+        "name": "rot0-bare-completed-north",
+        "interval": "interval-before-1790942351904492700",
+        "guard": "phase/direction/foot/state/key/entry/stow match corrected run; actual rotation0 in both intervals"
+      }
+    ],
+    "note": "Seven rotation-zero bare pairs use earlier native actual rotation-zero captures after stale cleanup lost six pairs and one source file. Exact phase/root/state/entry comparison guards reuse. Other route captures from corrected run. No continuous film claim."
+  }
+}

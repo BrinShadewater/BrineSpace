@@ -1,0 +1,448 @@
+{
+  "source": {
+    "path": "character/marsh-retained-gesture-material-v1/sources/south-gesture-03.png",
+    "sha256": "1264c647413325efd60d8bf6ff23049e4014257b7627dd9e23cfbff68382dc6f",
+    "generationId": "exec-c2fc6e85-287c-46cc-8555-8b3a34ca8524",
+    "occupiedBodyHeights": [
+      622,
+      623,
+      622,
+      622,
+      623
+    ],
+    "commonScale": 0.23595505617977527,
+    "assessment": "Staged for exact-scale cross-family review; not installed."
+  },
+  "frames": [
+    {
+      "cell": 0,
+      "bodyBox": [
+        150,
+        55,
+        391,
+        677
+      ],
+      "wholeFigureCrop": [
+        146,
+        51,
+        395,
+        681
+      ],
+      "scale": 0.23595505617977527,
+      "file": "character/marsh-retained-gesture-material-v1/south03-unselected/gesture-00.png",
+      "sha256": "a01dbbfc11f523721b85d91c25223f00eef1a86b7a55a10f15d8af0ace647e48",
+      "occupiedSize": [
+        59,
+        149
+      ]
+    },
+    {
+      "cell": 1,
+      "bodyBox": [
+        563,
+        54,
+        795,
+        677
+      ],
+      "wholeFigureCrop": [
+        559,
+        50,
+        799,
+        681
+      ],
+      "scale": 0.23595505617977527,
+      "file": "character/marsh-retained-gesture-material-v1/south03-unselected/gesture-01.png",
+      "sha256": "049383d6605351e96c56af19e86ce9b60a71d7d591a9e770c55f3a213d408dfa",
+      "occupiedSize": [
+        57,
+        149
+      ]
+    },
+    {
+      "cell": 2,
+      "bodyBox": [
+        963,
+        55,
+        1207,
+        677
+      ],
+      "wholeFigureCrop": [
+        959,
+        51,
+        1211,
+        681
+      ],
+      "scale": 0.23595505617977527,
+      "file": "character/marsh-retained-gesture-material-v1/south03-unselected/gesture-02.png",
+      "sha256": "2b1ed8e9028f3d6898df34f95faffb3aab1624d29201ae7acf7d8dad9cb401a6",
+      "occupiedSize": [
+        59,
+        149
+      ]
+    },
+    {
+      "cell": 3,
+      "bodyBox": [
+        1375,
+        55,
+        1609,
+        677
+      ],
+      "wholeFigureCrop": [
+        1371,
+        51,
+        1613,
+        681
+      ],
+      "scale": 0.23595505617977527,
+      "file": "character/marsh-retained-gesture-material-v1/south03-unselected/gesture-03.png",
+      "sha256": "dd221a7daeff44bc71c62d2907383cb2431f5cfaba3226bd735ced4be963d725",
+      "occupiedSize": [
+        57,
+        149
+      ]
+    },
+    {
+      "cell": 4,
+      "bodyBox": [
+        1780,
+        54,
+        2020,
+        677
+      ],
+      "wholeFigureCrop": [
+        1776,
+        50,
+        2024,
+        681
+      ],
+      "scale": 0.23595505617977527,
+      "file": "character/marsh-retained-gesture-material-v1/south03-unselected/neutral-ruler.png",
+      "sha256": "97e0df52f6722e1803fc312dc4969eb0738b2d5577b67eda41305f224a92d2ed",
+      "occupiedSize": [
+        59,
+        149
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-south",
+      "frameFiles": [
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-03.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    },
+    {
+      "id": "remove-helmet-south",
+      "frameFiles": [
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-00.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-01.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-02.png",
+        "res://character/marsh-retained-gesture-material-v1/south03-unselected/gesture-03.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false
+    }
+  ],
+  "slots": 12,
+  "uniqueNewGestureSources": 4,
+  "apngDecodedExactFrames": 6,
+  "apngTotalDurationMs": 900,
+  "board": "character/marsh-retained-gesture-material-v1/south03-unselected/cross-family-contact.png",
+  "boardSha256": "dcba38d597adce2eb2c013129b36c432048f5b54b584a3b8235423f8ec45aa27",
+  "actuallyInspected": true,
+  "wholeScalePolicy": "One factor from own147px occupied standing height / generated neutral height. Whole alpha crops only; no recolour, anatomy patch, mirror or per-pose fit.",
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "nativeEvidence": {
+    "captures": [
+      {
+        "file": "native-00.png",
+        "slot": 0,
+        "sha256": "a59f62204ea44b9c4b173805685a10659d45491fb7a88645f6b5986ede224b3d"
+      },
+      {
+        "file": "native-01.png",
+        "slot": 1,
+        "sha256": "8fa45b5b8d3b3e7841cde13d50f47acfead913c5232308791de056b6315b9c76"
+      },
+      {
+        "file": "native-02.png",
+        "slot": 2,
+        "sha256": "40b429bb69af1595a9cf453fee84803878ab83f39250d859ef19620bb0186dcc"
+      },
+      {
+        "file": "native-03.png",
+        "slot": 3,
+        "sha256": "7ac178eb8568deab95e79e405057491bfbd2dd51fd53a269349670fd222fc394"
+      },
+      {
+        "file": "native-04.png",
+        "slot": 4,
+        "sha256": "6e62d7f8c7c10ae8acfbaee03668a46e2c3ea0033f106dbc25b0bea70605a40b"
+      },
+      {
+        "file": "native-05.png",
+        "slot": 5,
+        "sha256": "56d07afa8e2aed232967df49f4c33e7cfcdc85caf76f7f3c942ad9d8b57d172e"
+      }
+    ],
+    "checks": 190,
+    "failures": 0,
+    "playerRestores": 6,
+    "samples": [
+      {
+        "elapsed": 0.0,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.021,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.041,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.061,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.081,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.101,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.121,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.141,
+        "slot": 0
+      },
+      {
+        "elapsed": 0.161,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.181,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.201,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.221,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.241,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.261,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.281,
+        "slot": 1
+      },
+      {
+        "elapsed": 0.301,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.321,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.341,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.361,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.381,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.401,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.421,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.441,
+        "slot": 2
+      },
+      {
+        "elapsed": 0.461,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.481,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.501,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.521,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.541,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.561,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.581,
+        "slot": 3
+      },
+      {
+        "elapsed": 0.601,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.621,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.641,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.661,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.681,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.701,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.721,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.741,
+        "slot": 4
+      },
+      {
+        "elapsed": 0.761,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.781,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.801,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.821,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.841,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.861,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.881,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.901,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.921,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.941,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.961,
+        "slot": 5
+      },
+      {
+        "elapsed": 0.981,
+        "slot": 5
+      },
+      {
+        "elapsed": 1.001,
+        "slot": 5
+      },
+      {
+        "elapsed": 1.021,
+        "slot": 5
+      }
+    ],
+    "scope": "Unselected two legacy generic gesture aliases,12exact source slots/900ms finite; one visual bank sampled at20ms intervals with6player restores and6native source/world-height pairs. No real helmet action/controller enablement, continuous viewing, actor furniture/contact, fullRunSave/Continue, other facings or full-set acceptance.",
+    "boards": [
+      {
+        "path": "character/marsh-retained-gesture-material-v1/south03-unselected/native-contact-00.png",
+        "sha256": "e036ab94d7d80b00a22c5fe29041a93fe57ff0aa5e52579da57fe251a6029331",
+        "actuallyInspected": true,
+        "operations": "Three full native captures side by side, no resize or crop."
+      },
+      {
+        "path": "character/marsh-retained-gesture-material-v1/south03-unselected/native-contact-01.png",
+        "sha256": "7b8cdfc51afc563571cd0b101a654b23008b2f7b21ecb4d2c2ea51d6e8bd0bf9",
+        "actuallyInspected": true,
+        "operations": "Three full native captures side by side, no resize or crop."
+      }
+    ],
+    "stableBoundedInputs": 395,
+    "unchangedOwnerNonLogFiles": 2931,
+    "nativeScriptSha256": "22631d91006ed6942fc6463ffebd406bcef53ba9b0aa4680f3c9cbdcb8a2f850",
+    "continuousMotionReviewed": false,
+    "normalAdmission": false
+  },
+  "visualAssessment": "Single-row whole03 is slimmer and closer to current own idle than old broad/coarse gesture. Connected gloves/limbs, muted ivory/sage/charcoal and appropriate South identity; exact own idle first/last. Head/collar/material and dynamic interpolation still provisional for full-family acceptance."
+}

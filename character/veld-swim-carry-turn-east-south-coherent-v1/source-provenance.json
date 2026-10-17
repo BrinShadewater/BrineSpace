@@ -1,0 +1,55 @@
+{
+  "installed": false,
+  "method": "built-in imagegen body; reused independently authored selected ordinary-turn helmet components",
+  "sources": [
+    {
+      "source": "character/veld-swim-carry-turn-east-south-coherent-v1/body-source-v1.png",
+      "sourceSha256": "f756134cc5adcba151ede8bbbd5e657ac1bc36651cd40783dbfe6585d9d9ee77",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-east-south-coherent-v1/body-prompt-v1.txt",
+      "promptSha256": "503323979d69ed3fa57c13d7da12e2c8d012fc33ded451a1dedf0517e61c89ac",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-8e7c67c0-7032-49dd-b659-7b0f6f99ef62.png",
+      "references": [
+        {
+          "path": "character/veld-swim-turn-east-south-coherent-v1/bare-source-v1.png",
+          "sha256": "befc0141062fd093b571b5c0ef8de0373d461234138e6dc59f11c43429951ddc"
+        },
+        {
+          "path": "character/veld-swim-carry-east-coherent-v1/source-v2.png",
+          "sha256": "3f37f9651282d24cd2a37bdb5d39b389fb5f227c9e1c50d0b850e5a4196aa0e0"
+        },
+        {
+          "path": "character/veld-swim-carry-south-coherent-v1/source-v3.png",
+          "sha256": "587632a8a5b41c1c83fef6798205965d6ef16df91dd1e16adc2023d3676adc77"
+        }
+      ],
+      "selection": "cells0,1,3 selected;cell2 rejected for close yaw"
+    },
+    {
+      "source": "character/veld-swim-carry-turn-east-south-coherent-v1/body-source-v2.png",
+      "sourceSha256": "fa2b20d1e540fb82764ce385c9d20c6c919983a263420a4b092c955c3354f42c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "character/veld-swim-carry-turn-east-south-coherent-v1/body-prompt-v2.txt",
+      "promptSha256": "06db5ecb4db5c6c8ab2bb4160c75d7b5d23128aad021dd7fb9a6d59e2b5a65e5",
+      "providerOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-df799607-56c3-4936-bba1-6f536ea7e030.png",
+      "references": [
+        {
+          "path": "character/veld-swim-carry-turn-east-south-coherent-v1/body-source-v1.png",
+          "sha256": "f756134cc5adcba151ede8bbbd5e657ac1bc36651cd40783dbfe6585d9d9ee77"
+        }
+      ],
+      "selection": "cell2 only selected; other cells unused"
+    }
+  ],
+  "helmetSource": {
+    "path": "character/veld-swim-turn-east-south-coherent-v1/helmet-source-v1.png",
+    "sha256": "ec7987e0174d056107dbced623a08fec3ba21dfb828995ddcbcdfbb8700401da"
+  },
+  "scaleRule": "One .24 source atlas ruler; visual skull/torso/leg/case comparisons required; no per-frame normalization"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "title": "Holdfasts, brittle stars and hydroids",
+  "assets": [
+    {
+      "id": "holdfast",
+      "kind": "prop",
+      "selected_source": "runtime/holdfast.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "versions": [
+        {
+          "file": "holdfast-v1.png",
+          "sha256": "1fa22226ab8445bdd1bd707b4c72c26a899d79158c08796464049373526657b3",
+          "rejection": null
+        },
+        {
+          "file": "runtime/holdfast.png",
+          "sha256": "4a9e09744cba1975816930f8f91eb64ab9e8c209c7f7a27c40341a61e024d9ac",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "brittle-stars",
+      "kind": "prop",
+      "selected_source": "runtime/brittle-stars.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "versions": [
+        {
+          "file": "brittle-stars-v1.png",
+          "sha256": "04719462d18f1cd1da494ba5df2754ad29640e8eb0a0b2a2896b4c201a1fd67e",
+          "rejection": null
+        },
+        {
+          "file": "runtime/brittle-stars.png",
+          "sha256": "40edd8f1cb919195a05b92b52dda28ea075e37add695d45dc9e5f2e7102cec83",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "hydroids",
+      "kind": "prop",
+      "selected_source": "runtime/hydroids.png",
+      "stage": "installed; agent native review complete; owner acceptance separate",
+      "versions": [
+        {
+          "file": "hydroids-v1.png",
+          "sha256": "638579e926c00edb0f5e876488f4f027a724e840e947864d8f9fbe6f2a06df97",
+          "rejection": null
+        },
+        {
+          "file": "hydroids-v2.png",
+          "sha256": "9db40c5fcb8639ac9ac7e1bfe9603dcbe6df327bbf35cd233318bf23cf33420c",
+          "rejection": "overly skeletal branching; feathered v1 reads better after actual alpha compositing"
+        },
+        {
+          "file": "runtime/hydroids.png",
+          "sha256": "b5a74dc550f841cb51cb3a8cf08a885cfaa27364d6d1b50fc1ac4831b35e72a2",
+          "rejection": null
+        }
+      ]
+    }
+  ]
+}

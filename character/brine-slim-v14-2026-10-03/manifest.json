@@ -1,0 +1,50 @@
+{
+  "status": "installed, native checks pass; owner accepted slimmer design and displayed float preview on 2026-10-03",
+  "source_id": "exec-3979654e-acc7-448e-917f-5e8f6445ebdc.png",
+  "alpha_threshold": 240,
+  "source_crop": [
+    253,
+    49,
+    784,
+    1442
+  ],
+  "export_size": [
+    56,
+    148
+  ],
+  "reference_height": 148,
+  "references": {
+    "character/brine-polish-v13-2026-10-02/source.png": "756c135a97d9910ebcd1549deb41a750ee8a1b5deaf722fab0f1be314571494c"
+  },
+  "outputs": {
+    "source.png": "b859a5fc9a0a796b7caf8e1276391a1be106f04f9bd2c40aa20ee318f7e6ea41",
+    "body.png": "547301f769758689a4fc2120942b0a7fbfa7ef8f7734290a484585d334ae086e",
+    "prompt.txt": "c78024d68647cd9d6b36b1fe9d418ba409eaba65d0111bde073df6330d7c8658",
+    "build.py": "efa8c80d76b7fc9cd3bb981e79497c4e8768c9ab52806363d63c7f8727845c47",
+    "comparison.png": "3c66d1eca9f8fe4c615b68ee756a73567a480ca0722ab9f847f8bf2408fe19a7",
+    "production-float.gif": "218c182490a5bb30bccfc750e0ca204ca1ea49e43466cbfbcdfee735e46e8299",
+    "motion-review.png": "1dc5bdb868450cc834d3d327e41877a4fe903fc386efea1af57403b52bff6598",
+    "production_preview.gd": "ee740c8b95e65bb735dde351319e09f0d6cb01a2df5b6a245e346c3b111f3b37",
+    "fresh_continue.gd": "466a93afeaf37d64913ef1cf322b2c957ea36ba64e272c85ae16fa1c1731ab05"
+  },
+  "motion": "Existing v13 eight-second floating rig unchanged",
+  "limits": "Generated anatomical revision, no global horizontal squeeze. Near-opaque extraction removes diffuse generated halo and faint edge alpha. Owner appearance review separate.",
+  "native_sessions": {
+    "chamber": "output/brine-slim-v14/session-519e2dec61a7409c8e5afa41892adebc",
+    "motion": "output/brine-slim-v14/session-ce71324d62894d9db37080d24f09c100",
+    "fresh_continue": "output/brine-slim-v14/session-0fd3ce5003e34c0ca88f908165016d9e"
+  },
+  "checks": [
+    "Chamber PASS: 4 rotations, 16 routes, 3565 movement samples, containment, pause/offline, 3 viewports",
+    "200 native production frames at 25fps; rigid face/torso and 8-second loop seam assertions",
+    "Actual title/loading Continue: 15 checks, 0 failures",
+    "All three native intervals: scratch APPDATA, 2931 owner non-log files unchanged, engine exit 0, clean logs",
+    "Byte-exact local body rebuild; raster LFS attributes; scoped diff check"
+  ],
+  "visual_review": "Generated source, same-height old/new/selected Bill comparison, actual station chamber and eight sampled native poses inspected. Full loop GIF provided for owner motion review.",
+  "owner_acceptance": {
+    "date": "2026-10-03",
+    "statement": "Okay, that looks pretty good",
+    "scope": "Displayed v14 slimmer BRINE model and production floating preview; no new release export acceptance"
+  }
+}

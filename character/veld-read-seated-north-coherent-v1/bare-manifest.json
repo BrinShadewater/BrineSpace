@@ -1,0 +1,251 @@
+{
+  "name": "Veld North bounded tablet bare candidate",
+  "status": "staged_candidate",
+  "precomposed": true,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "read-seated-north",
+      "frameFiles": [
+        "frames/bare/read-seated-north/000.png",
+        "frames/bare/read-seated-north/001.png",
+        "frames/bare/read-seated-north/002.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/005.png",
+        "frames/bare/read-seated-north/004.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/005.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/002.png",
+        "frames/bare/read-seated-north/001.png",
+        "frames/bare/read-seated-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        120,
+        140,
+        140,
+        1840,
+        1840,
+        1840,
+        1840,
+        1840,
+        1840,
+        140,
+        140,
+        120,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "read-seated-enter-south",
+      "frameFiles": [
+        "frames/bare/read-seated-north/000.png",
+        "frames/bare/read-seated-north/001.png",
+        "frames/bare/read-seated-north/002.png",
+        "frames/bare/read-seated-north/003.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        120,
+        140,
+        140
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "read-seated-exit-south",
+      "frameFiles": [
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/002.png",
+        "frames/bare/read-seated-north/001.png",
+        "frames/bare/read-seated-north/000.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        120,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    },
+    {
+      "id": "read-seated-hold-south",
+      "frameFiles": [
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/005.png",
+        "frames/bare/read-seated-north/004.png",
+        "frames/bare/read-seated-north/003.png",
+        "frames/bare/read-seated-north/005.png",
+        "frames/bare/read-seated-north/003.png"
+      ],
+      "frameDurationsMs": [
+        1840,
+        1840,
+        1840,
+        1840,
+        1840,
+        1840
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated",
+        "seated"
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seatContactDepth": true
+    }
+  ]
+}

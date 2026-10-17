@@ -1,0 +1,59 @@
+{
+  "name": "Veld approved-foundation side walk",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "four_pose_west_sequence_trial_not_installed",
+  "states": [
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "loop": true,
+      "mirrored": false
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png"
+      ],
+      "frameCount": 4,
+      "frameDurationsMs": [
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": true,
+      "mirrored": false,
+      "derivations": {
+        "0": "v2/west/1",
+        "1": "v2/west/2",
+        "2": "v2/west/3",
+        "3": "v2/west/5"
+      }
+    }
+  ]
+}

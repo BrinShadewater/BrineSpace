@@ -1,0 +1,79 @@
+{
+  "south": {
+    "params": {
+      "model": "minimax_hailuo",
+      "variant": "minimax-2.3-fast",
+      "duration": 6,
+      "resolution": "768",
+      "count": 1,
+      "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+      "prompt_optimizer": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "49565608-f0f4-4fb7-8222-07aef7598a5f"
+        }
+      ],
+      "prompt": "[Static shot] The helmeted character walks in place at a steady, natural pace, viewed directly from the front throughout the entire shot. Her chest remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her rigid helmet, single face behind the clear visor, white lamp, suit design, colours, lighting and plain green background remain unchanged."
+    },
+    "submission": {
+      "results": [
+        {
+          "id": "ced03337-9121-41f0-8ac3-d2da225c255b",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The helmeted character walks in place at a steady, natural pace, viewed directly from the front throughout the entire shot. Her chest remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her rigid helmet, single face behind the clear visor, white lamp, suit design, colours, lighting and plain green background remain unchanged.",
+            "duration": 6,
+            "reference_images": [
+              "49565608-f0f4-4fb7-8222-07aef7598a5f"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    }
+  },
+  "north": {
+    "params": {
+      "model": "minimax_hailuo",
+      "variant": "minimax-2.3-fast",
+      "duration": 6,
+      "resolution": "768",
+      "count": 1,
+      "folder_id": "81b1a4f0-4348-4e3a-88ce-00bf92590cf0",
+      "prompt_optimizer": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "42a1de73-17d4-4645-8f9e-30502e24e3e8"
+        }
+      ],
+      "prompt": "[Static shot] The character walks in place at a steady, natural pace, viewed directly from behind throughout the entire shot. Her back remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her helmet, design, colours, lighting and plain green background remain unchanged."
+    },
+    "submission": {
+      "results": [
+        {
+          "id": "31bed0b9-8c82-4ae2-9fb8-db52bf9f0bba",
+          "type": "video",
+          "status": "pending",
+          "model": "minimax_hailuo",
+          "params": {
+            "prompt": "[Static shot] The character walks in place at a steady, natural pace, viewed directly from behind throughout the entire shot. Her back remains square to the camera as her legs alternate steps and her arms swing gently. She stays centered at the same size. Her helmet, design, colours, lighting and plain green background remain unchanged.",
+            "duration": 6,
+            "reference_images": [
+              "42a1de73-17d4-4645-8f9e-30502e24e3e8"
+            ],
+            "variant": "minimax-2.3-fast",
+            "resolution": "768",
+            "prompt_optimizer": false
+          }
+        }
+      ]
+    }
+  },
+  "estimatedCredits": 8
+}

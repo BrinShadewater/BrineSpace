@@ -1,0 +1,62 @@
+{
+  "checks": 65,
+  "failures": 0,
+  "originalMasterExtraction": "master-idle-extraction.json",
+  "recipe": "character/veld-carry-west-master-proportions-v1/package-registration.json",
+  "recipeSHA256": "7dc4d05eddb95795eb8e160086f09008574a6776a5c3c6976e8c3d822b0d5f8d",
+  "originalMasterIdleSourceSHA256": "84a2acc321f1b15bfe871df1ef6b12402cbb48e0789d8dd2ca5137a2289986a6",
+  "shellSource": "character/veld-shared-helmet-v1/fitted-north.png",
+  "shellSHA256": "cf8f45ec906d76ec42802cd05b611bd37f5cfb7c1250111e639902556f7b158e",
+  "helmetFit": {
+    "position": [
+      112,
+      69
+    ],
+    "clearBox": [
+      111,
+      77,
+      145,
+      102
+    ],
+    "bodyGasket": [
+      127.5,
+      104
+    ],
+    "shellSize": [
+      33,
+      35
+    ],
+    "scale": 1,
+    "gradeChanged": false
+  },
+  "floorCaseRawSHA256": "69d1e89b94a44343ae01ab24da25aa527e4fa8a5bf64840fb7ece44448342958",
+  "floorCaseCrop": [
+    240,
+    109,
+    1323,
+    913
+  ],
+  "floorCaseSize": [
+    33,
+    24
+  ],
+  "floorCasePosition": [
+    112,
+    193
+  ],
+  "newFrameBindings": {
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/000.png": "f0fe366e5a85f4955e3a3e9a91d2de9a1b3e9af76991c59e4950f9be21666c9c",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/001.png": "b806109db5956a61ad0681729563f9c11405ab8c6ae388dd4c49a69f744d18fb",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/002.png": "be0e63148cf5d8bbb6495c16d0b5d5d1804ec6f4a486d26cf597aa15edd345c4",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/003.png": "7bc5bd3810b23878167f1804d13e4a1de74be619d143985aaafc1384265dd1f1",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/004.png": "60a73756b413c43fc3e91d1b8fabab91bf27a6044c1313b30c07cdc22926ebcd",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/bare/unload-north/005.png": "c9c0cc70b8710e3e0e93926e5c9d5d35d3a0dc13f5575e5da31a25c9748ef223",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/000.png": "f31061ac32602fcf0bb69fa0229f3fc214acb063994964bbffa7ce926a103479",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/001.png": "6e2c81d07cd9558b14eb3e194ab81004c5c34504a01409cee203d736f7312cec",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/002.png": "ec8d238273cc5ccb779c888f0e18624569720231f68e5e94f938f3fb9b29e0b5",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/003.png": "a0964d34b56457111f3528d576083f7f3bff33430b65e0e4654b7963391d60cd",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/004.png": "1e8088ecf3588d7fb53608c7da326b49162919de7d4249a9121b6a40d3a8039a",
+    "character/veld-cargo-north-master-family-v1/idle-join-v2/frames/helmet/unload-north/005.png": "18d67cda0c44aec24c5d553d217be863c52669340ad74db2e7f9b9200811390f"
+  },
+  "scope": "Exact whole original-master static North standing endpoint; shared recipe/rigid shell; body-only source and independent authored prop. First5action frames exact reused. Not full idle animation, continuous contact/motion, production ownership/checkpoint/adoption acceptance."
+}

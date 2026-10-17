@@ -1,0 +1,49 @@
+{
+  "checks": 10108,
+  "failures": 0,
+  "results": [
+    {
+      "actualDiskRestore": true,
+      "breathRemaining": 15.0,
+      "captures": [
+        "res://character/james-console-water-exit-turn-v1/arrival-captures/restore-aborted-bare-entry-entry.png",
+        "res://character/james-console-water-exit-turn-v1/arrival-captures/restore-aborted-bare-entry-exit.png"
+      ],
+      "contact": "(117.0498, 147.5015)",
+      "holdTicks": 125,
+      "mode": "bare",
+      "phases": [
+        "entry",
+        "exit",
+        "egress"
+      ],
+      "restoredPhase": "entry",
+      "rotation": 0,
+      "tankRemaining": 60.0,
+      "ticks": 2326,
+      "water": 0.65
+    },
+    {
+      "actualDiskRestore": true,
+      "breathRemaining": 15.0,
+      "captures": [
+        "res://character/james-console-water-exit-turn-v1/arrival-captures/restore-aborted-helmet-entry-entry.png",
+        "res://character/james-console-water-exit-turn-v1/arrival-captures/restore-aborted-helmet-entry-exit.png"
+      ],
+      "contact": "(117.0498, 147.5015)",
+      "holdTicks": 125,
+      "mode": "helmet",
+      "phases": [
+        "entry",
+        "exit",
+        "egress"
+      ],
+      "restoredPhase": "entry",
+      "rotation": 0,
+      "tankRemaining": 40.6166666666678,
+      "ticks": 2326,
+      "water": 0.95
+    }
+  ],
+  "scope": "Normal installed manifest loaders, chooser, update including safety modules, natural flooding/vitals, actual navigation/move, simulation-owned hold clocks and grid drawing. Four rotations, bare breathable flooded.65 and helmet submerged.95; full poses clear, paused hold and exact joins. No candidate/gate/hold injections. Two actual checkpoint write/read/staged Continue restores of power-interrupted partial entry, both gear; exact pixels/paused clock/actor/path, smooth finite exit and no service reward. Bare flooded.65; helmet submerged.95; high-water bare survival and interruptions separate."
+}

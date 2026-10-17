@@ -1,0 +1,84 @@
+{
+  "name": "James north cargo carry helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_north_carry_v1",
+  "strideDistanceCells": {
+    "carry-north": 0.0827027027027027
+  },
+  "states": [
+    {
+      "id": "carry-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/000.png",
+        "frames/helmet/001.png",
+        "frames/helmet/002.png",
+        "frames/helmet/003.png",
+        "frames/helmet/004.png",
+        "frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "walkingGuideSourceFrames": [
+          0,
+          6,
+          12,
+          18,
+          24,
+          30
+        ],
+        "direction": "Independent north view",
+        "palette": "Fixed master-matched hardware highlight compression and gold calibration; head protected"
+      }
+    }
+  ]
+}

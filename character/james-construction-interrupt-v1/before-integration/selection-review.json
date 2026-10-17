@@ -1,0 +1,62 @@
+{
+  "status": "controller_interruption_visual_defect_confirmed_candidate_staged",
+  "runtimeInstalled": false,
+  "fullSetComplete": false,
+  "interruption": {
+    "checks": 1581,
+    "cases": 24,
+    "captures": 72,
+    "profileGuard": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-_6tjhkyf",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES INTERRUPT CASE north complete=true",
+        "JAMES INTERRUPT CASE east complete=true",
+        "JAMES INTERRUPT CASE south complete=true",
+        "JAMES INTERRUPT CASE west complete=true",
+        "JAMES INTERRUPT: 1581 checks, 0 failures"
+      ]
+    },
+    "scope": "24 actual power/locked-door holds across draw/held/stow and four bare directions in four genuine paid jobs. Normal60Hz controller. Initial room resets, no helmet eligibility or fresh Continue claim. Visual transition quality must be assessed separately from preserved simulation state."
+  },
+  "continue": {
+    "checks": 1104,
+    "cases": 3,
+    "captures": 21,
+    "profileGuard": {
+      "exitCode": 0,
+      "timedOut": false,
+      "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-native-oxzjpmkz",
+      "realProfileUnchanged": true,
+      "profileDelta": [],
+      "summary": [
+        "JAMES CONSTRUCTION CONTINUE CASE north-torch-draw completed=true",
+        "JAMES CONSTRUCTION CONTINUE CASE east-weld completed=true",
+        "JAMES CONSTRUCTION CONTINUE CASE south-torch-stow completed=true",
+        "JAMES CONSTRUCTION CONTINUE: 1104 checks, 0 failures"
+      ]
+    },
+    "scope": "Three actual disk checkpoints into fresh main scenes: North partial draw, East held weld, South partial stow. Exact actor/playback/source/clock/pause/paid order, normal60Hz update to paid completion. Bare only. Not all facing-phase combinations or interrupted transition checkpoints."
+  },
+  "visualFinding": "All72 interruption captures/four boards reviewed: actual paid work/contact and sparks behavior pass, but direct state idle creates an abrupt arm/tool disappearance and restored state snaps back to work pose. This is not visual acceptance. All21 fresh Continue views reviewed on one board; saved source and progress are exact. North after-restore camera differs by242viewport pixels; one fixed post-restore crop used for six captures, no sprite transform or height normalization.",
+  "candidate": {
+    "checks": 60,
+    "failures": 0,
+    "states": 24,
+    "refs": 316,
+    "uniqueSourceFiles": 113,
+    "newArtwork": 0,
+    "runtimeInstalled": false,
+    "scope": "Twelve actual observed bare interruption entry poses. Exact retained first source, reverse partial draw, remaining stow, held source followed by authored stow, exact neutral and reverse return to exact retained source. Fixed148 ruler/pivot and source RGB/alpha unchanged. Candidate not yet controller-driven; all arbitrary source phases, repeated interruption, safety and fresh Continue of candidate remain."
+  },
+  "candidateVisualReview": "Four eight-sample-per-phase source boards reviewed; original whole poses, fixed148 ruler/pivot, retained entry and resumed source exact, idle seam exact, no color/material/shape changes. Candidate is source choreography, not actual controller proof.",
+  "remaining": [
+    "Generalize to arbitrary actual source indices; integrate stow/return while preserving paid work, safety precedence, contact and progress",
+    "Capture every new native source transition, including repeated loss/restoration during exit/return",
+    "Fresh disk Continue inside new interruption motion and all facing-phase combinations",
+    "Repair effect/contact and full James consistency, owner/export acceptance"
+  ]
+}

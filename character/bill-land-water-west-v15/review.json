@@ -1,0 +1,915 @@
+{
+  "inputSHA256": {
+    "bill-land-water-west-v15/build.py": "02f55bfd78f87f1e9b342d415a56c02ee78995460bf887be25c3eab45511bea1",
+    "bill-swim-west-master-v7/prepare_body.py": "397ab12ff016f704fb674f682f338b63925ab7827d73f501f791c726b3607be6",
+    "bill-land-water-west-v14/build.py": "882f93429644208f29076f482331b210fe6fe2b3a6e767193069f91114cec0d5",
+    "bill-swim-west-master-v6/sources/canonical-bare-head-v1.png": "699cb3c5bbf1c4c7c4ef8e964472c6c68e21d13078883bc9d4b8564d87755b51",
+    "bill-cargo-helmet-west-v1/sources/canonical-head.png": "226417bf28083f77bd4d0eae1de504bf5885a8b3d0b3cf54b15419bd8eb3653d",
+    "crew-side-masters-v1/bill-side-master-01.png": "d5bba4c2a0ef9b0acd93240f03fbf43b45497e3cb62143e0860011c754a0d86a",
+    "bill-water-exit-west-master-v8/sources/master-west-reference.png": "b1c6fc168514e8154de9a5a83a6488f23d9878bd4d89025305afed9c48ca35e6",
+    "bill-water-exit-west-master-v8/sources/master-west-reference.json": "ea08b9d1c54f5dec530c02d2792586af8db04786ef1362fe2b7347b36b2676e5",
+    "bill-land-water-west-v15/generation-job-v1.json": "2d0b80804286fe0cc9db59dedfa236d17768eab4e8e29b2dd366f9888bfbb7c3",
+    "bill-land-water-west-v15/generation-provenance-v1.json": "2ad5e9fb5eba706dbf54be049a16aa45dfe0d360c15e388c9be2d7ebad5f4f02",
+    "bill-land-water-west-v15/sources/push-calibrated-prompt-v1.txt": "a099388f9eeecf66ec91c64530f3b3616cc9ba1576fdf650b69308034d527732",
+    "bill-land-water-west-v15/sources/push-calibrated-v1.png": "14abde62c17071f5a0669b23aa2b04d05143c42921d0972fa8f14a916199605e",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/000.png": "63599c1e64035f1e633b56b46b967dc6e59f73bf93cfbd621132f3bae63ec2d8",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/001.png": "83d856bc54ffef3710d68f6ae1b314242bfc7afcd709b4b1391a98680310bfd2",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/002.png": "cf3a716306a0e66f7aab390700978f41d0d2731ef44a4bdf64ac2e1905767b05",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/003.png": "36e9a9d39985e73e690721c3057d9e9f7d07c7c2f8644d4553d660c6bba7a5dd",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/004.png": "95523214a94a38e6d205619086d5d5acec85b2b208fffd355320d3dacee5d85f",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/005.png": "7744890a23f051f98314948611d7cd9d503d198f33f005505d079b71d680fd8f",
+    "bill-land-water-west-v14/bare/frames/land-swim-west/006.png": "63bd2d3a7c60806edf8f099b85d0ea5c16ec42e3ef5cc660e060eedfd5a1b843",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/000.png": "4b16dc9e96ce2f9cba0d7f65bdd2cef6e352e5443e73e4f22aab1f7537fcfd94",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/001.png": "325a061f3154a2edc96097ddca631abee9611e023923540744d086e9881e701c",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/002.png": "da1465b6a8d60b6b5f6a6a2ba54bf2aea35ddda22206d8b592c591412f30fa42",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/003.png": "266ab7c23f52afcd407e944e7ab89cdf360a69d1717ef57877b4554abff07303",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/004.png": "71eb062a7d0c997693e163ff9417daafa67fe3cd93883020f21e46f74eb70f42",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/005.png": "eddb89f97854c0535ae187174000e4a52b3a9e2414d2d9fa11f81b532f43dbaf",
+    "bill-land-water-west-v14/helmet/frames/land-swim-west/006.png": "e77be3964f11a90e3b2badc16cfe49229683a560d947a18eb73b7bc38365fda2",
+    "bill-land-water-west-v14/bare/manifest.json": "8d58890741c4ccc2f4d7a2f3595b6d6efd1202f7fc6ef259c7f9b2af582469d0",
+    "bill-land-water-west-v14/helmet/manifest.json": "96b9f2fc72f7f1e344f2aae1d873852cfa2e4034bd90fcda2a76d06121bcd62b",
+    "bill-land-water-west-v15/generation-job-v2.json": "11088540c0d5ddb2018dd4a566ed9a713f8e7e34c06fed4504a884e1d20d44df",
+    "bill-land-water-west-v15/generation-provenance-v2.json": "7fee5604d10595c3a8e974d8febf81e06370e3be8becc893dcad6319b15e0193",
+    "bill-land-water-west-v15/sources/level-prone-calibrated-prompt-v1.txt": "417ff89fa55acbff345f991f239f74f50732c975b704416e986fd01a96a099b0",
+    "bill-land-water-west-v15/sources/level-prone-calibrated-v1.png": "6a2eb7562c724fc46021dbeedac4a5d6e880395d65e9f2de1cbd7f8d4e774f7a"
+  },
+  "frozenInputsStable": 32,
+  "frames": [
+    {
+      "priorHipMarker": {
+        "roi": [
+          170,
+          168,
+          182,
+          178
+        ],
+        "components": [
+          {
+            "pixels": 3,
+            "center": [
+              175.66666666666666,
+              171.33333333333334
+            ]
+          },
+          {
+            "pixels": 3,
+            "center": [
+              177.33333333333334,
+              173.66666666666666
+            ]
+          }
+        ],
+        "sourceCenter": [
+          176.5,
+          172.5
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "calibration": {
+        "neutralROI": [
+          120,
+          0,
+          500,
+          1010
+        ],
+        "neutralOpaqueBounds": [
+          181,
+          36,
+          469,
+          979
+        ],
+        "neutralHeight": 943,
+        "neutralHeadProxy": {
+          "roi": [
+            220,
+            0,
+            410,
+            220
+          ],
+          "bounds": [
+            17,
+            37,
+            157,
+            180
+          ],
+          "width": 140,
+          "height": 143,
+          "componentTouchesROIEdge": false,
+          "sourceCrown": [
+            304,
+            37
+          ],
+          "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+        },
+        "actionROIs": [
+          [
+            530,
+            130,
+            1535,
+            1010
+          ],
+          [
+            330,
+            95,
+            1535,
+            670
+          ],
+          [
+            315,
+            675,
+            1535,
+            1000
+          ]
+        ],
+        "oneWholeSourceScale": 0.1569459172852598,
+        "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+        "actionFacing": "west",
+        "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+      },
+      "name": "Push off",
+      "source": "bill-land-water-west-v15/sources/push-calibrated-v1.png",
+      "actionROI": [
+        530,
+        130,
+        1535,
+        1010
+      ],
+      "headProxy": {
+        "roi": [
+          800,
+          150,
+          1000,
+          350
+        ],
+        "bounds": [
+          27,
+          24,
+          166,
+          171
+        ],
+        "width": 139,
+        "height": 147,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          898,
+          174
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        8,
+        88
+      ],
+      "crown": [
+        149,
+        115
+      ],
+      "bareDonorPosition": [
+        143,
+        115
+      ],
+      "helmetDonorPosition": [
+        134,
+        102
+      ],
+      "erasePolygon": [
+        [
+          119,
+          112
+        ],
+        [
+          174,
+          112
+        ],
+        [
+          174,
+          126
+        ],
+        [
+          154,
+          143
+        ],
+        [
+          119,
+          143
+        ]
+      ],
+      "sourceLowestPaintedSupport": 973,
+      "registeredLowestPaintedAlpha": 241,
+      "hipMarker": {
+        "roi": [
+          1040,
+          500,
+          1110,
+          565
+        ],
+        "components": [
+          {
+            "pixels": 38,
+            "center": [
+              1068.3157894736842,
+              524.8947368421053
+            ]
+          },
+          {
+            "pixels": 38,
+            "center": [
+              1078.5,
+              539.7894736842105
+            ]
+          }
+        ],
+        "sourceCenter": [
+          1073.407894736842,
+          532.3421052631579
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "registeredHipMarker": [
+        176,
+        172
+      ],
+      "registrationScope": "Whole-figure equipment-hip registration from prior V14 pose; source trajectory proxy, not physical contact/root acceptance",
+      "physicalContactAccepted": false,
+      "bareDonorSize": [
+        21,
+        23
+      ],
+      "helmetDonorSize": [
+        40,
+        40
+      ],
+      "donorScale": 1,
+      "donorRotation": 0,
+      "bodyOutsideHeadRegionsExact": true,
+      "foregroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueBareDonorExact": true,
+      "opaqueBareDonorPixelsChecked": 32,
+      "opaqueHelmetDonorExact": true,
+      "opaqueHelmetDonorPixelsChecked": 228
+    },
+    {
+      "priorHipMarker": {
+        "roi": [
+          170,
+          198,
+          182,
+          208
+        ],
+        "components": [
+          {
+            "pixels": 3,
+            "center": [
+              174.33333333333334,
+              202.66666666666666
+            ]
+          },
+          {
+            "pixels": 2,
+            "center": [
+              177.0,
+              204.5
+            ]
+          }
+        ],
+        "sourceCenter": [
+          175.66666666666669,
+          203.58333333333331
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "calibration": {
+        "neutralROI": [
+          10,
+          0,
+          320,
+          1010
+        ],
+        "neutralOpaqueBounds": [
+          30,
+          35,
+          312,
+          982
+        ],
+        "neutralHeight": 947,
+        "neutralHeadProxy": {
+          "roi": [
+            60,
+            0,
+            260,
+            220
+          ],
+          "bounds": [
+            25,
+            37,
+            159,
+            175
+          ],
+          "width": 134,
+          "height": 138,
+          "componentTouchesROIEdge": false,
+          "sourceCrown": [
+            155,
+            37
+          ],
+          "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+        },
+        "actionROIs": [
+          [
+            530,
+            130,
+            1535,
+            1010
+          ],
+          [
+            330,
+            95,
+            1535,
+            670
+          ],
+          [
+            315,
+            675,
+            1535,
+            1000
+          ]
+        ],
+        "oneWholeSourceScale": 0.1562829989440338,
+        "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+        "actionFacing": "west",
+        "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+      },
+      "name": "Levelling",
+      "source": "bill-land-water-west-v15/sources/level-prone-calibrated-v1.png",
+      "actionROI": [
+        330,
+        95,
+        1535,
+        670
+      ],
+      "headProxy": {
+        "roi": [
+          600,
+          100,
+          800,
+          290
+        ],
+        "bounds": [
+          25,
+          24,
+          161,
+          163
+        ],
+        "width": 136,
+        "height": 139,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          696,
+          124
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        32,
+        140
+      ],
+      "crown": [
+        141,
+        159
+      ],
+      "bareDonorPosition": [
+        135,
+        158
+      ],
+      "helmetDonorPosition": [
+        126,
+        145
+      ],
+      "erasePolygon": [
+        [
+          111,
+          156
+        ],
+        [
+          166,
+          156
+        ],
+        [
+          166,
+          170
+        ],
+        [
+          146,
+          186
+        ],
+        [
+          111,
+          186
+        ]
+      ],
+      "sourceLowestPaintedSupport": 658,
+      "registeredLowestPaintedAlpha": 243,
+      "hipMarker": {
+        "roi": [
+          890,
+          390,
+          940,
+          435
+        ],
+        "components": [
+          {
+            "pixels": 50,
+            "center": [
+              911.5,
+              406.0
+            ]
+          },
+          {
+            "pixels": 56,
+            "center": [
+              927.5892857142857,
+              416.875
+            ]
+          }
+        ],
+        "sourceCenter": [
+          919.5446428571429,
+          411.4375
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "registeredHipMarker": [
+        176,
+        204
+      ],
+      "registrationScope": "Whole-figure equipment-hip registration from prior V14 pose; source trajectory proxy, not physical contact/root acceptance",
+      "physicalContactAccepted": false,
+      "bareDonorSize": [
+        21,
+        23
+      ],
+      "helmetDonorSize": [
+        40,
+        40
+      ],
+      "donorScale": 1,
+      "donorRotation": 0,
+      "bodyOutsideHeadRegionsExact": true,
+      "foregroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueBareDonorExact": true,
+      "opaqueBareDonorPixelsChecked": 37,
+      "opaqueHelmetDonorExact": true,
+      "opaqueHelmetDonorPixelsChecked": 226
+    },
+    {
+      "priorHipMarker": {
+        "roi": [
+          183,
+          219,
+          195,
+          230
+        ],
+        "components": [
+          {
+            "pixels": 2,
+            "center": [
+              187.5,
+              224.0
+            ]
+          },
+          {
+            "pixels": 3,
+            "center": [
+              190.33333333333334,
+              224.66666666666666
+            ]
+          }
+        ],
+        "sourceCenter": [
+          188.91666666666669,
+          224.33333333333331
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "calibration": {
+        "neutralROI": [
+          10,
+          0,
+          320,
+          1010
+        ],
+        "neutralOpaqueBounds": [
+          30,
+          35,
+          312,
+          982
+        ],
+        "neutralHeight": 947,
+        "neutralHeadProxy": {
+          "roi": [
+            60,
+            0,
+            260,
+            220
+          ],
+          "bounds": [
+            25,
+            37,
+            159,
+            175
+          ],
+          "width": 134,
+          "height": 138,
+          "componentTouchesROIEdge": false,
+          "sourceCrown": [
+            155,
+            37
+          ],
+          "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+        },
+        "actionROIs": [
+          [
+            530,
+            130,
+            1535,
+            1010
+          ],
+          [
+            330,
+            95,
+            1535,
+            670
+          ],
+          [
+            315,
+            675,
+            1535,
+            1000
+          ]
+        ],
+        "oneWholeSourceScale": 0.1562829989440338,
+        "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+        "actionFacing": "west",
+        "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+      },
+      "name": "Near prone",
+      "source": "bill-land-water-west-v15/sources/level-prone-calibrated-v1.png",
+      "actionROI": [
+        315,
+        675,
+        1535,
+        1000
+      ],
+      "headProxy": {
+        "roi": [
+          550,
+          670,
+          750,
+          850
+        ],
+        "bounds": [
+          18,
+          19,
+          150,
+          152
+        ],
+        "width": 132,
+        "height": 133,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          639,
+          689
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "translation": [
+        47,
+        84
+      ],
+      "crown": [
+        147,
+        192
+      ],
+      "bareDonorPosition": [
+        141,
+        190
+      ],
+      "helmetDonorPosition": [
+        132,
+        177
+      ],
+      "erasePolygon": [
+        [
+          117,
+          189
+        ],
+        [
+          172,
+          189
+        ],
+        [
+          172,
+          203
+        ],
+        [
+          152,
+          218
+        ],
+        [
+          117,
+          218
+        ]
+      ],
+      "sourceLowestPaintedSupport": 945,
+      "registeredLowestPaintedAlpha": 232,
+      "hipMarker": {
+        "roi": [
+          880,
+          880,
+          940,
+          925
+        ],
+        "components": [
+          {
+            "pixels": 52,
+            "center": [
+              897.4615384615385,
+              894.0961538461538
+            ]
+          },
+          {
+            "pixels": 62,
+            "center": [
+              917.6935483870968,
+              897.9193548387096
+            ]
+          }
+        ],
+        "sourceCenter": [
+          907.5775434243176,
+          896.0077543424318
+        ],
+        "scope": "Equipment proxy; not anatomical or floor-contact acceptance"
+      },
+      "registeredHipMarker": [
+        189,
+        224
+      ],
+      "registrationScope": "Whole-figure equipment-hip registration from prior V14 pose; source trajectory proxy, not physical contact/root acceptance",
+      "physicalContactAccepted": false,
+      "bareDonorSize": [
+        21,
+        23
+      ],
+      "helmetDonorSize": [
+        40,
+        40
+      ],
+      "donorScale": 1,
+      "donorRotation": 0,
+      "bodyOutsideHeadRegionsExact": true,
+      "foregroundExact": true,
+      "belowHeadRegionExact": true,
+      "opaqueBareDonorExact": true,
+      "opaqueBareDonorPixelsChecked": 37,
+      "opaqueHelmetDonorExact": true,
+      "opaqueHelmetDonorPixelsChecked": 221
+    }
+  ],
+  "calibration": {
+    "Push off": {
+      "neutralROI": [
+        120,
+        0,
+        500,
+        1010
+      ],
+      "neutralOpaqueBounds": [
+        181,
+        36,
+        469,
+        979
+      ],
+      "neutralHeight": 943,
+      "neutralHeadProxy": {
+        "roi": [
+          220,
+          0,
+          410,
+          220
+        ],
+        "bounds": [
+          17,
+          37,
+          157,
+          180
+        ],
+        "width": 140,
+        "height": 143,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          304,
+          37
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "actionROIs": [
+        [
+          530,
+          130,
+          1535,
+          1010
+        ],
+        [
+          330,
+          95,
+          1535,
+          670
+        ],
+        [
+          315,
+          675,
+          1535,
+          1000
+        ]
+      ],
+      "oneWholeSourceScale": 0.1569459172852598,
+      "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+      "actionFacing": "west",
+      "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+    },
+    "Levelling": {
+      "neutralROI": [
+        10,
+        0,
+        320,
+        1010
+      ],
+      "neutralOpaqueBounds": [
+        30,
+        35,
+        312,
+        982
+      ],
+      "neutralHeight": 947,
+      "neutralHeadProxy": {
+        "roi": [
+          60,
+          0,
+          260,
+          220
+        ],
+        "bounds": [
+          25,
+          37,
+          159,
+          175
+        ],
+        "width": 134,
+        "height": 138,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          155,
+          37
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "actionROIs": [
+        [
+          530,
+          130,
+          1535,
+          1010
+        ],
+        [
+          330,
+          95,
+          1535,
+          670
+        ],
+        [
+          315,
+          675,
+          1535,
+          1000
+        ]
+      ],
+      "oneWholeSourceScale": 0.1562829989440338,
+      "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+      "actionFacing": "west",
+      "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+    },
+    "Near prone": {
+      "neutralROI": [
+        10,
+        0,
+        320,
+        1010
+      ],
+      "neutralOpaqueBounds": [
+        30,
+        35,
+        312,
+        982
+      ],
+      "neutralHeight": 947,
+      "neutralHeadProxy": {
+        "roi": [
+          60,
+          0,
+          260,
+          220
+        ],
+        "bounds": [
+          25,
+          37,
+          159,
+          175
+        ],
+        "width": 134,
+        "height": 138,
+        "componentTouchesROIEdge": false,
+        "sourceCrown": [
+          155,
+          37
+        ],
+        "scope": "Bounded brown head proxy, not complete anatomical acceptance."
+      },
+      "actionROIs": [
+        [
+          530,
+          130,
+          1535,
+          1010
+        ],
+        [
+          330,
+          95,
+          1535,
+          670
+        ],
+        [
+          315,
+          675,
+          1535,
+          1000
+        ]
+      ],
+      "oneWholeSourceScale": 0.1562829989440338,
+      "neutralFacing": "west/left-facing, anatomical calibration only, not selected idle",
+      "actionFacing": "west",
+      "scope": "Shared sheet standing denominator; action anatomy/perspective still visually provisional."
+    }
+  },
+  "priorCompletePosesExact": 8,
+  "decodedAPNGFramesExact": 14,
+  "durationsMs": [
+    60,
+    70,
+    80,
+    60,
+    80,
+    90,
+    60
+  ],
+  "totalMs": 500,
+  "loop": 1,
+  "density": {
+    "Push off": 0.1569459172852598,
+    "Levelling": 0.1562829989440338,
+    "Near prone": 0.1562829989440338
+  },
+  "canvas": [
+    352,
+    320
+  ],
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "normalSelected": false,
+  "nativeAcceptance": false,
+  "scope": "Whole standing-calibrated airborne phases. Ready/Crouch and current idle/swim endpoints exact from V14; no older interior phase retained. Full master/shoulder/grade/contact/native acceptance pending.",
+  "coupledExitEndpointsExact": 4,
+  "postBuildChecks": {
+    "currentFrozenInputHashes": 32,
+    "publisherASTs": 2,
+    "generationProvenanceSets": 2,
+    "LFSPaths": 5
+  },
+  "visualReview": {
+    "date": "2026-10-02",
+    "boardsSeen": [
+      "master-comparison.png",
+      "prior turn raw, neck and full paired boards",
+      "browser paired Push off"
+    ],
+    "browserPlayback": "Normal and quarter speed reach Swimming7/7 and restore Play entry after final hold; manually stepped back to Push off4/7.",
+    "screenshot": "browser-review.png",
+    "finding": "All five interior poses now standing-calibrated. Raised far arm remains connected after bounded foreground masking correction. Idle grade is darker; body angle, shoulders, hand/kick path, full master perspective and physical contact/trajectory remain provisional.",
+    "retainedFailedDiagnostic": "head-attachment-diagnostic.png depicts rejected earlier mask with detached far hand, not current build."
+  }
+}

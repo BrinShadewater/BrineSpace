@@ -1,0 +1,65 @@
+{
+  "status": "installed_material_join_revision_owner_review_pending",
+  "runtimeInstalled": true,
+  "coverage": [
+    "pickup-east",
+    "carry-east",
+    "unload-east",
+    "pickup-south",
+    "carry-south",
+    "unload-south",
+    "pickup-west",
+    "carry-west",
+    "unload-west",
+    "pickup-north",
+    "carry-north",
+    "unload-north"
+  ],
+  "source": "Original selected directional cargo packs retained unchanged; registration.json records every source path/hash and protected endpoint",
+  "derivation": "Fixed gold gain by source direction across pickup/carry/reversed unload. Bare-derived mask shared by equipment. North unchanged. No geometry, alpha, head, cloth, case or timing edits.",
+  "fixedGoldGains": {
+    "east": [
+      0.82,
+      0.9,
+      1.0
+    ],
+    "west": [
+      0.84,
+      0.93,
+      1.0
+    ],
+    "south": [
+      0.9,
+      0.94,
+      1.0
+    ],
+    "north": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "checks": "1013 packaging /673 installed-loader native checks,0 failures;48 native captures",
+  "evidence": [
+    "validation.json",
+    "validate-validation.json",
+    "material-comparison.json",
+    "../james-animation-coverage-2026-09-30/carry-turn-join-audit.json"
+  ],
+  "profileAudit": {
+    "scratchDirectoryAsserted": true,
+    "realProfileUnchanged": false,
+    "profileDelta": [
+      "logs\\godot2026-09-30T04.33.38.log",
+      "logs\\godot2026-09-30T04.30.28.log"
+    ],
+    "nonLogFilesUnchanged": true
+  },
+  "visualReview": "Decoded cargo preview, exact master/turn/carry comparison and native carrying reviewed; final owner visual review pending",
+  "review": "review-material-v1.gif",
+  "remaining": [
+    "Owner visual review",
+    "111 retained body states, including everyday/furniture/swimming/salvage/distress/recovery/death",
+    "Full cross-animation consistency and polish"
+  ]
+}

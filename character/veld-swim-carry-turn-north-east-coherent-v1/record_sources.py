@@ -1,0 +1,7 @@
+from pathlib import Path
+import json,hashlib
+from PIL import Image
+H=Path(__file__).resolve().parent;R=H.parents[1]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+p=H/'body-source-v1.png';prompt=H/'body-prompt-v1.txt';refs=[R/'character/veld-swim-turn-north-east-coherent-v1/bare-source-v2.png',R/'character/veld-swim-carry-east-coherent-v1/source-v2.png',R/'character/veld-swim-carry-north-coherent-v1/source-v3.png'];helmet=R/'character/veld-swim-turn-north-east-coherent-v1/helmet-source-v1.png'
+(H/'source-provenance.json').write_text(json.dumps(dict(installed=False,method='Built-in imagegen independent whole-body cargo yaws; retained authored prone helmet atlas',bodySources=[dict(path=p.relative_to(R).as_posix(),sha256=sha(p),dimensions=list(Image.open(p).size),prompt=prompt.relative_to(R).as_posix(),promptSha256=sha(prompt),providerOriginal='C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-e48f3814-45a4-42a5-84af-5c24d77c423e.png',selection='All four independent cargo intermediates',references=[dict(path=x.relative_to(R).as_posix(),sha256=sha(x)) for x in refs])],helmetSources=[dict(path=helmet.relative_to(R).as_posix(),sha256=sha(helmet),cells=[0,1,2,3],scale=.083)],scaleRule='One .22 body/.083 helmet atlas ruler; explicit full-head centers, case-priority grade exclusions; no silhouette size normalization',semanticLandmarksSha256=sha(H/'semantic-landmarks.json')),indent=2)+'\n',encoding='utf-8')

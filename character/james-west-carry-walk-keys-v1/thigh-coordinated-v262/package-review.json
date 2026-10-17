@@ -1,0 +1,76 @@
+{
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "tiles": [
+    {
+      "phase": 11,
+      "admittedPixels": 354,
+      "outsideExact": 65182,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 56.4593,
+      "medianAfter": 59.6037,
+      "p95Before": 88.83965999999963,
+      "p95After": 97.13872999999987
+    },
+    {
+      "phase": 12,
+      "admittedPixels": 292,
+      "outsideExact": 65244,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 65.4974,
+      "medianAfter": 62.7822,
+      "p95Before": 97.04030999999992,
+      "p95After": 99.66951999999999
+    },
+    {
+      "phase": 13,
+      "admittedPixels": 352,
+      "outsideExact": 65184,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 58.284800000000004,
+      "medianAfter": 61.2848,
+      "p95Before": 84.91584999999999,
+      "p95After": 90.23284999999998
+    },
+    {
+      "phase": 14,
+      "admittedPixels": 349,
+      "outsideExact": 65187,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 62.71,
+      "medianAfter": 62.4252,
+      "p95Before": 97.90363999999984,
+      "p95After": 102.09179999999985
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_joint_construction_improvement_boundary_and_master_grade_pending",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeIncluded": true,
+  "findings": [
+    "Four-pose joint sheet brings coarse cloth midtones closer together and retains diagonal seam/quilt construction; topological seam continuity is still provisional.",
+    "Before/after same-mask medians11:56.46to59.60,12:65.50to62.78,13:58.28to61.28,14:62.71to62.43. Each95th rises; joint edit homogenizes partly by brightening. Different masks/poses do not measure identical material or prove flicker absent.",
+    "Knees, original silhouette/alpha, outside component and body pairing exact. All six native source poses at four sizes/both gears reviewed. Original selected panel at10/15 still creates construction boundaries.",
+    "No continuous full49 native motion, anatomical/perspective/contact or normal cargo lifecycle acceptance."
+  ]
+}

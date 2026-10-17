@@ -1,0 +1,54 @@
+{
+  "status": "source_motion_review_material_mismatch_open",
+  "motionReferencesReviewed": 108,
+  "clipsPerGear": 9,
+  "allPoseBoardsReviewed": 9,
+  "mastersCompared": "North and West selected idle frame0, same declared148 ruler; displayed separately from water anchor",
+  "browserObservations": [
+    {
+      "key": "death-water-west",
+      "timeSeconds": [
+        0.02,
+        3.87
+      ],
+      "poses": [
+        0,
+        5
+      ]
+    },
+    {
+      "key": "swim-north",
+      "timeSeconds": [
+        0.02,
+        0.52
+      ],
+      "poses": [
+        0,
+        3
+      ]
+    },
+    {
+      "key": "swim-west",
+      "timeSeconds": [
+        0.02
+      ],
+      "poses": [
+        0
+      ]
+    }
+  ],
+  "browserScope": "Observed selected source replay advancing beside masters at148/82 ruler. All nine clips available; not every clip continuously watched, no native-motion proof.",
+  "findings": [
+    "North/West tread/start/swim/stop pose sequences retain compact legs and boots.",
+    "All10 tested registered start/swim/stop/West death-entry pairs exactly match. Tests bind swim frame0, not every arbitrary active swim phase.",
+    "West death interiors1-5 visibly have brighter slightly pink knee/boot hardware and fuller lit limb patches than swim entry. Material polish remains open despite repaired compact leg projection."
+  ],
+  "diagnostic": "material-diagnostic.json broad rear-body ROI: pooled per-pose P90 RGB swim[100.2,91.9,89.8],death[112.4,102.3,102.3]; neutral mean>100 fraction .077 vs .118. Not semantic or physical lighting measurement.",
+  "productionInputsUnchanged": 405,
+  "artOrProductionChanges": false,
+  "engineRun": false,
+  "ownerAcceptance": "pending",
+  "fullSetComplete": false,
+  "materialRevision": "character/james-west-water-death-material-v2/selection.json",
+  "materialRevisionStatus": "Selected native material curve; reviewed scopes and owner-pending status are in linked revision. Original mismatch report remains historical."
+}

@@ -1,0 +1,220 @@
+{
+  "name": "James east lying candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_lying_master_revision",
+  "states": [
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "frames/lie-down/000.png",
+        "frames/lie-down/001.png",
+        "frames/lie-down/002.png",
+        "frames/lie-down/003.png",
+        "frames/lie-down/004.png",
+        "frames/lie-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "frames/sleep/000.png",
+        "frames/sleep/001.png",
+        "frames/sleep/002.png",
+        "frames/sleep/003.png",
+        "frames/sleep/004.png",
+        "frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -23.02054054054054,
+        -7.498378378378378
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "frames/get-up/000.png",
+        "frames/get-up/001.png",
+        "frames/get-up/002.png",
+        "frames/get-up/003.png",
+        "frames/get-up/004.png",
+        "frames/get-up/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    }
+  ]
+}

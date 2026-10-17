@@ -1,0 +1,112 @@
+{
+  "checks": 4798,
+  "failures": 0,
+  "mismatches": 0,
+  "results": [
+    {
+      "actualMove": true,
+      "arrived": "east",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-east-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-east-070.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-east-140.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "east",
+      "medium": "dry",
+      "mode": "bare"
+    },
+    {
+      "actualMove": true,
+      "arrived": "south",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-south-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-south-070.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-south-140.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "south",
+      "medium": "dry",
+      "mode": "bare"
+    },
+    {
+      "actualMove": true,
+      "arrived": "west",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-west-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-west-077.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-west-153.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "west",
+      "medium": "dry",
+      "mode": "bare"
+    },
+    {
+      "actualMove": true,
+      "arrived": "north",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-north-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-north-068.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/bare-dry-north-136.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "north",
+      "medium": "dry",
+      "mode": "bare"
+    },
+    {
+      "actualMove": true,
+      "arrived": "east",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-east-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-east-070.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-east-140.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "east",
+      "medium": "dry",
+      "mode": "helmet"
+    },
+    {
+      "actualMove": true,
+      "arrived": "south",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-south-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-south-070.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-south-140.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "south",
+      "medium": "dry",
+      "mode": "helmet"
+    },
+    {
+      "actualMove": true,
+      "arrived": "west",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-west-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-west-077.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-west-153.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "west",
+      "medium": "dry",
+      "mode": "helmet"
+    },
+    {
+      "actualMove": true,
+      "arrived": "north",
+      "captures": [
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-north-000.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-north-068.png",
+        "res://character/james-tablet-east-matte-v3/arrival-captures/helmet-dry-north-136.png"
+      ],
+      "freshSceneMidpointContinue": true,
+      "incoming": "north",
+      "medium": "dry",
+      "mode": "helmet"
+    }
+  ],
+  "scope": "Eight explicit collision-checked dry generic maintenance-room arrival paths through real James move/arrive and normal grid; four incoming directions, bare/helmet. All1146 selected dry tablet slots (new141 East source poses per mode) through actual NPC.update; eight actual fresh-scene midpoint disk Continues with exact actor/playback/clock/pause/pixels, six-second completion and normal need relief. Not autonomous pathfinder, actual locker/equipment changes, workstation-specific rotation or exterior journey proof."
+}

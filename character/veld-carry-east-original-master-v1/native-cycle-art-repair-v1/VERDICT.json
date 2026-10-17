@@ -1,0 +1,88 @@
+{
+  "status": "Rejected full-cycle master-fidelity and grid-layout repair",
+  "artifactId": "exec-3792cae9-de82-4c2e-a153-4824acb96071",
+  "provider": "builtin imagegen",
+  "raw": "raw-cycle-repair-v1.png",
+  "prompt": "prompt.txt",
+  "audit": "AUDIT.json",
+  "priorAudit": "AUDIT-v0-gutter-contaminated.json",
+  "sourceCells": 38,
+  "standingCalibrationCell": 38,
+  "blankCellContamination": [
+    223,
+    192,
+    189
+  ],
+  "originalMaster": {
+    "height": 148,
+    "headWidth": 26,
+    "headTop": 76,
+    "headAxis": 123.5,
+    "floor": 223,
+    "upperBodyWidth": 42,
+    "clothMedian": [
+      66.0,
+      64.0,
+      63.0
+    ],
+    "saturatedEdgePixels": 17
+  },
+  "returnedMaster": {
+    "height": 148,
+    "headWidth": 33,
+    "headTop": 76,
+    "headAxis": 124.0,
+    "floor": 223,
+    "upperBodyWidth": 52,
+    "clothMedian": [
+      62.0,
+      61.0,
+      61.0
+    ],
+    "saturatedEdgePixels": 3
+  },
+  "ranges": {
+    "height": [
+      142,
+      148
+    ],
+    "headWidth": [
+      33,
+      35
+    ],
+    "headTop": [
+      80,
+      97
+    ],
+    "headAxis": [
+      123.0,
+      131.0
+    ],
+    "floor": [
+      223,
+      238
+    ],
+    "upperBodyWidth": [
+      50,
+      52
+    ],
+    "saturatedEdgePixels": [
+      0,
+      12
+    ]
+  },
+  "visualReview": "Complete returned atlas, original/detail comparison and all39 input/returned/original comparisons reviewed. Main bilateral phases broadly recognizable, but head, torso and case enlarge; body positions drift under fixed grid. Adjacent-row boot fragments occur in occupied and nominally blank cells. No preservation of exact38pose contact/phase geometry claimed. Pale outline reduced visually but not enough to offset identity/layout failures. Saturated flecks in initial tool view do not establish opaque material contamination; alpha-aware review supersedes that preliminary concern.",
+  "measurementCorrection": "V0 included previous-row boot fragments in the standing ruler. Corrected metrics isolate largest connected figure for measurement only; every returned pixel remains in extracted artwork. No per-cell recenter, rescale, RGB or anatomical repair.",
+  "frozenNativeInputsChecked": 308,
+  "frozenNativeInputChanges": [],
+  "originalGuideInputsChecked": 39,
+  "originalGuideInputChanges": [],
+  "nativeRun": "Not run: rejected source already fails appearance and layout requirements. No candidate helmet or normal selection admission.",
+  "bindings": {
+    "raw-cycle-repair-v1.png": "8a578bd2788b14bd789bb152e1c74ae7eeb4ba35d636566d8243a81a3db88f59",
+    "prompt.txt": "66710f2ce594e7253dab6680a19c81fd2ec677fa8c0331632607a70d32ed570a",
+    "INPUT.json": "8a2989b38c48091ea65cf8350e51f04007ef582cfc3b081e143f8b3e40207931",
+    "AUDIT.json": "373f4bebd26b32cf25835ee27967e33bd0161a524f44fb54db761d912efc0496",
+    "audit_cycle.py": "6a7c5cb2f2cafaa815c34c06ea33b5bcdab1c022945e236b4a35b65ae29572f7"
+  }
+}

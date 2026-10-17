@@ -1,0 +1,45 @@
+{
+  "decodedFrames": 142,
+  "fps": 24.0,
+  "size": [
+    768,
+    768
+  ],
+  "sourceSha256": "f2e153851c452cc5327c18232ef04bf7dcde120d0fa032bb01604cf1e13663be",
+  "pages": [
+    "raw-000.png",
+    "raw-024.png",
+    "raw-048.png",
+    "raw-072.png",
+    "raw-096.png",
+    "raw-120.png"
+  ],
+  "sampleIndices": [
+    0,
+    35,
+    70,
+    106,
+    141
+  ],
+  "visualReviewPending": false,
+  "selected": false,
+  "scope": "All raw wholebody frames beside supplied canonical endpoints, common uniform256 display only. No alpha extraction/gear/native/normal source admission or continuous watched-motion acceptance.",
+  "sourceAcceptance": false,
+  "disposition": "rejected",
+  "reviewedPages": [
+    "raw-000.png",
+    "raw-024.png",
+    "raw-048.png",
+    "raw-072.png",
+    "raw-096.png",
+    "raw-120.png"
+  ],
+  "endpointSamplesReviewed": true,
+  "findings": [
+    "All142 raw frames inspected chronologically on six boards, plus actual endpoint samples.",
+    "Starts South, rotates toward East and through North, passes West, returns South, then reaches West again. Requested shortest quarter turn failed.",
+    "Visible foot lifts/strides and changing lower-body stance; purple backpack rectangle appears mid-spin.",
+    "Final128..141 moves South toward West but cannot be admitted alone: begins from changed stance/material after foot movement, very few transition frames, and complete canonical joins are unproven.",
+    "No extraction, helmet fitting, native playback, normal selection or owner acceptance."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "rawSize": [
+    1536,
+    1024
+  ],
+  "tiles": [
+    {
+      "phase": 21,
+      "admittedPixels": 380,
+      "outsideExact": 65156,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 56.531499999999994,
+      "medianAfter": 68.71,
+      "p95Before": 94.84639999999999,
+      "p95After": 95.58466000000001
+    },
+    {
+      "phase": 22,
+      "admittedPixels": 371,
+      "outsideExact": 65165,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 54.4252,
+      "medianAfter": 67.9948,
+      "p95Before": 86.9613,
+      "p95After": 95.06049999999999
+    },
+    {
+      "phase": 23,
+      "admittedPixels": 363,
+      "outsideExact": 65173,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 57.357,
+      "medianAfter": 68.78219999999999,
+      "p95Before": 89.14067999999997,
+      "p95After": 90.76255999999994
+    },
+    {
+      "phase": 24,
+      "admittedPixels": 324,
+      "outsideExact": 65212,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 56.463300000000004,
+      "medianAfter": 69.065,
+      "p95Before": 81.50548999999994,
+      "p95After": 100.43586999999984
+    },
+    {
+      "phase": 25,
+      "admittedPixels": 297,
+      "outsideExact": 65239,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": 55.357,
+      "medianAfter": 71.067,
+      "p95Before": 84.62519999999999,
+      "p95After": 101.81164
+    },
+    {
+      "phase": 20,
+      "admittedPixels": 0,
+      "outsideExact": 65536,
+      "alphaExact": true,
+      "silhouetteExact": true,
+      "kneeExactBothGears": true,
+      "sharedBodyExact": true,
+      "medianBefore": null,
+      "medianAfter": null,
+      "p95Before": null,
+      "p95After": null
+    }
+  ],
+  "selected": false,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "disposition": "unselected_return_leg_construction_original_brightness_not_met",
+  "rawVisuallyReviewed": true,
+  "sourceBoardsReviewed": [
+    "coordinate-source-review.png",
+    "admission-review.png",
+    "thigh-detail-review.png",
+    "paired-source-review.png"
+  ],
+  "nativeIncluded": true,
+  "findings": [
+    "Pose-specific upper-thigh polygons follow narrowing21..25 leg surfaces. Original glove zone and per-pose knee rectangles are protected; alpha/silhouette/outside component and paired body exact.",
+    "Quilt/yellow seam construction follows return stance, but same-mask medians54..57to68..71 show brightness increase. No final master material or temporal acceptance.",
+    "Raw generator reference20/background changes excluded; unchanged original reference preserved. All eight paired20..27 native captures at four sizes and three boards visually reviewed; selected26/27 still retain panel construction.",
+    "No full49 continuous visual motion, master anatomical/perspective/contact or normal pickup/carry/turn/unload acceptance."
+  ]
+}

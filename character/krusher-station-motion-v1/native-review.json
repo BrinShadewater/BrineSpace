@@ -1,0 +1,50 @@
+{
+  "checks": 4317,
+  "coverage": {
+    "bare:bunk-enter-east": [
+      "d3ef015550807da851dd8a8cf3e904c00b6121d72173c172ed686b1ae9568a89",
+      "bd207f5ac6d1e0bc7fa742c849ba8206c7ffd10d921fd42a1667ca4456049c6d",
+      "b2a8cfe87eebf2cc21c58d0686fe08d8850b4e8c0423729dfd7eef4f51ec5d79",
+      "03cbd220bc2c92e422f43b34befdd46d55c22e25da1bff0bdd98847934bb9543",
+      "8f63e9fbb627033dc2050b25d3a8a7b67c458a618a1744f98509be21d5060f2b",
+      "0c73c50bfbdf47f82f5151de52198812995c5c0e96ee396e7989dad8cdfec147",
+      "d242a9ec707c0f7081df8df18fe7bc6603da7b553b5d24d2c2b164cf3555128f"
+    ],
+    "bare:bunk-exit-east": [
+      "d242a9ec707c0f7081df8df18fe7bc6603da7b553b5d24d2c2b164cf3555128f",
+      "0c73c50bfbdf47f82f5151de52198812995c5c0e96ee396e7989dad8cdfec147",
+      "8f63e9fbb627033dc2050b25d3a8a7b67c458a618a1744f98509be21d5060f2b",
+      "03cbd220bc2c92e422f43b34befdd46d55c22e25da1bff0bdd98847934bb9543",
+      "b2a8cfe87eebf2cc21c58d0686fe08d8850b4e8c0423729dfd7eef4f51ec5d79",
+      "bd207f5ac6d1e0bc7fa742c849ba8206c7ffd10d921fd42a1667ca4456049c6d",
+      "d3ef015550807da851dd8a8cf3e904c00b6121d72173c172ed686b1ae9568a89"
+    ],
+    "bare:bunk-sleep-east": [
+      "d242a9ec707c0f7081df8df18fe7bc6603da7b553b5d24d2c2b164cf3555128f"
+    ],
+    "helmet:bunk-enter-east": [
+      "d0d2e6286afda743f7e970f42afbf571003803ad5c333bb933ed7f1e48920c68",
+      "5cf4fd0354386c722867fd6ee05f5f91bc91b8f8491d542150c06e020f5a7f9c",
+      "cbabdf73c467a51d441c158558185bf335bf997311886ee45a404fa25044a9b0",
+      "dfcf9e7ca2c9c216aeb9d65d012aeccaabd6ff39637fb575a960288b3db0d054",
+      "a5a28d89fe48654054bcf92fd0563753344fe1198c33623e96700a6979aa4ac8",
+      "95ac48b634310b9bd8ce17f9ab90c551d3e839c4f0451b386107da966b340344",
+      "95530f1eb47269510c61608d7ff7c6d5a4806e22fc3cbb5b4ab0f1e3eb76c82e"
+    ],
+    "helmet:bunk-exit-east": [
+      "95530f1eb47269510c61608d7ff7c6d5a4806e22fc3cbb5b4ab0f1e3eb76c82e",
+      "95ac48b634310b9bd8ce17f9ab90c551d3e839c4f0451b386107da966b340344",
+      "a5a28d89fe48654054bcf92fd0563753344fe1198c33623e96700a6979aa4ac8",
+      "dfcf9e7ca2c9c216aeb9d65d012aeccaabd6ff39637fb575a960288b3db0d054",
+      "cbabdf73c467a51d441c158558185bf335bf997311886ee45a404fa25044a9b0",
+      "5cf4fd0354386c722867fd6ee05f5f91bc91b8f8491d542150c06e020f5a7f9c",
+      "d0d2e6286afda743f7e970f42afbf571003803ad5c333bb933ed7f1e48920c68"
+    ],
+    "helmet:bunk-sleep-east": [
+      "95530f1eb47269510c61608d7ff7c6d5a4806e22fc3cbb5b4ab0f1e3eb76c82e"
+    ]
+  },
+  "failures": 0,
+  "scope": "Two actual main-scene bunk lifecycles advanced at 30Hz with production actor updates and rendering. Default authored bunk at centered room zoom .9. Captured native frames preserve simulated cadence; PNG capture is not a real-time video, other furniture and roster integration remain separate.",
+  "visualScope": "Every native pose-change witness and complete room context reviewed by the agent. Animated WebP reconstructs the 30Hz simulation; actual capture ran slower than real time."
+}

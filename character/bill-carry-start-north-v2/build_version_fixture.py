@@ -1,0 +1,33 @@
+"""Retain the native bank-version fixture derivation from the reviewed main-scene fixture."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2]
+s=(ROOT/'tests/test_bill_carry_normal_continue_v1.gd').read_text().replace('bill-carry-normal-continue-v1','bill-carry-source-version-continue-v1').replace('BILL NORMAL CONTINUE V1:','BILL SOURCE VERSION CONTINUE V1:')
+s=s.replace('for helmet in [false,true]:\n  for phase_name in ["entry","settle","rise"]:', 'for binding in [preload("res://scripts/bill_carry_player.gd").BINDING,preload("res://scripts/bill_carry_player.gd").CURRENT_BINDING]:\n  for helmet in [false,true]:\n   for phase_name in ["entry","settle"]:')
+a=s.index('   await prepare(game,helmet)');b=s.index(' var f=FileAccess.open')
+s=s[:a]+''.join(' '+line if line.strip() else line for line in s[a:b].splitlines(keepends=True))+s[b:]
+s=s.replace('await prepare(game,helmet);var player=', 'game.grid_view.human_water_player.clear_carry();check(game.grid_view.human_water_player.select_binding(binding),"Fixture selects explicit saved source version");await prepare(game,helmet);await north_lane(game);var player=')
+s=s.replace('player.start_motion.direction=="west"','player.start_motion.direction=="north"')
+s=s.replace('var name:String=("helmet" if helmet else "bare")+"-"+phase_name','var name:String=("new" if binding==preload("res://scripts/bill_carry_player.gd").CURRENT_BINDING else "retained")+"-"+("helmet" if helmet else "bare")+"-"+phase_name')
+s=s.replace('check(restored.get_image().get_data()==pixels', 'check(player.carry_binding()==binding and actor.snapshot().carry_binding==binding,"Fresh restore keeps actor and displayed bank bound")\n    check(restored.get_image().get_data()==pixels')
+s=s.replace('"wrapperOnly":false','"wrapperOnly":false,"binding":binding')
+s=s.replace('Six actual scratch disk/fresh main restores: natural West entry, settle/yaw and North gradual rise, both gears, exact actor/source/clock/needs and30future ticks. Selected normal loader and actual RunSave.restore_staged; no candidate injection.', 'Eight actual disk/fresh main restores: both source versions and gears, North first-step and arrival. Real workshop service with prescribed collision-clear North lane. Selected normal loader and RunSave; no source-bank injection. Exact actor/source/clock/needs and30future ticks. Not natural route chooser coverage.')
+original=(ROOT/'tests/test_bill_carry_north_start_station_v2.gd').read_text()
+a=original.index('   var longest:=');b=original.index('   game.grid_view._get_human_frame_source',a)
+lane=original[a:b].replace('Vector2(cell)','Vector2(CELL)').replace('actor.direction="east" if candidate else "north"','actor.direction="east"').replace('if longest<100.0:continue','if longest<100.0:return')
+lane=''.join(line[2:] for line in lane.splitlines(keepends=True))
+fn='func north_lane(game):\n var actor=game.bill_npc;var player=game.grid_view.human_water_player\n player.clear_carry();player.current_key="";player.last_time=-1;player.motion.clear()\n'+lane+' game.grid_view._get_human_frame_source(actor.animation_state(),actor.direction)\n'
+s=s.replace('func run():',fn+'func run():')
+(ROOT/'tests/test_bill_carry_source_version_continue_v1.gd').write_text(s)
+(ROOT/'tests/test_bill_carry_source_version_continue_v1.gd.uid').write_text('uid://w3n4r6s8t2v5w\n')
+runner=(ROOT/'tools/run_bill_carry_normal_continue_v1_validation.py').read_text().replace('bill-carry-normal-continue-v1','bill-carry-source-version-continue-v1').replace('test_bill_carry_normal_continue_v1.gd','test_bill_carry_source_version_continue_v1.gd').replace('BILL NORMAL CONTINUE V1:','BILL SOURCE VERSION CONTINUE V1:').replace('bare-entry-before-room.png','retained-bare-entry-before-room.png')
+(ROOT/'tools/run_bill_carry_source_version_continue_v1_validation.py').write_text(runner)
+priority=(ROOT/'tests/test_bill_carry_normal_priority_v1.gd').read_text().replace('bill-carry-normal-priority-v1','bill-carry-north-version-priority-v1').replace('BILL NORMAL PRIORITY V1:','BILL NORTH VERSION PRIORITY V1:')
+priority=priority.replace('func run():',fn+'func run():').replace('await prepare(game,helmet);','await prepare(game,helmet);await north_lane(game);')
+priority=priority.replace('player.start_motion.direction=="west"','player.start_motion.direction=="north"')
+priority=priority.replace('var game=await fresh();','var game=await fresh();check(game.grid_view.human_water_player.carry_binding()==preload("res://scripts/bill_carry_player.gd").CURRENT_BINDING,"New North sources selected without overrides");')
+priority=priority.replace('18 controlled actual-main priority cases on natural entry/settle/rise:', '18 controlled selected-main North priority cases on a prescribed collision-clear lane, entry/settle/rise:')
+(ROOT/'tests/test_bill_carry_north_version_priority_v1.gd').write_text(priority)
+(ROOT/'tests/test_bill_carry_north_version_priority_v1.gd.uid').write_text('uid://x3n4r6s8t2v5w\n')
+priority_runner=(ROOT/'tools/run_bill_carry_normal_priority_v1_validation.py').read_text().replace('bill-carry-normal-priority-v1','bill-carry-north-version-priority-v1').replace('test_bill_carry_normal_priority_v1.gd','test_bill_carry_north_version_priority_v1.gd').replace('BILL NORMAL PRIORITY V1:','BILL NORTH VERSION PRIORITY V1:')
+(ROOT/'tools/run_bill_carry_north_version_priority_v1_validation.py').write_text(priority_runner)
+print('Version-aware native fixture saved')

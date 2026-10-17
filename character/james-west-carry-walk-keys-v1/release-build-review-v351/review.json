@@ -1,0 +1,66 @@
+{
+  "version": 351,
+  "buildInfo": {
+    "build_id": "brinespace-5024faab0e485c1a",
+    "source_sha256": "5024faab0e485c1a7b02e376389a6df22bda865a5c41461e0094f7fbabfa2574",
+    "git_commit": "eb1cb03b1f34384362546daeac517508a00c6cae",
+    "working_tree_modified": true,
+    "file_count": 35968,
+    "source_bytes": 3580947801
+  },
+  "buildValidation": {
+    "checks": [
+      {
+        "check": "test_release_assert_safety.py",
+        "exitCode": 0,
+        "reused": true
+      },
+      {
+        "check": "test_release_manifest.py",
+        "exitCode": 0,
+        "reused": true,
+        "tests": 9
+      },
+      {
+        "check": "maintained-exporter",
+        "exitCode": 0
+      }
+    ],
+    "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-release-_nhdspkq",
+    "realProfileUnchanged": true,
+    "profileDelta": [],
+    "frozenSha256": "06d506b45cce101e574952113cd32e4725fc989a59ca6983839c4dc85de90c52"
+  },
+  "releaseValidation": {
+    "checks": [
+      {
+        "check": "exact-packed-asset-audit",
+        "exitCode": 0,
+        "reused": true
+      },
+      {
+        "check": "actual-release-new-game-saved-continue-f8",
+        "exitCode": 0
+      }
+    ],
+    "scratch": "C:\\Users\\Alex\\AppData\\Local\\Temp\\brine-james-release-ehvhafwc",
+    "realProfileUnchanged": true,
+    "profileDelta": [],
+    "hashes": {
+      "BrineSpace.exe": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+      "BrineSpace.pck": "13483c405aa1c6e0c070b216882e71138fc5b3f8c7131f306db32d77ca706510"
+    },
+    "logs": {
+      "asset-audit.log": [
+        "RELEASE ASSET AUDIT: checked=35514 missing=0 changed=0 remapped=0 unexpected=0"
+      ],
+      "native-release.log": [
+        "JAMES ACTUAL RELEASE NEW GAME + SAVED CONTINUE + F8: 0 failures; debug=false"
+      ]
+    },
+    "qaOverrideRemoved": true
+  },
+  "visualReview": "Native New Game, F8 and saved-loop Continue screenshots viewed. Station visible without Fit/Locate; James visible at pod exit in Continue capture; readable icon/font UI and no obvious placeholder/cut-off. Source sit-down browser endpoint also retained. These stationary captures do not certify every clip in continuous motion.",
+  "shutdownWarning": "32 leaked ObjectDB instances at native fixture exit; no engine/script errors captured during smoke; long-session memory not certified.",
+  "remaining": "Ordinary autonomous water/exterior/hazard visual review and complete continuous selected-clip review; cargo quilt and north unload stance polish remain. Windows candidate only, no publication."
+}

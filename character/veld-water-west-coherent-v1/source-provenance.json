@@ -1,0 +1,69 @@
+{
+  "method": "built-in imagegen",
+  "status": "saved raw sources; staged not installed",
+  "records": [
+    {
+      "source": "character/veld-water-west-coherent-v1/tread-source-v1.png",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-750c0723-eeb2-47f7-a774-c2fec1aee1f6.png",
+      "sha256": "2ccef1c2af21b573c76a90ad517784177451dee49e58177e274b8d1af0faf97b",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "promptFile": "tread-source-prompt-v1.txt",
+      "references": [
+        {
+          "path": "character/veld-video-walk-v1/master-input.png",
+          "sha256": "f8b137be48baae1be8a4c4ff549dd1358ac5705cf05f51c4c68b9891c418f292"
+        }
+      ]
+    },
+    {
+      "source": "character/veld-water-west-coherent-v1/swim-source-v1.png",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-37b1ee9e-ece1-40cf-8e32-ad9e4ee8cf5f.png",
+      "sha256": "affe45ef932fe36b20d54f5178b0e43c28ad60eb40bb060bc33babbcfb972618",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "promptFile": "swim-source-prompt-v1.txt",
+      "references": [
+        {
+          "path": "character/veld-video-walk-v1/master-input.png",
+          "sha256": "f8b137be48baae1be8a4c4ff549dd1358ac5705cf05f51c4c68b9891c418f292"
+        },
+        {
+          "path": "character/veld-water-west-coherent-v1/tread-source-v1.png",
+          "sha256": "2ccef1c2af21b573c76a90ad517784177451dee49e58177e274b8d1af0faf97b"
+        }
+      ]
+    },
+    {
+      "source": "character/veld-water-west-coherent-v1/transition-source-v1.png",
+      "builtinOriginal": "C:/Users/Alex/.codex/generated_images/01a0ef89-9984-7e73-99c2-84cdd8b28b14/exec-b76063c2-7e2e-47bb-b518-0b9631a0c982.png",
+      "sha256": "9755e23c1045044def4e2cffceec4e3415e98246048381d89f6abb4d9ae5aa16",
+      "dimensions": [
+        2161,
+        728
+      ],
+      "mode": "RGBA",
+      "promptFile": "transition-source-prompt-v1.txt",
+      "references": [
+        {
+          "path": "character/veld-video-walk-v1/master-input.png",
+          "sha256": "f8b137be48baae1be8a4c4ff549dd1358ac5705cf05f51c4c68b9891c418f292"
+        },
+        {
+          "path": "character/veld-water-west-coherent-v1/tread-source-v1.png",
+          "sha256": "2ccef1c2af21b573c76a90ad517784177451dee49e58177e274b8d1af0faf97b"
+        },
+        {
+          "path": "character/veld-water-west-coherent-v1/swim-source-v1.png",
+          "sha256": "affe45ef932fe36b20d54f5178b0e43c28ad60eb40bb060bc33babbcfb972618"
+        }
+      ]
+    }
+  ]
+}

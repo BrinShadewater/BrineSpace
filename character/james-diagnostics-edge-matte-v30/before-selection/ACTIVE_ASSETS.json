@@ -1,0 +1,873 @@
+{
+  "scope": "Complete selected Bill, Veld, Branforth and Marsh libraries, with retained companion and portrait bindings.",
+  "locomotionOverrides": {
+    "bill": "character/crew-runtime-matte-v1/bill/manifest.json",
+    "veld": "character/crew-runtime-matte-v1/veld/manifest.json",
+    "branforth": "character/crew-runtime-matte-v1/branforth/manifest.json"
+  },
+  "actionOverrides": {
+    "bill-east": "character/bill-bare-east-selected-v1/manifest.json",
+    "bill-west": "character/bill-bare-west-selected-v1/manifest.json",
+    "bill-south": "character/bill-bare-south-selected-v1/manifest.json",
+    "bill-north": "character/bill-bare-north-selected-v1/manifest.json",
+    "branforth-south": "character/james-action-south-matched-v1/manifest.json",
+    "branforth-west": "character/james-action-west-matched-v1/manifest.json",
+    "branforth-east": "character/james-action-east-matched-v1/manifest.json",
+    "veld-west": "character/veld-action-west-matched-v1/manifest.json",
+    "veld-south": "character/veld-action-south-matched-v1/manifest.json",
+    "veld-north": "character/veld-action-north-matched-v1/manifest.json",
+    "branforth-north": "character/james-action-north-matched-v5/manifest.json",
+    "branforth-interact-east": "character/james-interact-east-matched-v1/manifest.json",
+    "veld-helmet-fitting-east": "character/veld-helmet-fitting-east-v2/manifest.json",
+    "branforth-interact-west": "character/james-interact-west-matched-v2/manifest.json",
+    "veld-interact-east": "character/veld-interact-east-consistent-v1/bare-manifest.json",
+    "veld-east-sample-chain": "character/veld-east-sample-chain-consistent-v1/bare-manifest.json",
+    "veld-carry-east": "character/veld-carry-east-consistent-v1/bare-manifest.json",
+    "veld-pickup-east": "character/veld-pickup-east-consistent-v1/bare-manifest.json",
+    "veld-unload-east": "character/veld-unload-east-consistent-v1/bare-manifest.json",
+    "branforth-interact-south": "character/james-interact-south-matched-v3/manifest.json",
+    "branforth-interact-north": "character/james-interact-north-matched-v2/manifest.json",
+    "veld-carry-west": "character/veld-carry-west-consistent-v1/bare-manifest.json",
+    "veld-unload-west": "character/veld-unload-west-consistent-v1/bare-manifest.json",
+    "branforth-cargo-east": "character/james-cargo-east-height-v3/bare-manifest.json",
+    "veld-pickup-west": "character/veld-pickup-west-consistent-v1/bare-manifest.json",
+    "veld-carry-south": "character/veld-carry-south-consistent-v1/bare-manifest.json",
+    "veld-unload-south": "character/veld-unload-south-consistent-v1/bare-manifest.json",
+    "branforth-cargo-west": "character/james-cargo-west-v1/bare-manifest.json",
+    "veld-pickup-south": "character/veld-pickup-south-consistent-v1/bare-manifest.json",
+    "veld-carry-north": "character/veld-carry-north-consistent-v1/bare-manifest.json",
+    "branforth-cargo-south": "character/james-cargo-south-v1/bare-manifest.json",
+    "veld-unload-north": "character/veld-unload-north-consistent-v1/bare-manifest.json",
+    "veld-pickup-north": "character/veld-pickup-north-consistent-v1/bare-manifest.json",
+    "branforth-cargo-north": "character/james-cargo-north-v1/bare-manifest.json",
+    "veld-carry-turn-east-south": "character/veld-carry-turn-east-south-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-south-east": "character/veld-carry-turn-east-south-consistent-v1/bare-manifest.json",
+    "branforth-cargo-turn-east-south": "character/james-cargo-turn-east-south-height-v3/bare-manifest.json",
+    "veld-carry-turn-north-east": "character/veld-carry-turn-north-east-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-east-north": "character/veld-carry-turn-north-east-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-north-west": "character/veld-carry-turn-north-west-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-west-north": "character/veld-carry-turn-north-west-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-south-west": "character/veld-carry-turn-south-west-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-west-south": "character/veld-carry-turn-south-west-consistent-v1/bare-manifest.json",
+    "branforth-cargo-turn-east-north": "character/james-cargo-turn-east-north-v1/bare-manifest.json",
+    "branforth-cargo-turn-south-west": "character/james-cargo-turn-south-west-v1/bare-manifest.json",
+    "branforth-cargo-turn-north-west": "character/james-cargo-turn-north-west-v1/bare-manifest.json",
+    "branforth-cargo-half-turns": "character/james-cargo-half-turns-v1/bare-manifest.json",
+    "veld-carry-turn-east-west": "character/veld-carry-half-turns-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-west-east": "character/veld-carry-half-turns-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-north-south": "character/veld-carry-half-turns-consistent-v1/bare-manifest.json",
+    "veld-carry-turn-south-north": "character/veld-carry-half-turns-consistent-v1/bare-manifest.json",
+    "bill-cargo-east": "character/bill-cargo-east-coherent-v1/manifest.json",
+    "bill-cargo-west": "character/bill-cargo-west-coherent-v1/manifest.json",
+    "bill-cargo-south": "character/bill-cargo-south-coherent-v1/manifest.json",
+    "bill-cargo-north": "character/bill-cargo-north-coherent-v1/manifest.json",
+    "bill-carry-turn-matrix": "character/bill-carry-turn-matrix-v1/bare-manifest.json",
+    "bill-water-swim-east": "character/bill-swim-east-coherent-v1/manifest.json",
+    "bill-water-tread-east": "character/bill-tread-east-coherent-v1/manifest.json",
+    "bill-water-transitions-east": "character/bill-swim-transitions-east-coherent-v1/manifest.json",
+    "bill-water-swim-west": "character/bill-swim-west-coherent-v1/manifest.json",
+    "bill-water-tread-west": "character/bill-tread-west-coherent-v1/manifest.json",
+    "bill-water-transitions-west": "character/bill-swim-transitions-west-coherent-v1/manifest.json",
+    "bill-water-swim-north": "character/bill-swim-north-coherent-v1/manifest.json",
+    "bill-water-tread-north": "character/bill-tread-north-coherent-v1/manifest.json",
+    "bill-water-transitions-north": "character/bill-swim-transitions-north-coherent-v1/manifest.json",
+    "bill-water-swim-south": "character/bill-swim-south-coherent-v1/manifest.json",
+    "bill-water-tread-south": "character/bill-tread-south-coherent-v1/manifest.json",
+    "bill-water-transitions-south": "character/bill-swim-transitions-south-coherent-v1/manifest.json",
+    "branforth-cargo-material-joined": "character/james-cargo-material-joined-v1/bare-manifest.json",
+    "branforth-inspect-tablet": "character/james-inspect-tablet-v1/bare-manifest.json",
+    "branforth-meals": "character/james-meal-family-v1/bare-manifest.json",
+    "branforth-seated": "character/james-seated-family-v1/bare-manifest.json",
+    "branforth-bunk": "character/james-bunk-east-master-v1/bare-manifest.json",
+    "branforth-lying": "character/james-lying-family-v1/bare-manifest.json",
+    "branforth-water": "character/james-water-family-v1/bare-manifest.json",
+    "branforth-water-turns": "character/james-water-turn-family-v1/bare-manifest.json",
+    "veld-water-north": "character/veld-water-north-coherent-v1/bare-manifest.json",
+    "veld-water-south": "character/veld-water-south-coherent-v1/bare-manifest.json",
+    "veld-water-east": "character/veld-water-east-coherent-v1/bare-manifest.json",
+    "veld-water-west": "character/veld-water-west-coherent-v1/bare-manifest.json",
+    "veld-swim-turn-matrix": "character/veld-swim-turn-matrix-coherent-v1/bare-manifest.json",
+    "branforth-water-cargo": "character/james-water-cargo-family-v1/bare-manifest.json",
+    "branforth-water-cargo-turns": "character/james-water-cargo-turn-family-v1/bare-manifest.json",
+    "branforth-air": "character/james-air-family-v1/bare-manifest.json",
+    "bill-water-carry-east": "character/bill-swim-carry-east-coherent-v1/manifest.json",
+    "bill-water-carry-west": "character/bill-swim-carry-west-coherent-v1/manifest.json",
+    "bill-water-carry-north": "character/bill-swim-carry-north-coherent-v1/manifest.json",
+    "bill-water-carry-south": "character/bill-swim-carry-south-coherent-v1/manifest.json",
+    "bill-water-carry-turn-matrix": "character/bill-swim-carry-turn-matrix-v1/bare-manifest.json",
+    "branforth-death": "character/james-death-family-v1/bare-manifest.json",
+    "bill-basic-swim-turn-matrix": "character/bill-swim-turn-matrix-v1/bare-manifest.json",
+    "bill-distress-family": "character/bill-distress-family-v1/bare-manifest.json",
+    "bill-work-pickup-family": "character/bill-salvage-pickup-family-v1/bare-manifest.json",
+    "branforth-north-rest": "character/james-north-rest-polish-v1/bare-manifest.json",
+    "branforth-north-water-polish": "character/james-water-north-polish-v1/bare-manifest.json",
+    "branforth-west-water-death-polish": "character/james-west-water-death-material-v2/bare-manifest.json",
+    "bill-water-death-family": "character/bill-death-water-family-v1/bare-manifest.json",
+    "bill-dry-recovery-family": "character/bill-recover-air-family-v1/bare-manifest.json",
+    "bill-north-sitting-family": "character/bill-seated-north-family-v1/bare-manifest.json",
+    "bill-south-sitting-family": "character/bill-seated-south-family-v1/bare-manifest.json",
+    "branforth-console-water-entry": "character/james-console-water-turn-v1/bare-manifest.json",
+    "branforth-console-water-exit": "character/james-console-water-exit-turn-v1/bare-manifest.json",
+    "veld-scientific-samples": "character/veld-salvage-pickup-family-coherent-v1/bare-manifest.json",
+    "veld-water-cargo": "character/veld-swim-carry-matrix-coherent-v1/bare-manifest.json",
+    "veld-water-cargo-turns": "character/veld-swim-carry-turn-matrix-coherent-v1/bare-manifest.json",
+    "veld-dry-recovery-family": "character/veld-recover-air-family-coherent-v1/bare-manifest.json",
+    "veld-swim-distress-family": "character/veld-swim-distress-family-coherent-v1/bare-manifest.json",
+    "bill-east-sitting-family": "character/bill-seated-east-family-v1/bare-manifest.json",
+    "bill-west-sitting-family": "character/bill-seated-west-family-v1/bare-manifest.json",
+    "bill-inspection-family": "character/bill-inspect-family-v1/bare-manifest.json",
+    "bill-cardinal-meal-family": "character/bill-meal-family-v1/manifest.json",
+    "bill-dry-death-contact-family": "character/bill-death-ground-contact-family-v1/manifest.json",
+    "bill-generic-rest-family": "character/bill-rest-family-v1/manifest.json",
+    "bill-run-east": "character/bill-run-head-locked-v1/manifest.json",
+    "bill-run-west": "character/bill-run-head-locked-v1/manifest.json",
+    "bill-run-north": "character/bill-run-head-locked-v1/manifest.json",
+    "bill-run-south": "character/bill-run-head-locked-v1/manifest.json",
+    "bill-walk-south-east": "character/bill-walk-south-east-coherent-v1/manifest.json",
+    "veld-water-death-prone-family": "character/veld-death-water-prone-family-v1/bare-manifest.json",
+    "veld-water-death-tread-family": "character/veld-death-water-tread-family-v1/bare-manifest.json",
+    "veld-generic-rest-family": "character/veld-rest-family-v1/bare-manifest.json",
+    "bill-walk-north": "character/bill-walk-north-master-head-v1/manifest.json",
+    "bill-walk-west": "character/bill-walk-west-material-v1/manifest.json",
+    "branforth-south-meal": "character/james-meal-service-south-open-v1/handoffs-manifest.json",
+    "bill-walk-east": "character/bill-walk-east-material-v1/manifest.json",
+    "bill-walk-south": "character/bill-walk-south-material-v1/manifest.json",
+    "bill-cargo-east-master-head": "character/bill-cargo-east-master-head-v1/manifest.json",
+    "bill-cargo-west-master-head": "character/bill-cargo-west-master-head-v1/manifest.json",
+    "branforth-drink-north-hand-continuity": "character/james-drink-north-hand-continuity-v1/manifest.json",
+    "branforth-tablet-material-continuity": "character/james-inspect-material-continuity-v1/bare-manifest.json",
+    "branforth-tablet-material-continuity-helmet": "character/james-inspect-material-continuity-v1/helmet-manifest.json",
+    "branforth-east-separate-tablet": "character/james-east-inspect-body-grade-v26/bare-manifest.json",
+    "branforth-east-separate-tablet-helmet": "character/james-east-inspect-body-grade-v26/helmet-manifest.json",
+    "branforth-sleep-cadence": "character/james-sleep-cadence-v1/bare-manifest.json",
+    "branforth-sleep-cadence-helmet": "character/james-sleep-cadence-v1/helmet-manifest.json",
+    "branforth-rest-material": "character/james-rest-material-continuity-v1/bare-manifest.json",
+    "branforth-rest-material-helmet": "character/james-rest-material-continuity-v1/helmet-manifest.json",
+    "branforth-east-rest-identity": "character/james-rest-east-identity-v2/bare-manifest.json",
+    "branforth-east-rest-identity-helmet": "character/james-rest-east-identity-v2/helmet-manifest.json",
+    "bill-cargo-north-master-head": "character/bill-cargo-north-master-head-v1/manifest.json",
+    "branforth-west-rest-identity": "character/james-rest-west-identity-v2/bare-manifest.json",
+    "branforth-west-rest-identity-helmet": "character/james-rest-west-identity-v2/helmet-manifest.json",
+    "bill-cargo-south-master-head": "character/bill-cargo-south-master-head-v1/manifest.json",
+    "bill-carry-turn-identity-matrix": "character/bill-carry-turn-identity-matrix-v5/bare-manifest.json",
+    "branforth-south-rest-identity": "character/james-rest-south-identity-v2/bare-manifest.json",
+    "branforth-south-rest-identity-helmet": "character/james-rest-south-identity-v2/helmet-manifest.json",
+    "branforth-seated-read-head-pitch-helmet": "character/james-seated-read-head-pitch-v2/helmet-manifest.json",
+    "branforth-seated-read-phases": "character/james-seated-read-phases-v1/bare-manifest.json",
+    "branforth-seated-read-phases-helmet": "character/james-seated-read-phases-v1/helmet-manifest.json",
+    "branforth-torch-material-residue": "character/james-torch-material-residue-v2/bare-manifest.json",
+    "branforth-torch-material-residue-helmet": "character/james-torch-material-residue-v2/helmet-manifest.json",
+    "veld-south-seated-tablet-family": "character/veld-seated-south-selected-v1/bare-manifest.json",
+    "veld-north-seated-breathing-family": "character/veld-seated-north-selected-v1/bare-manifest.json",
+    "veld-north-chair-fall-seated": "character/veld-lounge-fall-north-v1/bare-manifest.json",
+    "veld-north-chair-fall-partial": "character/veld-lounge-partial-fall-north-v1/bare-manifest.json",
+    "veld-north-chair-fall-late": "character/veld-lounge-late-fall-north-v1/bare-manifest.json",
+    "veld-north-chair-fall-early": "character/veld-lounge-early-fall-north-v1/bare-manifest.json",
+    "veld-east-bunk-whole-body-family": "character/veld-bunk-body-master-v1/bare-manifest.json",
+    "veld-east-bunk-early-fall-family": "character/veld-bunk-early-fall-v1/bare-manifest.json",
+    "branforth-east-cargo-heads": "character/james-east-cargo-heads-v3/bare-manifest.json",
+    "veld-south-sofa-reader-falls": "character/veld-sofa-fall-south-selected-v1/bare-manifest.json",
+    "veld-south-sofa-partial-falls": "character/veld-sofa-partial-fall-south-selected-v1/bare-manifest.json"
+  },
+  "equipmentOverrides": {
+    "bill": "character/bill-shared-helmet-runtime-v2/manifest.json",
+    "bill-cardinal-torch": "character/bill-torch-helmet-family-v1/manifest.json",
+    "bill-run-east": "character/bill-run-head-locked-v1/helmet-manifest.json",
+    "bill-run-west": "character/bill-run-head-locked-v1/helmet-manifest.json",
+    "bill-run-north": "character/bill-run-head-locked-v1/helmet-manifest.json",
+    "bill-run-south": "character/bill-run-head-locked-v1/helmet-manifest.json",
+    "bill-walk-south-east": "character/bill-walk-south-east-coherent-v1/helmet-manifest.json",
+    "veld": "character/veld-shared-helmet-v1/manifest.json",
+    "branforth": "character/james-shared-helmet-runtime-v1/manifest.json",
+    "bill-water-carry-east": "character/bill-swim-carry-helmet-east-coherent-v1/manifest.json",
+    "bill-water-carry-west": "character/bill-swim-carry-helmet-west-coherent-v1/manifest.json",
+    "bill-water-carry-north": "character/bill-swim-carry-helmet-north-coherent-v1/manifest.json",
+    "bill-water-carry-south": "character/bill-swim-carry-helmet-south-coherent-v1/manifest.json",
+    "bill-water-carry-turn-matrix": "character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json",
+    "bill-basic-swim-turn-matrix": "character/bill-swim-turn-matrix-v1/helmet-manifest.json",
+    "bill-distress-family": "character/bill-distress-family-v1/helmet-manifest.json",
+    "bill-work-pickup-family": "character/bill-salvage-pickup-family-v1/helmet-manifest.json",
+    "bill-water-death-family": "character/bill-death-water-family-v1/helmet-manifest.json",
+    "bill-dry-recovery-family": "character/bill-recover-air-family-v1/helmet-manifest.json",
+    "bill-north-sitting-family": "character/bill-seated-north-family-v1/helmet-manifest.json",
+    "bill-south-sitting-family": "character/bill-seated-south-family-v1/helmet-manifest.json",
+    "bill-east-sitting-family": "character/bill-seated-east-family-v1/helmet-manifest.json",
+    "bill-west-sitting-family": "character/bill-seated-west-family-v1/helmet-manifest.json",
+    "bill-inspection-family": "character/bill-inspect-family-v1/helmet-manifest.json",
+    "bill-dry-death-contact-family": "character/bill-death-ground-contact-family-v1/helmet-manifest.json",
+    "bill-generic-rest-family": "character/bill-rest-family-v1/helmet-manifest.json",
+    "veld-generic-rest-family": "character/veld-rest-family-v1/helmet-manifest.json",
+    "bill-walk-west": "character/bill-walk-west-material-v1/helmet-manifest.json",
+    "bill-walk-east": "character/bill-walk-east-material-v1/helmet-manifest.json",
+    "bill-walk-south": "character/bill-walk-south-material-v1/helmet-manifest.json",
+    "bill-cargo-east-master-head": "character/bill-cargo-east-master-head-v1/helmet-manifest.json",
+    "bill-cargo-west-master-head": "character/bill-cargo-west-master-head-v1/helmet-manifest.json",
+    "bill-cargo-north-master-head": "character/bill-cargo-north-master-head-v1/helmet-manifest.json",
+    "bill-cargo-south-master-head": "character/bill-cargo-south-master-head-v1/helmet-manifest.json",
+    "bill-carry-turn-identity-matrix": "character/bill-carry-turn-identity-matrix-v5/helmet-manifest.json",
+    "veld-south-seated-tablet-family": "character/veld-seated-south-selected-v1/helmet-manifest.json",
+    "veld-north-seated-breathing-family": "character/veld-seated-north-selected-v1/helmet-manifest.json",
+    "branforth-east-cargo-heads": "character/james-east-cargo-heads-v3/helmet-manifest.json"
+  },
+  "equipmentActionOverrides": {
+    "branforth-south": "character/james-shared-helmet-actions-south-v1/manifest.json",
+    "bill-east": "character/bill-equipped-east-selected-v1/manifest.json",
+    "bill-west": "character/bill-equipped-west-selected-v1/manifest.json",
+    "bill-south": "character/bill-equipped-south-selected-v1/manifest.json",
+    "bill-north": "character/bill-equipped-north-selected-v1/manifest.json",
+    "branforth-west": "character/james-shared-helmet-actions-west-v1/manifest.json",
+    "branforth-east": "character/james-shared-helmet-actions-east-v1/manifest.json",
+    "veld-east": "character/veld-shared-helmet-actions-east-v1/manifest.json",
+    "veld-west": "character/veld-shared-helmet-actions-west-v1/manifest.json",
+    "veld-south": "character/veld-shared-helmet-actions-south-v1/manifest.json",
+    "veld-north": "character/veld-shared-helmet-actions-north-v1/manifest.json",
+    "branforth-north": "character/james-shared-helmet-actions-north-v5/manifest.json",
+    "branforth-interact-east": "character/james-shared-helmet-interact-east-v1/manifest.json",
+    "veld-fitting-idle-east": "character/veld-helmet-fitting-east-v2/equipped-idle-manifest.json",
+    "branforth-interact-west": "character/james-shared-helmet-interact-west-v2/manifest.json",
+    "veld-interact-east": "character/veld-interact-east-consistent-v1/helmet-manifest.json",
+    "veld-east-sample-chain": "character/veld-east-sample-chain-consistent-v1/helmet-manifest.json",
+    "veld-carry-east": "character/veld-carry-east-consistent-v1/helmet-manifest.json",
+    "veld-pickup-east": "character/veld-pickup-east-consistent-v1/helmet-manifest.json",
+    "veld-unload-east": "character/veld-unload-east-consistent-v1/helmet-manifest.json",
+    "branforth-interact-south": "character/james-shared-helmet-interact-south-v3/manifest.json",
+    "branforth-interact-north": "character/james-shared-helmet-interact-north-v2/manifest.json",
+    "branforth-torch-east": "character/james-torch-material-residue-v2/helmet-manifest.json",
+    "branforth-torch-west": "character/james-torch-material-residue-v2/helmet-manifest.json",
+    "branforth-torch-south": "character/james-torch-material-residue-v2/helmet-manifest.json",
+    "branforth-torch-north": "character/james-torch-material-residue-v2/helmet-manifest.json",
+    "veld-carry-west": "character/veld-carry-west-consistent-v1/helmet-manifest.json",
+    "veld-unload-west": "character/veld-unload-west-consistent-v1/helmet-manifest.json",
+    "branforth-cargo-east": "character/james-cargo-east-height-v3/helmet-manifest.json",
+    "veld-pickup-west": "character/veld-pickup-west-consistent-v1/helmet-manifest.json",
+    "veld-carry-south": "character/veld-carry-south-consistent-v1/helmet-manifest.json",
+    "veld-unload-south": "character/veld-unload-south-consistent-v1/helmet-manifest.json",
+    "branforth-cargo-west": "character/james-cargo-west-v1/helmet-manifest.json",
+    "veld-pickup-south": "character/veld-pickup-south-consistent-v1/helmet-manifest.json",
+    "veld-carry-north": "character/veld-unified-turn-helmet-v1/carry-north-helmet-manifest.json",
+    "branforth-cargo-south": "character/james-cargo-south-v1/helmet-manifest.json",
+    "veld-unload-north": "character/veld-unload-north-consistent-v1/helmet-manifest.json",
+    "veld-pickup-north": "character/veld-pickup-north-consistent-v1/helmet-manifest.json",
+    "branforth-cargo-north": "character/james-cargo-north-v1/helmet-manifest.json",
+    "veld-carry-turn-east-south": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-south-east": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "branforth-cargo-turn-east-south": "character/james-cargo-turn-east-south-height-v3/helmet-manifest.json",
+    "veld-carry-turn-north-east": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-east-north": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-north-west": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-west-north": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-south-west": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "veld-carry-turn-west-south": "character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json",
+    "branforth-cargo-turn-east-north": "character/james-cargo-turn-east-north-v1/helmet-manifest.json",
+    "branforth-cargo-turn-south-west": "character/james-cargo-turn-south-west-v1/helmet-manifest.json",
+    "branforth-cargo-turn-north-west": "character/james-cargo-turn-north-west-v1/helmet-manifest.json",
+    "branforth-cargo-half-turns": "character/james-cargo-half-turns-v1/helmet-manifest.json",
+    "veld-carry-turn-east-west": "character/veld-unified-turn-helmet-v1/half-helmet-manifest.json",
+    "veld-carry-turn-west-east": "character/veld-unified-turn-helmet-v1/half-helmet-manifest.json",
+    "veld-carry-turn-north-south": "character/veld-unified-turn-helmet-v1/half-helmet-manifest.json",
+    "veld-carry-turn-south-north": "character/veld-unified-turn-helmet-v1/half-helmet-manifest.json",
+    "bill-cargo-east": "character/bill-cargo-helmet-east-v1/manifest.json",
+    "bill-cargo-west": "character/bill-cargo-helmet-west-v1/manifest.json",
+    "bill-cargo-south": "character/bill-cargo-helmet-south-v1/manifest.json",
+    "bill-cargo-north": "character/bill-cargo-helmet-north-v1/manifest.json",
+    "bill-carry-turn-matrix": "character/bill-carry-turn-matrix-v1/helmet-manifest.json",
+    "bill-water-swim-east": "character/bill-swim-helmet-east-coherent-v1/manifest.json",
+    "bill-water-tread-east": "character/bill-tread-helmet-east-coherent-v1/manifest.json",
+    "bill-water-transitions-east": "character/bill-swim-transitions-helmet-east-coherent-v1/manifest.json",
+    "bill-water-swim-west": "character/bill-swim-helmet-west-coherent-v1/manifest.json",
+    "bill-water-tread-west": "character/bill-tread-helmet-west-coherent-v1/manifest.json",
+    "bill-water-transitions-west": "character/bill-swim-transitions-helmet-west-coherent-v1/manifest.json",
+    "bill-water-swim-north": "character/bill-swim-helmet-north-coherent-v1/manifest.json",
+    "bill-water-tread-north": "character/bill-tread-helmet-north-coherent-v1/manifest.json",
+    "bill-water-transitions-north": "character/bill-swim-transitions-helmet-north-coherent-v1/manifest.json",
+    "bill-water-swim-south": "character/bill-swim-helmet-south-coherent-v1/manifest.json",
+    "bill-water-tread-south": "character/bill-tread-helmet-south-coherent-v1/manifest.json",
+    "bill-water-transitions-south": "character/bill-swim-transitions-helmet-south-coherent-v1/manifest.json",
+    "branforth-cargo-material-joined": "character/james-cargo-material-joined-v1/helmet-manifest.json",
+    "branforth-inspect-tablet": "character/james-inspect-tablet-v1/helmet-manifest.json",
+    "branforth-meals": "character/james-meal-family-v1/helmet-manifest.json",
+    "branforth-seated": "character/james-seated-family-v1/helmet-manifest.json",
+    "branforth-bunk": "character/james-bunk-east-master-v1/helmet-manifest.json",
+    "branforth-lying": "character/james-lying-family-v1/helmet-manifest.json",
+    "branforth-water": "character/james-water-family-v1/helmet-manifest.json",
+    "branforth-water-turns": "character/james-water-turn-family-v1/helmet-manifest.json",
+    "veld-water-north": "character/veld-water-north-coherent-v1/helmet-manifest.json",
+    "veld-water-south": "character/veld-water-south-coherent-v1/helmet-manifest.json",
+    "veld-water-east": "character/veld-water-east-coherent-v1/helmet-manifest.json",
+    "veld-water-west": "character/veld-water-west-coherent-v1/helmet-manifest.json",
+    "veld-swim-turn-matrix": "character/veld-swim-turn-matrix-coherent-v1/helmet-manifest.json",
+    "branforth-water-cargo": "character/james-water-cargo-family-v1/helmet-manifest.json",
+    "branforth-water-cargo-turns": "character/james-water-cargo-turn-family-v1/helmet-manifest.json",
+    "branforth-air": "character/james-air-family-v1/helmet-manifest.json",
+    "branforth-death": "character/james-death-family-v1/helmet-manifest.json",
+    "branforth-north-rest": "character/james-north-rest-polish-v1/helmet-manifest.json",
+    "branforth-north-water-polish": "character/james-water-north-polish-v1/helmet-manifest.json",
+    "branforth-west-water-death-polish": "character/james-west-water-death-material-v2/helmet-manifest.json",
+    "branforth-console-water-entry": "character/james-console-water-turn-v1/helmet-manifest.json",
+    "branforth-console-water-exit": "character/james-console-water-exit-turn-v1/helmet-manifest.json",
+    "veld-scientific-samples": "character/veld-salvage-pickup-family-coherent-v1/helmet-manifest.json",
+    "veld-water-cargo": "character/veld-swim-carry-matrix-coherent-v1/helmet-manifest.json",
+    "veld-water-cargo-turns": "character/veld-swim-carry-turn-matrix-coherent-v1/helmet-manifest.json",
+    "veld-dry-recovery-family": "character/veld-recover-air-family-coherent-v1/helmet-manifest.json",
+    "veld-swim-distress-family": "character/veld-swim-distress-family-coherent-v1/helmet-manifest.json",
+    "veld-water-death-prone-family": "character/veld-death-water-prone-family-v1/helmet-manifest.json",
+    "veld-water-death-tread-family": "character/veld-death-water-tread-family-v1/helmet-manifest.json",
+    "veld-north-chair-fall-seated": "character/veld-lounge-fall-north-v1/helmet-manifest.json",
+    "veld-north-chair-fall-partial": "character/veld-lounge-partial-fall-north-v1/helmet-manifest.json",
+    "veld-north-chair-fall-late": "character/veld-lounge-late-fall-north-v1/helmet-manifest.json",
+    "veld-north-chair-fall-early": "character/veld-lounge-early-fall-north-v1/helmet-manifest.json",
+    "veld-east-bunk-whole-body-family": "character/veld-bunk-body-master-v1/helmet-manifest.json",
+    "veld-east-bunk-early-fall-family": "character/veld-bunk-early-fall-v1/helmet-manifest.json",
+    "veld-south-sofa-reader-falls": "character/veld-sofa-fall-south-selected-v1/helmet-manifest.json",
+    "veld-south-sofa-partial-falls": "character/veld-sofa-partial-fall-south-selected-v1/helmet-manifest.json",
+    "branforth-turn-helmet-cap": "character/james-helmet-turn-dip-v1/helmet-manifest.json"
+  },
+  "animationRoots": [
+    {
+      "root": "character/robot-polish-v1/josh/packs",
+      "packs": [
+        "locomotion",
+        "actions"
+      ]
+    },
+    {
+      "root": "character/robot-polish-v1/river/packs",
+      "packs": [
+        "locomotion",
+        "actions",
+        "water"
+      ]
+    },
+    {
+      "root": "character/margot-polish-v1/packs",
+      "packs": [
+        "locomotion",
+        "actions",
+        "water"
+      ]
+    },
+    {
+      "root": "character/major-bill-v3/packs",
+      "packs": [
+        "bare-184x184-p122-88",
+        "bare-184x184-p92-172",
+        "bare-184x184-p92-70",
+        "bare-184x208-p92-196",
+        "bare-208x184-p122-88",
+        "bare-208x184-p86-88",
+        "bare-208x224-p104-152",
+        "bare-208x224-p104-72",
+        "bare-256x256-p128-128",
+        "bare-256x256-p128-224",
+        "helmet-184x184-p122-88",
+        "helmet-184x184-p92-172",
+        "helmet-184x184-p92-70",
+        "helmet-208x184-p122-88",
+        "helmet-208x184-p86-88",
+        "helmet-208x224-p104-152",
+        "helmet-208x224-p104-72",
+        "helmet-256x256-p128-128",
+        "helmet-256x256-p128-224"
+      ]
+    },
+    {
+      "root": "character/dr-veld-v2/packs",
+      "packs": [
+        "bare-184x184-p92.0-172.0",
+        "bare-208x184-p122.0-88.0",
+        "bare-208x224-p104.0-152.0",
+        "bare-184x184-p92.0-54.0",
+        "bare-208x184-p86.0-88.0",
+        "bare-184x184-p92.0-70.0",
+        "bare-184x184-p122.0-88.0",
+        "bare-184x208-p92.0-196.0",
+        "bare-256x256-p128.0-224.0",
+        "bare-256x256-p128.0-128.0",
+        "helmet-184x184-p92.0-172.0",
+        "helmet-208x184-p122.0-88.0",
+        "helmet-208x224-p104.0-152.0",
+        "helmet-184x184-p92.0-54.0",
+        "helmet-208x184-p86.0-88.0",
+        "helmet-184x184-p92.0-70.0",
+        "helmet-184x184-p122.0-88.0",
+        "helmet-256x256-p128.0-224.0",
+        "helmet-256x256-p128.0-128.0"
+      ]
+    },
+    {
+      "root": "character/chief-engineer-branforth-v2/packs",
+      "packs": [
+        "bare-184x184-p92.0-172.0",
+        "bare-208x184-p122.0-88.0",
+        "bare-208x224-p104.0-152.0",
+        "bare-208x224-p104.0-72.0",
+        "bare-208x184-p86.0-88.0",
+        "bare-184x184-p92.0-70.0",
+        "bare-184x184-p122.0-88.0",
+        "bare-184x208-p92.0-196.0",
+        "bare-256x256-p128.0-224.0",
+        "bare-256x256-p128.0-128.0",
+        "bare-256x276-p128.0-128.0",
+        "helmet-184x184-p92.0-172.0",
+        "helmet-208x184-p122.0-88.0",
+        "helmet-208x224-p104.0-152.0",
+        "helmet-208x224-p104.0-72.0",
+        "helmet-208x184-p86.0-88.0",
+        "helmet-184x184-p92.0-70.0",
+        "helmet-184x184-p122.0-88.0",
+        "helmet-256x256-p128.0-224.0",
+        "helmet-256x256-p128.0-128.0",
+        "helmet-256x276-p128.0-128.0"
+      ]
+    },
+    {
+      "root": "character/marsh-v2/packs",
+      "packs": [
+        "bare-184x184-p92.0-172.0"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-turn-matrix-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-turn-matrix-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/margot-polish-v1/packs/locomotion/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/margot-polish-v1/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/margot-polish-v1/packs/water/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/josh/packs/locomotion/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/locomotion/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/josh/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/water/manifest.json"
+    },
+    {
+      "script": "scripts/marsh_npc.gd",
+      "contains": "res://character/marsh-v2/clearance.json"
+    },
+    {
+      "script": "scripts/architects.gd",
+      "contains": "res://character/portraits-lighting-v1/bill.png"
+    },
+    {
+      "script": "scripts/architects.gd",
+      "contains": "res://character/portraits-lighting-v1/veld.png"
+    },
+    {
+      "script": "scripts/architects.gd",
+      "contains": "res://character/portraits-lighting-v1/branforth.png"
+    },
+    {
+      "script": "scripts/architects.gd",
+      "contains": "res://character/portraits-backgrounds-v1/marsh.png"
+    },
+    {
+      "script": "scripts/crew_comms.gd",
+      "contains": "res://character/brine-comms-v14/portrait.png"
+    },
+    {
+      "script": "scripts/companions.gd",
+      "contains": "res://character/companions/%s-portrait.png"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/major-bill-v3/"
+    },
+    {
+      "script": "scripts/crew_action_pack.gd",
+      "contains": "res://character/crew-actions-v1/"
+    },
+    {
+      "script": "scripts/crew_action_pack.gd",
+      "contains": "res://character/crew-underwater-v1/equipment/"
+    },
+    {
+      "script": "scripts/crew_life.gd",
+      "contains": "res://character/crew-life-v1/"
+    },
+    {
+      "script": "scripts/crew_sprite_player.gd",
+      "contains": "res://character/dr-veld-v2/"
+    },
+    {
+      "script": "scripts/crew_sprite_player.gd",
+      "contains": "res://character/chief-engineer-branforth-v2/"
+    },
+    {
+      "script": "scripts/crew_sprite_player.gd",
+      "contains": "res://character/marsh-v2/"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-helmet-fitting-east-v2/manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-helmet-fitting-east-v2/equipped-idle-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-interact-east-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-interact-east-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-east-sample-chain-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-east-sample-chain-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-east-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-east-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-east-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-east-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-east-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-east-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-west-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-west-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-west-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-west-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-west-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-west-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-south-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-south-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-south-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-south-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-south-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-south-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-north-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-north-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-north-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unload-north-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-north-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-pickup-north-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-east-south-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-east-south-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-north-east-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-north-east-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-north-west-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-north-west-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-south-west-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-turn-south-west-consistent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unified-turn-helmet-v1/quarter-helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unified-turn-helmet-v1/half-helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-carry-half-turns-consistent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-unified-turn-helmet-v1/carry-north-helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-north-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-north-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-south-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-south-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-east-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-east-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-west-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-water-west-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-salvage-pickup-family-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-salvage-pickup-family-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-carry-matrix-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-carry-matrix-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-carry-turn-matrix-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-swim-carry-turn-matrix-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-recover-air-family-coherent-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-recover-air-family-coherent-v1/helmet-manifest.json"
+    },
+    {
+      "contains": "res://character/veld-seated-south-selected-v1/bare-manifest.json",
+      "script": "scripts/grid_canvas.gd"
+    },
+    {
+      "contains": "res://character/veld-seated-south-selected-v1/helmet-manifest.json",
+      "script": "scripts/grid_canvas.gd"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-seated-north-selected-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-seated-north-selected-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-fall-north-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-fall-north-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-partial-fall-north-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-partial-fall-north-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-late-fall-north-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-late-fall-north-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-early-fall-north-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-lounge-early-fall-north-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-bunk-body-master-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-bunk-body-master-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-bunk-early-fall-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-bunk-early-fall-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-sofa-fall-south-selected-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-sofa-fall-south-selected-v1/helmet-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-sofa-partial-fall-south-selected-v1/bare-manifest.json"
+    },
+    {
+      "script": "scripts/grid_canvas.gd",
+      "contains": "res://character/veld-sofa-partial-fall-south-selected-v1/helmet-manifest.json"
+    }
+  ],
+  "portraits": {
+    "brine": "character/brine-comms-v14/portrait.png",
+    "bill": "character/portraits-lighting-v1/bill.png",
+    "veld": "character/portraits-lighting-v1/veld.png",
+    "branforth": "character/portraits-lighting-v1/branforth.png",
+    "marsh": "character/portraits-backgrounds-v1/marsh.png",
+    "river": "character/companions/river-portrait.png",
+    "josh": "character/companions/josh-portrait.png",
+    "margot": "character/companions/margot-portrait.png"
+  },
+  "retainedLegacy": "Earlier source packs remain intact for provenance. Marsh legacy helmet rows are not selected: android gameplay does not use them.",
+  "reviews": [
+    "character/robot-rescue-v1/index.html",
+    "character/animation-expansion-v5/review.html",
+    "character/companion-water-v1/review.html",
+    "character/veld-north-chair-falls-selected-v1/resume-review.html",
+    "character/veld-bunk-selected-v1/review.html"
+  ],
+  "handoff": "docs/CREW_REPLACEMENT_2026-09-12.md",
+  "torchActionOverrides": {
+    "bill-east": "character/bill-torch-actions-v1/manifest.json",
+    "bill-west": "character/bill-torch-actions-v1/manifest.json",
+    "bill-south": "character/bill-torch-actions-v1/manifest.json",
+    "bill-north": "character/bill-torch-actions-v1/manifest.json",
+    "branforth-east": "character/james-torch-material-residue-v2/bare-manifest.json",
+    "branforth-west": "character/james-torch-material-residue-v2/bare-manifest.json",
+    "branforth-south": "character/james-torch-material-residue-v2/bare-manifest.json",
+    "branforth-north": "character/james-torch-material-residue-v2/bare-manifest.json"
+  },
+  "helmetTransitionOverrides": {
+    "bill-east": "character/bill-helmet-fitting-east-v1/manifest.json",
+    "branforth-east": "character/james-helmet-fitting-east-v1/manifest.json"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "status": "staged_south_construction_torch",
+  "runtimeInstalled": false,
+  "coverage": [
+    "torch-draw-south",
+    "weld-south",
+    "torch-stow-south"
+  ],
+  "framesPerMode": 63,
+  "states": {
+    "torch-draw-south": {
+      "frames": 8,
+      "durationMs": 520,
+      "loop": false
+    },
+    "weld-south": {
+      "frames": 43,
+      "durationMs": 1200,
+      "loop": true
+    },
+    "torch-stow-south": {
+      "frames": 12,
+      "durationMs": 520,
+      "loop": false
+    }
+  },
+  "source": "character/james-torch-south-direct-v1",
+  "derivation": "Quick draw0/8/12/16/20/24/28/32; work32-74 every2 + reverse72-32 every2; stow join32 + actual130-140; late colour-flash section omitted. Exact idle/action/loop joins.",
+  "perspective": "Compared approved Bill weld-south: forward front-view nozzle/flame projects downward on screen. V1 tool placement selected after reference review; v2 large shoulder-side flame rejected.",
+  "beltEquipment": "Exact selected idle wrench core restored all126 bare/equipped frames, no held wrench removal required",
+  "helmet": "Selected frontal shell, crown13/order2 smooth path, maximum adjacent0/1px",
+  "colour": "Fixed neutral grade with intentional blue flame protected; no per-frame colour/brightness repair",
+  "native": "539 checks/0 failures,12 captures, scratch assertion passed, real profile unchanged",
+  "visualReview": "Source/tool detail/common front torch reference/contact/stow join/native midpoint inspected148/82/54/27px. Full GIF owner review pending.",
+  "estimatedGenerationUSD": 0.38,
+  "verifiedBilling": null,
+  "pending": [
+    "Owner south torch GIF review",
+    "Install/verify south if accepted",
+    "North standing torch and retained special actions"
+  ]
+}

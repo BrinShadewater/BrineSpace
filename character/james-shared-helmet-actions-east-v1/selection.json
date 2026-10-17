@@ -1,0 +1,37 @@
+{
+  "status": "installed_owner_accepted_east_repair",
+  "acceptedSource": "character/james-repair-east-direct-v2/neutral-review-v3.gif",
+  "coverage": [
+    "kneel-east",
+    "repair-east",
+    "stand-east"
+  ],
+  "framesPerMode": 99,
+  "timingMs": {
+    "kneel-east": 1000,
+    "repair-east": 1167,
+    "stand-east": 1000
+  },
+  "derivation": "Rise reverses registered descent; repair uses forward/reverse original poses. No interpolation or new generation.",
+  "joins": "Exact installed idle endpoints, kneel/repair/stand joins and repair seam.",
+  "frontBoot": "Source front toe (118,167) matches installed idle; isolated footprint tracking excludes hand and rear boot.",
+  "native": "Actual installed grid loader: 827 checks/0 failures. Crew walk: 5732/0. Maintenance-bay production controller and renderer: 30 captures/0 failures. Scratch APPDATA, real profile unchanged.",
+  "pending": [],
+  "runtimeInstalled": true,
+  "ownerAcceptance": {
+    "date": "2026-09-29",
+    "feedback": "Okay, looks good, keep going",
+    "scope": "Registered east chain timing and shared helmet fit"
+  },
+  "verification": {
+    "installedLoaderChecks": 827,
+    "installedLoaderFailures": 0,
+    "crewWalkChecks": 5732,
+    "crewWalkFailures": 0,
+    "stationFailures": 0,
+    "stationCaptures": 30,
+    "realProfileUnchanged": true,
+    "stationScope": "Controlled maintenance-bay fixture with production NPC transitions and renderer, bare and equipped east chain; owner live gameplay review remains separate."
+  },
+  "remaining": []
+}

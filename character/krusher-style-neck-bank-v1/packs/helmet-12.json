@@ -1,0 +1,249 @@
+{
+  "name": "Krusher Dom water helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "states": [
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/f53960c17394d4e39306cc1912da72d2a4a0e8c6d3bbd48802913eb3d6bc7e85.png",
+        "res://character/krusher-style-neck-bank-v1/frames/5598d8f41d358ee6eef5af4f58b53d2af0fe65fd930cece09be354391a6b698b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/10be0dfb2d64f46e5b34e7a7e66099829c2ac8df7aaaf2878028ade8797a2260.png",
+        "res://character/krusher-style-neck-bank-v1/frames/09287a7607c4a1688cf1bde1d5a49cb47aa71a90201928f9448aec06f2aec976.png",
+        "res://character/krusher-style-neck-bank-v1/frames/3886de3528b8e492bc70d3c746b6947332d17defa8aeec45039ef4ec21e672f1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e31b65cf825f771d200196d971e269fd5d3cad7c8eb92e54014ab5cd8e3bc596.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/c5cd53d9097361310a6c84fad5c485ae06df6564dd230af9d9276bbfe112ecc8.png",
+        "res://character/krusher-style-neck-bank-v1/frames/8fb3f39c3b039d3cdc344850b77e0991191201dadb4d499ea6e675b1483c215f.png",
+        "res://character/krusher-style-neck-bank-v1/frames/719da347c877bd94fa15f1505d06f8b587a6c77c8a1ccb316ca2642d202d7134.png",
+        "res://character/krusher-style-neck-bank-v1/frames/fa1153c0d5f7ff89408b66eb450035d1b5c390e117a372ee2af04bba42e2c86a.png",
+        "res://character/krusher-style-neck-bank-v1/frames/90446172607cb91349d525bcc3a92096715d14d77c5de942b30e84a8b7efc342.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d4b4e21eed5076c14b55d8d340690c252b8dc7d57bdcf9688016aaf9dde487a3.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-south",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/fdfa640e6235c2907f7ecdecac692679fafdfde78be44ca8a05a0f6d543294ef.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff2e6ea8171c89fd5c8692674d19d8c95044d474cb862b4fe2879bd90eccf82b.png",
+        "res://character/krusher-style-neck-bank-v1/frames/e049c0722f12b10875978f79f09ac9f35d5e7e2a6c517adf47b325c5f88b2185.png",
+        "res://character/krusher-style-neck-bank-v1/frames/cea3fc86d36b2ccdb6f77689506ce1f1cb06e7598a7a3c61571544889821d45c.png",
+        "res://character/krusher-style-neck-bank-v1/frames/4d0fc1d6da214889b1235bc6516bbb9b29b24b710f0b7c2cc7856bb3e1cd8e30.png",
+        "res://character/krusher-style-neck-bank-v1/frames/74eb86a82662d18154468d4e6b1a27a0fa16cd045e249b67cd5891ed4982ecef.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-death-family-v1/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    },
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "res://character/krusher-style-neck-bank-v1/frames/033c2b96e68294af32b4ef08d1dcb611a2cb72c2865da7179eed130a0a4344a6.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d730d560f96216b8817170dc80272289824125108b623b65dab2cad9c3e029b1.png",
+        "res://character/krusher-style-neck-bank-v1/frames/56cea0247ac83f1c17d0d6a15a79199f67b7d88154c2964ac49a8444ca660c32.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ff8b5b30a114077e1e1b353be5ccfaa4667ffcc759b616aa529079f978897b08.png",
+        "res://character/krusher-style-neck-bank-v1/frames/ef8ce1b9147d9190334f46b69e6de8f5fa1eab281c50f517bc997f49e88e3ed3.png",
+        "res://character/krusher-style-neck-bank-v1/frames/d032e9b5b8679f8dcd21368766c3cd694be27acef8ee65578d1ab5f13086846b.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "sourceManifest": "res://character/james-west-water-death-material-v2/helmet-manifest.json",
+        "reuse": "Complete original James death body and state metadata; local Krusher closed-eye/tilted head and matte cyan; exact ground idle entry"
+      }
+    }
+  ]
+}

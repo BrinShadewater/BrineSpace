@@ -1,0 +1,51 @@
+{
+  "status": "installed_native_verified_owner_review_pending",
+  "runtimeInstalled": true,
+  "fullSetComplete": false,
+  "statesPerMode": 4,
+  "sourceReferences": 48,
+  "pixelChanges": 0,
+  "cycleMs": 3600,
+  "packageChecks": 192,
+  "native": {
+    "checks": 385,
+    "failures": 0,
+    "journeys": [
+      {
+        "actualBerthApproach": true,
+        "captures": [
+          "res://character/james-sleep-cadence-v1/native/bare-sleep-0.png",
+          "res://character/james-sleep-cadence-v1/native/bare-sleep-8.png",
+          "res://character/james-sleep-cadence-v1/native/bare-sleep-16.png"
+        ],
+        "freshSceneMidSleepContinue": true,
+        "mode": "bare",
+        "sleepSourceSlots": 18
+      },
+      {
+        "actualBerthApproach": true,
+        "captures": [
+          "res://character/james-sleep-cadence-v1/native/helmet-sleep-0.png",
+          "res://character/james-sleep-cadence-v1/native/helmet-sleep-8.png",
+          "res://character/james-sleep-cadence-v1/native/helmet-sleep-16.png"
+        ],
+        "freshSceneMidSleepContinue": true,
+        "mode": "helmet",
+        "sleepSourceSlots": 18
+      }
+    ],
+    "scope": "All eight normal loaded sleep states, three visual cycles each; actual retained q0 North berth approach/sleep/get-up in both gear modes, two fresh-scene disk Continues and normal fatigue relief. Other bunk layouts/rotations and actual gear changes not exercised."
+  },
+  "profileGuard": {
+    "realProfileUnchanged": false,
+    "profileDelta": [
+      "last_session.json"
+    ]
+  },
+  "visualReview": "All48 original sleeping poses inspected in paired four-direction source board; six actual retained q0 North berth captures reviewed. Source-clock previews prepared, no new artwork.",
+  "remaining": [
+    "Owner cadence/full-motion review",
+    "Other actual bunk layouts/rotations and actual gear changes",
+    "Full-frame and cross-family master/material/anatomy/motion/hand-off polish across James library"
+  ]
+}

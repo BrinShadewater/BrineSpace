@@ -150,3 +150,16 @@ Resolve moved authoring inputs through their explicit archived locations and ret
 the frozen original hashes. Avoid direct truncating PNG writes during rebuilds;
 use the maintained atomic write-if-changed helper and compare unrelated runtime
 files after the completed build. A failed partial build is not an accepted revision.
+
+## Layered-image and revision review
+
+When source detail is hard to see, inspect the source range, deterministic bake,
+runtime tint/alpha, occlusion and actual screen sampling separately. Opaque pixels
+alone do not guarantee readable material detail. Preserve identity/local color
+when correcting the failed stage; do not lift all shadows or add a global wash.
+Show actual gameplay scale alongside enlarged diagnostic crops. Use a new preview
+filename for each reviewed revision so desktop caching cannot show old artwork.
+A crop must match the currently loaded asset and physical viewport transform;
+preserve the original baseline and distinguish agent review from owner acceptance.
+For card-specific layering and effect contracts, read the room pipeline's
+references/effects-and-card-art.md in the active checkout.

@@ -1,0 +1,6 @@
+# Original-rig turn sources
+
+- 8299876a-8526-427a-9dc2-2303d2cb8760: raw-turn-v1.png/prompt-turn-v1.txt. True original rear/Eastheld refs, six whole poses. Rejected: later height150-153/floor226-229 vs148/224first, lateheads29-30vsEast26; kneeplates appearlate, angularposesrepeat.
+- 0e7683f3-b7b6-4cba-89c0-be18f689e311: raw-turn-v2.png/prompt-turn-v2.txt. Authoring correction improves knee reveal but lateheight151/head30-31/floor227-228 remain, repeated nearprofile. Rejected; no per-pose scale/Y repair.
+- 231a6c06-5dc6-4d92-8c10-a5c23a8834d1: raw-mid-v1.png/prompt-mid-v1.txt. Single whole original-rig pose from originalEastheld identity, unchanged whole oldmid angle-only ref and originalrear. Height149matchesold149/head25/body54/sole224; extra fourth cylinder and hook invented at hip, rejected equipment.
+- 0c6ca746-e121-499c-9251-27707f96b1e9: raw-mid-v2.png/prompt-mid-v2.txt. Whole equipment removal edit; exactly3canisters and no hook restored. Head26/body54/H149/sole224/clothmedian73.33. Focused edit changed some contour/grade too; source not pixel-identical toV1. Selected staged SOURCE POSE only. Original whole29x36shell004 fitted10868/body outsideheadprotectionexact.35nativechecks0/6captures5.8s;46inputsfrozenstable/2931owner non-logfiles unchanged. Complete turn/motion notyetaccepted.

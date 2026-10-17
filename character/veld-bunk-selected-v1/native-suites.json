@@ -1,0 +1,42 @@
+[
+  {
+    "label": "approach",
+    "test": "test_veld_bunk_selected_approach",
+    "output": "veld-bunk-selected-approach-v1",
+    "success": "0 failures;2 natural chooser/route/activity cases",
+    "timeout": 600,
+    "derivedFrom": "test_veld_bunk_body_approach"
+  },
+  {
+    "label": "partial",
+    "test": "test_veld_bunk_selected_partial",
+    "output": "veld-bunk-selected-partial-v1",
+    "success": "0 failures;80 partial actor deaths,320 actor-file restores",
+    "timeout": 600,
+    "derivedFrom": "test_veld_bunk_body_settle"
+  },
+  {
+    "label": "settle",
+    "test": "test_veld_bunk_selected_settle",
+    "output": "veld-bunk-selected-settle-v1",
+    "success": "0 failures;4 fresh disk restores",
+    "timeout": 750,
+    "derivedFrom": "test_veld_bunk_body_settle_resume"
+  },
+  {
+    "label": "early",
+    "test": "test_veld_bunk_selected_early",
+    "output": "veld-bunk-selected-early-v1",
+    "success": "0 failures;8 fresh disk restores",
+    "timeout": 750,
+    "derivedFrom": "test_veld_bunk_early_fall_native"
+  },
+  {
+    "label": "fire",
+    "test": "test_veld_bunk_selected_fire",
+    "output": "veld-bunk-selected-fire-v1",
+    "success": "0 failures;6 fresh disk restores",
+    "timeout": 750,
+    "derivedFrom": "test_veld_bunk_body_fire_resume"
+  }
+]

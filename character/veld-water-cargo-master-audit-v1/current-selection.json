@@ -1,0 +1,774 @@
+{
+  "scope": "Current literal loader/catalog selection; static master comparison, not full motion acceptance",
+  "loaderSha256": "8b396cdd14acfb55a6d03f16757d1597f6fd838a46749562ec412db3f6ff82d2",
+  "records": {
+    "bare/east": {
+      "manifest": "character/dr-veld-v2/packs/bare-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-bare-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-east",
+        "frameFiles": [
+          "../../frames/bare/swim-carry-east/000.png",
+          "../../frames/bare/swim-carry-east/001.png",
+          "../../frames/bare/swim-carry-east/002.png",
+          "../../frames/bare/swim-carry-east/003.png",
+          "../../frames/bare/swim-carry-east/004.png",
+          "../../frames/bare/swim-carry-east/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/bare/swim-carry-east/000.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-east/001.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-east/002.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-east/003.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-east/004.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-east/005.png"
+      ],
+      "hashes": [
+        "1344e01ba7321fbec8ce8486044cf35fb8c3341cc1de3c5a1bf28e25650c4370",
+        "27b02cc766063a71be5caafa318739783331227bd4c438e47f8b594f65547762",
+        "b300b19416d18e3b775d07c728bdb5a46f1cccad6f1c09aaeaa76d172ae41834",
+        "b2623672d4ca4400d28e34de43d61a0eccbf9d54589ae881b7e2256aea277017",
+        "e56b833f58f31960d34fc6fc68c3c3833d7113a2a94282c6c0cff5d8c5987315",
+        "b81838750c596c66478fd92b9623111d06fcd13e7967bacae6b2e3b2d5054626"
+      ]
+    },
+    "bare/west": {
+      "manifest": "character/dr-veld-v2/packs/bare-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-bare-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-west",
+        "frameFiles": [
+          "../../frames/bare/swim-carry-west/000.png",
+          "../../frames/bare/swim-carry-west/001.png",
+          "../../frames/bare/swim-carry-west/002.png",
+          "../../frames/bare/swim-carry-west/003.png",
+          "../../frames/bare/swim-carry-west/004.png",
+          "../../frames/bare/swim-carry-west/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "west",
+          "west",
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/bare/swim-carry-west/000.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-west/001.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-west/002.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-west/003.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-west/004.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-west/005.png"
+      ],
+      "hashes": [
+        "4de913f2fcc667206305603b4aadb61453faa2c02dd96f39375ca239a3764611",
+        "0b38ec73643cb1f212811d9607b3952190b37555fd9b7085a865bbe0e374ddb6",
+        "a03238b5d9890297cd2cf50d8c12161f77bdecfcbdddd8d8cd7d50c16efb74af",
+        "351857afded2905acffff975636986852fb320f8d43bedbfefb11b4b7f0505d9",
+        "54230af6c99eb7d462cb67661c769cfeff5639931002207cee4099c82620efe8",
+        "14507ee66b2a50fe862c49ef4ed732edec3fd4ead1bd211434f187fe675f7c31"
+      ]
+    },
+    "bare/north": {
+      "manifest": "character/dr-veld-v2/packs/bare-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-bare-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-north",
+        "frameFiles": [
+          "../../frames/bare/swim-carry-north/000.png",
+          "../../frames/bare/swim-carry-north/001.png",
+          "../../frames/bare/swim-carry-north/002.png",
+          "../../frames/bare/swim-carry-north/003.png",
+          "../../frames/bare/swim-carry-north/004.png",
+          "../../frames/bare/swim-carry-north/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "north",
+          "north",
+          "north",
+          "north",
+          "north",
+          "north"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/bare/swim-carry-north/000.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-north/001.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-north/002.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-north/003.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-north/004.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-north/005.png"
+      ],
+      "hashes": [
+        "ef867505f3c599448bbb7a469e6d75f3c70b039254965b72910775c573b2995c",
+        "500c150928bdce4935c95a685fd23c0771892700c2dec8a55ad428e8a8624e79",
+        "396de2750fb5b8469ad63f36d48b58e807f591a480d2d8374668b3dc7b8dbe41",
+        "16e48fe3fdb098612a5e1e8bd8f85c7a98b871ec1f1590e66765d551f1d0ded5",
+        "9808b20b3bd0b373dba24db98ace68dcb7a8cd65b1b831c8abf759fa69afa9c3",
+        "87241e1f7ef01be1cdd92a73b0080b69bb3385ce6d6131807e2950709f9e5867"
+      ]
+    },
+    "bare/south": {
+      "manifest": "character/dr-veld-v2/packs/bare-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-bare-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-south",
+        "frameFiles": [
+          "../../frames/bare/swim-carry-south/000.png",
+          "../../frames/bare/swim-carry-south/001.png",
+          "../../frames/bare/swim-carry-south/002.png",
+          "../../frames/bare/swim-carry-south/003.png",
+          "../../frames/bare/swim-carry-south/004.png",
+          "../../frames/bare/swim-carry-south/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/bare/swim-carry-south/000.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-south/001.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-south/002.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-south/003.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-south/004.png",
+        "character/dr-veld-v2/frames/bare/swim-carry-south/005.png"
+      ],
+      "hashes": [
+        "4183177bb0f86c1d7b70e5121a82a8e02a00984b6cc31d5278daa122e39a7656",
+        "17ef4b391e2c4d9acd90ab792142ad6e72991237816e4012bb3077d35960e259",
+        "f918769741021e0c428a73cc90d1deb7cf6f3b4ec8cea0b00073b530f32a31d9",
+        "711ba837a15d8d1a3a8ed2e12123cb0ae6aedb18d7693305f22dd987219f5b17",
+        "5c766e90db3766f1f0dd37777af9fc7d781c6a04b9bc13afe78ff352ea5af7fe",
+        "1e5428a1cdb720c071bc0362317b9bac762e7eca28942cde1c34c171c6becb07"
+      ]
+    },
+    "helmet/east": {
+      "manifest": "character/dr-veld-v2/packs/helmet-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-helmet-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-east",
+        "frameFiles": [
+          "../../frames/helmet/swim-carry-east/000.png",
+          "../../frames/helmet/swim-carry-east/001.png",
+          "../../frames/helmet/swim-carry-east/002.png",
+          "../../frames/helmet/swim-carry-east/003.png",
+          "../../frames/helmet/swim-carry-east/004.png",
+          "../../frames/helmet/swim-carry-east/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/000.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/001.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/002.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/003.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/004.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-east/005.png"
+      ],
+      "hashes": [
+        "1a0bf5c2f943d8f43c28109d786cf3a16afcb425aa0c196a04147b3c4da43fad",
+        "cd3b79681781795ac1748663b240fd47916dc9e0dc0a35bafb67945f044f66cb",
+        "3ebd172504dcdd6d004bd9fc8823b2e5b8ec76b1d61c0782f9c95c12bca44883",
+        "729f8cb985fb784ed0e6764554478c9192e3fc7f1f57ebb85bf48f691c0701d3",
+        "e488ab99a63ca31d9f153470a5921e77f6af4ad459c9ce23251776d01a15508d",
+        "f1fff77d5faa7486c801c5596ffc6721fd98e3d76113a1ed892b050192f6431a"
+      ]
+    },
+    "helmet/west": {
+      "manifest": "character/dr-veld-v2/packs/helmet-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-helmet-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-west",
+        "frameFiles": [
+          "../../frames/helmet/swim-carry-west/000.png",
+          "../../frames/helmet/swim-carry-west/001.png",
+          "../../frames/helmet/swim-carry-west/002.png",
+          "../../frames/helmet/swim-carry-west/003.png",
+          "../../frames/helmet/swim-carry-west/004.png",
+          "../../frames/helmet/swim-carry-west/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "west",
+          "west",
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/000.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/001.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/002.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/003.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/004.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-west/005.png"
+      ],
+      "hashes": [
+        "2c06859468932ac0557517dd60ad124e88da1fe440c8fe9d737c2629d5f50857",
+        "1f3746b87b9f29ed9a27b5ec1786279ef7834c50a838603b23d98cfa26ba48bf",
+        "196e4954ddae0176261aa07401e3173e3fc6a6a4c21f889e39b3e17c9b2ca15b",
+        "93f0399ff5945fb909530d9758b5ee74a6b048123056daa33c86fc7df45c9158",
+        "2561d4987bea1a56fd71ec6cc250ba0cb449410c2673d0b2c982b5414b5fda1d",
+        "090d9011b2fa8e573d20a62ba6e11d8be3d08c0bbd5d995e28e67234a8227302"
+      ]
+    },
+    "helmet/north": {
+      "manifest": "character/dr-veld-v2/packs/helmet-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-helmet-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-north",
+        "frameFiles": [
+          "../../frames/helmet/swim-carry-north/000.png",
+          "../../frames/helmet/swim-carry-north/001.png",
+          "../../frames/helmet/swim-carry-north/002.png",
+          "../../frames/helmet/swim-carry-north/003.png",
+          "../../frames/helmet/swim-carry-north/004.png",
+          "../../frames/helmet/swim-carry-north/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "north",
+          "north",
+          "north",
+          "north",
+          "north",
+          "north"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/000.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/001.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/002.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/003.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/004.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-north/005.png"
+      ],
+      "hashes": [
+        "c4cb9606510614c50eb09dbeb6d4cf0f83e4d7b35940ceb4675fedf7a2986f75",
+        "e036f8dda83ea39df92c2cb8daf85213b6da4ea2e4b8f3b6568d5fcb9ab2a4bd",
+        "3bf218f2396a5149ecda6e8372b980760e8a82b475e17fdc4b6f340144db504b",
+        "1f0ea950aa9f856dda0d60c9ad068c97c48c59a5bc3598429a5986080c338dc7",
+        "4122e8a9e5d44aa75a5de01558747002016e9c220d72c8780232bb805ccaf53c",
+        "a5b832c4ddecc7447922cce7797264a12161751c23e04f9e5ce547ed38df4d94"
+      ]
+    },
+    "helmet/south": {
+      "manifest": "character/dr-veld-v2/packs/helmet-256x256-p128.0-128.0/manifest.json",
+      "profile": {
+        "name": "dr-veld-v2-helmet-256x256-p128.0-128.0",
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "pivot": [
+          128.0,
+          128.0
+        ],
+        "standingHeight": 148,
+        "strideDistanceCells": {
+          "carry": 0.12,
+          "swim": 0.16,
+          "swim-carry": 0.16,
+          "walk": 0.12,
+          "walk-east": 0.11716216216216217,
+          "walk-west": 0.12405405405405405,
+          "carry-east": 0.0872972972972973,
+          "carry-west": 0.07351351351351351,
+          "carry-south": 0.0827027027027027,
+          "carry-north": 0.0827027027027027,
+          "walk-south": 0.12,
+          "walk-north": 0.12
+        },
+        "precomposed": true
+      },
+      "state": {
+        "id": "swim-carry-south",
+        "frameFiles": [
+          "../../frames/helmet/swim-carry-south/000.png",
+          "../../frames/helmet/swim-carry-south/001.png",
+          "../../frames/helmet/swim-carry-south/002.png",
+          "../../frames/helmet/swim-carry-south/003.png",
+          "../../frames/helmet/swim-carry-south/004.png",
+          "../../frames/helmet/swim-carry-south/005.png"
+        ],
+        "frameDurationsMs": [
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0,
+          140.0
+        ],
+        "loop": true,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim",
+          "swim"
+        ],
+        "waterPoses": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "files": [
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/000.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/001.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/002.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/003.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/004.png",
+        "character/dr-veld-v2/frames/helmet/swim-carry-south/005.png"
+      ],
+      "hashes": [
+        "d2d746b990a26ffa4bd92c5fc6315f2004d57918ae41ca6abd6ff18e54974da6",
+        "1c25cded8cab7fdc1f4e119111c38935f90c62a5d4c85ae5b94891da9606b7dc",
+        "40bcde4bd710dd5cbd9a2fcc41145b4daf7260752d577ffd11c9e599a05b5200",
+        "d59271418a70b7a2a6d504df5f40417e539b6fede1c7de465bc13301ff232c16",
+        "89a4bea80d2b641a747fc737c37143e77d897a904892d1ac570985b544b2ab7b",
+        "8cf1bbd324dcd72c5979deca0efd7d444e99259c997fb9a4cce7cee0d2cc8097"
+      ]
+    }
+  }
+}

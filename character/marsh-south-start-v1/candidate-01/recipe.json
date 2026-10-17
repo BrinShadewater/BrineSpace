@@ -1,0 +1,137 @@
+{
+  "status": "unselected source study; native motion and runtime controller pending",
+  "rawSha256": "cb7feb21b05d4ab0c376bf18138615fe9d7591fe9d0172ab0c507256e5708fef",
+  "commonNeutralScale": 0.19321148825065274,
+  "cells": [
+    {
+      "cell": [
+        0,
+        0,
+        443,
+        887
+      ],
+      "commonScale": 0.19321148825065274,
+      "registration": [
+        48,
+        10
+      ],
+      "contact": [
+        43.5,
+        160
+      ],
+      "contactTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        62,
+        23,
+        121,
+        170
+      ],
+      "role": "interior",
+      "frameSha256": "cc4c46663462e325a158d9ac10f14dea2d8428c2e1f285ae473faa6218d3df14"
+    },
+    {
+      "cell": [
+        443,
+        0,
+        887,
+        887
+      ],
+      "commonScale": 0.19321148825065274,
+      "registration": [
+        37,
+        10
+      ],
+      "contact": [
+        55.0,
+        160
+      ],
+      "contactTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        50,
+        23,
+        109,
+        170
+      ],
+      "role": "interior",
+      "frameSha256": "85eb2d4010b28fd4e168dd4b79c057691c6815b7aa3fd633d3fc5c890c5c7736"
+    },
+    {
+      "cell": [
+        887,
+        0,
+        1330,
+        887
+      ],
+      "commonScale": 0.19321148825065274,
+      "registration": [
+        48,
+        15
+      ],
+      "contact": [
+        31.0,
+        155
+      ],
+      "contactTarget": [
+        78.5,
+        170
+      ],
+      "bounds": [
+        61,
+        29,
+        120,
+        177
+      ],
+      "role": "interior",
+      "frameSha256": "2857a72975b120e21b9d20930238d10fe7373ac33d2adb13a65a7754a013babf"
+    },
+    {
+      "cell": [
+        1330,
+        0,
+        1774,
+        887
+      ],
+      "commonScale": 0.19321148825065274,
+      "registration": [
+        51,
+        10
+      ],
+      "contact": [
+        41.0,
+        160
+      ],
+      "contactTarget": [
+        92.0,
+        170
+      ],
+      "bounds": [
+        62,
+        23,
+        122,
+        170
+      ],
+      "role": "neutral ruler",
+      "frameSha256": "f0b4e71ad48e6a0f06683e30708830ddaafca756d2390a351efaef7f7c64a688"
+    }
+  ],
+  "idleReference": "character\\marsh-v2\\frames\\bare\\idle-south\\000.png",
+  "idleSha256": "8b44ad6d3fd740c8b7afd7c4e63d83d2bfecb57c9bee05d6c9feaa0749d7991d",
+  "gaitEndpoint": "character\\marsh-v2\\frames\\bare\\walk-south\\004.png",
+  "gaitSha256": "655067b49235987be98f4154dbed968b25e04e5ded6ee4497120a5339a4cfeeb",
+  "proposedGaitJoinSeconds": 0.48,
+  "durationsMs": [
+    80,
+    80,
+    80,
+    80,
+    80
+  ],
+  "grade": "none",
+  "decision": "Generated cell3 reverses requested lead: anatomical LEFT/viewer RIGHT goes forward. Stage as left-leading start toward selected gait slot4, which has the same foot order. Do not claim requested right-leading source. Whole figures registered by actual sole; no anatomy patches, independent scale or body warp. Common H148 scale, support quantization and joins require visual/native review."
+}

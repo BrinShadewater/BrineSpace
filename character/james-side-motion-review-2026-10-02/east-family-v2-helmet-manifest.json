@@ -1,0 +1,261 @@
+{
+  "name": "James East cargo retained shared helmet pair for head family v2",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_existing_helmet_pair_turn_review_pending",
+  "strideDistanceCells": {
+    "carry-east": 0.0872972972972973,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.07351351351351351,
+    "carry-north": 0.0827027027027027
+  },
+  "states": [
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/000.png",
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/001.png",
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/002.png",
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/003.png",
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/004.png",
+        "../james-cargo-material-joined-v1/frames/helmet/pickup-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fixedScale": [
+          0.39759036144578314,
+          0.4340175953079179
+        ],
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        }
+      }
+    },
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/000.png",
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/001.png",
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/002.png",
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/003.png",
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/004.png",
+        "../james-cargo-material-joined-v1/frames/helmet/carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "fixedScale": [
+          0.39759036144578314,
+          0.44879518072289154
+        ],
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        }
+      }
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/000.png",
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/001.png",
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/002.png",
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/003.png",
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/004.png",
+        "../james-cargo-material-joined-v1/frames/helmet/unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "fixedScale": [
+          0.39759036144578314,
+          0.4340175953079179
+        ],
+        "derivation": "Independent pickup and complete6-pose alternating carry; unload reverses pickup",
+        "helmet": "Selected shared east shell follows moving face",
+        "materialCorrection": {
+          "donorPack": "james-cargo-east-height-v3",
+          "fixedGoldGain": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "mask": "Gold RGB classes below bare crown+30 and above crown+86; same bare-derived mask in both modes",
+          "preserve": "Exact master ground endpoint, alpha, face/head, neutral cloth/case and all non-gold pixels"
+        }
+      }
+    }
+  ]
+}

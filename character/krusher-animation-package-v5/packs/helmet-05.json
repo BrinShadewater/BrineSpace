@@ -1,0 +1,1545 @@
+{
+  "name": "Krusher Dom cargo helmet",
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "markings": "matte muted cyan #527C80"
+  },
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "states": [
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "../frames/b6fac9e4c3259bc1c2bf2d74e6671ece5f467f3fbdd15d10706dfb53e29be288.png",
+        "../frames/90f193286f76fbff9a94058f2355153910a6a83c3c8683d579f783ecc48ac95c.png",
+        "../frames/d4ac974a84ac89110333eb7519ce6e88db8c17438cdc825580e6e7a38dde69fd.png",
+        "../frames/865541cdda3d4ffaf87387a1c8106889218edb321c608b667f8598dc62601e6f.png",
+        "../frames/75a20d1ddc94c00f4be38a769cd13ae246027fbe6f7fbfbe70099b4e0aee7e5e.png",
+        "../frames/3871db818eaac8cb4687a046fa600f51209b88a3388f9ebada074bb0486045a2.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e16325eeb4c6bdc7189c5270b9897c72218566b5b213b8ba7e97baa8286ced59.png",
+        "../frames/09474480abc1745ed938761550b030fa336c415b7e72e4cd9d0b3c0360701c01.png",
+        "../frames/1da9098a5dce2163825568f5a598e09a6bab9f468d5f7ddd746ea15450657f6a.png",
+        "../frames/ad487f778a0054086c54be674b10515d6e5d8f0e736796f8a4631a84358d2e16.png",
+        "../frames/b77aa1e5ba919a68ee4276422fbe98148ae7aeb42ddfa2a27e2000da2e8e06a9.png",
+        "../frames/14f0aa6594ce5df08b42302ba7cc839a60513e2f6cc951a14f8727f95f02e8f9.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/db03ec65c270271f1f3576830030cc1dae5bf7b0122da419bb1a284e19eca364.png",
+        "../frames/5cf610f0373aa5ba8fb6dd4df2f4baf20b5eb32bd566917ce4ac541c06fda7b1.png",
+        "../frames/3e435cd42f5a8e6a0874cb0e93511c81ed4c756b8434f0fbdf4faed8cd8cc216.png",
+        "../frames/2104987c10c5adbd98b2125f4fd2ea0d60e8a67ec314c3f40956544681e9e14e.png",
+        "../frames/ab31673092ec353fc396eb49b2c686feadd5b77362efd9a03627ddca67ae8bf1.png",
+        "../frames/fe88c27bed9bd27d815e4e7427f23f21d6914ce25165c4d33094c39890c8e7a0.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png",
+        "../frames/b921f7a7ac32b644eed8bc4931aa5caa4ce6129175cfe7ea8b3fe703048e1490.png",
+        "../frames/6937fff5b87e16d57a01cc25ad03e6e334e925b53fc886b91b628c60dffee530.png",
+        "../frames/8093477c64b7c0a26801f1a5fdfd249e2c31fad51a00e297381f5dbd0c65fab0.png",
+        "../frames/d1eb005950df945ba167f069a416f134041fa704667c1b87ee147a59a2366f86.png",
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-east-west",
+      "frameCount": 11,
+      "frameFiles": [
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png",
+        "../frames/ed0d8cf268fbb3c3e3adc47c4ea5f190464bca025d8b0b47f8fce8c4b6b2e37f.png",
+        "../frames/32ee8a064085f4c2a6c8a7fcd6089099b5afe513040b3976cdefc15210133643.png",
+        "../frames/54888295f4e7606207054e8a357652a47df7035f414b5d7bebd7146f455a8cb5.png",
+        "../frames/4778bba911451b6c71e7e411b9ba75220507e16e00ca8e197a46aad5085ddaf1.png",
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png",
+        "../frames/d1eb005950df945ba167f069a416f134041fa704667c1b87ee147a59a2366f86.png",
+        "../frames/8093477c64b7c0a26801f1a5fdfd249e2c31fad51a00e297381f5dbd0c65fab0.png",
+        "../frames/6937fff5b87e16d57a01cc25ad03e6e334e925b53fc886b91b628c60dffee530.png",
+        "../frames/b921f7a7ac32b644eed8bc4931aa5caa4ce6129175cfe7ea8b3fe703048e1490.png",
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-south",
+      "frameCount": 11,
+      "frameFiles": [
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png",
+        "../frames/d1eb005950df945ba167f069a416f134041fa704667c1b87ee147a59a2366f86.png",
+        "../frames/8093477c64b7c0a26801f1a5fdfd249e2c31fad51a00e297381f5dbd0c65fab0.png",
+        "../frames/6937fff5b87e16d57a01cc25ad03e6e334e925b53fc886b91b628c60dffee530.png",
+        "../frames/b921f7a7ac32b644eed8bc4931aa5caa4ce6129175cfe7ea8b3fe703048e1490.png",
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-north-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png",
+        "../frames/3350d25b69654a0ba303902eb411ed776d831bbb80c8c8fcfabb51545607f1b9.png",
+        "../frames/2d706314fedeaf87026f382d71492acbb9d37181a1e44abc93de59080fe86e80.png",
+        "../frames/21d9c03f5aec51102573d785c3ef2eff1c51dc3c2d93e4ab7bd0b28c398bb9b6.png",
+        "../frames/ad2c0c2e1ae91bbc815e30aace398125b662cfd4b7d11f93cb0c6281b88ebe1f.png",
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-north",
+      "frameCount": 11,
+      "frameFiles": [
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png",
+        "../frames/b921f7a7ac32b644eed8bc4931aa5caa4ce6129175cfe7ea8b3fe703048e1490.png",
+        "../frames/6937fff5b87e16d57a01cc25ad03e6e334e925b53fc886b91b628c60dffee530.png",
+        "../frames/8093477c64b7c0a26801f1a5fdfd249e2c31fad51a00e297381f5dbd0c65fab0.png",
+        "../frames/d1eb005950df945ba167f069a416f134041fa704667c1b87ee147a59a2366f86.png",
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-south-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png",
+        "../frames/ed0d8cf268fbb3c3e3adc47c4ea5f190464bca025d8b0b47f8fce8c4b6b2e37f.png",
+        "../frames/32ee8a064085f4c2a6c8a7fcd6089099b5afe513040b3976cdefc15210133643.png",
+        "../frames/54888295f4e7606207054e8a357652a47df7035f414b5d7bebd7146f455a8cb5.png",
+        "../frames/4778bba911451b6c71e7e411b9ba75220507e16e00ca8e197a46aad5085ddaf1.png",
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-east",
+      "frameCount": 11,
+      "frameFiles": [
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png",
+        "../frames/4778bba911451b6c71e7e411b9ba75220507e16e00ca8e197a46aad5085ddaf1.png",
+        "../frames/54888295f4e7606207054e8a357652a47df7035f414b5d7bebd7146f455a8cb5.png",
+        "../frames/32ee8a064085f4c2a6c8a7fcd6089099b5afe513040b3976cdefc15210133643.png",
+        "../frames/ed0d8cf268fbb3c3e3adc47c4ea5f190464bca025d8b0b47f8fce8c4b6b2e37f.png",
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png",
+        "../frames/11f549c18e7e6c95d91cf1f83669de20fc17d2a6f1bbf63d55100f694b2fadc2.png",
+        "../frames/88b758ff989da363f9ba254fd7ef730a0fb9fb6a27c17f5594e649dd8752789c.png",
+        "../frames/39e65e450382e9f7562144ce748e118e48fd8c02aa21fa2f3548c2fd46a5d636.png",
+        "../frames/2e711b8ccc228a5aca5543ff7f1fdba1fb266eb6c355012ab100857596790959.png",
+        "../frames/0a6b45efc30374bf11fb105966d90918dd3c9eeb09f2e543015dbb3b747265ca.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        200,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png",
+        "../frames/ad2c0c2e1ae91bbc815e30aace398125b662cfd4b7d11f93cb0c6281b88ebe1f.png",
+        "../frames/21d9c03f5aec51102573d785c3ef2eff1c51dc3c2d93e4ab7bd0b28c398bb9b6.png",
+        "../frames/2d706314fedeaf87026f382d71492acbb9d37181a1e44abc93de59080fe86e80.png",
+        "../frames/3350d25b69654a0ba303902eb411ed776d831bbb80c8c8fcfabb51545607f1b9.png",
+        "../frames/e99f9084a078ac62364ddb7945a0a7be807fe25b5a864828ea19cb94e6c59899.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/385fb387ce060eadbdd0642b5426be748537f341fbc322b2855dd4996f92c978.png",
+        "../frames/4778bba911451b6c71e7e411b9ba75220507e16e00ca8e197a46aad5085ddaf1.png",
+        "../frames/54888295f4e7606207054e8a357652a47df7035f414b5d7bebd7146f455a8cb5.png",
+        "../frames/32ee8a064085f4c2a6c8a7fcd6089099b5afe513040b3976cdefc15210133643.png",
+        "../frames/ed0d8cf268fbb3c3e3adc47c4ea5f190464bca025d8b0b47f8fce8c4b6b2e37f.png",
+        "../frames/0b56b89ad1c8abbc5d1e3f27ece9d7d6dd7abd39f8e311d467c6cf22f14225cf.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "carry-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/ed51b9307b27c4b2fee94cbef1a69d4c6692192cf357b01f409f1970808b2174.png",
+        "../frames/d93fb0f482158a2e762b981ed953b5809c40c74f127718f428853212a4f0056f.png",
+        "../frames/0d0f474cdfb8a258134c3c9e03000088c95944c1abcd253d629fb052bdf035d6.png",
+        "../frames/02cbc69df2d68d4a7ea9601437db934e2dc3d54be6081577719b999572e48a02.png",
+        "../frames/cabe1fd7cab73e17252b1f9b61ceb4dab4debdef4c9702db9b41e6f662b366fa.png",
+        "../frames/3a978c311fc2b4375d0887b329a1996356fdac600bb3406aa5c3721b99c076d5.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "../frames/e684e091f33eeed123f9d8947b4c98748e390fe3935eea1cc4c0553035d74af0.png",
+        "../frames/34ff0d94c2caaae0fe9c0ea5fcd14513db11a9090be993ef127f9de3f863ec62.png",
+        "../frames/f60e7f244595d17e0350c9ed2f36fbdbcb0c8b4fdb97aadc6f26628132ae45c0.png",
+        "../frames/c8404977a329cc3ea1781c4d88924789aea6f48f4f1b8bf29a52f331eb540c38.png",
+        "../frames/2d487d5f65ffbe44e53a09b9b8bf2c77397f54bf282a6d7fdcd4440409d43819.png",
+        "../frames/dd230c8983853acc5040a3cc8c917dbdaa7d2f20d44f37739b2673b7b1e3b374.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/46a50381e75ee77ffd952cb684220893cab26db24e825411ce68f72cbc801f72.png",
+        "../frames/49d56a2a040013ab463a78d306e0eebfac0608acf4bea9eb2ae4105d1ec5645b.png",
+        "../frames/4aace6b2355df5abcdc08356e3c936d546d5b9ad0bfe84af2c653a2b1fc81569.png",
+        "../frames/dc16415069a80b21ced6c4f64e52e48fb17ce251264c2c7466a14258410da5f3.png",
+        "../frames/b99021145d2bcdc7bdf0d8dc3dfcf8b212babb3b985dc1659e4fb79223d9e1e7.png",
+        "../frames/e16325eeb4c6bdc7189c5270b9897c72218566b5b213b8ba7e97baa8286ced59.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/2eb4c5c4577872441441b7782b5e277ea2c52bdb90d1357d061f4dccbc4eafbf.png",
+        "../frames/2baccbdff06fb511eea50e2c0f9125a35efb56e0ed948b5fa8ad9721c5e48c5d.png",
+        "../frames/08472eb3d3cfc892c1e8af9a16cb045c6c2447de63858d08fd3dc08653988bf4.png",
+        "../frames/41549692e2f399d82ffb0c7779c64126b6b8a732067a0c0b212af85099857b4f.png",
+        "../frames/224f3e2bb37a2ae30db6cf4220cb904ddb05213d12d4b686bfbf42a6c95d9b03.png",
+        "../frames/db03ec65c270271f1f3576830030cc1dae5bf7b0122da419bb1a284e19eca364.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "pickup-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/0de5dd16d7d304dde400523bf285bed6739f876b0ff4255eac5652c5d759f83c.png",
+        "../frames/ecba4ed1217afbbf21cabe4160fa91ba9ace7613fc22ce4c467ded18e1ac365f.png",
+        "../frames/528487e7b7548ce60f93cfad470b7b5c05d2ccdb133dd3a5de2f3d1abe329dbc.png",
+        "../frames/b3afef969a4232dd0a7b2ec237531a4795310173064133119171314248980ede.png",
+        "../frames/216c4110868ecf15cad3d3e68a2c1fc8b72731769c6ac2e242cc062ba2595f5c.png",
+        "../frames/ed51b9307b27c4b2fee94cbef1a69d4c6692192cf357b01f409f1970808b2174.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "../frames/dd230c8983853acc5040a3cc8c917dbdaa7d2f20d44f37739b2673b7b1e3b374.png",
+        "../frames/2d487d5f65ffbe44e53a09b9b8bf2c77397f54bf282a6d7fdcd4440409d43819.png",
+        "../frames/c8404977a329cc3ea1781c4d88924789aea6f48f4f1b8bf29a52f331eb540c38.png",
+        "../frames/f60e7f244595d17e0350c9ed2f36fbdbcb0c8b4fdb97aadc6f26628132ae45c0.png",
+        "../frames/34ff0d94c2caaae0fe9c0ea5fcd14513db11a9090be993ef127f9de3f863ec62.png",
+        "../frames/e684e091f33eeed123f9d8947b4c98748e390fe3935eea1cc4c0553035d74af0.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/e16325eeb4c6bdc7189c5270b9897c72218566b5b213b8ba7e97baa8286ced59.png",
+        "../frames/b99021145d2bcdc7bdf0d8dc3dfcf8b212babb3b985dc1659e4fb79223d9e1e7.png",
+        "../frames/dc16415069a80b21ced6c4f64e52e48fb17ce251264c2c7466a14258410da5f3.png",
+        "../frames/4aace6b2355df5abcdc08356e3c936d546d5b9ad0bfe84af2c653a2b1fc81569.png",
+        "../frames/49d56a2a040013ab463a78d306e0eebfac0608acf4bea9eb2ae4105d1ec5645b.png",
+        "../frames/46a50381e75ee77ffd952cb684220893cab26db24e825411ce68f72cbc801f72.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../frames/db03ec65c270271f1f3576830030cc1dae5bf7b0122da419bb1a284e19eca364.png",
+        "../frames/224f3e2bb37a2ae30db6cf4220cb904ddb05213d12d4b686bfbf42a6c95d9b03.png",
+        "../frames/41549692e2f399d82ffb0c7779c64126b6b8a732067a0c0b212af85099857b4f.png",
+        "../frames/08472eb3d3cfc892c1e8af9a16cb045c6c2447de63858d08fd3dc08653988bf4.png",
+        "../frames/2baccbdff06fb511eea50e2c0f9125a35efb56e0ed948b5fa8ad9721c5e48c5d.png",
+        "../frames/2eb4c5c4577872441441b7782b5e277ea2c52bdb90d1357d061f4dccbc4eafbf.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    },
+    {
+      "id": "unload-west",
+      "frameCount": 7,
+      "frameFiles": [
+        "../frames/ed51b9307b27c4b2fee94cbef1a69d4c6692192cf357b01f409f1970808b2174.png",
+        "../frames/216c4110868ecf15cad3d3e68a2c1fc8b72731769c6ac2e242cc062ba2595f5c.png",
+        "../frames/b3afef969a4232dd0a7b2ec237531a4795310173064133119171314248980ede.png",
+        "../frames/528487e7b7548ce60f93cfad470b7b5c05d2ccdb133dd3a5de2f3d1abe329dbc.png",
+        "../frames/ecba4ed1217afbbf21cabe4160fa91ba9ace7613fc22ce4c467ded18e1ac365f.png",
+        "../frames/fde41a504276f6586f8f7f98ed77be8c140d47cb2f2d0f2524d3cd810a92b066.png",
+        "../frames/814cb2bd4e64625ec0fdc18e1360146219cdc07905cf1e3cd40d630ecffc26e6.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "reuse": "Frozen selected whole James cargo body, case, clocks and state flags",
+        "identity": "Tracked Krusher cardinal and authored intermediate turn heads, original helmet shell, matte cyan markings",
+        "registration": "Original256canvas foot128224 standing148; no body rescaling"
+      }
+    }
+  ],
+  "strideDistanceCells": {
+    "carry-east": 0.0872972972972973,
+    "carry-north": 0.0827027027027027,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.07351351351351351
+  }
+}

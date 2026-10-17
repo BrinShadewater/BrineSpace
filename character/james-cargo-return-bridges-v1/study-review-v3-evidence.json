@@ -1,0 +1,23 @@
+{
+  "selected": false,
+  "fullGoalComplete": false,
+  "visualBridgeAcceptance": false,
+  "reviewed": [
+    "west-bridge-generated-v3.png",
+    "west-bridge-endpoint-review-v3.png",
+    "west-bridge-station-review-v3.png"
+  ],
+  "improvements": [
+    "Original head/shared-shell and lower-leg pixels outside recorded torso/hip rectangle retained exactly in all6sources.",
+    "Both gears use exactly identical generated torso/hip rectangle; eliminated independent undersized generated helmet.",
+    "Case and arm adjustment now progresses rather than repeating a fixed destination stance."
+  ],
+  "remaining": [
+    "Third pose tilts/lifts the case beyond the level unload entrance, so final join is not accepted.",
+    "Rectangular shoulder/collar and hip boundaries still require motion review; outside-window equality does not prove anatomical continuity.",
+    "Final floor-case/standing handoff and actual finite return controller/safety/Continue remain open."
+  ],
+  "nativePlayerChecks": 18,
+  "outsideWindowExactChecks": 358440,
+  "method": "Built-in imagegen v3 source; native deterministic shared350bare-ruler/217pixel cell resize, recorded80,110,84,69torso/hip rectangle on original sources. No per-frame grade, reflection or head rescale."
+}

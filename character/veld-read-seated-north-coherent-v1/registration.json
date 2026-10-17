@@ -1,0 +1,164 @@
+{
+  "executionId": "27204356-f2aa-4d76-956b-181d14f996a7",
+  "source": "sources/reading-v1.png",
+  "sourceSha256": "4e30d67b64ac5a05c0c648c3d3e65fe2d25736ba0ccb9a921115aaf094643c44",
+  "fixedRuler": 0.29306930693069305,
+  "gradeAuthority": "character/veld-seated-north-coherent-v1/bare-registration.json",
+  "gradeAuthoritySha256": "d052ec14539658ea203f827f9146847ffb5ef83d4dde4b6b54975099ea8f8369",
+  "bodyAuthority": {
+    "bare": {
+      "path": "character/veld-seated-north-coherent-v1/frames/bare/sit-down-north/005.png",
+      "sha256": "3a5d961eb10263151f180604c1a20285d71dd823c07b6212809ca33db3a05b39"
+    },
+    "helmet": {
+      "path": "character/veld-seated-north-coherent-v1/frames/helmet/sit-down-north/005.png",
+      "sha256": "12fc836577b7b2ad2c5bef942a989976b60acc2d693db23f5503b6c06e044105"
+    }
+  },
+  "insertRegions": [
+    [
+      98,
+      164,
+      116,
+      183
+    ],
+    [
+      140,
+      164,
+      159,
+      183
+    ]
+  ],
+  "insertMask": "insert-mask.png",
+  "insertMaskSha256": "318cfd1b7b4255fd87e5eff4374a200ff829ae2408d15ae0f7d5b1e4d0260c30",
+  "adoptedRawSlots": [
+    0,
+    1,
+    2,
+    3,
+    2,
+    5
+  ],
+  "rejectedRawSlots": {
+    "4": "upper-arm/science-badge movement violates protected anatomy"
+  },
+  "wholeBackAndEquipmentExact": true,
+  "frames": [
+    {
+      "slot": 0,
+      "rawBox": [
+        157,
+        128,
+        358,
+        504
+      ],
+      "floor": 500,
+      "foot": 255.4995357474466,
+      "size": [
+        59,
+        110
+      ],
+      "position": [
+        99,
+        114
+      ]
+    },
+    {
+      "slot": 1,
+      "rawBox": [
+        660,
+        128,
+        877,
+        504
+      ],
+      "floor": 500,
+      "foot": 767.501400560224,
+      "size": [
+        64,
+        110
+      ],
+      "position": [
+        96,
+        114
+      ]
+    },
+    {
+      "slot": 2,
+      "rawBox": [
+        1183,
+        128,
+        1379,
+        504
+      ],
+      "floor": 500,
+      "foot": 1280.0829450139795,
+      "size": [
+        57,
+        110
+      ],
+      "position": [
+        100,
+        114
+      ]
+    },
+    {
+      "slot": 3,
+      "rawBox": [
+        159,
+        640,
+        355,
+        1016
+      ],
+      "floor": 1012,
+      "foot": 255.40744368266405,
+      "size": [
+        57,
+        110
+      ],
+      "position": [
+        100,
+        114
+      ]
+    },
+    {
+      "slot": 4,
+      "rawBox": [
+        671,
+        641,
+        888,
+        1016
+      ],
+      "floor": 1012,
+      "foot": 767.8489065606362,
+      "size": [
+        64,
+        110
+      ],
+      "position": [
+        100,
+        114
+      ]
+    },
+    {
+      "slot": 5,
+      "rawBox": [
+        1183,
+        640,
+        1379,
+        1015
+      ],
+      "floor": 1011,
+      "foot": 1279.8416886543537,
+      "size": [
+        57,
+        110
+      ],
+      "position": [
+        100,
+        114
+      ]
+    }
+  ],
+  "fullReadDurationMs": 12000,
+  "scope": "bounded generated arm/tablet source on exact common seated body; staged, finite12s read includes draw/hold/stow; interrupted reading/room/Continue/acceptance pending"
+}

@@ -1,0 +1,93 @@
+extends SceneTree
+const BODY := "res://character/james-west-carry-walk-keys-v1/finite-handoff-v44/bare-manifest.json"
+const HELMET := "res://character/james-west-carry-walk-keys-v1/finite-handoff-v44/helmet-manifest.json"
+const OUT := "res://character/james-west-carry-walk-keys-v1/finite-handoff-v44/native"
+var checks := 0
+var failures := 0
+func check(ok: bool, why: String) -> void:
+    checks += 1
+    if not ok:
+        failures += 1
+        push_error(why)
+class Board extends Node2D:
+    var player
+    var key := "carry-prepare-west"
+    var elapsed := 0.0
+    func _draw() -> void:
+        draw_rect(Rect2(0,0,1200,320),Color("303b40"))
+        draw_string(ThemeDB.fallback_font,Vector2(12,24),"James staged finite carrying preparation / "+key,HORIZONTAL_ALIGNMENT_LEFT,-1,18,Color.WHITE)
+        for mode in range(2):
+            var tex: Texture2D=player.frame_at_elapsed(key,elapsed,"" if mode==0 else "diving-helmet")
+            for i in range(4):
+                var scale: float=[148.0,82.0,54.0,27.0][i]/148.0
+                var at:=Vector2(100+i*150+mode*600,265)
+                draw_texture_rect(tex,Rect2(at-Vector2(128,224)*scale,tex.get_size()*scale),false)
+                draw_line(at-Vector2(40,0),at+Vector2(40,0),Color("536469"))
+func _init() -> void:
+	print("JAMES FINITE PREPARATION BOOT")
+	call_deferred("run")
+func run() -> void:
+	var expected:=OS.get_environment("APPDATA").path_join("Godot/app_userdata/BrineSpace").replace("\\","/")
+	check(OS.get_user_data_dir().replace("\\","/").to_lower()==expected.to_lower(),"Scratch profile isolation")
+	if failures or DisplayServer.get_name()=="headless":quit(2);return
+	var player=load("res://scripts/crew_sprite_player.gd").new()
+	player.load_manifest(BODY)
+	check(player.load_equipment_manifest("diving-helmet",HELMET),"Paired candidate equipment accepted")
+	for mode in range(2):
+		var gear: String="" if mode==0 else "diving-helmet"
+		var manifest: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(BODY if mode==0 else HELMET))
+		var rows: Dictionary=player.frames if mode==0 else player.equipment_frames[gear]
+		for state in manifest.states:
+			check(rows[state.id].size()==3,"Three authored slots")
+			check(not player.timing[state.id].loop,"Finite motion")
+			check(absf(player.cycle_seconds(state.id,gear)-.21)<.000001,"210ms preparation study")
+			var elapsed:=0.0
+			for i in range(3):
+				var source:=Image.load_from_file(ProjectSettings.globalize_path(state.frameFiles[i]))
+				var tex: Texture2D=rows[state.id][i]
+				check(tex.get_image().get_data()==source.get_data(),"Exact authored source slot")
+				check(tex.get_meta("crew_pivot")==Vector2(128,224),"Fixed foot pivot")
+				check(tex.get_meta("crew_standing_height")==148.0,"Unchanged master ruler")
+				check(player.frame_at_elapsed(state.id,elapsed+.000001,gear).get_image().get_data()==source.get_data(),"Exact finite clock selection")
+				elapsed+=float(state.frameDurationsMs[i])/1000.0
+			check(player.frame_at_elapsed(state.id,.211,gear).get_image().get_data()==rows[state.id][-1].get_image().get_data(),"Finite endpoint clamps")
+			check(player.frame_at_elapsed(state.id,4.0,gear).get_image().get_data()==rows[state.id][-1].get_image().get_data(),"No late loop/restart")
+		for i in range(3):
+			check(rows["carry-prepare-west"][i].get_image().get_data()==rows["carry-unprepare-west"][2-i].get_image().get_data(),"Explicit reversed-source study")
+	root.size=Vector2i(1200,320)
+	root.content_scale_size=Vector2i.ZERO
+	var board:=Board.new();board.player=player;root.add_child(board)
+	DirAccess.make_dir_recursive_absolute(OUT)
+	var captures:=0
+	for key in ["carry-prepare-west","carry-unprepare-west"]:
+		var elapsed:=0.0
+		for i in range(3):
+			board.key=key;board.elapsed=elapsed+.000001;board.queue_redraw()
+			await process_frame
+			await RenderingServer.frame_post_draw
+			check(root.get_texture().get_image().save_png(OUT.path_join(key+"-%03d.png"%i))==OK,"Four-size paired native capture")
+			captures+=1
+			elapsed+=float(player.timing[key].durations[i])/1000.0
+	# At210ms hand off to distance-driven walk0, rather than replaying its40ms.
+	player.load_manifest("res://character/james-west-carry-walk-keys-v1/master-head-review-v16/bare-manifest.json",true)
+	check(player.load_equipment_manifest("diving-helmet","res://character/james-west-carry-walk-keys-v1/master-head-review-v16/helmet-manifest.json"),"Walking pair appended")
+	check(absf(player.cycle_seconds("carry-prepare-west")+player.cycle_seconds("carry-west")-1.89)<.000001,"Runtime study equals1890ms source preview")
+	var handoff_samples:=0
+	for equipment in ["","diving-helmet"]:
+		var row: Array=player.frames["carry-west"] if equipment.is_empty() else player.equipment_frames[equipment]["carry-west"]
+		check(player.frame("carry","west",.21,Vector2.ZERO,equipment)==row[0],"Walk0 begins at210ms")
+		var elapsed:=0.0
+		for slot in range(49):
+			var distance: float=.1796875*(elapsed+.000001)/1.68
+			var tex: Texture2D=player.frame("carry","west",.21+elapsed+.000001,Vector2(-distance,0),equipment)
+			check(tex==row[slot],"Exact chronological distance source after handoff")
+			if slot==1:check(absf(.21+elapsed-.25)<.000001,"Walk1 begins at250ms without duplicate walk0")
+			handoff_samples+=1
+			elapsed+=float(player.timing["carry-west"].durations[slot])/1000.0
+	var uid_path:="res://character/james-west-carry-walk-keys-v1/finite-handoff-v44/native_probe.gd.uid"
+	if not FileAccess.file_exists(uid_path):
+		var uid_file:=FileAccess.open(uid_path,FileAccess.WRITE);uid_file.store_line(ResourceUID.id_to_text(ResourceUID.create_id()))
+	var file:=FileAccess.open("res://character/james-west-carry-walk-keys-v1/finite-handoff-v44/native-evidence.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify({"checks":checks,"failures":failures,"captures":captures,"handoffSourceSamples":handoff_samples,"handoffMs":210,"journeyMs":1890,"scope":"Isolated staged CrewSpritePlayer finite three-pose preparation/reversed-source studies, exact sources/clocks/pivots/rulers, terminal clamping and six paired four-size native captures. No normal dispatch, distance-driven cargo journey, real rooms/Continue, full collar/equipment or uninterrupted visual motion acceptance."},"  "))
+	print("JAMES FINITE PREPARATION: %d checks, %d failures, %d captures"%[checks,failures,captures])
+	quit(1 if failures else 0)

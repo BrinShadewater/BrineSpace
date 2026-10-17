@@ -1,0 +1,82 @@
+{
+  "generation": "Built-in image generation; original North terminal and East cargo/case crop references. Four raw sources and exact prompts retained.",
+  "attempts": [
+    {
+      "source": "sources/rejected-case-v1.png",
+      "generated": "exec-f3180335-81d8-483c-bef2-83cf0d988388.png",
+      "reason": "Oversize handle/vertical straps and broad projection drift from original plain case."
+    },
+    {
+      "source": "sources/rejected-case-v2.png",
+      "generated": "exec-ebeb0d34-4c21-4758-99c7-d799d280eddd.png",
+      "reason": "Smoky attached halo; stacked tall-panel design."
+    },
+    {
+      "source": "sources/rejected-case-v3.png",
+      "generated": "exec-688c847c-69bb-4bfd-8db2-5bc695131a07.png",
+      "reason": "Clean edge but tall three-surface design; silhouette drift."
+    },
+    {
+      "source": "sources/case-v4.png",
+      "generated": "exec-2ec55a57-1e2d-4002-90a4-bdea88e94a64.png",
+      "status": "Selected for staged source study only; no gameplay admission."
+    }
+  ],
+  "registration": {
+    "source": "sources/case-v4.png",
+    "sourceBox": [
+      310,
+      438,
+      876,
+      973
+    ],
+    "scale": 0.04063604240282685,
+    "nativeCaseSize": [
+      23,
+      22
+    ],
+    "position": [
+      117,
+      198
+    ],
+    "pivot": [
+      128,
+      224
+    ],
+    "standingHeight": 148,
+    "alphaExtraction": "Largest alpha>80 component, associated two-pixel fringe only; original raw alpha retained in sources. No painted pixels.",
+    "grade": "No recoloring applied; generated material reviewed separately.",
+    "sourceSha256": "9948815662787647880c6a7a9c7d2d4e6adfeaf8c4a90cdced96cee002e95e3b",
+    "protectedInputs": {
+      "character/bill-carry-start-south-v2/short-route-captures/rot0-bare-completed-north-source.png": "bf7654d7e5a41d76ad3b3c3ee082d4dbd06a9ba59f307e2a875fadf1a13c598e",
+      "character/bill-unload-north-rise-v1/frames/bare/unload-north/013.png": "b9e7298d61710997f8a5b4d24f1b15a10e4bb30ef4b5f86744f8203298a18fc9",
+      "character/bill-carry-start-south-v2/short-route-captures/rot0-helmet-completed-north-source.png": "a692ad9f27f8d2545b139b05fc1a0b5c8f7ee8ae18c8988a70ce8f5b571f0b52",
+      "character/bill-unload-north-rise-v1/frames/helmet/unload-north/013.png": "531744b86b0df561ac4b6ae08b870ff248860f446666a43e8af56688c74d5a62"
+    },
+    "metrics": {
+      "bare": {
+        "opaqueBodyPixelsPreserved": 4995,
+        "outsidePropPixelsPreserved": 65036
+      },
+      "helmet": {
+        "opaqueBodyPixelsPreserved": 5118,
+        "outsidePropPixelsPreserved": 65036
+      }
+    },
+    "status": "staged source/prop study; no normal loader, ownership, lifetime, depth, persistence or Continue behavior selected"
+  },
+  "validation": {
+    "passed": true,
+    "pixelComparisons": 257232,
+    "mechanicalScope": "Exact native opaque body and outside-prop RGBA retained; case behind body, same floor location both gears. Not native lifecycle or visual acceptance."
+  },
+  "visualReview": "Agent reviewed registered full and82/148-scale paired board. Fourth case is compact, clean-edged and restrained matte grey; opaque body/head/helmet remain exact. Native23x22 differs from original occluded23x26crop: full hidden case geometry is inferred, not master-exact recovery. New latches/material detail and terminal-to-new-case join still need native motion review.",
+  "normalSelectionChanged": false,
+  "runtimeStatus": "No actor/world prop ownership, lifetime, depth, deletion, save or Continue behavior implemented. Composed idle previews are study images; a floor case must be anchored independently of moving actor.",
+  "remaining": [
+    "Native terminal join and world depth/contact",
+    "Floor-anchor persistence while actor leaves",
+    "Service-loss carry return and priority/Continue",
+    "Remaining full-set and cross-family polish"
+  ]
+}

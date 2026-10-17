@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti
+
+HAZARD SETUP eat/rotated-counter prior running=true paused=false crew=1
+ERROR: Actual changed contact cancels obsolete return
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://character/james-meal-interrupt-north-v1/native-contact.gd:9)
+       [1] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:80)
+SCRIPT ERROR: Invalid call. Nonexistent function 'restore' in base 'RefCounted (branforth_npc.gd)'.
+   at: run (res://character/james-meal-interrupt-north-v1/native-contact.gd:83)
+   GDScript backtrace (most recent call first):
+       [0] run (res://character/james-meal-interrupt-north-v1/native-contact.gd:83)
+       [1] capture (res://character/james-meal-interrupt-north-v1/native-contact.gd:27)

@@ -1,0 +1,108 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 514,
+  "failures": 0,
+  "captures": 8,
+  "exactSources": 8,
+  "samples": 126,
+  "actorPlayerRestores": 8,
+  "decodedHeldFrames": 8,
+  "stableBoundedInputs": 501,
+  "unchangedOwnerNonLogFiles": 2931,
+  "cases": [
+    {
+      "action": "pickup",
+      "actorRestores": 4,
+      "actualArrivalSamples": 0,
+      "captureCount": 4,
+      "captureStart": 0,
+      "exitDirection": "north",
+      "exitElapsed": -1.0,
+      "exitPose": "carry",
+      "exitStage": "workshop_carry",
+      "exitState": "walk",
+      "sampleStart": 0,
+      "samples": 26,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "action": "unload",
+      "actorRestores": 4,
+      "actualArrivalSamples": 35,
+      "captureCount": 4,
+      "captureStart": 4,
+      "exitDirection": "east",
+      "exitElapsed": 0.0,
+      "exitPose": "walk-start",
+      "exitStage": "",
+      "exitState": "walk",
+      "sampleStart": 26,
+      "samples": 100,
+      "slots": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "sourceParity": [
+    {
+      "key": "pickup-north",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/pickup-north/000.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    },
+    {
+      "key": "pickup-north",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/pickup-north/001.png",
+      "sha256": "9553a6b8a1be3f2da2463d2881c1b1e70aea0f39623eaa92e8627b33f6cf9ec1"
+    },
+    {
+      "key": "pickup-north",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/pickup-north/002.png",
+      "sha256": "68b4ea1d925ce4e0bf164b5b9d84be57bb16bc3469e8b1dbc03c4ef7aeb8f5a1"
+    },
+    {
+      "key": "pickup-north",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/pickup-north/003.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "key": "unload-north",
+      "slot": 0,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "key": "unload-north",
+      "slot": 1,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/001.png",
+      "sha256": "68b4ea1d925ce4e0bf164b5b9d84be57bb16bc3469e8b1dbc03c4ef7aeb8f5a1"
+    },
+    {
+      "key": "unload-north",
+      "slot": 2,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/002.png",
+      "sha256": "9553a6b8a1be3f2da2463d2881c1b1e70aea0f39623eaa92e8627b33f6cf9ec1"
+    },
+    {
+      "key": "unload-north",
+      "slot": 3,
+      "path": "character/marsh-cargo-held-material-v1/north-unload-01-unselected/unload-north/003.png",
+      "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Normal Marsh.update/main/grid/player staged North pickup entered from work timer; actual short North carry route reaches arrive() and forces North unload. Four130ms frames,normal .52pickup and2secondunload finalidle hold,actor/player restores andpause. Actual arrival covered,NOT complete pickup-to-carry-to-unload delivery,expedition/fullsave/TitleContinue/contactfilm/normal admission/fullsetacceptance.",
+  "limits": "Actual short carry route enters North unload; not complete pickup-to-delivery route. No expedition delivery/fullsave/TitleContinue/continuous contact/normal admission/fullset acceptance."
+}

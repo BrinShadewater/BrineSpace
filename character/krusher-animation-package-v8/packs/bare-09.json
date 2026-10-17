@@ -1,0 +1,257 @@
+{
+  "name": "Krusher Dom helmet fitting east",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "status": "candidate-not-installed",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "../frames/070f87ec7c1f58e636913cb0bd2be748a53357b07ba18cf1752031e18474c50a.png",
+        "../frames/b59a04cf4f4cde447b4ac128ae7319d6f779d9b80fd366b326db155a814231a2.png",
+        "../frames/757828f4f15aaf1e16f5c0d8a130c22cc238ed4c84d7d0a6405e0c85e63e2210.png",
+        "../frames/c45955485fcc6d934766372634a79e75ea9c04755a8b0d484a40d6d5045b821b.png",
+        "../frames/78b12fee7f6fb2b6127cd2e8c3f9415b239e4efff075e60d12ed24a26039c6e5.png",
+        "../frames/7e3fbc8a311bf34fd2fe310652c2c098e8f870b359aa940e9fc9d189dc1eae8d.png",
+        "../frames/f7983497972327f646cfd8abce20a2b54bcd04b63daf227858ca3a3ab374ffc8.png",
+        "../frames/325d2f0cc9ff6cbe8c6493b3be524d5bf09f15d0a344bfa0e564ba951149fae0.png",
+        "../frames/adefc158aa2f1d39d23761738e56d59ae3e8f317ffc7fc53e8aeeff5dee0d70d.png",
+        "../frames/7826deeadd3164e13a51c7c034243a01ffc4e1fce2a408013b0f3210da5c3b0c.png",
+        "../frames/b6d2b0f742d4670d8fb705182966d65260c69942f2847647cebbde38d3a8e094.png",
+        "../frames/76167a558ab1872fb4c0863636eb3a456ad25fc0664709c823539466ea4c5057.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "../frames/76167a558ab1872fb4c0863636eb3a456ad25fc0664709c823539466ea4c5057.png",
+        "../frames/b6d2b0f742d4670d8fb705182966d65260c69942f2847647cebbde38d3a8e094.png",
+        "../frames/7826deeadd3164e13a51c7c034243a01ffc4e1fce2a408013b0f3210da5c3b0c.png",
+        "../frames/adefc158aa2f1d39d23761738e56d59ae3e8f317ffc7fc53e8aeeff5dee0d70d.png",
+        "../frames/325d2f0cc9ff6cbe8c6493b3be524d5bf09f15d0a344bfa0e564ba951149fae0.png",
+        "../frames/f7983497972327f646cfd8abce20a2b54bcd04b63daf227858ca3a3ab374ffc8.png",
+        "../frames/7e3fbc8a311bf34fd2fe310652c2c098e8f870b359aa940e9fc9d189dc1eae8d.png",
+        "../frames/78b12fee7f6fb2b6127cd2e8c3f9415b239e4efff075e60d12ed24a26039c6e5.png",
+        "../frames/c45955485fcc6d934766372634a79e75ea9c04755a8b0d484a40d6d5045b821b.png",
+        "../frames/757828f4f15aaf1e16f5c0d8a130c22cc238ed4c84d7d0a6405e0c85e63e2210.png",
+        "../frames/b59a04cf4f4cde447b4ac128ae7319d6f779d9b80fd366b326db155a814231a2.png",
+        "../frames/070f87ec7c1f58e636913cb0bd2be748a53357b07ba18cf1752031e18474c50a.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ],
+      "provenance": "James authored body, tool and shell motion reused; Krusher identity and matte cyan markings; removal reverses fitting poses; exact canonical-v4 idle endpoints",
+      "sourcePoseIndices": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "runtimeInstalled": false,
+  "identity": {
+    "name": "Krusher Dom",
+    "title": "System Administrator",
+    "department": "AI & Robotics",
+    "accentTarget": "#527C80",
+    "baseFamily": "James / Branforth"
+  }
+}

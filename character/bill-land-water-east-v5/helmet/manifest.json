@@ -1,0 +1,48 @@
+{
+  "name": "Bill East articulated lift midpoint \u2014 helmet",
+  "frameWidth": 320,
+  "frameHeight": 320,
+  "pivot": [
+    160,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "source_lift_trial_unselected",
+  "states": [
+    {
+      "id": "land-swim-east",
+      "frameFiles": [
+        "frames/land-swim-east/000.png",
+        "frames/land-swim-east/001.png",
+        "frames/land-swim-east/002.png",
+        "frames/land-swim-east/003.png",
+        "frames/land-swim-east/004.png",
+        "frames/land-swim-east/005.png",
+        "frames/land-swim-east/006.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        50,
+        50,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "Six V4 poses exact. One new whole-body lift at fixed320/1254 authoring-canvas scale with whole-pose(-2,-1) registration; helmet uses original scale1 native component. Original100ms crouch hold split50+50, total500ms. No normal admission."
+    }
+  ],
+  "equipment": "diving-helmet"
+}

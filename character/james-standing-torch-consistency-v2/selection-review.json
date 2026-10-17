@@ -1,0 +1,113 @@
+{
+  "status": "selected_sources_reviewed_material_polish_pending",
+  "runtimeOrArtChanged": false,
+  "sourceReferences": 696,
+  "pairedStates": 24,
+  "boardsReviewed": [
+    "east-page0.png",
+    "east-page1.png",
+    "east-page2.png",
+    "east-page3.png",
+    "east-page4.png",
+    "east-page5.png",
+    "east-page6.png",
+    "north-page0.png",
+    "north-page1.png",
+    "south-page0.png",
+    "south-page1.png",
+    "south-page2.png",
+    "west-page0.png",
+    "west-page1.png",
+    "west-page2.png",
+    "west-page3.png"
+  ],
+  "masterBoardsReviewed": [
+    "east-masters.png",
+    "north-masters.png",
+    "south-masters.png",
+    "west-masters.png"
+  ],
+  "exactRGBAJoins": 32,
+  "visualReview": "All696 selected dry torch draw/weld/stow references inspected on16 paired boards against four bare/helmet idle masters. Stable adult build, boots, shared helmet and forward torch orientation. Interior lower-suit/hand green residue needs bounded source-material review, most evident North draw1. No per-pose size normalization warranted by this source review.",
+  "materialDiagnostic": [
+    {
+      "mode": "bare",
+      "direction": "east",
+      "masterGreenFraction": 0.0,
+      "worstKey": "torch-draw-east",
+      "worstIndex": 11,
+      "worstGreenFraction": 0.023098591549295774,
+      "medianGreenFraction": 0.017857142857142856
+    },
+    {
+      "mode": "bare",
+      "direction": "north",
+      "masterGreenFraction": 0.0344311377245509,
+      "worstKey": "torch-draw-north",
+      "worstIndex": 1,
+      "worstGreenFraction": 0.08542976939203355,
+      "medianGreenFraction": 0.06880496637351267
+    },
+    {
+      "mode": "bare",
+      "direction": "south",
+      "masterGreenFraction": 0.04091653027823241,
+      "worstKey": "torch-draw-south",
+      "worstIndex": 1,
+      "worstGreenFraction": 0.061018437225636525,
+      "medianGreenFraction": 0.04471744471744472
+    },
+    {
+      "mode": "bare",
+      "direction": "west",
+      "masterGreenFraction": 0.0,
+      "worstKey": "torch-stow-west",
+      "worstIndex": 7,
+      "worstGreenFraction": 0.020041109969167522,
+      "medianGreenFraction": 0.01529535864978903
+    },
+    {
+      "mode": "helmet",
+      "direction": "east",
+      "masterGreenFraction": 0.0,
+      "worstKey": "torch-draw-east",
+      "worstIndex": 11,
+      "worstGreenFraction": 0.023098591549295774,
+      "medianGreenFraction": 0.017857142857142856
+    },
+    {
+      "mode": "helmet",
+      "direction": "north",
+      "masterGreenFraction": 0.0344311377245509,
+      "worstKey": "torch-draw-north",
+      "worstIndex": 1,
+      "worstGreenFraction": 0.08542976939203355,
+      "medianGreenFraction": 0.06880496637351267
+    },
+    {
+      "mode": "helmet",
+      "direction": "south",
+      "masterGreenFraction": 0.04091653027823241,
+      "worstKey": "torch-draw-south",
+      "worstIndex": 1,
+      "worstGreenFraction": 0.061018437225636525,
+      "medianGreenFraction": 0.04471744471744472
+    },
+    {
+      "mode": "helmet",
+      "direction": "west",
+      "masterGreenFraction": 0.0,
+      "worstKey": "torch-stow-west",
+      "worstIndex": 7,
+      "worstGreenFraction": 0.020041109969167522,
+      "medianGreenFraction": 0.01529535864978903
+    }
+  ],
+  "causeEvidence": "Existing direct-v1 grade.py neutral selector requires blue>=green-4; greener source material is excluded from the neutralization. This explains a plausible residual route, not a proof that every green pixel is unwanted.",
+  "limitations": [
+    "No new native/controller/route/Continue evidence",
+    "No continuously watched full-motion claim from contact sheets or generated source GIF",
+    "No full-set or owner acceptance",
+    "Bounds include raised torch/flame; do not force source alpha bounds to master stature"
+  ]
+}

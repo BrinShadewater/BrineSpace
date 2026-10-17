@@ -1,0 +1,28 @@
+{
+  "version": 340,
+  "entryChecks": 290,
+  "interruptChecks": 2289,
+  "failures": 0,
+  "entryScenarios": 48,
+  "interruptSamples": 272,
+  "normalChanged": false,
+  "sourceAcceptance": false,
+  "fullGoalComplete": false,
+  "ownerProfileUnchanged": true,
+  "visualReview": "Two bare/helmet four-direction entry boards actually viewed; static entry continuity only, not full motion.",
+  "priorFailedTrial": {
+    "checks": 2017,
+    "failures": 56,
+    "finding": "Swim slot boundary subtraction could select previous pose on restart."
+  },
+  "scope": "Staged exact-source player; pause, fresh player restore, restart/re-interruption and entry travel checks. Actor collision route, direction/equipment changes and whole-run Continue remain unverified.",
+  "prelaunchFreeze": false,
+  "postRunCodeBindings": {
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\phase_player.gd": "9e6b06a03cca2d1fa0b53a558761b553aaa4a682c2441a2c64db93073dff5d6b",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\probe.gd": "d4b99aa6a73c252a7e340f9d3e8d11aa7f2c6255e0cba4e2751ae13af5f78b1e",
+    "character\\james-west-carry-walk-keys-v1\\water-stop-bridge-v340\\interrupt_probe.gd": "6fe5ed3ebf71bc27115d39766613d122c8e3183de892811ea25fe762627ab8cb",
+    "scripts\\crew_sprite_player.gd": "7bb05a4426c8ad6849732f3e51f480ef3a3a1c748091378d261f92407bbf0a08",
+    "scripts\\james_cargo_player.gd": "51d59041d12cb496c363412a764f94699a6b353c0a1fbd16eb454f5c572774f1",
+    "scripts\\grid_canvas.gd": "d28956990d15ffb37497ad8ac91d8629822ef71020623f2bbefc9bdd55cfa2ef"
+  }
+}

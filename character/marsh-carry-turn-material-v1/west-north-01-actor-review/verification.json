@@ -1,0 +1,107 @@
+{
+  "normalAdmission": false,
+  "fullGoalComplete": false,
+  "checks": 482,
+  "failures": 0,
+  "engineErrors": 0,
+  "exitCode": 0,
+  "captures": 12,
+  "exactSources": 12,
+  "controlledSamples": 140,
+  "actorPlayerRestores": 5,
+  "allFiveTurnPhases": true,
+  "allFourDestinationPhases": true,
+  "exactDestinationFrame0Return": true,
+  "stableBoundedInputs": 125,
+  "unchangedOwnerNonLogFiles": 2931,
+  "sourceParity": [
+    {
+      "capture": 0,
+      "key": "idle-west",
+      "slot": -1,
+      "path": "character/marsh-v2/frames/bare/idle-west/000.png",
+      "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+    },
+    {
+      "capture": 1,
+      "key": "carry-west",
+      "slot": 0,
+      "path": "character/marsh-west-carry-material-v1/candidate-03/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 2,
+      "key": "carry-turn-west-north",
+      "slot": 0,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-west-north/000.png",
+      "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+    },
+    {
+      "capture": 3,
+      "key": "carry-turn-west-north",
+      "slot": 1,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-west-north/001.png",
+      "sha256": "78741e996e0c015842684d340f3bebf08616dd11af1f1bc3179b634d7c9fd67c"
+    },
+    {
+      "capture": 4,
+      "key": "carry-turn-west-north",
+      "slot": 2,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-west-north/002.png",
+      "sha256": "9b85a072043eddd51ed511f0877e19eddf43a58f9223187a0ea0825ac91d0217"
+    },
+    {
+      "capture": 5,
+      "key": "carry-turn-west-north",
+      "slot": 3,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-west-north/003.png",
+      "sha256": "fcaa42e52d861948808f82f3ead5f98fcf1cd06162d79e38196ccc623fa9f21b"
+    },
+    {
+      "capture": 6,
+      "key": "carry-turn-west-north",
+      "slot": 4,
+      "path": "character/marsh-carry-turn-material-v1/west-north-01-unselected/carry-turn-west-north/004.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 7,
+      "key": "carry-north",
+      "slot": 0,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/000.png",
+      "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+    },
+    {
+      "capture": 8,
+      "key": "carry-north",
+      "slot": 1,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/001.png",
+      "sha256": "ecbf95d1d500e58419d0b52e325582e2b2f7bade03035f09a08e59da7f82026f"
+    },
+    {
+      "capture": 9,
+      "key": "carry-north",
+      "slot": 2,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/002.png",
+      "sha256": "933ddedfc3de7aea36546b51802edd490ca16c6a51c7811fb50a3639ba02a1df"
+    },
+    {
+      "capture": 10,
+      "key": "carry-north",
+      "slot": 3,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/003.png",
+      "sha256": "d106f817d4b0aaf10a623c991d2664033c053d988ede5443b7aa320c962aeec6"
+    },
+    {
+      "capture": 11,
+      "key": "carry-north",
+      "slot": 1,
+      "path": "character/marsh-north-carry-material-v1/candidate-01/001.png",
+      "sha256": "ecbf95d1d500e58419d0b52e325582e2b2f7bade03035f09a08e59da7f82026f"
+    }
+  ],
+  "visualReviewed": true,
+  "scope": "Actual normal Marsh.move workshop_carry on clear West-64/North-96 path corner,normal factory/main/grid/player with staged carries/quarter turn;140controlled20ms samples,five moving turn actor/player restores+pause holds,exact destination frame0 return,all4 destination phases. No full RunSave/visible TitleContinue,reverse path-turn,complete pickup/unload or continuous contact acceptance.",
+  "heldApng": "Five exact cropped held captures at60/90/100/90/60ms;not realtime continuous film/contact.",
+  "retainedFailure": "None in this independent West-North native interval;East fixture explicit bool retained."
+}

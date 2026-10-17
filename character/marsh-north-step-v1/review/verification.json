@@ -1,0 +1,74 @@
+{
+  "normalAdmission": false,
+  "nativeChecks": 166,
+  "failures": 0,
+  "nativeCaptures": [
+    {
+      "elapsed": 0.0,
+      "file": "pose-000.png",
+      "slot": 0,
+      "nativeSha256": "2f31e23265efa7955023e5ee81d64bf222ac321f772c78b1a7859dd581da6689",
+      "sourceSha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+    },
+    {
+      "elapsed": 0.12,
+      "file": "pose-001.png",
+      "slot": 1,
+      "nativeSha256": "768c4b4385b506c9215187712e74b1adaedaf2dea057a883b19364c64635cc41",
+      "sourceSha256": "55f874c6689eb542589c769b7d551b6a969b2d128a87a0a29f5faa3d59441bb7"
+    },
+    {
+      "elapsed": 0.24,
+      "file": "pose-002.png",
+      "slot": 2,
+      "nativeSha256": "3e2da5351e21effd184ee162d32c937ba2b18585b6b1090a265d9dee94c53251",
+      "sourceSha256": "7f1810b84289442aa9d46aaf10a360c1eeddea53b03193bbe9a2c4fce159702d"
+    },
+    {
+      "elapsed": 0.36,
+      "file": "pose-003.png",
+      "slot": 3,
+      "nativeSha256": "fea347944a73e39da5bd8453cf28bdd9fed485ee833c4293c07f1b1539f5d895",
+      "sourceSha256": "5e91777074f19b85be7c30a2d8aeede7a47e5914bd235ef30fe28e5b85f549e6"
+    },
+    {
+      "elapsed": 0.48,
+      "file": "pose-004.png",
+      "slot": 4,
+      "nativeSha256": "e84cfd0818cf2b50ba3971f86a3a426354dad467c57e622dad53e45fa7715f4c",
+      "sourceSha256": "1f69029aff5cd77ee2823564dfa46f27dd094f05a4b3c942d533845a07651f77"
+    },
+    {
+      "elapsed": 0.6,
+      "file": "pose-005.png",
+      "slot": 5,
+      "nativeSha256": "67f2514fb55ee90f6f259d0a4041ab0683f7cbc349502e54eff159e5919b3216",
+      "sourceSha256": "97048cc3bbabf0d04f4fe6bde4975b1c22e5ba52b00235454ff299bd4aa813c5"
+    },
+    {
+      "elapsed": 0.72,
+      "file": "pose-006.png",
+      "slot": 6,
+      "nativeSha256": "df99ca489a16328984083cc1c8a0ba35520334c80149767c2801c667d4138d41",
+      "sourceSha256": "2b7470071d1fb4e473ab4a4b010f7331e23d124b3fa885517d9a7224b0fc1836"
+    }
+  ],
+  "losslessPreviewFramesVerified": 7,
+  "ownerNonLogFiles": 2931,
+  "ownerUnchanged": true,
+  "sourceClockOnly": true,
+  "rootContactVerified": false,
+  "continueVerified": false,
+  "inputs": {
+    "tools/review_marsh_north_step.gd": "d18db8531427b7ef8c1b07d96d386081b8c9b51ab7cee8f1bc5b280fd9e2c4bd",
+    "tools/build_marsh_north_step.py": "c3c03d297f267bfe70bb9052b0d31e8459ef607b0cbfb0b73ea726caaf7ec776",
+    "scripts/grid_canvas.gd": "77846c5c2a874bf01a64369389d12595e73d1e68fed39b3178b47fd6541162e7",
+    "scripts/crew_sprite_player.gd": "7bff043e7500e96108906d91e84b83b82374ccf40e79d03a871c0bd0383c443e",
+    "character/marsh-v2/catalog.json": "3d630b722c31daa267447eb0a6a4567c54a36626f6f363f27431750d07be55ef",
+    "character/marsh-north-step-v1/candidate-04/manifest.json": "3fc786ee490fba4e6b2de2e6e758a2345e1d0def1b0e0500a834cc4a7190cae3"
+  },
+  "logSha256": "aa363844e22a0136774a4b71e765be1766289f8daeec2e52927dd273f2dd81ea",
+  "scope": "Normal selected loader plus explicitly unselected candidate04;20ms source-clock playback at148/65.28 density. No root travel/controller, contact curve, natural routes, production admission or Continue.",
+  "currentFixtureMatchesCaptured": false,
+  "motionDecision": "rejected: zero forward landing depth; source-clock checks are historical presentation evidence only"
+}

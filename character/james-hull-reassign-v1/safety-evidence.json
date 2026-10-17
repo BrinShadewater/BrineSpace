@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "goal": "",
+      "medium": "dry",
+      "returning": true,
+      "state": "idle",
+      "trigger": "cancel"
+    },
+    {
+      "goal": "",
+      "medium": "dry",
+      "returning": true,
+      "state": "idle",
+      "trigger": "reassign"
+    },
+    {
+      "goal": "",
+      "medium": "dry",
+      "returning": false,
+      "state": "death-ground",
+      "trigger": "death"
+    },
+    {
+      "goal": "hull-repair",
+      "medium": "flooded",
+      "returning": false,
+      "state": "repair",
+      "trigger": "flood"
+    }
+  ],
+  "checks": 76,
+  "failures": 0,
+  "scope": "Four actual paid North held repairs, rapid reassignment back, interrupted resumed entry by cancellation/reassignment/death/flood; nine corrupted saved resume variants each, including canonical recipe for wrong paid target. Prescribed recovered peer; not Bill claim, other facings, physical floor loss or all hazards."
+}
