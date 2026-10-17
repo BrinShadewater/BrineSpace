@@ -1,0 +1,134 @@
+{
+  "scope": "Three actual release template candidate visits; same clean audited PCK, QA autoload adapter, debug=false, script call-stack tracking off, automatic capture/breadcrumbs off during measurement, muted, VSync off, deterministic 40-room fixture, 1600x900 drawable, 180 frames per phase/visit; normal production rules unchanged outside dedicated fixture. No fresh packaged parent comparison.",
+  "visits": [
+    {
+      "visit": 1,
+      "code": 0,
+      "valid": true,
+      "debug": false,
+      "max_rss_bytes": 2728296448,
+      "peak_physical_footprint_bytes": 4929081184,
+      "result": "/Users/Shared/BrineSpace-native-validation-evidence-20261017/release-benchmark/1/result.json"
+    },
+    {
+      "visit": 2,
+      "code": 0,
+      "valid": true,
+      "debug": false,
+      "max_rss_bytes": 3974938624,
+      "peak_physical_footprint_bytes": 5150003304,
+      "result": "/Users/Shared/BrineSpace-native-validation-evidence-20261017/release-benchmark/2/result.json"
+    },
+    {
+      "visit": 3,
+      "code": 0,
+      "valid": true,
+      "debug": false,
+      "max_rss_bytes": 4175282176,
+      "peak_physical_footprint_bytes": 5270212832,
+      "result": "/Users/Shared/BrineSpace-native-validation-evidence-20261017/release-benchmark/3/result.json"
+    }
+  ],
+  "ready_ms": [
+    4426.735,
+    3513.042,
+    3523.166
+  ],
+  "scene_request_to_ready_ms": [
+    5025.339,
+    4124.907,
+    4141.915
+  ],
+  "phases": [
+    {
+      "action": "idle",
+      "simulation_speed": 1,
+      "frames": 540,
+      "mean_fps": 45.290166548716535,
+      "p95_ms": 26.745,
+      "p99_ms": 35.281,
+      "max_ms": 77.491,
+      "over_100ms": 0
+    },
+    {
+      "action": "idle",
+      "simulation_speed": 2,
+      "frames": 540,
+      "mean_fps": 43.60388358796656,
+      "p95_ms": 29.219,
+      "p99_ms": 41.586,
+      "max_ms": 68.031,
+      "over_100ms": 0
+    },
+    {
+      "action": "idle",
+      "simulation_speed": 4,
+      "frames": 540,
+      "mean_fps": 43.051788191899035,
+      "p95_ms": 29.223,
+      "p99_ms": 32.738,
+      "max_ms": 35.649,
+      "over_100ms": 0
+    },
+    {
+      "action": "zoom",
+      "simulation_speed": 1,
+      "frames": 540,
+      "mean_fps": 39.98352086591867,
+      "p95_ms": 35.476,
+      "p99_ms": 39.941,
+      "max_ms": 48.866,
+      "over_100ms": 0
+    },
+    {
+      "action": "zoom",
+      "simulation_speed": 2,
+      "frames": 540,
+      "mean_fps": 39.11319380015317,
+      "p95_ms": 37.025,
+      "p99_ms": 41.697,
+      "max_ms": 45.092,
+      "over_100ms": 0
+    },
+    {
+      "action": "zoom",
+      "simulation_speed": 4,
+      "frames": 540,
+      "mean_fps": 37.29086299965354,
+      "p95_ms": 36.724,
+      "p99_ms": 41.215,
+      "max_ms": 45.525,
+      "over_100ms": 0
+    },
+    {
+      "action": "placement",
+      "simulation_speed": 1,
+      "frames": 540,
+      "mean_fps": 45.258103190989615,
+      "p95_ms": 26.298,
+      "p99_ms": 33.121,
+      "max_ms": 44.404,
+      "over_100ms": 0
+    },
+    {
+      "action": "placement",
+      "simulation_speed": 2,
+      "frames": 540,
+      "mean_fps": 42.07293670812305,
+      "p95_ms": 29.84,
+      "p99_ms": 36.671,
+      "max_ms": 47.549,
+      "over_100ms": 0
+    },
+    {
+      "action": "placement",
+      "simulation_speed": 4,
+      "frames": 540,
+      "mean_fps": 40.90782028740016,
+      "p95_ms": 31.395,
+      "p99_ms": 40.035,
+      "max_ms": 69.472,
+      "over_100ms": 0
+    }
+  ]
+}

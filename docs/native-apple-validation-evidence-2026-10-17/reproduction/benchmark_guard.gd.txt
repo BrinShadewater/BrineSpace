@@ -1,0 +1,14 @@
+extends "res://scripts/bug_report.gd"
+var qa_verified:=false
+func _enter_tree():
+ var expected=OS.get_environment("BRINE_EXPECTED_PROFILE")
+ qa_verified=not expected.is_empty() and OS.get_user_data_dir()==expected
+ print("RELEASE_PROFILE_GUARD ",OS.get_user_data_dir()," matches=",qa_verified)
+ if not qa_verified:
+  get_tree().quit(2)
+  return
+ super._enter_tree()
+func _ready():
+ if qa_verified:
+  super._ready()
+  performance_monitor.auto_capture=false

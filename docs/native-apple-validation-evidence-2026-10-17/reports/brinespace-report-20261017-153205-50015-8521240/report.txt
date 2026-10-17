@@ -1,0 +1,48 @@
+BrineSpace bug report
+build: {"build_id":"brinespace-caa46fba0f4ef5ec","file_count":36679.0,"git_commit":"585111ca3878e6ae60d044d745b395bdb2a7e9af","source_bytes":4019428998.0,"source_sha256":"caa46fba0f4ef5ec308d1c33f1132a5dfe4bcfbb28073c1f57054a98583a7484","working_tree_modified":true}
+trigger: manual (F8)
+note: Native Apple validation continue
+captured at F8: 2026-10-17 15:32:05 (uptime 8 s)
+
+input state when F8 was pressed:
+  tree paused: false
+  music: track moonlit_canyon_02.ogg at 7 of 293 s, -30.2 dB, ducked -3.3 dB, master MUTED 100%, device Default (CoreAudio, 48000 Hz)
+  mouse mode: 0 (0 visible, 2 captured, 3 confined)
+  pointer: (955.9803, 949.7687)  window: (2940, 1642)  viewport: (1933.0, 1080.0)
+  focus owner: (none)
+  hovered control: (none)
+  covers the screen: Main (Control) filter=0 alpha=1.00 rect=[P: (0.0, 0.0), S: (1933.0, 1080.0)]
+  covers the screen: Main/SpaceBackdrop (ColorRect) filter=0 alpha=1.00 rect=[P: (0.0, 0.0), S: (1933.0, 1080.0)]
+  covers the screen: Main/Root (Control) filter=0 alpha=1.00 rect=[P: (0.0, 0.0), S: (1933.0, 1080.0)]
+  covers the screen: Main/Root/Center/GridFrame/GridScroll/GridView (Control) filter=0 alpha=1.00 rect=[P: (-5875.0, -5960.0), S: (12804.48, 12804.48)]
+  covers the screen: Main/Root/Center/GridFrame/LightMap/LightMapViewport/White (ColorRect) filter=0 alpha=1.00 rect=[P: (0.0, 0.0), S: (8192.0, 8192.0)]
+  layer 900 visible: BugReport/@Node@2/@CanvasLayer@1016 (CanvasLayer)
+
+bundle time: 2026-10-17 15:32:05
+errors logged: none
+automatic captures this session: 1
+previous session lock: (none)
+game version: Build 0.3.0 – Manta Ray
+godot: 4.7.2-stable (official)
+template: release
+os: macOS 27.2.0
+cpu: Apple M4
+memory MB physical/free: 24576 / 7116
+gpu: Apple M4 (Apple)
+graphics api: 4.1 Metal - 91.7
+renderer: gl_compatibility / opengl3
+window: (2940, 1642) screen: (2940, 1912)
+uptime seconds: 8
+scene: res://scenes/main.tscn
+
+files:
+       398  logs/current.log
+       476  logs/previous.log
+      1025  saves/brine_save.json
+      1025  saves/brine_save.json.bak
+     73605  saves/brine_loop.save
+     73485  saves/brine_loop.save.bak
+     73605  diagnostics/live_station.save
+        81  diagnostics/live_station.json
+     26050  diagnostics/performance.json
+    802163  screenshot.png

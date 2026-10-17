@@ -1,0 +1,171 @@
+{
+	"automatic_reports": [],
+	"clock": "wall time between process callbacks; includes vsync, focus loss and pauses",
+	"context": "values sampled at bucket end, not per-frame averages",
+	"drone_texture_cache": {
+		"budget_bytes": 268435456,
+		"cached_decoded_bytes": 0,
+		"cargo_fallback_draws": 0,
+		"cargo_frame_draws": 0,
+		"cargo_storage": false,
+		"cargo_storage_sources": 8,
+		"classification_complete": true,
+		"classified_entries": 0,
+		"entries": 0,
+		"frame_uploads": {
+			"bytes": 0,
+			"events": [],
+			"events_complete": true,
+			"frame": 42,
+			"largest_bytes": 0,
+			"max_usec": 0,
+			"uploads": 0,
+			"usec": 0
+		},
+		"latest_upload_frame": {
+			"bytes": 0,
+			"events": [],
+			"events_complete": true,
+			"frame": 42,
+			"largest_bytes": 0,
+			"max_usec": 0,
+			"uploads": 0,
+			"usec": 0
+		},
+		"live_details_complete": true,
+		"live_lookup_entries_inspected": 0,
+		"live_lookup_scan_complete": true,
+		"live_scope": "Currently live images reachable through bounded weak lookups; decoded storage, not total GPU residency. Details capped at 64, lookup scan at 4096.",
+		"native_effect_storage": false,
+		"native_encoded_original_bytes": 0,
+		"native_fallback_draws": 0,
+		"native_mask_draws": 0,
+		"native_mask_sources": 3,
+		"observed_live_decoded_bytes": 0,
+		"observed_live_details": [],
+		"observed_live_unique_images": 0,
+		"observed_uncached_live_decoded_bytes": 0,
+		"over_budget_bytes": 0,
+		"recent_decoded_bytes": 0,
+		"scope": "Cache bookkeeping; recent means touched within two frames, not GPU residency or an eviction instruction",
+		"stale_decoded_bytes": 0,
+		"stale_lookup_removals": 0,
+		"upload_usec": 0,
+		"uploads": 0,
+		"weak_image_entries": 0
+	},
+	"engine_process_time_scope": "TIME_PROCESS and TIME_PHYSICS_PROCESS are previous reporting-second maxima; process_ms_latest and context engine_process_ms are latest reported maxima, not current-frame durations.",
+	"errors": {
+		"distinct": 0,
+		"groups": [],
+		"log": "user://logs/godot.log",
+		"total": 0
+	},
+	"frame_boundaries": "Signal intervals between monitor process callbacks; render_signals_ms is not GPU time. Missing on incomplete/headless frames.",
+	"hitches": [
+		{
+			"action_age_ms": 2417,
+			"draw_calls": 188.0,
+			"engine_physics_ms": 1.639,
+			"engine_process_ms": 38.216,
+			"frame_boundaries_ms": {
+				"after_render_ms": 0.413,
+				"before_render_ms": 110.999,
+				"render_signals_ms": 60.042
+			},
+			"frame_ms": 171.454,
+			"last_action": "",
+			"paused": false,
+			"unfocused": false,
+			"uptime_ms": 1417.08
+		},
+		{
+			"action_age_ms": 3057,
+			"draw_calls": 188.0,
+			"engine_physics_ms": 1.639,
+			"engine_process_ms": 38.216,
+			"frame_boundaries_ms": {
+				"after_render_ms": 635.108,
+				"before_render_ms": 0.444,
+				"render_signals_ms": 4.939
+			},
+			"frame_ms": 640.491,
+			"last_action": "",
+			"paused": false,
+			"unfocused": false,
+			"uptime_ms": 2057.571
+		}
+	],
+	"memory": {
+		"contact_meshes": 0,
+		"contact_meshes_retired": 0,
+		"floor_meshes": 0,
+		"floor_meshes_retired": 0,
+		"nodes": 114.0,
+		"objects": 2269.0,
+		"orphans": 0.0,
+		"static_mem_mb": 0.0,
+		"texture_mem_mb": 78.47203540802
+	},
+	"memory_baseline": {
+		"contact_meshes": 0,
+		"contact_meshes_retired": 0,
+		"floor_meshes": 0,
+		"floor_meshes_retired": 0,
+		"nodes": 114.0,
+		"objects": 2267.0,
+		"orphans": 0.0,
+		"static_mem_mb": 0.0,
+		"texture_mem_mb": 78.47203540802
+	},
+	"partial_bucket": {
+		"frames": 0,
+		"max_frame_ms": 0.0,
+		"paused_frames": 0,
+		"span_ms": 0.0,
+		"unfocused_frames": 0
+	},
+	"percentile": "per-bucket nearest-rank p95; sample cap explicitly recorded",
+	"retention": "latest 120 approximately one-second buckets; current process only",
+	"rows": [
+		{
+			"context_at_end": {
+				"draw_calls_latest": 188.0,
+				"fps_cap": 0,
+				"objects": 2267.0,
+				"process_ms_latest": 38.216,
+				"scene": "res://scenes/title_screen.tscn",
+				"static_memory_bytes": null,
+				"viewport": "(1922.0, 1080.0)",
+				"vsync": 1
+			},
+			"fps": 33.1881288378598,
+			"frames": 43,
+			"hitches_50ms": 2,
+			"max_frame_ms": 640.491,
+			"mean_frame_ms": 30.1312558139535,
+			"memory": {
+				"contact_meshes": 0,
+				"contact_meshes_retired": 0,
+				"floor_meshes": 0,
+				"floor_meshes_retired": 0,
+				"nodes": 114.0,
+				"objects": 2267.0,
+				"orphans": 0.0,
+				"static_mem_mb": 0.0,
+				"texture_mem_mb": 78.47203540802
+			},
+			"p95_frame_ms": 48.795,
+			"p95_sample_capped": false,
+			"p95_sample_count": 43,
+			"p99_frame_ms": 640.491,
+			"paused_frames": 0,
+			"span_ms": 1295.644,
+			"unfocused_frames": 9,
+			"uptime_ms": 2057.571
+		}
+	],
+	"schema": 1,
+	"texture_memory_scope": "Engine-reported allocations, not measured driver VRAM. Calibrate each runtime and compare decoded-pixel inventories separately; do not apply a global correction factor.",
+	"timeline": []
+}
