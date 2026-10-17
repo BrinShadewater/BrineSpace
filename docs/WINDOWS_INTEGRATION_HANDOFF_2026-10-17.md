@@ -36,7 +36,7 @@ The focused Windows runtime commit is the useful post-kit comparison. Reconcile 
 | File | Change and merge concern |
 |---|---|
 | `scripts/crew_sprite_player.gd` | Reuses immutable clip metadata during loading; source/clip/timing/filter identity remains equivalent. |
-| `scripts/crew_storage/worker_batch.gd` | Hoists immutable batch metadata and prioritizes immediately consumed compression tasks; inspect native worker-pool policy. |
+| `scripts/crew_storage/worker_batch.gd` | Primes first-profile paths and prioritizes immediately consumed compression tasks; inspect native worker-pool policy. |
 | `scripts/image_prefetch.gd` | Services the existing bounded startup decoder/progress lifecycle during preparation. |
 | `scripts/main.gd` | Adds the initially visible-art preparation stage before startup completion; retain title/loading begin/end and failure cleanup ordering. |
 | `scripts/grid_canvas.gd` | Defers an unused nursery fallback during selection; prepares opening environment/companion views; predicts the initial clamped view with a zero-size fallback; prepares initial floor/wall images only for multiroom groups. Retains the existing three-cell join cover, owner finish/rotation, disabled-wall and offscreen rules. |
@@ -76,6 +76,8 @@ Windows timing used a native visible secondary display,1600×900, Compatibility/
 
 ![Windows New Loop reference](integration/windows-2026-10-17/reference-new.png)
 ![Windows twelve-room Continue reference](integration/windows-2026-10-17/reference-continue.png)
+
+Final publication guard: **136 protected delivery hashes and 2,948 owner files unchanged**, with no new exports. Independent read-only publication review found no material issue. See [integrity record](integration/windows-2026-10-17/publication-integrity.json) and [review scope](integration/windows-2026-10-17/publication-review.md).
 
 ## Frozen delivery identities
 
