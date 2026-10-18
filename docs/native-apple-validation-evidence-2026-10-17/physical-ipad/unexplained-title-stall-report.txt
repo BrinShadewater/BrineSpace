@@ -1,0 +1,37 @@
+BrineSpace bug report
+build: {"build_id":"brinespace-84d6658d7c53bb33","file_count":36680.0,"git_commit":"0724036569ea1da7249003a246039961bb0e6bb0","source_bytes":4019429905.0,"source_sha256":"84d6658d7c53bb33c058e98df0d5b16c0259ee352ffe43fdb6762942823824cd","working_tree_modified":true}
+trigger: manual (F8)
+note: automatic capture // one frame took 40135 ms
+captured at F8: 2026-10-17 19:13:19 (uptime 1006 s)
+
+input state when F8 was pressed:
+  tree paused: false
+  music: track deep_ocean.ogg at 0 of 213 s, -46.6 dB, master on 100%, device Default (CoreAudio, 48000 Hz)
+  mouse mode: 0 (0 visible, 2 captured, 3 confined)
+  pointer: (992.5424, 1118.445)  window: (2360, 1640)  viewport: (1920.0, 1334.0)
+  focus owner: TitleScreen/@VBoxContainer@21/@Button@29 (Button)
+  hovered control: TitleScreen/@VBoxContainer@21 (VBoxContainer)
+  covers the screen: TitleScreen (Control) filter=0 alpha=1.00 rect=[P: (0.0, 0.0), S: (1920.0, 1334.0)]
+
+bundle time: 2026-10-17 19:13:19
+errors logged: none
+automatic captures this session: 1
+previous session lock: pid=4548 | unix=1792288506 | started=2026-10-17 18:55:06 | version=0.3.0
+game version: Build 0.3.0 – Manta Ray
+godot: 4.7.2-stable (official)
+template: release
+os: iOS 27.2.0
+cpu: Apple A14 Bionic
+memory MB physical/free: 3819 / 1016
+gpu: Apple A14 GPU (Apple Inc.)
+graphics api: OpenGL ES 3.0 Metal - 105
+renderer: gl_compatibility / opengl3
+window: (2360, 1640) screen: (2360, 1640)
+uptime seconds: 1006
+scene: res://scenes/title_screen.tscn
+
+files:
+        35  logs/current.log
+        60  diagnostics/live_station.json
+    108972  diagnostics/performance.json
+   2934874  screenshot.png

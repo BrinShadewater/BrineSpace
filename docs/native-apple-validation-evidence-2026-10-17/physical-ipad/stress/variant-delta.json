@@ -1,0 +1,17 @@
+{
+  "added": [
+    "res://scenes/native_stress_empty.tscn",
+    "res://scripts/native_stress_benchmark.gd",
+    "res://scripts/native_stress_guard.gd"
+  ],
+  "omitted_from_stress": [
+    "res://brineui/intro/brine-intro-wip1.ogv",
+    "res://scenes/intro_film.tscn",
+    "res://scripts/intro_film.gd",
+    "res://scripts/native_validation_guard.gd"
+  ],
+  "changed": [
+    "res://project.godot"
+  ],
+  "scope": "Dedicated stress QA package vs ordinary validation variant; no production edits."
+}

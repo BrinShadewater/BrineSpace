@@ -1,3 +1,5 @@
+Latest: [physical iPad owner acceptance and bounded stress](physical-ipad/README.md). Memory/performance acceptance remains open.
+
 # Native Apple validation evidence — 2026-10-17
 
 See [handoff](../MAC_IPAD_NATIVE_VALIDATION_HANDOFF_2026-10-17.md) and [performance](PERFORMANCE.md). This evidence validates the exact integration585111ca3, without game-source changes. Native Mac fixtures, a QA clone of a maintained release export, and physical iPad acceptance are separate lanes. Physical iPad gameplay/endurance acceptance is **PENDING**; a separate app is now installed with scoped intro smoke evidence in [ipad-install](ipad-install/README.md).

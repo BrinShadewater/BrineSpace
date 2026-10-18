@@ -1,0 +1,20 @@
+{
+  "bundle_id": "com.shadewater.brinespace.nativevalidation20261017",
+  "build_id": "brinespace-84d6658d7c53bb33",
+  "human_results": [
+    {
+      "check": "Debugger-detached New Loop loading",
+      "answer": "Station loads"
+    },
+    {
+      "check": "Save, return to title, Continue: station/resources/cards",
+      "answer": "Everything restores correctly"
+    },
+    {
+      "check": "Pinch zoom, two-finger pan/rotation, drag card back to hand, Codex scroll, Home Screen/reopen",
+      "answer": "All pass; returns paused and intact"
+    }
+  ],
+  "diagnostics": "PID4561 completed startup, normal four-room construction, zero logged errors. No source fix; debugger-associated SIGKILL attempts excluded from clean performance acceptance.",
+  "scope": "User-confirmed functional coverage; does not establish long-run memory acceptance or every visual state."
+}

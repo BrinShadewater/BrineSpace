@@ -1,6 +1,8 @@
+Latest continuation: [physical iPad functional/memory/stress results](IPAD_PHYSICAL_VALIDATION_2026-10-17.md) supersede the earlier install-only iPad status below.
+
 # Native Mac/iPad validation handoff — 2026-10-17
 
-**Result: scoped Mac PASS; separate physical iPad install/intro smoke PASS; iPad gameplay/endurance PENDING; original Mac diagnostic preservation FAIL. No release acceptance or game-source fix.** Windows, Mac and iPad together remains the release goal.
+**Result: scoped Mac and owner-confirmed iPad functional PASS; bounded iPad stress completed; performance/memory headroom OPEN; original Mac diagnostic preservation FAIL. No release acceptance or game-source fix.** Windows, Mac and iPad together remains the release goal.
 
 Validation branch: `codex/mac-ipad-native-validation-2026-10-17`. Exact tested integration `585111ca3878e6ae60d044d745b395bdb2a7e9af`, parent `7e3029a4539348c477ca29636afe063c29e919fa`. Remote tip matched when work began; no revision substituted. Separate worktree `/Users/Shared/BrineSpace-native-validation-20261017`; original checkout remains on its Mac handoff branch. Integration/main/frozen candidates were not edited or merged.
 
