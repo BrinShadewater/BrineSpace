@@ -1362,14 +1362,26 @@ func prewarm_visible_derelicts(main, view_cells: Rect2) -> void:
 		if cull_room_drawing and cull_derelict_drawing and not region.intersects(Rect2(Vector2(cell),Vector2.ONE)): continue
 		_bill_room_view({"id":main.Companions.ROOMS[ward.kind]})
 
+var last_room_preparation:Dictionary={}
 func prewarm_room_views(main) -> void:
-	var ids: Array = main.hand.duplicate()
+	var tree:=Engine.get_main_loop() as SceneTree
+	var tablet:bool=OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false)))
+	# A thumbnail in the hand must not instantiate tens of MiB of full room art.
+	# Keep required construction ready even when its card has left the hand.
+	var ids: Array = [] if tablet else main.hand.duplicate()
 	if not str(main.selected_card_id).is_empty(): ids.push_front(str(main.selected_card_id))
 	for room in main.placed_rooms: ids.append(str(room.get("id","")))
+	if tablet:
+		for order in main.drone_fleet.orders:ids.append(str(order.get("id","")))
+		for drone in main.drone_fleet.drones.values():
+			if not drone.order.is_empty():ids.append(str(drone.order.get("id","")))
 	for id in ids:
 		if id.is_empty() or prewarmed_room_ids.has(id): continue
 		prewarmed_room_ids[id] = true
+		if main.has_method("_note_performance_action"):main._note_performance_action("room_prepare")
+		var started:=Time.get_ticks_usec()
 		_bill_room_view({"id": id})
+		last_room_preparation={"id":id,"usec":Time.get_ticks_usec()-started,"at_ms":Time.get_ticks_msec()}
 		return
 
 func _process(_delta: float) -> void:

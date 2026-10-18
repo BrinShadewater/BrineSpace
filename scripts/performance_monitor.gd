@@ -252,6 +252,8 @@ func station_breakdown(scene: Node) -> Dictionary:
 	if not last_frame_boundaries.is_empty(): result["frame_boundaries_ms"]=last_frame_boundaries.duplicate()
 	if scene==null or not "frame_timing_usec" in scene: return result
 	if "startup_stage_ms" in scene: result["startup_stage_ms"] = scene.startup_stage_ms.duplicate()
+	if "last_save_timings" in scene:result["save_timings"]=scene.last_save_timings.duplicate(true)
+	if is_instance_valid(scene.get("grid_view")) and "last_room_preparation" in scene.grid_view:result["room_preparation"]=scene.grid_view.last_room_preparation.duplicate()
 	result["image_prefetch"] = preload("res://scripts/image_prefetch.gd").stats()
 	if is_instance_valid(scene.get("grid_view")) and "crew_texture_pool" in scene.grid_view:
 		result["crew_texture_sharing"] = scene.grid_view.crew_texture_pool.stats.duplicate()

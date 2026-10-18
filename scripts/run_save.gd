@@ -4,6 +4,8 @@ const VERSION := 1
 const FIELDS := ["resources","run_earned","placed_rooms","hand","draw_pile","discard_pile","large_room_selected_id","rerolls_remaining","reroll_recovery_progress","run_victory","expedition_mode","run_rewards_recorded","run_awarded_research","selected_card_id","hovered_card_id","selected_rotation","selected_room_cell","hover_cell","cycle","crew_count","had_crew","corruption","orbit_decay","active_synergies","connected_synergy_links","active_synergy_links","synergy_stabilization_progress","run_discovered_synergy_ids","run_stabilized_synergy_ids","run_decrypted_blueprint_ids","prototype_card_seen_cycle","discovery_bursts","resonance_score","resonance_tier_index","links_formed","largest_cascade","last_cascade_size","running","admin_mode","grid_zoom","visual_time_seconds","time_speed_index","completed_pois","expired_pois","power_generated","power_used","power_capacity","unpowered_rooms","powered_room_cells","unpowered_room_cells","offline_reasons","last_cycle_delta","test_walker_cell","test_walker_next_cell","test_walker_previous_cell","test_walker_progress","test_walker_speed","test_walker_state","test_walker_break_timer","test_walker_direction"]
 static var pending: Dictionary = {}
 static var last_error := ""
+# Most recent write only; scalar timings exclude file contents and scene references.
+static var last_timings:Dictionary={}
 
 static func capture(game) -> Dictionary:
 	var state := {}
@@ -33,45 +35,63 @@ static func capture(game) -> Dictionary:
 
 static func write(game, path: String = PATH) -> Error:
 	last_error = ""
+	last_timings={"started_ms":Time.get_ticks_msec()}
 	if game.get_meta("restoring_checkpoint",false):
 		last_error = "Station restoration is still in progress."
 		return ERR_BUSY
 	if not game.running or game.testing_free_build or game.testing_disable_failures:
 		last_error = "No active loop to save."
 		return ERR_UNAVAILABLE
+	var stamp:=Time.get_ticks_usec()
 	var captured := capture(game)
+	last_timings.capture_usec=Time.get_ticks_usec()-stamp
+	stamp=Time.get_ticks_usec()
 	# Never replace a good checkpoint with one the loader would reject (it fell back to the
 	# backup silently before Sept 26). Keep the previous file and say why.
 	var reason := problem(captured)
+	last_timings.validate_usec=Time.get_ticks_usec()-stamp
 	if not reason.is_empty():
 		last_error = "Checkpoint not written: " + reason + ". Previous checkpoint kept."
 		return ERR_INVALID_DATA
+	stamp=Time.get_ticks_usec()
 	var bytes := var_to_bytes(captured)
+	last_timings.serialize_usec=Time.get_ticks_usec()-stamp
 	var temp := path + ".tmp"
+	stamp=Time.get_ticks_usec()
 	var file := FileAccess.open(temp, FileAccess.WRITE)
+	last_timings.open_usec=Time.get_ticks_usec()-stamp
 	if file == null:
 		last_error = "Save unavailable. Check storage access."
 		return FileAccess.get_open_error()
+	stamp=Time.get_ticks_usec()
 	file.store_string(bytes.hex_encode().sha256_text() + "\n")
 	file.store_buffer(bytes)
 	file.flush()
 	var error := file.get_error()
 	file.close()
+	last_timings.write_flush_close_usec=Time.get_ticks_usec()-stamp
 	if error != OK:
 		last_error = "Save write failed. Previous checkpoint retained."
 		return error
 	var backup := path + ".bak"
+	last_timings.backup_usec=0
+	var replace_started:=0
+	stamp=Time.get_ticks_usec()
 	if FileAccess.file_exists(path):
 		error = DirAccess.copy_absolute(path, backup)
+		last_timings.backup_usec=Time.get_ticks_usec()-stamp
 		if error != OK:
 			last_error = "Cannot protect previous checkpoint."
 			return error
 		# Windows cannot rename over an existing destination.
+		replace_started=Time.get_ticks_usec()
 		error = DirAccess.remove_absolute(path)
 		if error != OK:
 			last_error = "Cannot replace checkpoint."
 			return error
+	if replace_started==0:replace_started=Time.get_ticks_usec()
 	error = DirAccess.rename_absolute(temp, path)
+	last_timings.replace_usec=Time.get_ticks_usec()-replace_started
 	if error != OK:
 		if FileAccess.file_exists(backup):
 			DirAccess.copy_absolute(backup, path)

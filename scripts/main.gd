@@ -3846,14 +3846,22 @@ func _menu_quit_game() -> void:
 		_open_menu()
 		menu_status_label.text = RunSave.last_error if not RunSave.last_error.is_empty() else meta.last_error
 
+var last_save_timings:Dictionary={}
 func _save_active_loop() -> bool:
 	_note_performance_action("save")
+	var started:=Time.get_ticks_usec()
 	var error := RunSave.write(self, run_save_path)
+	last_save_timings={"at_ms":Time.get_ticks_msec(),"checkpoint":RunSave.last_timings.duplicate(),"checkpoint_usec":Time.get_ticks_usec()-started,"result":int(error)}
 	if error != OK:
 		menu_save_feedback.text = "SAVE FAILED // " + RunSave.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
 		return false
-	if meta.save_to_disk() != OK:
+	var progression_started:=Time.get_ticks_usec()
+	var progression_error:int=meta.save_to_disk()
+	last_save_timings.progression_usec=Time.get_ticks_usec()-progression_started
+	last_save_timings.total_usec=Time.get_ticks_usec()-started
+	last_save_timings.progression_result=progression_error
+	if progression_error != OK:
 		menu_save_feedback.text = "LOOP RECORDED / PROGRESSION NOT SAVED // " + meta.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
 		return false
@@ -4597,6 +4605,8 @@ func _default_card_rotation(id: String) -> int:
 func _on_card_pressed(id: String) -> void:
 	if _gameplay_input_blocked() or not running:
 		return
+	_note_performance_action("card_select")
+	var started:=Time.get_ticks_usec()
 	_clear_prototype_marker(id)
 	selected_card_id = id
 	play_station_sound("ui_select")
@@ -4605,6 +4615,7 @@ func _on_card_pressed(id: String) -> void:
 	selected_rotation = _default_card_rotation(id)
 	_refresh_cards()
 	_refresh_inspector()
+	frame_timing_usec["card_select"]=Time.get_ticks_usec()-started
 
 func _on_card_hovered(id: String, card: Control) -> void:
 	if _gameplay_input_blocked() or not running:

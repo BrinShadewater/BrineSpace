@@ -168,11 +168,14 @@ func _size_targets(node: Node, compact := false, menu := false) -> void:
 
 func cancel_blueprint() -> void:
 	if game._gameplay_input_blocked(): return
+	game._note_performance_action("card_return")
+	var started:=Time.get_ticks_usec()
 	game.card_drag._finish()
 	game.selected_card_id = ""
 	game.selected_rotation = 0
 	game.hovered_card_id = ""
 	game._refresh_all()
+	game.frame_timing_usec["card_return"]=Time.get_ticks_usec()-started
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED:

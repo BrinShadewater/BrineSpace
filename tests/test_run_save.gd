@@ -73,6 +73,12 @@ func _run() -> void:
 	game.synergy_stabilization_progress = {"test_pattern": 2}
 	game.placed_rooms[1]["suspended"] = true
 	check(Save.write(game, PATH) == OK, "Save should write successfully")
+	check(game._save_active_loop(), "Instrumented Save preserves the successful checkpoint path")
+	var timings:Variant=game.get("last_save_timings")
+	check(timings is Dictionary and timings.has("checkpoint") and timings.has("progression_usec") and timings.has("total_usec"), "Recovered Save reports distinguish checkpoint and progression costs")
+	if timings is Dictionary and timings.get("checkpoint") is Dictionary:
+		for phase in ["capture_usec","validate_usec","serialize_usec","open_usec","write_flush_close_usec","backup_usec","replace_usec"]:
+			check(timings.checkpoint.has(phase) and timings.checkpoint[phase]>=0, "Save report contains completed phase: "+phase)
 	var data := Save.read(PATH)
 	check(not data.is_empty(), "Checkpoint must load")
 	var expected_resources: Dictionary = game.resources.duplicate(true)
