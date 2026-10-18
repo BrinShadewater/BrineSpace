@@ -365,6 +365,8 @@ func _ready() -> void:
 	glow_layer.material = additive
 	glow_layer.draw.connect(_draw_motes)
 	add_child(glow_layer)
+	# Session-only visual audition; F10 returns to the existing look exactly.
+	add_child(preload("res://scripts/look_audition.gd").new())
 	toast = Label.new()
 	toast.position = Vector2(24, 24)
 	toast.mouse_filter = Control.MOUSE_FILTER_IGNORE
