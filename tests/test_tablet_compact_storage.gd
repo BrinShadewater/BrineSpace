@@ -38,6 +38,17 @@ func run():
  print("COMPACT_BYTES ",Motion.texture_bytes[path]," ORIGINAL_BYTES ",full_bytes)
  check(Motion.texture_bytes[path]<full_bytes*.66,"iPad keeps less than two thirds the original decoded sheet bytes")
  if compact is Storage:
+  check(compact.cropped==null,"iPad releases decoded compact atlas after worker packing")
+  check(compact.base_bytes<int(source_spec.box[2])*int(source_spec.box[3])*int(source_spec.columns)*(int(source_spec.height)/int(source_spec.cell[1]))*4*.8,"Lossless packing reduces retained compact atlas bytes by at least 20 percent")
+  var decoded:=Image.new()
+  check(decoded.load_png_from_buffer(FileAccess.get_file_as_bytes(source_spec.path))==OK,"Compact reference decodes")
+  var crop_size:=Vector2i(source_spec.box[2],source_spec.box[3])
+  for i in range(int(record.frameCount) if record.has("frameCount") else int(clip.frameCount)):
+   var at:=Vector2i(i%int(source_spec.columns),i/int(source_spec.columns))*crop_size
+   var expected:Image=decoded.get_region(Rect2i(at,crop_size))
+   var actual:Texture2D=compact.frame(i)
+   check(actual!=null and actual.get_image().get_data()==expected.get_data(),"Lossless frame pixels match compact source %d"%i)
+  decoded=null
   for i in range(20):compact.frame(i)
   check(compact.frames.size()<=6,"iPad frame texture cache stays bounded to six frames")
  if DisplayServer.get_name()!="headless" and compact is Storage:

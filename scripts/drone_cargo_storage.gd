@@ -7,6 +7,29 @@ var original_png:=PackedByteArray()
 var width:int
 var height:int
 var cropped:Image
+# Tablet CPU storage is lossless and independently decodable per frame. Never
+# decompress a whole atlas or upload it just to display one animation pose.
+var packed_frames:Array[PackedByteArray]=[]
+var packed_format:int=Image.FORMAT_RGBA8
+var packed_frame_bytes:int=0
+static func pack_image(image:Image,frame_size:Vector2i,columns:int)->Image:
+	var carrier:=Image.create(1,1,false,Image.FORMAT_RGBA8)
+	var invisible:=image.is_invisible()
+	carrier.fill(Color(0,0,0,0) if invisible else Color.WHITE)
+	for key in image.get_meta_list():carrier.set_meta(key,image.get_meta(key))
+	if invisible:return carrier
+	var packed:Array[PackedByteArray]=[]
+	var bytes:=0
+	for row in range(image.get_height()/frame_size.y):
+		for column in columns:
+			var frame:Image=image.get_region(Rect2i(Vector2i(column,row)*frame_size,frame_size))
+			var pixels:PackedByteArray=frame.get_data().compress(FileAccess.COMPRESSION_ZSTD)
+			packed.append(pixels);bytes+=pixels.size()
+	carrier.set_meta("drone_packed_frames",packed)
+	carrier.set_meta("drone_packed_format",image.get_format())
+	carrier.set_meta("drone_packed_frame_bytes",image.get_region(Rect2i(Vector2i.ZERO,frame_size)).get_data_size())
+	carrier.set_meta("drone_packed_bytes",bytes)
+	return carrier
 ## Kept area inside one frame, border included.
 var box:Rect2i
 var cell:Vector2i
@@ -31,11 +54,18 @@ func frame(index:int)->Texture2D:
 	if frames.has(index):
 		if frame_cache_limit>0:frame_order.erase(index);frame_order.append(index)
 		return frames[index]
-	if cropped==null or index<0 or columns<=0:return null
+	if index<0 or columns<=0:return null
+	if cropped==null and index>=packed_frames.size():return null
 	var at:=Vector2i(index%columns,index/columns)*box.size
-	if at.y+box.size.y>cropped.get_height():return null
+	if cropped!=null and at.y+box.size.y>cropped.get_height():return null
 	var started:int=Time.get_ticks_usec()
-	var image:Image=cropped.get_region(Rect2i(at,box.size))
+	var image:Image
+	if cropped!=null:image=cropped.get_region(Rect2i(at,box.size))
+	else:
+		var byte_count:int=packed_frame_bytes
+		var pixels:PackedByteArray=packed_frames[index].decompress(byte_count,FileAccess.COMPRESSION_ZSTD)
+		if pixels.size()!=byte_count:push_error("Invalid packed drone frame: "+source);return null
+		image=Image.create_from_data(box.size.x,box.size.y,false,packed_format,pixels)
 	frames[index]=ImageTexture.create_from_image(image)
 	if frame_cache_limit>0:
 		frame_order.append(index);frame_bytes+=image.get_data_size()

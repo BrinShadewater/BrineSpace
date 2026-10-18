@@ -81,6 +81,7 @@ static func cache_diagnostics() -> Dictionary:
 	# F8/stall reports only: weak lookups distinguish retained live storage from
 	# ordinary cache ownership. Metadata only; never read back pixels or hold images.
 	var live_bytes:=0
+	var packed_cpu_bytes:=0
 	var encoded_original_bytes:=0
 	var uncached_live_bytes:=0
 	var live_ids:Dictionary={}
@@ -96,6 +97,7 @@ static func cache_diagnostics() -> Dictionary:
 		if live_ids.has(id):continue
 		live_ids[id]=true
 		if image is NativeEffect or image is CargoStorage:encoded_original_bytes+=image.original_png.size()
+		if image is CargoStorage and image.cropped==null:packed_cpu_bytes+=image.base_bytes
 		var bytes:int=entry.bytes
 		live_bytes+=bytes
 		var cache_owned:bool=textures.has(path) and is_same(textures[path],image)
@@ -108,7 +110,7 @@ static func cache_diagnostics() -> Dictionary:
 		"recent_decoded_bytes": recent_bytes, "stale_decoded_bytes": stale_bytes,
 		"classified_entries": visited, "classification_complete": visited == texture_bytes.size(),
 		"weak_image_entries":weak_images.size(),"stale_lookup_removals":trim_removed,
-		"observed_live_unique_images":live_ids.size(),"observed_live_decoded_bytes":live_bytes,
+		"packed_cpu_bytes":packed_cpu_bytes,"storage_accounting":"Legacy decoded-byte keys count retained payload; tablet packed CPU frames are compressed, frame textures are decoded. Not whole-process residency.","observed_live_unique_images":live_ids.size(),"observed_live_decoded_bytes":live_bytes,
 		"observed_uncached_live_decoded_bytes":uncached_live_bytes,"observed_live_details":live_details,
 		"live_lookup_entries_inspected":weak_visited,"live_lookup_scan_complete":weak_visited==weak_images.size(),
 		"live_details_complete":live_details.size()==live_ids.size(),
@@ -172,7 +174,7 @@ static func cache_image(path:String,image:Image,invisible:bool=false) -> void:
 	if invisible:
 		image=Image.create(1,1,false,Image.FORMAT_RGBA8)
 		image.fill(Color(0,0,0,0))
-	var bytes:=image.get_data_size()
+	var bytes:int=int(image.get_meta("drone_packed_bytes",image.get_data_size()))
 	while cached_bytes+bytes>cache_budget() and not texture_order.is_empty():
 		var oldest:String=texture_order[0]
 		if int(last_used.get(oldest,0))>=Engine.get_process_frames()-2:break
@@ -402,7 +404,7 @@ static func load_native_or_original(path:String,tablet:bool=false)->Image:
 					return image
 	var compact_spec:=storage_spec_for_policy(path,tablet or OS.has_feature("ios"))
 	if not compact_spec.is_empty():
-		var cargo:Image=load_cargo_storage(path,compact_spec,original_bytes)
+		var cargo:Image=load_cargo_storage(path,compact_spec,original_bytes,tablet or OS.has_feature("ios"))
 		if cargo!=null:return cargo
 	image=Image.new()
 	return image if image.load_png_from_buffer(original_bytes)==OK else null
@@ -452,7 +454,7 @@ static func storage_spec_for_policy(path:String,tablet:bool)->Dictionary:
 	if tablet and not OS.get_cmdline_user_args().has("--reference-tablet-storage") and TabletStorageData.DATA.has(path):
 		return TabletStorageData.DATA[path]
 	return cargo_storage.get(path,{}) if cargo_storage_enabled else {}
-static func load_cargo_storage(path:String,spec:Dictionary,original_bytes:PackedByteArray)->Image:
+static func load_cargo_storage(path:String,spec:Dictionary,original_bytes:PackedByteArray,pack_frames:bool=false)->Image:
 	var original_hash:=HashingContext.new();original_hash.start(HashingContext.HASH_SHA256);original_hash.update(original_bytes)
 	# A changed selected PNG must invalidate its derived storage, even at the same path/dimensions.
 	if original_hash.finish().hex_encode()!=spec.original_sha256:return null
@@ -465,6 +467,8 @@ static func load_cargo_storage(path:String,spec:Dictionary,original_bytes:Packed
 	var rows:int=int(spec.height)/int(spec.cell[1])
 	if image.get_size()!=Vector2i(int(spec.box[2])*int(spec.columns),int(spec.box[3])*rows):return null
 	image.set_meta("drone_cargo_original_png",original_bytes);image.set_meta("drone_cargo_source",path)
+	if pack_frames and not OS.get_cmdline_user_args().has("--reference-tablet-frame-packing"):
+		return CargoStorage.pack_image(image,Vector2i(spec.box[2],spec.box[3]),int(spec.columns))
 	return image
 static func cargo_context_supported(canvas:CanvasItem)->bool:
 	var node:Node=canvas
@@ -485,7 +489,11 @@ static func make_cargo_texture(path:String,image:Image)->Texture2D:
 	var spec:Dictionary=compact_storage_spec(path)
 	var display=CargoStorage.new();display.source=path;display.original_png=image.get_meta("drone_cargo_original_png");display.width=int(spec.width);display.height=int(spec.height)
 	if tablet_memory_limits(): display.frame_cache_limit=6
-	display.cropped=image;display.box=Rect2i(int(spec.box[0]),int(spec.box[1]),int(spec.box[2]),int(spec.box[3]));display.cell=Vector2i(int(spec.cell[0]),int(spec.cell[1]));display.columns=int(spec.columns);display.base_bytes=image.get_data_size()
+	display.cropped=null if image.has_meta("drone_packed_frames") else image;display.box=Rect2i(int(spec.box[0]),int(spec.box[1]),int(spec.box[2]),int(spec.box[3]));display.cell=Vector2i(int(spec.cell[0]),int(spec.cell[1]));display.columns=int(spec.columns);display.base_bytes=int(image.get_meta("drone_packed_bytes",image.get_data_size()))
+	if image.has_meta("drone_packed_frames"):
+		display.packed_frames=image.get_meta("drone_packed_frames")
+		display.packed_format=int(image.get_meta("drone_packed_format"))
+		display.packed_frame_bytes=int(image.get_meta("drone_packed_frame_bytes"))
 	var ref:WeakRef=weakref(display)
 	display.storage_changed=func(bytes:int):
 		if not weak_images.has(path) or weak_images[path].ref.get_ref()!=ref.get_ref():return

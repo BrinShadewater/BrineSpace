@@ -135,5 +135,17 @@ func run() -> void:
 	check(batch_stats.private_compress_jobs_left==0 and batch_stats.private_compress_peak_jobs<=batch.WORK_WINDOW,"Crew worker bounds and cleanup preserved")
 	Prefetch.end()
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(manifest))
+	# iPad repeat loading must not schedule a desktop-sized decoded window.
+	root.set_meta("tablet_controls",true)
+	file=FileAccess.open(manifest,FileAccess.WRITE);file.store_string("\n".join(paths));file.close()
+	Prefetch.begin(manifest)
+	for path in paths:
+		var tablet_image:Image=SafeImage.raw_image(path)
+		check(tablet_image!=null and tablet_image.get_data()==direct(path).get_data(),"Tablet bounded prefetch preserves pixels")
+		check(Prefetch.tasks.size()<=4,"Tablet retains at most four pending image decodes")
+	check(Prefetch.peak_pending<=4,"Tablet peak pending stays below desktop window")
+	Prefetch.end()
+	root.remove_meta("tablet_controls")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(manifest))
 	print("IMAGE PREFETCH %s" % ("PASS" if failures == 0 else "FAIL %d" % failures))
 	quit(1 if failures else 0)

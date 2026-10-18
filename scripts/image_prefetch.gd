@@ -11,6 +11,8 @@ extends RefCounted
 
 const MANIFEST := "user://startup_images.txt"
 const WINDOW := 96
+const TABLET_WINDOW := 4
+static var decode_window := WINDOW
 # A short, bounded decode cache serves repeated animation poses during startup.
 # Images handed to callers are copies: raw-image consumers may edit their pixels.
 const CACHE_BYTES := 16 * 1024 * 1024
@@ -49,6 +51,9 @@ const PUMP_MS := 120
 static func begin(manifest := MANIFEST) -> void:
 	if active: return
 	active = true
+	# Capture platform policy on the main thread before starting any workers.
+	var tree:=Engine.get_main_loop() as SceneTree
+	decode_window=TABLET_WINDOW if OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false))) else WINDOW
 	manifest_path = manifest
 	recorded = PackedStringArray()
 	completed_requests = 0
@@ -112,7 +117,7 @@ static func take(path: String) -> Image:
 	var i: int = index_of[path]
 	# Images the new order skipped would otherwise stay decoded; release those well behind.
 	for j in tasks.keys():
-		if j < i - WINDOW:
+		if j < i - decode_window:
 			WorkerThreadPool.wait_for_task_completion(tasks[j])
 			tasks.erase(j)
 			mutex.lock()
@@ -124,7 +129,7 @@ static func take(path: String) -> Image:
 	# A new manifest can jump thousands of slots ahead. Never queue the skipped
 	# prefix: retain at most one window behind and predecode one window ahead.
 	next_submit = maxi(next_submit, i)
-	_submit_up_to(i + WINDOW)
+	_submit_up_to(i + decode_window)
 	if not tasks.has(i): return null
 	WorkerThreadPool.wait_for_task_completion(tasks[i])
 	tasks.erase(i)
@@ -193,6 +198,7 @@ static func _pump() -> void:
 static func _submit_up_to(limit: int) -> void:
 	limit = mini(limit, paths.size())
 	while next_submit < limit:
+		if tasks.size()>=decode_window:break
 		tasks[next_submit] = WorkerThreadPool.add_task(_decode.bind(next_submit, paths[next_submit]))
 		worker_submissions += 1
 		peak_pending = maxi(peak_pending,tasks.size())
@@ -218,7 +224,7 @@ static func stats() -> Dictionary:
 	mutex.lock()
 	var result := {"requests": recorded.size() if active else completed_requests, "prefetch_hits": hits, "recent_hits": cache_hits,
 		"worker_submissions": worker_submissions, "peak_pending": peak_pending,
-		"primed_paths": primed_paths,
+		"primed_paths": primed_paths, "decode_window":decode_window,
 		"unused_results": unused_results, "worker_decode_usec": worker_decode_usec,
 		"peak_decoded_bytes": peak_decoded_bytes, "recent_cache_budget_bytes": CACHE_BYTES}
 	mutex.unlock()

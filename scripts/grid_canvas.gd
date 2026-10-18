@@ -1263,6 +1263,7 @@ var prewarmed_room_ids: Dictionary = {}
 var hand_image_records:Dictionary={}
 var hand_image_assets:Dictionary={}
 var hand_image_profiles:Dictionary={}
+var hand_surface_upload_frame:=-1
 func _lazy_view(key: StringName, script: Script):
 	var view = lazy_views.get(key)
 	if not is_instance_valid(view):
@@ -4797,7 +4798,13 @@ func prepare_hand_images(main) -> void:
 	if not queue.enabled or preload("res://scripts/image_prefetch.gd").active:queue.maintain([]);return
 	_prime_surface_image_records()
 	var ids:Array=main.hand.duplicate()
-	if not str(main.selected_card_id).is_empty():ids.push_front(str(main.selected_card_id))
+	var tree:=Engine.get_main_loop() as SceneTree
+	var tablet:bool=OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false)))
+	if not str(main.selected_card_id).is_empty():
+		# Retire old hand jobs so they cannot occupy both queue slots while a
+		# different selected blueprint waits indefinitely.
+		if tablet:ids=[str(main.selected_card_id)]
+		else:ids.push_front(str(main.selected_card_id))
 	var wanted:Array=[]
 	var floors=preload("res://rooms/whole-room/modular_floor.gd")
 	var walls=preload("res://rooms/whole-room/painted_shell.gd")
@@ -4808,6 +4815,22 @@ func prepare_hand_images(main) -> void:
 			var uploaded:bool=floors.textures.has(record.key) if record.kind=="floor" else walls.textures.has(record.key)
 			if not uploaded and record.source not in wanted:wanted.append(record.source)
 	queue.maintain(wanted)
+	# Upload only the selected blueprint, at most one already-decoded surface
+	# per frame. Previously the queue held CPU pixels until the placing frame,
+	# where floors and walls could both allocate GPU textures at once.
+	if not tablet or hand_surface_upload_frame==Engine.get_process_frames():return
+	if str(main.selected_card_id).is_empty():return
+	for record in _surface_image_records(str(main.selected_card_id),int(main.selected_rotation)):
+		var uploaded:bool=floors.textures.has(record.key) if record.kind=="floor" else walls.textures.has(record.key)
+		if uploaded or not queue.jobs.has(record.source):continue
+		if not WorkerThreadPool.is_task_completed(queue.jobs[record.source].task):continue
+		# A failed decode retains the ordinary placement fallback, without a
+		# synchronous retry in this preparation pass.
+		if not queue.jobs[record.source].result.has("image"):continue
+		hand_surface_upload_frame=Engine.get_process_frames()
+		if record.kind=="floor":floors.texture(record.key)
+		else:walls.png(record.key)
+		return
 
 func _prime_surface_image_records() -> void:
 	preload("res://scripts/room_layout_store.gd").prime()
