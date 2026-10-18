@@ -47,34 +47,53 @@ recover new blueprints without a recipe list spoiling the experiments.
 
 The station also holds its missing people. Expand toward derelict cryo wards,
 repair them into the base, and thaw the architects inside. Rescuing an architect
-adds a named crew member and unlocks that character for future loops.
+adds a named crew member for the rest of the expedition. Spend Archived Data on
+the Meta Progression page to bring recovered characters into future loops.
 
 BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
 game with resource pressure, quiet machinery and an AI core with opinions. You can
 pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
-## Current checkpoint - September 16, 2026
+## Current development — October 18, 2026
 
-The September 12-16 sessions worked through a full owner playtest. Power was reworked
-around a station-wide blackout, BRINE's chamber now floods with the rest of the station,
-the cyan room selector became a lamp-light outline that follows the hull, the companions
-answer a click in their own voices, and the owner's hand-edited Studio room layouts became
-the committed defaults. The earlier [combined polish and release pass](docs/FINAL_POLISH_RELEASE_2026-09-09.md)
-remains the baseline for room artwork, portraits, companion animations and flood responses.
+BrineSpace is a playable Godot 4.7 prototype, locally tested with 4.7.2.
+Windows, Mac and iPad are being developed toward a shared release. Published
+source branches and validation candidates are available for review; no downloadable
+GitHub release is currently published. Large-station performance, iPad memory
+headroom and longer expeditions remain under evaluation.
 
-Start with [current status](docs/CURRENT_STATUS.md) for the latest decisions and
-[development notes](docs/DEVELOPMENT_NOTES.md) for the design direction. BrineSpace
-is a playable prototype; balance, crew animation and longer expeditions are still
-being evaluated.
+The default `main` branch retains the October 14 gameplay checkpoint, with this
+repository overview refreshed on October 18. Later work is published separately:
+
+- [Windows preservation](https://github.com/BrinShadewater/BrineSpace/tree/codex/windows-preservation-20261017)
+  records the broader Windows source and art work.
+- [Windows / Mac / iPad integration](https://github.com/BrinShadewater/BrineSpace/tree/codex/windows-mac-ipad-integration-20261017)
+  reconciles the shared runtime for review. Read its
+  [integration handoff](https://github.com/BrinShadewater/BrineSpace/blob/codex/windows-mac-ipad-integration-20261017/docs/WINDOWS_MAC_IPAD_INTEGRATION_HANDOFF_2026-10-17.md).
+- [Native Apple validation](https://github.com/BrinShadewater/BrineSpace/tree/codex/mac-ipad-native-validation-2026-10-17)
+  records Mac and physical iPad checks; [later iPad memory and placement work](https://github.com/BrinShadewater/BrineSpace/tree/codex/ipad-memory-placement-2026-10-17)
+  remains a separate integration input.
+- [F10 visual audition](https://github.com/BrinShadewater/BrineSpace/tree/codex/look-audition-20261018)
+  adds an optional session-only tilt-shift and pixel-grid comparison to the shared
+  review baseline. It starts off and does not change saved preferences. Read the
+  [controls and validation notes](https://github.com/BrinShadewater/BrineSpace/blob/codex/look-audition-20261018/docs/LOOK_AUDITION_2026-10-18.md).
+
+These branches have not been merged into `main`. Read the current-status file and
+handoff on the branch you are using; their checks apply to their recorded revision
+and platform. For the default branch, start with [current status](docs/CURRENT_STATUS.md)
+and [development notes](docs/DEVELOPMENT_NOTES.md).
+
+### Prototype systems
 
 - **47 room identities** with matching doors, four rotations, operating effects
   and authored furniture layouts. Most furnished rooms favor three or four large
   assets; BRINE Core keeps its more elaborate arrangement.
 - **Four architects:** Major Bill, Dr. Veld, Chief Engineer Branforth and Marsh.
-  Recover them to unlock future selection. Marsh is an android powered by a
+  Recover them for the current loop; purchase their return with Archived Data.
+  Marsh is an android powered by a
   rechargeable battery; his derelict charging chamber has its own recovery sequence.
 - **Three optional companions:** River, Josh and Margot. Find and restore their
-  derelicts, unlock future selection, and watch their individual behaviors. River and Josh
+  derelicts, purchase their return for later loops, and watch their individual behaviors. River and Josh
   are robots; Margot is a cat you can approach and pet. Each answers a click with their own
   dialogue window: Josh talks, River chirps with a status-lamp translation, Margot is a cat.
 - **Working station systems:** paid drone construction, mining and salvage, finite
@@ -96,9 +115,9 @@ Current runs are open-ended. Starting doctrines, timed reconstruction directives
 and legacy orbital POIs are retired. Construction costs, resource failures and
 hidden recipe discovery remain active. Conclude Expedition banks the loop.
 
-A [Windows build was verified on September 9](docs/WINDOWS_BUILD_2026-09-09.md).
-It is a local dated package, not a download published in this repository; later
-source changes include companion personality work.
+Local Windows and Apple validation packages are described in the branch handoffs
+above. They are dated test candidates; this repository does not currently offer
+a published release download.
 
 ## Run locally
 
@@ -127,7 +146,9 @@ not usable image files, so finish the LFS download before diagnosing missing art
 2. Draft and rotate blueprints, pay construction costs and connect matching doors.
 3. Supply power, food, oxygen and other room inputs; inspect shortages and reserves.
 4. Discover functioning room links and maintain three consecutive functioning
-   cycles to stabilize patterns and unlock rewards. Hidden recipes stay hidden.
+   cycles to stabilize patterns: later loops double their per-cycle bonus, award
+   Archived Data, and halve the related blueprint cost. Buy blueprints, crew and
+   companions on the Meta Progression page. Hidden recipes stay hidden.
 5. Recover architects and companions, harvest finite sites and expand sustainably.
 6. Save/Continue or use Conclude Expedition to bank the loop. Resource collapse
    remains a failure condition; there is no directive deadline or scenario victory.
