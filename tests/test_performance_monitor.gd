@@ -13,6 +13,21 @@ func check(ok: bool,message: String) -> void:
 	if not ok: failures+=1;push_error(message)
 func _init() -> void:
 	var monitor:=Monitor.new()
+	# OS suspension is not a rendered frame, including when returning to Title.
+	monitor.last_usec=Time.get_ticks_usec()-60000000;monitor.render_pre_usec=1;monitor.render_post_usec=2
+	monitor.last_frame_boundaries={"stale":true}
+	monitor.notification(Node.NOTIFICATION_APPLICATION_PAUSED)
+	monitor.notification(Node.NOTIFICATION_APPLICATION_RESUMED)
+	check(Time.get_ticks_usec()-monitor.last_usec<1000000,"Resume resets wall-frame origin after suspension")
+	check(monitor.render_pre_usec==0 and monitor.render_post_usec==0 and monitor.last_frame_boundaries.is_empty(),"Resume discards pre-suspension render boundaries")
+	check(monitor.has_method("record_save_timings"),"Save timings survive leaving the gameplay scene")
+	if monitor.has_method("record_save_timings"):
+		var save:Dictionary={"checkpoint":{"capture_usec":17},"total_usec":20}
+		monitor.call("record_save_timings",save);save.checkpoint.capture_usec=99
+		var saved:Dictionary=monitor.snapshot().get("last_save",{})
+		check(saved.get("checkpoint",{}).get("capture_usec")==17,"Saved timing history is independent of the previous scene")
+		saved.checkpoint.capture_usec=88
+		check(monitor.snapshot().last_save.checkpoint.capture_usec==17,"Editing report cannot mutate retained Save timings")
 	var grid_script=load("res://scripts/grid_canvas.gd")
 	check(grid_script!=null and grid_script.can_instantiate(),"Production grid compiles with current cache diagnostics")
 	var scene:=ReportScene.new();var grid:=ReportGrid.new();scene.grid_view=grid

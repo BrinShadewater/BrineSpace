@@ -3847,6 +3847,10 @@ func _menu_quit_game() -> void:
 		menu_status_label.text = RunSave.last_error if not RunSave.last_error.is_empty() else meta.last_error
 
 var last_save_timings:Dictionary={}
+func _publish_save_timings() -> void:
+	var monitor=_performance_monitor()
+	if monitor!=null and monitor.has_method("record_save_timings"):monitor.record_save_timings(last_save_timings)
+
 func _save_active_loop() -> bool:
 	_note_performance_action("save")
 	var started:=Time.get_ticks_usec()
@@ -3855,6 +3859,7 @@ func _save_active_loop() -> bool:
 	if error != OK:
 		menu_save_feedback.text = "SAVE FAILED // " + RunSave.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
+		_publish_save_timings()
 		return false
 	var progression_started:=Time.get_ticks_usec()
 	var progression_error:int=meta.save_to_disk()
@@ -3864,10 +3869,12 @@ func _save_active_loop() -> bool:
 	if progression_error != OK:
 		menu_save_feedback.text = "LOOP RECORDED / PROGRESSION NOT SAVED // " + meta.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
+		_publish_save_timings()
 		return false
 	last_save_cycle = cycle
 	last_save_msec = Time.get_ticks_msec()
 	_refresh_save_status()
+	_publish_save_timings()
 	return true
 
 func _menu_save_game() -> void:
@@ -4580,12 +4587,27 @@ func _load_card_textures() -> void:
 		if texture != null:
 			card_textures[id] = texture
 
+# Pixel-payload accounting only; no texture readbacks or decoded image retention.
+func card_storage_stats() -> Dictionary:
+	var result:Dictionary={"cards":card_textures.size(),"deferred_cards":0,"eager_cards":0,"packed_cpu_bytes":0,"uploaded_pixel_bytes":0}
+	for texture in card_textures.values():
+		if texture.has_method("cpu_storage_bytes"):
+			result.packed_cpu_bytes+=texture.cpu_storage_bytes()
+			if texture.uploaded_texture==null:result.deferred_cards+=1
+			else:result.uploaded_pixel_bytes+=texture.pixel_storage_bytes()
+		else:result.eager_cards+=1
+	return result
+
 func _load_card_thumbnail(path: String) -> Texture2D:
 	# Prepare the raw image's mipmaps before its first upload. The former path
 	# uploaded, read back and uploaded again for every PNG thumbnail.
 	var raw_image := preload("res://scripts/safe_image.gd").raw_image(path)
 	if raw_image != null:
 		if not raw_image.has_mipmaps(): raw_image.generate_mipmaps()
+		if TabletControls.enabled(self) and not OS.get_cmdline_user_args().has("--reference-tablet-card-storage"):
+			var deferred=preload("res://scripts/deferred_card_texture.gd").new()
+			deferred.configure(raw_image)
+			return deferred
 		return ImageTexture.create_from_image(raw_image)
 	var texture := preload("res://scripts/safe_image.gd").raw_texture(path)
 	if texture == null: return null

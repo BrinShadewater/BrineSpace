@@ -79,6 +79,9 @@ func _run() -> void:
 	if timings is Dictionary and timings.get("checkpoint") is Dictionary:
 		for phase in ["capture_usec","validate_usec","serialize_usec","open_usec","write_flush_close_usec","backup_usec","replace_usec"]:
 			check(timings.checkpoint.has(phase) and timings.checkpoint[phase]>=0, "Save report contains completed phase: "+phase)
+	var report_monitor=game._performance_monitor()
+	var recorded_save:Dictionary=report_monitor.snapshot().get("last_save",{})
+	check(recorded_save==timings,"Save stages publish before leaving the gameplay scene")
 	var data := Save.read(PATH)
 	check(not data.is_empty(), "Checkpoint must load")
 	var expected_resources: Dictionary = game.resources.duplicate(true)
@@ -126,6 +129,7 @@ func _run() -> void:
 	check(Save.write(game, PATH) == OK, "Checkpoint should be ready for title Continue")
 	root.remove_child(game)
 	game.free()
+	check(report_monitor.snapshot().get("last_save",{})==recorded_save,"Title report retains completed Save stages after gameplay is freed")
 	var title = load("res://scenes/title_screen.tscn").instantiate()
 	title.run_save_path = PATH
 	# Neither the title nor the game it opens may touch the player's real progress file.

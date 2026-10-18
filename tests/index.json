@@ -69,6 +69,7 @@
       "test_hand_image_preparation",
       "test_tablet_placement_preparation",
       "test_tablet_room_preparation",
+      "test_tablet_card_storage",
       "test_release_benchmark_render_guards",
       "test_room_image_sharing",
       "test_release_benchmark_driver",
@@ -536,6 +537,7 @@
     ]
   },
   "lanes": {
+    "test_tablet_card_storage": {"lane": "native", "reason": "Requires native rotated and mipmapped pixel comparisons"},
     "test_marsh_swim_stroke": {
       "lane": "native",
       "reason": "Complete installed swim strokes and adjoining turn source-hold captures at two scales; explicit scratch APPDATA required."

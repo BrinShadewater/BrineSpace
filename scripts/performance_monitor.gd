@@ -54,6 +54,26 @@ var baseline_memory: Dictionary={}
 var growth_warned:={}
 var last_route_searches:=0
 var last_route_failures:=0
+var application_suspended:=false
+var suspended_at_ms:=0
+var last_save_timings:Dictionary={}
+
+func record_save_timings(value:Dictionary) -> void:
+	last_save_timings=value.duplicate(true)
+
+func _notification(what:int) -> void:
+	if what==NOTIFICATION_APPLICATION_PAUSED:
+		if not application_suspended:suspended_at_ms=Time.get_ticks_msec()
+		application_suspended=true
+		slow_ms=0.0
+	elif what==NOTIFICATION_APPLICATION_RESUMED:
+		if application_suspended:note("lifecycle","OS resume after %d ms suspended" % (Time.get_ticks_msec()-suspended_at_ms))
+		application_suspended=false
+		last_usec=Time.get_ticks_usec()
+		render_pre_usec=0;render_post_usec=0
+		last_frame_boundaries.clear();last_draw_timing.clear()
+		slow_ms=0.0
+
 var current_action := ""
 var action_at_ms := -1000
 
@@ -91,6 +111,7 @@ static func frame_boundaries(start:int,pre:int,post:int,end:int) -> Dictionary:
 var last_draw_timing: Dictionary = {}
 
 func _process(_delta: float) -> void:
+	if application_suspended:return
 	var now:=Time.get_ticks_usec()
 	var current_scene:=get_tree().current_scene
 	if current_scene!=null and is_instance_valid(current_scene.get("grid_view")) and current_scene.grid_view.has_method("take_draw_timing"):
@@ -295,7 +316,7 @@ func write_breadcrumbs() -> void:
 	var recent: Array=timeline.slice(maxi(0,timeline.size()-BREADCRUMB_EVENTS))
 	file.store_string(JSON.stringify({"written":Time.get_datetime_string_from_system(false,true),
 		"uptime_ms":Time.get_ticks_msec(),"latest_bucket":latest.duplicate(true),"memory":memory_stats(),
-		"errors":errors.total,"automatic_reports":auto_reports,"timeline":recent},"\t"))
+		"errors":errors.total,"automatic_reports":auto_reports,"timeline":recent,"last_save":last_save_timings.duplicate(true)},"\t"))
 	file.close()
 
 func context(scene: Node) -> Dictionary:
@@ -317,6 +338,7 @@ func context(scene: Node) -> Dictionary:
 		last_route_searches=crew.route_searches
 		last_route_failures=crew.route_failures
 		result["errors_logged"]=errors.total
+		if scene.has_method("card_storage_stats"):result["card_storage"]=scene.card_storage_stats()
 		if is_instance_valid(scene.grid_view):
 			result["visible_rooms"]=scene.grid_view.visible_draw_rooms.size()
 			result["floor_rebuilds_total"]=scene.grid_view.floor_rebuilds
@@ -325,8 +347,8 @@ func context(scene: Node) -> Dictionary:
 	return result
 
 func snapshot() -> Dictionary:
-	return {"schema":1,"clock":"wall time between process callbacks; includes vsync, focus loss and pauses",
-		"retention":"latest 120 approximately one-second buckets; current process only",
+	return {"schema":1,"clock":"active wall time between callbacks; includes vsync, window focus loss and gameplay pause; excludes OS suspension",
+		"retention":"latest 120 approximately one-second active buckets; OS suspension time excluded; current process only",
 		"frame_boundaries":"Signal intervals between monitor process callbacks; render_signals_ms is not GPU time. Missing on incomplete/headless frames.",
 		"percentile":"per-bucket nearest-rank p95; sample cap explicitly recorded",
 		"context":"values sampled at bucket end, not per-frame averages",
@@ -335,7 +357,7 @@ func snapshot() -> Dictionary:
 		"memory":memory_stats(),"memory_baseline":baseline_memory.duplicate(),
 		"texture_memory_scope":"Engine-reported allocations, not measured driver VRAM. Calibrate each runtime and compare decoded-pixel inventories separately; do not apply a global correction factor.",
 		"drone_texture_cache":preload("res://scripts/drone_animation.gd").cache_diagnostics(),
-		"rows":rows.duplicate(true),"hitches":hitches.duplicate(true),
+		"rows":rows.duplicate(true),"hitches":hitches.duplicate(true),"last_save":last_save_timings.duplicate(true),
 		"partial_bucket":{"frames":frames,"span_ms":total_ms,"max_frame_ms":maximum_ms,"paused_frames":paused_frames,"unfocused_frames":unfocused_frames}}
 
 func toggle_overlay() -> void:
