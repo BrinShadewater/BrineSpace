@@ -17,9 +17,13 @@
 - [x] Run focused source headless/native/Python lanes; record failures and affected reruns.
 - [x] Export fresh maintained Mac candidate, audit bytes/signature; run actual release journey and native interaction/rendering checks with verified scratch profile.
 - [x] Build fresh isolated Mac parent where storage permits; balanced native loading/placement/zoom/memory comparison with no competing work.
-- [ ] **BLOCKED pending owner app closure:** Export/sign distinct physical-iPad QA app; verify fresh identity/container; run available physical-renderer lifecycle/input/compact/extended workload and physical-memory capture; disclose unavailable physical interactions.
+- [ ] **PENDING physical gameplay/endurance:** Separate Release app installed; fresh identity/container verified and intro smoke passed. Still require physical-renderer lifecycle/input/compact/extended workload and whole-process memory capture.
 - [x] Recheck protected files, produce scoped PASS/FAIL/BLOCKED handoff and portable evidence, commit/push validation branch only.
 
 ## Outcome
 
 See ../../MAC_IPAD_NATIVE_VALIDATION_HANDOFF_2026-10-17.md. Parent comparison used fresh source/editor rather than a second exported app due storage. Physical lane blocked; one original diagnostic breadcrumb changed (preservation exception). No production code fixes. Publication checked separately at commit/push.
+
+## Physical installation continuation
+
+Owner closed the old app and authorized separate installation. Maintained Release build installed as com.shadewater.brinespace.nativevalidation20261017; empty Documents verified before launch, guarded intro smoke passed, old app Documents47/47 SHA256 unchanged. Initial signal9 during unsuccessful debugger check retained separately; no physical memory acceptance. Touch/gameplay/endurance remains pending owner testing. See native handoff and ipad-install evidence.

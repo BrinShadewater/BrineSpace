@@ -1,0 +1,4 @@
+(lldb) device select 00008101-0018645836EA601E
+(lldb) device process attach -p 4548
+(lldb) expr -l objective-c -- (char *)getenv("HOME")
+error: unable to evaluate expression while the process is connected: the process must be stopped because the expression might require allocating memory.

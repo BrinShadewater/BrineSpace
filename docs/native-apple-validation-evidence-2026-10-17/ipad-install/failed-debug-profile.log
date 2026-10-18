@@ -1,0 +1,5 @@
+(lldb) script lldb.debugger.SetAsync(False)
+(lldb) device select 00008101-0018645836EA601E
+(lldb) device process attach -p 4548
+(lldb) process interrupt
+error: Process must be launched.

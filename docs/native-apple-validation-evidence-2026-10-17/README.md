@@ -1,6 +1,6 @@
 # Native Apple validation evidence — 2026-10-17
 
-See [handoff](../MAC_IPAD_NATIVE_VALIDATION_HANDOFF_2026-10-17.md) and [performance](PERFORMANCE.md). This evidence validates the exact integration585111ca3, without game-source changes. Native Mac fixtures, a QA clone of a maintained release export, and physical iPad acceptance are separate lanes. Physical iPad acceptance is **BLOCKED**.
+See [handoff](../MAC_IPAD_NATIVE_VALIDATION_HANDOFF_2026-10-17.md) and [performance](PERFORMANCE.md). This evidence validates the exact integration585111ca3, without game-source changes. Native Mac fixtures, a QA clone of a maintained release export, and physical iPad acceptance are separate lanes. Physical iPad gameplay/endurance acceptance is **PENDING**; a separate app is now installed with scoped intro smoke evidence in [ipad-install](ipad-install/README.md).
 
 - `build-and-platform.json`, `hydration.json`, `parent-runtime-verification.json`, package/source audit logs: identities and export scope.
 - `python-tests.json`, four Python logs, `headless/`, `native-tests.json` and native test logs: focused source lanes.
