@@ -534,10 +534,16 @@
     "tablet-memory": [
       "test_tablet_drone_memory",
       "test_tablet_compact_storage"
+    ],
+    "performance": [
+      "test_tablet_ui_texture_storage"
     ]
   },
   "lanes": {
-    "test_tablet_card_storage": {"lane": "native", "reason": "Requires native rotated and mipmapped pixel comparisons"},
+    "test_tablet_card_storage": {
+      "lane": "native",
+      "reason": "Requires native rotated and mipmapped pixel comparisons"
+    },
     "test_marsh_swim_stroke": {
       "lane": "native",
       "reason": "Complete installed swim strokes and adjoining turn source-hold captures at two scales; explicit scratch APPDATA required."

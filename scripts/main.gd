@@ -1557,6 +1557,9 @@ func _panel_texture_for(panel: PanelContainer) -> String:
 
 func _make_texture_stylebox(path: String, patch_margin: int, content_left: int, content_right: int, content_top: int, content_bottom: int) -> StyleBoxTexture:
 	var texture: Texture2D = ui_textures.get(path)
+	if texture == null and TabletControls.enabled(self):
+		texture = _load_raw_png_texture(path)
+		if texture != null: ui_textures[path] = texture
 	if texture == null:
 		return null
 	var style := StyleBoxTexture.new()
@@ -4542,6 +4545,8 @@ func _primary_output_line(room: Dictionary) -> String:
 
 func _load_ui_textures() -> void:
 	ui_textures.clear()
+	# Tablet vector panels need no raster skins. Optional pixel frames load on use.
+	if TabletControls.enabled(self): return
 	for path in [
 		UI_PANEL_LARGE,
 		UI_PANEL_MEDIUM,
