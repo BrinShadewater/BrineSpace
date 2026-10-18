@@ -16,6 +16,7 @@ const SOURCES := {
 var textures: Dictionary = {}
 var scenery: Array[Dictionary] = []
 var initialized := false
+var legacy_scenery_prepared := false
 var site_signature := ""
 const ComposedSites := preload("res://assets/environment/composed_sites.gd")
 var composed_sites := ComposedSites.new()
@@ -74,7 +75,7 @@ var sediment_decals := SedimentDecals.new()
 func prepare_for_loading(layout: Dictionary) -> void:
 	if layout.is_empty(): return
 	var order := PackedStringArray()
-	for id in ["silt-plain"] + SCENERY:
+	for id in ["silt-plain"] + (SCENERY if _uses_legacy_scenery(layout) else []):
 		order.append(EnvironmentArt.PATHS.get(id,SOURCES[id]))
 	var groups: Array = [fungi_biome,sub_biomes]
 	order.append_array(PackedStringArray(FungiBiome.SOURCES.values()))
@@ -93,16 +94,24 @@ func prepare_for_loading(layout: Dictionary) -> void:
 		groups.append(site_art.replacement_view)
 		order.append_array(PackedStringArray(site_art.replacement_view.SOURCES.values()))
 	preload("res://scripts/image_prefetch.gd").prime(order)
-	prepare()
+	prepare(_uses_legacy_scenery(layout))
 	sync_site(layout)
 	for view in groups:view.prepare()
 	ambient_water.prepare()
 
-func prepare() -> void:
-	if initialized:
+func _uses_legacy_scenery(layout: Dictionary) -> bool:
+	var tree := Engine.get_main_loop() as SceneTree
+	var tablet := OS.has_feature("ios") or (tree != null and bool(tree.root.get_meta("tablet_controls",false)))
+	return layout.is_empty() or not tablet
+
+func prepare(include_legacy_scenery := true) -> void:
+	if initialized and (not include_legacy_scenery or legacy_scenery_prepared):
 		return
-	initialized = true
-	for id in ["silt-plain"] + SCENERY:
+	# Generated tablet sites return before drawing legacy scatter. Keep its source
+	# textures unloaded, but allow an existing view to enter an authored legacy site.
+	legacy_scenery_prepared = legacy_scenery_prepared or include_legacy_scenery
+	for id in ["silt-plain"] + (SCENERY if include_legacy_scenery else []):
+		if textures.has(id): continue
 		if id in ["silt-plain","tube-worms"]:
 			var selected:=EnvironmentArt.texture(id)
 			if selected!=null:
@@ -113,6 +122,8 @@ func prepare() -> void:
 			var source := Image.new()
 			if preload("res://scripts/safe_image.gd").load_png(source, path) == OK:
 				textures[id] = ImageTexture.create_from_image(source)
+	if initialized: return
+	initialized = true
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 9062026
 	for i in range(180):
@@ -131,7 +142,7 @@ func prepare() -> void:
 
 # Background colour, silt tiles and the sub-biome ground: nothing here moves with time.
 func render_still(canvas: CanvasItem, cell_size: float, grid_size: int, layout: Dictionary = {}) -> void:
-	prepare()
+	prepare(_uses_legacy_scenery(layout))
 	var bounds := Rect2(Vector2.ZERO, Vector2.ONE * cell_size * grid_size)
 	canvas.draw_rect(bounds, Color("09222d"))
 	# Let the canvas clip the small fixed set of tiles. Manual viewport culling
@@ -161,11 +172,11 @@ func render_still(canvas: CanvasItem, cell_size: float, grid_size: int, layout: 
 
 # What the still layer depends on; a retained copy is current while this is unchanged.
 func still_key(cell_size: float, grid_size: int, layout: Dictionary = {}) -> Array:
-	prepare()
+	prepare(_uses_legacy_scenery(layout))
 	return [cell_size,grid_size,str(layout.get("seed","legacy"))+str(layout.get("habitats",[])),textures.has("silt-plain")]
 
 func sync_site(layout: Dictionary) -> void:
-	prepare()
+	prepare(_uses_legacy_scenery(layout))
 	var signature := str(layout.get("seed","legacy"))+str(layout.get("habitats",[]))
 	if signature!=site_signature:
 		site_signature=signature

@@ -539,7 +539,8 @@
       "test_tablet_crew_decode",
       "test_tablet_dressing_storage",
       "test_tablet_crew_cache_session",
-      "test_crew_checkpoint_storage"
+      "test_crew_checkpoint_storage",
+      "test_tablet_seabed_storage"
     ],
     "performance": [
       "test_tablet_ui_texture_storage"
@@ -1639,6 +1640,10 @@
     "test_tablet_crew_cache_session": {
       "lane": "native",
       "reason": "Verifies independent and overlapping tablet batches while servicing the native loading window."
+    },
+    "test_tablet_seabed_storage": {
+      "lane": "native",
+      "reason": "Compares full generated/legacy seabed viewport pixels and tablet texture retention on a real display."
     }
   }
 }
