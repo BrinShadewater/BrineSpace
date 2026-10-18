@@ -23,13 +23,18 @@ func run():
  Motion.native_effect_storage=false
  root.set_meta("tablet_controls",true)
  var mode="hull"
+ var heading="south"
  for arg in OS.get_cmdline_user_args():
   if arg.begins_with("--compact-case="):mode=arg.trim_prefix("--compact-case=")
+  if arg.begins_with("--compact-heading="):heading=arg.trim_prefix("--compact-heading=")
  var manifest=Motion.catalog("construction" if mode=="construction" else "mining")
  var clip=manifest.states["job-weld-south" if mode=="construction" else "mine-south"]
- var record:Dictionary=clip.effectAtlas if mode=="effect" else clip.atlas
+ var record:Dictionary=manifest.headings[heading].wheelAtlas if mode=="wheel" else clip.effectAtlas if mode=="effect" else clip.atlas
+ var frame_count:int=int(record.get("frameCount",clip.frameCount))
  var path:String=record.path
  var source_spec=Motion.compact_storage_spec(path)
+ check(not source_spec.is_empty(),"Selected layer has verified tablet storage: "+path)
+ if source_spec.is_empty():quit(1);return
  var full_size=Vector2i(source_spec.width,source_spec.height)
  var full_bytes:int=full_size.x*full_size.y*4
  var cell=Vector2(manifest.frameWidth,manifest.frameHeight)
@@ -43,7 +48,7 @@ func run():
   var decoded:=Image.new()
   check(decoded.load_png_from_buffer(FileAccess.get_file_as_bytes(source_spec.path))==OK,"Compact reference decodes")
   var crop_size:=Vector2i(source_spec.box[2],source_spec.box[3])
-  for i in range(int(record.frameCount) if record.has("frameCount") else int(clip.frameCount)):
+  for i in range(frame_count):
    var at:=Vector2i(i%int(source_spec.columns),i/int(source_spec.columns))*crop_size
    var expected:Image=decoded.get_region(Rect2i(at,crop_size))
    var actual:Texture2D=compact.frame(i)
@@ -59,7 +64,7 @@ func run():
    var view=SubViewport.new();view.size=Vector2i(cell)+Vector2i(32,32);view.transparent_bg=true;view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(view);captures.append(view)
    var p=Painter.new();p.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;p.texture_repeat=CanvasItem.TEXTURE_REPEAT_DISABLED;p.texture=original;p.cell=cell;p.record=record;p.reference=lane==0;view.add_child(p);painters.append(p)
   var lease_tested:=false
-  for frame in [0,int(clip.frameCount)/2,int(clip.frameCount)-1]:
+  for frame in [0,frame_count/2,frame_count-1]:
    for p in painters:p.index=frame;p.queue_redraw()
    for i in range(3):await process_frame
    await RenderingServer.frame_post_draw
@@ -69,26 +74,26 @@ func run():
     lease_tested=true
     var held=weakref(compact.frames[int(frame)])
     var before=captures[1].get_texture().get_image().get_data()
-    for offset in range(1,13):compact.frame((int(frame)+offset)%int(clip.frameCount))
+    for offset in range(1,13):compact.frame((int(frame)+offset)%frame_count)
     check(not compact.frames.has(int(frame)),"Another consumer evicts old frame from LRU")
     check(held.get_ref()!=null,"Retained canvas leases survive frame cache eviction")
     for i in range(3):await process_frame
     await RenderingServer.frame_post_draw
     check(before==captures[1].get_texture().get_image().get_data(),"Retained pixels stay visible after frame cache eviction")
-    painters[1].index=(int(frame)+1)%int(clip.frameCount);painters[1].queue_redraw()
+    painters[1].index=(int(frame)+1)%frame_count;painters[1].queue_redraw()
     for i in range(3):await process_frame
     await RenderingServer.frame_post_draw
     check(held.get_ref()==null,"Redrawing canvas releases retired frame lease")
 
   check(lease_tested,"A visible sampled frame exercises retained canvas leases")
   var flood=ShaderMaterial.new();flood.shader=preload("res://scripts/flood_submersion.gdshader")
-  for p in painters:p.material=flood;p.index=int(clip.frameCount)/2;p.queue_redraw()
+  for p in painters:p.material=flood;p.index=frame_count/2;p.queue_redraw()
   for i in range(3):await process_frame
   await RenderingServer.frame_post_draw
   check(captures[0].get_texture().get_image().get_data()==captures[1].get_texture().get_image().get_data(),"Flood material preserves unscaled visible pixels")
   for p in painters:p.material=null;p.queue_redraw()
   for scale_value in [0.1,0.3,0.5,0.73]:
-   for p in painters:p.index=int(clip.frameCount)/2;p.scale_value=scale_value;p.queue_redraw()
+   for p in painters:p.index=frame_count/2;p.scale_value=scale_value;p.queue_redraw()
    for i in range(3):await process_frame
    await RenderingServer.frame_post_draw
    var drawn=captures[1].get_texture().get_image()
@@ -98,6 +103,7 @@ func run():
     for i in range(2):await process_frame
     await RenderingServer.frame_post_draw
     references.append(captures[0].get_texture().get_image().get_data())
+   if mode=="wheel":check(not drawn.is_invisible(),"Wheel fractional check contains visible artwork")
    var data=drawn.get_data();var changed:=0;var unexplained:=0
    for k in range(0,data.size(),4):
     if data.slice(k,k+4)==references[0].slice(k,k+4):continue
