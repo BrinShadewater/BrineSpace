@@ -1,3 +1,7 @@
+## Active iPad stress and transition investigation — October17,2026
+
+Branch `codex/ipad-memory-placement-2026-10-17`; [follow-up](IPAD_TRANSITION_STRESS_FOLLOWUP_2026-10-17.md). Existing build453 completed a valid physical40→43room workload:9×600samples at1×/2×/4×,5core saves unchanged. Sampled process footprint peaked2.592GB across two passive traces; single diagnostic run, not A/B savings, leak clearance or safe headroom proof. Worst frame1,049.881ms occurred well after placement, mostly outside measured action/simulation. Actual placement frames183/117/146ms. Rendering/cache lifecycle and older Save/title stalls remain open. First paused-overlay benchmark rejected explicitly; native text-located touch helper corrects a missed fixed-coordinate menu tap. Normal mode restored; unprofiled transition repeat awaits iPad UI-automation Touch ID approval. Evidence-only update; no new runtime/build. Frozen builds/protected checkout unchanged.
+
 ## Tablet UI memory and physical touch automation — October17,2026
 
 Branch `codex/ipad-memory-placement-2026-10-17`; [handoff](IPAD_UI_MEMORY_TOUCH_FOLLOWUP_2026-10-17.md). Build **brinespace-453cc0bb5ad27b6f** installed in existing Validation2 with5core save hashes preserved. Tablet raster panel skins now load only when requested; vector UI retains none; pixel setting/original pixels and desktop policy preserved. Reversible native Mac probe removes5,283,024engine texture bytes; physical whole-process delta unmeasured. Source/exact-PCK tests, asset/script audit, strict signature and independent review pass.

@@ -1,0 +1,7 @@
+{
+  "scope": "Rejected QA run; not a valid simulation, placement or memory-comparison workload.",
+  "pid": 9183,
+  "reason": "An inherited unclean-session recovery overlay paused SceneTree. Benchmark coroutine continued collecting frames, but default-pausable FrameDriver did not run actions or deterministic simulation. All nine phase camera_end.rooms remained40 rather than41/42/43.",
+  "retained_evidence": "after-stress-documents; large-station-memory.trace; stress-progress-{first,mid,late}.json",
+  "correction": "Backed up diagnostic session.lock to current-lock.txt, terminated completed QA PID9183, removed only Documents/bug_report/session.lock using app-container AFC. No core save files edited. Relaunched exact installed build asPID9393. Verify actual placement and simulation before accepting rerun."
+}
