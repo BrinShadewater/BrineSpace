@@ -1,0 +1,76 @@
+{
+  "build": "brinespace-a3c0c90c822c9ebf",
+  "owner_report": "Card-return appeared frozen, then recovered.",
+  "interpretation": "Manual report records 60.406s and 30.225s frames following Save actions. No card-return action marker exists, so gesture causality is unproven. Signal intervals are not CPU stacks or GPU timings.",
+  "hitches": [
+    {
+      "uptime_ms": 59047.683,
+      "frame_ms": 17216.085,
+      "paused": false,
+      "last_action": "",
+      "action_age_ms": 60048,
+      "frame_boundaries_ms": {
+        "after_render_ms": 17211.751,
+        "before_render_ms": 1.904,
+        "render_signals_ms": 2.43
+      },
+      "engine_process_ms": 7.066
+    },
+    {
+      "uptime_ms": 115423.364,
+      "frame_ms": 11560.589,
+      "paused": false,
+      "last_action": "placement",
+      "action_age_ms": 431,
+      "frame_boundaries_ms": {
+        "after_render_ms": 282.23,
+        "before_render_ms": 11277.702,
+        "render_signals_ms": 0.657
+      },
+      "engine_process_ms": 6.918,
+      "grid_draw_usec": 0
+    },
+    {
+      "uptime_ms": 118732.247,
+      "frame_ms": 2759.712,
+      "paused": true,
+      "last_action": "placement",
+      "action_age_ms": 3740,
+      "frame_boundaries_ms": {
+        "after_render_ms": 2758.436,
+        "before_render_ms": 0.739,
+        "render_signals_ms": 0.537
+      },
+      "engine_process_ms": 11207.56,
+      "grid_draw_usec": 2449501
+    },
+    {
+      "uptime_ms": 344689.4,
+      "frame_ms": 60405.513,
+      "paused": true,
+      "last_action": "save",
+      "action_age_ms": 60350,
+      "frame_boundaries_ms": {
+        "after_render_ms": 60372.834,
+        "before_render_ms": 0.916,
+        "render_signals_ms": 31.763
+      },
+      "engine_process_ms": 33.577,
+      "grid_draw_usec": 10467
+    },
+    {
+      "uptime_ms": 402318.943,
+      "frame_ms": 30224.688,
+      "paused": true,
+      "last_action": "save",
+      "action_age_ms": 30189,
+      "frame_boundaries_ms": {
+        "after_render_ms": 30192.029,
+        "before_render_ms": 0.382,
+        "render_signals_ms": 32.277
+      },
+      "engine_process_ms": 33.425,
+      "grid_draw_usec": 3752
+    }
+  ]
+}

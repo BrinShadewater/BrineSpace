@@ -1,0 +1,87 @@
+{
+  "scope": "180-second Time Profiler all-process capture filtered exclusively to appPID7724. CPU samples exclude waiting threads; a non-reproduced stall cannot be diagnosed from this trace. Native framework symbols partially unresolved. Samples are observations, not function timings.",
+  "main_thread_samples": 65984,
+  "exclusive_leaf_top": [
+    {
+      "frame": "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+      "samples": 5770
+    },
+    {
+      "frame": "RasterizerCanvasGLES3::_record_item_commands(RendererCanvasRender::Item const*, RID, Transform2D const&, RendererCanvasRender::Item*&, GLES3::CanvasShaderData::BlendMode, RendererCanvasRender::Light*, unsigned int&, bool&, bool&, Vector2 const&)",
+      "samples": 1952
+    },
+    {
+      "frame": "Variant::reference(Variant const&)",
+      "samples": 1750
+    },
+    {
+      "frame": "0x2563fbcd5",
+      "samples": 1686
+    },
+    {
+      "frame": "<deduplicated_symbol>",
+      "samples": 949
+    },
+    {
+      "frame": "HashMap<Variant, Variant, HashMapHasherDefault, StringLikeVariantComparator, DefaultTypedAllocator<HashMapElement<Variant, Variant>>>::_lookup_idx(Variant const&, unsigned int&) const",
+      "samples": 798
+    },
+    {
+      "frame": "Variant::_clear_internal()",
+      "samples": 789
+    },
+    {
+      "frame": "0x2563fbb49",
+      "samples": 732
+    },
+    {
+      "frame": "0x268b3fe65",
+      "samples": 711
+    },
+    {
+      "frame": "0x1a65f0f7d",
+      "samples": 699
+    },
+    {
+      "frame": "ZSTD_decompressSequences",
+      "samples": 676
+    },
+    {
+      "frame": "RendererCanvasCull::_cull_canvas_item(RendererCanvasCull::Item*, Transform2D const&, Rect2 const&, Color const&, int, RendererCanvasRender::Item**, RendererCanvasRender::Item**, RendererCanvasCull::Item*, RendererCanvasCull::Item*, bool, unsigned int, Vector2 const&, int, RendererCanvasRender::Item*)",
+      "samples": 644
+    },
+    {
+      "frame": "RasterizerCanvasGLES3::_prepare_canvas_texture(RID, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, unsigned int&, Vector2&)",
+      "samples": 643
+    },
+    {
+      "frame": "0x268b3cd7d",
+      "samples": 639
+    },
+    {
+      "frame": "Variant::operator=(Variant const&)",
+      "samples": 621
+    },
+    {
+      "frame": "0x268b3cd9d",
+      "samples": 495
+    },
+    {
+      "frame": "RasterizerCanvasGLES3::_render_batch(RendererCanvasRender::Light*, unsigned int, RenderingServerTypes::RenderInfo*)",
+      "samples": 455
+    },
+    {
+      "frame": "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+      "samples": 436
+    },
+    {
+      "frame": "String::hash() const",
+      "samples": 434
+    },
+    {
+      "frame": "Variant::hash_compare(Variant const&, int, bool) const",
+      "samples": 403
+    }
+  ],
+  "owner_repeat": "Reported smoother; manual report Save-associated frame59.621ms. No runtime change or established fix."
+}
