@@ -891,7 +891,7 @@ func _south_short_base_move(delta: float) -> void:
 
 func _south_short_base_update(main,delta: float) -> void:
 	if delta<=0 or main.paused or not main.running:return
-	if main is Node and main.get("grid_view")!=null:bind_south_stop_player(main.grid_view.marsh_player)
+	if active and main is Node and main.get("grid_view")!=null:bind_south_stop_player(main.grid_view.marsh_player)
 	south_stop_time=main.get_visual_time_seconds()
 	if dead:clear_south_stop();south_stop_idle_pending=false;return
 	if not south_stop_active():

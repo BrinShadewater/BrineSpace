@@ -288,9 +288,47 @@ const ROOM_TEXTURE_OVERDRAW := 0.012
 const ROOM_SOURCE_MARGIN := 8
 
 const CrewSpritePlayer = preload("res://scripts/crew_sprite_player.gd")
-var veld_player = CrewSpritePlayer.new()
+var _veld_player = CrewSpritePlayer.new()
+var _marsh_player = CrewSpritePlayer.new()
+# Tablet-only: absent crew keep lightweight playback until their first consumer.
+# James stays eager because cargo checkpoint admission validates his source bank.
+var deferred_replacement_crew := false
+var replacement_crew_loaded: Dictionary = {}
+var replacement_playback: Dictionary = {}
+var veld_player: CrewSpritePlayer:
+	get:
+		_ensure_replacement_crew("veld")
+		return _veld_player
+	set(value):
+		_veld_player=value
+		replacement_crew_loaded["veld"]=true
 var branforth_player = preload("res://scripts/james_water_player.gd").new()
-var marsh_player = CrewSpritePlayer.new()
+var marsh_player: CrewSpritePlayer:
+	get:
+		_ensure_replacement_crew("marsh")
+		return _marsh_player
+	set(value):
+		_marsh_player=value
+		replacement_crew_loaded["marsh"]=true
+
+func _ensure_replacement_crew(actor:String) -> void:
+	if not deferred_replacement_crew or replacement_crew_loaded.has(actor) or not is_inside_tree():return
+	_load_replacement_crew_animations([actor])
+	var player=_veld_player if actor=="veld" else _marsh_player
+	if replacement_playback.has(actor):player.restore_snapshot(replacement_playback[actor]);replacement_playback.erase(actor)
+	crew_texture_pool.clear_lookup()
+
+## Capturing/restoring an absent actor must not invoke its loading getter.
+func _replacement_snapshot(actor:String) -> Dictionary:
+	if replacement_playback.has(actor):return replacement_playback[actor].duplicate(true)
+	return (_veld_player if actor=="veld" else _marsh_player).snapshot()
+
+func _restore_replacement_playback(actor:String,data:Dictionary) -> void:
+	if deferred_replacement_crew and not replacement_crew_loaded.has(actor) and str(data.get("key","")).is_empty():
+		replacement_playback[actor]=data.duplicate(true)
+		return
+	var player=veld_player if actor=="veld" else marsh_player
+	player.restore_snapshot(data)
 
 var human_sprite: Texture2D
 var door_texture: Texture2D
@@ -401,7 +439,8 @@ func _ready() -> void:
 				textures.append(texture)
 		if not textures.is_empty():
 			room_texture_variants[id] = textures
-	_load_replacement_crew_animations()
+	deferred_replacement_crew=preload("res://scripts/tablet_controls.gd").enabled(self)
+	_load_replacement_crew_animations(["branforth"] if deferred_replacement_crew else ["veld","branforth","marsh"])
 	human_sprite = _load_png_texture("res://character/major-bill-v3/rotations/south.png")
 	for direction in ["north", "east", "south", "west"]:
 		var texture := _load_png_texture("res://character/major-bill-v3/rotations/%s.png" % direction)
@@ -518,10 +557,10 @@ func _detached_crew_bank():
 	if Router.active==null:Router.start(Engine.get_main_loop() as SceneTree,self,CpuBank.new())
 	return Router.active.bank
 
-func _load_replacement_crew_animations() -> void:
-	var detached=_detached_crew_bank()
+func _load_replacement_crew_animations(actors:Array=["veld","branforth","marsh"]) -> void:
+	var detached=Router.active.bank if deferred_replacement_crew and Router.active!=null else _detached_crew_bank()
 	var bank=detached if detached!=null else CpuBank.new()
-	for actor in ["veld","branforth","marsh"]:
+	for actor in actors:
 		var base: String=CrewSpritePlayer.REVISION_ROOTS[actor]
 		var catalog: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
 		var player = CpuJames.new() if actor=="branforth" else CpuPlayer.new()
@@ -4392,7 +4431,7 @@ func _get_marsh_cargo_drain_frame(main) -> Texture2D:
 func crew_playback_snapshot() -> Dictionary:
 	return {"bill": {"key": human_animation_key, "phase": human_animation_phase,
 		"last_time": human_animation_last_time, "started": human_animation_started,
-		"last_position": human_animation_last_position,"water":human_water_player.snapshot()}, "veld": veld_player.snapshot(), "branforth": branforth_player.snapshot(), "marsh": marsh_player.snapshot()}
+		"last_position": human_animation_last_position,"water":human_water_player.snapshot()}, "veld": _replacement_snapshot("veld"), "branforth": branforth_player.snapshot(), "marsh": _replacement_snapshot("marsh")}
 
 func restore_crew_playback(data: Dictionary) -> void:
 	var bill: Dictionary = data.bill
@@ -4403,9 +4442,9 @@ func restore_crew_playback(data: Dictionary) -> void:
 		human_animation_started = float(bill.started)
 		human_animation_last_position = bill.last_position
 	if bill.has("water") and CrewSpritePlayer.valid_snapshot(bill.water): human_water_player.restore_snapshot(bill.water)
-	veld_player.restore_snapshot(data.veld)
+	_restore_replacement_playback("veld",data.veld)
 	if data.has("branforth"): branforth_player.restore_snapshot(data.branforth)
-	if data.has("marsh"): marsh_player.restore_snapshot(data.marsh)
+	if data.has("marsh"): _restore_replacement_playback("marsh",data.marsh)
 
 func _is_james_actor(actor) -> bool:
 	var script: Script=actor.get_script()

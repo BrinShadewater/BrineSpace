@@ -533,13 +533,18 @@
     ],
     "tablet-memory": [
       "test_tablet_drone_memory",
-      "test_tablet_compact_storage"
+      "test_tablet_compact_storage",
+      "test_tablet_crew_loading"
     ],
     "performance": [
       "test_tablet_ui_texture_storage"
     ]
   },
   "lanes": {
+    "test_tablet_crew_loading": {
+      "lane": "native",
+      "reason": "Loads actual crew CPU sources, validates deferred playback and desktop policy"
+    },
     "test_tablet_card_storage": {
       "lane": "native",
       "reason": "Requires native rotated and mipmapped pixel comparisons"
