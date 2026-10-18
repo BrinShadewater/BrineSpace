@@ -2,6 +2,15 @@ extends "res://scripts/crew_storage/base_batch.gd"
 ## Private experiment: main-thread PNG/prefetch ownership, bounded independent
 ## worker compression/bounds, main-thread frame adoption. No GPU worker calls.
 const WORK_WINDOW:=8
+const TABLET_WORK_WINDOW:=4
+var work_window:=WORK_WINDOW
+var skipped_png_decodes:=0
+var fingerprint_usec:=0
+var pending_image_bytes:=0
+var peak_pending_image_bytes:=0
+func _init():
+	var tree:=Engine.get_main_loop() as SceneTree
+	if OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false))):work_window=TABLET_WORK_WINDOW
 const Prefetch=preload("res://scripts/image_prefetch.gd")
 var jobs:Dictionary={}
 var key_jobs:Dictionary={}
@@ -19,6 +28,19 @@ func prepare_path(path:String):
 	if path_jobs.has(path):return
 	var known:WeakRef=cpu_sources.get(path)
 	if known!=null and known.get_ref()!=null:return
+	# PNG-byte identity is the existing immutable sharing key. Check it before
+	# decoding another path for the same art; never retain the encoded file.
+	if work_window==TABLET_WORK_WINDOW and FileAccess.file_exists(path):
+		var hash_started:=Time.get_ticks_usec()
+		var digest:=FileAccess.get_sha256(path)
+		fingerprint_usec+=Time.get_ticks_usec()-hash_started
+		known=cpu_pixels.get(digest)
+		if known!=null and known.get_ref()!=null:
+			cpu_sources[path]=known;skipped_png_decodes+=1;return
+		if key_jobs.has(digest):
+			var primary:String=key_jobs[digest]
+			path_jobs[path]=primary;job_paths[primary].append(path)
+			dedup_hits+=1;skipped_png_decodes+=1;return
 	var image:=Image.new()
 	var started:=Time.get_ticks_usec()
 	var error:int=preload("res://scripts/safe_image.gd").load_png(image,path,true)
@@ -46,7 +68,8 @@ func prepare_path(path:String):
 		result.used=Rect2(image.get_used_rect())
 		result.bounds_usec=Time.get_ticks_usec()-bounds_started
 		result.worker_usec=Time.get_ticks_usec()-work_started,true)
-	jobs[path]={"task":task,"result":result}
+	jobs[path]={"task":task,"result":result,"image_bytes":image.get_data_size()}
+	pending_image_bytes+=image.get_data_size();peak_pending_image_bytes=maxi(peak_pending_image_bytes,pending_image_bytes)
 	key_jobs[key]=path;path_jobs[path]=path;job_paths[path]=[path]
 	submitted+=1;peak_jobs=maxi(peak_jobs,jobs.size())
 func materialize(display:Texture2D,early:bool=true)->void:
@@ -60,6 +83,7 @@ func materialize(display:Texture2D,early:bool=true)->void:
 	var started:=Time.get_ticks_usec()
 	WorkerThreadPool.wait_for_task_completion(job.task)
 	wait_usec+=Time.get_ticks_usec()-started
+	pending_image_bytes-=int(job.image_bytes)
 	jobs.erase(primary)
 	var result:Dictionary=job.result
 	worker_usec+=int(result.worker_usec);worker_compress_usec+=int(result.compress_usec)
@@ -88,7 +112,7 @@ func finish()->Dictionary:
 			if pending[id].texture.get_ref()!=null:order.append(pending[id].path)
 		Prefetch.prime(order)
 	for id in ids:
-		while next<ids.size() and jobs.size()<WORK_WINDOW:
+		while next<ids.size() and jobs.size()<work_window:
 			var ahead:int=ids[next];next+=1
 			if not pending.has(ahead):continue
 			if pending[ahead].texture.get_ref()!=null:prepare_path(pending[ahead].path)
@@ -99,9 +123,9 @@ func finish()->Dictionary:
 		else:materialize(texture,false)
 	for path in jobs.keys():
 		WorkerThreadPool.wait_for_task_completion(jobs[path].task);unused_jobs+=1
-	jobs.clear();key_jobs.clear();path_jobs.clear();job_paths.clear()
+	jobs.clear();key_jobs.clear();path_jobs.clear();job_paths.clear();pending_image_bytes=0
 	var result:Dictionary=super.finish()
-	result.merge({"private_pending_content_hits":dedup_hits,"private_key_jobs_left":key_jobs.size(),"private_path_jobs_left":path_jobs.size(),"private_compress_jobs":submitted,"private_compress_peak_jobs":peak_jobs,
+	result.merge({"private_work_window":work_window,"private_skipped_png_decodes":skipped_png_decodes,"private_fingerprint_usec":fingerprint_usec,"private_peak_pending_image_bytes":peak_pending_image_bytes,"private_pending_content_hits":dedup_hits,"private_key_jobs_left":key_jobs.size(),"private_path_jobs_left":path_jobs.size(),"private_compress_jobs":submitted,"private_compress_peak_jobs":peak_jobs,
 		"private_compress_wait_usec":wait_usec,"private_worker_usec":worker_usec,
 		"private_worker_compress_usec":worker_compress_usec,"private_worker_bounds_usec":worker_bounds_usec,
 		"private_compress_unused_jobs":unused_jobs,"private_compress_jobs_left":jobs.size()})
