@@ -1,0 +1,26 @@
+{
+  "scope": "Native Mac GLES3 tablet fixture; compressed immutable source bookkeeping, not process footprint or measured physical iPad savings.",
+  "runtime_commit": "137a9813ecfe2ae01ba934775e50c477a14d724b",
+  "initial_compressed_bytes": 102953537,
+  "after_first_veld_bytes": 131536873,
+  "after_first_marsh_bytes": 140535542,
+  "deferred_bytes": 37582005,
+  "desktop_eager_preserved": true,
+  "red_failures": 2,
+  "red_reason": "Original eager loader prepared both absent actors before first use.",
+  "green_failures": 0,
+  "coverage": [
+    "inactive updates and full checkpoint capture do not load absent actors",
+    "pending empty playback survives first materialization",
+    "nonempty absent playback loads into existing Router and preserves key/phase",
+    "repeated access shares loaded sources",
+    "James cargo checkpoint player remains eager",
+    "desktop retains eager loading"
+  ],
+  "known_limits": [
+    "First-use load remains synchronous and may pause at encounter; no claim that all stalls are fixed",
+    "James remains eager to preserve existing cargo checkpoint admission",
+    "All-crew-active memory returns to the original source-bank footprint",
+    "Physical process memory savings not yet measured"
+  ]
+}
