@@ -4,6 +4,9 @@ extends "res://scripts/crew_storage/base_batch.gd"
 const PreparedCache=preload("res://scripts/crew_storage/prepared_cache.gd")
 static var prepared_cache_enabled:=true # Diagnostic A/B; tablet default keeps disposable prepared data.
 var prepared_cache:RefCounted
+var cache_hits:=0
+var cache_writes:=0
+var cache_rejected:=0
 const WORK_WINDOW:=8
 const TABLET_WORK_WINDOW:=4
 var work_window:=WORK_WINDOW
@@ -14,7 +17,8 @@ var peak_pending_image_bytes:=0
 func _init():
 	var tree:=Engine.get_main_loop() as SceneTree
 	if OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false))):work_window=TABLET_WORK_WINDOW
-	if work_window==TABLET_WORK_WINDOW and prepared_cache_enabled:prepared_cache=PreparedCache.new()
+	if work_window==TABLET_WORK_WINDOW and prepared_cache_enabled:
+		prepared_cache=PreparedCache.shared()
 const Prefetch=preload("res://scripts/image_prefetch.gd")
 var jobs:Dictionary={}
 var key_jobs:Dictionary={}
@@ -47,7 +51,11 @@ func prepare_path(path:String):
 			path_jobs[path]=primary;job_paths[primary].append(path)
 			dedup_hits+=1;skipped_png_decodes+=1;return
 		if prepared_cache!=null:
+			var previous_hits:int=prepared_cache.hits
+			var previous_rejected:int=prepared_cache.rejected
 			var cached:Dictionary=prepared_cache.load_prepared(digest)
+			cache_hits+=prepared_cache.hits-previous_hits
+			cache_rejected+=prepared_cache.rejected-previous_rejected
 			if not cached.is_empty():
 				cached.worker_usec=0;cached.compress_usec=0;cached.bounds_usec=0
 				jobs[path]={"task":-1,"result":cached,"image_bytes":0,"cached":true}
@@ -98,7 +106,12 @@ func materialize(display:Texture2D,early:bool=true)->void:
 	pending_image_bytes-=int(job.image_bytes)
 	jobs.erase(primary)
 	var result:Dictionary=job.result
-	if prepared_cache!=null and not job.get("cached",false):prepared_cache.store_prepared(result)
+	if prepared_cache!=null and not job.get("cached",false):
+		var previous_writes:int=prepared_cache.writes
+		var previous_rejected:int=prepared_cache.rejected
+		prepared_cache.store_prepared(result)
+		cache_writes+=prepared_cache.writes-previous_writes
+		cache_rejected+=prepared_cache.rejected-previous_rejected
 	worker_usec+=int(result.worker_usec);worker_compress_usec+=int(result.compress_usec)
 	worker_bounds_usec+=int(result.bounds_usec)
 	var known:WeakRef=cpu_pixels.get(result.key)
@@ -139,7 +152,7 @@ func finish()->Dictionary:
 		unused_jobs+=1
 	jobs.clear();key_jobs.clear();path_jobs.clear();job_paths.clear();pending_image_bytes=0
 	var result:Dictionary=super.finish()
-	result.merge({"private_disk_cache_hits":prepared_cache.hits if prepared_cache!=null else 0,"private_disk_cache_writes":prepared_cache.writes if prepared_cache!=null else 0,"private_disk_cache_rejected":prepared_cache.rejected if prepared_cache!=null else 0,"private_work_window":work_window,"private_skipped_png_decodes":skipped_png_decodes,"private_fingerprint_usec":fingerprint_usec,"private_peak_pending_image_bytes":peak_pending_image_bytes,"private_pending_content_hits":dedup_hits,"private_key_jobs_left":key_jobs.size(),"private_path_jobs_left":path_jobs.size(),"private_compress_jobs":submitted,"private_compress_peak_jobs":peak_jobs,
+	result.merge({"private_disk_cache_hits":cache_hits,"private_disk_cache_writes":cache_writes,"private_disk_cache_rejected":cache_rejected,"private_work_window":work_window,"private_skipped_png_decodes":skipped_png_decodes,"private_fingerprint_usec":fingerprint_usec,"private_peak_pending_image_bytes":peak_pending_image_bytes,"private_pending_content_hits":dedup_hits,"private_key_jobs_left":key_jobs.size(),"private_path_jobs_left":path_jobs.size(),"private_compress_jobs":submitted,"private_compress_peak_jobs":peak_jobs,
 		"private_compress_wait_usec":wait_usec,"private_worker_usec":worker_usec,
 		"private_worker_compress_usec":worker_compress_usec,"private_worker_bounds_usec":worker_bounds_usec,
 		"private_compress_unused_jobs":unused_jobs,"private_compress_jobs_left":jobs.size()})

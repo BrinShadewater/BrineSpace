@@ -6,7 +6,7 @@ var dimensions:=Vector2i.ZERO
 var pixel_format:=Image.FORMAT_RGBA8
 var mipmaps:=false
 var mipmap_count:=0
-var _checkpoint_packed:=PackedByteArray()
+var _checkpoint_packed_digest:=PackedByteArray()
 var _checkpoint_layout:Array=[]
 var _checkpoint_digest:=""
 var source:Image:
@@ -31,10 +31,12 @@ func checkpoint_rgba_sha256()->String:
 	# Keep the existing checkpoint hash of hex-encoded image bytes. Never retain a
 	# decoded Image. Exact compressed-byte and layout checks also catch tool edits.
 	var layout:Array=[raw_bytes,dimensions,pixel_format,mipmaps]
-	if not _checkpoint_digest.is_empty() and layout==_checkpoint_layout and packed==_checkpoint_packed:
+	var hash:=HashingContext.new();hash.start(HashingContext.HASH_SHA256);hash.update(packed)
+	var packed_digest:=hash.finish()
+	if not _checkpoint_digest.is_empty() and layout==_checkpoint_layout and packed_digest==_checkpoint_packed_digest:
 		return _checkpoint_digest
 	_checkpoint_digest=get_image().get_data().hex_encode().sha256_text()
 	_checkpoint_layout=layout
-	# Packed arrays can alias in-place writes: the validity key must own its copy.
-	_checkpoint_packed=packed.duplicate()
+	# Detect aliased in-place edits without retaining a second frame payload.
+	_checkpoint_packed_digest=packed_digest
 	return _checkpoint_digest

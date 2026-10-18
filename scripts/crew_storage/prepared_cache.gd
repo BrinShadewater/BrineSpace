@@ -5,6 +5,16 @@ const MAX_BYTES:=192*1024*1024
 const MAX_ENTRY:=4*1024*1024
 const MAX_RAW:=16*1024*1024
 const MAX_FILES:=8192
+static var shared_session:RefCounted
+static func cache_directory()->String:
+ return OS.get_cache_dir().path_join("BrineSpace/crew-frame-v1") if OS.has_feature("ios") else "user://crew-frame-cache-v1"
+static func shared()->RefCounted:
+ # Reuse metadata, not pixels: each batch still validates the bytes it opens.
+ # Profile changes and OS removal of the whole disposable directory reset it.
+ var path:=cache_directory()
+ if shared_session==null or shared_session.directory!=path or not DirAccess.dir_exists_absolute(path):
+  shared_session=load("res://scripts/crew_storage/prepared_cache.gd").new()
+ return shared_session
 var directory:String
 var entries:Dictionary={}
 var bytes:=0
@@ -12,7 +22,7 @@ var writes:=0
 var hits:=0
 var rejected:=0
 func _init():
- directory=OS.get_cache_dir().path_join("BrineSpace/crew-frame-v1") if OS.has_feature("ios") else "user://crew-frame-cache-v1"
+ directory=cache_directory()
  if DirAccess.make_dir_recursive_absolute(directory)!=OK:return
  var dir:=DirAccess.open(directory)
  if dir==null:return
@@ -39,7 +49,8 @@ func load_prepared(key:String)->Dictionary:
  var name:=key+".bin"
  if not entries.has(name):return {}
  var file:=FileAccess.open(directory.path_join(name),FileAccess.READ)
- if file==null:return {}
+ if file==null:
+  _erase(name);return {} # OS may purge entries while the metadata session lives.
  var length:=file.get_length()
  if length<=32 or length>MAX_ENTRY:file.close();_erase(name);rejected+=1;return {}
  var checksum:=file.get_buffer(32);var payload:=file.get_buffer(length-32);file.close()
