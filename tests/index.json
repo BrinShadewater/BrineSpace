@@ -535,13 +535,18 @@
       "test_tablet_drone_memory",
       "test_tablet_compact_storage",
       "test_tablet_crew_loading",
-      "test_tablet_crew_decode"
+      "test_tablet_crew_decode",
+      "test_tablet_dressing_storage"
     ],
     "performance": [
       "test_tablet_ui_texture_storage"
     ]
   },
   "lanes": {
+    "test_tablet_dressing_storage": {
+      "lane": "native",
+      "reason": "Compares actual registered room dressing pixels across tablet/desktop storage policies"
+    },
     "test_tablet_crew_decode": {
       "lane": "native",
       "reason": "Checks actual immutable crew pixels, encoded dedup and tablet compression window"

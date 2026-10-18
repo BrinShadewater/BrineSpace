@@ -4,6 +4,8 @@ extends RefCounted
 var room
 var profile: Dictionary
 var textures: Dictionary={}
+static var defer_tablet_textures := true # Diagnostic A/B; normal tablet play defers unused sheets.
+var texture_pool: RefCounted
 
 func _init(host, path: String) -> void:
 	room=host
@@ -11,14 +13,10 @@ func _init(host, path: String) -> void:
 	# First profiles have no learned room order. Announce this small authored set
 	# before consuming it; the existing bounded decoder owns and releases the work.
 	preload("res://scripts/image_prefetch.gd").prime(PackedStringArray(profile.textures.values()))
-	var pool = room.get_meta("room_texture_pool") if room.has_meta("room_texture_pool") else null
-	for key in profile.textures:
-		if pool != null:
-			textures[key]=pool.acquire(profile.textures[key]).texture
-			continue
-		var image := Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
-		textures[key]=ImageTexture.create_from_image(image)
+	texture_pool = room.get_meta("room_texture_pool") if room.has_meta("room_texture_pool") else null
+	var tablet:bool=OS.has_feature("ios") or (room is Node and preload("res://scripts/tablet_controls.gd").enabled(room))
+	if not (defer_tablet_textures and tablet and not room.has_meta("layout_editor_preview")):
+		for key in profile.textures: _texture(key)
 	var resolved_furniture: Array=[]
 	for raw_item in profile.get("furniture",[]):
 		var item: Dictionary=raw_item.duplicate(true)
@@ -30,6 +28,16 @@ func _init(host, path: String) -> void:
 		resolved_furniture.append(item)
 		room.life_items.append(registration(item))
 	profile.furniture=resolved_furniture
+
+func _texture(key: String):
+	if not textures.has(key):
+		if texture_pool != null:
+			textures[key]=texture_pool.acquire(profile.textures[key]).texture
+		else:
+			var image := Image.new()
+			preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
+			textures[key]=ImageTexture.create_from_image(image)
+	return textures[key]
 
 func registration(item: Dictionary) -> Dictionary:
 	var r: Array=item.region
@@ -54,7 +62,7 @@ func place() -> void:
 	room.keep_props_inside_walls()
 
 func draw_sprite(prop: Dictionary, texture_key: String) -> void:
-	var texture: ImageTexture=textures[texture_key]
+	var texture: ImageTexture=_texture(texture_key)
 	for polygon in prop.registration.pieces:
 		var points := PackedVector2Array()
 		var uv := PackedVector2Array()
