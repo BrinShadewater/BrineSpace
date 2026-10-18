@@ -1,0 +1,274 @@
+{
+  "crew_storage": {
+    "active": true,
+    "draw_epochs": 0,
+    "generated_readbacks": 0,
+    "missing": 0,
+    "presenter": {
+      "acquire_calls": 0,
+      "cache_byte_limit": 67108864,
+      "cache_bytes": 0,
+      "cache_hits": 0,
+      "capacity": 128,
+      "decode_max_usec": 0,
+      "decode_total_usec": 0,
+      "decoded_bytes": 0,
+      "decoded_count": 0,
+      "evictions": 0,
+      "owner_count": 0,
+      "slot_count": 0,
+      "spill_allocations": 0,
+      "spill_count": 0,
+      "spill_peak_source_bytes": 0,
+      "submit_max_usec": 0,
+      "submit_total_usec": 0,
+      "uploads": 0
+    },
+    "registered_canvases": 645,
+    "resolved": 0,
+    "shown_pose_count": 0,
+    "source_compressed_bytes": 140535542,
+    "source_decoded_bytes": 1624022112,
+    "source_reference_count": 16432,
+    "tracked_owners": 0
+  },
+  "grid_marks": [
+    {
+      "label": "ready_begin",
+      "texture_bytes": 73433103.0,
+      "usec": 2406425
+    },
+    {
+      "label": "_generate_star_points()",
+      "texture_bytes": 73433103.0,
+      "usec": 2406835
+    },
+    {
+      "label": "space_background_texture = _load_png_texture(\"res://legacy/retired/space texture.jpg\")",
+      "texture_bytes": 73433103.0,
+      "usec": 2407013
+    },
+    {
+      "label": "_load_replacement_crew_animations()",
+      "texture_bytes": 188585911.0,
+      "usec": 2602744
+    },
+    {
+      "label": "human_sprite = _load_png_texture(\"res://character/major-bill-v3/rotations/south.png\")",
+      "texture_bytes": 188585911.0,
+      "usec": 6795601
+    }
+  ],
+  "marks": [
+    {
+      "label": "var backdrop",
+      "usec": 2357001
+    },
+    {
+      "label": "var root",
+      "usec": 2357041
+    },
+    {
+      "label": "var top_shell",
+      "usec": 2357048
+    },
+    {
+      "label": "var top_bar",
+      "usec": 2357091
+    },
+    {
+      "label": "var identity",
+      "usec": 2357104
+    },
+    {
+      "label": "var title",
+      "usec": 2357115
+    },
+    {
+      "label": "var subtitle",
+      "usec": 2358546
+    },
+    {
+      "label": "var resources_row",
+      "usec": 2358652
+    },
+    {
+      "label": "var navigation_row",
+      "usec": 2358663
+    },
+    {
+      "label": "var journal",
+      "usec": 2358672
+    },
+    {
+      "label": "var menu_button",
+      "usec": 2379919
+    },
+    {
+      "label": "var middle",
+      "usec": 2400049
+    },
+    {
+      "label": "var grid_frame",
+      "usec": 2400058
+    },
+    {
+      "label": "var scroll",
+      "usec": 2400077
+    },
+    {
+      "label": "var grid",
+      "usec": 2402590
+    },
+    {
+      "label": "var feedback_style",
+      "usec": 8541569
+    },
+    {
+      "label": "var objective_panel",
+      "usec": 8541649
+    },
+    {
+      "label": "var objective_text",
+      "usec": 8541680
+    },
+    {
+      "label": "var objective_box",
+      "usec": 8541687
+    },
+    {
+      "label": "var cascade_panel",
+      "usec": 8543202
+    },
+    {
+      "label": "var cascade_text: Label = cascade_panel.get_node(\"Body\").get_child(1)",
+      "usec": 8544138
+    },
+    {
+      "label": "var crew_strip",
+      "usec": 8544167
+    },
+    {
+      "label": "var recenter_button",
+      "usec": 8608369
+    },
+    {
+      "label": "var side_dock",
+      "usec": 8608421
+    },
+    {
+      "label": "var side_scroll",
+      "usec": 8608435
+    },
+    {
+      "label": "var preview_box",
+      "usec": 8650008
+    },
+    {
+      "label": "var airlock_panel=preload(\"res://scripts/airlock_panel.gd\").new()",
+      "usec": 8659516
+    },
+    {
+      "label": "var speed_label",
+      "usec": 8726905
+    },
+    {
+      "label": "var draft_status",
+      "usec": 8727744
+    },
+    {
+      "label": "var summary_outcome",
+      "usec": 8728967
+    },
+    {
+      "label": "_build_journal_overlay()",
+      "usec": 8729492
+    },
+    {
+      "label": "_build_menu_overlay()",
+      "usec": 8730984
+    },
+    {
+      "label": "ui_end",
+      "usec": 8733300
+    }
+  ],
+  "save_comparison": {
+    "both_valid": true,
+    "cycle": true,
+    "hand": true,
+    "placed_rooms": true,
+    "resources": true,
+    "state_keys": [
+      "resources",
+      "run_earned",
+      "placed_rooms",
+      "hand",
+      "draw_pile",
+      "discard_pile",
+      "large_room_selected_id",
+      "rerolls_remaining",
+      "reroll_recovery_progress",
+      "run_victory",
+      "expedition_mode",
+      "run_rewards_recorded",
+      "run_awarded_research",
+      "selected_card_id",
+      "hovered_card_id",
+      "selected_rotation",
+      "selected_room_cell",
+      "hover_cell",
+      "cycle",
+      "crew_count",
+      "had_crew",
+      "corruption",
+      "orbit_decay",
+      "active_synergies",
+      "connected_synergy_links",
+      "active_synergy_links",
+      "synergy_stabilization_progress",
+      "run_discovered_synergy_ids",
+      "run_stabilized_synergy_ids",
+      "run_decrypted_blueprint_ids",
+      "prototype_card_seen_cycle",
+      "discovery_bursts",
+      "resonance_score",
+      "resonance_tier_index",
+      "links_formed",
+      "largest_cascade",
+      "last_cascade_size",
+      "running",
+      "admin_mode",
+      "grid_zoom",
+      "visual_time_seconds",
+      "time_speed_index",
+      "completed_pois",
+      "expired_pois",
+      "power_generated",
+      "power_used",
+      "power_capacity",
+      "unpowered_rooms",
+      "powered_room_cells",
+      "unpowered_room_cells",
+      "offline_reasons",
+      "last_cycle_delta",
+      "test_walker_cell",
+      "test_walker_next_cell",
+      "test_walker_previous_cell",
+      "test_walker_progress",
+      "test_walker_speed",
+      "test_walker_state",
+      "test_walker_break_timer",
+      "test_walker_direction"
+    ]
+  },
+  "scope": "Isolated native Mac GLES3 tablet UI construction, in-memory diagnostic script override only; physical iPad timing remains separate.",
+  "startup": {
+    "dialogue_audio_tablet": 43.357,
+    "interface_and_grid": 6376.302,
+    "interface_art": 606.215,
+    "new_loop": 59.411,
+    "restore": 0.001,
+    "station_rooms": 94.059
+  }
+}
