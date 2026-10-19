@@ -6,6 +6,34 @@ modular placement, interdependent production and discovered room synergies.
 
 > "The station is quiet. That does not mean it is empty."
 
+## Play v0.3.0 — Manta Ray
+
+**[Download free on itch.io](https://brinshadewater.itch.io/brinespace)** — name your own price; optional support is welcome.
+
+| Platform | Availability |
+|---|---|
+| Windows | **v0.3.0 Manta Ray available now** |
+| macOS | **Mac alpha available now**, version 0.3.0-alpha.301 |
+| iPad | In testing; no public download or announced release date |
+
+[Watch the 45-second gameplay trailer](https://www.youtube.com/watch?v=Qotx5wmJt7M) · [Manta Ray devlog and change summary](https://brinshadewater.itch.io/brinespace/devlog/1715251/-v030-manta-ray-windows-mac-are-available)
+
+### What you can play
+
+The published **Windows Manta Ray build** includes:
+
+- **79 room types**, drafted as blueprints and connected door to door across the seabed.
+- **101 pair synergies and 11 multi-room patterns** to discover by keeping room combinations functioning.
+- **Four recoverable architects and three optional companions**, with construction, mining and salvage drones supporting the station.
+- **Resource pressure and underwater hazards:** balance power, oxygen, water, food and materials while dealing with hull leaks, flooding and fires.
+- **Archived Data progression:** conclude expeditions and spend the data on blueprints, crew and companions for later loops.
+
+BrineSpace remains an early-development prototype. Large stations can still load slowly, drop frames and stall during placement. The Mac alpha has been tested on Apple M4; Intel binaries are included, but physical Intel Macs remain untested. Larger stations may use several GB of memory and stutter, particularly at higher simulation speeds.
+
+For fans of Blue Prince's room drafting, The King Is Watching's roguelite resource-management trade-offs, Stacklands' card-driven building, and Oxygen Not Included's colony-survival pressures. BrineSpace takes its own underwater approach, with room synergies and Archived Data progression between expeditions.
+
+### A look inside the source prototype
+
 ![A BrineSpace station on the sea floor: BRINE Core at the centre, rooms connected around it, the room inspector open and a draft hand of blueprints](docs/screenshots/station-gameplay-2026-09-16.png)
 
 *Native Godot capture, September 16, 2026, from a scripted scene rather than a played
@@ -54,16 +82,16 @@ BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
 game with resource pressure, quiet machinery and an AI core with opinions. You can
 pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
-## Current development — October 18, 2026
+## Source checkpoints — October 19, 2026
 
-BrineSpace is a playable Godot 4.7 prototype, locally tested with 4.7.2.
-Windows, Mac and iPad are being developed toward a shared release. Published
-source branches and validation candidates are available for review; no downloadable
-GitHub release is currently published. Large-station performance, iPad memory
-headroom and longer expeditions remain under evaluation.
+BrineSpace uses Godot 4.7, locally tested with 4.7.2. Public Windows and Mac alpha
+builds are distributed on [itch.io](https://brinshadewater.itch.io/brinespace);
+there is currently no downloadable GitHub Release. Large-station performance,
+iPad memory headroom and longer expeditions remain under evaluation.
 
 The default `main` branch retains the October 14 gameplay checkpoint, with this
-repository overview refreshed on October 18. Later work is published separately:
+repository overview refreshed on October 19. The published Windows content totals
+above describe a later build. Source work is published separately:
 
 - [Windows preservation](https://github.com/BrinShadewater/BrineSpace/tree/codex/windows-preservation-20261017)
   records the broader Windows source and art work.
@@ -83,7 +111,7 @@ handoff on the branch you are using; their checks apply to their recorded revisi
 and platform. For the default branch, start with [current status](docs/CURRENT_STATUS.md)
 and [development notes](docs/DEVELOPMENT_NOTES.md).
 
-### Prototype systems
+### Prototype systems in `main`
 
 - **47 room identities** with matching doors, four rotations, operating effects
   and authored furniture layouts. Most furnished rooms favor three or four large
@@ -115,9 +143,9 @@ Current runs are open-ended. Starting doctrines, timed reconstruction directives
 and legacy orbital POIs are retired. Construction costs, resource failures and
 hidden recipe discovery remain active. Conclude Expedition banks the loop.
 
-Local Windows and Apple validation packages are described in the branch handoffs
-above. They are dated test candidates; this repository does not currently offer
-a published release download.
+The branch handoffs also describe dated Windows and Apple validation candidates.
+Their test results apply to the recorded build and platform. For playable public
+Windows and Mac alpha downloads, use [itch.io](https://brinshadewater.itch.io/brinespace).
 
 ## Run locally
 
