@@ -1,0 +1,81 @@
+{
+  "asset_id": "mechanical-tool-east-wall-v1",
+  "department": "Engineering / Maintenance",
+  "condition": "Maintained matte olive and dark tools",
+  "attachment_class": "Low self-supporting east bank",
+  "functional_bays": [
+    "North tool trays",
+    "Central repair mat",
+    "South closed pouch and west-access drawers"
+  ],
+  "runtime_behavior": "Static uninstalled art",
+  "camera_and_facing": "Near-top-down; right backing, west access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/mechanical-tool-west-wall-v1/wall.png",
+      "sha256": "10fcd282692ef9b2d01a47f9045aadb2e62a41df7ccbc4873ec6499ceedf158f",
+      "role": "Shallow cabinet, camera and matte tools"
+    }
+  ],
+  "source_path": "assets/mechanical-tool-east-wall-v1/source-v1.png",
+  "source_sha256": "00a451e57104bc6cc22636d49e60fe091c46dec9581f4bd07a759ec71ef66ab4",
+  "export_path": "assets/mechanical-tool-east-wall-v1/wall.png",
+  "export_sha256": "a805d49d5677670db9c606c3db1dcbe2a6a956c88f5e824318df0288e332f44f",
+  "native_canvas_px": [
+    1086,
+    1448
+  ],
+  "proposed_display_width_world": 75.2084912812737,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Drawer access",
+    "Crew circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet olive fronts, dark tools and brown fabric retain companion finish without silver shaft stripes."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/mechanical-tool-east-wall-v1/wall-scale.png",
+      "findings": [
+        "Full320-unit length inspected; visible depth75.21 versus west70.47.",
+        "Drawer grips and pouch buckles face west; occupied access unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral180 removes baked checkerboard; light/dark full silhouette and segmented edges reviewed."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/mechanical-tool-east-wall-v1/registration.json",
+  "registration_sha256": "31d059b3cb618d6d366039209a2193df4b9b2eaf98a7278d5e7ee78e774252eb",
+  "prompt_path": "assets/mechanical-tool-east-wall-v1/source.prompt.txt",
+  "prompt_sha256": "f0377494ae8b82706ad5ed9e718a97e6ec2b93569ca1ea7360af850e839db2b6",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/mechanical-tool-east-wall.log": "492b1edc565d16b8d2dffd6552d6c48a413ef192bcce895960f3e79fa078375c",
+    "output/mechanical-tool-east-wall-v1/wall-scale.png": "f8af7a6380d44cc67a8cbf24e006903f85f222fdd4506d0dd8750ea9d5a339ba"
+  }
+}

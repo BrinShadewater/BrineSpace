@@ -1,0 +1,130 @@
+extends Node
+var checks:=0
+var failures:=0
+var game
+var phase:="new"
+var started:=0
+var hold_for_ui:=false
+func check(ok:bool,message:String):
+	checks+=1
+	if not ok:failures+=1;push_error(message)
+func _ready():
+	process_mode=Node.PROCESS_MODE_ALWAYS
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--phase="):phase=arg.trim_prefix("--phase=")
+		if arg=="--hold-for-ui":hold_for_ui=true
+	call_deferred("run")
+func run():
+	check(not OS.is_debug_build(),"Actual release required")
+	check(OS.get_user_data_dir()==OS.get_environment("BRINE_EXPECTED_PROFILE"),"Verified scratch profile")
+	if failures:get_tree().quit(2);return
+	started=Time.get_ticks_msec()
+	var title
+	var skipped:=false
+	while Time.get_ticks_msec()-started<60000:
+		await get_tree().process_frame
+		title=get_tree().current_scene
+		if title!=null and title.is_node_ready() and title.has_method("_start_game"):break
+		if title!=null and title.scene_file_path=="res://scenes/intro_film.tscn" and title.is_node_ready() and title.get("_player")!=null and not skipped:
+			skipped=true
+			print("QA_STAGE skip_intro")
+			var skip=InputEventKey.new();skip.keycode=KEY_SPACE;skip.pressed=true;title._unhandled_input.call_deferred(skip)
+	check(title!=null and title.has_method("_start_game"),"Intro Skip reaches title")
+	if failures:finish();return
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://title-"+phase+".png")
+	var load_started:=Time.get_ticks_msec()
+	if phase=="new":
+		print("QA_STAGE new_loop")
+		title.start_button.pressed.emit.call_deferred()
+		while not is_instance_valid(title.archive):await get_tree().process_frame
+		check(is_instance_valid(title.archive),"Architect picker opens")
+		title.archive.confirm.pressed.emit.call_deferred()
+	else:
+		check(title.continue_button.visible,"Saved loop offered")
+		if not title.continue_button.visible:finish();return
+		title.continue_button.pressed.emit.call_deferred()
+	while Time.get_ticks_msec()-load_started<120000:
+		await get_tree().process_frame
+		for child in get_tree().root.get_children():
+			if child.has_method("type_transmission") and child.typing:
+				var accept=InputEventAction.new();accept.action="ui_accept";accept.pressed=true;child._input(accept)
+			if child.has_method("finish_after_scene_change") and not child.continue_button.disabled and not child.has_meta("qa_continued"):
+				child.set_meta("qa_continued",true);print("QA_STAGE loading_continue");child.continue_button.pressed.emit.call_deferred()
+		game=get_tree().current_scene
+		var covered:=false
+		for child in get_tree().root.get_children():
+			if child.has_method("finish_after_scene_change"):covered=true
+		if game!=null and game!=title and game.get("startup_complete")==true and not covered and game.process_mode!=Node.PROCESS_MODE_DISABLED:break
+	check(game!=null and game!=title and game.get("startup_complete")==true,"Gameplay starts")
+	if failures:finish();return
+	var loading_ms:=Time.get_ticks_msec()-load_started
+	if phase=="continue":
+		var prior=JSON.parse_string(FileAccess.get_file_as_string("user://journey-state.json"))
+		var actual=JSON.parse_string(JSON.stringify(game.RunSave.capture(game).state))
+		for field in ["resources","placed_rooms","hand","draw_pile","discard_pile","cycle","corruption"]:
+			check(actual[field]==prior.state[field],"Continue restores "+field)
+	game.crew_comms.minimize()
+	if game.paused:game._toggle_pause()
+	var before:float=game.visual_time_seconds
+	for i in range(120):await get_tree().process_frame
+	check(game.visual_time_seconds>before,"Normal simulation advances")
+	check(game.grid_view.visible_draw_rooms.size()>0,"Station draws without Fit")
+	check(game.run_save_path.begins_with("user://") or game.run_save_path.begins_with(OS.get_user_data_dir()),"Save target remains isolated")
+	game._set_paused(true,false)
+	var before_preview_resources=game.resources.duplicate(true)
+	game._on_card_pressed(game.hand[0])
+	if not game.RoomDatabaseScript.get_room(game.hand[0]).has("fixed_rotation"):
+		for i in range(16):
+			var rotation_before:int=game.selected_rotation
+			var rotate=InputEventKey.new();rotate.keycode=KEY_R;rotate.physical_keycode=KEY_R;rotate.pressed=true;Input.parse_input_event(rotate);Input.flush_buffered_events()
+			check(game.selected_rotation==(rotation_before+1)%4,"Repeated preview R rotation")
+			await get_tree().process_frame
+	check(game.resources==before_preview_resources,"Rotation preview spends no resources")
+	var key=InputEventKey.new();key.keycode=KEY_ESCAPE;key.pressed=true;Input.parse_input_event(key);Input.flush_buffered_events()
+	check(game.selected_card_id.is_empty() and not game.menu_open,"Escape deselects without menu")
+	key=InputEventKey.new();key.keycode=KEY_F7;key.pressed=true;Input.parse_input_event(key);Input.flush_buffered_events()
+	var report=get_tree().root.get_node("BugReport")
+	check(is_instance_valid(report.performance_monitor),"F7 reaches performance monitor through engine input")
+	key=InputEventKey.new();key.keycode=KEY_F;key.pressed=true;key.meta_pressed=true;Input.parse_input_event(key);Input.flush_buffered_events()
+	await get_tree().process_frame
+	check(game.history_search.has_focus(),"Command-F focuses station search")
+	game.history_search.text=""
+	for letter in "reactor":
+		var typed=InputEventKey.new();typed.pressed=true;typed.unicode=letter.unicode_at(0);typed.keycode=letter.unicode_at(0);Input.parse_input_event(typed)
+	Input.flush_buffered_events()
+	check(game.history_search.text=="reactor","Search accepts engine keyboard text")
+	game._toggle_journal()
+	game._open_menu()
+	var saved:=false
+	for button in game.menu_center.find_children("*","Button",true,false):
+		if button.text=="Save Game":button.pressed.emit();saved=true;break
+	check(saved and FileAccess.file_exists(game.run_save_path),"Menu Save writes checkpoint")
+	game._close_menu()
+	var checkpoint=game.RunSave.read(game.run_save_path)
+	check(not checkpoint.is_empty(),"Checkpoint parses")
+	if phase=="new":
+		var f=FileAccess.open("user://journey-state.json",FileAccess.WRITE);f.store_string(JSON.stringify({"rooms":game.placed_rooms.size(),"run_path":game.run_save_path,"state":game.RunSave.capture(game).state}));f.close()
+	else:
+		var prior=JSON.parse_string(FileAccess.get_file_as_string("user://journey-state.json"))
+		check(game.placed_rooms.size()==int(prior.rooms),"Continue restores room count")
+	key=InputEventKey.new();key.keycode=KEY_F8;key.pressed=true;Input.parse_input_event(key);Input.flush_buffered_events()
+	check(report.overlay!=null and report.overlay.visible,"F8 opens report via engine input")
+	var zip:String=report.save_report("Native Apple validation "+phase)
+	check(not zip.is_empty() and FileAccess.file_exists(zip),"F8 report saved")
+	report._hide_overlay()
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://game-"+phase+".png")
+	check(preload("res://scripts/safe_image.gd").failures.is_empty(),"No missing artwork")
+	var f=FileAccess.open("user://journey-"+phase+".json",FileAccess.WRITE)
+	f.store_string(JSON.stringify({"checks":checks,"failures":failures,"phase":phase,"loading_ms":loading_ms,"debug":OS.is_debug_build(),"user_dir":OS.get_user_data_dir(),"rooms":game.placed_rooms.size(),"renderer":RenderingServer.get_video_adapter_name(),"startup":game.startup_stage_ms},"\t"));f.close()
+	finish()
+func finish():
+	print("NATIVE_RELEASE_JOURNEY ",phase," checks=",checks," failures=",failures," debug=",OS.is_debug_build())
+	if hold_for_ui and failures==0:
+		print("QA_NATIVE_UI_READY")
+		var deadline=Time.get_ticks_msec()+180000
+		while Time.get_ticks_msec()<deadline and not FileAccess.file_exists("user://qa-ui-done"):
+			await get_tree().process_frame
+	if game!=null and game.has_method("_menu_quit_game") and failures==0:game._menu_quit_game()
+	else:get_tree().quit(1 if failures else 0)

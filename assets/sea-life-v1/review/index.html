@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>BrineSpace sea life candidate review</title>
+<style>body{background:#101e26;color:#dce8e8;font:16px system-ui;max-width:1250px;margin:30px auto}button,select,input{font:inherit;margin:8px;padding:7px}canvas{width:100%;background:#10212c}img{width:100%}.note{color:#b8c8cf}</style>
+<h1>Sea life: installed first batch</h1>
+<p class="note">Registered atlas playback. First-pass direction was approved; final integrated motion remains for owner review. <a href="native-review.jpg">Native game review</a> · <a href="tidewalker-assembly-native.gif">Complete tidewalker motion</a></p>
+<button id="pause">Pause</button><button id="step">Next frame</button>
+<label>Palette <select id="palette"><option value="#40f2d9">Teal</option><option value="#9e7aff">Violet</option><option value="#ffb852">Amber</option><option value="#99ff9e">Green</option></select></label>
+<label>Background <select id="ground"><option value="#10212c">Ocean</option><option value="#d3cfc5">Light</option><option value="#62264e">Contrast</option></select></label>
+<label>Preview scale <input id="scale" type="range" min="0.2" max="1" step="0.1" value="0.6"></label>
+<span id="frame"></span><canvas id="view" width="1240" height="600"></canvas>
+<p>Glass Choir: a three-chamber filter-feeder, 0.35 cells, drifting and slowly rotating.<br>Veil Kite: a folded membrane glider, 0.9 cells, banking with the current.</p>
+<img src="contact-sheet.jpg" alt="Contact sheet with three primary species and two optional concepts">
+<script>
+const c=document.querySelector('canvas'),ctx=c.getContext('2d');let clock=0,playing=true,last=0;
+const names=['lantern-bell-body','lantern-bell-core','ribbon-swimmer','ribbon-head'];
+const images=Object.fromEntries(names.map(n=>{let i=new Image();i.src='../'+n+'.png';return[n,i]}));
+const off=document.createElement('canvas');off.width=640;off.height=480;const ox=off.getContext('2d');
+pause.onclick=()=>{playing=!playing;pause.textContent=playing?'Pause':'Resume'};
+step.onclick=()=>{playing=false;pause.textContent='Resume';clock+=1/6};
+function sprite(body,core,f,cols,w,h,x,y,s){if(!images[body].complete||!images[core].complete)return;
+const sx=f%cols*w,sy=Math.floor(f/cols)*h;ox.clearRect(0,0,640,480);ox.globalCompositeOperation='source-over';
+ox.drawImage(images[body],sx,sy,w,h,0,0,w,h);ox.globalCompositeOperation='multiply';ox.fillStyle=palette.value;ox.fillRect(0,0,w,h);
+ox.globalCompositeOperation='destination-in';ox.drawImage(images[body],sx,sy,w,h,0,0,w,h);ox.globalCompositeOperation='source-over';
+ctx.drawImage(off,0,0,w,h,x,y,w*s,h*s);ctx.drawImage(images[core],sx,sy,w,h,x,y,w*s,h*s);}
+function draw(ts){if(playing&&last)clock+=(ts-last)/1000;last=ts;ctx.fillStyle=ground.value;ctx.fillRect(0,0,c.width,c.height);
+const s=Number(scale.value),a=Math.floor(clock*6)%8,b=Math.floor(clock*10)%8;
+sprite(names[0],names[1],a,4,320,480,60,50,s);sprite(names[2],names[3],b,1,640,96,430,210,s);
+ctx.fillStyle=ground.value==='#d3cfc5'?'#28363e':'#dce8e8';ctx.font='18px system-ui';ctx.fillText('Lantern bell / '+(a+1),60,550);ctx.fillText('Ribbon swimmer / '+(b+1),430,550);
+frame.textContent='Visual clock '+clock.toFixed(2)+' s';requestAnimationFrame(draw)}requestAnimationFrame(draw);
+</script></html>

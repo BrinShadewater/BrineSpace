@@ -1,0 +1,56 @@
+{
+  "textures": {
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "medical_care_trolley",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        -70,
+        -52,
+        48,
+        20
+      ],
+      "centers_by_quarter": [
+        [
+          -46,
+          -42
+        ],
+        [
+          38,
+          -36
+        ],
+        [
+          44,
+          72
+        ],
+        [
+          -38,
+          70
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "medical_care_trolley",
+      "offset": [
+        -3,
+        -2
+      ],
+      "size": [
+        56,
+        27
+      ],
+      "fill": "8d9f99",
+      "edge": "b2c0b7"
+    }
+  ]
+}

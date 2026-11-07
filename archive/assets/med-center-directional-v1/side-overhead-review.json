@@ -1,0 +1,21 @@
+{
+  "stage": "integrated-native-state-layout-card-reviewed",
+  "source": "assets/med-center-directional-v1/side-overhead.png",
+  "sha256": "e55ccda30a2a74f77271cc5acd069ec69ed5d506ad1594aae5b9b2cae04a18d9",
+  "dimensions": [
+    798,
+    1971
+  ],
+  "raw": "exec-52b74919-5e6f-4bc0-92ad-8e5f2439238d.png",
+  "rejected_study": "side-overhead-study.png",
+  "registrations": [
+    "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-east.json",
+    "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-west.json"
+  ],
+  "review": "Low overhead four-bay counter retains emergency kit, samples, instrument tray, three treatment cartridges and diagnostic keyboard/screen. Corrected large scissors and three clamps to inward finger loops; cartridge releases inward, hoses outward. Both native idle sides and refreshed card reviewed.",
+  "comparison": "output/med-center-overhead-2026-09-12/comparison.json",
+  "validation": "176 layouts and existing 20 variant regressions PASS 20260912-154703-headless; 47 card identities parity PASS. Baseline/installed catalog and card bake exit 0; all prop metadata and q1/q3 RGB unchanged. Six native state captures exit 0; eight isolated screen cases pass active/temporal checks; retained powered east reviewed.",
+  "card": "assets/med-center-directional-v1/overhead-cards/med_center.png",
+  "remaining": "Actual station pause, owner aesthetic acceptance and broader room rollout.",
+  "state_checks": "output/med-center-overhead-2026-09-12/checks.json"
+}

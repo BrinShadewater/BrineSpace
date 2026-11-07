@@ -1,0 +1,33 @@
+{
+  "outputs": [
+    {
+      "path": "assets/med-bay-directional-v1/treatment-north.png",
+      "sha256": "3f7eb794361f687fb985b178610e43d10848aec8aa8e20bf070bfd6bcc49750b",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "assets/med-bay-directional-v1/treatment-sides.png",
+      "sha256": "b08f66bcbdc9d41e0b9164bb09b0e34da81fd065a5f474af1af14c356fca932d",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "assets/med-bay-directional-v1/cards/med_bay.png",
+      "sha256": "ce536a28c78d3bd689e62a4e0072378283567b3a91b88e093da6d87c71e838b6",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "evidence": "output/med-bay-remaining-2026-09-12/west-fit-check/runtime.json",
+  "geometry": "Four rotations preserve IDs, rectangles and independent bounds; south unchanged.",
+  "review": "North and both side native views inspected. Owner side aesthetic feedback unresolved.",
+  "state_evidence": "output/med-bay-remaining-2026-09-12/corrected-state-checks.json",
+  "state_review": "Corrected west powered image reviewed: console screen, bed monitor and supply indicators remain independent; temporal pixels verified."
+}

@@ -1,0 +1,12 @@
+{
+  "integration_base": "7e3029a4539348c477ca29636afe063c29e919fa",
+  "windows_merge_parent": "3b014229bd7f1a86ab6e55c1584f83229bed9403",
+  "preservation_reference": "4d09bad8ca8f248d1a05e76463d8a1b129fcf1be",
+  "conflicts": {
+    "scripts/main.gd": "Retain Windows initial-art preparation, reset its clock before Mac dialogue/audio/tablet stage; startup_complete only after all Mac setup. Add iPad preparation guard after failing regression.",
+    "tests/index.json": "Logical union using preserved current Windows routing; retain Mac groups and native lanes; add compact-storage native classification and tablet-memory group.",
+    "docs/CURRENT_STATUS.md": "Combined status header plus Windows publication prefix and complete Mac current status."
+  },
+  "authoring_scope": "All unrelated art archives, ACTIVE_ASSETS audit/workflow edits and skill changes retained on full preservation branch;189modified/untracked runtime inputs match frozen5dd exactly.",
+  "encoding_recovery": "Windows default encoding interrupted initial status write. Reconstructed from immutable parent Git blobs using explicit UTF-8 before any validation."
+}

@@ -1,0 +1,33 @@
+{
+  "reviewed_at": "2026-09-12",
+  "renderer": "Godot 4.6.1, real-display OpenGL compatibility",
+  "captures": {
+    "q0_west": {
+      "path": "output/refinery-owner-repair-2026-09-12/native/ore_refinery-q0.png",
+      "sha256": "61e7fa60c392dbe9ee0e8d8a3ce0d6acc93914fbf031934cf500c296dd2dd97b"
+    },
+    "q1_north": {
+      "path": "output/refinery-owner-repair-2026-09-12/native/ore_refinery-q1.png",
+      "sha256": "80e8e4c6d1c08b05af5fb6da7348c8c9aaa494ffa3a1efee40739f9d6a4694da"
+    },
+    "q2_east": {
+      "path": "output/refinery-owner-repair-2026-09-12/native/ore_refinery-q2.png",
+      "sha256": "91cfd21a6e3115cb630bb0685a2b8a655ffaa0607dfdc849b82135ffb671e3b2"
+    },
+    "q3_south": {
+      "path": "output/refinery-owner-repair-2026-09-12/native/ore_refinery-q3.png",
+      "sha256": "3d83aea4e4890cdb0effffb25ed02d2021a81b96b38a1f3218849ffc83fb064c"
+    }
+  },
+  "verdict": "pass",
+  "findings": [
+    "Wall banks and independent machinery share restrained burnt-orange paint in all four rotations.",
+    "The reported white bands beneath and between the south wall pieces are absent.",
+    "Yellow logistics markings, copper billets, ore, enclosed pale trim and gauges remain legible.",
+    "The q3 crusher and hopper remain separate and the center routes remain open."
+  ],
+  "tests": [
+    "output/test-runs/20260912-181245-headless",
+    "output/test-runs/20260912-181319-headless"
+  ]
+}

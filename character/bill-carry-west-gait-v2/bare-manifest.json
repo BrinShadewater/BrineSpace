@@ -1,0 +1,54 @@
+{
+  "name": "Bill West master upper alternating carry gait candidate",
+  "status": "staged_visual_review",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "standingHeight": 148,
+  "pivot": [
+    128,
+    224
+  ],
+  "textureFilter": "linear",
+  "precomposed": true,
+  "strideDistanceCells": {
+    "carry": 0.12
+  },
+  "states": [
+    {
+      "id": "carry-west",
+      "frameFiles": [
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/000.png",
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/001.png",
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/002.png",
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/003.png",
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/004.png",
+        "res://character/bill-carry-west-gait-v2/frames/bare/carry-west/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ]
+}

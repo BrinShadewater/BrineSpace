@@ -1,0 +1,7 @@
+"""Retain complete far-support passing with its own neutral calibration."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+source=(ROOT/'tools/build_marsh_east_carry_contact03.py').read_text().replace('contact-03','passing-05').replace('far-contact.png','far-passing.png').replace('exec-1661ff9f-b710-4f30-ae90-3b6dc30c659a','exec-a2734a27-25e4-462c-927b-d2805582751e')
+source=source.replace('foreground thigh correctly backward/left, boot contact projection and crate variant remain provisional','far flat supporting boot under pelvis and foreground near knee/rear boot lifted left; whole joins provisional')
+source=source.replace('Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending.','Foreground near knee and raised rear boot LEFT of far flat supporting shin/boot. Complete far support visible; no high knee. Current inset-panel single-latch crate matches contact04 variant more closely; near half/body/grade/crate joins and moving contact remain pending.')
+exec(compile(source,str(ROOT/'tools/build_marsh_east_carry_passing05.py'),'exec'),{'__file__':str(ROOT/'tools/build_marsh_east_carry_passing05.py'),'__name__':'__main__'})

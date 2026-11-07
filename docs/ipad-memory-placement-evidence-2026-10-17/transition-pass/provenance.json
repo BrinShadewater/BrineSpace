@@ -1,0 +1,19 @@
+{
+  "build": "brinespace-453cc0bb5ad27b6f",
+  "runtime_commit": "8102bbe6a01e9b29fe5ae0d360250f1ce61a4d09",
+  "pck_sha256": "5592e9f155fba59dedda08d43683ed18e8fd90dbb6705cb91d157cb680d7c73f",
+  "fixture_source_sha256": "2abbb16e8022571a211909558f8f480303027facd6f4fe02216a60467d6a9a26",
+  "result_sha256": "c29a68b363d0c8bd6491bad483356d2e2289bbfb0523d2dd7d631423d52a941f",
+  "device": "Physical iPad13,18 / A14 / 4GB / iPadOS27.2",
+  "pid": 9393,
+  "normal_mode_restored": true,
+  "core_saves_preserved": true,
+  "limitations": [
+    "Single diagnostic stress run, not controlled before/after or leak proof",
+    "One screenshot and progress copies during run",
+    "Activity Monitor1Hz samples exclude instantaneous/OS lifetime peak",
+    "Two consecutive traces; small boundary gap possible",
+    "Unprofiled normal gameplay transition repeat blocked by iPad UI-automation Touch ID timeout; runner initialization failed."
+  ],
+  "normal_mode_restore_method": "Removed QA mode flag via app-container AFC; independent pull returned GET_FILE_INFO not found. Marker0 transfer had failed read-back and is not accepted."
+}

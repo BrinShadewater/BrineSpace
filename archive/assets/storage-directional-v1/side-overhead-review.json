@@ -1,0 +1,27 @@
+{
+  "stage": "integrated-native-state-layout-reviewed",
+  "source": "assets/storage-directional-v1/side-overhead.png",
+  "sha256": "eb04d64fd15a23074d26dbc52cb0cbdb567880daa36b3e9ecda2a5f324258b0c",
+  "dimensions": [
+    1223,
+    1286
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "raw": "exec-40eb29de-0aca-4100-b217-59e86a8cda12.png",
+  "review": "Low overhead cargo platforms: three strapped crates; inventory bank has six small cases, one wide case, six console buttons and one dial. Handles and buckle releases inward, matte grey composite and ochre webbing. Both native idle side views reviewed.",
+  "registrations": [
+    "rooms/full-wall-v1/registrations/storage-wall-east-cargo.json",
+    "rooms/full-wall-v1/registrations/storage-wall-east-inventory.json",
+    "rooms/full-wall-v1/registrations/storage-wall-west-cargo.json",
+    "rooms/full-wall-v1/registrations/storage-wall-west-inventory.json"
+  ],
+  "geometry": "Outer-edge-aligned contain registration preserves all baseline prop metadata; authored east reflected for west.",
+  "comparison": "output/storage-overhead-2026-09-12/comparison.json",
+  "validation": "176 layouts and existing 20 variant regressions PASS 20260912-151346-headless. Baseline and installed native catalog exit 0; q0/q2 RGB unchanged. Six direct/retained captures exit 0; four isolated console cases pass active and temporal comparisons; retained west visually reviewed.",
+  "card": "q0 unchanged, existing card retained.",
+  "remaining": "Explicit station pause, owner aesthetic acceptance and broader room rollout.",
+  "state_checks": "output/storage-overhead-2026-09-12/checks.json"
+}

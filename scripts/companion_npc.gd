@@ -1,0 +1,413 @@
+extends "res://scripts/bill_npc.gd"
+## Companion locomotion reuses room routing, never architect jobs or human needs.
+var identity := "river"
+# Companions start sealed in wreck sites; their packs (35-60 MB each) load the first time
+# anything reads player or poses, not when the run begins (Sept 28).
+const SpritePlayer = preload("res://scripts/crew_sprite_player.gd")
+var _player: SpritePlayer = SpritePlayer.new()
+var _poses: SpritePlayer = SpritePlayer.new()
+var art_loaded := false
+# A sealed tablet pod needs only its displayed clips, not water/personality art.
+var pod_player: SpritePlayer = SpritePlayer.new()
+var pod_poses: SpritePlayer = SpritePlayer.new()
+var player: SpritePlayer:
+	get:
+		if not art_loaded: _load_art()
+		return _player
+	set(value): _player = value
+var poses: SpritePlayer:
+	get:
+		if not art_loaded: _load_art()
+		return _poses
+	set(value): _poses = value
+var locomotion=preload("res://scripts/companion_motion.gd").new()
+var wake_direction := "south"
+var water=preload("res://scripts/companion_water.gd").new()
+var building_navigation:=false
+const ACTIONS := {"margot":["sit","groom","nap","pet","stretch","yawn"],"river":["scan","inspect","boot"],"josh":["watch","turn","torch","powerdown"]}
+const DURATIONS := {"sit":7.0,"groom":7.0,"nap":18.0,"pet":6.0,"scan":3.6,"inspect":4.8,"watch":6.0,"turn":2.4,"torch":6.0,"stretch":2.4,"yawn":3.2,"boot":2.4,"powerdown":6.0}
+var behavior := ""
+var behavior_elapsed := 0.0
+var behavior_duration := 0.0
+var personality_cooldown := 12.0
+var pet_cooldown := 0.0
+var pending_behavior := ""
+var interest_cell := Vector2i(-1,-1)
+var interest_point := Vector2.ZERO
+var chirp_pending := false
+var wake_first := false
+
+func _init(id := "river", art_source = null) -> void:
+	identity = id
+	decision_rng = RandomNumberGenerator.new()
+	decision_rng.randomize()
+	# Restore fresh behavior/playback objects, but retain already decoded artwork.
+	# Copy containers so a new actor cannot mutate the previous actor's clip rows.
+	if art_source != null and art_source.identity == id:
+		if art_source.art_loaded:
+			for pair in [[_player,art_source._player],[_poses,art_source._poses]]:
+				pair[0].frames = pair[1].frames.duplicate(true)
+				pair[0].timing = pair[1].timing.duplicate(true)
+				pair[0].strides = pair[1].strides.duplicate(true)
+				pair[0].equipment_frames = pair[1].equipment_frames.duplicate(true)
+			art_loaded = true
+		swim_clearance = art_source.swim_clearance.duplicate(true)
+		tread_clearance = art_source.tread_clearance.duplicate(true)
+		return
+	# Water clearance is navigation data, needed before any artwork.
+	var clearance := {"margot":"res://character/margot-polish-v1/clearance.json","river":"res://character/robot-polish-v1/river/clearance.json"}
+	if clearance.has(id):
+		var bounds: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(clearance[id]))
+		swim_clearance = bounds; tread_clearance = bounds.duplicate(true)
+
+func cryo_animation_player(key: String, actions: bool) -> SpritePlayer:
+	var tree := Engine.get_main_loop() as SceneTree
+	var tablet := OS.has_feature("ios") or (tree != null and bool(tree.root.get_meta("tablet_controls",false)))
+	if not tablet or art_loaded or identity != "margot": return poses if actions else player
+	var selected: SpritePlayer = pod_poses if actions else pod_player
+	if not selected.frames.has(key):
+		var path := "res://character/margot-polish-v1/packs/actions/manifest.json" if actions else "res://character/margot-polish-v1/packs/locomotion/manifest.json"
+		selected.load_manifest_states(path,[key],true,true)
+	return selected
+
+func _load_art() -> void:
+	art_loaded = true
+	var id := identity
+	if id=="margot":
+		_player.load_manifest("res://character/margot-polish-v1/packs/locomotion/manifest.json")
+		_player.load_manifest("res://character/margot-polish-v1/packs/water/manifest.json",true)
+		_poses.load_manifest("res://character/margot-polish-v1/packs/actions/manifest.json")
+		pod_player=SpritePlayer.new();pod_poses=SpritePlayer.new()
+		for key in _player.frames:
+			if not key.begins_with("swim-"):continue
+			for texture in _player.frames[key]:
+				texture.set_meta("companion_surface",true)
+				texture.set_meta("companion_surface_line",148.0)
+				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")
+		return
+	const ROBOT_PACKS={
+		"josh":["res://character/robot-polish-v1/josh/packs/locomotion/manifest.json","res://character/robot-polish-v1/josh/packs/actions/manifest.json"],
+		"river":["res://character/robot-polish-v1/river/packs/locomotion/manifest.json","res://character/robot-polish-v1/river/packs/actions/manifest.json"]
+	}
+	_player.load_manifest(ROBOT_PACKS[id][0])
+	_poses.load_manifest(ROBOT_PACKS[id][1])
+	if id=="river":
+		_player.load_manifest("res://character/robot-polish-v1/river/packs/water/manifest.json",true)
+		for key in _player.frames:
+			if not (key.begins_with("swim-") or key.begins_with("float-")):continue
+			for texture in _player.frames[key]:
+				texture.set_meta("companion_surface",true)
+				texture.set_meta("companion_surface_line",140.0)
+				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")
+
+func rebuild(main,staged:=false)->void:
+	building_navigation=true
+	super.rebuild(main,staged)
+	building_navigation=false;water.rebuilt(self)
+
+func segment_clear(a:Vector2,b:Vector2)->bool:
+	return super.segment_clear(a,b) and (building_navigation or water.segment_safe(self,a,b))
+
+func needs_air() -> bool: return false
+# Idle behaviours (sitting, scanning, watching) give way; a torch repair, a pet from the
+# player, or a flooded companion (Josh offline, River afloat) does not walk a step-aside path.
+func can_step_aside() -> bool:
+	return water.mode == "dry" and behavior not in ["torch","pet"] and stage.is_empty() and expedition.is_empty()
+
+func prepare_to_step_aside() -> void:
+	behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+	goal="";state="idle"
+func animation_state() -> String: return state
+func arrive() -> void:
+	path.clear(); goal=""; state="idle"; timer=decision_rng.randf_range(2.0,5.0)
+	activity="sniffing the air" if identity=="margot" else "scanning nearby" if identity=="river" else "watching the crew"
+	if not pending_behavior.is_empty():
+		face_interest()
+		var action := pending_behavior
+		pending_behavior=""
+		start_behavior(action)
+
+func face_interest() -> void:
+	var offset := interest_point-foot
+	if offset.length()>1:direction=("east" if offset.x>0 else "west") if absf(offset.x)>absf(offset.y) else ("south" if offset.y>0 else "north")
+
+func start_behavior(action: String) -> void:
+	if water.mode!="dry":return
+	if action not in ACTIONS[identity]:return
+	wake_first=identity=="margot" and behavior=="nap" and action=="pet"
+	if wake_first:wake_direction=direction
+	behavior=action;behavior_elapsed=0.0;behavior_duration=DURATIONS[action]+(wake_seconds() if wake_first else 0.0)
+	path.clear();pending_behavior="";goal="";state="idle"
+	personality_cooldown=decision_rng.randf_range(12.0,22.0)
+	if identity=="margot" and action=="pet":direction="south" # Pet reaction still faces the viewer.
+	activity={"sit":"sitting quietly","groom":"washing her face","nap":"curled up asleep","pet":"leaning into your hand","scan":"looking around","inspect":"inspecting discarded equipment","watch":"watching nearby repairs" if interest_cell!=Vector2i(-1,-1) else "watching the crew","turn":"turning on his treads","torch":"assisting repairs with blowtorch","stretch":"stretching her paws","yawn":"having a long yawn","boot":"running startup checks","powerdown":"resting in standby"}[action]
+	chirp_pending=identity=="river"
+
+func pet() -> bool:
+	if water.mode!="dry":return false
+	if identity!="margot" or not active or pet_cooldown>0 or not can_stand(foot):return false
+	start_behavior("pet");pet_cooldown=8.0
+	return true
+
+func personality_snapshot() -> Dictionary:
+	return {"action":behavior,"elapsed":behavior_elapsed,"duration":behavior_duration,"cooldown":personality_cooldown,"pet_cooldown":pet_cooldown,"pending":pending_behavior,"cell":interest_cell,"point":interest_point,"chirp_pending":chirp_pending,"wake_first":wake_first,"wake_direction":wake_direction,"locomotion":locomotion.snapshot(),"water":water.snapshot()}
+
+static func valid_personality(data: Variant, id: String) -> bool:
+	if data==null:return true # Existing companion saves predate personality actions.
+	if not data is Dictionary:return false
+	if not preload("res://scripts/companion_water.gd").valid(data.get("water")):return false
+	if data.has("water") and data.water!=null and data.water.mode not in ["dry",{"margot":"swim","river":"float","josh":"offline"}[id]]:return false
+	if not preload("res://scripts/companion_motion.gd").valid(data.get("locomotion")):return false
+	if data.get("wake_direction","south") not in ["south","west","north","east"]:return false
+	if not data.get("action") is String or (data.action!="" and data.action not in ACTIONS[id]):return false
+	if not data.get("pending") is String or data.pending not in ["","inspect","watch","torch","sit","nap"]:return false
+	if data.pending!="" and data.pending not in ACTIONS[id]:return false
+	if not data.get("cell") is Vector2i or not data.get("point") is Vector2 or not data.point.is_finite():return false
+	if data.cell!=Vector2i(-1,-1) and (data.cell.x<0 or data.cell.y<0 or data.cell.x>=40 or data.cell.y>=40):return false
+	if not data.get("chirp_pending") is bool or not data.get("wake_first") is bool:return false
+	for key in ["elapsed","duration","cooldown","pet_cooldown"]:
+		if not (data.get(key) is float or data.get(key) is int) or not is_finite(float(data[key])) or data[key]<0 or data[key]>180:return false
+	if data.elapsed>data.duration:return false
+	if data.action=="":return data.elapsed==0 and data.duration==0 and not data.chirp_pending and not data.wake_first
+	return data.duration>0 and data.pending=="" and (not data.wake_first or data.action=="pet") and (not data.chirp_pending or id=="river")
+
+func restore_personality(data: Variant) -> void:
+	if data==null:return
+	behavior=data.action;behavior_elapsed=data.elapsed;behavior_duration=data.duration
+	personality_cooldown=data.cooldown;pet_cooldown=data.pet_cooldown
+	pending_behavior=data.pending;interest_cell=data.cell;interest_point=data.point
+	chirp_pending=data.chirp_pending;wake_first=data.wake_first
+	wake_direction=data.get("wake_direction","south");locomotion.restore(data.get("locomotion"))
+	water.restore(data.get("water"))
+
+func route_interest(main, cell: Vector2i, point: Vector2, action: String) -> bool:
+	var start := nearest_in_room(foot,cell_at(foot))
+	if start<0:return false
+	var candidates: Array=room_nodes.get(cell,[]).duplicate()
+	candidates.sort_custom(func(a,b):return graph.get_point_position(a).distance_squared_to(point)<graph.get_point_position(b).distance_squared_to(point))
+	for target in candidates:
+		var destination: Vector2=graph.get_point_position(target)
+		if destination.distance_to(point)<50 or destination.distance_to(point)>(95 if action=="torch" else 145) or not spawn_clear(destination):continue
+		var route := plan_route(start,target)
+		if route.is_empty():continue
+		interest_cell=cell;interest_point=point;pending_behavior=action
+		path=route;goal="curiosity";goal_cell=cell
+		activity="approaching discarded equipment" if identity=="river" else "approaching nearby repairs"
+		personality_cooldown=18.0
+		return true
+	return false
+
+func choose_personality(main) -> void:
+	interest_cell=Vector2i(-1,-1)
+	if identity=="river":
+		for cell in main.wrecks:
+			var site: Dictionary=main.wrecks[cell]
+			if site.kind in ["river","josh"] and site.cleared and main.occupied.has(cell):
+				var point: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*CELL+main.Companions.CONTAINER_FOOT
+				if route_interest(main,cell,point,"inspect"):return
+		start_behavior("scan")
+	elif identity=="josh":
+		var repair:=preload("res://scripts/companion_repair.gd").target(main,self)
+		if not repair.is_empty() and route_interest(main,repair.cell,repair.point,"torch"):return
+		for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+			if peer.active and not peer.dead and peer.state in ["repair","weld"] and peer.expedition.is_empty():
+				if route_interest(main,cell_at(peer.foot),peer.foot,"watch"):return
+		start_behavior(["turn","watch","powerdown"][decision_rng.randi_range(0,2)])
+	else:
+		# Company is an occasional choice, not an assignment or a needs bonus.
+		if decision_rng.randf()<0.5 and settle_near_resting_crew(main):return
+		start_behavior(["sit","groom","nap","stretch","yawn"][decision_rng.randi_range(0,4)])
+
+func resting_company(main,peer) -> bool:
+	if peer==null or not peer.active or peer.dead or peer.movement_medium!="dry" or not peer.path.is_empty() or not peer.expedition.is_empty():return false
+	if peer.helmet_equipped or not peer.locker_request.is_empty() or peer.helmet_action_active():return false
+	var resting: bool=peer.stage in ["life_seated","life_sleep"] or (peer.goal=="fatigue" and peer.stage.is_empty() and peer.state=="idle" and peer.timer>0)
+	if not resting:return false
+	var room: Dictionary=main.occupied.get(peer.cell_at(peer.foot),{})
+	return not room.is_empty() and float(room.get("fire",0))<=0 and float(room.get("water_level",0))<0.2 and not room.get("suspended",false)
+
+func settle_near_resting_crew(main) -> bool:
+	if identity!="margot" or water.mode!="dry" or main.hardware.doors:return false
+	var peers: Array=[]
+	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+		if resting_company(main,peer) and foot.distance_to(peer.foot)<=CELL*1.5:peers.append(peer)
+	peers.sort_custom(func(a,b):return foot.distance_squared_to(a.foot)<foot.distance_squared_to(b.foot))
+	var start:=nearest_in_room(foot,cell_at(foot))
+	if start<0:return false
+	var attempts:=0
+	for peer in peers:
+		var cell: Vector2i=peer.cell_at(peer.foot)
+		var candidates: Array=room_nodes.get(cell,[]).duplicate()
+		candidates.sort_custom(func(a,b):return graph.get_point_position(a).distance_squared_to(peer.foot)<graph.get_point_position(b).distance_squared_to(peer.foot))
+		for target in candidates:
+			var point: Vector2=graph.get_point_position(target)
+			var local:=point-(Vector2(cell)+Vector2.ONE*.5)*CELL
+			var distance:float=point.distance_to(peer.foot)
+			# Leave personal space and keep the room's doorway margins free.
+			if distance<60 or distance>145 or absf(local.x)>140 or absf(local.y)>140 or not spawn_clear(point):continue
+			attempts+=1
+			var route:=plan_route(start,target)
+			if not route.is_empty():
+				interest_cell=cell;interest_point=peer.foot
+				pending_behavior="nap" if peer.stage=="life_sleep" else "sit"
+				path=route;goal="curiosity";goal_cell=cell;timer=0
+				activity="finding a quiet spot beside the crew";personality_cooldown=18.0
+				return true
+			if attempts>=3:return false
+	return false
+
+func resting_company_still_here(main) -> bool:
+	if main.hardware.doors:return false
+	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+		if resting_company(main,peer) and peer.cell_at(peer.foot)==interest_cell and peer.foot.distance_to(interest_point)<24:return true
+	return false
+
+func update(main, delta: float) -> void:
+	if not active or not main.running or main.paused or delta<=0: return
+	if water.advance(self,main,delta):return
+	preload("res://scripts/fire_safety.gd").refresh(main,self)
+	if topology(main)!=signature: rebuild(main)
+	var old_state: String=state
+	var old_direction: String=direction
+	if preload("res://scripts/fire_safety.gd").advance(main,self,delta):
+		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+		if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
+		return
+	# Topology and locked cells were just refreshed; a false fire-safety
+	# result returns before mutations. This synchronous path can reuse it.
+	_advance_companion(main,delta,true)
+	if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
+	else:activity="swimming" if identity=="margot" else "floating nearby"
+
+var reuse_update_topology:=not OS.get_cmdline_user_args().has("--reference-companion-topology")
+
+func _advance_companion(main, delta: float, topology_checked:=false) -> void:
+	if behavior.is_empty():personality_cooldown=maxf(0,personality_cooldown-delta)
+	pet_cooldown=maxf(0,pet_cooldown-delta)
+	# Direct callers retain validation; only update() supplies the checked state.
+	if (not topology_checked or not reuse_update_topology) and topology(main)!=signature: rebuild(main)
+	if identity=="margot" and pending_behavior in ["sit","nap"] and not resting_company_still_here(main):
+		pending_behavior="";path.clear();goal="";state="idle";timer=2.0
+		activity="sniffing the air"
+	if not can_stand(foot):
+		path.clear();pending_behavior="";behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false;state="idle";activity="route obstructed";return
+	if path.is_empty() and water.mode=="dry" and behavior!="torch" and _make_way(main,delta):return
+	if not behavior.is_empty():
+		if behavior=="torch":
+			var repair:=preload("res://scripts/companion_repair.gd").target(main,self)
+			if repair.is_empty() or repair.cell!=interest_cell or repair.point.distance_to(interest_point)>2:
+				# Extinguish immediately and play only the stow phase on interruption.
+				behavior_elapsed=maxf(behavior_elapsed,behavior_duration-poses.cycle_seconds("torch-exit-"+direction))
+		if chirp_pending:
+			main.play_station_sound("companion_chirp",foot/CELL);chirp_pending=false
+		behavior_elapsed=minf(behavior_duration,behavior_elapsed+delta)
+		if behavior_elapsed>=behavior_duration:
+			behavior="";behavior_elapsed=0;behavior_duration=0;wake_first=false;arrive()
+		return
+	if hardware_doors_locked:
+		state="idle";activity="waiting for unlocked doors";return
+	if not path.is_empty():
+		move(delta * (0.7 if identity=="margot" else 0.8 if identity=="river" else 0.9)*locomotion.speed_factor(self)); return
+	state="idle"
+	timer=maxf(0,timer-delta)
+	if timer>0:return
+	if identity=="josh" and personality_cooldown>0:
+		var repair:=preload("res://scripts/companion_repair.gd").target(main,self)
+		if not repair.is_empty() and route_interest(main,repair.cell,repair.point,"torch"):return
+	if personality_cooldown<=0 and water.mode=="dry":
+		choose_personality(main);return
+	var target_cell := cell_at(foot)
+	var nearest := INF
+	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+		if not peer.active or peer.dead or not peer.expedition.is_empty():continue
+		var distance := foot.distance_squared_to(peer.foot)
+		if distance<nearest:
+			nearest=distance;target_cell=cell_at(peer.foot)
+	var start := nearest_in_room(foot,cell_at(foot))
+	var candidates: Array=room_nodes.get(target_cell,[])
+	if start<0 or candidates.is_empty():timer=2;return
+	for attempt in range(20):
+		var target: int=candidates[decision_rng.randi_range(0,candidates.size()-1)]
+		var point: Vector2=graph.get_point_position(target)
+		if not spawn_clear(point) or point.distance_to(foot)<30:continue
+		var route := plan_route(start,target)
+		if route.is_empty():continue
+		path=route;goal="curiosity";goal_cell=target_cell
+		activity="keeping company";return
+	timer=2
+
+# A companion idling in a crew member's way (a doorway, a narrow aisle) gets up and moves to the far side of
+# its room. The crew yield to companions, so without this Marsh waited ~8 s for Margot to finish sitting in a
+# doorway (owner F8 report, Sept 30).
+var make_way_retry := 0.0
+func _make_way(main, delta: float) -> bool:
+	# A failed search walks the whole graph; after a miss, wait before trying again rather than every frame.
+	if make_way_retry > 0.0:
+		make_way_retry = maxf(0.0, make_way_retry - delta)
+		return false
+	var blocked := Vector2.INF
+	# Read the crew defensively: test fixtures drive companions with a minimal stand-in game.
+	for peer in [main.get("bill_npc"),main.get("veld_npc"),main.get("branforth_npc"),main.get("marsh_npc")]:
+		if peer==null or not peer.active or peer.dead or not peer.expedition.is_empty():continue
+		if peer.activity=="waiting for passage" and peer.foot.distance_to(foot)<CREW_CLEARANCE*2.5:
+			blocked=peer.foot;break
+	if blocked==Vector2.INF:return false
+	var here:=cell_at(foot)
+	var start:=nearest_in_room(foot,here)
+	var candidates: Array=room_nodes.get(here,[]).duplicate()
+	if start<0 or candidates.is_empty():return false
+	candidates.sort_custom(func(a,b):return graph.get_point_position(a).distance_squared_to(blocked)>graph.get_point_position(b).distance_squared_to(blocked))
+	for target in candidates.slice(0,10):
+		var point: Vector2=graph.get_point_position(target)
+		if point.distance_to(blocked)<CREW_CLEARANCE*3.0 or not spawn_clear(point):continue
+		var route:=plan_route(start,target)
+		if route.is_empty():continue
+		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+		path=route;goal="curiosity";goal_cell=here;timer=0
+		activity="making way";return true
+	make_way_retry = 1.0
+	return false
+
+# Water can catch a companion beside a wall, where her swim outline does not fit: every route failed at its
+# first step and she floated in place until the water dropped (Sept 30). Like crew escapes
+# (flood_safety.escape_starts), she squeezes on standing clearance to the nearest spot where she fits.
+func plan_route(start: int, target: int) -> PackedVector2Array:
+	var route := smooth_route(route_between(start,target))
+	if not route.is_empty() or movement_medium=="dry": return route
+	var facing := direction
+	for entry in preload("res://scripts/flood_safety.gd").escape_starts(self):
+		if not entry.squeeze: continue
+		direction=entry.facing
+		var joined := smooth_route(route_between(entry.node,target),entry.point)
+		direction=facing
+		if joined.is_empty(): continue
+		joined.insert(0,entry.point)
+		squeeze_point=entry.point
+		return joined
+	return route
+
+func wake_seconds()->float:
+	return poses.cycle_seconds("nap-exit-"+wake_direction)
+
+func texture(time: float) -> Texture2D:
+	var wet:Texture2D=water.texture(self)
+	if wet!=null:return wet
+	if not behavior.is_empty():
+		var elapsed := behavior_elapsed
+		if wake_first:
+			var waking:=wake_seconds()
+			if elapsed<waking:return poses.frame_at_elapsed("nap-exit-"+wake_direction,elapsed)
+			elapsed-=waking
+		var key := behavior+"-"+direction
+		var enter := behavior+"-enter-"+direction
+		var leave := behavior+"-exit-"+direction
+		var entry_seconds := poses.cycle_seconds(enter) if poses.frames.has(enter) else 0.0
+		var exit_seconds := poses.cycle_seconds(leave) if poses.frames.has(leave) else 0.0
+		if elapsed<entry_seconds:return poses.frame_at_elapsed(enter,elapsed)
+		if behavior_duration-behavior_elapsed<exit_seconds:return poses.frame_at_elapsed(leave,exit_seconds-(behavior_duration-behavior_elapsed))
+		var cursor: float=maxf(0,elapsed-entry_seconds)
+		if poses.timing[key].loop:cursor=fmod(cursor,poses.cycle_seconds(key))
+		return poses.frame_at_elapsed(key,cursor)
+	var transitional: Texture2D=locomotion.texture(self)
+	if transitional!=null:return transitional
+	return player.frame(state,direction,time,foot/CELL)

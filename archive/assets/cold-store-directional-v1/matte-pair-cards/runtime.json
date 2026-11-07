@@ -1,0 +1,46 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/storage_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "logistics",
+			"detail_stage": "fridge and weighing rack flanking north-south aisle",
+			"details": [],
+			"floor_owner": "res://rooms/underwater/cold-store-v1/cold_store_view.gd",
+			"floor_stage": "integrated; native card, completed room and three viewport captures",
+			"id": "cold_store",
+			"machinery": [],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/storage-load-deck.png",
+			"source_sha256": "95aaf0bb8c3987d4855d6c56510e83e887f57b84f3bcd5d77340c029a18f4fa0",
+			"view": "res://rooms/underwater/cold-store-v1/cold_store_view.gd"
+		},
+		"layered": true,
+		"room": "cold_store",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "fridge",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "rack",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/cold-store-v1/cold_store_view.gd"
+	}
+]

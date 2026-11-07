@@ -1,0 +1,322 @@
+{
+  "skill_name": "brinespace-character-pipeline",
+  "version": 1,
+  "status": "partially_executed",
+  "path_base": "active BrineSpace checkout",
+  "output_cases": [
+    {
+      "id": "complete-local-density-replacement",
+      "prompt": "Repair Bill locally and replace all his animations and states, preserving detail and improving the pipeline.",
+      "inputs": [
+        "docs/BILL_FULL_REPLACEMENT_2026-09-12.md",
+        "tools/bill-art-source-contract.json"
+      ],
+      "assertions": [
+        "Inventories the actual consumer including joins and equipment",
+        "Re-extracts original higher-resolution sources and preserves source hashes",
+        "Preserves world size, pivots, timing, water metadata and equipment alignment",
+        "Does not treat palette simplification or final-frame enlargement as added detail",
+        "Updates bindings, clearance, native fixtures, maintained and installed skills and bible",
+        "Reports source gait limitations separately from density and coverage acceptance"
+      ],
+      "visual_review": [
+        "Native same-world-scale bare/equipped animation",
+        "Live room context and source-detail comparison"
+      ]
+    },
+    {
+      "id": "new-officer-concept",
+      "prompt": "Create a new BrineSpace engineering officer based on Major Bill's art style. I only want the concept for now.",
+      "inputs": [
+        "docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md",
+        "character/major-bill-v2",
+        "character/dr-veld-v1/concept-01.png"
+      ],
+      "assertions": [
+        "Preserves shared style with a distinct officer identity",
+        "Saves canonical source and provenance",
+        "Shows a same-scale comparison",
+        "Does not change gameplay or produce an unsolicited full animation pack"
+      ],
+      "visual_review": [
+        "Silhouette and department readability",
+        "Character consistency with approved crew"
+      ]
+    },
+    {
+      "id": "walk-repair",
+      "prompt": "Clean up Veld's east-facing walk using the supplied defect notes. Keep her identity and other accepted actions intact.",
+      "inputs": [
+        "character/dr-veld-v1",
+        "scripts/crew_sprite_player.gd"
+      ],
+      "fixture_setup": "Use an isolated copy and supply a real observed walk defect, or introduce a labeled registration defect in the copy. Keep baseline hashes of unrelated frames.",
+      "assertions": [
+        "Inspects the reported defect before selecting a repair",
+        "Preserves original sources and unrelated accepted frame pixels",
+        "Preserves the compatible canvas, pivot and state interface",
+        "Validates affected exports and reviews changed motion",
+        "Does not create unnecessary new actions"
+      ],
+      "visual_review": [
+        "Defect corrected without identity drift",
+        "Ground contact and loop continuity"
+      ]
+    },
+    {
+      "id": "prepared-pack-integration",
+      "prompt": "Integrate this prepared BrineSpace crew pack as a wandering NPC with independent needs and saved state, using the existing prototype behavior.",
+      "inputs": [
+        "scripts/bill_npc.gd",
+        "scripts/veld_npc.gd",
+        "scripts/crew_sprite_player.gd",
+        "tests/test_crew_polish.gd"
+      ],
+      "fixture_setup": "Supply a contract-valid prepared pack in an isolated checkout, with isolated saves/settings. Evaluate the requested crew count rather than assuming two-actor tests cover an added third actor.",
+      "assertions": [
+        "Uses independent needs, random state and playback",
+        "Checks required states against the controller",
+        "Verifies reachable movement, door response and depth",
+        "Verifies pause and saved action restoration",
+        "Preserves existing run economy and avoids unrelated architecture changes"
+      ],
+      "visual_review": [
+        "Native action transitions",
+        "Room and corridor occlusion",
+        "Applicable crew passing"
+      ]
+    },
+    {
+      "id": "wearable-transition-repair",
+      "prompt": "Repair these BrineSpace helmet transitions and integrate them for all supplied crew without changing their body scale.",
+      "inputs": [
+        "character/crew-underwater-v1",
+        "scripts/crew_sprite_player.gd",
+        "scripts/bill_npc.gd"
+      ],
+      "fixture_setup": "Use isolated source copies with a labeled visor-occlusion defect and tall overhead pose. Preserve baseline frame hashes.",
+      "assertions": [
+        "Measures helmet/body differences separately",
+        "Preserves body scale with appropriate canvas/pivot",
+        "Records per-pose source and fitting provenance",
+        "Synchronizes transition with simulation timer",
+        "Tests real mid-action disk restoration for all crew",
+        "Reports missing locker geometry rather than claiming a fixture proves it"
+      ],
+      "visual_review": [
+        "Single head in worn helmet and empty carried helmet",
+        "Gloves and tool sidedness",
+        "Endpoint silhouette continuity",
+        "Overhead clearance at station scale"
+      ]
+    },
+    {
+      "id": "locker-stage-handoff-review",
+      "prompt": "Review our current crew locker animations and identify what is still needed before calling the interaction visually complete. Keep existing reusable-gear behavior and save semantics. This is a read-only review; do not generate art or edit gameplay.",
+      "inputs": [
+        "skills/brinespace-character-pipeline/references/underwater-equipment.md",
+        "character/crew-underwater-v1/locker/README.md",
+        "character/crew-underwater-v1/build_locker_sequences.py",
+        "scripts/airlock_service.gd",
+        "tests/test_airlock.gd"
+      ],
+      "assertions": [
+        "Selects the character workflow and room workflow for the prop interaction as applicable",
+        "Distinguishes exact endpoint equality, combined dwell and preceding silhouette discontinuity",
+        "Checks named handoff markers against final composed durations",
+        "Distinguishes shelf visibility from finite inventory and preserves atomic cancellation",
+        "Treats static native captures and passing tests as insufficient for continuous visual acceptance",
+        "Identifies per-stage and post-release save evidence without claiming an unexecuted skill evaluation passed",
+        "Respects read-only scope"
+      ],
+      "visual_review": [
+        "Not applicable to this read-only workflow decision trial; does not certify animation quality"
+      ]
+    },
+    {
+      "id": "direct-hailuo-continuation",
+      "prompt": "The MiniMax key is saved. Continue Bill north and update the pipeline; preserve our Higgsfield credits.",
+      "inputs": [
+        "docs/CURRENT_STATUS.md",
+        "docs/MINIMAX_DIRECT_HANDOFF.md",
+        "tools/minimax_video.py"
+      ],
+      "assertions": [
+        "Reads MINIMAX_API_KEY without exposing or persisting it",
+        "Uses direct Fast 2.3 768P 6s and records one-attempt cost estimate",
+        "Preserves reserved free Genjutsu and avoids duplicate paid POST on resume",
+        "Separates source success from gait/scale review and runtime acceptance",
+        "Preserves matte finish once and rejects per-frame size normalization",
+        "Keeps current runtime frames until a candidate is selected"
+      ],
+      "visual_review": [
+        "Full raw gait and scale drift",
+        "Loop seam and actual gameplay scales"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "crew-material-transition-repair",
+      "prompt": "James turns green when idle and gets brighter when walking. Bill hair and beard change between poses. Fix colour without changing gait.",
+      "inputs": [
+        "docs/CREW_ANIMATION_SESSION_CLOSEOUT_2026-09-29.md",
+        "character/ACTIVE_ASSETS.json"
+      ],
+      "assertions": [
+        "Uses current directional idle/material authority and preserved unmapped sources",
+        "Inspects masks and partial-alpha edge contamination instead of global tint",
+        "Preserves yellow engineering and burgundy accents, face and gait",
+        "Applies matte once and checks idle/walk joins at gameplay sizes"
+      ],
+      "visual_review": [
+        "Full motion and stop/start changes on station backgrounds",
+        "Hair/beard, skin, graphite, silver and keyed edges"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "shared-helmet-action-neck-fit",
+      "prompt": "Bill helmet and head break while interacting and the collar detaches when he kneels.",
+      "inputs": [
+        "docs/BILL_ANIMATION_CONTINUATION_2026-09-29.md",
+        "character/bill-shared-helmet-actions-east-v1/build.py"
+      ],
+      "assertions": [
+        "Starts from staged v3 and does not infer acceptance from successful tests",
+        "Inspects first interior frame as well as exact idle endpoints",
+        "Fits moving head/aperture/collar, checks alpha and avoids fixed idle overlay during bend",
+        "Limits idle-body arm transfer to appropriate small interaction",
+        "Preserves timing, joins, matte materials and white lamp"
+      ],
+      "visual_review": [
+        "Continuous interaction, kneel, repair, stand and idle transitions",
+        "Collar at back of neck, head placement and arm attachment"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "parallel-actor-session-closeout",
+      "prompt": "Close this animation session; I will reopen separate Veld, James and Bill sessions.",
+      "inputs": [
+        "docs/CURRENT_STATUS.md",
+        "character/ACTIVE_ASSETS.json"
+      ],
+      "assertions": [
+        "Saves separate actor handoffs and current installed/staged decisions",
+        "Preserves dirty and untracked assets and does not reset checkout",
+        "Assigns actor directory ownership and coordinates shared loader/registry edits",
+        "Does not spawn new chats, start generation or claim unfinished work accepted",
+        "Separates structural skill checks from independent behavior evaluation"
+      ],
+      "visual_review": [
+        "Not applicable to documentation closeout; no new visual acceptance claimed"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "marsh-master-detail-repair",
+      "prompt": "Marsh changes style during diagnostics; compare all animations to masters and repair them.",
+      "inputs": [
+        "docs/MARSH_MASTER_COMPARISON_2026-09-30.md",
+        "character/marsh-master-repair-v1/baseline-contract.json"
+      ],
+      "assertions": [
+        "Freezes actual ordered selection, hashes, geometry and timing",
+        "Separates missing construction detail from exposure drift",
+        "Uses coherent body/tool source and preserves white fluid",
+        "Records actual sheet extraction, holds and shared-pose reuse",
+        "Verifies runtime overrides without claiming owner acceptance"
+      ],
+      "visual_review": [
+        "Connected tablet grip, coherent body and stable identity",
+        "Consecutive source/station poses and idle/action seams"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "marsh-motion-capture-evidence",
+      "prompt": "Review all Marsh loops and turns for smooth motion.",
+      "inputs": [
+        "tools/review_marsh_motion.gd",
+        "character/marsh-consistency-review-v1/runtime-contract.json"
+      ],
+      "assertions": [
+        "Checks all slots and loop wraps with key/slot/time records",
+        "Uses unique capture namespace and safe final queued draw",
+        "Distinguishes viewer restart from authored seam",
+        "Reports static frame, cadence and gameplay evidence separately",
+        "Fingerprints profiles before/after scratch Godot run or discloses omission"
+      ],
+      "visual_review": [
+        "Crops contain low poses and variable pivots",
+        "Gameplay contact/foot sliding only accepted when observed"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    },
+    {
+      "id": "marsh-installed-closeout",
+      "prompt": "Is everything installed? Close Marsh work and update our skills, pipeline and bible.",
+      "inputs": [
+        "character/marsh-v2/catalog.json",
+        "docs/MARSH_SESSION_CLOSEOUT_2026-09-30.md"
+      ],
+      "assertions": [
+        "Verifies ordered bindings and selected hashes",
+        "Separates installed, owner-approved and exported scope",
+        "Preserves existing installed skill differences while syncing new guidance",
+        "Updates status/handoff without unrelated asset rebuilds or Godot tests",
+        "Does not schedule work or infer approval from closure"
+      ],
+      "visual_review": [
+        "Documentation closeout supplies no new visual acceptance"
+      ],
+      "evaluation_status": "not_executed_fresh_context"
+    }
+  ],
+  "selection_cases": [
+    {
+      "prompt": "Create a female Science Officer for BrineSpace based on Bill.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Veld's walking frames wobble; clean them up.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Package these approved BrineSpace crew frames for Godot.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Animate the research room machinery.",
+      "should_trigger": false,
+      "expected_route": "brinespace-room-pipeline"
+    },
+    {
+      "prompt": "Make a sprite sheet for an unrelated platformer.",
+      "should_trigger": false,
+      "expected_route": "sprite-animation-maker"
+    },
+    {
+      "prompt": "Add a BrineSpace officer and a laboratory console she can use.",
+      "should_trigger": true,
+      "expected_route": "character workflow plus room workflow for console art/registration"
+    },
+    {
+      "prompt": "Add swimming and diving-helmet animations for the BrineSpace crew.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Make BrineSpace companion portraits match the other selector portraits and add newly recovered characters to the recap.",
+      "should_trigger": true,
+      "expected_route": "comms-portraits and godot-integration; native selector sizing and recovery/checkpoint checks"
+    },
+    {
+      "prompt": "Make the existing BrineSpace Windows game build.",
+      "should_trigger": false,
+      "expected_route": "project RELEASE_WORKFLOW; no character art generation"
+    }
+  ],
+  "execution_records": [
+    "docs/validation/character-pipeline-locker-trial-2026-09-06/result.json"
+  ]
+}

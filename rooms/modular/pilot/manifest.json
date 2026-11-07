@@ -1,0 +1,28 @@
+{
+  "stage": "generated component candidates; not registered or integrated",
+  "source_reference": "rooms/hybrid/mycelium_nursery-v2.png",
+  "canvas_policy": "Preserve original 1254x1254 canvases. No independent crop/normalize. Define source region and placement explicitly after alpha review.",
+  "assets": [
+    {
+      "id": "floor",
+      "path": "rooms/modular/pilot/floor-v1.png",
+      "raw": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-abcec265-9af0-48b3-88e0-dda6049e50db.png",
+      "prompt": "Use case: precise-object-edit. Input is BrineSpace Mycelium room, used as material and overhead projection reference. Create its CLEAN FLOOR LAYER: remove every wall, doorway frame, machine, mushroom, tank, bench, pipe, shadow cast by removed furniture, and walkway stripe. Fill the entire square canvas edge to edge with continuous quiet dark slate square metal floor panels matching the reference floor scale and selective pixel-art texture. Flat orthographic overhead surface, no raised border or perspective extrusion. Subtle seams and sparse use wear, no drains, text, lights, checkerboard, blank margins or props. This is the opaque base beneath separately assembled walls and furniture, not a complete room. Single square PNG.",
+      "role": "opaque clean floor; seam and scale review pending"
+    },
+    {
+      "id": "growth_rack",
+      "path": "rooms/modular/pilot/growth_rack-v1.png",
+      "raw": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-0d334ed6-9963-4e8e-a4d5-61ec2fbc328b.png",
+      "prompt": "Use case: background-extraction. Input is the EDIT TARGET BrineSpace Mycelium room. Isolate ONLY the upper-left tiered mushroom cultivation rack with its attached irrigation rail, vertical support legs and small attached side control box. Preserve its overhead cutaway camera, mushroom colors, steel materials and proportions. Remove all other room contents, floor, walls, bench, tanks, floor markings and cast floor shadow, leaving genuinely transparent alpha including open spaces between legs. Keep the rack in its original upper-left position on the full square room canvas, same apparent scale; DO NOT center, enlarge or crop it. No new props, glow, text or checkerboard. One isolated static prop on a transparent full-room canvas, intended for depth sorting independently of the floor.",
+      "role": "separate prop; registration drift and stray alpha review pending"
+    }
+  ],
+  "acceptance": {
+    "geometry": false,
+    "registration": false,
+    "character_occlusion": false,
+    "animation": false,
+    "live_integration": false
+  }
+}

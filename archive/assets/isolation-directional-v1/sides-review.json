@@ -1,0 +1,30 @@
+{
+  "room": "isolation_vault",
+  "directions": [
+    "east",
+    "west"
+  ],
+  "stage": "integrated-owner-side-review-pending",
+  "source": "assets/isolation-directional-v1/isolation-sides-overhead.png",
+  "sha256": "0bec81d620cf292a5df2c1e862ac246ab122ea9293fa1208f88b3f9c95048dd6",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "original": "exec-19f12054-047b-4d93-91e1-e260750da63e.png",
+  "evidence": "output/isolation-side-review-2026-09-12",
+  "owner_acceptance": false,
+  "rejected_study": "isolation-sides-two-box-study.png",
+  "findings": [
+    "Three upper switchboxes and three inward isolator levers per bank; pressure gauge and manual wheel retained.",
+    "First study omitted one box per bank; targeted image edit restored inventory.",
+    "Static amber lenses quiet; three source-local operating lamp pulses per side.",
+    "Native side review preserves all prop metadata and q0/q2 RGB.",
+    "Six lamps checked off/on and temporally in direct and retained rendering."
+  ],
+  "tests": [
+    "176 layouts",
+    "20 side variants",
+    "12 lamp/renderer cases"
+  ]
+}

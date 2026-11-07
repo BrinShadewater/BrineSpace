@@ -1,0 +1,13 @@
+{
+  "tool": "builtin image_gen",
+  "reference": "rooms/production-ten/battery_array-source-v1.png",
+  "referenceRole": "camera and engineering materials only",
+  "prompt": "Create ONE isolated secondary furniture sprite for the BRINE underwater station game. Reference supplies ONLY the camera, finely shaded pixel-art rendering and maintained dark steel/burnt-orange engineering materials. A compact insulated electrical diagnostic cart on four small casters: a charcoal rubber worktop supports a handheld multimeter in a stand, two secured test leads and a shallow tray of capped connectors. Beneath the worktop one orange drawer and a lower shelf holding a neatly coiled insulated cable. A slim hooded inspection lamp is clamped to the rear-left corner and bends over the worktop; lens neutral, runtime adds light. Everything belongs to this one grounded working cart; no loose surrounding accessories, no main battery banks, no floor tile, no room. Fixed orthographic near-top-down cutaway camera, upright height screen up, fronts face screen south, edges parallel screen axes, not isometric diamond. Readable silhouette and restrained detail suitable for a small gameplay sprite. Actual transparent RGBA background, alpha zero outside cart and through gaps; no painted checkerboard, no white backdrop. Keep full lamp and wheels within generous margins.",
+  "source": "battery-service-cart-v1.png",
+  "nativeSize": [
+    1214,
+    1295
+  ],
+  "mode": "RGBA",
+  "processing": "No raster postprocessing. Source region includes 2px around alpha>=128 bounds. Runtime lens overlay removes baked bright lens offline."
+}

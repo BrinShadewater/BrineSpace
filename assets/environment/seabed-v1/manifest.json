@@ -1,0 +1,695 @@
+{
+  "version": 1,
+  "status": "All listed identities generated. Native integration is a subset; see README.md.",
+  "assets": [
+    {
+      "id": "silt-plain",
+      "category": "texture",
+      "brief": "Production game background texture for BRINE underwater station builder. One square continuous deep-ocean SILT PLAIN seabed texture, orthographic overhead camera, no horizon. Subdued blue-green charcoal and muted slate sediment, broad quiet areas of fine silt, low gently curving sand ripples, sparse tiny gravel, subtle darker mineral patches. Carefully rendered chunky pixel-art illustration with selective fine detail, same material realism as industrial pixel-art station sprites. Flat restrained ambient illumination from upper left, no sunlight beams, no bright caustics, no surface waves. Low contrast, dark but visible, designed to sit underneath much brighter modular station rooms. Edge-to-edge ground, no border, no objects cropped into prominent seams, no structures, no creatures, no text, no UI. Aim for seamless repeat, evenly distributed quiet texture without a central focal subject. 2048 square.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "silt-plain-source-v1.png",
+          "sha256": "5f1e74ae2a935e42ce2366a481434c7a73b0e7cfe4355dab23665dd19ddb061f",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "silt-plain-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "basalt-shelf",
+      "category": "terrain",
+      "brief": "A low irregular cluster of broad layered basalt slabs, fractured slate blue stone with sediment gathered in crevices, overhead visible top surfaces and short south-facing rock edges.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "basalt-shelf-source-v1.png",
+          "sha256": "9ddd965c53cdb6ea38c57fe47cdb10fe1b2acfa7c0fd6f22bbf4c03658b93ee5",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 804638,
+          "partial_alpha_pixels": 767606,
+          "visible_bounds": [
+            0,
+            21,
+            1236,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "basalt-shelf-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "trench-edge",
+      "category": "terrain",
+      "brief": "A crescent-shaped eroded seabed escarpment framing a deep dark crevasse, irregular slate rock lip, scattered gravel at its foot; a self contained terrain decal with organic silhouette.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "trench-edge-source-v1.png",
+          "sha256": "cf1bb42ebb2b4b0403cc9c6b1adbcad00f0280af01be97f7c9a2e856dfb0a497",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 689044,
+          "partial_alpha_pixels": 883254,
+          "visible_bounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": "Excessive frontal cliff height; replace with overhead fissure."
+        },
+        {
+          "file": "trench-edge-source-v2.png",
+          "sha256": "89a9eda7eb9fad14cd78cee9b153f01ab1eec9abcc58c8f4567e053bfc4323ec",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1123785,
+          "partial_alpha_pixels": 448598,
+          "visible_bounds": [
+            38,
+            16,
+            1220,
+            1244
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "trench-edge-source-v2.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "mineral-outcrop",
+      "category": "terrain",
+      "brief": "One squat irregular mineral-bearing stone outcrop, dull copper veins and pale calcite inclusions in blue charcoal basalt, no emissive crystals.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "mineral-outcrop-source-v1.png",
+          "sha256": "289598b89577c8ec55e74c5495f4f0fa6c4344d13072bbec2a57d1bd961c6c6d",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 887056,
+          "partial_alpha_pixels": 685010,
+          "visible_bounds": [
+            2,
+            21,
+            1222,
+            1236
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "mineral-outcrop-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "vent-chimney",
+      "category": "hazard",
+      "brief": "One hydrothermal vent formation, three unequal squat mineral chimneys on a shared crust base, dark vent apertures, restrained ochre deposits; no smoke or plume baked in.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "vent-chimney-source-v1.png",
+          "sha256": "0d584a93e3c8a9d08d24f3ee51a1dafb23ddf6f219662cd377c223e6546f610c",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1055612,
+          "partial_alpha_pixels": 516488,
+          "visible_bounds": [
+            0,
+            21,
+            1232,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": "Tall frontal towers; replace with low overhead vent mouths."
+        },
+        {
+          "file": "vent-chimney-source-v2.png",
+          "sha256": "8552b536efed8035c9c829f07cc7c5cf532a1fb14ea1c3d2a2f5560e985cb15c",
+          "size": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 951919,
+          "partial_alpha_pixels": 620945,
+          "visible_bounds": [
+            59,
+            0,
+            1404,
+            1024
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        },
+        {
+          "file": "vent-chimney-source-v3.png",
+          "sha256": "80b72c3af3596654688f42b79361f90eac26797ea417d5220c6483140c87b0b5",
+          "size": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": "Opaque painted checkerboard; retain transparent v2."
+        }
+      ],
+      "selected_source": "vent-chimney-source-v2.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false,
+      "visual_note": "v2 retains a soft exterior sediment halo; use over dark ground. v3 extraction rejected."
+    },
+    {
+      "id": "brine-pool",
+      "category": "hazard",
+      "brief": "One irregular dense brine pool seen directly overhead, dark teal glassy liquid enclosed by a pale mineral crust rim, subtle inner ripple line, no bright glow.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "brine-pool-source-v1.png",
+          "sha256": "9c49a41aed23877e5e7c4609692c339af8b5f1c3420e6ddf19727637fed01d09",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 644620,
+          "partial_alpha_pixels": 927794,
+          "visible_bounds": [
+            0,
+            20,
+            1240,
+            1230
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "brine-pool-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "coral-garden",
+      "category": "ecology",
+      "brief": "One low deep-sea coral colony with branching muted ivory coral, dusky teal sponges and small burgundy anemones rooted on two stones, subdued colors, no tropical bright reef.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "coral-garden-source-v1.png",
+          "sha256": "23b376a978bf0108bb521f262904b5d5c69cd3d9fcc4a49585dc5320fdaca077",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 819229,
+          "partial_alpha_pixels": 753233,
+          "visible_bounds": [
+            0,
+            3,
+            1251,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "coral-garden-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "tube-worms",
+      "category": "ecology",
+      "brief": "One cluster of deep-sea tube worms rooted on a low mineral crust, ivory tubes and restrained oxblood feeding crowns, readable clustered silhouettes.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "tube-worms-source-v1.png",
+          "sha256": "dddb6eaeffa72406948c976850d0e48222307f0da48c6c1295d3faca24ee3294",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 679401,
+          "partial_alpha_pixels": 893053,
+          "visible_bounds": [
+            0,
+            0,
+            1240,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "tube-worms-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "wreck-corridor",
+      "category": "wreckage",
+      "brief": "A ruined straight underwater station corridor segment, torn gunmetal pressure ribs, buckled grey panels and a broken cyan life-support pipe, open ruptured ends, silt and restrained rust, no active lights. Horizontal footprint.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "wreck-corridor-source-v1.png",
+          "sha256": "b76d567686c25e010a5c242d184e9fc420130ae741ac32ae06c95348b95ba096",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1020156,
+          "partial_alpha_pixels": 551944,
+          "visible_bounds": [
+            0,
+            19,
+            1236,
+            1198
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "wreck-corridor-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "wreck-engineering",
+      "category": "wreckage",
+      "brief": "A collapsed engineering station compartment fragment, burnt-orange panel remnants on charcoal pressure-frame ribs, one crushed cylindrical tank and disconnected thick pipes, exposed torn floor grating, compact asymmetric debris silhouette. Clearly irreparable rubble, not a usable room.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "wreck-engineering-source-v1.png",
+          "sha256": "844385d04e5ea8e178df2509d9eb2f6adb7b69c0d24d36624e600d94d719254d",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 628109,
+          "partial_alpha_pixels": 943903,
+          "visible_bounds": [
+            0,
+            0,
+            1232,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "wreck-engineering-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "wreck-cargo",
+      "category": "wreckage",
+      "brief": "A small pile of three damaged modular cargo crates, neutral grey with muted yellow handling corners, one split crate and loose plates, partially buried silt, no writing or active lights.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "wreck-cargo-source-v1.png",
+          "sha256": "9dd289ce00a6b3d1af724f92b1db45afc2e053c4a6235851b16a3b131d0a9f0b",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 676309,
+          "partial_alpha_pixels": 896116,
+          "visible_bounds": [
+            0,
+            0,
+            1248,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "wreck-cargo-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "wreck-frame",
+      "category": "wreckage",
+      "brief": "Minimal remaining underwater station foundation frame, four damaged low rectangular gunmetal structural rails with bolts, missing side sections and a few steel scraps, hollow center with real transparency, no floor.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "wreck-frame-source-v1.png",
+          "sha256": "d0eae59fca0ad47e0caf3b331f917ff7f255d6d15c7a2fde84ebe6079b4aa233",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1053474,
+          "partial_alpha_pixels": 518512,
+          "visible_bounds": [
+            0,
+            51,
+            1240,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "wreck-frame-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": false
+    },
+    {
+      "id": "hull-fragment",
+      "category": "salvage",
+      "brief": "One detached bent pressure-hull panel with two attached ribs, pale enamel remnants over gunmetal, restrained rust on torn edges, no floor or surrounding debris.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "hull-fragment-source-v1.png",
+          "sha256": "147299fc7d683ec4fb4a57e71496988d5c342786ebfdb26aefa76f707672b2be",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 954877,
+          "partial_alpha_pixels": 617328,
+          "visible_bounds": [
+            48,
+            21,
+            1228,
+            1229
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "hull-fragment-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "pipe-fragment",
+      "category": "salvage",
+      "brief": "One severed industrial underwater pipe elbow and attached mounting bracket, desaturated cyan jacket, exposed dark steel coupling, seabed salvage object.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "pipe-fragment-source-v1.png",
+          "sha256": "dd93c49a8811eae26c20c0d6aef2dcb3fc30cbaa888f3ebc2eb552c417b980f1",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 762563,
+          "partial_alpha_pixels": 809658,
+          "visible_bounds": [
+            0,
+            23,
+            1224,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "pipe-fragment-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "live_background": true
+    },
+    {
+      "id": "silt-plume",
+      "category": "water",
+      "brief": "One wispy asymmetric underwater sediment disturbance cloud, muted slate grey teal particulate wisps, dense near lower-left emitter fading gently toward upper right, true variable alpha throughout, no seabed, no smoke or flames.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "silt-plume-source-v1.png",
+          "sha256": "16f022572402cde842ced5526e82a1d38e80d20cc9e288d2c6c92b1f58835d3c",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 776838,
+          "partial_alpha_pixels": 795635,
+          "visible_bounds": [
+            0,
+            0,
+            1242,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": "Solid rock silhouettes in a particle-only layer."
+        },
+        {
+          "file": "silt-plume-source-v2.png",
+          "sha256": "4ec5bda48a8904ef6077ba03a3b45236ef38c6ed85254fc8e75c97113eca02a1",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 543466,
+          "partial_alpha_pixels": 1029050,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "silt-plume-source-v2.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "emitter_anchor_normalized": [
+        0.5,
+        0.85
+      ],
+      "anchor_status": "provisional; adjust to source silhouette before effect integration",
+      "live_background": false
+    },
+    {
+      "id": "bubble-stream",
+      "category": "water",
+      "brief": "One sparse curved trail of small deep-water air bubbles of varied size, muted pale teal rim highlights and transparent centers, narrow near lower emitter spreading upward, true transparent empty space, no water rectangle.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "bubble-stream-source-v1.png",
+          "sha256": "3f3a38339dd6813bd83dec36c9a547cb8e09c8375126b6cd7dccc073d22d3a5d",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1426489,
+          "partial_alpha_pixels": 145935,
+          "visible_bounds": [
+            25,
+            0,
+            1216,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "bubble-stream-source-v1.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "emitter_anchor_normalized": [
+        0.5,
+        0.85
+      ],
+      "anchor_status": "provisional; adjust to source silhouette before effect integration",
+      "live_background": false
+    },
+    {
+      "id": "current-wisp",
+      "category": "water",
+      "brief": "One subtle flowing underwater current wisp, three widely spaced elongated curved ribbons of suspended teal particles, nearly transparent, no arrowheads, no foam, no surface waves.",
+      "status": "generated; alpha audited; visual owner review pending",
+      "versions": [
+        {
+          "file": "current-wisp-source-v1.png",
+          "sha256": "db715b8ef4d4c3bc4cf6f495a4f850aee3b0446a68d8a12c22f058dfa0f343e2",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 681689,
+          "partial_alpha_pixels": 890728,
+          "visible_bounds": [
+            0,
+            0,
+            1248,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": "Unrequested station machinery in a particle-only layer."
+        },
+        {
+          "file": "current-wisp-source-v2.png",
+          "sha256": "f9f5720a447dc075829d57bffa18a7021d53d69b9d3e9dae1695c3bba3e3dce4",
+          "size": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "transparent_pixels": 1116665,
+          "partial_alpha_pixels": 455851,
+          "visible_bounds": [
+            0,
+            9,
+            1254,
+            1254
+          ],
+          "processing": "none; original generated pixels",
+          "rejection": null
+        }
+      ],
+      "selected_source": "current-wisp-source-v2.png",
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "gameplay_state": "none; visual asset only",
+      "emitter_anchor_normalized": [
+        0.5,
+        0.85
+      ],
+      "anchor_status": "provisional; adjust to source silhouette before effect integration",
+      "live_background": false
+    }
+  ]
+}

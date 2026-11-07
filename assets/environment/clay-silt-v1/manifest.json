@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "versions": [
+        {
+          "file": "clay-silt-ground-v1.png",
+          "sha256": "9c22c49a05b8fc179c5641eac827863c5b276bd50e1d5bfaf3291f4d1d42a0eb",
+          "rejection": null
+        }
+      ],
+      "kind": "ground",
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending",
+      "id": "clay-silt-ground",
+      "selected_source": "clay-silt-ground-v1.png"
+    },
+    {
+      "versions": [
+        {
+          "rejection": null,
+          "file": "burrow-mouths-v1.png",
+          "sha256": "06824409f2baa8d36769fe53e60469e866344449455d961b8d1a3e224c162c63"
+        }
+      ],
+      "id": "burrow-mouths",
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending",
+      "kind": "prop",
+      "selected_source": "burrow-mouths-v1.png"
+    }
+  ],
+  "prompt_records": [
+    "generation-record.json",
+    "burrow-record.json"
+  ],
+  "title": "Fine clay-silt study",
+  "native_previews": [
+    {
+      "label": "Ordinary/mirrored sampling crossed with source/runtime tint; faint mirror seams remain",
+      "path": "../../../output/clay-silt-v1/ground-repetition.png"
+    },
+    {
+      "label": "Native feathered clay-silt patch beside a station room",
+      "path": "../../../output/clay-silt-station-v1/group-1-1600.png"
+    },
+    {
+      "label": "Native clay habitat with two sparse burrow clusters",
+      "path": "../../../output/clay-silt-station-v2/group-1-1600.png"
+    },
+    {
+      "path": "../../../output/environment-export-v15/captures/life-clay-burrows.png",
+      "label": "Isolated Windows build: clay silt and burrow clusters"
+    }
+  ],
+  "runtime_registry": "clay_silt_view.gd"
+}

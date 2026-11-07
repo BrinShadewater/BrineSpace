@@ -1,0 +1,20 @@
+{
+  "stage": "integrated-native-state-layout-card-reviewed",
+  "source": "assets/med-office-directional-v1/side-overhead.png",
+  "sha256": "258ee6e36453dd7000d73f357c9871c7c121e1bf175dd807316eccd99d8e0bd0",
+  "dimensions": [
+    786,
+    2002
+  ],
+  "raw": "exec-1da5d628-3803-4ff6-85c5-9dcbc9a64912.png",
+  "registrations": [
+    "rooms/full-wall-v1/registrations/side-medical-records-wall-east.json",
+    "rooms/full-wall-v1/registrations/side-medical-records-wall-west.json"
+  ],
+  "review": "Low overhead four-bay counter; inward keyboard, folder grips, supply handles and handset. Clipboard clip outward; six vials retained. Matte medical cream/teal, blank idle screens and operating-only traces. Both native idle side views and refreshed card reviewed.",
+  "comparison": "output/med-office-overhead-2026-09-12/comparison.json",
+  "validation": "176 layouts and existing 20 variant regressions PASS 20260912-153849-headless; 47 card identities parity PASS. Baseline/installed native catalog and card bake exit 0; all prop metadata and q1/q3 RGB unchanged. Six state captures exit 0; eight isolated east/west direct/retained screen cases pass power and temporal comparisons.",
+  "card": "assets/med-office-directional-v1/overhead-cards/med_office.png",
+  "remaining": "Explicit actual-station pause, owner aesthetic acceptance and broader rollout.",
+  "state_checks": "output/med-office-overhead-2026-09-12/checks.json"
+}

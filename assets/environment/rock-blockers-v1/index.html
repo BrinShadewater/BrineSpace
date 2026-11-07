@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRINE — Connected rock blockers</title>
+<style>body{margin:0;background:#07171d;color:#b3c9c3;font:16px/1.6 system-ui}main{max-width:1200px;margin:auto;padding:40px 24px}h1{color:#d5e5de}button,a{color:#a7cdb9}button{background:#142a2d;border:1px solid #41615b;padding:10px 16px;margin:0 8px 10px 0;cursor:pointer}button[aria-pressed=true]{background:#385149}img{display:block;width:100%;border:1px solid #294342}#source{max-width:420px}p{max-width:850px}small{color:#829992}</style>
+<main><small>BRINE / ENVIRONMENT ASSETS</small><h1>Connected basalt formations</h1>
+<p>Each rock blocks one standard room cell. Neighboring cells share a continuous stone surface. Clear a section to expose new cliff edges, then build into the opening.</p>
+<nav aria-label="Clearance stages"><button data-image="connected-1600" aria-pressed="true">Connected formation</button><button data-image="excavation-a" aria-pressed="false">Excavation</button><button data-image="notch-cleared" aria-pressed="false">Cleared cell</button><button data-image="rebuilt" aria-pressed="false">Room built over</button><button data-image="interior-cleared" aria-pressed="false">Deeper clearance</button></nav>
+<img id="capture" src="../../../output/rock-blockers-v1/connected-1600.png" alt="Native Godot capture of connected basalt blockers beside standard rooms">
+<p>Native fixture: one isolated rock, a nine-cell formation, and an L-shaped shelf. These screenshots are generated locally by the playtest fixture.</p>
+<h2>Original material</h2><img id="source" src="basalt-surface-v1.png" alt="Generated slate-blue basalt surface material">
+<p>Built-in image generation; original pixels preserved. Connected outlines and cliff relief are drawn by the game. <a href="generation-record.json">Exact generation prompt</a> · <a href="README.md">Implementation and verification</a></p>
+</main><script>document.querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const im=document.getElementById('capture');im.src='../../../output/rock-blockers-v1/'+b.dataset.image+'.png';im.alt='Native Godot capture: '+b.textContent;});</script></html>

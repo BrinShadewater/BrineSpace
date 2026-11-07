@@ -1,0 +1,248 @@
+extends RefCounted
+const Architects = preload("res://scripts/architects.gd")
+const NAMES := ["Hairline crack","Split seam","Hull rupture"]
+const SEVERITIES := [0.2,0.5,0.8]
+const COSTS := [2,3,5]
+const SECONDS := [6.0,10.0,14.0]
+
+static func variant(room: Dictionary) -> int:
+	var severity := float(room.get("hull_crack",0))
+	return 0 if severity<=0.35 else 1 if severity<=0.7 else 2
+
+static func leak_rate(room: Dictionary) -> float:
+	return float(room.get("hull_crack",0))*0.04*(0.2 if room.get("hull_patched",false) else 1.0)
+
+static func request(game,cell: Vector2i,patch := false) -> bool:
+	if not game.running or not game.occupied.has(cell): return false
+	var room: Dictionary=game.occupied[cell]
+	if float(room.get("hull_crack",0))<=0 or room.has("leak_repair"): return false
+	if patch and room.get("hull_patched",false): return false
+	var index := variant(room)
+	var cost: int=1 if patch else COSTS[index]
+	if int(game.resources.metal)<cost: return false
+	game.resources.metal-=cost
+	room.leak_repair={"cost":cost,"duration":3.0 if patch else SECONDS[index],"progress":0.0,"worker":"","status":"Waiting for reachable crew","patch":patch}
+	game._log("%s queued at %s. %d Metal reserved." % ["Emergency patch" if patch else "Hull repair",cell,cost],false)
+	return true
+
+# Crew start a repair on their own once damage is serious (owner call, Sept 16): a split seam
+# or worse, or a cracked room at wading depth. Manual requests from the inspector still work
+# at any severity. Skipped while the Metal for the weld is short.
+const AUTO_SEVERITY := 0.35
+static func auto_queue(game) -> void:
+	if not game.running or game.paused: return
+	var crew := false
+	for id in Architects.IDS:
+		var actor = Architects.actor_for(game,id)
+		if Architects.present(game,id) and actor.active and not actor.dead: crew = true
+	if not crew: return
+	for room in game.placed_rooms:
+		var crack := float(room.get("hull_crack",0))
+		if crack <= 0 or room.has("leak_repair") or room.get("hull_patched",false): continue
+		if crack <= AUTO_SEVERITY and float(room.get("water_level",0)) < 0.25: continue
+		if int(game.resources.metal) < COSTS[variant(room)]: continue
+		if request(game,room.pos):
+			game._log("Crew noticed serious hull damage at %s and queued a repair." % room.pos,false)
+
+static func cancel(game,cell: Vector2i) -> bool:
+	if not game.occupied.has(cell) or not game.occupied[cell].has("leak_repair"): return false
+	var room: Dictionary=game.occupied[cell]
+	var job: Dictionary=room.leak_repair
+	if not str(job.worker).is_empty():
+		var actor=Architects.actor_for(game,job.worker)
+		if actor.goal=="hull-repair":
+			if actor.has_method("prepare_hull_return"):actor.prepare_hull_return(game)
+			release(actor)
+	# Used patch material is consumed; unstarted orders refund in full.
+	var refund := int(floor(float(job.cost)*(1.0-float(job.progress)/float(job.duration))))
+	game.resources.metal+=refund
+	room.erase("leak_repair")
+	game._log("Hull repair cancelled. %d Metal returned." % refund,false)
+	return true
+
+static func reassign(game,cell: Vector2i,id: String) -> bool:
+	if id not in Architects.IDS or not Architects.present(game,id) or not game.occupied.has(cell): return false
+	var room: Dictionary=game.occupied[cell]
+	if not room.has("leak_repair"): return false
+	var job: Dictionary=room.leak_repair
+	if str(job.worker)==id:return true # Selecting the current worker preserves their live pose.
+	if not str(job.worker).is_empty():
+		var actor=Architects.actor_for(game,job.worker)
+		if actor.goal=="hull-repair":
+			if actor.has_method("prepare_hull_return"):actor.prepare_hull_return(game)
+			release(actor)
+	job.worker=""
+	job.preferred=id
+	job.status="Waiting for assigned crew"
+	return true
+
+static func air_needed(room: Dictionary,job: Dictionary,travel: float,drain := 0.0,travel_exposure := 0.0) -> float:
+	var duration := travel+float(job.duration)-float(job.progress)
+	var water := float(room.get("water_level",0))
+	var future := room.duplicate()
+	if not room.get("hull_patched",false): future.hull_crack=minf(1,float(room.get("hull_crack",0))+duration*0.0005)
+	var rate := maxf(0,leak_rate(future)-drain)
+	var projected := minf(1,water+rate*duration)
+	if projected<0.85: return travel_exposure
+	var until_critical := maxf(0,(0.85-water)/rate) if rate>0 else (0.0 if water>=0.85 else INF)
+	# Water rises while the worker travels, but crossing dry rooms does not spend
+	# their tank. Count the actual hazardous transit separately from time on site.
+	var exposure := travel_exposure+maxf(0,duration-maxf(travel,until_critical))
+	# Include recovery while a powered pump lowers water below breathing height.
+	var recovery := (projected-0.84)/drain+3.0 if drain>0 else 12.0
+	return exposure+maxf(3,recovery)
+
+static func release(actor) -> void:
+	if actor.has_method("finish_hull_animation"):actor.finish_hull_animation()
+	actor.goal=""
+	actor.path.clear()
+	actor.state="idle"
+	actor.timer=0.5
+	actor.activity="hull repair waiting"
+
+static func approach(actor,cell: Vector2i,swimming := false,smooth := true) -> Dictionary:
+	var desired := (Vector2(cell)+Vector2.ONE*0.5)*384+Vector2(-70,-115)
+	# Already at the worksite: no synthetic navigation turn is needed to resume.
+	if actor.cell_at(actor.foot)==cell and actor.foot.distance_to(desired)<30 and actor.can_stand(actor.foot):
+		return {"point":actor.foot,"route":PackedVector2Array()}
+	var start: int=actor.nearest_in_room(actor.foot,actor.cell_at(actor.foot))
+	if start<0: return {}
+	# Try the best few spots only: a failed search explores the whole crew graph, and trying
+	# every node near the seam each frame stalled the game (F8 report 20260917-042558).
+	var candidates: Array = []
+	for node in actor.room_nodes.get(cell,[]):
+		var point: Vector2=actor.graph.get_point_position(node)
+		var local: Vector2=point-(Vector2(cell)+Vector2.ONE*0.5)*384
+		# Furnishing can cover the old fixed repair anchor. A clear point beside
+		# another wall is a valid weld station; never require walking through art.
+		var wall_distance: float=maxf(absf(local.x),absf(local.y))
+		if (point.distance_to(desired)>50 and (wall_distance<96 or wall_distance>176)) or not actor.can_stand(point): continue
+		var facing: String=("west" if local.x<0 else "east") if absf(local.x)>absf(local.y) else ("north" if local.y<0 else "south")
+		if swimming and actor.needs_air() and not actor.swim_segment_clear(point,point,facing): continue
+		candidates.append([point.distance_to(desired)*4+actor.foot.distance_to(point),node,point])
+	candidates.sort_custom(func(a,b): return a[0]<b[0])
+	for i in range(mini(3,candidates.size())):
+		var path: PackedVector2Array=actor.route_between(start,candidates[i][1])
+		if path.is_empty() or not actor.segment_clear(actor.foot,path[0]): continue
+		var route: PackedVector2Array=actor.smooth_route(path) if smooth else path
+		if route.is_empty(): continue
+		return {"point":candidates[i][2],"route":route}
+	return {}
+
+static func advance(game,actor,dt: float) -> bool:
+	var id: String="bill" if actor==game.bill_npc else "veld" if actor==game.veld_npc else "marsh" if actor==game.marsh_npc else "branforth"
+	var eligible: bool=actor.expedition.is_empty() and not actor.helmet_action_active() and actor.locker_request.is_empty() and actor.goal!="construction" and not (actor.activity=="refilling oxygen tank" and actor.timer>0)
+	for room in game.placed_rooms:
+		if not room.has("leak_repair"): continue
+		var job: Dictionary=room.leak_repair
+		if actor.goal=="hull-repair" and actor.goal_cell!=room.pos: continue
+		var worker: String=job.worker
+		if not worker.is_empty():
+			var assigned=Architects.actor_for(game,worker)
+			if assigned.dead or not Architects.present(game,worker) or assigned.goal!="hull-repair":
+				job.worker=""
+		if not eligible or (not str(job.worker).is_empty() and job.worker!=id): continue
+		if not str(job.get("preferred","")).is_empty() and job.preferred!=id: continue
+		if not game.running or game.paused: return actor.goal=="hull-repair"
+		if job.worker.is_empty():
+			var available: float=actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen
+			var wait: Dictionary=actor.get_meta("hull_air_retry",{})
+			if is_same(wait.get("job"),job) and available<=float(wait.get("air",0)) and Time.get_ticks_msec()<int(wait.get("until",0)): continue
+			if Time.get_ticks_msec()<int(actor.get_meta("hull_approach_retry",0)): continue
+			# Budget air on the graph route before paying for long-route smoothing.
+			var found := approach(actor,room.pos,float(room.get("water_level",0))>=0.55,false)
+			if found.is_empty():
+				job.status="Path blocked / waiting for access"
+				actor.set_meta("hull_approach_retry",Time.get_ticks_msec()+2000)
+				continue
+			var travel := 0.0
+			var travel_exposure := 0.0
+			var from: Vector2=actor.foot
+			for point in found.route:
+				var length: float=from.distance_to(point)
+				travel+=length/25.3
+				var samples: int=maxi(1,ceili(length/24.0))
+				for sample in range(samples):
+					var transit: Dictionary=game.occupied.get(actor.cell_at(from.lerp(point,(sample+0.5)/samples)),{})
+					var arrival: float=travel-length/25.3+length*(sample+1)/samples/25.3
+					var transit_future: Dictionary=transit.duplicate()
+					if not transit.get("hull_patched",false): transit_future.hull_crack=minf(1,float(transit.get("hull_crack",0))+arrival*0.0005) if float(transit.get("hull_crack",0))>0 else 0.0
+					var transit_drain := 0.008 if game.hardware.power and game.hardware.pumps and game.powered_room_cells.has(transit.get("pos")) and not transit.get("suspended",false) else 0.0
+					var projected_water: float=float(transit.get("water_level",0))+maxf(0,leak_rate(transit_future)-transit_drain)*arrival
+					if projected_water>=0.85:
+						travel_exposure+=length/samples/25.3
+				from=point
+			var drain := 0.008 if game.hardware.power and game.hardware.pumps and game.powered_room_cells.has(room.pos) and not room.get("suspended",false) else 0.0
+			var needed := air_needed(room,job,travel,drain,travel_exposure)
+			if int(game.resources.oxygen)<=0: needed=travel+float(job.duration)-float(job.progress)+12
+			if actor.needs_air() and needed>available:
+				job.status="Unsafe air budget / helmet or refill needed"
+				if not preload("res://scripts/flood_safety.gd").seek_locker(game,actor,id):
+					actor.set_meta("hull_air_retry",{"job":job,"air":available,"until":Time.get_ticks_msec()+2000})
+				continue
+			var route: PackedVector2Array=actor.smooth_route(found.route)
+			if not found.route.is_empty() and route.is_empty():
+				job.status="Path blocked / waiting for access"
+				actor.set_meta("hull_approach_retry",Time.get_ticks_msec()+2000)
+				continue
+			job.worker=id
+			job.point=found.point
+			actor.path=route
+			actor.stage=""
+			actor.timer=0
+			actor.goal="hull-repair"
+			actor.goal_cell=room.pos
+		if not actor.can_stand(job.point):
+			job.worker=""
+			release(actor)
+			return true
+		if actor.foot.distance_to(job.point)>1:
+			actor.activity="heading to hull leak"
+			job.status="Crew travelling"
+			if actor.path.is_empty():
+				var found := approach(actor,room.pos,float(room.get("water_level",0))>=0.55)
+				if found.is_empty(): job.worker=""; release(actor); return true
+				job.point=found.point
+				actor.path=found.route
+			actor.move(dt)
+			return true
+		actor.path.clear()
+		job.status="Welding"
+		var local_work: Vector2=Vector2(job.point)-(Vector2(room.pos)+Vector2.ONE*0.5)*384
+		actor.direction=("west" if local_work.x<0 else "east") if absf(local_work.x)>absf(local_work.y) else ("north" if local_work.y<0 else "south")
+		actor.state="weld" if actor.movement_medium=="dry" and (not actor.helmet_equipped or actor.has_method("sync_hull_animation")) else "repair"
+		actor.activity="sealing hull / %d%%" % roundi(float(job.progress)/float(job.duration)*100)
+		if actor.has_method("advance_hull_resume") and actor.advance_hull_resume(game,job,dt):return true
+		job.progress=minf(job.duration,float(job.progress)+dt*preload("res://scripts/companion_repair.gd").multiplier(game,room.pos)*preload("res://scripts/research_tree.gd").hull_repair_rate(game.get("meta")))
+		if actor.has_method("sync_hull_animation"):actor.sync_hull_animation(job)
+		if job.progress>=job.duration:
+			var patched: bool=job.get("patch",false)
+			if patched:
+				room.hull_patched=true
+			else:
+				room.hull_crack=0.0
+				room.hull_welded=true
+				room.erase("hull_patched")
+				room.erase("hull_cause")
+				room.erase("local_incident")
+			room.erase("leak_repair")
+			release(actor)
+			actor.activity="emergency patch fitted" if patched else "hull sealed"
+			game._log(("Patch fitted at %s. Leak reduced by 80%%; full welding still required." if patched else "Hull sealed at %s. Pumps must clear the remaining water.") % room.pos,false)
+			game._refresh_all()
+		return true
+	if actor.goal=="hull-repair": release(actor)
+	return false
+
+static func valid(job: Variant) -> bool:
+	if not job is Dictionary: return false
+	if job.has("patch") and not job.patch is bool: return false
+	if not job.get("cost") is int or job.cost not in ([1] if job.get("patch",false) else COSTS): return false
+	if not job.get("worker") is String or job.worker not in ["","bill","veld","branforth","marsh"]: return false
+	for key in ["duration","progress"]:
+		if not (job.get(key) is float or job.get(key) is int) or not is_finite(float(job[key])): return false
+	if job.get("preferred","") not in ["","bill","veld","branforth","marsh"]: return false
+	if not job.get("status","") is String or str(job.get("status","")).length()>96: return false
+	if (job.duration!=3.0 if job.get("patch",false) else (job.duration not in SECONDS and job.duration!=16.0)) or job.progress<0 or job.progress>job.duration: return false
+	if not job.worker.is_empty() and (not job.get("point") is Vector2 or not job.point.is_finite()): return false
+	return true

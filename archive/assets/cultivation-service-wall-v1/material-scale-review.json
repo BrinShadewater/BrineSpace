@@ -1,0 +1,62 @@
+{
+  "asset_id": "cultivation-service-wall",
+  "department": "Life support / cultivation",
+  "condition": "maintained; growing medium confined to potting tray",
+  "attachment_class": "continuous low cabinet against sealed north wall",
+  "functional_bays": [
+    "seed storage",
+    "potting tray and secured scoop",
+    "propagation preparation tray",
+    "closed nutrient mixing reservoir",
+    "irrigation valves and gauge"
+  ],
+  "runtime_behavior": "static standalone art; no simulation or animation installed",
+  "camera_and_facing": "overhead; north backing, bottom operator controls and handles",
+  "references": [],
+  "source_path": "assets/cultivation-service-wall-v1/source.png",
+  "source_sha256": "e702a90d4c2fd91aa35decca6d69dfee0a121dbb46bcf9fc9bf1715d5e34ef54",
+  "export_path": "assets/cultivation-service-wall-v1/cultivation-service-wall.png",
+  "export_sha256": "d4b80ecfa715299567c3289dd4f37dba0f198c7584e511be3fc4af171f1593b6",
+  "native_canvas_px": [
+    2007,
+    784
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Uninterrupted north wall required; actual room collision/routes pending."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Muted matte sage, clay-brown potting surface and dark rubber; reservoir has no reflective stripe.",
+        "Sparse lights; two modest seedlings retain small scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/cultivation-service-wall-review.png",
+      "findings": [
+        "328-unit native width reviewed beside existing furnished room and crew.",
+        "Five activity bays remain distinguishable; growing medium stays confined, no floor clutter."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source; one silhouette polygon, threshold128.",
+        "Native light/dark export review shows clean exterior and retained dark tray cells."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Broad tops and shallow front lips held the overhead projection on first candidate.",
+    "Functional bay descriptions document depicted activities, not implemented behavior."
+  ]
+}

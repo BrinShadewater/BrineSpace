@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""Native-aware test runner for the tests/ tree.
+
+Solves the problems a naive headless sweep hits (2026-09-10 audit):
+  - Tests that await RenderingServer.frame_post_draw, or read
+    get_texture().get_image(), hang or abort under the headless dummy driver.
+    They are routed to the NATIVE lane and skipped headless, not failed.
+  - Tests that deliberately reject headless execution exit with code 2
+    (project convention: camera_pixel_stability, content_cache_parity,
+    layout_performance_guards). Exit 2 maps to SKIP-NATIVE, not FAIL.
+  - Godot's shutdown teardown noise ("Unreferenced static string", RID leaks)
+    is a kill signature, not a failure. A timed-out test that already printed
+    its PASS line is reported PASS-HUNG.
+  - A script error aborts a fixture's run() before its quit(), so the process
+    idles until the timeout. Once a SCRIPT ERROR is printed and nothing more
+    arrives for STALL_SECONDS, the test is stopped and reported FAIL(hung).
+  - Art-evidence fixtures refuse to run unless user:// resolves inside their
+    own "/output/<name>/scratch-appdata/" folder, or unless APPDATA contains
+    a token they name ('APPDATA").contains("<token>")'). The runner reads the
+    name from the fixture and points APPDATA at a folder of that name under
+    output/ for that one test.
+  - Other fixtures exit 2 unless BRINESPACE_TEST_USER_DIR equals user://, so
+    that they only ever run in a profile someone chose. The runner sets it to
+    the chosen scratch profile. A normal launch now creates scratch storage;
+    a fixture redirecting tests to the real roaming folder is refused.
+    Inherited scratch APPDATA is intentionally replaced too: seed fixtures through
+    their named scratch path or run their isolated dedicated harness.
+
+Lanes are detected from test source at run time (always current); exceptions
+and subsystem groups live in tests/index.json.
+
+Examples:
+  python tools/run_tests.py --list                 # classify without running
+  python tools/run_tests.py                        # headless lane, all tests
+  python tools/run_tests.py --subsystem flood      # one subsystem
+  python tools/run_tests.py --only test_run_save   # explicit selection
+  python tools/run_tests.py --native               # run the native lane
+                                                   # (real display required)
+
+Results go to output/test-runs/<stamp>/ (summary.tsv + per-test logs).
+Exit code: non-zero if any selected test FAILs or times out without a PASS line.
+"""
+import argparse
+import datetime
+import json
+import re
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+from run_release_benchmark import isolated_environment
+
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_GODOT = {
+    "win32": "C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe",
+}
+PASS_LINE = re.compile(r"\bPASS\b|failures=0|:\s*0 failures\b")
+FAIL_LINE = re.compile(r"\bFAIL\b|SCRIPT ERROR|failures=[1-9]|:\s*[1-9]\d* failures")
+KILL_NOISE = re.compile(
+    r"Unreferenced static string|ObjectDB instances leaked|resources still in use"
+    r"|RID allocations|Pages in use exist|NavMeshGeometryParser"
+)
+
+
+def load_index() -> dict:
+    path = ROOT / "tests/index.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+EXTENDS_TEST = re.compile(r'extends\s+"res://tests/([\w./-]+)\.gd"')
+
+
+def source_chain(test: Path, depth: int = 6) -> list[str]:
+    """This fixture's source, then its base fixtures' - most helpers are inherited."""
+    chain, current = [], test
+    while current is not None and current.exists() and depth > 0:
+        src = current.read_text(encoding="utf-8", errors="replace")
+        chain.append(src)
+        match = EXTENDS_TEST.search(src)
+        current = (ROOT / "tests" / (match.group(1) + ".gd")) if match else None
+        depth -= 1
+    return chain
+
+
+OWN_SCRATCH = re.compile(r'"/output/([\w.-]+)/scratch-appdata/"')
+OWN_TOKEN = re.compile(r'get_environment\("APPDATA"\)[^\n;]{0,80}?\.contains\("([\w.-]+)"\)')
+
+
+def own_scratch(test: Path) -> Path | None:
+    """The scratch APPDATA folder a fixture demands for itself, if it names one."""
+    for text in source_chain(test):
+        match = OWN_SCRATCH.search(text)
+        if match:
+            return ROOT / "output" / match.group(1) / "scratch-appdata"
+        match = OWN_TOKEN.search(text)
+        if match:
+            return ROOT / "output" / "test-scratch" / match.group(1)
+    return None
+
+
+def scratch_profile(appdata: str) -> str | None:
+    """user:// for this APPDATA, or None when APPDATA is the account's real roaming folder."""
+    if sys.platform != "win32" or not appdata:
+        return None
+    chosen = Path(appdata).resolve()
+    real = [Path.home() / "AppData" / "Roaming"]
+    if os.environ.get("USERPROFILE"):
+        real.append(Path(os.environ["USERPROFILE"]) / "AppData" / "Roaming")
+    if any(chosen == folder.resolve() for folder in real):
+        return None
+    return (chosen / "Godot" / "app_userdata" / "BrineSpace").as_posix()
+
+
+def detect_lane(test: Path, index: dict) -> tuple[str, str]:
+    """Return (lane, reason). Lane: headless | native | skip."""
+    override = index.get("lanes", {}).get(test.stem)
+    if override:
+        return override.get("lane", "headless"), override.get("reason", "index.json override")
+    chain = source_chain(test)
+    src = chain[0]
+    # Art-evidence tools refuse to run without a fresh --capture-dir, which a sweep cannot
+    # invent: their run() is inherited, so the guard is in a base file, not this one.
+    owner = next((text for text in chain if "func run(" in text), src)
+    if "if capture_dir.is_empty() or DirAccess" in owner:
+        return "skip", "art-evidence tool: run it directly with --capture-dir"
+    joined = chr(10).join(chain)
+    render_bound = "frame_post_draw" in joined or "get_texture().get_image()" in joined
+    guarded = "headless" in src
+    if render_bound and not guarded:
+        return "native", "awaits rendered frames with no headless guard"
+    return "headless", "headless-safe (guards its captures)" if render_bound else "no render dependency"
+
+
+STALL_SECONDS = 10.0
+
+
+def run_process(cmd: list[str], log: Path, timeout: float, stall_seconds: float = STALL_SECONDS,
+                env: dict | None = None) -> tuple[int, str, bool, bool]:
+    """Run cmd with its output in log. Return (exit code, output, timed_out, stalled)."""
+    started = last_growth = time.monotonic()
+    size, errored, timed_out, stalled = 0, False, False, False
+    with log.open("wb") as sink:
+        proc = subprocess.Popen(cmd, stdout=sink, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, env=env)
+        while proc.poll() is None:
+            time.sleep(0.25)
+            now = time.monotonic()
+            current = log.stat().st_size
+            if current != size:
+                with log.open("rb") as reader:
+                    # Re-read a little before the old end so a marker split across writes is seen.
+                    reader.seek(max(0, size - 16))
+                    errored = errored or b"SCRIPT ERROR" in reader.read()
+                size, last_growth = current, now
+            if now - started >= timeout:
+                timed_out = True
+            elif errored and now - last_growth >= stall_seconds:
+                stalled = True
+            if timed_out or stalled:
+                proc.kill()
+                proc.wait()
+                break
+    output = log.read_bytes().decode("utf-8", errors="replace").replace("\r\n", "\n")
+    log.write_text(output, encoding="utf-8")
+    return (-1 if timed_out or stalled else proc.returncode), output, timed_out, stalled
+
+
+def classify_result(code: int, output: str, timed_out: bool) -> tuple[str, str]:
+    """Return (verdict, detail line)."""
+    lines = [l for l in output.splitlines() if l.strip() and not KILL_NOISE.search(l)]
+    passed = any(PASS_LINE.search(l) and not FAIL_LINE.search(l) for l in lines)
+    failed = any(FAIL_LINE.search(l) for l in lines)
+    detail = next((l for l in lines if FAIL_LINE.search(l)), "")
+    if not detail:
+        detail = next((l for l in reversed(lines) if PASS_LINE.search(l)), "")
+    if timed_out:
+        if passed and not failed:
+            return "PASS-HUNG", detail or "printed PASS, then hung at exit"
+        return "TIMEOUT", detail or "no verdict line before the timeout"
+    if code == 2:
+        return "SKIP-NATIVE", "test rejects this lane by design (exit 2)"
+    if code == 0 and not failed:
+        return "PASS", detail
+    return f"FAIL({code})", detail[:240]
+
+
+def run(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--godot", default=DEFAULT_GODOT.get(sys.platform, "godot"))
+    parser.add_argument("--timeout", type=int, default=120, help="seconds per test")
+    parser.add_argument("--subsystem", help="group from tests/index.json")
+    parser.add_argument("--only", help="comma-separated test names (stem)")
+    parser.add_argument("--native", action="store_true",
+                        help="run the native lane (real display) instead of headless")
+    parser.add_argument("--screen", default=os.environ.get("BRINE_TEST_SCREEN"),
+                        help="Godot screen index for native-lane windows (default: $BRINE_TEST_SCREEN, "
+                             "else Godot's choice); keeps test windows off the monitor you work on")
+    parser.add_argument("--list", action="store_true", help="classify only, run nothing")
+    parser.add_argument("--playtests", action="store_true",
+                        help="include tests/playtest_*.gd (long; native recommended)")
+    args = parser.parse_args(argv)
+
+    index = load_index()
+    patterns = ["test_*.gd"] + (["playtest_*.gd"] if args.playtests else [])
+    tests = sorted(p for pattern in patterns for p in (ROOT / "tests").glob(pattern))
+    if args.subsystem:
+        wanted = set(index.get("subsystems", {}).get(args.subsystem, []))
+        if not wanted:
+            known = ", ".join(sorted(index.get("subsystems", {})))
+            print(f"Unknown subsystem {args.subsystem!r}. Known: {known}")
+            return 2
+        tests = [t for t in tests if t.stem in wanted]
+    if args.only:
+        wanted = {name.strip() for name in args.only.split(",")}
+        missing = wanted - {t.stem for t in tests}
+        if missing:
+            print("Requested tests unavailable in this selection:", ", ".join(sorted(missing)))
+            print("This runner discovers Godot .gd tests. Run Python checks with python tests/<name>.py; check subsystem/playtest filters too.")
+            return 2
+        tests = [t for t in tests if t.stem in wanted]
+
+    lane_wanted = "native" if args.native else "headless"
+    plan = [(t, *detect_lane(t, index)) for t in tests]
+    if args.list:
+        for t, lane, reason in plan:
+            print(f"{t.stem}\t{lane}\t{reason}")
+        counts = {}
+        for _, lane, _ in plan:
+            counts[lane] = counts.get(lane, 0) + 1
+        print("LANES:", ", ".join(f"{k}={v}" for k, v in sorted(counts.items())))
+        return 0
+
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    out_dir = ROOT / "output" / "test-runs" / f"{stamp}-{lane_wanted}"
+    (out_dir / "logs").mkdir(parents=True, exist_ok=True)
+    # An unset per-fixture override must never inherit the player's profile.
+    default_env, default_profile = isolated_environment(out_dir / "scratch-appdata")
+    summary_rows = []
+    tally = {}
+    for t, lane, reason in plan:
+        if lane == "skip":
+            verdict, detail, duration = "SKIP", reason, 0.0
+        elif lane != lane_wanted:
+            verdict, detail, duration = f"SKIP-{lane.upper()}", reason, 0.0
+        else:
+            cmd = [args.godot, "--path", str(ROOT), "-s", f"res://tests/{t.name}"]
+            if not args.native:
+                cmd.insert(1, "--headless")
+            elif args.screen is not None:
+                cmd[1:1] = ["--screen", str(args.screen)]
+            per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
+            started = time.monotonic()
+            env = dict(default_env)
+            scratch = own_scratch(t)
+            if scratch is not None and sys.platform == "win32":
+                scratch.mkdir(parents=True, exist_ok=True)
+                env["APPDATA"] = str(scratch)
+            profile = scratch_profile(env.get("APPDATA", "")) if sys.platform == "win32" else default_profile.as_posix()
+            if profile is not None:
+                Path(profile).mkdir(parents=True, exist_ok=True)
+                env["BRINESPACE_TEST_USER_DIR"] = profile
+            else:
+                raise ValueError(f"Refusing test {t.stem}: profile is not isolated from player data")
+            code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout, env=env)
+            duration = time.monotonic() - started
+            verdict, detail = classify_result(code, output, timed_out)
+            if stalled:
+                verdict = "FAIL(hung)"
+                detail = ("stopped: silent after a script error; " + detail)[:240]
+        tally[verdict.split("(")[0]] = tally.get(verdict.split("(")[0], 0) + 1
+        summary_rows.append(f"{t.stem}\t{verdict}\t{duration:.1f}s\t{detail}")
+        print(summary_rows[-1], flush=True)
+    (out_dir / "summary.tsv").write_text("\n".join(summary_rows) + "\n", encoding="utf-8")
+    print("RESULT:", ", ".join(f"{k}={v}" for k, v in sorted(tally.items())),
+          f"-> {out_dir.relative_to(ROOT)}")
+    bad = sum(v for k, v in tally.items() if k.startswith("FAIL") or k == "TIMEOUT")
+    return 1 if bad else 0
+
+
+if __name__ == "__main__":
+    sys.exit(run())

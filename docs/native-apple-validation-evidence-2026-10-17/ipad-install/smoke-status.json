@@ -1,0 +1,21 @@
+{
+  "status": "PASS installation and scoped physical intro smoke; gameplay/endurance acceptance PENDING",
+  "new_bundle_id": "com.shadewater.brinespace.nativevalidation20261017",
+  "distinct_old_bundle_id": "com.shadewater.brinespace.ipadqa",
+  "fresh_documents_empty_before_launch": true,
+  "guarded_bugreport_continuation_observed": true,
+  "engine": "official Godot4.7.2",
+  "renderer": "OpenGL ES3.0",
+  "clean_relaunch_pid": 4553,
+  "observed_uptime_ms": 55156,
+  "errors": 0,
+  "scene": "res://scenes/intro_film.tscn",
+  "whole_process_footprint": "Not measured; LLDB attempts did not produce valid task memory.",
+  "initial_exit": "Signal9 during diagnostic attempt; cause unconfirmed, no matching accessible crash/jetsam file then. No debugger-free exit observed in subsequent55-second intro sample.",
+  "pending": [
+    "owner touch/layout/audio/New/Save/Continue checks",
+    "background/suspend/resume",
+    "sustained construction/large station and whole-process memory/peak/growth/cache leases/decode counts",
+    "prior physical EXC_RESOURCE2867MB not cleared"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "assets": [
+    {
+      "id": "crew_linen_wall",
+      "source": "assets/crew-linen-wall-v1/wall-source-v1.png",
+      "source_sha256": "70b91bc9554c666fd0ece24f6d55e9fbc2cc1b12dffb1f6759142a8fe07fbfc9",
+      "export": "assets/crew-linen-wall-v1/wall.png",
+      "export_sha256": "e0e8c430116bce333b69724b7baf9c7944684316980bdcfd82e3b481a324e0f1",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "display_width_world": 320,
+      "visible_height_world": 76.2,
+      "registration": "assets/crew-linen-wall-v1/wall.json",
+      "neutral_min": 100,
+      "aperture_seeds": [],
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "Warm matte cream/walnut/rust utility furniture; no powered or emissive pixels",
+        "alpha": "Full light/dark native review and exterior corner checks pass; backed shelves stay opaque.",
+        "evidence": "output/crew-linen-wall-v1/wall-scale.png",
+        "evidence_sha256": "99b03a5f15cfb010b49e9d4796ab857f2a980ced42b57e05829d5fd4701769e2",
+        "log": "output/crew-linen-wall.log",
+        "owner_acceptance": null
+      },
+      "integration": false,
+      "floor_collision": null,
+      "camera": "Elevated south-facing orthographic"
+    },
+    {
+      "id": "crew_linen_hamper",
+      "source": "assets/crew-linen-wall-v1/hamper-source-v2.png",
+      "source_sha256": "6adf91108110849f48fef74f32c22ff5c608842fb167091a9af2d2f69114cc91",
+      "export": "assets/crew-linen-wall-v1/hamper.png",
+      "export_sha256": "3329b770133dac5244bb8b4242f04e2e99f9af7c54bf18874a8072d9ee67be18",
+      "native_dimensions": [
+        1227,
+        1282
+      ],
+      "display_width_world": 34,
+      "visible_height_world": 49.54,
+      "registration": "assets/crew-linen-wall-v1/hamper.json",
+      "neutral_min": 100,
+      "aperture_seeds": [
+        [
+          600,
+          205
+        ]
+      ],
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "V2 eliminates silvery frame/caster stripes; charcoal supports and simple canvas folds. Small prop stays 34 units wide.",
+        "alpha": "Handle opening and undercarriage alpha 0; frame and fabric retention samples nonzero; native light/dark review pass.",
+        "evidence": "output/crew-linen-wall-v1/hamper-scale.png",
+        "evidence_sha256": "6e043f50a7a3704fd27f45f5228f5a193546095980578261d75f07659bd52869",
+        "log": "output/crew-linen-hamper.log",
+        "owner_acceptance": null
+      },
+      "integration": false,
+      "floor_collision": null,
+      "camera": "Elevated south-facing orthographic"
+    }
+  ],
+  "sources": [
+    {
+      "path": "assets/crew-linen-wall-v1/hamper-source-v1.png",
+      "sha256": "29c81c00e293f59f917ec7022f5bec524182327ca49c9b1810b11d92210332c4",
+      "mode": "RGBA",
+      "disposition": "rejected shiny frame"
+    },
+    {
+      "path": "assets/crew-linen-wall-v1/hamper-source-v2.png",
+      "sha256": "6adf91108110849f48fef74f32c22ff5c608842fb167091a9af2d2f69114cc91",
+      "mode": "RGB",
+      "disposition": "selected"
+    },
+    {
+      "path": "assets/crew-linen-wall-v1/wall-source-v1.png",
+      "sha256": "70b91bc9554c666fd0ece24f6d55e9fbc2cc1b12dffb1f6759142a8fe07fbfc9",
+      "mode": "RGB",
+      "disposition": "selected"
+    }
+  ],
+  "references": [
+    {
+      "path": "assets/full-wall-props-autumn-v1/crew-lounge-built-in.png",
+      "sha256": "ad35668dd3425b66ae50226f520dc02145c4a99b7891dd57f6faab8b7621e979",
+      "role": "Crew palette and fitted materials only; do not inherit glow or gloss"
+    },
+    {
+      "path": "rooms/decoration-integration/crew_hab.png",
+      "sha256": "c47c712bad9d26d8a486a9f57020185fe1c4113f965357cd0194324acd34a560",
+      "role": "Crew furnishings and scale context only"
+    }
+  ],
+  "generation": "built-in imagegen",
+  "prompts": "prompts.json",
+  "renderer": "tools/review_registered_wall_asset.gd",
+  "renderer_sha256": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c",
+  "processing": "Read-only source-specific neutral100 silhouette registration; native Godot UV export. Hamper handle hole seed retained. Raw sources unchanged."
+}

@@ -1,0 +1,103 @@
+{
+  "frameWidth": 184,
+  "frameHeight": 208,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "swim-turn-west-south",
+      "frameFiles": [
+        "swim-turn-west-south-000.png",
+        "swim-turn-west-south-001.png",
+        "swim-turn-west-south-002.png",
+        "swim-turn-west-south-003.png",
+        "swim-turn-west-south-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-south-west",
+      "frameFiles": [
+        "swim-turn-south-west-000.png",
+        "swim-turn-south-west-001.png",
+        "swim-turn-south-west-002.png",
+        "swim-turn-south-west-003.png",
+        "swim-turn-south-west-004.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

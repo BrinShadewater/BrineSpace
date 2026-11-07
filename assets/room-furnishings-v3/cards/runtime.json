@@ -1,0 +1,677 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/hydroponics_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"hydro_nutrients",
+						"full_wall_hydroponics-wall_nursery"
+					],
+					"purpose": "nutrient service runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"hydro_bed_west",
+						"full_wall_hydroponics-wall_nursery"
+					],
+					"purpose": "irrigation isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/hydroponics_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "hydroponics_bay",
+			"machinery": [
+				{
+					"id": "hydro_bed_west",
+					"rect": [
+						-163.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_bed_east",
+					"rect": [
+						57.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_nutrients",
+					"rect": [
+						-160.0,
+						55.0,
+						66.0,
+						44.0
+					]
+				},
+				{
+					"id": "hydro_harvest",
+					"rect": [
+						77.0,
+						104.0,
+						88.0,
+						48.0
+					]
+				},
+				{
+					"id": "hydro_potting_trolley",
+					"rect": [
+						9.0,
+						124.0,
+						56.0,
+						22.0
+					]
+				},
+				{
+					"id": "hydro_harvest_stand",
+					"rect": [
+						-155.0,
+						133.0,
+						65.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/full-wall-v1/hydroponics_bay_view.gd"
+		},
+		"layered": true,
+		"room": "hydroponics_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_hydroponics-wall_crops",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_hydroponics-wall_nursery",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_nutrients",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_harvest",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_nutrient_island",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/hydroponics_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/cryo_chamber.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"cryo_pod_0"
+					],
+					"purpose": "pod coolant isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_cryo-support-wall"
+					],
+					"purpose": "cryo control service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/cryo_chamber_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "cryo_chamber",
+			"machinery": [
+				{
+					"id": "cryo_console",
+					"rect": [
+						70.0,
+						99.0,
+						84.0,
+						57.0
+					]
+				},
+				{
+					"id": "cryo_supply_trolley",
+					"rect": [
+						82.0,
+						29.0,
+						60.0,
+						24.0
+					]
+				},
+				{
+					"id": "cryo_transfer_cooler",
+					"rect": [
+						-58.0,
+						135.0,
+						30.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_cryo-support-wall",
+					"rect": [
+						-174.0,
+						-164.0,
+						90.2082901000977,
+						328.0
+					]
+				},
+				{
+					"id": "cryo_pod_0",
+					"rect": [
+						47.4259338378906,
+						-144.101852416992,
+						62.0,
+						90.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/cryo_chamber_view.gd"
+		},
+		"layered": true,
+		"room": "cryo_chamber",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "cryo_thaw_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_cryo-support-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_pod_1",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_pod_0",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/cryo_chamber_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/quarantine_cell.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"quarantine_preparation",
+						"full_wall_quarantine-specimen-wall"
+					],
+					"purpose": "clean preparation boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"quarantine_filter",
+						"full_wall_quarantine-specimen-wall"
+					],
+					"purpose": "sealed filter service",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/quarantine_cell_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "quarantine_cell",
+			"machinery": [
+				{
+					"id": "quarantine_berth",
+					"rect": [
+						-165.0,
+						-128.0,
+						120.0,
+						72.0
+					]
+				},
+				{
+					"id": "quarantine_filter",
+					"rect": [
+						92.0,
+						-133.0,
+						70.0,
+						52.0
+					]
+				},
+				{
+					"id": "quarantine_monitor",
+					"rect": [
+						-28.0,
+						-105.0,
+						72.0,
+						44.0
+					]
+				},
+				{
+					"id": "quarantine_cabinet",
+					"rect": [
+						-166.0,
+						106.0,
+						74.0,
+						46.0
+					]
+				},
+				{
+					"id": "quarantine_preparation",
+					"rect": [
+						-62.0,
+						107.0,
+						84.0,
+						32.0
+					]
+				},
+				{
+					"id": "quarantine_sealed_cooler",
+					"rect": [
+						41.0,
+						117.0,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/quarantine_cell_view.gd"
+		},
+		"layered": true,
+		"room": "quarantine_cell",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "universal_parts_chest",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_quarantine-specimen-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_berth",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_monitor",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/quarantine_cell_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/ore_refinery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_ore-refinery-wall"
+					],
+					"purpose": "refinery maintenance access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"refinery_pressure_unit"
+					],
+					"purpose": "process isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/ore_refinery_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "ore_refinery",
+			"machinery": [
+				{
+					"id": "refinery_sorter",
+					"rect": [
+						84.0,
+						37.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "refinery_pressure_unit",
+					"rect": [
+						54.0,
+						-20.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "full_wall_ore-refinery-wall",
+					"rect": [
+						-174.0,
+						-148.020309448242,
+						120.0,
+						296.040618896484
+					]
+				},
+				{
+					"id": "refinery_vessels",
+					"rect": [
+						71.8753204345703,
+						-125.730285644531,
+						98.0,
+						60.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+		},
+		"layered": true,
+		"room": "ore_refinery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "refinery_sorting_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_ore-refinery-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_vessels",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/pressure_control.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"flush_left",
+						"life_tank"
+					],
+					"purpose": "pressure line isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"flush_right",
+						"life_console"
+					],
+					"purpose": "pressure console inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/pressure_control_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "pressure_control",
+			"machinery": [
+				{
+					"id": "flush_back",
+					"rect": [
+						-174.0,
+						-174.0,
+						348.0,
+						150.0
+					]
+				},
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/pressure_control_view.gd"
+		},
+		"layered": true,
+		"room": "pressure_control",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_back",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_equipment_plinth",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/pressure_control_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/isolation_vault.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "sealed vault isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "emergency control inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/isolation_vault_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "isolation_vault",
+			"machinery": [
+				{
+					"id": "full_wall_emergency-isolation-wall",
+					"rect": [
+						-162.176559448242,
+						-174.0,
+						324.353118896484,
+						134.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+		},
+		"layered": true,
+		"room": "isolation_vault",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "universal_task_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_emergency-isolation-wall",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+	}
+]

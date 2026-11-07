@@ -1,0 +1,166 @@
+extends SceneTree
+const Rooms = preload("res://scripts/room_database.gd")
+const Insights = preload("res://scripts/station_ui_insights.gd")
+class Game extends "res://scripts/main.gd":
+	func _refresh_all() -> void: pass
+var failures := 0
+func check(ok: bool, message: String) -> void:
+	if not ok:
+		failures += 1
+		push_error(message)
+func add(game, id: String, cell: Vector2i) -> Dictionary:
+	var room := Rooms.get_room(id)
+	room.pos = cell
+	room.rotation = 0
+	game.placed_rooms.append(room)
+	game.occupied[cell] = room
+	return room
+func _init() -> void:
+	var game = Game.new()
+	var core := add(game,"brine_core",Vector2i(20,20))
+	game.resources.power = 2
+	var forecast: Dictionary = game._simulate_room_economy()
+	check(forecast.generation == 0 and forecast.power_used == 1 and forecast.delta.power == -1,"Reserve alone supplies the core")
+	check(Insights.power_balance(game,forecast).contains("Battery discharge: 1 Power"),"Feedback explains reserve discharge")
+	game._apply_room_economy()
+	check(game.resources.power == 1 and game.powered_room_cells.has(core.pos),"First battery cycle commits its debit")
+	game._apply_room_economy()
+	check(game.resources.power == 0 and game.powered_room_cells.has(core.pos),"Last reserve unit still buys a full cycle")
+	game._apply_room_economy()
+	check(game.unpowered_room_cells.has(core.pos),"Core loses power only on the subsequent unpaid cycle")
+	add(game,"solar_array",Vector2i(21,20))
+	game._apply_room_economy()
+	check(game.resources.power == 2 and game.powered_room_cells.has(core.pos),"Generation restores operation and charges surplus")
+	game.hardware.power = false
+	game._apply_room_economy()
+	check(game.resources.power == 2 and game.powered_room_cells.is_empty(),"Master off retains stored energy")
+	game.free()
+	game = Game.new()
+	var bay := add(game,"mining_drone_bay",Vector2i(20,20))
+	game.resources.power = 1
+	game._apply_room_economy()
+	var drone: Dictionary = game.drone_fleet.drones[bay.pos]
+	drone.battery = 0.0
+	drone.charge_credit = 6.0
+	game.running = true
+	game.paused = false
+	check(game.powered_room_cells.has(bay.pos) and not game._simulate_room_economy().working_cells.has(bay.pos),"Reproduce paid bay with insufficient next-cycle power")
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
+	game._update_wreck_clearance(0.25)
+	check(drone.battery > 0.0,"Paid bay continues previously paid charging despite empty reserve")
+	check(game.resources.power == 0,"Previously paid charging does not spend reserve twice")
+	var fire_room := add(game,"reactor",Vector2i(21,20))
+	fire_room.fire=0.5
+	preload("res://scripts/room_fire.gd").refresh_operation(game)
+	check(game.powered_room_cells.has(bay.pos),"An unrelated fire preserves the already paid bay")
+	check(game.offline_reasons.get(fire_room.pos)=="FIRE","Burning machinery immediately goes offline")
+	fire_room.fire=0.0
+	fire_room.suspended=true
+	preload("res://scripts/room_fire.gd").refresh_operation(game)
+	check(game.powered_room_cells.has(bay.pos),"Extinguishing another room preserves the already paid bay")
+	check(game.offline_reasons.get(fire_room.pos)=="SUSPENDED","Extinguished machinery still respects suspension")
+	var charge: float = drone.battery
+	game.paused = true
+	game._update_wreck_clearance(0.25)
+	check(drone.battery == charge,"Pause holds paid charging")
+	game.paused = false
+	game.hardware.power = false
+	game._update_wreck_clearance(0.25)
+	check(drone.battery == charge,"Master off holds paid charging")
+	game.hardware.power = true
+	game._apply_room_economy()
+	game._update_wreck_clearance(0.25)
+	check(drone.battery > charge,"An unpaid operating cycle does not discard prepaid battery charge")
+	add(game,"battery_array",Vector2i(20,21))
+	game.resources.power=16
+	game.powered_room_cells.clear()
+	drone.battery=0.0;drone.charge_credit=0.0
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==12.0 and game.resources.power==14,"Main controller charges from 16 stored Power without bay cycle allocation")
+	drone.battery=0.0;drone.charge_credit=0.0
+	game.resources.power=3
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==0.0 and game.resources.power==3,"Main controller preserves three Power automatically")
+	game.resources.power=4
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==6.0 and game.resources.power==3,"Main controller resumes charging when reserve recovers")
+	check(Insights.power_demand(game).contains("preserving a reserve of 3"),"Power inspector explains the charging reserve")
+	game.free()
+	game = Game.new()
+	game.meta.unlocked_room_ids.clear()
+	for id in Rooms.STARTING_UNLOCKS: game.meta.unlocked_room_ids[id] = true
+	game._build_run_deck()
+	game._draw_hand()
+	check(game.selected_card_id.is_empty() and game.hand.size() == 3,"New opening hand requires explicit blueprint selection")
+	game.free()
+	# A full reserve discards surplus generation; feedback must name it instead of a silent +0.
+	game = Game.new()
+	add(game,"brine_core",Vector2i(20,20))
+	var turbine := add(game,"current_turbine",Vector2i(19,20))
+	turbine.rotation = 3
+	game.resources.power = 5
+	forecast = game._simulate_room_economy()
+	check(forecast.power_vented == 0 and not Insights.power_balance(game,forecast).contains("RESERVE FULL"),"Charging below the cap vents nothing")
+	game.resources.power = game._get_power_capacity()
+	forecast = game._simulate_room_economy()
+	check(forecast.generation == 4 and forecast.delta.power == 0 and forecast.power_vented == 3,"West turbine surplus above a full reserve is vented")
+	check(Insights.power_balance(game,forecast).contains("RESERVE FULL // 3 Power vented"),"Power panel names vented surplus")
+	game.forecast_power_vented = forecast.power_vented
+	check(Insights.turbine_intake(game,turbine).contains("INTAKE WEST") and Insights.turbine_intake(game,turbine).contains("RESERVE FULL"),"Clear turbine status explains why it adds nothing")
+	check(Insights.placement_hazards(game,"corridor",Vector2i(18,20),0).any(func(h): return h.contains("BLOCKS CURRENT TURBINE INTAKE")),"Placing on a turbine intake warns")
+	check(Insights.placement_hazards(game,"corridor",Vector2i(18,21),0).is_empty(),"A neighbouring cell does not warn about the intake")
+	for rotation in range(4):
+		for corner in [Vector2i.ZERO, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.ONE]:
+			var anchor: Vector2i = Vector2i(18,20)-corner
+			check(Insights.placement_hazards(game,"hydroponics_farm",anchor,rotation).size()==1,"Every covered square of a large footprint warns once about the turbine intake")
+	check(Insights.placement_hazards(game,"hydroponics_farm",Vector2i(16,18),0).is_empty(),"A nearby large footprint does not produce a false intake warning")
+	game.free()
+	# A deposit reachable only through one approach cell: walling it off must warn.
+	game = Game.new()
+	add(game,"brine_core",Vector2i(18,20))
+	add(game,"mining_drone_bay",Vector2i(22,20))
+	for cell in [Vector2i(25,20),Vector2i(24,19),Vector2i(24,21)]:
+		game.wrecks[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	var deposit := preload("res://scripts/harvest_sites.gd").make_site("mining")
+	deposit.discovered = true
+	game.drone_fleet.sites = {Vector2i(24,20): deposit}
+	game.drone_fleet.sites_initialized = true
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	# Drones pass beneath rooms (owner playtest), so no placement can cut a bay's route.
+	check(not Insights.placement_hazards(game,"corridor",Vector2i(23,20),1).any(func(h): return h.contains("CUTS")),"Rooms never cut a drone route")
+	add(game,"corridor",Vector2i(21,20))
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	check(not preload("res://scripts/drone_routes.gd").find_path(Vector2i(22,20),Vector2i(18,20),game.drone_fleet.route_blockers).is_empty(),"A drone route runs under a corridor with no matching door")
+	game.placed_rooms.pop_back()
+	game.occupied.erase(Vector2i(21,20))
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	check(Insights.placement_hazards(game,"corridor",Vector2i(22,22),1).is_empty(),"An unrelated placement does not warn")
+	# Seal the approach with rock: the stalled bay names the rock to break and the deposit it opens.
+	game.wrecks[Vector2i(23,20)] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	var hint: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
+	var named := Vector2i(-1,-1)
+	for candidate in [Vector2i(23,20),Vector2i(24,19)]:
+		if hint.contains("select the rock at %s" % candidate): named = candidate
+	check(named != Vector2i(-1,-1) and hint.contains("(24, 20)"),"Walled deposit names a nearest single rock to clear: "+hint)
+	if named != Vector2i(-1,-1):
+		game.wrecks[named].cleared = true
+		game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+		check(not preload("res://scripts/drone_routes.gd").find_path(Vector2i(22,20),Vector2i(24,20),game.drone_fleet.route_blockers).is_empty(),"Clearing the named rock opens a real drone route")
+		game.wrecks[named].cleared = false
+		game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	game.drone_fleet.drones[Vector2i(22,20)].route_wait = true
+	check(game.drone_fleet.battery_status(Vector2i(22,20),5,true,false,game.wrecks).contains("NO ROUTE TO A DEPOSIT"),"Bay status carries the clearance hint")
+	deposit.units = 0
+	check(game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks).contains("NO SURVEYED DEPOSITS LEFT"),"Exhausted deposits say so")
+	# Derelict wards on both launch ports: the paid restoration is the first step.
+	deposit.units = 12
+	# Drones leave in any direction, so wards on every open side seal the bay.
+	for cell in [Vector2i(22,19),Vector2i(22,21),Vector2i(21,20),Vector2i(23,20)]:
+		game.wrecks[cell] = {"kind":"cryo","progress":0.0,"active":false,"cleared":false,"paid":false,"rotation":0,"pods":[]}
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	var sealed: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
+	check(sealed.contains("recover the derelict ward at"),"Ward-sealed bay names the ward to restore: "+sealed)
+	game.free()
+	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
+	quit(0 if failures == 0 else 1)

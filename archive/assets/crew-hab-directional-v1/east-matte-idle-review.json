@@ -1,0 +1,17 @@
+{
+  "stage": "integrated-native-state-layout-reviewed",
+  "source": "assets/crew-hab-directional-v1/east-matte-idle.png",
+  "sha256": "e799d582f2df0645ea66d57adb41a84408ce3e5d73968ad19b1f6fb107343cee",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "raw": "exec-e34c47cb-4ba0-4795-bca5-33eade072c42.png",
+  "registration": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-east.json",
+  "review": "Preserved overhead berth, bedding, towels, plant, box, thermos, books, mug and access. Reduced gloss on thermos/trim; removed baked reading glow. Source-local lamp polygon adds steady powered diffuser only. Native idle and powered east reviewed.",
+  "comparison": "output/hab-east-matte-2026-09-12/comparison.json",
+  "validation": "176 layouts and existing 20 variant regressions PASS 20260912-152023-headless. Native baseline/installed capture exit 0; all placement metadata and q0/q2/q3 RGB unchanged. Six native state captures exit 0; direct and retained lamp crops change with power and remain identical across operating times.",
+  "card": "q0 unchanged; existing card retained.",
+  "remaining": "Other authored berth material revisions, actual station pause and owner aesthetic acceptance remain open.",
+  "state_checks": "output/hab-east-matte-2026-09-12/checks.json"
+}

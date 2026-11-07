@@ -1,0 +1,238 @@
+extends "res://rooms/whole-room/life_support_view.gd"
+## Crew-style BRINE floats behind the chamber's water, reflections and front rim.
+var body_texture: Texture2D
+var body_source_rect: Rect2
+var body_normalized_rect: Rect2
+const FloatArt=preload("res://rooms/underwater/brine-core/brine_float.gd")
+const BODY_SIZE := Vector2(56.0,148.0)*(184.8/148.0)
+const BODY_RECT := Rect2(Vector2(626.0-BODY_SIZE.x*0.5,584.6),BODY_SIZE)
+var float_meshes:={} # painter instance id -> ArrayMesh
+const NAMEPLATE := Rect2(555,535,142,34)
+var architect_pod: Dictionary = {}:
+	set(value):
+		var changed := architect_pod.is_empty()!=value.is_empty()
+		architect_pod=value
+		if changed: layout.clear() # Invalidate the shared geometry cache only when furniture changes.
+const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
+var dressing: RefCounted
+func is_animated_prop(prop: Dictionary) -> bool: return prop.id=="brine_chamber" or prop.registration.has("operating_screens")
+func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
+	var bounds: Rect2=super.prop_visual_bounds(prop)
+	if prop.id=="brine_chamber":
+		bounds=bounds.merge(Rect2(life_point(prop,NAMEPLATE.position),NAMEPLATE.size*prop.rect.size.x/prop.registration.width))
+	return bounds
+func rebuild() -> void:
+	super.rebuild()
+	for prop in props:
+		if prop.id=="brine_chamber": prop.registration["owns_contact_shadow"]=true
+	if dressing!=null: dressing.place()
+	if not architect_pod.is_empty():
+		var source: Rect2=preload("res://scripts/architects.gd").CORE_POD_RECT
+		var center:=Geometry.turn(source.get_center(),quarter)
+		var rect:=Rect2(center-source.size/2,source.size)
+		props.append({"id":"architect_pod","rect":rect,"center":Vector2.ZERO,"sort_y":rect.end.y,"registration":{"rect":source,"pivot":Vector2(210,560),"width":290.0,"outline":[Vector2(30,70),Vector2(365,70),Vector2(365,610),Vector2(30,610)]}})
+func _ready() -> void:
+	super._ready()
+	var image := Image.new()
+	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-scale-v10-2026-09-26/source-atlas.png")
+	life_texture=ImageTexture.create_from_image(image)
+	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-slim-v14-2026-10-03/body.png")
+	body_source_rect=Rect2(image.get_used_rect())
+	# Preserve the old 92-square registration without discarding source detail.
+	var registered_width:=roundf(body_source_rect.size.x*74.0/body_source_rect.size.y)
+	body_normalized_rect=Rect2(Vector2(floorf((92.0-registered_width)/2.0),9.0)/92.0,Vector2(registered_width,74.0)/92.0)
+	var filtered:=CanvasTexture.new()
+	filtered.diffuse_texture=ImageTexture.create_from_image(image)
+	filtered.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
+	body_texture=filtered
+	life_items=[{"id":"brine_chamber","rect":Rect2(-52,-40,104,80),"pivot":Vector2(626,879),"width":286.0,"outline":[Vector2(512,459),Vector2(517,429),Vector2(538,404),Vector2(570,384),Vector2(603,375),Vector2(649,375),Vector2(686,386),Vector2(718,407),Vector2(737,434),Vector2(743,460),Vector2(743,670),Vector2(760,695),Vector2(770,722),Vector2(770,808),Vector2(757,836),Vector2(730,858),Vector2(690,873),Vector2(648,880),Vector2(603,879),Vector2(562,870),Vector2(525,853),Vector2(500,830),Vector2(484,797),Vector2(484,719),Vector2(493,696),Vector2(511,674)]}]
+	dressing=Dressing.new(self,"res://rooms/underwater/brine-core/renewal-v2/composition.json")
+	rebuild()
+
+func draw_room_floor(center: Vector2) -> void:
+	RoomFloor.draw_profile_floor(self,painter,center,Color("303b40"),Color(0.10,0.17,0.19,0.22),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
+	if dressing!=null: dressing.floor()
+	# Source-registered contact shade hugs the ceramic skirt instead of floating
+	# below its front edge. The shared rectangular shadow is disabled for this prop.
+	for prop in props:
+		if prop.id=="brine_chamber":
+			for band in range(3):
+				var spread:=float(3-band)*2.0
+				var shadow:=PackedVector2Array()
+				for i in range(64):
+					var a:=i*TAU/64.0
+					shadow.append(life_point(prop,Vector2(627,800)+Vector2(cos(a)*(143+spread),sin(a)*(80+spread))))
+				painter.draw_colored_polygon(shadow,Color(0.018,0.028,0.032,0.10))
+
+func draw_wall(rect: Rect2, horizontal: bool) -> void:
+	super.draw_wall(rect,horizontal)
+	# Unconnected BRINE sockets are closed pressure doors, rather than blank infill.
+	# Open/connected edges are split into short wall spans by shared geometry, so
+	# their animated door renderer takes over without a closed leaf underneath.
+	if (rect.size.x if horizontal else rect.size.y)<383.0: return
+	var center:=rect.get_center()
+	preload("res://rooms/doors/door_finish.gd").low_closed(painter,center,not horizontal,"brine")
+
+static func default_door_parts() -> Array:
+	return [
+		{"rect":Rect2(-42,-9,84,18),"color":"344c4d"},
+		{"rect":Rect2(-36,-7,35,14),"color":"bfc7bf"},
+		{"rect":Rect2(1,-7,35,14),"color":"bfc7bf"},
+		{"rect":Rect2(-34,-5,31,2),"color":"e0e2d8"},
+		{"rect":Rect2(3,-5,31,2),"color":"e0e2d8"},
+		{"rect":Rect2(-33,3,28,2),"color":"739c99"},
+		{"rect":Rect2(5,3,28,2),"color":"739c99"},
+		{"rect":Rect2(-7,-1,3,3),"color":"395b5c"},
+		{"rect":Rect2(4,-1,3,3),"color":"395b5c"},
+		{"rect":Rect2(-42,-10,6,20),"color":"cbd0c6"},
+		{"rect":Rect2(36,-10,6,20),"color":"cbd0c6"},
+		{"rect":Rect2(-40,-2,2,4),"color":"65b7b1"},
+		{"rect":Rect2(38,-2,2,4),"color":"65b7b1"}]
+
+var retain_brine_parts := not OS.get_cmdline_user_args().has("--redraw-brine-parts")
+
+func pod_power() -> float:
+	return float(architect_pod.get("startup_power",1.0))
+
+func retained_prop_passes(prop: Dictionary) -> Array:
+	if not retain_brine_parts:
+		return [{"method":"draw_registered_prop","live":is_animated_prop(prop) or prop.registration.get("dressing",false)}]
+	if prop.id=="architect_pod": return [{"method":"draw_prop_occupant","live":true}]
+	if prop.registration.get("dressing",false):
+		return [{"method":"draw_prop_base","live":false},{"method":"draw_prop_occupant","live":true}]
+	return [{"method":"draw_prop_base","live":false},{"method":"draw_prop_occupant","live":true},
+		{"method":"draw_prop_glass","live":false},{"method":"draw_prop_bubbles","live":true},
+		{"method":"draw_prop_front","live":false}]
+
+func draw_registered_prop(prop: Dictionary) -> void:
+	if prop.id=="architect_pod":
+		draw_prop_occupant(prop)
+		return
+	draw_prop_base(prop)
+	draw_prop_occupant(prop)
+	if prop.registration.get("dressing",false): return
+	draw_prop_glass(prop)
+	draw_prop_bubbles(prop)
+	draw_prop_front(prop)
+
+func draw_prop_base(prop: Dictionary) -> void:
+	if dressing!=null and dressing.draw(prop): return
+	var vertices := PackedVector2Array()
+	var uv := PackedVector2Array()
+	for point in prop.registration.outline:
+		vertices.append(life_point(prop,point))
+		uv.append(point/Vector2(life_texture.get_size()))
+	draw_cached_polygon(vertices,uv,life_texture)
+
+func draw_prop_occupant(prop: Dictionary) -> void:
+	if prop.id=="architect_pod":
+		preload("res://scripts/architect_cryo_art.gd").draw(painter,prop.rect,architect_pod)
+		return
+	if prop.registration.get("dressing",false):
+		if operating: draw_computer_display(prop)
+		return
+	var time:float=machine_clock if operating and pod_power()>0 else 0.0
+	var vertices:=PackedVector2Array()
+	for uv in FloatArt.uvs():vertices.append(life_point(prop,BODY_RECT.position+uv*BODY_RECT.size+FloatArt.drift(uv,time)))
+	var arrays:=[];arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX]=vertices;arrays[Mesh.ARRAY_TEX_UV]=FloatArt.uvs();arrays[Mesh.ARRAY_INDEX]=FloatArt.indices()
+	# One mesh per canvas item. A canvas keeps drawing the mesh it was given until it redraws:
+	# a fresh ArrayMesh per draw freed the one a retained slot still held ("mesh is null",
+	# BRINE vanished), and one shared mesh let a tray thumbnail reshape BRINE in the room.
+	var key:=painter.get_instance_id()
+	if not float_meshes.has(key):
+		if float_meshes.size()>=64:
+			for stale in float_meshes.keys():
+				if not is_instance_id_valid(stale): float_meshes.erase(stale)
+		float_meshes[key]=ArrayMesh.new()
+	var mesh:ArrayMesh=float_meshes[key]
+	mesh.clear_surfaces();mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	var tint:=Color.WHITE*lerpf(.12,1.0,pod_power());tint.a=1
+	painter.draw_mesh(mesh,body_texture,Transform2D.IDENTITY,tint)
+
+func body_points(time:float,active:=true) -> PackedVector2Array:
+	var points:=PackedVector2Array()
+	for uv in FloatArt.uvs():points.append(BODY_RECT.position+uv*BODY_RECT.size+FloatArt.drift(uv,time if active else 0.0))
+	return points
+
+func draw_prop_glass(prop: Dictionary) -> void:
+	# Foreground water and reflections cross the body, rather than sitting behind it.
+	glass_polygon(prop,[Vector2(555,576),Vector2(695,576),Vector2(697,738),Vector2(680,762),Vector2(652,775),Vector2(601,775),Vector2(571,761),Vector2(553,739)],Color(0.15,0.53,0.58,0.14))
+	glass_polygon(prop,[Vector2(582,577),Vector2(602,579),Vector2(626,768),Vector2(612,773)],Color(0.70,0.90,0.91,0.12))
+	glass_polygon(prop,[Vector2(665,578),Vector2(671,577),Vector2(692,738),Vector2(686,749)],Color(0.77,0.93,0.94,0.17))
+
+func draw_prop_bubbles(prop: Dictionary) -> void:
+	if operating and pod_power()>0.0:
+		var phase:=fposmod(machine_clock,9.0)/1.8
+		var fade:=smoothstep(0.0,0.16,phase)*(1.0-smoothstep(0.72,1.0,phase))
+		for mark in effect_marks(prop,machine_clock):
+			painter.draw_circle(life_point(prop,mark[0]),lerpf(0.4,0.65,phase),Color(0.67,0.87,0.89,0.65*fade),false,0.5,true)
+
+func draw_prop_front(prop: Dictionary) -> void:
+	# Repaint the real ceramic front lip after the occupant. It is an occluder.
+	var rim := [Vector2(515,754),Vector2(540,778),Vector2(576,794),Vector2(624,801),Vector2(671,795),Vector2(711,779),Vector2(738,753),Vector2(738,800),Vector2(715,832),Vector2(681,850),Vector2(628,857),Vector2(576,850),Vector2(540,832),Vector2(516,803)]
+	var vertices := PackedVector2Array()
+	var uv := PackedVector2Array()
+	for point in rim:
+		vertices.append(life_point(prop,point))
+		uv.append(point/Vector2(life_texture.get_size()))
+	draw_cached_polygon(vertices,uv,life_texture)
+	# The cap also belongs in front of the occupant, never behind her hair.
+	var cap := [Vector2(512,459),Vector2(517,429),Vector2(538,404),Vector2(570,384),Vector2(603,375),Vector2(649,375),Vector2(686,386),Vector2(718,407),Vector2(737,434),Vector2(743,460),Vector2(743,526),Vector2(728,552),Vector2(685,574),Vector2(640,583),Vector2(602,582),Vector2(559,568),Vector2(528,547),Vector2(512,521)]
+	vertices.clear()
+	uv.clear()
+	for point in cap:
+		vertices.append(life_point(prop,point))
+		uv.append(point/Vector2(life_texture.get_size()))
+	draw_cached_polygon(vertices,uv,life_texture)
+	for x in [553.0,701.0]:
+		painter.draw_line(life_point(prop,Vector2(x,577)),life_point(prop,Vector2(x,735)),Color(0.55,0.83,0.85,0.32),0.8,true)
+	draw_nameplate(prop)
+
+func draw_nameplate(_prop: Dictionary) -> void:
+	# Final selected v10 casing deliberately has no collar lettering.
+	pass
+
+func glass_polygon(prop: Dictionary, source: Array, color: Color) -> void:
+	var points:=PackedVector2Array()
+	for point in source: points.append(life_point(prop,point))
+	painter.draw_colored_polygon(points,color)
+
+func float_offset(time: float) -> Vector2:
+	return Vector2(sin(time*TAU/11.0)*1.2,sin(time*TAU/8.0)*5.0)
+
+func draw_computer_display(prop: Dictionary) -> void:
+	if prop.id=="brine_server":
+		for i in range(4):
+			painter.draw_rect(Rect2(life_point(prop,Vector2(1242,466+i*44)),Vector2(1.5,0.65)),Color("79aba8") if i!=2 else Color("baad79"))
+	var screens: Array[Rect2]=[]
+	if prop.id=="brine_dual_workstation": screens=[Rect2(198,346,148,66),Rect2(441,346,142,66)]
+	elif prop.id=="brine_diagnostics": screens=[Rect2(877,366,112,59)]
+	for screen_index in range(screens.size()):
+		var screen: Rect2=screens[screen_index]
+		if screen_index==1:
+			for column in range(5):
+				var start:=screen.position+Vector2(column*27+8,screen.size.y)
+				var height:=18.0+float((column*17)%41)
+				painter.draw_line(life_point(prop,start),life_point(prop,start-Vector2(0,height)),Color(0.40,0.65,0.62,0.8),1.3)
+			continue
+		var points:=PackedVector2Array()
+		for i in range(12):
+			var p: Vector2 = screen.position+Vector2(screen.size.x*i/11.0,screen.size.y*(0.5+0.18*sin(i*1.8)))
+			points.append(life_point(prop,p))
+		painter.draw_polyline(points,Color(0.30,0.62,0.64,0.78),0.65,true)
+		for line in range(3):
+			var a: Vector2 = screen.position+Vector2(0,line*7)
+			painter.draw_line(life_point(prop,a),life_point(prop,a+Vector2(screen.size.x*(0.65-line*0.12),0)),Color(0.33,0.53,0.54,0.6),0.5)
+
+func effect_marks(prop: Dictionary,time: float) -> Array:
+	if not is_animated_prop(prop): return []
+	var phase:=fposmod(time,9.0)
+	if phase>1.8: return []
+	var point:=Vector2(668+sin(phase*3.0)*2.0,743-phase/1.8*150)
+	return [[point,point]] # One brief bubble, followed by more than seven quiet seconds.
+
+func layout_caption() -> String:
+	return "BRINE CORE / registered chamber and body / %d degrees"%(quarter*90)

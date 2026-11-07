@@ -1,0 +1,124 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "quarantine_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -26,
+        -136,
+        60,
+        24
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    },
+    {
+      "id": "quarantine_sealed_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        -13,
+        112,
+        30,
+        10
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "quarantine_filter",
+        "source": [
+          1090,
+          470
+        ]
+      },
+      "via": [
+        [
+          168,
+          -165
+        ],
+        [
+          -170,
+          -165
+        ]
+      ],
+      "to": {
+        "host": "quarantine_berth",
+        "source": [
+          148,
+          480
+        ]
+      },
+      "color": "728d91",
+      "width": 2
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          -40,
+          -67
+        ],
+        [
+          41,
+          -67
+        ],
+        [
+          41,
+          -65
+        ],
+        [
+          -40,
+          -65
+        ]
+      ],
+      "fill": "809b9c"
+    },
+    {
+      "points": [
+        [
+          -41,
+          131
+        ],
+        [
+          28,
+          131
+        ],
+        [
+          28,
+          133
+        ],
+        [
+          -41,
+          133
+        ]
+      ],
+      "fill": "809b9c"
+    }
+  ]
+}

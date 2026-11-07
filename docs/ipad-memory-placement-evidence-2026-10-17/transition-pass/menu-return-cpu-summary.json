@@ -1,0 +1,469 @@
+{
+  "scope": "Time Profiler running CPU samples filtered exclusively to app8789 MainThread;10\u201320s window brackets screenshot-verified SaveReturnTitle tap11.996s/ack17.485s. CPU samples exclude waits and profiling changes timing. Counts are samples, not function durations.",
+  "main_samples_total": 25453,
+  "main_samples_window": 3388,
+  "leaf_top": [
+    {
+      "symbol": "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+      "samples": 156
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_record_item_commands(RendererCanvasRender::Item const*, RID, Transform2D const&, RendererCanvasRender::Item*&, GLES3::CanvasShaderData::BlendMode, RendererCanvasRender::Light*, unsigned int&, bool&, bool&, Vector2 const&)",
+      "samples": 102
+    },
+    {
+      "symbol": "0x2563fbcd5",
+      "samples": 70
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_prepare_canvas_texture(RID, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, unsigned int&, Vector2&)",
+      "samples": 56
+    },
+    {
+      "symbol": "Variant::PackedArrayRef<unsigned char>::~PackedArrayRef()",
+      "samples": 56
+    },
+    {
+      "symbol": "inflate_fast",
+      "samples": 48
+    },
+    {
+      "symbol": "0x25640104d",
+      "samples": 47
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_render_batch(RendererCanvasRender::Light*, unsigned int, RenderingServerTypes::RenderInfo*)",
+      "samples": 45
+    },
+    {
+      "symbol": "<deduplicated_symbol>",
+      "samples": 43
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+      "samples": 43
+    },
+    {
+      "symbol": "RendererCanvasCull::_cull_canvas_item(RendererCanvasCull::Item*, Transform2D const&, Rect2 const&, Color const&, int, RendererCanvasRender::Item**, RendererCanvasRender::Item**, RendererCanvasCull::Item*, RendererCanvasCull::Item*, bool, unsigned int, Vector2 const&, int, RendererCanvasRender::Item*)",
+      "samples": 30
+    },
+    {
+      "symbol": "0x2612692b1",
+      "samples": 27
+    },
+    {
+      "symbol": "0x19a641dfd",
+      "samples": 27
+    },
+    {
+      "symbol": "0x19a641955",
+      "samples": 26
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::free_polygon(unsigned long long)",
+      "samples": 26
+    },
+    {
+      "symbol": "0x2563fbb49",
+      "samples": 25
+    },
+    {
+      "symbol": "0x268a871a1",
+      "samples": 24
+    },
+    {
+      "symbol": "Variant::callp(StringName const&, Variant const**, int, Variant&, Callable::CallError&)",
+      "samples": 22
+    },
+    {
+      "symbol": "0x1a934af19",
+      "samples": 22
+    },
+    {
+      "symbol": "0x261731f51",
+      "samples": 21
+    }
+  ],
+  "inclusive_top": [
+    {
+      "symbol": "0x1a4b4fae3",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x19a6c4523",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x19ea76b57",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x19a8737e3",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x1a4b4927b",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x246e1ff23",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x1a4b4913b",
+      "samples": 3388
+    },
+    {
+      "symbol": "main",
+      "samples": 3388
+    },
+    {
+      "symbol": "0x2d3f20bf3",
+      "samples": 3275
+    },
+    {
+      "symbol": "0x19ea2656b",
+      "samples": 3258
+    },
+    {
+      "symbol": "0x19ea2630b",
+      "samples": 3258
+    },
+    {
+      "symbol": "0x19e559c13",
+      "samples": 3242
+    },
+    {
+      "symbol": "0x19e613137",
+      "samples": 3242
+    },
+    {
+      "symbol": "0x19e612647",
+      "samples": 3240
+    },
+    {
+      "symbol": "0x19e613327",
+      "samples": 3234
+    },
+    {
+      "symbol": "-[GDTView drawView]",
+      "samples": 3230
+    },
+    {
+      "symbol": "Main::iteration()",
+      "samples": 3128
+    },
+    {
+      "symbol": "RenderingServerDefault::_draw(bool, double)",
+      "samples": 1775
+    },
+    {
+      "symbol": "RendererViewport::draw_viewports(bool)",
+      "samples": 1734
+    },
+    {
+      "symbol": "0x19a872373",
+      "samples": 1734
+    },
+    {
+      "symbol": "0x19a873257",
+      "samples": 1731
+    },
+    {
+      "symbol": "0x19a891d27",
+      "samples": 1731
+    },
+    {
+      "symbol": "0x19a891db3",
+      "samples": 1731
+    },
+    {
+      "symbol": "RendererViewport::_draw_viewport(RendererViewport::Viewport*)",
+      "samples": 1646
+    },
+    {
+      "symbol": "RendererCanvasCull::render_canvas(RID, RendererCanvasCull::Canvas*, Transform2D const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Rect2 const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+      "samples": 1642
+    },
+    {
+      "symbol": "RendererCanvasCull::_render_canvas_item_tree(RID, RendererCanvasCull::Canvas::ChildItem*, int, Transform2D const&, Rect2 const&, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+      "samples": 1638
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::canvas_render_items(RID, RendererCanvasRender::Item*, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Transform2D const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool&, RenderingServerTypes::RenderInfo*)",
+      "samples": 1591
+    },
+    {
+      "symbol": "0x19a8820bf",
+      "samples": 1560
+    },
+    {
+      "symbol": "0x19a8822cf",
+      "samples": 1560
+    },
+    {
+      "symbol": "0x19a872623",
+      "samples": 1560
+    },
+    {
+      "symbol": "0x19a85e7bb",
+      "samples": 1557
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+      "samples": 1537
+    },
+    {
+      "symbol": "SceneTree::process(double)",
+      "samples": 1245
+    },
+    {
+      "symbol": "RasterizerCanvasGLES3::_render_batch(RendererCanvasRender::Light*, unsigned int, RenderingServerTypes::RenderInfo*)",
+      "samples": 1226
+    },
+    {
+      "symbol": "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+      "samples": 879
+    }
+  ],
+  "frequent_leaf_stacks": [
+    {
+      "frames": [
+        "RasterizerCanvasGLES3::_record_item_commands(RendererCanvasRender::Item const*, RID, Transform2D const&, RendererCanvasRender::Item*&, GLES3::CanvasShaderData::BlendMode, RendererCanvasRender::Light*, unsigned int&, bool&, bool&, Vector2 const&)",
+        "RasterizerCanvasGLES3::_record_item_commands(RendererCanvasRender::Item const*, RID, Transform2D const&, RendererCanvasRender::Item*&, GLES3::CanvasShaderData::BlendMode, RendererCanvasRender::Light*, unsigned int&, bool&, bool&, Vector2 const&)",
+        "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+        "RasterizerCanvasGLES3::canvas_render_items(RID, RendererCanvasRender::Item*, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Transform2D const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool&, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::_render_canvas_item_tree(RID, RendererCanvasCull::Canvas::ChildItem*, int, Transform2D const&, Rect2 const&, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::render_canvas(RID, RendererCanvasCull::Canvas*, Transform2D const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Rect2 const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererViewport::_draw_viewport(RendererViewport::Viewport*)",
+        "RendererViewport::draw_viewports(bool)",
+        "RenderingServerDefault::_draw(bool, double)",
+        "Main::iteration()",
+        "-[GDTView drawView]",
+        "0x19e613327"
+      ],
+      "samples": 102
+    },
+    {
+      "frames": [
+        "RasterizerCanvasGLES3::_prepare_canvas_texture(RID, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, unsigned int&, Vector2&)",
+        "RasterizerCanvasGLES3::_record_item_commands(RendererCanvasRender::Item const*, RID, Transform2D const&, RendererCanvasRender::Item*&, GLES3::CanvasShaderData::BlendMode, RendererCanvasRender::Light*, unsigned int&, bool&, bool&, Vector2 const&)",
+        "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+        "RasterizerCanvasGLES3::canvas_render_items(RID, RendererCanvasRender::Item*, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Transform2D const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool&, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::_render_canvas_item_tree(RID, RendererCanvasCull::Canvas::ChildItem*, int, Transform2D const&, Rect2 const&, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::render_canvas(RID, RendererCanvasCull::Canvas*, Transform2D const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Rect2 const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererViewport::_draw_viewport(RendererViewport::Viewport*)",
+        "RendererViewport::draw_viewports(bool)",
+        "RenderingServerDefault::_draw(bool, double)",
+        "Main::iteration()",
+        "-[GDTView drawView]",
+        "0x19e613327"
+      ],
+      "samples": 55
+    },
+    {
+      "frames": [
+        "inflate_fast",
+        "png_read_IDAT_data",
+        "png_read_row",
+        "png_image_read_direct",
+        "png_safe_execute",
+        "png_image_finish_read",
+        "PNGDriverCommon::png_to_image(unsigned char const*, unsigned long, bool, Ref<Image>)",
+        "ImageLoaderPNG::load_mem_png(unsigned char const*, int)",
+        "Image::_load_from_buffer(Vector<unsigned char> const&, Ref<Image> (*)(unsigned char const*, int))",
+        "MethodBindTR<Error, Vector<unsigned char> const&>::validated_call(Object*, Variant const**, Variant*) const",
+        "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+        "Variant::callp(StringName const&, Variant const**, int, Variant&, Callable::CallError&)"
+      ],
+      "samples": 48
+    },
+    {
+      "frames": [
+        "RasterizerCanvasGLES3::_render_batch(RendererCanvasRender::Light*, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+        "RasterizerCanvasGLES3::canvas_render_items(RID, RendererCanvasRender::Item*, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Transform2D const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool&, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::_render_canvas_item_tree(RID, RendererCanvasCull::Canvas::ChildItem*, int, Transform2D const&, Rect2 const&, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::render_canvas(RID, RendererCanvasCull::Canvas*, Transform2D const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Rect2 const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererViewport::_draw_viewport(RendererViewport::Viewport*)",
+        "RendererViewport::draw_viewports(bool)",
+        "RenderingServerDefault::_draw(bool, double)",
+        "Main::iteration()",
+        "-[GDTView drawView]",
+        "0x19e613327",
+        "0x19e612647"
+      ],
+      "samples": 45
+    },
+    {
+      "frames": [
+        "0x2563fbcd5",
+        "0x1a934baeb",
+        "0x1a934b8b7",
+        "0x227494653",
+        "0x2274943f3",
+        "0x227499e97",
+        "0x227494243",
+        "0x2610a5f87",
+        "0x2610a5f1f",
+        "0x2610a5eeb",
+        "0x261730d1b",
+        "0x261731a3f"
+      ],
+      "samples": 44
+    },
+    {
+      "frames": [
+        "RasterizerCanvasGLES3::_render_items(RID, int, Transform2D const&, RendererCanvasRender::Light*, bool&, bool, RenderingServerTypes::RenderInfo*, bool)",
+        "RasterizerCanvasGLES3::canvas_render_items(RID, RendererCanvasRender::Item*, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Transform2D const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool&, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::_render_canvas_item_tree(RID, RendererCanvasCull::Canvas::ChildItem*, int, Transform2D const&, Rect2 const&, Color const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererCanvasCull::render_canvas(RID, RendererCanvasCull::Canvas*, Transform2D const&, RendererCanvasRender::Light*, RendererCanvasRender::Light*, Rect2 const&, RenderingServerEnums::CanvasItemTextureFilter, RenderingServerEnums::CanvasItemTextureRepeat, bool, bool, unsigned int, RenderingServerTypes::RenderInfo*)",
+        "RendererViewport::_draw_viewport(RendererViewport::Viewport*)",
+        "RendererViewport::draw_viewports(bool)",
+        "RenderingServerDefault::_draw(bool, double)",
+        "Main::iteration()",
+        "-[GDTView drawView]",
+        "0x19e613327",
+        "0x19e612647",
+        "0x19e613137"
+      ],
+      "samples": 43
+    },
+    {
+      "frames": [
+        "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+        "Object::callp(StringName const&, Variant const**, int, Callable::CallError&)",
+        "Variant::callp(StringName const&, Variant const**, int, Variant&, Callable::CallError&)",
+        "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+        "Object::callp(StringName const&, Variant const**, int, Callable::CallError&)",
+        "Variant::callp(StringName const&, Variant const**, int, Variant&, Callable::CallError&)",
+        "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+        "Object::callp(StringName const&, Variant const**, int, Callable::CallError&)",
+        "Variant::callp(StringName const&, Variant const**, int, Variant&, Callable::CallError&)",
+        "GDScriptFunction::call(GDScriptInstance*, Variant const**, int, Callable::CallError&, GDScriptFunction::CallState*)",
+        "CanvasItem::_redraw_callback()",
+        "CallQueue::_call_function(Callable const&, Variant const*, int, bool)"
+      ],
+      "samples": 37
+    },
+    {
+      "frames": [
+        "Variant::PackedArrayRef<unsigned char>::~PackedArrayRef()",
+        "Variant::_clear_internal()",
+        "GDScriptInstance::~GDScriptInstance()",
+        "Object::_predelete()",
+        "CanvasTexture::~CanvasTexture()",
+        "Variant::_clear_internal()",
+        "ArrayPrivate::~ArrayPrivate()",
+        "Array::~Array()",
+        "DictionaryPrivate::~DictionaryPrivate()",
+        "Dictionary::_unref() const",
+        "Dictionary::~Dictionary()",
+        "DictionaryPrivate::~DictionaryPrivate()"
+      ],
+      "samples": 28
+    }
+  ],
+  "bins_100ms": {
+    "10.0": 31,
+    "10.1": 35,
+    "10.2": 32,
+    "10.3": 28,
+    "10.4": 31,
+    "10.5": 36,
+    "10.6": 29,
+    "10.7": 29,
+    "10.8": 27,
+    "10.9": 36,
+    "11.0": 32,
+    "11.1": 32,
+    "11.2": 30,
+    "11.3": 36,
+    "11.4": 31,
+    "11.5": 32,
+    "11.6": 36,
+    "11.7": 32,
+    "11.8": 33,
+    "11.9": 30,
+    "12.0": 31,
+    "12.1": 36,
+    "12.2": 29,
+    "12.3": 33,
+    "12.4": 30,
+    "12.5": 31,
+    "12.6": 32,
+    "12.7": 29,
+    "12.8": 27,
+    "12.9": 34,
+    "13.0": 33,
+    "13.1": 29,
+    "13.2": 29,
+    "13.3": 29,
+    "13.4": 31,
+    "13.5": 31,
+    "13.6": 29,
+    "13.7": 31,
+    "13.8": 29,
+    "13.9": 30,
+    "14.0": 27,
+    "14.1": 31,
+    "14.2": 36,
+    "14.3": 29,
+    "14.4": 25,
+    "14.5": 35,
+    "14.6": 24,
+    "14.7": 36,
+    "14.8": 34,
+    "14.9": 55,
+    "15.0": 88,
+    "15.1": 90,
+    "15.2": 89,
+    "15.3": 11,
+    "15.4": 17,
+    "15.5": 27,
+    "15.6": 33,
+    "15.7": 30,
+    "15.8": 33,
+    "15.9": 36,
+    "16.0": 34,
+    "16.1": 35,
+    "16.2": 35,
+    "16.3": 35,
+    "16.4": 28,
+    "16.5": 34,
+    "16.6": 30,
+    "16.7": 36,
+    "16.8": 32,
+    "16.9": 34,
+    "17.0": 34,
+    "17.1": 30,
+    "17.2": 34,
+    "17.3": 36,
+    "17.4": 30,
+    "17.5": 35,
+    "17.6": 34,
+    "17.7": 31,
+    "17.8": 32,
+    "17.9": 33,
+    "18.0": 35,
+    "18.1": 31,
+    "18.2": 35,
+    "18.3": 35,
+    "18.4": 34,
+    "18.5": 34,
+    "18.6": 35,
+    "18.7": 35,
+    "18.8": 35,
+    "18.9": 33,
+    "19.0": 33,
+    "19.1": 34,
+    "19.2": 34,
+    "19.3": 36,
+    "19.4": 37,
+    "19.5": 31,
+    "19.6": 37,
+    "19.7": 38,
+    "19.8": 33,
+    "19.9": 34
+  }
+}

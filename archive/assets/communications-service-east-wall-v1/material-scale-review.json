@@ -1,0 +1,71 @@
+{
+  "asset_id": "communications-service-east-wall-v1",
+  "department": "Communications service",
+  "condition": "Maintained",
+  "attachment_class": "East-wall standing service counter",
+  "functional_bays": [
+    "Three patch leads",
+    "Tester and handset",
+    "Mat with case and cable",
+    "Three spare connectors and case"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Right backing; left tester knobs, handset cord, case latches and three cabinet pulls; plain south end",
+  "references": [
+    {
+      "path": "assets/communications-service-west-wall-v1/communications-service-west.png",
+      "sha256": "345d41bc2e77ba2a9882985699d39fdeb750831aff7f0897b2c28932edf4b0e1",
+      "role": "Slim west geometry, inventory and matte finish"
+    }
+  ],
+  "source_path": "assets/communications-service-east-wall-v1/source.png",
+  "source_sha256": "0bbc1e3628879516a9e846878ec4a3f9356700780e85bc7b07c7d0b6beeadd7b",
+  "export_path": "assets/communications-service-east-wall-v1/communications-service-east.png",
+  "export_sha256": "80edc2c1d6eaf07161b1d4f2598e89e0c266e5241fc4af1f0a6d0f93374d9fa8",
+  "native_canvas_px": [
+    1039,
+    1514
+  ],
+  "proposed_display_width_world": 66.54364797728886,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Static waveform/cables, no occupied access or room mounting verified. Independently reconstructed dimensions."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Quiet bluegrey and graphite at native scale. Mat pattern simplifies; green display remains localized."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full320-unit portrait reviewed at66.54width. Left controls, cord and both latches confirmed;3patch leads and3spares retained. Close to west65.07 but not identical geometry."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral220 excludes white exterior; light/dark columns and backed cable-loop supports inspected."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/communications-service-east-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/communications-service-east-wall-v1/registration.json",
+  "registration_sha256": "a8ae203fe1ca30872d3534e3511637cf821b106725dc465c7b74583962bacf77",
+  "prompt_path": "assets/communications-service-east-wall-v1/source.prompt.txt",
+  "prompt_sha256": "03b62b2001d95c601c824d211fceabbe0d9f07c0adfa162e71bd7e5390bb066e",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

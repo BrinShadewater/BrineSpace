@@ -1,0 +1,40 @@
+{
+  "status": "derived_candidate_not_integrated",
+  "frameWidth": 92,
+  "frameHeight": 104,
+  "pivot": [
+    46,
+    98
+  ],
+  "states": [
+    {
+      "id": "deposit-helmet-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        200,
+        200,
+        260,
+        180,
+        160
+      ],
+      "loop": false,
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 4,
+          "timeMs": 820
+        }
+      ]
+    }
+  ],
+  "derivation": "Pickup pose images reused in reverse order; deposit timing and release marker authored separately. Marker is review metadata, not a runtime inventory event."
+}

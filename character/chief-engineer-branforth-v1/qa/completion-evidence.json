@@ -1,0 +1,25 @@
+{
+  "reviewDate": "2026-09-06",
+  "reviewer": "Codex agent",
+  "ownerApproval": false,
+  "files": {
+    "character\\chief-engineer-branforth-v1\\final\\manifest.json": "f2d0cbac55a4275264cbfe0fb05d9e04737d724aa1827fbaf15f121c5147ebaf",
+    "scripts\\branforth_npc.gd": "425ad4485f2005c8354db62219fe870d9fed9f8a5c210beefed665d39620152e",
+    "scripts\\bill_npc.gd": "4a627ee7af448bd57edd40d9c6d584fc720d738be175284055a4e2192e2b09bd",
+    "scripts\\main.gd": "d388f42a19a9cff1c8010f7a4c76689ce1d2e76e56bc31650c58e71750d1f81b",
+    "scripts\\grid_canvas.gd": "f6264e118047d34121567adf9988161251243a1b9cf7d2b81fd6ace705d07c70",
+    "scripts\\run_save.gd": "3065e63ebf162e6832315525102eae77d334fca10aa5cc8624ee495e0dcb368a"
+  },
+  "logs": {
+    "actions-native.log": "BRANFORTH NATIVE: PASS; [\"walk-north\", \"kneel\", \"repair\", \"stand\", \"walk-east\", \"walk-south\", \"walk-west\", \"interact\", \"idle\"]",
+    "engineer-integration.log": "BRANFORTH: PASS",
+    "pack-test.log": "BRANFORTH PACK: 0 failures",
+    "test_bill_npc.log": "BILL NPC: PASS",
+    "test_crew_polish.log": "CREW POLISH: PASS; minimum separation 20.10",
+    "test_major_bill_animations.log": "MAJOR BILL: 17 animations / 102 frames; coverage, timing, transitions, native SpriteFrames: 0 failures",
+    "test_run_save.log": "SAVE GAME: PASS",
+    "three-crew-native.log": "BRANFORTH THREE CREW: PASS; minimum separation 20.61",
+    "three-crew.log": "BRANFORTH THREE CREW: PASS; minimum separation 20.61",
+    "veld-regression.log": "DR VELD: PASS"
+  }
+}

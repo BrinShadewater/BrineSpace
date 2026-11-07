@@ -1,0 +1,30 @@
+{
+  "asset": "galley-south-wall",
+  "selected_source": "source-v3.png",
+  "export": "galley-south-wall.png",
+  "export_sha256": "ef46454be397902399b572b3767a62deb205f45a4ff59e807a744d0702996c3a",
+  "generation": "built-in imagegen",
+  "registration": "registration.json",
+  "review": "material-scale-review.json",
+  "revisions": [
+    {
+      "source": "source-v1.png",
+      "sha256": "eb6de82509c42726e6ba83d1e45c8705880160c9c5fe7cf783c20a6dab7041b4",
+      "prompt": "source-v1.prompt.txt",
+      "disposition": "rejected: backing and drawers still north-facing"
+    },
+    {
+      "source": "source-v2.png",
+      "sha256": "06f44ad3751344ea88dd3523351cbaabe2c23f84aab8cf2b3f93c52592f36e14",
+      "prompt": "source-v2.prompt.txt",
+      "disposition": "superseded: omitted boiler nozzle"
+    },
+    {
+      "source": "source-v3.png",
+      "sha256": "1f72d4e14573c7026c7a75168d4c3286e0cc68dee2169db3f552f96af451fbc0",
+      "prompt": "source-v3.prompt.txt",
+      "disposition": "selected standalone candidate; owner review pending"
+    }
+  ],
+  "installed": false
+}

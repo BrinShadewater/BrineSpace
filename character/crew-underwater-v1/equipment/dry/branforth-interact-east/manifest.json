@@ -1,0 +1,45 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "interact-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        180,
+        120,
+        140,
+        260,
+        140,
+        180
+      ],
+      "fps": 5.88235,
+      "loop": false,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/interact-east.png",
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "interact-east": "05ec43f5fb6474e9f61f2ce1880d35d81ef5b459555074fb5f3a6f1e828ad4b9",
+        "idle-east": "cf2b013c1a7b4043f09c2ffb74eec25ff179fc4f3e3e4645b057ee05779c3f62"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    }
+  ]
+}

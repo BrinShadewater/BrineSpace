@@ -1,0 +1,971 @@
+{
+  "name": "James ordinary water turns helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_owner_review_pending",
+  "states": [
+    {
+      "id": "swim-turn-east-south",
+      "frameFiles": [
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/000.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "east-south",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-east-v1/frames/helmet/swim/000.png",
+          "character/james-water-south-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-south-east",
+      "frameFiles": [
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/000.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "east-south",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-east-v1/frames/helmet/swim/000.png",
+          "character/james-water-south-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-south-west",
+      "frameFiles": [
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/000.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/001.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/002.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/003.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/004.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "south-west",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-south-v1/frames/helmet/swim/000.png",
+          "character/james-water-west-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-west-south",
+      "frameFiles": [
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/000.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/001.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/002.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/003.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/004.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "south-west",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-south-v1/frames/helmet/swim/000.png",
+          "character/james-water-west-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/000.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/001.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/002.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/003.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/004.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "west-north",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-west-v1/frames/helmet/swim/000.png",
+          "character/james-water-north-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/000.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/001.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/002.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/003.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/004.png",
+        "../james-water-turn-west-north-v1/frames/helmet/swim-turn-north-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "west-north",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-west-v1/frames/helmet/swim/000.png",
+          "character/james-water-north-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-north-east",
+      "frameFiles": [
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/000.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/001.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/002.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/003.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/004.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "north-east",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-north-v1/frames/helmet/swim/000.png",
+          "character/james-water-east-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-east-north",
+      "frameFiles": [
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/000.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/001.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/002.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/003.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/004.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "north-east",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-north-v1/frames/helmet/swim/000.png",
+          "character/james-water-east-v1/frames/helmet/swim/000.png"
+        ],
+        "derivation": "Exact installed swim endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-turn-east-west",
+      "frameFiles": [
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/000.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/005.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/001.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/002.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/003.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/004.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; retained 680ms clock",
+        "sourceFrames": [
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/000.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/001.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/002.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/003.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/004.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/005.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/001.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/002.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/003.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/004.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-south-west/005.png"
+        ]
+      }
+    },
+    {
+      "id": "swim-turn-west-east",
+      "frameFiles": [
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/000.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/001.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/002.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/003.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/004.png",
+        "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/005.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; retained 680ms clock",
+        "sourceFrames": [
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/000.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/001.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/002.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/003.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/004.png",
+          "../james-water-turn-south-west-v1/frames/helmet/swim-turn-west-south/005.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/001.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/002.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/003.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/004.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/005.png"
+        ]
+      }
+    },
+    {
+      "id": "swim-turn-north-south",
+      "frameFiles": [
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/000.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/001.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/002.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/003.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/004.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/005.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; retained 680ms clock",
+        "sourceFrames": [
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/000.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/001.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/002.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/003.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/004.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-north-east/005.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/001.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/002.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/003.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/004.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-east-south/005.png"
+        ]
+      }
+    },
+    {
+      "id": "swim-turn-south-north",
+      "frameFiles": [
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/000.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/001.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/002.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/003.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/004.png",
+        "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/005.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/001.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/002.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/003.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/004.png",
+        "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        90,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; retained 680ms clock",
+        "sourceFrames": [
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/000.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/001.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/002.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/003.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/004.png",
+          "../james-water-turn-east-south-v1/frames/helmet/swim-turn-south-east/005.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/001.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/002.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/003.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/004.png",
+          "../james-water-turn-north-east-v1/frames/helmet/swim-turn-east-north/005.png"
+        ]
+      }
+    }
+  ]
+}

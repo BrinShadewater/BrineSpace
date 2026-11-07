@@ -1,0 +1,63 @@
+{
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "cargo-drain-east",
+      "frameFiles": [
+        "cargo-drain-east-000.png",
+        "cargo-drain-east-001.png",
+        "cargo-drain-east-002.png",
+        "cargo-drain-east-003.png",
+        "cargo-drain-east-004.png",
+        "cargo-drain-east-005.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        180,
+        220,
+        220,
+        180,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "revision": "marsh-master-repair-v1",
+  "pivot": [
+    92.0,
+    172.0
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "kneel-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/neutral.png",
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/working-b.png",
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/working-a.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false
+    },
+    {
+      "id": "stand-south",
+      "frameFiles": [
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/working-a.png",
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/working-b.png",
+        "res://character/marsh-v2/supplemental/south-work-polish-v1/neutral.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false
+    }
+  ]
+}

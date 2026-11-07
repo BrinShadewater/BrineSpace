@@ -1,0 +1,230 @@
+{
+  "variants": [
+    {
+      "id": "engineering",
+      "footprint_cells": [
+        1,
+        1
+      ],
+      "canvas_pivot": [
+        0.5,
+        0.5
+      ],
+      "runtime_width": "game.get_cell_size()",
+      "sources": {
+        "wreck": {
+          "file": "engineering-wreck-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "4867e7676d7c73a43175a159e7236ce9141a2e8d59055b8a9ce15b4b2dcb56ce",
+          "mode": "RGBA",
+          "transparent_pixels": 253846,
+          "partial_alpha_pixels": 1318534,
+          "processing": "none; original generation retained",
+          "usage": "transparent whole-cell texture"
+        },
+        "stripped": {
+          "file": "engineering-stripped-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "b28e0597c0ce74f07a18eca819e9cf13fc3b177f44b1bb386fc549db7777d5e1",
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "processing": "none; original generation retained",
+          "usage": "opaque interior-only source; never render as a standalone full sprite"
+        }
+      },
+      "stripped_interior_normalized": [
+        0.085,
+        0.115,
+        0.825,
+        0.765
+      ],
+      "hull_owner": "Original wreck texture at every uncleared stage",
+      "state_sequence": [
+        "wreck",
+        "registered stripped interior",
+        "foundation clearing",
+        "cleared ground"
+      ],
+      "visual_owner_approval": "pending"
+    },
+    {
+      "id": "medical",
+      "footprint_cells": [
+        1,
+        1
+      ],
+      "canvas_pivot": [
+        0.5,
+        0.5
+      ],
+      "runtime_width": "game.get_cell_size()",
+      "sources": {
+        "wreck": {
+          "file": "medical-wreck-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "1597d1f7b43e76e8986c760433ce1664777964eec2ba008867879b610bc0b91e",
+          "mode": "RGBA",
+          "transparent_pixels": 243224,
+          "partial_alpha_pixels": 1329187,
+          "processing": "none; original generation retained",
+          "usage": "transparent whole-cell texture"
+        },
+        "stripped": {
+          "file": "medical-stripped-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "1e8de101af363a75f4838451b8ff14b18565edbc03dcaa0740f76c9853e4d1ee",
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "processing": "none; original generation retained",
+          "usage": "opaque interior-only source; never render as a standalone full sprite"
+        }
+      },
+      "stripped_interior_normalized": [
+        0.085,
+        0.115,
+        0.825,
+        0.765
+      ],
+      "hull_owner": "Original wreck texture at every uncleared stage",
+      "state_sequence": [
+        "wreck",
+        "registered stripped interior",
+        "foundation clearing",
+        "cleared ground"
+      ],
+      "visual_owner_approval": "pending"
+    },
+    {
+      "id": "habitation",
+      "footprint_cells": [
+        1,
+        1
+      ],
+      "canvas_pivot": [
+        0.5,
+        0.5
+      ],
+      "runtime_width": "game.get_cell_size()",
+      "sources": {
+        "wreck": {
+          "file": "habitation-wreck-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "3516f1d72551dae670cc297267d8937ccfb692c832818f18ee9cf843a461b9c3",
+          "mode": "RGBA",
+          "transparent_pixels": 223356,
+          "partial_alpha_pixels": 1349079,
+          "processing": "none; original generation retained",
+          "usage": "transparent whole-cell texture"
+        },
+        "stripped": {
+          "file": "habitation-stripped-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "8162dab2d9a5e35f884ecb2a3b0bbd5368407ec77d619ce2466d67f83f1c399a",
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "processing": "none; original generation retained",
+          "usage": "opaque interior-only source; never render as a standalone full sprite"
+        }
+      },
+      "stripped_interior_normalized": [
+        0.085,
+        0.115,
+        0.825,
+        0.765
+      ],
+      "hull_owner": "Original wreck texture at every uncleared stage",
+      "state_sequence": [
+        "wreck",
+        "registered stripped interior",
+        "foundation clearing",
+        "cleared ground"
+      ],
+      "visual_owner_approval": "pending"
+    },
+    {
+      "id": "hydroponics",
+      "footprint_cells": [
+        1,
+        1
+      ],
+      "canvas_pivot": [
+        0.5,
+        0.5
+      ],
+      "runtime_width": "game.get_cell_size()",
+      "sources": {
+        "wreck": {
+          "file": "hydroponics-wreck-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "6b4b539d65be745d4966c96d570117f742343bf0396a95a868e5480be9cf3f7a",
+          "mode": "RGBA",
+          "transparent_pixels": 252533,
+          "partial_alpha_pixels": 1319778,
+          "processing": "none; original generation retained",
+          "usage": "transparent whole-cell texture"
+        },
+        "stripped": {
+          "file": "hydroponics-stripped-v1.png",
+          "native_size": [
+            1254,
+            1254
+          ],
+          "sha256": "2a3b4623a94cf77f3b3553dda2f286e95c4953bd9ad087ac124f319347e19a6c",
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "processing": "none; original generation retained",
+          "usage": "opaque interior-only source; never render as a standalone full sprite"
+        }
+      },
+      "stripped_interior_normalized": [
+        0.085,
+        0.115,
+        0.825,
+        0.765
+      ],
+      "hull_owner": "Original wreck texture at every uncleared stage",
+      "state_sequence": [
+        "wreck",
+        "registered stripped interior",
+        "foundation clearing",
+        "cleared ground"
+      ],
+      "visual_owner_approval": "pending"
+    }
+  ],
+  "job_seconds_at_1x": 18,
+  "salvage_metal": {
+    "engineering": 12,
+    "medical": 8,
+    "habitation": 6,
+    "hydroponics": 10
+  },
+  "timing_and_yields": "prototype values, not human balance acceptance",
+  "native_evidence": "output/wrecked-rooms-v1/",
+  "verification": "test_wreck_clearance.gd and playtest_wreck_rooms.gd"
+}

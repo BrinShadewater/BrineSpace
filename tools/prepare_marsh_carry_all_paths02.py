@@ -1,0 +1,13 @@
+"""Refresh all12 path directions on one current inherited-controller revision."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+old='[["south","east"],["south","west"],["north","east"],["north","west"],["west","east"],["north","south"],["south","north"]]'
+new='[["south","east"],["south","west"],["north","east"],["north","west"],["west","east"],["north","south"],["south","north"],["east","south"],["west","south"],["east","north"],["west","north"],["east","west"]]'
+s=(ROOT/'tools/review_marsh_carry_remaining_paths01_actor.gd').read_text();assert old in s;s=s.replace(old,new).replace('carry-remaining-paths-01','carry-all-paths-02').replace('Seven actual','Twelve actual').replace('four reverse quarters400ms andthree opposites800ms','eight quarters400ms andfour opposites800ms').replace('MARSH REMAINING PATHS','MARSH ALL PATHS')
+p=ROOT/'tools/review_marsh_carry_all_paths02_actor.gd';assert not p.exists();p.write_text(s);p.with_suffix('.gd.uid').write_text('uid://dk8allpath2v04\n')
+s=(ROOT/'tools/publish_marsh_carry_remaining_paths01_actor.py').read_text().replace('carry-remaining-paths-01','carry-all-paths-02').replace('remaining-paths-01-actor-review','all-paths-02-actor-review').replace("'south-north']","'south-north','east-south','west-south','east-north','west-north','east-west']")
+for a,b in [('len(r[\'captures\'])==96','len(r[\'captures\'])==160'),('len(r[\'samples\'])==1040','len(r[\'samples\'])==1760'),('restores==decoded_count==47','restores==decoded_count==76'),('all96PairsInspected','all160PairsInspected'),("'actualPaths':7","'actualPaths':12"),("'captures':96","'captures':160"),("'exactSources':96","'exactSources':160"),("'controlledSamples':1040","'controlledSamples':1760"),("'actorPlayerRestores':47","'actorPlayerRestores':76"),("'decodedHeldApngFrames':47","'decodedHeldApngFrames':76"),('Seven actual staged paths only','Twelve actual staged paths only')]:assert a in s,a;s=s.replace(a,b)
+p=ROOT/'tools/publish_marsh_carry_all_paths02_actor.py';assert not p.exists();p.write_text(s)
+s=(ROOT/'tools/fingerprint_marsh_carry_remaining_paths01_actor.py').read_text().replace('remaining_paths01','all_paths02').replace('remaining-path inputs','all-path inputs').replace("'assemble_marsh_carry_opposite01.py'","'assemble_marsh_carry_opposite01.py','review_marsh_carry_remaining_paths01_actor.gd','publish_marsh_carry_remaining_paths01_actor.py','publish_marsh_carry_all_paths02_actor.py'")
+p=ROOT/'tools/fingerprint_marsh_carry_all_paths02_actor.py';assert not p.exists();p.write_text(s)
+print('Fresh12direction same-controller fixture+UID/publisher/fingerprinter;160views/1760samples/76restores expected.')

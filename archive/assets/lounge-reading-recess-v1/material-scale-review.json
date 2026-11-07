@@ -1,0 +1,90 @@
+{
+  "asset_id": "lounge-reading-recess-v1",
+  "department": "Habitation / Crew Lounge",
+  "condition": "Matte walnut, paper and cloth",
+  "attachment_class": "Fitted desk/storage construction variant",
+  "functional_bays": [
+    "Book storage",
+    "Game drawers",
+    "Reading surface with open knee recess",
+    "Radio and mugs"
+  ],
+  "runtime_behavior": "Static uninstalled variant; no seating interaction",
+  "camera_and_facing": "Near top-down, north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/lounge-reading-wall-v1/wall.png",
+      "sha256": "7444b64af268d4b067345422a026a25b4c20b950a48f324b5a678e317fdb9c02",
+      "role": "Edit target; preserve matte reading-bank identity"
+    }
+  ],
+  "source_path": "assets/lounge-reading-recess-v1/source-v1.png",
+  "source_sha256": "169d1f9bd3cd3a8c906f434318023e1db5d080276cf0baeedfdaad621f46c7d6",
+  "export_path": "assets/lounge-reading-recess-v1/wall.png",
+  "export_sha256": "c8bfdd1353095e3589aceed8143698d1a495572f5ee0bcf7a9c49323b91b0f05",
+  "native_canvas_px": [
+    1774,
+    887
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Doors and approach",
+    "Occupied knee/posture/reach validation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Matte warm wood/paper retained; construction variant does not introduce polished trim."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/lounge-reading-recess-v1/wall-scale.png",
+      "findings": [
+        "320-unit variant reviewed beside furnished Lounge. Transparent recess with retained supports clearly visible.",
+        "Actual opening is wider than requested60-70 units; measured width recorded rather than claiming exact prompt fit."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral180 registration removes background including exterior-connected knee recess; sample1050,550 alpha0 and countertop1050,410 alpha255."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 61.43540669856459,
+  "registration_path": "assets/lounge-reading-recess-v1/registration.json",
+  "registration_sha256": "4a9d9f76a776804fd3d9ff1a863c96711e20e706878f523acb5f196fff91445b",
+  "prompt_path": "assets/lounge-reading-recess-v1/source.prompt.txt",
+  "prompt_sha256": "bea58dfad3930776562c75c0d25845149e70968843db6348130d69031a4a1740",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "recess_sample": {
+    "source_y": 550,
+    "source_x_span": [
+      866,
+      1312
+    ],
+    "visible_width_world": 85.35885167464114
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/lounge-reading-recess.log": "faee45a45f671f00a15105dce0e4ce0cb815ea112c7a445d1759311a6b083a1c",
+    "output/lounge-reading-recess-v1/wall-scale.png": "9a0ea61fd504b9cfc5add4a16a19f1769b5c67f5c48b12b317781a30564d8b97",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

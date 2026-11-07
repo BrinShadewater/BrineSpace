@@ -1,0 +1,117 @@
+{
+  "status": "integrated_provisional_locker_sequence",
+  "frameWidth": 92,
+  "frameHeight": 104,
+  "pivot": [
+    46,
+    98
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameCount": 12,
+      "frameFiles": [
+        "../../revisions/veld-pickup-helmet-east-v1/frame_000.png",
+        "../../revisions/veld-pickup-helmet-east-v1/frame_001.png",
+        "../../revisions/veld-pickup-helmet-east-v1/frame_002.png",
+        "../../revisions/veld-pickup-helmet-east-v1/frame_003.png",
+        "../../revisions/veld-pickup-helmet-east-v1/frame_004.png",
+        "../../revisions/veld-pickup-helmet-east-v1/frame_005.png",
+        "../../pilot/veld-equip-helmet-east/frame_000.png",
+        "../../pilot/veld-equip-helmet-east/frame_001.png",
+        "../../pilot/veld-equip-helmet-east/frame_002.png",
+        "../../pilot/veld-equip-helmet-east/frame_003.png",
+        "../../pilot/veld-equip-helmet-east/frame_004.png",
+        "../../pilot/veld-equip-helmet-east/frame_005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        180,
+        160,
+        180,
+        180,
+        80,
+        100,
+        180,
+        220,
+        220,
+        260,
+        240
+      ],
+      "loop": false,
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_000.png",
+      "sha256": "4646a12fdb8ffc1860ab1cf9e38159ca6c34f30b48877e7f39f26c671d04e16b"
+    },
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_001.png",
+      "sha256": "5d61ccccc5e3cfbc4fef2fc50d43209640a2baa1045eb2a23b3e0c730372d2d0"
+    },
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_002.png",
+      "sha256": "d95ca8248e990845fb18bb998553a72087ee9c7f389536446ac012c276e2173c"
+    },
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_003.png",
+      "sha256": "a46f354f48337b4ccebbc99c482ebacf85d0fecbee320fae5a159e5125eae023"
+    },
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_004.png",
+      "sha256": "60011622c3ba776edeff2ce781cf3bc389c5396d42a59418dc2e7c06bea8321f"
+    },
+    {
+      "source": "revisions/veld-pickup-helmet-east-v1/frame_005.png",
+      "sha256": "dd0cd836ca021ed462f104f9e614ff641f7b497590a6043cc3bb880faad317da"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_000.png",
+      "sha256": "dd0cd836ca021ed462f104f9e614ff641f7b497590a6043cc3bb880faad317da"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_001.png",
+      "sha256": "d7ca21bdef16ea434038ebf57fde0c6bce52b7b3c4a7cf2ef62eb2f4960bef41"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_002.png",
+      "sha256": "fd9433493cd5e40370975550d1bf6cb73a68273b243c5f7874ae62bcb1d86680"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_003.png",
+      "sha256": "d637079064bee841d7e950c1dfac09e22c14b81add638b65bc717031491cbf78"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_004.png",
+      "sha256": "c47e5eaa38f6b85b72a6acc185de4afafa890dfa0cd99261be95ebc1b449ad02"
+    },
+    {
+      "source": "pilot/veld-equip-helmet-east/frame_005.png",
+      "sha256": "38a503d68d82961169f4be924ea4d11c56dbdd5c1d6177cb01f4c161b521b68d"
+    }
+  ],
+  "joinTiming": {
+    "frames": [
+      5,
+      6
+    ],
+    "sourceDurationsMs": [
+      160,
+      180
+    ],
+    "composedDurationsMs": [
+      80,
+      100
+    ],
+    "reason": "One shared held pose, not two sequential full holds."
+  },
+  "limitations": "Candidate pose joins and shelf attachment alignment require visual refinement. Shelf visibility follows handoff markers; equipment commits at whole-action completion and cancellation keeps prior equipment."
+}

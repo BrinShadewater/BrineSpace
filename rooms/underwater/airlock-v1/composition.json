@@ -1,0 +1,273 @@
+{
+  "textures": {
+    "airlock": "res://legacy/default/rooms/underwater/airlock-v1/cutouts.png",
+    "service_bank": "res://legacy/default/assets/rooms/airlock/furnishings/suit-air-bank.png"
+  },
+  "furniture": [
+    {
+      "id": "suit_lockers",
+      "texture": "service_bank",
+      "region": [
+        69,
+        93,
+        708,
+        581
+      ],
+      "footprint": [
+        85,
+        -25,
+        70,
+        90
+      ],
+      "pivot": [
+        423,
+        668
+      ],
+      "ground_width": 600,
+      "centers_by_quarter": [
+        [
+          120,
+          20
+        ],
+        [
+          -20,
+          120
+        ],
+        [
+          -98,
+          -15
+        ],
+        [
+          120,
+          -40
+        ]
+      ],
+      "live_furniture": true
+    },
+    {
+      "id": "outer_hatch",
+      "texture": "airlock",
+      "region": [
+        631,
+        62,
+        596,
+        578
+      ],
+      "footprint": [
+        -58,
+        -133,
+        116,
+        36
+      ],
+      "pivot": [
+        930,
+        635
+      ],
+      "ground_width": 588,
+      "live_furniture": true
+    },
+    {
+      "id": "air_compressor",
+      "texture": "airlock",
+      "region": [
+        102,
+        696,
+        373,
+        419
+      ],
+      "footprint": [
+        -153,
+        -10,
+        60,
+        32
+      ],
+      "pivot": [
+        272,
+        1110
+      ],
+      "ground_width": 327,
+      "live_furniture": true,
+      "centers_by_quarter": [
+        [
+          -123,
+          6
+        ],
+        [
+          -10,
+          -104
+        ],
+        [
+          123,
+          -6
+        ],
+        [
+          -10,
+          -104
+        ]
+      ]
+    },
+    {
+      "id": "changing_bench",
+      "texture": "airlock",
+      "region": [
+        581,
+        757,
+        623,
+        365
+      ],
+      "footprint": [
+        -153,
+        109,
+        83,
+        24
+      ],
+      "pivot": [
+        892,
+        1118
+      ],
+      "ground_width": 614,
+      "live_furniture": true,
+      "pieces": [
+        [
+          [
+            581,
+            757
+          ],
+          [
+            1204,
+            757
+          ],
+          [
+            1204,
+            946
+          ],
+          [
+            581,
+            946
+          ]
+        ],
+        [
+          [
+            581,
+            946
+          ],
+          [
+            994,
+            946
+          ],
+          [
+            994,
+            990
+          ],
+          [
+            581,
+            990
+          ]
+        ],
+        [
+          [
+            1154,
+            946
+          ],
+          [
+            1204,
+            946
+          ],
+          [
+            1204,
+            990
+          ],
+          [
+            1154,
+            990
+          ]
+        ],
+        [
+          [
+            581,
+            990
+          ],
+          [
+            1204,
+            990
+          ],
+          [
+            1204,
+            1122
+          ],
+          [
+            581,
+            1122
+          ]
+        ]
+      ],
+      "patches": [
+        {
+          "points": [
+            [
+              994,
+              946
+            ],
+            [
+              1154,
+              946
+            ],
+            [
+              1154,
+              990
+            ],
+            [
+              994,
+              990
+            ]
+          ],
+          "color": "060b0a"
+        }
+      ]
+    },
+    {
+      "id": "reserve_air_bank",
+      "texture": "service_bank",
+      "region": [
+        1200,
+        138,
+        718,
+        536
+      ],
+      "footprint": [
+        -180,
+        -169,
+        104,
+        32
+      ],
+      "pivot": [
+        1559,
+        668
+      ],
+      "ground_width": 718,
+      "live_furniture": true
+    },
+    {
+      "id": "equipment_check_bench",
+      "texture": "service_bank",
+      "region": [
+        775,
+        153,
+        430,
+        515
+      ],
+      "footprint": [
+        78,
+        -169,
+        100,
+        32
+      ],
+      "pivot": [
+        990,
+        668
+      ],
+      "ground_width": 430,
+      "live_furniture": true
+    }
+  ]
+}

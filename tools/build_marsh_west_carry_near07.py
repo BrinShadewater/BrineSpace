@@ -1,0 +1,7 @@
+"""Retain correct near support but extended contact-like requested passing."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+s=(ROOT/'tools/build_marsh_east_carry_contact03.py').read_text().replace('east','west').replace('East','West').replace('contact-03','near-07').replace('far-contact.png','near-passing.png').replace('exec-1661ff9f-b710-4f30-ae90-3b6dc30c659a','exec-76ab179a-7594-4320-aca2-0ed69a3d0aa1')
+s=s.replace('foreground thigh correctly backward/left, boot contact projection and crate variant remain provisional','foreground near support correct, but foreground thigh forward slope/dark rear leg remain too extended; passing refinement pending')
+s=s.replace('Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending.','Correct foreground near flat supporting boot LEFT and dark far rear boot RIGHT,plain inset crate single-left block latch consistent. Foreground near thigh still forward sloping and dark far rear leg extended like contact,not compact near passing. Refine complete passing figure before coherent cycle/native staging.')
+exec(compile(s,str(Path(__file__).resolve()),'exec'),{'__file__':str(Path(__file__).resolve()),'__name__':'__main__'})

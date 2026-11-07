@@ -1,0 +1,253 @@
+---
+name: brinespace-room-pipeline
+description: Use when generating, repairing, reviewing, or integrating BrineSpace room graphics, underwater terrain and scenery, wreckage, room-card art, doorway layouts, functioning-room visual effects, or station-wide visual treatments.
+---
+
+# BrineSpace room pipeline
+
+For station-wide pixel/tilt-shift treatments, recovering owner-selected looks from
+F8 reports, or checking whether a visual change reached a release, read
+[look and release evidence](references/look-and-release-evidence.md).
+
+For a mixed ocean asset family, overhead fungi, upright grass-shaped kelp or
+smooth anchored foliage, read [ocean foliage and closeout](references/ocean-foliage-and-closeout.md).
+It covers native scale review, production clock/accessibility checks and scoped completion evidence.
+
+For cryopod masters, physical sliding doors, thaw/fog sequences and visible
+character landing handoffs, read [cryopod emergence](references/cryopod-emergence.md).
+Use both pipelines and the latest owner-selected encounter geometry.
+
+For ambient sea-life art, underwater effect textures and card frames/emblems,
+read [effects and card artwork](references/effects-and-card-art.md). It covers
+source contrast, independent alpha/color, foreground outlines, actual pixel
+density, reproducible bakes and revision-specific native previews.
+
+For native room-rendering or texture-cache optimization, read
+[performance validation](references/native-performance-validation.md) and the
+active checkout's `docs/IPAD_QA_WORKFLOW.md`. Preserve the current art contract;
+use device evidence before treating a backend or memory change as accepted.
+
+For companion rescue crates, occupant reveals and recovery handoffs, read
+[companion rescue workflow](references/companion-rescue.md) and use both pipelines.
+
+For existing Desktop selections, installation audits and acceptance closeout, read
+[selected artwork audit](references/selected-art-audit.md). Start from current status
+and the latest dated owner decisions before carrying forward older next steps.
+
+For the September 26 room/animation closeout, read the active checkout's
+`docs/ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md` after CURRENT_STATUS.md.
+It supersedes historical pending drone installation steps; immersion ideas remain deferred.
+
+For drone NPC animation, launch/recovery effects or their closeout, read
+[drone production lessons](references/drone-animation.md). Use both room and
+character workflows when changing a drone and its dock interaction.
+
+
+**September 20 owner-directed decoration:** use large and medium bought props to
+compose believable work areas, not a scatter of accessories. Preserve the owner's
+reference layouts; change only requested rooms. Start with three-room pilots and
+review them before a wider rollout. Inspect effective live props before placement:
+old functional furniture can remain beneath bought additions. Keep its activity
+approaches usable. See the composition section in the tileset reference.
+Do not use Higgsfield unless the owner explicitly requests it.
+
+For the Studio scale actor, funded-operation and construction-access previews,
+fresh preview-driven opening checks and saved-loop UI evidence, read
+[gameplay preview contracts](references/gameplay-preview-contract.md).
+
+**Current owner direction (September 12 playtest):** read [top-down owner contract](references/top-down-owner-contract.md) first. All room equipment moves to top-down, inward-facing art on every wall; older conflicting camera/acceptance guidance is superseded.
+
+For directional service counters, short finished-end sections and additive host
+studies, read [fitted service lessons](references/fitted-service-lessons.md).
+
+
+For matching station navigation artwork and UI integration, read
+[navigation UI lessons](references/navigation-ui.md). Its material rules are
+UI-specific; do not apply them universally to room props.
+
+For corridor floors, department risers, default doors and opposite-facing corners,
+read [the corridor/riser contract](references/corridor-riser-contract.md).
+
+For layout-editor tray previews, drag optimization and water-rendering follow-up,
+read [editor and water lessons](references/layout-editor-and-water.md).
+
+For bought art packs, the `rooms/tileset-library/` registry, the Studio asset tray,
+sweeping assets the owner marked, or extending an owner layout to other rotations, read
+[the tileset library](references/tileset-library.md) first. To furnish a room from that library, read
+[decorating a room](references/room-decorating.md): what the owner's own rooms measure as. The owner decorates rooms by
+hand; the registration contract (absolute `pieces`, trimmed `region`, floor `footprint`,
+stable `id`) and the rule that the Studio's mark files are owner data are both easy to
+break and were both broken once.
+
+For every new or revised prop, apply the owner-directed
+[material and scale review](references/material-and-scale-review.md): matte
+surfaces, restrained highlights and native-scale comparison are explicit gates.
+Record verified corrections in the maintained workflow as each art task progresses.
+
+For current bought-prop furnishing, choose the number of pieces from the room's
+activity and operator space; the earlier one-anchor/one-support batch limit is
+historical, not a current cap. Give the room a clear primary function and group
+large/medium equipment into coherent work areas. Use quarter-specific positions
+where actual door ports require them. Review effective props, scale and circulation
+in all four production views before baking changed cards. Preserve owner acceptance
+as a separate gate from geometry checks and agent visual review. The current
+composition workflow is in the tileset reference; the visual intent is in the bible.
+
+For the fourteen-room continuous/split wall rollout, read
+[wall-room rollout](references/wall-room-rollout.md).
+
+For full-wall props, side-facing variants, enclosed cutout repairs and relocation,
+read [full-wall installation lessons](references/full-wall-installations.md).
+
+For session consolidation, paused production or a cross-room handoff, read
+[handoff guidance](references/handoff.md). Use current selections and dated
+evidence before carrying forward historical TODOs or package claims.
+
+For underwater hull windows, wall-mounted props and related deck details, read
+[the hull fitting workflow](references/underwater-hull-fittings.md). It separates
+wall registration, floor collision, transparency cleanup and native style review.
+
+Produce usable room assets, not just attractive images. Keep geometry authoritative
+and distinguish **generated → cleaned → geometry-validated → integrated → verified**.
+Track rejected candidates separately; counts at one stage never imply another.
+
+For crew character design, sprite animation, or character-specific NPC integration,
+use `skills/brinespace-character-pipeline/SKILL.md` in the active checkout. Use both
+workflows when a task changes a character and its room/prop interaction. Existing
+characters used to verify room clearance do not require a character redesign.
+
+For underwater terrain, scenery, wreckage or blocker art, read
+[references/environment.md](references/environment.md). It routes environment
+geometry, source provenance and native review; room-specific door and card gates
+below apply only when those consumers are in scope.
+Its combined ocean-art review section covers cell-scale density, fine-grain
+materials and deterministic variant integration. For this session's final scope,
+read `docs/OCEAN_ART_SESSION_CLOSEOUT_2026-09-30.md` after CURRENT_STATUS.md.
+
+For current scope, read `docs/CURRENT_STATUS.md` first. For takeover or closeout,
+use `docs/CLAUDE_HANDOFF_2026-09-24.md` and the maintained
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md`; dated reports retain their original scope.
+
+## Establish the contract
+
+Locate the BrineSpace checkout from the active workspace; never assume a drive
+path. When using an installed snapshot for production, compare it with
+`skills/brinespace-room-pipeline` in that checkout using
+`python <installed-skill>/scripts/check_source_sync.py --source <checkout-skill> --installed <installed-skill>`.
+The comparison reports source-only, modified and installed-only files; inspect each
+difference and use an explicit `--expected` list only for deliberate divergences.
+Use the maintained project references when a difference is reported; do not overwrite
+project work from an older installed snapshot. Read its AGENTS.md and docs/DEVELOPMENT_NOTES.md. Get room IDs, footprints,
+door masks and walkways from scripts/room_database.gd; inspect the renderer's
+coordinate transforms before specifying pixel positions. Existing art can have
+incorrect doors. Inspect actual PNGs, not filenames or thumbnails alone.
+
+Read the checkout's docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md before room art
+production or review. It owns department identity, condition, shared architecture
+and the current south-facing/infill contract. Technical passes on older art do
+not establish compliance with this bible.
+
+Read [references/production.md](references/production.md) before production or
+integration. It contains cleanup commands, evidence requirements and a manifest
+example. Read [references/lessons.md](references/lessons.md) when revising the
+pipeline or choosing generation/animation methods.
+Read [references/art-direction.md](references/art-direction.md) before writing
+room briefs, selecting art references, or reviewing visual consistency.
+Read [references/layered-assets.md](references/layered-assets.md) for modular
+hulls, separately registered props, directional views and layered animation.
+
+## Generate against geometry
+
+Use readable machinery silhouettes, quiet department-appropriate floors, maintained
+department-specific materials and restrained lighting in the shared cutaway camera.
+Do not apply ivory enamel and dark slate universally. Record primary department,
+secondary functions and independent condition before selecting style references.
+Preserve the requested scope; do not substitute recolors or count duplicates as
+new rooms. Name every requested identity in a pack ledger before batching.
+Keep construction consistent, not compositions identical. Give each room a
+recognizable visual story and record its focal subject, material contrast,
+surface condition and functioning-effect anchor before generating.
+
+Separate references by role: style master, canonical layout, subject. A reactor
+image is not a valid door template for a corner room. Prefer shared hull/door
+templates with editable interior regions. If templates do not exist, author and
+verify them before claiming geometry is locked. A prompt alone is not a lock.
+
+Use the available imagegen skill/tool for generation. Make each room an individual
+asset; assemble contact sheets afterward for comparison. Preserve raw outputs and
+exact prompts. An illustration with an imitation checkerboard is opaque until
+pixel inspection proves otherwise. The whole-room production target is 1280
+square, not a universal prop or material size; record the
+actual native dimensions and any normalization, rather than claiming the tool
+honored the requested size.
+
+## Repair and inspect
+
+For a focused repair to integrated room art, read
+[references/repair-loop.md](references/repair-loop.md). It keeps diagnostic,
+gameplay-scale and revision-specific acceptance separate and explains how to
+feed verified improvements back into this skill and the project's bible.
+
+For a multi-room source batch, save each result immediately and audit its manifest
+with `tools/audit_room_source_batch.py`. Record revisions without replacing source
+hashes. Its contact sheet and alpha report are provenance/review aids, never a
+geometry or runtime acceptance certificate.
+
+Use the project's tools/room_art_pipeline.py for authorized local cleanup. It
+removes only edge-connected light neutral background and fits without stretching;
+it does not validate doors, remove every fringe, or guarantee pixel-grid fidelity.
+Compare raw and cleaned images. Repair a failed region without changing accepted
+regions where practical; save revisions to new paths. Never crop away wrong doors
+and call the footprint correct.
+
+Inspect at full resolution, actual gameplay zoom, and in a same-scale pack sheet.
+Check each doorway, sealed side, route, machinery footprint, light hierarchy and
+transparent exterior. Dimensional tests cannot prove these visual properties.
+
+## Integrate the accepted result
+
+Static interiors, stateful doors and machinery effects have separate roles.
+Define effect anchors in room-local coordinates and transform them with the room.
+Keep operation state separate from discovery knowledge: offline machinery stops;
+unknown recipes remain hidden. Pause freezes continuing motion.
+
+Update both station and card consumers, including alternate-art selection, without
+rewriting unrelated gameplay. Preserve originals and player saves. Validate raster
+staging through Git LFS and keep Godot script/UID pairs together.
+
+Finish with native Godot evidence and relevant regression tests. Report what is
+generated, rejected, integrated and verified, plus remaining work. A full-set
+request is not finished when only a pilot is good. Do not install external apps,
+purchase generation, publish, or push merely because this skill is active.
+
+Reconcile furnishing coverage against the current RoomDatabase identities before reporting a catalog total; add newly introduced rooms to the ledger.
+
+For decoration passes, follow the bible's Organic room composition section: author activity areas and physical supports before placement. Repeated paired accessories are a rejected composition, not a reusable template.
+
+For supported furniture, use the project dressing helper where appropriate and see `docs/ORGANIC_ROOM_COMPOSITION.md`. Derive free circulation from each room's actual ports; do not reserve an unnecessary cross aisle in a single-door room. Validate composition profile hashes in packaged evidence alongside raster assets.
+
+For true-alpha registration, use the read-only `tools/register_alpha_silhouette.py` and the supported-furniture lesson. Keep visual acceptance separate from route and packaged asset checks.
+
+Before packaging profile-based furnishings, run `tools/audit_composition_dependencies.py` with the affected manifests; see the dependency audit lesson.
+
+For all-room floor production and integration, read [floor coverage lessons](references/floor-coverage.md). Reconcile live identities and inherited floor owners; keep per-room source, placement, and native-acceptance stages separate.
+
+
+## Build storage at closeout
+
+For generated-package retention and disk cleanup, read
+[storage retention](references/storage-retention.md). Preserve source art and
+review evidence separately from disposable executable/package copies.
+
+For sparse-room cleanup, source repaint integration and source-control closeout, read
+[room materials and declutter](references/room-materials-and-declutter.md).
+
+## September 28 engineering notes
+
+- Clean exports and room designs moved to `Desktop/Projects/Gaming/Brine Space Art`; masters, designs and provenance are the only copies.
+- Room views are lazy in `grid_canvas`; prewarm through `prewarm_station_views` in fixtures. Mark fixed hull art with `flush_region`.
+- Studio Wall Art saves `wall/riser` as `room:<id>` (another room's walls.json riser); Studio Doors saves `door/style`, honoured by `painted_shell` and live doors. Use the Studio Preview row to review airlock, drone, probe, fire and flood animation in a room.
+
+For a reported runtime defect, visual-integration failure or measured slowdown, read
+[reproduction and performance evidence](references/debugging-and-performance.md).
+Use existing F7/F8 diagnostics and scoped tests; native visual acceptance remains separate.

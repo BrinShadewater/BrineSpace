@@ -1,0 +1,20 @@
+{
+  "room": "current_turbine",
+  "direction": "east",
+  "stage": "rejected-native-study",
+  "source": "assets/turbine-directional-v2/turbine-east-overhead-study.png",
+  "sha256": "56be43009724533fd82897e70e88c5268a350a1dc8b118fcf9ee12e454bccf30",
+  "original": "exec-687669f3-6bde-4a2d-a486-4a63e1109d1f.png",
+  "prompt": "assets/turbine-directional-v2/east-overhead-prompt.json",
+  "registration": "assets/turbine-directional-v2/east-overhead-registration.json",
+  "native": "output/turbine-overhead-2026-09-12/native/current_turbine-q1.png",
+  "comparison": "output/turbine-overhead-2026-09-12/comparison.json",
+  "findings": [
+    "Intake still faces left and wall spine remains right.",
+    "More top surface but invented large top hatch changes construction.",
+    "Still reads as vertically stacked machinery rather than clear floor-mounted bank.",
+    "Wider silhouette fitted into original prop aspect shortens occupied wall length; intake less readable at native scale than previous candidate."
+  ],
+  "decision": "Do not install or propagate this camera solution to other rooms. Live defaults, code, effects and cards unchanged.",
+  "next": "Develop a coherent floor-mounted side composition with wall-length footprint and top-plane proportions specified independently; preserve inward intake and operator control faces. Owner side preference remains unconfirmed."
+}

@@ -1,0 +1,381 @@
+{
+  "catalogBefore": {
+    "revision": "marsh-v2",
+    "standingHeight": 148,
+    "body": [
+      "packs/bare-184x184-p92.0-172.0/manifest.json",
+      "packs/bare-184x237-p92.0-172.0/manifest.json",
+      "supplemental/ground-east/manifest.json",
+      "supplemental/ground-west/manifest.json",
+      "supplemental/berth-east/manifest.json",
+      "supplemental/bunk-east/bare/manifest.json",
+      "supplemental/swim-east/manifest.json",
+      "supplemental/swim-west/manifest.json",
+      "supplemental/swim-north/manifest.json",
+      "supplemental/swim-south/manifest.json",
+      "supplemental/swim-turn-east-north/manifest.json",
+      "supplemental/swim-turn-west-north/manifest.json",
+      "supplemental/swim-turn-east-south/manifest.json",
+      "supplemental/swim-turn-west-south/manifest.json",
+      "supplemental/swim-turn-east-west/manifest.json",
+      "supplemental/swim-turn-north-south/manifest.json",
+      "supplemental/carry-turn-east-north/manifest.json",
+      "supplemental/carry-turn-west-north/manifest.json",
+      "supplemental/carry-turn-east-south/manifest.json",
+      "supplemental/carry-turn-west-south/manifest.json",
+      "supplemental/carry-turn-east-west/manifest.json",
+      "supplemental/carry-turn-north-south/manifest.json",
+      "supplemental/loaded-swim-east/manifest.json",
+      "supplemental/loaded-swim-west/manifest.json",
+      "supplemental/loaded-swim-north/manifest.json",
+      "supplemental/loaded-swim-south/manifest.json",
+      "supplemental/swim-carry-turn-east-north/manifest.json",
+      "supplemental/swim-carry-turn-west-north/manifest.json",
+      "supplemental/swim-carry-turn-east-south/manifest.json",
+      "supplemental/swim-carry-turn-west-south/manifest.json",
+      "supplemental/swim-carry-turn-east-west/manifest.json",
+      "supplemental/swim-carry-turn-north-south/manifest.json",
+      "supplemental/cargo-drain-east/manifest.json",
+      "supplemental/cargo-drain-west/manifest.json",
+      "supplemental/cargo-drain-north/manifest.json",
+      "supplemental/cargo-drain-south/manifest.json",
+      "../marsh-injury-runtime-v1/manifest.json",
+      "../marsh-quality-pass-v2/manifest.json",
+      "../marsh-crew-chat-v1/manifest.json",
+      "../marsh-crew-chat-v2/manifest.json",
+      "../marsh-quality-pass-v3/manifest.json",
+      "../marsh-diagnostics-v4/manifest.json",
+      "../marsh-diagnostics-v5/manifest.json",
+      "../marsh-diagnostics-v6/manifest.json",
+      "../marsh-diagnostics-v7/manifest.json",
+      "../marsh-quality-pass-v4/manifest-p92_0-172_0.json",
+      "../marsh-quality-pass-v4/manifest-p128-224.json",
+      "../marsh-quality-pass-v4/manifest-p112-172.json",
+      "../marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "../marsh-master-repair-v1/manifest-p128-224.json",
+      "../marsh-master-repair-v1/manifest-p112-172.json",
+      "../marsh-north-walk-material-v1/candidate-01/manifest.json",
+      "../marsh-north-walk-material-v1/candidate-01/north-start/manifest.json",
+      "../marsh-north-stop-v1/phase-bank-v3/manifest.json",
+      "../marsh-north-step-v1/sequence-v2/manifest.json",
+      "../marsh-south-walk-material-v1/candidate-02/manifest.json",
+      "../marsh-south-idle-material-v1/candidate-01/manifest.json",
+      "../marsh-south-idle-material-v1/candidate-01/south-start/manifest.json",
+      "../marsh-south-stop-v1/candidate-06/phase-0/manifest.json",
+      "../marsh-south-stop-v1/candidate-06/phase-1/manifest.json",
+      "../marsh-south-stop-v1/candidate-06/phase-2/manifest.json",
+      "../marsh-south-stop-v1/candidate-01/phase-3/manifest.json",
+      "../marsh-south-stop-v1/candidate-07/phase-4/manifest.json",
+      "../marsh-south-stop-v1/candidate-01/phase-5/manifest.json",
+      "../marsh-south-step-v1/candidate-05/manifest.json",
+      "../marsh-south-collapse-material-v1/candidate-01/manifest.json",
+      "../marsh-south-injury-material-v1/candidate-01/manifest.json",
+      "../marsh-north-collapse-material-v1/candidate-02/manifest.json",
+      "../marsh-north-injury-material-v1/candidate-01/manifest.json",
+      "../marsh-east-collapse-material-v1/candidate-01/manifest.json",
+      "../marsh-east-injury-material-v1/candidate-01/manifest.json",
+      "../marsh-west-collapse-material-v1/candidate-02/manifest.json",
+      "../marsh-west-injury-material-v1/candidate-01/manifest.json",
+      "../marsh-south-run-material-v1/candidate-05/manifest.json",
+      "../marsh-east-run-material-v1/candidate-03/manifest.json",
+      "../marsh-west-run-material-v1/candidate-02/manifest.json",
+      "../marsh-north-run-material-v1/candidate-03/manifest.json",
+      "supplemental/retained-gesture-return-v1/manifest.json",
+      "supplemental/cargo-matched-v1/loaded-water-loops-turns/manifest.json",
+      "supplemental/cargo-matched-v1/dry-turns/manifest.json",
+      "supplemental/cargo-matched-v1/held-pickup-unload/manifest.json",
+      "supplemental/cargo-matched-v1/carry-east/manifest.json",
+      "supplemental/cargo-matched-v1/carry-west/manifest.json",
+      "supplemental/cargo-matched-v1/carry-north/manifest.json",
+      "supplemental/cargo-matched-v1/carry-south/manifest.json",
+      "supplemental/cargo-matched-v1/water-pickup-drain/manifest.json"
+    ],
+    "equipment": [],
+    "status": "complete_source_revision"
+  },
+  "catalogBeforeSha256": "f93a9abc0b3f248bc49618a53845201e7f6906c98c861e496fff7341ea1386f8",
+  "catalogAfterSha256": "29451944da33f4c0ac26a83c31710b45fdba9be61ba1ae5a206b0e19c066b793",
+  "manifestSha256": "33772182027b897e2e586465fdc27633809166c6eda978f1401c0c60672fb69a",
+  "aliases": [
+    {
+      "id": "cargo-unload-east",
+      "oldManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "oldManifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "oldState": {
+        "id": "cargo-unload-east",
+        "frameFiles": [
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-east/000.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-east/001.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-east/002.png",
+          "../../character/marsh-v2/frames/bare/cargo-unload-east/003.png"
+        ],
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "east",
+          "east",
+          "east",
+          "east"
+        ],
+        "waterKinds": [
+          "cargo",
+          "cargo",
+          "cargo",
+          "cargo"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "newSourceState": "unload-east",
+      "newManifest": "character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/manifest.json",
+      "newManifestSha256": "388a7ef50ca3b9e35cd9938cde801fcccc874b42899c19bd2205a7971170146b",
+      "selectedSources": [
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-016.png",
+          "sha256": "ccad1eba4e0900a67900ccfcd33062c88c0ff450d94029f7a0ecaeb8fb77edc8"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-017.png",
+          "sha256": "139dcffb6cd8e32ebed8929a25774ed16cf5c4ea937eac2e2a302f20942e08d6"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-018.png",
+          "sha256": "6813a2848c528ab05691b3ca28a76c01c74c511e1ef33b217c1d1ada725f4a34"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-019.png",
+          "sha256": "f69b78d3ce2813528a0fdf9f0f081a7e06b95eda873bd4259eceafdf8506925a"
+        }
+      ]
+    },
+    {
+      "id": "cargo-unload-west",
+      "oldManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "oldManifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "oldState": {
+        "id": "cargo-unload-west",
+        "frameFiles": [
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-west/000.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-west/001.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-west/002.png",
+          "../../character/marsh-v2/frames/bare/cargo-unload-west/003.png"
+        ],
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "west",
+          "west",
+          "west",
+          "west"
+        ],
+        "waterKinds": [
+          "cargo",
+          "cargo",
+          "cargo",
+          "cargo"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "newSourceState": "unload-west",
+      "newManifest": "character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/manifest.json",
+      "newManifestSha256": "388a7ef50ca3b9e35cd9938cde801fcccc874b42899c19bd2205a7971170146b",
+      "selectedSources": [
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-024.png",
+          "sha256": "05309ec3495e73b759164cf31353a2a002c38532c60045648c4f04663a93e467"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-025.png",
+          "sha256": "1c0788f6579f6f0c04eeb45b695131fc65e2f00404811c7d2559ecf338221d89"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-026.png",
+          "sha256": "b0fadc5292ba0252c054bceff5d9391fb2f541867f972b72411c4690486b0a1d"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-027.png",
+          "sha256": "bececc0d137b531971163af9d9fb5961acac943fbf722587889154ba71c6f812"
+        }
+      ]
+    },
+    {
+      "id": "cargo-unload-north",
+      "oldManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "oldManifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "oldState": {
+        "id": "cargo-unload-north",
+        "frameFiles": [
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-north/000.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-north/001.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-north/002.png",
+          "../../character/marsh-v2/frames/bare/cargo-unload-north/003.png"
+        ],
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "north",
+          "north",
+          "north",
+          "north"
+        ],
+        "waterKinds": [
+          "cargo",
+          "cargo",
+          "cargo",
+          "cargo"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "newSourceState": "unload-north",
+      "newManifest": "character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/manifest.json",
+      "newManifestSha256": "388a7ef50ca3b9e35cd9938cde801fcccc874b42899c19bd2205a7971170146b",
+      "selectedSources": [
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-008.png",
+          "sha256": "a8edc9192c7ebf052a70fcc9d372dc1bc5eb28e22d150c511397d36e0a2223fb"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-009.png",
+          "sha256": "68b4ea1d925ce4e0bf164b5b9d84be57bb16bc3469e8b1dbc03c4ef7aeb8f5a1"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-010.png",
+          "sha256": "9553a6b8a1be3f2da2463d2881c1b1e70aea0f39623eaa92e8627b33f6cf9ec1"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-011.png",
+          "sha256": "4ff92128acf2416d6d934aa20cb739d3b81137dfc4effa01e2e5ba30c221ea0d"
+        }
+      ]
+    },
+    {
+      "id": "cargo-unload-south",
+      "oldManifest": "character/marsh-master-repair-v1/manifest-p92_0-172_0.json",
+      "oldManifestSha256": "b4d12f1c0bd53e92d03112edfd9b2612e21ff8412d9a5c42971f10f967c8c700",
+      "oldState": {
+        "id": "cargo-unload-south",
+        "frameFiles": [
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-south/000.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-south/001.png",
+          "../../character/marsh-master-repair-v1/frames/cargo-unload-south/002.png",
+          "../../character/marsh-v2/frames/bare/cargo-unload-south/003.png"
+        ],
+        "frameDurationsMs": [
+          130.0,
+          130.0,
+          130.0,
+          130.0
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "cargo",
+          "cargo",
+          "cargo",
+          "cargo"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "newSourceState": "unload-south",
+      "newManifest": "character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/manifest.json",
+      "newManifestSha256": "388a7ef50ca3b9e35cd9938cde801fcccc874b42899c19bd2205a7971170146b",
+      "selectedSources": [
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-000.png",
+          "sha256": "8393c293d8bdb99fd1a97ce183c3848ab2b2b528be65543382c119c97974de9d"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-001.png",
+          "sha256": "4c70b793c48b827ffdbdab081d2299e2776997c81e7d9132da3eb0b1df7da9c6"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-002.png",
+          "sha256": "004cca177febe3ff1aae1cf54c3f976b584ee5722f6c4ae057521edbd3ab2437"
+        },
+        {
+          "path": "res://character/marsh-v2/supplemental/cargo-matched-v1/held-pickup-unload/frame-003.png",
+          "sha256": "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+        }
+      ]
+    }
+  ],
+  "changedStates": [
+    "cargo-unload-east",
+    "cargo-unload-west",
+    "cargo-unload-north",
+    "cargo-unload-south"
+  ],
+  "unchangedStates": 224,
+  "normalAdmission": true,
+  "fullGoalComplete": false,
+  "postNativeReceiptCorrection": {
+    "oldNormalizedLfHash": "beba371e84ebcd8b59da326ccc781a537d73e19c6eaada33e237d9bdfd6c6d54",
+    "originalByteHash": "f93a9abc0b3f248bc49618a53845201e7f6906c98c861e496fff7341ea1386f8",
+    "recoveredFile": "catalog-before.json",
+    "method": "Exact JSON serialized CRLF bytes match independent pre-alias inventory and preceding frozen input hash.",
+    "scope": "Provenance metadata corrected after native interval. Before JSON content, current catalogue/runtime/art unchanged."
+  }
+}

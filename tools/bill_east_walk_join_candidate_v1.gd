@@ -1,0 +1,48 @@
+extends RefCounted
+## Explicitly installed by the review fixture; normal Bill has no join provider.
+var player=preload("res://scripts/crew_sprite_player.gd").new()
+var previous_state=""
+var started=-1.0
+var stopped=-1.0
+var last_time=-1.0
+var last_display:Texture2D
+var stop_source:Texture2D
+var start_source:Texture2D
+var start_slot=0
+var last_slot=0
+var stop_slot=0
+var idle:Texture2D
+var middle:Dictionary={}
+func _init():
+ player.load_manifest("res://character/bill-east-walk-joins-v1/manifest.json")
+ for slot in [0,12,24,36]:middle[slot]=player.frames["walk-settle-%03d-east"%slot][0]
+ idle=player.frames["walk-join-idle-east"][0]
+ for texture in [idle]+middle.values():texture.set_meta("major_bill_v2",true)
+func reset():
+ previous_state="";started=-1;stopped=-1;last_display=null;last_time=-1
+func known(texture:Texture2D)->bool:
+ for t in [idle]+middle.values():
+  if texture.get_image().get_data()==t.get_image().get_data():return true
+ return stop_source!=null and texture.get_image().get_data()==stop_source.get_image().get_data()
+func frame(state:String,direction:String,time:float,source:Texture2D,slot:int,actor)->Texture2D:
+ if direction!="east" or actor.helmet_equipped or actor.movement_medium!="dry" or state not in ["walk","idle"]:
+  reset();return source
+ if time<last_time:reset()
+ if state=="walk" and previous_state!="walk":
+  start_source=last_display if stopped>=0 and last_display!=null else idle
+  start_slot=stop_slot if stopped>=0 else 0
+  started=time;stopped=-1
+ if state=="idle" and previous_state=="walk":
+  stopped=time;stop_source=last_display;stop_slot=((last_slot+6)/12 as int)%4*12
+  if last_display==idle:stopped=-1
+ var shown=source
+ if state=="walk":
+  last_slot=slot
+  if time-started<.045:shown=start_source
+  elif time-started<.13:shown=middle[start_slot]
+ elif stopped>=0:
+  if time-stopped<.03 and stop_source!=null:shown=stop_source
+  elif time-stopped<.14:shown=middle[stop_slot]
+  else:stopped=-1
+ previous_state=state;last_display=shown;last_time=time
+ return shown

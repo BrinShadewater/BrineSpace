@@ -1,0 +1,112 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/xeno_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_xeno-containment-wall"
+					],
+					"purpose": "containment inspection access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"xeno_service_cart"
+					],
+					"purpose": "specimen transfer boundary",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "xeno_lab",
+			"machinery": [
+				{
+					"id": "xeno_samples",
+					"rect": [
+						-160.0,
+						67.0,
+						94.0,
+						68.0
+					]
+				},
+				{
+					"id": "xeno_workbench",
+					"rect": [
+						66.0,
+						84.0,
+						94.0,
+						70.0
+					]
+				},
+				{
+					"id": "full_wall_xeno-containment-wall",
+					"rect": [
+						-163.815002441406,
+						-174.0,
+						327.630004882813,
+						134.0
+					]
+				},
+				{
+					"id": "xeno_service_cart",
+					"rect": [
+						-108.0,
+						8.13674926757813,
+						50.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+		},
+		"layered": true,
+		"room": "xeno_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "xeno_scanner",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_xeno-containment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_workbench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_samples",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+	}
+]

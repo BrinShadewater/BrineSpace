@@ -1,0 +1,81 @@
+{
+  "room": "holographic_core",
+  "stage": "verified",
+  "layout": "layout_06_core",
+  "kind": "split-door",
+  "department": "Science / optical computing",
+  "condition": "maintained",
+  "sources": [
+    {
+      "source": "assets/holo-wall-v1/north-rejected.png",
+      "sha256": "6863f2250d4375fae5c5e690b7cbd1999593692476f63fe97e69281e510be53b",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "prompt": "assets/holo-wall-v1/north-rejected.prompt.txt",
+      "references": [
+        "rooms/underwater/batch-two/holographic_core-source-v1.png",
+        "assets/archive-wall-v1/north.png"
+      ],
+      "stage": "rejected",
+      "selected": false
+    },
+    {
+      "source": "assets/holo-wall-v1/north.png",
+      "sha256": "9273ea63264496ea8095d98b19258007d880f03a14e716a4c7d87fd2d7a6ffc7",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/holo-wall-v1/north.prompt.txt",
+      "references": [
+        "assets/holo-wall-v1/north-rejected.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    },
+    {
+      "source": "assets/holo-wall-v1/sides.png",
+      "sha256": "5e81e85c1564989958a6da65a3a2f27af4ec55b50272c32016f49bc19eeffe5a",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "prompt": "assets/holo-wall-v1/sides.prompt.txt",
+      "references": [
+        "assets/holo-wall-v1/north.png",
+        "assets/archive-wall-v1/sides.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    },
+    {
+      "source": "assets/holo-wall-v1/south.png",
+      "sha256": "12ba46c1e84d91b0b1577a7a1f3ac634b70bd7c9f54d74212a4e1c8b49d50c82",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/holo-wall-v1/south.prompt.txt",
+      "references": [
+        "assets/holo-wall-v1/north.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    }
+  ],
+  "pending": [],
+  "verification": {
+    "native": "output/holo-wall-review.log",
+    "anchors": "output/holo-wall-anchors.log",
+    "routes": "output/holo-wall-routes.log",
+    "source_audit": "output/holo-source-audit/audit.json",
+    "card": "assets/holo-wall-v1/card.png",
+    "row_cut_negative_control": "Y=780 rejected; Y=800 accepted"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "asset_id": "cargo-dolly-empty",
+  "department": "Logistics / storage",
+  "condition": "maintained with light handling wear",
+  "attachment_class": "low wheeled cargo platform",
+  "functional_bays": [
+    "empty deck",
+    "side restraint retainers",
+    "bottom push handle"
+  ],
+  "runtime_behavior": "static standalone state candidate; no hauling or transitions installed",
+  "camera_and_facing": "overhead; push handle bottom",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/cargo-dolly-v1/cargo-dolly.png",
+      "sha256": "839925b68be9af57e3c01b07f9c364415d4b227e79a523c38f86f756d4f1c26a",
+      "role": "loaded-state edit target; preserve frame geometry"
+    }
+  ],
+  "source_path": "assets/cargo-dolly-empty-v1/source.png",
+  "source_sha256": "4fdb92950afbc62ad6a922b12c25d69273478a325c56c0f769f874803b9f1a11",
+  "export_path": "assets/cargo-dolly-empty-v1/cargo-dolly-empty.png",
+  "export_sha256": "807e1e05c34c62dca744247438355500bd6c063a8897e4ffc42f2f9bc0549475",
+  "native_canvas_px": [
+    1081,
+    1455
+  ],
+  "proposed_display_width_world": 36.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Actual collision and state-switch visual check pending; include wheels and handle."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte brown-gray deck, dark pad and navy corner guards; no reflective cargo wrapping remains."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/cargo-dolly-empty-review.png",
+      "findings": [
+        "36-unit width reviewed beside furnished room/crew reference.",
+        "Empty deck and retained frame read clearly; registered bounds differ from loaded by +1 pixel width and +3 height."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "RGB checkerboard excluded at neutral185/spread22 with handle-aperture seed530,1100.",
+        "Light/dark review preserves empty deck, wheels and clear handle opening."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "State edits may preserve canvas but slightly change silhouette; record common region before runtime switching."
+  ],
+  "proposed_display_height_world": 52.27605633802817,
+  "registration_path": "assets/cargo-dolly-empty-v1/registration.json",
+  "registration_sha256": "7ed14db94ec2d89543a66baf2ec55f4b75e185ce2bfe951e04e626e1233ace41",
+  "prompt_path": "assets/cargo-dolly-empty-v1/source.prompt.txt",
+  "prompt_sha256": "d2b03288d2e4dbc5bc17cf852f44d59bb79683a0829d763d61673ad55ca23fdf",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "empty"
+}

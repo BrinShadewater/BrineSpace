@@ -1,0 +1,747 @@
+{
+  "scope": "Four labeled diagnostic processes, not primary timing. External observer, bounded five-second post-ready draw window, scene/loading/render boundaries and exact clock anchor. Cumulative CPU draw counters reconciled across resets; nested stages overlap. Render signal spans are wall time, not GPU execution. No production modification.",
+  "runs": [
+    {
+      "label": "trace-B-new-1-fresh",
+      "lane": "B",
+      "ready_ms": 5747.198,
+      "uncovered_ms": 6492.388,
+      "initial_art_ms": 575.041,
+      "setup_to_render_pre_ms": 291.895,
+      "setup_to_render_pre_grid_ms": 215.428,
+      "ready_to_uncover_ms": 745.19,
+      "tail_grid_ms": 589.983,
+      "tail_grid_by_kind_ms": {
+        "Grid": 2.754,
+        "EnvHazeLines": 0.102,
+        "EnvLiveAbove": 41.435,
+        "EnvExteriorActors": 6.825,
+        "EnvFog": 0.369,
+        "EnvLife": 40.107,
+        "LifeOverStation": 0.034,
+        "Floors": 0.153,
+        "FloorsRest": 0.036,
+        "Walls": 0.086,
+        "Lights": 0.684,
+        "EnvStaticBelow": 0.519,
+        "EnvFoundations": 4.134,
+        "EnvDerelicts": 341.344,
+        "LiveContents": 54.631,
+        "Foreground": 1.02,
+        "FloorSlot": 25.933,
+        "WallSlot/shell": 28.779,
+        "WallSlot/crown": 41.038,
+        "@Node2D@808": 0.0,
+        "@Node2D@809": 0.0,
+        "@Node2D@810": 0.0,
+        "@Node2D@811": 0.0,
+        "@Node2D@812": 0.0,
+        "@Node2D@813": 0.0,
+        "@Node2D@814": 0.0,
+        "@Node2D@815": 0.0,
+        "@Node2D@816": 0.0,
+        "@Node2D@817": 0.0,
+        "@Node2D@818": 0.0,
+        "@Node2D@819": 0.0,
+        "@Node2D@820": 0.0
+      },
+      "max_render_signal_span_ms": 14.167,
+      "largest_observer_boundary_gaps": [
+        {
+          "from": "event/loading_state",
+          "to": "event/main_added",
+          "start_action_ms": 118.733,
+          "ms": 978.927
+        },
+        {
+          "from": "event/main_added",
+          "to": "render/pre",
+          "start_action_ms": 1097.66,
+          "ms": 703.765
+        },
+        {
+          "from": "render/post",
+          "to": "event/loading_state",
+          "start_action_ms": 5746.922,
+          "ms": 589.034
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4966.233,
+          "ms": 308.16
+        },
+        {
+          "from": "event/after_scene_changed_deferred",
+          "to": "render/pre",
+          "start_action_ms": 5519.712,
+          "ms": 213.071
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 3122.285,
+          "ms": 180.513
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4549.464,
+          "ms": 169.089
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5275.85,
+          "ms": 124.343
+        }
+      ],
+      "events": [
+        {
+          "event": "loading_state",
+          "action_ms": 114.608,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[true, false, true, false, false]"
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 118.733,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, false, true, false, false]"
+        },
+        {
+          "event": "main_added",
+          "action_ms": 1097.66,
+          "pf_active": true,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "setup_last_ready",
+          "action_ms": 5440.888,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "main_ready",
+          "action_ms": 5441.308,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "scene_changed",
+          "action_ms": 5441.642,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "after_scene_changed_deferred",
+          "action_ms": 5519.712,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6335.956,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, true]"
+        },
+        {
+          "event": "first_complete_process",
+          "action_ms": 6335.97,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6364.826,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, false]"
+        },
+        {
+          "event": "loading_exiting",
+          "action_ms": 6487.321,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "trace-A-new-1-fresh",
+      "lane": "A",
+      "ready_ms": 5817.383,
+      "uncovered_ms": 6541.887,
+      "initial_art_ms": 564.05,
+      "setup_to_render_pre_ms": 301.155,
+      "setup_to_render_pre_grid_ms": 218.468,
+      "ready_to_uncover_ms": 724.504,
+      "tail_grid_ms": 580.451,
+      "tail_grid_by_kind_ms": {
+        "Grid": 2.524,
+        "EnvHazeLines": 0.105,
+        "EnvLiveAbove": 40.501,
+        "EnvExteriorActors": 6.082,
+        "EnvFog": 0.345,
+        "EnvLife": 38.132,
+        "LifeOverStation": 0.024,
+        "Floors": 0.164,
+        "FloorsRest": 0.036,
+        "Walls": 0.084,
+        "Lights": 0.728,
+        "EnvStaticBelow": 0.507,
+        "EnvFoundations": 4.081,
+        "EnvDerelicts": 336.971,
+        "LiveContents": 53.848,
+        "Foreground": 1.029,
+        "FloorSlot": 26.065,
+        "WallSlot/shell": 28.617,
+        "WallSlot/crown": 40.608,
+        "@Node2D@808": 0.0,
+        "@Node2D@809": 0.0,
+        "@Node2D@810": 0.0,
+        "@Node2D@811": 0.0,
+        "@Node2D@812": 0.0,
+        "@Node2D@813": 0.0,
+        "@Node2D@814": 0.0,
+        "@Node2D@815": 0.0,
+        "@Node2D@816": 0.0,
+        "@Node2D@817": 0.0,
+        "@Node2D@818": 0.0,
+        "@Node2D@819": 0.0,
+        "@Node2D@820": 0.0
+      },
+      "max_render_signal_span_ms": 14.397,
+      "largest_observer_boundary_gaps": [
+        {
+          "from": "event/loading_state",
+          "to": "event/main_added",
+          "start_action_ms": 120.723,
+          "ms": 978.232
+        },
+        {
+          "from": "event/main_added",
+          "to": "render/pre",
+          "start_action_ms": 1098.955,
+          "ms": 706.884
+        },
+        {
+          "from": "render/post",
+          "to": "event/loading_state",
+          "start_action_ms": 5817.076,
+          "ms": 580.126
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5019.833,
+          "ms": 311.541
+        },
+        {
+          "from": "event/after_scene_changed_deferred",
+          "to": "render/pre",
+          "start_action_ms": 5584.453,
+          "ms": 218.258
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4614.138,
+          "ms": 159.378
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5332.467,
+          "ms": 126.246
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4775.139,
+          "ms": 122.207
+        }
+      ],
+      "events": [
+        {
+          "event": "loading_state",
+          "action_ms": 117.355,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[true, false, true, false, false]"
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 120.723,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, false, true, false, false]"
+        },
+        {
+          "event": "main_added",
+          "action_ms": 1098.955,
+          "pf_active": true,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "setup_last_ready",
+          "action_ms": 5501.556,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "main_ready",
+          "action_ms": 5501.938,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "scene_changed",
+          "action_ms": 5502.407,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "after_scene_changed_deferred",
+          "action_ms": 5584.453,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6397.202,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, true]"
+        },
+        {
+          "event": "first_complete_process",
+          "action_ms": 6397.214,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6416.553,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, false]"
+        },
+        {
+          "event": "loading_exiting",
+          "action_ms": 6537.48,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "trace-A-new-2-fresh",
+      "lane": "A",
+      "ready_ms": 5913.691,
+      "uncovered_ms": 6535.068,
+      "initial_art_ms": 568.157,
+      "setup_to_render_pre_ms": 328.724,
+      "setup_to_render_pre_grid_ms": 229.608,
+      "ready_to_uncover_ms": 621.377,
+      "tail_grid_ms": 583.873,
+      "tail_grid_by_kind_ms": {
+        "Grid": 1.809,
+        "EnvHazeLines": 0.056,
+        "EnvLiveAbove": 40.405,
+        "EnvExteriorActors": 0.044,
+        "EnvFog": 0.212,
+        "EnvLife": 39.17,
+        "LifeOverStation": 0.02,
+        "Floors": 0.16,
+        "FloorsRest": 0.037,
+        "Walls": 0.085,
+        "Lights": 0.728,
+        "EnvStaticBelow": 0.534,
+        "EnvFoundations": 4.226,
+        "EnvDerelicts": 342.679,
+        "LiveContents": 54.273,
+        "Foreground": 0.99,
+        "FloorSlot": 26.65,
+        "WallSlot/shell": 30.712,
+        "WallSlot/crown": 41.083,
+        "@Node2D@808": 0.0,
+        "@Node2D@809": 0.0,
+        "@Node2D@810": 0.0,
+        "@Node2D@811": 0.0,
+        "@Node2D@812": 0.0,
+        "@Node2D@813": 0.0,
+        "@Node2D@814": 0.0,
+        "@Node2D@815": 0.0,
+        "@Node2D@816": 0.0,
+        "@Node2D@817": 0.0,
+        "@Node2D@818": 0.0,
+        "@Node2D@819": 0.0,
+        "@Node2D@820": 0.0
+      },
+      "max_render_signal_span_ms": 17.989,
+      "largest_observer_boundary_gaps": [
+        {
+          "from": "event/loading_state",
+          "to": "event/main_added",
+          "start_action_ms": 118.189,
+          "ms": 964.828
+        },
+        {
+          "from": "event/main_added",
+          "to": "render/pre",
+          "start_action_ms": 1083.017,
+          "ms": 718.3
+        },
+        {
+          "from": "render/post",
+          "to": "event/loading_state",
+          "start_action_ms": 5912.922,
+          "ms": 592.389
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5095.392,
+          "ms": 296.635
+        },
+        {
+          "from": "event/after_scene_changed_deferred",
+          "to": "render/pre",
+          "start_action_ms": 5676.127,
+          "ms": 218.85
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4688.38,
+          "ms": 159.982
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5393.205,
+          "ms": 128.168
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4850.208,
+          "ms": 122.183
+        }
+      ],
+      "events": [
+        {
+          "event": "loading_state",
+          "action_ms": 114.124,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[true, false, true, false, false]"
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 118.189,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, false, true, false, false]"
+        },
+        {
+          "event": "main_added",
+          "action_ms": 1083.017,
+          "pf_active": true,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "setup_last_ready",
+          "action_ms": 5566.253,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "main_ready",
+          "action_ms": 5566.804,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "scene_changed",
+          "action_ms": 5567.291,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "after_scene_changed_deferred",
+          "action_ms": 5676.127,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6505.311,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, true]"
+        },
+        {
+          "event": "first_complete_process",
+          "action_ms": 6505.323,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_exiting",
+          "action_ms": 6534.718,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "trace-B-new-2-fresh",
+      "lane": "B",
+      "ready_ms": 5881.287,
+      "uncovered_ms": 6502.288,
+      "initial_art_ms": 573.908,
+      "setup_to_render_pre_ms": 298.326,
+      "setup_to_render_pre_grid_ms": 218.834,
+      "ready_to_uncover_ms": 621.001,
+      "tail_grid_ms": 581.833,
+      "tail_grid_by_kind_ms": {
+        "Grid": 2.122,
+        "EnvHazeLines": 0.064,
+        "EnvLiveAbove": 40.68,
+        "EnvExteriorActors": 0.055,
+        "EnvFog": 0.213,
+        "EnvLife": 40.391,
+        "LifeOverStation": 0.017,
+        "Floors": 0.149,
+        "FloorsRest": 0.038,
+        "Walls": 0.084,
+        "Lights": 1.096,
+        "EnvStaticBelow": 0.543,
+        "EnvFoundations": 4.408,
+        "EnvDerelicts": 341.464,
+        "LiveContents": 54.005,
+        "Foreground": 0.896,
+        "FloorSlot": 26.311,
+        "WallSlot/shell": 28.874,
+        "WallSlot/crown": 40.423,
+        "@Node2D@808": 0.0,
+        "@Node2D@809": 0.0,
+        "@Node2D@810": 0.0,
+        "@Node2D@811": 0.0,
+        "@Node2D@812": 0.0,
+        "@Node2D@813": 0.0,
+        "@Node2D@814": 0.0,
+        "@Node2D@815": 0.0,
+        "@Node2D@816": 0.0,
+        "@Node2D@817": 0.0,
+        "@Node2D@818": 0.0,
+        "@Node2D@819": 0.0,
+        "@Node2D@820": 0.0
+      },
+      "max_render_signal_span_ms": 15.153,
+      "largest_observer_boundary_gaps": [
+        {
+          "from": "event/loading_state",
+          "to": "event/main_added",
+          "start_action_ms": 118.776,
+          "ms": 998.04
+        },
+        {
+          "from": "event/main_added",
+          "to": "render/pre",
+          "start_action_ms": 1116.816,
+          "ms": 714.53
+        },
+        {
+          "from": "render/post",
+          "to": "event/loading_state",
+          "start_action_ms": 5881.051,
+          "ms": 589.515
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5093.786,
+          "ms": 301.135
+        },
+        {
+          "from": "event/after_scene_changed_deferred",
+          "to": "render/pre",
+          "start_action_ms": 5649.047,
+          "ms": 217.041
+        },
+        {
+          "from": "event/grid_ready",
+          "to": "render/pre",
+          "start_action_ms": 4632.168,
+          "ms": 213.803
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 4472.174,
+          "ms": 127.8
+        },
+        {
+          "from": "render/post",
+          "to": "render/pre",
+          "start_action_ms": 5397.148,
+          "ms": 126.867
+        }
+      ],
+      "events": [
+        {
+          "event": "loading_state",
+          "action_ms": 113.475,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[true, false, true, false, false]"
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 118.776,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, false, true, false, false]"
+        },
+        {
+          "event": "main_added",
+          "action_ms": 1116.816,
+          "pf_active": true,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "setup_last_ready",
+          "action_ms": 5567.762,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "main_ready",
+          "action_ms": 5568.171,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "scene_changed",
+          "action_ms": 5568.611,
+          "pf_active": true,
+          "pf_tasks": 1,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "after_scene_changed_deferred",
+          "action_ms": 5649.047,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_state",
+          "action_ms": 6470.566,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0,
+          "state": "[false, true, true, true, true]"
+        },
+        {
+          "event": "first_complete_process",
+          "action_ms": 6470.582,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        },
+        {
+          "event": "loading_exiting",
+          "action_ms": 6501.391,
+          "pf_active": false,
+          "pf_tasks": 0,
+          "focused": true,
+          "window_mode": 0
+        }
+      ]
+    }
+  ]
+}

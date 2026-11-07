@@ -1,0 +1,439 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/data_archive.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "data",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"full_wall_archive-wall_cartridges"
+					],
+					"purpose": "rack service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"archive_terminal"
+					],
+					"purpose": "terminal inspection access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/data_archive_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "data_archive",
+			"machinery": [
+				{
+					"id": "archive_rack_0",
+					"rect": [
+						-143.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_rack_1",
+					"rect": [
+						85.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_library",
+					"rect": [
+						-154.0,
+						101.0,
+						84.0,
+						55.0
+					]
+				},
+				{
+					"id": "archive_terminal",
+					"rect": [
+						84.0,
+						46.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "archive_service_cart",
+					"rect": [
+						94.0,
+						136.0,
+						60.0,
+						24.0
+					]
+				},
+				{
+					"id": "archive_task_lamp",
+					"rect": [
+						70.0,
+						137.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/data-access.png",
+			"source_sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9",
+			"view": "res://rooms/full-wall-v1/data_archive_view.gd"
+		},
+		"layered": true,
+		"room": "data_archive",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_archive-wall_cartridges",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_archive-wall_index",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "archive_library",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_terminal",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_media_restoration_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_sealed_media_transit_case",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/data_archive_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/storage_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "logistics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"storage_lift"
+					],
+					"purpose": "loading transfer boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"full_wall_storage-wall_cargo"
+					],
+					"purpose": "rack restraint socket",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/storage_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "storage_bay",
+			"machinery": [
+				{
+					"id": "storage_crates",
+					"rect": [
+						-170.0,
+						105.0,
+						62.0,
+						42.0
+					]
+				},
+				{
+					"id": "storage_shelves",
+					"rect": [
+						84.0,
+						-142.352935791016,
+						88.0,
+						56.0
+					]
+				},
+				{
+					"id": "storage_lift",
+					"rect": [
+						-100.0,
+						94.0,
+						66.0,
+						50.0
+					]
+				},
+				{
+					"id": "storage_secured_rack",
+					"rect": [
+						116.0,
+						-48.0,
+						52.0,
+						36.0
+					]
+				},
+				{
+					"id": "storage_packing_bench",
+					"rect": [
+						43.0,
+						91.0,
+						62.0,
+						24.0
+					]
+				},
+				{
+					"id": "storage_waiting_case",
+					"rect": [
+						-145.0,
+						-109.0,
+						34.0,
+						14.0
+					]
+				},
+				{
+					"id": "storage_task_light",
+					"rect": [
+						108.0,
+						91.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "storage_staging_pallet",
+					"rect": [
+						-130.0,
+						-57.0,
+						60.0,
+						25.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/storage-load-deck.png",
+			"source_sha256": "95aaf0bb8c3987d4855d6c56510e83e887f57b84f3bcd5d77340c029a18f4fa0",
+			"view": "res://rooms/full-wall-v1/storage_bay_view.gd"
+		},
+		"layered": true,
+		"room": "storage_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_storage-wall_cargo",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_storage-wall_inventory",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "storage_crates",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_lift",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_cargo_sorting_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_folded_handling_dolly",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/storage_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/maintenance_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"maintenance_diagnostics"
+					],
+					"purpose": "diagnostic operator footing",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_maintenance-repair-wall"
+					],
+					"purpose": "repair wall maintenance access",
+					"rotations": {
+						"2": {
+							"stand_off": 42.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/maintenance_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "maintenance_bay",
+			"machinery": [
+				{
+					"id": "maintenance_panels",
+					"rect": [
+						-166.0,
+						107.0,
+						70.0,
+						44.0
+					]
+				},
+				{
+					"id": "maintenance_diagnostics",
+					"rect": [
+						65.0,
+						90.0,
+						64.0,
+						42.0
+					]
+				},
+				{
+					"id": "parts_trolley",
+					"rect": [
+						-82.0,
+						121.0,
+						44.0,
+						16.0
+					]
+				},
+				{
+					"id": "air_service_bottle",
+					"rect": [
+						145.0,
+						112.0,
+						26.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_maintenance-repair-wall",
+					"rect": [
+						-138.705062866211,
+						-174.0,
+						277.410125732422,
+						134.0
+					]
+				},
+				{
+					"id": "repair_task_light",
+					"rect": [
+						-62.5999984741211,
+						51.6999969482422,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+		},
+		"layered": true,
+		"room": "maintenance_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "maintenance_component_rebuild_cradle",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_fastener_drawer_chest",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_maintenance-repair-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_panels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_diagnostics",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+	}
+]

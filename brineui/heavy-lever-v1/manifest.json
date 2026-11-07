@@ -1,0 +1,31 @@
+{
+  "source": "atlas.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGB",
+  "sha256": "04403626c608ed93a206e6d18e6f6fd4988412ee16d2e3bd2cd90a75eb5f9df6",
+  "regions": {
+    "raised": [
+      110,
+      32,
+      575,
+      932
+    ],
+    "lowered": [
+      850,
+      32,
+      575,
+      932
+    ]
+  },
+  "method": "built-in image_gen",
+  "reference": "../industrial-switches-v1/atlas.png",
+  "notes": "Opaque backing. Two endpoint poses, not a continuous drag animation. Minor generated housing differences remain.",
+  "indicators": {
+    "raised": "red / off",
+    "lowered": "green / on"
+  },
+  "previous_source": "atlas-amber-v1.png"
+}

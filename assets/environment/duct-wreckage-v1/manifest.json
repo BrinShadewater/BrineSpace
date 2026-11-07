@@ -1,0 +1,49 @@
+{
+  "title": "Collapsed ventilation duct study",
+  "prompt_records": [
+    "generation-record.json",
+    "revision-record.json",
+    "fresh-record.json"
+  ],
+  "assets": [
+    {
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending",
+      "versions": [
+        {
+          "sha256": "e80eef6fc179deea195b1419fc85f8b0d7439b20afefb62d5fe9779877fb3641",
+          "rejection": "Too much side-wall relief; mounting flange touches canvas edge. Study source only.",
+          "file": "collapsed-vent-duct-v1.png"
+        },
+        {
+          "file": "collapsed-vent-duct-v2.png",
+          "sha256": "4b55267d966a563f876eec294f0796b4b26aa8c6dc1aa332478092217b3a8926",
+          "rejection": "Opaque RGB checkerboard; framing improved but not usable transparency"
+        },
+        {
+          "rejection": null,
+          "file": "collapsed-vent-duct-v3.png",
+          "sha256": "3717cad63887c7d181489274992c4e75ed8418ad92ceb0cc13e0a8a4ad3cdbbe"
+        }
+      ],
+      "selected_source": "collapsed-vent-duct-v3.png",
+      "kind": "prop",
+      "id": "collapsed-vent-duct"
+    }
+  ],
+  "schema_version": 1,
+  "runtime_registry": "duct_view.gd",
+  "native_previews": [
+    {
+      "path": "../../../output/duct-wreckage-v1/terrain-scale.png",
+      "label": "Native terrain comparison: 0.40, 0.50 and 0.65 cell widths"
+    },
+    {
+      "path": "../../../output/duct-station-v1/group-1-1600.png",
+      "label": "Native room-adjacent duct placement on pale shoal"
+    },
+    {
+      "path": "../../../output/environment-export-v14/captures/debris-collapsed-duct.png",
+      "label": "Isolated Windows debug build: collapsed duct on pale shoal"
+    }
+  ]
+}

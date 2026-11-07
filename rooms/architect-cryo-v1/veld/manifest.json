@@ -1,0 +1,34 @@
+{
+  "name": "veld-cryo-v1",
+  "frameWidth": 418,
+  "frameHeight": 627,
+  "pivot": [
+    210,
+    560
+  ],
+  "source": "../veld-source.png",
+  "sourceSha256": "f95f42c02bea2d7eda5f18fbbb1c04007b23376617903e4bf931dab31d5120e4",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "sourceMode": "RGB",
+  "durationSeconds": 7.0,
+  "cleanup": "Project clear_exterior: remove edge-connected neutral pixels; no stretching/mirroring",
+  "states": [
+    {
+      "id": "wake-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "wake-0.png",
+        "wake-1.png",
+        "wake-2.png",
+        "wake-3.png",
+        "wake-4.png",
+        "wake-5.png"
+      ],
+      "fps": 0.8571428571428571,
+      "loop": false
+    }
+  ]
+}

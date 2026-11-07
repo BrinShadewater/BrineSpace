@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-radio-signal-wall",
+  "department": "Communications",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Dark charcoal/slate fitted casing with small subdued burgundy/red accent tabs, grey rubber and dark radio backs, tactile panel seams and inset rear service vents. Keep antennas, handset and instruments, warm grey working pad, quiet small signal-light accents only. No bright screen fronts on viewer side."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/radio-signal-wall.png",
+      "sha256": "cfd9d3ae0c67e8c60a58b486751b3bb8035edbb5e6a731df9b68ac8e8bd2cff7",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/wall-room-rollout-v1/radio-signal-wall.png",
+      "sha256": "215140a22cae1e48694fbbb81f599d42eae606e1933f9c868765f5d89dc2354c",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/radio-signal-wall.png",
+  "source_sha256": "9d726141e604f480cc53f3364fc15152df66e579055e74fd6ea8b6c3e8e05453",
+  "export_path": "assets/room-style-polish-v1/exports/radio-signal-wall.png",
+  "export_sha256": "ee0a1d5bdaf07f106f16136db7890adb79d0728d13a03903f67fbf7c1ccaf7c0",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    91.33367503844183
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Dark charcoal/slate fitted casing with small subdued burgundy/red accent tabs, grey rubber and dark radio backs, tactile panel seams and inset rear service vents. Keep antennas, handset and instruments, warm grey working pad, quiet small signal-light accents only. No bright screen fronts on viewer side.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/radio-signal-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1048,
+            525
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Selectable tray view; current default chooses another mounting wall."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 91.33367503844183,
+  "registration_path": "rooms/full-wall-v1/registrations/side-radio-signal-wall-south.json",
+  "registration_sha256": "73a81e05adc7078f0b31fdbe5f73d7e8f6acbbeeb1cb61f84bb96dcb66e5a9a6",
+  "prompt_path": "assets/room-style-polish-v1/radio-signal-wall.prompt.txt",
+  "prompt_sha256": "70f833f37c6e88861ee18a10471d1a2a75196858c4503b513b20a7500cbad98f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

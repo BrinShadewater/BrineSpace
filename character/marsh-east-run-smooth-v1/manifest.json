@@ -1,0 +1,68 @@
+{
+  "revision": "marsh-east-run-airborne-registration-v1",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "strideDistanceCells": {
+    "run-east": 0.11027027027027027
+  },
+  "states": [
+    {
+      "id": "run-east",
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameFiles": [
+        "res://character/marsh-east-run-material-v1/candidate-03/000.png",
+        "res://character/marsh-east-run-material-v1/candidate-03/001.png",
+        "res://character/marsh-east-run-smooth-v1/run-east-002-registered.png",
+        "res://character/marsh-east-run-material-v1/candidate-03/003.png",
+        "res://character/marsh-east-run-material-v1/candidate-03/004.png",
+        "res://character/marsh-east-run-material-v1/candidate-03/005.png"
+      ]
+    }
+  ]
+}

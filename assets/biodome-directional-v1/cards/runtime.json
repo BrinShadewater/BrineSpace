@@ -1,0 +1,125 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/biodome.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"full_wall_biodome-habitat-wall"
+					],
+					"purpose": "aquatic servicing runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"biodome_processor",
+						"full_wall_biodome-habitat-wall"
+					],
+					"purpose": "fluid service isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/biodome_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "biodome",
+			"machinery": [
+				{
+					"id": "biodome_tree",
+					"rect": [
+						-159.0,
+						-133.782318115234,
+						94.0,
+						74.0
+					]
+				},
+				{
+					"id": "biodome_ferns",
+					"rect": [
+						51.0,
+						-121.0,
+						106.0,
+						76.0
+					]
+				},
+				{
+					"id": "biodome_aquatic",
+					"rect": [
+						-158.0,
+						72.0,
+						96.0,
+						66.0
+					]
+				},
+				{
+					"id": "biodome_processor",
+					"rect": [
+						58.0,
+						74.0,
+						108.0,
+						80.0
+					]
+				},
+				{
+					"id": "biodome_cultivation_cart",
+					"rect": [
+						-154.0,
+						15.0,
+						54.0,
+						20.0
+					]
+				},
+				{
+					"id": "biodome_propagation_shelf",
+					"rect": [
+						84.0,
+						12.0,
+						64.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/full-wall-v1/biodome_view.gd"
+		},
+		"layered": true,
+		"room": "biodome",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "biodome_processor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_biodome-habitat-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_tree",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/biodome_view.gd"
+	}
+]

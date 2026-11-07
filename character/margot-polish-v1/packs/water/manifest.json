@@ -1,0 +1,215 @@
+{
+  "character": "margot-polish-v1",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "installed-source",
+  "mirrored": false,
+  "calibration": {
+    "south": {
+      "motionScale": 0.28,
+      "sitScale": 0.24327868852459017,
+      "referenceBonnetWidths": [
+        106,
+        122
+      ],
+      "groomScale": 0.2558620689655173,
+      "napScale": 0.22830769230769232,
+      "extrasScale": 0.2938613861386139,
+      "swimScale": 0.23744000000000004,
+      "petScale": 0.12793103448275864
+    },
+    "west": {
+      "motionScale": 0.28,
+      "sitScale": 0.2246511627906977,
+      "referenceBonnetWidths": [
+        69,
+        86
+      ],
+      "groomScale": 0.21707865168539325,
+      "napScale": 0.2123076923076923,
+      "extrasScale": 0.2576,
+      "swimScale": 0.2576
+    },
+    "north": {
+      "motionScale": 0.28,
+      "sitScale": 0.1513513513513514,
+      "referenceBonnetWidths": [
+        80,
+        148
+      ],
+      "groomScale": 0.22400000000000003,
+      "napScale": 0.21747572815533983,
+      "extrasScale": 0.2488888888888889,
+      "swimScale": 0.2488888888888889
+    },
+    "east": {
+      "motionScale": 0.28,
+      "sitScale": 0.2260240963855422,
+      "referenceBonnetWidths": [
+        67,
+        83
+      ],
+      "groomScale": 0.2039130434782609,
+      "napScale": 0.215632183908046,
+      "extrasScale": 0.26422535211267606,
+      "swimScale": 0.24051282051282052
+    }
+  },
+  "sourceHashes": {
+    "locomotion-v1.png": "c15e64db9b20545ba804885c8dc518183159dcd3096f7d05b86776a4ebc9d0b6",
+    "sit-v1.png": "a98bae39f88e873a23108b7ca903644904a4aa189161ae0a9fb68b8b5eb7203c",
+    "sit-v3.png": "52fcced29f24104a1c67b1fcc633adf680c08163afd9df8dadfcda206c1d7d1b",
+    "sit-north-v4.png": "095ad2b6e2df55fe1933793f55d2caff94f535fe8f496a22e7720ab42b63fc03",
+    "groom-v1.png": "666d540a9ed30297498b96fd80c907b456ab167daee93c0a38e9f63137bbafda",
+    "nap-v1.png": "ab3418a7153023f1f4c147d1701570c6ec408896fea49d65c0942d0e16d5710c",
+    "extras-v1.png": "67b55242cb7c84a68e5e4657119d3493b0380ac8e4a122f84f30c05dbd69db52",
+    "pet-v1.png": "bd6e6ab5e9d40735052c4fd48e830fb2e2d08a3d330f3dbe99ec7599a48f58a3",
+    "swim-v1.png": "464d9aff54af6fb2e1e58df29949049755e36a7433f8363605c9ce8cf6436d5c"
+  },
+  "strideDistanceCells": {
+    "walk": 0.07
+  },
+  "states": [
+    {
+      "id": "swim-south",
+      "frameFiles": [
+        "../../frames/swim-south/000.png",
+        "../../frames/swim-south/001.png",
+        "../../frames/swim-south/002.png",
+        "../../frames/swim-south/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-idle-south",
+      "frameFiles": [
+        "../../frames/swim-idle-south/000.png",
+        "../../frames/swim-idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-west",
+      "frameFiles": [
+        "../../frames/swim-west/000.png",
+        "../../frames/swim-west/001.png",
+        "../../frames/swim-west/002.png",
+        "../../frames/swim-west/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-idle-west",
+      "frameFiles": [
+        "../../frames/swim-idle-west/000.png",
+        "../../frames/swim-idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-north",
+      "frameFiles": [
+        "../../frames/swim-north/000.png",
+        "../../frames/swim-north/001.png",
+        "../../frames/swim-north/002.png",
+        "../../frames/swim-north/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-idle-north",
+      "frameFiles": [
+        "../../frames/swim-idle-north/000.png",
+        "../../frames/swim-idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-east",
+      "frameFiles": [
+        "../../frames/swim-east/000.png",
+        "../../frames/swim-east/001.png",
+        "../../frames/swim-east/002.png",
+        "../../frames/swim-east/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    },
+    {
+      "id": "swim-idle-east",
+      "frameFiles": [
+        "../../frames/swim-idle-east/000.png",
+        "../../frames/swim-idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350
+      ],
+      "loop": true,
+      "provenance": "authored",
+      "water": true,
+      "surfaceLine": 148
+    }
+  ]
+}

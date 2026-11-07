@@ -1,0 +1,55 @@
+{
+  "asset_id": "repair-trolley",
+  "department": "Engineering",
+  "condition": "maintained with localized handling wear",
+  "attachment_class": "small freestanding service cart",
+  "camera_and_facing": "overhead; diagnostic controls and push handle bottom",
+  "references": [],
+  "source_path": "assets/repair-trolley-v1/source-v2.png",
+  "source_sha256": "e724297531f2ebe43684669ae9c75c520c11cb0215a1f62fb6602bf7b3197473",
+  "export_path": "assets/repair-trolley-v1/repair-trolley.png",
+  "export_sha256": "78e1610ba7bf6d77ca87ef2c51c9356b9e0557ffaff654042f2c64537cab9be2",
+  "native_canvas_px": [
+    1095,
+    1437
+  ],
+  "proposed_display_width_world": 38,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Actual floor footprint and room routes not yet established."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "V2 changes silver spanners to matte gunmetal and reduces broad surface speckling.",
+        "Dark powder coat, rubber and ochre bumpers remain distinct."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/repair-trolley-review.png",
+      "findings": [
+        "38 units wide, approximately62 units tall; viewed beside established furnishings/crew.",
+        "Tool and cable recesses read as groups; fine spanner details simplify."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "RGB V2 checkerboard excluded with neutral minimum190, spread22.",
+        "Explicit enclosed push-handle gap seed500,1117 removed; vector and exported pixel checks pass.",
+        "Light/dark native board inspected; no visible checkerboard."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Handle apertures require explicit review even when the exterior alpha looks clean.",
+    "Specify finish on individual metal hand tools; a matte cart brief alone left silver tool edges."
+  ]
+}

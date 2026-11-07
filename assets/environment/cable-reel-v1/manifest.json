@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "title": "Collapsed cable reel",
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "id": "collapsed-cable-reel",
+      "kind": "prop",
+      "selected_source": "collapsed-cable-reel-v1.png",
+      "versions": [
+        {
+          "file": "collapsed-cable-reel-v1.png",
+          "sha256": "bb1933b43b1a5f3b2cca3b79cffc2e0e0987f814f038c812ed023bc3050249dc",
+          "rejection": null
+        }
+      ],
+      "stage": "integrated; native and isolated Windows export reviewed; owner approval pending"
+    }
+  ],
+  "native_previews": [
+    {
+      "path": "../../../output/cable-reel-v1/terrain-scale.png",
+      "label": "Native cable reel at three cell widths on pale sediment and ash"
+    },
+    {
+      "path": "../../../output/cable-reel-station-v1/group-1-1600.png",
+      "label": "Native station: half-cell cable reel on pale sediment"
+    },
+    {
+      "path": "../../../output/environment-export-v22/captures/debris-cable-reel.png",
+      "label": "Isolated Windows export: cable reel on pale sediment"
+    }
+  ],
+  "runtime_registry": "cable_reel_view.gd"
+}

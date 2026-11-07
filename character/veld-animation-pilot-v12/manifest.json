@@ -1,0 +1,247 @@
+{
+  "name": "veld-new-design-motion-pilot",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "review_candidate_not_installed",
+  "palettePolicy": "Brightness matched to idle, then skin/blue/cloth plus bounded hair, silver streak, ivory and bright steel mapped along locked ramps. Continuous shading; not flat 24-colour quantization.",
+  "strideDistanceCells": {
+    "walk": 0.11716216216216217,
+    "walk-west": 0.15904365904365905
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png",
+        "frames/idle-south/002.png",
+        "frames/idle-south/003.png",
+        "frames/idle-south/004.png",
+        "frames/idle-south/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-south-01.png",
+      "source_sha256": "48dd1a6967fc7df38135165c5600f86b532908aff532e0cd083d42f8531f98c3",
+      "mirrored": false,
+      "extractionScales": [
+        0.23987034035656402,
+        0.23948220064724918,
+        0.23987034035656402,
+        0.24143556280587275,
+        0.24143556280587275,
+        0.24143556280587275
+      ]
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png",
+        "frames/idle-east/002.png",
+        "frames/idle-east/003.png",
+        "frames/idle-east/004.png",
+        "frames/idle-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-east-01.png",
+      "source_sha256": "10f72166952e2a2ac3df31a18d523edb485fb58427da4f216b4ec4180da10e5a",
+      "mirrored": false,
+      "extractionScales": [
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3064182194616977,
+        0.3076923076923077,
+        0.3064182194616977
+      ]
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "loop": true,
+      "source": "sources/walk-east-01.png",
+      "source_sha256": "fcc2a6437cfcfe9e2363f75bc431fa4884eca827d70bff0f4c8a07f99d09b0d9",
+      "mirrored": false,
+      "extractionScales": [
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576,
+        0.3099476439790576
+      ]
+    },
+    {
+      "id": "interact-east",
+      "frameFiles": [
+        "frames/interact-east/000.png",
+        "frames/interact-east/001.png",
+        "frames/interact-east/002.png",
+        "frames/interact-east/003.png",
+        "frames/interact-east/004.png",
+        "frames/interact-east/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        160,
+        180,
+        180,
+        480,
+        180,
+        160
+      ],
+      "loop": false,
+      "source": "sources/interact-east-01.png",
+      "source_sha256": "ec285557c0947dfa4906166a59adacbaccfa793ff93388293080af288ff5ff7b",
+      "mirrored": false,
+      "extractionScales": [
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3076923076923077,
+        0.3064182194616977,
+        0.3076923076923077,
+        0.3064182194616977
+      ],
+      "frameDerivations": {
+        "0": "frames/idle-east/000.png",
+        "5": "frames/idle-east/000.png"
+      },
+      "joinPolicy": "Exact shared idle-east frame zero at entry and exit; generated middle four poses."
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png",
+        "frames/idle-west/002.png",
+        "frames/idle-west/003.png",
+        "frames/idle-west/004.png",
+        "frames/idle-west/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-west-01.png",
+      "source_sha256": "ceab0194a1a11c9e162cb50857e983ffa80ce92c8cd61fdb329f1bfc0de18087",
+      "mirrored": false,
+      "extractionScales": [
+        0.31223628691983124,
+        0.31223628691983124,
+        0.31223628691983124,
+        0.31157894736842107,
+        0.31157894736842107,
+        0.31157894736842107
+      ]
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png",
+        "frames/walk-west/004.png",
+        "frames/walk-west/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "loop": true,
+      "source": "sources/walk-west-01.png",
+      "source_sha256": "8cfee936ce51c50014b63cabd2818991f95a0162351f53bd161203f1729d8405",
+      "mirrored": false,
+      "extractionScales": [
+        0.3152289669861555,
+        0.3152289669861555,
+        0.3152289669861555,
+        0.3152289669861555,
+        0.3152289669861555,
+        0.3152289669861555
+      ]
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png",
+        "frames/idle-north/002.png",
+        "frames/idle-north/003.png",
+        "frames/idle-north/004.png",
+        "frames/idle-north/005.png"
+      ],
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "loop": true,
+      "source": "sources/idle-north-01.png",
+      "source_sha256": "dc9b1320c1de9a7c4ea05230800a307a5ada852c4689b96a73fa6dc41fff4323",
+      "mirrored": false,
+      "extractionScales": [
+        0.32599118942731276,
+        0.3238512035010941,
+        0.3238512035010941,
+        0.32599118942731276,
+        0.3288888888888889,
+        0.3288888888888889
+      ]
+    }
+  ]
+}

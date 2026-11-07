@@ -1,0 +1,48 @@
+{
+  "source": "character/marsh-motion-polish-v1/sources/walk-east-video-01.mp4",
+  "output": "character/marsh-motion-polish-v1/review/walk-east-video-cycle-01",
+  "state": "walk-east",
+  "sourceFrames": [
+    36,
+    41,
+    45,
+    50,
+    55,
+    59
+  ],
+  "sourceCycle": [
+    36,
+    64
+  ],
+  "durations": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+  ],
+  "sourceSize": [
+    1248,
+    1664
+  ],
+  "fps": 24,
+  "scale": 0.10652173913043478,
+  "position": [
+    62,
+    59
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Fixed anatomical scale, pelvis approximately x624 and ground y1543.",
+    "Independent source cycle 36-64; no per-pose bounding-box normalization.",
+    "Marsh remains helmet-free. Selected with 96 dense pixels per cycle; native and live walk checks recorded in docs/HANDOFF_MARSH_MOTION_2026-09-12.md. Boundary heel measurements do not prove continuous foot locking."
+  ]
+}

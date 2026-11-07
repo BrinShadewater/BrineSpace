@@ -1,0 +1,37 @@
+{
+  "title": "Fractured basalt study",
+  "assets": [
+    {
+      "id": "fractured-basalt-slab",
+      "selected_source": "fractured-basalt-slab-v1.png",
+      "versions": [
+        {
+          "file": "fractured-basalt-slab-v1.png",
+          "rejection": null,
+          "sha256": "bc02f39f9c06120ba543ddc24eda928e0cf01e29632e49af6fc8b4d76c589ce2"
+        }
+      ],
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending",
+      "kind": "prop"
+    }
+  ],
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "schema_version": 1,
+  "native_previews": [
+    {
+      "label": "Native pale sediment and ash comparison at 0.35, 0.45 and 0.55 cell widths",
+      "path": "../../../output/fractured-rock-v1/terrain-scale.png"
+    },
+    {
+      "path": "../../../output/fractured-rock-station-v1/group-1-1600.png",
+      "label": "Native station view: fractured plates beneath room geometry on ash"
+    },
+    {
+      "path": "../../../output/environment-export-v13/captures/rocks-fractured-basalt.png",
+      "label": "Isolated Windows debug build: fractured basalt beside porous stones on ash"
+    }
+  ],
+  "runtime_registry": "fractured_rock_view.gd"
+}

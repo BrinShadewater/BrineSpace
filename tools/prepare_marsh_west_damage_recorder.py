@@ -1,0 +1,15 @@
+"""Prepare scoped West normal milestone recorder from checkpoint proof template."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];target=ROOT/'tools/record_marsh_west_damage_normal.py';assert not target.exists()
+text=(ROOT/'tools/record_marsh_north_damage_normal.py').read_text().replace('north','west').replace('North','West').replace('NORTH','WEST')
+text=text.replace('59x132 versus idle55x146:14row articulation reduction','44x134 versus idle31x147:13row articulation reduction')
+text=text.replace('Source02 neutral56x147','Source02 neutral32x147').replace('dark\nrear exposed soles legitimate','dark\nsole/heel material distinct from ivory boot uppers')
+text=text.replace('115','123').replace('69body','73body').replace('cf5nhdamn1v73','cl2whdamn7v79')
+text=text.replace('right-screen glove droplets','visible glove-side droplets').replace('West final sole-facing feet remain','West final dark sole/heel surfaces remain')
+text=text.replace('East/West old head/shoulder/detail\njoins need their own master repair','Run/carry/other action head/shoulder/detail\njoins need their own master review')
+text=text.replace('East/West older head/shoulder/detail density joins still need own-master comparison.','Run/carry/other action density joins need their own-master comparison.')
+text=text.replace('East native collapse and white-fluid/rise family, then West and full-set','Current whole-set source inventory, remaining-family review and full-set')
+text=text.replace('East complete source01 also retained/packaged, unselected, native review pending.','Current selected family inventory has74whole source boards; acceptance remains open.')
+text=text.replace('Native East source01 collapse study, independent white-fluid/rise and normal\ncheckpoint family; then West repair and full-set master/style/proportion/grade','Review remaining selected families, starting run-to-idle/walk; full-set\nmaster/style/proportion/grade')
+target.write_text(text)
+print('Prepared West recorder; run only after native/family inspection.')

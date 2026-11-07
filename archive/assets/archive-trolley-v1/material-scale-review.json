@@ -1,0 +1,68 @@
+{
+  "asset_id": "archive-trolley-v1",
+  "department": "Archive",
+  "condition": "Maintained",
+  "attachment_class": "Freestanding wheeled trolley",
+  "functional_bays": [],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; push handle south",
+  "references": [
+    {
+      "path": "assets/archive-restoration-wall-v1/archive-restoration-wall.png",
+      "sha256": "d2a47905da27abc40c2413fc2cbc8d819fdce5aec8986fe9bda6948071a8e4df",
+      "role": "Companion materials, camera and media subject"
+    }
+  ],
+  "source_path": "assets/archive-trolley-v1/source.png",
+  "source_sha256": "be01649734442d04bb7aca4a8fd74577ba1c1c1bc635df2b9e774cfcece20383",
+  "export_path": "assets/archive-trolley-v1/archive-trolley.png",
+  "export_sha256": "db6f94dc04bfa80f5325b03df6f0766c0c2708b613d948c19294bda71cf9deec",
+  "native_canvas_px": [
+    1241,
+    1268
+  ],
+  "proposed_display_width_world": 32.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Include wheels and projecting handle in footprint; occupied pushing and aisle access unverified"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Matte graphite tray and dusty-blue shelf; pale paper tabs remain contained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "32-unit trolley remains modest beside328-unit bench. Cartridge details simplify; same general media family, not exact interchangeable item geometry."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral190 registration with handle seed600,906; handle alpha0 and backed tray alpha255 verified. Native light/dark boards inspected."
+      ]
+    },
+    "native_evidence": "output/archive-trolley-review.png",
+    "group_evidence": "output/archive-trolley-group.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 30.0,
+  "registration_path": "assets/archive-trolley-v1/registration.json",
+  "registration_sha256": "a69386936c5d95f8b069593698830cbcd8257a534b1693e714d389b91a10d617",
+  "prompt_path": "assets/archive-trolley-v1/source.prompt.txt",
+  "prompt_sha256": "b7db1e9d26bb3d592c58881b22019807b73be77e08a592e18123d7bdbe27dad8",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "Loaded: three cartridges on upper tray, one closed case below"
+}

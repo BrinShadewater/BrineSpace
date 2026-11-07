@@ -1,0 +1,61 @@
+{
+  "asset_id": "operator-stool-v1",
+  "department": "Operations",
+  "condition": "Maintained fabric and painted frame",
+  "attachment_class": "Freestanding low stool",
+  "functional_bays": [],
+  "runtime_behavior": null,
+  "camera_and_facing": "Top-down shallow cutaway; no backrest; proposed operator faces north",
+  "references": [],
+  "source_path": "assets/operator-stool-v1/source.png",
+  "source_sha256": "106862b0a14972ccbeab89c3a203b07a037653e789ff40a4d2239e8e90269de8",
+  "export_path": "assets/operator-stool-v1/operator-stool.png",
+  "export_sha256": "b63671eb09af4abf444559a8d6475e48845dee3b3d08005227199e932b368428",
+  "native_canvas_px": [
+    1402,
+    1122
+  ],
+  "proposed_display_width_world": 22.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Reserve footrest and occupied operator space; static group is not clearance validation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Quiet charcoal fabric and matte olive frame."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "22-unit stool stays modest beside 328-unit console; weave simplifies at native scale."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Footrest aperture at (700,750) has alpha 0; retained seat at (700,450) has near-opaque alpha 253. Dark/light board inspected."
+      ]
+    },
+    "native_evidence": "output/operator-stool-review.png",
+    "group_evidence": "output/operator-stool-group.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 26.340996168582375,
+  "registration_path": "assets/operator-stool-v1/registration.json",
+  "registration_sha256": "e7dafc2e2e6bc53a41de08e1caf51a9864acf70d6ffb1d14f4ebf8c3e474ab31",
+  "prompt_path": "assets/operator-stool-v1/source.prompt.txt",
+  "prompt_sha256": "32e60204280cdbbb6b538d5b542842d2c22d2e0477b94c7de13cfd2fd31bed8a",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

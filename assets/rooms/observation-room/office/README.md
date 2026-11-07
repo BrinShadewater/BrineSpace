@@ -1,0 +1,20 @@
+# Matching observation-office assets
+
+Separate south-facing desk and chair art, matching the approved darker observation-room palette. Desk, rear chair and reading set are now installed in the live observation room. Native 1254-square transparent PNGs: wooden-desk.png and office-chair.png. Original RGB generator outputs retained; their baked checkerboard is excluded by vector registration, including reviewed chair gaps. Native cutouts visually inspected. Desk knee space and chair openings are transparent. Live furniture has matching collision footprints.
+
+Built-in image-generation prompts:
+
+## Desk
+Create ONE standalone wooden OFFICE DESK game art asset matching the supplied BrineSpace observation-library reference. Reference is MATERIAL AND RENDERING STYLE ONLY, do not reproduce the room. Dark walnut timber, aged bronze small handles, charcoal steel feet/edge brackets, restrained warm taupe drawer insets. Slightly dark, mostly maintained, rich painterly pixel-art detail matching reference. Straight-on elevated orthographic cutaway camera from SOUTH, desk long edge perfectly horizontal, visible desktop and south-facing working front, no diagonal isometric yaw. Compact practical rectangular desk with square corners and small bevels; drawers on one side, supported leg on other, generous EMPTY knee opening in middle for a separate office chair. Empty clean usable desktop, no computer, no lamp, no books, no chair. Complete silhouette with all feet inside canvas and ample margin. Genuine transparent alpha background including space between legs; no painted checkerboard, no floor, no room, no ground shadow outside object. One asset centered on square canvas. No text, no watermark. Preserve furniture scale and subdued palette of the reference. This is reusable station furniture, not a full room illustration.
+
+## Chair
+Create ONE standalone OFFICE CHAIR game art asset matching the supplied BrineSpace observation-library reference's approved darker palette and painterly pixel-art rendering. Reference is materials/style only. Dark walnut wooden arms and back frame, subdued dark chestnut-brown leather seat/back upholstery, charcoal steel compact swivel base with five small stable feet/casters, restrained aged bronze hardware. Practical comfortable office chair, not throne, not gaming racing chair. Straight-on elevated orthographic camera from SOUTH matching reference: chair faces south toward viewer, horizontal features level, see seat top and front face of backrest, no diagonal isometric yaw. Clear readable shape at small game scale, mostly maintained with subtle handling wear, no exaggerated gloss. All feet visible inside canvas, ample transparent margins. ONE chair alone, no desk, no room, no floor, no person, no text, no lamps/glow. Genuine transparent alpha exterior and between arms/base, not imitation checkerboard. Full object on square canvas. Match a modest wooden office desk, warm dark walnut and muted bronze, restrained highlights.
+
+Reference for both: rooms/underwater/observation-room-v1/source-v3.png (materials and rendering style). Source JSON registrations preserve hashes; cutouts rendered through Godot, evidence output/observation-office.log. Live scale, collision and crew routes are verified by tests/test_observation_room.gd.
+
+
+## Completed-room preview
+
+completed-room.png is a native Godot composition with the desk, pulled-out chair, existing riser wall and silt foundations. Preview scripts preserve live room placement and player settings. Five-prop bounds and a route from the south entrance to the window pass; evidence: output/observation-completed-room.log. The south socket is sealed for the unconnected preview, following the normal card convention. The preview now uses the live furnished view. Reading prompts are recorded in reading-prompts.md.
+
+Latest verification: output/observation-reading-test.log, output/observation-card-furnished.log and output/observation-crew-regression.log. Crew use a north idle sprite lowered behind the chair for sit/read/rise; no new full-body character animation sheet was created.

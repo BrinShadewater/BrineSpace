@@ -1,0 +1,356 @@
+{
+ "_note": "Per-sheet fixes. Numbers are the cut numbers on the contact sheet; boxes are [x0,y0,x1,y1] in design pixels.",
+ "life_support-extra2": {
+  "rebox": {
+   "1": [
+    122,
+    118,
+    468,
+    328
+   ],
+   "2": [
+    782,
+    118,
+    1133,
+    328
+   ]
+  }
+ },
+ "anomaly-extra1": {
+  "rebox": {
+   "2": [
+    778,
+    108,
+    1144,
+    362
+   ]
+  }
+ },
+ "recreation-extra3": {
+  "rebox": {
+   "1": [
+    108,
+    84,
+    458,
+    238
+   ],
+   "4": [
+    742,
+    252,
+    912,
+    442
+   ]
+  },
+  "add": [
+   [
+    136,
+    243,
+    532,
+    467
+   ],
+   [
+    918,
+    288,
+    1027,
+    457
+   ],
+   [
+    1038,
+    232,
+    1152,
+    508
+   ]
+  ],
+  "solid": [
+   4
+  ]
+ },
+ "_model_cut_fixes": {
+  "_note": "Model-cut repairs (tools/room_props_v2 model cutter). Points are in padded-crop px (prop box grown by 40). add_points: SAM clicks adding a missed part. sam_object_points: the prop's box plus these clicks, as one object, replace the cut. solid_rects: [x0,y0,x1,y1] areas forced fully opaque (plain rectangular parts the models dropped). peel_shadow: remove dark grey painted shadow from the outer edge (tools: scratch peel.py), except protect_rects. clear_below_y: erase floor below the prop's bottom ink line. floor_split: [[box,[clicks]],...] furniture objects kept on the prop; the full cut also installs as sp-<id>-rug.png (a floor piece, tags.json floor_pieces).",
+  "data_archive-1": {
+   "add_points": [
+    [
+     144,
+     150
+    ],
+    [
+     375,
+     150
+    ]
+   ]
+  },
+  "salvage_drone_bay-2": {
+   "add_points": [
+    [
+     452,
+     72
+    ],
+    [
+     444,
+     125
+    ]
+   ],
+   "solid_rects": [
+    [
+     436,
+     43,
+     477,
+     100
+    ],
+    [
+     459,
+     150,
+     473,
+     208
+    ],
+    [
+     421,
+     205,
+     485,
+     352
+    ]
+   ],
+   "peel_shadow": {
+    "depth": 10,
+    "protect_rects": [
+     [
+      160,
+      285,
+      445,
+      348
+     ]
+    ]
+   }
+  },
+  "recreation-extra3-1": {
+   "sam_object_points": [
+    [
+     122,
+     56
+    ],
+    [
+     82,
+     86
+    ],
+    [
+     250,
+     90
+    ],
+    [
+     300,
+     90
+    ],
+    [
+     55,
+     90
+    ],
+    [
+     375,
+     90
+    ],
+    [
+     200,
+     135
+    ],
+    [
+     200,
+     160
+    ]
+   ],
+   "solid_rects": [
+    [
+     45,
+     150,
+     387,
+     190
+    ]
+   ],
+   "clear_below_y": {
+    "y": 177,
+    "except": "green (hanging plant)"
+   }
+  },
+  "mycelium_nursery-2": {
+   "sam_object_points": [
+    [
+     177,
+     184
+    ],
+    [
+     115,
+     64
+    ],
+    [
+     255,
+     134
+    ],
+    [
+     180,
+     124
+    ],
+    [
+     177,
+     224
+    ],
+    [
+     110,
+     144
+    ],
+    [
+     245,
+     70
+    ]
+   ]
+  },
+  "xeno_lab-1": {
+   "sam_object_points": [
+    [
+     190,
+     140
+    ],
+    [
+     72,
+     140
+    ],
+    [
+     308,
+     140
+    ],
+    [
+     190,
+     52
+    ],
+    [
+     190,
+     245
+    ],
+    [
+     190,
+     300
+    ],
+    [
+     80,
+     55
+    ],
+    [
+     300,
+     55
+    ]
+   ],
+   "solid_rects": [
+    [
+     80,
+     62,
+     330,
+     252
+    ]
+   ]
+  },
+  "ore_refinery-5": {
+   "add_points": [
+    [
+     383,
+     110
+    ],
+    [
+     383,
+     160
+    ],
+    [
+     383,
+     205
+    ],
+    [
+     381,
+     232
+    ]
+   ]
+  },
+  "crew_lounge-3": {
+   "floor_split": [
+    [
+     [
+      90,
+      50,
+      452,
+      218
+     ],
+     [
+      [
+       190,
+       100
+      ],
+      [
+       340,
+       100
+      ],
+      [
+       190,
+       160
+      ],
+      [
+       340,
+       160
+      ],
+      [
+       105,
+       130
+      ],
+      [
+       432,
+       130
+      ]
+     ]
+    ],
+    [
+     [
+      115,
+      225,
+      415,
+      338
+     ],
+     [
+      [
+       270,
+       265
+      ],
+      [
+       140,
+       300
+      ],
+      [
+       400,
+       300
+      ],
+      [
+       230,
+       260
+      ]
+     ]
+    ],
+    [
+     [
+      115,
+      340,
+      422,
+      422
+     ],
+     [
+      [
+       270,
+       370
+      ],
+      [
+       130,
+       380
+      ],
+      [
+       405,
+       380
+      ]
+     ]
+    ]
+   ]
+  }
+ }
+}

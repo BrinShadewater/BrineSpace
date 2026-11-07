@@ -1,0 +1,72 @@
+{
+  "asset_id": "specimen-carrier",
+  "department": "Science / laboratory",
+  "condition": "maintained",
+  "attachment_class": "portable case on a supported surface",
+  "functional_bays": [
+    "closed specimen compartment",
+    "inspection window",
+    "bottom carrying handle and latches"
+  ],
+  "runtime_behavior": "static standalone prop; no transport simulation installed",
+  "camera_and_facing": "overhead; handle and latches bottom",
+  "references": [],
+  "source_path": "assets/specimen-carrier-v1/source.png",
+  "source_sha256": "b5e6940a744d37bac046c371fdfb427fa0c1a8afcc7fcc4333fbfa5f2f8d9236",
+  "export_path": "assets/specimen-carrier-v1/specimen-carrier.png",
+  "export_sha256": "eb885f509d68af527306fe68d909fb4ecf0fd0d2e35991284bcdad4a0852ea19",
+  "native_canvas_px": [
+    1484,
+    1060
+  ],
+  "proposed_display_width_world": 28.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Needs a supported counter or cart placement; floor routes and carrying animation not established."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte teal-gray shell, dark rubber and restrained inspection window; no broad reflection streaks."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/specimen-carrier-review.png",
+      "findings": [
+        "28-unit width beside furnished room/crew reference; reads as a compact portable case.",
+        "Individual tube details become small marks; do not enlarge solely to expose caps."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source, one component decomposed into six polygons around openings.",
+        "Handle pixel700,775 has alpha0; inspection-window pixel600,450 retains source alpha253 (near-opaque), not an aperture.",
+        "Light/dark native board inspected; no exterior halo."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "An inspection window is retained artwork; a handle aperture is exterior space. Verify these separately."
+  ],
+  "proposed_display_height_world": 15.285475792988313,
+  "registration_path": "assets/specimen-carrier-v1/registration.json",
+  "registration_sha256": "d7c83b37ea4f91aac94813f0006e600680a658814bf5835f6d0c4aa8ebe2c1e4",
+  "prompt_path": "assets/specimen-carrier-v1/source.prompt.txt",
+  "prompt_sha256": "23a3b1c1044fe733b4535602742eab70fb28b05c332458af82b5f1e1c1efc04e",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

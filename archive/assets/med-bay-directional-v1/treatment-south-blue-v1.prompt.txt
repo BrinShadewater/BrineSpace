@@ -1,0 +1,9 @@
+Owner correction: preserve the selected south/top-down Medical Treatment Wall and
+change only its orange mattress and matching pillow upholstery to a muted medical
+cyan-blue. Preserve all geometry, supplies, instruments, cabinetry, shadows,
+registration, white exterior and source dimensions. Do not repaint accepted areas.
+
+Production method: deterministic HSV remap inside the reviewed upholstery region,
+using tools/recolor_medical_treatment_bed.py. The generated image edit was retained
+separately as a rejected palette reference because it changed canvas dimensions and
+could not prove preservation outside the mattress.

@@ -1,0 +1,39 @@
+{
+  "id": "gravity_loom",
+  "method": "built-in imagegen background-extraction followed by authorized local light-exterior cleanup and margin normalization",
+  "prompt": "Use case: background-extraction. Edit target: the attached BrineSpace gravity_loom room sprite. Remove ONLY the opaque black exterior outside the metal hull and beyond the doorway floor edges, replacing it with genuinely transparent alpha. Preserve all interior dark floor tiles, shadows, equipment, colors, lights, hull, door jambs, and doorway floor surfaces. Keep the entire room at the same overhead projection and proportions. Do not redesign, add or remove machinery, alter the doors, or add a checkerboard, white background, text, or scenery. Output a single transparent PNG cutout.",
+  "reference_roles": [
+    {
+      "path": "rooms/hybrid/gravity_loom.png",
+      "role": "edit target; preserve interior and silhouette"
+    }
+  ],
+  "raw": {
+    "path": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-ee1f4485-ed19-4ebb-87c4-7f546aa56a6a.png",
+    "sha256": "aa08e7c370c760baedea656030cee139183cbb55d70fb4f5844bede18fcaf470",
+    "size": [
+      1254,
+      1254
+    ]
+  },
+  "output": {
+    "path": "rooms\\hybrid\\gravity_loom-v2.png",
+    "sha256": "eec5f514ff52a3d9a15f90cab66b5d43879054b255f2669342570e313f4efd19",
+    "size": [
+      1280,
+      1280
+    ]
+  },
+  "cleanup": {
+    "size": 1280,
+    "margin": 8,
+    "script": "tools/room_art_pipeline.py"
+  },
+  "review": {
+    "alpha_corner_10_10": 0,
+    "visual": "Exterior cleared; primary equipment retained, but regenerated fine details and normalization are not pixel-identical. Geometry and seams remain unverified.",
+    "geometry_verified": false,
+    "integrated": false,
+    "native_verified": false
+  }
+}

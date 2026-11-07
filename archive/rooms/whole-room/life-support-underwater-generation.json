@@ -1,0 +1,31 @@
+{
+  "room_id": "life_support",
+  "primary_department": "Life Support",
+  "condition": "maintained",
+  "function": "Atmosphere filtration and water treatment",
+  "geometry": {
+    "cell": 384,
+    "floor_module": 48,
+    "wall": 16,
+    "door": 72,
+    "rotation": "rotate equipment centers; artwork stays south-facing"
+  },
+  "source": "rooms/whole-room/life-support-underwater-source-v1.png",
+  "source_sha256": "B340AFC131371088AC226D61EF989A3F28AFF033EF7675B1E2E125CF539CEE82",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "requested_size": [
+    1280,
+    1280
+  ],
+  "method": "Built-in image generation edit; source pixels registered on existing geometry, no whole-room bitmap rotation",
+  "prompt": "Use case: precise-object-edit. Redesign this BrineSpace Life Support room as maintained UNDERWATER BASE atmosphere and water treatment machinery. Preserve the exact square composition, orthographic top-down cutaway pixel-art camera (south-facing machine fronts), generous empty central cross-shaped walking lanes, locations and relative sizes of the four equipment groups. Target 1280x1280. Primary department Life Support: clean cool medium-grey industrial cabinets, charcoal bases, insulated grey-green piping, restrained cyan and green identification panels, neutral white light. Not cream/ivory lab furniture, no rust/grime/decay. Top LEFT: retain a twin circular ventilation-fan cabinet in the same silhouette. Top RIGHT: dominant filtration skid with three stout replaceable vertical filter vessels, visible front gauges, short connected insulated pipes; keep entire apparatus inside the old equipment area, no external hoses. Bottom LEFT: replace the repeated fan cabinet with a compact transparent pale cyan water-treatment tank on a broad grey plinth, top visible, dark surrounding frame, attached pump contained within the old fan area. Bottom RIGHT: compact grey diagnostic console with a dark non-glowing screen and subtle cyan identification strip. All machinery remains south facing, no people, no text. Keep props separated from walls and each other. No pipes across walkways. Floor: quiet muted grey-green modular deck with shallow service covers; no generic bright grid. Walls: same exact position and low height as reference, cool grey cladding over dark pressure structure. Preserve all four centered doorway gaps and existing wall thickness as layout guides only; do not add doors, arches or wall lamps. Important: individual props must be self-contained silhouettes on floor so we can register them independently; no strong external shadows or large baked light pools. Fine controlled pixel clusters and rich industrial forms, matching reference detail density; avoid glossy 3D render and photorealism.",
+  "status": "Owner approves visual direction; registered station/card v3 and native operation/rotation tests completed; see docs/UNDERWATER_LIFE_SUPPORT.md",
+  "preserved": "Old candidate and all previous cards",
+  "notes": [
+    "Generated wall coordinates differ from old source; resampled new wall strips after failed v1 card.",
+    "Source glass/identification cyan remains static; added motion is operation-gated, not a claim of separate emissive masks."
+  ]
+}

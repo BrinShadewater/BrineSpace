@@ -1,0 +1,443 @@
+extends Node
+## Bounded local diagnostics. No disk writes, screenshots or heavy profiling per frame.
+const MAX_ROWS:=120
+const MAX_HITCHES:=32
+const MAX_SAMPLES:=2048
+const HITCH_MS:=50.0
+# Automatic capture (owner request, Sept 17): a stall saves its own report, so a slowdown is
+# recorded even when nobody reaches F8 in time.
+const STALL_MS:=400.0
+const SLOW_FPS:=20.0
+const SLOW_SECONDS:=2.0
+const AUTO_LIMIT:=3
+const AUTO_GAP_MS:=90000
+const GRAPH_FRAMES:=180
+const MAX_TIMELINE:=240
+const SESSION_STATS_PATH:="user://session_stats.csv"
+# Breadcrumbs survive a hard crash: the recent timeline is written every few seconds, and the
+# next launch attaches it to the crash report.
+const BREADCRUMB_PATH:="user://last_session.json"
+const BREADCRUMB_MS:=5000
+const BREADCRUMB_EVENTS:=40
+# Memory watch: nodes, orphans and texture memory are compared against the first full bucket.
+const GROWTH_WARNING:=1.6
+var rows: Array=[]
+var hitches: Array=[]
+var samples: Array[float]=[]
+var total_ms:=0.0
+var maximum_ms:=0.0
+var frames:=0
+var paused_frames:=0
+var unfocused_frames:=0
+var hitch_count:=0
+var last_usec:=0
+var render_pre_usec:=0
+var render_post_usec:=0
+var last_frame_boundaries:Dictionary={}
+var overlay: CanvasLayer
+var label: Label
+var latest: Dictionary={}
+var recent_frames: Array[float]=[] # Newest last; drawn as the overlay's frame graph.
+var timeline: Array=[] # Station events, so a spike can be matched to what just happened.
+var errors=preload("res://scripts/error_watch.gd").new()
+var error_poll_ms:=0
+var slow_ms:=0.0
+var auto_reports:=0
+var last_auto_ms:=-AUTO_GAP_MS
+var auto_capture:=true
+var auto_notes: Array=[]
+var stats_path:=SESSION_STATS_PATH
+var graph: Control
+var breadcrumb_ms:=0
+var breadcrumb_path:=BREADCRUMB_PATH
+var baseline_memory: Dictionary={}
+var growth_warned:={}
+var last_route_searches:=0
+var last_route_failures:=0
+var application_suspended:=false
+var suspended_at_ms:=0
+var last_save_timings:Dictionary={}
+
+func record_save_timings(value:Dictionary) -> void:
+	last_save_timings=value.duplicate(true)
+
+func _notification(what:int) -> void:
+	if what==NOTIFICATION_APPLICATION_PAUSED:
+		if not application_suspended:suspended_at_ms=Time.get_ticks_msec()
+		application_suspended=true
+		slow_ms=0.0
+	elif what==NOTIFICATION_APPLICATION_RESUMED:
+		if application_suspended:note("lifecycle","OS resume after %d ms suspended" % (Time.get_ticks_msec()-suspended_at_ms))
+		application_suspended=false
+		last_usec=Time.get_ticks_usec()
+		render_pre_usec=0;render_post_usec=0
+		last_frame_boundaries.clear();last_draw_timing.clear()
+		slow_ms=0.0
+
+var current_action := ""
+var action_at_ms := -1000
+
+func mark_action(action: String) -> void:
+	var now := Time.get_ticks_msec()
+	if action == current_action and now - action_at_ms < 500: return
+	current_action = action
+	action_at_ms = now
+	note("action", action)
+
+func _ready() -> void:
+	process_mode=Node.PROCESS_MODE_ALWAYS
+	last_usec=Time.get_ticks_usec()
+	RenderingServer.frame_pre_draw.connect(_record_render_start)
+	RenderingServer.frame_post_draw.connect(_record_render_end)
+	# Only a real play session captures by itself or writes breadcrumbs. A test or tool started
+	# with -s replaces the main loop with its own script, which is the reliable signal; their
+	# slow frames must never add reports to the player's folder.
+	auto_capture=get_tree().get_script()==null
+
+func _record_render_start() -> void:
+	render_pre_usec=Time.get_ticks_usec()
+
+func _record_render_end() -> void:
+	render_post_usec=Time.get_ticks_usec()
+
+static func frame_boundaries(start:int,pre:int,post:int,end:int) -> Dictionary:
+	# Signal intervals, not GPU timings. Omit frames without a complete,
+	# correctly ordered render pair instead of reusing stale/headless samples.
+	if pre<=0 or post<=0 or pre<start or post<pre or end<post: return {}
+	return {"before_render_ms":float(pre-start)/1000.0,
+		"render_signals_ms":float(post-pre)/1000.0,
+		"after_render_ms":float(end-post)/1000.0}
+
+var last_draw_timing: Dictionary = {}
+
+func _process(_delta: float) -> void:
+	if application_suspended:return
+	var now:=Time.get_ticks_usec()
+	var current_scene:=get_tree().current_scene
+	if current_scene!=null and is_instance_valid(current_scene.get("grid_view")) and current_scene.grid_view.has_method("take_draw_timing"):
+		last_draw_timing=current_scene.grid_view.take_draw_timing()
+	last_frame_boundaries=frame_boundaries(last_usec,render_pre_usec,render_post_usec,now)
+	var elapsed:=float(now-last_usec)/1000.0
+	last_usec=now
+	recent_frames.append(elapsed)
+	if recent_frames.size()>GRAPH_FRAMES: recent_frames.pop_front()
+	if now/1000-error_poll_ms>3000:
+		error_poll_ms=int(now/1000)
+		errors.poll(now/1000.0)
+	if auto_capture and now/1000-breadcrumb_ms>BREADCRUMB_MS:
+		breadcrumb_ms=int(now/1000)
+		write_breadcrumbs()
+	var scene:=get_tree().current_scene
+	var station: bool=scene!=null and scene.has_method("capture_bug_report_snapshot")
+	var held: bool=get_tree().paused or (station and bool(scene.get("paused")))
+	observe(elapsed,held,not get_window().has_focus(),now/1000.0)
+	if total_ms>=1000.0:
+		finish_bucket(context(scene),now/1000.0)
+		if label!=null and overlay.visible: refresh_label()
+	if overlay!=null and overlay.visible and graph!=null: graph.queue_redraw()
+	# Loading is slow by design and covered by the loading transition; it is not a stall.
+	var busy:=loading(scene)
+	if busy: slow_ms=0.0
+	_watch_for_stalls(elapsed,held or busy,not get_window().has_focus(),now/1000.0)
+
+func observe(ms: float,held: bool,unfocused: bool,uptime_ms: float) -> void:
+	if not is_finite(ms) or ms<=0: return
+	frames+=1;total_ms+=ms;maximum_ms=maxf(maximum_ms,ms)
+	if held: paused_frames+=1
+	if unfocused: unfocused_frames+=1
+	if samples.size()<MAX_SAMPLES: samples.append(ms)
+	if ms>=HITCH_MS:
+		hitch_count+=1
+		var hitch := {"uptime_ms":uptime_ms,"frame_ms":ms,"paused":held,"unfocused":unfocused}
+		hitch.merge(station_breakdown(get_tree().current_scene if is_inside_tree() else null))
+		hitches.append(hitch)
+		if hitches.size()>MAX_HITCHES: hitches.pop_front()
+
+# True while a station is still starting up or the loading transition is on screen. Decoding the
+# crew art takes seconds inside one frame there, which used to save an automatic report and log
+# "one frame took 3449 ms" on every Continue (packaged check, October 11, 2026).
+func loading(scene: Node) -> bool:
+	if scene!=null and scene.has_method("capture_bug_report_snapshot") and not bool(scene.get("startup_complete")): return true
+	if not is_inside_tree(): return false
+	for child in get_tree().root.get_children():
+		if child.has_method("finish_after_scene_change"): return true
+	return false
+
+# A stall saves its own bug report, at most AUTO_LIMIT times a session and never twice within
+# AUTO_GAP_MS, so a slow patch produces one report rather than a folder full.
+func _watch_for_stalls(ms: float,held: bool,unfocused: bool,uptime_ms: float) -> void:
+	if held or unfocused or not auto_capture: return
+	slow_ms=slow_ms+ms if ms>1000.0/SLOW_FPS else 0.0
+	var reason:=""
+	if ms>=STALL_MS: reason="one frame took %.0f ms" % ms
+	elif slow_ms>=SLOW_SECONDS*1000.0: reason="under %d FPS for %.1f s" % [int(SLOW_FPS),slow_ms/1000.0]
+	if reason.is_empty(): return
+	slow_ms=0.0
+	if auto_reports>=AUTO_LIMIT or uptime_ms-last_auto_ms<AUTO_GAP_MS: return
+	var reporter:=get_parent()
+	if reporter==null or not reporter.has_method("save_report"): return
+	last_auto_ms=uptime_ms
+	auto_reports+=1
+	var path: String
+	if reporter.has_method("save_stall_report_async"):
+		path=await reporter.save_stall_report_async("automatic capture // %s" % reason)
+	elif reporter.has_method("save_report_async"):
+		path=await reporter.save_report_async("automatic capture // %s" % reason)
+	else: path=reporter.save_report("automatic capture // %s" % reason)
+	if not is_inside_tree() or reporter.get("_report_shutting_down")==true: return
+	auto_notes.append({"uptime_ms":uptime_ms,"reason":reason,"path":path})
+	var saved := not path.is_empty()
+	note("stall",("Automatic report saved: %s" if saved else "Automatic report could not be saved: %s") % reason)
+	var scene:=get_tree().current_scene
+	if scene!=null and scene.has_method("_log"):
+		scene._log(("DIAGNOSTICS // %s. Report saved in the bug_reports folder." if saved else "DIAGNOSTICS // %s. Report could not be saved.") % reason,true)
+
+# What the game is holding on to: nodes, orphaned nodes, texture memory and the retained mesh
+# caches. A steady climb here is a leak, and the first crossing is logged once.
+func memory_stats() -> Dictionary:
+	var floors=preload("res://rooms/whole-room/modular_floor.gd")
+	var scene = get_tree().current_scene if is_inside_tree() else null
+	var canvas = scene.grid_view if scene != null and "grid_view" in scene else null
+	var retired_contacts:=0
+	if is_instance_valid(canvas):
+		for bundle in canvas.contact_retired: retired_contacts+=bundle.size()
+	return {"nodes":Performance.get_monitor(Performance.OBJECT_NODE_COUNT),
+		"orphans":Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT),
+		"objects":Performance.get_monitor(Performance.OBJECT_COUNT),
+		"texture_mem_mb":Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)/1048576.0,
+		"static_mem_mb":Performance.get_monitor(Performance.MEMORY_STATIC)/1048576.0,
+		"floor_meshes":floors.cache.size(),"floor_meshes_retired":floors.retired.size(),
+		"contact_meshes":canvas.contact_meshes.size() if is_instance_valid(canvas) else 0,"contact_meshes_retired":retired_contacts}
+
+func _check_growth(stats: Dictionary) -> void:
+	if baseline_memory.is_empty():
+		baseline_memory=stats.duplicate()
+		return
+	for key in ["nodes","orphans","texture_mem_mb","static_mem_mb","floor_meshes_retired","contact_meshes_retired"]:
+		var base: float=maxf(float(baseline_memory.get(key,0.0)),1.0)
+		if float(stats.get(key,0.0))<base*GROWTH_WARNING or growth_warned.has(key): continue
+		growth_warned[key]=true
+		note("memory","%s grew from %.1f to %.1f since the session started" % [key,base,float(stats.get(key,0.0))])
+
+# Station events worth lining up against the timings (rooms placed, cycles, floods, deaths).
+func note(kind: String,text: String) -> void:
+	timeline.append({"uptime_ms":float(Time.get_ticks_msec()),"kind":kind,"text":text})
+	if timeline.size()>MAX_TIMELINE: timeline.pop_front()
+
+# One line per finished loop, appended locally so slowdowns can be compared across sessions.
+func record_session(row: Dictionary) -> void:
+	# Same rule as capture: only a real play session writes into the player's folder.
+	if stats_path.is_empty() or not auto_capture: return
+	var exists:=FileAccess.file_exists(stats_path)
+	var file:=FileAccess.open(stats_path,FileAccess.READ_WRITE if exists else FileAccess.WRITE)
+	if file==null: return
+	var columns:=["when","build","cycles","crew_remaining","victory","mean_frame_ms","p95_frame_ms","max_frame_ms","hitches","errors"]
+	if not exists:
+		file.store_line(",".join(columns))
+	else:
+		file.seek_end()
+	var values:=PackedStringArray()
+	for column in columns: values.append(str(row.get(column,"")))
+	file.store_line(",".join(values))
+	file.close()
+
+func session_row(scene) -> Dictionary:
+	var mean:=0.0
+	var p95:=0.0
+	var worst:=0.0
+	var hitch_total:=0
+	for bucket in rows:
+		mean+=float(bucket.mean_frame_ms)
+		p95=maxf(p95,float(bucket.p95_frame_ms))
+		worst=maxf(worst,float(bucket.max_frame_ms))
+		hitch_total+=int(bucket.hitches_50ms)
+	if not rows.is_empty(): mean/=float(rows.size())
+	return {"when":Time.get_datetime_string_from_system(false,true),"build":preload("res://scripts/build_version.gd").version(),
+		"cycles":int(scene.get("cycle")) if scene!=null else 0,
+		"crew_remaining":int(scene.get("crew_count")) if scene!=null else 0,
+		"victory":int(bool(scene.get("run_victory"))) if scene!=null else 0,
+		"mean_frame_ms":"%.2f"%mean,"p95_frame_ms":"%.2f"%p95,"max_frame_ms":"%.2f"%worst,
+		"hitches":hitch_total,"errors":errors.total}
+
+# Where the hitch frame's time went: the station's own systems (microseconds, from the most
+# recent station frame and cycle advance), engine process/physics time and the grid draw
+# profile when it is enabled. Signal boundaries distinguish render-adjacent waits
+# without claiming the unaccounted remainder is GPU rendering.
+func station_breakdown(scene: Node) -> Dictionary:
+	var result := {"engine_process_ms":Performance.get_monitor(Performance.TIME_PROCESS)*1000.0,
+		"engine_physics_ms":Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)*1000.0,
+		"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)}
+	result["last_action"] = current_action
+	result["action_age_ms"] = Time.get_ticks_msec() - action_at_ms
+	if not last_frame_boundaries.is_empty(): result["frame_boundaries_ms"]=last_frame_boundaries.duplicate()
+	if scene==null or not "frame_timing_usec" in scene: return result
+	if "startup_stage_ms" in scene: result["startup_stage_ms"] = scene.startup_stage_ms.duplicate()
+	if "last_save_timings" in scene:result["save_timings"]=scene.last_save_timings.duplicate(true)
+	if is_instance_valid(scene.get("grid_view")) and "last_room_preparation" in scene.grid_view:result["room_preparation"]=scene.grid_view.last_room_preparation.duplicate()
+	result["image_prefetch"] = preload("res://scripts/image_prefetch.gd").stats()
+	if is_instance_valid(scene.get("grid_view")) and "crew_texture_pool" in scene.grid_view:
+		result["crew_texture_sharing"] = scene.grid_view.crew_texture_pool.stats.duplicate()
+	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.has_method("crew_storage_diagnostics"):
+		result["crew_storage"] = scene.grid_view.crew_storage_diagnostics()
+	var timings: Dictionary=scene.frame_timing_usec.duplicate()
+	if timings.has("last_cycle_at_ms"):
+		timings["cycle_advance_age_ms"]=Time.get_ticks_msec()-int(timings.last_cycle_at_ms)
+		timings.erase("last_cycle_at_ms")
+	result["station_usec"]=timings
+	if "crew_frame_usec" in scene: result["crew_usec"]=scene.crew_frame_usec.duplicate(true)
+	result.merge(last_draw_timing)
+	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.profile_draw:
+		result["grid_draw_usec"]=scene.grid_view.draw_profile_usec.duplicate()
+	return result
+
+func finish_bucket(details: Dictionary,uptime_ms: float) -> Dictionary:
+	if frames==0: return {}
+	var ordered:=samples.duplicate();ordered.sort()
+	latest={"uptime_ms":uptime_ms,"span_ms":total_ms,"frames":frames,"mean_frame_ms":total_ms/frames,
+		"fps":1000.0*frames/total_ms,"p95_frame_ms":ordered[ceili(ordered.size()*0.95)-1],
+		"p99_frame_ms":ordered[ceili(ordered.size()*0.99)-1],
+		"p95_sample_count":ordered.size(),"p95_sample_capped":frames>MAX_SAMPLES,
+		"max_frame_ms":maximum_ms,"hitches_50ms":hitch_count,"paused_frames":paused_frames,
+		"unfocused_frames":unfocused_frames,"context_at_end":details.duplicate(true)}
+	var stats:=memory_stats()
+	latest["memory"]=stats
+	_check_growth(stats)
+	rows.append(latest.duplicate(true))
+	if rows.size()>MAX_ROWS: rows.pop_front()
+	samples.clear();total_ms=0;maximum_ms=0;frames=0;paused_frames=0;unfocused_frames=0;hitch_count=0
+	return latest.duplicate(true)
+
+# A small file the next launch can read after a crash that killed the game outright.
+func write_breadcrumbs() -> void:
+	if breadcrumb_path.is_empty(): return
+	var file:=FileAccess.open(breadcrumb_path,FileAccess.WRITE)
+	if file==null: return
+	var recent: Array=timeline.slice(maxi(0,timeline.size()-BREADCRUMB_EVENTS))
+	file.store_string(JSON.stringify({"written":Time.get_datetime_string_from_system(false,true),
+		"uptime_ms":Time.get_ticks_msec(),"latest_bucket":latest.duplicate(true),"memory":memory_stats(),
+		"runtime_caches":runtime_cache_counters(),"errors":errors.total,"automatic_reports":auto_reports,"timeline":recent,"last_save":last_save_timings.duplicate(true)},"\t"))
+	file.close()
+
+# Breadcrumb cadence only; fixed-size counters avoid enumerating pixel banks,
+# retaining images, reading GPU pixels or enabling the heavy draw profiler.
+func runtime_cache_counters() -> Dictionary:
+	var drone=preload("res://scripts/drone_animation.gd")
+	var result:Dictionary={"drone":{"cached_decoded_bytes":drone.cached_bytes,
+		"budget_bytes":drone.cache_budget(),"entries":drone.textures.size(),
+		"weak_image_entries":drone.weak_images.size(),"pending_jobs":drone.image_jobs.size(),
+		"uploads":drone.texture_uploads}}
+	var tablet_floor=preload("res://scripts/tablet_floor_texture.gd")
+	result["tablet_floor_storage"]={"enabled":tablet_floor.enabled,"etc2_supported":tablet_floor.supported,
+		"served":tablet_floor.served,"cumulative_payload_bytes":tablet_floor.cumulative_payload_bytes}
+	var walls=preload("res://rooms/underwater/corridor_wall_art.gd")
+	var sources:Dictionary={};var wall_bytes:=0
+	for key in walls.textures:
+		var source:String=walls.catalog().get(key,{}).get("source",key)
+		sources[source]=true
+		var texture:Texture2D=walls.textures[key]
+		wall_bytes+=texture.get_width()*texture.get_height()*4
+	result["corridor_wall_storage"]={"sharing":walls.share_sources,"textures":walls.textures.size(),"sources":sources.size(),"rgba_capacity_bytes":wall_bytes}
+	var doors=preload("res://rooms/doors/painted_door.gd")
+	var door_ids:Dictionary={};var door_sources:Dictionary={};var door_bytes:=0
+	for skin in doors.skins.values():
+		for key in skin.textures:
+			var texture:Texture2D=skin.textures[key]
+			var source:String=key if doors.share_sources else str(doors.catalog.styles["default" if skin.family=="hallway" else skin.family][str(key).get_slice(":",1)])
+			door_sources[source]=true
+			if not door_ids.has(texture.get_instance_id()):
+				door_ids[texture.get_instance_id()]=true
+				door_bytes+=texture.get_width()*texture.get_height()*4
+	result["door_storage"]={"sharing":doors.share_sources,"textures":door_ids.size(),"sources":door_sources.size(),"rgba_capacity_bytes":door_bytes}
+	result["checkpoint_restore"]=preload("res://scripts/run_save.gd").last_restore_timings.duplicate()
+	var scene:Node=get_tree().current_scene if is_inside_tree() else null
+	if scene!=null and is_instance_valid(scene.get("grid_view")) and scene.grid_view.has_method("crew_storage_diagnostics"):
+		var builds:Dictionary={}
+		for key in ["bill_npc","veld_npc","branforth_npc","marsh_npc"]:
+			var actor=scene.get(key)
+			if actor!=null:builds[key]={"enabled":actor.reuse_staged_geometry,"timings":actor.last_build_stats.duplicate(),"points":actor.graph.get_point_count(),"segment_cache_entries":actor.segment_geometry_cache.size(),"boundary_fast":actor.boundary_fast_calls,"boundary_fallback":actor.boundary_fallback_calls}
+		result["navigation_builds"]=builds
+		result["crew"]=scene.grid_view.crew_storage_diagnostics()
+		result["sealed_veld_pod_cached"]=scene.grid_view.has_meta("tablet_veld_pod_idle")
+	return result
+
+func context(scene: Node) -> Dictionary:
+	var memory_bytes:=Performance.get_monitor(Performance.MEMORY_STATIC)
+	var result: Dictionary={"scene":scene.scene_file_path if scene!=null else "none",
+		"draw_calls_latest":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),
+		"process_ms_latest":Performance.get_monitor(Performance.TIME_PROCESS)*1000.0,
+		"static_memory_bytes":memory_bytes if memory_bytes>0 else null,
+		"objects":Performance.get_monitor(Performance.OBJECT_COUNT),
+		"viewport":str(get_viewport().get_visible_rect().size),"fps_cap":Engine.max_fps,
+		"vsync":DisplayServer.window_get_vsync_mode()}
+	if scene!=null and scene.has_method("capture_bug_report_snapshot"):
+		result.merge({"rooms":scene.placed_rooms.size(),"cycle":scene.cycle,"speed_index":scene.time_speed_index,
+			"running":scene.running,"initializing":not scene.startup_complete})
+		# Expensive work counted since the last bucket: crew path searches and how many failed.
+		var crew=preload("res://scripts/bill_npc.gd")
+		result["route_searches"]=crew.route_searches-last_route_searches
+		result["route_failures"]=crew.route_failures-last_route_failures
+		last_route_searches=crew.route_searches
+		last_route_failures=crew.route_failures
+		result["errors_logged"]=errors.total
+		if scene.has_method("card_storage_stats"):result["card_storage"]=scene.card_storage_stats()
+		if is_instance_valid(scene.grid_view):
+			result["visible_rooms"]=scene.grid_view.visible_draw_rooms.size()
+			result["floor_rebuilds_total"]=scene.grid_view.floor_rebuilds
+			result["wall_rebuilds_total"]=scene.grid_view.wall_rebuilds
+			result["heavy_draw_profiler"]=scene.grid_view.profile_draw
+	return result
+
+func snapshot() -> Dictionary:
+	return {"schema":1,"clock":"active wall time between callbacks; includes vsync, window focus loss and gameplay pause; excludes OS suspension",
+		"retention":"latest 120 approximately one-second active buckets; OS suspension time excluded; current process only",
+		"frame_boundaries":"Signal intervals between monitor process callbacks; render_signals_ms is not GPU time. Missing on incomplete/headless frames.",
+		"percentile":"per-bucket nearest-rank p95; sample cap explicitly recorded",
+		"context":"values sampled at bucket end, not per-frame averages",
+		"engine_process_time_scope":"TIME_PROCESS and TIME_PHYSICS_PROCESS are previous reporting-second maxima; process_ms_latest and context engine_process_ms are latest reported maxima, not current-frame durations.",
+		"errors":errors.summary(),"timeline":timeline.duplicate(true),"automatic_reports":auto_notes.duplicate(true),
+		"memory":memory_stats(),"memory_baseline":baseline_memory.duplicate(),
+		"texture_memory_scope":"Engine-reported allocations, not measured driver VRAM. Calibrate each runtime and compare decoded-pixel inventories separately; do not apply a global correction factor.",
+		"drone_texture_cache":preload("res://scripts/drone_animation.gd").cache_diagnostics(),
+		"rows":rows.duplicate(true),"hitches":hitches.duplicate(true),"last_save":last_save_timings.duplicate(true),
+		"partial_bucket":{"frames":frames,"span_ms":total_ms,"max_frame_ms":maximum_ms,"paused_frames":paused_frames,"unfocused_frames":unfocused_frames}}
+
+func toggle_overlay() -> void:
+	if overlay==null:
+		overlay=CanvasLayer.new();overlay.layer=900;add_child(overlay)
+		var panel:=PanelContainer.new();panel.position=Vector2(16,122);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		var style:=StyleBoxFlat.new();style.bg_color=Color(.025,.055,.065,.94)
+		style.content_margin_left=12;style.content_margin_right=12;style.content_margin_top=8;style.content_margin_bottom=8
+		panel.add_theme_stylebox_override("panel",style);overlay.add_child(panel)
+		var column:=VBoxContainer.new();column.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(column)
+		label=Label.new();label.mouse_filter=Control.MOUSE_FILTER_IGNORE;label.add_theme_font_size_override("font_size",16)
+		label.add_theme_color_override("font_color",Color(.7,.92,.86));column.add_child(label)
+		graph=preload("res://scripts/performance_graph.gd").new()
+		graph.monitor=self
+		column.add_child(graph)
+		overlay.hide()
+	overlay.visible=not overlay.visible
+	refresh_label()
+
+func refresh_label() -> void:
+	if latest.is_empty(): label.text="PERFORMANCE [F7]\nCollecting frame timings…\nF8: save a bug report";return
+	var c: Dictionary=latest.context_at_end
+	var memory: String="n/a" if c.get("static_memory_bytes")==null else "%.1f MiB"%[float(c.static_memory_bytes)/1048576.0]
+	var station: Dictionary=last_station_usec()
+	var systems:="—"
+	if not station.is_empty():
+		var parts:=PackedStringArray()
+		for key in ["crew","drones_wrecks","cryo","interface","airlocks"]:
+			if station.has(key): parts.append("%s %.1f"%[key.substr(0,5),float(station[key])/1000.0])
+		if last_draw_timing.has("grid_draw_usec"): parts.append("draw %.1f"%(float(last_draw_timing.grid_draw_usec)/1000.0))
+		systems=" / ".join(parts)+" ms"
+	label.text="PERFORMANCE [F7]  •  F8 REPORT\n%.0f FPS / %.1f ms mean / %.1f ms p95\nPeak %.1f ms / %d hitches ≥50 ms\nDraw calls %.0f / memory %s\nRooms %s / visible %s\nSystems %s\nSearches %s/s (%s failed) / errors %d\nPaused frames %d / unfocused %d%s"%[
+		latest.fps,latest.mean_frame_ms,latest.p95_frame_ms,latest.max_frame_ms,latest.hitches_50ms,
+		float(c.get("draw_calls_latest",0)),memory,
+		str(c.get("rooms","—")),str(c.get("visible_rooms","—")),systems,
+		str(c.get("route_searches","—")),str(c.get("route_failures","—")),errors.total,
+		latest.paused_frames,latest.unfocused_frames,
+		"" if auto_reports==0 else "\n%d automatic report(s) saved"%auto_reports]
+
+func last_station_usec() -> Dictionary:
+	var scene:=get_tree().current_scene if is_inside_tree() else null
+	return scene.frame_timing_usec.duplicate() if scene!=null and "frame_timing_usec" in scene else {}

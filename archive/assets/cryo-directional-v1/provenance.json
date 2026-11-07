@@ -1,0 +1,18 @@
+{
+  "room": "cryo_chamber",
+  "quarter": 3,
+  "source": "res://assets/cryo-directional-v1/cryo-south.png",
+  "sha256": "464171b08d91a1fd8dad8320391cfbe118d65cd4ffc5d51a61fc119c33b5902a",
+  "dimensions": [
+    2172,
+    724
+  ],
+  "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-south.json",
+  "native_evidence": "output/cryo-directional-2026-09-12/final/runtime.json",
+  "comparison": "output/cryo-directional-2026-09-12/final-comparison.json",
+  "state_evidence": "output/cryo-directional-2026-09-12/state-checks.json",
+  "cache_evidence": "output/cryo-directional-2026-09-12/cache-comparison.json",
+  "review": "Overhead south cryogenic support bank; inward vessel and sample-holder releases, top control strip, outer fixed insulated manifold. Compressor, two coolant vessels, coil/pump, three sample cylinders and gas bottle preserved in source. Existing two independent pods and compressor preserved at original sizes, relocated north. Automatic duplicate console removed by q3 tombstone. Other rotations RGB identical. Native static/powered review passed.",
+  "checks": "176 furnished routes,20 existing side variants,cryo recovery and188 layout keys pass. Three localized operating checks pass. Cached/uncached blueprint captures match all four rotations. Recovery-room bypass remains unchanged; recovery gameplay suite passes. q0 card unchanged.",
+  "remaining": "North/east/west Cryo art still requires review. Full catalog active; no export."
+}

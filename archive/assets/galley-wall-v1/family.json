@@ -1,0 +1,50 @@
+{
+  "family": "galley",
+  "stage": "four standalone directional candidates; not integrated",
+  "orientations": {
+    "north": {
+      "export": "assets/galley-wall-v1/galley-wall.png",
+      "sha256": "0db554ebe8d835f106c6a264e8f27551ce5ed675c6e2a0fe686cf64f94f930b0",
+      "registration": "assets/galley-wall-v1/registration.json",
+      "review": "assets/galley-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "backing_edge": "top",
+      "long_axis_world": 328,
+      "installed": false
+    },
+    "south": {
+      "export": "assets/galley-south-wall-v1/galley-south-wall.png",
+      "sha256": "ef46454be397902399b572b3767a62deb205f45a4ff59e807a744d0702996c3a",
+      "registration": "assets/galley-south-wall-v1/registration.json",
+      "review": "assets/galley-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "backing_edge": "bottom",
+      "long_axis_world": 328,
+      "installed": false
+    },
+    "west": {
+      "export": "assets/galley-west-wall-v1/galley-west-wall.png",
+      "sha256": "c006cb8c7ff368435ba98f8477af8d4a5ebd2c4f3a438ca7cda6b01573c0bcde",
+      "registration": "assets/galley-west-wall-v1/registration.json",
+      "review": "assets/galley-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "backing_edge": "left",
+      "long_axis_world": 328,
+      "installed": false
+    },
+    "east": {
+      "export": "assets/galley-east-wall-v1/galley-east-wall.png",
+      "sha256": "865a9b1fdb1e0583d8594c2852750a75ad09ae2af969af0979c0374872c44a60",
+      "registration": "assets/galley-east-wall-v1/registration.json",
+      "review": "assets/galley-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "backing_edge": "right",
+      "long_axis_world": 328,
+      "installed": false
+    }
+  },
+  "supporting_props": [
+    "assets/meal-trolley-v1/manifest.json"
+  ],
+  "owner_acceptance": null
+}

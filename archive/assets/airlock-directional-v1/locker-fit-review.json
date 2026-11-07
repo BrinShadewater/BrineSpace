@@ -1,0 +1,42 @@
+{
+  "room": "airlock",
+  "stage": "locker-fit-and-service-verified",
+  "changes": {
+    "q0": [
+      76,
+      -42
+    ],
+    "q1": [
+      -142,
+      40
+    ],
+    "q2": [
+      -140,
+      -205
+    ],
+    "q3": [
+      74,
+      -210
+    ]
+  },
+  "scale_preserved": 1.35,
+  "causes": [
+    "q1 fitting point in south wall collision band",
+    "q2 fitting point in west wall collision band",
+    "q3 standable target disconnected from route network beside chamber",
+    "q0 visual bounds beyond furniture envelope"
+  ],
+  "evidence": {
+    "probe": "output\\airlock-check-bench-2026-09-12\\probe-service.log",
+    "route_probe": "output\\airlock-check-bench-2026-09-12\\probe-route.log",
+    "service": "output/test-runs/20260912-110641-headless/logs/test_airlock.log",
+    "layouts": "output/test-runs/20260912-110753-headless/logs/test_preferred_room_layouts.log",
+    "native": "output\\airlock-check-bench-2026-09-12\\locker-route-final\\runtime.json"
+  },
+  "test_scope": "Bill all four quarters; Veld and Branforth q0; Marsh intentionally excluded from helmet service. 176 furnished layouts, 47 card identities.",
+  "source_hashes": {
+    "rooms/full-wall-v1/default-layouts.json": "bd9c2c1918eda2110f9976e74705859883b8579ed37872c88ba88b09a52243b7",
+    "rooms/underwater/airlock-v1/airlock_view.gd": "000d58226c54658d466e1c37b35190c2756dc084ec51cf44c05922abf9474d2f"
+  },
+  "remaining": "Directional locker art and other rooms remain; owner aesthetic acceptance not implied."
+}

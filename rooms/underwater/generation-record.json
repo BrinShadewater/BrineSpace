@@ -1,0 +1,26 @@
+{
+  "method": "builtin image_gen",
+  "sources": [
+    {
+      "path": "rooms/underwater/straight-source-v1.png",
+      "prompt": "Create production pixel-art for ONE horizontal narrow underwater base corridor. Edit target image is the exact geometry guide: preserve the canvas, silhouette, width, taper locations and completely open left/right mouths. On a 1280 square canvas the corridor runs x64..1216 centred y640; its straight exterior edges y448 and832, interior y496..784, taper ends x64..160 and1120..1216. Keep the navy background unchanged. Paint only within the guide hull/floor. True overhead orthographic surface art, NO tall wall faces, no perspective, no characters, no text, no doors or archways. Industrial retro-futurist chunky pixel art, maintained neutral gunmetal pressure hull with pale grey cladding, black gasket seams, purposeful repeating ribs and bolt clusters, thin service pipe recessed along the north inner edge; quiet recessed deck panels of consistent size, a modest maintenance grate. Two small unlit exterior lamp housings within wall thickness. The walkway must stay empty. Rich authored game asset detail but not rusty, not glossy 3D, no baked glow, no shadows outside silhouette. This image will be used as surface art over locked game geometry; do not invent protrusions or move the entrances.",
+      "stage": "surface samples integrated; full bitmap not used"
+    },
+    {
+      "path": "rooms/underwater/corner-source-v1.png",
+      "prompt": "Paint ONE L-shaped narrow underwater pressure-hull corridor game asset. Image1 is exact layout target; image2 is material/style reference ONLY. Preserve image1's entire square canvas, L outline, west mouth at left-centre and south mouth at bottom-centre, entrance sizes and floor boundaries. Paint inside its guide only, keep navy exterior. True overhead orthographic chunky detailed pixel-art surface, low cutaway walls with NO tall projected faces. Match image2's maintained grey metal panels, black gaskets, restrained bolt clusters, dark slate recessed floor panels, repeating pressure ribs. Add character: recessed utility pipe follows outer elbow, a round flush inspection hatch set into the deck near the outer corner (not a hole, not raised), small unlit lamp housings integrated within wall thickness. Keep centre path through elbow clear. Both mouths completely OPEN: no door frames, no doors, no end walls. No lettering, no characters, no large props, no glow, no shadow outside silhouette, no extra branches or widening of floor. Native target 1280 square. This is registered surface art for exact game polygons, not a standalone scene.",
+      "stage": "full layout rejected for drift; flush hatch sample reused"
+    },
+    {
+      "path": "rooms/underwater/corner-source-v2.png",
+      "prompt": "Precise paintover of the attached geometry guide ONLY. Keep the entire composition pixel registered: the L-corridor must remain in the LOWER LEFT and lower centre of this square, not recentered! Preserve all original floor and wall outline coordinates and the large blank upper area. Left entrance at (64,640) and bottom entrance at (640,1216). Top exterior wall y448 from x160 to784; right wall x832 from y496 to1120; inner elbow at448,832. DO NOT centre or resize the L. Paint neutral grey industrial pressure-hull SURFACES into existing shapes with chunky pixel-art panels, black gaskets, purposeful bolt clusters, low relief repeating wall ribs, a thin recessed service pipe at outer edge and one FLUSH round inspection hatch on floor near outer elbow. Quiet slate floor deck; mostly clean maintained metal; unlit inset lamp housings. No text, characters, perspective, tall wall elevation, doors, end caps, freestanding objects, glow or extra branches. Both entrance mouths stay open. Navy exterior unchanged. Game texture over authoritative geometry, exact silhouette more important than composition. Single asset 1280 square.",
+      "stage": "guide outline improved but tall wall treatment rejected; not integrated"
+    }
+  ],
+  "registration": "rooms/underwater/corridor_surfaces.gd",
+  "notes": [
+    "Source pixels unmodified. Geometry owns hull and floor clipping.",
+    "Generated surface art is sampled into 48-unit floor modules and 16-unit wall bands; non-uniform surface scaling is explicit.",
+    "No generated whole-image quarter rotations. Native 4-way and state review required."
+  ]
+}

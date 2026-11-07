@@ -1,0 +1,71 @@
+{
+  "asset_id": "communications-service-wall-v1",
+  "department": "Communications service",
+  "condition": "Maintained",
+  "attachment_class": "North-wall standing service counter",
+  "functional_bays": [
+    "Three-lead patch panel",
+    "Signal tester and cradled handset",
+    "Clear repair mat with closed box and test lead",
+    "Three spare connectors and service case"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Top-down shallow cutaway, north backing and south handles/controls",
+  "references": [
+    {
+      "path": "assets/material-polish-v1/tidal-north.png",
+      "sha256": "a07624168121691bddf8754c0db60d522bb6c193564350a33e39d901fae25a79",
+      "role": "Owner-selected construction quality and camera; communications palette separate"
+    }
+  ],
+  "source_path": "assets/communications-service-wall-v1/source.png",
+  "source_sha256": "c24636178dde8934751cfe5e63a13735528136c0e41d36b9d0f70356ea1f0fea",
+  "export_path": "assets/communications-service-wall-v1/communications-service-wall.png",
+  "export_sha256": "d7856759990200dbad088b982f7f6d4765d4cd1048849576c264ae3a72785a2e",
+  "native_canvas_px": [
+    1983,
+    793
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Static waveform and patch leads; no routing, audio, signal-test or occupied reach behavior."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 removes bright fastener dots and edge glare, quiets worktop texture and darkens connector finish. Small green waveform remains localized."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "320-unit light/dark review beside Command Center. Tester/handset subordinate to wall length; broad clear repair mat retained. Three connected patch leads and three spare connectors visible."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral180 excludes checkerboard. Full-width exterior inspected on light/dark grounds; cable loops remain on opaque supports."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/communications-service-wall-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 78.0952380952381,
+  "registration_path": "assets/communications-service-wall-v1/registration.json",
+  "registration_sha256": "af63d1df3596fe22d788d4e8e63c4afa7154da58e22a053e4d10b2a12bb36c1e",
+  "prompt_path": "assets/communications-service-wall-v1/source.prompt.txt",
+  "prompt_sha256": "8bc6dac80a661b4181d0e9f99183b0cfb1aed5b0805a27734e8b25128420bd0a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

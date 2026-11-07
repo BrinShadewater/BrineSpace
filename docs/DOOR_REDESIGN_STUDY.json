@@ -1,0 +1,15 @@
+{
+  "stage": "concept-only",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: BrineSpace pressure door redesign concept board, NOT a production animation sprite sheet. Create a polished pixel-art art-direction board on solid dark slate background, landscape. Three columns labeled BIO / LIFE SUPPORT / ENGINEERING. Each column shows the same compact modular double sliding pressure door design, upper row closed and lower row fully open. Fixed orthographic elevated top-down game camera with screen-up vertical height, no isometric diagonal wall. Broad rectangular compact frame, flat header, clean chamfered upper corners, dark recessed seals, tidy large panel surfaces with restrained fasteners, no rust or scratches. Same shape in every column. BIO ivory composite with restrained muted green trim. LIFE SUPPORT cool mid-grey metal with restrained teal trim. ENGINEERING charcoal steel with burnt-orange panel strips. All lamps and lenses neutral WHITE, no blue/cyan/green/amber glow, no bloom. Clear metal threshold under opening; flat traversable floor no step/pit/long tunnel. Closed doors two equal leaves center seam. Open doors leaves fully retracted into side pockets, identical frame and aperture, no residual middle strip. Rich but restrained hand-crafted pixel rendering, clean utilitarian retrofuturist station style, dark structural edges and small top-left highlights. White illumination independent from painted colored accents. Large readable silhouettes rather than noisy grunge. Include small bottom text 'DESIGN STUDY — GEOMETRY NOT VALIDATED'. No people, rooms, walls, props, logos. This is one coherent comparison illustration for judging design, not individual production assets.",
+  "variants": [
+    "Bio: ivory / muted green trim",
+    "Life Support: grey / teal trim",
+    "Engineering: charcoal / burnt orange trim"
+  ],
+  "review": {
+    "palette": "White lenses and distinct department finishes read clearly.",
+    "geometry": "Not validated. Frontal concept camera, deep open-door recess and residual retracted leaves must not be used as runtime geometry.",
+    "integration": "Not integrated. Existing layered atlas now uses neutral-white lamps; source preserved."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "status": "one-pose surface study, not installed",
+  "source": "detail-down-b-source.png",
+  "sha256": "13190149a8c906c87b03a3c9ec3343d43a22abe44732b8e3f9bcc8fd72b43208",
+  "original": "down-b.png",
+  "mask_polygon": [
+    [
+      524,
+      710
+    ],
+    [
+      690,
+      710
+    ],
+    [
+      690,
+      820
+    ],
+    [
+      910,
+      1140
+    ],
+    [
+      340,
+      1140
+    ],
+    [
+      460,
+      840
+    ]
+  ],
+  "rule": "RGB-only replacement where both source alphas>=128; original alpha and all pixels outside mask preserved",
+  "changed_source_pixels": 83766,
+  "changed_frame_pixels": 2274,
+  "source_alpha_exact": true,
+  "registered_alpha_exact": true,
+  "upper_body_source_exact": true,
+  "registration": {
+    "source": "down-b.png",
+    "sha256": "d5033276f57783769beddd232359a3861e8fd83df958222295267540cc81a8ea",
+    "scale": 0.1588683351468988,
+    "head_band_center": 597.5,
+    "target_head_band_center": 92.0,
+    "ground": 1112,
+    "destination": [
+      -3,
+      -5
+    ],
+    "opaque_bbox": [
+      406,
+      195,
+      847,
+      1112
+    ],
+    "alpha_threshold": 16,
+    "faint_pixels_removed": 10509
+  }
+}

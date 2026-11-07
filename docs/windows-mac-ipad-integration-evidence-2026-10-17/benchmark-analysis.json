@@ -1,0 +1,1353 @@
+{
+  "schedule": "ABBAAB",
+  "A": "frozen brinespace-5dd3aea89a5b1c1f",
+  "B": "brinespace-8089314d5d1aa129 / ba698b855facee3262b9a8647e4369cf68589843",
+  "environment": "Windows, Godot4.7.2 release, Compatibility/OpenGL3.3 NVIDIA616.92 RTX4070Ti,1600x900,visible secondary display,Dummy audio,uploads/repack stopped,no concurrent Godot",
+  "method": "3 serial processes per build;180frames for each action/speed;pooled540samples per table cell;fresh isolated profile/copy of same checkpoint and layouts;OS caches uncontrolled;all valid outliers retained. Means and percentiles are frame times, not placement-function execution time.",
+  "rows": [
+    {
+      "speed": 1,
+      "action": "idle",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 17.704977777777778,
+        "average_fps": 56.481290886178904,
+        "p95_ms": 22.02,
+        "p99_ms": 34.717,
+        "max_ms": 51.331,
+        "frames_over_50_ms": 1,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          56.71293707164013,
+          57.288752499221935,
+          55.47284280752985
+        ],
+        "run_max_ms": [
+          39.436,
+          43.318,
+          51.331
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 17.574472222222223,
+        "average_fps": 56.90071299754536,
+        "p95_ms": 20.28,
+        "p99_ms": 34.126,
+        "max_ms": 40.288,
+        "frames_over_50_ms": 0,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          56.483896284269676,
+          56.91618617284511,
+          57.30803162511891
+        ],
+        "run_max_ms": [
+          37.073,
+          39.363,
+          40.288
+        ]
+      },
+      "fps_change_percent": 0.7425859161251713
+    },
+    {
+      "speed": 1,
+      "action": "zoom",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 21.001498148148148,
+        "average_fps": 47.61565070005147,
+        "p95_ms": 31.617,
+        "p99_ms": 45.856,
+        "max_ms": 54.7,
+        "frames_over_50_ms": 3,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          48.264812940332575,
+          47.945750980956646,
+          46.66668913581331
+        ],
+        "run_max_ms": [
+          51.066,
+          50.085,
+          54.7
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 21.199744444444445,
+        "average_fps": 47.17037993644578,
+        "p95_ms": 32.173,
+        "p99_ms": 40.908,
+        "max_ms": 50.099,
+        "frames_over_50_ms": 1,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          46.72616984806993,
+          47.77639373693943,
+          47.020960899458764
+        ],
+        "run_max_ms": [
+          50.099,
+          46.932,
+          49.158
+        ]
+      },
+      "fps_change_percent": -0.9351353117289407
+    },
+    {
+      "speed": 1,
+      "action": "placement",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 18.014733333333332,
+        "average_fps": 55.5101194947839,
+        "p95_ms": 23.954,
+        "p99_ms": 34.242,
+        "max_ms": 59.786,
+        "frames_over_50_ms": 3,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          56.261674297416675,
+          56.09119181317897,
+          54.22405379026136
+        ],
+        "run_max_ms": [
+          59.41,
+          59.786,
+          59.496
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 18.27932037037037,
+        "average_fps": 54.706629116306594,
+        "p95_ms": 23.624,
+        "p99_ms": 36.819,
+        "max_ms": 61.125,
+        "frames_over_50_ms": 3,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          54.8647507692495,
+          54.958391917452595,
+          54.301378078473306
+        ],
+        "run_max_ms": [
+          59.363,
+          59.451,
+          61.125
+        ]
+      },
+      "fps_change_percent": -1.4474664904167711
+    },
+    {
+      "speed": 2,
+      "action": "idle",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 18.638477777777776,
+        "average_fps": 53.652450158364154,
+        "p95_ms": 24.903,
+        "p99_ms": 31.909,
+        "max_ms": 33.966,
+        "frames_over_50_ms": 0,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          54.247782169839056,
+          54.045630726022075,
+          52.6908792966118
+        ],
+        "run_max_ms": [
+          33.966,
+          32.723,
+          32.349
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 18.871537037037037,
+        "average_fps": 52.989854405468556,
+        "p95_ms": 25.338,
+        "p99_ms": 33.407,
+        "max_ms": 38.355,
+        "frames_over_50_ms": 0,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          53.026424245566616,
+          53.11210371731614,
+          52.83181461433652
+        ],
+        "run_max_ms": [
+          38.355,
+          36.4,
+          37.116
+        ]
+      },
+      "fps_change_percent": -1.2349776215994535
+    },
+    {
+      "speed": 2,
+      "action": "zoom",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 23.161842592592592,
+        "average_fps": 43.17445799065273,
+        "p95_ms": 36.801,
+        "p99_ms": 46.771,
+        "max_ms": 58.923,
+        "frames_over_50_ms": 2,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          44.936975891312414,
+          44.12328142882956,
+          40.702746485656974
+        ],
+        "run_max_ms": [
+          42.455,
+          44.79,
+          58.923
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 22.518457407407407,
+        "average_fps": 44.408015252015076,
+        "p95_ms": 34.615,
+        "p99_ms": 41.578,
+        "max_ms": 68.624,
+        "frames_over_50_ms": 1,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          44.37452990732379,
+          44.33581622114504,
+          44.514095264615364
+        ],
+        "run_max_ms": [
+          42.459,
+          68.624,
+          43.438
+        ]
+      },
+      "fps_change_percent": 2.8571459116624176
+    },
+    {
+      "speed": 2,
+      "action": "placement",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 19.827801851851852,
+        "average_fps": 50.43423408564088,
+        "p95_ms": 27.466,
+        "p99_ms": 50.297,
+        "max_ms": 82.189,
+        "frames_over_50_ms": 6,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          52.15429093633751,
+          51.96561377596858,
+          47.469781528242216
+        ],
+        "run_max_ms": [
+          80.222,
+          72.71,
+          82.189
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 19.80762777777778,
+        "average_fps": 50.48560136625256,
+        "p95_ms": 25.271,
+        "p99_ms": 51.59,
+        "max_ms": 240.994,
+        "frames_over_50_ms": 6,
+        "frames_over_100_ms": 1,
+        "run_fps": [
+          50.853390522679675,
+          49.32946188408401,
+          51.31718381558657
+        ],
+        "run_max_ms": [
+          75.526,
+          240.994,
+          73.446
+        ]
+      },
+      "fps_change_percent": 0.10185002616367456
+    },
+    {
+      "speed": 4,
+      "action": "idle",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 20.010172222222224,
+        "average_fps": 49.974582372132396,
+        "p95_ms": 26.467,
+        "p99_ms": 39.498,
+        "max_ms": 54.717,
+        "frames_over_50_ms": 3,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          50.390061064355756,
+          50.66293862494604,
+          48.90683709431436
+        ],
+        "run_max_ms": [
+          45.76,
+          51.086,
+          54.717
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 20.25276296296296,
+        "average_fps": 49.375979061658896,
+        "p95_ms": 28.012,
+        "p99_ms": 40.443,
+        "max_ms": 55.562,
+        "frames_over_50_ms": 2,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          49.66583172885097,
+          49.55822968091942,
+          48.910664399747915
+        ],
+        "run_max_ms": [
+          55.562,
+          46.575,
+          43.682
+        ]
+      },
+      "fps_change_percent": -1.1978155335367058
+    },
+    {
+      "speed": 4,
+      "action": "zoom",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 25.088294444444443,
+        "average_fps": 39.85922607112259,
+        "p95_ms": 40.67,
+        "p99_ms": 56.548,
+        "max_ms": 67.852,
+        "frames_over_50_ms": 9,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          40.6238468751799,
+          40.682553806632676,
+          38.36085760385721
+        ],
+        "run_max_ms": [
+          66.715,
+          67.852,
+          60.859
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 24.99807037037037,
+        "average_fps": 40.003087645727916,
+        "p95_ms": 38.261,
+        "p99_ms": 50.202,
+        "max_ms": 79.294,
+        "frames_over_50_ms": 6,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          39.99344996163968,
+          40.30761878935164,
+          39.71262181846745
+        ],
+        "run_max_ms": [
+          67.035,
+          58.888,
+          79.294
+        ]
+      },
+      "fps_change_percent": 0.3609241542939845
+    },
+    {
+      "speed": 4,
+      "action": "placement",
+      "A": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 20.680603703703703,
+        "average_fps": 48.3544878247877,
+        "p95_ms": 31.139,
+        "p99_ms": 44.795,
+        "max_ms": 76.455,
+        "frames_over_50_ms": 3,
+        "frames_over_100_ms": 0,
+        "run_fps": [
+          48.991989809666116,
+          48.969571396546996,
+          47.148757473077985
+        ],
+        "run_max_ms": [
+          72.003,
+          72.823,
+          76.455
+        ]
+      },
+      "B": {
+        "runs": 3,
+        "frames": 540,
+        "mean_ms": 22.367724074074076,
+        "average_fps": 44.70727538878564,
+        "p95_ms": 30.792,
+        "p99_ms": 46.5,
+        "max_ms": 863.143,
+        "frames_over_50_ms": 4,
+        "frames_over_100_ms": 1,
+        "run_fps": [
+          39.865202462074954,
+          47.563054076550145,
+          47.63284602285575
+        ],
+        "run_max_ms": [
+          863.143,
+          73.053,
+          73.615
+        ]
+      },
+      "fps_change_percent": -7.542655501217832
+    }
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "lane": "A",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-5dd3aea89a5b1c1f",
+          "source_sha256": "5dd3aea89a5b1c1ff763cd1fd67994314cfc679cfed6455dca207240d3947185",
+          "git_commit": "67e7db969f7c5d952a3c80830369715d703199c5",
+          "working_tree_modified": true,
+          "file_count": 36430,
+          "source_bytes": 3596750196
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "cc05a0b90e6628f2f357d339372f2577457b3e8e2f301a21072d0b713b60ee55",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 6441.466,
+      "texture_mb": 2004.94237995148,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 17.6326611111111,
+          "p95_ms": 19.829,
+          "p99_ms": 34.963,
+          "max_ms": 39.436
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 20.7190277777778,
+          "p95_ms": 31.036,
+          "p99_ms": 46.571,
+          "max_ms": 51.066
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 17.7740888888889,
+          "p95_ms": 23.314,
+          "p99_ms": 33.963,
+          "max_ms": 59.41
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.4339333333333,
+          "p95_ms": 24.137,
+          "p99_ms": 31.726,
+          "max_ms": 33.966
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 22.2533888888889,
+          "p95_ms": 34.67,
+          "p99_ms": 41.774,
+          "max_ms": 42.455
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 19.1738777777778,
+          "p95_ms": 24.567,
+          "p99_ms": 61.317,
+          "max_ms": 80.222
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 19.8451833333333,
+          "p95_ms": 25.483,
+          "p99_ms": 38.548,
+          "max_ms": 45.76
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 24.6160833333333,
+          "p95_ms": 38.709,
+          "p99_ms": 56.698,
+          "max_ms": 66.715
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 20.4115,
+          "p95_ms": 30.631,
+          "p99_ms": 44.795,
+          "max_ms": 72.003
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "lane": "B",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-8089314d5d1aa129",
+          "source_sha256": "8089314d5d1aa12983437804bba5e416b737ee6421485a912291d059246c6b5d",
+          "git_commit": "ba698b855facee3262b9a8647e4369cf68589843",
+          "working_tree_modified": false,
+          "file_count": 36679,
+          "source_bytes": 4019437576
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "1b4d24d62a2d463114a7cf96c595db77e893f4c789a1079499b0955d44846207",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 5735.678,
+      "texture_mb": 1821.23035144806,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 17.7041611111111,
+          "p95_ms": 20.28,
+          "p99_ms": 34.126,
+          "max_ms": 37.073
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 21.4012833333333,
+          "p95_ms": 32.268,
+          "p99_ms": 44.114,
+          "max_ms": 50.099
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 18.2266388888889,
+          "p95_ms": 23.092,
+          "p99_ms": 36.819,
+          "max_ms": 59.363
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.8585222222222,
+          "p95_ms": 25.21,
+          "p99_ms": 33.556,
+          "max_ms": 38.355
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 22.53545,
+          "p95_ms": 33.295,
+          "p99_ms": 41.211,
+          "max_ms": 42.459
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 19.6643722222222,
+          "p95_ms": 25.893,
+          "p99_ms": 53.51,
+          "max_ms": 75.526
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 20.1345666666667,
+          "p95_ms": 26.304,
+          "p99_ms": 55.321,
+          "max_ms": 55.562
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 25.0040944444444,
+          "p95_ms": 38.068,
+          "p99_ms": 51.648,
+          "max_ms": 67.035
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 25.0845333333333,
+          "p95_ms": 30.551,
+          "p99_ms": 74.946,
+          "max_ms": 863.143
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "lane": "B",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-8089314d5d1aa129",
+          "source_sha256": "8089314d5d1aa12983437804bba5e416b737ee6421485a912291d059246c6b5d",
+          "git_commit": "ba698b855facee3262b9a8647e4369cf68589843",
+          "working_tree_modified": false,
+          "file_count": 36679,
+          "source_bytes": 4019437576
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "1b4d24d62a2d463114a7cf96c595db77e893f4c789a1079499b0955d44846207",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 27338.128,
+      "texture_mb": 2004.94237995148,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 17.5696944444444,
+          "p95_ms": 19.925,
+          "p99_ms": 36.169,
+          "max_ms": 39.363
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 20.9308388888889,
+          "p95_ms": 31.52,
+          "p99_ms": 43.985,
+          "max_ms": 46.932
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 18.1955833333333,
+          "p95_ms": 23.991,
+          "p99_ms": 36.866,
+          "max_ms": 59.451
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.8281,
+          "p95_ms": 24.5,
+          "p99_ms": 33.919,
+          "max_ms": 36.4
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 22.5551277777778,
+          "p95_ms": 34.816,
+          "p99_ms": 45.615,
+          "max_ms": 68.624
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 20.2718611111111,
+          "p95_ms": 24.242,
+          "p99_ms": 51.59,
+          "max_ms": 240.994
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 20.1782833333333,
+          "p95_ms": 29.597,
+          "p99_ms": 45.9,
+          "max_ms": 46.575
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 24.8092055555556,
+          "p95_ms": 38.261,
+          "p99_ms": 51.712,
+          "max_ms": 58.888
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 21.0247222222222,
+          "p95_ms": 30.675,
+          "p99_ms": 48.46,
+          "max_ms": 73.053
+        }
+      ]
+    },
+    {
+      "run": 4,
+      "lane": "A",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-5dd3aea89a5b1c1f",
+          "source_sha256": "5dd3aea89a5b1c1ff763cd1fd67994314cfc679cfed6455dca207240d3947185",
+          "git_commit": "67e7db969f7c5d952a3c80830369715d703199c5",
+          "working_tree_modified": true,
+          "file_count": 36430,
+          "source_bytes": 3596750196
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "cc05a0b90e6628f2f357d339372f2577457b3e8e2f301a21072d0b713b60ee55",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 5226.646,
+      "texture_mb": 2004.94237995148,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 17.4554333333333,
+          "p95_ms": 20.819,
+          "p99_ms": 34.717,
+          "max_ms": 43.318
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 20.8569055555556,
+          "p95_ms": 31.198,
+          "p99_ms": 45.856,
+          "max_ms": 50.085
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 17.8281111111111,
+          "p95_ms": 23.356,
+          "p99_ms": 36.101,
+          "max_ms": 59.786
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.5028833333333,
+          "p95_ms": 25.137,
+          "p99_ms": 31.608,
+          "max_ms": 32.723
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 22.6637722222222,
+          "p95_ms": 33.776,
+          "p99_ms": 44.24,
+          "max_ms": 44.79
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 19.2434944444445,
+          "p95_ms": 25.662,
+          "p99_ms": 50.297,
+          "max_ms": 72.71
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 19.7382944444444,
+          "p95_ms": 25.592,
+          "p99_ms": 46.943,
+          "max_ms": 51.086
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 24.5805611111111,
+          "p95_ms": 38.055,
+          "p99_ms": 52.349,
+          "max_ms": 67.852
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 20.4208444444444,
+          "p95_ms": 31.111,
+          "p99_ms": 45.457,
+          "max_ms": 72.823
+        }
+      ]
+    },
+    {
+      "run": 5,
+      "lane": "A",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-5dd3aea89a5b1c1f",
+          "source_sha256": "5dd3aea89a5b1c1ff763cd1fd67994314cfc679cfed6455dca207240d3947185",
+          "git_commit": "67e7db969f7c5d952a3c80830369715d703199c5",
+          "working_tree_modified": true,
+          "file_count": 36430,
+          "source_bytes": 3596750196
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "cc05a0b90e6628f2f357d339372f2577457b3e8e2f301a21072d0b713b60ee55",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 5578.657,
+      "texture_mb": 2004.94237995148,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 18.0268388888889,
+          "p95_ms": 23.55,
+          "p99_ms": 36.717,
+          "max_ms": 51.331
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 21.4285611111111,
+          "p95_ms": 31.921,
+          "p99_ms": 46.266,
+          "max_ms": 54.7
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 18.442,
+          "p95_ms": 24.792,
+          "p99_ms": 35.162,
+          "max_ms": 59.496
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.9786166666667,
+          "p95_ms": 24.963,
+          "p99_ms": 32.269,
+          "max_ms": 32.349
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 24.5683666666667,
+          "p95_ms": 40.6,
+          "p99_ms": 51.859,
+          "max_ms": 58.923
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 21.0660333333333,
+          "p95_ms": 29.955,
+          "p99_ms": 51.834,
+          "max_ms": 82.189
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 20.4470388888889,
+          "p95_ms": 27.361,
+          "p99_ms": 51.626,
+          "max_ms": 54.717
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 26.0682388888889,
+          "p95_ms": 41.295,
+          "p99_ms": 56.548,
+          "max_ms": 60.859
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 21.2094666666667,
+          "p95_ms": 31.815,
+          "p99_ms": 46.391,
+          "max_ms": 76.455
+        }
+      ]
+    },
+    {
+      "run": 6,
+      "lane": "B",
+      "identity": {
+        "build": {
+          "build_id": "brinespace-8089314d5d1aa129",
+          "source_sha256": "8089314d5d1aa12983437804bba5e416b737ee6421485a912291d059246c6b5d",
+          "git_commit": "ba698b855facee3262b9a8647e4369cf68589843",
+          "working_tree_modified": false,
+          "file_count": 36679,
+          "source_bytes": 4019437576
+        },
+        "executable_sha256": "7208c3a81fbb5e0af24ab319bd377bf2e72e9b5fdcc01d709bafe1550e067b76",
+        "pck_sha256": "1b4d24d62a2d463114a7cf96c595db77e893f4c789a1079499b0955d44846207",
+        "fixture_sha256": "3d7dd51b66e8fe247ff9a1f6395a310762459f67c41291c2f8ad096bbc2f12a1",
+        "profile_guard_sha256": "80da8329e21ca995543eb8c380a64729266fcbef5abb73641e6a13f70e88b137"
+      },
+      "ready_ms": 5788.277,
+      "texture_mb": 2004.94237995148,
+      "phases": [
+        {
+          "action": "idle",
+          "speed": 1.0,
+          "mean_ms": 17.4495611111111,
+          "p95_ms": 20.173,
+          "p99_ms": 34.993,
+          "max_ms": 40.288
+        },
+        {
+          "action": "zoom",
+          "speed": 1.0,
+          "mean_ms": 21.2671111111111,
+          "p95_ms": 32.71,
+          "p99_ms": 40.898,
+          "max_ms": 49.158
+        },
+        {
+          "action": "placement",
+          "speed": 1.0,
+          "mean_ms": 18.4157388888889,
+          "p95_ms": 24.111,
+          "p99_ms": 37.365,
+          "max_ms": 61.125
+        },
+        {
+          "action": "idle",
+          "speed": 2.0,
+          "mean_ms": 18.9279888888889,
+          "p95_ms": 25.955,
+          "p99_ms": 33.21,
+          "max_ms": 37.116
+        },
+        {
+          "action": "zoom",
+          "speed": 2.0,
+          "mean_ms": 22.4647944444444,
+          "p95_ms": 33.383,
+          "p99_ms": 41.696,
+          "max_ms": 43.438
+        },
+        {
+          "action": "placement",
+          "speed": 2.0,
+          "mean_ms": 19.48665,
+          "p95_ms": 25.171,
+          "p99_ms": 51.976,
+          "max_ms": 73.446
+        },
+        {
+          "action": "idle",
+          "speed": 4.0,
+          "mean_ms": 20.4454388888889,
+          "p95_ms": 28.012,
+          "p99_ms": 40.443,
+          "max_ms": 43.682
+        },
+        {
+          "action": "zoom",
+          "speed": 4.0,
+          "mean_ms": 25.1809111111111,
+          "p95_ms": 38.188,
+          "p99_ms": 50.202,
+          "max_ms": 79.294
+        },
+        {
+          "action": "placement",
+          "speed": 4.0,
+          "mean_ms": 20.9939166666667,
+          "p95_ms": 31.279,
+          "p99_ms": 46.5,
+          "max_ms": 73.615
+        }
+      ]
+    }
+  ],
+  "frames_over_100_ms": [
+    {
+      "run": 2,
+      "lane": "B",
+      "action": "placement",
+      "action_usec": 2,
+      "draw": {
+        "grid_draw_usec": 6833,
+        "grid_redraws": 8
+      },
+      "drone_frame_uploads": {
+        "bytes": 0,
+        "events": [],
+        "events_complete": true,
+        "frame": 1851,
+        "largest_bytes": 0,
+        "max_usec": 0,
+        "uploads": 0,
+        "usec": 0
+      },
+      "drone_latest_upload_frame": {
+        "bytes": 84548,
+        "events": [
+          {
+            "bytes": 384,
+            "end_usec": 47556015,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-clevis.png",
+            "size": "(8, 12)",
+            "start_usec": 47555885,
+            "usec": 130
+          },
+          {
+            "bytes": 54356,
+            "end_usec": 47847117,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-cradle.png",
+            "size": "(127, 107)",
+            "start_usec": 47847029,
+            "usec": 88
+          },
+          {
+            "bytes": 29808,
+            "end_usec": 48101034,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-contact-foam.png",
+            "size": "(108, 69)",
+            "start_usec": 48100943,
+            "usec": 91
+          }
+        ],
+        "events_complete": true,
+        "frame": 1850,
+        "largest_bytes": 54356,
+        "max_usec": 130,
+        "uploads": 3,
+        "usec": 309
+      },
+      "drone_upload": {
+        "bytes": 29808,
+        "end_usec": 48101034,
+        "frame": 1850,
+        "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-contact-foam.png",
+        "size": "(108, 69)",
+        "start_usec": 48100943,
+        "usec": 91
+      },
+      "engine_process_ms": 26.25,
+      "engine_wait_usec": 861649,
+      "frame": 163,
+      "ms": 863.143,
+      "process_frame": 1851,
+      "render_cpu_ms": 5.32499980926514,
+      "render_gpu_ms": 4.15799999237061,
+      "sampled_drone_uploads": {
+        "bytes": 84548,
+        "events": [
+          {
+            "bytes": 384,
+            "end_usec": 47556015,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-clevis.png",
+            "size": "(8, 12)",
+            "start_usec": 47555885,
+            "usec": 130
+          },
+          {
+            "bytes": 54356,
+            "end_usec": 47847117,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-cradle.png",
+            "size": "(127, 107)",
+            "start_usec": 47847029,
+            "usec": 88
+          },
+          {
+            "bytes": 29808,
+            "end_usec": 48101034,
+            "frame": 1850,
+            "path": "res://assets/drone-runtime-2026-09-26/dock-components/mining-contact-foam.png",
+            "size": "(108, 69)",
+            "start_usec": 48100943,
+            "usec": 91
+          }
+        ],
+        "events_complete": true,
+        "frame": 1850,
+        "largest_bytes": 54356,
+        "max_usec": 130,
+        "uploads": 3,
+        "usec": 309
+      },
+      "sampled_process_frame": 1850,
+      "speed": 4.0,
+      "stages": {
+        "actors_effects": 488,
+        "detail_room_setup": 267,
+        "door_light_validation": 697,
+        "env_pass_above": 184,
+        "env_pass_exterior_actors": 422,
+        "env_pass_fog": 362,
+        "env_pass_life": 164,
+        "env_pass_lines": 149,
+        "env_seabed": 490,
+        "env_validation": 355,
+        "environment": 918,
+        "live_rooms": 2396,
+        "room_contents": 489,
+        "setup_actors_brine_core": 9,
+        "setup_actors_life_support": 91,
+        "setup_companions_brine_core": 6,
+        "setup_companions_life_support": 3,
+        "setup_configure_brine_core": 35,
+        "setup_configure_life_support": 53,
+        "setup_contents_brine_core": 130,
+        "setup_contents_life_support": 108,
+        "setup_doors_brine_core": 56,
+        "setup_doors_crew_hab": 21,
+        "setup_doors_current_turbine": 13,
+        "setup_doors_galley": 20,
+        "setup_doors_hydroponics_bay": 28,
+        "setup_doors_life_support": 28,
+        "setup_doors_mining_drone_bay": 25,
+        "setup_doors_reactor": 19,
+        "setup_doors_research_lab": 21,
+        "setup_doors_salvage_workshop": 41,
+        "setup_doors_solar_array": 47,
+        "setup_doors_storage_bay": 27,
+        "surface_validation": 459
+      },
+      "step_usec": 1479,
+      "systems": {
+        "airlocks": 29,
+        "crew": 1007,
+        "cryo": 43,
+        "drones_wrecks": 200,
+        "inspector_battery": 0,
+        "inspector_forecast": 0,
+        "inspector_scrap": 0,
+        "inspector_work": 0,
+        "interface": 32,
+        "last_cycle_advance": 6926,
+        "last_cycle_at_ms": 40708,
+        "station_total": 1313,
+        "ui_construction": 0,
+        "ui_drone_alert": 0,
+        "ui_fire": 0,
+        "ui_flood": 0,
+        "ui_guide": 0,
+        "ui_inspector": 0,
+        "ui_integrity": 0,
+        "ui_stuck": 0
+      }
+    },
+    {
+      "run": 3,
+      "lane": "B",
+      "action": "placement",
+      "action_usec": 2098,
+      "draw": {
+        "grid_draw_usec": 207700,
+        "grid_redraws": 19
+      },
+      "drone_frame_uploads": {
+        "bytes": 0,
+        "events": [],
+        "events_complete": true,
+        "frame": 1166,
+        "largest_bytes": 0,
+        "max_usec": 0,
+        "uploads": 0,
+        "usec": 0
+      },
+      "drone_latest_upload_frame": {
+        "bytes": 48168960,
+        "events": [
+          {
+            "bytes": 48168960,
+            "end_usec": 54514285,
+            "frame": 1165,
+            "path": "res://assets/mining-rover-v1-2026-09-26/completion/atlases/carry-south.png",
+            "size": "(2688, 4480)",
+            "start_usec": 54511166,
+            "usec": 3119
+          }
+        ],
+        "events_complete": true,
+        "frame": 1165,
+        "largest_bytes": 48168960,
+        "max_usec": 3119,
+        "uploads": 1,
+        "usec": 3119
+      },
+      "drone_upload": {
+        "bytes": 48168960,
+        "end_usec": 54514285,
+        "frame": 1165,
+        "path": "res://assets/mining-rover-v1-2026-09-26/completion/atlases/carry-south.png",
+        "size": "(2688, 4480)",
+        "start_usec": 54511166,
+        "usec": 3119
+      },
+      "engine_process_ms": 69.254,
+      "engine_wait_usec": 219352,
+      "frame": 30,
+      "ms": 240.994,
+      "process_frame": 1166,
+      "render_cpu_ms": 5.16900014877319,
+      "render_gpu_ms": 5.70499992370605,
+      "sampled_drone_uploads": {
+        "bytes": 48168960,
+        "events": [
+          {
+            "bytes": 48168960,
+            "end_usec": 54514285,
+            "frame": 1165,
+            "path": "res://assets/mining-rover-v1-2026-09-26/completion/atlases/carry-south.png",
+            "size": "(2688, 4480)",
+            "start_usec": 54511166,
+            "usec": 3119
+          }
+        ],
+        "events_complete": true,
+        "frame": 1165,
+        "largest_bytes": 48168960,
+        "max_usec": 3119,
+        "uploads": 1,
+        "usec": 3119
+      },
+      "sampled_process_frame": 1165,
+      "speed": 2.0,
+      "stages": {
+        "actors_effects": 498,
+        "detail_room_setup": 1282,
+        "door_light_validation": 2207,
+        "env_pass_above": 182093,
+        "env_pass_exterior_actors": 5161,
+        "env_pass_fog": 2857,
+        "env_pass_foundations": 621,
+        "env_pass_life": 172,
+        "env_pass_lines": 155,
+        "env_seabed": 512,
+        "env_validation": 380,
+        "environment": 971,
+        "floor_slots": 1718,
+        "floors": 1964,
+        "floors_rest": 868,
+        "lights": 537,
+        "live_rooms": 3455,
+        "room_contents": 532,
+        "setup_actors_brine_core": 39,
+        "setup_actors_crew_hab": 17,
+        "setup_actors_galley": 23,
+        "setup_actors_hydroponics_bay": 43,
+        "setup_actors_life_support": 17,
+        "setup_actors_solar_array": 29,
+        "setup_companions_brine_core": 9,
+        "setup_companions_crew_hab": 7,
+        "setup_companions_galley": 7,
+        "setup_companions_hydroponics_bay": 6,
+        "setup_companions_life_support": 6,
+        "setup_companions_solar_array": 9,
+        "setup_configure_brine_core": 55,
+        "setup_configure_crew_hab": 80,
+        "setup_configure_galley": 77,
+        "setup_configure_hydroponics_bay": 84,
+        "setup_configure_life_support": 68,
+        "setup_configure_solar_array": 473,
+        "setup_contents_brine_core": 130,
+        "setup_contents_galley": 98,
+        "setup_contents_hydroponics_bay": 93,
+        "setup_contents_solar_array": 170,
+        "setup_doors_brine_core": 82,
+        "setup_doors_crew_hab": 41,
+        "setup_doors_current_turbine": 12,
+        "setup_doors_galley": 40,
+        "setup_doors_hydroponics_bay": 42,
+        "setup_doors_life_support": 48,
+        "setup_doors_mining_drone_bay": 26,
+        "setup_doors_reactor": 20,
+        "setup_doors_research_lab": 18,
+        "setup_doors_salvage_workshop": 36,
+        "setup_doors_solar_array": 59,
+        "setup_doors_storage_bay": 27,
+        "setup_floor_brine_core": 213,
+        "setup_floor_crew_hab": 73,
+        "setup_floor_galley": 36,
+        "setup_floor_hydroponics_bay": 69,
+        "setup_floor_life_support": 60,
+        "setup_floor_solar_array": 66,
+        "setup_light_pools_brine_core": 45,
+        "setup_light_pools_crew_hab": 21,
+        "setup_light_pools_galley": 19,
+        "setup_light_pools_hydroponics_bay": 23,
+        "setup_light_pools_life_support": 20,
+        "setup_light_pools_solar_array": 23,
+        "setup_shadows_brine_core": 117,
+        "setup_shadows_crew_hab": 75,
+        "setup_shadows_galley": 63,
+        "setup_shadows_hydroponics_bay": 79,
+        "setup_shadows_life_support": 70,
+        "setup_shadows_solar_array": 77,
+        "setup_shell_crew_hab": 205,
+        "setup_shell_galley": 86,
+        "setup_shell_life_support": 143,
+        "setup_shell_solar_array": 179,
+        "surface_validation": 766,
+        "wall_slots": 1286,
+        "walls": 1688
+      },
+      "step_usec": 19531,
+      "systems": {
+        "airlocks": 28,
+        "crew": 19026,
+        "cryo": 45,
+        "drones_wrecks": 222,
+        "inspector_battery": 0,
+        "inspector_forecast": 0,
+        "inspector_scrap": 0,
+        "inspector_work": 0,
+        "interface": 38,
+        "last_cycle_advance": 6319,
+        "last_cycle_at_ms": 46056,
+        "station_total": 19361,
+        "ui_construction": 0,
+        "ui_drone_alert": 0,
+        "ui_fire": 0,
+        "ui_flood": 0,
+        "ui_guide": 0,
+        "ui_inspector": 0,
+        "ui_integrity": 0,
+        "ui_stuck": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "builtin image_gen",
+  "reference": "rooms/production-ten/ore_refinery-source-v1.png",
+  "referenceRole": "camera and engineering materials only",
+  "generation": "One isolated ore-assay workbench sprite for the BRINE underwater station game. Use reference ONLY for camera and maintained engineering style: finely shaded pixel art, charcoal steel, orange panels, small muted yellow safety details. Fixed orthographic top-down cutaway view, all horizontal edges screen horizontal, front faces screen south, no isometric diamond. A compact mineral sampling table with a shallow recessed spill tray on top. On that surface are three small labeled sample cups with no readable lettering, visibly different coarse ore fragments, a handheld assay probe in a holder, and a short scoop. Lower shelf has two secured mineral sample canisters of unequal size. One restrained hooded task light clamped to a rear corner, neutral unlit lens. The table and supported instruments are ONE coherent secondary workspace, four short grounded legs, not a room or huge refinery. Real transparent RGBA exterior and gaps, no checkerboard, no backdrop, no floor slab, no haze or glow. Full silhouette in frame with clear margins. Mostly clean work area, only localized mineral dust inside the spill tray.",
+  "alphaEdit": "Make the white background transparent. Keep the ore sampling bench and attached lamp unchanged, with lamp off. Return a PNG with genuine alpha, including all gaps between its legs and under the lamp. No checkerboard or replacement background.",
+  "source": "ore-assay-bench-v2.png",
+  "registration": "ore-assay-bench-registration-v1.json",
+  "processing": "Raster unchanged; read-only alpha to vector registration omits low-alpha haze and opens holes. Pressure unit reuses Maintenance's registered engineering hardware.",
+  "rejected": "v1 RGB white exterior"
+}

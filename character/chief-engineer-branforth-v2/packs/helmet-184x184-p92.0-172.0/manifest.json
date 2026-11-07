@@ -1,0 +1,703 @@
+{
+  "name": "chief-engineer-branforth-v2-helmet-184x184-p92.0-172.0",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92.0,
+    172.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "../../frames/helmet/idle-south/000.png",
+        "../../frames/helmet/idle-south/001.png",
+        "../../frames/helmet/idle-south/002.png",
+        "../../frames/helmet/idle-south/003.png",
+        "../../frames/helmet/idle-south/004.png",
+        "../../frames/helmet/idle-south/005.png"
+      ],
+      "frameDurationsMs": [
+        260.0,
+        220.0,
+        240.0,
+        220.0,
+        240.0,
+        260.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "../../frames/helmet/idle-north/000.png",
+        "../../frames/helmet/idle-north/001.png",
+        "../../frames/helmet/idle-north/002.png",
+        "../../frames/helmet/idle-north/003.png",
+        "../../frames/helmet/idle-north/004.png",
+        "../../frames/helmet/idle-north/005.png"
+      ],
+      "frameDurationsMs": [
+        260.0,
+        220.0,
+        240.0,
+        220.0,
+        240.0,
+        260.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "../../frames/helmet/idle-east/000.png",
+        "../../frames/helmet/idle-east/001.png",
+        "../../frames/helmet/idle-east/002.png",
+        "../../frames/helmet/idle-east/003.png",
+        "../../frames/helmet/idle-east/004.png",
+        "../../frames/helmet/idle-east/005.png"
+      ],
+      "frameDurationsMs": [
+        260.0,
+        220.0,
+        240.0,
+        220.0,
+        240.0,
+        260.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "../../frames/helmet/idle-west/000.png",
+        "../../frames/helmet/idle-west/001.png",
+        "../../frames/helmet/idle-west/002.png",
+        "../../frames/helmet/idle-west/003.png",
+        "../../frames/helmet/idle-west/004.png",
+        "../../frames/helmet/idle-west/005.png"
+      ],
+      "frameDurationsMs": [
+        260.0,
+        220.0,
+        240.0,
+        220.0,
+        240.0,
+        260.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "../../frames/helmet/walk-south/000.png",
+        "../../frames/helmet/walk-south/001.png",
+        "../../frames/helmet/walk-south/002.png",
+        "../../frames/helmet/walk-south/003.png",
+        "../../frames/helmet/walk-south/004.png",
+        "../../frames/helmet/walk-south/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "../../frames/helmet/walk-north/000.png",
+        "../../frames/helmet/walk-north/001.png",
+        "../../frames/helmet/walk-north/002.png",
+        "../../frames/helmet/walk-north/003.png",
+        "../../frames/helmet/walk-north/004.png",
+        "../../frames/helmet/walk-north/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "../../frames/helmet/walk-east/000.png",
+        "../../frames/helmet/walk-east/001.png",
+        "../../frames/helmet/walk-east/002.png",
+        "../../frames/helmet/walk-east/003.png",
+        "../../frames/helmet/walk-east/004.png",
+        "../../frames/helmet/walk-east/005.png"
+      ],
+      "frameDurationsMs": [
+        170.0,
+        130.0,
+        150.0,
+        170.0,
+        130.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "../../frames/helmet/walk-west/000.png",
+        "../../frames/helmet/walk-west/001.png",
+        "../../frames/helmet/walk-west/002.png",
+        "../../frames/helmet/walk-west/003.png",
+        "../../frames/helmet/walk-west/004.png",
+        "../../frames/helmet/walk-west/005.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        170.0,
+        150.0,
+        200.0,
+        150.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "interact-east",
+      "frameFiles": [
+        "../../frames/helmet/interact-east/000.png",
+        "../../frames/helmet/interact-east/001.png",
+        "../../frames/helmet/interact-east/002.png",
+        "../../frames/helmet/interact-east/003.png",
+        "../../frames/helmet/interact-east/004.png",
+        "../../frames/helmet/interact-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        120.0,
+        140.0,
+        260.0,
+        140.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "kneel-east",
+      "frameFiles": [
+        "../../frames/helmet/kneel-east/000.png",
+        "../../frames/helmet/kneel-east/001.png",
+        "../../frames/helmet/kneel-east/002.png",
+        "../../frames/helmet/kneel-east/003.png",
+        "../../frames/helmet/kneel-east/004.png",
+        "../../frames/helmet/kneel-east/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        160.0,
+        180.0,
+        180.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "repair-east",
+      "frameFiles": [
+        "../../frames/helmet/repair-east/000.png",
+        "../../frames/helmet/repair-east/001.png",
+        "../../frames/helmet/repair-east/002.png",
+        "../../frames/helmet/repair-east/003.png",
+        "../../frames/helmet/repair-east/004.png",
+        "../../frames/helmet/repair-east/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        140.0,
+        180.0,
+        140.0,
+        160.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "stand-east",
+      "frameFiles": [
+        "../../frames/helmet/stand-east/000.png",
+        "../../frames/helmet/stand-east/001.png",
+        "../../frames/helmet/stand-east/002.png",
+        "../../frames/helmet/stand-east/003.png",
+        "../../frames/helmet/stand-east/004.png",
+        "../../frames/helmet/stand-east/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        160.0,
+        180.0,
+        180.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-ground-east",
+      "frameFiles": [
+        "../../frames/helmet/death-ground-east/000.png",
+        "../../frames/helmet/death-ground-east/001.png",
+        "../../frames/helmet/death-ground-east/002.png",
+        "../../frames/helmet/death-ground-east/003.png",
+        "../../frames/helmet/death-ground-east/004.png",
+        "../../frames/helmet/death-ground-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        220.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

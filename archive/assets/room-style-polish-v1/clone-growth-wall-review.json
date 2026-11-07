@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-clone-growth-wall",
+  "department": "Clinical Science",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Quiet warm ivory composite and muted teal trim, charcoal rubber gaskets and low-emission sage green culture vessels. Glass has subtle plane shading, not gloss streaks. Preserve three vessels and plumbing; small service vents only on quiet rear panels."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/clone-growth-wall.png",
+      "sha256": "10bc9a6d859b8711312d72ccf3f290e51348edcf715dd53aabcbf6074685f6b5",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v2/clone-north.png",
+      "sha256": "21f35002b754e8b5ab2af2a5b9b0328e473f8ea95bc2725986d1d8a99ccb8295",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/clone-growth-wall.png",
+  "source_sha256": "39c30881c8b46968e770773a9885d14e6d75dade47eeee838bc1780e091489dd",
+  "export_path": "assets/room-style-polish-v1/exports/clone-growth-wall.png",
+  "export_sha256": "176c60a10f9e4dfc871a2f20c68f25cae48f6255c4da0b0de43da5a4dfd3a70a",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    81.15864892528147
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Quiet warm ivory composite and muted teal trim, charcoal rubber gaskets and low-emission sage green culture vessels. Glass has subtle plane shading, not gloss streaks. Preserve three vessels and plumbing; small service vents only on quiet rear panels.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/clone-growth-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1048,
+            544
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 81.15864892528147,
+  "registration_path": "rooms/full-wall-v1/registrations/side-clone-growth-wall-south.json",
+  "registration_sha256": "a68cad735f9dac3badc74009264f658996ab92a0525f69b9f12e9a037ef17592",
+  "prompt_path": "assets/room-style-polish-v1/clone-growth-wall.prompt.txt",
+  "prompt_sha256": "9823198ad9eb7eea59528daf37f9acbc573bceace1f98cbbc0ed509d8b7fe009",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

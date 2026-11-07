@@ -1,0 +1,38 @@
+{
+  "shapes": [
+    "corridor",
+    "corner",
+    "tee_corridor"
+  ],
+  "rotations": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "finishes": 3,
+  "captured_frames": 72,
+  "visual_review": {
+    "raised_contact_sheets": 36,
+    "native_full_size": [
+      "corner-0-q2-raised.png",
+      "tee_corridor-2-q3-raised.png",
+      "corridor-1-q1-low.png"
+    ],
+    "limits": "Remaining low-wall frames captured/tested but not individually visually inspected. No water, crew-routing or executable acceptance in this review."
+  },
+  "test": "tests/test_corridor_wall_variants.gd",
+  "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+  "source_hashes": {
+    "rooms/underwater/corridor_surfaces.gd": "0142e4c4279cee11ddf3718f4db078dbe595a8963564fe78a278eb05077eec3d",
+    "rooms/underwater/corridor_geometry.gd": "9af464abbb3bf76a76a1131236944c0d260d57e7ae2430cbb6a782ba9ab8a35a",
+    "rooms/underwater/corridor_dressing.gd": "f928a7751b8b52b1fa8a425f49e5dfe54dae4c416a08a207c076967c9dc4957b",
+    "rooms/underwater/corridor_wall_art.gd": "68f21f2a2dfd1faac76dcba1702666f09475bcc978f4c77d4da06b9f4e93d001"
+  },
+  "findings": [
+    "Existing architecture covers the directions; inventory was stale.",
+    "Raised wall faces remain upright and crossings unobstructed in inspected frames.",
+    "No removed clutter restored."
+  ],
+  "production_changes": false
+}

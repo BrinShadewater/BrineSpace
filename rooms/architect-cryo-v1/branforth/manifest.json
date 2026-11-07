@@ -1,0 +1,34 @@
+{
+  "name": "branforth-cryo-v1",
+  "frameWidth": 418,
+  "frameHeight": 627,
+  "pivot": [
+    210,
+    560
+  ],
+  "source": "../branforth-source.png",
+  "sourceSha256": "b8d7e26f5e467b27e88f918115af1c4618d4f821386096bc3c2c9e34e765b7a4",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "sourceMode": "RGB",
+  "durationSeconds": 7.0,
+  "cleanup": "Project clear_exterior: remove edge-connected neutral pixels; no stretching/mirroring",
+  "states": [
+    {
+      "id": "wake-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "wake-0.png",
+        "wake-1.png",
+        "wake-2.png",
+        "wake-3.png",
+        "wake-4.png",
+        "wake-5.png"
+      ],
+      "fps": 0.8571428571428571,
+      "loop": false
+    }
+  ]
+}

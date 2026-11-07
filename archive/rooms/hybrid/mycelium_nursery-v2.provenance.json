@@ -1,0 +1,62 @@
+{
+  "id": "mycelium_nursery",
+  "method": "built-in imagegen interior revision and background extraction; authorized cleanup/normalization",
+  "prompts": [
+    "Use case: precise-object-edit. Input image 1 is the EDIT TARGET: Mycelium Nursery for BrineSpace. Revise the interior art into a quieter, functional fungal cultivation room, not a glowing reactor. Keep the existing overhead cutaway perspective, square worn steel hull, exact west/east/south door positions and clear T-shaped walkways. North wall stays sealed. Replace the two giant luminous glass domes in the upper half with one broad tiered ribbed-steel cultivation rack on the upper left and a smaller pale enamel inoculation bench on the upper right. Rack trays contain readable clusters of pale oyster-like mushrooms and dark fibrous substrate: matte ivory and muted lavender caps, not light-emitting. Keep a small lower-left nutrient tank and lower-right stacked substrate trays, with restrained detail and quiet floor areas. Materials: worn slate steel, scratched ivory enamel, soft organic growth; purposeful moisture marks only by irrigation fittings. Lighting: neutral overhead, tiny desaturated cyan status indicators only; no glowing roots, amber strips, bloom, particles or holograms. Add a visible irrigation rail above the growth rack suitable for a future localized operating effect, but no animated effect baked into this static base. Preserve clear doorway routes and room scale. Transparent exterior alpha, single square PNG, no text, characters, scenery or checkerboard.",
+    "Use case: background-extraction. Edit target: attached Mycelium Nursery room. Remove ONLY the black exterior outside the hull and beyond the three doorway floor edges. Return actual transparent alpha outside the complete cutout. Preserve interior dark floors and shadows, mushroom trays, inoculation bench, irrigation rail, pipes, hull and doorway jambs. No redesign, no lighting changes, no added floor extensions, no checkerboard or scene background. Single square PNG."
+  ],
+  "reference_roles": [
+    {
+      "path": "rooms/hybrid/mycelium_nursery.png",
+      "role": "edit target; hull and layout reference, interior intentionally revised"
+    },
+    {
+      "path": "rooms/hybrid/mycelium_nursery-v2-raw.png",
+      "role": "background extraction target"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-7d644591-60a7-4536-8344-1a58d00a701c.png",
+      "sha256": "a0ba21a06dfcdf7ca4afe8c4f3f64a645dadaa215030abda8bc6ba1ffda87058",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-3c817aeb-6a3d-4209-9ebe-07d4e7e9985d.png",
+      "sha256": "aa978d6f91f9b4e31c25e5907da54dfdceef970d31bb92dee917086fdfd76c58",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/hybrid/mycelium_nursery-v2.png",
+      "sha256": "a3faef584aab26d083683d1f2f4330d015653c88efed72d0e5b4e44a8d942157",
+      "size": [
+        1280,
+        1280
+      ]
+    }
+  ],
+  "cleanup": {
+    "size": 1280,
+    "margin": 8,
+    "alpha_bounds": [
+      16,
+      8,
+      1264,
+      1272
+    ]
+  },
+  "review": {
+    "identity": "Tiered cultivation rack and inoculation bench replace luminous domes; matte mushrooms read without bloom.",
+    "state_anchor": "Irrigation rail above upper-left growth rack; future effect, not implemented.",
+    "geometry": "Three doorway recesses and clear T aisle; registration and seam coverage still pending.",
+    "geometry_verified": false,
+    "integrated": false,
+    "native_verified": false
+  }
+}

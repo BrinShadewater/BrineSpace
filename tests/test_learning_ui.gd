@@ -1,0 +1,114 @@
+extends SceneTree
+const Preferences = preload("res://scripts/title_settings.gd")
+const Insights = preload("res://scripts/station_ui_insights.gd")
+var failures := 0
+func _init() -> void:
+	call_deferred("_run")
+func check(ok: bool, message: String) -> void:
+	if not ok:
+		failures += 1
+		push_error(message)
+func _run() -> void:
+	Preferences.save_path = "user://learning_ui_test.cfg"
+	Preferences.reduced_motion = true
+	var game = load("res://scenes/main.tscn").instantiate()
+	game.meta.save_path = "user://learning_ui_test.json"
+	game.run_save_path = "user://learning_ui_test.loop"
+	game.meta.discovered_synergy_ids.clear()
+	game.meta.stabilized_synergy_ids.clear()
+	game.meta.unread_records.clear()
+	game.meta.guide_completed = false
+	game.meta.unlocked_room_ids.erase("biodome")
+	root.add_child(game)
+	current_scene = game
+	root.size = Vector2i(1600,900)
+	game._confirm_doctrines()
+	game._set_paused(true, false)
+	# The Sept 9 adaptive guide replaced the numbered steps: it opens by asking
+	# for power and reports queued construction as "BUILDING <room>".
+	# The sidebar tutorial box itself was retired in the Sept 9 sidebar pass
+	# (visual bible); the guide text is still maintained and must start here.
+	check(game.guide_label.text.contains("CONNECT POWER"), "New-loop guide must start with connecting power")
+	game.hand.assign(["solar_array"])
+	game.selected_card_id = "solar_array"
+	game.selected_rotation = 2
+	game._on_grid_clicked(Vector2i(19,20))
+	check(game.guide_label.text.contains("BUILDING"), "Guide must explain pending construction")
+	game.paused = false
+	# Architects build paid orders since the Sept 8 construction pass: finish the
+	# core thaw, then advance crew construction until the room completes.
+	game.Architects.advance_core(game, game.Architects.DURATION)
+	for step in range(900):
+		game._update_test_walker(0.1)
+		game._update_wreck_clearance(0.1)
+		if game.occupied.has(Vector2i(19,20)): break
+	game.paused = true
+	check(game.placed_rooms.size() == 2, "Guide fixture must use a real paid placement")
+	game._refresh_learning_ui()
+	check(not game.guide_label.text.contains("CONNECT POWER"), "Guide must respond to placement")
+	game.selected_card_id = ""
+	game.hover_cell = Vector2i(19,20)
+	game.selected_room_cell = game.hover_cell
+	game._refresh_inspector()
+	check(game.inspector_label.text.contains("NEXT CYCLE FORECAST"), "Built-room inspector must separate forecast from observed status")
+	check(not game.inspector_label.text.contains("Closed Air Loop"), "Inspector must not reveal an undiscovered recipe")
+	game._focus_inspected_room()
+	check(game.selected_room_cell == Vector2i(19,20), "Locate must retain the inspected room")
+	game._toggle_inspected_room()
+	game._refresh_inspector()
+	# The remedy sits in the effects panel beside the room details since the inspector redesign.
+	check(game.inspector_effects.text.contains("Resume this room"), "Suspension must have an actionable remedy")
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://output/learning-ui-inspector.png")
+	check(Insights.remedy("NEEDS POWER + WATER").contains("shared") or Insights.remedy("NEEDS POWER + WATER").contains("share"), "Shortage guidance must explain the actual shared budget")
+	game._handle_synergy_discovery("closed_air_loop")
+	game._refresh_learning_ui()
+	check(game.meta.unread_records.has("synergy:closed_air_loop") and game.discovery_review_button.visible, "Discovery must create a persistent review action")
+	var restored = preload("res://scripts/meta_state.gd").new()
+	restored.save_path = game.meta.save_path
+	restored.unread_records.clear()
+	restored.load_from_disk()
+	check(restored.unread_records.has("synergy:closed_air_loop"), "Unread discoveries must survive profile reload")
+	check(game.current_toast_record == "synergy:closed_air_loop", "Discovery notification must retain its exact archive target")
+	var click := InputEventMouseButton.new()
+	click.button_index = MOUSE_BUTTON_LEFT
+	click.pressed = true
+	game.cascade_toast.gui_input.emit(click)
+	await process_frame
+	check(game.menu_archive.mode == "codex" and game.menu_archive.codex_tabs.current_tab == 1, "Review must open the synergy Codex")
+	check(game.menu_archive.search.text == "Closed Air Loop", "Review must target the discovered entry")
+	check(not game.meta.unread_records.has("synergy:closed_air_loop"), "Opening a discovery must mark it reviewed")
+	game.menu_archive._close()
+	await create_timer(0.2).timeout
+	game._close_menu()
+	game._award_synergy_stabilization(preload("res://scripts/synergy_manager.gd").get_synergy("closed_air_loop"))
+	game._refresh_learning_ui()
+	# Owner playtest, Sept 17: stabilizing no longer decrypts a blueprint; the pattern record is new again.
+	check(game.meta.unread_records.has("synergy:closed_air_loop") and not game.meta.unread_records.has("room:biodome"), "Stabilized patterns get a new record; no blueprint is decrypted")
+	game._review_latest_discovery()
+	await process_frame
+	check(game.menu_archive.codex_tabs.current_tab == 1 and game.menu_archive.search.text == "Closed Air Loop", "Stabilization review must target its synergy card")
+	game.menu_archive._close()
+	await create_timer(0.2).timeout
+	game._close_menu()
+	game._finish_guide()
+	check(not game.guide_box.visible, "Skip must dismiss the guide")
+	restored.load_from_disk()
+	check(restored.guide_completed, "Skipping the guide must persist")
+	game.resonance_score = 50
+	game._show_reboot_summary("Station supplies exhausted.", false)
+	# The outcome has its own line under the heading; the prose keeps what survives.
+	check(game.summary_text.text.contains("remain in your profile") and game.summary_outcome_label.text.contains("Station supplies exhausted."), "Summary must explain the outcome and retained rewards")
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://output/learning-ui-summary.png")
+	# Doctrine mastery was retired with starting doctrines (DEVELOPMENT_NOTES.md):
+	# runs record no doctrine, so no mastery rank or rank review is produced.
+	check(not game.meta.unread_records.has("mastery:industry"), "Retired doctrine mastery must not create unread records")
+	check(game.summary_layer.visible, "Summary stays open after the outcome is shown")
+	for path in [Preferences.save_path, game.meta.save_path, game.run_save_path]:
+		if FileAccess.file_exists(path):
+			DirAccess.remove_absolute(path)
+	print("LEARNING UI: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
+	quit(failures)

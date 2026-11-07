@@ -1,0 +1,94 @@
+{
+  "asset_id": "seed-packet-carrier-v1",
+  "department": "Life Support / Hydroponics",
+  "condition": "Matte sage tray, cream paper and charcoal handle",
+  "attachment_class": "Portable supported prop",
+  "functional_bays": [
+    "Three paper packet slots",
+    "North handle",
+    "South latch"
+  ],
+  "runtime_behavior": "Static carrier artwork",
+  "camera_and_facing": "Near top-down, north handle and south latch",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/seed-sorting-west-section-v1/wall.png",
+      "sha256": "7b4bc7362d0a578dce1bbc25ac72518d6beeb330d0d845e08f6e85852ecaeb7c",
+      "role": "Department palette and packet material"
+    }
+  ],
+  "source_path": "assets/seed-packet-carrier-v1/source-v1.png",
+  "source_sha256": "94f3b007960db40e0041b786dc3380b49d1a791fb34632dd0e580800e238ed63",
+  "export_path": "assets/seed-packet-carrier-v1/carrier.png",
+  "export_sha256": "5f58c24171f32ab65baf12904936c6d8a2f6452b6bb403b9110c4444562ec850",
+  "native_canvas_px": [
+    1448,
+    1086
+  ],
+  "proposed_display_width_world": 24.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Unsupported edges",
+    "Tool working areas",
+    "Hand grip clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet sage and paper at24-unit width; sparse rim shading remains."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/seed-packet-carrier-v1/carrier-scale.png",
+      "findings": [
+        "24 by19.50 actual; three supported packets visible.",
+        "Handle drawn beyond north rim; folded/carry pose not verified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "White exterior neutral228 plus reviewed handle aperture seed700,240; alpha at seed is zero, light/dark board inspected."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    },
+    "supported_group": {
+      "verdict": "agent_pass_static_support",
+      "evidence": "output/seed-packet-carrier-v1/group-scale.png",
+      "report": "assets/seed-packet-carrier-v1/group.json",
+      "findings": [
+        "Carrier24 units wide at187,17 rests on right worktop; existing propagation tray28 wide at81,17 remains on left.",
+        "Native and2x review show no overhang or central sorting-tray overlap. Handle and latch included in silhouette.",
+        "Lifting motion, hand clearance and runtime attachment remain unverified."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 19.49824150058617,
+  "registration_path": "assets/seed-packet-carrier-v1/registration.json",
+  "registration_sha256": "47ee65d22d568e6b55a7bd37114ff5b0fdb8efae51367e67afebdbb83f4082bc",
+  "prompt_path": "assets/seed-packet-carrier-v1/source.prompt.txt",
+  "prompt_sha256": "962260ccd91d660b98069731fd7eaa4d27e42fc16a1ae8d2ca21f58f2240520a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/seed-packet-carrier.log": "2fbe59c5c81bcfa737d9f8de1b98c65df3ee7adb9f7525ee41d8c20ab8bad22f",
+    "output/seed-packet-carrier-v1/carrier-scale.png": "bc4b0d04dc7ef1fa4942c69fd7e721937203955253b40789ad5f4446437b41f8",
+    "output/seed-packet-carrier-v1/group-scale.png": "2d262585bcf6ff5c673693b6f17a41ebe64eabe26f85eca3d7b8d541d017a840",
+    "assets/seed-packet-carrier-v1/group.json": "03615fadefda6720f4b1c1f8c1df571c74640af7dd5da0d1a21736650844dab6",
+    "output/seed-carrier-group.log": "40ae6c4fdd5da28d73c690a9db33a2644f83ace7f85344aff637905582955169"
+  }
+}

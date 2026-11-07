@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "sources": {
+    "pressure_gauge": {
+      "path": "assets/wall-dressing-v2/source/pressure_gauge.png",
+      "size": [
+        1187,
+        1326
+      ],
+      "mode": "RGBA",
+      "sha256": "2bd720fcac60c1079c3a124414947787b3344f691d14083d6218083acec8fec0"
+    },
+    "station_map": {
+      "path": "assets/wall-dressing-v2/source/station_map.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "31ee7444478d90d41a1d1fa7c1b153d7b604a180c83fdcc0aec301168745904e"
+    },
+    "fire_extinguisher": {
+      "path": "assets/wall-dressing-v2/source/fire_extinguisher.png",
+      "size": [
+        1087,
+        1447
+      ],
+      "mode": "RGBA",
+      "sha256": "78d028e8af19736baf3c9f61ac5cfedb5c9a048b3bf138c2390d65a7ade89d1f"
+    },
+    "oxygen_masks": {
+      "path": "assets/wall-dressing-v2/source/oxygen_masks.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "a6eb9645f04e7b809945867524fd96dc2e1fadeb28d9a76bef5ac430c624d502"
+    },
+    "key_rack": {
+      "path": "assets/wall-dressing-v2/source/key_rack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "6b2e8526edb15e60288ba84ed891076ab0f52e9e59b74f0cb975c0efbb2d15dd"
+    },
+    "tool_rack": {
+      "path": "assets/wall-dressing-v2/source/tool_rack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "68dc6e7e084f4da4722c7f4a6fca2cc7820ea705c40da073b306ea757c29a849"
+    },
+    "wall_planter": {
+      "path": "assets/wall-dressing-v2/source/wall_planter.png",
+      "size": [
+        1233,
+        1275
+      ],
+      "mode": "RGBA",
+      "sha256": "580ab31ae19ebace10bbdb919cdd821d887f97eb61b734e1dea9f287a77274a1"
+    },
+    "pennant": {
+      "path": "assets/wall-dressing-v2/source/pennant.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "7fcbc5b917f2429162c673028a36e195857fae41c6bd54d40095644bb293f025"
+    },
+    "vent_fan": {
+      "path": "assets/wall-dressing-v2/source/vent_fan.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "508c8161968c78abe43d700c54d2b54710fa81961aa06a71b1a285dafa58ddb2"
+    },
+    "alarm_beacon": {
+      "path": "assets/wall-dressing-v2/source/alarm_beacon.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "cb3bb5a3aaf135e7086755b1111bdc5b15398b2b1af1d3f54a42da2e732bcada"
+    },
+    "sample_display": {
+      "path": "assets/wall-dressing-v2/source/sample_display.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "ff891ffb2b60b4a6a05ad95713f501c90cf879df3b197730d1085af8b98914df"
+    },
+    "coat_hooks": {
+      "path": "assets/wall-dressing-v2/source/coat_hooks.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "9455c41e0276ff2a8f116cef08bfbe4641a8768eb8bab3cae39a879cf4a66558"
+    }
+  },
+  "sprites": {
+    "pressure_gauge": {
+      "path": "assets/wall-dressing-v2/sprites/pressure_gauge.png",
+      "size": [
+        968,
+        1010
+      ],
+      "pivot": [
+        484.0,
+        505.0
+      ],
+      "units_per_pixel": 0.02574257425742574,
+      "recommended_height": 26,
+      "category": "instrument",
+      "source_alpha_bounds": [
+        112,
+        152,
+        1076,
+        1158
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "07c5e33e7cef23a52fad925207127c5299f721d6d3b4d4337429c639e46a0404"
+    },
+    "station_map": {
+      "path": "assets/wall-dressing-v2/sprites/station_map.png",
+      "size": [
+        1166,
+        745
+      ],
+      "pivot": [
+        583.0,
+        372.5
+      ],
+      "units_per_pixel": 0.03758389261744966,
+      "recommended_height": 28,
+      "category": "information",
+      "source_alpha_bounds": [
+        187,
+        120,
+        1349,
+        861
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "bb4687471d18d5afc13d6ef0399607fc063be9de5aa7720ee2b0020d2dd9f811"
+    },
+    "fire_extinguisher": {
+      "path": "assets/wall-dressing-v2/sprites/fire_extinguisher.png",
+      "size": [
+        525,
+        1270
+      ],
+      "pivot": [
+        262.5,
+        635.0
+      ],
+      "units_per_pixel": 0.026771653543307086,
+      "recommended_height": 34,
+      "category": "safety",
+      "source_alpha_bounds": [
+        287,
+        71,
+        808,
+        1337
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "bf697afc532676b4c763290ed92e48fa0c0d72a7461e910139a2a71a5d6f7039"
+    },
+    "oxygen_masks": {
+      "path": "assets/wall-dressing-v2/sprites/oxygen_masks.png",
+      "size": [
+        986,
+        1062
+      ],
+      "pivot": [
+        493.0,
+        531.0
+      ],
+      "units_per_pixel": 0.02824858757062147,
+      "recommended_height": 30,
+      "category": "safety",
+      "source_alpha_bounds": [
+        136,
+        78,
+        1118,
+        1136
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "d547268767ef4e2d53b892607bb9e612cc697a8f5da41edbca49906a94c8f7fb"
+    },
+    "key_rack": {
+      "path": "assets/wall-dressing-v2/sprites/key_rack.png",
+      "size": [
+        1161,
+        780
+      ],
+      "pivot": [
+        580.5,
+        390.0
+      ],
+      "units_per_pixel": 0.028205128205128206,
+      "recommended_height": 22,
+      "category": "storage",
+      "source_alpha_bounds": [
+        190,
+        82,
+        1347,
+        858
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "25810634825f71e8d167369b194eabe89f064030c1ea4e0c3b247bfa9107547f"
+    },
+    "tool_rack": {
+      "path": "assets/wall-dressing-v2/sprites/tool_rack.png",
+      "size": [
+        1221,
+        929
+      ],
+      "pivot": [
+        610.5,
+        464.5
+      ],
+      "units_per_pixel": 0.030139935414424113,
+      "recommended_height": 28,
+      "category": "storage",
+      "source_alpha_bounds": [
+        158,
+        41,
+        1375,
+        966
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "c0424f1dd5730aadccec419a5838e894c5a163c24d07e0579e51758a50f98d4f"
+    },
+    "wall_planter": {
+      "path": "assets/wall-dressing-v2/sprites/wall_planter.png",
+      "size": [
+        895,
+        947
+      ],
+      "pivot": [
+        447.5,
+        473.5
+      ],
+      "units_per_pixel": 0.0337909186906019,
+      "recommended_height": 32,
+      "category": "personal",
+      "source_alpha_bounds": [
+        184,
+        156,
+        1075,
+        1099
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "68cebceb42972aa6de673c6b26fcfef8b3247c93225d52654c69e40d2eb23b4a"
+    },
+    "pennant": {
+      "path": "assets/wall-dressing-v2/sprites/pennant.png",
+      "size": [
+        938,
+        1343
+      ],
+      "pivot": [
+        469.0,
+        671.5
+      ],
+      "units_per_pixel": 0.022338049143708117,
+      "recommended_height": 30,
+      "category": "personal",
+      "source_alpha_bounds": [
+        45,
+        86,
+        979,
+        1425
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "c8b4f15db132e0b23d7d3316d0f4be043198ea1f1c255527b751cab1d66e2dc1"
+    },
+    "vent_fan": {
+      "path": "assets/wall-dressing-v2/sprites/vent_fan.png",
+      "size": [
+        912,
+        958
+      ],
+      "pivot": [
+        456.0,
+        479.0
+      ],
+      "units_per_pixel": 0.029227557411273485,
+      "recommended_height": 28,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        173,
+        136,
+        1081,
+        1090
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "501328e87f1a5292f8507fd379188656374456bfff142ecfb3ddd82691854275"
+    },
+    "alarm_beacon": {
+      "path": "assets/wall-dressing-v2/sprites/alarm_beacon.png",
+      "size": [
+        674,
+        1290
+      ],
+      "pivot": [
+        337.0,
+        645.0
+      ],
+      "units_per_pixel": 0.018604651162790697,
+      "recommended_height": 24,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        177,
+        110,
+        847,
+        1396
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "6f28bc4701235b9e6e008655f51466155bd3cd2d039258dd1cd810ba96b746ab"
+    },
+    "sample_display": {
+      "path": "assets/wall-dressing-v2/sprites/sample_display.png",
+      "size": [
+        1100,
+        574
+      ],
+      "pivot": [
+        550.0,
+        287.0
+      ],
+      "units_per_pixel": 0.04878048780487805,
+      "recommended_height": 28,
+      "category": "personal",
+      "source_alpha_bounds": [
+        220,
+        215,
+        1316,
+        785
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "26f253d4a8382494f6bcf5c559dcfde292d1e934343b1dbfc97d9685d406f96b"
+    },
+    "coat_hooks": {
+      "path": "assets/wall-dressing-v2/sprites/coat_hooks.png",
+      "size": [
+        1160,
+        865
+      ],
+      "pivot": [
+        580.0,
+        432.5
+      ],
+      "units_per_pixel": 0.03236994219653179,
+      "recommended_height": 28,
+      "category": "storage",
+      "source_alpha_bounds": [
+        190,
+        89,
+        1346,
+        950
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0d57f26843cc76f3730965b0e34b36393e82009351a07d7b4dcaa5de41a33d5e"
+    }
+  },
+  "layouts": {
+    "maintenance": [
+      [
+        "pressure_gauge",
+        -149,
+        -216
+      ],
+      [
+        "tool_rack",
+        -82,
+        -216
+      ],
+      [
+        "vent_fan",
+        76,
+        -216
+      ],
+      [
+        "key_rack",
+        141,
+        -216
+      ]
+    ],
+    "safety_station": [
+      [
+        "station_map",
+        -147,
+        -216
+      ],
+      [
+        "fire_extinguisher",
+        -70,
+        -216
+      ],
+      [
+        "oxygen_masks",
+        78,
+        -216
+      ],
+      [
+        "alarm_beacon",
+        143,
+        -216
+      ]
+    ],
+    "crew_details": [
+      [
+        "wall_planter",
+        -149,
+        -216
+      ],
+      [
+        "pennant",
+        -80,
+        -216
+      ],
+      [
+        "sample_display",
+        79,
+        -216
+      ],
+      [
+        "coat_hooks",
+        148,
+        -216
+      ]
+    ]
+  },
+  "wall_envelope": [
+    -192,
+    -240,
+    384,
+    48
+  ],
+  "reserved_door_bay": [
+    -34,
+    -246,
+    68,
+    58
+  ]
+}

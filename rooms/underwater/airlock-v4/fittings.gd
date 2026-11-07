@@ -1,0 +1,50 @@
+extends RefCounted
+## Visual attachments in screen-facing hull space; never navigation blockers.
+const Riser=preload("res://rooms/whole-room/riser_geometry.gd")
+static var textures: Dictionary={}
+static var profile: Dictionary={}
+static func source_paths() -> Dictionary:
+	if profile.is_empty():
+		profile=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/airlock-v4/wall-profile.json"))
+	return profile.textures
+
+static func load_assets(keys:Array=[]) -> void:
+	var sources:=source_paths()
+	for key in sources if keys.is_empty() else keys:
+		if textures.has(key): continue
+		var image:=Image.new()
+		preload("res://scripts/safe_image.gd").load_png(image,sources[key])
+		textures[key]=ImageTexture.create_from_image(image)
+
+static func sprite(canvas: CanvasItem,key: String,bounds: Rect2) -> void:
+	load_assets([key])
+	var size: Vector2=textures[key].get_size()
+	size*=minf(bounds.size.x/size.x,bounds.size.y/size.y)
+	canvas.draw_texture_rect(textures[key],Rect2(bounds.get_center()-size*0.5,size),false)
+
+static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO,wall_view=null) -> void:
+	load_assets()
+	# Pressure hull: structural ribs, steel panels and fixed maintenance conduits.
+	canvas.draw_rect(Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Color("354b54"))
+	for x in range(-192,192,48):
+		canvas.draw_rect(Rect2(x+3,Riser.TOP+4,42,Riser.HEIGHT-10),Color("43585e"))
+		canvas.draw_line(Vector2(x+4,Riser.TOP+5),Vector2(x+43,Riser.TOP+5),Color("677974"),1)
+		canvas.draw_line(Vector2(x+44,Riser.TOP+5),Vector2(x+44,-198),Color("21383f"),2)
+	for x in [-192,-52,48,188]:
+		canvas.draw_rect(Rect2(x,Riser.TOP,4,Riser.HEIGHT),Color("1e343d"))
+		canvas.draw_line(Vector2(x+1,Riser.TOP+2),Vector2(x+1,-194),Color("81908a"),1)
+	canvas.draw_rect(Rect2(-196,Riser.CAP_TOP,392,7),Color("667c7b"))
+	canvas.draw_line(Vector2(-196,Riser.TOP+1),Vector2(196,Riser.TOP+1),Color("21353c"),2)
+	canvas.draw_rect(Rect2(-192,-196,384,4),Color("1b3039"))
+	canvas.draw_line(Vector2(-188,-194),Vector2(-36,-194),Color("92805b"),1)
+	canvas.draw_line(Vector2(36,-194),Vector2(188,-194),Color("92805b"),1)
+	# Owner-requested airlock furnishings are part of this room's architecture.
+	# Keep the global pause on optional decoration in other rooms unchanged.
+	for item in profile.wall_items:
+		var r: Array=item.rect
+		var bounds:=Rect2(Vector2(r[0],r[1])+Riser.MOUNT_SHIFT,Vector2(r[2],r[3]))
+		var covered:=false
+		if wall_view!=null and wall_view.has_method("wall_art_rects"):
+			for art_rect in wall_view.wall_art_rects():
+				if art_rect.intersects(bounds): covered=true
+		if not covered: sprite(canvas,item.texture,bounds)

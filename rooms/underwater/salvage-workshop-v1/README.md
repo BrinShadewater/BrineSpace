@@ -1,0 +1,20 @@
+# Salvage Workshop
+
+Engineering; secondary Logistics; maintained with localized handling wear. The heavy workbench dismantles recovered machinery beneath warm task lighting. Burnt-orange drawers and charcoal steel contrast with the quiet engineering floor. Parts shelves and a repair press belong to the bench; the floor tote provides a delivery destination. The small press indicator animates only while operating.
+
+Fixed north installation, one south entrance. Build cost 8 Metal. Each functioning cycle consumes 3 stored Metal and 2 Power, producing 1 Rare Mineral through the shared input budget. Crew visits are presentation of work, not a staffing requirement or an additional material award. A connected functioning Salvage Drone Bay discovers Parts Reclamation (+1 Metal/cycle); three consecutive functioning cycles stabilize its research reward. Unknown recipes remain hidden.
+
+Bench source is 1774×887 RGBA; tote source is 1536×1024 RGBA. Raw source alpha includes soft exterior pixels. Read-only alpha registration uses threshold 200; native Godot polygon rendering writes bench.png and tote.png at source resolution. Originals remain unchanged. Rebuild cutouts with render_assets.gd. No new character sheets: existing idle/interact/walk frames plus a carried tote overlay implement inspection, work, delivery and unloading.
+
+## Workbench prompt
+Create ONE reusable BrineSpace SALVAGE WORKSHOP workbench installation sprite, transparent alpha background. Reference image is camera and painterly pixel-art rendering ONLY; do not copy room, drones, floor or hull. Straight-on elevated orthographic SOUTH view, horizontal edges level, no diagonal yaw. A broad heavy charcoal steel workbench with burnt orange drawer panels and chunky legs, working surface holding a dismantled marine motor and separated valuable components. Tall tool pegboard behind it with neatly hung spanners, modest parts shelves on LEFT, warm shaded task lamp above working surface. RIGHT end has a compact vise/repair press attached to bench. Rich selectively detailed industrial pixel art, mostly maintained with small scuffs at contact points, restrained amber lamps, no neon, no text. Asymmetric believable workshop, coherent single connected assembly. No floor, no walls, no crew, no loose objects outside silhouette, no checkerboard. Full asset inside canvas with margin, wide horizontal composition about 2:1. Readable silhouette at small game scale, muted darker palette matching station. All working interfaces face SOUTH.
+
+Reference: rooms/production-ten/salvage_drone_bay-source-v1.png supplies camera/rendering only.
+
+## Tote prompt
+ONE standalone small SALVAGE PARTS TOTE game prop for BrineSpace, open shallow rectangular charcoal steel carry bin containing a few recovered bronze bearings, dark cable coils and steel motor components. Small burnt-orange front panel, two useful side hand grips. Elevated orthographic SOUTH camera, level horizontal front, no diagonal yaw. Painterly detailed pixel art, muted charcoal steel and aged bronze, modest handled scuffs, mostly maintained, readable at tiny sprite scale. Genuine transparent alpha background and internal handle gaps. No room, floor, shadow beyond object, people, text or checkerboard. Single complete compact object centered with margin. Matches industrial workbench in supplied reference, which supplies materials and camera only.
+
+Reference: bench-source.png supplies materials and camera.
+
+## Verification
+Native card, completed room, bounds and route reviewed. Operating/frozen/offline pixel checks pass. Paid construction, Save/Continue, three crew inspect/work/carry/unload, disk snapshots, zero-time freeze, suspension and continuous collision checks pass. Three viewport sizes and four delivery frames captured. Economy/discovery and existing crew/power regressions pass. Logs are in output/workshop-*.log. Manifest hashes track runtime components. No standalone executable was rebuilt; native review is agent review, not owner approval.

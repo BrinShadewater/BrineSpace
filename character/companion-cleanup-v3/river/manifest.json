@@ -1,0 +1,136 @@
+{
+  "character": "river",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "strideDistanceCells": {
+    "walk": 0.1
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/000.png",
+        "frames/walk-south/001.png",
+        "frames/walk-south/002.png",
+        "frames/walk-south/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/000.png",
+        "frames/walk-north/001.png",
+        "frames/walk-north/002.png",
+        "frames/walk-north/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    }
+  ],
+  "rowDirections": [
+    "south",
+    "west",
+    "north",
+    "east"
+  ],
+  "mirrored": false,
+  "sourceManifest": "../../river-v1/manifest.json",
+  "paletteColors": 64,
+  "extraction": "Border-connected neutral background removal for robots; magenta key for cat/actions; BOX downsample before binary alpha and shared palette."
+}

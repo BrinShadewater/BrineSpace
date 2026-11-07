@@ -1,0 +1,81 @@
+{
+  "asset_id": "observation-chart-east-wall-v1",
+  "department": "Habitation / Observation",
+  "condition": "Matte wood and paper",
+  "attachment_class": "Low east-backed counter",
+  "functional_bays": [
+    "North folders and storage",
+    "Central chart and weights",
+    "South rolls and closed banded sleeve"
+  ],
+  "runtime_behavior": "Static standing counter",
+  "camera_and_facing": "Near-top-down; right backing, left drawer access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/observation-chart-west-wall-v1/wall.png",
+      "sha256": "5d313e3214f438175e0d0ed1ec0d0afa036beb5a3f3394e12887bb2ef79652ec",
+      "role": "Side construction and matte materials"
+    }
+  ],
+  "source_path": "assets/observation-chart-east-wall-v1/source-v1.png",
+  "source_sha256": "77fb75f9432e274065790b5cb70b32f3a1335bddfa73a6d70f21b0b82b608ac4",
+  "export_path": "assets/observation-chart-east-wall-v1/wall.png",
+  "export_sha256": "aa09dc6f9cbbf2c3b324ab327feed7826f9b6820c4798490d1bf19a54f133349",
+  "native_canvas_px": [
+    1081,
+    1455
+  ],
+  "proposed_display_width_world": 74.13489736070382,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Operator clearance",
+    "Porthole view"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet wood, dark pulls and banded cloth sleeve; no shiny buckle."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/observation-chart-east-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit native length;74.13 depth versus west74.01.",
+        "Left-facing pulls; sleeve uses plain cloth band, opening motion unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral150 removes baked checkerboard; light/dark and segmented silhouette inspected."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/observation-chart-east-wall-v1/registration.json",
+  "registration_sha256": "1e3aef1c144191b83fbcf0fec3c8efa6bde1f6b7308a96249cfb66920d1b14f4",
+  "prompt_path": "assets/observation-chart-east-wall-v1/source.prompt.txt",
+  "prompt_sha256": "af6d37292c2f8e8b14a4aa5338ebb9945a8b2ae5f5b37edc7fb7e0c9d28544fe",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/observation-chart-east-wall.log": "5e5653ac0e3faab52b5667b4420a38beb7a0f14779bf84d5195406c1205c5fc7",
+    "output/observation-chart-east-wall-v1/wall-scale.png": "fab65c70a99239c125f99121782b9ab510a147db2b1af1a5145a036978354abb"
+  }
+}

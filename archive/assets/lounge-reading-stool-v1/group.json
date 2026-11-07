@@ -1,0 +1,51 @@
+{
+  "entries": [
+    {
+      "export": "res://assets/lounge-reading-wall-v1/wall.png",
+      "sha256": "7444b64af268d4b067345422a026a25b4c20b950a48f324b5a678e317fdb9c02",
+      "region": [
+        50.0,
+        286.0,
+        1673.0,
+        323.0
+      ],
+      "width": 320,
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "export": "res://assets/lounge-reading-stool-v1/stool.png",
+      "sha256": "6316c13581d39f836c5af00319dc970cb267fcd0408a18e78d7a6bdb89836774",
+      "region": [
+        365.0,
+        355.0,
+        525.0,
+        524.0
+      ],
+      "width": 26,
+      "at": [
+        154,
+        82
+      ]
+    }
+  ],
+  "runtime_placement_verified": false,
+  "owner_acceptance": null,
+  "scope": "Static reading-area scale proposal; stool aligned below open-book zone",
+  "occupied_clearance_verified": false,
+  "review": {
+    "verdict": "agent_pass_static_scale",
+    "findings": [
+      "26-unit stool remains subordinate to320-unit wall; warm cloth/wood palette matches.",
+      "Solid cabinet front has no knee recess. Occupied seated reading posture/reach cannot be inferred from this board.",
+      "Stool positioned at154,82 below book zone; visible separation is20.22 units from cabinet silhouette, not certified movement clearance."
+    ]
+  },
+  "evidence": {
+    "output/lounge-reading-group.log": "40ae6c4fdd5da28d73c690a9db33a2644f83ace7f85344aff637905582955169",
+    "output/lounge-reading-stool-v1/group-scale.png": "b5cab057a858098661809bab9754086e2b2c8eeb409dbb06790a64444184a535",
+    "tools/review_prop_group.gd": "f0708f88d0b75e8e818f59f689b30169458ba78d11899a3312febe153a5e5346"
+  }
+}

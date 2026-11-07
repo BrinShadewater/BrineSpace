@@ -1,0 +1,67 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "bunk-lower-east",
+      "frameFiles": [
+        "000.png",
+        "001.png",
+        "002.png"
+      ],
+      "furniture": "bunk",
+      "frameDurationsMs": [
+        300,
+        300,
+        300
+      ],
+      "loop": false,
+      "depthOffsets": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "id": "bunk-rise-east",
+      "frameFiles": [
+        "002.png",
+        "001.png",
+        "000.png"
+      ],
+      "furniture": "bunk",
+      "frameDurationsMs": [
+        300,
+        300,
+        300
+      ],
+      "loop": false,
+      "depthOffsets": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "id": "bunk-sleep-east",
+      "frameFiles": [
+        "002.png"
+      ],
+      "furniture": "bunk",
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "depthOffsets": [
+        100
+      ]
+    }
+  ]
+}

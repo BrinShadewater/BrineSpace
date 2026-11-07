@@ -1,0 +1,283 @@
+extends RefCounted
+const PATH := "user://brine_settings.cfg"
+# A test, tool or probe started with -s replaces the main loop with its own script - the same
+# signal the performance monitor uses for automatic captures. Those runs resize windows and toggle
+# preferences, and they used to write all of it into the player's own settings (owner report,
+# Sept 17: a probe left a stale window size and swapped the hand layout). They get their own file.
+const TEST_PATH := "user://test_settings.cfg"
+static var save_path := PATH
+
+static func _player_session() -> bool:
+	var loop := Engine.get_main_loop()
+	return loop == null or loop.get_script() == null
+
+# Called before any read or write: only a real play session touches the player's file.
+static func _settings_path() -> String:
+	if save_path == PATH and not _player_session(): return TEST_PATH
+	return save_path
+static var initialized := false
+static var window_size := Vector2i(1600, 900)
+static var reduced_motion := false
+static var placement_guides := true
+# The resource overlay: what each room gives and takes, drawn over the rooms (hotkey "Resource overlay").
+static var resource_overlay := false
+static var raised_walls := true
+static var hand_backdrop := false
+static var hand_layout := "fan" # Draft hand as a row of cards or a fan (owner playtest).
+static var pixel_frames := false # HUD panels use clean vector frames unless this is on.
+static var fps_cap := 0
+# Visual effects: 0 Low, 1 Medium (default), 2 High. See docs/superpowers/specs/2026-09-29-lighting-atmosphere-design.md.
+static var effects_quality := 1
+static var auto_graphics := false
+static var muted := false
+static var music_volume := 1.0
+static var effects_volume := 1.0
+static var ambience_volume := 1.0
+static var mute_unfocused := false
+static var pause_unfocused := false
+static var zoom_sensitivity := 1.0
+static var invert_zoom := false
+static var tooltip_delay := 0.5
+static var text_scale := 1.0
+static var window_focused := true
+
+# Strengths of the water-atmosphere effects for the current Quality (spec values are the Medium column).
+static func atmosphere() -> Dictionary:
+	match effects_quality:
+		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0, "drift": 0.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0, "occlusion": 0.0, "fog": 0.0}
+		# Owner playtest, Sept 29: outside a bit too grainy, water pattern too strong and more transparent wanted,
+		# a green outline round some props (the colour fringe), rooms a little dark (shadow and occlusion).
+		# Second pass, Sept 29: still dark, a bright green edge, too much blue glow, wanted sharper. Less bloom,
+		# tint and fringe; the focus blur halved; lighter shadow, occlusion and fog.
+		2: return {"shafts": 0.45, "caustics": 0.26, "tint": 0.45, "snow": 1.05, "drift": 1.3, "grade": 1.0, "bloom": 0.12, "shimmer": 0.5, "grain": 0.35, "fringe": 0.04, "blur": 0.5, "shadow": 0.5, "occlusion": 0.45, "fog": 0.6}
+		_: return {"shafts": 0.42, "caustics": 0.24, "tint": 0.52, "snow": 0.75, "drift": 1.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0, "occlusion": 0.0, "fog": 0.0}
+const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V, "Resource overlay": KEY_Y}
+static var keys: Dictionary = DEFAULT_KEYS.duplicate()
+
+static func pressed(event: InputEvent, action: String) -> bool:
+	return event is InputEventKey and event.pressed and not event.echo and event.keycode == int(keys[action]) and not event.ctrl_pressed and not event.alt_pressed and not event.meta_pressed
+
+static func key_name(action: String) -> String:
+	return OS.get_keycode_string(int(keys[action]))
+
+static func apply_key_hints(node: Node) -> void:
+	if node.has_meta("key_hint"):
+		var caption: String = node.get_meta("key_hint")
+		for action in keys:
+			caption = caption.replace("{" + action + "}", key_name(action))
+		node.text = caption
+	for child in node.get_children():
+		apply_key_hints(child)
+
+static func initialize(window: Window) -> void:
+	if initialized:
+		return
+	initialized = true
+	window_focused = window.has_focus()
+	if not window.focus_entered.is_connected(_on_focus.bind(true)):
+		window.focus_entered.connect(_on_focus.bind(true))
+		window.focus_exited.connect(_on_focus.bind(false))
+	var config := ConfigFile.new()
+	raised_walls = true
+	if config.load(_settings_path()) != OK:
+		# The 1600x900 window override is in pixels, so a Retina Mac (scale 2) opened the first
+		# window at half size. Windows always reports scale 1 and is unchanged.
+		var scale := DisplayServer.screen_get_scale(window.current_screen)
+		if scale > 1.0 and window.mode == Window.MODE_WINDOWED:
+			window_size = Vector2i(Vector2(window.size) * scale)
+			apply_window_mode(window, 0, false)
+		window_size = window.size
+		apply_runtime(window)
+		return
+	var saved_size = config.get_value("display", "size", Vector2i(1600, 900))
+	keys = DEFAULT_KEYS.duplicate()
+	var saved_keys = config.get_value("controls", "keys", {})
+	if saved_keys is Dictionary:
+		var candidate: Dictionary = DEFAULT_KEYS.duplicate()
+		for action in DEFAULT_KEYS:
+			candidate[action] = int(saved_keys.get(action, DEFAULT_KEYS[action]))
+		# An action added after the player saved their bindings takes its default only if that key is free;
+		# otherwise the first free spare key. A collision here used to reset every custom binding (Sept 30).
+		for action in DEFAULT_KEYS:
+			if saved_keys.has(action): continue
+			var taken := {}
+			for other in candidate:
+				if other != action and saved_keys.has(other): taken[candidate[other]] = true
+			if taken.has(candidate[action]):
+				for spare in [KEY_Y, KEY_O, KEY_U, KEY_H, KEY_K, KEY_L, KEY_N, KEY_M, KEY_B, KEY_T, KEY_G]:
+					if not taken.has(spare) and not candidate.values().has(spare):
+						candidate[action] = spare
+						break
+		var used := {}
+		var valid := true
+		for key in candidate.values():
+			if key <= 0 or key in [KEY_ESCAPE, KEY_TAB, KEY_ENTER, KEY_KP_ENTER, KEY_F7, KEY_F8, KEY_F9] or used.has(key):
+				valid = false
+			used[key] = true
+		if valid:
+			keys = candidate
+	# Migrate the retired forced-low setting to the new owner-directed default.
+	# A new explicit choice remains persistent after this migration.
+	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
+	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
+	resource_overlay = bool(config.get_value("display", "resource_overlay", false))
+	hand_backdrop = bool(config.get_value("display", "hand_backdrop", false))
+	pixel_frames = bool(config.get_value("accessibility", "pixel_frames", false))
+	hand_layout = str(config.get_value("display", "hand_layout", "fan"))
+	if hand_layout not in ["row", "fan"]:
+		hand_layout = "fan"
+	reduced_motion = bool(config.get_value("accessibility", "reduced_motion", false))
+	fps_cap = int(config.get_value("display", "fps_cap", 0))
+	effects_quality = clampi(int(config.get_value("display", "effects_quality", 1)), 0, 2)
+	auto_graphics = bool(config.get_value("display", "auto_graphics", false))
+	if auto_graphics: effects_quality = detect_graphics()
+	if fps_cap not in [0, 30, 60, 120, 144, 240]:
+		fps_cap = 0
+	muted = bool(config.get_value("audio", "muted", false))
+	music_volume = clampf(float(config.get_value("audio", "music_volume", 1.0)), 0.0, 1.0)
+	effects_volume = clampf(float(config.get_value("audio", "effects_volume", 1.0)), 0.0, 1.0)
+	ambience_volume = clampf(float(config.get_value("audio", "ambience_volume", 1.0)), 0.0, 1.0)
+	mute_unfocused = bool(config.get_value("audio", "mute_unfocused", false))
+	pause_unfocused = bool(config.get_value("controls", "pause_unfocused", false))
+	zoom_sensitivity = clampf(float(config.get_value("controls", "zoom_sensitivity", 1.0)), 0.5, 2.0)
+	invert_zoom = bool(config.get_value("controls", "invert_zoom", false))
+	tooltip_delay = clampf(float(config.get_value("accessibility", "tooltip_delay", 0.5)), 0.1, 1.5)
+	text_scale = clampf(float(config.get_value("accessibility", "text_scale", 1.0)), 1.0, 1.3)
+	if saved_size is Vector2i and saved_size.x >= 960 and saved_size.y >= 540:
+		window_size = saved_size
+		window.size = window_size
+	var saved_mode := int(config.get_value("display", "window_mode", 1 if config.get_value("display", "fullscreen", false) else 0))
+	apply_window_mode(window, saved_mode, false)
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if config.get_value("display", "vsync", true) else DisplayServer.VSYNC_DISABLED)
+	AudioServer.set_bus_volume_linear(0, clampf(float(config.get_value("audio", "volume", 1.0)), 0.0, 1.0))
+	apply_runtime(window)
+
+static func _on_focus(focused: bool) -> void:
+	window_focused = focused
+	AudioServer.set_bus_mute(0, silent_run() or muted or (mute_unfocused and not focused))
+
+# A test, probe or fixture run (Godot --script, --silent, or BRINE_SILENT=1) starts the whole game, music
+# included, on the real audio device. Native runs on screen 2 were playing music and effects over the owner's
+# own game and cutting out when they ended (owner playtest, Sept 29: "music keeps cutting in and out").
+# Such runs mute the master bus; every sound still plays and is counted, it just is not heard.
+# Tests that check the real mute logic (focus loss, the Mute setting) switch this on for their duration.
+static var allow_sound_in_tests := false
+
+static func silent_run() -> bool:
+	if allow_sound_in_tests: return false
+	var args := OS.get_cmdline_args()
+	return args.has("--script") or args.has("-s") or args.has("--silent") or OS.get_environment("BRINE_SILENT") == "1"
+
+static func mute_if_silent_run() -> void:
+	if silent_run(): AudioServer.set_bus_mute(0, true)
+
+static func apply_runtime(window: Window) -> void:
+	Engine.max_fps = fps_cap
+	apply_key_hints(window)
+	# Menu tooltips use a timer in title_button_style; the engine's built-in
+	# viewport tooltip delay is fixed when the viewport is constructed.
+	_on_focus(window_focused)
+
+static func zoom_step() -> float:
+	return 0.05 * zoom_sensitivity * (-1.0 if invert_zoom else 1.0)
+
+static func apply_menu_text(node: Node) -> void:
+	if node is RichTextLabel:
+		for font_key in ["normal_font_size", "bold_font_size", "italics_font_size", "bold_italics_font_size", "mono_font_size"]:
+			var base_key: String = "menu_base_" + font_key
+			if not node.has_meta(base_key):
+				node.set_meta(base_key, node.get_theme_font_size(font_key))
+			node.add_theme_font_size_override(font_key, roundi(node.get_meta(base_key) * text_scale))
+	if node is Label or node is Button or node is LineEdit or node is TabBar:
+		if not node.has_meta("menu_base_font_size"):
+			node.set_meta("menu_base_font_size", node.get_theme_font_size("font_size"))
+		node.add_theme_font_size_override("font_size", roundi(node.get_meta("menu_base_font_size") * text_scale))
+		if node is OptionButton:
+			node.get_popup().add_theme_font_size_override("font_size", roundi(17 * text_scale))
+	for child in node.get_children():
+		apply_menu_text(child)
+
+static func is_fullscreen(window: Window) -> bool:
+	return get_window_mode(window) != 0
+
+static func get_window_mode(window: Window) -> int:
+	if window.borderless:
+		return 1
+	if window.mode == Window.MODE_EXCLUSIVE_FULLSCREEN:
+		return 2
+	if window.mode == Window.MODE_FULLSCREEN or window.borderless:
+		return 1
+	return 0
+
+static func apply_window_mode(window: Window, value: int, remember_size := true) -> void:
+	if remember_size and get_window_mode(window) == 0 and window.mode == Window.MODE_WINDOWED:
+		window_size = window.size
+	var screen := window.current_screen
+	var screen_position := DisplayServer.screen_get_position(screen)
+	var screen_size := DisplayServer.screen_get_size(screen)
+	window.mode = Window.MODE_WINDOWED
+	window.borderless = value == 1
+	match value:
+		1:
+			window.position = screen_position
+			window.size = screen_size
+		2:
+			window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+		_:
+			# Center in the usable area (clear of the taskbar, or the Mac menu bar and Dock) and
+			# shrink to fit when the remembered size is larger than that area.
+			var usable := DisplayServer.screen_get_usable_rect(screen)
+			var fitted := Vector2i(mini(window_size.x, usable.size.x), mini(window_size.y, usable.size.y))
+			var centered := usable.position + Vector2i(maxi(0, int((usable.size.x - fitted.x) * 0.5)), maxi(0, int((usable.size.y - fitted.y) * 0.5)))
+			window.size = fitted
+			window.position = centered
+			# Windows promotes a borderless window covering the screen to exclusive fullscreen,
+			# and the earlier MODE_WINDOWED does not undo it; request windowed again once the
+			# borders and size are back (owner playtest: resolution changes misbehaved).
+			window.mode = Window.MODE_WINDOWED
+			window.size = fitted
+			window.position = centered
+
+static func save(window: Window) -> Error:
+	if window.mode == Window.MODE_WINDOWED and not is_fullscreen(window):
+		window_size = window.size
+	var config := ConfigFile.new()
+	config.set_value("display", "size", window_size)
+	config.set_value("display", "fullscreen", is_fullscreen(window))
+	config.set_value("display", "window_mode", get_window_mode(window))
+	config.set_value("display", "vsync", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED)
+	config.set_value("audio", "volume", AudioServer.get_bus_volume_linear(0))
+	config.set_value("accessibility", "reduced_motion", reduced_motion)
+	config.set_value("accessibility", "placement_guides", placement_guides)
+	config.set_value("display", "resource_overlay", resource_overlay)
+	config.set_value("display", "raised_walls", raised_walls)
+	config.set_value("display", "riser_walls_enabled", raised_walls)
+	config.set_value("display", "hand_backdrop", hand_backdrop)
+	config.set_value("display", "hand_layout", hand_layout)
+	config.set_value("accessibility", "pixel_frames", pixel_frames)
+	config.set_value("display", "fps_cap", fps_cap)
+	config.set_value("display", "effects_quality", effects_quality)
+	config.set_value("display", "auto_graphics", auto_graphics)
+	config.set_value("audio", "muted", muted)
+	config.set_value("audio", "music_volume", music_volume)
+	config.set_value("audio", "effects_volume", effects_volume)
+	config.set_value("audio", "ambience_volume", ambience_volume)
+	config.set_value("audio", "mute_unfocused", mute_unfocused)
+	config.set_value("controls", "pause_unfocused", pause_unfocused)
+	config.set_value("controls", "zoom_sensitivity", zoom_sensitivity)
+	config.set_value("controls", "invert_zoom", invert_zoom)
+	config.set_value("controls", "keys", keys)
+	config.set_value("accessibility", "tooltip_delay", tooltip_delay)
+	config.set_value("accessibility", "text_scale", text_scale)
+	return config.save(_settings_path())
+
+## Conservative hardware recommendation; manual choices always win.
+static func recommended_quality(adapter: String, cores: int) -> int:
+	var name := adapter.to_lower()
+	if cores <= 2 or "llvmpipe" in name or "software" in name or "swiftshader" in name: return 0
+	if "intel" in name or "integrated" in name or "radeon graphics" in name: return 1
+	if cores >= 4 and ("geforce" in name or "radeon rx" in name or "rtx" in name): return 2
+	return 1
+
+static func detect_graphics() -> int:
+	return recommended_quality(RenderingServer.get_video_adapter_name(), OS.get_processor_count())

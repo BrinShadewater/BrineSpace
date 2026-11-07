@@ -1,0 +1,33 @@
+{
+  "status": "derived_removal_pilot_not_runtime",
+  "frameWidth": 92,
+  "frameHeight": 104,
+  "pivot": [
+    46,
+    98
+  ],
+  "states": [
+    {
+      "id": "remove-helmet-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        260,
+        220,
+        220,
+        180,
+        220
+      ],
+      "loop": false
+    }
+  ],
+  "derivation": "Reuses donning frames in reverse order; removal timing authored separately. Ends holding helmet; locker return is not depicted."
+}

@@ -1,0 +1,107 @@
+{
+  "revision": "marsh-fullset-v4",
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "bunk-enter-east",
+      "frameFiles": [
+        "../../character/marsh-v2/supplemental/bunk-east/bare/000.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/001.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/002.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/003.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/004.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/005.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-enter-east/006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        240,
+        300,
+        300,
+        300,
+        300,
+        280
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "",
+        "",
+        "",
+        "",
+        "bunk",
+        "bunk",
+        "bunk"
+      ],
+      "depthOffsets": [
+        96,
+        96,
+        96,
+        96,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "id": "bunk-exit-east",
+      "frameFiles": [
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/000.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/001.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/002.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/003.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/004.png",
+        "../../character/marsh-quality-pass-v4/frames/bunk-exit-east/005.png",
+        "../../character/marsh-v2/supplemental/bunk-east/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        280,
+        300,
+        300,
+        300,
+        300,
+        240,
+        120
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "bunk",
+        "bunk",
+        "bunk",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "depthOffsets": [
+        100,
+        100,
+        100,
+        96,
+        96,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "bunk-sleep-east",
+      "frameFiles": [
+        "../../character/marsh-quality-pass-v4/frames/bunk-sleep-east/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "furnitureFrames": [
+        "bunk"
+      ],
+      "depthOffsets": [
+        100
+      ]
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "name": "James distress/recovery helmet",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_owner_review_pending",
+  "states": [
+    {
+      "id": "swim-distress-east",
+      "frameFiles": [
+        "../james-air-east-v1/frames/helmet/swim-distress-east/000.png",
+        "../james-air-east-v1/frames/helmet/swim-distress-east/001.png",
+        "../james-air-east-v1/frames/helmet/swim-distress-east/002.png",
+        "../james-air-east-v1/frames/helmet/swim-distress-east/003.png",
+        "../james-air-east-v1/frames/helmet/swim-distress-east/004.png",
+        "../james-air-east-v1/frames/helmet/swim-distress-east/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-east",
+      "frameFiles": [
+        "../james-air-east-v1/frames/helmet/recover-air-east/000.png",
+        "../james-air-east-v1/frames/helmet/recover-air-east/001.png",
+        "../james-air-east-v1/frames/helmet/recover-air-east/002.png",
+        "../james-air-east-v1/frames/helmet/recover-air-east/003.png",
+        "../james-air-east-v1/frames/helmet/recover-air-east/004.png",
+        "../james-air-east-v1/frames/helmet/recover-air-east/005.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "swim-distress-south",
+      "frameFiles": [
+        "../james-air-south-v1/frames/helmet/swim-distress-south/000.png",
+        "../james-air-south-v1/frames/helmet/swim-distress-south/001.png",
+        "../james-air-south-v1/frames/helmet/swim-distress-south/002.png",
+        "../james-air-south-v1/frames/helmet/swim-distress-south/003.png",
+        "../james-air-south-v1/frames/helmet/swim-distress-south/004.png",
+        "../james-air-south-v1/frames/helmet/swim-distress-south/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-south",
+      "frameFiles": [
+        "../james-air-south-v1/frames/helmet/recover-air-south/000.png",
+        "../james-air-south-v1/frames/helmet/recover-air-south/001.png",
+        "../james-air-south-v1/frames/helmet/recover-air-south/002.png",
+        "../james-air-south-v1/frames/helmet/recover-air-south/003.png",
+        "../james-air-south-v1/frames/helmet/recover-air-south/004.png",
+        "../james-air-south-v1/frames/helmet/recover-air-south/005.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "swim-distress-west",
+      "frameFiles": [
+        "../james-air-west-v1/frames/helmet/swim-distress-west/000.png",
+        "../james-air-west-v1/frames/helmet/swim-distress-west/001.png",
+        "../james-air-west-v1/frames/helmet/swim-distress-west/002.png",
+        "../james-air-west-v1/frames/helmet/swim-distress-west/003.png",
+        "../james-air-west-v1/frames/helmet/swim-distress-west/004.png",
+        "../james-air-west-v1/frames/helmet/swim-distress-west/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "../james-air-west-v1/frames/helmet/recover-air-west/000.png",
+        "../james-air-west-v1/frames/helmet/recover-air-west/001.png",
+        "../james-air-west-v1/frames/helmet/recover-air-west/002.png",
+        "../james-air-west-v1/frames/helmet/recover-air-west/003.png",
+        "../james-air-west-v1/frames/helmet/recover-air-west/004.png",
+        "../james-air-west-v1/frames/helmet/recover-air-west/005.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "swim-distress-north",
+      "frameFiles": [
+        "../james-air-north-v1/frames/helmet/swim-distress-north/000.png",
+        "../james-air-north-v1/frames/helmet/swim-distress-north/001.png",
+        "../james-air-north-v1/frames/helmet/swim-distress-north/002.png",
+        "../james-air-north-v1/frames/helmet/swim-distress-north/003.png",
+        "../james-air-north-v1/frames/helmet/swim-distress-north/004.png",
+        "../james-air-north-v1/frames/helmet/swim-distress-north/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    },
+    {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "../james-air-north-v1/frames/helmet/recover-air-north/000.png",
+        "../james-air-north-v1/frames/helmet/recover-air-north/001.png",
+        "../james-air-north-v1/frames/helmet/recover-air-north/002.png",
+        "../james-air-north-v1/frames/helmet/recover-air-north/003.png",
+        "../james-air-north-v1/frames/helmet/recover-air-north/004.png",
+        "../james-air-north-v1/frames/helmet/recover-air-north/005.png"
+      ],
+      "frameDurationsMs": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent two-row facing source",
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Fixed anatomical scale per action row; fixed material gains per row; reused selected shared helmets; exact swim loop seam or final idle endpoint"
+      }
+    }
+  ]
+}

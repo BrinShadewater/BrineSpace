@@ -1,0 +1,529 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "path": "assets/floor-utilities-v1/source/floor-source.png",
+      "status": "rejected opaque black background",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "e053246c402ed9a2ca1790fedb761795e984d3c1031ff2d27038783b87c6c490"
+    },
+    {
+      "path": "assets/floor-utilities-v1/source/floor-white-v2.png",
+      "status": "accepted cleanup source",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "264f2a75da60bc11ef776f86e6ea857b2cdbd53b25aca6bfa997d674f076d6f7"
+    }
+  ],
+  "sprites": {
+    "wire_straight": {
+      "path": "assets/floor-utilities-v1/sprites/wire_straight.png",
+      "source_region": [
+        60,
+        113,
+        396,
+        207
+      ],
+      "alpha_trim": [
+        9,
+        9,
+        324,
+        87
+      ],
+      "size": [
+        315,
+        78
+      ],
+      "pivot": [
+        157.5,
+        39.0
+      ],
+      "family": "wire",
+      "units_per_pixel": 0.12,
+      "ports": {
+        "west": [
+          2,
+          38
+        ],
+        "east": [
+          310,
+          38
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "a70e72f4a59021ca167f9aecde18d3484683bbf74f668b9ed82c11d565934a4e"
+    },
+    "wire_elbow": {
+      "path": "assets/floor-utilities-v1/sprites/wire_elbow.png",
+      "source_region": [
+        497,
+        80,
+        711,
+        291
+      ],
+      "alpha_trim": [
+        10,
+        11,
+        203,
+        203
+      ],
+      "size": [
+        193,
+        192
+      ],
+      "pivot": [
+        96.5,
+        96.0
+      ],
+      "family": "wire",
+      "units_per_pixel": 0.12,
+      "ports": {
+        "west": [
+          2,
+          38
+        ],
+        "south": [
+          154,
+          189
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "d83946939ca08f0b718a7896a67f527aef11d2e81f6063aa97e2d44944ba3f90"
+    },
+    "wire_t": {
+      "path": "assets/floor-utilities-v1/sprites/wire_t.png",
+      "source_region": [
+        847,
+        102,
+        1190,
+        310
+      ],
+      "alpha_trim": [
+        11,
+        11,
+        332,
+        202
+      ],
+      "size": [
+        321,
+        191
+      ],
+      "pivot": [
+        160.5,
+        95.5
+      ],
+      "family": "wire",
+      "units_per_pixel": 0.12,
+      "ports": {
+        "west": [
+          2,
+          47
+        ],
+        "east": [
+          319,
+          47
+        ],
+        "south": [
+          157,
+          188
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "f65c551b78d8f523db994bd07f5ad92b9c859becbb5d82940a14b3b5d9393df0"
+    },
+    "cable_straight": {
+      "path": "assets/floor-utilities-v1/sprites/cable_straight.png",
+      "source_region": [
+        53,
+        388,
+        400,
+        510
+      ],
+      "alpha_trim": [
+        10,
+        9,
+        335,
+        112
+      ],
+      "size": [
+        325,
+        103
+      ],
+      "pivot": [
+        162.5,
+        51.5
+      ],
+      "family": "cable",
+      "units_per_pixel": 0.15,
+      "ports": {
+        "west": [
+          0,
+          50
+        ],
+        "east": [
+          324,
+          50
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "513a954c71d92ca13c5b9964cf802b58068fcc92fd4bbec45b2f78f64c7ac4dc"
+    },
+    "cable_elbow": {
+      "path": "assets/floor-utilities-v1/sprites/cable_elbow.png",
+      "source_region": [
+        499,
+        376,
+        713,
+        605
+      ],
+      "alpha_trim": [
+        11,
+        10,
+        205,
+        217
+      ],
+      "size": [
+        194,
+        207
+      ],
+      "pivot": [
+        97.0,
+        103.5
+      ],
+      "family": "cable",
+      "units_per_pixel": 0.15,
+      "ports": {
+        "west": [
+          0,
+          55
+        ],
+        "south": [
+          146,
+          205
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "2e9ba0f3166153649ee23fec6cde84b34123080c59cb04d721f2bf7b9a5ab239"
+    },
+    "cable_t": {
+      "path": "assets/floor-utilities-v1/sprites/cable_t.png",
+      "source_region": [
+        832,
+        384,
+        1199,
+        626
+      ],
+      "alpha_trim": [
+        11,
+        10,
+        356,
+        233
+      ],
+      "size": [
+        345,
+        223
+      ],
+      "pivot": [
+        172.5,
+        111.5
+      ],
+      "family": "cable",
+      "units_per_pixel": 0.15,
+      "ports": {
+        "west": [
+          1,
+          53
+        ],
+        "east": [
+          345,
+          53
+        ],
+        "south": [
+          170,
+          220
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "27e9738d4991417591da314216b924532e62a3f5acca73cf5f379e88d31a7e15"
+    },
+    "mat_straight": {
+      "path": "assets/floor-utilities-v1/sprites/mat_straight.png",
+      "source_region": [
+        47,
+        689,
+        405,
+        831
+      ],
+      "alpha_trim": [
+        10,
+        10,
+        347,
+        133
+      ],
+      "size": [
+        337,
+        123
+      ],
+      "pivot": [
+        168.5,
+        61.5
+      ],
+      "family": "mat",
+      "units_per_pixel": 0.2,
+      "ports": {
+        "west": [
+          1,
+          61
+        ],
+        "east": [
+          334,
+          61
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "97952a1116c272440570de7d2560b10e29d7a87c93d73d9dcb8ac3a267516637"
+    },
+    "mat_elbow": {
+      "path": "assets/floor-utilities-v1/sprites/mat_elbow.png",
+      "source_region": [
+        499,
+        653,
+        706,
+        891
+      ],
+      "alpha_trim": [
+        11,
+        10,
+        196,
+        229
+      ],
+      "size": [
+        185,
+        219
+      ],
+      "pivot": [
+        92.5,
+        109.5
+      ],
+      "family": "mat",
+      "units_per_pixel": 0.2,
+      "ports": {
+        "west": [
+          1,
+          64
+        ],
+        "south": [
+          125,
+          216
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "00397e82222421bea91fba5d4f9b20a64b77297ec0bc968b63d18eabf70b5f79"
+    },
+    "mat_t": {
+      "path": "assets/floor-utilities-v1/sprites/mat_t.png",
+      "source_region": [
+        826,
+        683,
+        1196,
+        910
+      ],
+      "alpha_trim": [
+        10,
+        10,
+        359,
+        218
+      ],
+      "size": [
+        349,
+        208
+      ],
+      "pivot": [
+        174.5,
+        104.0
+      ],
+      "family": "mat",
+      "units_per_pixel": 0.2,
+      "ports": {
+        "west": [
+          2,
+          59
+        ],
+        "east": [
+          348,
+          59
+        ],
+        "south": [
+          175,
+          205
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "cbaf0aff2a81a255a791098e05159176a996b94aadf89b184370f374c159b37a"
+    },
+    "pipe_straight": {
+      "path": "assets/floor-utilities-v1/sprites/pipe_straight.png",
+      "source_region": [
+        51,
+        971,
+        399,
+        1126
+      ],
+      "alpha_trim": [
+        11,
+        10,
+        337,
+        143
+      ],
+      "size": [
+        326,
+        133
+      ],
+      "pivot": [
+        163.0,
+        66.5
+      ],
+      "family": "pipe",
+      "units_per_pixel": 0.16,
+      "ports": {
+        "west": [
+          1,
+          69
+        ],
+        "east": [
+          322,
+          69
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "10bfd51675e22622121054d7d64604829952e6d31c4813e0b785890ed5bdadf7"
+    },
+    "pipe_elbow": {
+      "path": "assets/floor-utilities-v1/sprites/pipe_elbow.png",
+      "source_region": [
+        486,
+        950,
+        714,
+        1166
+      ],
+      "alpha_trim": [
+        11,
+        9,
+        219,
+        206
+      ],
+      "size": [
+        208,
+        197
+      ],
+      "pivot": [
+        104.0,
+        98.5
+      ],
+      "family": "pipe",
+      "units_per_pixel": 0.16,
+      "ports": {
+        "west": [
+          2,
+          48
+        ],
+        "south": [
+          157,
+          193
+        ]
+      },
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "0e6e2e01b87af2439b07bcfbe47f2e94933f3928cd094c984d8f8b2d5b0e5f10"
+    },
+    "pipe_channel": {
+      "path": "assets/floor-utilities-v1/sprites/pipe_channel.png",
+      "source_region": [
+        808,
+        967,
+        1063,
+        1143
+      ],
+      "alpha_trim": [
+        10,
+        9,
+        246,
+        166
+      ],
+      "size": [
+        236,
+        157
+      ],
+      "pivot": [
+        118.0,
+        78.5
+      ],
+      "family": "pipe",
+      "units_per_pixel": 0.16,
+      "ports": {},
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "c55fe2fac5011fc1d9e56e8630983a853869ae57fdb43537cd4e82212c2e9c62"
+    },
+    "pipe_channel_cover": {
+      "path": "assets/floor-utilities-v1/sprites/pipe_channel_cover.png",
+      "source_region": [
+        1059,
+        974,
+        1219,
+        1138
+      ],
+      "alpha_trim": [
+        10,
+        10,
+        150,
+        154
+      ],
+      "size": [
+        140,
+        144
+      ],
+      "pivot": [
+        70.0,
+        72.0
+      ],
+      "family": "pipe",
+      "units_per_pixel": 0.16,
+      "ports": {},
+      "layer": "floor_under_actors",
+      "projection": "top_down",
+      "collision": false,
+      "sha256": "a462f14d1c0fca6b7e34845f8a0eaee0ad3d40420d8fc2e9593b21f5766a92c4"
+    }
+  },
+  "connection_policy": "Authored decorative anchors, not seamless autotiles. Review floor seams and crew clearance at placement."
+}

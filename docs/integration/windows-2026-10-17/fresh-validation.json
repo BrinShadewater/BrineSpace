@@ -1,0 +1,125 @@
+[
+  {
+    "test": "test_release_assert_safety.py",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "..",
+      "----------------------------------------------------------------------",
+      "Ran 2 tests in 0.927s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "test": "test_release_manifest.py",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "..........",
+      "----------------------------------------------------------------------",
+      "Ran 10 tests in 0.232s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "test": "test_macos_export.py",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "..",
+      "----------------------------------------------------------------------",
+      "Ran 2 tests in 0.018s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "test": "test_test_runner_selection.py",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "...",
+      "----------------------------------------------------------------------",
+      "Ran 3 tests in 0.028s",
+      "",
+      "OK"
+    ]
+  },
+  {
+    "test": "test_initial_surface_loading.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "INITIAL SURFACE LOADING PASS checks=16 failures=0"
+    ]
+  },
+  {
+    "test": "test_visible_art_loading.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "VISIBLE ART LOADING PASS failures=0"
+    ]
+  },
+  {
+    "test": "test_room_art_prefetch.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "ROOM ART PREFETCH PASS failures=0"
+    ]
+  },
+  {
+    "test": "test_room_view_selection.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "ROOM_VIEW_SELECTION PASS"
+    ]
+  },
+  {
+    "test": "test_image_prefetch.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "",
+      "WARNING: Artwork unavailable: res://icon.svg.missing.png (File not found). Diagnostic placeholder substituted; include an F8 report.",
+      "   at: push_warning (core/variant/variant_utility.cpp:1033)",
+      "   GDScript backtrace (most recent call first):",
+      "       [0] load_png (res://scripts/safe_image.gd:29)",
+      "       [1] run (res://tests/test_image_prefetch.gd:51)",
+      "IMAGE PREFETCH PASS"
+    ]
+  },
+  {
+    "test": "test_crew_router_lifetime.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "CREW ROUTER LIFETIME: 13 checks, 0 failures"
+    ]
+  },
+  {
+    "test": "test_crew_router_pixels.gd",
+    "exit_code": 0,
+    "error_lines": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+      "",
+      "CREW ROUTER PIXELS: 12 checks, 0 failures"
+    ]
+  }
+]

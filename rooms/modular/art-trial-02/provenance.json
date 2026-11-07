@@ -1,0 +1,148 @@
+{
+  "stage": "visually_reviewed_rejected",
+  "enabled_in_pilot": [],
+  "review": {
+    "west": "Failed geometry guide: horizontal trays and original south-facing composition retained.",
+    "east": "Partial layout success: vertical trays and asymmetric marker placement follow guide. Mushroom clusters appear sideways/repeated, not convincingly reprojected upright. Not a rotation-ready view.",
+    "registration": "Native canvases preserved. No cleanup, crop, resize, texture rotation or integration performed.",
+    "next_gate": "Use a deterministic dimensional prop source for all views; separate chassis/tray materials from upright mushroom clusters and valve sprites. Do not repeat this exact paid request."
+  },
+  "diagnostics": {
+    "method": "Read-only RGB difference from white converted to luminance, threshold >40; bounding boxes are diagnostics, not registration anchors.",
+    "guide_bounds_both": [654, 400, 1395, 1651],
+    "west_raw_bounds": [225, 409, 1823, 1711],
+    "east_raw_bounds": [645, 338, 1403, 1649],
+    "west_guide_sha256": "f3fdd70c379e1d5e6e47445abe8051c11e6c06d31d188d6d6924f5d4fb334f65",
+    "east_guide_sha256": "ab8bac2f6a15a717b05bd1dc00b675bb920dcbe1b59f782df471d4d8130f5015",
+    "west_raw_sha256": "98f903094fe6135b9822a16ac5bc384f1f48bc6eed5a1f64e0448277d5e624ef",
+    "east_raw_sha256": "1d6cfdf045267328d5d5e6f7ca68ae8bb910c6437f3aecf73d6b4d465ab537de",
+    "native_size_all": [2048, 2048]
+  },
+  "requested_model": "nano_banana_pro",
+  "reported_model": "nano_banana_2",
+  "model_equivalence_verified": false,
+  "estimated_total_credits": 4,
+  "balance_after": 899.5,
+  "prior_trial_balance": 903.5,
+  "balance_decrease_since_prior_trial": 4,
+  "completed_results": [{"index":0,"job_id":"1714a275-af3b-4086-b4d0-a30bfb2681ce","status":"completed","type":"image","model":"nano_banana_2","result_url":"https://d8j0ntlcm91z4.cloudfront.net/user_3DI8EyzxtV7c98Xbr9UTZQAAYSr/hf_20260905_183916_1714a275-af3b-4086-b4d0-a30bfb2681ce.png"},{"index":1,"job_id":"b73db20a-6e02-4ed0-b0b1-5d1040d551fc","status":"completed","type":"image","model":"nano_banana_2","result_url":"https://d8j0ntlcm91z4.cloudfront.net/user_3DI8EyzxtV7c98Xbr9UTZQAAYSr/hf_20260905_183916_b73db20a-6e02-4ed0-b0b1-5d1040d551fc.png"}],
+  "requests": [
+    {
+      "index": 0,
+      "params": {
+        "model": "nano_banana_pro",
+        "resolution": "2k",
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "96dd8b0e-d120-4b81-a7f4-9835de4090fb"
+          },
+          {
+            "role": "image",
+            "value": "9c21f582-76b2-4225-8e9d-ec5028932640"
+          }
+        ],
+        "prompt": "Retexture the FIRST image's exact geometry into polished BrineSpace industrial pixel-art-inspired game art. FIRST IMAGE IS AUTHORITATIVE for silhouette, camera, layout, margins and object placement. SECOND IMAGE supplies worn ivory steel, dark ribbed trays, cream mushroom detail and material style ONLY; do not copy its horizontal composition. One low mushroom cultivation rack facing WEST. Preserve THREE VERTICAL parallel trays running screen top to bottom, the tall rectangular silhouette, exact outer bounds, shallow vertical chassis face projecting downward at screen bottom. Preserve teal valve and service marker locations from FIRST image. Mushroom stems upright vertically on screen, never sideways. Enrich mushrooms into small varied clusters inside each existing tray, fine chipped enamel and ribbed metal. Preserve same framing and scale as FIRST image, do not enlarge or recenter, no perspective convergence, no extra equipment. Pure white background, no floor shadows, no room, lettering, glow, animation or additional views. Geometry guide re-skin, not free reinterpretation."
+      }
+    },
+    {
+      "index": 1,
+      "params": {
+        "model": "nano_banana_pro",
+        "resolution": "2k",
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "7842706b-8cf9-4af6-a2a2-73cc2834269e"
+          },
+          {
+            "role": "image",
+            "value": "9c21f582-76b2-4225-8e9d-ec5028932640"
+          }
+        ],
+        "prompt": "Retexture the FIRST image's exact geometry into polished BrineSpace industrial pixel-art-inspired game art. FIRST IMAGE IS AUTHORITATIVE for silhouette, camera, layout, margins and object placement. SECOND IMAGE supplies worn ivory steel, dark ribbed trays, cream mushroom detail and material style ONLY; do not copy its horizontal composition. One low mushroom cultivation rack facing EAST. Preserve THREE VERTICAL parallel trays running screen top to bottom, the tall rectangular silhouette, exact outer bounds, shallow vertical chassis face projecting downward at screen bottom. Preserve teal valve and service marker locations from FIRST image. Mushroom stems upright vertically on screen, never sideways. Enrich mushrooms into small varied clusters inside each existing tray, fine chipped enamel and ribbed metal. Preserve same framing and scale as FIRST image, do not enlarge or recenter, no perspective convergence, no extra equipment. Pure white background, no floor shadows, no room, lettering, glow, animation or additional views. Geometry guide re-skin, not free reinterpretation."
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "1714a275-af3b-4086-b4d0-a30bfb2681ce",
+      "status": "pending",
+      "adjustments": {
+        "medias[0].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Nano Banana Pro backend expects schema-key media roles"
+        },
+        "medias[1].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Nano Banana Pro backend expects schema-key media roles"
+        }
+      }
+    },
+    {
+      "index": 1,
+      "job_id": "b73db20a-6e02-4ed0-b0b1-5d1040d551fc",
+      "status": "pending",
+      "adjustments": {
+        "medias[0].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Nano Banana Pro backend expects schema-key media roles"
+        },
+        "medias[1].role": {
+          "requested": "image",
+          "used": "image_references",
+          "reason": "Nano Banana Pro backend expects schema-key media roles"
+        }
+      }
+    }
+  ],
+  "guides": [
+    {
+      "facing": "west",
+      "media_id": "96dd8b0e-d120-4b81-a7f4-9835de4090fb",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DI8EyzxtV7c98Xbr9UTZQAAYSr/96dd8b0e-d120-4b81-a7f4-9835de4090fb.png",
+      "role": "authoritative geometry proxy",
+      "script": "tools/render_rack_geometry_guides.py",
+      "native_size": [
+        2048,
+        2048
+      ],
+      "projection": "(1024+10*x,1140+10*(y-z))",
+      "footprint": [
+        102,
+        74
+      ],
+      "height": 23
+    },
+    {
+      "facing": "east",
+      "media_id": "7842706b-8cf9-4af6-a2a2-73cc2834269e",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DI8EyzxtV7c98Xbr9UTZQAAYSr/7842706b-8cf9-4af6-a2a2-73cc2834269e.png",
+      "role": "authoritative geometry proxy",
+      "script": "tools/render_rack_geometry_guides.py",
+      "native_size": [
+        2048,
+        2048
+      ],
+      "projection": "(1024+10*x,1140+10*(y-z))",
+      "footprint": [
+        102,
+        74
+      ],
+      "height": 23
+    }
+  ],
+  "style_reference": {
+    "job_id": "9c21f582-76b2-4225-8e9d-ec5028932640",
+    "role": "materials only; not authoritative geometry"
+  },
+  "main_game_integrated": false
+}

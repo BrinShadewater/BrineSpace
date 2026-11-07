@@ -1,0 +1,16 @@
+"""Prepare accurately scoped independent East normal milestone recorder."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];target=ROOT/'tools/record_marsh_east_damage_normal.py';assert not target.exists()
+text=(ROOT/'tools/record_marsh_north_damage_normal.py').read_text().replace('north','east').replace('North','East').replace('NORTH','EAST')
+text=text.replace('candidate02','candidate01').replace('59x132 versus idle55x146:14row articulation reduction','37x140 versus idle32x147:7row articulation reduction')
+text=text.replace('Source02 neutral56x147','Source01 neutral30x147').replace('dark\nrear exposed soles legitimate','dark\nsole material distinct from ivory boot uppers')
+text=text.replace('115','105').replace('69body','71body').replace('69body entries','71body entries').replace('cf5nhdamn1v73','ci8ehdamn4v76')
+text=text.replace('right-screen glove droplets','visible glove-side droplets').replace('North final sole-facing feet remain','East final dark boot sole/heel surfaces remain')
+text=text.replace('East final sole-facing feet remain','East final dark boot sole/heel surfaces remain')
+text=text.replace('East/West old head/shoulder/detail','West old head/shoulder/detail').replace('East/West older head/shoulder/detail','West older head/shoulder/detail')
+text=text.replace('East native collapse and white-fluid/rise family, then West and full-set','West native collapse and white-fluid/rise family, then full-set')
+text=text.replace('East complete source01 also retained/packaged, unselected, native review pending.','West complete sources01/02 retained/packaged, unselected, native review pending.')
+text=text.replace('Native East source01 collapse study, independent white-fluid/rise and normal','Native West source02 collapse study, independent white-fluid/rise and normal')
+text=text.replace('fixed source', 'fixed source')
+target.write_text(text)
+print('Prepared East normal recorder; run only after all native/family boards inspected.')

@@ -1,0 +1,70 @@
+{
+  "asset_id": "crew-listening-wall-v1",
+  "department": "Crew recreation",
+  "condition": "Maintained",
+  "attachment_class": "North-wall standing selection counter",
+  "functional_bays": [
+    "Cassette selection trays",
+    "Player and two headphone docks",
+    "Clear counter with album case and fabric pad"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; north backing and south controls",
+  "references": [
+    {
+      "path": "assets/lounge-reading-wall-v1/wall.png",
+      "sha256": "7444b64af268d4b067345422a026a25b4c20b950a48f324b5a678e317fdb9c02",
+      "role": "Warm crew materials and camera; storage subject deliberately replaced"
+    }
+  ],
+  "source_path": "assets/crew-listening-wall-v1/source.png",
+  "source_sha256": "fcbc9c846488579ae75a627ffe51cd007935510c90adfc1f4ab7152d983e2b52",
+  "export_path": "assets/crew-listening-wall-v1/crew-listening-wall.png",
+  "export_sha256": "d2ac90c740e6daf6f1ed9364168333e54857593c7beee746c3bc0cb49d7c7017",
+  "native_canvas_px": [
+    1882,
+    836
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "No knee recess; do not assume seated posture or occupied reach. Headphones static in backed docks."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Warm matte wood, putty player and fabric pads; modest material highlights."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "320-unit comparison retains player and headphones; V2 replaces book-like source transfer with cassette trays. Fine album graphics become decorative."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "True-alpha source registered at128; dark/light board inspected. Headphone centers retain opaque dock backing; sampled center alpha above250."
+      ]
+    },
+    "native_evidence": "output/crew-listening-wall-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 63.82072829131653,
+  "registration_path": "assets/crew-listening-wall-v1/registration.json",
+  "registration_sha256": "bc6b29c35a677b8d97fae974e0a7d319e4a94655680915bf2b8a56bca854caa3",
+  "prompt_path": "assets/crew-listening-wall-v1/source.prompt.txt",
+  "prompt_sha256": "4be904cabef74aa1c7643e440a7ea08e47301a01be9b6110bdfc7217dd64fc69",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

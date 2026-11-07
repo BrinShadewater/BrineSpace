@@ -1,0 +1,58 @@
+extends RefCounted
+## Measured constant gains; rebuild with tools/polish_suno_audio.py.
+const GAIN_DB := {
+	"res://assets/audio/suno-v1/moonlit_canyon_01.ogg": -0.68,
+	"res://assets/audio/suno-v1/moonlit_canyon_02.ogg": -1.02,
+	"res://assets/audio/suno-v1/moonlit_test_run_01.ogg": -5.1,
+	"res://assets/audio/suno-v1/moonlit_test_run_02.ogg": -3.58,
+	"res://assets/audio/tracks-v1/deep_ocean.ogg": -0.85,
+	"res://assets/audio/tracks-v1/oceanic_drift.ogg": -0.59,
+	"res://assets/audio/tracks-v1/silence.ogg": -1.56,
+	"res://assets/audio/tracks-v1/sonar_pressure.ogg": -2.11,
+	"res://assets/audio/tracks-v1/station_pulse.ogg": -1.35,
+	"res://assets/audio/suno-v1/interior_01.ogg": -2.67,
+	"res://assets/audio/suno-v1/interior_02.ogg": -1.54,
+	"res://assets/audio/suno-v1/ocean_01.ogg": -2.43,
+	"res://assets/audio/suno-v1/ocean_02.ogg": -1.5,
+	"res://assets/audio/suno-polish-v1/placement_01.wav": -2.75,
+	"res://assets/audio/suno-polish-v1/placement_02.wav": -1.68,
+	"res://assets/audio/suno-polish-v1/placement_03.wav": -0.45,
+	"res://assets/audio/suno-polish-v1/placement_04.wav": 0.99,
+	"res://assets/audio/suno-polish-v1/power_on_01.wav": -5.64,
+	"res://assets/audio/suno-polish-v1/power_on_02.wav": -10.39,
+	"res://assets/audio/suno-polish-v1/door_01.wav": -7.33,
+	"res://assets/audio/suno-polish-v1/door_02.wav": -1.04,
+	"res://assets/audio/suno-v1/airlock_01.ogg": -0.36,
+	"res://assets/audio/suno-v1/airlock_02.ogg": -10.61,
+	"res://assets/audio/suno-v1/drone_01.ogg": -3.92,
+	"res://assets/audio/suno-v1/drone_02.ogg": -1.86,
+	"res://assets/audio/suno-polish-v1/cargo_01.wav": -4.03,
+	"res://assets/audio/suno-polish-v1/cargo_02.wav": -2.41,
+	"res://assets/audio/suno-polish-v1/terminal_01.wav": 2.61,
+	"res://assets/audio/suno-polish-v1/terminal_02.wav": -9.08,
+	"res://assets/audio/suno-polish-v1/discovery_01.wav": -6.46,
+	"res://assets/audio/suno-polish-v1/discovery_02.wav": -10.43,
+	"res://assets/audio/suno-polish-v1/warning_01.wav": -8.96,
+}
+
+## Spectral centroid of each music track, in Hz: how bright it sounds. Measured by decoding to
+## 16 kHz mono and taking the energy-weighted mean frequency over 1024-sample frames. The music
+## rotation crossfades tracks that sit close together here and saves the jumps for the rests,
+## because a six-second overlap between a dark ambient and a bright one reads as a mistake.
+const BRIGHTNESS_HZ := {
+	"res://assets/audio/tracks-v1/oceanic_drift.ogg": 356.0,
+	"res://assets/audio/tracks-v1/station_pulse.ogg": 414.0,
+	"res://assets/audio/tracks-v1/deep_ocean.ogg": 457.0,
+	"res://assets/audio/tracks-v1/silence.ogg": 476.0,
+	"res://assets/audio/tracks-v1/sonar_pressure.ogg": 951.0,
+	"res://assets/audio/suno-v1/moonlit_canyon_01.ogg": 1270.0,
+	"res://assets/audio/suno-v1/moonlit_test_run_02.ogg": 1433.0,
+	"res://assets/audio/suno-v1/moonlit_canyon_02.ogg": 1525.0,
+	"res://assets/audio/suno-v1/moonlit_test_run_01.ogg": 1545.0,
+}
+
+static func gain(stream: AudioStream) -> float:
+	return float(GAIN_DB.get(stream.resource_path, 0.0))
+
+static func brightness(stream: AudioStream) -> float:
+	return float(BRIGHTNESS_HZ.get(stream.resource_path, 900.0))

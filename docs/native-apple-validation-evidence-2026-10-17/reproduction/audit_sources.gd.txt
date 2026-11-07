@@ -1,0 +1,30 @@
+extends SceneTree
+var all_known:Dictionary
+var selected:Dictionary
+var seen:Dictionary={}
+var extras:=0
+var unknown:=0
+var changed:=0
+func _init():call_deferred("run")
+func walk(folder:String):
+ for name in DirAccess.get_files_at(folder):
+  var path=folder.path_join(name)
+  if path.ends_with(".gd"):
+   seen[path]=true
+   if not all_known.has(path):unknown+=1;push_error("Unknown packaged script "+path)
+   elif FileAccess.get_sha256(path)!=all_known[path]:changed+=1;push_error("Changed script "+path)
+   if not selected.has(path):extras+=1
+ for name in DirAccess.get_directories_at(folder):
+  if not name.begins_with("."):walk(folder.path_join(name))
+func run():
+ var args=OS.get_cmdline_user_args()
+ var expected=JSON.parse_string(FileAccess.get_file_as_string(args[1]))
+ all_known=expected.all;selected=expected.selected
+ if not ProjectSettings.load_resource_pack(args[0],true):quit(2);return
+ walk("res://")
+ var missing:=0
+ for path in selected:
+  if not seen.has(path):missing+=1;push_error("Missing selected script "+path)
+ var metadata_ok=JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json"))==expected.metadata
+ print("PACK SOURCE AUDIT selected=",selected.size()," extras=",extras," missing=",missing," changed=",changed," unknown=",unknown," metadata=",metadata_ok)
+ quit(0 if missing+changed+unknown==0 and metadata_ok else 1)

@@ -1,0 +1,466 @@
+{
+  "character": "river-actions",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "scan-south",
+      "frameFiles": [
+        "frames/scan-south/000.png",
+        "frames/scan-south/001.png",
+        "frames/scan-south/002.png",
+        "frames/scan-south/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "inspect-south",
+      "frameFiles": [
+        "frames/inspect-south/000.png",
+        "frames/inspect-south/001.png",
+        "frames/inspect-south/002.png",
+        "frames/inspect-south/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "scan-west",
+      "frameFiles": [
+        "frames/scan-west/000.png",
+        "frames/scan-west/001.png",
+        "frames/scan-west/002.png",
+        "frames/scan-west/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "inspect-west",
+      "frameFiles": [
+        "frames/inspect-west/000.png",
+        "frames/inspect-west/001.png",
+        "frames/inspect-west/002.png",
+        "frames/inspect-west/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "scan-north",
+      "frameFiles": [
+        "frames/scan-north/000.png",
+        "frames/scan-north/001.png",
+        "frames/scan-north/002.png",
+        "frames/scan-north/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "inspect-north",
+      "frameFiles": [
+        "frames/inspect-north/000.png",
+        "frames/inspect-north/001.png",
+        "frames/inspect-north/002.png",
+        "frames/inspect-north/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "scan-east",
+      "frameFiles": [
+        "frames/scan-east/000.png",
+        "frames/scan-east/001.png",
+        "frames/scan-east/002.png",
+        "frames/scan-east/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "inspect-east",
+      "frameFiles": [
+        "frames/inspect-east/000.png",
+        "frames/inspect-east/001.png",
+        "frames/inspect-east/002.png",
+        "frames/inspect-east/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "scan-enter-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-enter-south/000.png",
+        "frames/scan-enter-south/001.png"
+      ]
+    },
+    {
+      "id": "scan-exit-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-exit-south/000.png",
+        "frames/scan-exit-south/001.png"
+      ]
+    },
+    {
+      "id": "inspect-enter-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-enter-south/000.png",
+        "frames/inspect-enter-south/001.png"
+      ]
+    },
+    {
+      "id": "inspect-exit-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-exit-south/000.png",
+        "frames/inspect-exit-south/001.png"
+      ]
+    },
+    {
+      "id": "scan-enter-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-enter-west/000.png",
+        "frames/scan-enter-west/001.png"
+      ]
+    },
+    {
+      "id": "scan-exit-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-exit-west/000.png",
+        "frames/scan-exit-west/001.png"
+      ]
+    },
+    {
+      "id": "inspect-enter-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-enter-west/000.png",
+        "frames/inspect-enter-west/001.png"
+      ]
+    },
+    {
+      "id": "inspect-exit-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-exit-west/000.png",
+        "frames/inspect-exit-west/001.png"
+      ]
+    },
+    {
+      "id": "scan-enter-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-enter-north/000.png",
+        "frames/scan-enter-north/001.png"
+      ]
+    },
+    {
+      "id": "scan-exit-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-exit-north/000.png",
+        "frames/scan-exit-north/001.png"
+      ]
+    },
+    {
+      "id": "inspect-enter-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-enter-north/000.png",
+        "frames/inspect-enter-north/001.png"
+      ]
+    },
+    {
+      "id": "inspect-exit-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-exit-north/000.png",
+        "frames/inspect-exit-north/001.png"
+      ]
+    },
+    {
+      "id": "scan-enter-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-enter-east/000.png",
+        "frames/scan-enter-east/001.png"
+      ]
+    },
+    {
+      "id": "scan-exit-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/scan-exit-east/000.png",
+        "frames/scan-exit-east/001.png"
+      ]
+    },
+    {
+      "id": "inspect-enter-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-enter-east/000.png",
+        "frames/inspect-enter-east/001.png"
+      ]
+    },
+    {
+      "id": "inspect-exit-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/inspect-exit-east/000.png",
+        "frames/inspect-exit-east/001.png"
+      ]
+    },
+    {
+      "id": "boot-south",
+      "frameDurationsMs": [
+        350,
+        350,
+        350,
+        350,
+        350,
+        350
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-south/000.png",
+        "frames/boot-south/001.png",
+        "frames/boot-south/002.png",
+        "frames/boot-south/003.png",
+        "frames/boot-south/004.png",
+        "frames/boot-south/005.png"
+      ]
+    },
+    {
+      "id": "boot-exit-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-exit-south/000.png",
+        "frames/boot-exit-south/001.png"
+      ]
+    },
+    {
+      "id": "boot-west",
+      "frameDurationsMs": [
+        350,
+        350,
+        350,
+        350,
+        350,
+        350
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-west/000.png",
+        "frames/boot-west/001.png",
+        "frames/boot-west/002.png",
+        "frames/boot-west/003.png",
+        "frames/boot-west/004.png",
+        "frames/boot-west/005.png"
+      ]
+    },
+    {
+      "id": "boot-exit-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-exit-west/000.png",
+        "frames/boot-exit-west/001.png"
+      ]
+    },
+    {
+      "id": "boot-north",
+      "frameDurationsMs": [
+        350,
+        350,
+        350,
+        350,
+        350,
+        350
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-north/000.png",
+        "frames/boot-north/001.png",
+        "frames/boot-north/002.png",
+        "frames/boot-north/003.png",
+        "frames/boot-north/004.png",
+        "frames/boot-north/005.png"
+      ]
+    },
+    {
+      "id": "boot-exit-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-exit-north/000.png",
+        "frames/boot-exit-north/001.png"
+      ]
+    },
+    {
+      "id": "boot-east",
+      "frameDurationsMs": [
+        350,
+        350,
+        350,
+        350,
+        350,
+        350
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-east/000.png",
+        "frames/boot-east/001.png",
+        "frames/boot-east/002.png",
+        "frames/boot-east/003.png",
+        "frames/boot-east/004.png",
+        "frames/boot-east/005.png"
+      ]
+    },
+    {
+      "id": "boot-exit-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/boot-exit-east/000.png",
+        "frames/boot-exit-east/001.png"
+      ]
+    }
+  ],
+  "mirrored": false,
+  "source": "../../companion-personality-v1/sources/river.png",
+  "sourceSha256": "1e94841fbce43a11f06d802d5405ffe2f491cdb7b5db51ebae7ef86da3219de7",
+  "sourceManifest": "../../companion-cleanup-v3/river-actions/manifest.json",
+  "paletteColors": 64,
+  "extraction": "Border-connected neutral background removal for robots; magenta key for cat/actions; BOX downsample before binary alpha and shared palette.",
+  "expansionSources": "../sources/"
+}

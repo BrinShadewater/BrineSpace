@@ -1,0 +1,336 @@
+{
+  "sources": {
+    "corner-observation": {
+      "source": "res://assets/corridor-wall-variants-v1/corner-observation/source.png",
+      "sha256": "3dff3e92be4696ef262fb15c7816ad3a502aa06aeaf8e158e6171e1ae87f65cd",
+      "native_size": [
+        2007,
+        784
+      ],
+      "face": [
+        4,
+        179,
+        1999,
+        424
+      ],
+      "cap": [
+        4,
+        131,
+        1999,
+        48
+      ],
+      "low": [
+        70,
+        515,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        179,
+        60,
+        424
+      ]
+    },
+    "corner-transit": {
+      "source": "res://assets/corridor-wall-variants-v1/corner-transit/source.png",
+      "sha256": "a75fe6367c1f1a6e339ade54f322919fb7e4e6f1887ae269cde7cafb6ff31425",
+      "native_size": [
+        2006,
+        784
+      ],
+      "face": [
+        4,
+        184,
+        1998,
+        407
+      ],
+      "cap": [
+        4,
+        138,
+        1998,
+        46
+      ],
+      "low": [
+        70,
+        503,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        184,
+        60,
+        407
+      ]
+    },
+    "corner-utility": {
+      "source": "res://assets/corridor-wall-variants-v1/corner-utility/source.png",
+      "sha256": "2222c929797d02230e25c51a5f584d18967f15ac0a042dade2df1fd93982b08d",
+      "native_size": [
+        2006,
+        784
+      ],
+      "face": [
+        4,
+        196,
+        1998,
+        394
+      ],
+      "cap": [
+        4,
+        151,
+        1998,
+        45
+      ],
+      "low": [
+        70,
+        502,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        196,
+        60,
+        394
+      ]
+    },
+    "straight-observation": {
+      "source": "res://assets/corridor-wall-variants-v1/straight-observation/source.png",
+      "sha256": "b411ab42b4434f3631e1a890dd8ccba4bd5c5c33ff4bcc64183e991ab6a0202c",
+      "native_size": [
+        2006,
+        784
+      ],
+      "face": [
+        4,
+        201,
+        1998,
+        405
+      ],
+      "cap": [
+        4,
+        155,
+        1998,
+        46
+      ],
+      "low": [
+        70,
+        518,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        201,
+        60,
+        405
+      ]
+    },
+    "straight-transit": {
+      "source": "res://assets/corridor-wall-variants-v1/straight-transit/source.png",
+      "sha256": "111bb44af0bec3106ddd5b397acec422c8c46300a4546be49a907cb32ce9541e",
+      "native_size": [
+        2006,
+        784
+      ],
+      "face": [
+        4,
+        185,
+        1998,
+        391
+      ],
+      "cap": [
+        4,
+        140,
+        1998,
+        45
+      ],
+      "low": [
+        70,
+        488,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        185,
+        60,
+        391
+      ]
+    },
+    "straight-utility": {
+      "source": "res://assets/corridor-wall-variants-v1/straight-utility/source.png",
+      "sha256": "78ee6a489d5c9bd91e25f287c05147a504e994bda7db9bb8f8fa01b735fcad92",
+      "native_size": [
+        2006,
+        784
+      ],
+      "face": [
+        4,
+        185,
+        1998,
+        410
+      ],
+      "cap": [
+        4,
+        138,
+        1998,
+        47
+      ],
+      "low": [
+        70,
+        507,
+        240,
+        80
+      ],
+      "return": [
+        4,
+        185,
+        60,
+        410
+      ]
+    }
+  },
+  "variants": [
+    {
+      "frames": [
+        "corridor-0-q0-raised.png",
+        "corridor-0-q0-low.png",
+        "corridor-0-q1-raised.png",
+        "corridor-0-q1-low.png",
+        "corridor-0-q2-raised.png",
+        "corridor-0-q2-low.png",
+        "corridor-0-q3-raised.png",
+        "corridor-0-q3-low.png"
+      ],
+      "id": "corridor",
+      "number": 0,
+      "variant": "transit"
+    },
+    {
+      "frames": [
+        "corridor-1-q0-raised.png",
+        "corridor-1-q0-low.png",
+        "corridor-1-q1-raised.png",
+        "corridor-1-q1-low.png",
+        "corridor-1-q2-raised.png",
+        "corridor-1-q2-low.png",
+        "corridor-1-q3-raised.png",
+        "corridor-1-q3-low.png"
+      ],
+      "id": "corridor",
+      "number": 1,
+      "variant": "utility"
+    },
+    {
+      "frames": [
+        "corridor-2-q0-raised.png",
+        "corridor-2-q0-low.png",
+        "corridor-2-q1-raised.png",
+        "corridor-2-q1-low.png",
+        "corridor-2-q2-raised.png",
+        "corridor-2-q2-low.png",
+        "corridor-2-q3-raised.png",
+        "corridor-2-q3-low.png"
+      ],
+      "id": "corridor",
+      "number": 2,
+      "variant": "observation"
+    },
+    {
+      "frames": [
+        "corner-0-q0-raised.png",
+        "corner-0-q0-low.png",
+        "corner-0-q1-raised.png",
+        "corner-0-q1-low.png",
+        "corner-0-q2-raised.png",
+        "corner-0-q2-low.png",
+        "corner-0-q3-raised.png",
+        "corner-0-q3-low.png"
+      ],
+      "id": "corner",
+      "number": 0,
+      "variant": "transit"
+    },
+    {
+      "frames": [
+        "corner-1-q0-raised.png",
+        "corner-1-q0-low.png",
+        "corner-1-q1-raised.png",
+        "corner-1-q1-low.png",
+        "corner-1-q2-raised.png",
+        "corner-1-q2-low.png",
+        "corner-1-q3-raised.png",
+        "corner-1-q3-low.png"
+      ],
+      "id": "corner",
+      "number": 1,
+      "variant": "utility"
+    },
+    {
+      "frames": [
+        "corner-2-q0-raised.png",
+        "corner-2-q0-low.png",
+        "corner-2-q1-raised.png",
+        "corner-2-q1-low.png",
+        "corner-2-q2-raised.png",
+        "corner-2-q2-low.png",
+        "corner-2-q3-raised.png",
+        "corner-2-q3-low.png"
+      ],
+      "id": "corner",
+      "number": 2,
+      "variant": "observation"
+    },
+    {
+      "frames": [
+        "tee_corridor-0-q0-raised.png",
+        "tee_corridor-0-q0-low.png",
+        "tee_corridor-0-q1-raised.png",
+        "tee_corridor-0-q1-low.png",
+        "tee_corridor-0-q2-raised.png",
+        "tee_corridor-0-q2-low.png",
+        "tee_corridor-0-q3-raised.png",
+        "tee_corridor-0-q3-low.png"
+      ],
+      "id": "tee_corridor",
+      "number": 0,
+      "variant": "transit"
+    },
+    {
+      "frames": [
+        "tee_corridor-1-q0-raised.png",
+        "tee_corridor-1-q0-low.png",
+        "tee_corridor-1-q1-raised.png",
+        "tee_corridor-1-q1-low.png",
+        "tee_corridor-1-q2-raised.png",
+        "tee_corridor-1-q2-low.png",
+        "tee_corridor-1-q3-raised.png",
+        "tee_corridor-1-q3-low.png"
+      ],
+      "id": "tee_corridor",
+      "number": 1,
+      "variant": "utility"
+    },
+    {
+      "frames": [
+        "tee_corridor-2-q0-raised.png",
+        "tee_corridor-2-q0-low.png",
+        "tee_corridor-2-q1-raised.png",
+        "tee_corridor-2-q1-low.png",
+        "tee_corridor-2-q2-raised.png",
+        "tee_corridor-2-q2-low.png",
+        "tee_corridor-2-q3-raised.png",
+        "tee_corridor-2-q3-low.png"
+      ],
+      "id": "tee_corridor",
+      "number": 2,
+      "variant": "observation"
+    }
+  ],
+  "integration": "Shared low hull and raised wall renderers, nine card variants, existing art_variant selection",
+  "geometry": "Existing authoritative corridor hulls and openings retained; angled faces and neighbor culling retained; north entry faces are windowless closed doors",
+  "review": "Native review complete; owner acceptance pending"
+}

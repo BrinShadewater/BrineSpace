@@ -1,0 +1,56 @@
+{
+  "textures": {
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "nursery_supply_trolley",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        -164,
+        39,
+        44,
+        16
+      ],
+      "centers_by_quarter": [
+        [
+          -142,
+          47
+        ],
+        [
+          -36,
+          -75
+        ],
+        [
+          142,
+          -35
+        ],
+        [
+          120,
+          46
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "nursery_supply_trolley",
+      "offset": [
+        -3,
+        9
+      ],
+      "size": [
+        50,
+        18
+      ],
+      "fill": "343e44",
+      "edge": "65767a"
+    }
+  ]
+}

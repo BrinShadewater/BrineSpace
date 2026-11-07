@@ -1,0 +1,37 @@
+{
+  "id": "anomaly_lab",
+  "brief": "Experimental instruments measure impossible geometry. A large angular containment frame surrounds three offset nested black polygonal slabs held on visible thin mechanical mounts, upper-center in room; lower-left chunky instrument cart and right-wall narrow measurement bank. Slabs not a reactor, no sphere, no floating effects. Dark basalt surfaces contrast rubbed pale steel frame, minimal muted violet instrument markings. Clear southern access aisle around frame base. Future effect anchor frame corners for measured pulses, offline slabs remain visible.",
+  "prompt": "Use case: stylized-concept. Asset: one BrineSpace room sprite, square 1280 target. Use reference for overhead cutaway camera, worn hull construction and selective pixel illustration treatment, and ONLY SOUTH centered open doorway layout. Completely replace medical furnishings with specified subject. NORTH EAST WEST walls sealed, no false door trim. South doorway is a floor passage through wall not a painted panel. Large readable equipment, quiet dark slate floor, sparse supporting details, same station scale. Genuinely transparent exterior; no black or checkerboard backdrop. No text, UI, logos, characters. Static base readable without active glow; future localized effects separate. Experimental instruments measure impossible geometry. A large angular containment frame surrounds three offset nested black polygonal slabs held on visible thin mechanical mounts, upper-center in room; lower-left chunky instrument cart and right-wall narrow measurement bank. Slabs not a reactor, no sphere, no floating effects. Dark basalt surfaces contrast rubbed pale steel frame, minimal muted violet instrument markings. Clear southern access aisle around frame base. Future effect anchor frame corners for measured pulses, offline slabs remain visible.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-a63e3a9e-ce0c-4f35-be75-94e5d5772019.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/med_bay.png",
+    "inherit": "camera/materials/south-only doors",
+    "exclude": "medical equipment"
+  },
+  "processing": {
+    "tool": "tools/room_art_pipeline.py",
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "9534cbd9fa5e6e89f6deadbe14ad825c53cde29bab95f676eb1d272234691ba4",
+  "output_sha256": "8d2b1d71020d9a1d2127823b0c0081155e14cab3f8ac19ec17d8ec404d26d1f7",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage": "normalized-candidate",
+  "geometry": "south doorway visible, other sides sealed; seam/native checks pending",
+  "art": "distinct focal subject; gameplay scale not verified",
+  "integrated": false
+}

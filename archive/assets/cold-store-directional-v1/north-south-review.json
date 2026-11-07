@@ -1,0 +1,65 @@
+{
+  "entries": [
+    {
+      "subject": "fridge",
+      "direction": "north",
+      "registration": "rooms/full-wall-v1/registrations/cold-store-fridge.json",
+      "source": "rooms/underwater/cold-store-v1/fridge-v2.png",
+      "sha256": "e744e3ab74f26ee2e6315f3cda85e117ef5b20b94a06bbacc18c3d5a20e848a3",
+      "native_size": [
+        1189,
+        1323
+      ],
+      "display_width": 92,
+      "stage": "library-installed-native-reviewed"
+    },
+    {
+      "subject": "fridge",
+      "direction": "south",
+      "registration": "rooms/full-wall-v1/registrations/side-cold-store-fridge-south.json",
+      "source": "assets/cold-store-directional-v1/fridge-south.png",
+      "sha256": "49fcd0282edbe6a2ce7bb006dd7ba0909ed22685ff8f308cc0cc8bad9f13202a",
+      "native_size": [
+        1635,
+        962
+      ],
+      "display_width": 92,
+      "stage": "library-installed-native-reviewed"
+    },
+    {
+      "subject": "rack",
+      "direction": "north",
+      "registration": "rooms/full-wall-v1/registrations/cold-store-rack.json",
+      "source": "rooms/underwater/cold-store-v1/rack-v2.png",
+      "sha256": "40666c8fcab00a5b24bec922fd638bad34f551bad4295acd89b61fdf0f9dfe12",
+      "native_size": [
+        1122,
+        1402
+      ],
+      "display_width": 92,
+      "stage": "library-installed-native-reviewed"
+    },
+    {
+      "subject": "rack",
+      "direction": "south",
+      "registration": "rooms/full-wall-v1/registrations/side-cold-store-rack-south.json",
+      "source": "assets/cold-store-directional-v1/rack-south.png",
+      "sha256": "eed00736e1d20d2dd54ab80aeedbed4b36fbca14dcc8009a279ea9f36d1011fe",
+      "native_size": [
+        1682,
+        935
+      ],
+      "display_width": 92,
+      "stage": "library-installed-native-reviewed"
+    }
+  ],
+  "native_evidence": "output/cold-store-remaining-2026-09-12/companions/native.png",
+  "runtime": "output/cold-store-remaining-2026-09-12/companions/runtime.json",
+  "playable_parity": "output/cold-store-remaining-2026-09-12/comparison.json",
+  "scope": "Reusable north/south library companions. Fixed q0 gameplay unchanged; no alternate playable rotations enabled.",
+  "rejected": {
+    "rack-south-frontal-study.png": "All tiers remained visible as frontal elevation.",
+    "fridge-south-study.png": "Excessive projected depth; replaced with compact overhead source."
+  },
+  "owner_acceptance": false
+}

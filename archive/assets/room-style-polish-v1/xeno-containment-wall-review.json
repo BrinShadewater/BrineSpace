@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-xeno-containment-wall",
+  "department": "Xenobiology",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Muted warm grey/ivory and blue-grey hardware with limited dull ochre safety framing. Smoked glass and matte polymer; modest contained specimen equipment. A few recessed service seams and seals. Preserve capped vessels and the open task surface, do not increase hazard stripes."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/xeno-containment-wall.png",
+      "sha256": "d15b58eb2bbd067ebc39d1efc48c597d0bb88a0e42819c156cddf13402a06aae",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-xeno-v2/xeno-north.png",
+      "sha256": "d4e7dd20365cf3b0021b647b26f46c06cf43e160f8cd4dbcf0d1abec2c9dd861",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/xeno-containment-wall.png",
+  "source_sha256": "9d0124d429e17eb3711bb9d99b4b16a46bc6653f5ff6f5ea989e4d39deede21c",
+  "export_path": "assets/room-style-polish-v1/exports/xeno-containment-wall.png",
+  "export_sha256": "5b046fd2258e7fa7b83640f39995a2751ebff11e4700121fb3e49d3b098d5b61",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    85.91374122367101
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Muted warm grey/ivory and blue-grey hardware with limited dull ochre safety framing. Smoked glass and matte polymer; modest contained specimen equipment. A few recessed service seams and seals. Preserve capped vessels and the open task surface, do not increase hazard stripes.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/xeno-containment-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1049,
+            566
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 85.91374122367101,
+  "registration_path": "rooms/full-wall-v1/registrations/side-xeno-containment-wall-south.json",
+  "registration_sha256": "c3782ac77b1e35f436d00487714a63ebe7d1598ea5e6fb84ec7a9104e325b2a9",
+  "prompt_path": "assets/room-style-polish-v1/xeno-containment-wall.prompt.txt",
+  "prompt_sha256": "5ba8f311b96ba6b7e9963f2599a7ada08aa6d5b8029db9d029952f4101404cf6",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

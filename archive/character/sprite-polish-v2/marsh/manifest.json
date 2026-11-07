@@ -1,0 +1,2704 @@
+{
+  "name": "Marsh",
+  "frameSize": [
+    92,
+    92
+  ],
+  "pivot": [
+    46,
+    86
+  ],
+  "strideDistanceCells": {
+    "walk": 0.12,
+    "run": 0.16
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/000.png",
+        "frames/walk-south/001.png",
+        "frames/walk-south/002.png",
+        "frames/walk-south/003.png",
+        "frames/walk-south/004.png",
+        "frames/walk-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/000.png",
+        "frames/walk-north/001.png",
+        "frames/walk-north/002.png",
+        "frames/walk-north/003.png",
+        "frames/walk-north/004.png",
+        "frames/walk-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png",
+        "frames/walk-east/004.png",
+        "frames/walk-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png",
+        "frames/walk-west/004.png",
+        "frames/walk-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "run-south",
+      "frameFiles": [
+        "frames/run-south/000.png",
+        "frames/run-south/001.png",
+        "frames/run-south/002.png",
+        "frames/run-south/003.png",
+        "frames/run-south/004.png",
+        "frames/run-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "run-north",
+      "frameFiles": [
+        "frames/run-north/000.png",
+        "frames/run-north/001.png",
+        "frames/run-north/002.png",
+        "frames/run-north/003.png",
+        "frames/run-north/004.png",
+        "frames/run-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "run-east",
+      "frameFiles": [
+        "frames/run-east/000.png",
+        "frames/run-east/001.png",
+        "frames/run-east/002.png",
+        "frames/run-east/003.png",
+        "frames/run-east/004.png",
+        "frames/run-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "run-west",
+      "frameFiles": [
+        "frames/run-west/000.png",
+        "frames/run-west/001.png",
+        "frames/run-west/002.png",
+        "frames/run-west/003.png",
+        "frames/run-west/004.png",
+        "frames/run-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "weld-south",
+      "frameFiles": [
+        "frames/weld-south/000.png",
+        "frames/weld-south/001.png",
+        "frames/weld-south/002.png",
+        "frames/weld-south/003.png",
+        "frames/weld-south/004.png",
+        "frames/weld-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "weld-north",
+      "frameFiles": [
+        "frames/weld-north/000.png",
+        "frames/weld-north/001.png",
+        "frames/weld-north/002.png",
+        "frames/weld-north/003.png",
+        "frames/weld-north/004.png",
+        "frames/weld-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "weld-east",
+      "frameFiles": [
+        "frames/weld-east/000.png",
+        "frames/weld-east/001.png",
+        "frames/weld-east/002.png",
+        "frames/weld-east/003.png",
+        "frames/weld-east/004.png",
+        "frames/weld-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "weld-west",
+      "frameFiles": [
+        "frames/weld-west/000.png",
+        "frames/weld-west/001.png",
+        "frames/weld-west/002.png",
+        "frames/weld-west/003.png",
+        "frames/weld-west/004.png",
+        "frames/weld-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "repair-south",
+      "frameFiles": [
+        "frames/repair-south/000.png",
+        "frames/repair-south/001.png",
+        "frames/repair-south/002.png",
+        "frames/repair-south/003.png",
+        "frames/repair-south/004.png",
+        "frames/repair-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "repair-north",
+      "frameFiles": [
+        "frames/repair-north/000.png",
+        "frames/repair-north/001.png",
+        "frames/repair-north/002.png",
+        "frames/repair-north/003.png",
+        "frames/repair-north/004.png",
+        "frames/repair-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "repair-east",
+      "frameFiles": [
+        "frames/repair-east/000.png",
+        "frames/repair-east/001.png",
+        "frames/repair-east/002.png",
+        "frames/repair-east/003.png",
+        "frames/repair-east/004.png",
+        "frames/repair-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "repair-west",
+      "frameFiles": [
+        "frames/repair-west/000.png",
+        "frames/repair-west/001.png",
+        "frames/repair-west/002.png",
+        "frames/repair-west/003.png",
+        "frames/repair-west/004.png",
+        "frames/repair-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "interact-south",
+      "frameFiles": [
+        "frames/interact-south/000.png",
+        "frames/interact-south/001.png",
+        "frames/interact-south/002.png",
+        "frames/interact-south/003.png",
+        "frames/interact-south/004.png",
+        "frames/interact-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "interact-north",
+      "frameFiles": [
+        "frames/interact-north/000.png",
+        "frames/interact-north/001.png",
+        "frames/interact-north/002.png",
+        "frames/interact-north/003.png",
+        "frames/interact-north/004.png",
+        "frames/interact-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "interact-east",
+      "frameFiles": [
+        "frames/interact-east/000.png",
+        "frames/interact-east/001.png",
+        "frames/interact-east/002.png",
+        "frames/interact-east/003.png",
+        "frames/interact-east/004.png",
+        "frames/interact-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "interact-west",
+      "frameFiles": [
+        "frames/interact-west/000.png",
+        "frames/interact-west/001.png",
+        "frames/interact-west/002.png",
+        "frames/interact-west/003.png",
+        "frames/interact-west/004.png",
+        "frames/interact-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "inspect-south",
+      "frameFiles": [
+        "frames/inspect-south/000.png",
+        "frames/inspect-south/001.png",
+        "frames/inspect-south/002.png",
+        "frames/inspect-south/003.png",
+        "frames/inspect-south/004.png",
+        "frames/inspect-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "inspect-north",
+      "frameFiles": [
+        "frames/inspect-north/000.png",
+        "frames/inspect-north/001.png",
+        "frames/inspect-north/002.png",
+        "frames/inspect-north/003.png",
+        "frames/inspect-north/004.png",
+        "frames/inspect-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "inspect-east",
+      "frameFiles": [
+        "frames/inspect-east/000.png",
+        "frames/inspect-east/001.png",
+        "frames/inspect-east/002.png",
+        "frames/inspect-east/003.png",
+        "frames/inspect-east/004.png",
+        "frames/inspect-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "inspect-west",
+      "frameFiles": [
+        "frames/inspect-west/000.png",
+        "frames/inspect-west/001.png",
+        "frames/inspect-west/002.png",
+        "frames/inspect-west/003.png",
+        "frames/inspect-west/004.png",
+        "frames/inspect-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "salvage-south",
+      "frameFiles": [
+        "frames/salvage-south/000.png",
+        "frames/salvage-south/001.png",
+        "frames/salvage-south/002.png",
+        "frames/salvage-south/003.png",
+        "frames/salvage-south/004.png",
+        "frames/salvage-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "salvage-north",
+      "frameFiles": [
+        "frames/salvage-north/000.png",
+        "frames/salvage-north/001.png",
+        "frames/salvage-north/002.png",
+        "frames/salvage-north/003.png",
+        "frames/salvage-north/004.png",
+        "frames/salvage-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "salvage-east",
+      "frameFiles": [
+        "frames/salvage-east/000.png",
+        "frames/salvage-east/001.png",
+        "frames/salvage-east/002.png",
+        "frames/salvage-east/003.png",
+        "frames/salvage-east/004.png",
+        "frames/salvage-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "salvage-west",
+      "frameFiles": [
+        "frames/salvage-west/000.png",
+        "frames/salvage-west/001.png",
+        "frames/salvage-west/002.png",
+        "frames/salvage-west/003.png",
+        "frames/salvage-west/004.png",
+        "frames/salvage-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "swim-pickup-south",
+      "frameFiles": [
+        "frames/swim-pickup-south/000.png",
+        "frames/swim-pickup-south/001.png",
+        "frames/swim-pickup-south/002.png",
+        "frames/swim-pickup-south/003.png",
+        "frames/swim-pickup-south/004.png",
+        "frames/swim-pickup-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "frames/swim-pickup-north/000.png",
+        "frames/swim-pickup-north/001.png",
+        "frames/swim-pickup-north/002.png",
+        "frames/swim-pickup-north/003.png",
+        "frames/swim-pickup-north/004.png",
+        "frames/swim-pickup-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "frames/swim-pickup-east/000.png",
+        "frames/swim-pickup-east/001.png",
+        "frames/swim-pickup-east/002.png",
+        "frames/swim-pickup-east/003.png",
+        "frames/swim-pickup-east/004.png",
+        "frames/swim-pickup-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "frames/swim-pickup-west/000.png",
+        "frames/swim-pickup-west/001.png",
+        "frames/swim-pickup-west/002.png",
+        "frames/swim-pickup-west/003.png",
+        "frames/swim-pickup-west/004.png",
+        "frames/swim-pickup-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "unload-south",
+      "frameFiles": [
+        "frames/unload-south/000.png",
+        "frames/unload-south/001.png",
+        "frames/unload-south/002.png",
+        "frames/unload-south/003.png",
+        "frames/unload-south/004.png",
+        "frames/unload-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "unload-north",
+      "frameFiles": [
+        "frames/unload-north/000.png",
+        "frames/unload-north/001.png",
+        "frames/unload-north/002.png",
+        "frames/unload-north/003.png",
+        "frames/unload-north/004.png",
+        "frames/unload-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "frames/unload-east/000.png",
+        "frames/unload-east/001.png",
+        "frames/unload-east/002.png",
+        "frames/unload-east/003.png",
+        "frames/unload-east/004.png",
+        "frames/unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "unload-west",
+      "frameFiles": [
+        "frames/unload-west/000.png",
+        "frames/unload-west/001.png",
+        "frames/unload-west/002.png",
+        "frames/unload-west/003.png",
+        "frames/unload-west/004.png",
+        "frames/unload-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "swim-south",
+      "frameFiles": [
+        "frames/swim-south/000.png",
+        "frames/swim-south/001.png",
+        "frames/swim-south/002.png",
+        "frames/swim-south/003.png",
+        "frames/swim-south/004.png",
+        "frames/swim-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-north",
+      "frameFiles": [
+        "frames/swim-north/000.png",
+        "frames/swim-north/001.png",
+        "frames/swim-north/002.png",
+        "frames/swim-north/003.png",
+        "frames/swim-north/004.png",
+        "frames/swim-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-east",
+      "frameFiles": [
+        "frames/swim-east/000.png",
+        "frames/swim-east/001.png",
+        "frames/swim-east/002.png",
+        "frames/swim-east/003.png",
+        "frames/swim-east/004.png",
+        "frames/swim-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-west",
+      "frameFiles": [
+        "frames/swim-west/000.png",
+        "frames/swim-west/001.png",
+        "frames/swim-west/002.png",
+        "frames/swim-west/003.png",
+        "frames/swim-west/004.png",
+        "frames/swim-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "tread-south",
+      "frameFiles": [
+        "frames/tread-south/000.png",
+        "frames/tread-south/001.png",
+        "frames/tread-south/002.png",
+        "frames/tread-south/003.png",
+        "frames/tread-south/004.png",
+        "frames/tread-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "tread-north",
+      "frameFiles": [
+        "frames/tread-north/000.png",
+        "frames/tread-north/001.png",
+        "frames/tread-north/002.png",
+        "frames/tread-north/003.png",
+        "frames/tread-north/004.png",
+        "frames/tread-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "tread-east",
+      "frameFiles": [
+        "frames/tread-east/000.png",
+        "frames/tread-east/001.png",
+        "frames/tread-east/002.png",
+        "frames/tread-east/003.png",
+        "frames/tread-east/004.png",
+        "frames/tread-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "tread-west",
+      "frameFiles": [
+        "frames/tread-west/000.png",
+        "frames/tread-west/001.png",
+        "frames/tread-west/002.png",
+        "frames/tread-west/003.png",
+        "frames/tread-west/004.png",
+        "frames/tread-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-distress-south",
+      "frameFiles": [
+        "frames/swim-distress-south/000.png",
+        "frames/swim-distress-south/001.png",
+        "frames/swim-distress-south/002.png",
+        "frames/swim-distress-south/003.png",
+        "frames/swim-distress-south/004.png",
+        "frames/swim-distress-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-distress-north",
+      "frameFiles": [
+        "frames/swim-distress-north/000.png",
+        "frames/swim-distress-north/001.png",
+        "frames/swim-distress-north/002.png",
+        "frames/swim-distress-north/003.png",
+        "frames/swim-distress-north/004.png",
+        "frames/swim-distress-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-distress-east",
+      "frameFiles": [
+        "frames/swim-distress-east/000.png",
+        "frames/swim-distress-east/001.png",
+        "frames/swim-distress-east/002.png",
+        "frames/swim-distress-east/003.png",
+        "frames/swim-distress-east/004.png",
+        "frames/swim-distress-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-distress-west",
+      "frameFiles": [
+        "frames/swim-distress-west/000.png",
+        "frames/swim-distress-west/001.png",
+        "frames/swim-distress-west/002.png",
+        "frames/swim-distress-west/003.png",
+        "frames/swim-distress-west/004.png",
+        "frames/swim-distress-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "death-ground-south",
+      "frameFiles": [
+        "frames/death-ground-south/000.png",
+        "frames/death-ground-south/001.png",
+        "frames/death-ground-south/002.png",
+        "frames/death-ground-south/003.png",
+        "frames/death-ground-south/004.png",
+        "frames/death-ground-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "death-ground-north",
+      "frameFiles": [
+        "frames/death-ground-north/000.png",
+        "frames/death-ground-north/001.png",
+        "frames/death-ground-north/002.png",
+        "frames/death-ground-north/003.png",
+        "frames/death-ground-north/004.png",
+        "frames/death-ground-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "death-ground-east",
+      "frameFiles": [
+        "frames/death-ground-east/000.png",
+        "frames/death-ground-east/001.png",
+        "frames/death-ground-east/002.png",
+        "frames/death-ground-east/003.png",
+        "frames/death-ground-east/004.png",
+        "frames/death-ground-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "death-ground-west",
+      "frameFiles": [
+        "frames/death-ground-west/000.png",
+        "frames/death-ground-west/001.png",
+        "frames/death-ground-west/002.png",
+        "frames/death-ground-west/003.png",
+        "frames/death-ground-west/004.png",
+        "frames/death-ground-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "death-water-south",
+      "frameFiles": [
+        "frames/death-water-south/000.png",
+        "frames/death-water-south/001.png",
+        "frames/death-water-south/002.png",
+        "frames/death-water-south/003.png",
+        "frames/death-water-south/004.png",
+        "frames/death-water-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": true
+    },
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "frames/death-water-north/000.png",
+        "frames/death-water-north/001.png",
+        "frames/death-water-north/002.png",
+        "frames/death-water-north/003.png",
+        "frames/death-water-north/004.png",
+        "frames/death-water-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": true
+    },
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "frames/death-water-east/000.png",
+        "frames/death-water-east/001.png",
+        "frames/death-water-east/002.png",
+        "frames/death-water-east/003.png",
+        "frames/death-water-east/004.png",
+        "frames/death-water-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": true
+    },
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "frames/death-water-west/000.png",
+        "frames/death-water-west/001.png",
+        "frames/death-water-west/002.png",
+        "frames/death-water-west/003.png",
+        "frames/death-water-west/004.png",
+        "frames/death-water-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "water": true
+    },
+    {
+      "id": "kneel-south",
+      "frameFiles": [
+        "frames/kneel-south/000.png",
+        "frames/kneel-south/001.png",
+        "frames/kneel-south/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "kneel-north",
+      "frameFiles": [
+        "frames/kneel-north/000.png",
+        "frames/kneel-north/001.png",
+        "frames/kneel-north/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "kneel-east",
+      "frameFiles": [
+        "frames/kneel-east/000.png",
+        "frames/kneel-east/001.png",
+        "frames/kneel-east/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "kneel-west",
+      "frameFiles": [
+        "frames/kneel-west/000.png",
+        "frames/kneel-west/001.png",
+        "frames/kneel-west/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "stand-south",
+      "frameFiles": [
+        "frames/stand-south/000.png",
+        "frames/stand-south/001.png",
+        "frames/stand-south/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "stand-north",
+      "frameFiles": [
+        "frames/stand-north/000.png",
+        "frames/stand-north/001.png",
+        "frames/stand-north/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "stand-east",
+      "frameFiles": [
+        "frames/stand-east/000.png",
+        "frames/stand-east/001.png",
+        "frames/stand-east/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "stand-west",
+      "frameFiles": [
+        "frames/stand-west/000.png",
+        "frames/stand-west/001.png",
+        "frames/stand-west/002.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-down-south",
+      "frameFiles": [
+        "frames/sit-down-south/000.png",
+        "frames/sit-down-south/001.png",
+        "frames/sit-down-south/002.png",
+        "frames/sit-down-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-down-north",
+      "frameFiles": [
+        "frames/sit-down-north/000.png",
+        "frames/sit-down-north/001.png",
+        "frames/sit-down-north/002.png",
+        "frames/sit-down-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-down-east",
+      "frameFiles": [
+        "frames/sit-down-east/000.png",
+        "frames/sit-down-east/001.png",
+        "frames/sit-down-east/002.png",
+        "frames/sit-down-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-down-west",
+      "frameFiles": [
+        "frames/sit-down-west/000.png",
+        "frames/sit-down-west/001.png",
+        "frames/sit-down-west/002.png",
+        "frames/sit-down-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "frames/lie-down-south/000.png",
+        "frames/lie-down-south/001.png",
+        "frames/lie-down-south/002.png",
+        "frames/lie-down-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "lie-down-north",
+      "frameFiles": [
+        "frames/lie-down-north/000.png",
+        "frames/lie-down-north/001.png",
+        "frames/lie-down-north/002.png",
+        "frames/lie-down-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "frames/lie-down-east/000.png",
+        "frames/lie-down-east/001.png",
+        "frames/lie-down-east/002.png",
+        "frames/lie-down-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "lie-down-west",
+      "frameFiles": [
+        "frames/lie-down-west/000.png",
+        "frames/lie-down-west/001.png",
+        "frames/lie-down-west/002.png",
+        "frames/lie-down-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-rise-south",
+      "frameFiles": [
+        "frames/sit-rise-south/000.png",
+        "frames/sit-rise-south/001.png",
+        "frames/sit-rise-south/002.png",
+        "frames/sit-rise-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-rise-north",
+      "frameFiles": [
+        "frames/sit-rise-north/000.png",
+        "frames/sit-rise-north/001.png",
+        "frames/sit-rise-north/002.png",
+        "frames/sit-rise-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-rise-east",
+      "frameFiles": [
+        "frames/sit-rise-east/000.png",
+        "frames/sit-rise-east/001.png",
+        "frames/sit-rise-east/002.png",
+        "frames/sit-rise-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-rise-west",
+      "frameFiles": [
+        "frames/sit-rise-west/000.png",
+        "frames/sit-rise-west/001.png",
+        "frames/sit-rise-west/002.png",
+        "frames/sit-rise-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "frames/get-up-south/000.png",
+        "frames/get-up-south/001.png",
+        "frames/get-up-south/002.png",
+        "frames/get-up-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "get-up-north",
+      "frameFiles": [
+        "frames/get-up-north/000.png",
+        "frames/get-up-north/001.png",
+        "frames/get-up-north/002.png",
+        "frames/get-up-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "frames/get-up-east/000.png",
+        "frames/get-up-east/001.png",
+        "frames/get-up-east/002.png",
+        "frames/get-up-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "get-up-west",
+      "frameFiles": [
+        "frames/get-up-west/000.png",
+        "frames/get-up-west/001.png",
+        "frames/get-up-west/002.png",
+        "frames/get-up-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "sit-idle-south",
+      "frameFiles": [
+        "frames/sit-idle-south/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sit-idle-north",
+      "frameFiles": [
+        "frames/sit-idle-north/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sit-idle-east",
+      "frameFiles": [
+        "frames/sit-idle-east/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sit-idle-west",
+      "frameFiles": [
+        "frames/sit-idle-west/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "read-seated-south",
+      "frameFiles": [
+        "frames/read-seated-south/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "read-seated-north",
+      "frameFiles": [
+        "frames/read-seated-north/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "read-seated-east",
+      "frameFiles": [
+        "frames/read-seated-east/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "read-seated-west",
+      "frameFiles": [
+        "frames/read-seated-west/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "frames/sleep-south/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "frames/sleep-north/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "frames/sleep-east/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "frames/sleep-west/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "eat-south",
+      "frameFiles": [
+        "frames/eat-south/000.png",
+        "frames/eat-south/001.png",
+        "frames/eat-south/002.png",
+        "frames/eat-south/003.png",
+        "frames/eat-south/004.png",
+        "frames/eat-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "eat-north",
+      "frameFiles": [
+        "frames/eat-north/000.png",
+        "frames/eat-north/001.png",
+        "frames/eat-north/002.png",
+        "frames/eat-north/003.png",
+        "frames/eat-north/004.png",
+        "frames/eat-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "eat-east",
+      "frameFiles": [
+        "frames/eat-east/000.png",
+        "frames/eat-east/001.png",
+        "frames/eat-east/002.png",
+        "frames/eat-east/003.png",
+        "frames/eat-east/004.png",
+        "frames/eat-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "eat-west",
+      "frameFiles": [
+        "frames/eat-west/000.png",
+        "frames/eat-west/001.png",
+        "frames/eat-west/002.png",
+        "frames/eat-west/003.png",
+        "frames/eat-west/004.png",
+        "frames/eat-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "drink-south",
+      "frameFiles": [
+        "frames/drink-south/000.png",
+        "frames/drink-south/001.png",
+        "frames/drink-south/002.png",
+        "frames/drink-south/003.png",
+        "frames/drink-south/004.png",
+        "frames/drink-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "drink-north",
+      "frameFiles": [
+        "frames/drink-north/000.png",
+        "frames/drink-north/001.png",
+        "frames/drink-north/002.png",
+        "frames/drink-north/003.png",
+        "frames/drink-north/004.png",
+        "frames/drink-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "drink-east",
+      "frameFiles": [
+        "frames/drink-east/000.png",
+        "frames/drink-east/001.png",
+        "frames/drink-east/002.png",
+        "frames/drink-east/003.png",
+        "frames/drink-east/004.png",
+        "frames/drink-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "drink-west",
+      "frameFiles": [
+        "frames/drink-west/000.png",
+        "frames/drink-west/001.png",
+        "frames/drink-west/002.png",
+        "frames/drink-west/003.png",
+        "frames/drink-west/004.png",
+        "frames/drink-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "pickup-south",
+      "frameFiles": [
+        "frames/pickup-south/000.png",
+        "frames/pickup-south/001.png",
+        "frames/pickup-south/002.png",
+        "frames/pickup-south/003.png",
+        "frames/pickup-south/004.png",
+        "frames/pickup-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "pickup-north",
+      "frameFiles": [
+        "frames/pickup-north/000.png",
+        "frames/pickup-north/001.png",
+        "frames/pickup-north/002.png",
+        "frames/pickup-north/003.png",
+        "frames/pickup-north/004.png",
+        "frames/pickup-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "frames/pickup-east/000.png",
+        "frames/pickup-east/001.png",
+        "frames/pickup-east/002.png",
+        "frames/pickup-east/003.png",
+        "frames/pickup-east/004.png",
+        "frames/pickup-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "pickup-west",
+      "frameFiles": [
+        "frames/pickup-west/000.png",
+        "frames/pickup-west/001.png",
+        "frames/pickup-west/002.png",
+        "frames/pickup-west/003.png",
+        "frames/pickup-west/004.png",
+        "frames/pickup-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "recover-air-south",
+      "frameFiles": [
+        "frames/recover-air-south/000.png",
+        "frames/recover-air-south/001.png",
+        "frames/recover-air-south/002.png",
+        "frames/recover-air-south/003.png",
+        "frames/recover-air-south/004.png",
+        "frames/recover-air-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "frames/recover-air-north/000.png",
+        "frames/recover-air-north/001.png",
+        "frames/recover-air-north/002.png",
+        "frames/recover-air-north/003.png",
+        "frames/recover-air-north/004.png",
+        "frames/recover-air-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "recover-air-east",
+      "frameFiles": [
+        "frames/recover-air-east/000.png",
+        "frames/recover-air-east/001.png",
+        "frames/recover-air-east/002.png",
+        "frames/recover-air-east/003.png",
+        "frames/recover-air-east/004.png",
+        "frames/recover-air-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "frames/recover-air-west/000.png",
+        "frames/recover-air-west/001.png",
+        "frames/recover-air-west/002.png",
+        "frames/recover-air-west/003.png",
+        "frames/recover-air-west/004.png",
+        "frames/recover-air-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "carry-south",
+      "frameFiles": [
+        "frames/carry-south/000.png",
+        "frames/carry-south/001.png",
+        "frames/carry-south/002.png",
+        "frames/carry-south/003.png",
+        "frames/carry-south/004.png",
+        "frames/carry-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "carry-north",
+      "frameFiles": [
+        "frames/carry-north/000.png",
+        "frames/carry-north/001.png",
+        "frames/carry-north/002.png",
+        "frames/carry-north/003.png",
+        "frames/carry-north/004.png",
+        "frames/carry-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "frames/carry-east/000.png",
+        "frames/carry-east/001.png",
+        "frames/carry-east/002.png",
+        "frames/carry-east/003.png",
+        "frames/carry-east/004.png",
+        "frames/carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "carry-west",
+      "frameFiles": [
+        "frames/carry-west/000.png",
+        "frames/carry-west/001.png",
+        "frames/carry-west/002.png",
+        "frames/carry-west/003.png",
+        "frames/carry-west/004.png",
+        "frames/carry-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": true,
+      "water": false
+    },
+    {
+      "id": "cargo-unload-south",
+      "frameFiles": [
+        "frames/cargo-unload-south/000.png",
+        "frames/cargo-unload-south/001.png",
+        "frames/cargo-unload-south/002.png",
+        "frames/cargo-unload-south/003.png",
+        "frames/cargo-unload-south/004.png",
+        "frames/cargo-unload-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "cargo-unload-north",
+      "frameFiles": [
+        "frames/cargo-unload-north/000.png",
+        "frames/cargo-unload-north/001.png",
+        "frames/cargo-unload-north/002.png",
+        "frames/cargo-unload-north/003.png",
+        "frames/cargo-unload-north/004.png",
+        "frames/cargo-unload-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "cargo-unload-east",
+      "frameFiles": [
+        "frames/cargo-unload-east/000.png",
+        "frames/cargo-unload-east/001.png",
+        "frames/cargo-unload-east/002.png",
+        "frames/cargo-unload-east/003.png",
+        "frames/cargo-unload-east/004.png",
+        "frames/cargo-unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "cargo-unload-west",
+      "frameFiles": [
+        "frames/cargo-unload-west/000.png",
+        "frames/cargo-unload-west/001.png",
+        "frames/cargo-unload-west/002.png",
+        "frames/cargo-unload-west/003.png",
+        "frames/cargo-unload-west/004.png",
+        "frames/cargo-unload-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "equip-helmet-south",
+      "frameFiles": [
+        "frames/equip-helmet-south/000.png",
+        "frames/equip-helmet-south/001.png",
+        "frames/equip-helmet-south/002.png",
+        "frames/equip-helmet-south/003.png",
+        "frames/equip-helmet-south/004.png",
+        "frames/equip-helmet-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "equip-helmet-north",
+      "frameFiles": [
+        "frames/equip-helmet-north/000.png",
+        "frames/equip-helmet-north/001.png",
+        "frames/equip-helmet-north/002.png",
+        "frames/equip-helmet-north/003.png",
+        "frames/equip-helmet-north/004.png",
+        "frames/equip-helmet-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "frames/equip-helmet-east/000.png",
+        "frames/equip-helmet-east/001.png",
+        "frames/equip-helmet-east/002.png",
+        "frames/equip-helmet-east/003.png",
+        "frames/equip-helmet-east/004.png",
+        "frames/equip-helmet-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "equip-helmet-west",
+      "frameFiles": [
+        "frames/equip-helmet-west/000.png",
+        "frames/equip-helmet-west/001.png",
+        "frames/equip-helmet-west/002.png",
+        "frames/equip-helmet-west/003.png",
+        "frames/equip-helmet-west/004.png",
+        "frames/equip-helmet-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "remove-helmet-south",
+      "frameFiles": [
+        "frames/remove-helmet-south/000.png",
+        "frames/remove-helmet-south/001.png",
+        "frames/remove-helmet-south/002.png",
+        "frames/remove-helmet-south/003.png",
+        "frames/remove-helmet-south/004.png",
+        "frames/remove-helmet-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "remove-helmet-north",
+      "frameFiles": [
+        "frames/remove-helmet-north/000.png",
+        "frames/remove-helmet-north/001.png",
+        "frames/remove-helmet-north/002.png",
+        "frames/remove-helmet-north/003.png",
+        "frames/remove-helmet-north/004.png",
+        "frames/remove-helmet-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "frames/remove-helmet-east/000.png",
+        "frames/remove-helmet-east/001.png",
+        "frames/remove-helmet-east/002.png",
+        "frames/remove-helmet-east/003.png",
+        "frames/remove-helmet-east/004.png",
+        "frames/remove-helmet-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "remove-helmet-west",
+      "frameFiles": [
+        "frames/remove-helmet-west/000.png",
+        "frames/remove-helmet-west/001.png",
+        "frames/remove-helmet-west/002.png",
+        "frames/remove-helmet-west/003.png",
+        "frames/remove-helmet-west/004.png",
+        "frames/remove-helmet-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-draw-south",
+      "frameFiles": [
+        "frames/torch-draw-south/000.png",
+        "frames/torch-draw-south/001.png",
+        "frames/torch-draw-south/002.png",
+        "frames/torch-draw-south/003.png",
+        "frames/torch-draw-south/004.png",
+        "frames/torch-draw-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-draw-north",
+      "frameFiles": [
+        "frames/torch-draw-north/000.png",
+        "frames/torch-draw-north/001.png",
+        "frames/torch-draw-north/002.png",
+        "frames/torch-draw-north/003.png",
+        "frames/torch-draw-north/004.png",
+        "frames/torch-draw-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-draw-east",
+      "frameFiles": [
+        "frames/torch-draw-east/000.png",
+        "frames/torch-draw-east/001.png",
+        "frames/torch-draw-east/002.png",
+        "frames/torch-draw-east/003.png",
+        "frames/torch-draw-east/004.png",
+        "frames/torch-draw-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-draw-west",
+      "frameFiles": [
+        "frames/torch-draw-west/000.png",
+        "frames/torch-draw-west/001.png",
+        "frames/torch-draw-west/002.png",
+        "frames/torch-draw-west/003.png",
+        "frames/torch-draw-west/004.png",
+        "frames/torch-draw-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-stow-south",
+      "frameFiles": [
+        "frames/torch-stow-south/000.png",
+        "frames/torch-stow-south/001.png",
+        "frames/torch-stow-south/002.png",
+        "frames/torch-stow-south/003.png",
+        "frames/torch-stow-south/004.png",
+        "frames/torch-stow-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-stow-north",
+      "frameFiles": [
+        "frames/torch-stow-north/000.png",
+        "frames/torch-stow-north/001.png",
+        "frames/torch-stow-north/002.png",
+        "frames/torch-stow-north/003.png",
+        "frames/torch-stow-north/004.png",
+        "frames/torch-stow-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-stow-east",
+      "frameFiles": [
+        "frames/torch-stow-east/000.png",
+        "frames/torch-stow-east/001.png",
+        "frames/torch-stow-east/002.png",
+        "frames/torch-stow-east/003.png",
+        "frames/torch-stow-east/004.png",
+        "frames/torch-stow-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "torch-stow-west",
+      "frameFiles": [
+        "frames/torch-stow-west/000.png",
+        "frames/torch-stow-west/001.png",
+        "frames/torch-stow-west/002.png",
+        "frames/torch-stow-west/003.png",
+        "frames/torch-stow-west/004.png",
+        "frames/torch-stow-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "water": false
+    },
+    {
+      "id": "swim-carry-south",
+      "frameFiles": [
+        "frames/swim-carry-south/000.png",
+        "frames/swim-carry-south/001.png",
+        "frames/swim-carry-south/002.png",
+        "frames/swim-carry-south/003.png",
+        "frames/swim-carry-south/004.png",
+        "frames/swim-carry-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-carry-north",
+      "frameFiles": [
+        "frames/swim-carry-north/000.png",
+        "frames/swim-carry-north/001.png",
+        "frames/swim-carry-north/002.png",
+        "frames/swim-carry-north/003.png",
+        "frames/swim-carry-north/004.png",
+        "frames/swim-carry-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-carry-east",
+      "frameFiles": [
+        "frames/swim-carry-east/000.png",
+        "frames/swim-carry-east/001.png",
+        "frames/swim-carry-east/002.png",
+        "frames/swim-carry-east/003.png",
+        "frames/swim-carry-east/004.png",
+        "frames/swim-carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    },
+    {
+      "id": "swim-carry-west",
+      "frameFiles": [
+        "frames/swim-carry-west/000.png",
+        "frames/swim-carry-west/001.png",
+        "frames/swim-carry-west/002.png",
+        "frames/swim-carry-west/003.png",
+        "frames/swim-carry-west/004.png",
+        "frames/swim-carry-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "water": true
+    }
+  ],
+  "sourceManifest": "../../marsh-v1/final/manifest.json",
+  "sourceSheets": [
+    "../sources/marsh-locomotion.png",
+    "../sources/marsh-work.png",
+    "../sources/marsh-swim.png",
+    "../sources/marsh-death.png"
+  ],
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "paletteColors": 64,
+  "mirrored": false
+}

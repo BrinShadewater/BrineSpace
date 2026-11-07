@@ -1,0 +1,126 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/shield_generator.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"hull_injector",
+						"full_wall_shield-pressure-wall"
+					],
+					"purpose": "hull treatment supply isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"hull_panel_cradle",
+						"full_wall_shield-pressure-wall"
+					],
+					"purpose": "replacement panel staging",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/hull-integrity/shield_generator_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "shield_generator",
+			"machinery": [
+				{
+					"id": "hull_monitor",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "hull_test_rig",
+					"rect": [
+						57.0,
+						-141.208114624023,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "hull_injector",
+					"rect": [
+						-165.0,
+						92.0,
+						84.0,
+						54.0
+					]
+				},
+				{
+					"id": "hull_patch_rack",
+					"rect": [
+						80.0,
+						100.0,
+						84.0,
+						54.0
+					]
+				},
+				{
+					"id": "hull_calibration_bench",
+					"rect": [
+						80.0,
+						-8.0,
+						84.0,
+						32.0
+					]
+				},
+				{
+					"id": "hull_panel_cradle",
+					"rect": [
+						-162.0,
+						-3.0,
+						84.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/shield_generator_view.gd"
+		},
+		"layered": true,
+		"room": "shield_generator",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "hull_patch_rack",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_shield-pressure-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "hull_monitor",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/shield_generator_view.gd"
+	}
+]

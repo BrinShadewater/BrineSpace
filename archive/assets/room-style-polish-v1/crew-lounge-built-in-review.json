@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-crew-lounge-built-in",
+  "department": "Habitation",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Warm dark wood end tables and plinth, muted warm cream small end casings, burnt-sienna cloth cushions with subtle broad fabric shading and seam stitching. No pale green steel. Keep rear backrest at BOTTOM and the seating extending toward TOP; NEVER turn sofa around. Quiet leaves and a matte cup; avoid varnished gold wood edges or shiny ceramic rim."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/crew-lounge-built-in.png",
+      "sha256": "758da00e3191fb882c8c9d541444d4dade2a86dea77e06fcbe3bd5f2abee6e16",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/full-wall-props-autumn-v1/crew-lounge-built-in.png",
+      "sha256": "ad35668dd3425b66ae50226f520dc02145c4a99b7891dd57f6faab8b7621e979",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/crew-lounge-built-in.png",
+  "source_sha256": "84024ef57705a8a26e429ab7a5aa11c7ee8ace43d20e8c81555577b552fde0ab",
+  "export_path": "assets/room-style-polish-v1/exports/crew-lounge-built-in.png",
+  "export_sha256": "89e2d10b2c5a12cd7f16d1ed47a4c48b37f52c83979ac3e25f84a49d81b7576b",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    69.38832997987927
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Warm dark wood end tables and plinth, muted warm cream small end casings, burnt-sienna cloth cushions with subtle broad fabric shading and seam stitching. No pale green steel. Keep rear backrest at BOTTOM and the seating extending toward TOP; NEVER turn sofa around. Quiet leaves and a matte cup; avoid varnished gold wood edges or shiny ceramic rim.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/crew-lounge-built-in.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1049,
+            526
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 69.38832997987927,
+  "registration_path": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-south.json",
+  "registration_sha256": "34ae61ee6d6b3f18ab3b3474688630195ae6dfe690eefc2e1b4d4af898c9ee9a",
+  "prompt_path": "assets/room-style-polish-v1/crew-lounge-built-in.prompt.txt",
+  "prompt_sha256": "6aa4704e6b811299c7f6020f64c33f25c34b8b1469d9bab0217e5e1123ed539a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

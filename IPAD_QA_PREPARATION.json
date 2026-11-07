@@ -1,0 +1,24 @@
+{
+  "status": "FINAL TOUCH BUILD SIGNED, INSTALLED AND LAUNCHED; device gesture/layout acceptance pending",
+  "source_base": "brinespace-0aeb47064e40c288",
+  "purpose": "Local iPad 10th generation feasibility test",
+  "preset": "iPad QA",
+  "device_family": "iPad only",
+  "template_version": "4.7.2.stable",
+  "ios_template_sha256": "fd3280d10dc75356dded006f6f8813f40a5aebd32d128592b781256d8ffbdff4",
+  "template_archive_sha512": "ca4d71c4d7b81dfc15d1a98baa07534aa95b03fdda78a0075b06672e1648d2e5f40980c9adc28d23e1b92e732ee7bf3461997aa804af74ec2fcd7a93ccb84079",
+  "renderer": "gl_compatibility explicitly retained for mobile",
+  "team_id": "LP5CWU4BSX",
+  "required": "Full Xcode, Apple signing team selected in Xcode, connected unlocked trusted iPad",
+  "not_yet_verified": [
+    "actual device pinch/pan and larger UI acceptance",
+    "memory limits",
+    "performance",
+    "background/resume",
+    "save round trip"
+  ],
+  "team_id_evidence": "Xcode selected-team Manage link generated App Store Connect switchTo/LP5CWU4BSX URL",
+  "xcode": "27.1 (27A9275), iOS SDK 27.1",
+  "device": "iPad13,18 (10th generation), iPadOS27.2; paired; Developer Mode enabled",
+  "touch_build_id": "brinespace-588d6c3f3bb5b0b0"
+}

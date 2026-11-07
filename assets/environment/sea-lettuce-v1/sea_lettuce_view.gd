@@ -1,0 +1,26 @@
+extends RefCounted
+## Low decorative vegetation beneath rooms; no growth or harvest state.
+const ROOT := "res://legacy/default/assets/environment/sea-lettuce-v1/"
+const SOURCES := {
+    "sea-lettuce-rosette": "sea-lettuce-rosette-v1.png"
+}
+const CENTER := Vector2(11.4,25.6)
+const PLANTS := [
+	{"at":Vector2(11.4,25.6),"size":0.33},
+	{"at":Vector2(11.8,25.8),"size":0.25}
+]
+var textures: Dictionary = {}
+var prepared := false
+func prepare() -> void:
+	if prepared: return
+	prepared = true
+	var source := Image.new()
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["sea-lettuce-rosette"])==OK:
+		textures["sea-lettuce-rosette"]=ImageTexture.create_from_image(source)
+func render_into(canvas: CanvasItem, cell_size: float, clock:=0.0) -> void:
+	prepare()
+	if textures.is_empty(): return
+	var texture: Texture2D=textures["sea-lettuce-rosette"]
+	for plant in PLANTS:
+		var display := texture.get_size()/texture.get_width()*float(plant.size)*cell_size
+		preload("res://scripts/ambient_fronds.gd").draw(canvas,texture,Rect2(plant.at*cell_size-display*0.5,display),clock,plant.at.x*2.1+plant.at.y,Color(.57,.66,.63,.86))

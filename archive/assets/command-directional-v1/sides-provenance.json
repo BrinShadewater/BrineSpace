@@ -1,0 +1,15 @@
+{
+  "source": "assets\\command-directional-v1\\command-sides.png",
+  "sha256": "d701b56aa5277af9da3c810227e05e13d140c111ede8c62e64d022f16bed63c1",
+  "dimensions": [
+    963,
+    1633
+  ],
+  "reference": "assets/wall-room-rollout-v1/command-split-sides.png",
+  "prompt": "prompt-sides.txt",
+  "method": "Built-in material edit; independent four-quadrant neutral vector registration with original proportional frames.",
+  "review": "Inward controls retained, matte bronze/brick red. Native q1/q3 reviewed; only side-bank pixels changed, inventory/bounds unchanged, q0/q2 RGB identical.",
+  "evidence": "output\\command-directional-2026-09-12\\sides-comparison.json",
+  "state_evidence": "output\\command-directional-2026-09-12\\sides-state-checks.json",
+  "tests": "176 routes and20 existing side variants pass; four localized display OFF/two-time checks pass. q0 card unchanged."
+}

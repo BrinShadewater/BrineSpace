@@ -1,0 +1,130 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/data_archive.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "data",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"full_wall_archive-wall_cartridges"
+					],
+					"purpose": "rack service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"archive_terminal"
+					],
+					"purpose": "terminal inspection access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/data_archive_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "data_archive",
+			"machinery": [
+				{
+					"id": "archive_rack_0",
+					"rect": [
+						-143.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_rack_1",
+					"rect": [
+						85.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_library",
+					"rect": [
+						-154.0,
+						101.0,
+						84.0,
+						55.0
+					]
+				},
+				{
+					"id": "archive_terminal",
+					"rect": [
+						84.0,
+						46.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "archive_service_cart",
+					"rect": [
+						94.0,
+						136.0,
+						60.0,
+						24.0
+					]
+				},
+				{
+					"id": "archive_task_lamp",
+					"rect": [
+						70.0,
+						137.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/data-access.png",
+			"source_sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9",
+			"view": "res://rooms/full-wall-v1/data_archive_view.gd"
+		},
+		"layered": true,
+		"room": "data_archive",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_archive-wall_cartridges",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_archive-wall_index",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "archive_library",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_terminal",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/data_archive_view.gd"
+	}
+]

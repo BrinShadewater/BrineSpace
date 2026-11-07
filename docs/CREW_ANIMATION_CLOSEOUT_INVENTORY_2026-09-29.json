@@ -1,0 +1,679 @@
+{
+  "date": "2026-09-29",
+  "branch": "main",
+  "head_at_closeout": "92478eb4",
+  "scope": "Human crew selected override manifests and Bill staged candidates; legacy catalogs remain retained, not newly accepted. Snapshot includes local working files; not a complete backup or visual acceptance.",
+  "registrySha256": "b71bf2f3217061c055412f353501c077b75302a9dc546dd57a06c801f6b29f05",
+  "manifests": [
+    {
+      "category": "locomotionOverrides",
+      "actor": "bill",
+      "path": "character/crew-runtime-matte-v1/bill/manifest.json",
+      "manifestSha256": "8648cb23745ba55130822110f66758cc378c530ef8d2c3c458ecf577979d5d49",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 59,
+          "orderedFrameContentSha256": "90b54ae4f8ec1fe69cb817697afa2afae8b56f0edeefd75176143df4c687a621"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 73,
+          "orderedFrameContentSha256": "3d75e1ce5d5d8d388cc6d4e43ef10b8d116b68a3d8c2e72959e9a1ab19d19436"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 48,
+          "orderedFrameContentSha256": "f7416beacfb83c47b680eb4022dad5b41ad47a7fc51e6ed151b08ea9f6149c12"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "0b4b3d295529799b667eb77a822784ab12261fd1deac268af01d5ae895f2e61a"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 30,
+          "orderedFrameContentSha256": "56cb82b21ea94e72667d1f52c7f6077606f4ecc2db76e2f185100dd7d1c1ee27"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "eab828024e38ea7edd6323f6bc962551eff47d2a8ecfc5b836e029366dd1c230"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 48,
+          "orderedFrameContentSha256": "967abccba09d1546ceb4c1c0a6c236fc9a64f341ba400d8e28ccbc9be816397d"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "0edacb757da0f720157d3c6445881c44889ea92a1ce06c759907a56cf839b156"
+        }
+      ]
+    },
+    {
+      "category": "locomotionOverrides",
+      "actor": "veld",
+      "path": "character/crew-runtime-matte-v1/veld/manifest.json",
+      "manifestSha256": "20ab91f6d15cc9e9796f01d88d5485990661a755e151a3fa720716c75b3f523a",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 26,
+          "orderedFrameContentSha256": "a1c095768fb25646ae4489711a72b79f082a6c5c34262ebeec32b89538445096"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 28,
+          "orderedFrameContentSha256": "42cbf41d7b4cf311c637349a580db190ba1faba32ad3412327737ae44a2208fd"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 41,
+          "orderedFrameContentSha256": "bb5eb90876cc8cf097de42f0973926c224ff0d879a105ceee665d15fc5ebe5ce"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 40,
+          "orderedFrameContentSha256": "7c510d468a1201892bf1e97485d06637257c1d72bcf36c8212000377c411e913"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "9c668fa8dbeaa3567cc43c62b810fa773bff519bfd14c09d9b637dd096a830eb"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "6b1323bcc0d3a0ed1b1a2a1cf3ab3653cac6ced1ef5df085098d9294c1d9639e"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "2ea65877fd49b768659873213e4ae519f46d90e49d986e3ecbb72c47a6602124"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "d128e2ab2157e3020723d7c075174aeebffddb188df6a009772a2f52bd7fddec"
+        }
+      ]
+    },
+    {
+      "category": "locomotionOverrides",
+      "actor": "branforth",
+      "path": "character/crew-runtime-matte-v1/branforth/manifest.json",
+      "manifestSha256": "770ac815ba88e5f6b48378db0b26268e2d45f037bc252ea97b53c70dee11964a",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 76,
+          "orderedFrameContentSha256": "f84492027516d23e5ca92523ed53ee7d2151765ed40742ea5ba864955f8cc8c6"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "24873ceca22f841c4a1026428cbcaaa9e26220d069b448c94a29a6ea7cfc7c91"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 39,
+          "orderedFrameContentSha256": "39630cf69febe8526fe46c1ce50e11138f1714029b6e963f0947552b73df791f"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "96c0b6da31fe8085add6950a23a001aa6e3b10f25bdc6e43badcbedb8e35fadc"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 36,
+          "orderedFrameContentSha256": "ce10b1ae09da4ffafe16f7e7832de15294892728875b580d1221b9721452aef0"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "e1fd9ef46f0278b3a3b76ce168aa1dee9131ab09421490852669cc89b2ca8e77"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 49,
+          "orderedFrameContentSha256": "978368d047b32d95a9596f10332ca4cb4d296377928f161ba4fbc8d2451bdb18"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "91d89db5b1d745c10f97c7b9d699119eb7ccc6882647de2546fd59f125a36c06"
+        }
+      ]
+    },
+    {
+      "category": "actionOverrides",
+      "actor": "veld-west",
+      "path": "character/veld-action-west-matched-v1/manifest.json",
+      "manifestSha256": "a461f2b428521561aa178da0efd88adcb57b8d27a9f94c0a11f6eeee7fa789c6",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "551481e685740584740e014e55f6205997ea05133667afa14347a99039ef440b"
+        },
+        {
+          "id": "kneel-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "9cb56d39620f37fc0f90a008da99f619a85218d9d6ba969ced16bdd9f4bc7ae5"
+        },
+        {
+          "id": "repair-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "78733071fb14bc24c6634fe01c98537fb92afa73ee01cc631a8be1e558076408"
+        },
+        {
+          "id": "stand-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "596eab760b82550f27453f87b8444a98f1ed4c048492f2d88d05a2e9fbe68d59"
+        }
+      ]
+    },
+    {
+      "category": "actionOverrides",
+      "actor": "veld-south",
+      "path": "character/veld-action-south-matched-v1/manifest.json",
+      "manifestSha256": "7e345dda10c0284c58463046659f41336ede4bf76f197e56c2a11b91e83baab8",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "750426a8aacd7089d9705935ffca2cb7b9cb064efc7250c6ef1874f2b1216231"
+        },
+        {
+          "id": "kneel-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "2b94abebd50afcad41ab41c2691e8c30fd1f3ffc7e0406c20f0b41ea73559429"
+        },
+        {
+          "id": "repair-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "9aedc07c16dd665f08e8c894ba600995a112196f4117d1a740a298913cfa1fa1"
+        },
+        {
+          "id": "stand-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "6311c254303d8968b2eb39d26d8e3a1e6bce291f8e2954ef1ae2e31f16d76d71"
+        }
+      ]
+    },
+    {
+      "category": "actionOverrides",
+      "actor": "veld-north",
+      "path": "character/veld-action-north-matched-v1/manifest.json",
+      "manifestSha256": "af0d1b840d49e51bb6b7fa466d2e6fa7a97e6a5138824f1b9a13b1efb34196ee",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "b54daa8521a41d7eaeb3e29da96ae93ad183e8a1dc6136d6114a104fa46a8448"
+        },
+        {
+          "id": "kneel-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "bc97d3edfcab99d80b3409f7502ce4327712a52e48ef21f8cb964144ad6a3600"
+        },
+        {
+          "id": "repair-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "c269dc585d689e4a3c29d69f82fa5bc6599d0b18863ce9a91999f032adb3e82d"
+        },
+        {
+          "id": "stand-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "a5e17a521fc49b0dc4ba3ab477964c8e415b1a97c4e29410cd793cdc38753517"
+        }
+      ]
+    },
+    {
+      "category": "equipmentOverrides",
+      "actor": "bill",
+      "path": "character/bill-shared-helmet-runtime-v2/manifest.json",
+      "manifestSha256": "e96c6e8c6d5582aa031ead127bc3df078c13e33cec8b85cd6c7c8a5140cf30a2",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 59,
+          "orderedFrameContentSha256": "ce7f43392542aa96a6bae9a64b01e0ea6406aabef8eb9010fa20567e037a89ed"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 73,
+          "orderedFrameContentSha256": "5c87a01e64d508c710c480b091a4a3f0b2cdec5fdb65e32fd58aa1b6d9ed0fe6"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 48,
+          "orderedFrameContentSha256": "3cdde2cfff56197c0412c9cb606064a77f76229d04810ba1d41797cfbc53f3d2"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "84e3d695df06784a0ef65df0a2b56c00aaa1abb037582238f9845dbd19c4ba48"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 30,
+          "orderedFrameContentSha256": "8fa563506f9c42e7be182fd4e19ab1a51598ba3940fc072f976d069d9cd74e7c"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "39335e598b9dabd7732d732e55fa674df71e7a14ae7f5c4116baabc33ed07a36"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 48,
+          "orderedFrameContentSha256": "873b47ef3795f3e2a1457a18028c262b22ca95bf89171969d579a4e43d85c2ce"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "bc9ad0a387e750cfa26a31016f94ebce8bf3aed5886527accbe657150503573e"
+        }
+      ]
+    },
+    {
+      "category": "equipmentOverrides",
+      "actor": "veld",
+      "path": "character/veld-shared-helmet-v1/manifest.json",
+      "manifestSha256": "98012d9a162bb432f510728643f166c80cb744d6b8d36b80576e946d1866be43",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 26,
+          "orderedFrameContentSha256": "26a71e8a0501a98de844873dd82a20a733376574775e53bec98fde01f8a166f6"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 28,
+          "orderedFrameContentSha256": "a60ec2b4237e7bda61b14d5b75c45b6a693454c30ede90d75a23b40628d42f38"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 41,
+          "orderedFrameContentSha256": "2094f227feb8c1565020c3e0e5e3871016eb9888739749d0a3da0b9081971dda"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 40,
+          "orderedFrameContentSha256": "b0bb5c025da3727d9e1b0bbd955119f072bd8ba1bf2bcb62a833e3d6c475afc2"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "7facd10c182537217677e973f92c2da977dbdd85481dba580d2511c9de369e59"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "65322d8e9ae27a7d01ecb96c4c431cc48cf10526d5fa6553f06b4551299652c9"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "48e7fd7dc0af019bc246af2531cd8f64b830a78b0f17c08c6be423fb253d8c3f"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "7ab2d04f96dfe4d2b42ae2d34a9d96ef5cd756bc5b01bd5bb50f0e0cae2d73e8"
+        }
+      ]
+    },
+    {
+      "category": "equipmentOverrides",
+      "actor": "branforth",
+      "path": "character/james-shared-helmet-runtime-v1/manifest.json",
+      "manifestSha256": "f06ecda249e4f8d1d10e884a41e2518441a26ae92a5351d57c7f1b2045d6f714",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "walk-south",
+          "frameReferences": 76,
+          "orderedFrameContentSha256": "9ef999f84de809fc4102225a9c01886344a7261e1648ea32fa80c8690575dc1a"
+        },
+        {
+          "id": "idle-south",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "262fad06a62a4066b2797694f291c731cfde6170625baacdaf2b7a2f3a539747"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 39,
+          "orderedFrameContentSha256": "20d8d4fa94155417332b0189f59e27d1d6ff8ba2915215a91c6303480fc5eb4d"
+        },
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "d8c71e3e6e988c4a323a4ea11d488304c558c51fc55d93ae73563ee410a41971"
+        },
+        {
+          "id": "walk-north",
+          "frameReferences": 36,
+          "orderedFrameContentSha256": "ef5de0c31ab4d39f438e602f09fdf1c73102e039053be9386ab44c7d5c541e59"
+        },
+        {
+          "id": "idle-north",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "7fafbdb1da7a61c46560800b6320b30ca7da4192619933cc98b32a392c80a8a5"
+        },
+        {
+          "id": "walk-west",
+          "frameReferences": 49,
+          "orderedFrameContentSha256": "966ee8c029bcbe0cae545bc798d4b75d40b30e9019c019d14a27f99314bd80ca"
+        },
+        {
+          "id": "idle-west",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "27fe611f72db075de0ab3ffd4711c2d413264b87697dbe11dc9f3cac58c25e95"
+        }
+      ]
+    },
+    {
+      "category": "equipmentActionOverrides",
+      "actor": "veld-east",
+      "path": "character/veld-shared-helmet-actions-east-v1/manifest.json",
+      "manifestSha256": "19e0da823696af924ba9d769618b56f88051d6ef6ac14a3871690b16b9728adb",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148,
+      "states": [
+        {
+          "id": "interact-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "265f61e7544b595d1e2fb804a1f45134628d5b3dbe2f96d8aa5ab1d21a5f4f53"
+        },
+        {
+          "id": "kneel-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "1bd8328886964ef871b26aeb52c25c7ed7ec30feabe318ad979798ef17393022"
+        },
+        {
+          "id": "repair-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "d005ddb6cfd6defb01e0f58ea673e4bef608a1d0faabcf8f277a401b3020b16c"
+        },
+        {
+          "id": "stand-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "434c5b6b1d82a64277d04d3bcb0e2f09de6e1ce49c2259458551fb7a2c0e954a"
+        }
+      ]
+    },
+    {
+      "category": "equipmentActionOverrides",
+      "actor": "veld-west",
+      "path": "character/veld-shared-helmet-actions-west-v1/manifest.json",
+      "manifestSha256": "1a28f7a7f0d9e154b3bcd4c7a51d96e6ad66edcde06094c24ac51e2cd3604cb2",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "aaa74640ecdb9309d054b2d26cde2bd28a54b0057dad0ef917c27f939fc685ad"
+        },
+        {
+          "id": "kneel-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "68e43b6b3cf4c87f80de5552fb9e072be96ae4e5a7760c7a8608d51ea46574bf"
+        },
+        {
+          "id": "repair-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "906eff4a7e434d62c145ccf572decde24919ede23fdbf17c2c58dc121ec336c6"
+        },
+        {
+          "id": "stand-west",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "1972bdcf8ec60da64f19015c3ea27991f5239ad16d993dff2e6c6d69a52e9edb"
+        }
+      ]
+    },
+    {
+      "category": "equipmentActionOverrides",
+      "actor": "veld-south",
+      "path": "character/veld-shared-helmet-actions-south-v1/manifest.json",
+      "manifestSha256": "4c5b65088579d9d9c38b090eb179cae74c6468950341716448cf931a9d73eab3",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "46878b27a6c0e0548eafbc1b923401f6740fd801a7707d06a2a2d4dc4e56d1a9"
+        },
+        {
+          "id": "kneel-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "5079a96e2607b182a99e94c8c22e660967fa77568b2288fa4bf584d44ac2d479"
+        },
+        {
+          "id": "repair-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "a92dca55ebaf19e002174a81c7e8e07549c2659ae09b4383e566653c66598de8"
+        },
+        {
+          "id": "stand-south",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "013f0a839bce78e8af7f6e34646af861349bed702cbf4674f71461def80421c8"
+        }
+      ]
+    },
+    {
+      "category": "equipmentActionOverrides",
+      "actor": "veld-north",
+      "path": "character/veld-shared-helmet-actions-north-v1/manifest.json",
+      "manifestSha256": "783d4c775aa83198457e5b0d74fa69ba76ef5129c5b65f20d99081ff6c131a5d",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "interact-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "e1938b4adb7a50ea82fd24e445f253d1efdd7596b5ac8f47514f2af5131a2f87"
+        },
+        {
+          "id": "kneel-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "b91971834f2da9f8910ea53d63ea2e9a0b268a825bac39ffe1bffbe95943ce65"
+        },
+        {
+          "id": "repair-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "ee4afc02ef1469905342183902f23710f02e8124c13cd681c60a594c666c2adb"
+        },
+        {
+          "id": "stand-north",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "4ac939ce713612ad5d48d6eeda2efd43a3d0f04387ffbee18985074067929a0b"
+        }
+      ]
+    },
+    {
+      "category": "staged_not_installed",
+      "actor": "bill",
+      "path": "character/bill-shared-helmet-east-matte-v1/manifest.json",
+      "manifestSha256": "1593131ca88300a3d280580d1d622920cfced0ba3f0fe913cb467529aa58abd8",
+      "frameWidth": 184.0,
+      "frameHeight": 184.0,
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148.0,
+      "states": [
+        {
+          "id": "idle-east",
+          "frameReferences": 72,
+          "orderedFrameContentSha256": "c91ab3cdff1d327ca253664cc6f145a3f09a767bbbb677965cbf7e026b188b10"
+        },
+        {
+          "id": "walk-east",
+          "frameReferences": 48,
+          "orderedFrameContentSha256": "20c7eda32092e86f4193b561b0de4529510622d0ebdb59f7966ea5d4ec488ae0"
+        }
+      ]
+    },
+    {
+      "category": "staged_not_installed",
+      "actor": "bill",
+      "path": "character/bill-action-east-matched-v1/manifest.json",
+      "manifestSha256": "573843d3a5c378494e71245ae338b903a0dddfb4617d9d6bf7073a96e88cc2a6",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "states": [
+        {
+          "id": "interact-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "cc2de19fd8cfc26acdf362cabd1d2585eff346ab38f8eeca3eb2020d6b9d2020"
+        },
+        {
+          "id": "kneel-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "22ba86163f200c226d930e9ef0a48d9f666295ce30fbdc0cf5bbf1e77394810c"
+        },
+        {
+          "id": "repair-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "5ea52bea6cc43c7509e722c60b999dc891a5bd5820190028ebee12fc2d824dc3"
+        },
+        {
+          "id": "stand-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "fd6a831cbbe20cb0f7eb6f944cabc725459a99961418766b98980cb478330312"
+        }
+      ]
+    },
+    {
+      "category": "staged_not_installed",
+      "actor": "bill",
+      "path": "character/bill-shared-helmet-actions-east-v1/manifest.json",
+      "manifestSha256": "fe84c316750db1661b8c6053cc6a25775ff16fd4becf22cc3cd918dbc67485dc",
+      "frameWidth": 184,
+      "frameHeight": 184,
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148,
+      "states": [
+        {
+          "id": "interact-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "6855efca45cbd206f9342de9f4448742f9fe1dd4ef14d112ee148c5a546d5871"
+        },
+        {
+          "id": "kneel-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "91bc1d25caf9c6b99b799405c6ea54975b23b4ed12cade88087811c2fa0974ed"
+        },
+        {
+          "id": "repair-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "5f956b2fb9283bb5ac3220eda0f860cbd3f00b49117b5dba3a74326992c3100e"
+        },
+        {
+          "id": "stand-east",
+          "frameReferences": 6,
+          "orderedFrameContentSha256": "f3e1bab1170e780e3ba7fd240ea4c8cc31e5327119976fe0e49f5455b8f9cb8b"
+        }
+      ]
+    }
+  ]
+}

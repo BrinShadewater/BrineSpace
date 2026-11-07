@@ -1,0 +1,33 @@
+{
+  "stage": "pilot_integrated",
+  "provider": "built-in image_gen",
+  "reference": "C:/Users/Alex/.codex/generated_images/01a06da5-a7ef-7d01-a977-fb23e4a353a1/exec-865188c0-1a10-423f-b797-d3be7564f285.png",
+  "requests": [
+    {
+      "name": "enamel",
+      "prompt": "BrineSpace game asset. Opaque seamless square MATERIAL TEXTURE swatch only: warm ivory painted industrial steel with sparse subtle chipped paint exposing gray metal, tiny worn scratches, quiet broad flat areas. Covers entire image edge to edge, no object silhouette, no border, no bevel, no fasteners, no panel seams, no shadow, no lighting gradient. Strict orthographic surface map with uniform ambient lighting. Match reference ONLY for industrial painterly pixel-art-inspired material treatment and palette; do not draw a room or reuse its composition. Readable restrained game art, not photorealism, no text or UI."
+    },
+    {
+      "name": "floor",
+      "prompt": "BrineSpace game asset. Opaque seamless square MATERIAL TEXTURE swatch only: dark desaturated slate blue steel floor, low contrast fine scuffs and sparse small wear marks. Covers image edge to edge. NO panel seams, grids, bolts, objects, borders, directional shadows, bright stains, lighting gradient. Quiet low-contrast flat surface, uniform ambient light. Match reference ONLY for industrial painterly pixel-art-inspired material treatment and palette; do not draw a room or reuse its composition. Readable restrained game art, not photorealism, no text or UI."
+    },
+    {
+      "name": "cartridge",
+      "prompt": "BrineSpace game asset. ONE isolated upright short cylindrical filter cartridge, dark muted teal glass with worn cream metal circular collars and dark charcoal base, no labels, cables, valves or asymmetrical attachments. Body rotationally symmetric. Fixed elevated overhead camera, upright verticals, gentle screen upper left light. Real transparent alpha background, NO painted checkerboard, no floor shadow. No active lights or bubbles. Compact wide cylinder, height about 1.5 times width. Match reference ONLY for industrial painterly pixel-art-inspired material treatment and palette; do not draw a room or reuse its composition. Readable restrained game art, not photorealism, no text or UI."
+    }
+  ],
+  "processing": "Original image pixels preserved. Cartridge display region uses alpha>=128 bounds plus 2px margin. Surface UVs repeat every128world units, rotate with facing; fixed screen geometry and bevels. No geometric resizing of source files.",
+  "review": "Cabinets, wall caps and quiet floor now use generated materials. Cartridge elongated rather than requested squat; aspect-preserving small display accepted for pilot. Wear is more uniformly distributed than desired final authored finish. Seamless edges not mathematically certified.",
+  "hashes": {
+    "enamel": "f955d65fdd1018bbe0bb502cfe336e9bc4143dd07793cb3c9219e5f4e078eb6b",
+    "floor": "b44eb5a02e36089031d6808e71a7a72f995780a3f96355e6ac13a007d54bf6f5",
+    "cartridge": "83dede3dc4aee231da643a6c0aadb676d2237e5c83884bef6729ac3d8933e94a"
+  },
+  "verification": {
+    "log": "output/materials-01.log",
+    "captures": "output/materials-native-01",
+    "passage_samples": 1540,
+    "motion_offline_pause": true
+  },
+  "main_game_integrated": false
+}

@@ -1,0 +1,37 @@
+{
+  "build": "brinespace-f348dea4a6bc24b8",
+  "scope": "Physical iPad XCTest touch actions and OS screenshots, not clean performance benchmark. No debugger attached to game. Raw all-process traces and save data remain private outside Git.",
+  "actions_passed": [
+    "Dialogue Close",
+    "Drag MiningDroneBay to grid and back to hand without spending resources",
+    "Rotate via visible button, place at (21,20), spend6Metal/1Power",
+    "Resume, finish MiningDroneBay construction and observe crew inside",
+    "Pinch zoom with native touch gesture",
+    "Home then activate returns paused with completed room intact",
+    "Save and SaveReturnTitle produces cycle1 two-room preview"
+  ],
+  "save_total_usec": 59053,
+  "worst_transition_hitch": {
+    "action_age_ms": 542,
+    "draw_calls": 193.0,
+    "engine_physics_ms": 0.132,
+    "engine_process_ms": 95.484,
+    "frame_boundaries_ms": {
+      "after_render_ms": 0.795,
+      "before_render_ms": 438.589,
+      "render_signals_ms": 8.913
+    },
+    "frame_ms": 448.297,
+    "last_action": "save",
+    "paused": false,
+    "unfocused": false,
+    "uptime_ms": 434695.837
+  },
+  "outstanding": "448.297ms title transition frame,438.589ms before-render interval; actual Save59.053ms. Scene teardown/transition remains a hypothesis, not established root cause or fixed. Earlier30/60second Save frames remain unresolved.",
+  "memory_trace_scope": "116samples filtered to exact f348PID8548 during launch/loading/small station; not comparable to earlier40room stress or proof of new453UI skin savings.",
+  "rejected_setup": [
+    "First passive trace had no live Validation2 process, so excluded; earlier BrineSpaceStress background process is a different bundle.",
+    "Initial XCTest screenshot copy needed an existing destination directory; retry passed.",
+    "Cross-process native texture totals varied; savings established only by reversible within-process18skin load/clear delta."
+  ]
+}

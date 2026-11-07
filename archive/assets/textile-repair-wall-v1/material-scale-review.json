@@ -1,0 +1,71 @@
+{
+  "asset_id": "textile-repair-wall-v1",
+  "department": "Crew habitation / textile repair",
+  "condition": "Maintained",
+  "attachment_class": "North-wall standing workbench",
+  "functional_bays": [
+    "Four thread spools",
+    "Compact sewing machine",
+    "Cutting mat and folded cloth",
+    "Fabric storage and closed supply tin"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Top-down shallow cutaway; backing north, drawer and operator access south; machine needle left and wheel right",
+  "references": [
+    {
+      "path": "assets/material-polish-v1/tidal-north.png",
+      "sha256": "a07624168121691bddf8754c0db60d522bb6c193564350a33e39d901fae25a79",
+      "role": "Owner-selected construction/material quality reference, not department palette"
+    }
+  ],
+  "source_path": "assets/textile-repair-wall-v1/source.png",
+  "source_sha256": "0cbc8545dbb52c621151fbaef578725243722951bb641bc014dc6802cf758659",
+  "export_path": "assets/textile-repair-wall-v1/textile-repair-wall.png",
+  "export_sha256": "6ac6075b9beccaf5f004754aea28018bd91eb9a8ad1f591692e63a690de652f5",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Solid standing counter; no seated knee recess, pedal, animation or occupied clearance verified."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 replaces bright brass hardware with painted graphite and reduces machine rim brightness; small midtone machine edge remains quiet at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full320-unit review against Command Center. V2 machine is smaller with clear tabletop around it; cutting surface remains largest task area. Reduction is approximate, not the exact requested60 percent."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "RGB checkerboard excluded through neutral185 source registration. Light/dark exterior reviewed; table-backed machine throat and mat-backed scissors loops stay opaque."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/textile-repair-wall-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 75.22388059701493,
+  "registration_path": "assets/textile-repair-wall-v1/registration.json",
+  "registration_sha256": "7f82aa5f5682350a5d1f916f1bcffc89c6f332074b268eefa14cd6869c71e4fd",
+  "prompt_path": "assets/textile-repair-wall-v1/source.prompt.txt",
+  "prompt_sha256": "50f9ac5660d58bfbc9d091aad92d3e9120f6ebe5e9821ea1586c4ad3d4b7eeef",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

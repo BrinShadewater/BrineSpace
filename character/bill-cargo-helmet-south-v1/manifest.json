@@ -1,0 +1,251 @@
+{
+  "name": "Bill south cargo with canonical shared helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12
+  },
+  "precomposed": true,
+  "status": "staged_owner_visual_review",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "pickup-south",
+      "frameFiles": [
+        "frames/pickup-south/000.png",
+        "frames/pickup-south/001.png",
+        "frames/pickup-south/002.png",
+        "frames/pickup-south/003.png",
+        "frames/pickup-south/004.png",
+        "frames/pickup-south/005.png",
+        "frames/pickup-south/006.png",
+        "frames/pickup-south/007.png",
+        "frames/pickup-south/008.png",
+        "frames/pickup-south/009.png",
+        "frames/pickup-south/010.png",
+        "frames/pickup-south/011.png"
+      ],
+      "frameDurationsMs": [
+        35.0,
+        35.0,
+        40.0,
+        40.0,
+        45.0,
+        45.0,
+        50.0,
+        50.0,
+        50.0,
+        50.0,
+        40.0,
+        40.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "canonical accepted south face/helmet;translation only;original cargo bodies/case below fitted neck preserved"
+    },
+    {
+      "id": "carry-south",
+      "frameFiles": [
+        "frames/carry-south/000.png",
+        "frames/carry-south/001.png",
+        "frames/carry-south/002.png",
+        "frames/carry-south/003.png",
+        "frames/carry-south/004.png",
+        "frames/carry-south/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "canonical accepted south face/helmet;translation only;original cargo bodies/case below fitted neck preserved"
+    },
+    {
+      "id": "unload-south",
+      "frameFiles": [
+        "frames/unload-south/000.png",
+        "frames/unload-south/001.png",
+        "frames/unload-south/002.png",
+        "frames/unload-south/003.png",
+        "frames/unload-south/004.png",
+        "frames/unload-south/005.png",
+        "frames/unload-south/006.png",
+        "frames/unload-south/007.png",
+        "frames/unload-south/008.png",
+        "frames/unload-south/009.png",
+        "frames/unload-south/010.png",
+        "frames/unload-south/011.png"
+      ],
+      "frameDurationsMs": [
+        35.0,
+        35.0,
+        45.0,
+        45.0,
+        50.0,
+        50.0,
+        50.0,
+        50.0,
+        45.0,
+        45.0,
+        35.0,
+        35.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "canonical accepted south face/helmet;translation only;original cargo bodies/case below fitted neck preserved"
+    }
+  ],
+  "equipment": "diving-helmet",
+  "integration": "selected_by_grid_canvas_native_frame_clock_checked_2026_09_30"
+}

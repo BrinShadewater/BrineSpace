@@ -1,0 +1,31 @@
+{
+  "asset": "galley-west-wall",
+  "selected_source": "source-v3.png",
+  "generation": "built-in imagegen",
+  "export": "galley-west-wall.png",
+  "export_sha256": "c006cb8c7ff368435ba98f8477af8d4a5ebd2c4f3a438ca7cda6b01573c0bcde",
+  "review": "material-scale-review.json",
+  "registration": "registration.json",
+  "revisions": [
+    {
+      "source": "source-v1.png",
+      "sha256": "b299d48d715a3170f30dea4cff19ed66cb1958e7add76c7e88e43014d432de72",
+      "prompt": "source-v1.prompt.txt",
+      "disposition": "rejected: drawers, cooking controls and drink appliance face down"
+    },
+    {
+      "source": "source-v2.png",
+      "sha256": "24f2a9b25e2609d13dd6d26c78f506cd7744dc576d17af78550d89bf3e9b9858",
+      "prompt": "source-v2.prompt.txt",
+      "disposition": "rejected: drink appliance still has downward nozzle"
+    },
+    {
+      "source": "source-v3.png",
+      "sha256": "93e6288e1d0fcfeb9fd591143a0f2f2bd8f146ff21c1139943b93e7abd907e28",
+      "prompt": "source-v3.prompt.txt",
+      "disposition": "selected standalone candidate; owner review pending"
+    }
+  ],
+  "installed": false,
+  "owner_acceptance": null
+}

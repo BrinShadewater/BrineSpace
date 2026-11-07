@@ -1,0 +1,1152 @@
+{
+  "character": "margot-polish-v1",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "status": "installed-source",
+  "mirrored": false,
+  "calibration": {
+    "south": {
+      "motionScale": 0.28,
+      "sitScale": 0.24327868852459017,
+      "referenceBonnetWidths": [
+        106,
+        122
+      ],
+      "groomScale": 0.2558620689655173,
+      "napScale": 0.22830769230769232,
+      "extrasScale": 0.2938613861386139,
+      "swimScale": 0.23744000000000004,
+      "petScale": 0.12793103448275864
+    },
+    "west": {
+      "motionScale": 0.28,
+      "sitScale": 0.2246511627906977,
+      "referenceBonnetWidths": [
+        69,
+        86
+      ],
+      "groomScale": 0.21707865168539325,
+      "napScale": 0.2123076923076923,
+      "extrasScale": 0.2576,
+      "swimScale": 0.2576
+    },
+    "north": {
+      "motionScale": 0.28,
+      "sitScale": 0.1513513513513514,
+      "referenceBonnetWidths": [
+        80,
+        148
+      ],
+      "groomScale": 0.22400000000000003,
+      "napScale": 0.21747572815533983,
+      "extrasScale": 0.2488888888888889,
+      "swimScale": 0.2488888888888889
+    },
+    "east": {
+      "motionScale": 0.28,
+      "sitScale": 0.2260240963855422,
+      "referenceBonnetWidths": [
+        67,
+        83
+      ],
+      "groomScale": 0.2039130434782609,
+      "napScale": 0.215632183908046,
+      "extrasScale": 0.26422535211267606,
+      "swimScale": 0.24051282051282052
+    }
+  },
+  "sourceHashes": {
+    "locomotion-v1.png": "c15e64db9b20545ba804885c8dc518183159dcd3096f7d05b86776a4ebc9d0b6",
+    "sit-v1.png": "a98bae39f88e873a23108b7ca903644904a4aa189161ae0a9fb68b8b5eb7203c",
+    "sit-v3.png": "52fcced29f24104a1c67b1fcc633adf680c08163afd9df8dadfcda206c1d7d1b",
+    "sit-north-v4.png": "095ad2b6e2df55fe1933793f55d2caff94f535fe8f496a22e7720ab42b63fc03",
+    "groom-v1.png": "666d540a9ed30297498b96fd80c907b456ab167daee93c0a38e9f63137bbafda",
+    "nap-v1.png": "ab3418a7153023f1f4c147d1701570c6ec408896fea49d65c0942d0e16d5710c",
+    "extras-v1.png": "67b55242cb7c84a68e5e4657119d3493b0380ac8e4a122f84f30c05dbd69db52",
+    "pet-v1.png": "bd6e6ab5e9d40735052c4fd48e830fb2e2d08a3d330f3dbe99ec7599a48f58a3",
+    "swim-v1.png": "464d9aff54af6fb2e1e58df29949049755e36a7433f8363605c9ce8cf6436d5c"
+  },
+  "strideDistanceCells": {
+    "walk": 0.07
+  },
+  "states": [
+    {
+      "id": "sit-enter-south",
+      "frameFiles": [
+        "../../frames/sit-enter-south/000.png",
+        "../../frames/sit-enter-south/001.png",
+        "../../frames/sit-enter-south/002.png",
+        "../../frames/sit-enter-south/003.png"
+      ],
+      "frameDurationsMs": [
+        170,
+        200,
+        220,
+        190
+      ],
+      "loop": false,
+      "provenance": "authored descent with locomotion idle endpoint"
+    },
+    {
+      "id": "sit-south",
+      "frameFiles": [
+        "../../frames/sit-south/000.png",
+        "../../frames/sit-south/001.png",
+        "../../frames/sit-south/002.png",
+        "../../frames/sit-south/003.png"
+      ],
+      "frameDurationsMs": [
+        1600,
+        160,
+        650,
+        700
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "sit-exit-south",
+      "frameFiles": [
+        "../../frames/sit-exit-south/000.png",
+        "../../frames/sit-exit-south/001.png",
+        "../../frames/sit-exit-south/002.png",
+        "../../frames/sit-exit-south/003.png"
+      ],
+      "frameDurationsMs": [
+        190,
+        220,
+        200,
+        170
+      ],
+      "loop": false,
+      "provenance": "reversed authored descent"
+    },
+    {
+      "id": "groom-enter-south",
+      "frameFiles": [
+        "../../frames/groom-enter-south/000.png",
+        "../../frames/groom-enter-south/001.png",
+        "../../frames/groom-enter-south/002.png",
+        "../../frames/groom-enter-south/003.png",
+        "../../frames/groom-enter-south/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "groom-south",
+      "frameFiles": [
+        "../../frames/groom-south/000.png",
+        "../../frames/groom-south/001.png",
+        "../../frames/groom-south/002.png",
+        "../../frames/groom-south/003.png",
+        "../../frames/groom-south/004.png",
+        "../../frames/groom-south/005.png",
+        "../../frames/groom-south/006.png"
+      ],
+      "frameDurationsMs": [
+        220,
+        220,
+        220,
+        220,
+        220,
+        220,
+        220
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "groom-exit-south",
+      "frameFiles": [
+        "../../frames/groom-exit-south/000.png",
+        "../../frames/groom-exit-south/001.png",
+        "../../frames/groom-exit-south/002.png",
+        "../../frames/groom-exit-south/003.png",
+        "../../frames/groom-exit-south/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "nap-enter-south",
+      "frameFiles": [
+        "../../frames/nap-enter-south/000.png",
+        "../../frames/nap-enter-south/001.png",
+        "../../frames/nap-enter-south/002.png",
+        "../../frames/nap-enter-south/003.png",
+        "../../frames/nap-enter-south/004.png",
+        "../../frames/nap-enter-south/005.png",
+        "../../frames/nap-enter-south/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "nap-south",
+      "frameFiles": [
+        "../../frames/nap-south/000.png",
+        "../../frames/nap-south/001.png",
+        "../../frames/nap-south/002.png",
+        "../../frames/nap-south/003.png",
+        "../../frames/nap-south/004.png"
+      ],
+      "frameDurationsMs": [
+        850,
+        850,
+        850,
+        850,
+        850
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "nap-exit-south",
+      "frameFiles": [
+        "../../frames/nap-exit-south/000.png",
+        "../../frames/nap-exit-south/001.png",
+        "../../frames/nap-exit-south/002.png",
+        "../../frames/nap-exit-south/003.png",
+        "../../frames/nap-exit-south/004.png",
+        "../../frames/nap-exit-south/005.png",
+        "../../frames/nap-exit-south/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "stretch-south",
+      "frameFiles": [
+        "../../frames/stretch-south/000.png",
+        "../../frames/stretch-south/001.png",
+        "../../frames/stretch-south/002.png",
+        "../../frames/stretch-south/003.png",
+        "../../frames/stretch-south/004.png",
+        "../../frames/stretch-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        240,
+        420,
+        420,
+        300,
+        200
+      ],
+      "loop": false,
+      "provenance": "authored stretch with shared idle endpoints"
+    },
+    {
+      "id": "yawn-enter-south",
+      "frameFiles": [
+        "../../frames/yawn-enter-south/000.png",
+        "../../frames/yawn-enter-south/001.png",
+        "../../frames/yawn-enter-south/002.png",
+        "../../frames/yawn-enter-south/003.png",
+        "../../frames/yawn-enter-south/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "yawn-south",
+      "frameFiles": [
+        "../../frames/yawn-south/000.png",
+        "../../frames/yawn-south/001.png",
+        "../../frames/yawn-south/002.png",
+        "../../frames/yawn-south/003.png",
+        "../../frames/yawn-south/004.png"
+      ],
+      "frameDurationsMs": [
+        260,
+        260,
+        260,
+        260,
+        260
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "yawn-exit-south",
+      "frameFiles": [
+        "../../frames/yawn-exit-south/000.png",
+        "../../frames/yawn-exit-south/001.png",
+        "../../frames/yawn-exit-south/002.png",
+        "../../frames/yawn-exit-south/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "pet-enter-south",
+      "frameFiles": [
+        "../../frames/pet-enter-south/000.png",
+        "../../frames/pet-enter-south/001.png",
+        "../../frames/pet-enter-south/002.png",
+        "../../frames/pet-enter-south/003.png",
+        "../../frames/pet-enter-south/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "pet-south",
+      "frameFiles": [
+        "../../frames/pet-south/000.png",
+        "../../frames/pet-south/001.png",
+        "../../frames/pet-south/002.png",
+        "../../frames/pet-south/003.png",
+        "../../frames/pet-south/004.png",
+        "../../frames/pet-south/005.png",
+        "../../frames/pet-south/006.png"
+      ],
+      "frameDurationsMs": [
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "pet-exit-south",
+      "frameFiles": [
+        "../../frames/pet-exit-south/000.png",
+        "../../frames/pet-exit-south/001.png",
+        "../../frames/pet-exit-south/002.png",
+        "../../frames/pet-exit-south/003.png",
+        "../../frames/pet-exit-south/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "sit-enter-west",
+      "frameFiles": [
+        "../../frames/sit-enter-west/000.png",
+        "../../frames/sit-enter-west/001.png",
+        "../../frames/sit-enter-west/002.png",
+        "../../frames/sit-enter-west/003.png"
+      ],
+      "frameDurationsMs": [
+        170,
+        200,
+        220,
+        190
+      ],
+      "loop": false,
+      "provenance": "authored descent with locomotion idle endpoint"
+    },
+    {
+      "id": "sit-west",
+      "frameFiles": [
+        "../../frames/sit-west/000.png",
+        "../../frames/sit-west/001.png",
+        "../../frames/sit-west/002.png",
+        "../../frames/sit-west/003.png"
+      ],
+      "frameDurationsMs": [
+        1600,
+        160,
+        650,
+        700
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "sit-exit-west",
+      "frameFiles": [
+        "../../frames/sit-exit-west/000.png",
+        "../../frames/sit-exit-west/001.png",
+        "../../frames/sit-exit-west/002.png",
+        "../../frames/sit-exit-west/003.png"
+      ],
+      "frameDurationsMs": [
+        190,
+        220,
+        200,
+        170
+      ],
+      "loop": false,
+      "provenance": "reversed authored descent"
+    },
+    {
+      "id": "groom-enter-west",
+      "frameFiles": [
+        "../../frames/groom-enter-west/000.png",
+        "../../frames/groom-enter-west/001.png",
+        "../../frames/groom-enter-west/002.png",
+        "../../frames/groom-enter-west/003.png",
+        "../../frames/groom-enter-west/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "groom-west",
+      "frameFiles": [
+        "../../frames/groom-west/000.png",
+        "../../frames/groom-west/001.png",
+        "../../frames/groom-west/002.png",
+        "../../frames/groom-west/003.png",
+        "../../frames/groom-west/004.png",
+        "../../frames/groom-west/005.png",
+        "../../frames/groom-west/006.png"
+      ],
+      "frameDurationsMs": [
+        220,
+        220,
+        220,
+        220,
+        220,
+        220,
+        220
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "groom-exit-west",
+      "frameFiles": [
+        "../../frames/groom-exit-west/000.png",
+        "../../frames/groom-exit-west/001.png",
+        "../../frames/groom-exit-west/002.png",
+        "../../frames/groom-exit-west/003.png",
+        "../../frames/groom-exit-west/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "nap-enter-west",
+      "frameFiles": [
+        "../../frames/nap-enter-west/000.png",
+        "../../frames/nap-enter-west/001.png",
+        "../../frames/nap-enter-west/002.png",
+        "../../frames/nap-enter-west/003.png",
+        "../../frames/nap-enter-west/004.png",
+        "../../frames/nap-enter-west/005.png",
+        "../../frames/nap-enter-west/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "nap-west",
+      "frameFiles": [
+        "../../frames/nap-west/000.png",
+        "../../frames/nap-west/001.png",
+        "../../frames/nap-west/002.png",
+        "../../frames/nap-west/003.png",
+        "../../frames/nap-west/004.png"
+      ],
+      "frameDurationsMs": [
+        850,
+        850,
+        850,
+        850,
+        850
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "nap-exit-west",
+      "frameFiles": [
+        "../../frames/nap-exit-west/000.png",
+        "../../frames/nap-exit-west/001.png",
+        "../../frames/nap-exit-west/002.png",
+        "../../frames/nap-exit-west/003.png",
+        "../../frames/nap-exit-west/004.png",
+        "../../frames/nap-exit-west/005.png",
+        "../../frames/nap-exit-west/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "stretch-west",
+      "frameFiles": [
+        "../../frames/stretch-west/000.png",
+        "../../frames/stretch-west/001.png",
+        "../../frames/stretch-west/002.png",
+        "../../frames/stretch-west/003.png",
+        "../../frames/stretch-west/004.png",
+        "../../frames/stretch-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        240,
+        420,
+        420,
+        300,
+        200
+      ],
+      "loop": false,
+      "provenance": "authored stretch with shared idle endpoints"
+    },
+    {
+      "id": "yawn-enter-west",
+      "frameFiles": [
+        "../../frames/yawn-enter-west/000.png",
+        "../../frames/yawn-enter-west/001.png",
+        "../../frames/yawn-enter-west/002.png",
+        "../../frames/yawn-enter-west/003.png",
+        "../../frames/yawn-enter-west/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "yawn-west",
+      "frameFiles": [
+        "../../frames/yawn-west/000.png",
+        "../../frames/yawn-west/001.png",
+        "../../frames/yawn-west/002.png",
+        "../../frames/yawn-west/003.png",
+        "../../frames/yawn-west/004.png"
+      ],
+      "frameDurationsMs": [
+        260,
+        260,
+        260,
+        260,
+        260
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "yawn-exit-west",
+      "frameFiles": [
+        "../../frames/yawn-exit-west/000.png",
+        "../../frames/yawn-exit-west/001.png",
+        "../../frames/yawn-exit-west/002.png",
+        "../../frames/yawn-exit-west/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "sit-enter-north",
+      "frameFiles": [
+        "../../frames/sit-enter-north/000.png",
+        "../../frames/sit-enter-north/001.png",
+        "../../frames/sit-enter-north/002.png",
+        "../../frames/sit-enter-north/003.png"
+      ],
+      "frameDurationsMs": [
+        170,
+        200,
+        220,
+        190
+      ],
+      "loop": false,
+      "provenance": "authored descent with locomotion idle endpoint"
+    },
+    {
+      "id": "sit-north",
+      "frameFiles": [
+        "../../frames/sit-north/000.png",
+        "../../frames/sit-north/001.png",
+        "../../frames/sit-north/002.png",
+        "../../frames/sit-north/003.png"
+      ],
+      "frameDurationsMs": [
+        1600,
+        160,
+        650,
+        700
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "sit-exit-north",
+      "frameFiles": [
+        "../../frames/sit-exit-north/000.png",
+        "../../frames/sit-exit-north/001.png",
+        "../../frames/sit-exit-north/002.png",
+        "../../frames/sit-exit-north/003.png"
+      ],
+      "frameDurationsMs": [
+        190,
+        220,
+        200,
+        170
+      ],
+      "loop": false,
+      "provenance": "reversed authored descent"
+    },
+    {
+      "id": "groom-enter-north",
+      "frameFiles": [
+        "../../frames/groom-enter-north/000.png",
+        "../../frames/groom-enter-north/001.png",
+        "../../frames/groom-enter-north/002.png",
+        "../../frames/groom-enter-north/003.png",
+        "../../frames/groom-enter-north/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "groom-north",
+      "frameFiles": [
+        "../../frames/groom-north/000.png",
+        "../../frames/groom-north/001.png",
+        "../../frames/groom-north/002.png",
+        "../../frames/groom-north/003.png",
+        "../../frames/groom-north/004.png",
+        "../../frames/groom-north/005.png",
+        "../../frames/groom-north/006.png"
+      ],
+      "frameDurationsMs": [
+        220,
+        220,
+        220,
+        220,
+        220,
+        220,
+        220
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "groom-exit-north",
+      "frameFiles": [
+        "../../frames/groom-exit-north/000.png",
+        "../../frames/groom-exit-north/001.png",
+        "../../frames/groom-exit-north/002.png",
+        "../../frames/groom-exit-north/003.png",
+        "../../frames/groom-exit-north/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "nap-enter-north",
+      "frameFiles": [
+        "../../frames/nap-enter-north/000.png",
+        "../../frames/nap-enter-north/001.png",
+        "../../frames/nap-enter-north/002.png",
+        "../../frames/nap-enter-north/003.png",
+        "../../frames/nap-enter-north/004.png",
+        "../../frames/nap-enter-north/005.png",
+        "../../frames/nap-enter-north/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "nap-north",
+      "frameFiles": [
+        "../../frames/nap-north/000.png",
+        "../../frames/nap-north/001.png",
+        "../../frames/nap-north/002.png",
+        "../../frames/nap-north/003.png",
+        "../../frames/nap-north/004.png"
+      ],
+      "frameDurationsMs": [
+        850,
+        850,
+        850,
+        850,
+        850
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "nap-exit-north",
+      "frameFiles": [
+        "../../frames/nap-exit-north/000.png",
+        "../../frames/nap-exit-north/001.png",
+        "../../frames/nap-exit-north/002.png",
+        "../../frames/nap-exit-north/003.png",
+        "../../frames/nap-exit-north/004.png",
+        "../../frames/nap-exit-north/005.png",
+        "../../frames/nap-exit-north/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "stretch-north",
+      "frameFiles": [
+        "../../frames/stretch-north/000.png",
+        "../../frames/stretch-north/001.png",
+        "../../frames/stretch-north/002.png",
+        "../../frames/stretch-north/003.png",
+        "../../frames/stretch-north/004.png",
+        "../../frames/stretch-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        240,
+        420,
+        420,
+        300,
+        200
+      ],
+      "loop": false,
+      "provenance": "authored stretch with shared idle endpoints"
+    },
+    {
+      "id": "yawn-enter-north",
+      "frameFiles": [
+        "../../frames/yawn-enter-north/000.png",
+        "../../frames/yawn-enter-north/001.png",
+        "../../frames/yawn-enter-north/002.png",
+        "../../frames/yawn-enter-north/003.png",
+        "../../frames/yawn-enter-north/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "yawn-north",
+      "frameFiles": [
+        "../../frames/yawn-north/000.png",
+        "../../frames/yawn-north/001.png",
+        "../../frames/yawn-north/002.png",
+        "../../frames/yawn-north/003.png",
+        "../../frames/yawn-north/004.png"
+      ],
+      "frameDurationsMs": [
+        260,
+        260,
+        260,
+        260,
+        260
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "yawn-exit-north",
+      "frameFiles": [
+        "../../frames/yawn-exit-north/000.png",
+        "../../frames/yawn-exit-north/001.png",
+        "../../frames/yawn-exit-north/002.png",
+        "../../frames/yawn-exit-north/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "sit-enter-east",
+      "frameFiles": [
+        "../../frames/sit-enter-east/000.png",
+        "../../frames/sit-enter-east/001.png",
+        "../../frames/sit-enter-east/002.png",
+        "../../frames/sit-enter-east/003.png"
+      ],
+      "frameDurationsMs": [
+        170,
+        200,
+        220,
+        190
+      ],
+      "loop": false,
+      "provenance": "authored descent with locomotion idle endpoint"
+    },
+    {
+      "id": "sit-east",
+      "frameFiles": [
+        "../../frames/sit-east/000.png",
+        "../../frames/sit-east/001.png",
+        "../../frames/sit-east/002.png",
+        "../../frames/sit-east/003.png"
+      ],
+      "frameDurationsMs": [
+        1600,
+        160,
+        650,
+        700
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "sit-exit-east",
+      "frameFiles": [
+        "../../frames/sit-exit-east/000.png",
+        "../../frames/sit-exit-east/001.png",
+        "../../frames/sit-exit-east/002.png",
+        "../../frames/sit-exit-east/003.png"
+      ],
+      "frameDurationsMs": [
+        190,
+        220,
+        200,
+        170
+      ],
+      "loop": false,
+      "provenance": "reversed authored descent"
+    },
+    {
+      "id": "groom-enter-east",
+      "frameFiles": [
+        "../../frames/groom-enter-east/000.png",
+        "../../frames/groom-enter-east/001.png",
+        "../../frames/groom-enter-east/002.png",
+        "../../frames/groom-enter-east/003.png",
+        "../../frames/groom-enter-east/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "groom-east",
+      "frameFiles": [
+        "../../frames/groom-east/000.png",
+        "../../frames/groom-east/001.png",
+        "../../frames/groom-east/002.png",
+        "../../frames/groom-east/003.png",
+        "../../frames/groom-east/004.png",
+        "../../frames/groom-east/005.png",
+        "../../frames/groom-east/006.png"
+      ],
+      "frameDurationsMs": [
+        220,
+        220,
+        220,
+        220,
+        220,
+        220,
+        220
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "groom-exit-east",
+      "frameFiles": [
+        "../../frames/groom-exit-east/000.png",
+        "../../frames/groom-exit-east/001.png",
+        "../../frames/groom-exit-east/002.png",
+        "../../frames/groom-exit-east/003.png",
+        "../../frames/groom-exit-east/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "nap-enter-east",
+      "frameFiles": [
+        "../../frames/nap-enter-east/000.png",
+        "../../frames/nap-enter-east/001.png",
+        "../../frames/nap-enter-east/002.png",
+        "../../frames/nap-enter-east/003.png",
+        "../../frames/nap-enter-east/004.png",
+        "../../frames/nap-enter-east/005.png",
+        "../../frames/nap-enter-east/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "nap-east",
+      "frameFiles": [
+        "../../frames/nap-east/000.png",
+        "../../frames/nap-east/001.png",
+        "../../frames/nap-east/002.png",
+        "../../frames/nap-east/003.png",
+        "../../frames/nap-east/004.png"
+      ],
+      "frameDurationsMs": [
+        850,
+        850,
+        850,
+        850,
+        850
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "nap-exit-east",
+      "frameFiles": [
+        "../../frames/nap-exit-east/000.png",
+        "../../frames/nap-exit-east/001.png",
+        "../../frames/nap-exit-east/002.png",
+        "../../frames/nap-exit-east/003.png",
+        "../../frames/nap-exit-east/004.png",
+        "../../frames/nap-exit-east/005.png",
+        "../../frames/nap-exit-east/006.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    },
+    {
+      "id": "stretch-east",
+      "frameFiles": [
+        "../../frames/stretch-east/000.png",
+        "../../frames/stretch-east/001.png",
+        "../../frames/stretch-east/002.png",
+        "../../frames/stretch-east/003.png",
+        "../../frames/stretch-east/004.png",
+        "../../frames/stretch-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        240,
+        420,
+        420,
+        300,
+        200
+      ],
+      "loop": false,
+      "provenance": "authored stretch with shared idle endpoints"
+    },
+    {
+      "id": "yawn-enter-east",
+      "frameFiles": [
+        "../../frames/yawn-enter-east/000.png",
+        "../../frames/yawn-enter-east/001.png",
+        "../../frames/yawn-enter-east/002.png",
+        "../../frames/yawn-enter-east/003.png",
+        "../../frames/yawn-enter-east/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "shared idle/sit endpoints plus authored action onset"
+    },
+    {
+      "id": "yawn-east",
+      "frameFiles": [
+        "../../frames/yawn-east/000.png",
+        "../../frames/yawn-east/001.png",
+        "../../frames/yawn-east/002.png",
+        "../../frames/yawn-east/003.png",
+        "../../frames/yawn-east/004.png"
+      ],
+      "frameDurationsMs": [
+        260,
+        260,
+        260,
+        260,
+        260
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "yawn-exit-east",
+      "frameFiles": [
+        "../../frames/yawn-exit-east/000.png",
+        "../../frames/yawn-exit-east/001.png",
+        "../../frames/yawn-exit-east/002.png",
+        "../../frames/yawn-exit-east/003.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": false,
+      "provenance": "authored recovery and reversed sit descent"
+    }
+  ]
+}

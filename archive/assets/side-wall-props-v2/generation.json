@@ -1,0 +1,17 @@
+{
+  "room": "crew_lounge",
+  "source": "crew_lounge.png",
+  "prompt": "Edit this BrineSpace couch sprite sheet. Correct the geometry: both orange couch installations must be perfectly straight north-south with parallel vertical long edges, no perspective taper, no diagonal back panel, no bowing. The panoramic underwater picture above the couch must be a straight thin vertical strip aligned exactly with the long wall edge, not slanting across the cushions. Orthographic overhead cutaway game asset, horizontal cross edges, upright height projects screen-up. Preserve orange cushions, cream/dark frame, underwater picture, plants, coffee end table, books, restrained original colors and detail style. Two isolated full-length versions on pure white background, 1536x1024 sheet: LEFT half EAST-wall version, backing at RIGHT, seating facing LEFT; RIGHT half WEST-wall version backing at LEFT, seating facing RIGHT. Each unit slender, constant-width rectangular plan, around280px wide900px long, both fully inside image with margins. Make wall-contact backing run on a single constant x coordinate throughout its long straight section. No floor, room, wall, text, glow, checkerboard, people. This is a geometry correction of the provided artwork, not a new furniture design.",
+  "edit_target": "assets/side-wall-props-v1/crew_lounge.png",
+  "selection": {
+    "west": "right half",
+    "east": "left half"
+  },
+  "reason": "Owner requested straight upright couch artwork flush against side wall",
+  "sha256": "42879cce732943dce372c9602ccee653ba784b39d6c5589fdb8c1a0a68e64123",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "mode": "RGB; polygon cutout at runtime"
+}

@@ -1,0 +1,397 @@
+extends RefCounted
+const IDS := ["river","josh","margot"]
+const NAMES := {"river":"River","josh":"Josh","margot":"Margot"}
+const ROLES := {"river":"Small utility droid","josh":"Tracked companion","margot":"Cat in a frog hat"}
+const ROOMS := {"river":"salvage_workshop","josh":"storage_bay","margot":"cryo_chamber"}
+const TITLES := {"river":"Garbage Disposal Room","josh":"Derelict Storage Room","margot":"Derelict Pet Cryo Ward"}
+const OBJECTS := {"river":"trash container","josh":"shipping crate","margot":"pet cryopod"}
+const CELLS := {"river":Vector2i(20,18),"josh":Vector2i(22,20),"margot":Vector2i(20,22)}
+const REPAIR_METAL := 8
+const BOOT_SECONDS := 8.0
+const NPC = preload("res://scripts/companion_npc.gd")
+static var portraits := {}
+const PORTRAIT_PATHS := {
+	"river": "res://character/portraits-brine-style-v1/river.png",
+	"josh": "res://character/portraits-brine-style-v1/josh.png",
+	"margot": "res://character/portraits-brine-style-v1/margot.png"
+}
+static var container_textures := {}
+const CRYO_MASTER_PATHS := {
+	"margot-human-a":"res://character/cryo-ward-layered-v5/frames/broken-human-a.png",
+	"margot-human-b":"res://character/cryo-ward-layered-v5/frames/broken-human-b.png",
+}
+const ENCOUNTER_PATHS := {
+	"margot-closed":"res://character/companions/encounters/margot-closed.png",
+	"margot-open":"res://character/companions/encounters/margot-open.png",
+	"josh-closed":"res://character/companions/encounters/josh-closed.png",
+	"josh-open":"res://character/companions/encounters/josh-open.png",
+	"river-closed":"res://character/companions/encounters/river-closed.png",
+	"river-open":"res://character/companions/encounters/river-open.png",
+}
+const CONTAINER_FOOT := Vector2(90,60)
+# The container is drawn at half size (owner, Sept 29): the old 94x64 rect scaled by 0.5 about its foot at (90,60).
+const CONTAINER_RECT := Rect2(67,34,47,32)
+const RECOVERY_CLEARANCE := Rect2(28,-8,126,168)
+const RescueArt = preload("res://scripts/companion_rescue_art.gd")
+
+static func container_texture(id: String, opened: bool) -> Texture2D:
+	return RescueArt.empty_frame(id) if opened else RescueArt.frame(id,0)
+
+static func rescue_texture(game, cell: Vector2i) -> Texture2D:
+	var site: Dictionary=game.wrecks[cell]
+	var actor=game.companion_actors[site.kind]
+	if site.recovered or not site.opened or site.boot<6.4:
+		return RescueArt.texture(site.kind,site.opened,site.boot,site.recovered)
+	var point: Variant=spawn_point(actor,cell)
+	if point==null:return RescueArt.texture(site.kind,true,6.39,false)
+	var offset := Vector2(0,40) if point==null else Vector2(point)-(Vector2(cell)+Vector2.ONE*.5)*384.0-CONTAINER_FOOT
+	return RescueArt.texture(site.kind,site.opened,site.boot,site.recovered,actor,offset)
+
+static func room_props(props: Array, id := "") -> Array:
+	if id=="margot":return [] # This found ward contains exactly its three authored pods.
+	# Found compartments clear a loading area around their one recovery object.
+	return props.filter(func(prop):return not prop.get("layout_hidden",false) and not prop.rect.intersects(RECOVERY_CLEARANCE))
+
+static func recovery_props(id: String, recovered := false) -> Array:
+	if id!="margot":return [{"id":"companion_container","rect":CONTAINER_RECT,"position":CONTAINER_FOOT}]
+	return [
+		{"id":"margot-human-a","rect":Rect2(-134,-127,68,116),"position":Vector2(-100,-15)},
+		{"id":"margot-human-b","rect":Rect2(61,-127,68,116),"position":Vector2(95,-15)},
+		{"id":"margot-open" if recovered else "margot-closed","rect":Rect2(56,53,38,76),"position":Vector2(75,125)}]
+
+static func prop_texture(key: String) -> Texture2D:
+	if not container_textures.has(key):
+		var img := Image.new()
+		var path: String=CRYO_MASTER_PATHS.get(key,ENCOUNTER_PATHS.get(key,""))
+		if path.is_empty():return null
+		if img.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
+		var texture := ImageTexture.create_from_image(img)
+		texture.set_meta("crew_frame_92",true);texture.set_meta("crew_pivot",Vector2(80,144))
+		if CRYO_MASTER_PATHS.has(key):
+			texture.set_meta("crew_pivot",Vector2(256,448));texture.set_meta("crew_standing_height",148.0)
+		container_textures[key]=texture
+	return container_textures[key]
+
+static func margot_pod_texture(game, cell: Vector2i) -> Texture2D:
+	var site: Dictionary=game.wrecks[cell]
+	var actor=game.companion_actors.margot
+	if site.opened and not actor.room_nodes.has(cell):
+		actor.room_cache=game.bill_npc.room_cache
+		actor.rebuild(game)
+	var point: Variant=spawn_point(actor,cell)
+	var origin: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+preload("res://scripts/margot_cryo_art.gd").FOOT
+	var offset:=Vector2(0,28) if point==null else Vector2(point)-origin
+	return preload("res://scripts/margot_cryo_art.gd").texture(actor,float(site.boot),bool(site.opened),bool(site.recovered),offset,game.Preferences.reduced_motion)
+
+static func portrait(id: String) -> Texture2D:
+	if not IDS.has(id):return null
+	if not portraits.has(id):
+		var img := Image.new()
+		if img.load_png_from_buffer(FileAccess.get_file_as_bytes(PORTRAIT_PATHS[id]))!=OK:return null
+		portraits[id]=ImageTexture.create_from_image(img)
+	return portraits[id]
+
+static func begin(game) -> void:
+	game.companion_actors.clear();game.companion_roster.clear()
+	for id in IDS:
+		game.companion_actors[id]=NPC.new(id)
+		var selected: bool=game.meta.selected_companion_ids.has(id) and game.meta.unlocked_companion_ids.has(id)
+		if selected:game.companion_roster[id]=Vector2i(20,20)
+		else:game.wrecks[CELLS[id]]={"kind":id,"progress":0.0,"active":false,"cleared":false,"paid":false,"boot":0.0,"opened":false,"recovered":false}
+
+static func is_site(game, cell: Vector2i) -> bool:
+	return IDS.has(game.wrecks.get(cell,{}).get("kind",""))
+
+static func accessible(game, cell: Vector2i) -> bool:
+	var id: String=game.wrecks[cell].kind
+	for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
+		if game.occupied.has(cell+offset) and game._doors_connect(ROOMS[id],0,offset,game.occupied[cell+offset]):return true
+	return false
+
+static func toggle(game, cell: Vector2i) -> void:
+	if not game.running or not is_site(game,cell):return
+	var site: Dictionary=game.wrecks[cell]
+	if site.cleared:
+		if not site.recovered:
+			site.opened=true
+			game._log("Two human pods failed. The smaller one is still keeping a promise." if site.kind=="margot" else "%s opened. A machine inside is still answering."%OBJECTS[site.kind],false)
+	else:
+		if site.active:site.active=false
+		else:
+			var blocker: Dictionary=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[site.kind],0,REPAIR_METAL)
+			if not blocker.is_empty():
+				game._log("%s: %s"%[TITLES[site.kind],blocker.detail],false)
+				return
+			if not site.paid:
+				game.resources.metal-=REPAIR_METAL;site.paid=true
+			site.active=true
+	game._refresh_all()
+
+static func connect_room(game, cell: Vector2i) -> void:
+	var id: String=game.wrecks[cell].kind
+	var previous: int=game.selected_rotation
+	game.selected_rotation=0
+	game._place_room(ROOMS[id],cell,true)
+	game.selected_rotation=previous
+	game.occupied[cell].display_name=TITLES[id]
+	game._log("%s connected. Inspect its %s."%[TITLES[id],OBJECTS[id]],false)
+
+static func boot_status(game, cell: Vector2i) -> String:
+	var site: Dictionary=game.wrecks[cell]
+	if site.recovered:return "COMPANION ABOARD"
+	if not site.cleared:return "REPAIRING HULL" if site.active else "SEALED DERELICT"
+	if not site.opened:return "SEALED %s"%OBJECTS[site.kind].to_upper()
+	if not game.occupied.has(cell) or game.occupied[cell].get("suspended",false):return "ROOM SUSPENDED"
+	if not game.hardware.power or not game.powered_room_cells.has(cell):return "WAITING FOR POWER"
+	return "THAWING" if site.kind=="margot" else "RESTARTING"
+
+# Presentation reads the existing recovery state. It never spends, surveys or plans a crew route.
+static func surveyed_site(game, cell: Vector2i) -> bool:
+	return is_site(game,cell) and game.surveyed_water.has(cell) and preload("res://scripts/wreck_field.gd").visible(game.wrecks,cell)
+
+static func recovery_guidance(game, cell: Vector2i) -> Dictionary:
+	var site: Dictionary=game.wrecks[cell]
+	var id: String=site.kind
+	var connected: bool=site.cleared or accessible(game,cell)
+	var done: Array=[connected,site.cleared,site.opened,site.recovered]
+	var labels: Array=["Connect a matching door","Repair hull · %d Metal"%REPAIR_METAL,"Start pet pod thaw" if id=="margot" else "Open "+OBJECTS[id],"Thaw · %d powered seconds"%BOOT_SECONDS if id=="margot" else "Restart · %d powered seconds"%BOOT_SECONDS]
+	if site.paid:labels[1]+=" paid · %d%%"%roundi(float(site.progress)/preload("res://scripts/wreck_field.gd").DURATION*100)
+	if site.opened:labels[3]+=" · %d%%"%roundi(float(site.boot)/BOOT_SECONDS*100)
+	var step:=4
+	for i in range(4):
+		if not done[i]:step=i+1;break
+	var detail: String
+	if site.recovered:
+		detail="%s is aboard this loop. "%NAMES[id]+("Available in future expedition selection." if game.meta.unlocked_companion_ids.has(id) else "Buy them in Meta Progression to keep them for future loops.")
+	elif not connected:
+		detail=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[id],0,REPAIR_METAL).get("detail","Reconnect a matching door. Paid repair progress is retained.")
+	elif not site.cleared:
+		var blocker: Dictionary=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[id],0,REPAIR_METAL)
+		var metal: int=int(game.resources.get("metal",0))
+		if not site.active and not blocker.is_empty() and not str(blocker.button).begins_with("NEEDS "):detail=str(blocker.detail)
+		elif not site.paid and metal<REPAIR_METAL:
+			detail="Save %d more Metal (%d/%d). Repair needs 18 seconds of crew welding after travel."%[REPAIR_METAL-metal,metal,REPAIR_METAL]
+		elif not site.active and not blocker.is_empty():detail=str(blocker.detail)
+		elif not site.active:detail="Repair paid; progress retained. Resume repair below." if site.paid else "Start repair below: %d Metal, then 18 seconds of crew welding after travel."%REPAIR_METAL
+		elif not game.hardware.power:detail="Restore station Power to continue repair. Payment and progress are retained."
+		elif game.hardware.doors:detail="Unlock the station DOORS switch to continue repair. Payment and progress are retained."
+		else:
+			var job: Dictionary=game.get_meta("ward_repair_job",{})
+			detail=str(job.get("status","")) if job.get("cell",Vector2i(-1,-1))==cell else ""
+			if detail.is_empty():detail="Waiting for reachable crew. Travel comes before 18 seconds of welding."
+	elif not site.opened:detail="Start the pet cryopod thaw using the action below." if id=="margot" else "Open the %s using the action below. The companion is still inside."%OBJECTS[id]
+	elif game.occupied.get(cell,{}).get("suspended",false):detail="Resume the room below, then wait for its next operating cycle. Powered progress is retained."
+	elif not game.hardware.power:detail="Restore station Power. Powered progress is retained."
+	elif not game.powered_room_cells.has(cell):detail="Waiting for room Power / next operating cycle. Powered progress is retained."
+	elif float(site.boot)>=BOOT_SECONDS:detail="%d/%d powered seconds. Waiting for a clear emergence spot inside the room."%[BOOT_SECONDS,BOOT_SECONDS]
+	else:detail="%s: %.1f/%d powered seconds. Progress survives Power loss and Save/Continue."%["Thaw" if id=="margot" else "Restart",site.boot,BOOT_SECONDS]
+	if not game.running:detail="Expedition concluded. "+detail
+	elif game.paused and not site.recovered:detail="Paused / resume the expedition to advance. "+detail
+	var steps: Array=[]
+	for i in range(4):steps.append({"text":labels[i],"done":done[i],"current":not site.recovered and step==i+1})
+	return {"step":step,"steps":steps,"detail":detail,"complete":site.recovered}
+
+static func next_connected_recovery(game, except_cell:=Vector2i(-1,-1)) -> Dictionary:
+	var best: Dictionary={}
+	var best_score:=INF
+	for cell in game.wrecks:
+		if cell==except_cell or not surveyed_site(game,cell):continue
+		var site: Dictionary=game.wrecks[cell]
+		if site.recovered or not accessible(game,cell):continue
+		# Continue an opened/paid job before suggesting another expense. Ties are stable.
+		var stage: int=0 if site.opened else 1 if site.cleared else 2 if site.active else 3 if site.paid else 4
+		var score: float=stage*10000+cell.distance_squared_to(Vector2i(20,20))*100+cell.y*40+cell.x
+		if score<best_score:
+			best_score=score;best={"cell":cell,"id":site.kind}
+	return best
+
+static func next_recovery_link(game, except_cell:=Vector2i(-1,-1)) -> String:
+	var target:=next_connected_recovery(game,except_cell)
+	if target.is_empty():return "No other surveyed companion room has a connected door. Extend connected rooms and survey lights."
+	var cell: Vector2i=target.cell
+	var guidance:=recovery_guidance(game,cell)
+	return "[b]NEXT CONNECTED RECOVERY[/b]\n[url=recovery:%d,%d]%s · sector %d, %d[/url]\nDoor connected · %s\n%s"%[cell.x,cell.y,NAMES[target.id],cell.x,cell.y,guidance.steps[guidance.step-1].text,guidance.detail]
+
+static func spawn(game, id: String, cell: Vector2i) -> bool:
+	var actor = game.companion_actors[id]
+	actor.room_cache=game.bill_npc.room_cache
+	actor.rebuild(game)
+	actor.avoidance_positions.clear()
+	for peer in all_actors(game):
+		if peer!=actor and peer.active:actor.avoidance_positions.append(peer.foot)
+	var point: Variant=spawn_point(actor,cell)
+	if point==null:return false
+	actor.foot=point;actor.active=true;actor.arrive()
+	if id!="margot" or is_site(game,cell):actor.direction="south"
+	if id=="river" and not is_site(game,cell):actor.start_behavior("boot")
+	return true
+
+static func spawn_point(actor, cell: Vector2i) -> Variant:
+	var nodes: Array=actor.room_nodes.get(cell,[]).duplicate()
+	var local_foot:=preload("res://scripts/margot_cryo_art.gd").FOOT+Vector2(0,28) if actor.identity=="margot" else CONTAINER_FOOT+Vector2(0,40)
+	var emergence := (Vector2(cell)+Vector2.ONE*0.5)*384.0+local_foot
+	nodes.sort_custom(func(a,b):return actor.graph.get_point_position(a).distance_squared_to(emergence)<actor.graph.get_point_position(b).distance_squared_to(emergence))
+	for node in nodes:
+		var point: Vector2=actor.graph.get_point_position(node)
+		if actor.spawn_clear(point):
+			return point
+	return null
+
+static func all_actors(game) -> Array:
+	return [game.bill_npc,game.veld_npc,game.branforth_npc,game.marsh_npc]+game.companion_actors.values()
+
+static func advance(game, delta: float) -> void:
+	if not game.running or game.paused or delta<=0:return
+	for cell in game.wrecks:
+		if not is_site(game,cell) or boot_status(game,cell) not in ["RESTARTING","THAWING"]:continue
+		var site: Dictionary=game.wrecks[cell]
+		if site.kind!="margot":
+			var actor=game.companion_actors[site.kind]
+			if not actor.room_nodes.has(cell):
+				actor.room_cache=game.bill_npc.room_cache
+				actor.rebuild(game)
+			actor.avoidance_positions.clear()
+			for peer in all_actors(game):
+				if peer!=actor and peer.active:actor.avoidance_positions.append(peer.foot)
+		site.boot=minf(BOOT_SECONDS,site.boot+delta)
+		if site.boot>=BOOT_SECONDS:
+			if game.meta.record_character(site.kind):
+				game.run_discovered_character_ids.append(site.kind)
+		if site.boot>=BOOT_SECONDS and spawn(game,site.kind,cell):
+			site.recovered=true;game.companion_roster[site.kind]=cell
+			game._log(("COMPANION RECOVERED // %s. Available in future expedition selection." if game.meta.unlocked_companion_ids.has(site.kind) else "COMPANION RECOVERED // %s joins this loop. Buy them in Meta Progression to keep them.")%NAMES[site.kind],false)
+			game._refresh_all()
+	for id in game.companion_roster:
+		var actor = game.companion_actors[id]
+		if not actor.active:
+			if game.architect_run.get("core",{}).get("recovered",false):spawn(game,id,game.companion_roster[id])
+			continue
+		actor.avoidance_positions.clear()
+		for peer in all_actors(game):
+			if peer!=actor and peer.active:actor.avoidance_positions.append(peer.foot)
+		actor.hardware_doors_locked=game.hardware.doors
+		actor.update(game,delta)
+
+static func inspect(game, cell: Vector2i) -> void:
+	var site: Dictionary=game.wrecks[cell]
+	var id: String=site.kind
+	game.preview_name_label.text=TITLES[id]
+	game.preview_tags_label.text="COMPANION RECOVERY // "+OBJECTS[id].to_upper()
+	game.preview_texture.texture=portrait(id) if site.opened else null
+	game.inspector_focus_button.set_meta("cell",cell);game.inspector_focus_button.disabled=false
+	game.inspector_label.text="%s\n\n%s\n\n%s\n\nCompanions keep company with the crew. They do not occupy architect berths or perform construction."%[boot_status(game,cell),"Reconnect matching doors and repair the hull: 8 Metal, 18 seconds. Repair payment and progress persist." if not site.cleared else "Open the %s, then supply room power for an eight-second restart. Progress survives power loss and Save/Continue."%OBJECTS[id],"%s // %d%% restarted"%[NAMES[id],roundi(site.boot/BOOT_SECONDS*100)] if site.opened else "Something was left inside."]
+	if id=="margot":
+		game.inspector_label.text=game.inspector_label.text.replace("Open the pet cryopod, then supply room power for an eight-second restart.","Start the pet cryopod thaw, then supply room power for eight seconds.").replace("restarted","thawed").replace("Something was left inside.","Two broken human cryopods hold skeletons. A smaller pet pod still has a heartbeat.")
+	var button: Button=game.room_operation_button
+	button.set_meta("cell",cell)
+	var blocker: Dictionary=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[id],0,REPAIR_METAL) if not site.recovered and not site.opened else {}
+	button.text="COMPANION ABOARD" if site.recovered else "RESTARTING // %d%%"%roundi(site.boot/BOOT_SECONDS*100) if site.opened else "OPEN "+OBJECTS[id].to_upper() if site.cleared else "PAUSE REPAIR" if site.active else String(blocker.button) if not blocker.is_empty() else "RESUME REPAIR" if site.paid else "REPAIR & CONNECT // %d METAL"%REPAIR_METAL
+	if id=="margot":button.text=button.text.replace("RESTARTING","THAWING").replace("OPEN PET CRYOPOD","THAW PET CRYOPOD")
+	button.disabled=not game.running or site.recovered or site.opened or not blocker.is_empty()
+	if not blocker.is_empty(): game.inspector_label.text+="
+
+[color=#f0bd99]%s // %s[/color]"%[blocker.button,blocker.detail]
+	if site.recovered:
+		button.text="RESUME ROOM" if game.occupied[cell].get("suspended",false) else "SUSPEND ROOM"
+		button.disabled=not game.running
+		game.inspector_label.text+="\n\nRestored room inputs / cycle: %s. Outputs / cycle: %s."%[game._format_cost(game.occupied[cell].consumption),game._format_cost(game.occupied[cell].production)]
+
+static func snapshot(game) -> Dictionary:
+	var actors := {}
+	for id in game.companion_actors:
+		var actor = game.companion_actors[id]
+		actors[id]={"npc":actor.snapshot(),"playback":actor._player.snapshot(),"personality":actor.personality_snapshot()}
+	return {"version":2,"roster":game.companion_roster.duplicate(),"actors":actors}
+
+static func can_pet(game, from_journal := false) -> bool:
+	if not game.running or not game.companion_roster.has("margot"):return false
+	if game.paused and not (from_journal and game._journal_is_open() and not game.pause_before_journal):return false
+	var actor = game.companion_actors.margot
+	return actor.active and actor.water.mode=="dry" and actor.pet_cooldown<=0 and actor.can_stand(actor.foot)
+
+static func pet_refusal(game) -> String:
+	# Journal copy for a refused pet. It names the reason that outlasts a pause first: telling a
+	# player to resume is misleading when Margot is swimming and still will not be pettable once
+	# they do (owner polish pass, Sept 18).
+	var actor = game.companion_actors.margot
+	if actor.water.mode!="dry":return "wait for the water to recede"
+	if actor.pet_cooldown>0:return "give her a moment"
+	if not game.running or (game.paused and not (game._journal_is_open() and not game.pause_before_journal)):return "resume expedition first"
+	return "she is out of reach"
+
+static func pet_margot(game) -> bool:
+	if not can_pet(game) or not game.companion_actors.margot.pet():return false
+	var cell: Vector2i=game.companion_actors.margot.cell_at(game.companion_actors.margot.foot)
+	game.inspector_focus_button.set_meta("cell",cell);game._focus_inspected_room()
+	game._log("Margot permits a brief interruption. The purring appears intentional.",false)
+	game._refresh_all()
+	return true
+
+static func valid_site(site: Dictionary) -> bool:
+	for key in ["paid","opened","recovered","active","cleared"]:
+		if not site.get(key) is bool:return false
+	if not site.get("progress") is float or not is_finite(site.progress) or site.progress<0 or site.progress>18:return false
+	if not (site.get("boot") is float) or not is_finite(site.boot) or site.boot<0 or site.boot>BOOT_SECONDS:return false
+	if (site.active or site.cleared or site.progress>0) and not site.paid:return false
+	if site.opened and not site.cleared:return false
+	if site.boot>0 and not site.opened:return false
+	return not site.recovered or site.boot==BOOT_SECONDS
+
+static func valid(data: Variant, wrecks: Variant, rooms: Variant) -> bool:
+	if not wrecks is Dictionary or not rooms is Array:return false
+	for site in wrecks.values():
+		if not site is Dictionary or not site.get("kind") is String:return false
+	for room in rooms:
+		if not room is Dictionary or not room.get("pos") is Vector2i or not room.get("id") is String:return false
+	if data==null:
+		for site in wrecks.values():
+			if IDS.has(site.kind):return false
+		return true
+	if not data is Dictionary or data.get("version") not in [1,2] or not data.get("roster") is Dictionary or not data.get("actors") is Dictionary:return false
+	var expected: Array=["river","josh"] if data.version==1 else IDS
+	if data.actors.size()!=expected.size():return false
+	var occupied := {}
+	for room in rooms:occupied[room.pos]=room.id
+	var sites := {}
+	for cell in wrecks:
+		var site: Dictionary=wrecks[cell]
+		if not IDS.has(site.kind):continue
+		if not expected.has(site.kind):return false
+		if sites.has(site.kind) or not valid_site(site):return false
+		sites[site.kind]=cell
+		if site.cleared and occupied.get(cell)!=ROOMS[site.kind]:return false
+		if site.recovered and data.roster.get(site.kind)!=cell:return false
+	for id in data.roster:
+		if not expected.has(id) or not data.roster[id] is Vector2i or not occupied.has(data.roster[id]):return false
+		if sites.has(id) and not wrecks[sites[id]].recovered:return false
+		if not sites.has(id) and data.roster[id]!=Vector2i(20,20):return false
+	for id in expected:
+		if not data.actors.get(id) is Dictionary:return false
+		var record: Dictionary=data.actors[id]
+		if not NPC.valid_snapshot(record.get("npc"),false) or not preload("res://scripts/crew_sprite_player.gd").valid_snapshot(record.get("playback")):return false
+		if not NPC.valid_personality(record.get("personality"),id):return false
+		if record.get("personality") is Dictionary and record.personality.action!="":
+			if not record.npc.active or record.npc.state!="idle" or not record.npc.path.is_empty():return false
+		if record.npc.active and not data.roster.has(id):return false
+		if record.npc.active and not occupied.has(Vector2i(floori(record.npc.foot.x/384.0),floori(record.npc.foot.y/384.0))):return false
+		# Companions use shared fire-safety evacuation as well as curiosity walks.
+		# Save the real retreat; never normalize it into an idle pose or grant work.
+		if record.npc.goal=="fire-retreat" and (not record.npc.active or record.npc.get("movement_medium","dry")!="dry" or record.npc.stage!="" or (record.get("personality") is Dictionary and record.personality.get("action","")!="")):return false
+		if record.npc.state not in ["idle","walk"] or record.npc.goal not in ["","curiosity","fire-retreat"] or record.npc.dead or record.npc.helmet_equipped or not record.npc.expedition.is_empty():return false
+	return true
+
+static func restore(game, data: Variant) -> void:
+	var previous: Dictionary = game.companion_actors.duplicate()
+	game.companion_actors.clear();game.companion_roster.clear()
+	if data==null:
+		for id in IDS:game.companion_actors[id]=NPC.new(id,previous.get(id))
+		return
+	game.companion_roster=data.roster.duplicate()
+	for id in IDS:
+		var actor = NPC.new(id,previous.get(id))
+		game.companion_actors[id]=actor
+		if not data.actors.has(id):continue # Older robot-only loops do not gain a new rescue site.
+		actor.restore_snapshot(game,data.actors[id].npc)
+		# A companion with no clip playing (still sealed) keeps its packs unloaded.
+		(actor.player if not str(data.actors[id].playback.get("key","")).is_empty() else actor._player).restore_snapshot(data.actors[id].playback)
+		actor.restore_personality(data.actors[id].get("personality"))

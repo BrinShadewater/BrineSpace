@@ -1,0 +1,288 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "walk-start-east",
+      "frameFiles": [
+        "idle-east-000-p128-224.png",
+        "../marsh-v2/supplemental/ground-east/walk-start-east-001.png",
+        "../marsh-v2/supplemental/ground-east/walk-start-east-002.png",
+        "../marsh-v2/supplemental/ground-east/walk-start-east-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-stop-east",
+      "frameFiles": [
+        "../marsh-v2/supplemental/ground-east/walk-stop-east-000.png",
+        "../marsh-v2/supplemental/ground-east/walk-stop-east-001.png",
+        "../marsh-v2/supplemental/ground-east/walk-stop-east-002.png",
+        "idle-east-000-p128-224.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-step-east",
+      "frameFiles": [
+        "idle-east-000-p128-224.png",
+        "../marsh-v2/supplemental/ground-east/walk-step-east-001.png",
+        "../marsh-v2/supplemental/ground-east/walk-step-east-002.png",
+        "../marsh-v2/supplemental/ground-east/walk-step-east-003.png",
+        "../marsh-v2/supplemental/ground-east/walk-step-east-004.png",
+        "../marsh-v2/supplemental/ground-east/walk-step-east-005.png",
+        "idle-east-000-p128-224.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-start-west",
+      "frameFiles": [
+        "idle-west-000-p128-224.png",
+        "../marsh-v2/supplemental/ground-west/walk-start-west-001.png",
+        "../marsh-v2/supplemental/ground-west/walk-start-west-002.png",
+        "../marsh-v2/supplemental/ground-west/walk-start-west-003.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-stop-west",
+      "frameFiles": [
+        "../marsh-v2/supplemental/ground-west/walk-stop-west-000.png",
+        "../marsh-v2/supplemental/ground-west/walk-stop-west-001.png",
+        "../marsh-v2/supplemental/ground-west/walk-stop-west-002.png",
+        "idle-west-000-p128-224.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-step-west",
+      "frameFiles": [
+        "idle-west-000-p128-224.png",
+        "../marsh-v2/supplemental/ground-west/walk-step-west-001.png",
+        "../marsh-v2/supplemental/ground-west/walk-step-west-002.png",
+        "../marsh-v2/supplemental/ground-west/walk-step-west-003.png",
+        "../marsh-v2/supplemental/ground-west/walk-step-west-004.png",
+        "../marsh-v2/supplemental/ground-west/walk-step-west-005.png",
+        "idle-west-000-p128-224.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "revision": "marsh-locomotion-joins-v1"
+}

@@ -1,0 +1,9 @@
+# Shared science accessories — second material pass
+
+The prior research-accessories repaint reduced shine but retained conspicuous cobalt plastic and bright blue gloves. Native Med Center review demonstrated that it still did not match the medical materials. The new assets/material-polish-science-v2/research-accessories.png replaces those accents with muted petrol blue-grey while preserving plant colors, tools, prop silhouettes and the 1254-square atlas layout. This is a generated material repaint, not a runtime global tint.
+
+Eight current compositions now use the new source: Mycelium Nursery, Med Bay, Bio Lab, Cryo Chamber, Med Center, Xeno Lab, Quarantine Cell and Research Lab. The common library nursery_supply_trolley also uses it. Read-only vector registration removes the neutral background, including the cooler handle and trolley shelf aperture; per-item pieces intersect existing source regions. Original source retained. Exact prompt, registration, hashes and consumer list are in the asset directory.
+
+Validation: 64 rotation/state renders across the eight rooms, eight sealed offline card bakes, and the native editor workflow fixture passed without ERROR output. All eight q0 rooms were visually inspected at native 512 size. The trolley and cooler are substantially less distracting, with no obvious background leaks in those captures. Other rotations were rendered but not individually visually accepted. Current card consumers were refreshed. No executable rebuild.
+
+Next material priorities visible in this review: Cryo capsule/glass cyan glow; Mycelium's pale workstation tops and cultivation wall; Bio and Xeno's bright large wall banks, glass and standalone cabinets. These remain unfinished, as do other unreviewed wall families, risers, shared props and animation/lighting consistency. The review does not establish whole-game completion.

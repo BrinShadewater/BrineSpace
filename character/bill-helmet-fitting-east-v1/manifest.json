@@ -1,0 +1,216 @@
+{
+  "name": "Bill east helmet fitting candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "run": 0.168,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.10567567567567569,
+    "walk-west": 0.10567567567567569
+  },
+  "precomposed": true,
+  "status": "owner_visual_accepted_2026_09_29_scale_v2",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "frames/equip-helmet-east/000.png",
+        "frames/equip-helmet-east/001.png",
+        "frames/equip-helmet-east/002.png",
+        "frames/equip-helmet-east/003.png",
+        "frames/equip-helmet-east/004.png",
+        "frames/equip-helmet-east/005.png",
+        "frames/equip-helmet-east/006.png",
+        "frames/equip-helmet-east/007.png",
+        "frames/equip-helmet-east/008.png",
+        "frames/equip-helmet-east/009.png",
+        "frames/equip-helmet-east/010.png",
+        "frames/equip-helmet-east/011.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ],
+      "provenance": "whole east figure; fixed source scale; exact selected bare/equipped endpoints; removal reverses authored fitting poses"
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "frames/remove-helmet-east/000.png",
+        "frames/remove-helmet-east/001.png",
+        "frames/remove-helmet-east/002.png",
+        "frames/remove-helmet-east/003.png",
+        "frames/remove-helmet-east/004.png",
+        "frames/remove-helmet-east/005.png",
+        "frames/remove-helmet-east/006.png",
+        "frames/remove-helmet-east/007.png",
+        "frames/remove-helmet-east/008.png",
+        "frames/remove-helmet-east/009.png",
+        "frames/remove-helmet-east/010.png",
+        "frames/remove-helmet-east/011.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ],
+      "provenance": "whole east figure; fixed source scale; exact selected bare/equipped endpoints; removal reverses authored fitting poses"
+    }
+  ]
+}

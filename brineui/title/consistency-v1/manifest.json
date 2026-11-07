@@ -1,0 +1,49 @@
+{
+  "status": "integrated-native-verified",
+  "styleReference": "../../../character/brine-comms-v13/portrait.png",
+  "compositionReference": "../cover-clean.png",
+  "sources": [
+    {
+      "file": "cover.png",
+      "generatedSource": "C:/Users/Alex/.codex/generated_images/01a084c1-9936-7f60-9531-8441b46c8df4/exec-76a2dabe-f129-4cd7-8d85-7fed1391ae07.png",
+      "prompt": "cover-prompt.txt",
+      "sha256": "77d1b838f8ad847bb396d56b4e5de3fd4c01efcaba810a66721be9df6289546b",
+      "size": [
+        1925,
+        817
+      ],
+      "mode": "RGB",
+      "status": "selected: native clipped character source",
+      "processing": "Generated source bytes preserved"
+    },
+    {
+      "file": "background.png",
+      "generatedSource": "C:/Users/Alex/.codex/generated_images/01a084c1-9936-7f60-9531-8441b46c8df4/exec-989ee75c-3780-4202-afc4-bcb147feaf74.png",
+      "prompt": "background-prompt.txt",
+      "sha256": "20874d4df37d6d1defee6e183aee31ea3f7283f688e1e94433e71a2c5c3581c6",
+      "size": [
+        1925,
+        817
+      ],
+      "mode": "RGB",
+      "status": "selected: stationary stage",
+      "processing": "Generated source bytes preserved"
+    },
+    {
+      "file": "rejected-character.png",
+      "generatedSource": "C:/Users/Alex/.codex/generated_images/01a084c1-9936-7f60-9531-8441b46c8df4/exec-dc3699ac-0efb-480b-b2b0-1d6e7c4b7852.png",
+      "prompt": "character-prompt.txt",
+      "sha256": "38aa2f5c23770c86f5d74c3fdacf50fb909dc3d560c06e8e7d3da8374a814c19",
+      "size": [
+        1923,
+        817
+      ],
+      "mode": "RGB",
+      "status": "rejected: RGB checkerboard exterior, changed dimensions and character scale",
+      "processing": "Generated source bytes preserved"
+    }
+  ],
+  "characterMask": "character-outline.json",
+  "runtimeConsumer": "scripts/title_cover.gd",
+  "notes": "Character clipping is a native Polygon2D using original cover pixels; no checkerboard keying or raster recoloring. Original title art retained."
+}

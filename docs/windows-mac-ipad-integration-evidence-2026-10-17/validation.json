@@ -1,0 +1,438 @@
+{
+  "host": "Windows",
+  "lanes": {
+    "headless": 13,
+    "native_windows": 15,
+    "python_suites": 4
+  },
+  "python_unique_tests": 17,
+  "invocations": [
+    {
+      "test": "test_integration_loading_policy.gd",
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "INTEGRATION LOADING POLICY PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_refinement.gd",
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "IPAD_STARTUP {\"engine\":\"4.7.2-stable (official)\",\"time\":\"2026-10-17T10:07:12\",\"timings\":{\"scene_load_ms\":13,\"stages_ms\":{\"dialogue_audio_tablet\":27.418,\"interface_and_grid\":11157.764,\"interface_art\":432.367,\"new_loop\":30.134,\"restore\":0.003,\"station_rooms\":91.962},\"station_build_ms\":11747,\"tap_to_loading_visible_ms\":61},\"version\":1}",
+        "IPAD_STARTUP {\"engine\":\"4.7.2-stable (official)\",\"time\":\"2026-10-17T10:07:18\",\"timings\":{\"scene_load_ms\":21,\"stages_ms\":{\"dialogue_audio_tablet\":22.27,\"interface_and_grid\":3611.517,\"interface_art\":76.765,\"new_loop\":28.507,\"restore\":33.111,\"station_rooms\":7.998},\"station_build_ms\":3795,\"tap_to_loading_visible_ms\":3},\"version\":1}",
+        "TABLET REFINEMENT PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_release_assert_safety.py",
+      "variant": [],
+      "lane": "python",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "..",
+        "----------------------------------------------------------------------",
+        "Ran 2 tests in 5.494s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "test": "test_release_manifest.py",
+      "variant": [],
+      "lane": "python",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "..........",
+        "----------------------------------------------------------------------",
+        "Ran 10 tests in 0.199s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "test": "test_macos_export.py",
+      "variant": [],
+      "lane": "python",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "..",
+        "----------------------------------------------------------------------",
+        "Ran 2 tests in 0.016s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "test": "test_test_runner_selection.py",
+      "variant": [],
+      "lane": "python",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "...",
+        "----------------------------------------------------------------------",
+        "Ran 3 tests in 0.036s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "test": "test_initial_surface_loading.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "INITIAL SURFACE LOADING PASS checks=16 failures=0"
+      ]
+    },
+    {
+      "test": "test_visible_art_loading.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "VISIBLE ART LOADING PASS failures=0"
+      ]
+    },
+    {
+      "test": "test_room_art_prefetch.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "ROOM ART PREFETCH PASS failures=0"
+      ]
+    },
+    {
+      "test": "test_room_view_selection.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "ROOM_VIEW_SELECTION PASS"
+      ]
+    },
+    {
+      "test": "test_image_prefetch.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "WARNING: Artwork unavailable: res://icon.svg.missing.png (File not found). Diagnostic placeholder substituted; include an F8 report.",
+        "   at: push_warning (core/variant/variant_utility.cpp:1033)",
+        "   GDScript backtrace (most recent call first):",
+        "       [0] load_png (res://scripts/safe_image.gd:29)",
+        "       [1] run (res://tests/test_image_prefetch.gd:51)",
+        "IMAGE PREFETCH PASS"
+      ]
+    },
+    {
+      "test": "test_crew_router_lifetime.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "CREW ROUTER LIFETIME: 13 checks, 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_quit.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "IPAD QUIT PASS"
+      ]
+    },
+    {
+      "test": "test_tablet_drone_memory.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "TABLET LARGE ATLAS peak_pending=1 ready=true",
+        "TABLET DRONE MEMORY PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_drone_runtime_animation.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "DRONE RUNTIME: 252 clips, 144 directional phase samples, dock boundaries; 0 failures"
+      ]
+    },
+    {
+      "test": "test_run_save.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "SAVE GAME: PASS"
+      ]
+    },
+    {
+      "test": "test_save_integrity.gd",
+      "variant": [],
+      "lane": "headless",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "SAVE INTEGRITY failures=0"
+      ]
+    },
+    {
+      "test": "test_crew_router_pixels.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "CREW ROUTER PIXELS: 12 checks, 0 failures"
+      ]
+    },
+    {
+      "test": "test_room_art_prefetch_pixels.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "ROOM ART PREFETCH PIXELS PASS checks=117 presentations=56 failures=0"
+      ]
+    },
+    {
+      "test": "test_visible_art_loading_pixels.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "VISIBLE ART PIXELS PASS checks=18 failures=0"
+      ]
+    },
+    {
+      "test": "test_drone_effect_storage.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "DRONE_EFFECT_STORAGE checks=84 failures=0"
+      ]
+    },
+    {
+      "test": "test_drone_cargo_storage.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "DRONE_CARGO_STORAGE scaled_pixels=95460 from_neighbour=716 checks=274 failures=0"
+      ]
+    },
+    {
+      "test": "test_drone_invisible_cache.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "INVISIBLE_CACHE 12 checks; 0 failures"
+      ]
+    },
+    {
+      "test": "test_card_art.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "CARD ART: checks=34 failures=0"
+      ]
+    },
+    {
+      "test": "test_card_drag.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "CARD DRAG PASS: click stays a click, ghost lift, cancel over hand and by right click, preview follow, drop places"
+      ]
+    },
+    {
+      "test": "test_menu_recovery.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "MENU RECOVERY: PASS"
+      ]
+    },
+    {
+      "test": "test_tablet_controls.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "TABLET CONTROLS PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_space.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4070 Ti",
+        "",
+        "TABLET SPACE PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_refinement.gd",
+      "variant": [],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "",
+        "IPAD_STARTUP {\"engine\":\"4.7.2-stable (official)\",\"time\":\"2026-10-17T10:20:36\",\"timings\":{\"scene_load_ms\":60,\"stages_ms\":{\"dialogue_audio_tablet\":27.369,\"interface_and_grid\":10954.937,\"interface_art\":663.637,\"new_loop\":34.745,\"restore\":0.002,\"station_rooms\":99.816},\"station_build_ms\":11788,\"tap_to_loading_visible_ms\":57},\"version\":1}",
+        "IPAD_STARTUP {\"engine\":\"4.7.2-stable (official)\",\"time\":\"2026-10-17T10:20:43\",\"timings\":{\"scene_load_ms\":67,\"stages_ms\":{\"dialogue_audio_tablet\":22.279,\"interface_and_grid\":3976.098,\"interface_art\":255.064,\"new_loop\":28.713,\"restore\":36.195,\"station_rooms\":31.481},\"station_build_ms\":4365,\"tap_to_loading_visible_ms\":45},\"version\":1}",
+        "TABLET REFINEMENT PASS: 0 failures",
+        "WARNING: 34 ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+        "   at: cleanup (core/object/object.cpp:2536)"
+      ]
+    },
+    {
+      "test": "test_tablet_compact_storage.gd",
+      "variant": [
+        "--compact-case=hull"
+      ],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "COMPACT_BYTES 46085760 ORIGINAL_BYTES 144506880",
+        "SCALED_COMPACT scale=0.1 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.3 changed=370 unexplained=0",
+        "SCALED_COMPACT scale=0.5 changed=93 unexplained=0",
+        "SCALED_COMPACT scale=0.73 changed=423 unexplained=0",
+        "TABLET COMPACT STORAGE PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_compact_storage.gd",
+      "variant": [
+        "--compact-case=effect"
+      ],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "COMPACT_BYTES 413280 ORIGINAL_BYTES 144506880",
+        "SCALED_COMPACT scale=0.1 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.3 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.5 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.73 changed=0 unexplained=0",
+        "TABLET COMPACT STORAGE PASS: 0 failures"
+      ]
+    },
+    {
+      "test": "test_tablet_compact_storage.gd",
+      "variant": [
+        "--compact-case=construction"
+      ],
+      "lane": "native",
+      "exit_code": 0,
+      "errors": [],
+      "tail": [
+        "COMPACT_BYTES 32267808 ORIGINAL_BYTES 56623104",
+        "SCALED_COMPACT scale=0.1 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.3 changed=0 unexplained=0",
+        "SCALED_COMPACT scale=0.5 changed=5025 unexplained=0",
+        "SCALED_COMPACT scale=0.73 changed=0 unexplained=0",
+        "TABLET COMPACT STORAGE PASS: 0 failures"
+      ]
+    }
+  ],
+  "source_review": "No code findings in merge7b076ab or packaging fixba698b85. Additional performance interpretation leaves stall attribution open.",
+  "limits": "Forced-tablet metadata on Windows does not establish native Apple behavior, sampling acceptance or physical memory stability."
+}

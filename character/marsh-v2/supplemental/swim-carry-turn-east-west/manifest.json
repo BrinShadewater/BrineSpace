@@ -1,0 +1,151 @@
+{
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "swim-carry-turn-east-west-000.png",
+        "swim-carry-turn-east-west-001.png",
+        "swim-carry-turn-east-west-002.png",
+        "swim-carry-turn-east-west-003.png",
+        "swim-carry-turn-east-west-004.png",
+        "swim-carry-turn-east-west-005.png",
+        "swim-carry-turn-east-west-006.png",
+        "swim-carry-turn-east-west-007.png",
+        "swim-carry-turn-east-west-008.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "north",
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "swim-carry-turn-west-east-000.png",
+        "swim-carry-turn-west-east-001.png",
+        "swim-carry-turn-west-east-002.png",
+        "swim-carry-turn-west-east-003.png",
+        "swim-carry-turn-west-east-004.png",
+        "swim-carry-turn-west-east-005.png",
+        "swim-carry-turn-west-east-006.png",
+        "swim-carry-turn-west-east-007.png",
+        "swim-carry-turn-west-east-008.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        90,
+        100,
+        90,
+        120,
+        90,
+        100,
+        90,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition",
+        "transition"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

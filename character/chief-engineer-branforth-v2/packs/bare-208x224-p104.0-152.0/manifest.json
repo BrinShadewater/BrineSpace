@@ -1,0 +1,79 @@
+{
+  "name": "chief-engineer-branforth-v2-bare-208x224-p104.0-152.0",
+  "frameWidth": 208,
+  "frameHeight": 224,
+  "pivot": [
+    104.0,
+    152.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "swim-south",
+      "frameFiles": [
+        "../../frames/bare/swim-south/000.png",
+        "../../frames/bare/swim-south/001.png",
+        "../../frames/bare/swim-south/002.png",
+        "../../frames/bare/swim-south/003.png",
+        "../../frames/bare/swim-south/004.png",
+        "../../frames/bare/swim-south/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

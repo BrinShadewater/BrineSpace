@@ -1,0 +1,83 @@
+{
+  "asset_id": "parts-cleaning-wall-v1",
+  "department": "Engineering / Maintenance",
+  "condition": "Matte olive paint and charcoal rubber, dry equipment",
+  "attachment_class": "North-backed floor counter",
+  "functional_bays": [
+    "Two opaque bottles and folded work cloth",
+    "Dry recessed basin and short spout",
+    "Ribbed mat with washer, coupling and bracket",
+    "South-facing supply drawers"
+  ],
+  "runtime_behavior": "Static dry parts-cleaning artwork; no liquid or cleaning simulation",
+  "camera_and_facing": "Near top-down; north backing, south drawer access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/mechanical-tool-wall-v1/wall.png",
+      "sha256": "1c84d84884d39973f297fcb28a7d581273b5a47ba8571d5b0aea9177efce90d5",
+      "role": "Engineering cabinet finish and camera"
+    }
+  ],
+  "source_path": "assets/parts-cleaning-wall-v1/source-v2.png",
+  "source_sha256": "f2cb306331bab08c3788c2fc37d236239ad17146d90d70854ecdd2aca413a2ba",
+  "export_path": "assets/parts-cleaning-wall-v1/wall.png",
+  "export_sha256": "3130c18683ac9b141b9a8a7d7b656daa2dd6eb0dd55b28256afb1cb2ab43c869",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Operator clearance",
+    "Existing maintenance machinery"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Dry dark basin without wet reflections; muted bottle shoulder facets remain after V2 edit.",
+        "V2 replaces nut with flat washer; dark backed holes remain opaque."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/parts-cleaning-wall-v1/wall-scale.png",
+      "findings": [
+        "320 by78.70 actual; compared beside furnished Maintenance at same world scale.",
+        "Three small loose parts and two bottles; no occupied reach validation."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "White exterior registered at neutral228; light/dark silhouette reviewed. Basin drain and washer hole are backed, not transparent apertures."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 78.6960690316395,
+  "registration_path": "assets/parts-cleaning-wall-v1/registration.json",
+  "registration_sha256": "d697bd699f85b13fd3cd099ec8ca2e5e85bde71a2a8ff5e7a5b4adac948e8ac7",
+  "prompt_path": "assets/parts-cleaning-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "61191c48620d52edd6cdef690e0404e688b361096c81506086132cb619de413a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/parts-cleaning-wall.log": "af1dae45fb5fd73ee28511cec2ade7da5aa55e16b0f577eca5f73093625c8cad",
+    "output/parts-cleaning-wall-v1/wall-scale.png": "ced77df448a8361f56d31510991e29c7efa1591a6da6c58190ef96eb1c0b0799"
+  }
+}

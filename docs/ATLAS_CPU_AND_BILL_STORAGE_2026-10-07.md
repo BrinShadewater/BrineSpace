@@ -1,0 +1,23 @@
+# Project handoff
+
+Updated: October 7, 2026 · Project: BrineSpace · Task: atlas preparation attribution and remaining crew GPU storage
+
+## Objective and acceptance
+Continue the full PC/Mac performance/release plan. Preserve selected animation pixels, effective filtering, frame identity, timing and Bill's historical save bindings. Full FPS/memory/loading/stability/visual/bug/endurance/platform gates remain open.
+
+## Accepted decisions and constraints
+Do not optimize PNG worker waiting on the assumption it blocks these measured uploads. Do not implement GPU alias sharing on the assumption sampled resident crew images duplicate storage. Keep separate render-thread mode disabled: actual release trial crashes before gameplay. Earlier cropped-frame sampling remains rejected. No source/art/configuration optimization admitted this interval.
+
+## Current state and verification
+1. Physical normal drone helper instrumented only for source-stage timing, then restored exact current bytes (including prior accepted timestamp addition). Normal-source native active40room1080p pan/zoom1/2/4x360frames, clean engine/logs. All54sampled upload events are finished_worker: workers completed before GPU upload; blocking worker wait0. Background read+decode2,384,392us/invisibility54,790us; GPU image creation188,727us. Background worker durations overlap each other and gameplay, not frame stall time. This is native development attribution, not a matched packaged FPS or compressed-crew comparison. Evidence `output/drone-source-cost-2026-10-07/`.
+
+2. Actual debug=false private release dbe44a995a5708be, same40room360frame workload, additive read-only source-alias census. Shown331wrapper objects map to317unique CPU pixel sources. At six sampled phase endpoints,9–16resident GPU allocations have9–16unique source objects; repeated pixel bytes0 at every endpoint. This does not cover transient within-frame duplication, but does not justify an alias-sharing implementation as the main remedy. All phases/routes/art clean; end3037.838MiB. QA adapter restored; PCK unchanged. Evidence `output/crew-source-alias-census-2026-10-07/`.
+
+3. Actual same release `--render-thread separate` trial: engine emits experimental-mode warning, Windows GL VSync warning, then fatal CowData out-of-bounds before gameplay. No performance result; configuration unchanged; owned process terminal and QA adapter restored. Do not repeat as a release optimization. Evidence `output/separate-render-release-2026-10-07/`. Primary4.7.2 source confirms CLI modes/default Safe and deferred main-thread post-draw steps: https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/main/main.cpp and https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/servers/rendering/rendering_server_default.cpp. Source investigation supports trial setup, not stability or efficacy. Engine upgrade not proposed.
+
+4. Actual normal-mode packaged startup after the rejected thread trial succeeds cleanly. Opt-in weak metadata inventory, no GPU pixel readback: crew pool2,354surviving storages/543,183,616decoded bytes, inventory complete;2,170Bill-named first-source records/518,265,600bytes (~494.26MiB), other first-source paths24,918,016bytes. First-source labels do not prove exclusive ownership or exact GPU residency. Room pool4records/23,592,164bytes. Initial few-room scene9.468s request-to-ready/1082.994MiB textures; exit80.055MiB/router released. This is not12/40room or loading-gate acceptance. Exact adapter identity hash recorded; QA adapter restored. Evidence `output/retained-startup-inventory-2026-10-07/`.
+
+All successful/failed processes terminal. Each isolated lane preserves all2,936owner non-log files. Frozen release inputs untouched. Normal renderer/selection/physics/settings remain as before this interval.
+
+## Next action
+Audit Bill's actual frame object types, aliases, draw consumers and historical binding selection before attempting session-owned CPU source/GPU presentation. The494MiB named-storage inventory justifies this larger memory lead, not a saving claim. Preserve allhistorical sources and frame wrappers; keep archives. Existing compressed crew bank/player/presenter may supply lossless primitives, but original Bill class chain and binding behavior must remain intact. Test all binding variants and live/save transitions before any admission; first prototype isolated. Reduced retained storage could provide memory headroom for a later measured atlas strategy, but do not enlarge GPU budgets now. GPU uploads and redraw-only frame costs still both require solutions; 60FPS gate remains failed.

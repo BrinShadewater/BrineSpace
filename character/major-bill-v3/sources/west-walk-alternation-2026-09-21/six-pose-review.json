@@ -1,0 +1,68 @@
+{
+  "status": "staged six-pose west walk; not installed",
+  "generation_tool": "built-in image_gen; no Higgsfield",
+  "new_sources": {
+    "passing-b-low.png": {
+      "sha256": "4637bc76984e6702ccf428df4583b39f248c1551c1393f269da4a31e53800a70",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "down-a.png": {
+      "sha256": "be93206c963eabe3b8303dd4ff16dc41f8884223958e9613e5af894f5e9b7c8d",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "down-b.png": {
+      "sha256": "d5033276f57783769beddd232359a3861e8fd83df958222295267540cc81a8ea",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  },
+  "native": {
+    "bare_frames": 27,
+    "helmet_frames": 27,
+    "phase_parity": true,
+    "cycle_ms": 900
+  },
+  "paid_station": {
+    "candidate_getter_verified": true,
+    "captures": 480,
+    "complete": true,
+    "failures_disabled": false,
+    "free_build": false,
+    "running": true,
+    "scope": "Native paid setup with controlled blueprints; autonomous walk/state transitions; manual30Hz simulation and actor-follow crop each sample; station capture each30samples; not human playtesting",
+    "west_samples": 80
+  },
+  "first_station_attempt": {
+    "exit": 1,
+    "west_samples": 24,
+    "total_samples": 240,
+    "reason": "Insufficient west coverage before north turn; retained separately"
+  },
+  "selected_bare_walk_hashes_unchanged": 12,
+  "limits": [
+    "Controlled renderer and paid opening fixtures, not human expedition acceptance",
+    "Source detail and gait aesthetics awaiting owner feedback",
+    "Foot-lock and continuous world-space boot contact not proven",
+    "East remains current source poses"
+  ]
+}

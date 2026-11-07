@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "kind": "ground",
+      "stage": "integrated; native station reviewed; owner approval pending",
+      "selected_source": "shell-hash-ground-v2.png",
+      "versions": [
+        {
+          "rejection": "Native mirrored repetition creates conspicuous diamond bands; retained for comparison",
+          "sha256": "afd06da3ed264e1a10a5dc420fe2efe25941743f29f22ba514a05fb7c677a5bc",
+          "file": "shell-hash-ground-v1.png"
+        },
+        {
+          "file": "shell-hash-ground-v2.png",
+          "sha256": "2bbcaa492cc3d6f4650dab146b27170e3b3f99864c78bcab0637e5394dc151de",
+          "rejection": null
+        }
+      ],
+      "id": "shell-hash-ground"
+    },
+    {
+      "id": "limestone-cobbles",
+      "kind": "prop",
+      "stage": "integrated; native station reviewed; owner approval pending",
+      "selected_source": "limestone-cobbles-v1.png",
+      "versions": [
+        {
+          "rejection": null,
+          "sha256": "46a11a5dfb448a86fc89c9454825c1f174eb72beb13452b31e62f7151680e934",
+          "file": "limestone-cobbles-v1.png"
+        }
+      ]
+    },
+    {
+      "id": "shell-bed",
+      "kind": "prop",
+      "stage": "integrated; native station reviewed; owner approval pending",
+      "selected_source": "shell-bed-v1.png",
+      "versions": [
+        {
+          "file": "shell-bed-v1.png",
+          "rejection": null,
+          "sha256": "a9f96634ad3d11b79b1338f258ac78439b6dfb5e4770bfb2f81e84205c39f1cf"
+        }
+      ]
+    }
+  ],
+  "prompt_records": [
+    "generation-record.json",
+    "props-record.json",
+    "ground-revision-record.json",
+    "shell-bed-record.json"
+  ],
+  "title": "Shell shoal terrain study",
+  "runtime_registry": "shell_shoal_view.gd"
+}

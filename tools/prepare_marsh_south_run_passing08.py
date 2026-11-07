@@ -1,0 +1,21 @@
+"""Use single correctly sided pose first; retain07's wrong-side result."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1];BASE=ROOT/'character/marsh-south-run-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    original=ROOT/'character/marsh-south-idle-material-v1/candidate-01/000.png';guide=BASE/'selected-idle0-only.png';Image.open(original).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(guide)
+    prompt='''Draw TWO complete full-body Marsh figures side by side with wide transparent space, actual transparent background. Same elevated FRONT/SOUTH camera. Figure1 follows reference1's EXACT LEG ARRANGEMENT. Its long planted/supporting boot is on the RIGHT SIDE OF THE IMAGE, and the lifted foot is on the LEFT SIDE OF THE IMAGE. Preserve those sides exactly. Reference1 is the specific single selected walk pose, not a multi-pose sheet. Turn that whole pose into a mildly compressed running passing pose: supporting knee bends slightly, pelvis/head lower modestly about3% of standing height, lifted knee moves beneath pelvis, elbows bend naturally near sides. No crouching or deep knee bend. Keep original complete adult body anatomy/head/collar/chest equipment at unchanged scale.
+
+Figure2 stands neutral arms down exactly as reference2, the single selected idle. Reference2 is PRIMARY for fitted adult head/body/equipment proportions, drawing density, warm ivory/sage/slate material grade and the SAME body scale in both figures. Reference3 original standing master controls swept blond male identity and implant on HIS RIGHT temple, viewer LEFT. Do not mirror either figure or swap leg sides. Asymmetric implant stays on viewer LEFT even though the supporting foot of figure1 is on viewer RIGHT.
+
+Keep neutral and passing planted boot soles at the SAME floor baseline; passing head lowers only gently through natural knee/hip flexion. Ruler selected neutral occupies58wide by147high native pixels in184square canvas with pivot92/172, metadataH148. These are calibration, not text. ONE shared anatomical scale from neutral; no per-pose fit or resizing. Warm ivory suit panels/fabric and boot uppers; muted sage shoulders/pouches, slate flexible joints, charcoal gloves and SOLES. Crisp restrained pixel clusters and matte material, no cold blue/cyan, glossy finish, wider chest, bigger head or extra equipment. Fully connected whole shoulders/elbows/hands and hips/knees/ankles/boots. Two whole bodies only, no limb fragments or patches. No labels, text, magenta, floor, shadows, halo, glow, haze or effects. Transparency begins outside silhouettes.'''
+    path=BASE/'passing-08.prompt.txt';assert not path.exists();path.write_text(prompt+'\n',encoding='utf-8')
+    refs=[BASE/'right-support-selected-walk3.png',guide,ROOT/'character/marsh-motion-polish-v1/sources/south-standing-identity-01.png']
+    req={'normalAdmission':False,'status':'frozen single-pose-first request before generation','promptSha256':sha(path),'orderedReferences':[{'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in refs],'idleGuideSource':{'path':original.relative_to(ROOT).as_posix(),'sha256':sha(original),'operation':'whole RGBA nearest4x'},'transparentBackground':True,'sheetGrid':[2,1],'constraints':'Correct right support, mild compression at one neutral scale, no mirror/anatomicalpatch/recolour/perposefit.'}
+    (BASE/'passing-08.request.json').write_text(json.dumps(req,indent=2)+'\n')
+    source=(ROOT/'tools/build_marsh_south_run_passing05.py').read_text().replace('passing-05','passing-07').replace('exec-f135a5ba-5de8-4914-b347-105c357cac07','exec-a9d2c8e4-0968-4bbd-8e91-3a20f97fbdde').replace('visually correct support side','wrong support side').replace('Correct side / pending','Wrong support side').replace('Correct viewer RIGHT support in raw source; head/torso/grade/stride and alpha edges pending whole-cycle review.','Requested viewer RIGHT support, generated viewer LEFT support. Mild dip retained, not valid as right phase; no mirror/patch.')
+    (ROOT/'tools/build_marsh_south_run_passing07.py').write_text(source,encoding='utf-8')
+    print('Frozen08 single pose first and prepared rejected07 retention.')
+if __name__=='__main__':main()

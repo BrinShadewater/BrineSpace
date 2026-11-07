@@ -1,0 +1,105 @@
+{
+  "valid": true,
+  "scope": "QA deterministic simulation and real free-fixture placements; not owner gameplay acceptance or leak proof.",
+  "source": "physical_stress_result.json",
+  "phases": 9,
+  "samples": 5400,
+  "placement_room_counts": [
+    41,
+    42,
+    43
+  ],
+  "worst_frame_ms": 1049.881,
+  "phases_summary": [
+    {
+      "action": "idle",
+      "speed": 1.0,
+      "mean_ms": 50.6746516666666,
+      "p95_ms": 66.334,
+      "p99_ms": 86.832,
+      "max_ms": 598.97,
+      "texture_mb": 1300.70723056793,
+      "rooms_end": 40
+    },
+    {
+      "action": "zoom",
+      "speed": 1.0,
+      "mean_ms": 75.0908583333333,
+      "p95_ms": 116.35,
+      "p99_ms": 149.605,
+      "max_ms": 202.187,
+      "texture_mb": 1302.47598743439,
+      "rooms_end": 40
+    },
+    {
+      "action": "placement",
+      "speed": 1.0,
+      "mean_ms": 48.19094,
+      "p95_ms": 50.436,
+      "p99_ms": 64.953,
+      "max_ms": 333.16,
+      "texture_mb": 1316.56131839752,
+      "rooms_end": 41
+    },
+    {
+      "action": "idle",
+      "speed": 2.0,
+      "mean_ms": 64.9842633333333,
+      "p95_ms": 99.72,
+      "p99_ms": 133.277,
+      "max_ms": 346.796,
+      "texture_mb": 1323.39720630646,
+      "rooms_end": 41
+    },
+    {
+      "action": "zoom",
+      "speed": 2.0,
+      "mean_ms": 78.7500233333333,
+      "p95_ms": 131.095,
+      "p99_ms": 166.23,
+      "max_ms": 282.728,
+      "texture_mb": 1332.44005298615,
+      "rooms_end": 41
+    },
+    {
+      "action": "placement",
+      "speed": 2.0,
+      "mean_ms": 57.750775,
+      "p95_ms": 83.013,
+      "p99_ms": 116.312,
+      "max_ms": 666.671,
+      "texture_mb": 1353.89602375031,
+      "rooms_end": 42
+    },
+    {
+      "action": "idle",
+      "speed": 4.0,
+      "mean_ms": 74.9389533333333,
+      "p95_ms": 114.244,
+      "p99_ms": 160.587,
+      "max_ms": 649.731,
+      "texture_mb": 1368.73207569122,
+      "rooms_end": 42
+    },
+    {
+      "action": "zoom",
+      "speed": 4.0,
+      "mean_ms": 76.4784833333333,
+      "p95_ms": 116.917,
+      "p99_ms": 166.224,
+      "max_ms": 231.82,
+      "texture_mb": 1321.6259393692,
+      "rooms_end": 42
+    },
+    {
+      "action": "placement",
+      "speed": 4.0,
+      "mean_ms": 67.0486483333334,
+      "p95_ms": 99.647,
+      "p99_ms": 149.831,
+      "max_ms": 1049.881,
+      "texture_mb": 1346.94991397858,
+      "rooms_end": 43
+    }
+  ]
+}

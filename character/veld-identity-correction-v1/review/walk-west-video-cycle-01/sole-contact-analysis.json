@@ -1,0 +1,45 @@
+{
+  "status": "manual_contact_calibration",
+  "phaseFractions": [
+    0.0,
+    0.18888888888888888,
+    0.3333333333333333
+  ],
+  "records": [
+    {
+      "leg": "first support",
+      "heelX": [
+        109,
+        132,
+        145
+      ]
+    },
+    {
+      "leg": "second support",
+      "heelX": [
+        110,
+        134,
+        146
+      ]
+    }
+  ],
+  "selectedStride": 108,
+  "comparison": {
+    "76": [
+      10.67,
+      10.67
+    ],
+    "108": [
+      2.6,
+      3.6
+    ],
+    "122": [
+      4.67,
+      5.62
+    ]
+  },
+  "limits": [
+    "Manually read heel-to-sole junctions have 1-2 pixel uncertainty and heel roll.",
+    "Slot-boundary residuals do not prove continuous foot locking between held frames."
+  ]
+}

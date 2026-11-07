@@ -1,0 +1,74 @@
+{
+  "sources": {
+    "west-start-01.png": "7b3b10858b026a333568c05b97741ff1e0e2f917cba181706772a9aecce47f3d",
+    "tread-west-endpoint.png": "d2b90bce466442c67a8869680191cdc0c695e1e6546fd52396683d1dd1ee82f0",
+    "swim-west-endpoint.png": "75eaa4bbb69ae2a011b114cf1138315a3d0575147c900ff7b3030527ab768eb1"
+  },
+  "registration": [
+    {
+      "cell": [
+        0,
+        0,
+        724,
+        724
+      ],
+      "sourceShoulder": [
+        366,
+        324
+      ],
+      "targetShoulder": [
+        95,
+        116
+      ],
+      "scale": 0.24,
+      "offset": [
+        7,
+        38
+      ]
+    },
+    {
+      "cell": [
+        724,
+        0,
+        1448,
+        724
+      ],
+      "sourceShoulder": [
+        1028,
+        340
+      ],
+      "targetShoulder": [
+        89,
+        128
+      ],
+      "scale": 0.24,
+      "offset": [
+        16,
+        46
+      ]
+    },
+    {
+      "cell": [
+        1448,
+        0,
+        2172,
+        724
+      ],
+      "sourceShoulder": [
+        1750,
+        394
+      ],
+      "targetShoulder": [
+        83,
+        136
+      ],
+      "scale": 0.24,
+      "offset": [
+        11,
+        41
+      ]
+    }
+  ],
+  "derived": "Stop reverses authored start poses; unchanged tread/swim zero-frame endpoints, transparent padding only",
+  "scope": "west start and stop only; no cargo or turns"
+}

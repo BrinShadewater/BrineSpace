@@ -1,0 +1,93 @@
+{
+  "assets": [
+    {
+      "id": "medical_supply_wall",
+      "source": "assets/medical-supply-wall-v1/wall-source-v1.png",
+      "source_sha256": "482b159e620521cc8d873af5c84a463f2ebddc58fae9b03a7cfeb7f11785eabc",
+      "export": "assets/medical-supply-wall-v1/wall.png",
+      "export_sha256": "06edfb1aeae13bd5350e94bb52e9e156af196f34dfd423bdbca739255bb5de95",
+      "native_dimensions": [
+        2172,
+        724
+      ],
+      "display_width_world": 320,
+      "visible_height_world": 68.17,
+      "registration": "assets/medical-supply-wall-v1/wall.json",
+      "neutral_min": 185,
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "Pale cream/teal with diffuse cabinet surfaces; closed supplies and return area separated",
+        "alpha": "Exterior corners clear; native light/dark board reviewed; retained supply materials tested",
+        "evidence": "output/medical-supply-wall-v1/wall-scale.png",
+        "evidence_sha256": "231c9ca8b8cc077b69b6f3234609bda6c110c73a796d921c25c0bdfb27753c38",
+        "log": "output/medical-supply-wall-final.log",
+        "owner_acceptance": null
+      },
+      "floor_collision": null,
+      "integration": false
+    },
+    {
+      "id": "medical_supply_cart",
+      "source": "assets/medical-supply-wall-v1/cart-source-v2.png",
+      "source_sha256": "3f27fc76eee93b0ab16970499c9485a7abc530c11874f0c2c4c166c16c4e642f",
+      "export": "assets/medical-supply-wall-v1/cart.png",
+      "export_sha256": "061dee29e9c51b88e0d8a4eb06fc7bbfc2c97a8db3b9cd437733c79756eedf95",
+      "native_dimensions": [
+        1254,
+        1254
+      ],
+      "display_width_world": 36,
+      "visible_height_world": 43.49,
+      "registration": "assets/medical-supply-wall-v1/cart.json",
+      "neutral_min": 185,
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "V2 reduces glossy rim, cassette and packet highlights; inset molded pulls avoid chrome",
+        "alpha": "Exterior corners clear; native light/dark board reviewed; retained supply materials tested",
+        "evidence": "output/medical-supply-wall-v1/cart-scale.png",
+        "evidence_sha256": "190c3997af92f2597cb2c35122eca683f7606660decb80e93cb83cf2bef9b66d",
+        "log": "output/medical-supply-cart.log",
+        "owner_acceptance": null
+      },
+      "floor_collision": null,
+      "integration": false
+    }
+  ],
+  "sources": [
+    {
+      "path": "assets/medical-supply-wall-v1/cart-source-v1.png",
+      "sha256": "081f245e53e1f774495721eacd9223af57d63644141ecc4b0864ad375b198657",
+      "mode": "RGBA",
+      "selected": false
+    },
+    {
+      "path": "assets/medical-supply-wall-v1/cart-source-v2.png",
+      "sha256": "3f27fc76eee93b0ab16970499c9485a7abc530c11874f0c2c4c166c16c4e642f",
+      "mode": "RGB",
+      "selected": true
+    },
+    {
+      "path": "assets/medical-supply-wall-v1/wall-source-v1.png",
+      "sha256": "482b159e620521cc8d873af5c84a463f2ebddc58fae9b03a7cfeb7f11785eabc",
+      "mode": "RGB",
+      "selected": true
+    }
+  ],
+  "references": [
+    {
+      "path": "assets/crew-linen-wall-v1/wall.png",
+      "sha256": "e0e8c430116bce333b69724b7baf9c7944684316980bdcfd82e3b481a324e0f1",
+      "role": "fitted scale/matte guidance only, not domestic subject"
+    },
+    {
+      "path": "rooms/decoration-integration/med_bay.png",
+      "sha256": "75bb74b4eed5d59af3c333b50a7d3e5284803147a5eae3243ae235135520db33",
+      "role": "established clinical palette, equipment and scale, exclude old glossy treatment"
+    }
+  ],
+  "generation": "built-in imagegen",
+  "prompts": "prompts.json",
+  "renderer": "tools/review_registered_wall_asset.gd",
+  "renderer_sha256": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c",
+  "processing": "Read-only neutral185 source registration and native UV export; wall-only exterior spikes clipped above source y147, prior registration preserved; original rasters unchanged."
+}

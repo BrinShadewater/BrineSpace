@@ -1,0 +1,52 @@
+{
+  "asset_id": "meal-trolley",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "low freestanding rolling cabinet",
+  "camera_and_facing": "overhead shallow cutaway; working controls/handle face bottom",
+  "references": [],
+  "source_path": "assets/meal-trolley-v1/source.png",
+  "source_sha256": "ca8b21a459a23f93f78c58354b50c812a9473b46be1e32ab199013d494f01233",
+  "export_path": "assets/meal-trolley-v1/meal-trolley.png",
+  "export_sha256": "2eb8072da9a3974ee63c36cc4ee8799a6c8eea10092e7bbed7d2c1b4c5329b3d",
+  "native_canvas_px": [
+    1060,
+    1484
+  ],
+  "proposed_display_width_world": 38,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Actual room placement and collision not established; preserve door approaches."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte putty tray and brown frame; two covered containers and dark cups; no operating glow."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/meal-trolley-review.png",
+      "findings": [
+        "Viewed at 38 world units width beside existing furnishings/crew; visual height 66.3 units.",
+        "Fine details simplify at game scale; no size increase to expose them."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source registered at alpha 128; one silhouette polygon.",
+        "Export inspected on light and dark grounds; silhouette and valid pale interior retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Portrait props need aspect-fitted enlarged diagnostics while native preview preserves intended display scale."
+  ]
+}

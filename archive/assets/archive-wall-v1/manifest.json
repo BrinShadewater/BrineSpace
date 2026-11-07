@@ -1,0 +1,65 @@
+{
+  "room": "data_archive",
+  "stage": "verified",
+  "layout": "layout_06_core",
+  "kind": "split-door",
+  "department": "Science / data storage",
+  "condition": "maintained",
+  "sources": [
+    {
+      "source": "assets/archive-wall-v1/north.png",
+      "sha256": "2ec0360f882e01fc744275725c7fafccb5efe591b9f88b88f79963c49d4d9d78",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/archive-wall-v1/north.prompt.txt",
+      "references": [
+        "rooms/underwater/batch-two/data_archive-source-v1.png",
+        "assets/wall-room-rollout-v1/command-split-north.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    },
+    {
+      "source": "assets/archive-wall-v1/sides.png",
+      "sha256": "f8cab418f6077e364b267883a50a8ec256553e4a135201a52f2cb7ff62e0ecb5",
+      "dimensions": [
+        963,
+        1633
+      ],
+      "mode": "RGB",
+      "prompt": "assets/archive-wall-v1/sides.prompt.txt",
+      "references": [
+        "assets/archive-wall-v1/north.png",
+        "assets/wall-room-rollout-v1/command-split-sides.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    },
+    {
+      "source": "assets/archive-wall-v1/south.png",
+      "sha256": "f090bc1d27643240e85e23008efa40698289a325ede9755b88785b6830ab1025",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/archive-wall-v1/south.prompt.txt",
+      "references": [
+        "assets/archive-wall-v1/north.png"
+      ],
+      "stage": "native-reviewed",
+      "selected": true
+    }
+  ],
+  "pending": [],
+  "verification": {
+    "native": "output/archive-wall-review.log",
+    "anchors": "output/archive-wall-anchors.log",
+    "routes": "output/archive-wall-routes.log",
+    "source_audit": "output/archive-source-audit/audit.json",
+    "card": "assets/archive-wall-v1/card.png"
+  }
+}

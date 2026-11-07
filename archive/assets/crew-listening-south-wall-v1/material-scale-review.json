@@ -1,0 +1,71 @@
+{
+  "asset_id": "crew-listening-south-wall-v1",
+  "department": "Crew recreation",
+  "condition": "Maintained",
+  "attachment_class": "South-wall standing selection counter",
+  "functional_bays": [
+    "Cassette trays",
+    "Player",
+    "Two backed headphone docks",
+    "Album case and rust cloth"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "North-facing top-edge controls, pulls and latch; plain southern service base",
+  "references": [
+    {
+      "path": "assets/crew-listening-wall-v1/crew-listening-wall.png",
+      "sha256": "d2ac90c740e6daf6f1ed9364168333e54857593c7beee746c3bc0cb49d7c7017",
+      "role": "North inventory and warm matte material reference"
+    }
+  ],
+  "source_path": "assets/crew-listening-south-wall-v1/source.png",
+  "source_sha256": "d582f092407acb427260d8ee5c042fbc079e2bda575cff2ead37eb5738f7aecf",
+  "export_path": "assets/crew-listening-south-wall-v1/crew-listening-south.png",
+  "export_sha256": "044319cbd6798f99b09b84befe64d9d724b293909062bc327a1e79593964918a",
+  "native_canvas_px": [
+    1881,
+    836
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Standing counter; no knee recess. Directional visual depths vary; runtime placement remains unverified."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Quiet warm wood, putty player and matte fabric. No dominant rim glare at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "320-unit bank reviewed beside Command Center at equal scale. Top-edge controls and handles face north. Meter lies below knob rather than requested top position; remains a flat visible readout. Headphones small with backed docks."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Light/dark native boards show a clean exterior; headphone docks remain opaque. RGB checkerboard excluded using neutral185 registration."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/crew-listening-south-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 60.15435501653804,
+  "registration_path": "assets/crew-listening-south-wall-v1/registration.json",
+  "registration_sha256": "8bf482bbfa6731be513a27e685bb2906979bdd86700e2983c703744e76775828",
+  "prompt_path": "assets/crew-listening-south-wall-v1/source.prompt.txt",
+  "prompt_sha256": "3bbec2958132981782a819520ad36ae2e0a3c718d43f60a73d9a9ba8706ff9df",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

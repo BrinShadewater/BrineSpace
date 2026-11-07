@@ -1,0 +1,55 @@
+{
+  "status": "selected_source_native_verified_live_context_pending",
+  "checks": [
+    "18 body frames present",
+    "Exact idle and kneel/sample/stand joins",
+    "All six kneel source silhouettes extracted intact at actual transparent gaps"
+  ],
+  "timing": {
+    "kneel-west": {
+      "durations": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "seconds": 0.52
+    },
+    "stand-west": {
+      "durations": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "seconds": 0.52
+    },
+    "repair-west": {
+      "durations": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "seconds": 0.84
+    }
+  },
+  "review": "Agent inspected all bare-body phases together; native temporal and fitted helmet review pending.",
+  "remaining": [
+    "Continuous live workplace motion and occlusion",
+    "North sample chain"
+  ],
+  "nativeEvidence": "output/crew-replacement-2026-09-12/veld/identity-west-sample-chain-selected.log",
+  "limits": [
+    "Current selected evidence in README and ledger; continuous live review pending."
+  ]
+}

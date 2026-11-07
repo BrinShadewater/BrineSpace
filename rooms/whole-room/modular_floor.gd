@@ -1,0 +1,194 @@
+extends RefCounted
+## Pilot tile geometry. Cached in room-local coordinates; no zoom or light state in keys.
+const SCIENCE="res://assets/department-floors-v2/science-panels.png"
+const HALL_TILES="res://assets/corridor-risers-v2/floor.png"
+const HALL_ALTERNATES=["res://assets/corridor-risers-v2/floor-rubber.png","res://assets/corridor-risers-v2/floor-sage.png","res://assets/corridor-risers-v2/floor-bronze.png"]
+const HALL_QUIET="res://assets/hallway-floor-tiles-v1/source.png"
+const DECK="res://assets/floors-and-details-v5/corridor-deck.png"
+const MATERIALS=["Original","Sealed panel","Steel plate","Grating"]
+const LIMIT=96
+static var enabled:=not OS.get_cmdline_user_args().has("--reference-floor-tiles")
+static var cache: Dictionary={}
+# Evicted batches stay referenced here: a canvas drawn with them may never redraw.
+static var retired: Array=[]
+static var textures: Dictionary={}
+static var cell_cache: Dictionary={}
+static var builds:=0
+static var hits:=0
+const FLOOR_REVISIONS={
+	"res://assets/corridor-risers-v2/floor-sage.png":"res://assets/corridor-risers-v2/floor-sage-v2.png",
+	"res://assets/corridor-risers-v2/floor-bronze.png":"res://assets/corridor-risers-v2/floor-bronze-v2.png",
+}
+static func texture(path: String) -> Texture2D:
+	if not textures.has(path):
+		var im:Image=preload("res://scripts/hand_image_preparation.gd").take(FLOOR_REVISIONS.get(path,path))
+		var stored:Image=preload("res://scripts/tablet_floor_texture.gd").image_for(FLOOR_REVISIONS.get(path,path))
+		if stored!=null:im=stored
+		if im==null:
+			im=Image.new()
+			preload("res://scripts/safe_image.gd").load_png(im,FLOOR_REVISIONS.get(path,path))
+		textures[path]=ImageTexture.create_from_image(im)
+	return textures[path]
+static func pilot(id: String) -> bool: return id in ["research_lab", "reactor", "life_support", "crew_hab", "corridor", "corner", "tee_corridor", "hydroponics_bay", "mycelium_nursery", "tidal_condenser", "quarantine_cell", "cryo_chamber", "clone_lab", "med_bay", "storage_bay", "pressure_control", "crew_lounge", "mining_drone_bay", "ore_refinery", "listening_post", "xeno_lab", "maintenance_bay", "bio_lab", "isolation_vault", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "brine_core", "solar_array", "battery_array", "salvage_drone_bay", "gravity_loom", "data_archive", "biodome", "anomaly_lab", "command_center", "holographic_core", "med_center", "med_office", "radio_lab", "shield_generator", "observation_room", "salvage_workshop", "galley", "cold_store"]
+static func tile_key(cell: Vector2i) -> String: return "tile/%d/%d" % [cell.x,cell.y]
+static func material_key(cell: Vector2i) -> String: return "floor/material/%d/%d" % [cell.x,cell.y]
+static func tile_at(point: Vector2) -> Vector2i: return Vector2i(((point+Vector2.ONE*192)/48).floor())
+static func floor_values(values: Dictionary) -> Dictionary:
+	var result: Dictionary={}
+	for key in values:
+		if str(key).begins_with("tile/") or str(key).begins_with("floor/"): result[key]=values[key]
+	return result
+static func rectangle(rect: Rect2) -> PackedVector2Array:
+	return PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)])
+static func footprint(corridor: bool, q: int, shape:="corridor") -> PackedVector2Array:
+	if not corridor: return rectangle(Rect2(-192,-192,384,384))
+	var result:=PackedVector2Array()
+	for p in preload("res://rooms/underwater/corridor_geometry.gd").floor_for(shape=="corner",shape=="tee_corridor"):
+		result.append(preload("res://tools/modular_room_geometry.gd").turn(p,q))
+	return result
+static func cells(corridor: bool, q: int, shape:="corridor") -> Array[Vector2i]:
+	var key:=str(corridor)+str(q if corridor else 0)+shape
+	if cell_cache.has(key): return cell_cache[key]
+	var result: Array[Vector2i]=[]
+	var poly:=footprint(corridor,q,shape)
+	for y in range(8):
+		for x in range(8):
+			var cell:=Vector2i(x,y)
+			if Geometry2D.is_point_in_polygon(Vector2(cell)*48-Vector2.ONE*168,poly): result.append(cell)
+	cell_cache[key]=result
+	return result
+static func tile_material(values: Dictionary, cell: Vector2i) -> int:
+	var value=values.get(material_key(cell),0)
+	return clampi(int(value),0,3) if value is int or value is float else 0
+static func add_polygon(groups: Dictionary, path: String, poly: PackedVector2Array, rect: Rect2, uv_rect: Rect2, color: Color, corridor_original:=false, q:=0) -> void:
+	var triangles:=Geometry2D.triangulate_polygon(poly)
+	if triangles.is_empty(): return
+	if not groups.has(path): groups[path]={"vertices":PackedVector3Array(),"uv":PackedVector2Array(),"colors":PackedColorArray(),"indices":PackedInt32Array()}
+	var group: Dictionary=groups[path]
+	var offset: int=group.vertices.size()
+	for p in poly:
+		group.vertices.append(Vector3(p.x,p.y,0))
+		group.uv.append((preload("res://tools/modular_room_geometry.gd").turn(p,-q)+Vector2.ONE*192)/384 if corridor_original else uv_rect.position+(p-rect.position)/rect.size*uv_rect.size)
+		group.colors.append(color)
+	for index in triangles: group.indices.append(index+offset)
+static var finish_catalog: Dictionary={}
+static func finishes() -> Dictionary:
+	if not finish_catalog.is_empty(): return finish_catalog
+	var result: Dictionary={"Station deck":DECK,"Industrial hallway deck":HALL_TILES,"Quiet hallway panels":HALL_QUIET}
+	result["Hallway charcoal studded rubber"]=HALL_ALTERNATES[0]
+	result["Hallway sage grooved steel"]=HALL_ALTERNATES[1]
+	result["Hallway muted bronze tread"]=HALL_ALTERNATES[2]
+	result["Engineering access plates"]="res://assets/room-floor-tiles-v3/engineering-access.png"
+	result["Life support drainage panels"]="res://assets/room-floor-tiles-v3/life-support-drainage.png"
+	result["Habitation cork composite"]="res://assets/room-floor-tiles-v3/habitation-composite.png"
+	result["Medical sealed terrazzo"]="res://assets/room-floor-tiles-v4/medical-terrazzo.png"
+	result["Hydroponics slotted decking"]="res://assets/room-floor-tiles-v4/hydroponic-drainage.png"
+	result["Cargo reinforced loading plates"]="res://assets/room-floor-tiles-v4/cargo-anchor.png"
+	result["Data antistatic rubber"]="res://assets/room-floor-tiles-v4/server-rubber.png"
+	result["Galley hex mosaic panels"]="res://assets/room-floor-tiles-v4/galley-hex.png"
+	result["Lounge woven acoustic panels"]="res://assets/room-floor-tiles-v4/lounge-acoustic.png"
+	result["Reactor heatshield ceramics"]="res://assets/room-floor-tiles-v5/reactor-heatshield.png"
+	result["Cryo insulated composite"]="res://assets/room-floor-tiles-v5/cryo-insulated.png"
+	result["Robotics ESD workdeck"]="res://assets/room-floor-tiles-v5/robotics-esd.png"
+	result["Refinery basalt wear plates"]="res://assets/room-floor-tiles-v5/refinery-basalt.png"
+	result["Command precision inlay"]="res://assets/room-floor-tiles-v5/command-inlay.png"
+	result["Observation mineral slate"]="res://assets/room-floor-tiles-v5/observation-slate.png"
+	for row in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json")):
+		var path:=str(row.source)
+		if path in result.values(): continue
+		result[path.get_file().get_basename().replace("-"," ").capitalize()]=path
+	# Finishes cut from the tileset library: {"caption": "res://path.png"}, owner-picked.
+	var extra:="res://rooms/tileset-library/floors.json"
+	if FileAccess.file_exists(extra):
+		var picked: Variant=JSON.parse_string(FileAccess.get_file_as_string(extra))
+		if picked is Dictionary:
+			for caption in picked:
+				if not str(picked[caption]) in result.values(): result[str(caption)]=str(picked[caption])
+	finish_catalog=result
+	return result
+
+static func hall_module(local: Vector2, _shape: String, _variant:=0) -> Dictionary:
+	# Use the new atlas in its authored order, without the retired service-lane pattern.
+	var cell:=Vector2i(((local+Vector2.ONE*192)/24).floor())
+	return {"tile":Vector2(posmod(cell.x,8),posmod(cell.y,8)),"turn":0}
+
+static func hall_divisions(path: String) -> int:
+	return 6 if path==HALL_ALTERNATES[1] else 7 if path==HALL_ALTERNATES[2] else 8
+
+static func add_hall_cell(groups: Dictionary, rect: Rect2, poly: PackedVector2Array, q: int, shape: String, color: Color, variant:=0, path:=HALL_TILES, selected: Variant=null) -> void:
+	var turn=preload("res://tools/modular_room_geometry.gd")
+	var divisions:=hall_divisions(path)
+	for y in range(2):
+		for x in range(2):
+			var small:=Rect2(rect.position+Vector2(x,y)*24,Vector2.ONE*24)
+			var module:=hall_module(turn.turn(small.get_center(),-q),shape,variant)
+			if selected is Array and selected.size()==2 and (selected[0] is int or selected[0] is float) and (selected[1] is int or selected[1] is float):
+				module.tile=Vector2(selected[0],selected[1])
+			module.tile=Vector2(posmod(int(module.tile.x),divisions),posmod(int(module.tile.y),divisions))
+			for clipped in Geometry2D.intersect_polygons(rectangle(small),poly):
+				var offset: int=groups.get(path,{"uv":[]}).uv.size()
+				add_polygon(groups,path,clipped,small,Rect2(module.tile/divisions,Vector2.ONE/divisions),color)
+				for i in range(clipped.size()):
+					var local:=turn.turn((clipped[i]-small.get_center())/24,-q-int(module.turn))+Vector2.ONE*.5
+					groups[path].uv[offset+i]=(module.tile+local)/divisions
+
+static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, source_path:=SCIENCE, shape:="corridor", variant:=0) -> Array:
+	var relevant:=floor_values(values)
+	var key:=hash([relevant,corridor,q,opacity,source_path,shape,variant])
+	if cache.has(key): hits+=1; return cache[key]
+	var groups: Dictionary={}
+	var poly:=footprint(corridor,q,shape)
+	for cell in cells(corridor,q,shape):
+		var rect:=Rect2(Vector2(cell)*48-Vector2.ONE*192,Vector2.ONE*48)
+		var regions:=Geometry2D.intersect_polygons(rectangle(rect),poly)
+		var material:=tile_material(values,cell)
+		var path:String=tile_source(values,cell,corridor,source_path)
+		var finished:bool=str(values.get("floor/finish","")) in finishes().values()
+		var uv_rect: Rect2
+		if material==0:
+			var source=values.get(tile_key(cell),[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4])
+			if not source is Array or source.size()!=2 or not (source[0] is int or source[0] is float) or not (source[1] is int or source[1] is float): source=[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4]
+			var divisions:=hall_divisions(path) if path==HALL_TILES or path in HALL_ALTERNATES else 8 if corridor and path!=HALL_QUIET else 4
+			uv_rect=Rect2(Vector2(posmod(int(source[0]),divisions),posmod(int(source[1]),divisions))/divisions,Vector2.ONE/divisions)
+		elif material==1: uv_rect=Rect2(0.40,0.185,0.18,0.065)
+		elif material==2: uv_rect=Rect2(0.16,0.05,0.16,0.20)
+		else: uv_rect=Rect2(0.20,0.37,0.20,0.20)
+		var shade:=1.0
+		if values.get("floor/variation",false): shade=0.975+float(posmod(hash([cell,values.get("floor/seed",1)]),6))*0.01
+		# An owner-picked finish carries its own strength; without one it draws at the
+		# room's authored opacity, as every finish did before the setting existed.
+		var strength: float=clampf(float(values.get("floor/strength",opacity)),0.1,1.0) if finished else opacity
+		var color:=Color(shade,shade,shade,1.0 if corridor else strength)
+		if corridor and (path==HALL_TILES or path in HALL_ALTERNATES) and material==0:
+			add_hall_cell(groups,rect,poly,q,shape,color,variant,path,values.get(tile_key(cell)))
+			continue
+		for region in regions: add_polygon(groups,path,region,rect,uv_rect,color,corridor and material==0 and path not in [HALL_TILES,HALL_QUIET] and not path in HALL_ALTERNATES,q)
+	var result: Array=[]
+	for path in groups:
+		var group: Dictionary=groups[path]
+		var arrays:=[]; arrays.resize(Mesh.ARRAY_MAX)
+		arrays[Mesh.ARRAY_VERTEX]=group.vertices; arrays[Mesh.ARRAY_TEX_UV]=group.uv
+		arrays[Mesh.ARRAY_COLOR]=group.colors; arrays[Mesh.ARRAY_INDEX]=group.indices
+		var mesh:=ArrayMesh.new(); mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+		result.append({"mesh":mesh,"texture":texture(path)})
+	if cache.size()>=LIMIT:
+		var oldest=cache.keys()[0]
+		retired.append(cache[oldest])
+		cache.erase(oldest)
+	cache[key]=result; builds+=1
+	return result
+static func draw(canvas: CanvasItem, values: Dictionary, corridor: bool, q:=0, opacity:=0.42, center:=Vector2.ZERO, light:=1.0, source_path:=SCIENCE, shape:="corridor", variant:=0) -> void:
+	for batch in meshes(values,corridor,q,opacity,source_path,shape,variant):
+		canvas.draw_mesh(batch.mesh,batch.texture,Transform2D(0,center),Color(light,light,light))
+
+static func tile_source(values:Dictionary,cell:Vector2i,corridor:bool,source_path:String) -> String:
+	var material:int=tile_material(values,cell)
+	var path:String=(HALL_TILES if corridor else source_path) if material==0 else (DECK if material in [2,3] else SCIENCE)
+	var finish:String=str(values.get("floor/finish",""))
+	return finish if finish in finishes().values() else path
+static func preparation_paths(values:Dictionary,corridor:bool,q:int,source_path:String,shape:="corridor") -> Array:
+	var result:Array=[]
+	for cell in cells(corridor,q,shape):
+		var path:String=tile_source(values,cell,corridor,source_path)
+		if path not in result:result.append(path)
+	return result

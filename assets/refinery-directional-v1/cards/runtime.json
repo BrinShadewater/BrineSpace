@@ -1,0 +1,106 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/ore_refinery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_ore-refinery-wall"
+					],
+					"purpose": "refinery maintenance access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"refinery_pressure_unit"
+					],
+					"purpose": "process isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/ore_refinery_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "ore_refinery",
+			"machinery": [
+				{
+					"id": "refinery_sorter",
+					"rect": [
+						84.0,
+						37.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "refinery_pressure_unit",
+					"rect": [
+						54.0,
+						-20.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "full_wall_ore-refinery-wall",
+					"rect": [
+						-174.0,
+						-148.020309448242,
+						120.0,
+						296.040618896484
+					]
+				},
+				{
+					"id": "refinery_vessels",
+					"rect": [
+						71.8753204345703,
+						-125.730285644531,
+						98.0,
+						60.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+		},
+		"layered": true,
+		"room": "ore_refinery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_ore-refinery-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_vessels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_sorter",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+	}
+]

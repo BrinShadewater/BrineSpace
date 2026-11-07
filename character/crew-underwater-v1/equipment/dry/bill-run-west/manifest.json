@@ -1,0 +1,43 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "run-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-run-west.png"
+      ],
+      "sourceSha256": {
+        "cleanup-run-west": "7b6b451cd036362ee37c3e95e2d6cabf2083719b1153266acd27633794944daa"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    }
+  ]
+}

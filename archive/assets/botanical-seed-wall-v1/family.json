@@ -1,0 +1,53 @@
+{
+  "family": "botanical-seed",
+  "directions": {
+    "north": {
+      "export": "assets/botanical-seed-wall-v1/wall.png",
+      "sha256": "7b37a5ae9c880e162d2a97dd1a8ab4cd8d767bfdf0c3e9c18bd69fe216c80bfd",
+      "registration": "assets/botanical-seed-wall-v1/registration.json",
+      "review": "assets/botanical-seed-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "backing_edge": "top",
+      "world_width": 320,
+      "visible_depth": 64.76001979218209
+    },
+    "south": {
+      "export": "assets/botanical-seed-south-wall-v1/wall.png",
+      "sha256": "54ab541d4eeb835aaadbe0dae18c51591ea900f884be5ddea4b069701db2bb28",
+      "registration": "assets/botanical-seed-south-wall-v1/registration.json",
+      "review": "assets/botanical-seed-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "backing_edge": "bottom",
+      "world_width": 320,
+      "visible_depth": 73.62112747587608
+    },
+    "west": {
+      "export": "assets/botanical-seed-west-wall-v1/wall.png",
+      "sha256": "636b1c6d49ec27d09cd940fc7d1c76e3017e132d0b882feb7c9d1e9360143405",
+      "registration": "assets/botanical-seed-west-wall-v1/registration.json",
+      "review": "assets/botanical-seed-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "backing_edge": "left",
+      "world_height": 320,
+      "visible_depth": 45.36312849162011
+    },
+    "east": {
+      "export": "assets/botanical-seed-east-wall-v1/wall.png",
+      "sha256": "347e8147c3f4ab85f38c2083127baaf096d96271e09c49527460c014d5978af5",
+      "registration": "assets/botanical-seed-east-wall-v1/registration.json",
+      "review": "assets/botanical-seed-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "backing_edge": "right",
+      "world_height": 320,
+      "visible_depth": 46.76409185803758
+    }
+  },
+  "missing_directions": [],
+  "owner_acceptance": null,
+  "runtime_placement_verified": false,
+  "construction_differences": [
+    "South adds right drawer pair and deeper rear housing; not exact reverse",
+    "West slim variant measures 45.36 by 320 and has three packets, versus four in the horizontal banks.",
+    "East measures 46.76 by 320 and adds right backing hinges; four tins restored in V2. Side variants contain three packets."
+  ]
+}

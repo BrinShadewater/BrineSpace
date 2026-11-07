@@ -1,0 +1,19 @@
+"""Freeze whole near-back weight transfer to exact North cargo endpoint."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-carry-turn-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+g=json.loads((S/'guide-provenance.json').read_text());pose=ROOT/'character/marsh-carry-turn-material-v1/east-north-01-unselected/intermediate-3.png'
+originals=[ROOT/g['primaryIdles']['north']['path'],ROOT/g['stagedEndpoints']['north']['path'],pose];refs=[]
+for name,p in zip(['body-primary','cargo-endpoint','yaw-review'],originals):
+    q=S/f'east-north-nearback02-{name}.png';Image.open(p).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(q);refs.append(q)
+refs.append(ROOT/g['ownOriginalMasters']['north']['path'])
+prompt='''Create TWO complete adult Marsh game sprites on transparent background with wide gutter. LEFT is NEARLY BACK-facing cargo turn,slightly REAR-RIGHT22.5degrees from straight back;RIGHT is neutral exact BACK standing ruler. ReferenceONE selected North idle PRIMARY gives small adult head/body/limb proportions,elevated camera,quiet warm matte ivory/sage/slate pixel grade. ReferenceTWO exact North cargo endpoint gives bent forward arms,front-held hidden case,and correct destination weight. ReferenceTHREE earlier near-back pose gives yaw ONLY:its supporting foot is wrong and must change. ReferenceFOUR ownNorth original gives backplate,harness,pouches,blond back hair and anatomicalRIGHT implant at viewerRIGHT rear edge. No mirroring.
+LEFT complete figure looks mostly AWAY,with a tiny turn toward screenRIGHT:back of head visible,no frontal eyes/nose portrait,backplate near frontal to camera with slight REAR-RIGHT projection. Head/chest/hips share same gentle rear-right yaw. Small adult head,full adult limb lengths,not a portrait. Both bent arms hold slate crate IN FRONT of his waist,away from viewer:torso hides case completely or leaves at most a tiny edge at screenRIGHT. Never place box across his back or hang it from belt. No visible hand across backplate. Near elbow at side,forearm forward naturally occluded. Case physically unchanged though hidden.
+Crucial weight correction:VIEWER LEFT boot supports flat at LOWEST floor level,matching referenceTWO. VIEWER RIGHT boot is gently RAISED behind in short recovery step with rear sole visible. The left thigh/knee/shin stacks above planted left boot;right leg bends a little for raised recovery,not high knee/run/squat. This is back view:actorLEFT=viewerLEFT supports;actorRIGHT=viewerRIGHT recovers. Do NOT copy referenceTHREE's planted viewerRIGHT leg. Retain its near-back direction only. Gentle pivot,not both airborne.
+RIGHT exact neutral North BACK standing ruler from referenceONE,arms down,no crate. Same camera,height,body/head/material. One146 occupied neutral calibration,184canvas,p92/172,H148,no per-pose/cargo-width fitting. Two whole connected hair-to-sole figures,wide transparent empty gutter,no floor/shadow/haze/text. LEFT figure almost BACK with correct VIEWER LEFT plant and VIEWER RIGHT raised sole;not FRONT or side.'''
+p=S/'east-north-nearback02.prompt.txt';assert not p.exists();p.write_text(prompt+'\n',encoding='utf-8')
+records=[g['primaryIdles']['north'],g['stagedEndpoints']['north'],{'path':pose.relative_to(ROOT).as_posix(),'sha256':sha(pose)}]
+(S/'east-north-nearback02.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'sourceFrames':records,'sheetGrid':[2,1],'transparentBackground':True,'neutralOccupiedTargetHeight':146,'replaceForwardSlot':3,'baseSource':'east-north-01'},indent=2)+'\n')
+print('Frozen near-back whole figure with destination viewerLEFT support;case stays in front and hidden.')

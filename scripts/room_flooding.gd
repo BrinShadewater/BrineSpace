@@ -1,0 +1,240 @@
+extends RefCounted
+## Fractions of a compartment, per simulation second. Closed bulkheads seal water.
+const Architects = preload("res://scripts/architects.gd")
+const Service = preload("res://scripts/airlock_service.gd")
+const MEDIUM := 0.25
+const HIGH := 0.55
+const CRITICAL := 0.85
+const STARVATION_SECONDS := 90.0
+# Share of an open doorway's flow that seeps into the BRINE core through a closed door.
+const CORE_SEEPAGE := 0.15
+# Closed but unlocked doors are not watertight (owner call, Sept 16): water seeps through them
+# in all four directions at this share of an open doorway. Locking a room's doors, or the
+# station-wide DOORS switch, seals them.
+const DOOR_SEEPAGE := 0.15
+
+static func level(room: Dictionary) -> float:
+	return float(room.get("water_level", 1.0 if room.get("flooded",false) else 0.0))
+
+# Rooms at wading depth or deeper: where alerts, fire and refuge logic already treat a room as flooded.
+static func flooded_count(rooms: Array) -> int:
+	var count := 0
+	for room in rooms:
+		if level(room) >= MEDIUM: count += 1
+	return count
+
+static func stage(water: float) -> String:
+	if water >= CRITICAL: return "CRITICAL"
+	if water >= HIGH: return "HIGH / SWIMMING"
+	if water >= MEDIUM: return "MEDIUM / WADING"
+	return "LOW" if water > 0.001 else "DRY"
+
+static func advance(game, delta: float) -> void:
+	if not is_finite(delta) or delta <= 0 or not game.running or game.paused: return
+	# Bounded steps keep transfers conservative and independent of room iteration order.
+	var remaining := delta
+	while remaining > 0.00001:
+		var dt := minf(remaining,0.1)
+		step_water(game,dt)
+		# Where crew will swim: routes plan the other rooms with the walking check.
+		var swim_cells := {}
+		for room in game.placed_rooms:
+			if level(room)>=HIGH:
+				for cell in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+					swim_cells[cell]=true
+		for id in Architects.IDS:
+			Architects.actor_for(game,id).swim_cells=swim_cells
+		for id in Architects.IDS:
+			var actor = Architects.actor_for(game,id)
+			if Architects.present(game,id) and actor.active and not actor.dead:
+				step_crew(game,actor,id,dt)
+		remaining -= dt
+
+static func step_water(game, dt: float) -> void:
+	# Resolve external sources/sinks first. A pump cannot drain borrowed water,
+	# and a saturated leak cannot cancel water leaving through a doorway.
+	var levels := {}
+	var changes := {}
+	var pumps: bool = game.hardware.power and game.hardware.pumps
+	for room in game.placed_rooms:
+		var repair=preload("res://scripts/hull_repair.gd")
+		var severity: float=room.get("hull_crack",0.0)
+		if severity>0 and not room.get("hull_patched",false):
+			var before: int=repair.variant(room)
+			room.hull_crack=minf(1,severity+dt*0.0005*preload("res://scripts/research_tree.gd").crack_rate(game.get("meta")))
+			if repair.variant(room)>before:
+				game._log("HULL DETERIORATION // %s at %s. %s." % [room.get("display_name",room.id),room.pos,repair.NAMES[repair.variant(room)]],true)
+		var leak: float=repair.leak_rate(room)
+		if room.get("flooded",false) and room.has("branch_owner"): leak += 0.04
+		var pump := 0.008 if pumps and game.powered_room_cells.has(room.pos) and not room.get("suspended",false) else 0.0
+		levels[room.pos] = clampf(level(room)+(leak-pump)*dt,0,1)
+		changes[room.pos] = 0.0
+	for pair in connected_pairs(game):
+		var room_a: Vector2i=pair[0]
+		var room_b: Vector2i=pair[1]
+		var cell: Vector2i=pair[2]
+		var next: Vector2i=pair[3]
+		var difference: float=levels[room_a]-levels[room_b]
+		if is_zero_approx(difference): continue
+		if game.occupied[cell].get("isolated",false) or game.occupied[next].get("isolated",false): continue
+		var aperture := clampf(float(game.grid_view._door_frame_for_pair(game,cell,next))/float(game.grid_view.DOOR_OPEN_FRAMES-1),0,1)
+		var sealed: bool = game.hardware.get("doors",false) or game.occupied[cell].get("doors_locked",false) or game.occupied[next].get("doors_locked",false)
+		# The core never passes water onward, so it does not seep outward either.
+		var out_of_core: bool = (difference > 0 and game.occupied[cell].get("id","") == "brine_core") or (difference < 0 and game.occupied[next].get("id","") == "brine_core")
+		if sealed: aperture = 0.0
+		elif not out_of_core: aperture = maxf(aperture, DOOR_SEEPAGE)
+		# BRINE's chamber is not watertight: a flooded neighbour seeps in through its closed doors,
+		# so the station's heart floods with the station (owner playtest: it stayed dry behind
+		# closed doors). Seepage runs inward only, so the core never carries a flood onward.
+		var into_core: bool = (difference > 0 and game.occupied[next].get("id","") == "brine_core") or (difference < 0 and game.occupied[cell].get("id","") == "brine_core")
+		if into_core and not sealed: aperture = maxf(aperture, CORE_SEEPAGE)
+		var flow := difference*0.18*aperture*dt*preload("res://scripts/research_tree.gd").flood_rate(game.get("meta"))
+		changes[room_a] -= flow
+		changes[room_b] += flow
+	for room in game.placed_rooms:
+		room.water_level = clampf(float(levels[room.pos])+float(changes[room.pos]),0,1)
+
+static func connected_pairs(game) -> Array:
+	var signature := []
+	for room in game.placed_rooms:
+		signature.append([room.pos,room.id,room.get("rotation",0),room.get("size",Vector2i.ONE),room.get("ports",[]),room.get("branch_owner",Vector2i(-1,-1))])
+	var key := hash(signature)
+	if game.grid_view.get_meta("flood_topology",-1)==key:
+		return game.grid_view.get_meta("flood_pairs",[])
+	var pairs := []
+	for room in game.placed_rooms:
+		for cell in preload("res://scripts/room_footprint.gd").cells(room.pos,room.get("size",Vector2i.ONE)):
+			for offset in [Vector2i.RIGHT,Vector2i.DOWN]:
+				var next: Vector2i=cell+offset
+				if not game.occupied.has(next): continue
+				var neighbor: Dictionary=game.occupied[next]
+				if neighbor.get("pos",Vector2i(-1,-1)) == room.pos: continue
+				var connected: bool = game._ports_connect(room,neighbor,cell,next) if game.has_method("_ports_connect") and (room.get("size",Vector2i.ONE)!=Vector2i.ONE or neighbor.get("size",Vector2i.ONE)!=Vector2i.ONE) else game._placed_rooms_connected(room,neighbor,offset)
+				if connected: pairs.append([room.pos,neighbor.pos,cell,next])
+	game.grid_view.set_meta("flood_topology",key)
+	game.grid_view.set_meta("flood_pairs",pairs)
+	return pairs
+
+static func step_crew(game, actor, id: String, dt: float) -> void:
+	var cell: Vector2i = actor.cell_at(actor.foot)
+	var water := level(game.occupied.get(cell,{}))
+	var current_room: Dictionary = game.occupied.get(cell,{})
+	if current_room.get("id","")=="moonbay":
+		var local_point: Vector2=actor.foot-(Vector2(current_room.pos)+Vector2.ONE)*384.0
+		water=maxf(water,preload("res://rooms/large-rooms/moonbay.gd").water_at(current_room,local_point))
+		if actor.moonbay_assignment.get("onboard",false): water=0.0 # Sealed mini-sub supplies breathing air.
+	var exterior: bool = actor.movement_medium == "exterior" or not game.occupied.has(cell)
+	if actor.expedition.is_empty() and not exterior:
+		if water >= HIGH:
+			actor.cancel_helmet_action()
+			if not actor.locker_request.is_empty():
+				actor.goal=""
+				actor.path.clear()
+				actor.state="idle"
+			actor.locker_request.clear()
+		# Crew who don't breathe (Marsh) walk the flooded floor instead of swimming: his swim
+		# outline could not fit a furnished room, trapping him (owner playtest).
+		actor.movement_medium = "flooded" if water >= HIGH and actor.needs_air() else "dry"
+	elif not actor.expedition.is_empty() and actor.expedition.phase in ["pressurize","drain"]:
+		water = maxf(water,preload("res://scripts/airlock_cycle.gd").pose(game.occupied.get(actor.expedition.home,{})).water)
+		exterior=false
+		actor.movement_medium="flooded" if water>0 else "dry"
+	actor.flood_speed = (0.55 if water >= HIGH else (0.65 if water >= MEDIUM else 1.0))*preload("res://scripts/research_tree.gd").walk_rate(game.get("meta"))
+	if not actor.needs_air():
+		actor.helmet_equipped=false
+		actor.air_recovery=0.0;actor.air_was_low=false
+		actor.drain_battery(dt)
+	else:
+		var unsafe_air: bool = exterior or water >= CRITICAL or int(game.resources.oxygen)<=0
+		if exterior and not actor.helmet_equipped:
+			actor.movement_medium="exterior"
+			kill(game,actor,id,"unprotected exterior exposure")
+			return
+		actor.air_recovery=maxf(0,actor.air_recovery-dt)
+		if unsafe_air:
+			if (actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen)<=(12 if actor.helmet_equipped else 5): actor.air_was_low=true
+			var air_rate: float = preload("res://scripts/research_tree.gd").air_drain_rate(game.get("meta"))
+			if actor.helmet_equipped: actor.tank_oxygen = maxf(0,actor.tank_oxygen-dt*air_rate)
+			else: actor.breath_oxygen = maxf(0,actor.breath_oxygen-dt*air_rate)
+			if (actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen) <= 0.00001:
+				kill(game,actor,id,"oxygen exhausted")
+				return
+		else:
+			if actor.air_was_low: actor.air_recovery=3.0;actor.air_was_low=false
+			actor.breath_oxygen = 15.0
+			if actor.helmet_equipped and Service.ready(game,cell):
+				var locker := Service.locker(game,cell)
+				if not locker.is_empty() and actor.foot.distance_to(locker.interaction_point)<=12:
+					actor.tank_oxygen = minf(60,actor.tank_oxygen+dt*12)
+	actor.starvation = minf(STARVATION_SECONDS,actor.starvation+dt) if int(game.resources.food)<=0 else maxf(0,actor.starvation-dt*2)
+	if actor.starvation >= STARVATION_SECONDS:
+		kill(game,actor,id,"starvation")
+		return
+	var breathing_danger: bool = actor.needs_air() and (exterior or water >= CRITICAL or int(game.resources.oxygen)<=0)
+	preload("res://scripts/crew_danger.gd").check(game,actor,id,breathing_danger,STARVATION_SECONDS)
+
+static func kill(game,actor,id: String,cause: String) -> void:
+	# Second Chance keystone (Meta Progression): once per loop, starvation or lost air is undone.
+	if cause in ["oxygen exhausted","starvation"] and preload("res://scripts/research_tree.gd").second_chance(game.get("meta")) and not game.has_meta("second_chance_used"):
+		game.set_meta("second_chance_used",true)
+		actor.breath_oxygen=15.0
+		actor.tank_oxygen=60.0
+		actor.starvation=0.0
+		actor.needs.hunger=0.0
+		var message := "SECOND CHANCE // %s was pulled back from %s. It will not happen twice this loop." % [Architects.NAMES[id],cause]
+		game._log(message,true)
+		if is_instance_valid(game.get("crew_comms")): game.crew_comms.transmit("brine",message,"",true)
+		return
+	if actor.has_method("prepare_death_motion"):actor.prepare_death_motion(game)
+	preload("res://scripts/moonbay_missions.gd").on_crew_death(game,actor)
+	actor.die()
+	game.crew_count = maxi(0,game.crew_count-1)
+	for member in game.recovered_crew:
+		if member.get("architect_id","")==id: member.alive=false
+	game._log("%s lost: %s. The station keeps count." % [Architects.NAMES[id],cause],true)
+	preload("res://scripts/crew_danger.gd").announce_death(game,id,cause)
+	game._check_fail_conditions()
+
+static func inspector(game,room: Dictionary) -> String:
+	var text := "WATER %d%% // %s" % [roundi(level(room)*100),stage(level(room))]
+	# A remembered blueprint has no placed cell, crew or actionable repair links.
+	if not room.has("pos"): return text
+	if level(room)>0 or float(room.get("hull_crack",0))>0:
+		text += "\nHull crack: %d%% severity. Pumps drain 0.8%%/s when powered." % roundi(float(room.get("hull_crack",0))*100)
+	if float(room.get("hull_crack",0))>0:
+		var repairs = preload("res://scripts/hull_repair.gd")
+		var index: int=repairs.variant(room)
+		text += "\n%s / %.1f%% water per second" % [repairs.NAMES[index],repairs.leak_rate(room)*100]
+		text += "\nCause: "+str(room.get("hull_cause","existing hull damage"))
+		text += "\nPATCHED / leak reduced 80%; deterioration arrested. Full weld still required." if room.get("hull_patched",false) else "\nUNPATCHED / worsens 3 percentage points per minute."
+		if room.has("leak_repair"):
+			text += "\nRepair / %d%% / Metal allocated" % roundi(float(room.leak_repair.progress)/float(room.leak_repair.duration)*100)
+			text += "\n"+str(room.leak_repair.get("status","Waiting for crew"))
+			var refund := int(floor(float(room.leak_repair.cost)*(1-float(room.leak_repair.progress)/float(room.leak_repair.duration))))
+			text += "\n[url=floodcancel:%d:%d]Cancel / return %d Metal[/url]" % [room.pos.x,room.pos.y,refund]
+			for id in Architects.IDS:
+				if Architects.present(game,id): text += "\n[url=floodassign:%d:%d:%s]Assign %s[/url]" % [room.pos.x,room.pos.y,id,Architects.NAMES[id]]
+		else:
+			if not room.get("hull_patched",false): text += "\n[url=floodpatch:%d:%d]Emergency patch / 1 Metal / 3s crew work[/url]" % [room.pos.x,room.pos.y]
+			text += "\n[url=floodrepair:%d:%d]Send crew to weld — %d Metal / %.0fs work[/url]" % [room.pos.x,room.pos.y,repairs.COSTS[index],repairs.SECONDS[index]]
+
+	for id in Architects.IDS:
+		var actor = Architects.actor_for(game,id)
+		if not actor.active or actor.dead or actor.cell_at(actor.foot)!=room.pos: continue
+		text += "\nMarsh // "+actor.battery_status() if not actor.needs_air() else "\n%s // %s %.0fs" % [Architects.NAMES[id],"TANK" if actor.helmet_equipped else "BREATH",actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen]
+		if actor.starvation>0: text += " / %s %.0fs" % ["STARVING" if int(game.resources.food)<=0 else "RECOVERING",STARVATION_SECONDS-actor.starvation]
+	return text
+
+static func valid_rooms(rooms: Array) -> bool:
+	for room in rooms:
+		if room.has("leak_repair") and not preload("res://scripts/hull_repair.gd").valid(room.leak_repair): return false
+		if room.has("hull_welded") and not room.hull_welded is bool: return false
+		if room.has("hull_patched") and not room.hull_patched is bool: return false
+		if room.has("hull_cause") and (not room.hull_cause is String or room.hull_cause.length()>80): return false
+		for key in ["water_level","hull_crack"]:
+			if not room.has(key): continue
+			if not (room[key] is float or room[key] is int) or not is_finite(float(room[key])) or room[key]<0 or room[key]>1: return false
+	return true
+
+static func draw(canvas,game,rooms: Array,size: float) -> void:
+	preload("res://scripts/flood_visuals.gd").draw_front(canvas,game,rooms,size)

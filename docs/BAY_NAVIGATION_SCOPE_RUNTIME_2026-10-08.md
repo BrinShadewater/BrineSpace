@@ -1,0 +1,24 @@
+# Project handoff
+
+Updated: October 8, 2026 · Project: BrineSpace · Task: bay graph scope actual release comparison
+
+## Objective and acceptance
+Continue the entire performance, bug and PC/Mac release plan. Reduce measured rebuild stalls without changing clocks, route outcomes, selected art or owner data. No release publication. All acceptance gates remain applicable.
+
+## Accepted decisions and constraints
+Bay scope stays private despite substantial actual CPU savings: hazard/layout/cancellation/save and repeated native/visual checks remain. Only boarding/exit_bay with station pressure door closed, clear fire restrictions and both endpoints inside the same bay may scope. Approach/dispatch/unload/general station routes retain full graphs. Partial graph signature invalidated immediately; failed scope falls back to full rebuild. Full character rebuild overrides and side effects preserved.
+
+## Current state
+Private D:/BrineSpace-performance/2026-10-08/moon-navigation-owner/bay-release/{bill.gd,missions.gd,owner.pck,run.py,runtime/}; immutable census pack plus canonical actual release pack and early owner override. Both measured lanes use exactly the same physical patch pack; only --bay-scope changes branch. Bill scope transported via navigation_room_anchor member, reset immediately around synchronous rebuild, rather than added virtual-call parameter. Normal scope/mission sources unchanged. Current normal door-lock correction from previous milestone remains. Read-only extraction of frozen mission script retained in bay-release-preparation/.
+
+## Verification
+Initial indentation failure rejected before measurement; preserved indent-failure logs/source/owner fingerprint, corrected tab style and added isolated mission --check-only. First reference run rejected as minimized near final zoom; retained minimized-reference evidence, restarted only after terminal state, no focus-guard bypass.
+
+First two-lane trial shows scope calls but 19,695 nodes and all three fallbacks; no attributed savings accepted. Child rebuild overrides forward only main/staged, dropping extra scope argument. Retained argument-not-forwarded copies of code, reports, pack and identity. Revised member transport keeps child hooks. Initial Marsh local probe copied incomplete inheritance chain and failed assignment; exact live PID stopped after observed script error, failed evidence retained. Recursively copied full private motion inheritance chain down to private Bill base. Native/headless geometry tests then pass5,964 checks each for Veld, Branforth and Marsh: four rotations, boarding/exit_bay, both hardware and room locks, first/warm exact routes, complete reachable component adjacency and local geometry (except intentional character bunk label). Every component stays inside bay, later station signature invalidated. Earlier Bill5,964 proof retained.
+
+Corrected actual native debug=false1080p,40 rooms/four crew/three natural missions, same pack,9x180 idle/pan/zoom1/2/4x, no VSync/cap, no render timing profiler. All four compiled actor base hashes and compiled mission source SHA verified; identity-candidate.json records exact inputs. Candidate executes one scoped boarding rebuild per pilot:1,319 nodes each, ZERO fallbacks; reference scope calls0. All three missions launch. Every compared phase mission/resource/crew/drone/door/light/power/zoom/large-prop endpoint identical, full final mission history equal. Unlike earlier indexed trial, no prop count mismatch in this pair.
+
+Pan2x frame126: reference249.233 ms, candidate136.433 ms. Crew192,458 to77,721 us; step193,196 to78,428 us; engine wait56,009 to57,976 us. Largest observed stall drops about45%, dominant crew CPU about60%. Means and p95 improve7/9 phases each; 4x pan/zoom means slightly worse. Single pair, not three-run certification. Renderer counters disabled/unavailable, not zero GPU cost. Peak2,346.157744 MiB each; exits228.259212 MiB each; uploads2,334 each. No storage optimization claim. No engine errors/warnings/leaks/missing art; owner2,936 files unchanged; adapters restored; all jobs terminal. comparison.json records exact hitches and per-phase equality. Gate still fails:136 ms maximum and all workloads remain above60FPS budget.
+
+## Next action
+Extend private mission-path coverage through return, unloading, cancellation/demolition, fire, layout changes, hardware locks, pause and save/Continue. Prove full navigation restored after partial graph and no unnecessary rebuild on normal idle. Profile remaining~78ms crew work within scoped boarding: likely first new local geometry plus other per-actor work, measure stages before optimizing. Repeat matched native pairs with reversed order before admitting source. Separate drone uploads/drawing still dominate ordinary frame budgets. Combined actual Windows/Mac exports, original nine reports/endurance/loading/texture gates, GTX1650/M1 and signing/notarization remain open. No itch action.

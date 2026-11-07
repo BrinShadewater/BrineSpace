@@ -1,0 +1,117 @@
+{
+  "status": "integrated_provisional_locker_sequence",
+  "frameWidth": 92,
+  "frameHeight": 104,
+  "pivot": [
+    46,
+    98
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameCount": 12,
+      "frameFiles": [
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_000.png",
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_001.png",
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_002.png",
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_003.png",
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_004.png",
+        "../../revisions/branforth-pickup-helmet-east-v2/frame_005.png",
+        "../../pilot/branforth-equip-helmet-east/frame_000.png",
+        "../../pilot/branforth-equip-helmet-east/frame_001.png",
+        "../../pilot/branforth-equip-helmet-east/frame_002.png",
+        "../../pilot/branforth-equip-helmet-east/frame_003.png",
+        "../../pilot/branforth-equip-helmet-east/frame_004.png",
+        "../../pilot/branforth-equip-helmet-east/frame_005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        180,
+        160,
+        180,
+        180,
+        80,
+        100,
+        180,
+        220,
+        220,
+        260,
+        240
+      ],
+      "loop": false,
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_000.png",
+      "sha256": "9c1973f5da34efa5f4b0d59c8eeb1c5dfe32c21717e5ca278e4d0e66af603870"
+    },
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_001.png",
+      "sha256": "d300e1b373f8c0feb103e0d457542b3ba3ca8d2bb12bbd364c36380c66b4013c"
+    },
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_002.png",
+      "sha256": "9866e0c2284cfeb2e10380d48d433d5bebf31caa62fafd0fa36fed9955fae1e6"
+    },
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_003.png",
+      "sha256": "1eec8fb4cd4bc2539f273216b416dd26ba57af0c29cad4a362dde0b22ce7caaf"
+    },
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_004.png",
+      "sha256": "7fe42389af9eaf31242c0f1880e5cc7e86619940ae28f322f06cf81e2831c0de"
+    },
+    {
+      "source": "revisions/branforth-pickup-helmet-east-v2/frame_005.png",
+      "sha256": "c11167e4ad88ce081d499a0e71a8bb6dc5d9218ae4d8ea5cae91c4f7289e7dcd"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_000.png",
+      "sha256": "c11167e4ad88ce081d499a0e71a8bb6dc5d9218ae4d8ea5cae91c4f7289e7dcd"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_001.png",
+      "sha256": "113d21ab0fa8e410796339d902ac315e0e7cb17c447670abbfad252a0525e791"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_002.png",
+      "sha256": "010dc74b4d30f6308b03f23800ea6994dbd8b7800db46cc31e914f2dec93e396"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_003.png",
+      "sha256": "36c51ac370979f186ca61777244511b831350946a1e79f558498b6fb61bfac9f"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_004.png",
+      "sha256": "53a19143164d868cbff604d2c2dc20eadeaac5b8ac5cbd703917434909a7c596"
+    },
+    {
+      "source": "pilot/branforth-equip-helmet-east/frame_005.png",
+      "sha256": "70141797ad6f1d899d14c9562eb11f55afd53df03078b36fb577b6edc56346ca"
+    }
+  ],
+  "joinTiming": {
+    "frames": [
+      5,
+      6
+    ],
+    "sourceDurationsMs": [
+      160,
+      180
+    ],
+    "composedDurationsMs": [
+      80,
+      100
+    ],
+    "reason": "One shared held pose, not two sequential full holds."
+  },
+  "limitations": "Candidate pose joins and shelf attachment alignment require visual refinement. Shelf visibility follows handoff markers; equipment commits at whole-action completion and cancellation keeps prior equipment."
+}

@@ -1,0 +1,45 @@
+{
+  "room": "solar_array",
+  "label": "Thermal Power Control",
+  "reference": "assets/material-polish-v1/tidal-north.png",
+  "method": "Imagegen material repaint, read-only exterior/aperture vector registration, existing source UV coordinates for room equipment. Originals preserved.",
+  "assets": [
+    {
+      "path": "assets/material-polish-v3/thermal-equipment.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d42d645275ec59f87d018ad60b198d8d978d910ecc997bcab72e1da9b8049973",
+      "prompt": "assets/material-polish-v3/thermal-equipment.prompt.txt"
+    },
+    {
+      "path": "assets/material-polish-v3/thermal-north.png",
+      "size": [
+        1965,
+        800
+      ],
+      "sha256": "659f8a3465ca27d9b9205cb14ea767ab78f99b04f85d7eda261f9743852c635f",
+      "prompt": "assets/material-polish-v3/thermal-north.prompt.txt"
+    },
+    {
+      "path": "assets/material-polish-v3/thermal-sides.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d4e7a210107ae51ab266261d219066b3fa07268e8ce984570c5ff59faeec0ea2",
+      "prompt": "assets/material-polish-v3/thermal-sides.prompt.txt"
+    },
+    {
+      "path": "assets/material-polish-v3/thermal-south.png",
+      "size": [
+        1966,
+        800
+      ],
+      "sha256": "0369df83dda25185a8746f33bbbd64abeaa71060cd1db8482c0cdbf520f5d448",
+      "prompt": "assets/material-polish-v3/thermal-south.prompt.txt"
+    }
+  ],
+  "scope": "Four wall directions, auxiliary equipment and structural wall source. Shared maintenance furniture unchanged; full-game matching remains incomplete."
+}

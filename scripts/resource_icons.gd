@@ -1,0 +1,67 @@
+extends RefCounted
+## Resource icon artwork and colours, shared by the HUD, draft cards, codex and Meta Progression
+## (owner playtest, Sept 17: resources should read with the same icon and colour everywhere).
+
+const PATHS := preload("res://scripts/ui_icons.gd").PATHS
+
+# The HUD resource chip colours.
+const COLORS := {
+	"metal": "#d2dbe2", "power": "#edc66b", "oxygen": "#9ed8ee", "water": "#79afe0",
+	"food": "#c1d990", "data": "#7bc6bf", "archived_data": "#a2c8bc", "biomass": "#99bb7f",
+	"rare_minerals": "#baa0d7", "rare": "#baa0d7", "integrity": "#a2cfad", "crew": "#e6c6a0",
+	"corruption": "#a16367", "anomaly": "#9181a2", "orbit": "#9fb3c8",
+}
+
+static func icon(id: String, icon_size := 16) -> String:
+	return "[img=%dx%d]%s[/img]" % [icon_size, icon_size, PATHS[id]] if PATHS.has(id) else ""
+
+static func color(id: String) -> String:
+	return str(COLORS.get(id, "#d8e6ea"))
+
+static func display_name(id: String) -> String:
+	return "Archived Data" if id == "archived_data" else ("Rare Minerals" if id == "rare" else id.replace("_", " ").capitalize())
+
+# One amount with its icon and colour: "[img] Metal 6" or, with sign, "[img] +6 Metal".
+static func amount(id: String, value: int, icon_size := 16, signed := false) -> String:
+	var text := ("%+d %s" % [value, display_name(id)]) if signed else ("%s %d" % [display_name(id), value])
+	return "%s [color=%s]%s[/color]" % [icon(id, icon_size), color(id), text]
+
+# "[img]Metal 6, [img]Power 1" with each resource's icon and colour, as the draft cards show costs.
+static func bbcode(values: Dictionary, icon_size := 16) -> String:
+	if values.is_empty(): return "None"
+	var parts := PackedStringArray()
+	for key in values:
+		parts.append(amount(str(key), int(values[key]), icon_size))
+	return ", ".join(parts)
+
+const WORDS := {
+	"archived data": "archived_data", "rare minerals": "rare_minerals", "rare mineral": "rare_minerals",
+	"metal": "metal", "power": "power", "oxygen": "oxygen", "water": "water", "food": "food",
+	"data": "data", "biomass": "biomass", "integrity": "integrity",
+}
+static var _pattern: RegEx
+
+# Adds icons and colours to resource amounts written in plain sentences, such as perk and
+# synergy text: "Start each loop with +5 Metal." The amount and resource are coloured and the
+# icon sits before them. Text must not already contain BBCode.
+static func decorate(text: String, icon_size := 16) -> String:
+	if _pattern == null:
+		_pattern = RegEx.new()
+		# The amount may sit before or after its resource ("+5 Metal", "WATER 30%"), but always on
+		# the same line: a number ending one line was being pulled into the next line's resource
+		# ("Stabilized: 1" then "Archived Data banked").
+		_pattern.compile("(?i)([+-]?\\d+%?[ \\t]+)?\\b(archived data|rare minerals?|metal|power|oxygen|water|food|data|biomass|integrity)\\b([ \\t]+[+-]?\\d+%?)?")
+	var result := ""
+	var last := 0
+	for found in _pattern.search_all(text):
+		var word: String = found.get_string(2)
+		# A resource written as an ordinary noun is prose, not a readout: "wait for the water to
+		# recede" was getting a Water icon mid-sentence, and "restore power to start the pump" a
+		# Power one (owner polish pass, Sept 18). Decorate a capitalised name, or any spelling that
+		# carries an amount beside it.
+		if word[0] == word[0].to_lower() and found.get_string(1).is_empty() and found.get_string(3).is_empty(): continue
+		var id: String = WORDS[word.to_lower()]
+		result += text.substr(last, found.get_start() - last)
+		result += "%s [color=%s]%s[/color]" % [icon(id, icon_size), color(id), found.get_string()]
+		last = found.get_end()
+	return result + text.substr(last)

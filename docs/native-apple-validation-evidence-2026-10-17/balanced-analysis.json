@@ -1,0 +1,247 @@
+{
+  "scope": "Six ABBAAB native editor fixture visits, 40 final rooms; 3 saved rooms initially loaded; 1600x900 actual drawable; same frozen input/layout; muted, VSync off, max FPS unlimited; deterministic simulation driver; no concurrent Godot/export jobs in accepted runs. Not packaged-release or physical-iPad comparison.",
+  "by_build": {
+    "A": {
+      "commit": "7e3029a4539348c477ca29636afe063c29e919fa",
+      "visits": 3,
+      "ready_ms": [
+        8151.207,
+        5091.682,
+        5056.225
+      ],
+      "scene_request_to_ready_ms": [
+        9217.985,
+        6216.233,
+        6171.22
+      ],
+      "max_rss_bytes": [
+        4081975296,
+        4006772736,
+        4189880320
+      ],
+      "peak_physical_footprint_bytes": [
+        5090103400,
+        5096280144,
+        5235036408
+      ],
+      "phases": [
+        {
+          "action": "idle",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 42.800713852498596,
+          "p95_ms": 29.255,
+          "p99_ms": 37.784,
+          "max_ms": 81.539,
+          "over_100ms": 0
+        },
+        {
+          "action": "idle",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 41.59158999565137,
+          "p95_ms": 30.1,
+          "p99_ms": 40.329,
+          "max_ms": 50.751,
+          "over_100ms": 0
+        },
+        {
+          "action": "idle",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 40.394622548158615,
+          "p95_ms": 30.865,
+          "p99_ms": 34.21,
+          "max_ms": 35.429,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 37.6837185958544,
+          "p95_ms": 37.151,
+          "p99_ms": 42.542,
+          "max_ms": 45.209,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 36.87187229222188,
+          "p95_ms": 40.538,
+          "p99_ms": 44.081,
+          "max_ms": 64.543,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 34.569657379485534,
+          "p95_ms": 39.442,
+          "p99_ms": 45.291,
+          "max_ms": 46.888,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 43.87836300228436,
+          "p95_ms": 27.658,
+          "p99_ms": 33.075,
+          "max_ms": 49.378,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 40.447444612842304,
+          "p95_ms": 31.027,
+          "p99_ms": 39.354,
+          "max_ms": 50.088,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 38.97332708797796,
+          "p95_ms": 33.33,
+          "p99_ms": 50.127,
+          "max_ms": 55.493,
+          "over_100ms": 0
+        }
+      ],
+      "safe_image_failure_counts": [
+        0,
+        0,
+        0
+      ]
+    },
+    "B": {
+      "commit": "585111ca3878e6ae60d044d745b395bdb2a7e9af",
+      "visits": 3,
+      "ready_ms": [
+        5691.798,
+        4648.831,
+        4678.984
+      ],
+      "scene_request_to_ready_ms": [
+        6797.783,
+        5756.591,
+        5797.792
+      ],
+      "max_rss_bytes": [
+        4075110400,
+        3779330048,
+        4357226496
+      ],
+      "peak_physical_footprint_bytes": [
+        5031727064,
+        4978610184,
+        5415293320
+      ],
+      "phases": [
+        {
+          "action": "idle",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 43.956108360598336,
+          "p95_ms": 27.814,
+          "p99_ms": 33.854,
+          "max_ms": 78.345,
+          "over_100ms": 0
+        },
+        {
+          "action": "idle",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 42.10641226076345,
+          "p95_ms": 29.579,
+          "p99_ms": 39.599,
+          "max_ms": 43.464,
+          "over_100ms": 0
+        },
+        {
+          "action": "idle",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 40.00517992996427,
+          "p95_ms": 31.64,
+          "p99_ms": 37.952,
+          "max_ms": 49.595,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 37.946541193851594,
+          "p95_ms": 36.656,
+          "p99_ms": 42.639,
+          "max_ms": 45.583,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 36.906532702331866,
+          "p95_ms": 39.765,
+          "p99_ms": 43.268,
+          "max_ms": 68.472,
+          "over_100ms": 0
+        },
+        {
+          "action": "zoom",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 34.0081880380733,
+          "p95_ms": 40.847,
+          "p99_ms": 45.575,
+          "max_ms": 48.858,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 1,
+          "frames": 540,
+          "mean_fps": 44.06830783573685,
+          "p95_ms": 27.356,
+          "p99_ms": 36.95,
+          "max_ms": 48.252,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 2,
+          "frames": 540,
+          "mean_fps": 41.06491359029627,
+          "p95_ms": 30.963,
+          "p99_ms": 37.709,
+          "max_ms": 48.061,
+          "over_100ms": 0
+        },
+        {
+          "action": "placement",
+          "simulation_speed": 4,
+          "frames": 540,
+          "mean_fps": 38.98733431465898,
+          "p95_ms": 33.667,
+          "p99_ms": 47.496,
+          "max_ms": 85.971,
+          "over_100ms": 0
+        }
+      ],
+      "safe_image_failure_counts": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

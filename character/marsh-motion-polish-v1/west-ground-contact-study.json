@@ -1,0 +1,54 @@
+{
+  "status": "unselected-support-contact-study",
+  "standingHeight": 148,
+  "worldStandingHeight": 65.28,
+  "direction": "west",
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Manual sole/heel tracking; initial far boot occluded. Approximate +/-3 dense pixels.",
+    "Contact-compensated discrete poses are not native movement validation. Continuous timing and walk-phase joins still need review."
+  ],
+  "transitions": {
+    "start": {
+      "recipe": "character/marsh-motion-polish-v1/start-west-candidate-recipe.json",
+      "travelPixels": [
+        0,
+        3,
+        14,
+        26
+      ],
+      "durationMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "supportDescription": "far boot becomes trailing support",
+      "uncertaintyPixels": 3
+    },
+    "stop": {
+      "recipe": "character/marsh-motion-polish-v1/stop-west-candidate-recipe.json",
+      "travelPixels": [
+        0,
+        8,
+        12,
+        15
+      ],
+      "durationMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "supportDescription": "near lead boot remains support",
+      "uncertaintyPixels": 3
+    }
+  }
+}

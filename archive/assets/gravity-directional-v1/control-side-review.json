@@ -1,0 +1,32 @@
+{
+  "room": "gravity_loom",
+  "prop": "control_console",
+  "stage": "integrated-native-reviewed",
+  "source": "assets/gravity-directional-v1/control-side.png",
+  "sha256": "01b41f6efd8c05bf29d13173c480852f0fcccb2ae0cc1071a7daf44c2fbde077",
+  "dimensions": [
+    1932,
+    814
+  ],
+  "original": "exec-6aedda6a-e42c-4970-b3b1-176dad5baf61.png",
+  "registration": "rooms/full-wall-v1/registrations/side-gravity-control-side.json",
+  "authored_direction": "east",
+  "placements": {
+    "west": 1,
+    "east": 3
+  },
+  "length": 118,
+  "width": 54.36649214659686,
+  "evidence": "output/gravity-control-side-2026-09-12",
+  "owner_acceptance": false,
+  "findings": [
+    "Two inward module grips and two inward adjustment knobs.",
+    "Dark static screen; no new operating display effect implemented.",
+    "South console replaced in q1/q3; original apparatus and calibration metadata unchanged.",
+    "q0/q2 RGB identical."
+  ],
+  "tests": [
+    "176 preferred layouts",
+    "20 side variants"
+  ]
+}

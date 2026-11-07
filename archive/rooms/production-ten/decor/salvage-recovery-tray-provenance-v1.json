@@ -1,0 +1,24 @@
+{
+  "stage": "integrated_native_verified_packaged_review_pending",
+  "prompt": "Create one isolated modular game prop for BrineSpace: a LOW rectangular recovery sorting tray resting on four short steel feet, with recovered underwater station parts securely resting inside: one small broken teal instrument casing, two copper pipe elbows, a bundled dark umbilical hose, and three chunky steel fasteners in a corner compartment. Asymmetric arrangement with visible empty tray surface between objects. Functional engineering graphite steel with muted ochre rim clips; maintained tray, recovered parts lightly salt-stained but not covered in grime. South-facing orthographic game cutaway camera looking down 35 degrees: FRONT EDGE PERFECTLY HORIZONTAL, vertical legs vertical, NO diagonal isometric rotation, top surfaces visible. Crisp detailed retro industrial game raster sprite, readable silhouette, restrained highlights, no photorealistic studio look. One assembled low tray, all items physically supported. True transparent RGBA background, including between short legs, no checkerboard pattern, no floor, no room, no text, no glow, no cast shadow. Square image, generous transparent margins. This is a small floor-supported secondary prop, not a giant machine.",
+  "source": "rooms/production-ten/decor/salvage-recovery-tray-v1.png",
+  "reference_roles": "No raster references; department and camera contract in prompt",
+  "department": "Engineering",
+  "condition": "Maintained tray; recovered parts visibly damaged",
+  "processing": "Raw generated RGBA preserved; read-only alpha registration",
+  "sha256": "1b1f287e7ebcfb0c8c26fca491a40382710d068c0ed262da74fca4c9e4966ddd",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_range": [
+    0,
+    255
+  ],
+  "evidence": [
+    "output/salvage-recovery-depth-v1/review.json",
+    "output/salvage-recovery-audit-v1.log",
+    "output/drone-detail-routes-v2.log"
+  ],
+  "visual_review": "q0 card and normal 52% station capture inspected; new prop reads as a secondary task surface. This does not approve the complete room composition."
+}

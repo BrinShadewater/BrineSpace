@@ -1,0 +1,140 @@
+{
+  "normalAdmission": true,
+  "catalogBeforeSha256": "ee79e1dd065362c76cf53922977896d456b3324c8ba1395742e88cf207db7b5d",
+  "catalogAfterSha256": "8af02cd784b73bc28d78dfdd74c32c059c092b37ab2cf4b005a3d1f44745969f",
+  "changedStates": [
+    "kneel-south",
+    "stand-south"
+  ],
+  "changedSlots": 6,
+  "unchangedEffectiveStates": 226,
+  "bodyStates": 228,
+  "bodySlots": 1190,
+  "bodyManifests": 95,
+  "source": "Three existing selected whole PNGs reused. Neutral-B-A kneel, A-B-neutral stand. No new generated or edited image.",
+  "stagedReceiptSha256": "6de7347cb94ddf62a29371833b83fc72208a59dff134f867022840f20630a521",
+  "oldStates": {
+    "kneel-south": {
+      "state": {
+        "id": "kneel-south",
+        "frameFiles": [
+          "../../character/marsh-diagnostics-v7/frames/kneel-south/000.png",
+          "../../character/marsh-master-repair-v1/frames/kneel-south/001.png",
+          "../../character/marsh-master-repair-v1/frames/kneel-south/002.png"
+        ],
+        "frameDurationsMs": [
+          200.0,
+          200.0,
+          200.0
+        ],
+        "loop": false
+      },
+      "header": {
+        "revision": "marsh-master-repair-v1",
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "textureFilter": "nearest"
+      },
+      "frames": [
+        "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2",
+        "e9363a26e1bc22f45b7fa421f1bc0f00a7e9541bb62ffe80b37949cc698fc5b2",
+        "dadb15b8b9523ef2a3e08be56d30f004f0a67a55d79c9de1aaffe790baf479c4"
+      ]
+    },
+    "stand-south": {
+      "state": {
+        "id": "stand-south",
+        "frameFiles": [
+          "../../character/marsh-master-repair-v1/frames/stand-south/000.png",
+          "../../character/marsh-master-repair-v1/frames/stand-south/001.png",
+          "../../character/marsh-diagnostics-v7/frames/stand-south/002.png"
+        ],
+        "frameDurationsMs": [
+          200.0,
+          200.0,
+          200.0
+        ],
+        "loop": false
+      },
+      "header": {
+        "revision": "marsh-master-repair-v1",
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "textureFilter": "nearest"
+      },
+      "frames": [
+        "dadb15b8b9523ef2a3e08be56d30f004f0a67a55d79c9de1aaffe790baf479c4",
+        "e9363a26e1bc22f45b7fa421f1bc0f00a7e9541bb62ffe80b37949cc698fc5b2",
+        "4daa3b29dcf71a329b809cb7f51827b69f9aae3b2096b900afdcf818414c9af2"
+      ]
+    }
+  },
+  "newStates": {
+    "kneel-south": {
+      "state": {
+        "id": "kneel-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/neutral.png",
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/working-b.png",
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/working-a.png"
+        ],
+        "frameDurationsMs": [
+          200.0,
+          200.0,
+          200.0
+        ],
+        "loop": false
+      },
+      "header": {
+        "revision": "marsh-master-repair-v1",
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "textureFilter": "nearest"
+      },
+      "frames": [
+        "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e",
+        "3f20f860a400691991420f2f7973ff8b875f7e868c608f3a00ea6e547f62252d",
+        "5f09226421bbbc510321c24ed0e38836efaf44ce61e5987ba0a773c0cb9a245b"
+      ]
+    },
+    "stand-south": {
+      "state": {
+        "id": "stand-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/working-a.png",
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/working-b.png",
+          "res://character/marsh-v2/supplemental/south-work-polish-v1/neutral.png"
+        ],
+        "frameDurationsMs": [
+          200.0,
+          200.0,
+          200.0
+        ],
+        "loop": false
+      },
+      "header": {
+        "revision": "marsh-master-repair-v1",
+        "pivot": [
+          92.0,
+          172.0
+        ],
+        "standingHeight": 148,
+        "textureFilter": "nearest"
+      },
+      "frames": [
+        "5f09226421bbbc510321c24ed0e38836efaf44ce61e5987ba0a773c0cb9a245b",
+        "3f20f860a400691991420f2f7973ff8b875f7e868c608f3a00ea6e547f62252d",
+        "072323ccabf81e7e431fb66836492d8da7a072ee32895c70a3aa4d30bb098b5e"
+      ]
+    }
+  }
+}

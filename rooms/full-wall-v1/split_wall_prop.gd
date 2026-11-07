@@ -1,0 +1,98 @@
+extends "res://rooms/full-wall-v1/full_wall_prop.gd"
+## Independently authored sections leave the cross-room doorway approach open.
+var sections := {}
+var placement_passes := 0
+var specification: Dictionary
+var layout_asset_id: String
+
+func _init(id: String, layout_id: String = "") -> void:
+	super(id)
+	layout_asset_id = id if layout_id.is_empty() else layout_id
+	specification=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/split-"+id+".json"))
+	for direction in ["north","east","south","west"]:
+		sections[direction]=[]
+		for section in specification.sections:
+			var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+"-"+direction+"-"+section+".json"))
+			var section_registration: Dictionary=decode_registration(data)
+			if data.has("operating_screens"):
+				section_registration.operating_screens=data.operating_screens.duplicate(true)
+			if data.has("operating_screen_color"):
+				section_registration.operating_screen_color=data.operating_screen_color
+			if data.get("mirror_horizontal",false):
+				section_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(section_registration)
+			var source := ArtSource.new(data.source,section_registration,texture_pool,share_texture_storage)
+			source.section=section
+			sections[direction].append(source)
+
+func apply(room) -> void:
+	# Configuration runs every frame for shared views. Relocate only changed geometry.
+	var signature := hash([asset_id,room.quarter,room.layout,room.props])
+	if room.get_meta("split_wall_signature",-1)==signature:
+		if preload("res://scripts/room_layout_store.gd").apply(room,layout_asset_id):
+			room.set_meta("split_wall_signature",hash([asset_id,room.quarter,room.layout,room.props]))
+		return
+	placement_passes+=1
+	var direction: String=["north","east","south","west"][room.quarter]
+	var kept: Array=[]
+	var inner: float=(Geometry.CELL-Geometry.WALL)*0.5
+	for index in range(2):
+		var section: ArtSource=sections[direction][index]
+		var reg: Dictionary=section.registration
+		var horizontal: bool=direction in ["north","south"]
+		var span := 136.0
+		var width: float=span if horizontal else minf(100,span*reg.width/reg.height)
+		var height: float=width*reg.height/reg.width
+		var along: float=-inner if index==0 else inner-span
+		var position := Vector2(along,-inner if direction=="north" else inner-height) if horizontal else Vector2(-inner if direction=="west" else inner-width,along)
+		kept.append({"id":"full_wall_"+asset_id+"_"+section.section,"full_wall":true,"wall_mount":true,"split_wall":true,"validate_directional_layout":true,"side_view":direction,"rect":Rect2(position,Vector2(width,height)),"sort_y":position.y+height,"registration":reg,"split_source":section})
+		if direction=="north":
+			kept[-1]["visual_y_offset"]=float(specification.get("north_art_offset",0.0))
+	var candidates: Array=room.props.filter(func(item): return not owns(item) and item.id not in specification.replaces)
+	candidates.sort_custom(func(a,b): return int(a.id in specification.preserve)>int(b.id in specification.preserve))
+	var moved: Array=[]
+	var unplaced: Array=[]
+	for original in candidates:
+		var dressing_spec: Dictionary=original.get("registration",{}).get("spec",{})
+		if dressing_spec.get("centerpiece",false) or dressing_spec.get("authored_anchor",false):
+			# The central installation is an authored anchor. Other furnishings move
+			# around it, and the room route fixture validates actual circulation.
+			kept.append(original)
+			continue
+		var candidate := vacant_placement(room,original,kept)
+		if candidate.is_empty(): unplaced.append(original.id)
+		else:
+			kept.append(candidate)
+			moved.append(original.id)
+	room.props=kept
+	placement_reports[room.quarter]={"relocated":moved,"no_clear_space":unplaced}
+	# Restore the complete source profile before resolving active hosts each rotation.
+	for name in ["dressing","cryo_dressing","center_dressing","office_dressing"]:
+		if not name in room or room.get(name)==null: continue
+		var dressing=room.get(name)
+		if not profiles.has(name): profiles[name]=dressing.profile.duplicate(true)
+		dressing.profile=profiles[name].duplicate(true)
+		var ids: Array=kept.map(func(item): return item.id)
+		for key in ["furniture","mats","supported"]:
+			dressing.profile[key]=dressing.profile.get(key,[]).filter(func(item): return (item.id if key=="furniture" else item.host) in ids)
+		for key in ["routes","surface_routes"]:
+			dressing.profile[key]=dressing.profile.get(key,[]).filter(func(route): return route.from.host in ids and route.to.host in ids and route.from.host not in moved and route.to.host not in moved)
+	preload("res://scripts/room_layout_store.gd").apply(room,layout_asset_id)
+	room.set_meta("split_wall_signature",hash([asset_id,room.quarter,room.layout,room.props]))
+
+func draw(room, prop: Dictionary) -> void:
+	if prop.get("library_asset",false):
+		preload("res://scripts/room_asset_library.gd").draw(room,prop)
+		return
+	var reg: Dictionary=prop.registration
+	var texture: ImageTexture=prop.split_source.texture
+	var scale: float=prop.rect.size.x/reg.width
+	var anchor := Vector2(prop.rect.get_center().x,prop.rect.end.y)
+	anchor.y+=float(prop.get("visual_y_offset",0.0))
+	for polygon in reg.pieces:
+		var points := PackedVector2Array()
+		var uv := PackedVector2Array()
+		for point in polygon:
+			points.append(anchor+(point-reg.pivot)*scale)
+			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(reg,point)/Vector2(texture.get_size()))
+		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+	preload("res://scripts/room_asset_library.gd").draw_operating_screens(room,reg,anchor,scale)

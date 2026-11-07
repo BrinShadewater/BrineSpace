@@ -1,0 +1,312 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/current_turbine.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "turbine bearing inspection",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"current_turbine_service_bench"
+					],
+					"purpose": "service bench footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "current_turbine",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-125.0,
+						84.0,
+						250.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "current_turbine_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+		},
+		"layered": true,
+		"room": "current_turbine",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "current_flow_governor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_instrument_cabinet",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/biomass_digester.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"power_machine",
+						"full_wall_biomass-processing-wall"
+					],
+					"purpose": "digestate washdown outlet",
+					"rotations": {
+						"3": {
+							"scale": 0.6
+						}
+					},
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"biomass_digester_service_bench",
+						"full_wall_biomass-processing-wall"
+					],
+					"purpose": "sampling service isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "biomass_digester",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-110.0,
+						24.0,
+						220.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "biomass_digester_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/biomass_digester_view.gd"
+		},
+		"layered": true,
+		"room": "biomass_digester",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "biomass_feedstock_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_maintenance_trestle",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_biomass-processing-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/biomass_digester_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/heat_recovery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "heat exchanger service isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"heat_recovery_service_bench"
+					],
+					"purpose": "maintenance footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "heat_recovery",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-135.0,
+						24.0,
+						270.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "heat_recovery_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/power-expansion-v1/heat_recovery_view.gd"
+		},
+		"layered": true,
+		"room": "heat_recovery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "heat_exchanger_manifold",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_cable_caddy",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/heat_recovery_view.gd"
+	}
+]

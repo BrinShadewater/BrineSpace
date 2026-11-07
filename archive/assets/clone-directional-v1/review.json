@@ -1,0 +1,25 @@
+{
+  "room": "clone_lab",
+  "selected": {
+    "clone-north.png": {
+      "sha256": "a15c3678e5f8e07f7381958b525bc04128fefe7c76a7189fa9833419e6e9ee9a",
+      "generated_original": "exec-8c51f285-3386-499f-a72f-79328e33758f.png"
+    },
+    "clone-sides.png": {
+      "sha256": "89776b3456e9f4702921263447634e0d1c445a72e50ab2cebea51c5582a20089",
+      "generated_original": "exec-a0b39289-6aab-4b8c-a8ce-eda8e2d8c697.png"
+    }
+  },
+  "rejected": {
+    "clone-sides-study-v1.png": "Lower workstation still faces down; missing lower storage.",
+    "clone-sides-study-v2.png": "Cabinet/monitor facing corrected; top case and centrifuge releases still down."
+  },
+  "review": "Native north, east and west reviewed; prior south retained unchanged. All runtime rectangles and prop IDs preserved; mounting flags changed without translations. North change leaves other rotations RGB-identical.",
+  "checks": {
+    "layouts": 176,
+    "side_variants": 20,
+    "card_identities": 47,
+    "states": "Console and nutrients have local off/on and temporal changes in all four rotations; all banks static."
+  },
+  "evidence": "output/clone-remaining-2026-09-12/final/runtime.json"
+}

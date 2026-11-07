@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-03",
+  "normalAdmission": true,
+  "fullGoalComplete": false,
+  "admissionSha256": "a81a6b49ccf5e30f224018292b0a74fdde5b58b891cd1701f653cd7fefbc446c",
+  "manifestSha256": "093ae5f0372d593f1eff8502a49ebd685a222d32325a4a8b445e2e490d0950eb",
+  "normalInventoryPath": "character/marsh-selected-normal-audit-2026-10-03-post-north-walk/inventory.json",
+  "normalInventorySha256": "0491a1848d34ffc818ea16db8ccecc3f5df7de81a6da69fcb459075e01e131e7",
+  "changedStates": 7,
+  "changedSlots": 12,
+  "uniqueRevisedDrawings": 6,
+  "unchangedEffectiveStates": 221,
+  "unchangedLaterStopDrawings": 24,
+  "bodyStates": 228,
+  "bodySlots": 1190,
+  "bodyManifests": 92,
+  "nativeRun": "output/marsh-animation-audit/north-walk-selected-world-v2-2026-10-03",
+  "reportSha256": "c9e087e17907230aa7bdf8c8de34b431c7e52b58fb0c72401d2ea37d8ac5b0f4",
+  "verificationSha256": "8f1813a84bd52e9b62119cd366480cc5bca9111d4e1870a1083100b318f5a431",
+  "checks": 3840,
+  "failures": 0,
+  "pairedCaptures": 104,
+  "movementSamples": 513,
+  "arrivals": 8,
+  "actorRestores": 9,
+  "boardsReviewed": 18,
+  "firstFullCaptureReviewed": true,
+  "bothFiguresVisible": true,
+  "minimumVisibilityDifference": 1250,
+  "inputsStableAndExactAtAcceptance": 5595,
+  "ownerNonLogStable": 2931,
+  "engineExit": 0,
+  "engineErrors": 0,
+  "engineWarnings": 0,
+  "browser": {
+    "exactPreAdmissionComparisonPaths": true,
+    "normalAndQuarterAdvanceSampled": true,
+    "pausedPhase": 0,
+    "pausedClockMs": 11710,
+    "drawsAtPauseAndLaterScreenshot": [
+      1634,
+      3137
+    ],
+    "continuousWatchedCadence": false,
+    "artifacts": [
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/motion-review/motion-review.html",
+        "sha256": "4a3e61d8935f7918379638c7afccef40c178f9e21c6c15a96f060140bbd6f7b5"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/motion-review/browser-quarter.png",
+        "sha256": "04088015e25f83a52e2a5c4bf8261c4669f3c385b2ca7b7fd811882cc14d8587"
+      },
+      {
+        "path": "character/marsh-v2/supplemental/north-walk-polish-v1/motion-review/browser-paused.png",
+        "sha256": "bc1ec1a7b4681c4a2690e3f956de4e9d5ddd919cdfdfc9bba82dd87157a7dcf3"
+      }
+    ]
+  },
+  "failedRun": {
+    "run": "output/marsh-animation-audit/north-walk-selected-world-v1-2026-10-03",
+    "checks": 3876,
+    "failures": 86,
+    "pairedCaptures": 104,
+    "allFailures": "Original-counterfactual actor visibility only; hand-built textures lacked normal loader metadata. Separate original sprite player loader fixes comparison. Specific metadata-field necessity not isolated.",
+    "inputsStable": 5594,
+    "ownerNonLogStable": 2931,
+    "terminal": "Completed normally with engine exit1; no Stop-Process action issued because process had completed before revalidation."
+  },
+  "artifactChecks": {
+    "pngLfsFilters": 546,
+    "pythonAst": 4,
+    "pairedUidUnique": true,
+    "skillMirrorByteEqual": true,
+    "newToolsHandoffAndAppendedNotesWhitespaceClean": true
+  },
+  "limits": "Strict same-root source sole depth established. Not complete2Dplanted-foot geometry, continuous watched cadence, natural goal selection, paid building, all rooms/rotations, disk fullRunSave/TitleContinue or whole-family identity/grade acceptance.",
+  "next": "South walk material and its implemented transition aliases, then wider actions, natural cadence and full-save coverage."
+}

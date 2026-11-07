@@ -1,0 +1,27 @@
+# Room furnishings v4 prompts
+
+Generated September 13, 2026 for Brine Space. Each request specifies a single isolated production asset for native overhead room composition. Preserve the generated source path in the batch manifest after generation.
+
+## Current Turbine flow-governor console
+
+Single large rectangular industrial flow-governor calibration console for a damaged underwater space-station current-turbine room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Wide low work island with two recessed circular flow dials, a guarded brass control wheel, three analog gauges, a narrow teal diagnostic strip, and one coiled sensor lead fully supported on the surface. Matte charcoal steel, oxidized bronze, muted sea-green accents, restrained worn edges, chunky readable shapes, painterly hand-built 2D game asset, no text, no logos, no people, no perspective, no isometric angle, no glow halo, no cast shadow beyond a tight contact shadow. Large crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.
+
+## Biomass Digester feedstock-prep island
+
+Single large rectangular feedstock-preparation island for a damaged underwater space-station biomass-digester room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Broad sealed work surface with two inset organic-feed hoppers, a short guarded macerator trough, removable sample tray, pressure latch handles, and a small amber status panel, all components physically supported by the island. Matte dark olive and graphite steel, muted brown organic residue staining kept subtle, dull brass fasteners, worn utilitarian construction, chunky readable painterly 2D game art, no text, no logos, no people, no perspective, no isometric angle, no glow halo, no broad cast shadow. Large crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.
+
+## Heat Recovery exchanger manifold
+
+Single large rectangular heat-exchanger service manifold for a damaged underwater space-station heat-recovery room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Long low service island with two parallel copper heat loops under dark protective grilles, four valve caps, two temperature gauges, a compact insulated tool tray, and restrained red-blue pipe markers without letters. Matte graphite steel, aged copper, muted brick red and desaturated blue, localized wear, chunky readable painterly 2D game asset, no text, no logos, no people, no perspective, no isometric angle, no glow halo, no broad cast shadow. Large crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.
+
+## Universal sealed instrument cabinet
+
+Single medium rectangular sealed instrument cabinet usable in any damaged underwater space-station room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Low gasketed equipment cabinet with two flush lids, recessed neutral handles, a small blank inspection plate, tie-down corners, and no department-specific instruments. Matte charcoal and warm gray steel, muted tan edge guards, restrained scuffs, no dominant department color, chunky readable painterly 2D game asset, no text, no logos, no people, no perspective, no isometric angle, no glow halo, only a tight contact shadow. Medium crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.
+
+## Universal maintenance trestle
+
+Single medium rectangular maintenance trestle usable in any damaged underwater space-station room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Compact folding work stand with a thick neutral worktop, two recessed clamps, a shallow parts tray holding generic fasteners, and folded brace geometry visible only from above; every loose piece rests on the worktop. Matte graphite steel and desaturated warm gray, dull ochre safety corners used sparingly, restrained wear, chunky readable painterly 2D game asset, no text, no logos, no people, no perspective, no isometric angle, no glow halo, only a tight contact shadow. Medium crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.
+
+## Universal cable-and-hose caddy
+
+Single medium rectangular mobile cable-and-hose caddy usable in any damaged underwater space-station room, strict orthographic top-down view with no visible front or side faces, centered isolated object, true transparent alpha background with no floor and no backdrop. Low wheeled utility caddy with two neat dark hose coils, one empty spool, four recessed caster housings, a plain tool pocket, and a short secured connector lead that stays inside the footprint. Matte charcoal steel, warm gray panels, muted rust-brown rubber, tiny desaturated teal fasteners, restrained wear, chunky readable painterly 2D game asset, no text, no logos, no people, no perspective, no isometric angle, no glow halo, only a tight contact shadow. Medium crew-scale prop, rectangular silhouette, generous transparent margin, 1254 by 1254 RGBA PNG.

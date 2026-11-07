@@ -1,0 +1,35 @@
+{
+  "room_id": "crew_hab",
+  "primary_department": "Habitation",
+  "condition": "maintained",
+  "source": "rooms/whole-room/crew-hab-source-v1.png",
+  "source_sha256": "9BC8548EAE1F1C8BD88A833958824BEDA87DDD51D49E193A2EA6DDF47D74F7BA",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "requested_size": [
+    1280,
+    1280
+  ],
+  "prompt": "Use case: stylized-concept. Create one BrineSpace CREW HAB room art asset, target 1280 square. Reference is CAMERA AND PIXEL DETAIL ONLY, not biology or machinery. Fixed orthographic near-top-down cutaway, square room parallel to image edges, all furniture fronts face screen south. Maintained underwater station habitation: cream painted modular pressure-hull panels over dark grey structure, muted warm orange textiles, warm brown synthetic wood accents. Cozy practical industrial retrofuturism, not luxurious, not decayed. Four distinct self-contained assemblies spaced in corners around broad quiet clear cross-shaped walking routes. Northwest: one compact south-facing single berth with cream frame, grey pillow at north end and muted orange blanket, under-bed storage. Northeast: a second compact single berth with grey-green folded blanket and small integrated locker. Southwest: low personal desk with dark screen, closed drawer, small book stack and tucked stool entirely within desk assembly. Southeast: one compact orange lounge chair with attached small brown side table and a mug, grouped tightly. Furniture should occupy about x180-500 and x780-1100, y170-460 and y760-1030 in a 1254-like image. Keep all tall silhouettes detached from walls and within these zones. No people, no bodies in beds, no plants or specimen tanks. Central floor entirely clear, muted warm grey service deck, quiet large modular panels, no rugs crossing walkways. Continuous low cream walls on every side, unused door sockets sealed flush; engine adds canonical door openings later. No drawn doors or portals. Normal subdued neutral ambient lighting, dark screens, no baked lamp glow or light pools. Keep same coherent chunky detailed pixel clusters as reference, no photorealism, no isometric diamond, no labels, text, logos, UI or watermark. No hoses between furniture, no giant beds. This is a single room illustration for separately registering furniture, not a spritesheet.",
+  "method": "Built-in image generation; individual source furniture polygons registered on authoritative room geometry.",
+  "geometry": {
+    "cell": 384,
+    "floor_module": 48,
+    "door": 72,
+    "wall": 16,
+    "ports": "Canonical Crew Hab tee; centers rotate, furniture stays south facing"
+  },
+  "card": "rooms/whole-room/crew-hab-card-v2.png",
+  "status": "Integrated and native-test verified; owner visual approval pending",
+  "effects": "Warm independent room fixtures; operation-gated desk traces. Empty beds and chair deliberately static.",
+  "evidence": [
+    "output/crew-hab-effects-v1.log",
+    "output/crew-hab-station-v1.log"
+  ],
+  "limitations": [
+    "Existing raw-PNG loader emits export warnings; this pass is not packaged-build verification.",
+    "Source furniture shading is baked, not a complete separate emissive/normal asset set."
+  ]
+}

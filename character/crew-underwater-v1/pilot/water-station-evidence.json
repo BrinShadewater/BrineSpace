@@ -1,0 +1,15 @@
+{
+  "fixture": "tests/playtest_crew_water.gd",
+  "result": "PASS",
+  "inspected": [
+    "native/water/tread-0400-crop.png",
+    "native/water/death-3000-crop.png"
+  ],
+  "scope": "Actual station scene, medium set directly, three crew tread and terminal water death",
+  "limitations": [
+    "No room flooding signal",
+    "No exterior or locker interaction",
+    "Water silhouette approaches machinery; clearance and occlusion review pending",
+    "Helmet station rendering not exercised"
+  ]
+}

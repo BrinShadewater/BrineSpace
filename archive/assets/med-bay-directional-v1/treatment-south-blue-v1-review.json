@@ -1,0 +1,41 @@
+{
+  "asset_id": "medical-treatment-wall-south-blue-v1",
+  "stage": "integrated_and_native_reviewed",
+  "source": {
+    "path": "assets/room-facing-repair-v3/medical-treatment-wall-south.png",
+    "sha256": "916183260f09860ac8b65b1727cab15ac7c41e12f37e89146c04d6a8c720c544",
+    "size": [2097, 750]
+  },
+  "output": {
+    "path": "assets/med-bay-directional-v1/treatment-south-blue-v1.png",
+    "sha256": "cf2ba5215191f07557935ff03952f2f305a872cd3a114826c5db008e1d441feb",
+    "size": [2097, 750]
+  },
+  "method": {
+    "tool": "tools/recolor_medical_treatment_bed.py",
+    "target_roi": [560, 205, 1435, 485],
+    "changed_pixels": 188410,
+    "outside_roi_changed_pixels": 0,
+    "finding": "Orange upholstery was remapped into the muted medical cyan family while retaining original shading and every non-target pixel."
+  },
+  "rejected_candidate": {
+    "path": "assets/med-bay-directional-v1/rejected/treatment-south-blue-imagegen-01.png",
+    "sha256": "f924ee437c2983122658e97acfc982f07c56adc0102690f33d036c541a4eb042",
+    "size": [2095, 750],
+    "reason": "Correct color direction, but canvas width changed and surrounding-pixel preservation was not provable."
+  },
+  "integration": {
+    "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-south.json",
+    "geometry_changed": false,
+    "card_refresh_required": false,
+    "card_reason": "The selected card is the north orientation and does not contain the south upholstery."
+  },
+  "verification": {
+    "native_capture": "output/med-bay-blue-2026-09-12/native-verified",
+    "native_renderer": "Godot 4.6.1 OpenGL on NVIDIA GeForce RTX 4070 Ti",
+    "native_visual_review": "All four rotations inspected; south bank remains wall-fitted, readable and inward-facing with muted blue upholstery.",
+    "layout_tests": "output/test-runs/20260912-164920-headless",
+    "layout_scope": "176 furnished orientations and 20 side-wall variants passed"
+  },
+  "owner_acceptance": null
+}

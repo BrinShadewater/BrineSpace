@@ -1,0 +1,306 @@
+extends RefCounted
+## Local authoring overrides; independent of expedition saves.
+static var path := "user://room_layouts.json"
+static var defaults_path := "res://rooms/full-wall-v1/default-layouts.json"
+static var loaded := false
+static var data: Dictionary={}
+static var revision:=0
+static var geometry_revision:=0
+static func ensure_loaded() -> void:
+	if loaded: return
+	loaded=true
+	revision+=1
+	if FileAccess.file_exists(path):
+		var parsed=JSON.parse_string(FileAccess.get_file_as_string(path))
+		if parsed is Dictionary and parsed.get("version",0)==1 and parsed.get("layouts") is Dictionary:
+			if navigation_stamp(data)!=navigation_stamp(parsed.layouts): geometry_revision+=1
+			data=parsed.layouts
+static var reset_warned: Dictionary={} # One placement-reset warning per asset/quarter/prop.
+static func key(asset: String, q: int) -> String: return asset+"/"+str(posmod(q,4))
+static var authored_cache: Dictionary={}
+static var authored_cache_path:=""
+static func invalidate_authored() -> void:
+	authored_cache_path=""
+static func authored_positions(asset: String, q: int) -> Dictionary:
+	if authored_cache_path!=defaults_path:
+		var previous:=authored_cache
+		authored_cache_path=defaults_path; authored_cache={}
+		if FileAccess.file_exists(defaults_path):
+			var parsed=JSON.parse_string(FileAccess.get_file_as_string(defaults_path))
+			if parsed is Dictionary and parsed.get("version",0)==1 and parsed.get("layouts") is Dictionary: authored_cache=parsed.layouts
+		if previous!=authored_cache: revision+=1
+		if navigation_stamp(previous)!=navigation_stamp(authored_cache): geometry_revision+=1
+	return authored_cache.get(key(asset,q),{}).duplicate(true)
+# Loads both layout files so revision and geometry_revision settle. Callers that cache geometry
+# call this first: a revision that changes while they fill their cache throws it away again.
+static func prime() -> void:
+	ensure_loaded()
+	authored_positions("brine_core",0)
+
+static func positions(asset: String, q: int) -> Dictionary:
+	ensure_loaded()
+	var result:=authored_positions(asset,q)
+	result.merge(data.get(key(asset,q),{}).duplicate(true),true)
+	return result
+
+static var reuse_layout_store := not OS.get_cmdline_user_args().has("--uncached-layout-store")
+static var merged_cache: Dictionary={}
+static var merged_cache_revision:=-1
+static var merged_cache_data=null
+static func shared_positions(asset: String, q: int) -> Dictionary:
+	# Read-only merged layout for the per-frame paths (apply, surface drawing).
+	# Callers must never mutate the result; use positions() for an owned copy.
+	if not reuse_layout_store: return positions(asset,q)
+	ensure_loaded()
+	if authored_cache_path!=defaults_path: authored_positions(asset,q) # Reload + bump revision.
+	# Fixtures and capture tools assign `data` wholesale without bumping revision;
+	# the identity check keeps that long-standing shortcut working.
+	if merged_cache_revision!=revision or not is_same(merged_cache_data,data):
+		merged_cache_revision=revision
+		merged_cache_data=data
+		merged_cache={}
+	var cache_key:=key(asset,q)
+	if not merged_cache.has(cache_key):
+		var result: Dictionary=authored_cache.get(cache_key,{}).duplicate(true)
+		result.merge(data.get(cache_key,{}).duplicate(true),true)
+		merged_cache[cache_key]=result
+	return merged_cache[cache_key]
+static func save_layout(asset: String, q: int, positions_to_save: Dictionary) -> Error:
+	ensure_loaded()
+	var next:=data.duplicate(true)
+	if positions_to_save.is_empty(): next.erase(key(asset,q))
+	else: next[key(asset,q)]=positions_to_save.duplicate(true)
+	return write_data(next)
+static func write_data(next: Dictionary) -> Error:
+	var file:=FileAccess.open(path+".tmp",FileAccess.WRITE)
+	if file==null: return FileAccess.get_open_error()
+	file.store_string(JSON.stringify({"version":1,"layouts":next},"\t"))
+	file.close()
+	var error:=DirAccess.rename_absolute(ProjectSettings.globalize_path(path+".tmp"),ProjectSettings.globalize_path(path))
+	if error==OK:
+		if next!=data: revision+=1
+		if navigation_stamp(next)!=navigation_stamp(data): geometry_revision+=1
+		data=next
+	return error
+# One placement envelope, shared by Studio and the live game. The live values are
+# the truth: anything Studio calls legal must survive in the running station.
+# Ordinary props 360x378; wall mounts a full cell (400x400); props with a movable
+# region keep Studio's taller box, which the live guard previously lacked.
+const PROP_ENVELOPE := Rect2(-180,-198,360,378)
+const MOVABLE_PROP_ENVELOPE := Rect2(-184,-260,368,444)
+static func envelope_for(room, prop: Dictionary) -> Rect2:
+	if prop.has("movable_region") or prop.get("wall_attachment",false): return MOVABLE_PROP_ENVELOPE
+	if prop.get("wall_mount",false):
+		var half: float=(room.Geometry.CELL+room.Geometry.WALL)*0.5
+		return Rect2(-half,-half,half*2,half*2)
+	return PROP_ENVELOPE
+static func door_lane(side: int) -> Rect2:
+	return Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
+static func move_prop(prop: Dictionary, at: Vector2) -> void:
+	var shift: Vector2=at-prop.rect.position
+	prop.rect.position=at
+	prop.sort_y=preload("res://scripts/room_asset_library.gd").base_sort_y(prop)
+	if prop.has("art_offset"): prop.art_offset+=shift
+static func apply_serial(room, quarter: int) -> int:
+	return int(room.get_meta("layout_apply_serials",{}).get(quarter,0))
+static func apply(room, asset: String) -> bool:
+	room.set_meta("layout_asset",asset)
+	if room.has_meta("layout_editor_preview"): return false
+	var selected:=shared_positions(asset,room.quarter)
+	# The cheap early-out: (asset, quarter, store revision) determine `selected`,
+	# and the per-prop stamp detects a rebuild that replaced the prop dictionaries
+	# (a rebuild resets positions, so stamped props are exactly the applied ones).
+	var signature:=hash([asset,room.quarter,revision]) if reuse_layout_store else hash([asset,room.quarter,selected,room.props])
+	if room.get_meta("layout_apply_signature",-1)==signature:
+		if not reuse_layout_store: return false
+		# Checking only survivors accepts both a shortened list and an empty one.
+		# Match the applied count as well so saved library props can be restored.
+		var stamped: bool = room.get_meta("layout_apply_count",-1)==room.props.size()
+		for prop in room.props:
+			if prop.get("_layout_stamp",-1)!=signature: stamped=false; break
+		if stamped: return false
+	# Prop dictionaries are about to mutate; retained draw slots key on this view's serial
+	# for this quarter. Per view keeps one churning room from invalidating every other
+	# room; per quarter keeps two rooms that share a view at different rotations from
+	# invalidating each other every frame (two rotated Solar Arrays cost ~57 ms a frame).
+	var serials: Dictionary = room.get_meta("layout_apply_serials",{})
+	serials[room.quarter] = int(serials.get(room.quarter,0))+1
+	room.set_meta("layout_apply_serials",serials)
+	# Only restore props this authoring layer previously removed; dynamic room props stay authoritative.
+	var removed_by_quarter: Dictionary=room.get_meta("layout_removed_ids",{})
+	var originals: Dictionary=room.get_meta("layout_copy_sources",{}).get(room.quarter,{})
+	for id in removed_by_quarter.get(room.quarter,[]):
+		if selected.has(id) and selected[id]==null: continue
+		if not originals.has(id): continue
+		var present:=false
+		for prop in room.props:
+			if str(prop.id)==id: present=true; break
+		if not present: room.props.append(originals[id].duplicate(true))
+	var removed: Array=[]
+	for prop in room.props:
+		if selected.has(str(prop.id)) and selected[str(prop.id)]==null: removed.append(str(prop.id))
+	for id in removed_by_quarter.get(room.quarter,[]):
+		if selected.has(id) and selected[id]==null and id not in removed: removed.append(id)
+	removed_by_quarter[room.quarter]=removed; room.set_meta("layout_removed_ids",removed_by_quarter)
+	preload("res://scripts/room_asset_library.gd").apply(room,selected)
+	copies(room,selected)
+	preload("res://scripts/room_asset_library.gd").apply_variants(room,selected)
+	room.props=room.props.filter(func(prop): return not (selected.has(str(prop.id)) and selected[str(prop.id)]==null))
+	# Common decorations stay in Studio; live rooms contain their specialist equipment only.
+	room.props=room.props.filter(func(prop): return not is_common_decoration(prop))
+	var room_id:=room_id_for(room,asset)
+	room.props=room.props.filter(func(prop): return preload("res://scripts/room_asset_library.gd").keeps_in_room(room_id,prop))
+	for prop in room.props:
+		var axes=selected.get("flip/"+str(prop.id),[false,false])
+		if not axes is Array or axes.size()!=2: axes=[false,false]
+		prop.layout_flip=Vector2(-1 if axes[0] else 1,-1 if axes[1] else 1)
+		prop.layout_hidden=selected.get("hidden/"+str(prop.id),false)
+		if prop.has("flush_region"): continue
+		if not prop.has("layout_default"): prop.layout_default=prop.rect.position
+		var at: Vector2=prop.layout_default
+		var value=selected.get(str(prop.id))
+		if value is Array and value.size()==2 and (value[0] is float or value[0] is int) and (value[1] is float or value[1] is int):
+			at=Vector2(value[0],value[1])
+			if not at.is_finite(): continue
+		resize_prop(prop,selected.get("size/"+str(prop.id),[1.0,1.0]))
+		move_prop(prop,at)
+		prop.sort_y+=float(selected.get("order/"+str(prop.id),0))*512.0
+		if prop.get("validate_directional_layout",false):
+			# Studio defaults to free placement, including older saves that omit the flag.
+			# Match its authored sizes/positions; only reject completely detached stale art.
+			if selected.get("__free_placement",true) and Rect2(-240,-300,480,540).intersects(room.prop_visual_bounds(prop)):
+				continue
+			# Constrained layouts retain the directional clearance guard.
+			var valid := envelope_for(room,prop).encloses(room.prop_visual_bounds(prop))
+			for side in range(4):
+				if not room.Geometry.has_port(room.layout[0],side): continue
+				if prop.rect.intersects(door_lane(side)): valid=false
+			if not valid:
+				# Silent before 2026-09-11: an authored placement outside the constrained
+				# envelope was reset with no trace, so the layout looked saved but never
+				# appeared. Warn once per prop so a live session does not spam the log.
+				var notice:=key(asset,room.quarter)+"/"+str(prop.id)
+				if not reset_warned.has(notice):
+					reset_warned[notice]=true
+					push_warning("RoomLayoutStore reset "+notice+" to its default: the saved placement falls outside the constrained envelope or blocks a door lane.")
+				resize_prop(prop,[1.0,1.0])
+				move_prop(prop,prop.layout_default)
+
+	if reuse_layout_store:
+		for prop in room.props: prop._layout_stamp=signature
+		room.set_meta("layout_apply_signature",signature)
+		room.set_meta("layout_apply_count",room.props.size())
+	else:
+		room.set_meta("layout_apply_signature",hash([asset,room.quarter,selected,room.props]))
+	return true
+
+static func is_common_decoration(prop: Dictionary) -> bool:
+	var registration: Dictionary=prop.get("registration",{})
+	if registration.get("dressing",false):
+		return not registration.get("spec",{}).get("live_furniture",false)
+	for field in ["id","copy_source","variant_source","portable_id"]:
+		if str(prop.get(field,"")).begins_with("library/common-"): return true
+	return false
+
+static func surface_positions(room: Node) -> Dictionary:
+	if room.has_meta("layout_draft"): return room.get_meta("layout_draft")
+	# Per-frame draw path: shared read-only merge (see shared_positions).
+	return shared_positions(str(room.get_meta("layout_asset","")),room.quarter)
+
+static func resize_prop(prop: Dictionary, value) -> void:
+	if prop.has("flush_region"): return
+	if not prop.has("layout_original_size"):
+		prop.layout_original_size=prop.rect.size
+		prop.layout_original_lift=float(prop.get("visual_y_offset",0.0))
+	var scale_value:=1.0
+	if value is Array and value.size()==2 and (value[0] is float or value[0] is int):
+		if is_finite(float(value[0])): scale_value=clampf(float(value[0]),0.25,2.0)
+	prop.rect.size=prop.layout_original_size*scale_value
+	if prop.has("visual_y_offset"): prop.visual_y_offset=prop.layout_original_lift*scale_value
+	prop.sort_y=preload("res://scripts/room_asset_library.gd").base_sort_y(prop)
+
+static func flip_axes(room: Node, id: String) -> Vector2:
+	var value=surface_positions(room).get("flip/"+id,[false,false])
+	if not value is Array or value.size()!=2: return Vector2.ONE
+	return Vector2(-1 if value[0] else 1,-1 if value[1] else 1)
+
+static func draw_flip(room, canvas: CanvasItem, prop: Dictionary, origin: Vector2, scale_value: float) -> void:
+	# Dictionary.get evaluates its fallback even when the cached value exists.
+	var axes: Vector2=prop.layout_flip if prop.has("layout_flip") else flip_axes(room,str(prop.id))
+	if axes==Vector2.ONE:
+		# Unflipped: (center-center*axes) is exactly zero, so skip the virtual bounds
+		# lookup that otherwise ran for every retained slot paint.
+		canvas.draw_set_transform(origin,0,Vector2.ONE*scale_value)
+		return
+	var center: Vector2=room.prop_visual_bounds(prop).get_center()
+	canvas.draw_set_transform(origin+(center-center*axes)*scale_value,0,axes*scale_value)
+
+static func save_many(layouts: Dictionary) -> Error:
+	ensure_loaded()
+	var next:=data.duplicate(true)
+	for id in layouts:
+		if layouts[id].is_empty(): next.erase(id)
+		else: next[id]=layouts[id].duplicate(true)
+	return write_data(next)
+
+static func copies(room, values: Dictionary) -> void:
+	var catalogs: Dictionary=room.get_meta("layout_copy_sources",{})
+	var sources: Dictionary=catalogs.get(room.quarter,{})
+	for original in room.props:
+		if not original.has("copy_source") and not original.get("library_asset",false): sources[str(original.id)]=original.duplicate(true)
+	catalogs[room.quarter]=sources; room.set_meta("layout_copy_sources",catalogs)
+	room.props=room.props.filter(func(prop): return not prop.has("copy_source"))
+	for id in values:
+		if not str(id).begins_with("copy/") or not values[id] is Array: continue
+		var source: String=str(values.get("source/"+id,""))
+		for original in sources.values():
+			if str(original.id)!=source: continue
+			var prop: Dictionary=original.duplicate(true)
+			prop.id=id; prop.copy_source=source
+			room.props.append(prop)
+			break
+
+static var asset_paths: Dictionary={}
+static func asset_for(room) -> String:
+	if "room_id" in room: return "room-"+str(room.room_id)
+	if asset_paths.is_empty():
+		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):
+			asset_paths[entry.view]=entry.asset
+	return str(asset_paths.get(room.get_script().resource_path,""))
+
+static var asset_rooms: Dictionary={}
+static func room_id_for(room, asset: String) -> String:
+	if "room_id" in room: return str(room.room_id)
+	if asset_rooms.is_empty():
+		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):
+			asset_rooms[entry.asset]=entry.room
+	return str(asset_rooms.get(asset,""))
+
+static func surface_copies(items: Array, values: Dictionary) -> Array:
+	var result: Array=items.duplicate(true)
+	for id in values:
+		if not str(id).begins_with("copy/") or not values[id] is Array: continue
+		var source: String=str(values.get("source/"+id,""))
+		for original in items:
+			if str(original.id)!=source: continue
+			var item: Dictionary=original.duplicate(true)
+			item.id=id
+			var at:=Vector2(values[id][0],values[id][1])
+			if item.has("at"):
+				item.rect.position+=at-item.at; item.at=at
+			else: item.rect.position=at
+			result.append(item)
+			break
+	return result
+
+static func navigation_stamp(layouts: Dictionary) -> int:
+	var relevant: Dictionary={}
+	for layout in layouts:
+		var entries: Dictionary={}
+		for key in layouts[layout]:
+			var id:=str(key)
+			if id=="__free_placement" or (not id.contains("/") and not id.begins_with("__")) or id.begins_with("library/") or id.begins_with("copy/") or id.begins_with("source/") or id.begins_with("portable/") or id.begins_with("size/") or id.begins_with("flip/") or id.begins_with("hidden/"):
+				if id.begins_with("hidden/light/") or id.begins_with("hidden/riser/") or id.begins_with("hidden/decor/"): continue
+				entries[id]=layouts[layout][key]
+		if not entries.is_empty(): relevant[layout]=entries
+	return hash(relevant)

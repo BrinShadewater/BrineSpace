@@ -1,0 +1,42 @@
+{
+  "id": "radio_lab",
+  "brief": "Listens through orbital static. Broad upper-wall radio receiver console with large twin reel spools and a prominent circular tuning dial; lower-left compact folded dish calibration rig, lower-right signal rack. Brushed steel, charcoal panels, restrained turquoise glass with subtle copper wiring. Clear horizontal central aisle. ONLY WEST EAST door openings; north/south walls sealed. Reference north/south doors must be replaced with west/east geometry. Future effect anchors reel pivots and meter window; no baked wave beams.",
+  "prompt": "Use case: stylized-concept. One square1280 BrineSpace room sprite. Reference supplies ONLY overhead cutaway camera, hull construction, selective pixel detail and quiet slate floor; replace all mining equipment and yellow palette. Worn steel with readable large machinery and sparse purposeful detail. True transparent exterior, not black/checkerboard. No text/UI/people. Keep hull square and centered. Door gaps are centered14 percent width, floor flush to outer wall boundary with no extensions beyond hull and no blocking trim. Base equipment readable offline; localized functioning effects added later. Listens through orbital static. Broad upper-wall radio receiver console with large twin reel spools and a prominent circular tuning dial; lower-left compact folded dish calibration rig, lower-right signal rack. Brushed steel, charcoal panels, restrained turquoise glass with subtle copper wiring. Clear horizontal central aisle. ONLY WEST EAST door openings; north/south walls sealed. Reference north/south doors must be replaced with west/east geometry. Future effect anchors reel pivots and meter window; no baked wave beams.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-fa78e776-4ac7-45ca-be5d-df9a80e0e3cf.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/mining_drone_bay.png",
+    "inherit": "camera/hull/detail, north-south layout except Radio",
+    "exclude": "drones/yellow palette"
+  },
+  "processing": {
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "2fbacf5a838bfc4a7721c443c0bcb64002764c1bb8c76b42b86eb3f2006416a2",
+  "output_sha256": "635250acdec367e50a6c1160971c9f6291cd9b999ca09d76258219b1f2052f98",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "alpha_bounds": [
+    15,
+    8,
+    1264,
+    1272
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage": "normalized-candidate",
+  "review": "fail: west/east doors rendered as closed panels",
+  "integrated": false,
+  "native_verified": false
+}

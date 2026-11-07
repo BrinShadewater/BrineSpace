@@ -1,0 +1,59 @@
+{
+  "asset_id": "galley-wall",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "self-supporting cabinet against sealed north wall",
+  "camera_and_facing": "overhead shallow cutaway; working controls/handle face bottom",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Desktop/17074484_071125-cc-otrc-alienearth3-img.jpg",
+      "sha256": "cbe2ccd774f754f54f51236befbb874b845a6b1e4ee086729225e5a1d7cee6e6",
+      "role": "owner material/atmosphere reference; not camera or geometry"
+    }
+  ],
+  "source_path": "assets/galley-wall-v1/source.png",
+  "source_sha256": "9d066d155dacbda5b78a41f34e7b81e957d8c1425aace30b343a163506667e78",
+  "export_path": "assets/galley-wall-v1/galley-wall.png",
+  "export_sha256": "0db554ebe8d835f106c6a264e8f27551ce5ed675c6e2a0fe686cf64f94f930b0",
+  "native_canvas_px": [
+    2006,
+    784
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Actual room placement and collision not established; preserve door approaches.",
+    "Requires uninterrupted wall; do not bridge a doorway."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Warm putty worktop and brown cabinetry; quiet dark appliances; readable cooking/preparation/wash zones."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/galley-wall-review.png",
+      "findings": [
+        "Viewed at 328 world units width beside existing furnishings/crew; visual height 61.3 units.",
+        "Fine details simplify at game scale; no size increase to expose them."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "RGB checkerboard source; exterior-neutral vector registration at source-specific threshold 190; one polygon.",
+        "Export inspected on light and dark grounds; silhouette and valid pale interior retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Portrait props need aspect-fitted enlarged diagnostics while native preview preserves intended display scale."
+  ]
+}

@@ -1,0 +1,341 @@
+extends RefCounted
+const HULL_ATLAS_PATH := "res://assets/environment/hull-condition-v2/runtime/hull-256.png"
+static var hull_atlas: Texture2D
+static var hull_atlas_attempted := false
+
+static func draw_hull_decal(canvas,origin: Vector2,scale: float,index: int) -> bool:
+	if not hull_atlas_attempted:
+		hull_atlas_attempted=true
+		var picture := Image.new()
+		if FileAccess.file_exists(HULL_ATLAS_PATH) and picture.load_png_from_buffer(FileAccess.get_file_as_bytes(HULL_ATLAS_PATH))==OK and picture.get_size()==Vector2i(768,512):
+			hull_atlas=ImageTexture.create_from_image(picture)
+	if hull_atlas==null: return false
+	canvas.draw_texture_rect_region(hull_atlas,Rect2(origin+Vector2(-24,-19)*scale,Vector2(48,48)*scale),Rect2(Vector2(index%3,index/3)*256,Vector2(256,256)))
+	return true
+
+const SurfaceShader = preload("res://scripts/flood_surface.gdshader")
+const SubmersionShader = preload("res://scripts/flood_submersion.gdshader")
+const Corridor = preload("res://rooms/underwater/corridor_geometry.gd")
+const Geometry = preload("res://tools/modular_room_geometry.gd")
+const Settings = preload("res://scripts/title_settings.gd")
+
+static func condition_clock(clock: float) -> float:
+	return 0.0 if Settings.reduced_motion else clock
+
+static func floor_bounds(room: Dictionary) -> Rect2:
+	var extent: Vector2i=room.get("size",Vector2i.ONE)
+	# Large-room perimeter walls are 28 world units thick, ordinary hulls 12.
+	var inset:=28.0 if extent!=Vector2i.ONE else 12.0
+	return Rect2(Vector2.ONE*(-192.0+inset),Vector2(extent)*384.0-Vector2.ONE*inset*2.0)
+
+static func damage_anchor(room: Dictionary) -> Vector2:
+	if room.id in ["corridor","corner","tee_corridor"]:
+		return Geometry.turn(Vector2(-80,-56),Corridor.rotation(room))
+	return Vector2(-70,-184)
+
+static func shape(room: Dictionary) -> PackedVector2Array:
+	if room.id in ["corridor","corner","tee_corridor"]:
+		var points := PackedVector2Array()
+		for point in Corridor.floor_for(room.id=="corner",room.id=="tee_corridor"):
+			points.append(Geometry.turn(point,Corridor.rotation(room)))
+		return points
+	var bounds:=floor_bounds(room)
+	return PackedVector2Array([bounds.position,Vector2(bounds.end.x,bounds.position.y),bounds.end,Vector2(bounds.position.x,bounds.end.y)])
+
+static func update_surfaces(grid,game,rooms: Array,size: float) -> void:
+	var visible := {}
+	var clock: float = condition_clock(game.get_visual_time_seconds())
+	for room in rooms:
+		var water := float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0))
+		if water<=0.001: continue
+		visible[room.pos]=true
+		if not grid.flood_surfaces.has(room.pos):
+			var surface := Polygon2D.new()
+			surface.material=ShaderMaterial.new()
+			surface.material.shader=SurfaceShader
+			# Above both retained floor passes, below the walls.
+			grid.surface_passes[grid.Surface.FLOOR_REST].add_child(surface)
+			grid.flood_surfaces[room.pos]=surface
+		var surface: Polygon2D=grid.flood_surfaces[room.pos]
+		var key := [room.id,room.get("rotation",0),room.get("size",Vector2i.ONE)]
+		if surface.get_meta("shape_key",[])!=key:
+			surface.polygon=shape(room)
+			surface.set_meta("shape_key",key)
+		surface.position=(Vector2(room.pos)+Vector2.ONE*0.5)*size
+		surface.scale=Vector2.ONE*size/384.0
+		surface.material.set_shader_parameter("depth",water)
+		surface.material.set_shader_parameter("clock",clock)
+		surface.show()
+	for cell in grid.flood_surfaces.keys():
+		if not game.occupied.has(cell):
+			grid.flood_surfaces[cell].queue_free()
+			grid.flood_surfaces.erase(cell)
+		elif not visible.has(cell): grid.flood_surfaces[cell].hide()
+
+static func prop_material(slot: Node2D,prop: Dictionary,water: float,clock: float,origin: Vector2,scale: float) -> void:
+	clock=condition_clock(clock)
+	if water<=0.001:
+		if slot.material!=null:
+			slot.material=null
+			slot.remove_meta("flood_parameters")
+			slot.remove_meta("flood_clock")
+		return
+	if slot.material==null:
+		slot.material=ShaderMaterial.new()
+		slot.material.shader=SubmersionShader
+		slot.remove_meta("flood_parameters")
+		slot.remove_meta("flood_clock")
+	var line: Vector2=origin+Vector2(0,prop.rect.end.y-water*76.0)*scale
+	var transform := slot.get_global_transform()
+	line=transform*line
+	var parameters := [line.y,scale*transform.get_scale().y,water]
+	if slot.get_meta("flood_parameters",[])!=parameters:
+		slot.material.set_shader_parameter("waterline_y",parameters[0])
+		slot.material.set_shader_parameter("world_scale",parameters[1])
+		slot.material.set_shader_parameter("depth",water)
+		slot.set_meta("flood_parameters",parameters)
+	# The clock only changes while unpaused; skip the per-prop uniform upload otherwise.
+	if slot.get_meta("flood_clock",INF)!=clock:
+		slot.material.set_shader_parameter("clock",clock)
+		slot.set_meta("flood_clock",clock)
+
+static func draw_crew_shadow(canvas,foot: Vector2,water: float) -> void:
+	var depth := clampf(water,0,1)
+	var width := lerpf(6,15,smoothstep(0.25,0.85,depth))
+	for layer in range(3):
+		var radius := 1.0+layer*0.45
+		var points := PackedVector2Array()
+		for i in range(20):
+			var angle := TAU*i/20.0
+			points.append(foot+Vector2(cos(angle)*width,sin(angle)*width*0.36)*radius+Vector2(0,depth*5))
+		canvas.draw_colored_polygon(points,Color(0.01,0.04,0.05,lerpf(0.10,0.018,depth)/(1+layer)))
+
+static func crew_waterline(foot_y: float,water: float,swimming: bool) -> float:
+	# Standing sprites use feet as pivot; swimmers use shoulders.
+	return foot_y-lerpf(-3,25,clampf((water-0.55)/0.45,0,1)) if swimming else foot_y-water/0.55*42.0
+
+static func draw_crew(canvas,texture: Texture2D,rect: Rect2,foot: Vector2,water: float,clock: float) -> void:
+	clock=condition_clock(clock)
+	if water<=0.001:
+		canvas.draw_texture_rect(texture,rect,false,texture.get_meta("cryo_tint",Color.WHITE))
+		return
+	var swimming: bool=texture.get_meta("crew_water_pose",false)
+	if texture.get_meta("companion_surface",false):
+		# Buoyant companions remain at the surface, even in a full compartment.
+		var fraction:float=float(texture.get_meta("companion_surface_line",73.0))/float(texture.get_height())
+		var line:float=rect.position.y+rect.size.y*fraction
+		var size:=Vector2(texture.get_size())
+		canvas.draw_texture_rect_region(texture,Rect2(rect.position,Vector2(rect.size.x,rect.size.y*fraction)),Rect2(Vector2.ZERO,Vector2(size.x,size.y*fraction)))
+		canvas.draw_texture_rect_region(texture,Rect2(Vector2(rect.position.x,line),Vector2(rect.size.x,rect.size.y*(1-fraction))),Rect2(Vector2(0,size.y*fraction),Vector2(size.x,size.y*(1-fraction))),Color(.35,.7,.73,.48))
+		draw_crew_wake(canvas,Vector2(foot.x,line),texture,clock,10)
+		return
+	if swimming:
+		var submersion := clampf((water-0.55)/0.45,0,1)
+		canvas.draw_texture_rect(texture,rect,false,Color(0.37,0.71,0.74,lerpf(0.70,0.23,submersion)))
+		var facing: String=texture.get_meta("crew_water_facing","east")
+		var offset: Vector2={"east":Vector2(22,-6),"west":Vector2(-22,-6),"north":Vector2(0,-12),"south":Vector2(0,14)}.get(facing,Vector2.ZERO)
+		if texture.get_meta("crew_water_kind","")=="tread": offset=Vector2(0,-13)
+		var head := foot+offset
+		if water<0.85:
+			var points := PackedVector2Array()
+			var uv := PackedVector2Array()
+			for i in range(24):
+				var angle := TAU*i/24.0
+				var point := head+Vector2(cos(angle)*13,sin(angle)*12)
+				points.append(point)
+				uv.append((point-rect.position)/rect.size)
+			canvas.draw_polygon(points,PackedColorArray([Color(1,1,1,1-submersion*0.5)]),uv,texture)
+			draw_crew_wake(canvas,head+Vector2(0,5),texture,clock,14.0)
+		else:
+			for i in range(3):
+				var phase := fposmod(clock*0.7+i*0.33,1.0)
+				canvas.draw_arc(head+Vector2(sin(clock*2+i)*3,-phase*23),1+phase,0,TAU,10,Color(0.6,0.8,0.78,(1-phase)*0.65),0.7,true)
+		return
+	var line := crew_waterline(foot.y,water,swimming)+sin(clock*2.0)*0.55
+	var fraction := clampf((line-rect.position.y)/rect.size.y,0,1)
+	var tex := Vector2(texture.get_size())
+	if fraction>0:
+		canvas.draw_texture_rect_region(texture,Rect2(rect.position,Vector2(rect.size.x,rect.size.y*fraction)),Rect2(Vector2.ZERO,Vector2(tex.x,tex.y*fraction)))
+	if fraction<1:
+		canvas.draw_texture_rect_region(texture,Rect2(Vector2(rect.position.x,line),Vector2(rect.size.x,rect.end.y-line)),Rect2(Vector2(0,tex.y*fraction),Vector2(tex.x,tex.y*(1-fraction))),Color(0.30,0.66,0.70,0.35 if water<0.85 else 0.22))
+	draw_crew_wake(canvas,Vector2(foot.x,line),texture,clock,8.0)
+
+static func draw_crew_wake(canvas,contact: Vector2,texture: Texture2D,clock: float,width: float) -> void:
+	clock=condition_clock(clock)
+	var facing: String=texture.get_meta("crew_water_facing","south")
+	var direction: Vector2={"east":Vector2.RIGHT,"west":Vector2.LEFT,"north":Vector2.UP,"south":Vector2.DOWN}.get(facing,Vector2.DOWN)
+	var side := Vector2(-direction.y,direction.x)
+	var kind: String=texture.get_meta("crew_water_kind","")
+	var moving := kind in ["walk","swim"]
+	# Two separated, tapered disturbances leave the front and center open.
+	# Moving poses trail behind the body; idle/treading only stirs nearby water.
+	for bank in [-1,1]:
+		var previous := Vector2.ZERO
+		for i in range(9):
+			var t := i/8.0
+			var pulse := sin(clock*3.1+bank*1.7-t*4)
+			var lateral := width*(0.58+t*0.45)+pulse*0.6
+			var behind := lerpf(-2.0,20.0 if moving else 6.0,t)
+			var offset: Vector2 = side*lateral*float(bank)-direction*behind
+			offset.y*=0.38
+			var point: Vector2 = contact+offset
+			if i>0:
+				var alpha := sin(PI*(t-0.0625))*0.28*(0.85+sin(clock*2+bank)*0.15)
+				canvas.draw_line(previous,point,Color(0.62,0.76,0.72,alpha),0.7,true)
+			previous=point
+
+static func draw_door_currents(canvas,game,room: Dictionary,center: Vector2,scale: float,time: float) -> void:
+	if room.get("isolated",false): return
+	var water := float(room.get("water_level",0))
+	for source in preload("res://scripts/room_footprint.gd").cells(room.pos,room.get("size",Vector2i.ONE)):
+		for direction in [Vector2i.RIGHT,Vector2i.DOWN]:
+			var cell: Vector2i=source+direction
+			if not game.occupied.has(cell): continue
+			var neighbor: Dictionary=game.occupied[cell]
+			if neighbor.get("pos",Vector2i(-1,-1))==room.pos: continue
+			_draw_single_door_current(canvas,game,room,neighbor,source,cell,direction,center+Vector2(source-room.pos)*384.0*scale,scale,time,water)
+
+static func _draw_single_door_current(canvas,game,room: Dictionary,neighbor: Dictionary,source: Vector2i,cell: Vector2i,direction: Vector2i,center: Vector2,scale: float,time: float,water: float) -> void:
+		var difference := water-float(neighbor.get("water_level",0))
+		if maxf(water,float(neighbor.get("water_level",0)))<=0.015:
+			game.grid_view.door_wet_history.erase([source,cell])
+			return
+		if neighbor.get("isolated",false): return
+		if not game._placed_rooms_connected(room,neighbor,direction,source,cell): return
+		var aperture := float(game.grid_view._door_frame_for_pair(game,source,cell))/float(game.grid_view.DOOR_OPEN_FRAMES-1)
+		var key: Array=[source,cell]
+		var wet=preload("res://rooms/doors/door_water.gd")
+		var state: Dictionary=wet.advance(game.grid_view.door_wet_history.get(key,{}),roundi(aperture*9),time)
+		game.grid_view.door_wet_history[key]=state
+		wet.draw(canvas,center+Vector2(direction)*192*scale,Vector2(direction),aperture,difference,maxf(water,float(neighbor.get("water_level",0))),float(state.closing_until)>time,time,scale)
+		if absf(difference)<0.015: return
+		if aperture<=0: return
+		var flow := Vector2(direction)*signf(difference)
+		var across := Vector2(-flow.y,flow.x)
+		var mouth := center+Vector2(direction)*192*scale
+		for i in range(3):
+			var phase := fposmod(time*(0.6+absf(difference))+i/3.0,1.0)
+			var point := mouth+flow*(phase-0.5)*26*scale
+			var alpha := sin(phase*PI)*minf(0.5,absf(difference)*2)*aperture
+			canvas.draw_polyline(PackedVector2Array([point-flow*2*scale-across*5*scale,point,point-flow*2*scale+across*5*scale]),Color(0.56,0.83,0.81,alpha),maxf(0.7,scale),true)
+
+static func draw_leak(canvas,origin: Vector2,scale: float,severity: float,water: float,time: float,patched := false) -> void:
+	if severity<=0: return
+	var authored := draw_hull_decal(canvas,origin,scale,3 if patched else (0 if severity<=0.35 else 1 if severity<=0.7 else 2))
+	if not authored:
+		# Stable fractured metal, with a narrow bright bevel against a dark opening.
+		var fracture := PackedVector2Array()
+		var shape: Array
+		if severity<=0.35:
+			shape=[Vector2(-3,-3),Vector2(0,1),Vector2(-2,5),Vector2(0,9)]
+		elif severity<=0.7:
+			shape=[Vector2(-13,0),Vector2(-7,2),Vector2(-3,-1),Vector2(2,4),Vector2(0,9),Vector2(9,7),Vector2(14,9)]
+		else:
+			shape=[Vector2(-8,-5),Vector2(-3,-2),Vector2(-5,2),Vector2(1,5),Vector2(-2,10),Vector2(3,14)]
+			canvas.draw_colored_polygon(PackedVector2Array([origin+Vector2(-6,0)*scale,origin+Vector2(4,3)*scale,origin+Vector2(5,10)*scale,origin+Vector2(-3,12)*scale]),Color(0.025,0.05,0.06,0.95))
+		for point in shape:
+			fracture.append(origin+point*scale)
+		canvas.draw_polyline(fracture,Color(0.035,0.065,0.075,0.95),maxf(1,scale*(1.1+severity*2.1)),true)
+		var bevel := PackedVector2Array()
+		for point in fracture: bevel.append(point+Vector2(1,0)*scale)
+		canvas.draw_polyline(bevel,Color(0.65,0.72,0.68,0.65),maxf(0.7,scale*0.7),true)
+		canvas.draw_polyline(PackedVector2Array([origin+Vector2(-5,2)*scale,origin+Vector2(-11,5)*scale,origin+Vector2(-13,3)*scale]),Color(0.05,0.09,0.10,0.85),maxf(0.8,scale),true)
+	var mouth := origin+Vector2(0,9)*scale
+	if patched and not authored:
+		canvas.draw_rect(Rect2(origin+Vector2(-16,-8)*scale,Vector2(32,28)*scale),Color("667572"))
+		canvas.draw_rect(Rect2(origin+Vector2(-16,-8)*scale,Vector2(32,28)*scale),Color("a1aba0"),false,maxf(1,scale))
+		for bolt in [Vector2(-12,-4),Vector2(12,-4),Vector2(-12,16),Vector2(12,16)]:
+			canvas.draw_circle(origin+bolt*scale,maxf(1,scale*1.5),Color("263e42"))
+	if patched: mouth=origin+Vector2(0,21)*scale
+	if patched or severity<=0.35:
+		# Hairline and patched cracks seep only a falling droplet; the fixed translucent
+		# trickle bar under them read as a stray blue line (owner playtest).
+		var phase := fposmod(time*(0.45 if patched else 0.8),1.0)
+		if phase<0.65:
+			var drop := mouth+Vector2(0,phase*phase*65)*scale
+			canvas.draw_line(drop,drop+Vector2(0,3)*scale,Color(0.68,0.86,0.84,0.7),maxf(0.7,scale),true)
+		return
+	var reach := (19+severity*26)*(1-water*0.30)
+	var impact := mouth+Vector2(6,reach)*scale
+	# A tapered curved stream and broken highlights read as pressurized water.
+	var stream := PackedVector2Array()
+	for i in range(9):
+		var t := i/8.0
+		stream.append(mouth+Vector2(6*t+sin(time*8-t*6)*t*1.2,reach*t*t)*scale)
+	canvas.draw_polyline(stream,Color(0.36,0.67,0.70,0.28),maxf(1,scale*(2+severity*3)),true)
+	canvas.draw_polyline(stream,Color(0.68,0.86,0.84,0.65),maxf(0.7,scale),true)
+	for i in range(7):
+		var phase := fposmod(time*(1.2+severity)+i*0.137,1.0)
+		var spread := sin(i*7.13)*phase*(3+severity*6)
+		var point := mouth+Vector2(6*phase+spread,reach*phase*phase)*scale
+		canvas.draw_line(point,point+Vector2(spread*0.08,1.5+phase*2)*scale,Color(0.68,0.88,0.86,sin(phase*PI)*0.7),maxf(0.7,scale*0.8),true)
+	for i in range(3):
+		var phase := fposmod(time*0.85+i/3.0,1.0)
+		var ripple := PackedVector2Array()
+		for j in range(19):
+			var angle := TAU*j/18.0
+			ripple.append(impact+Vector2(cos(angle)*(3+phase*15),sin(angle)*(1+phase*5))*scale)
+		canvas.draw_polyline(ripple,Color(0.56,0.81,0.78,(1-phase)*0.32*severity),maxf(0.7,scale*0.7),true)
+
+static func draw_repair_torch(canvas,game,room: Dictionary,center: Vector2,scale: float,time: float) -> void:
+	var job: Dictionary=room.get("leak_repair",{})
+	if str(job.get("worker","")).is_empty() or job.get("status","")!="Welding": return
+	var actor=game.get(str(job.worker)+"_npc")
+	if actor.dead or actor.goal!="hull-repair" or actor.state not in ["weld","repair"] or not actor.path.is_empty(): return
+	if actor.state=="weld" and actor.animation_state()!="weld":return
+	var foot: Vector2=center+(actor.foot-(Vector2(room.pos)+Vector2.ONE*0.5)*384)*scale
+	const Settings=preload("res://scripts/title_settings.gd")
+	if Settings.reduced_motion or Settings.effects_quality==0: return
+	const Art=preload("res://scripts/environment_art.gd")
+	var direction: Vector2=Vector2.LEFT if actor.direction=="west" else Vector2.RIGHT if actor.direction=="east" else Vector2.UP if actor.direction=="north" else Vector2.DOWN
+	var tip:=foot+direction*18*scale+Vector2(0,-10)*scale
+	# The authored dry weld contains its own torch; add only restrained seam vapor.
+	if actor.state=="weld":
+		tip=foot+preload("res://scripts/station_effects.gd").torch_tip_offset(game,actor)*scale
+	if actor.state!="weld":
+		var pulse:=.52+.16*sin(time*7.0)
+		Art.sprite(canvas,"repair-spark",tip,Vector2(16,12)*scale,Color(1,.85,.58,pulse),direction.angle())
+	var phase:=fposmod(time*.65,1.0)
+	Art.sprite(canvas,"leak-puff",tip+Vector2(phase*5,-phase*12)*scale,Vector2(19,12)*(1+phase*.3)*scale,Color(.65,.72,.69,(1-phase)*.16))
+
+static func draw_front(canvas,game,rooms: Array,size: float) -> void:
+	var scale := size/384.0
+	for room in rooms:
+		var water := float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0))
+		var center: Vector2=(Vector2(room.pos)+Vector2.ONE*0.5)*size
+		var time: float=condition_clock(game.get_visual_time_seconds())
+		# Dry stations dominate normal play; skip the per-room door-current state
+		# machine when this room, both drawn-side neighbors, and their wash history
+		# are dry — matching draw_door_currents' own per-direction early-out+erase.
+		var grid=game.grid_view
+		var dry_doors: bool=water<=0.015 \
+			and float(game.occupied.get(room.pos+Vector2i.RIGHT,{}).get("water_level",0))<=0.015 \
+			and float(game.occupied.get(room.pos+Vector2i.DOWN,{}).get("water_level",0))<=0.015 \
+			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.RIGHT]) \
+			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.DOWN])
+		if not dry_doors: draw_door_currents(canvas,game,room,center,scale,time)
+		draw_repair_torch(canvas,game,room,center,scale,time)
+		var seam:=center+damage_anchor(room)*scale
+		if float(room.get("hull_crack",0))<=0 and room.get("hull_welded",false):
+			draw_hull_decal(canvas,seam,scale,4)
+		draw_leak(canvas,seam,scale,float(room.get("hull_crack",0)),water,time,bool(room.get("hull_patched",false)))
+		if water<=0.001: continue
+		if room.id not in ["corridor","corner","tee_corridor"]:
+			# Visible water depth on the front cutaway, tied to the same physical height.
+			var height := water*52.0*scale
+			var bounds:=floor_bounds(room)
+			var bottom := center.y+bounds.end.y*scale
+			canvas.draw_rect(Rect2(center.x+bounds.position.x*scale,bottom-height,bounds.size.x*scale,height),Color(0.08,0.34,0.40,0.23+water*0.12))
+			var surface := PackedVector2Array()
+			var segments:=ceili(bounds.size.x/9.0)
+			for i in range(segments+1):
+				var x := bounds.position.x+bounds.size.x*float(i)/float(segments)
+				surface.append(Vector2(center.x+x*scale,bottom-height+sin(x*0.085+time*1.4)*scale))
+			canvas.draw_polyline(surface,Color(0.48,0.75,0.70,0.65),maxf(1,scale*1.2),true)
+		var gauge := Rect2(center+Vector2(-175,-170)*scale,Vector2(4,72)*scale)
+		if room.id in ["corridor","corner","tee_corridor"]: gauge=Rect2(center+Vector2(-24,-24)*scale,Vector2(4,48)*scale)
+		canvas.draw_rect(gauge,Color("0a2027"))
+		canvas.draw_rect(Rect2(Vector2(gauge.position.x,gauge.end.y-gauge.size.y*water),Vector2(gauge.size.x,gauge.size.y*water)),Color("db8870") if water>=0.85 else Color("75bab7"))
+		for mark in [0.25,0.55,0.85]:
+			var y: float=gauge.end.y-gauge.size.y*mark
+			canvas.draw_line(Vector2(gauge.position.x-2*scale,y),Vector2(gauge.end.x+2*scale,y),Color(0.65,0.83,0.8,0.8),maxf(1,scale))

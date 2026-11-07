@@ -1,0 +1,34 @@
+{
+  "runtime_commit": "463675d177e62625accca6d461f302561f0889d5",
+  "source_tests": "7 focused source runner checks + native touch/refinement passed; see summaries/logs",
+  "exact_pack_fixtures": "card storage/render, monitor, Save/Continue, touch all return0; no script errors",
+  "audits": [
+    {
+      "check": "assets",
+      "code": 0,
+      "script_errors": false
+    },
+    {
+      "check": "sources",
+      "code": 0,
+      "script_errors": false
+    }
+  ],
+  "code_review": "Independent read-only review found no important actionable issue.",
+  "physical_launch": {
+    "pid": 8459,
+    "exact_install_path_present": true,
+    "uptime_ms": 20052,
+    "errors": 0,
+    "written": "2026-10-17 21:35:57",
+    "scene": "res://scenes/intro_film.tscn",
+    "scope": "Passive launch sample only; intro scene, no debugger; new gameplay/performance acceptance and physical process memory remain pending."
+  },
+  "progress_preserved": true,
+  "earlier_save_stalls": "Unresolved; do not classify them as suspension without evidence.",
+  "suspension_outlier": "Owner confirmed locked/backgrounded17minutes; specific1,020,312ms frame is suspension duration.",
+  "memory_scope": "Native Mac GLES3 tablet fixture counters/payload only; no physical iPad whole-process memory claim for this artifact.",
+  "setup_retries": [
+    "Signature audit wrapper initially used older system Python lacking hashlib.file_digest; succeeded using bundled Python3.13."
+  ]
+}

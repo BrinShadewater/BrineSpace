@@ -1,0 +1,28 @@
+{
+  "room": "listening_post",
+  "direction": "north",
+  "stage": "library-installed-native-reviewed",
+  "source": "assets/listening-directional-v1/listening-north-idle.png",
+  "source_sha256": "8dad30a052c119dbcf602fdf9b197710ac61b1c76e4135c636e53a52e010d6b3",
+  "dimensions": [
+    1774,
+    887
+  ],
+  "original": "exec-51c8f83a-abe6-462d-adb1-9d50426d6630.png",
+  "registration": "rooms/full-wall-v1/registrations/deepwater-listening-wall.json",
+  "registration_sha256": "e31537191314684b38b6a6dd3bb8f01cc431a124d16a8b43ce0aab09dff780d9",
+  "native_evidence": "output/listening-north-review-2026-09-12/companions/native.png",
+  "live_comparison": "output/listening-north-review-2026-09-12/comparison.json",
+  "findings": [
+    "Electronic activity removed; printed ink chart retained.",
+    "Native companion review at 344 world-unit width; cream/blue construction and headset retained.",
+    "Live q0 uses U-shaped flush art; all four live RGB images and prop metadata unchanged."
+  ],
+  "owner_acceptance": false,
+  "remaining": [
+    "East/west perspective review",
+    "North companion not installed into live U-shaped default; no operating overlay authored for library-only prop",
+    "Retained live U-shaped north source still has baked screen activity; separate repair required"
+  ],
+  "live_state_evidence": "output/listening-north-review-2026-09-12/state-checks.json"
+}

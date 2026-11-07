@@ -1,0 +1,36 @@
+{
+  "id": "quarantine_cell",
+  "brief": "A secured isolation facility: one substantial reinforced glass isolation cubicle in upper half with empty examination cot and wall vent; lower-left decontamination equipment cabinet and lower-right observation console. Clear broad horizontal walkway across middle. Exactly WEST EAST open doorways centered on outer side boundaries; NORTH SOUTH solid sealed walls. Ivory and charcoal steel, desaturated red safety fittings very sparse, scuffed sealing rails. Empty and clinical, no people or monsters. Future activity anchor filter grille, no glow curtain blocking aisle.",
+  "prompt": "Use case: stylized-concept. One production BrineSpace room illustration, overhead cutaway square target1280. Reference1 hydroponics supplies botanical material rendering and worn hull style ONLY, NOT layout, four planters or amber lights. Reference2 medical supplies restrained enamel/steel detail and scale ONLY, NOT beds or layout. Quiet slate floor and readable large equipment, selective crisp pixel detail, no people/text/UI. Actual transparent exterior; no checkerboard or black background. Doors must be floor-filled gaps through outer wall, centered on designated sides, sealed sides no doorway trim. Do not put walls behind open door recesses. Activity overlays separate, base still legible offline. A secured isolation facility: one substantial reinforced glass isolation cubicle in upper half with empty examination cot and wall vent; lower-left decontamination equipment cabinet and lower-right observation console. Clear broad horizontal walkway across middle. Exactly WEST EAST open doorways centered on outer side boundaries; NORTH SOUTH solid sealed walls. Ivory and charcoal steel, desaturated red safety fittings very sparse, scuffed sealing rails. Empty and clinical, no people or monsters. Future activity anchor filter grille, no glow curtain blocking aisle.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-136b4a1c-d5e4-4173-abf6-bdb0dcaacd6d.png",
+  "method": "built-in imagegen",
+  "reference_roles": [
+    "hydroponics_bay: botanical materials/hull style only",
+    "med_bay: enamel/steel rendering and scale only"
+  ],
+  "processing": {
+    "size": 1280,
+    "margin": 8,
+    "tool": "tools/room_art_pipeline.py"
+  },
+  "source_sha256": "c1bf82ce98ea81e5ada7a05c476247b134c4118b73e404629c60fee50f6fa281",
+  "output_sha256": "10f7505d45f438e4fe9d55a08a94a91cd3677d26c72b63004fa810f27648e25f",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "alpha_bounds": [
+    34,
+    8,
+    1245,
+    1272
+  ],
+  "stage": "normalized-candidate",
+  "geometry": "geometry failed: thin vertical wall strips still cross west/east openings",
+  "integrated": false,
+  "native_verified": false
+}

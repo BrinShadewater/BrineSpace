@@ -1,0 +1,53 @@
+{
+  "status": "provisional_manual_sole_landmarks",
+  "method": "Track the heel-to-sole junction of the grounded boot through each three-slot support sequence; coordinates read from nearest-neighbor sole review. Heel roll and 1-2 pixel reading uncertainty remain.",
+  "records": [
+    {
+      "leg": "near",
+      "phaseFractions": [
+        0.0,
+        0.18888888888888888,
+        0.3333333333333333
+      ],
+      "heelLandmarkX": [
+        145,
+        125,
+        110
+      ],
+      "fittedStride": 105.04418262150236
+    },
+    {
+      "leg": "far",
+      "phaseFractions": [
+        0.0,
+        0.18888888888888888,
+        0.3333333333333333
+      ],
+      "heelLandmarkX": [
+        144,
+        123,
+        111
+      ],
+      "fittedStride": 99.60972017673058
+    }
+  ],
+  "trialStride": 102,
+  "comparison": {
+    "76": [
+      9.67,
+      7.67
+    ],
+    "102": [
+      1.0,
+      2.73
+    ],
+    "122": [
+      5.67,
+      7.67
+    ]
+  },
+  "limits": [
+    "Residual ranges compare slot boundaries, not continuous foot locking. Held six-frame poses still move with the actor between boundaries.",
+    "Manual landmarks do not certify a flawless walk or native visual acceptance."
+  ]
+}

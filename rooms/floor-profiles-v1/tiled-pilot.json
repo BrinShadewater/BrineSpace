@@ -1,0 +1,155 @@
+{
+  "scope": [
+    "research_lab",
+    "med_bay",
+    "pressure_control",
+    "mycelium_nursery",
+    "crew_lounge",
+    "mining_drone_bay",
+    "ore_refinery",
+    "cryo_chamber",
+    "listening_post",
+    "xeno_lab",
+    "maintenance_bay",
+    "crew_hab",
+    "bio_lab",
+    "clone_lab",
+    "isolation_vault",
+    "current_turbine",
+    "biomass_digester",
+    "heat_recovery",
+    "airlock",
+    "construction_drone_bay",
+    "brine_core",
+    "solar_array",
+    "reactor",
+    "battery_array",
+    "salvage_drone_bay",
+    "gravity_loom",
+    "tidal_condenser",
+    "hydroponics_bay",
+    "life_support",
+    "quarantine_cell",
+    "data_archive",
+    "storage_bay",
+    "biodome",
+    "anomaly_lab",
+    "command_center",
+    "corridor",
+    "corner",
+    "tee_corridor",
+    "holographic_core",
+    "med_center",
+    "med_office",
+    "radio_lab",
+    "shield_generator",
+    "observation_room",
+    "salvage_workshop",
+    "galley",
+    "cold_store"
+  ],
+  "stage": "integrated; 47 studio identities enabled; Windows export checks passed",
+  "generated_images": false,
+  "sources": [
+    {
+      "path": "res://assets/department-floors-v2/science-panels.png",
+      "sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e"
+    },
+    {
+      "path": "res://assets/floors-and-details-v5/corridor-deck.png",
+      "sha256": "9c6bff51af9ec2f52ef0680b935f2de9bd0760266b3ca1d8d1c16e4fa05efa83"
+    },
+    {
+      "path": "res://assets/department-floors-v1/engineering-tread.png",
+      "sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0"
+    },
+    {
+      "path": "res://assets/department-floors-v1/wet-drainage.png",
+      "sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4"
+    },
+    {
+      "path": "res://assets/department-floors-v1/habitation-composite.png",
+      "sha256": "6d61be8c35cd3a10cd7d7021d10fcd2e0df97a9eb3e71c1ad67c6e4309d69b58"
+    },
+    {
+      "path": "res://assets/floors-and-details-v3/agriculture-floor.png",
+      "sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee"
+    },
+    {
+      "path": "res://assets/department-floors-v1/medical-sealed.png",
+      "sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d"
+    },
+    {
+      "path": "res://assets/department-floors-v2/storage-load-deck.png",
+      "sha256": "95aaf0bb8c3987d4855d6c56510e83e887f57b84f3bcd5d77340c029a18f4fa0"
+    },
+    {
+      "path": "res://assets/department-floors-v2/robotics-service.png",
+      "sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7"
+    },
+    {
+      "path": "res://assets/department-floors-v2/brine-ceramic.png",
+      "sha256": "68e3d511374255d724cde2bda5e08d3bc2ff5f8708fc9c4d5b88305efd031c67"
+    },
+    {
+      "path": "res://assets/floors-and-details-v3/anomaly-floor.png",
+      "sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a"
+    },
+    {
+      "path": "res://assets/department-floors-v2/data-access.png",
+      "sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9"
+    },
+    {
+      "path": "res://assets/department-floors-v2/command-gunmetal.png",
+      "sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852"
+    },
+    {
+      "path": "res://assets/floors-and-details-v5/acoustic-floor.png",
+      "sha256": "4e93f398ffa4cda776f1a202f32265220930de8d7d61f47f25d1eec94720e5da"
+    }
+  ],
+  "materials": {
+    "original": "Retains each department source mapping and existing room tile overrides",
+    "sealed_panel": {
+      "source": "science-panels",
+      "uv": [
+        0.4,
+        0.185,
+        0.18,
+        0.065
+      ]
+    },
+    "steel_plate": {
+      "source": "corridor-deck",
+      "uv": [
+        0.16,
+        0.05,
+        0.16,
+        0.2
+      ]
+    },
+    "grating": {
+      "source": "corridor-deck",
+      "uv": [
+        0.2,
+        0.37,
+        0.2,
+        0.2
+      ]
+    }
+  },
+  "geometry": "48-unit tiles on 384-unit room canvas; straight, corner and T-junction corridors clipped to authoritative rotated footprints",
+  "transitions": "Existing hull rims, corner bevels, door thresholds and separate detail layers retained",
+  "evidence": [
+    "output/tiled-floor-pilot/",
+    "output/tiled-floor-batch/",
+    "output/tiled-floor-batch-three/",
+    "output/tiled-floor-catalog/",
+    "output/tiled-floor-final-four/",
+    "output/tiled-floor-complete-20260908/checks.json"
+  ],
+  "limitations": [
+    "No new raster tiles generated",
+    "Source samples are pilot materials, not a complete edge-matched art pack"
+  ]
+}

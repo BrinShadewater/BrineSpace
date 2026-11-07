@@ -1,0 +1,80 @@
+{
+  "name": "James West water death material v2 bare",
+  "frameWidth": 256,
+  "frameHeight": 360,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_owner_review_pending",
+  "states": [
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "frames/bare/000.png",
+        "frames/bare/001.png",
+        "frames/bare/002.png",
+        "frames/bare/003.png",
+        "frames/bare/004.png",
+        "frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        250.0,
+        300.0,
+        350.0,
+        400.0,
+        400.0,
+        300.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "derivedFrom": "../james-west-water-death-polish-v1/bare-manifest.json",
+        "method": "native source-builder material calibration; no generated pixel source selected",
+        "geometryAlphaExact": true,
+        "materialCurve": {
+          "threshold": 50,
+          "slope": 0.8,
+          "blueHighlightGain": 0.98,
+          "mask": "alpha>0, RGB spread<30, original shared helmet edit-region excluded",
+          "scope": "One fixed smooth highlight compression shared across every interior and gear; no per-frame exposure fit. Exact entry untouched."
+        }
+      }
+    }
+  ]
+}

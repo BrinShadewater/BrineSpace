@@ -1,0 +1,131 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_office.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"office_exam",
+						"full_wall_medical-records-wall"
+					],
+					"purpose": "exam equipment service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"office_records",
+						"full_wall_medical-records-wall"
+					],
+					"purpose": "record cart stopping zone",
+					"rotations": {
+						"1": {
+							"scale": 0.5
+						}
+					},
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/med_office_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_office",
+			"machinery": [
+				{
+					"id": "office_desk",
+					"rect": [
+						-159.0,
+						-142.0,
+						98.0,
+						70.0
+					]
+				},
+				{
+					"id": "office_records",
+					"rect": [
+						79.0,
+						-127.309280395508,
+						66.0,
+						64.0
+					]
+				},
+				{
+					"id": "office_exam",
+					"rect": [
+						-157.0,
+						30.0,
+						90.0,
+						82.0
+					]
+				},
+				{
+					"id": "office_consultation",
+					"rect": [
+						70.0,
+						46.0,
+						88.0,
+						72.0
+					]
+				},
+				{
+					"id": "office_reference_shelf",
+					"rect": [
+						110.0,
+						-19.0,
+						52.0,
+						20.0
+					]
+				},
+				{
+					"id": "office_reading_lamp",
+					"rect": [
+						45.0,
+						79.0,
+						18.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_office_view.gd"
+		},
+		"layered": true,
+		"room": "med_office",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-records-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "office_exam",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_consultation",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_office_view.gd"
+	}
+]

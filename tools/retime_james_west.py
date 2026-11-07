@@ -1,0 +1,13 @@
+from pathlib import Path
+import json,shutil,numpy as np
+from PIL import Image
+S=Path('character/branforth-idle-led-west-matched-v2');P=Path('character/branforth-idle-led-west-timing-v1');P.mkdir(exist_ok=True);m=json.loads((S/'manifest.json').read_text());s=m['states'][0];arr=[np.array(Image.open(S/f),dtype=float)/255 for f in s['frameFiles']]
+for a in arr:a[:,:,:3]*=a[:,:,3:4]
+n=len(arr);delta=np.array([np.mean(abs(arr[(i+1)%n][100:174]-arr[i][100:174])) for i in range(n)]);smooth=np.array([np.median([delta[(i-1)%n],delta[i],delta[(i+1)%n]]) for i in range(n)]);weights=np.clip(smooth/np.median(smooth),.48,1);weights=(np.roll(weights,1)+2*weights+np.roll(weights,-1))/4;dur=[int(10*round(4.1666667*w)) for w in weights];preview=[]
+for f in s['frameFiles']:
+ dest=P/f;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(S/f,dest);im=Image.open(dest).convert('RGBA');bg=Image.new('RGB',(552,220),'#303b40')
+ for h,x in [(148,0),(82,210),(54,350),(27,450)]:
+  side=round(184*h/148);sm=im.resize((side,side),Image.Resampling.BILINEAR);bg.paste(sm,(x,20),sm)
+ preview.append(bg)
+old=s['frameDurationsMs'];s['frameDurationsMs']=dur;s['provenance']['timingTrial']={'source':str(S),'method':'Shorter holds in low-progression lower-body sections; three-frame median and bounded20-40ms holds. Every pose retained. This is a timing trial, not constant anatomical speed.'};(P/'manifest.json').write_text(json.dumps(m,indent=2));(P/'validation.json').write_text(json.dumps({'frames':n,'oldCycleMs':sum(old),'newCycleMs':sum(dur),'durationsMs':dur,'pixelsExact':all((P/f).read_bytes()==(S/f).read_bytes() for f in s['frameFiles'])},indent=2));preview[0].save(P/'review.gif',save_all=True,append_images=preview[1:],duration=dur,loop=0)
+p=Path('character/crew-idle-led-west-review-v4');p.mkdir(exist_ok=True);h=Path('character/crew-idle-led-west-review-v3/index.html').read_text().replace('James west loop recut','James west timing correction').replace('New boundary: source frames80-128, 49frames at original speed. Full alternating stride retained; same colour treatment. Candidate only.','Same49poses and colours; shorter holds through the slow section. Timing-only trial, cycle '+str(sum(dur))+'ms. Nothing installed.').replace('../branforth-idle-led-west-matched-v2/review.gif','../branforth-idle-led-west-timing-v1/review.gif').replace('../branforth-idle-led-west-matched-v1/review.gif','../branforth-idle-led-west-matched-v2/review.gif').replace('Previous cut','Previous timing');(p/'index.html').write_text(h);print('49 exact frames; cycle',sum(old),'->',sum(dur),'ms; holds',sorted(set(dur)))

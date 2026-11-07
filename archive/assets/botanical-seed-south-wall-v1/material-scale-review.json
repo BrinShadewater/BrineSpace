@@ -1,0 +1,81 @@
+{
+  "asset_id": "botanical-seed-south-wall-v1",
+  "department": "Life Support / Hydroponics",
+  "condition": "Matte sage composite",
+  "attachment_class": "Low south-backed bank",
+  "functional_bays": [
+    "North-access packet drawers",
+    "Central sorting tray",
+    "Four closed tins and cassette with north latches"
+  ],
+  "runtime_behavior": "Static seed preparation artwork",
+  "camera_and_facing": "Near-top-down; south rear housing, north access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/botanical-seed-wall-v1/wall.png",
+      "sha256": "7b37a5ae9c880e162d2a97dd1a8ab4cd8d767bfdf0c3e9c18bd69fe216c80bfd",
+      "role": "North seed bank construction and finish"
+    }
+  ],
+  "source_path": "assets/botanical-seed-south-wall-v1/source-v1.png",
+  "source_sha256": "c8f7dcf80e49f319fb8bc67941c82d5b2f7f585767ffd3694cab12e083bb3617",
+  "export_path": "assets/botanical-seed-south-wall-v1/wall.png",
+  "export_sha256": "54ab541d4eeb835aaadbe0dae18c51591ea900f884be5ddea4b069701db2bb28",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Growing rack access",
+    "Operator space"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Matte composite and opaque containers; restrained seeds and wooden scoop."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/botanical-seed-south-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit bank reviewed; right-hand additional drawer pair is a reconstruction difference.",
+        "All four tin catches and cassette latch face north; occupied opening motion unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "White exterior supports neutral228 registration; complete light/dark silhouette reviewed."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 73.62112747587608,
+  "registration_path": "assets/botanical-seed-south-wall-v1/registration.json",
+  "registration_sha256": "ce4525f06d4a6252857d6865de711b2d76b28ae749bb2855eaac93431d2489d5",
+  "prompt_path": "assets/botanical-seed-south-wall-v1/source.prompt.txt",
+  "prompt_sha256": "b7765b9cd2436d241c7c81e7c0ca9491efe7738518082a6c59b13c48dabe9a1f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/botanical-seed-south-wall.log": "bd71b41f9cc408da78491a18657ae01eb2e00582789729ed9659a6f48d823aa2",
+    "output/botanical-seed-south-wall-v1/wall-scale.png": "2013351cf536c9c350590b9162647a053ee9d35292fa0a5457864861a779cec7"
+  }
+}

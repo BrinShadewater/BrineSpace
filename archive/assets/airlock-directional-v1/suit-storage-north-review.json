@@ -1,0 +1,23 @@
+{
+  "stage": "wall-mounted-shared-wall-native-reviewed",
+  "source": "suit-storage-north-matte.png",
+  "raw": "exec-2086a2db-f7cd-47f3-b690-b72b3bff3099.png",
+  "prompt": "suit-storage-north-matte-prompt.json",
+  "actual_size": [
+    2172,
+    724
+  ],
+  "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-north.json",
+  "native": "output/airlock-north-mounted-2026-09-12/native/images/airlock-q2.png",
+  "inventory": "Two folded suits, two stored helmets, four boots; projecting pickup tray empty.",
+  "facing": "Rear mounting rail north, four access latches south/inward.",
+  "review": "Matte revision reduces cabinet edge sparkle and preserves two kits, empty tray and inward latches. Native width120 reviewed; small brass detail remains dense. Furnished-room comparison and service fit remain pending.",
+  "remaining": "Exposed-wall long shelf support needs polish; owner camera/material acceptance remains open. Side lockers remain separate unfinished work.",
+  "previous_source": "suit-storage-north.png",
+  "quarter": 2,
+  "checks": "20260912-124748-headless: Airlock service and176layouts pass. Native Bill q2 mounted pass,204travel samples; service-mounted.log. Other3quarters RGB identical and all footprint metadata unchanged.",
+  "native_service": "Native Bill q2 passes,204travel samples,all ten interlock phases,equipment/return,power,pause,saves,UI. Before-grasp/after-grasp/after-release images visually reviewed in output/airlock-north-live-2026-09-12/bill-q2-validated. Log service-validated.log.",
+  "mount": "wall_art_rect at[-158,-252] preserves the floor footprint[-158,-180] and helmet anchor. North fittings intersecting the art are omitted. Native isolated room reviewed.",
+  "shared_wall": "Camera-offset native probe showed the cabinet was outside viewport, not behind another room. It also exposed incorrect projection into the northern room when riser is omitted. configure_embedded now selects BASE_Y for omitted north sides, TOP otherwise. Shared-wall after-release screenshot reviewed and native Bill q2 exits0 in output/airlock-north-mounted-2026-09-12/shared-wall; log shared-wall.log.",
+  "wall_modes": "Raised visibility metadata is assigned before configure_embedded. Cabinet selects TOP only when raised north wall is visible and not omitted; otherwise BASE_Y. Native raised/low/shared/raised-again captures completed with footprint and mounting assertions; low and raised-again visually reviewed. Evidence output/airlock-wall-modes-2026-09-12. Headless service and176layouts pass20260912-125347-headless."
+}

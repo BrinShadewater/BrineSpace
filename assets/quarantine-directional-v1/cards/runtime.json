@@ -1,0 +1,138 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/quarantine_cell.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"quarantine_preparation",
+						"full_wall_quarantine-specimen-wall"
+					],
+					"purpose": "clean preparation boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"quarantine_filter",
+						"full_wall_quarantine-specimen-wall"
+					],
+					"purpose": "sealed filter service",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/quarantine_cell_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "quarantine_cell",
+			"machinery": [
+				{
+					"id": "quarantine_berth",
+					"rect": [
+						-165.0,
+						-128.0,
+						120.0,
+						72.0
+					]
+				},
+				{
+					"id": "quarantine_filter",
+					"rect": [
+						92.0,
+						-133.0,
+						70.0,
+						52.0
+					]
+				},
+				{
+					"id": "quarantine_monitor",
+					"rect": [
+						-28.0,
+						-105.0,
+						72.0,
+						44.0
+					]
+				},
+				{
+					"id": "quarantine_cabinet",
+					"rect": [
+						-166.0,
+						106.0,
+						74.0,
+						46.0
+					]
+				},
+				{
+					"id": "quarantine_preparation",
+					"rect": [
+						-62.0,
+						107.0,
+						84.0,
+						32.0
+					]
+				},
+				{
+					"id": "quarantine_sealed_cooler",
+					"rect": [
+						41.0,
+						117.0,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/quarantine_cell_view.gd"
+		},
+		"layered": true,
+		"room": "quarantine_cell",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_quarantine-specimen-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_berth",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_cabinet",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/quarantine_cell_view.gd"
+	}
+]

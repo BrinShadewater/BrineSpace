@@ -1,0 +1,133 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/brine_core.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "brine",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"brine_chamber"
+					],
+					"purpose": "chamber inspection port",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"brine_server"
+					],
+					"purpose": "recessed server service entry",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/brine-core/brine_core_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "brine_core",
+			"machinery": [
+				{
+					"id": "brine_chamber",
+					"rect": [
+						-52.0,
+						-40.0,
+						104.0,
+						80.0
+					]
+				},
+				{
+					"id": "brine_observation_pedestal",
+					"rect": [
+						97.0,
+						69.0,
+						24.0,
+						12.0
+					]
+				},
+				{
+					"id": "brine_dual_workstation",
+					"rect": [
+						72.0,
+						-123.0,
+						94.0,
+						30.0
+					]
+				},
+				{
+					"id": "brine_diagnostics",
+					"rect": [
+						-158.0,
+						112.0,
+						64.0,
+						30.0
+					]
+				},
+				{
+					"id": "brine_server",
+					"rect": [
+						132.0,
+						125.0,
+						32.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.16,
+			"source": "res://assets/department-floors-v2/brine-ceramic.png",
+			"source_sha256": "68e3d511374255d724cde2bda5e08d3bc2ff5f8708fc9c4d5b88305efd031c67",
+			"view": "res://rooms/underwater/brine-core/brine_core_view.gd"
+		},
+		"layered": true,
+		"room": "brine_core",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "brine_chamber",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_observation_pedestal",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_dual_workstation",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_diagnostics",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_server",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "architect_pod",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/brine-core/brine_core_view.gd"
+	}
+]

@@ -1,0 +1,23 @@
+"""Derive staged normal-player comparisons; never modify the normal catalogue."""
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+s = (ROOT / 'tools/review_marsh_south_step_detail_v1.gd').read_text()
+s = s.replace('const INDEX=', 'const UNUSED_INDEX=')
+s = s.replace('const ADMISSION=', 'const UNUSED_ADMISSION=')
+s = s.replace('south-step-detail-player-v1-2026-10-03', 'east-walk-family-detail-player-v2-2026-10-03')
+s = s.replace('func player_for(catalog:Dictionary):', 'func player_for(catalog:Dictionary,candidate:bool=true):')
+s = s.replace(' return p\n', ' if candidate:\n  p.load_manifest("res://character/marsh-east-walk-family-detail-v1/manifest.json",true)\n  check(p.frames.has("walk-east") and p.frames["walk-east"].size()==6,"staged candidate loaded after normal catalogue")\n return p\n')
+s = s.replace('var receipt:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(ADMISSION));var old=player_for(receipt.catalogBefore)', 'var old=player_for(catalog,false)')
+s = s.replace('var selection:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(INDEX))', 'var selection:Dictionary={"manifests":["character/marsh-east-walk-family-detail-v1/manifest.json"]}')
+s = s.replace('states==1 and slots==7 and restores==7', 'states==1 and slots==6 and restores==6')
+s = s.replace('actual selected state count', 'staged candidate state count').replace('normal source RGBA exact', 'staged whole source RGBA exact')
+s = s.replace('complete admitted cargo source/player coverage', 'complete staged East walking source/player coverage')
+s = s.replace('Old elapsed', 'Normal elapsed').replace('Selected', 'Candidate')
+s = s.replace('MARSH SOUTH STEP DETAIL PLAYER', 'MARSH EAST WALK FAMILY STAGED PLAYER')
+s = s.replace('Normal catalogue/equipment loaded; complete South short-step state/7exact sources, source-specific pivots/height, midpoint stateful/elapsed clocks,7player restore holds and loop/finite endpoints. All seven native source/station comparison captures. No live actor/contact/fullRunSave/Continue or continuous cadence/full-set acceptance.', 'Normal body/equipment catalogue loaded, then staged East walking manifest overrides only these player instances. Six exact candidate sources, pivots/height, authored holds and stride-clock agreement, six player restores and loop endpoint. Six diagnostic native-density/station-size old/candidate/idle captures. Normal selection unchanged; no actual main/grid/world floor contact, natural actor, fullRunSave/Continue, continuous cadence or full-set acceptance.')
+(ROOT / 'tools/review_marsh_east_walk_family_detail_v1.gd').write_text(s)
+(ROOT / 'tools/review_marsh_east_walk_family_detail_v1.gd.uid').write_text('uid://dmeastfamily6v1\n')
+f = (ROOT / 'tools/fingerprint_marsh_south_step_normal_world_v1.py').read_text()
+f = f.replace("records={p.relative_to(ROOT)", "paths.update(p for p in (ROOT/'character/marsh-east-walk-family-detail-v1').glob('*') if p.is_file())\npaths.update(ROOT/'tools'/n for n in ['prepare_marsh_east_walk_family_detail_v1.py','review_marsh_east_walk_family_detail_v1.py','prepare_marsh_east_walk_family_native_v1.py','review_marsh_east_walk_family_detail_v1.gd','review_marsh_east_walk_family_detail_v1.gd.uid','fingerprint_marsh_east_walk_family_detail_v1.py'])\nrecords={p.relative_to(ROOT)")
+(ROOT / 'tools/fingerprint_marsh_east_walk_family_detail_v1.py').write_text(f)
+print('Staged six-slot player and bounded normal/candidate input fingerprint prepared')

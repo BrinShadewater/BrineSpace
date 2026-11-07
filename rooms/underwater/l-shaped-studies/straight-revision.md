@@ -1,0 +1,6 @@
+# Straight footprint revision
+
+All three installations regenerated as separate L assets; previous atlas supplies the unchanged detached props. Sources preserved as straight-source-v1, cleaned proportionally with room_art_pipeline.py --size 1254 --margin 0. Native room-v3 captures inspected: vertical left benches, horizontal rear banks, east/south openings remain clear. Preview only. Details such as pipes and cabinet trim still have modeled relief.
+
+Exact image edit prompt:
+Edit the connected L-shaped installation in this reference to remove ALL perspective taper from its footprint. Return ONLY the L installation, remove the detached lower-right prop (it is preserved separately). The OUTER LEFT edge must be a perfectly straight VERTICAL line from top to bottom, not diagonal or flaring. OUTER TOP edge perfectly HORIZONTAL; top-left corner a square 90 degree corner, no chamfer. Left arm constant width with vertical inner and outer sides; rear arm horizontal constant depth. Add straight backing chassis where necessary so this fits FLUSH into the north and west walls of an orthogonal square room. Retain same machinery, department colors, maintained finish, crisp painted BRINE art. Orthographic game cutaway, no vanishing point or isometric taper. Transparent background, no floor, no wall, no checkerboard. L only, empty center and right/bottom.

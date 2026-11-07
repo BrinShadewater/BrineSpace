@@ -1,0 +1,463 @@
+[
+  {
+    "id": "cryo_chamber",
+    "source": "rooms/underwater/batch-two/cryo_chamber-source-v1.png",
+    "sha256": "cb7c68d7655dd253fed6fd7cfca008d83d1f39656b7ed76feb961e896ca6c726",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/cryo_chamber_view.gd",
+      "card": "rooms/underwater/batch-two/cryo_chamber-card-activity-v1.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/material-polish-science-v2/research-accessories.png",
+        "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
+      },
+      {
+        "path": "assets/rooms/cryo-chamber/furnishings/thaw-cart.png",
+        "sha256": "0075d10917f82c2088af2c624ccc9b9a5c965298bc4428ae90e8a618658e8e17"
+      },
+      {
+        "path": "assets/rooms/cryo-chamber/furnishings/thaw-cart-registration.json",
+        "sha256": "d915445b02c4b785b5abec61d97a5bad72d722cba302e730d662e54ed8138987"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/cryo-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/cryo-composition-v3.json",
+        "sha256": "5d8ec112c24e95cffc3c9380a886b5aec92141a3f5001fd7e288dca74f0b99ee"
+      }
+    ],
+    "verification": {
+      "furnishing_v3": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v3/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "clone_lab",
+    "source": "rooms/underwater/batch-two/clone_lab-source-v1.png",
+    "sha256": "44c65ce89fb8f38e1419d39652a7a11bae3fb06242cb250d576d85518f63c1f2",
+    "canonical_ports_nesw": [
+      3,
+      1,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/clone_lab_view.gd",
+      "card": "rooms/underwater/batch-two/clone_lab-card-activity-v1.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      },
+      {
+        "path": "assets/material-polish-v2/research-bench.png",
+        "sha256": "ed75c859d5ebf02852085845cc7473fadf707b8ff737a7352b20fcb49a0ea310"
+      },
+      {
+        "path": "assets/rooms/clone-lab/furnishings/genome-island.png",
+        "sha256": "8d554ba13f632d93e51b69b06a9c6a7df565a7829c13e735bb051b1031e0b4a7"
+      },
+      {
+        "path": "assets/rooms/clone-lab/furnishings/universal-sample-trolley.png",
+        "sha256": "798918b6d697e8a515805a9dd790c7abe14c0a116418af2e5b2fe1b0f7e814ce"
+      },
+      {
+        "path": "assets/rooms/clone-lab/furnishings/genome-island-registration.json",
+        "sha256": "46267a4d1f8d58ef929f2177c8c827b94386973b9ed9242cb34767b34ac5fc47"
+      },
+      {
+        "path": "assets/rooms/clone-lab/furnishings/universal-sample-trolley-registration.json",
+        "sha256": "114ea0d18f37e9ff97b5c932a6d5477d2c110c7a20d975c9610df9e159f14e69"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/clone-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/clone-composition-v3.json",
+        "sha256": "c1fff3acf58b280d355d1da84fb91d2d59913b734abe0fc83fe6bc8e584be258"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/clone-lab/cards/card.png",
+      "sha256": "be324ebc1f3288584af610cf6dca7c011e7c9ebc1b183240a4e5120988eeddcc"
+    },
+    "verification": {
+      "furnishing_v5": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v5/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "data_archive",
+    "source": "assets/rooms/data-archive/source/overhead.png",
+    "sha256": "3f23b0c90251d86dfdbe183b73561af2f12279dcbc9ae87f9ad220b4b65d4448",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/data_archive_view.gd",
+      "card": "assets/rooms/data-archive/cards/card.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/underwater/batch-two/archive-service-cart-v1.png",
+        "sha256": "8bb085eb0ce5a53c3eb71631328c0f2b624192d6a967e2926584a0a77825c41c"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/rooms/data-archive/furnishings/index-island.png",
+        "sha256": "a141bbad1b8bc2f0f9e289498bd5dc7af28a8f980f251c6f1c7b7a2e582e9944"
+      },
+      {
+        "path": "assets/rooms/data-archive/furnishings/media-restoration-table.png",
+        "sha256": "9444b0a1cf3b10364af7a7463d41a3ac89052d1ea34e4445ecf8481ed840b582"
+      },
+      {
+        "path": "assets/rooms/data-archive/furnishings/universal-sealed-media-transit-case.png",
+        "sha256": "525102e5bb632de3488814e8828401296d23eea185f3cc2caaaab3a625475915"
+      },
+      {
+        "path": "assets/rooms/data-archive/furnishings/media-restoration-table-registration.json",
+        "sha256": "d2ed4e58ee0def757c475e5a6e8a960a2783b1150f0389bde5eeddfe51ec083a"
+      },
+      {
+        "path": "assets/rooms/data-archive/furnishings/universal-sealed-media-transit-case-registration.json",
+        "sha256": "1e8bd27bb513ca5e2f6bada7373a3c2483724d31f3ed16f6cd95e581c039ea49"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/archive-composition-v4.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/archive-composition-v4.json",
+        "sha256": "5f0615d29c58280e84a9bc79600ceada2b82caaac88e2b99baf4b93e08f7adcc"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/data-archive/cards/card.png",
+      "sha256": "d21a1ab9b5ec384aef2e348371e7be15a9121e238b3eb9bfc504781f4c832dc8"
+    },
+    "verification": {
+      "furnishing_v8": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v8/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "biodome",
+    "source": "assets/rooms/biodome/source/overhead.png",
+    "sha256": "88feda3d0e5dabb1c2cbaf70d5a1d0e0eccba7982f2265f6073101e5e0c2d070",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/biodome_view.gd",
+      "card": "rooms/underwater/batch-two/biodome-card-care-v4.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/whole-room/hydro-potting-trolley-v1.png",
+        "sha256": "700463225ed2e9422c743ed90baf360f7c67b9410950fd7dc7b2e7805cbbf0ac"
+      },
+      {
+        "path": "assets/rooms/biodome/furnishings/propagation-shelf.png",
+        "sha256": "80407543672464aaea9d85dd84a8e1ce4d230cdfbf5d3917f57c2b25ad14fe11"
+      },
+      {
+        "path": "assets/rooms/biodome/furnishings/potting-island.png",
+        "sha256": "0071424e1d07b4e931139cd81cd370c9bd302241980fa5a8757d65c38c27138a"
+      },
+      {
+        "path": "assets/rooms/biodome/furnishings/universal-supply-pallet.png",
+        "sha256": "e8415b5e743ff6d9e454e7d2ee67bfb30103bda9e04873937ecb97b233ae9022"
+      },
+      {
+        "path": "assets/rooms/biodome/furnishings/potting-island-registration.json",
+        "sha256": "5ce65591ac4211e59466d867c42952b1b36cd3fced80661d012e8db00c46f9c0"
+      },
+      {
+        "path": "assets/rooms/biodome/furnishings/universal-supply-pallet-registration.json",
+        "sha256": "96a7f24fae7a51f27cc003ff78004b40ac518f99587ad8ff6a93983ec50b8e5f"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/biodome-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/biodome-composition-v3.json",
+        "sha256": "db1ca63f1c4b1636ebc2a6755ccdd29bb2ac2b595ca367675ee576875c945b9c"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/biodome/cards/card.png",
+      "sha256": "802cfea7bb305bd9f4a12ea08b326ebd1f568993da6ffc71a85ab5f3b7fb371e"
+    },
+    "verification": {
+      "furnishing_v5": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v5/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "xeno_lab",
+    "source": "rooms/underwater/batch-two/xeno_lab-source-v1.png",
+    "sha256": "9a6524c00d9049209dcef3e3e7feba2f8ffb63c14cde1829e6df39b1dd622ada",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/xeno_lab_view.gd",
+      "card": "assets/rooms/xeno-lab/cards/card.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/material-polish-science-v2/research-accessories.png",
+        "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
+      },
+      {
+        "path": "assets/rooms/xeno-lab/furnishings/assay-table.png",
+        "sha256": "71345f8b42f36bc05814871280186e77ce18a5b374177c2239637e5e3367ea00"
+      },
+      {
+        "path": "assets/rooms/xeno-lab/furnishings/universal-decon-caddy.png",
+        "sha256": "a670d22562a7818354c6212c21f1b4e61dca006469feed9e16365a9e2dfb8f70"
+      },
+      {
+        "path": "assets/rooms/xeno-lab/furnishings/assay-table-registration.json",
+        "sha256": "4978963996e6484db062d594ed1b7e446105710bb21c01b4ee7e279486f6fceb"
+      },
+      {
+        "path": "assets/rooms/xeno-lab/furnishings/universal-decon-caddy-registration.json",
+        "sha256": "a0bd5d7c6f4026b16170bb9af8712e6c807e225c095c3d264aa06c2dfb302e43"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/xeno-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/xeno-composition-v3.json",
+        "sha256": "54ce84334f9f37ff919150e6ecd520b67c64b7601edd3e9959097641c87b7e0d"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/xeno-lab/cards/card.png",
+      "sha256": "f29bda07b24a25d279efc5e3681491a61639b2eab9927da5127b25861153859a"
+    },
+    "verification": {
+      "furnishing_v6": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v6/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "anomaly_lab",
+    "source": "assets/rooms/anomaly-lab/source/overhead.png",
+    "sha256": "67e810d4f3d2d87eec9a16a70e71f2c40d0267091996e97fb44cb96fb0b1de7a",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/anomaly_lab_view.gd",
+      "card": "rooms/underwater/batch-two/anomaly_lab-card-mat-v2.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/underwater/batch-two/archive-service-cart-v1.png",
+        "sha256": "8bb085eb0ce5a53c3eb71631328c0f2b624192d6a967e2926584a0a77825c41c"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/anomaly-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/anomaly-composition-v2.json",
+        "sha256": "43b80f2d631f9fbc2093aa7f9c654881270b2a4161bbe6640c9d0ea20b3bf72a"
+      }
+    ]
+  },
+  {
+    "id": "bio_lab",
+    "source": "rooms/underwater/batch-two/bio_lab-source-v1.png",
+    "sha256": "ad3f7234d7b6afd8b5d70b0b08f4bda88b15965b93c598e5db7132d3768614ee",
+    "canonical_ports_nesw": [
+      3,
+      1,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/bio_lab_view.gd",
+      "card": "assets/rooms/bio-lab/cards/card.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      },
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/material-polish-v2/research-bench.png",
+        "sha256": "ed75c859d5ebf02852085845cc7473fadf707b8ff737a7352b20fcb49a0ea310"
+      },
+      {
+        "path": "assets/material-polish-science-v2/research-accessories.png",
+        "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
+      },
+      {
+        "path": "assets/rooms/bio-lab/furnishings/culture-preparation-island.png",
+        "sha256": "d3b579c1672f5fe7d7641140d7c1a933d6e05e5bcbd7ef3da265499b737be0c5"
+      },
+      {
+        "path": "assets/rooms/bio-lab/furnishings/universal-specimen-transit-case.png",
+        "sha256": "ee847e076c88b44d5e1c59663b2cf73533f78ce919585b9a9534c31961f7cd05"
+      },
+      {
+        "path": "assets/rooms/bio-lab/furnishings/culture-preparation-island-registration.json",
+        "sha256": "980ca4009495a278c917a1abe101009d473565be9ad109d8299612307086c9fc"
+      },
+      {
+        "path": "assets/rooms/bio-lab/furnishings/universal-specimen-transit-case-registration.json",
+        "sha256": "f044585705bec1244918a5f39afe9d644c1e13861ed16a92f9559e961efef23e"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/bio-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/bio-composition-v3.json",
+        "sha256": "d83a92815706b8c762673d65779b9779db83e8b9520be1da92f809ecd66198b9"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/bio-lab/cards/card.png",
+      "sha256": "dcf524f9469fdd5cd332ab7f5665d1e7f9b54271649705f71679a069cf6d492b"
+    },
+    "verification": {
+      "furnishing_v7": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v7/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "holographic_core",
+    "source": "assets/rooms/holographic-core/source/overhead.png",
+    "sha256": "03096676ba7b8c76e3f77d6814f7c1dd2d04cc355565e3eb6876b3c655f9430d",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/holographic_core_view.gd",
+      "card": "assets/rooms/holographic-core/cards/card.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/underwater/batch-two/archive-service-cart-v1.png",
+        "sha256": "8bb085eb0ce5a53c3eb71631328c0f2b624192d6a967e2926584a0a77825c41c"
+      },
+      {
+        "path": "assets/rooms/holographic-core/furnishings/calibration-block.png",
+        "sha256": "0435ade3e68d6bd1c3ba1f7867745ccffe3df5193e456f10c8762902acff9dac"
+      },
+      {
+        "path": "assets/rooms/holographic-core/furnishings/projection-alignment-deck.png",
+        "sha256": "9c233993fb94810c42d9a8f6a538a44ea70cc8f6d323d5208b40a9ed17eef93a"
+      },
+      {
+        "path": "assets/rooms/holographic-core/furnishings/universal-instrument-calibration-case.png",
+        "sha256": "8a24b05d6e673b92d42a5c37ac7566c1ba1619249aefeb5157d0c403254d2934"
+      },
+      {
+        "path": "assets/rooms/holographic-core/furnishings/projection-alignment-deck-registration.json",
+        "sha256": "ca0f17e03fa30a579fc280af09e34bc22852b1408bcb253e5b002c1d1529b97a"
+      },
+      {
+        "path": "assets/rooms/holographic-core/furnishings/universal-instrument-calibration-case-registration.json",
+        "sha256": "fd3638092e6d5dd1999078e1bd6ceafad16242a5036ac646fbc423bfc951a8f7"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/holo-composition-v5.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/holo-composition-v5.json",
+        "sha256": "2931672a9cf84b4cec3acd62e6a67e4c1f450b0ddd29dd142206af6e273eb50f"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/holographic-core/cards/card.png",
+      "sha256": "ebbae6afd4748ae3ec3e717673d88479971aea5cd028057abf304bf4ffd9d9b2"
+    },
+    "verification": {
+      "furnishing_v9": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v9/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "med_center",
+    "source": "rooms/underwater/batch-two/med_center-source-v1.png",
+    "sha256": "d016866372e6f2bb578be29b60d8d9ca60b561fe57e571afe93695eb622ef7e4",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/med_center_view.gd",
+      "card": "rooms/underwater/batch-two/med_center-card-services-v1.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/med-center-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/med-center-composition-v3.json",
+        "sha256": "955fc379d84f7517c0417ed56a1fc46b27ca81e7848349dc43e9f8769703a1ce"
+      }
+    ]
+  },
+  {
+    "id": "med_office",
+    "source": "rooms/underwater/batch-two/med_office-source-v1.png",
+    "sha256": "b15f54b71a37aee471afd022a5da0a5232f75b3fea6abfbf13babfb97690d209",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/batch-two/med_office_view.gd",
+      "card": "rooms/underwater/batch-two/med_office-card-group-v1.png"
+    },
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/lounge-support-v2.png",
+        "sha256": "0031013b88c2feeb40a8c1fce57e1b703615b66e8000ef229b3f9714131f0f6c"
+      }
+    ],
+    "composition_profile": "rooms/underwater/batch-two/med-office-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/batch-two/med-office-composition-v2.json",
+        "sha256": "9b85a94d892443f72c5cbf9b1155dc639625dca5802ed0e2761758d6ccb307a3"
+      }
+    ]
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "asset_id": "airlock_suit_air_bank",
+  "department": "Engineering",
+  "condition": "Maintained, sparse handling wear",
+  "attachment_class": "Self-supporting shallow wall cabinet",
+  "camera_and_facing": "Elevated orthographic south-facing front; no side variants yet",
+  "references": [
+    {
+      "path": "rooms/underwater/cold-store-v1/fridge-source-v2.png",
+      "sha256": "90f8f45aabcfc7b244ea312104562be71b2c631f8bb45dbc02cfe8d6e46d6892",
+      "role": "Matte revision: stepped shading and square construction"
+    },
+    {
+      "path": "rooms/underwater/airlock-v4/card-low-cutaway-v1.png",
+      "sha256": "395ac16eb5f00b185e53c8fb8600c83a60fe3a668bd73c5b6fe64719687322ae",
+      "role": "Existing equipment subject/scale only; older shine excluded"
+    },
+    {
+      "path": "assets/full-wall-props-refined-v2/maintenance-repair-wall.png",
+      "sha256": "bdfad16f9439ecf242e50109f100a39b88718f094003b29ca2adec9037f0d22f",
+      "role": "Continuous assembly and Engineering construction only; gloss and microtexture excluded"
+    }
+  ],
+  "source_path": "assets/airlock-wall-v1/suit-air-bank-source-v2.png",
+  "source_sha256": "7f21b95585988895809e2b1acafe947b81437778c6b804fea1378bbf5f1b9461",
+  "export_path": "assets/airlock-wall-v1/suit-air-bank.png",
+  "export_sha256": "28691b9b76886bc52b4a68df296cc5e537213179cd1816b64238e56cb9f499bf",
+  "native_canvas_px": [
+    1994,
+    789
+  ],
+  "proposed_display_width_world": 320,
+  "proposed_ground_footprint_world": [
+    320,
+    40
+  ],
+  "placement_exclusions": [
+    "North pressure chamber and exterior hatch",
+    "South station doorway",
+    "Existing helmet fitting station access"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_reviewed",
+      "findings": [
+        "V1 rejected: reflective cylinder streaks/shoulder glints and helmet glass streaks.",
+        "V2 selected: cylinder body values step in broad quiet bands; helmet glass subdued; restrained small hardware accents remain.",
+        "No global dark tint applied. Owner acceptance remains pending."
+      ]
+    },
+    "native_scale": {
+      "verdict": "diagnostic_pass",
+      "evidence": "output/airlock-wall-v1/material-scale.png",
+      "evidence_sha256": "ec24c6024c7f007a9e2e8aba663e3496eb382f86fe0e18fd7910d41b4bc1c054",
+      "findings": [
+        "Native nearest-filtered width 320; visible height about 100.55 world units.",
+        "Compared beside current Airlock rendered at one pixel per world unit.",
+        "Full-scale sprite and enlarged detail inspected. This is not a placed-room clearance check."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Raw V2 is RGB with painted checkerboard.",
+        "Read-only neutral registration at 160; Godot UV polygon export preserves source raster.",
+        "True-alpha exterior checked on dark and light native grounds; recessed suit/bench/hose areas have real backing, not missing background holes.",
+        "Four exterior corners plus upper gap alpha 0; sampled panels and suit alpha 255."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "A dark palette can still look glossy. Review cylinder/helmet materials independently.",
+    "Targeted material editing is preferable to global dimming.",
+    "Diagnostic board must fit the entire enlarged asset: initial 850px board cropped base; final height is 900px."
+  ]
+}

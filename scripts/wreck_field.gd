@@ -1,0 +1,106 @@
+extends RefCounted
+## Wrecks and rocks occupy placement cells but never join the operational room graph.
+const DURATION := 18.0
+const TYPES := ["engineering", "medical", "habitation", "hydroponics"]
+const NAMES := {"recovery":"Unidentified Recovery Site","engineering":"Engineering Wreck", "medical":"Medical Wreck", "habitation":"Habitation Wreck", "hydroponics":"Hydroponics Wreck", "basalt":"Basalt Outcrop", "cryo":"Derelict Cryo Ward", "charging":"Derelict Charging Chamber", "river":"Derelict Garbage Disposal Room", "josh":"Derelict Storage Room", "margot":"Derelict Pet Cryo Ward"}
+const YIELDS := {"engineering":12, "medical":8, "habitation":6, "hydroponics":10, "basalt":4}
+
+static func initial() -> Dictionary:
+	var result := {}
+	var positions := [Vector2i(18,18),Vector2i(22,18),Vector2i(18,22),Vector2i(22,22)]
+	for i in range(TYPES.size()):
+		result[positions[i]] = {"kind":TYPES[i], "progress":0.0, "active":false, "cleared":false}
+	# Connected shelves leave all four immediate core expansion cells open.
+	for cell in [Vector2i(17,19),Vector2i(17,20),Vector2i(17,21),Vector2i(16,20),Vector2i(16,21),Vector2i(23,19),Vector2i(23,20),Vector2i(23,21),Vector2i(24,19),Vector2i(19,17),Vector2i(20,17),Vector2i(21,17),Vector2i(20,23),Vector2i(21,23),Vector2i(21,24)]:
+		result[cell] = {"kind":"basalt", "progress":0.0, "active":false, "cleared":false}
+	preload("res://scripts/cryo_recovery.gd").seed(result)
+	# Broad solid sections can be cut into, leaving tunnels and interior pockets.
+	for x in range(11,17):
+		for y in range(18,24):
+			if (x==11 and y in [18,23]) or (x==16 and y==23): continue
+			var cell := Vector2i(x,y)
+			if not result.has(cell): result[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	# A sealed service pocket becomes identifiable only after an approach is cut.
+	result[Vector2i(13,21)] = {"kind":"engineering","progress":0.0,"active":false,"cleared":false,"buried":true}
+	for x in range(24,29):
+		for y in range(17,22):
+			if x==28 and y in [17,21]: continue
+			var cell := Vector2i(x,y)
+			if not result.has(cell): result[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	return result
+
+static func exposed(wrecks: Dictionary, cell: Vector2i) -> bool:
+	for offset in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
+		if not blocks(wrecks,cell+offset): return true
+	return false
+
+static func visible(wrecks: Dictionary, cell: Vector2i) -> bool:
+	return not wrecks.get(cell,{}).get("buried",false) or exposed(wrecks,cell)
+
+static func blocks(wrecks: Dictionary, cell: Vector2i) -> bool:
+	return wrecks.has(cell) and not wrecks[cell].cleared
+
+static func reachable(occupied: Dictionary, cell: Vector2i, wrecks: Dictionary = {}) -> bool:
+	if wrecks.has(cell) and (wrecks[cell].kind=="basalt" or wrecks[cell].get("buried",false)):
+		if not exposed(wrecks,cell): return false
+		var blocked := {}
+		for at in wrecks:
+			if blocks(wrecks,at): blocked[at] = true
+		for home in occupied:
+			if not preload("res://scripts/drone_routes.gd").find_path(home,cell,blocked).is_empty(): return true
+		return false
+	for offset in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
+		if occupied.has(cell+offset):
+			return true
+	return false
+
+static func busy(wrecks: Dictionary, except_cell: Vector2i) -> bool:
+	for cell in wrecks:
+		if cell != except_cell and wrecks[cell].active:
+			return true
+	return false
+
+# crew_work (cell -> seconds) is welding time from WardRepair: derelict wards only progress
+# while a crew member works on them (owner playtest, Sept 17). Without it (older callers and
+# fixtures) wards progress on the clock as before. Crew time already carries the repair rate.
+static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, drone_work: Variant = null, crew_work: Variant = null) -> Array:
+	var completed := []
+	for cell in wrecks:
+		var wreck: Dictionary = wrecks[cell]
+		if wreck.kind=="recovery" or wreck.cleared or not wreck.active or not reachable(occupied,cell,wrecks):
+			continue
+		var ward: bool = wreck.kind in ["cryo","charging","river","josh","margot"]
+		var work_delta: float = delta if drone_work == null and crew_work == null else float(crew_work.get(cell,0.0)) if ward and crew_work != null else delta if ward or drone_work == null else float(drone_work.get(cell,0.0))
+		wreck.progress = minf(DURATION,float(wreck.progress)+maxf(0.0,work_delta))
+		if wreck.progress >= DURATION:
+			wreck.cleared = true
+			wreck.active = false
+			completed.append(cell)
+		break # One basic salvage rig; no parallel rewards from malformed state.
+	return completed
+
+static func valid(value: Variant, occupied: Dictionary) -> bool:
+	if not value is Dictionary or value.size()>1600:
+		return false
+	var active_count := 0
+	for cell in value:
+		if not cell is Vector2i or cell.x<0 or cell.y<0 or cell.x>=40 or cell.y>=40:
+			return false
+		var w = value[cell]
+		if not w is Dictionary or not NAMES.has(w.get("kind")):
+			return false
+		if not w.get("progress") is float or not is_finite(w.progress) or w.progress<0 or w.progress>DURATION:
+			return false
+		if not w.get("active") is bool or not w.get("cleared") is bool:
+			return false
+		if w.kind=="recovery" and (w.progress!=0.0 or w.active or w.cleared or w.get("rotation")!=0 or w.has("pods")): return false
+		if not w.get("buried",false) is bool: return false
+		if w.kind in ["cryo","charging"] and not preload("res://scripts/cryo_recovery.gd").valid_ward(w):
+			return false
+		if w.kind in ["river","josh","margot"] and not preload("res://scripts/companions.gd").valid_site(w):return false
+		if w.cleared != (w.progress == DURATION) or (w.cleared and w.active):
+			return false
+		if not w.cleared and occupied.has(cell):
+			return false
+		active_count += int(w.active)
+	return active_count<=1

@@ -1,0 +1,12 @@
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+R=Path(__file__).resolve().parents[1];D=R/'character/bill-west-whole-master-pilot-v1';sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+for slot in [12,24,36]:
+ P=D/f'pose-{slot:03}';P.mkdir(exist_ok=False)
+ source=R/f'character/bill-west-master-head-repair-v1/bare-walk-{slot:03}-candidate.png';im=Image.open(source).convert('RGBA');assert im.size==(256,256);im.resize((1024,1024),Image.Resampling.NEAREST).save(P/'edit-target.png')
+ refs=[{'path':str(P/'edit-target.png'),'sha256':sha(P/'edit-target.png'),'source':source.relative_to(R).as_posix(),'sourceSha256':sha(source),'role':f'Exact whole stride{slot} geometry target'}, {'path':str(D/'candidate-000.png'),'sha256':sha(D/'candidate-000.png'),'source':(D/'candidate-000.png').relative_to(R).as_posix(),'sourceSha256':sha(D/'candidate-000.png'),'role':'Whole corrected stride000 material coherence reference'}, {'path':str(R/'character/bill-water-exit-west-master-v8/sources/master-west-reference.png'),'sha256':sha(R/'character/bill-water-exit-west-master-v8/sources/master-west-reference.png'),'source':'character/bill-water-exit-west-master-v8/sources/master-west-reference.png','sourceSha256':sha(R/'character/bill-water-exit-west-master-v8/sources/master-west-reference.png'),'role':'Original West high resolution identity/master detail'}]
+ (P/'references.json').write_text(json.dumps(refs,indent=2)+'\n')
+ prompt=f'''Edit image1 as one complete West-facing Bill walking sprite, exact stride phase{slot}. Preserve its exact pose, torso slimness, height, head position/angle, arm/hand positions, boot positions/angles, canvas placement and scale. Image2 is the corrected whole stride000 for consistency; image3 is original West high-resolution identity authority. Match their angular warm bearded face, medium brown textured hair, detailed matte charcoal diamond quilting and fine stitching, restrained red patches, practical harness/belt/pouches and worn subdued metal. Restore original master textured rendering without gloss, smooth cartoon cloth or brighter wash. Keep original body geometry and fixed foot baseline. No bigger torso/shoulders/head, new gesture, duplicate hands/limbs, props, shadow, halo, text or checkerboard. Image1 canvas1024square pivot512,896 standingH592. Do not transfer other reference poses. Return one coherent whole sprite on the same transparent square canvas.'''
+ (P/'prompt.txt').write_text(prompt,encoding='utf-8')
+print('Three additional whole stride references prepared')

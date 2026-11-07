@@ -1,0 +1,88 @@
+{
+  "asset_id": "botanical-seed-wall-v1",
+  "department": "Life Support / Hydroponics botanical preparation",
+  "condition": "Maintained matte composite and paper",
+  "attachment_class": "Low north-backed bank",
+  "functional_bays": [
+    "Packet organizer and drawers",
+    "Seed sorting tray and wooden scoop",
+    "Four closed opaque tins and propagation cassette"
+  ],
+  "runtime_behavior": "Static seed preparation artwork; no germination simulation",
+  "camera_and_facing": "Near-top-down; north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/quarantine-preparation-wall-v1/wall.png",
+      "sha256": "c8a14e2df52a9fb34365c429aaae459a5d3c844ab1cc893c6aecfcb9f8891938",
+      "role": "Matte composite and camera only"
+    }
+  ],
+  "source_path": "assets/botanical-seed-wall-v1/source-v2.png",
+  "source_sha256": "3df5847509c9399107d3d04afc42a34214ded5d1f5b7d87e046d08e609507850",
+  "export_path": "assets/botanical-seed-wall-v1/wall.png",
+  "export_sha256": "7b37a5ae9c880e162d2a97dd1a8ab4cd8d767bfdf0c3e9c18bd69fe216c80bfd",
+  "native_canvas_px": [
+    2173,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Growing-rack access",
+    "Door bays",
+    "Operator workspace"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Matte sage composite, paper packets and opaque tins; seeds use quiet brown clusters."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/botanical-seed-wall-v1/wall-final.png",
+      "findings": [
+        "320-unit review beside Hydroponics; accessory sorting bank subordinate to growing racks."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V1 dark checkerboard threshold damaged pale outer corners; rejected.",
+        "V2 plain white exterior allows neutral228 registration with intact corners. Source edit is not pixel locked."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 64.76001979218209,
+  "registration_path": "assets/botanical-seed-wall-v1/registration.json",
+  "registration_sha256": "d9e0359618f37471f32aabd327b2cf87dbe20b247c9b38c755b4c0ad98dc5da9",
+  "prompt_path": "assets/botanical-seed-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "65f63dc2b9a94a89a8e9b4c20d9fdd6172b4fe55a89e5333a0e928550fe48fb6",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "review_history": [
+    {
+      "source": "source-v1.png",
+      "registration": "registration-v1-rejected.json",
+      "reason": "Background threshold overlapped sage cabinet edges"
+    }
+  ],
+  "evidence_hashes": {
+    "output/botanical-seed-wall-final.log": "bde743cff89ec5ad1cd763b1a6541c5fcb857fe1df804d430df183f52545ddc2",
+    "output/botanical-seed-wall-v1/wall-final.png": "f2777514c48afa1984f2d6a0cdbbb78265950877ea9d3be7c6cac4de94c32079"
+  }
+}

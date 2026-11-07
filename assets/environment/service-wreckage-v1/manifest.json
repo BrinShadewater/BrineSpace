@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "runtime_registry": "service_wreckage_view.gd",
+  "prompt_records": [
+    "generation-record.json",
+    "revision-record.json",
+    "alpha-revision-record.json",
+    "fresh-tank-record.json",
+    "sensor-mast-record.json"
+  ],
+  "assets": [
+    {
+      "id": "collapsed-support",
+      "kind": "prop",
+      "selected_source": "collapsed-support-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "collapsed-support-v1.png",
+          "sha256": "760f7d47a35613c7712f65c276e723796025c44c6fc4b0f4ee915a5cf411906e",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "torn-cable-harness",
+      "kind": "prop",
+      "selected_source": "torn-cable-harness-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "torn-cable-harness-v1.png",
+          "sha256": "1e4ab525fdf11200f40aa412e84a9c0c84e410b87f2ffa9aabf754a80aaf3f28",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "ruptured-pressure-tank",
+      "kind": "prop",
+      "selected_source": "ruptured-pressure-tank-v4.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "ruptured-pressure-tank-v1.png",
+          "sha256": "399b570a27399a6a7da2e4d8d9bf32ffd5181c928b9a59b4cae83aea31c1d160",
+          "rejection": "Rejected: front-facing product view"
+        },
+        {
+          "file": "ruptured-pressure-tank-v2.png",
+          "sha256": "b5cdbaad697928970ee1b9b3557c40a6b3c99738b7c55363973297fb50c962bb",
+          "rejection": "Rejected: RGB painted checkerboard exterior"
+        },
+        {
+          "file": "ruptured-pressure-tank-v3.png",
+          "sha256": "942e67fd57461494106a01d8fb72bffc9b4a6e59181940b9d02fd6eb5fb7930a",
+          "rejection": "Rejected: RGB checkerboard persisted after edit"
+        },
+        {
+          "file": "ruptured-pressure-tank-v4.png",
+          "sha256": "49dec342e2d2c978f7a5c9447a6dab17d40736905b9d90e09036c4484612737b",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "detached-hatch",
+      "kind": "prop",
+      "selected_source": "detached-hatch-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "detached-hatch-v1.png",
+          "sha256": "1f88aa3ebb69447705e1bca7b4c511be323928859e4b91fe206c430f1ae465ae",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "collapsed-sensor-mast",
+      "kind": "prop",
+      "stage": "integrated; native station reviewed; owner approval pending",
+      "selected_source": "collapsed-sensor-mast-v1.png",
+      "versions": [
+        {
+          "sha256": "6a56fe83b64473e62a774e6e510d6a6d293ab97906622a5497f16866557080f5",
+          "rejection": null,
+          "file": "collapsed-sensor-mast-v1.png"
+        }
+      ]
+    }
+  ],
+  "title": "Exterior service wreckage",
+  "native_previews": [
+    {
+      "label": "Native source sheet",
+      "path": "../../../output/service-wreckage-v1/source-sheet.png"
+    },
+    {
+      "label": "Broken service frame at station scale",
+      "path": "../../../output/service-wreckage-v1/group-1-1600.png"
+    },
+    {
+      "label": "Failed pressure line",
+      "path": "../../../output/service-wreckage-v1/group-2-1600.png"
+    },
+    {
+      "label": "Normal paid corridor construction over debris",
+      "path": "../../../output/service-wreckage-v1/built-over-1600.png"
+    },
+    {
+      "label": "Fallen acoustic receiver at station scale",
+      "path": "../../../output/service-wreckage-mast-v1/group-4-1600.png"
+    }
+  ]
+}

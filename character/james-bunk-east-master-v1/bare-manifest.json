@@ -1,0 +1,216 @@
+{
+  "name": "James master-matched east bunk",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_bunk_master_revision_owner_review_pending",
+  "states": [
+    {
+      "id": "bunk-enter-east",
+      "frameFiles": [
+        "frames/bare/bunk-enter/000.png",
+        "frames/bare/bunk-enter/001.png",
+        "frames/bare/bunk-enter/002.png",
+        "frames/bare/bunk-enter/003.png",
+        "frames/bare/bunk-enter/004.png",
+        "frames/bare/bunk-enter/005.png",
+        "frames/bare/bunk-enter/006.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        240,
+        300,
+        300,
+        300,
+        300,
+        280
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "",
+        "",
+        "",
+        "",
+        "bunk",
+        "bunk",
+        "bunk"
+      ],
+      "depthOffsets": [
+        96,
+        96,
+        96,
+        96,
+        100,
+        100,
+        100
+      ],
+      "frameCount": 7,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.33035714285714285,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "derivation": "Independent seven-pose complete bodies; selected standing master; native choreography metadata, exact reversed exit and shared sleep"
+      }
+    },
+    {
+      "id": "bunk-exit-east",
+      "frameFiles": [
+        "frames/bare/bunk-exit/000.png",
+        "frames/bare/bunk-exit/001.png",
+        "frames/bare/bunk-exit/002.png",
+        "frames/bare/bunk-exit/003.png",
+        "frames/bare/bunk-exit/004.png",
+        "frames/bare/bunk-exit/005.png",
+        "frames/bare/bunk-exit/006.png"
+      ],
+      "frameDurationsMs": [
+        280,
+        300,
+        300,
+        300,
+        300,
+        240,
+        120
+      ],
+      "loop": false,
+      "furnitureFrames": [
+        "bunk",
+        "bunk",
+        "bunk",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "depthOffsets": [
+        100,
+        100,
+        100,
+        96,
+        96,
+        96,
+        96
+      ],
+      "frameCount": 7,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.33035714285714285,
+        "sourcePoses": [
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent seven-pose complete bodies; selected standing master; native choreography metadata, exact reversed exit and shared sleep"
+      }
+    },
+    {
+      "id": "bunk-sleep-east",
+      "frameFiles": [
+        "frames/bare/bunk-sleep/000.png"
+      ],
+      "frameDurationsMs": [
+        1000
+      ],
+      "loop": true,
+      "furnitureFrames": [
+        "bunk"
+      ],
+      "depthOffsets": [
+        100
+      ],
+      "frameCount": 1,
+      "facings": [
+        "east"
+      ],
+      "waterKinds": [
+        "sleep"
+      ],
+      "waterPoses": [
+        false
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.33035714285714285,
+        "sourcePoses": [
+          6
+        ],
+        "derivation": "Independent seven-pose complete bodies; selected standing master; native choreography metadata, exact reversed exit and shared sleep"
+      }
+    }
+  ]
+}

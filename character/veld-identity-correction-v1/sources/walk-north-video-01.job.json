@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "reference": "walk-north-video-reference-01.png",
+  "prompt": "walk-north-video-01.prompt.txt",
+  "model": "seedance_2_5",
+  "selection": "rejected costume continuity; motion reference only",
+  "referenceCrop": [
+    1532,
+    0,
+    2043,
+    770
+  ],
+  "referenceSource": "scanner-north-body-01.png",
+  "jobId": "487db416-326b-4b81-b82f-6457739c9a2d",
+  "resume": "Inspect this job ID and existing session; do not resubmit after an observation timeout.",
+  "resultUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3DI8EyzxtV7c98Xbr9UTZQAAYSr/hf_20260913_035719_487db416-326b-4b81-b82f-6457739c9a2d.mp4",
+  "localSource": "character\\veld-identity-correction-v1\\sources\\walk-north-video-01.mp4",
+  "observedOutput": {
+    "frames": 97,
+    "fps": 24,
+    "width": 1248,
+    "height": 1664
+  },
+  "review": "../review/walk-north-video-phases-01/temporal-contact.png",
+  "rejection": "Generated bare hands instead of suit gloves. Restore gloves in a new preserved source before selection."
+}

@@ -1,0 +1,112 @@
+{
+  "status": "source_rig_requires_runtime_review",
+  "actor": "marsh",
+  "direction": "north",
+  "sourceLegClip": "pickup-north",
+  "sourceLegFrame": 3,
+  "sourceTorsoClip": "pickup-north",
+  "sourceTorsoFrame": 3,
+  "phases": [
+    0,
+    1,
+    3,
+    4
+  ],
+  "rig": {
+    "projection": "axial",
+    "direction": "north",
+    "sourceClip": "walk-north",
+    "sourceFrame": 0,
+    "travel": 36,
+    "durations": [
+      125,
+      125,
+      0,
+      125,
+      125,
+      0
+    ],
+    "bodyBob": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "solePath": [
+      172,
+      168,
+      164,
+      160,
+      156,
+      164
+    ],
+    "legs": {
+      "left": {
+        "box": [
+          65,
+          121,
+          93,
+          184
+        ]
+      },
+      "right": {
+        "box": [
+          93,
+          121,
+          118,
+          184
+        ]
+      }
+    }
+  },
+  "recipe": {
+    "projection": "axial",
+    "direction": "north",
+    "sourceClip": "walk-north",
+    "sourceFrame": 0,
+    "travel": 36,
+    "durations": [
+      180,
+      180,
+      180,
+      180
+    ],
+    "bodyBob": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "solePath": [
+      172,
+      168,
+      164,
+      160,
+      156,
+      164
+    ],
+    "legs": {
+      "left": {
+        "box": [
+          65,
+          121,
+          93,
+          184
+        ]
+      },
+      "right": {
+        "box": [
+          93,
+          121,
+          118,
+          184
+        ]
+      }
+    }
+  },
+  "strideDistanceCells": 0.0827027027027027
+}

@@ -1,0 +1,72 @@
+{
+  "textures": {
+    "habitation": "res://rooms/production-ten/decor/lounge-support-v2.png"
+  },
+  "furniture": [
+    {
+      "id": "office_reference_shelf",
+      "texture": "habitation",
+      "region": [
+        659,
+        155,
+        411,
+        395
+      ],
+      "footprint": [
+        110,
+        -19,
+        52,
+        20
+      ]
+    },
+    {
+      "id": "office_reading_lamp",
+      "texture": "habitation",
+      "region": [
+        191,
+        69,
+        209,
+        480
+      ],
+      "footprint": [
+        45,
+        79,
+        18,
+        8
+      ],
+      "centers_by_quarter": [
+        [
+          54,
+          83
+        ],
+        [
+          -145,
+          110
+        ],
+        [
+          -54,
+          -83
+        ],
+        [
+          145,
+          -103
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "office_consultation",
+      "offset": [
+        -4,
+        42
+      ],
+      "size": [
+        96,
+        38
+      ],
+      "fill": "899d99",
+      "edge": "738e89"
+    }
+  ]
+}

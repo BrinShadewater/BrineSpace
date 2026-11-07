@@ -1,0 +1,28 @@
+"""Two facing timed-state fixture, preserving actual North arrival behavior."""
+from pathlib import Path
+import json
+ROOT=Path(__file__).resolve().parents[1]
+s=(ROOT/'tools/review_marsh_cargo_east_action01_actor.gd').read_text()
+s=s.replace('cargo-east-action-01-2026-10-02','cargo-southwest-action-01-2026-10-02')
+s=s.replace('\tplayer.load_manifest("res://character/marsh-cargo-held-material-v1/east-unload-01-unselected/manifest.json",true)','\tplayer.load_manifest("res://character/marsh-cargo-held-material-v1/south-unload-01-unselected/manifest.json",true)\n\tplayer.load_manifest("res://character/marsh-cargo-held-material-v1/west-unload-01-unselected/manifest.json",true)')
+s=s.replace('for action in ["pickup","unload"]:','for job in [["south","pickup"],["south","unload"],["west","pickup"],["west","unload"]]:\n\t\tvar facing:String=job[0];var action:String=job[1]')
+s=s.replace('actor.direction="east"','actor.direction=facing').replace('action+"-east"','action+"-"+facing')
+s=s.replace('else:check(actor.stage!="workshop_unload" and actor.action_elapsed()<0,"normal unload timer exits action")','else:check(actor.stage!="workshop_unload" and actor.animation_state()!="unload","normal unload timer exits targeted action, allowing next route")')
+s=s.replace('"action":action,"slots"','"action":action,"facing":facing,"slots"').replace('"exitState":actor.state','"exitState":actor.state,"exitPose":actor.animation_state(),"exitElapsed":actor.action_elapsed()')
+s=s.replace('Normal Marsh.update/main/grid/player staged East workshop pickup entered from work timer; East unload seeded valid action.','Normal Marsh.update/main/grid/player staged South andWest pickups entered from work timer; unloads seeded valid timed states.')
+s=s.replace('MARSH EAST ACTION','MARSH SOUTHWEST ACTION')
+(ROOT/'tools/review_marsh_cargo_southwest_action01_actor.gd').write_text(s)
+(ROOT/'tools/review_marsh_cargo_southwest_action01_actor.gd.uid').write_text('uid://dp3cargoact1v07\n')
+finger=(ROOT/'tools/fingerprint_marsh_cargo_east_action01.py').read_text().replace('cargo_east_action01','cargo_southwest_action01')
+finger=finger.replace("'pack_marsh_cargo_east_unload01.py'","'pack_marsh_cargo_south_unload01.py','pack_marsh_cargo_west_unload01.py','prepare_marsh_cargo_southwest_packers01.py'")
+finger=finger.replace("'character/marsh-cargo-held-material-v1/east-unload-01-unselected'","'character/marsh-cargo-held-material-v1/south-unload-01-unselected','character/marsh-cargo-held-material-v1/west-unload-01-unselected'")
+finger=finger.replace("'character/marsh-east-carry-material-v1/candidate-03'","'character/marsh-east-carry-material-v1/candidate-03','character/marsh-west-carry-material-v1/candidate-03','character/marsh-south-carry-material-v1/candidate-01'")
+(ROOT/'tools/fingerprint_marsh_cargo_southwest_action01.py').write_text(finger)
+pub=(ROOT/'tools/publish_marsh_cargo_east_action01.py').read_text().replace('cargo-east-action-01','cargo-southwest-action-01').replace("'east-action-01-actor-review'","'southwest-action-01-actor-review'")
+pub=pub.replace("len(r['captures'])==8 and [c['action'] for c in r['cases']]==['pickup','unload']","len(r['captures'])==16 and [(c['facing'],c['action']) for c in r['cases']]==[('south','pickup'),('south','unload'),('west','pickup'),('west','unload')]")
+pub=pub.replace("manifest=read(B/'east-unload-01-unselected/manifest.json');states={s['id']:s for s in manifest['states']};parity=[]","states={s['id']:s for f in ['south','west'] for s in read(B/f'{f}-unload-01-unselected/manifest.json')['states']};parity=[]")
+pub=pub.replace("case['action']+'-east'","case['action']+'-'+case['facing']")
+pub=pub.replace("'captures':8,'exactSources':8","'captures':16,'exactSources':16").replace("'actorPlayerRestores':8,'decodedHeldFrames':8","'actorPlayerRestores':16,'decodedHeldFrames':16").replace('allEightPairsInspected','allSixteenPairsInspected')
+pub=pub.replace('East unload seeded valid timed action, not actual workshop arrival which forces North.','South/West unloads seeded valid timed actions, not actual workshop arrival which forces North.')
+(ROOT/'tools/publish_marsh_cargo_southwest_action01.py').write_text(pub)
+print('South/West normal timed action fixture and paired helpers prepared')

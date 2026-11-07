@@ -1,0 +1,45 @@
+{
+  "north": {
+    "source": "research-north.png",
+    "sha256": "f6936f34a0417722eafa87f522776c4d153f3dcbb8371b75385144721ee75d29",
+    "generated_original": "exec-af46a5ce-6961-4619-8b1e-afc750dd4e6e.png",
+    "review": "Native q0 reviewed; static screen graphics removed; all equipment and rectangles retained. Other rotations RGB-identical.",
+    "evidence": "output/research-remaining-2026-09-12/north-comparison.json"
+  },
+  "side_studies": {
+    "files": [
+      "research-sides-rejected-v1.png",
+      "research-sides-rejected-v2.png"
+    ],
+    "stage": "rejected-not-integrated",
+    "reason": "Both retain three upper tubes instead of four; west duplicates tool trays. Carousel restoration alone is insufficient."
+  },
+  "selected_sides": {
+    "west": {
+      "source": "research-west.png",
+      "generated_original": "exec-4667ec61-de38-4e93-b341-7375051d21df.png",
+      "sha256": "4285c72a88dde8913c8c7f2040c436896e2f77fe1df8c6beb9dcaff674880d2d",
+      "inventory": "4 upper tubes, 2 lower tubes, 3 carousel stones, 4 lower stones in 2 trays, 1 tool tray with 2 tweezers, sink, sensor and central microscope specimen",
+      "stage": "native-reviewed-default-installed"
+    },
+    "east": {
+      "source": "research-east.png",
+      "generated_original": "exec-32c9b238-2a19-4764-a2cd-519d55300aaf.png",
+      "sha256": "4abf6278a33479771581162392eb7c1f14b39fb17af9b7177bd0c05f3c34ea09",
+      "inventory": "4 upper tubes, 2 lower tubes, 3 carousel stones, 4 lower stones in 2 trays, 1 tool tray with 2 tweezers, sink, sensor and central microscope specimen",
+      "stage": "native-reviewed-default-installed"
+    }
+  },
+  "single_side_studies": {
+    "research-west-study-v1.png": "duplicate vertical tool inset; upper tube count ambiguous",
+    "research-west-study-v2.png": "tool inset removed; upper tubes still overlap, not accepted"
+  },
+  "verification": {
+    "runtime": "output/research-remaining-2026-09-12/sides-final/runtime.json",
+    "comparison": "output/research-remaining-2026-09-12/sides-comparison.json",
+    "states": "output/research-remaining-2026-09-12/state-checks.json",
+    "tests": "176 furnished layouts and 20 side variants pass",
+    "mounting": "All runtime rectangles and visual bounds unchanged. East wall_mount metadata now true; authored defaults override automatic placement. West is selected as library prop. No gap-closing translation occurred.",
+    "card": "North and south unchanged; existing refreshed q0 card remains current."
+  }
+}

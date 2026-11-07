@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-12",
+  "request": "Reduce overly bright orange on Battery Array assets.",
+  "method": "Deterministic HSV palette correction across every selected directional wall source; geometry, alpha, shading and non-orange pixels preserved.",
+  "parameters": {
+    "hue_range": [0.015, 0.13],
+    "minimum_saturation": 0.35,
+    "minimum_value": 0.18,
+    "saturation_scale": 0.78,
+    "value_scale": 0.68,
+    "preserved_indicator_rule": "hue >= 0.095, saturation >= 0.62, value >= 0.68"
+  },
+  "outputs": {
+    "battery-north-muted-v1.png": {
+      "source": "res://assets/wall-room-rollout-v1/battery-split-north.png",
+      "changed_pixels": 211896,
+      "sha256": "ead96d044219885bafe9e88de91fe9d7fd996a2acdfd0bb4cfe24311555ac7d9"
+    },
+    "battery-sides-muted-v1.png": {
+      "source": "res://assets/battery-directional-v1/side-overhead.png",
+      "changed_pixels": 225514,
+      "sha256": "e1efe39a9f2bf35dd29bef9f18424b570f7186f968f15e8a59c7f8a7a3ea3696"
+    },
+    "battery-south-muted-v1.png": {
+      "source": "res://assets/battery-directional-v1/battery-south.png",
+      "changed_pixels": 170756,
+      "sha256": "693cbf8cafe801ee921ca2d89e1a282776efb54f450c8f73f3fd95d267f88bb4"
+    }
+  },
+  "card": {
+    "path": "res://assets/battery-directional-v2/cards/battery_array.png",
+    "sha256": "64c4f33d0799b7ede47cbd9d0d39f7a9f29e599e62b8c7bc0c82d45c4f7e5e43"
+  },
+  "review": "Accepted for source selection after native q0-q3 review. Painted frames are subordinate to graphite lids while compact amber indicators remain legible."
+}

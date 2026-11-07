@@ -1,0 +1,91 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/current_turbine.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "turbine bearing inspection",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"current_turbine_service_bench"
+					],
+					"purpose": "service bench footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "current_turbine",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-125.0,
+						84.0,
+						250.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "current_turbine_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+		},
+		"layered": true,
+		"room": "current_turbine",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+	}
+]

@@ -1,0 +1,75 @@
+{
+  "asset_id": "cargo-packing-wall",
+  "department": "Logistics / storage",
+  "condition": "maintained",
+  "attachment_class": "continuous low workbench against sealed north wall",
+  "functional_bays": [
+    "parcel weighing",
+    "wrapping surface and tape dispenser",
+    "label terminal",
+    "two open dispatch trays containing parcels",
+    "closed supplies"
+  ],
+  "runtime_behavior": "static standalone artwork; no weighing or dispatch simulation installed",
+  "camera_and_facing": "overhead; backing top, readouts and controls bottom",
+  "references": [],
+  "source_path": "assets/cargo-packing-wall-v1/source.png",
+  "source_sha256": "402fca863063c48ed4b26903d3eb1fd3e113335377d68e68b9705d66f0a5ce55",
+  "export_path": "assets/cargo-packing-wall-v1/cargo-packing-wall.png",
+  "export_sha256": "7acdf78fe4dc0ea783227148c222a79b7201217701d8d92be4084475238bf5ea",
+  "native_canvas_px": [
+    2020,
+    779
+  ],
+  "proposed_display_width_world": 328.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted north wall; actual room collision/routes pending."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Quiet brown-gray cabinet, rubber packing surface, muted navy identification panels.",
+        "Folded tan sheet and small blank label stay readable without bright surface glare."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/cargo-packing-wall-review.png",
+      "findings": [
+        "328-unit width beside furnished room and crew reference.",
+        "Weighing, packing, terminal and dispatch trays remain distinct; tape details simplify.",
+        "Source depicts open dispatch trays, not the closed bins requested in generation brief; recorded as the actual candidate configuration."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source registered at128; one polygon.",
+        "Light/dark native review shows clean silhouette with dark tray interiors and pale label retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Record actual open/closed container state after generation rather than inheriting prompt claims."
+  ],
+  "proposed_display_height_world": 77.64680390032503,
+  "registration_path": "assets/cargo-packing-wall-v1/registration.json",
+  "registration_sha256": "a1d3d6b7589cab3583b74d50d0c4d67bc6a918a0ba52158fc5a40be68e3bd19c",
+  "prompt_path": "assets/cargo-packing-wall-v1/source.prompt.txt",
+  "prompt_sha256": "906ac3588e846bcfd053ce171235a1b7bd7f6e07d901f3fc7aed32c834c92e1a",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

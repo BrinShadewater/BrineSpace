@@ -1,0 +1,27 @@
+{
+  "room": "construction_drone_bay",
+  "sources": [
+    {
+      "registration": "rooms/full-wall-v1/registrations/construction-fabrication-wall.json",
+      "source": "res://assets/wall-room-rollout-v1/construction-fabrication-wall.png",
+      "sha256": "1c16e5ebb4a28cc820285c7304b2daefddb2a33074f32e4525586acf16f8e512"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-construction-fabrication-wall-east.json",
+      "source": "res://assets/wall-room-rollout-v1/construction_drone_bay.png",
+      "sha256": "935e7681f6e1295a3ab1fd6373f540b391937b112a7472c3a44c947ae7abd509"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-construction-fabrication-wall-west.json",
+      "source": "res://assets/wall-room-rollout-v1/construction_drone_bay.png",
+      "sha256": "935e7681f6e1295a3ab1fd6373f540b391937b112a7472c3a44c947ae7abd509"
+    }
+  ],
+  "native_evidence": "output/construction-directional-2026-09-12/side-seated/runtime.json",
+  "comparison": "output/construction-directional-2026-09-12/side-comparison.json",
+  "mounting_evidence": "output/construction-directional-2026-09-12/mounting-checks.json",
+  "card": "res://assets/construction-directional-v1/cards/construction_drone_bay.png",
+  "review": "North original art retained after source/native review: front controls and drawer pulls inward, slight riser overlap. Side original art retained: CNC access/glass and chest controls/drawers on inward faces; angled cabinets preserve existing visible tool/spool inventory. Both side banks moved10 room units outward via wall_contact, exact original dimensions retained. Independent fleet props unchanged. Native q0/q2 and refreshed card reviewed. q1/q3 RGB unchanged.",
+  "checks": "176 furnished routes,20 existing side variants and47 card binding identities pass. No raster sources, live effect anchors or fleet behavior changed.",
+  "remaining": "All four construction directions reviewed; owner acceptance and full catalog pending. Salvage Drone Bay baseline captured next."
+}

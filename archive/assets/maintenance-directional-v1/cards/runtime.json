@@ -1,0 +1,129 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/maintenance_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"maintenance_diagnostics"
+					],
+					"purpose": "diagnostic operator footing",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_maintenance-repair-wall"
+					],
+					"purpose": "repair wall maintenance access",
+					"rotations": {
+						"2": {
+							"stand_off": 42.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/maintenance_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "maintenance_bay",
+			"machinery": [
+				{
+					"id": "maintenance_panels",
+					"rect": [
+						-166.0,
+						107.0,
+						70.0,
+						44.0
+					]
+				},
+				{
+					"id": "maintenance_diagnostics",
+					"rect": [
+						65.0,
+						90.0,
+						64.0,
+						42.0
+					]
+				},
+				{
+					"id": "parts_trolley",
+					"rect": [
+						-82.0,
+						121.0,
+						44.0,
+						16.0
+					]
+				},
+				{
+					"id": "air_service_bottle",
+					"rect": [
+						145.0,
+						112.0,
+						26.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_maintenance-repair-wall",
+					"rect": [
+						-138.705062866211,
+						-174.0,
+						277.410125732422,
+						134.0
+					]
+				},
+				{
+					"id": "repair_task_light",
+					"rect": [
+						-62.5999984741211,
+						51.6999969482422,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+		},
+		"layered": true,
+		"room": "maintenance_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_maintenance-repair-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_panels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_diagnostics",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+	}
+]

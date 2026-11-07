@@ -1,0 +1,35 @@
+{
+  "room": "airlock",
+  "prop": "equipment_check_bench",
+  "stage": "integrated-native-and-service-reviewed",
+  "source": "assets/airlock-directional-v1/check-bench-side.png",
+  "sha256": "ecb8370b82eaed460f57d01af74fa32ab6ebb38232513bd7996d7f14ced9fb90",
+  "dimensions": [
+    846,
+    1859
+  ],
+  "original": "exec-3661a3c9-71b4-4650-8653-7ae097113c99.png",
+  "registration": "rooms/full-wall-v1/registrations/side-airlock-check-bench-side.json",
+  "native": "output/airlock-check-bench-2026-09-12/companions/native.png",
+  "size": [
+    40.816326530612244,
+    100
+  ],
+  "authored": "east",
+  "west": "Same library item mirrored horizontally",
+  "findings": [
+    "Broad overhead slatted seat and two inward access handles.",
+    "No suits, helmets or cylinders baked into bench.",
+    "Isolated native review only; no live service/clearance acceptance.",
+    "Installed q1 east/q3 west only, explicit library draw branch; q0/q2 RGB unchanged and only bench metadata changes."
+  ],
+  "integration_requirements": [],
+  "production_runtime_changed": true,
+  "owner_acceptance": false,
+  "live_evidence": "output/airlock-check-bench-2026-09-12/final/runtime.json",
+  "fit_checks": "output/airlock-check-bench-2026-09-12/fit-checks.json",
+  "service_comparison": "output/airlock-check-bench-2026-09-12/failure-comparison.json",
+  "runtime_sha256": "000d58226c54658d466e1c37b35190c2756dc084ec51cf44c05922abf9474d2f",
+  "resolved_service_evidence": "output/test-runs/20260912-110641-headless/logs/test_airlock.log",
+  "service_scope": "Bill all four quarters; Veld and Branforth q0; Marsh intentionally excluded from helmet service. 176 furnished layouts, 47 card identities."
+}

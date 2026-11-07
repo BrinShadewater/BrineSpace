@@ -1,0 +1,62 @@
+{
+  "asset_id": "galley-west-wall",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "self-supporting cabinet against sealed west wall",
+  "camera_and_facing": "overhead; backing left; controls and handles right",
+  "references": [
+    {
+      "path": "assets/galley-wall-v1/galley-wall.png",
+      "sha256": "0db554ebe8d835f106c6a264e8f27551ce5ed675c6e2a0fe686cf64f94f930b0",
+      "role": "candidate subject/material reference; not owner acceptance or directional geometry"
+    }
+  ],
+  "source_path": "assets/galley-west-wall-v1/source-v3.png",
+  "source_sha256": "93e6288e1d0fcfeb9fd591143a0f2f2bd8f146ff21c1139943b93e7abd907e28",
+  "export_path": "assets/galley-west-wall-v1/galley-west-wall.png",
+  "export_sha256": "c006cb8c7ff368435ba98f8477af8d4a5ebd2c4f3a438ca7cda6b01573c0bcde",
+  "native_canvas_px": [
+    887,
+    1774
+  ],
+  "proposed_display_width_world": 53.60774818401937,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted west wall; no door overlap.",
+    "Collision, other directions and room integration pending."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte putty and brown; restrained indicators; no conspicuous reflection streaks."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/galley-west-wall-review.png",
+      "findings": [
+        "Full 328-unit vertical length reviewed at actual scale; width approximately 54 units.",
+        "Backing left, drawer fronts and cooker controls right; faucet and boiler tap project right.",
+        "Six activity bays remain distinct."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Raw V3 RGB checkerboard excluded through exterior-neutral vector registration at 195; one polygon.",
+        "Dark/light native review shows no visible checkerboard; pale work surfaces retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Correct backing does not establish correct appliance facing; inspect handles, controls, spouts and cup positions separately.",
+    "V2 still retained a downward coffee nozzle; V3 replaces it with a side-tap boiler."
+  ],
+  "proposed_display_height_world": 328
+}

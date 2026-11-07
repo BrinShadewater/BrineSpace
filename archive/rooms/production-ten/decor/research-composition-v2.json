@@ -1,0 +1,179 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "preparation_island",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        39,
+        60,
+        88,
+        34
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    },
+    {
+      "id": "reagent_trolley",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        139,
+        88,
+        30,
+        12
+      ],
+      "centers_by_quarter": [
+        [
+          154,
+          94
+        ],
+        [
+          -94,
+          154
+        ],
+        [
+          -154,
+          -94
+        ],
+        [
+          150,
+          -110
+        ]
+      ]
+    },
+    {
+      "id": "sample_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        123,
+        -43,
+        30,
+        10
+      ],
+      "centers_by_quarter": [
+        [
+          138,
+          -38
+        ],
+        [
+          38,
+          138
+        ],
+        [
+          -78,
+          98
+        ],
+        [
+          -38,
+          -138
+        ]
+      ]
+    }
+  ],
+  "supported": [
+    {
+      "id": "specimen_tray",
+      "texture": "accessories",
+      "region": [
+        96,
+        186,
+        454,
+        309
+      ],
+      "host": "research_specimens",
+      "anchor": [
+        389,
+        403
+      ],
+      "width": 20
+    }
+  ],
+  "mats": [
+    {
+      "host": "preparation_island",
+      "offset": [
+        -7,
+        12
+      ],
+      "size": [
+        126,
+        36
+      ],
+      "fill": "84969b",
+      "edge": "aab9bc"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "preparation_island",
+        "source": [
+          1100,
+          1020
+        ]
+      },
+      "to": {
+        "host": "reagent_trolley",
+        "source": [
+          329,
+          1128
+        ]
+      },
+      "color": "596c76",
+      "width": 1.5
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          -173,
+          -154
+        ],
+        [
+          61,
+          -154
+        ],
+        [
+          61,
+          -52
+        ],
+        [
+          -173,
+          -52
+        ]
+      ],
+      "fill": "8a989e",
+      "edge": "aab8bf"
+    }
+  ]
+}

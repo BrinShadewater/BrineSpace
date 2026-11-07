@@ -1,0 +1,53 @@
+{
+  "family": "observation-chart",
+  "directions": {
+    "north": {
+      "export": "assets/observation-chart-wall-v1/wall.png",
+      "sha256": "6456e18bad3bb71da7ca329a73feb7d25bffe59e6b0992d23a4db5663efa97ad",
+      "registration": "assets/observation-chart-wall-v1/registration.json",
+      "review": "assets/observation-chart-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "backing_edge": "top",
+      "world_width": 320,
+      "visible_depth": 66.7879368118717
+    },
+    "south": {
+      "export": "assets/observation-chart-south-wall-v1/wall.png",
+      "sha256": "53cd02839da30b03549494b92eaf152d2b0c55f5904b88ca9c77bfee49bd47d6",
+      "registration": "assets/observation-chart-south-wall-v1/registration.json",
+      "review": "assets/observation-chart-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "backing_edge": "bottom",
+      "world_width": 320,
+      "visible_depth": 73.86929948283968
+    },
+    "west": {
+      "export": "assets/observation-chart-west-wall-v1/wall.png",
+      "sha256": "5d313e3214f438175e0d0ed1ec0d0afa036beb5a3f3394e12887bb2ef79652ec",
+      "registration": "assets/observation-chart-west-wall-v1/registration.json",
+      "review": "assets/observation-chart-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "backing_edge": "left",
+      "world_height": 320,
+      "visible_depth": 74.00927766732936
+    },
+    "east": {
+      "export": "assets/observation-chart-east-wall-v1/wall.png",
+      "sha256": "aa09dc6f9cbbf2c3b324ab327feed7826f9b6820c4798490d1bf19a54f133349",
+      "registration": "assets/observation-chart-east-wall-v1/registration.json",
+      "review": "assets/observation-chart-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "backing_edge": "right",
+      "world_height": 320,
+      "visible_depth": 74.13489736070382
+    }
+  },
+  "missing_directions": [],
+  "owner_acceptance": null,
+  "runtime_placement_verified": false,
+  "construction_differences": [
+    "South plain rear panel replaces north visible charcoal front plinth; depths differ",
+    "West storage panels reconstructed with right-edge pulls; exact drawer correspondence unverified",
+    "East sleeve has cloth band without buckle; depths remain individually recorded"
+  ]
+}

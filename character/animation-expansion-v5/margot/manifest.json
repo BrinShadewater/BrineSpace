@@ -1,0 +1,137 @@
+{
+  "character": "margot",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "strideDistanceCells": {
+    "walk": 0.07
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/000.png",
+        "frames/walk-south/001.png",
+        "frames/walk-south/002.png",
+        "frames/walk-south/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/000.png",
+        "frames/walk-north/001.png",
+        "frames/walk-north/002.png",
+        "frames/walk-north/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    }
+  ],
+  "mirrored": false,
+  "sourceHashes": {
+    "other-directions.png": "87cf93b02ff62debb7459e4d53c6e43a673fa5e662603f626440b982f74eafd5",
+    "pods-v2.png": "d1a87da15186650ef23ff2b1084184b2cdf9fa0ef907d8f5bedf040a69ecd7c0",
+    "pods.png": "a40a406d5869dc93cd67409449bac275251c8e748c25b7f9881350b2af16cfc7",
+    "south.png": "129c985e1ff4811647b791d4d12865977c2aded12dba7b72b7b90ddad07ed853"
+  },
+  "sourceManifest": "../../companion-cleanup-v3/margot/manifest.json",
+  "paletteColors": 64,
+  "extraction": "Border-connected neutral background removal for robots; magenta key for cat/actions; BOX downsample before binary alpha and shared palette.",
+  "expansionSources": "../sources/"
+}

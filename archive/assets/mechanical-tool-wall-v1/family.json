@@ -1,0 +1,54 @@
+{
+  "family": "mechanical-tool",
+  "directions": {
+    "north": {
+      "export": "assets/mechanical-tool-wall-v1/wall.png",
+      "sha256": "1c84d84884d39973f297fcb28a7d581273b5a47ba8571d5b0aea9177efce90d5",
+      "registration": "assets/mechanical-tool-wall-v1/registration.json",
+      "review": "assets/mechanical-tool-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "backing_edge": "top",
+      "world_width": 320,
+      "visible_depth": 81.67497507477567
+    },
+    "south": {
+      "export": "assets/mechanical-tool-south-wall-v1/wall.png",
+      "sha256": "3ab5ddeab803b807d90ee742470892f91e3fea7b19d8b426eae359b05730673f",
+      "registration": "assets/mechanical-tool-south-wall-v1/registration.json",
+      "review": "assets/mechanical-tool-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "backing_edge": "bottom",
+      "world_width": 320,
+      "visible_depth": 82.76953511374876
+    },
+    "west": {
+      "export": "assets/mechanical-tool-west-wall-v1/wall.png",
+      "sha256": "10fcd282692ef9b2d01a47f9045aadb2e62a41df7ccbc4873ec6499ceedf158f",
+      "registration": "assets/mechanical-tool-west-wall-v1/registration.json",
+      "review": "assets/mechanical-tool-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "backing_edge": "left",
+      "world_height": 320,
+      "visible_depth": 70.46757164404224
+    },
+    "east": {
+      "export": "assets/mechanical-tool-east-wall-v1/wall.png",
+      "sha256": "a805d49d5677670db9c606c3db1dcbe2a6a956c88f5e824318df0288e332f44f",
+      "registration": "assets/mechanical-tool-east-wall-v1/registration.json",
+      "review": "assets/mechanical-tool-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "backing_edge": "right",
+      "world_height": 320,
+      "visible_depth": 75.2084912812737
+    }
+  },
+  "missing_directions": [],
+  "owner_acceptance": null,
+  "runtime_placement_verified": false,
+  "construction_differences": [
+    "South uses insulated screwdriver shafts and plain open-ended spanners",
+    "West uses narrower cabinet and three right-edge drawer fronts",
+    "East depth75.21 versus west70.47 at320-unit length; footprints are not interchangeable"
+  ],
+  "coverage_scope": "Four standalone directional reconstructions; occupied access and runtime placement unverified"
+}

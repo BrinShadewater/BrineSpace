@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "title": "Mooring debris study",
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "stage": "integrated; native station reviewed; owner approval pending",
+      "selected_source": "mooring-plate-chain-v1.png",
+      "kind": "prop",
+      "id": "mooring-plate-chain",
+      "versions": [
+        {
+          "sha256": "fc5c9fc7edc7eb8c7a14638e869e7db56898c5903f1fcec92973761eb98bb222",
+          "file": "mooring-plate-chain-v1.png",
+          "rejection": null
+        }
+      ]
+    }
+  ],
+  "runtime_registry": "mooring_debris_view.gd"
+}

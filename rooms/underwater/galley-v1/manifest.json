@@ -1,0 +1,33 @@
+{
+  "id": "galley",
+  "source": "rooms/underwater/galley-v1/kitchen-source.png",
+  "sha256": "582286b2a50936a0f8e606e5de28f20e3cc7185de6c16ae689d2e884f0a47612",
+  "integration": {
+    "view": "rooms/underwater/galley-v1/galley_view.gd",
+    "card": "rooms/underwater/galley-v1/card.png"
+  },
+  "card_sha256": "9819497af7b607030fb96023f9ec8e6216bd93bbae3bfe950eecb39ef2c82f32",
+  "canonical_ports_nesw": [
+    2
+  ],
+  "fixed_rotation": 0,
+  "component_assets": [
+    {
+      "path": "rooms/underwater/galley-v1/kitchen.png",
+      "sha256": "aa422849ee1aa349e5504374e403f167899b207b9d16c0484309b1b5a1977e54"
+    },
+    {
+      "path": "rooms/underwater/galley-v1/serving.png",
+      "sha256": "ff287068776fc533221c2ac89fa481b81b88d0c9f1bdbaca30090e60695bd566"
+    },
+    {
+      "path": "rooms/underwater/galley-v1/kitchen.json",
+      "sha256": "ada81b974b178475bec3ba24b2b7dd6196fa4c04adcc685c5110e4a74bee20b0"
+    },
+    {
+      "path": "rooms/underwater/galley-v1/serving.json",
+      "sha256": "7856edeb3bdbb5d4aebbe7bdc0f99c4252d26e3840c02ba1d7d8d47b87b7fda7"
+    }
+  ],
+  "scope": "Integrated and native tested; standalone package not rebuilt"
+}

@@ -1,0 +1,529 @@
+{
+  "character": "river",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "strideDistanceCells": {
+    "walk": 0.1
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/000.png",
+        "frames/idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/000.png",
+        "frames/walk-south/001.png",
+        "frames/walk-south/002.png",
+        "frames/walk-south/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/000.png",
+        "frames/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/000.png",
+        "frames/walk-west/001.png",
+        "frames/walk-west/002.png",
+        "frames/walk-west/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/000.png",
+        "frames/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/000.png",
+        "frames/walk-north/001.png",
+        "frames/walk-north/002.png",
+        "frames/walk-north/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/000.png",
+        "frames/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/000.png",
+        "frames/walk-east/001.png",
+        "frames/walk-east/002.png",
+        "frames/walk-east/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "move-start-south",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-start-south/000.png",
+        "frames/move-start-south/001.png",
+        "frames/move-start-south/002.png"
+      ]
+    },
+    {
+      "id": "move-stop-south",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-stop-south/000.png",
+        "frames/move-stop-south/001.png",
+        "frames/move-stop-south/002.png"
+      ]
+    },
+    {
+      "id": "move-start-west",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-start-west/000.png",
+        "frames/move-start-west/001.png",
+        "frames/move-start-west/002.png"
+      ]
+    },
+    {
+      "id": "move-stop-west",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-stop-west/000.png",
+        "frames/move-stop-west/001.png",
+        "frames/move-stop-west/002.png"
+      ]
+    },
+    {
+      "id": "move-start-north",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-start-north/000.png",
+        "frames/move-start-north/001.png",
+        "frames/move-start-north/002.png"
+      ]
+    },
+    {
+      "id": "move-stop-north",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-stop-north/000.png",
+        "frames/move-stop-north/001.png",
+        "frames/move-stop-north/002.png"
+      ]
+    },
+    {
+      "id": "move-start-east",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-start-east/000.png",
+        "frames/move-start-east/001.png",
+        "frames/move-start-east/002.png"
+      ]
+    },
+    {
+      "id": "move-stop-east",
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/move-stop-east/000.png",
+        "frames/move-stop-east/001.png",
+        "frames/move-stop-east/002.png"
+      ]
+    },
+    {
+      "id": "turn-south-west",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-south-west/000.png",
+        "frames/turn-south-west/001.png",
+        "frames/turn-south-west/002.png",
+        "frames/turn-south-west/003.png",
+        "frames/turn-south-west/004.png",
+        "frames/turn-south-west/005.png"
+      ]
+    },
+    {
+      "id": "turn-south-north",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-south-north/000.png",
+        "frames/turn-south-north/001.png",
+        "frames/turn-south-north/002.png",
+        "frames/turn-south-north/003.png",
+        "frames/turn-south-north/004.png",
+        "frames/turn-south-north/005.png",
+        "frames/turn-south-north/006.png",
+        "frames/turn-south-north/007.png",
+        "frames/turn-south-north/008.png",
+        "frames/turn-south-north/009.png",
+        "frames/turn-south-north/010.png"
+      ]
+    },
+    {
+      "id": "turn-south-east",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-south-east/000.png",
+        "frames/turn-south-east/001.png",
+        "frames/turn-south-east/002.png",
+        "frames/turn-south-east/003.png",
+        "frames/turn-south-east/004.png",
+        "frames/turn-south-east/005.png"
+      ]
+    },
+    {
+      "id": "turn-west-south",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-west-south/000.png",
+        "frames/turn-west-south/001.png",
+        "frames/turn-west-south/002.png",
+        "frames/turn-west-south/003.png",
+        "frames/turn-west-south/004.png",
+        "frames/turn-west-south/005.png"
+      ]
+    },
+    {
+      "id": "turn-west-north",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-west-north/000.png",
+        "frames/turn-west-north/001.png",
+        "frames/turn-west-north/002.png",
+        "frames/turn-west-north/003.png",
+        "frames/turn-west-north/004.png",
+        "frames/turn-west-north/005.png"
+      ]
+    },
+    {
+      "id": "turn-west-east",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-west-east/000.png",
+        "frames/turn-west-east/001.png",
+        "frames/turn-west-east/002.png",
+        "frames/turn-west-east/003.png",
+        "frames/turn-west-east/004.png",
+        "frames/turn-west-east/005.png",
+        "frames/turn-west-east/006.png",
+        "frames/turn-west-east/007.png",
+        "frames/turn-west-east/008.png",
+        "frames/turn-west-east/009.png",
+        "frames/turn-west-east/010.png"
+      ]
+    },
+    {
+      "id": "turn-north-south",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-north-south/000.png",
+        "frames/turn-north-south/001.png",
+        "frames/turn-north-south/002.png",
+        "frames/turn-north-south/003.png",
+        "frames/turn-north-south/004.png",
+        "frames/turn-north-south/005.png",
+        "frames/turn-north-south/006.png",
+        "frames/turn-north-south/007.png",
+        "frames/turn-north-south/008.png",
+        "frames/turn-north-south/009.png",
+        "frames/turn-north-south/010.png"
+      ]
+    },
+    {
+      "id": "turn-north-west",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-north-west/000.png",
+        "frames/turn-north-west/001.png",
+        "frames/turn-north-west/002.png",
+        "frames/turn-north-west/003.png",
+        "frames/turn-north-west/004.png",
+        "frames/turn-north-west/005.png"
+      ]
+    },
+    {
+      "id": "turn-north-east",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-north-east/000.png",
+        "frames/turn-north-east/001.png",
+        "frames/turn-north-east/002.png",
+        "frames/turn-north-east/003.png",
+        "frames/turn-north-east/004.png",
+        "frames/turn-north-east/005.png"
+      ]
+    },
+    {
+      "id": "turn-east-south",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-east-south/000.png",
+        "frames/turn-east-south/001.png",
+        "frames/turn-east-south/002.png",
+        "frames/turn-east-south/003.png",
+        "frames/turn-east-south/004.png",
+        "frames/turn-east-south/005.png"
+      ]
+    },
+    {
+      "id": "turn-east-west",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-east-west/000.png",
+        "frames/turn-east-west/001.png",
+        "frames/turn-east-west/002.png",
+        "frames/turn-east-west/003.png",
+        "frames/turn-east-west/004.png",
+        "frames/turn-east-west/005.png",
+        "frames/turn-east-west/006.png",
+        "frames/turn-east-west/007.png",
+        "frames/turn-east-west/008.png",
+        "frames/turn-east-west/009.png",
+        "frames/turn-east-west/010.png"
+      ]
+    },
+    {
+      "id": "turn-east-north",
+      "frameDurationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-east-north/000.png",
+        "frames/turn-east-north/001.png",
+        "frames/turn-east-north/002.png",
+        "frames/turn-east-north/003.png",
+        "frames/turn-east-north/004.png",
+        "frames/turn-east-north/005.png"
+      ]
+    }
+  ],
+  "rowDirections": [
+    "south",
+    "west",
+    "north",
+    "east"
+  ],
+  "mirrored": false,
+  "sourceManifest": "../../companion-cleanup-v3/river/manifest.json",
+  "paletteColors": 64,
+  "extraction": "Border-connected neutral background removal for robots; magenta key for cat/actions; BOX downsample before binary alpha and shared palette.",
+  "expansionSources": "../sources/"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "source-integrated-agent-reviewed-owner-review-pending",
+  "reference": "owner-reference.png",
+  "referenceSha256": "038e2086eb3cc72ff5815edd1aa34fa5920ce1bc8c612f96e7d550c122de93ad",
+  "original": "../consistency-v1/cover.png",
+  "output": "cover.png",
+  "outputSha256": "f037ecbb90149406bc055ed4cc7ecc57ba2465ca402cac0e26b8b399318987f6",
+  "size": [1925,817],
+  "inputCrop": [875,180,180,200],
+  "generation": "Built-in imagegen, two passes, exact prompts in prompts.txt",
+  "selected": "head-candidate-02.png",
+  "rejected": {"head-candidate-01.png":"Eyes remained too wide; refined in second pass."},
+  "processing": "compose.ps1: resize selected generation to original crop, feather within facial skin ellipse, preserve original pixels elsewhere",
+  "changedPixels": 6796,
+  "outsideCropChangedPixels": 0,
+  "consumer": "scripts/title_cover.gd",
+  "unchangedRegistration": "../consistency-v1/character-outline.json",
+  "nativeEvidence": "output/title-likeness-v2/",
+  "releaseStatus": "Source only; executable and itch.io build not updated"
+}

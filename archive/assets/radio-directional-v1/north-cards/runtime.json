@@ -1,0 +1,131 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/radio_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "acoustic",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"acoustic_receiver",
+						"full_wall_radio-signal-wall"
+					],
+					"purpose": "receiver signal service",
+					"rotations": {
+						"1": {
+							"scale": 0.6
+						}
+					},
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"acoustic_electronics_bench",
+						"full_wall_radio-signal-wall"
+					],
+					"purpose": "electronics bench access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "radio_lab",
+			"machinery": [
+				{
+					"id": "acoustic_listener",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "acoustic_transducers",
+					"rect": [
+						57.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "acoustic_receiver",
+					"rect": [
+						-165.0,
+						63.0,
+						80.0,
+						54.0
+					]
+				},
+				{
+					"id": "acoustic_bench",
+					"rect": [
+						83.0,
+						48.0,
+						82.0,
+						54.0
+					]
+				},
+				{
+					"id": "acoustic_electronics_bench",
+					"rect": [
+						-46.0,
+						112.0,
+						86.0,
+						30.0
+					]
+				},
+				{
+					"id": "acoustic_operator_chair",
+					"rect": [
+						-139.0,
+						-52.0,
+						38.0,
+						14.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v5/acoustic-floor.png",
+			"source_sha256": "4e93f398ffa4cda776f1a202f32265220930de8d7d61f47f25d1eec94720e5da",
+			"view": "res://rooms/full-wall-v1/radio_lab_view.gd"
+		},
+		"layered": true,
+		"room": "radio_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "acoustic_receiver",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_radio-signal-wall",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/radio_lab_view.gd"
+	}
+]

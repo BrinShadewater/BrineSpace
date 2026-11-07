@@ -1,0 +1,83 @@
+{
+  "asset_id": "botanical-seed-east-wall-v1",
+  "department": "Life Support / Hydroponics",
+  "condition": "Matte sage composite",
+  "attachment_class": "Slim east-backed seed bank",
+  "functional_bays": [
+    "Three packet organizer",
+    "Central seed sorting tray and scoop",
+    "Four closed tins and terracotta cassette"
+  ],
+  "runtime_behavior": "Static artwork",
+  "camera_and_facing": "Near top-down, right backing and left operator access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/botanical-seed-west-wall-v1/wall.png",
+      "sha256": "636b1c6d49ec27d09cd940fc7d1c76e3017e132d0b882feb7c9d1e9360143405",
+      "role": "Slim west construction and finish"
+    }
+  ],
+  "source_path": "assets/botanical-seed-east-wall-v1/source-v2.png",
+  "source_sha256": "cb9ae2332dfe2310d28b81c7aa8914d0c1438da2d76e79343c56a82fafd2d9d8",
+  "export_path": "assets/botanical-seed-east-wall-v1/wall.png",
+  "export_sha256": "347e8147c3f4ab85f38c2083127baaf096d96271e09c49527460c014d5978af5",
+  "native_canvas_px": [
+    1024,
+    1536
+  ],
+  "proposed_display_width_world": 46.76409185803758,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Growing rack access",
+    "Operator clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Subdued cabinet and charcoal hardware at native scale; small brown seed shading remains."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/botanical-seed-east-wall-v1/wall-scale.png",
+      "findings": [
+        "46.76 by 320, compared with west 45.36 by 320.",
+        "Four tins restored after V1 count drift; left-facing catches and grips. Added right backing hinges differ from west."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral228 white exterior registration; light/dark edge inspection passes."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Directional reconstruction can change inventory even with a matching silhouette; inspect count and functional hardware independently."
+  ],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/botanical-seed-east-wall-v1/registration.json",
+  "registration_sha256": "c68c1e88dcc43d2048e3fcb5d6ebdc4d856220bd5c4db5db4510cbbd60a005e9",
+  "prompt_path": "assets/botanical-seed-east-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "d10157ae5006120e33a8075a18d3e64f584ff3d9bd6b3b63832ca8dad3fc9489",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/botanical-seed-east-wall.log": "c50bf62c93e290db73be15c3ac1837c097d2bd373f77f223a3afe332955e8eee",
+    "output/botanical-seed-east-wall-v1/wall-scale.png": "66f59ce437db32286a873d3f71868ca8464ca28a89750ca53c71c18d7716405a"
+  }
+}

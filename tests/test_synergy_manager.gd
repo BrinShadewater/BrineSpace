@@ -1,0 +1,198 @@
+extends SceneTree
+
+const RoomDatabaseScript := preload("res://scripts/room_database.gd")
+const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
+const MainScript := preload("res://scripts/main.gd")
+const RunManagerScript := preload("res://scripts/run_manager.gd")
+const MetaStateScript := preload("res://scripts/meta_state.gd")
+
+var failures := 0
+
+func _init() -> void:
+	_run()
+
+func _run() -> void:
+	_test_repeated_pairs_stack()
+	_test_multi_link_placement_combines_bonuses()
+	_test_cryo_links_to_any_medical_room_once()
+	_test_disconnected_pairs_do_not_score()
+	_test_placement_cascade_scores_and_pulses()
+	_test_doctrines_build_a_constrained_deck()
+	_test_opening_hand_and_discard_cycle()
+	_test_doctrine_rooms_count_for_both_doctrines()
+	_test_all_doctrine_pairs_have_viable_decks()
+	_test_doctrine_mastery_persists_progress()
+	if failures > 0:
+		push_error("Synergy tests failed: %d" % failures)
+		quit(1)
+		return
+	print("Run-loop tests passed: links, cascades, all doctrine pairs, deck flow, and mastery are valid.")
+	quit(0)
+
+func _test_repeated_pairs_stack() -> void:
+	var occupied := {}
+	_add_room(occupied, "life_support", Vector2i(10, 10))
+	_add_room(occupied, "hydroponics_bay", Vector2i(11, 10))
+	_add_room(occupied, "life_support", Vector2i(12, 10))
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
+	var links: Array = result["links"]
+	_expect_equal(_count_links(links, "closed_air_loop"), 2, "two Closed Air Loop links should be counted")
+	var bonus := SynergyManagerScript.cycle_bonus(links)
+	_expect_equal(int(bonus.get("oxygen", 0)), 2, "each Closed Air Loop should add Oxygen")
+
+func _test_multi_link_placement_combines_bonuses() -> void:
+	var occupied := {}
+	_add_room(occupied, "life_support", Vector2i(4, 5))
+	_add_room(occupied, "hydroponics_bay", Vector2i(5, 5))
+	_add_room(occupied, "crew_hab", Vector2i(6, 5))
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
+	var links: Array = result["links"]
+	_expect_equal(_count_links(links, "closed_air_loop"), 1, "hydroponics should link to life support")
+	_expect_equal(_count_links(links, "green_commons"), 1, "hydroponics should link to crew quarters")
+	var bonus := SynergyManagerScript.cycle_bonus(links)
+	_expect_equal(int(bonus.get("oxygen", 0)), 1, "combined link bonus should include Oxygen")
+	_expect_equal(int(bonus.get("food", 0)), 1, "combined link bonus should include Food")
+
+func _test_cryo_links_to_any_medical_room_once() -> void:
+	var occupied := {}
+	_add_room(occupied, "cryo_chamber", Vector2i(20, 20))
+	_add_room(occupied, "med_bay", Vector2i(20, 21), 2)
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
+	_expect_equal(_count_links(result["links"], "safe_wake_protocol"), 1, "Cryo should link to a tagged medical neighbor")
+
+func _test_disconnected_pairs_do_not_score() -> void:
+	var occupied := {}
+	_add_room(occupied, "research_lab", Vector2i(3, 3))
+	_add_room(occupied, "data_archive", Vector2i(4, 3))
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
+	_expect_equal(_count_links(result["links"], "research_pipeline"), 0, "adjacent rooms without matching doors should not link")
+
+func _test_placement_cascade_scores_and_pulses() -> void:
+	var game = MainScript.new()
+	var test_save_path := "user://brine_synergy_test_save.json"
+	game.meta.save_path = test_save_path
+	game.meta.discovered_synergy_ids.clear()
+	game.occupied.clear()
+	game.placed_rooms.clear()
+	game.active_synergies.clear()
+	game.active_synergy_links.clear()
+	game.resonance_score = 0
+	game.resonance_tier_index = 0
+	game.links_formed = 0
+	game.largest_cascade = 0
+	# Existing completed rooms are fixture inputs; the new room is first an order.
+	game._place_room("life_support", Vector2i(9, 10), false, true)
+	game._place_room("crew_hab", Vector2i(11, 10), false, true)
+	game._place_room("hydroponics_bay", Vector2i(10, 10))
+	_expect_equal(game.resonance_score,0,"Pending construction cannot score a cascade")
+	var order: Dictionary = game.drone_fleet.orders.pop_front()
+	game._place_room(order.id,order.pos,false,true)
+	_expect_equal(game.resonance_score, 30, "a two-link placement should score a triangular cascade")
+	_expect_equal(game.links_formed, 2, "both new placement links should be recorded")
+	_expect_equal(game.largest_cascade, 2, "best cascade should retain the placement chain size")
+	_expect_equal(game.resonance_tier_index, 1, "a 30-point cascade should reach Aligned tier")
+	_expect_equal(int(game.resources.get("oxygen", 0)), 9, "cascade pulse should immediately grant Oxygen")
+	_expect_equal(int(game.resources.get("food", 0)), 9, "cascade pulse should immediately grant Food")
+	_expect_equal(int(game.resources.get("data", 0)), 1, "multi-link cascades should grant bonus Data")
+	game.free()
+	if FileAccess.file_exists(test_save_path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(test_save_path))
+
+func _test_doctrines_build_a_constrained_deck() -> void:
+	var unlocked := {}
+	for room_id in RoomDatabaseScript.STARTING_UNLOCKS:
+		unlocked[str(room_id)] = true
+	var deck := RunManagerScript.build_deck(["industry", "biosphere"], unlocked)
+	_expect_true(deck.has("solar_array"), "every doctrine deck should include essential power")
+	_expect_true(deck.has("reactor"), "Industry should add Reactor")
+	_expect_true(deck.has("hydroponics_bay"), "Biosphere should add Hydroponics")
+	_expect_true(deck.has("mining_drone_bay"), "every doctrine pair should retain a Metal economy")
+	_expect_true(not deck.has("radio_lab"), "unselected Science cards should stay outside the deck")
+	_expect_equal(deck.count("corridor"), 3, "the routing staple should have three deck copies")
+	_expect_equal(deck.count("reactor"), 2, "common doctrine cards should have two deck copies")
+
+func _test_opening_hand_and_discard_cycle() -> void:
+	var game = MainScript.new()
+	game._build_run_deck()
+	game._draw_hand()
+	_expect_equal(game.hand.size(), 3, "an opening draw should fill all three hand slots")
+	_expect_true(game.hand.has("solar_array"), "the opening hand should guarantee a power source")
+	_expect_true(game.hand.has("mining_drone_bay"), "the opening hand should guarantee a Metal economy")
+	var spent_card_id := str(game.hand.pop_front())
+	game.discard_pile.append(spent_card_id)
+	game._refill_hand()
+	_expect_equal(game.hand.size(), 3, "spending a card should immediately refill the hand")
+	_expect_true(game.discard_pile.has(spent_card_id), "spent blueprints should enter the discard pile")
+	game.free()
+
+
+func _test_doctrine_rooms_count_for_both_doctrines() -> void:
+	var overlap_counts := RunManagerScript.count_doctrine_rooms(
+		[{"id": "brine_core"}, {"id": "xeno_lab"}, {"id": "research_lab"}],
+		["science", "anomaly"]
+	)
+	_expect_equal(int(overlap_counts.get("science", 0)), 2, "overlap rooms should advance their Science doctrine")
+	_expect_equal(int(overlap_counts.get("anomaly", 0)), 2, "overlap rooms should also advance their Anomaly doctrine")
+func _test_all_doctrine_pairs_have_viable_decks() -> void:
+	var unlocked := {}
+	for room_id in RoomDatabaseScript.STARTING_UNLOCKS:
+		unlocked[str(room_id)] = true
+	var test_rng := RandomNumberGenerator.new()
+	test_rng.seed = 8042
+	var pair_count := 0
+	for first_index in range(RunManagerScript.DOCTRINE_ORDER.size()):
+		for second_index in range(first_index + 1, RunManagerScript.DOCTRINE_ORDER.size()):
+			var first_id := str(RunManagerScript.DOCTRINE_ORDER[first_index])
+			var second_id := str(RunManagerScript.DOCTRINE_ORDER[second_index])
+			var pair := [first_id, second_id]
+			var deck := RunManagerScript.build_deck(pair, unlocked)
+			var pair_name := RunManagerScript.doctrine_pair_name(pair)
+			pair_count += 1
+			_expect_true(deck.has("solar_array") and deck.has("mining_drone_bay"), "%s should retain power and Metal essentials" % pair_name)
+			_expect_true(deck.size() >= 10, "%s should have a playable clean-save deck" % pair_name)
+			for doctrine_id in pair:
+				var copies_for_doctrine := 0
+				for room_id_value in RunManagerScript.doctrine(doctrine_id).get("rooms", []):
+					copies_for_doctrine += deck.count(str(room_id_value))
+				_expect_true(copies_for_doctrine >= 2, "%s should expose a repeatable foothold for %s" % [pair_name, doctrine_id])
+	_expect_equal(pair_count, 10, "five doctrines should produce ten unique pair balance cases")
+
+func _test_doctrine_mastery_persists_progress() -> void:
+	var test_save_path := "user://brine_meta_test_save.json"
+	var test_meta = MetaStateScript.new()
+	test_meta.save_path = test_save_path
+	test_meta.doctrine_mastery.clear()
+	test_meta.total_victories = 0
+	var gain := test_meta.record_run(["industry", "biosphere"], true, 180)
+	_expect_equal(gain, 2, "victory should grant two mastery")
+	_expect_equal(test_meta.get_doctrine_rank("industry"), 1, "two mastery should reach doctrine rank one")
+	_expect_equal(test_meta.total_victories, 1, "victory count should persist")
+	test_meta.record_run(["industry"], false, 30)
+	_expect_equal(test_meta.get_doctrine_mastery("industry"), 3, "a meaningful failed run should still grant one mastery")
+	if FileAccess.file_exists(test_save_path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(test_save_path))
+
+func _add_room(occupied: Dictionary, room_id: String, pos: Vector2i, rotation := 0) -> void:
+	var room := RoomDatabaseScript.get_room(room_id).duplicate(true)
+	room["pos"] = pos
+	room["rotation"] = rotation
+	occupied[pos] = room
+
+func _count_links(links: Array, synergy_id: String) -> int:
+	var count := 0
+	for link in links:
+		if str(link.get("id", "")) == synergy_id:
+			count += 1
+	return count
+
+func _expect_equal(actual, expected, message: String) -> void:
+	if actual == expected:
+		return
+	failures += 1
+	push_error("%s: expected %s, got %s" % [message, str(expected), str(actual)])
+
+func _expect_true(condition: bool, message: String) -> void:
+	if condition:
+		return
+	failures += 1
+	push_error(message)

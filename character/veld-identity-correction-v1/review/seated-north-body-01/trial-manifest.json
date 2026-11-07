@@ -1,0 +1,167 @@
+{
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "sit-down-north",
+      "frameFiles": [
+        "sit-down-north-000.png",
+        "sit-down-north-001.png",
+        "sit-down-north-002.png",
+        "sit-down-north-003.png",
+        "sit-down-north-004.png",
+        "sit-down-north-005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ]
+    },
+    {
+      "id": "sit-rise-north",
+      "frameFiles": [
+        "sit-rise-north-000.png",
+        "sit-rise-north-001.png",
+        "sit-rise-north-002.png",
+        "sit-rise-north-003.png",
+        "sit-rise-north-004.png",
+        "sit-rise-north-005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-idle-north",
+      "frameFiles": [
+        "sit-idle-north-000.png",
+        "sit-idle-north-001.png",
+        "sit-idle-north-002.png",
+        "sit-idle-north-003.png",
+        "sit-idle-north-004.png",
+        "sit-idle-north-005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ]
+    }
+  ]
+}

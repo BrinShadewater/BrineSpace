@@ -1,0 +1,33 @@
+# Shared room floor textures — October 19, 2026
+
+Validation 2 **brinespace-2e6262a522a7271a**, HEAD `81b2f9a4a36eb0e3162d86ccfb4e9ef735836122` plus accepted dirty work, branch `codex/ipad-memory-placement-2026-10-17`. No commit/push. Source SHA256 `2e6262a522a7271aa4df30a80188a88fdd0ed50e804c96c118c2ab73105099d3`; signed PCK SHA256 `6dc7f1ea141f0307b4a3d6ea38cb79f003c255324a7fa526bc45af99be83ee2c`. Installed to `com.shadewater.brinespace.nativeoptimization20261017` on iPad13,18/A14/4 GB/iPadOS27.2. Frozen/public Mac/Windows builds and protected monitor checkout unchanged.
+
+## Scope and controlled native evidence
+
+`rooms/large-rooms/common.gd` reuses immutable, ungraded ordinary-floor uploads in either load order. Authored revision substitutions remain separate from original raw-source requests; graded sprites retain their previous cache priority. Ready hand-image preparation is consumed where available. Existing floor UVs, partial tiles, tint, flooding, draw order and gameplay rules are unchanged. `scripts/session_art_cache.gd` removes matching large-room aliases when the last owner leaves, before ordinary-floor textures clear; independent sprite/revised resources are preserved.
+
+Native regression: six duplicate-upload RID failures before the change; zero afterward. Review exposed a release/reentry gap; new two-owner lifecycle tests reproduced four failures, then passed after coordinated release. Original source bytes, both load orders, original-versus-revised floor separation, overlapping owners and reentry pass. The first draft of the lifecycle test had a duplicate-local-name parse error; corrected before its red/green runs. No bad test/build was accepted.
+
+Frozen40-room native Mac M4/tablet-policy comparison, three separate scratch processes: **1009.538→991.548 MiB**, **17.990 MiB less retained texture accounting**, repeated after final lifecycle fix. Full viewport pixel hash identical in all three: `2ab4af303d869b02671b72ea05b6285c3dda103bef2217cc9d2ca0cf1875d841`. Frame medians21.628/21.538/22.833ms and p9528.454/29.984/31.691ms; interface/grid2992/2711/3511ms. No reliable FPS, overall loading or whole-process RAM improvement established. Common code applies to both room renderers; this does not update the published Mac binary.
+
+## Verification
+
+Thirteen exact-pack fixtures pass: shared floors/lifecycle, prior life sheets/legacy room art/fog, crew storage/source keys/workers/index, overlay storage,175 Hull UI checks, Save and tablet controls. Three additional native suites pass: Session Art Cache26 checks, Transit Material Cache618 checks and Large Room Art. Native probes use scratch profiles and Mac owner fingerprints; package fixtures use the isolated validation profile and its guard. Asset audit36197 entries and source audit437 selected scripts report zero missing/changed/remapped/unknown. Strict signing passes; the signed bundle PCK equals the audited export, and the device installer accepted that bundle. Manifest delta contains only the two scripts above, no added/removed art. Independent scoped review's lifecycle finding was fixed; follow-up found no remaining actionable issues.
+
+Preliminary export was intentionally stopped for the lifecycle fix. An immediate retry refused the nonempty evidence directory; its partial package was discarded and logs retained. A fresh final export succeeded. Neither preliminary package was installed.
+
+## Physical testing and save preservation
+
+The same disposable station passed Save/title/Continue reentry before a **10-minute active run**, cycle71→191. All21 sampled one-second buckets were fully active, zero logged game errors, no observed crash. One crew,40 door-connected rooms/four multi-cell/52 occupied cells. Fixture-only initial reserves; normal caps, costs and hazards remained active (the post-run screen showed low metal and six flooded rooms). This is not an organic multi-crew or paid-placement acceptance test.
+
+572 valid nominal1Hz footprint samples over599 seconds: peak **2,220,379,872 bytes (2.220 GB)**, end **2,192,248,496 bytes (2.192 GB)**; first/last60-second-window medians increased **19,939,304 bytes**. Maximum sample gap1.441s. These are process-footprint observations, not a controlled before/after RAM saving or long-term leak clearance. Latest approximately one-second buckets sampled around every30 seconds: median16.452 FPS, minimum9.373, maximum22.922;15/21 buckets under20 FPS and maximum sampled frame317.104ms. No full-run frame distribution or causal FPS gain claimed. Three automatic reports were captured. No additional Instruments recorder ran during this measurement.
+
+Device first/reentry setup **6.408/3.703s**, interface/grid **3.802/2.578s**, scene load752/52ms. Cache-sensitive observations; loading pauses remain, with no controlled whole-load gain established. A manual local report was saved after the run; the menu needed a gesture scroll, and the system keyboard had to be dismissed to reach Save Report. No report was uploaded. The overlay on the later owner launch resulted from the intentional process stop used for save restoration, not an observed soak crash.
+
+All five owner save/checkpoint files backed up outside the repository and preserved hash-exact through installation. The initial and immediately-preinstall backups matched. Original state is cycle64/seven rooms/paused4×, timer1.11834893097652. A disposable connected40-room fixture uses normal failure/build rules with fixture-only seeded reserves and one crew; no organic multi-crew acceptance claimed.
+
+Final owner restoration: all five files restored hash-exact before launch, followed by Save/title/Continue/Save. Native full gameplay-state equality and exact timer parity pass against the authoritative backup: cycle64/seven rooms/speed index2/timer1.11834893097652. Cards, resources and crew are included in that full state equality. Save timestamps, event history, path and camera/scroll metadata changed through UI use; whole-file equality after saving is not claimed. Continue's existing1× reset was manually corrected to saved4× while paused. FinalSave101.726ms/result0, zero logged errors. Repeated owner setup3.586s/interface-grid2.624s; cache-uncontrolled. PID24234 is left paused/menu closed, Cold Store selected. Backups and manual reports remain outside the repository.
+
+The previous two-hour helper expired. First renewal timed out enabling UI automation; after owner approval the retry connected (helper PID79710). Keep it running between checks. No credentials or passcode were collected.
+
+Initial loading pauses, large-station frame rate, long-term growth and iPad release clearance remain open. Full local evidence: `/Users/Shared/BrineSpace-ipad-optimization-20261019/shared-floor-textures`.

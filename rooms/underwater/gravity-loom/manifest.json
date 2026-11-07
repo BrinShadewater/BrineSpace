@@ -1,0 +1,104 @@
+[
+  {
+    "id": "gravity_loom",
+    "primary_department": "Anomaly",
+    "source": "rooms/underwater/gravity-loom/source-v1.png",
+    "reference": "rooms/hybrid/gravity_loom-v2.png",
+    "prompt": "Edit the referenced BrineSpace Gravity Loom candidate into an underwater Anomaly department room source. Preserve its key identity: a central low horizontal apparatus of concentric SEGMENTED mechanical containment rings with four compact radial calibration modules, screen-south front faces and height screen-up. Reduce the apparatus to the middle 55 percent of the square canvas, leaving a broad completely empty perimeter walking route on all four sides. The whole ring apparatus sits on one shallow closed dark-metal dished test tray so gaps between rings are physical apparatus surfaces, not room floor. At the center, a few small inert mineral fragments rest in the tray, no black hole, no floating rocks in this OFFLINE source. Mostly clean black composite and dark steel with restrained non-emissive violet ceramic insulators, a few pale scientific instrument housings. Dedicated underwater Anomaly lab, not an orange Engineering reactor. Replace tall fortress walls and corner towers with low sealed modular pressure-hull walls, square aligned to canvas edges, all four sides flush without openings, doorway jambs or wall-midpoint inserts; engine supplies sockets. Quiet flat dark floor, no floor hazard route painted around the machine. No active lights, luminous panels, glow halos, arcs, sparks, steam, moving trails, text, people, stars, ocean windows, or UI. All diagnostic displays and emitter slots are dark. Fixed near-top-down cutaway chunky detailed pixel-art rendering consistent with the reference, not isometric diamond. Target1280 square, full room visible; transparent exterior if possible. Keep all machinery separate from walls and contained within the central apparatus silhouette. This is a new version, preserve original.",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/gravity-loom/gravity_loom_view.gd",
+      "candidate_card": "rooms/underwater/gravity-loom/card-v1.png",
+      "card": "assets/rooms/gravity-loom/cards/card.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "walkway": "perimeter",
+    "verification": {
+      "complete_acceptance": false,
+      "native": true,
+      "scope": "1280/1600/2560: one registered apparatus, four rotations, motion/offline/pause and bounds. Gameplay progression and current-controller scopes are detailed in the following evidence fields; complete acceptance remains false.",
+      "gameplay": "output/gravity-loom/progression-v2.log: canonical resource validation, paid cost, production/starvation, interrupted unlock, one prototype, rotated terminal progression and idempotent rewards pass.",
+      "viewports": [
+        1280,
+        1600,
+        2560
+      ],
+      "walker": "output/gravity-loom/walker-v3.log: 3136 ordered pairs involving Loom across 25 identities; 892032 legacy-helper route samples, zero failures. Square corner waypoints added after v2 collisions.",
+      "walker_scope_correction": "892032 samples cover the retained legacy perimeter path helper. Current Bill NPC uses its navigation graph; this is not full current-controller route acceptance.",
+      "windows_export": "windows-validation-v1: 11 selected room sources plus 6 supporting Battery Arrays; current Bill controlled tour physically reaches all 17 rooms, 43 transitions and 3278 checked steps from external cwd. Windows debug only.",
+      "crossings": "crossings-v2: current Bill graph/controller; 16 arrivals and 112 native frames reviewed. No apparatus intrusion; shared horizontal collar occlusion remains a separate art concern.",
+      "furnishing_v6": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v6/manifest.json; owner acceptance pending."
+    },
+    "review": [
+      "Central segmented apparatus with four calibration modules, unlit slots and resting mineral fragments.",
+      "Empty perimeter separates apparatus from walls. Actual runtime footprint must be verified.",
+      "Center retains patterned floor-like material rather than clearly dished test tray. Do not treat this as accepted extraction.",
+      "Donor hull differs from shared underwater hull; runtime geometry must supply canonical shell and sockets.",
+      "No active glow halo observed; small violet inserts remain material coloration."
+    ],
+    "sha256": "708fcd9d37a3f422bdf95a97bc57a1a946611dedf6f6af97b40194c95beca497",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "selected_source": "assets/rooms/gravity-loom/source/overhead.png",
+    "revisions": [
+      {
+        "source": "assets/rooms/gravity-loom/source/overhead.png",
+        "sha256": "fbacf101c161175f70029fd88e042535784d6ef0c5a721b4a6dc8803063e42ed",
+        "prompt": "Targeted edit of this Gravity Loom source. Preserve canvas, camera, walls, floor, exact location and size of all segmented rings and four radial modules. Change ONLY the circular center enclosed by the innermost ring: replace the square floor-like tile pattern with a clearly manufactured shallow charcoal metal sample dish, smooth matte surface, concentric machined grooves and a narrow raised steel rim; retain a few inert mineral fragments resting on the dish. It must look like a sealed removable apparatus tray, never exposed station floor. Keep it dark but slightly lighter than the ring gaps so its physical surface reads. No glow, lights, vortex, floating fragments, labels or new equipment. All other machinery and its non-emissive violet insulators unchanged. Retain full resolution and composition.",
+        "review": "Raised inner rim and machined dish distinguish central apparatus from room floor. Native offline card reviewed; full native station validation pending."
+      }
+    ],
+    "review_source": "rooms/underwater/gravity-loom/source-v1.png (historical source review; selected v2 review is in revisions)",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+        "sha256": "43de46c853a1bb41a91931375e6ff702baebb3d76ff7a519305ec80540ba1729"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/rooms/gravity-loom/furnishings/tensor-console.png",
+        "sha256": "3008da62675514ca3cf4f2471f8b43a2122922c29717b0948df63c3f02f9b473"
+      },
+      {
+        "path": "assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack.png",
+        "sha256": "347f4eda6617329a3c517b251b0c46f20e0b21588e90487781157527d3ed1538"
+      },
+      {
+        "path": "assets/rooms/gravity-loom/furnishings/tensor-console-registration.json",
+        "sha256": "4b68f3f57af29e37658b4d99ed75b954ad272bed1ce91924f36806b2e5de628c"
+      },
+      {
+        "path": "assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack-registration.json",
+        "sha256": "2d7ede7a46abbdd4d7768bd8621b1af95d6573dd0e10661cf722f0a714f5265f"
+      }
+    ],
+    "composition_profile": "rooms/underwater/gravity-loom/loom-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/gravity-loom/loom-composition-v3.json",
+        "sha256": "e447e4c88ad98f6855fc00d2bed7565d78a7efaf8174d150ad65a27e3a1ca10c"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/gravity-loom/cards/card.png",
+      "sha256": "7bb2c60bfd547e4ef4f8e37f37ecb2ff0509c31f84f425d9de27a8006d54d33f"
+    }
+  }
+]

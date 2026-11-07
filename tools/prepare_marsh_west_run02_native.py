@@ -1,0 +1,9 @@
+"""Reverse a validated physical route; West art comes from its own complete poses."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+source=(ROOT/'tools/review_marsh_east_run03_actor.gd').read_text().replace('marsh-east-run-material-v1','marsh-west-run-material-v1').replace('east-run-actor-03','west-run-actor-02').replace('candidate-03','candidate-02').replace('run-east','run-west').replace('"east"','"west"').replace('East','West').replace('EAST RUN03','WEST RUN02')
+start=source.index('\tactor.foot=route_start;');prefix=source[:start];tail=source[start:].replace('Vector2(168,0)','Vector2(-168,0)').replace('actor.foot.x>=before.x and actor.foot.x<=route_start.x+168','actor.foot.x<=before.x and actor.foot.x>=route_start.x-168')
+prefix=prefix.replace('if clear and actor.segment_clear(candidate,candidate+Vector2(168,0)):route_start=candidate;break','if clear and actor.segment_clear(candidate+Vector2(168,0),candidate):route_start=candidate+Vector2(168,0);break').replace('"segmentClear":actor.segment_clear(candidate,candidate+Vector2(168,0))','"segmentClear":actor.segment_clear(candidate+Vector2(168,0),candidate)')
+target=ROOT/'tools/review_marsh_west_run02_actor.gd';assert not target.exists();target.write_text(prefix+tail);target.with_suffix('.gd.uid').write_text('uid://cu2whrunm5v88\n')
+publisher=(ROOT/'tools/publish_marsh_east_run03_actor.py').read_text().replace('marsh-east-run-material-v1','marsh-west-run-material-v1').replace('east-run-actor-03','west-run-actor-02').replace('candidate-03','candidate-02').replace('idle-east','idle-west').replace('walk-east','walk-west').replace('East','West').replace('East','West').replace('actor-review-v3','actor-review-v1');(ROOT/'tools/publish_marsh_west_run02_actor.py').write_text(publisher)
+print('Prepared actual West move/render/restore study on reversed clear168world route and own source02; UID paired.')

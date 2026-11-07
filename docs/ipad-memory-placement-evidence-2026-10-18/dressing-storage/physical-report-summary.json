@@ -1,0 +1,174 @@
+{
+  "build": "brinespace-4c4165276d8f8aab",
+  "scope": "Physical same-process local report after owner Touch ID authorization; small existing station. No game source/build change in this completion pass.",
+  "report": "brinespace-report-20261018-011141-11851-1298688095.zip",
+  "last_save": {
+    "at_ms": 1239695,
+    "checkpoint": {
+      "backup_usec": 831,
+      "capture_usec": 8923,
+      "open_usec": 223,
+      "replace_usec": 800,
+      "serialize_usec": 837,
+      "started_ms": 1239672,
+      "validate_usec": 10404,
+      "write_flush_close_usec": 805
+    },
+    "checkpoint_usec": 23009,
+    "progression_result": 0,
+    "progression_usec": 2078,
+    "result": 0,
+    "total_usec": 25090
+  },
+  "error_total": 0,
+  "automatic_report_count": 0,
+  "engine_memory_counters": {
+    "contact_meshes": 2,
+    "contact_meshes_retired": 0,
+    "floor_meshes": 4,
+    "floor_meshes_retired": 0,
+    "nodes": 989.0,
+    "objects": 24129.0,
+    "orphans": 0.0,
+    "static_mem_mb": 0.0,
+    "texture_mem_mb": 787.563554763794
+  },
+  "retention": "latest 120 approximately one-second active buckets; OS suspension time excluded; current process only",
+  "largest_retained_hitches": [
+    {
+      "frame_ms": 228450.596,
+      "uptime_ms": 1228434.006,
+      "last_action": "save",
+      "action_age_ms": 228322,
+      "paused": true,
+      "unfocused": false,
+      "frame_boundaries_ms": {
+        "after_render_ms": 228417.915,
+        "before_render_ms": 1.765,
+        "render_signals_ms": 30.916
+      },
+      "save_timings": {
+        "at_ms": 1000176,
+        "checkpoint": {
+          "backup_usec": 4212,
+          "capture_usec": 32389,
+          "open_usec": 913,
+          "replace_usec": 2087,
+          "serialize_usec": 2025,
+          "started_ms": 1000115,
+          "validate_usec": 15129,
+          "write_flush_close_usec": 3329
+        },
+        "checkpoint_usec": 61274,
+        "progression_result": 0,
+        "progression_usec": 7280,
+        "result": 0,
+        "total_usec": 68583
+      }
+    },
+    {
+      "frame_ms": 274.67,
+      "uptime_ms": 403150.43,
+      "last_action": "save",
+      "action_age_ms": 161574,
+      "paused": true,
+      "unfocused": false,
+      "frame_boundaries_ms": {
+        "after_render_ms": 272.101,
+        "before_render_ms": 0.295,
+        "render_signals_ms": 2.274
+      },
+      "save_timings": {
+        "at_ms": 241654,
+        "checkpoint": {
+          "backup_usec": 2199,
+          "capture_usec": 60804,
+          "open_usec": 442,
+          "replace_usec": 1525,
+          "serialize_usec": 1255,
+          "started_ms": 241576,
+          "validate_usec": 10001,
+          "write_flush_close_usec": 1715
+        },
+        "checkpoint_usec": 78205,
+        "progression_result": 0,
+        "progression_usec": 3649,
+        "result": 0,
+        "total_usec": 81858
+      }
+    },
+    {
+      "frame_ms": 214.787,
+      "uptime_ms": 1266005.715,
+      "last_action": "save",
+      "action_age_ms": 26337,
+      "paused": true,
+      "unfocused": false,
+      "frame_boundaries_ms": null,
+      "save_timings": {
+        "at_ms": 1239695,
+        "checkpoint": {
+          "backup_usec": 831,
+          "capture_usec": 8923,
+          "open_usec": 223,
+          "replace_usec": 800,
+          "serialize_usec": 837,
+          "started_ms": 1239672,
+          "validate_usec": 10404,
+          "write_flush_close_usec": 805
+        },
+        "checkpoint_usec": 23009,
+        "progression_result": 0,
+        "progression_usec": 2078,
+        "result": 0,
+        "total_usec": 25090
+      }
+    },
+    {
+      "frame_ms": 140.887,
+      "uptime_ms": 1266146.602,
+      "last_action": "save",
+      "action_age_ms": 26474,
+      "paused": true,
+      "unfocused": false,
+      "frame_boundaries_ms": {
+        "after_render_ms": 10.887,
+        "before_render_ms": 9.615,
+        "render_signals_ms": 120.385
+      },
+      "save_timings": {
+        "at_ms": 1239695,
+        "checkpoint": {
+          "backup_usec": 831,
+          "capture_usec": 8923,
+          "open_usec": 223,
+          "replace_usec": 800,
+          "serialize_usec": 837,
+          "started_ms": 1239672,
+          "validate_usec": 10404,
+          "write_flush_close_usec": 805
+        },
+        "checkpoint_usec": 23009,
+        "progression_result": 0,
+        "progression_usec": 2078,
+        "result": 0,
+        "total_usec": 25090
+      }
+    }
+  ],
+  "long_gap_caveat": "228450.596ms callback gap retained around background/helper interruption; preceding Save was228322ms old and took68.583ms. Cause unestablished; do not classify as a Save operation, confirmed active-play freeze or cleared suspension issue.",
+  "final_state": {
+    "station_visible": true,
+    "paused": true,
+    "menu_closed": true,
+    "cycle": 1,
+    "rooms": 2,
+    "cards": [
+      "Solar Array",
+      "Hydroponics Bay",
+      "Current Turbine"
+    ],
+    "helper_exit_code": 0,
+    "same_app_process_alive": true
+  }
+}

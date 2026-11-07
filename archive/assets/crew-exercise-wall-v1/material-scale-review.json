@@ -1,0 +1,70 @@
+{
+  "asset_id": "crew-exercise-wall-v1",
+  "department": "Crew recreation / exercise storage",
+  "condition": "Maintained",
+  "attachment_class": "Low north-wall storage cabinet",
+  "functional_bays": [
+    "Four rubber dumbbells",
+    "Preparation surface and resistance bands",
+    "Rolled mats and closed fabric pouches"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; south-facing cabinet access",
+  "references": [
+    {
+      "path": "assets/crew-listening-wall-v1/crew-listening-wall.png",
+      "sha256": "d2ac90c740e6daf6f1ed9364168333e54857593c7beee746c3bc0cb49d7c7017",
+      "role": "Warm crew restraint and shallow camera, not subject"
+    }
+  ],
+  "source_path": "assets/crew-exercise-wall-v1/source.png",
+  "source_sha256": "b6715814c9d3b21d108050019d19d87c39a62d42f97802b66d3462252782cbf6",
+  "export_path": "assets/crew-exercise-wall-v1/crew-exercise-wall.png",
+  "export_sha256": "b130edb1e6bb39decc37b245f3ec935ac9bcb8391a4d27557a737079733c1d38",
+  "native_canvas_px": [
+    1882,
+    836
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Storage only; reserve independent occupied exercise area and retrieval space"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 reduces dumbbell edge glints; fabric texture remains visible at source size but quiet at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "320-unit board retains equipment groups and clear counter. All gear supported; no tall fixtures."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral110 removes dark checkerboard; light/dark board reviewed. Band centers keep backed tray alpha255; exterior alpha0."
+      ]
+    },
+    "native_evidence": "output/crew-exercise-wall-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 62.86348501664817,
+  "registration_path": "assets/crew-exercise-wall-v1/registration.json",
+  "registration_sha256": "59a3295e668943e62590c572036aa6736b207f3ccf3874551d9cade9dc6941e2",
+  "prompt_path": "assets/crew-exercise-wall-v1/source.prompt.txt",
+  "prompt_sha256": "e0f95bba42c43290a90313e13e20494cc3c1014e52d3cf3c6de0253deae3a331",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

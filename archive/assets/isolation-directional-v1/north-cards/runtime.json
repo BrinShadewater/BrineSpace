@@ -1,0 +1,97 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/isolation_vault.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "sealed vault isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "emergency control inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/isolation_vault_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "isolation_vault",
+			"machinery": [
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "full_wall_emergency-isolation-wall",
+					"rect": [
+						-162.176559448242,
+						-174.0,
+						324.353118896484,
+						134.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+		},
+		"layered": true,
+		"room": "isolation_vault",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_emergency-isolation-wall",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+	}
+]

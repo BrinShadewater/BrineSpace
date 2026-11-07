@@ -1,0 +1,131 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/command_center.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"command_systems"
+					],
+					"purpose": "command systems service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"command_chart_credenza",
+						"full_wall_command-wall_operations"
+					],
+					"purpose": "recessed chart station supply",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/command_center_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "command_center",
+			"machinery": [
+				{
+					"id": "command_ops",
+					"rect": [
+						-160.0,
+						-78.0,
+						72.0,
+						42.0
+					]
+				},
+				{
+					"id": "command_systems",
+					"rect": [
+						-158.0,
+						-144.341094970703,
+						80.0,
+						40.0
+					]
+				},
+				{
+					"id": "command_table",
+					"rect": [
+						-145.0,
+						80.0,
+						114.0,
+						66.0
+					]
+				},
+				{
+					"id": "command_comms",
+					"rect": [
+						64.0,
+						-120.0,
+						96.0,
+						58.0
+					]
+				},
+				{
+					"id": "command_chart_credenza",
+					"rect": [
+						103.0,
+						42.0,
+						58.0,
+						20.0
+					]
+				},
+				{
+					"id": "command_operator_chair",
+					"rect": [
+						112.0,
+						100.0,
+						38.0,
+						14.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/full-wall-v1/command_center_view.gd"
+		},
+		"layered": true,
+		"room": "command_center",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_command-wall_operations",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_command-wall_comms",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "command_systems",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_table",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/command_center_view.gd"
+	}
+]

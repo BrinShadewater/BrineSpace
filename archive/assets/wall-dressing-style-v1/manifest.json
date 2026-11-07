@@ -1,0 +1,912 @@
+{
+  "version": 1,
+  "sources": {
+    "analog_clock": {
+      "path": "assets/wall-dressing-style-v1/source/analog_clock.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "ab633be5e1c70197d2d4cd4a01b0a8ad46c5f1caf910e25d31edf607bf95ff47",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "digital_clock": {
+      "path": "assets/wall-dressing-style-v1/source/digital_clock.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "353ac21ef87bd29709a98c4470ae3555fad78c686e05ecb3d74bd42ad0e50710",
+      "gap_seeds": [
+        [
+          165,
+          450
+        ]
+      ],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "com_handset": {
+      "path": "assets/wall-dressing-style-v1/source/com_handset.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "80e45add3ec65efdbd2f9bcc9faff871f43e074163a7dde8d08b606e39120b15",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "com_panel": {
+      "path": "assets/wall-dressing-style-v1/source/com_panel.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "541fbf75748bddd3b226f8c47a03d937ba697a1fe8b236507d48196f671145b1",
+      "gap_seeds": [],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "wall_calendar": {
+      "path": "assets/wall-dressing-style-v1/source/wall_calendar.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "f1a327eb33f3b264a9d4c6dbac87500b9f60a6bbaff888a327726bbc360d9544",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "notice_board": {
+      "path": "assets/wall-dressing-style-v1/source/notice_board.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "38dca9c7a203b838be314af8d791d24cc3723968211bc39e4b6da3b559079984",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "picture_ocean": {
+      "path": "assets/wall-dressing-style-v1/source/picture_ocean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "a7e09a2bf607204201f38acebd116e720bc062280a771d0492e4ebae5a7c958c",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "picture_botanical": {
+      "path": "assets/wall-dressing-style-v1/source/picture_botanical.png",
+      "size": [
+        1173,
+        1341
+      ],
+      "mode": "RGBA",
+      "sha256": "2ab17ddf58617dfc45b343e16d350db0e4dd815207d9c9139f01d24778cb4bcd",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "poster_diver": {
+      "path": "assets/wall-dressing-style-v1/source/poster_diver.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "2ae3f0c21eea60a9e23128e44c6c0fedaae55eecc19fcc14610b2f9d95248b83",
+      "gap_seeds": [
+        [
+          510,
+          110
+        ],
+        [
+          510,
+          1440
+        ]
+      ],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "poster_marine": {
+      "path": "assets/wall-dressing-style-v1/source/poster_marine.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "c65b595a71960ca4dcddcbec744fe1e3001e9b5e81fdb1d30e08bea765043ab3",
+      "gap_seeds": [
+        [
+          510,
+          90
+        ],
+        [
+          510,
+          1450
+        ]
+      ],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "wall_lamp": {
+      "path": "assets/wall-dressing-style-v1/source/wall_lamp.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "a7c8df48cff5d8886acea3c93675a9ef978fe9778cd6166345723b0069e722fa",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "emergency_box": {
+      "path": "assets/wall-dressing-style-v1/source/emergency_box.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "dbd5b972583e31915f4f5957e749bd5ae8e8e5442b9017a97783c02f0be40421",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "pressure_gauge": {
+      "path": "assets/wall-dressing-style-v1/source/pressure_gauge.png",
+      "size": [
+        1188,
+        1324
+      ],
+      "mode": "RGB",
+      "sha256": "b4410b6fc5e9180e54e490a3f7eee858ad053e5c58850b9ac6e2f938938f11fe",
+      "gap_seeds": [],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "station_map": {
+      "path": "assets/wall-dressing-style-v1/source/station_map.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "31ee7444478d90d41a1d1fa7c1b153d7b604a180c83fdcc0aec301168745904e",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "fire_extinguisher": {
+      "path": "assets/wall-dressing-style-v1/source/fire_extinguisher.png",
+      "size": [
+        1087,
+        1447
+      ],
+      "mode": "RGBA",
+      "sha256": "78d028e8af19736baf3c9f61ac5cfedb5c9a048b3bf138c2390d65a7ade89d1f",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "oxygen_masks": {
+      "path": "assets/wall-dressing-style-v1/source/oxygen_masks.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "d50c81bd7dd7654460e6529314c7709c1d9ee7192a9ab19f015c24958ac10ff4",
+      "gap_seeds": [
+        [
+          625,
+          195
+        ]
+      ],
+      "cleanup": "neutral exterior and reviewed gaps"
+    },
+    "key_rack": {
+      "path": "assets/wall-dressing-style-v1/source/key_rack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "6b2e8526edb15e60288ba84ed891076ab0f52e9e59b74f0cb975c0efbb2d15dd",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "tool_rack": {
+      "path": "assets/wall-dressing-style-v1/source/tool_rack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "68dc6e7e084f4da4722c7f4a6fca2cc7820ea705c40da073b306ea757c29a849",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "wall_planter": {
+      "path": "assets/wall-dressing-style-v1/source/wall_planter.png",
+      "size": [
+        1233,
+        1275
+      ],
+      "mode": "RGBA",
+      "sha256": "580ab31ae19ebace10bbdb919cdd821d887f97eb61b734e1dea9f287a77274a1",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "pennant": {
+      "path": "assets/wall-dressing-style-v1/source/pennant.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "7fcbc5b917f2429162c673028a36e195857fae41c6bd54d40095644bb293f025",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "vent_fan": {
+      "path": "assets/wall-dressing-style-v1/source/vent_fan.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "508c8161968c78abe43d700c54d2b54710fa81961aa06a71b1a285dafa58ddb2",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "alarm_beacon": {
+      "path": "assets/wall-dressing-style-v1/source/alarm_beacon.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "cb3bb5a3aaf135e7086755b1111bdc5b15398b2b1af1d3f54a42da2e732bcada",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "sample_display": {
+      "path": "assets/wall-dressing-style-v1/source/sample_display.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "ff891ffb2b60b4a6a05ad95713f501c90cf879df3b197730d1085af8b98914df",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    },
+    "coat_hooks": {
+      "path": "assets/wall-dressing-style-v1/source/coat_hooks.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "9455c41e0276ff2a8f116cef08bfbe4641a8768eb8bab3cae39a879cf4a66558",
+      "gap_seeds": [],
+      "cleanup": "alpha floor 128"
+    }
+  },
+  "sprites": {
+    "analog_clock": {
+      "path": "assets/wall-dressing-style-v1/sprites/analog_clock.png",
+      "size": [
+        1052,
+        1088
+      ],
+      "pivot": [
+        526.0,
+        544.0
+      ],
+      "units_per_pixel": 0.022058823529411766,
+      "recommended_height": 24,
+      "category": "time",
+      "source_alpha_bounds": [
+        105,
+        73,
+        1153,
+        1157
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "840dd801b9823d22e88ea34ffa316f513f3292549c34894e878bc9e83047243e"
+    },
+    "digital_clock": {
+      "path": "assets/wall-dressing-style-v1/sprites/digital_clock.png",
+      "size": [
+        1317,
+        563
+      ],
+      "pivot": [
+        658.5,
+        281.5
+      ],
+      "units_per_pixel": 0.03197158081705151,
+      "recommended_height": 18,
+      "category": "time",
+      "source_alpha_bounds": [
+        95,
+        209,
+        1408,
+        768
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "89bb124a284f7ef9dc92795748fb1c51e09218120cdeb3d05c2fee7611b2d946"
+    },
+    "com_handset": {
+      "path": "assets/wall-dressing-style-v1/sprites/com_handset.png",
+      "size": [
+        803,
+        1400
+      ],
+      "pivot": [
+        401.5,
+        700.0
+      ],
+      "units_per_pixel": 0.022857142857142857,
+      "recommended_height": 32,
+      "category": "communications",
+      "source_alpha_bounds": [
+        124,
+        68,
+        923,
+        1464
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "24a73d285ae3157179a7e5046532296afd33b3cd71864abd5ab72a0a058687dc"
+    },
+    "com_panel": {
+      "path": "assets/wall-dressing-style-v1/sprites/com_panel.png",
+      "size": [
+        898,
+        887
+      ],
+      "pivot": [
+        449.0,
+        443.5
+      ],
+      "units_per_pixel": 0.029312288613303268,
+      "recommended_height": 26,
+      "category": "communications",
+      "source_alpha_bounds": [
+        178,
+        158,
+        1072,
+        1041
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "c7a7cfbb1b1f87687273673d1c1a3b8bb52eac89fc83646060ac94090f0a998c"
+    },
+    "wall_calendar": {
+      "path": "assets/wall-dressing-style-v1/sprites/wall_calendar.png",
+      "size": [
+        808,
+        1015
+      ],
+      "pivot": [
+        404.0,
+        507.5
+      ],
+      "units_per_pixel": 0.029556650246305417,
+      "recommended_height": 30,
+      "category": "paper",
+      "source_alpha_bounds": [
+        225,
+        105,
+        1029,
+        1116
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "39a7c2abf0e721a5e633e3e2cafd114b857b6887c3b13f33edc062083ecd3f47"
+    },
+    "notice_board": {
+      "path": "assets/wall-dressing-style-v1/sprites/notice_board.png",
+      "size": [
+        1274,
+        745
+      ],
+      "pivot": [
+        637.0,
+        372.5
+      ],
+      "units_per_pixel": 0.040268456375838924,
+      "recommended_height": 30,
+      "category": "paper",
+      "source_alpha_bounds": [
+        133,
+        127,
+        1403,
+        868
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0b4499ea2c860db5f0b827ca64a2af65ce76aff8c4a644e54e3c0217d09fab25"
+    },
+    "picture_ocean": {
+      "path": "assets/wall-dressing-style-v1/sprites/picture_ocean.png",
+      "size": [
+        910,
+        613
+      ],
+      "pivot": [
+        455.0,
+        306.5
+      ],
+      "units_per_pixel": 0.03915171288743882,
+      "recommended_height": 24,
+      "category": "picture",
+      "source_alpha_bounds": [
+        315,
+        185,
+        1221,
+        794
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0d664f0e6fdb9467b0b55c4b813c7d3795efd0d459bbcffaba72c9dc0205c928"
+    },
+    "picture_botanical": {
+      "path": "assets/wall-dressing-style-v1/sprites/picture_botanical.png",
+      "size": [
+        718,
+        1072
+      ],
+      "pivot": [
+        359.0,
+        536.0
+      ],
+      "units_per_pixel": 0.027985074626865673,
+      "recommended_height": 30,
+      "category": "picture",
+      "source_alpha_bounds": [
+        225,
+        126,
+        939,
+        1194
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "050f1e375b57c12b5c21f5b598fe26ea295b79a92637900bc76416192c0fffc4"
+    },
+    "poster_diver": {
+      "path": "assets/wall-dressing-style-v1/sprites/poster_diver.png",
+      "size": [
+        788,
+        1457
+      ],
+      "pivot": [
+        394.0,
+        728.5
+      ],
+      "units_per_pixel": 0.02196293754289636,
+      "recommended_height": 32,
+      "category": "poster",
+      "source_alpha_bounds": [
+        120,
+        47,
+        904,
+        1500
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "3d4571fb703ffa079649c4f306caddf50e8d39b882dc996573ec4394af74785a"
+    },
+    "poster_marine": {
+      "path": "assets/wall-dressing-style-v1/sprites/poster_marine.png",
+      "size": [
+        742,
+        1450
+      ],
+      "pivot": [
+        371.0,
+        725.0
+      ],
+      "units_per_pixel": 0.022068965517241378,
+      "recommended_height": 32,
+      "category": "poster",
+      "source_alpha_bounds": [
+        143,
+        44,
+        881,
+        1490
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "8b8acdd544fd5e6870cf8e826e925626b067bafafa8407a9da799c42c9a24e67"
+    },
+    "wall_lamp": {
+      "path": "assets/wall-dressing-style-v1/sprites/wall_lamp.png",
+      "size": [
+        1148,
+        527
+      ],
+      "pivot": [
+        574.0,
+        263.5
+      ],
+      "units_per_pixel": 0.03415559772296015,
+      "recommended_height": 18,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        196,
+        249,
+        1340,
+        772
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "a597b614bcc2c2d9edd3bfae22c419b2ba8a1f555180aba05b80207f64ec9633"
+    },
+    "emergency_box": {
+      "path": "assets/wall-dressing-style-v1/sprites/emergency_box.png",
+      "size": [
+        906,
+        930
+      ],
+      "pivot": [
+        453.0,
+        465.0
+      ],
+      "units_per_pixel": 0.030107526881720432,
+      "recommended_height": 28,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        176,
+        149,
+        1078,
+        1075
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "5483b54e4858c3afc9370666bc9d3f4a72746f59243c79bc9eebb94df221c877"
+    },
+    "pressure_gauge": {
+      "path": "assets/wall-dressing-style-v1/sprites/pressure_gauge.png",
+      "size": [
+        964,
+        1026
+      ],
+      "pivot": [
+        482.0,
+        513.0
+      ],
+      "units_per_pixel": 0.025341130604288498,
+      "recommended_height": 26,
+      "category": "instrument",
+      "source_alpha_bounds": [
+        114,
+        138,
+        1074,
+        1160
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "83f6558dd81704d40e5c1f488a1b397858d9ace9e50a846308294008424d26c9"
+    },
+    "station_map": {
+      "path": "assets/wall-dressing-style-v1/sprites/station_map.png",
+      "size": [
+        1166,
+        745
+      ],
+      "pivot": [
+        583.0,
+        372.5
+      ],
+      "units_per_pixel": 0.03758389261744966,
+      "recommended_height": 28,
+      "category": "information",
+      "source_alpha_bounds": [
+        187,
+        120,
+        1349,
+        861
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "bb4687471d18d5afc13d6ef0399607fc063be9de5aa7720ee2b0020d2dd9f811"
+    },
+    "fire_extinguisher": {
+      "path": "assets/wall-dressing-style-v1/sprites/fire_extinguisher.png",
+      "size": [
+        525,
+        1270
+      ],
+      "pivot": [
+        262.5,
+        635.0
+      ],
+      "units_per_pixel": 0.026771653543307086,
+      "recommended_height": 34,
+      "category": "safety",
+      "source_alpha_bounds": [
+        287,
+        71,
+        808,
+        1337
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "bf697afc532676b4c763290ed92e48fa0c0d72a7461e910139a2a71a5d6f7039"
+    },
+    "oxygen_masks": {
+      "path": "assets/wall-dressing-style-v1/sprites/oxygen_masks.png",
+      "size": [
+        969,
+        1070
+      ],
+      "pivot": [
+        484.5,
+        535.0
+      ],
+      "units_per_pixel": 0.028037383177570093,
+      "recommended_height": 30,
+      "category": "safety",
+      "source_alpha_bounds": [
+        144,
+        90,
+        1109,
+        1156
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "cc295083b24f35f5c09fb5f54898eeb7c406747b46e43d10c1c34cb73faeccf5"
+    },
+    "key_rack": {
+      "path": "assets/wall-dressing-style-v1/sprites/key_rack.png",
+      "size": [
+        1161,
+        780
+      ],
+      "pivot": [
+        580.5,
+        390.0
+      ],
+      "units_per_pixel": 0.028205128205128206,
+      "recommended_height": 22,
+      "category": "storage",
+      "source_alpha_bounds": [
+        190,
+        82,
+        1347,
+        858
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "25810634825f71e8d167369b194eabe89f064030c1ea4e0c3b247bfa9107547f"
+    },
+    "tool_rack": {
+      "path": "assets/wall-dressing-style-v1/sprites/tool_rack.png",
+      "size": [
+        1221,
+        929
+      ],
+      "pivot": [
+        610.5,
+        464.5
+      ],
+      "units_per_pixel": 0.030139935414424113,
+      "recommended_height": 28,
+      "category": "storage",
+      "source_alpha_bounds": [
+        158,
+        41,
+        1375,
+        966
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "c0424f1dd5730aadccec419a5838e894c5a163c24d07e0579e51758a50f98d4f"
+    },
+    "wall_planter": {
+      "path": "assets/wall-dressing-style-v1/sprites/wall_planter.png",
+      "size": [
+        895,
+        947
+      ],
+      "pivot": [
+        447.5,
+        473.5
+      ],
+      "units_per_pixel": 0.0337909186906019,
+      "recommended_height": 32,
+      "category": "personal",
+      "source_alpha_bounds": [
+        184,
+        156,
+        1075,
+        1099
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "68cebceb42972aa6de673c6b26fcfef8b3247c93225d52654c69e40d2eb23b4a"
+    },
+    "pennant": {
+      "path": "assets/wall-dressing-style-v1/sprites/pennant.png",
+      "size": [
+        938,
+        1343
+      ],
+      "pivot": [
+        469.0,
+        671.5
+      ],
+      "units_per_pixel": 0.022338049143708117,
+      "recommended_height": 30,
+      "category": "personal",
+      "source_alpha_bounds": [
+        45,
+        86,
+        979,
+        1425
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "c8b4f15db132e0b23d7d3316d0f4be043198ea1f1c255527b751cab1d66e2dc1"
+    },
+    "vent_fan": {
+      "path": "assets/wall-dressing-style-v1/sprites/vent_fan.png",
+      "size": [
+        912,
+        958
+      ],
+      "pivot": [
+        456.0,
+        479.0
+      ],
+      "units_per_pixel": 0.029227557411273485,
+      "recommended_height": 28,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        173,
+        136,
+        1081,
+        1090
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "501328e87f1a5292f8507fd379188656374456bfff142ecfb3ddd82691854275"
+    },
+    "alarm_beacon": {
+      "path": "assets/wall-dressing-style-v1/sprites/alarm_beacon.png",
+      "size": [
+        674,
+        1290
+      ],
+      "pivot": [
+        337.0,
+        645.0
+      ],
+      "units_per_pixel": 0.018604651162790697,
+      "recommended_height": 24,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        177,
+        110,
+        847,
+        1396
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "6f28bc4701235b9e6e008655f51466155bd3cd2d039258dd1cd810ba96b746ab"
+    },
+    "sample_display": {
+      "path": "assets/wall-dressing-style-v1/sprites/sample_display.png",
+      "size": [
+        1100,
+        574
+      ],
+      "pivot": [
+        550.0,
+        287.0
+      ],
+      "units_per_pixel": 0.04878048780487805,
+      "recommended_height": 28,
+      "category": "personal",
+      "source_alpha_bounds": [
+        220,
+        215,
+        1316,
+        785
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "26f253d4a8382494f6bcf5c559dcfde292d1e934343b1dbfc97d9685d406f96b"
+    },
+    "coat_hooks": {
+      "path": "assets/wall-dressing-style-v1/sprites/coat_hooks.png",
+      "size": [
+        1160,
+        865
+      ],
+      "pivot": [
+        580.0,
+        432.5
+      ],
+      "units_per_pixel": 0.03236994219653179,
+      "recommended_height": 28,
+      "category": "storage",
+      "source_alpha_bounds": [
+        190,
+        89,
+        1346,
+        950
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0d57f26843cc76f3730965b0e34b36393e82009351a07d7b4dcaa5de41a33d5e"
+    }
+  },
+  "layouts": {},
+  "wall_envelope": [
+    -192,
+    -240,
+    384,
+    48
+  ],
+  "reserved_door_bay": [
+    -34,
+    -246,
+    68,
+    58
+  ]
+}

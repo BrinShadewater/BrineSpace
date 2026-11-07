@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-mycelium-cultivation-wall",
+  "department": "Life Support",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Grey-green powder coat with muted teal reservoir and warm cream fungi. Natural fungal trays remain the focus; add subtle material separation between rubber tray lips, nutrient plumbing, soil and matte cabinet. Keep fungi pale but remove pinprick highlights; no extra plants."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/mycelium-cultivation-wall.png",
+      "sha256": "731ca3fba5b0b9a1c95c53c07fa5c68415c82c0c04fff6140b08551f1acc07a4",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/full-wall-props-balanced-v1/mycelium-cultivation-wall.png",
+      "sha256": "140ba7267bd38f5fc96384efb7cea992d373c71b577091b3bbf58c86e9910284",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/mycelium-cultivation-wall.png",
+  "source_sha256": "5b8963cbfc5ab6faa8e4ba95d00051dcce75cec3dca394bdc106b2caa2bba2b7",
+  "export_path": "assets/room-style-polish-v1/exports/mycelium-cultivation-wall.png",
+  "export_sha256": "62b9140da6eb1fc7b867dd4cd060b36a006d75fc086977bf00187b3f938bbd9c",
+  "native_canvas_px": [
+    2095,
+    751
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    78.87341128622268
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Grey-green powder coat with muted teal reservoir and warm cream fungi. Natural fungal trays remain the focus; add subtle material separation between rubber tray lips, nutrient plumbing, soil and matte cabinet. Keep fungi pale but remove pinprick highlights; no extra plants.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/mycelium-cultivation-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1047,
+            543
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 78.87341128622268,
+  "registration_path": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-south.json",
+  "registration_sha256": "192ab4069757c4d5f3c055eb1ed5313cc5d781acfc53b0e9d9a5f4b3a27683ba",
+  "prompt_path": "assets/room-style-polish-v1/mycelium-cultivation-wall.prompt.txt",
+  "prompt_sha256": "acf74921584bd79a7066c4625ca4d748ce0f66eded5798b5c5ceb8c5c5dbe416",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

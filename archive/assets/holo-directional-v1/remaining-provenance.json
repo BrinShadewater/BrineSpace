@@ -1,0 +1,31 @@
+{
+  "room": "holographic_core",
+  "method": "Built-in north and side material edits; six independent registrations preserve proportional frames. North art offset -22.",
+  "review": "Inward controls preserved, bright static cyan changed to idle blue-grey. Native q0/q1/q3 and card reviewed. All equipment/collision rectangles preserved; q2 RGB unchanged.",
+  "sources": {
+    "north": {
+      "path": "assets\\holo-directional-v1\\holo-north.png",
+      "sha256": "71737f80f85e06d62ecd1d031ab5d4fd91d36998f810e4300e996b4b4385530d",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "prompt-north.txt",
+      "reference": "assets/holo-wall-v1/north.png"
+    },
+    "sides": {
+      "path": "assets\\holo-directional-v1\\holo-sides.png",
+      "sha256": "d9a81d7c8342c520742f57bf1a3b07b8ece780207d546ba9746c27c158e173c8",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "prompt": "prompt-sides.txt",
+      "reference": "assets/holo-wall-v1/sides.png"
+    }
+  },
+  "comparison": "output\\holo-directional-2026-09-12\\final-comparison.json",
+  "states": "output\\holo-directional-2026-09-12\\remaining-state-checks.json",
+  "checks": "176 routes,20 existing variants,188 layout keys,47 card bindings and six localized live-equipment state checks pass.",
+  "repair": "Initial north rise let auto-placement move calibrator. Restored established q0 position in holographic_core_view.gd; unsupported holo-wall/0 draft key removed."
+}

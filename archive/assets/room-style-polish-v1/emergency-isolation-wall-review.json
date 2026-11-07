@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-emergency-isolation-wall",
+  "department": "Engineering emergency containment",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Charcoal powder-coated housing with small muted industrial orange catches/service panels, muted dark teal sealed chamber. Grey rubber gaskets and broad matte plane shading, no ivory clinical casing. Rear face has quiet inset vents and access seams, not operator controls."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/emergency-isolation-wall.png",
+      "sha256": "94e448573770b0359fe3069d8622504a823c4bf76d4bf469020fed9597c96386",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/full-wall-props-balanced-v1/emergency-isolation-wall.png",
+      "sha256": "89c05f11742ff64f06f909181f03d6c7f57e0d2c12bf2e3a5db6448220375943",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/emergency-isolation-wall.png",
+  "source_sha256": "48fe855712e7410af9dccc88f724e5a4a736af713693cddf0d4a28e3f802a746",
+  "export_path": "assets/room-style-polish-v1/exports/emergency-isolation-wall.png",
+  "export_sha256": "a0fb487856edca1b9db528f0890fdebc2839b38da4bfd56ca2e34ffb13131b7e",
+  "native_canvas_px": [
+    2095,
+    751
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    79.46557878633351
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Charcoal powder-coated housing with small muted industrial orange catches/service panels, muted dark teal sealed chamber. Grey rubber gaskets and broad matte plane shading, no ivory clinical casing. Rear face has quiet inset vents and access seams, not operator controls.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/emergency-isolation-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1047,
+            538
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 79.46557878633351,
+  "registration_path": "rooms/full-wall-v1/registrations/side-emergency-isolation-wall-south.json",
+  "registration_sha256": "f8fae19d9d2dcfc0ccdff625649710ebaafe6e5b134eb88ccadbf1ed69adbf1c",
+  "prompt_path": "assets/room-style-polish-v1/emergency-isolation-wall.prompt.txt",
+  "prompt_sha256": "79002f3d328fec78d82314a7d7abf5eff1fae1f74daaf1119dfdce8273da9590",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

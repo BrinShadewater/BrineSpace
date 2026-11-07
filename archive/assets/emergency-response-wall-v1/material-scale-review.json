@@ -1,0 +1,74 @@
+{
+  "asset_id": "emergency-response-wall",
+  "department": "Emergency response",
+  "condition": "maintained",
+  "attachment_class": "low continuous cabinet against sealed north wall",
+  "functional_bays": [
+    "sealed rescue supplies",
+    "folded stretcher",
+    "two breathing-mask cradles",
+    "sealed trauma kit preparation",
+    "incident terminal and utility drawer"
+  ],
+  "runtime_behavior": "static standalone art; no rescue action installed",
+  "camera_and_facing": "overhead; backing top, latches and controls bottom",
+  "references": [],
+  "source_path": "assets/emergency-response-wall-v1/source-v3.png",
+  "source_sha256": "7136b38ce1ea60c684d301f0d373f89ffb0b193230d03eafa6a74745f3da2bc4",
+  "export_path": "assets/emergency-response-wall-v1/emergency-response-wall.png",
+  "export_sha256": "cdf4fe006c52037db5a26fa5d52f6782f20569b01e90d104e418f8a1d86ebb50",
+  "native_canvas_px": [
+    2153,
+    730
+  ],
+  "proposed_display_width_world": 328.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted north wall; actual collision/routes pending."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "V3 removes remaining visor streaks; matte charcoal visors and muted burgundy fabric.",
+        "Metal frame highlights subdued; equipment remains distinct."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/emergency-response-wall-review.png",
+      "findings": [
+        "328-unit width beside furnished room/crew scale; shallow bank approximately54 units tall.",
+        "Rescue chest, stretcher, masks, kit and terminal remain distinct."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "RGB V3 checkerboard excluded with neutral185/spread22; one polygon.",
+        "Light/dark native review shows clean perimeter and retained dark visors/recesses."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "A broad matte-glass correction left visor streaks; a visor-interior-only flat-charcoal edit removed them."
+  ],
+  "proposed_display_height_world": 54.016182770109474,
+  "registration_path": "assets/emergency-response-wall-v1/registration.json",
+  "registration_sha256": "d49a880f7c3d475bdf06a764042da626e2a815f3516624ed16e08a6448545a4c",
+  "prompt_path": "assets/emergency-response-wall-v1/source-v3.prompt.txt",
+  "prompt_sha256": "4427de6273474bd366bffcf9f3244db3f4a1a39f3c0650a81f51a33fd495bcd9",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

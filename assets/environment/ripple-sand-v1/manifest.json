@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "title": "Current-ripple sand study",
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "id": "ripple-sand",
+      "kind": "ground",
+      "selected_source": "ripple-sand-v1.png",
+      "versions": [
+        {
+          "file": "ripple-sand-v1.png",
+          "sha256": "6f1e90c618486a671ab09def5e8a29a35f0142c3ee974a5889e8879d020a4701",
+          "rejection": null
+        }
+      ],
+      "stage": "integrated; native and isolated Windows export reviewed; owner approval pending; not certified seamless"
+    }
+  ],
+  "native_previews": [
+    {
+      "path": "../../../output/ripple-sand-v1/ground-repetition.png",
+      "label": "Ordinary and mirrored repetition in source colors and underwater tint"
+    },
+    {
+      "path": "../../../output/ripple-sand-station-v1/group-1-1600.png",
+      "label": "Native feathered ripple-sand patch beside a room; passing run v2"
+    },
+    {
+      "path": "../../../output/environment-export-v21/captures/habitat-ripple-sand.png",
+      "label": "Isolated Windows export: feathered ripple-sand habitat"
+    }
+  ],
+  "runtime_registry": "ripple_sand_view.gd"
+}

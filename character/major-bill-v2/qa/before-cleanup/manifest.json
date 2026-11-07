@@ -1,0 +1,571 @@
+{
+  "name": "major-bill-v2",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "standingHeight": 74,
+  "background": "transparent",
+  "generator": "built-in imagegen",
+  "requiredMovementStates": [
+    "idle",
+    "walk",
+    "run"
+  ],
+  "requiredDirections": [
+    "south",
+    "north",
+    "east",
+    "west"
+  ],
+  "actionChain": [
+    "idle-east",
+    "kneel-east",
+    "repair-east",
+    "stand-east",
+    "idle-east"
+  ],
+  "states": [
+    {
+      "id": "idle-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-south/frame_000.png",
+        "../frames/idle-south/frame_001.png",
+        "../frames/idle-south/frame_002.png",
+        "../frames/idle-south/frame_003.png",
+        "../frames/idle-south/frame_004.png",
+        "../frames/idle-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-south.png"
+      ],
+      "sourceSha256": {
+        "idle-south": "180e9bcb0edd2901add2f7979c9eaaa2aa62acca4298f9291b69d5fbd46eac61"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "idle-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-north/frame_000.png",
+        "../frames/idle-north/frame_001.png",
+        "../frames/idle-north/frame_002.png",
+        "../frames/idle-north/frame_003.png",
+        "../frames/idle-north/frame_004.png",
+        "../frames/idle-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-north.png"
+      ],
+      "sourceSha256": {
+        "idle-north": "019ded7c565ab3be4a58e59786077934c938762c1a0184574565d3c270a5e4c4"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "idle-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-east/frame_000.png",
+        "../frames/idle-east/frame_001.png",
+        "../frames/idle-east/frame_002.png",
+        "../frames/idle-east/frame_003.png",
+        "../frames/idle-east/frame_004.png",
+        "../frames/idle-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "idle-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-west/frame_000.png",
+        "../frames/idle-west/frame_001.png",
+        "../frames/idle-west/frame_002.png",
+        "../frames/idle-west/frame_003.png",
+        "../frames/idle-west/frame_004.png",
+        "../frames/idle-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-west.png"
+      ],
+      "sourceSha256": {
+        "idle-west": "c9da491d80ac06d2bb907932307f2822d4c2ef29d90467b1724ca6991effdea2"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "walk-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-south/frame_000.png",
+        "../frames/walk-south/frame_001.png",
+        "../frames/walk-south/frame_002.png",
+        "../frames/walk-south/frame_003.png",
+        "../frames/walk-south/frame_004.png",
+        "../frames/walk-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-south-polished.png",
+        "../generated/walk-south-opposite.png"
+      ],
+      "sourceSha256": {
+        "walk-south-polished": "45ca59ba01f64527adb432db262e7b93bbb9b6d309fff18b5b83a69e6208b6fe",
+        "walk-south-opposite": "7d23392a258b50b13092d4ceb209c9621274cccec19097e2109d8bd44db71ebb"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor. Opposite contact poses assembled into one six-phase cycle."
+    },
+    {
+      "id": "walk-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-north/frame_000.png",
+        "../frames/walk-north/frame_001.png",
+        "../frames/walk-north/frame_002.png",
+        "../frames/walk-north/frame_003.png",
+        "../frames/walk-north/frame_004.png",
+        "../frames/walk-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-north.png"
+      ],
+      "sourceSha256": {
+        "walk-north": "45e2c9f539bd50955883e745fd194f95cd2e6a4c72a423f01329eea8497a0677"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "walk-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-east/frame_000.png",
+        "../frames/walk-east/frame_001.png",
+        "../frames/walk-east/frame_002.png",
+        "../frames/walk-east/frame_003.png",
+        "../frames/walk-east/frame_004.png",
+        "../frames/walk-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-east.png"
+      ],
+      "sourceSha256": {
+        "walk-east": "b8281217386cdc9100f72b3fcee66562b95e97b814001855c7f9c2742c099099"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "walk-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-west/frame_000.png",
+        "../frames/walk-west/frame_001.png",
+        "../frames/walk-west/frame_002.png",
+        "../frames/walk-west/frame_003.png",
+        "../frames/walk-west/frame_004.png",
+        "../frames/walk-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-west.png"
+      ],
+      "sourceSha256": {
+        "walk-west": "b54dbe0f3aee73fd576e3e495d22b730dd4d490b970817f04d8aa5aa04f34fdb"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "run-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-south/frame_000.png",
+        "../frames/run-south/frame_001.png",
+        "../frames/run-south/frame_002.png",
+        "../frames/run-south/frame_003.png",
+        "../frames/run-south/frame_004.png",
+        "../frames/run-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/run-south.png"
+      ],
+      "sourceSha256": {
+        "run-south": "f47e721ac12c42df0303d33f8e27e823fcdd986f05dc4175298d9f8c42077d74"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "run-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-north/frame_000.png",
+        "../frames/run-north/frame_001.png",
+        "../frames/run-north/frame_002.png",
+        "../frames/run-north/frame_003.png",
+        "../frames/run-north/frame_004.png",
+        "../frames/run-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/run-north.png"
+      ],
+      "sourceSha256": {
+        "run-north": "d4df4a221277f7619e6f25fad5bc2d78f7b9964fe388dcc2cefdde26a9847599"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "run-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-east/frame_000.png",
+        "../frames/run-east/frame_001.png",
+        "../frames/run-east/frame_002.png",
+        "../frames/run-east/frame_003.png",
+        "../frames/run-east/frame_004.png",
+        "../frames/run-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/run-east.png"
+      ],
+      "sourceSha256": {
+        "run-east": "c1344a6f5e15a15c9fed2b8a2f4fe73b689ecdaec51472181e3550745cbd3cbb"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "run-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-west/frame_000.png",
+        "../frames/run-west/frame_001.png",
+        "../frames/run-west/frame_002.png",
+        "../frames/run-west/frame_003.png",
+        "../frames/run-west/frame_004.png",
+        "../frames/run-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/run-west.png"
+      ],
+      "sourceSha256": {
+        "run-west": "50399f7bf92fed0f37fa83dc4a8867bebeb7a5776e92ab9fd54c7614a7e46bfa"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "interact-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        180,
+        120,
+        140,
+        260,
+        140,
+        180
+      ],
+      "fps": 5.88235,
+      "loop": false,
+      "frameFiles": [
+        "../frames/interact-east/frame_000.png",
+        "../frames/interact-east/frame_001.png",
+        "../frames/interact-east/frame_002.png",
+        "../frames/interact-east/frame_003.png",
+        "../frames/interact-east/frame_004.png",
+        "../frames/interact-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/interact-east.png",
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "interact-east": "6200b3fe90d67b2dc276fb3cded2fb32b5533020cc44f7b5c849a260dbfc5b68",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "kneel-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/kneel-east/frame_000.png",
+        "../frames/kneel-east/frame_001.png",
+        "../frames/kneel-east/frame_002.png",
+        "../frames/kneel-east/frame_003.png",
+        "../frames/kneel-east/frame_004.png",
+        "../frames/kneel-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "5646ae63c4a0db9f0d1673feaed86c4637633e682112549fd6f8b13eb6108ac5",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033",
+        "repair-east": "12305b5021374c99afbf4fe8aacc5628ba8ab2e19ff54f2a51100c1e7e07548b"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor. Endpoints shared with idle and repair."
+    },
+    {
+      "id": "repair-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        160,
+        140,
+        180,
+        140,
+        160,
+        180
+      ],
+      "fps": 6.25,
+      "loop": true,
+      "frameFiles": [
+        "../frames/repair-east/frame_000.png",
+        "../frames/repair-east/frame_001.png",
+        "../frames/repair-east/frame_002.png",
+        "../frames/repair-east/frame_003.png",
+        "../frames/repair-east/frame_004.png",
+        "../frames/repair-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "repair-east": "12305b5021374c99afbf4fe8aacc5628ba8ab2e19ff54f2a51100c1e7e07548b"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    },
+    {
+      "id": "stand-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/stand-east/frame_000.png",
+        "../frames/stand-east/frame_001.png",
+        "../frames/stand-east/frame_002.png",
+        "../frames/stand-east/frame_003.png",
+        "../frames/stand-east/frame_004.png",
+        "../frames/stand-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "5646ae63c4a0db9f0d1673feaed86c4637633e682112549fd6f8b13eb6108ac5",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033",
+        "repair-east": "12305b5021374c99afbf4fe8aacc5628ba8ab2e19ff54f2a51100c1e7e07548b"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": "kneel-east",
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor. Reversed kneel frames, ending with tool stowed."
+    },
+    {
+      "id": "walk-south-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-south-east/frame_000.png",
+        "../frames/walk-south-east/frame_001.png",
+        "../frames/walk-south-east/frame_002.png",
+        "../frames/walk-south-east/frame_003.png",
+        "../frames/walk-south-east/frame_004.png",
+        "../frames/walk-south-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-south-east.png"
+      ],
+      "sourceSha256": {
+        "walk-south-east": "ee371e855838e98f7a4b4f4d2d755cc77e71700fccf7a3d9a78da513a0a818cb"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline and head anchor."
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/life_support.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"full_wall_life-support-wall_filter"
+					],
+					"purpose": "filter purge outlet",
+					"rotations": {
+						"1": {
+							"scale": 0.6
+						},
+						"2": {
+							"scale": 0.6
+						}
+					},
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"life_tank"
+					],
+					"purpose": "fluid service isolation",
+					"rotations": {
+						"1": {
+							"scale": 0.4
+						},
+						"2": {
+							"scale": 0.4
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/underwater_life_support_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "life_support",
+			"machinery": [
+				{
+					"id": "life_fan",
+					"rect": [
+						-165.0,
+						-113.0,
+						108.0,
+						54.0
+					]
+				},
+				{
+					"id": "life_filter",
+					"rect": [
+						57.0,
+						-151.0,
+						108.0,
+						78.0
+					]
+				},
+				{
+					"id": "life_tank",
+					"rect": [
+						-165.0,
+						107.0,
+						74.0,
+						42.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						-80.0,
+						111.0,
+						60.0,
+						38.0
+					]
+				},
+				{
+					"id": "life_service_cart",
+					"rect": [
+						83.0,
+						108.0,
+						56.0,
+						24.0
+					]
+				},
+				{
+					"id": "life_pressure_bottle",
+					"rect": [
+						148.0,
+						96.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "life_filter_bench",
+					"rect": [
+						-157.0,
+						47.0,
+						64.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/life_support_view.gd"
+		},
+		"layered": true,
+		"room": "life_support",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_life-support-wall_fan",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_life-support-wall_filter",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "life_tank",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_atmosphere_analysis_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_filter_cassette_chest",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/life_support_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"med_preparation"
+					],
+					"purpose": "sterile preparation boundary",
+					"rotations": {
+						"1": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						},
+						"3": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						}
+					},
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_medical-treatment-wall"
+					],
+					"purpose": "treatment wall service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/med_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_bay",
+			"machinery": [
+				{
+					"id": "med_supply",
+					"rect": [
+						106.0,
+						105.0,
+						60.0,
+						42.0
+					]
+				},
+				{
+					"id": "med_preparation",
+					"rect": [
+						25.0,
+						102.0,
+						72.0,
+						28.0
+					]
+				},
+				{
+					"id": "med_sealed_cooler",
+					"rect": [
+						133.0,
+						55.0,
+						28.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_medical-treatment-wall",
+					"rect": [
+						-162.79248046875,
+						-174.0,
+						325.5849609375,
+						134.0
+					]
+				},
+				{
+					"id": "med_bed_0",
+					"rect": [
+						-168.704925537109,
+						32.7868957519531,
+						86.0,
+						56.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+		},
+		"layered": true,
+		"room": "med_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "med_sterile_triage_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_enclosed_equipment_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-treatment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_bed_1",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_bed_0",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_supply",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/bio_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"bio_centrifuge"
+					],
+					"purpose": "sealed processing service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"bio_cold_storage"
+					],
+					"purpose": "cold storage maintenance",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/biodome_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "bio_lab",
+			"machinery": [
+				{
+					"id": "bio_centrifuge",
+					"rect": [
+						-160.0,
+						49.0,
+						78.0,
+						60.0
+					]
+				},
+				{
+					"id": "bio_cold_storage",
+					"rect": [
+						94.0,
+						101.0,
+						68.0,
+						54.0
+					]
+				},
+				{
+					"id": "bio_sample_cooler",
+					"rect": [
+						47.0,
+						134.0,
+						30.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_bio-culture-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						120.160667419434
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+		},
+		"layered": true,
+		"room": "bio_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "bio_culture_preparation_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_specimen_transit_case",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_bio-culture-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_centrifuge",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_cold_storage",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+	}
+]

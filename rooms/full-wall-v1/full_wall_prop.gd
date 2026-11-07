@@ -1,0 +1,343 @@
+extends RefCounted
+## Shared source registration and placement; original room shells remain authoritative.
+const Geometry = preload("res://tools/modular_room_geometry.gd")
+class ArtSource extends RefCounted:
+	var source: String
+	var registration: Dictionary
+	var section := ""
+	var pool: RefCounted
+	var share_storage := true
+	var loaded: ImageTexture
+	var texture: ImageTexture:
+		get:
+			if loaded == null:
+				if share_storage: loaded = pool.acquire(source).texture
+				else:
+					var image := Image.new()
+					preload("res://scripts/safe_image.gd").load_png(image, source)
+					loaded = ImageTexture.create_from_image(image)
+			return loaded
+	var art: ImageTexture:
+		get: return texture
+	func _init(path: String, data: Dictionary, storage: RefCounted, shared: bool) -> void:
+		source = path; registration = data; pool = storage; share_storage = shared
+
+var primary_art: ArtSource
+var art: ImageTexture:
+	get: return primary_art.texture
+# Each view owns this weak lookup. Identical source pixels share storage across
+# its wall/section registrations; registrations and mirrored UVs stay independent.
+var texture_pool = preload("res://scripts/crew_texture_pool.gd").new()
+var share_texture_storage := not OS.get_cmdline_user_args().has("--unshared-wall-textures")
+var registration: Dictionary
+var profiles := {}
+var asset_id: String
+var placement_reports := {}
+var side_views := {}
+var activity_layout: Dictionary={}
+var placement_cache := {}
+var reuse_placements := true
+var placement_cache_hits := 0
+
+func layout_key(room) -> String:
+	var selected := preload("res://scripts/room_layout_store.gd").asset_for(room)
+	return asset_id if selected.is_empty() else selected
+
+func _init(id: String) -> void:
+	asset_id=id
+	activity_layout=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/activity-layouts.json")).get(id,{})
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+".json"))
+	registration=decode_registration(data)
+	primary_art=ArtSource.new(data.source,registration,texture_pool,share_texture_storage)
+	for side in ["west","east","south"]:
+		var path: String = "res://rooms/full-wall-v1/registrations/side-"+id+"-"+side+".json"
+		if not FileAccess.file_exists(path): continue
+		var side_data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
+		var side_registration: Dictionary=decode_registration(side_data)
+		if side_data.get("mirror_horizontal",false):
+			side_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(side_registration)
+		side_views[side]=ArtSource.new(side_data.source,side_registration,texture_pool,share_texture_storage)
+	load_mirrored_side(id)
+
+# Opt-in per asset: `side-<id>-side.json` is one authored side wall that serves both
+# side walls, the opposite one mirrored (see docs/MIRRORED_SIDE_WALLS_PROPOSAL_2026-09-12.md).
+# Authored `side-<id>-east/west` art always wins, so adopting this never retires
+# accepted art; an asset converts only when an owner adds the `-side` registration.
+# North and south are never mirrored and are not consulted here.
+func load_mirrored_side(id: String) -> void:
+	if side_views.has("west") and side_views.has("east"): return
+	var path: String="res://rooms/full-wall-v1/registrations/side-"+id+"-side.json"
+	if not FileAccess.file_exists(path): return
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
+	var authored: String=str(data.get("direction","east"))
+	if authored not in ["west","east"]:
+		push_warning("Mirrored side registration "+path+" must declare direction east or west.")
+		return
+	var source: Dictionary=decode_registration(data)
+	var opposite: String="east" if authored=="west" else "west"
+	if not side_views.has(authored): side_views[authored]=ArtSource.new(data.source,source,texture_pool,share_texture_storage)
+	if not side_views.has(opposite):
+		# The raster is shared; only the polygons and their UVs are mirrored.
+		side_views[opposite]=ArtSource.new(data.source,preload("res://scripts/room_asset_library.gd").mirror_registration(source),texture_pool,share_texture_storage)
+
+func decode_registration(data: Dictionary) -> Dictionary:
+	var r: Array=data.region
+	var pieces: Array=[]
+	for polygon in data.pieces:
+		var points := PackedVector2Array()
+		for point in polygon: points.append(Vector2(point[0],point[1]))
+		pieces.append(points)
+	var decoded: Dictionary={"wall_mount":data.has("wall_contact"),"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3]),"outline":[Vector2(r[0],r[1]),Vector2(r[0]+r[2],r[1]),Vector2(r[0]+r[2],r[1]+r[3]),Vector2(r[0],r[1]+r[3])]}
+	if data.has("reading_lamp"): decoded.reading_lamp=data.reading_lamp.duplicate(true)
+	if data.has("operating_screens"): decoded.operating_screens=data.operating_screens.duplicate(true)
+	if data.has("operating_screen_color"): decoded.operating_screen_color=data.operating_screen_color
+	return decoded
+
+func owns(prop: Dictionary) -> bool:
+	return prop.get("full_wall",false)
+
+func bounds(prop: Dictionary) -> Rect2:
+	var height: float=prop.rect.size.x*prop.registration.height/prop.registration.width
+	return Rect2(prop.rect.position.x,prop.rect.end.y-height+float(prop.get("visual_y_offset",0.0)),prop.rect.size.x,height)
+
+func apply(room) -> void:
+	if asset_id=="pressure-manifold-wall" and room.quarter==0:
+		preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
+		return # Retain the accepted q0 originals.
+	for prop in room.props:
+		if owns(prop):
+			preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
+			return
+	# A layout can delete the bank (a null entry for its id). Nothing then carries the installed
+	# marker above, so the placement ran again on every reconfigure: props were displaced a second
+	# time and any with no clear space were silently dropped. A deleted bank installs nothing, so
+	# the room keeps its authored props and only the layout is applied.
+	# Studio needs a stable source layout. Its draft applies deletions after this
+	# baseline is captured; using saved deletions here resurrects displaced legacy
+	# furniture and makes the next save forget the missing bank's tombstone.
+	if not room.has_meta("layout_editor_preview") and preload("res://scripts/room_layout_store.gd").shared_positions(layout_key(room),room.quarter).get("full_wall_"+asset_id,0) == null:
+		preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
+		prune_dressing(room,[])
+		return
+	var north: bool=Geometry.has_port(room.layout[0],0)
+	var south: bool=Geometry.has_port(room.layout[0],2)
+	var side := ""
+	var source: Dictionary=registration
+	var new_directional: bool = asset_id in ["research-analysis-wall","medical-treatment-wall","pressure-manifold-wall","deepwater-listening-wall","xeno-containment-wall","emergency-isolation-wall","tidal-condensation-wall","biodome-habitat-wall","thermal-control-wall","anomaly-containment-wall","radio-signal-wall"] and room.quarter%2==1 and not (Geometry.has_port(room.layout[0],1) and Geometry.has_port(room.layout[0],3))
+	if (north and south) or new_directional:
+		side="west" if not Geometry.has_port(room.layout[0],3) else "east"
+		if not Geometry.has_port(room.layout[0],1) and (room.quarter==2 or (asset_id in ["radio-signal-wall","quarantine-specimen-wall"] and room.quarter==3)): side="east"
+		if not side_views.has(side):
+			restore_profiles(room)
+			return
+		source=side_views[side].registration
+	var south_bank: bool=side.is_empty() and not south and side_views.has("south") and (north or (asset_id in ["radio-signal-wall","quarantine-specimen-wall"] and room.quarter==2) or (asset_id in ["ore-refinery-wall","biodome-habitat-wall","medical-records-wall","medical-diagnostic-wall","cryo-support-wall","construction-fabrication-wall","salvage-disassembly-wall","drone-service-wall"] and room.quarter==3))
+	if south_bank: source=side_views.south.registration
+	var width := 344.0
+	if not north: width=minf(width,134.0*source.width/source.height)
+	if not side.is_empty(): width=minf(120.0,344.0*source.width/source.height)
+	var height: float=width*source.height/source.width
+	# Authored directional sources face into the room from their mounting wall.
+	var bottom := -174.0+height if not north else 174.0
+	var x := -width*0.5
+	var depth := height if not north else 42.0
+	if south_bank and source.get("wall_mount",false):
+		bottom=(Geometry.CELL-Geometry.WALL)*0.5
+		depth=height
+	if not side.is_empty():
+		var wall_inner: float=Geometry.CELL*0.5-Geometry.WALL*0.5 if source.get("wall_mount",false) else 174.0
+		x=-wall_inner if side=="west" else wall_inner-width
+		bottom=height*0.5
+		depth=height
+	var prop := {"id":"full_wall_"+asset_id,"full_wall":true,"wall_mount":source.get("wall_mount",false),"side_view":side,"validate_directional_layout":new_directional or (asset_id in ["tidal-condensation-wall","biodome-habitat-wall","thermal-control-wall","salvage-disassembly-wall","construction-fabrication-wall","anomaly-containment-wall","radio-signal-wall"] and not side.is_empty()),"rect":Rect2(x,bottom-depth,width,depth),"center":Vector2.ZERO,"sort_y":bottom,"registration":source}
+	if south_bank: prop.side_view="south"
+	# Every new rollout bank uses safe draft fallback, including horizontal poses.
+	if asset_id in ["salvage-disassembly-wall","construction-fabrication-wall","anomaly-containment-wall","radio-signal-wall","shield-pressure-wall","quarantine-specimen-wall","medical-diagnostic-wall","medical-records-wall","biomass-processing-wall"]:
+		prop.validate_directional_layout=true
+	# Lift artwork into the low north crown; collision remains on the floor.
+	prop["visual_y_offset"] = -22.0 if not north and side.is_empty() and not south_bank else 0.0
+	var fleet: String={"drone-service-wall":"mining","salvage-disassembly-wall":"salvage","construction-fabrication-wall":"construction"}.get(asset_id, "")
+	var replaced: Array=[]
+	if "life_items" in room:
+		for item in room.life_items:
+			if item.rect.get_center().y<0 and not item.get("dressing",false): replaced.append(item.id)
+	if asset_id=="mycelium-cultivation-wall": replaced.append_array(["rack","reservoir"])
+	if asset_id=="pressure-manifold-wall": replaced.append("flush_back")
+	# The live mining vehicle and its launch hatch keep their existing deployment behavior.
+	if not fleet.is_empty():
+		replaced.erase(fleet+"_rov")
+		replaced.erase(fleet+"_hatch")
+	var kept: Array=[]
+	var displaced: Array=[]
+	var visual := bounds(prop).grow(5)
+	var initial_props: Array=room.props.duplicate()
+	if fleet in ["salvage","construction"]:
+		initial_props.sort_custom(func(a,b): return int(a.id in [fleet+"_rov",fleet+"_hatch"])>int(b.id in [fleet+"_rov",fleet+"_hatch"]))
+	for existing in initial_props:
+		var dressing_spec: Dictionary=existing.get("registration",{}).get("spec",{})
+		if dressing_spec.get("centerpiece",false) or dressing_spec.get("authored_anchor",false):
+			# Large authored floor installations deliberately interrupt the old
+			# straight-lane heuristic; current route fixtures prove walkaround access.
+			kept.append(existing)
+			continue
+		if asset_id in ["quarantine-specimen-wall","medical-diagnostic-wall","medical-records-wall"]:
+			displaced.append(existing)
+			continue
+		if existing.id in replaced:
+			displaced.append(existing)
+			continue
+		if not fleet.is_empty() and existing.id in [fleet+"_rov",fleet+"_hatch"]:
+			# Operational vehicle and launch aperture remain present, separate from the service robot.
+			var at := Vector2(112,118) if existing.id==fleet+"_rov" else Vector2(-112,118)
+			if not side.is_empty(): at=Vector2(112 if side=="west" else -112,-100 if existing.id==fleet+"_rov" else 118)
+			existing.rect.position=at-existing.rect.size*0.5
+			if fleet!="mining": existing.relocated=true
+			existing.sort_y=existing.rect.end.y
+			kept.append(existing)
+			continue
+		var hits_reserved := false
+		if fleet in ["salvage","construction"]:
+			for reserved in kept:
+				if room.prop_visual_bounds(existing).grow(7).intersects(room.prop_visual_bounds(reserved)): hits_reserved=true
+		if hits_reserved or room.prop_visual_bounds(existing).intersects(visual):
+			displaced.append(existing)
+			continue
+		if not fleet.is_empty() and room.prop_visual_bounds(existing).intersects(Rect2(-170,40,340,134)):
+			displaced.append(existing)
+			continue
+		kept.append(existing)
+	kept.append(prop)
+	var moved: Array=[]
+	for item in kept:
+		if item.get("relocated",false): moved.append(item.id)
+	var unplaced: Array=[]
+	if asset_id=="quarantine-specimen-wall":
+		displaced.sort_custom(func(a,b): return int(a.id=="quarantine_berth")>int(b.id=="quarantine_berth"))
+	if asset_id=="medical-diagnostic-wall":
+		displaced.sort_custom(func(a,b): return int(a.id in ["medical_treatment","medical_imaging"])>int(b.id in ["medical_treatment","medical_imaging"]))
+	if asset_id=="medical-records-wall":
+		displaced.sort_custom(func(a,b): return int(a.id in ["office_exam","office_consultation"])>int(b.id in ["office_exam","office_consultation"]))
+	for old in displaced:
+		# Baked perimeter slices have fixed drawing coordinates; never translate their blockers alone.
+		if old.has("flush_region"):
+			unplaced.append(old.id)
+			continue
+		var candidate := vacant_placement(room,old,kept)
+		if candidate.is_empty(): unplaced.append(old.id)
+		else:
+			kept.append(candidate)
+			moved.append(old.id)
+	# Author activity targets, then resolve clearance at each orientation.
+	var targets: Dictionary=activity_layout.get("targets",{})
+	var movable: Array=[]
+	var anchored: Array=[]
+	for item in kept:
+		if targets.has(item.id) and not item.has("flush_region"): movable.append(item)
+		else: anchored.append(item)
+	movable.sort_custom(func(a,b): return room.prop_visual_bounds(a).get_area()>room.prop_visual_bounds(b).get_area())
+	var pending: Array=movable.duplicate()
+	for item in movable:
+		pending.erase(item)
+		var desired: Array=targets[item.id]
+		var target: Vector2=Geometry.turn(Vector2(desired[0],desired[1]),room.quarter)
+		var candidate:=vacant_placement(room,item,anchored+pending,target)
+		if candidate.is_empty(): anchored.append(item)
+		else:
+			anchored.append(candidate)
+			if item.id not in moved: moved.append(item.id)
+	kept=anchored
+	placement_reports[room.quarter]={"relocated":moved,"no_clear_space":unplaced,"activity":activity_layout.get("purpose","")}
+	room.props=kept
+	prune_dressing(room,moved)
+	preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
+
+# Remove service leads whose furniture was replaced or deleted; retain supported details on
+# survivors. A layout that deletes props needs this as much as a bank installation does.
+func prune_dressing(room, moved: Array) -> void:
+	var ids: Array=[]
+	for existing in room.props: ids.append(existing.id)
+	for name in ["dressing","cryo_dressing","center_dressing","office_dressing"]:
+		if not name in room: continue
+		var dressing=room.get(name)
+		if dressing==null: continue
+		if not profiles.has(name): profiles[name]=dressing.profile.duplicate(true)
+		dressing.profile=profiles[name].duplicate(true)
+		# The saved profile remains complete; active attachments follow surviving hosts.
+		for key in ["furniture","mats","supported"]:
+			var active: Array=[]
+			for item in dressing.profile.get(key,[]):
+				var host_id: String=str(item.id if key=="furniture" else item.host)
+				if host_id in ids: active.append(item)
+			dressing.profile[key]=active
+		for key in ["routes","surface_routes"]:
+			var routes: Array=[]
+			for route in dressing.profile.get(key,[]):
+				if route.from.host in ids and route.to.host in ids and route.from.host not in moved and route.to.host not in moved: routes.append(route)
+			dressing.profile[key]=routes
+
+func vacant_placement(room, original: Dictionary, occupied: Array, target:=Vector2.INF) -> Dictionary:
+	var before: Rect2=room.prop_visual_bounds(original)
+	# Bounds and door lanes are constant over the 29x29 search.
+	var lanes: Array = []
+	for side in range(4):
+		if Geometry.has_port(room.layout[0],side):
+			lanes.append(Rect2(-42,-180,84,180) if side==0 else (Rect2(0,-42,180,84) if side==1 else (Rect2(-42,0,84,180) if side==2 else Rect2(-180,-42,180,84))))
+	var obstacles: Array = []
+	for other in occupied: obstacles.append([room.prop_visual_bounds(other), other.rect])
+	# Cache the displacement, not mutable prop metadata. Actual geometry keys
+	# invalidate automatically after Studio edits, rotation or topology changes.
+	var key := var_to_bytes([before, original.rect, target, lanes, obstacles])
+	if reuse_placements and placement_cache.has(key):
+		placement_cache_hits += 1
+		return shifted_placement(original, placement_cache[key])
+	var best_distance := INF
+	var best_shift := Vector2.INF
+	for y in range(-168,169,12):
+		for x in range(-168,169,12):
+			var shift := Vector2(x,y)-before.position
+			var art_bounds := Rect2(before.position+shift,before.size)
+			var ground := Rect2(original.rect.position+shift,original.rect.size)
+			if not Rect2(-174,-174,348,348).encloses(art_bounds): continue
+			if not Rect2(-174,-174,348,348).encloses(ground): continue
+			var blocked := false
+			for lane in lanes:
+				if ground.intersects(lane): blocked=true; break
+			if blocked: continue
+			for other in obstacles:
+				if art_bounds.grow(7).intersects(other[0]) or ground.grow(7).intersects(other[1]): blocked=true; break
+			var distance: float=shift.length_squared() if target==Vector2.INF else art_bounds.get_center().distance_squared_to(target)
+			if blocked or distance>=best_distance: continue
+			best_shift=shift
+			best_distance=distance
+	if reuse_placements:
+		if placement_cache.size() >= 128: placement_cache.erase(placement_cache.keys()[0])
+		placement_cache[key] = best_shift
+	return shifted_placement(original, best_shift)
+
+func shifted_placement(original: Dictionary, shift: Vector2) -> Dictionary:
+	if shift == Vector2.INF: return {}
+	var candidate: Dictionary = original.duplicate(true)
+	candidate.rect.position += shift
+	candidate.sort_y = candidate.rect.end.y
+	if candidate.has("art_offset"): candidate.art_offset += shift
+	candidate.relocated = true
+	return candidate
+
+func restore_profiles(room) -> void:
+	for name in profiles:
+		var dressing=room.get(name)
+		if dressing!=null: dressing.profile=profiles[name].duplicate(true)
+
+func draw(room, prop: Dictionary) -> void:
+	var selected: Dictionary=prop.registration
+	var texture: ImageTexture=prop.library_texture if prop.get("library_asset",false) else (art if prop.get("side_view","").is_empty() else side_views[prop.side_view].art)
+	var scale: float=prop.rect.size.x/selected.width
+	var anchor := Vector2(prop.rect.get_center().x,prop.rect.end.y+float(prop.get("visual_y_offset",0.0)))
+	for polygon in selected.pieces:
+		var points := PackedVector2Array()
+		var uv := PackedVector2Array()
+		for point in polygon:
+			points.append(anchor+(point-selected.pivot)*scale)
+			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(selected,point)/Vector2(texture.get_size()))
+		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+	preload("res://scripts/room_asset_library.gd").draw_operating_screens(room,selected,anchor,scale)

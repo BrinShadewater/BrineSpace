@@ -1,0 +1,416 @@
+[
+  {
+    "id": "life_support",
+    "source": "rooms/whole-room/life-support-underwater-source-v1.png",
+    "sha256": "b340afc131371088ac226d61ef989a3f28aff033ef7675b1e2e125cf539cee82",
+    "integration": {
+      "view": "rooms/whole-room/underwater_life_support_view.gd",
+      "card": "assets/rooms/life-support/cards/card.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/battery-service-cart-v1.png",
+        "sha256": "4e69bab9b536f725cd937cd0fc1f32653022db6ff4083a8bcf6c31fae3e088e6"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/rooms/life-support/furnishings/scrubber-trolley.png",
+        "sha256": "3354d13c17931c973680a3bd48e45ecc34fd606ab285c2af44a7c502fda53467"
+      },
+      {
+        "path": "assets/rooms/life-support/furnishings/atmosphere-analysis-island.png",
+        "sha256": "772dbf4c9d5701212dfae22ec1b9195ca391f8d78c2da921866cca33ca4bb236"
+      },
+      {
+        "path": "assets/rooms/life-support/furnishings/universal-sealed-filter-cassette-chest.png",
+        "sha256": "94cca47f142229201aca141d3e7f42fce85361b5086ed75d78add000d2dd12a3"
+      },
+      {
+        "path": "assets/rooms/life-support/furnishings/atmosphere-analysis-island-registration.json",
+        "sha256": "8b0825d6ee48299e8ce2ffa22ab42b5e3321ea8ba5eb136bd6a1fa21b32b69d0"
+      },
+      {
+        "path": "assets/rooms/life-support/furnishings/universal-sealed-filter-cassette-chest-registration.json",
+        "sha256": "e72ce90a04819456fd535089601091164578b2d32ee51bafc680a2549125e487"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/life-support-composition-v5.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/life-support-composition-v5.json",
+        "sha256": "4240a824d97a636f33c91af1b1bd775794e5f0fd8d49d542bdc8518a389d0533"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/life-support/cards/card.png",
+      "sha256": "54bfa4245c68609a9f7c4c5cf67cb4a6e37c913015460876b9e7c490d656e198"
+    },
+    "verification": {
+      "furnishing_v7": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v7/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "hydroponics_bay",
+    "source": "assets/rooms/hydroponics-bay/source/hydroponics-candidate.png",
+    "sha256": "5a3e7312a9a28ca2bbe9a0800817639cd65a77555b3e3195e3fe2ab824e8822e",
+    "integration": {
+      "view": "rooms/whole-room/hydroponics_view.gd",
+      "card": "rooms/whole-room/hydroponics-card-harvest-v4.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/whole-room/hydro-potting-trolley-v1.png",
+        "sha256": "700463225ed2e9422c743ed90baf360f7c67b9410950fd7dc7b2e7805cbbf0ac"
+      },
+      {
+        "path": "assets/rooms/hydroponics-bay/furnishings/harvest-clean.png",
+        "sha256": "fa9f08644cbb903b9fd293e25137f9ffd2269aef789ba3abaec2e7082816f39b"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/hydro-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/hydro-composition-v3.json",
+        "sha256": "92a3dd6b46968676d877cc555c118a397b7fbb8e910ec469f9360a39fc686e0f"
+      }
+    ]
+  },
+  {
+    "id": "reactor",
+    "source": "assets/rooms/reactor/source/overhead.png",
+    "sha256": "487794fa86f762e5dcdb6ae93b1d1fe3cb29ee5cfad7144e7f44f128111ce7de",
+    "integration": {
+      "view": "rooms/whole-room/reactor_view.gd",
+      "card": "rooms/whole-room/reactor-card-mat-v2.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/rooms/reactor/furnishings/control-rod-bench.png",
+        "sha256": "306c0018588f228c490211e31943ded0e7013c4c729f3bc224e0c5fcc981a680"
+      },
+      {
+        "path": "assets/rooms/reactor/furnishings/universal-tool-chest.png",
+        "sha256": "9afd897a0a14bd9d916e941135e55df083219abf806d5257d674745dfbffa6b7"
+      },
+      {
+        "path": "assets/rooms/reactor/furnishings/control-rod-bench-registration.json",
+        "sha256": "3bebff6038c28403156883596609420f85591f12d69efa2c40037ae66c1b90f2"
+      },
+      {
+        "path": "assets/rooms/reactor/furnishings/universal-tool-chest-registration.json",
+        "sha256": "a3b1c7dc2e0027224313c74c1046e3841b6247a30c9a7e7b99708b8cf404077a"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/reactor-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/reactor-composition-v3.json",
+        "sha256": "df5c81c90b1b64375542098381e95cb7dedc529cd5b77698880f1a0dce2d59d4"
+      }
+    ],
+    "card": {
+      "path": "assets/rooms/reactor/cards/card.png",
+      "sha256": "a19cf19293f51f8d854dcfc38403def00f9c528550e195186b03226060ee080e"
+    },
+    "verification": {
+      "furnishing_v5": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v5/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "med_bay",
+    "source": "rooms/whole-room/med-bay-source-v1.png",
+    "sha256": "50f2bfef97600ccd77cfdebac8c8a003b2a3e5a410012798c1ea4d26ea7d6a6f",
+    "integration": {
+      "view": "rooms/whole-room/med_bay_view.gd",
+      "card": "assets/rooms/med-bay/cards/card.png"
+    },
+    "canonical_ports_nesw": [
+      2
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      },
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/material-polish-v2/research-bench.png",
+        "sha256": "ed75c859d5ebf02852085845cc7473fadf707b8ff737a7352b20fcb49a0ea310"
+      },
+      {
+        "path": "assets/material-polish-science-v2/research-accessories.png",
+        "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
+      },
+      {
+        "path": "assets/rooms/med-bay/furnishings/sterile-triage-island.png",
+        "sha256": "47733be1d52a6093f2dc308f2083070881b868fdcaff1b16a2fe535a4695c1d9"
+      },
+      {
+        "path": "assets/rooms/med-bay/furnishings/universal-enclosed-equipment-cart.png",
+        "sha256": "6cde01e7368e3df60e1ac5bba9b6dce5884be64bff6fcca0ef77679e4ba3192d"
+      },
+      {
+        "path": "assets/rooms/med-bay/furnishings/sterile-triage-island-registration.json",
+        "sha256": "0dd2f344adc004ce82e8f21faf2134f8ecd135f4eca51deee3af9ded410e1a14"
+      },
+      {
+        "path": "assets/rooms/med-bay/furnishings/universal-enclosed-equipment-cart-registration.json",
+        "sha256": "503d386d2d9bbdabf9b7a90e70416089c80bffc0fca05c5c212f8d5bb586a383"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/med-bay-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/med-bay-composition-v3.json",
+        "sha256": "49685eb4f50cbc3fead04fba62c4a22a18714c3855887431cbf271bb08128ed6"
+      }
+    ],
+    "activity_review": "Paired treatment beds and separate preparation/supply area. Four-rotation state checks, 72 static depth probes and current-controller entry/return tour pass (12 arrivals, 8 transitions, 699 samples). Postdates Windows v5; station-scale and package review pending.",
+    "card": {
+      "path": "assets/rooms/med-bay/cards/card.png",
+      "sha256": "e0f4326c05bca87ff61285b1c5800185731801c6ff822454bb213720d9f92a77"
+    },
+    "verification": {
+      "furnishing_v7": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v7/manifest.json; owner acceptance pending."
+    }
+  },
+  {
+    "id": "crew_hab",
+    "source": "assets/rooms/crew-hab/source/overhead.png",
+    "sha256": "9bc8548eae1f1c8bd88a833958824beda87ddd51d49e193a2ea6ddf47d74f7ba",
+    "integration": {
+      "view": "rooms/whole-room/crew_hab_view.gd",
+      "card": "rooms/whole-room/crew-hab-card-mat-v4.png"
+    },
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/lounge-support-v2.png",
+        "sha256": "0031013b88c2feeb40a8c1fce57e1b703615b66e8000ef229b3f9714131f0f6c"
+      },
+      {
+        "path": "assets/rooms/crew-hab/furnishings/drying-rack-clean.png",
+        "sha256": "a922fa5baa92de0be0a3afb94d45f4ebdd0f9fcbb32b5a8ea64dfdc331dccc3d"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/crew-hab-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/crew-hab-composition-v3.json",
+        "sha256": "1fb4c9d1e53d13f983a0c486921094c57d5b6f5b92ebcb5af9e519b46d725f07"
+      }
+    ],
+    "activity_review": "Paired berths, reading area and desk group. Four-rotation current-controller tour: 16 arrivals, 20 transitions, 1617 movement samples. 84 static depth probes. Postdates Windows v5; package and station-scale review pending."
+  },
+  {
+    "id": "mycelium_nursery",
+    "source": "rooms/whole-room/nursery-master.png",
+    "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66",
+    "integration": {
+      "view": "rooms/whole-room/nursery_furnished_view.gd",
+      "card": "rooms/whole-room/nursery-card-substrate-v1.png"
+    },
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/rooms/mycelium-nursery/furnishings/substrate-stand.png",
+        "sha256": "170af9170d2aafdfb7e119e8c91dc8e18f3fc6fbd45021d581bc66ec7f472f5a"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/nursery-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/nursery-composition-v3.json",
+        "sha256": "aed17d9a6e086b3d5b912f63385eb30c77b9c19c757448b4fa12ad7381f53c08"
+      }
+    ],
+    "activity_review": "Central growing rack, preparation bench/trolley and service equipment arrangement. Four-rotation state and 60 static depth probes pass; current-controller tour after production core wake passes 20 arrivals, 24 transitions, 1967 samples. Postdates Windows v6; station-scale/package review pending."
+  },
+  {
+    "id": "observation_room",
+    "source": "assets/rooms/observation-room/source/overhead.png",
+    "sha256": "fffe927d68156a708b55c5f10bdc41eb5b92c180ca244c483dafb53e1adc83b8",
+    "integration": {
+      "view": "rooms/underwater/observation-room-v1/observation_room_view.gd",
+      "card": "rooms/underwater/observation-room-v1/card.png"
+    },
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "scope": "Live furnished room and crew reading/window activities; native tests passed; standalone package not rebuilt",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/observation-room-v1/registration.json",
+        "sha256": "9f7515b0aa6c15333be7fe6ae227b0ffaae3f52f0a489294b642da62e0a36024"
+      },
+      {
+        "path": "assets/rooms/observation-room/office/wooden-desk.png",
+        "sha256": "2a47ec704c37cebca78b699d44a166113d1551cd1c32ba8157cd0354f645d421"
+      },
+      {
+        "path": "assets/rooms/observation-room/office/chair-rear.png",
+        "sha256": "0d6963acabf95458466ff42afc25a06abe2a575c0e68dbad4211985d505af08e"
+      },
+      {
+        "path": "assets/rooms/observation-room/office/reading-set.png",
+        "sha256": "e5655410bfb55b540cec0587654471f37b68c5d470fa2b9e442d5f6d74d891c2"
+      }
+    ],
+    "card_sha256": "e9b5a0444c4f52b966e80d9049f12cdcce1f330600ed458151da451143ed115d"
+  },
+  {
+    "id": "salvage_workshop",
+    "source": "rooms/underwater/salvage-workshop-v1/bench-source.png",
+    "sha256": "174a83e5d5e54ee6d56dbdb124c76a85ba1e55dc8a8a48a1f4780f5cb7792e75",
+    "integration": {
+      "view": "rooms/underwater/salvage-workshop-v1/workshop_view.gd",
+      "card": "rooms/underwater/salvage-workshop-v1/card.png"
+    },
+    "card_sha256": "820fca0f609ed9cf3511b2942f564fb3c3329ee2dc4498dfd437d93d1d0a7b1d",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/bench.png",
+        "sha256": "1343b9d5273b60425eb3ffd36d7ebcc2680d053a65671cdea57f17bd509d2189"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/tote.png",
+        "sha256": "e5cedb8498bf44ee52aeb0cb521d985f77551dc2b4c8af860efef3e2a9d7a598"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/bench.json",
+        "sha256": "26874b1c9a56b4547aac8aa14d964dbf1f116ec44d9ed037af0608df04e558aa"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/tote.json",
+        "sha256": "3f616942ebd9393d1d656b352d97a077cbc087cce516933dae05724f99786522"
+      }
+    ],
+    "scope": "Integrated and native tested; standalone package not rebuilt"
+  },
+  {
+    "id": "galley",
+    "source": "rooms/underwater/galley-v1/kitchen-source.png",
+    "sha256": "582286b2a50936a0f8e606e5de28f20e3cc7185de6c16ae689d2e884f0a47612",
+    "integration": {
+      "view": "rooms/underwater/galley-v1/galley_view.gd",
+      "card": "rooms/underwater/galley-v1/card.png"
+    },
+    "card_sha256": "9819497af7b607030fb96023f9ec8e6216bd93bbae3bfe950eecb39ef2c82f32",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/galley-v1/kitchen.png",
+        "sha256": "aa422849ee1aa349e5504374e403f167899b207b9d16c0484309b1b5a1977e54"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/serving.png",
+        "sha256": "ff287068776fc533221c2ac89fa481b81b88d0c9f1bdbaca30090e60695bd566"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/kitchen.json",
+        "sha256": "ada81b974b178475bec3ba24b2b7dd6196fa4c04adcc685c5110e4a74bee20b0"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/serving.json",
+        "sha256": "7856edeb3bdbb5d4aebbe7bdc0f99c4252d26e3840c02ba1d7d8d47b87b7fda7"
+      }
+    ],
+    "scope": "Integrated and native tested; standalone package not rebuilt"
+  },
+  {
+    "id": "cold_store",
+    "source": "rooms/underwater/cold-store-v1/fridge-source-v2.png",
+    "sha256": "90f8f45aabcfc7b244ea312104562be71b2c631f8bb45dbc02cfe8d6e46d6892",
+    "integration": {
+      "view": "rooms/underwater/cold-store-v1/cold_store_view.gd",
+      "card": "rooms/underwater/cold-store-v1/card.png"
+    },
+    "card_sha256": "87baed63a99fe02a75a29a21a32be7208e7691cc4e45a2439a4f83f9bcdc1947",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/cold-store-v1/fridge-v2.png",
+        "sha256": "e744e3ab74f26ee2e6315f3cda85e117ef5b20b94a06bbacc18c3d5a20e848a3"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/rack-v2.png",
+        "sha256": "40666c8fcab00a5b24bec922fd638bad34f551bad4295acd89b61fdf0f9dfe12"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/fridge-v2.json",
+        "sha256": "995f7cba7cfd3be7f3be54f91cd2536d02df6f3e9a95887613b4730c981eb1af"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/rack-v2.json",
+        "sha256": "196b4340b6e3c5103d5fb2a1a18767744c3e9a8ba15271f4f4a40e9adaa56345"
+      }
+    ],
+    "scope": "Owner-directed smaller matte V2; native art and routes verified; no standalone rebuild"
+  }
+]

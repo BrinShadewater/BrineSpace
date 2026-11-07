@@ -1,0 +1,84 @@
+{
+  "asset_id": "cargo-dolly-v2",
+  "department": "Logistics / Storage Bay",
+  "condition": "Maintained matte industrial equipment",
+  "attachment_class": "Low mobile cargo platform",
+  "functional_bays": [
+    "Strapped cargo case on rubber deck",
+    "Recessed grab slot",
+    "Low casters"
+  ],
+  "runtime_behavior": "Static standalone candidate, not installed",
+  "camera_and_facing": "Near top-down orthographic; north at top",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/storage-dispatch-wall-v1/wall-source-v1.png",
+      "sha256": "c5d46d47dacc637ed73f29889770b7d9a5749e7e41504ba89def3da82fb93eba",
+      "role": "Companion palette and cargo construction"
+    }
+  ],
+  "source_path": "assets/storage-dispatch-wall-v1/dolly-source-v2.png",
+  "source_sha256": "4d6d5b52839299f9d478c9c3162c11cb0c85d740701ba1a49db8ed060ecbee35",
+  "export_path": "assets/storage-dispatch-wall-v1/dolly.png",
+  "export_sha256": "01a0b52c822540c61c10eb780a96af19ad6ed111d6769f082edf8db81989f1f6",
+  "native_canvas_px": [
+    1254,
+    1254
+  ],
+  "proposed_display_width_world": 38.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Cargo handling and operator circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 removes bright case corner diamonds and yellow reflective bumper streaks.",
+        "Muted brown-ochre frame and blue-grey composite remain legible at 38 units."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/storage-dispatch-wall-v1/dolly-scale.png",
+      "findings": [
+        "Viewed beside furnished Storage Bay at equal world scale on light/dark grounds."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Opaque generated background removed through source UV registration; original raster unchanged.",
+        "Grab slot is a reviewed transparent aperture."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Correct bright bumper construction and case edge treatment separately; global darkening is insufficient."
+  ],
+  "proposed_display_height_world": 36.40981240981241,
+  "registration_path": "assets/storage-dispatch-wall-v1/dolly.json",
+  "registration_sha256": "3c0a7d4e561c82d3b57bf8b3c8e7850fc67db21226a8b48c8a099af6f0362d2b",
+  "prompt_path": "assets/storage-dispatch-wall-v1/dolly-v2.prompt.txt",
+  "prompt_sha256": "d2a35b4d1699083688cbc14d3015cb47352f3fd6438127a5d12e7100f7ea4b8a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/storage-dispatch-wall-v1/dolly-scale.png": "1416e4f4c81ad244044a657704489853b8d3dee22ee5b9c3594e3a1e0fe9d6f0",
+    "output/storage-dispatch-dolly.log": "adcf5961e2d883ace59a01f50e57885a09edb03f3d0aaf74909701c1a5764020",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

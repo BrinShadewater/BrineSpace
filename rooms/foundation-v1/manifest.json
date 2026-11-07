@@ -1,0 +1,142 @@
+{
+  "id": "station_south_foundation",
+  "source": "rooms/foundation-v1/foundation-source-v1.png",
+  "sha256": "db882466a803ad99c6faa7f645f79523469340dca847069189637ebb58bf215d",
+  "native_size": [
+    1983,
+    793
+  ],
+  "alpha_bounds": [
+    25,
+    9,
+    1959,
+    769
+  ],
+  "registration": [
+    25,
+    138,
+    1934,
+    596
+  ],
+  "processing": "Original generated RGBA preserved; runtime region excludes faint exterior padding. Uniform aspect-preserving scale, tint RGB 0.72/0.78/0.80.",
+  "prompt": "prompt.txt",
+  "integration": "Connected room subfloor strips beneath terrain-specific active foundations. Weathered derelict source. Basalt uses existing terrain texture extruded along actual south boundary, no steel piles. Foundations/subfloors render before rock/wreck silhouettes for partial occlusion. Southern occupied rooms conceal bases.",
+  "verification": {
+    "paid_preview": "output/foundation-preview-v2.log",
+    "visual": "output/depth-pass-v2/",
+    "git_lfs": true,
+    "packaged": false,
+    "occlusion": "output/foundation-occlusion.log",
+    "terrain": "output/foundation-terrain.log",
+    "terrain_visual": "output/foundation-terrain-v1/",
+    "exterior": "output/foundation-exterior-v2.log",
+    "partial_occlusion": "output/foundation-partial.log",
+    "depth_pass": "output/depth-water-checks-v2.log"
+  },
+  "variants": [
+    {
+      "id": "silt",
+      "source": "rooms/foundation-v1/foundation-silt-v1.png",
+      "sha256": "095898ca41f2608e227c76f1de4e0531f51d689e8a2a588ccdfa1fb36fb9d3b4",
+      "native_size": [
+        1983,
+        793
+      ],
+      "alpha_bounds": [
+        0,
+        21,
+        1955,
+        776
+      ],
+      "prompt": "prompt-silt.txt",
+      "reference": "foundation-source-v1.png",
+      "processing": "Original generated RGBA preserved; runtime uniform source registration only."
+    },
+    {
+      "id": "reef",
+      "source": "rooms/foundation-v1/foundation-reef-v1.png",
+      "sha256": "6ecafb75883c735fe45a6aaa23337fa096f159d0d2d09cbfdcb0abbf173fe30b",
+      "native_size": [
+        1983,
+        793
+      ],
+      "alpha_bounds": [
+        0,
+        23,
+        1953,
+        768
+      ],
+      "prompt": "prompt-reef.txt",
+      "reference": "foundation-source-v1.png",
+      "processing": "Original generated RGBA preserved; runtime uniform source registration only."
+    },
+    {
+      "id": "mineral",
+      "source": "rooms/foundation-v1/foundation-mineral-v1.png",
+      "sha256": "71b0dd3bf5b82eafd6cf9a3f404dbabda5885f7eac94355886c2693bfb81bbd6",
+      "native_size": [
+        1983,
+        793
+      ],
+      "alpha_bounds": [
+        0,
+        21,
+        1951,
+        753
+      ],
+      "prompt": "prompt-mineral.txt",
+      "reference": "foundation-source-v1.png",
+      "processing": "Original generated RGBA preserved; runtime uniform source registration only."
+    }
+  ],
+  "terrain_selection": {
+    "silt": "Default silt, brine flats, clay silt, ripple sand",
+    "reef": "Sponge, kelp and coral habitats",
+    "mineral": "Sulfur, iron seep, volcanic ash",
+    "source": "Manganese nodule habitat"
+  },
+  "weathered": {
+    "source": "rooms/foundation-v1/foundation-weathered-v3.png",
+    "sha256": "413d6a895065581a33ad051468a2998d6934de04c4017538dd3bcd0c7315f695",
+    "native_size": [
+      2160,
+      728
+    ],
+    "alpha_bounds": [
+      27,
+      8,
+      2160,
+      728
+    ],
+    "registration": [
+      25,
+      140,
+      2110,
+      550
+    ],
+    "prompt": "prompt-weathered-v3.txt",
+    "processing": "Fresh generated RGBA preserved; source region registration and runtime tint only. Selected for derelicts."
+  },
+  "rejected_weathered": [
+    {
+      "source": "rooms/foundation-v1/foundation-weathered-rejected-v1.png",
+      "sha256": "d99048add26822bf339463ae3de3bd7ed22cf36a25a6a39ad26ca7bb19317ad4",
+      "native_size": [
+        1983,
+        793
+      ],
+      "reason": "Opaque painted checkerboard exterior; not integrated",
+      "prompt": "prompt-weathered-v1.txt"
+    },
+    {
+      "source": "rooms/foundation-v1/foundation-weathered-rejected-v2.png",
+      "sha256": "99e34ba83d4b02cf13516f0b5b92bb0ca8d4375e8fccc62d97fb5b33df2129c0",
+      "native_size": [
+        1983,
+        793
+      ],
+      "reason": "Opaque painted checkerboard exterior; not integrated",
+      "prompt": "prompt-weathered-repair.txt"
+    }
+  ]
+}

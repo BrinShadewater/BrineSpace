@@ -1,0 +1,59 @@
+{
+  "construction_room": {
+    "id": "construction_drone_bay",
+    "department": "Engineering",
+    "condition": "Maintained",
+    "walkway": "Central route between active ports",
+    "card": "construction-bay-card-v3.png",
+    "doors": "North/south straight, rotating with room",
+    "focal_subject": "Orange assembly ROV and fabrication cradle",
+    "station": "rooms/production-ten/construction_drone_bay_view.gd"
+  },
+  "atlas": {
+    "prompt": "Precise background replacement. Replace the entire white/light gray checkerboard with completely flat vivid solid MAGENTA #FF00FF. The resulting background must be bright pink-purple, not white or gray. No transparency, no checkerboard. Preserve the six metal machines exactly in their same positions and size. Also replace background holes between claws, railings, legs and tools with that same flat #FF00FF magenta. Keep every steel machine pixel and detail unchanged. This is a chroma-key sprite atlas on a pure magenta matte. Do not add shadows. 1536x1024.",
+    "selected_output": "exec-9d93e20a-9f59-4ba4-b537-0bd337677e16.png",
+    "earlier_prompt_record": "Earlier six-prop generation prompt is summarized in docs/DRONE_FLEET.md; exact earlier prompt is not retained here.",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "reference_role": "Background-only edit of generated six-prop atlas; existing mining bay source supplied material/camera reference to earlier generation"
+  },
+  "stock_rack": {
+    "prompt": "Create ONE new individual game prop in the same dark steel industrial material, restrained orange accents, and south-facing oblique top-down camera as the provided BrineSpace machinery atlas. Subject: compact construction-material stock rack, a low heavy rectangular metal pallet with four thick prefabricated silver steel hull plates held vertically in slots at its rear, a small organized stack of short structural beams across its front, and two orange retaining straps. All parts physically supported, functional uncluttered readable silhouette, maintained clean industrial equipment. No vehicle, no robot, no tools floating. Center the complete rack with generous margin, front faces down the image. Background must be flat solid vivid magenta RGB255,0,255 including empty holes. No checkerboard, no floor, no room, no cast shadow, no text. A single prop only, square canvas.",
+    "selected_output": "exec-a564b930-9fc8-4e24-8b2d-3ea4f03de900.png",
+    "reference": "atlas-matte-v1.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "reference_role": "Material and camera"
+  },
+  "assets": [
+    {
+      "sha256": "01825580fbe892cd290ed3b9583304ba27a7cc86da17937cc7ba1c5bdea03b40",
+      "path": "assets/drones/fleet-v1/atlas-matte-v1.png"
+    },
+    {
+      "sha256": "d51b0cef9d68dcd15838f536650949cb0adff92745b89a30353582665908828e",
+      "path": "assets/drones/fleet-v1/stock-rack-matte-v1.png"
+    },
+    {
+      "sha256": "b3ef949ac77621139492174fcab449f654d4a9ce9d9f3f219aefd1b8f2e32d2b",
+      "path": "assets/drones/fleet-v1/construction-bay-card-v3.png"
+    },
+    {
+      "sha256": "75eb4124be355af379a04c268199ef03eb031066f2f6d34096dab9749a2ea008",
+      "path": "assets/drones/fleet-v1/mining-bay-card-bounds-v4.png"
+    },
+    {
+      "sha256": "9be2dcc1e85fa00f75ac2f17eefe11ad60608e4fa7ddb09ca8d91bed139acde3",
+      "path": "assets/drones/fleet-v1/salvage-bay-card-bounds-v4.png"
+    }
+  ],
+  "rejected": "Two earlier transparency attempts contained baked checkerboards; neither is a runtime source.",
+  "generator": "Codex image generation tool",
+  "evidence": "docs/DRONE_FLEET.md",
+  "date": "2026-09-06",
+  "processing": "Sources preserved byte-for-byte. Runtime chroma-key removes pixels where min(red,blue)-green > 0.18; regions and articulated tool pivots in scripts/drone_art.gd."
+}

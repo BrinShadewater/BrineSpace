@@ -1,0 +1,27 @@
+{
+  "room": "airlock",
+  "prop": "equipment_check_bench",
+  "direction": "south",
+  "quarter": 2,
+  "stage": "integrated-native-reviewed",
+  "source": "assets/airlock-directional-v1/check-bench-south.png",
+  "sha256": "5edd1fee39fc9005dabf6200eefa06c9faae7988c81b8ca06c9b3e8c1dcec271",
+  "dimensions": [
+    1983,
+    793
+  ],
+  "original": "exec-0ffec9d6-5a26-4428-b351-aa1e4fb77cf6.png",
+  "registration": "rooms/full-wall-v1/registrations/side-airlock-check-bench-south.json",
+  "evidence": "output/airlock-bench-south-2026-09-12",
+  "owner_acceptance": false,
+  "findings": [
+    "Overhead slatted seat with access handles on north/inward edge.",
+    "100-unit width retained at x=-178, bottom y=180.",
+    "Only q2 equipment_check_bench changes; other rotations RGB and metadata unchanged."
+  ],
+  "tests": {
+    "result": "PASS",
+    "evidence": "output/test-runs/20260912-111816-headless",
+    "scope": "Airlock service: Bill four quarters, Veld/Branforth q0; 176 preferred room layouts."
+  }
+}

@@ -1,0 +1,829 @@
+{
+  "version": 2,
+  "source_ledger": "source-ledger.json",
+  "unregistered_candidates": [],
+  "assets": [
+    {
+      "id": "sulfur-ground",
+      "biome": "sulfur",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "sulfur-ground-v1.png",
+      "versions": [
+        {
+          "id": "sulfur-ground",
+          "file": "sulfur-ground-v1.png",
+          "sha256": "5b622db8a874e0d6cb345a80578ca97b9c328b4cbe379f107fed911184dd6eb5",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sulfur-anhydrite",
+      "biome": "sulfur",
+      "category": "prop",
+      "size": 0.65,
+      "selected_source": "sulfur-anhydrite-v2.png",
+      "versions": [
+        {
+          "id": "sulfur-anhydrite",
+          "file": "sulfur-anhydrite-v1.png",
+          "sha256": "b89b2a6b1d91b1dfd2dca0b82af30eb66ce730fa774fe595cbf8f19f3e21f0a8",
+          "selected": false,
+          "mode": "RGBA",
+          "transparent_pixels": 1241589,
+          "partial_alpha_pixels": 330587,
+          "visible_bounds": [
+            132,
+            53,
+            1172,
+            1214
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": "Too upright/front-facing; superseded by overhead revision"
+        },
+        {
+          "id": "sulfur-anhydrite",
+          "file": "sulfur-anhydrite-v2.png",
+          "sha256": "40a2e9081a7d09b799b5546508f26015ad137e999cb1e14e985ad84ba2e9e14e",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 959486,
+          "partial_alpha_pixels": 612847,
+          "visible_bounds": [
+            0,
+            21,
+            1236,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sulfur-bacterial-mat",
+      "biome": "sulfur",
+      "category": "prop",
+      "size": 0.7,
+      "selected_source": "sulfur-bacterial-mat-v1.png",
+      "versions": [
+        {
+          "id": "sulfur-bacterial-mat",
+          "file": "sulfur-bacterial-mat-v1.png",
+          "sha256": "012adfdf0c4ca306fbf4756df0964a87832f44cc84f948e7db0b740413dc832d",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 1160626,
+          "partial_alpha_pixels": 411716,
+          "visible_bounds": [
+            0,
+            39,
+            1238,
+            1200
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sponge-ground",
+      "biome": "sponge",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "sponge-ground-v1.png",
+      "versions": [
+        {
+          "id": "sponge-ground",
+          "file": "sponge-ground-v1.png",
+          "sha256": "681b513dd8c590c18745620fe349edbafbc57dd2d89ba9c2f805254d3030e887",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sponge-vase-sponges",
+      "biome": "sponge",
+      "category": "prop",
+      "size": 0.55,
+      "selected_source": "sponge-vase-sponges-v2.png",
+      "versions": [
+        {
+          "id": "sponge-vase-sponges",
+          "file": "sponge-vase-sponges-v1.png",
+          "sha256": "b3df64c72fc84fc902d18dcc925157eba72286fce06b4dd26f39fe27be837f66",
+          "selected": false,
+          "mode": "RGBA",
+          "transparent_pixels": 995589,
+          "partial_alpha_pixels": 576214,
+          "visible_bounds": [
+            0,
+            40,
+            1234,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": "Too upright/front-facing; superseded by overhead revision"
+        },
+        {
+          "id": "sponge-vase-sponges",
+          "file": "sponge-vase-sponges-v2.png",
+          "sha256": "609980c81763e5342e0040f5e6aa51802d283a58f92524d33d5a99cd36415f77",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 980273,
+          "partial_alpha_pixels": 591545,
+          "visible_bounds": [
+            0,
+            48,
+            1230,
+            1198
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "sponge-sea-fans",
+      "biome": "sponge",
+      "category": "prop",
+      "size": 0.6,
+      "selected_source": "sponge-sea-fans-v2.png",
+      "versions": [
+        {
+          "id": "sponge-sea-fans",
+          "file": "sponge-sea-fans-v1.png",
+          "sha256": "db4e8846845daa8f181fd1b4e170ed2df881e93b76d88713d717eff9995ff14c",
+          "selected": false,
+          "mode": "RGBA",
+          "transparent_pixels": 1001986,
+          "partial_alpha_pixels": 570521,
+          "visible_bounds": [
+            0,
+            19,
+            1238,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": "Too upright/front-facing; superseded by overhead revision"
+        },
+        {
+          "id": "sponge-sea-fans",
+          "file": "sponge-sea-fans-v2.png",
+          "sha256": "e17f11737693558c18ae537f4594f1a7643aba362d464e6ff2b07b3329490147",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 774927,
+          "partial_alpha_pixels": 797584,
+          "visible_bounds": [
+            0,
+            0,
+            1253,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "brine-ground",
+      "biome": "brine",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "brine-ground-v1.png",
+      "versions": [
+        {
+          "id": "brine-ground",
+          "file": "brine-ground-v1.png",
+          "sha256": "60cf480fe8ae4070857034d554f7983d807d17ddf9f8296dad8d52123a7e9844",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "brine-salt-plates",
+      "biome": "brine",
+      "category": "prop",
+      "size": 0.7,
+      "selected_source": "brine-salt-plates-v1.png",
+      "versions": [
+        {
+          "id": "brine-salt-plates",
+          "file": "brine-salt-plates-v1.png",
+          "sha256": "4304d5590aad4692b6ee0ea4e7bb7ffea9550fc2ba344dda165c0d1864f096c0",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 1194385,
+          "partial_alpha_pixels": 378112,
+          "visible_bounds": [
+            63,
+            52,
+            1192,
+            1198
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "brine-seep-stones",
+      "biome": "brine",
+      "category": "prop",
+      "size": 0.6,
+      "selected_source": "brine-seep-stones-v1.png",
+      "versions": [
+        {
+          "id": "brine-seep-stones",
+          "file": "brine-seep-stones-v1.png",
+          "sha256": "2840e107c954a926192d40ad27ca82c35dd754c2197cfc8238d9eb327ab26fca",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 1231016,
+          "partial_alpha_pixels": 341013,
+          "visible_bounds": [
+            43,
+            53,
+            1199,
+            1230
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "kelp-ground",
+      "biome": "kelp",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "kelp-ground-v1.png",
+      "versions": [
+        {
+          "id": "kelp-ground",
+          "file": "kelp-ground-v1.png",
+          "sha256": "627294db5e505ea0041d6531c6d76240674c96e79b3a36a95512f0a4ce0e026c",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "kelp-ribbon-kelp",
+      "biome": "kelp",
+      "category": "prop",
+      "size": 0.65,
+      "selected_source": "kelp-ribbon-kelp-v1.png",
+      "versions": [
+        {
+          "id": "kelp-ribbon-kelp",
+          "file": "kelp-ribbon-kelp-v1.png",
+          "sha256": "db74713be06a391266c0e25de96e5a45bad30854b2e32ddd214b71d5f2125d7f",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 847526,
+          "partial_alpha_pixels": 724594,
+          "visible_bounds": [
+            0,
+            8,
+            1236,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "kelp-holdfast",
+      "biome": "kelp",
+      "category": "prop",
+      "size": 0.45,
+      "selected_source": "kelp-holdfast-v1.png",
+      "versions": [
+        {
+          "id": "kelp-holdfast",
+          "file": "kelp-holdfast-v1.png",
+          "sha256": "ee75e586ab6b5c7ea8d2514a8fcfd976cb50f5393fd3811c25f4b7b8a7ad39e9",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 939694,
+          "partial_alpha_pixels": 632536,
+          "visible_bounds": [
+            0,
+            21,
+            1232,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "coral-ground",
+      "biome": "coral",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "coral-ground-v1.png",
+      "versions": [
+        {
+          "id": "coral-ground",
+          "file": "coral-ground-v1.png",
+          "sha256": "0c479a91988c6b3661c8c6a6fa06125661312d7383e34b7eed3cb839e2c86a2b",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "coral-lace-coral",
+      "biome": "coral",
+      "category": "prop",
+      "size": 0.65,
+      "selected_source": "coral-lace-coral-v1.png",
+      "versions": [
+        {
+          "id": "coral-lace-coral",
+          "file": "coral-lace-coral-v1.png",
+          "sha256": "447a2377091cbaf54a614d69f2a5f8469a0c9376c150b993ae9e291b7b730461",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 781586,
+          "partial_alpha_pixels": 790902,
+          "visible_bounds": [
+            0,
+            21,
+            1233,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "coral-cup-corals",
+      "biome": "coral",
+      "category": "prop",
+      "size": 0.5,
+      "selected_source": "coral-cup-corals-v1.png",
+      "versions": [
+        {
+          "id": "coral-cup-corals",
+          "file": "coral-cup-corals-v1.png",
+          "sha256": "2ce8d1b98e09622c755aaac480b5aa861dc8c699e4e4c9b938af78a58f16a7be",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 748587,
+          "partial_alpha_pixels": 823753,
+          "visible_bounds": [
+            0,
+            23,
+            1234,
+            1204
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "nodules-ground",
+      "biome": "nodules",
+      "category": "ground",
+      "size": 4,
+      "selected_source": "nodules-ground-v1.png",
+      "versions": [
+        {
+          "id": "nodules-ground",
+          "file": "nodules-ground-v1.png",
+          "sha256": "aa469ff5ae55861f0dcef14f1570a8e2faf1a24810ca554338a4a71750f13395",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "nodules-nodule-cluster",
+      "biome": "nodules",
+      "category": "prop",
+      "size": 0.5,
+      "selected_source": "nodules-nodule-cluster-v1.png",
+      "versions": [
+        {
+          "id": "nodules-nodule-cluster",
+          "file": "nodules-nodule-cluster-v1.png",
+          "sha256": "2d0cdfd4e2e10f515d15dd12c9f8fae9d88539049f99c8a22d2c7af77c266385",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 1009743,
+          "partial_alpha_pixels": 562653,
+          "visible_bounds": [
+            0,
+            20,
+            1245,
+            1228
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "nodules-brittle-stars",
+      "biome": "nodules",
+      "category": "prop",
+      "size": 0.55,
+      "selected_source": "nodules-brittle-stars-v1.png",
+      "versions": [
+        {
+          "id": "nodules-brittle-stars",
+          "file": "nodules-brittle-stars-v1.png",
+          "sha256": "7bd62c811d6be58525fb1b11d130641a2d5e564443c47dc043284fde675954c8",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 985196,
+          "partial_alpha_pixels": 587096,
+          "visible_bounds": [
+            49,
+            23,
+            1200,
+            1238
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "iron-ground",
+      "biome": "iron",
+      "category": "ground",
+      "selected_source": "iron-ground-v1.png",
+      "versions": [
+        {
+          "id": "iron-ground",
+          "file": "iron-ground-v1.png",
+          "sha256": "a6290b741c89d4ce8cd0bbe040a17f404e52daedc588debc88b0dd1ddb335114",
+          "selected": true,
+          "mode": "RGB",
+          "transparent_pixels": 0,
+          "partial_alpha_pixels": 0,
+          "visible_bounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "iron-mineral-ledges",
+      "biome": "iron",
+      "category": "prop",
+      "selected_source": "iron-mineral-ledges-v1.png",
+      "versions": [
+        {
+          "id": "iron-mineral-ledges",
+          "file": "iron-mineral-ledges-v1.png",
+          "sha256": "cfc5eb89c7d80fb20cd3c764401137d5b311607398c57433b740313eb4ee3eac",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 791345,
+          "partial_alpha_pixels": 780452,
+          "visible_bounds": [
+            0,
+            21,
+            1222,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "iron-hydroids",
+      "biome": "iron",
+      "category": "prop",
+      "selected_source": "iron-hydroids-v1.png",
+      "versions": [
+        {
+          "id": "iron-hydroids",
+          "file": "iron-hydroids-v1.png",
+          "sha256": "2e360257ce804ac38c9a3137c3adb814734dfb02f5563207ecf842715bc7d503",
+          "selected": true,
+          "mode": "RGBA",
+          "transparent_pixels": 985856,
+          "partial_alpha_pixels": 586659,
+          "visible_bounds": [
+            0,
+            21,
+            1230,
+            1254
+          ],
+          "stage": "integrated; native reviewed; owner approval pending",
+          "processing": "none",
+          "size": [
+            1254,
+            1254
+          ],
+          "rejection": null
+        }
+      ],
+      "state": "decorative only; no collision, rewards or hazard effects",
+      "pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "runtime": "sub_biome_view.gd",
+  "source_count": 24,
+  "identity_count": 21
+}

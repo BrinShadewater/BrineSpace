@@ -1,0 +1,54 @@
+{
+  "name": "Bill North articulated first-step candidate",
+  "status": "staged_visual_review",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "standingHeight": 148,
+  "pivot": [
+    128,
+    224
+  ],
+  "textureFilter": "linear",
+  "precomposed": true,
+  "strideDistanceCells": {
+    "carry": 0.12
+  },
+  "states": [
+    {
+      "id": "carry-start-north",
+      "frameFiles": [
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/000.png",
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/001.png",
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/002.png",
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/003.png",
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/004.png",
+        "res://character/bill-carry-start-north-v2/frames/bare/carry-start-north/005.png"
+      ],
+      "frameDurationsMs": [
+        40,
+        50,
+        55,
+        65,
+        65,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ]
+}

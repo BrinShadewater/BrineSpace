@@ -1,0 +1,22 @@
+extends "res://scripts/bug_report.gd"
+func _enter_tree():
+ var actual := OS.get_user_data_dir()
+ var expected := ""
+ if OS.has_feature("ios"):
+  var home := OS.get_environment("HOME")
+  if not home.is_empty():
+   expected = home.path_join("Documents")
+ else:
+  expected = OS.get_environment("BRINE_EXPECTED_PROFILE")
+ var normalized_actual := actual.trim_prefix("/private") if actual.begins_with("/private/var/") else actual
+ var normalized_expected := expected.trim_prefix("/private") if expected.begins_with("/private/var/") else expected
+ var isolated := not expected.is_empty() and normalized_actual == normalized_expected
+ print("IPAD_VALIDATION_PROFILE_GUARD path=", actual, " expected=", expected, " matches=", isolated)
+ if not isolated:
+  OS.crash("Validation profile isolation guard failed before BugReport startup")
+  return
+ super._enter_tree()
+
+func _ready():
+ super._ready()
+ performance_monitor.auto_capture = false

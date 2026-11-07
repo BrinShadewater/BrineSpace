@@ -1,0 +1,4 @@
+extends Node
+func _ready():
+ if not FileAccess.file_exists("user://optimization_stress_enabled") or FileAccess.get_file_as_string("user://optimization_stress_enabled") != "1":
+  get_tree().call_deferred("change_scene_to_file","res://scenes/intro_film.tscn")

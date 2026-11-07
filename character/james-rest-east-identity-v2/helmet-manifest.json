@@ -1,0 +1,232 @@
+{
+  "name": "James East compact-head whole-source common-shell candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_native_source_verified_owner_review_pending",
+  "states": [
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "frames/helmet/lie-down-east/000.png",
+        "frames/helmet/lie-down-east/001.png",
+        "frames/helmet/lie-down-east/002.png",
+        "frames/helmet/lie-down-east/003.png",
+        "frames/helmet/lie-down-east/004.png",
+        "frames/helmet/lie-down-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source-v3.png",
+        "prompt": "prompt-v3.txt",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fixedScale": 0.4983164983164983,
+        "derivation": "Complete revised source figures; inherited fixed inverse ruler, exact master arrival, pooled shared material transform, shared sleep neutral, reverse get-up. No isolated head shrinking or pose-wise scale fitting.",
+        "helmetSource": "res://character/james-lying-east-v1/source-helmet.png",
+        "helmetSourceSha256": "c4f6b19eea8babd3a767bcc421e8f0712c2d209e16eadc00456f2e70e786ae18",
+        "fixedHeadScale": 0.43209876543209874,
+        "helmetDerivation": "Accepted pitch donors and standing-master-calibrated shell ruler reused; complete revised source body outside recorded ownership region. Source0 exact accepted helmet master."
+      }
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "frames/helmet/sleep-east/000.png",
+        "frames/helmet/sleep-east/001.png",
+        "frames/helmet/sleep-east/002.png",
+        "frames/helmet/sleep-east/003.png",
+        "frames/helmet/sleep-east/004.png",
+        "frames/helmet/sleep-east/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -22.962833178005592,
+        -6.616216216216216
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source-v3.png",
+        "prompt": "prompt-v3.txt",
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "fixedScale": 0.4983164983164983,
+        "derivation": "Complete revised source figures; inherited fixed inverse ruler, exact master arrival, pooled shared material transform, shared sleep neutral, reverse get-up. No isolated head shrinking or pose-wise scale fitting.",
+        "helmetSource": "res://character/james-lying-east-v1/source-helmet.png",
+        "helmetSourceSha256": "c4f6b19eea8babd3a767bcc421e8f0712c2d209e16eadc00456f2e70e786ae18",
+        "fixedHeadScale": 0.43209876543209874,
+        "helmetDerivation": "Accepted pitch donors and standing-master-calibrated shell ruler reused; complete revised source body outside recorded ownership region. Source0 exact accepted helmet master."
+      }
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "frames/helmet/get-up-east/000.png",
+        "frames/helmet/get-up-east/001.png",
+        "frames/helmet/get-up-east/002.png",
+        "frames/helmet/get-up-east/003.png",
+        "frames/helmet/get-up-east/004.png",
+        "frames/helmet/get-up-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source-v3.png",
+        "prompt": "prompt-v3.txt",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "fixedScale": 0.4983164983164983,
+        "derivation": "Complete revised source figures; inherited fixed inverse ruler, exact master arrival, pooled shared material transform, shared sleep neutral, reverse get-up. No isolated head shrinking or pose-wise scale fitting.",
+        "helmetSource": "res://character/james-lying-east-v1/source-helmet.png",
+        "helmetSourceSha256": "c4f6b19eea8babd3a767bcc421e8f0712c2d209e16eadc00456f2e70e786ae18",
+        "fixedHeadScale": 0.43209876543209874,
+        "helmetDerivation": "Accepted pitch donors and standing-master-calibrated shell ruler reused; complete revised source body outside recorded ownership region. Source0 exact accepted helmet master."
+      }
+    }
+  ]
+}

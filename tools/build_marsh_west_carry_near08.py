@@ -1,0 +1,7 @@
+"""Pack compact near passing with straight foreground supporting thigh."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+s=(ROOT/'tools/build_marsh_east_carry_contact03.py').read_text().replace('east','west').replace('East','West').replace('contact-03','near-08').replace('far-contact.png','near-passing.png').replace('exec-1661ff9f-b710-4f30-ae90-3b6dc30c659a','exec-ce8dcc0e-c84d-4f0a-91ae-d421d0f427c7')
+s=s.replace('foreground thigh correctly backward/left, boot contact projection and crate variant remain provisional','correct compact near support: foreground near thigh/shin vertical,near flat boot LEFT,dark far rear heel recovery RIGHT; whole joins pending')
+s=s.replace('Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending.','Foreground near thigh/shin now vertical under pelvis and near boot flat LEFT; darker far knee low RIGHT and calf folded behind RIGHT with rear boot raised. Correct compact near passing. Plain inset-panel/single-left-block-latch cargo concept consistent,whole crate/body/grade/camera/registration joins and native motion pending.')
+exec(compile(s,str(Path(__file__).resolve()),'exec'),{'__file__':str(Path(__file__).resolve()),'__name__':'__main__'})
